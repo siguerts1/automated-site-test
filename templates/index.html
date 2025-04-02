@@ -2,17 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ReleaseRadar.io - Automated Release Notes from Popular Projects">
-  <title>ReleaseRadar.io</title>
+  <title>ReleaseRadar</title>
+  <meta name="description" content="Search and view latest open source releases.">
+  <style>
+    body { font-family: sans-serif; padding: 2em; max-width: 800px; margin: auto; }
+    input { width: 100%; padding: 10px; margin-bottom: 20px; font-size: 16px; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 0.5em 0; }
+  </style>
 </head>
 <body>
-  <h1>🚀 ReleaseRadar.io</h1>
-  <p>Easily fetch updated release notes from popular open-source projects.</p>
-  <ul>
+  <h1>🔍 ReleaseRadar</h1>
+  <p>Search through {{ repos | length }} tracked open-source projects.</p>
+
+  <input type="text" id="search" placeholder="Search for a project...">
+
+  <ul id="repo-list">
     {% for repo in repos %}
-      <li><a href="{{ repo.filename }}">{{ repo.name }}</a></li>
+      <li data-name="{{ repo.name | lower }}">
+        <a href="{{ repo.filename }}">{{ repo.name }}</a>
+      </li>
     {% endfor %}
   </ul>
+
+  <script>
+    const input = document.getElementById("search");
+    const list = document.getElementById("repo-list").children;
+
+    input.addEventListener("input", () => {
+      const value = input.value.toLowerCase();
+      Array.from(list).forEach(li => {
+        li.style.display = li.dataset.name.includes(value) ? "list-item" : "none";
+      });
+    });
+  </script>
 </body>
 </html>
