@@ -33,14 +33,14 @@ def render_repo_html(repo_json_file):
 
 def generate_index_page(repo_files):
     """
-    Generate the main index.html page linking to each repo's release notes.
+    Generate index.html in the project root.
     """
     index_template = env.get_template("index.html")
     repo_links = []
 
     for filename in repo_files:
         name = filename.replace(".json", "").replace("_", "/")
-        html_file = filename.replace(".json", ".html")
+        html_file = os.path.join("site", filename.replace(".json", ".html"))
         repo_links.append({
             "name": name,
             "filename": html_file
@@ -48,28 +48,22 @@ def generate_index_page(repo_files):
 
     html = index_template.render(repos=repo_links)
 
-    output_path = os.path.join(OUTPUT_DIR, "index.html")
-    with open(output_path, "w") as f:
+    # Save to root
+    with open("index.html", "w") as f:
         f.write(html)
 
-    print(f"🏠 Homepage generated at {output_path}")
+    print("🏠 Homepage generated at ./index.html")
 
-
-def generate_sitemap(repo_files, domain="https://releaseradar.io"):
+def generate_sitemap(repo_files, domain="https://yourdomain.com"):
     """
-    Generate a sitemap.xml file listing all repo HTML pages and the homepage.
+    Generate sitemap.xml in root, with links to all release pages and index.
     """
-    sitemap_path = os.path.join(OUTPUT_DIR, "sitemap.xml")
-    
-    # Start with homepage
-    urls = [f"{domain}/index.html"]
+    urls = [f"{domain}/index.html"]  # Include homepage
 
-    # Add one entry for each repo's release page
     for file in repo_files:
         html_file = file.replace(".json", ".html")
-        urls.append(f"{domain}/{html_file}")
+        urls.append(f"{domain}/site/{html_file}")
 
-    # Build XML structure
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>']
     sitemap.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
 
@@ -80,11 +74,10 @@ def generate_sitemap(repo_files, domain="https://releaseradar.io"):
 
     sitemap.append("</urlset>")
 
-    # Save to file
-    with open(sitemap_path, "w") as f:
+    with open("sitemap.xml", "w") as f:
         f.write("\n".join(sitemap))
 
-    print(f"🗺️  Sitemap generated at {sitemap_path}")
+    print("🗺️  Sitemap generated at ./sitemap.xml")
 
 def main():
     # Collect all JSON files from the data directory
