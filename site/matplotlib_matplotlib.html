@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for matplotlib/matplotlib"/>
+  <title>matplotlib/matplotlib Release Notes</title>
+</head>
+<body>
+  <h1>🚀 matplotlib/matplotlib - Release Notes</h1>
+  
+    <section>
+      <h2>REL: v3.10.1 (2025-02-27)</h2>
+      <pre>This is the first bugfix release of the 3.10.x series.
+
+This release contains several bug-fixes and adjustments:
+
+- Respect array alpha with interpolation_stage='rgba' in _Imagebase::_make_image
+- Remove md5 usage to prevent issues on FIPS enabled systems
+- Fix pyplot.matshow figure handling
+- Fix modifying Axes' position also alters the original Bbox object used for initialization
+- Fix title position for polar plots
+- Add version gate to GTK4 calls when necessary
+- Raise warning if both c and facecolors are used in scatter plot
+
+As well as several documentation improvements and corrections.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.10.0 (2024-12-14)</h2>
+      <pre>Highlights of this release include:
+    
+    - Preliminary support for free-threaded CPython 3.13
+    - New more-accessible color cycle
+    - Dark-mode diverging colormaps
+    - Exception handling control
+    - InsetIndicator artist
+    - FillBetweenPolyCollection
+    - Fill between 3D lines
+    - Data in 3D plots can now be dynamically clipped to the axes view limits
+    - Rotating 3d plots with the mouse
+    - Increased Figure limits with Agg renderer
+    - Subfigures no longer provisional
+    - Subfigures are now added in row-major order
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: 3.9.4 (2024-12-13)</h2>
+      <pre>This is the fourth bugfix release of the 3.9.x series.
+
+This release contains two bug-fixes:
+
+- Fix toolbar icons in GTK backend
+- Fix `Poly3DCollection` initialization with list of lists</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: 3.9.3 (2024-11-30)</h2>
+      <pre>This is the third bugfix release of the 3.9.x series.
+
+This release contains several bug-fixes and adjustments:
+
+- Fix `axline` with extremely small slopes
+- Fix `axline` with non-linear axis scales
+- Fix `minimumSizeHint` with Qt backend
+- Fix config directory usage when it's behind a symlink
+- Fix draggable legend when blitting is enabled
+- Fix high CPU utilization in the `macosx` backend
+- Fix multiple hatch `edgecolors` passed to `contourf`
+- Improve compatibility with `pytest` 8.2.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Matplotlib v3.10.0rc1 (2024-11-01)</h2>
+      <pre>This is the first release candidate for Matplotlib 3.10.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: 3.9.2 (2024-08-13)</h2>
+      <pre>This is the second bugfix release of the 3.9.x series.
+
+This release contains several bug-fixes and adjustments:
+
+- Be more resilient to I/O failures when writing font cache
+- Fix nondeterministic behavior with subplot spacing and constrained layout
+- Fix sticky edge tolerance relative to data range
+- Improve formatting of image values in cases of singular norms
+
+Windows wheels now bundle the MSVC runtime DLL statically to avoid inconsistencies with other wheels and random crashes depending on import order.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: 3.9.1 (2024-07-04)</h2>
+      <pre>This is the first bugfix release of the 3.9.x series.
+
+This release contains several bug-fixes and adjustments:
+
+- Add GitHub artifact attestations for sdist and wheels
+- Re-add `matplotlib.cm.get_cmap`; note this function will still be removed at a later date
+- Allow duplicate backend entry points
+- Fix `Axes` autoscaling of thin bars at large locations
+- Fix `Axes` autoscaling with `axhspan` / `axvspan`
+- Fix `Axes3D` autoscaling of `Line3DCollection` / `Poly3DCollection`
+- Fix `Axes3D` mouse interactivity with non-default roll angle
+- Fix box aspect ratios in `Axes3D` with alternate vertical axis
+- Fix case handling of backends specified as `module://...`
+- Fix crash with TkAgg on Windows with `tk.window_focus: True`
+- Fix interactive update of SubFigures
+- Fix interactivity when using the IPython console
+- Fix pickling of AxesWidgets and SubFigures
+- Fix scaling on GTK3Cairo / GTK4Cairo backends
+- Fix text wrapping within SubFigures
+- Promote `mpltype` Sphinx role to a public extension; note this is only intended for development reasons</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: 3.9.0 (2024-05-15)</h2>
+      <pre>Highlights of this release include:
+
+- Plotting and Annotation improvements
+   - Axes.inset_axes is no longer experimental
+   - Legend support for Boxplot
+   - Percent sign in pie labels auto-escaped with usetex=True
+   - hatch parameter for stackplot
+   - Add option to plot only one half of violin plot
+   - axhline and axhspan on polar axes
+   - Subplot titles can now be automatically aligned
+   - axisartist can now be used together with standard Formatters
+   - Toggle minorticks on Axis
+   - StrMethodFormatter now respects axes.unicode_minus
+- Figure, Axes, and Legend Layout
+   - Subfigures now have controllable zorders
+   - Getters for xmargin, ymargin and zmargin
+- Mathtext improvements
+   - mathtext documentation improvements
+   - mathtext spacing corrections
+- Widget Improvements
+   - Check and Radio Button widgets support clearing
+- 3D plotting improvements
+   - Setting 3D axis limits now set the limits exactly
+- Other improvements
+   - New BackendRegistry for plotting backends
+   - Add widths, heights and angles setter to EllipseCollection
+   - image.interpolation_stage rcParam
+   - Arrow patch position is now modifiable
+   - NonUniformImage now has mouseover support</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.9.0rc2 (2024-04-09)</h2>
+      <pre>This is the second release candidate for the meso release 3.9.0.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.8.4 (2024-04-04)</h2>
+      <pre>This is the fourth micro release of the 3.8 series.
+    
+Highlights of the 3.8.4 release include:
+    
+- Enable building against numpy 2.0; released wheels are built against numpy 2
+- macosx: Clean up single-shot timers correctly
+- Add a draw during show for macos backend
+- Fix color sequence data for Set2 and Set3
+- gtk: Ensure pending draws are done before GTK draw
+- Update "Created with" url in hand.svg
+- Avoid modifying user input to Axes.bar
+- fix quiver3d incorrect arrow colors
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.7.5 (2024-02-16)</h2>
+      <pre>This is the fifth bugfix release of the 3.7.x series.
+
+This release contains two bug-fixes:
+
+- Fix hanging on `plt.pause` on the MacOS backend
+- Fix crash on exit when using the PGF backend on Windows</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.8.3 (2024-02-15)</h2>
+      <pre>This is the third micro release of the 3.8 series.
+
+Highlights of the 3.8.3 release include:
+
+- Improvements to the MacOS backend
+  - Fix hanging on `plt.pause`
+  - Fix warnings about "Secure coding is not enabled for restorable state"
+- Fix crash at exit for PGF backend
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.7.4 (2023-11-18)</h2>
+      <pre>This is the fourth bugfix release of the 3.7.x series.
+
+This release contains one bug-fix:
+
+- Fix a segmentation fault when resizing on Python 3.12 and macOS 14
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.8.2 (2023-11-17)</h2>
+      <pre>REL: v3.8.2
+
+This is the second bugfix release of the 3.8 series.
+
+Highlights of this release include:
+- Fix a segfault in the MacOS backend when running on Python 3.12
+- Fix Contour labeling manual positions selecting incorrect contours.
+- Various documentation improvements</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.8.1 (2023-10-31)</h2>
+      <pre>This is the first bugfix release of the 3.8.x series.
+
+
+This release contains several bug fixes and adjustments:
+
+
+- Bump setuptools required version because of setuptools_scm v8
+- Update ``find_nearest_contour`` and revert contour deprecations
+- ``allsegs`` and ``allkinds`` return individual segments
+- Restore default behavior of hexbin mincnt with C provided
+- Try/except import of Axes3D
+- Ensure valid path mangling for ContourLabeler
+- BLD: Remove development dependencies from sdists
+- FIX 2-tuple of colors in to_rgba_array
+- Fix issue with non-string labels and legend
+- Fix issue with locale comma when not using math text
+- Various type hinting improvements
+- Various documentation improvements
+- Improvements to the MacOS backend</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.8.0 (2023-09-15)</h2>
+      <pre>REL: v3.8.0
+
+Highlights of this release include:
+
+- Type hints for most public APIs
+- Many improvements to Mathtext
+   - Addition of ``\boldsymbol`` command
+   - Additional sizable delimiters
+   - Documentation improvements
+   - ``\substack`` command
+   - ``\middle`` delimitier
+   - ``\mathbfit`` for bold italic text
+- 3D plotting improvements
+   - Specify tick/axis label positions
+   - Improved text for coordinates in interactive sessions
+   - Ability to share view angles
+- New plotting method ``ecdf`` (empirical cumulative distribution function)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.7.3 (2023-09-12)</h2>
+      <pre>This is the third bugfix release of the 3.7.x series.
+
+This release contains several bug-fixes and adjustments:
+
+* Add Python 3.12 wheels
+* Update the license for the bundled colorbrewer colormap data
+* Fix Cairo backend when using cairocffi
+* Fix axes_grid1 inset axes with `bbox_inches=tight`
+* Fix bugs in `Path3DCollection` / `Poly3DCollection` constructors
+* Fix setting array labelcolor on Tick
+* Improve compatibility with latest NumPy
+* Stop warning when calling `tight_layout` multiple times</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.0rc1 (2023-08-10)</h2>
+      <pre>First release candidate for Matplotlib v3.8.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.7.2 (2023-07-05)</h2>
+      <pre>This is the second bugfix release of the 3.7.x series.
+
+This release contains several bug-fixes and adjustments:
+
+* Avoid modifying input masks in `pcolor`/`pcolormesh`
+* Fix 3D set_aspect error cases
+* Fix IPython's `%pylab` mode detection
+* Fix `Figure.get_constrained_layout_pads()`
+* Fix `Legend.set_draggable()` with `update="bbox"`
+* Fix `TransformedBbox.{,full_}contains`
+* Fix clipping of `bar_label` text
+* Fix colorbar size when saving with explicit `bbox_inches`
+* Fix errors when an input is entirely NaN
+* Fix leaks of exception tracebacks and `LayoutGrid` objects
+* Fix non-interpolated imshow in PDF export
+* Fix palettized image optimization in PDF export
+* Fix pgf tests with TeXLive 2022
+* Fix removal of `Axes` that contain widgets that are grabbing the mouse
+* Fix removal of draggable artists
+* Fix subslice optimization for long, fully nan lines
+* Fix tight layout if Figure has an existing layout manager
+* Fix window extent of AnnotationBbox before first draw
+* Fix wspace and hspace in subfigures
+* Improve Qt compatibility
+* Improve compatibility with Python 3.12
+* Prevent under the hood downcasting of values in `xcorr`
+* Remove some NumPy function overrides from `pylab`
+* Remove warning with symlog scales on mouseover</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.7.1 (2023-03-04)</h2>
+      <pre>This is the first bugfix release of the 3.7.x series.
+
+This release contains several bug-fixes and adjustments:
+
+* Ensure Qhull license is included in binary wheels
+* Fix application of rcParams on Axes labels
+* Fix compatibility with Pandas datetime unit converter
+* Fix compatibility with latest GTK4
+* Fix import of styles with relative path
+* Fix Lasso unresponsiveness when clicking and immediately releasing
+* Fix pickling of draggable legends
+* Fix RangeSlider.set_val when new value is outside existing value
+* Fix size of Tk spacers when changing display DPI
+* Fix wrapped text in constrained layout
+* Improve compatibility with third-party backends
+* Improve error if animation save path does not exist</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.7.0 (2023-02-13)</h2>
+      <pre>Highlights of this release include:
+
+- Plotting and Annotation improvements
+  - ``hatch`` parameter for pie
+  - Polar plot errors drawn in polar coordinates
+  - Additional format string options in `~matplotlib.axes.Axes.bar_label`
+  - ``ellipse`` boxstyle option for annotations
+  - The *extent* of ``imshow`` can now be expressed with units
+  - Reversed order of legend entries
+  - ``pcolormesh`` accepts RGB(A) colors
+  - View current appearance settings for ticks, tick labels, and gridlines
+  - Style files can be imported from third-party packages
+- Improvements to 3D Plotting
+  - 3D plot pan and zoom buttons
+  - *adjustable* keyword argument for setting equal aspect ratios in 3D
+  - ``Poly3DCollection`` supports shading
+  - rcParam for 3D pane color
+- Figure and Axes Layout
+  - ``colorbar`` now has a *location* keyword argument
+  - Figure legends can be placed outside figures using constrained_layout
+  - Per-subplot keyword arguments  in ``subplot_mosaic``
+  - ``subplot_mosaic`` no longer provisional
+- Widget Improvements
+  - Custom styling of button widgets
+  - Blitting in Button widgets
+- Other Improvements
+  - Source links can be shown or hidden for each Sphinx plot directive
+  - Figure hooks
+- New & Improved Narrative Documentation
+  - Brand new :doc:`Animations </tutorials/introductory/animation_tutorial>` tutorial.
+  - New grouped and stacked `bar chart <../../gallery/index.html#lines_bars_and_markers>`_ examples.
+  - New section for new contributors and reorganized git instructions in the :ref:`contributing guide<contributing>`.
+  - Restructured :doc:`/tutorials/text/annotations` tutorial.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.7.0rc1 (2023-01-25)</h2>
+      <pre>First release candidate for 3.7.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.6.3 (2023-01-12)</h2>
+      <pre>This is the third bugfix release of the 3.6.x series.
+
+This release contains several bug-fixes and adjustments:
+
+* Fix Artist removal from `axes_grid1` Axes classes
+* Fix `inset_locator` in subfigures
+* Fix `scatter` on masked arrays with units
+* Fix colorbar ticks with log norm contours
+* Fix deprecation warnings in GTK4 backend
+* Fix using relative paths in `HTMLWriter`
+* Improve failure message from rcParams string validation for tuple inputs
+* Improve performance of QtAgg backends
+* No longer modify `pil_kwargs` argument to `imsave` and `savefig`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.6.2 (2022-11-03)</h2>
+      <pre>This is the second bugfix release of the 3.6.x series.
+
+This release contains several bug-fixes and adjustments:
+
+* Avoid mutating dictionaries passed to `subplots`
+* Fix `bbox_inches='tight'` on a figure with constrained layout enabled
+* Fix auto-scaling of `ax.hist` density with `histtype='step'`
+* Fix compatibility with PySide6 6.4
+* Fix evaluating colormaps on non-NumPy arrays
+* Fix key reporting in pick events
+* Fix thread check on PyPy 3.8
+* Handle input to `ax.bar` that is all NaN
+* Make rubber band more visible on Tk and Wx backends
+* Restore (and warn on) seaborn styles in `style.library`
+* Restore `get_renderer` function in deprecated `tight_layout`
+* nb/webagg: Fix resize handle on WebKit browsers (e.g., Safari)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.6.1 (2022-10-08)</h2>
+      <pre>
+
+This is the first bugfix release of the 3.6.x series.
+
+This release contains several bug-fixes and adjustments:
+
+* A warning is no longer raised when constrained layout explicitly
+  disabled and tight layout is applied
+* Add missing `get_cmap` method to `ColormapRegistry`
+* Adding a colorbar on a `ScalarMappable` that is not attached to an
+  `Axes` is now deprecated instead of raising a hard error
+* Fix `barplot` being empty when first element is NaN
+* Fix `FigureManager.resize` on GTK4
+* Fix `fill_between` compatibility with NumPy 1.24 development version
+* Fix `hexbin` with empty arrays and log scaling
+* Fix `resize_event` deprecation warnings when creating figure on macOS
+* Fix build in mingw
+* Fix compatibility with PyCharm's interagg backend
+* Fix crash on empty `Text` in PostScript backend
+* Fix generic font families in SVG exports
+* Fix horizontal colorbars with hatches
+* Fix misplaced mathtext using `eqnarray`
+* `stackplot` no longer changes the Axes cycler</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.6.0 (2022-09-16)</h2>
+      <pre>Highlights of this release include:
+
+- Figure and Axes creation / management
+    - `subplots`, `subplot_mosaic` accept *height_ratios* and *width_ratios* arguments
+    - Constrained layout is no longer considered experimental
+    - New `layout_engine` module
+    - Compressed layout added for fixed-aspect ratio Axes
+    - Layout engines may now be removed
+    - `Axes.inset_axes` flexibility
+    - WebP is now a supported output format
+    - Garbage collection is no longer run on figure close
+- Plotting methods
+    - Striped lines (experimental)
+    - Custom cap widths in box and whisker plots in `bxp` and `boxplot`
+    - Easier labelling of bars in bar plot
+    - New style format string for colorbar ticks
+    - Linestyles for negative contours may be set individually
+    - Improved quad contour calculations via ContourPy
+    - `errorbar` supports *markerfacecoloralt*
+    - `streamplot` can disable streamline breaks
+    - New axis scale `asinh` (experimental)
+    - `stairs(..., fill=True)` hides patch edge by setting linewidth
+    - Fix the dash offset of the `Patch` class
+    - `Rectangle` patch rotation point
+- Colors and colormaps
+    - Color sequence registry
+    - Colormap method for creating a different lookup table size
+    - Setting norms with strings
+- Titles, ticks, and labels
+    - `plt.xticks` and `plt.yticks` support *minor* keyword argument
+- Legends
+    - Legend can control alignment of title and handles
+    - *ncol* keyword argument to `legend` renamed to *ncols*
+- Markers
+    - `marker` can now be set to the string "none"
+    - Customization of `MarkerStyle` join and cap style
+- Fonts and Text
+    - Font fallback
+    - List of available font names
+    - `math_to_image` now has a *color* keyword argument
+    - Active URL area rotates with link text
+- rcParams improvements
+    - Allow setting figure label size and weight globally and separately from title
+    - Mathtext parsing can be disabled globally
+    - Double-quoted strings in matplotlibrc
+- 3D Axes improvements
+    - Standardized views for primary plane viewing angles
+    - Custom focal length for 3D camera
+    - 3D plots gained a 3rd "roll" viewing angle
+    - Equal aspect ratio for 3D plots
+- Interactive tool improvements
+    - Rotation, aspect ratio correction and add/remove state
+    - `MultiCursor` now supports Axes split over multiple figures
+    - `PolygonSelector` bounding boxes
+    - Setting `PolygonSelector` vertices
+    - `SpanSelector` widget can now be snapped to specified values
+    - More toolbar icons are styled for dark themes
+- Platform-specific changes
+    - Wx backend uses standard toolbar
+    - Improvements to macosx backend
+        - Modifier keys handled more consistently
+        - `savefig.directory` rcParam support
+        - `figure.raise_window` rcParam support
+        - Full-screen toggle support
+        - Improved animation and blitting support
+    - macOS application icon applied on Qt backend
+    - New minimum macOS version
+    - Windows on ARM support</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.6.0rc2 (2022-08-29)</h2>
+      <pre>Second release candidate for 3.6.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.6.0rc1 (2022-08-29)</h2>
+      <pre>First release candidate for 3.6.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.5.3 (2022-08-11)</h2>
+      <pre>This is the third bugfix release of the 3.5.x series.
+
+This release contains several bug-fixes and adjustments:
+
+* Fix alignment of over/under symbols
+* Fix bugs in colorbars:
+    * alpha of extensions
+    * `drawedges=True` with extensions
+    * handling of `panchor=False`
+* Fix builds on Cygwin and IBM i
+* Fix contour labels in `SubFigure`s
+* Fix cursor output:
+     * for `imshow` with all negative values
+    * when using `BoundaryNorm`
+* Fix interactivity in IPython/Jupyter
+* Fix NaN handling in `errorbar`
+* Fix NumPy conversion from AstroPy unit arrays
+* Fix positional *markerfmt* passed to `stem`
+* Fix unpickling:
+    * crash loading in a separate process
+    * incorrect DPI when HiDPI screens</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>REL: v3.5.2 (2022-05-03)</h2>
+      <pre>This is the second bugfix release of the 3.5.x series.
+
+This release contains several bug-fixes and adjustments:
+
+* Add support for Windows on ARM (source-only; no wheels provided yet)
+* Add year to concise date formatter when displaying less than 12 months
+* Disable `QuadMesh` mouse cursor to avoid severe performance regression in `pcolormesh`
+* Delay backend selection to allow choosing one in more cases
+* Fix automatic layout bugs in EPS output
+* Fix autoscaling of `scatter` plots
+* Fix clearing of subfigures
+* Fix colorbar exponents, inversion of extensions, and use on inset axes
+* Fix compatibility with various NumPy-like classes (e.g., Pandas, xarray, etc.)
+* Fix constrained layout bugs with mixed subgrids
+* Fix `errorbar` with dashes
+* Fix errors in conversion to GTK4 and Qt6
+* Fix figure options accidentally re-ordering data
+* Fix keyboard focus of TkAgg backend
+* Fix manual selection of contour labels
+* Fix path effects on text with whitespace
+* Fix `quiver` in subfigures
+* Fix `RangeSlider.set_val` displaying incorrectly
+* Fix regressions in collection data limits
+* Fix `stairs` with no edgecolor
+* Fix some leaks in Tk backends
+* Fix tight layout DPI confusion
+* Fix tool button customizability and some tool manager bugs
+* Only set Tk HiDPI scaling-on-map for Windows systems
+* Partially allow TTC font collection files by selecting the first font</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

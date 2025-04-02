@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for containrrr/watchtower"/>
+  <title>containrrr/watchtower Release Notes</title>
+</head>
+<body>
+  <h1>🚀 containrrr/watchtower - Release Notes</h1>
+  
+    <section>
+      <h2>v1.7.1 (2023-11-11)</h2>
+      <pre>## Changelog
+
+a047c7f fix: instance cleanup without scope (#1836)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:i386-1.7.1`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull ghcr.io/containrrr/watchtower:i386-1.7.1`
+- `docker pull ghcr.io/containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-1.7.1`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-1.7.1`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:armhf-1.7.1`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-1.7.1`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.7.1`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-1.7.1`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.7.0 (2023-11-11)</h2>
+      <pre>## Changelog
+
+**Full Changelog**: https://github.com/containrrr/watchtower/compare/v1.6.0...v1.7.0
+
+### Features
+* 097df11 feat(docs): add linking and output messages (#1831)
+* dd54055 feat: add support for "none" scope (#1800)
+* 623f4e6 feat(filters): Add a flag/env to explicitly exclude containers by name (#1784)
+
+### Fixes
+* 48539c4 fix: set nopull param from args (#1830)
+* c4d4938 fix: handle missing healthcheck keys in config (#1810)
+* 40b8c77 fix: use new healthcheck config if not overridden (#1801)
+
+### Misc
+* 14a468d ci: fix manual release (#1833)
+* 7fb04d0 docs: fix list formatting in container-selection (#1380)
+* 72e437f chore: replace usages of ioutil (#1792)
+
+### Dependencies
+* e6fef8d chore(deps): bump github.com/spf13/cobra from 1.7.0 to 1.8.0 (#1822)
+* 458d661 chore(deps): bump golang.org/x/text from 0.13.0 to 0.14.0 (#1823)
+* 887569f chore(deps): bump github.com/docker/cli from 24.0.6+incompatible to 24.0.7+incompatible (#1817)
+* bd9d730 chore(deps): bump github.com/onsi/gomega from 1.28.1 to 1.29.0 (#1818)
+* 9aecd33 chore(deps): bump github.com/docker/docker from 24.0.6+incompatible to 24.0.7+incompatible (#1816)
+* 3d1ed23 chore(deps): bump github.com/prometheus/client_golang (#1779)
+* 2b56ee1 chore(deps): bump github.com/onsi/gomega from 1.28.0 to 1.28.1 (#1811)
+* 8aa41b8 chore(deps): bump golang.org/x/net from 0.16.0 to 0.17.0 (#1798)
+* 0a30955 chore(deps): bump golang.org/x/net from 0.15.0 to 0.16.0 (#1794)
+* 284066a chore(deps): bump github.com/onsi/gomega from 1.27.10 to 1.28.0 (#1781)
+* 1754dd1 chore(deps): bump github.com/docker/distribution from 2.8.2+incompatible to 2.8.3+incompatible (#1780)
+* 2abaa47 chore(deps): bump alpine from 3.18.3 to 3.18.4 in /dockerfiles (#1782)
+
+## New Contributors
+* @donuts-are-good made their first contribution in https://github.com/containrrr/watchtower/pull/1792
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.7.0`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-1.7.0`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:armhf-1.7.0`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-1.7.0`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:i386-1.7.0`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull ghcr.io/containrrr/watchtower:i386-1.7.0`
+- `docker pull ghcr.io/containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-1.7.0`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-1.7.0`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.6.0 (2023-10-02)</h2>
+      <pre>## Changelog
+
+### Features
+8e3bde7 feat: add --health-check command line switch (#1725)
+79ebad0 feat: allow logging output to use JSON formatter (#1705)
+650acde feat: add a label take precedence argument (#1754)
+bbbe041 feat: add no-pull label for containers (#1574)
+2e643ed feat(notifications): update shoutrrr to [v0.8](https://github.com/containrrr/shoutrrr/releases/tag/v0.8.0) (#1737)
+9f60766 feat: enabled loading http-api-token from file (#1728)
+0a5bd54 feat(clean): log removed/untagged images (#1466)
+dca45f5 feat: support container network mode (#1429)
+
+
+### Fixes
+bba9b2b fix: empty out the aliases on recreation (#1699)
+30280e3 fix(notifications): correctly set the delay from options (#1726)
+897b171 fix: only remove container id network aliases (#1724)
+dd1ec09 fix: always use container interface (#1516)
+25fdb40 fix(registry): image name parsing behavior (#1526)
+e8affe3 fix: received typo (#1765)
+cfcbcac fix: remove logging of credentials (#1534)
+4d661bf fix(registry): ignore empty challenge fields (#1626)
+9470bf8 fix: always add missing slashes to link names (#1588)
+
+### Misc
+a0fe4a4 ci: add dependabot auto approve
+9b28fbc chore: update Dockerfile.dev-self-contained to allow better build cache (#1755)
+139f672 test(flags): ensure temp files are cleaned up (#1727)
+a56b9bd add testwill as a contributor for doc (#1766)
+
+### Docs
+6ace7bd Update notifications.md (#1565)
+9180e95 feat(docs): add template preview (#1777)
+d1f58c5 docs: clarify what volumes are removed when requested (#1738)
+1d5a8d9 test: check flag/docs consistency (#1770)
+11423d1 docs: update interval text in introduction (#1767)
+b801b63 docs: bump go version in credential helper example (#1749)
+32204a7 docs: fix env variable name `notification(s)-delay` (#1486)
+b27bd05 docs: add "HTTP API Mode" link to nav menu (#1645)
+aa50d12 fix(docs): fix anchor links in the metrics part (#1522)
+
+
+<details>
+<summary>
+
+### Dependencies
+
+</summary>
+
+
+bde1383 Merge pull request #1548 from containrrr/dependabot/go_modules/github.com/onsi/gomega-1.26.0
+7de7356 Merge pull request #1549 from containrrr/dependabot/github_actions/goreleaser/goreleaser-action-4.2.0
+7648e9c chore(deps): bump github.com/docker/docker from 24.0.5+incompatible to 24.0.6+incompatible (#1761)
+6685fef chore(deps): bump github.com/docker/cli from 24.0.5+incompatible to 24.0.6+incompatible (#1762)
+856fd25 chore(deps): bump golang.org/x/net from 0.14.0 to 0.15.0 (#1760)
+da39883 chore(deps): bump goreleaser/goreleaser-action from 4.4.0 to 5.0.0 (#1759)
+36391b0 chore(deps): bump actions/checkout from 3 to 4 (#1750)
+cd458fa chore(deps): bump golang.org/x/text from 0.12.0 to 0.13.0 (#1751)
+0d2eba1 chore(deps): bump goreleaser/goreleaser-action from 4.3.0 to 4.4.0 (#1733)
+02da45d chore(deps): bump alpine from 3.18.2 to 3.18.3 in /dockerfiles (#1732)
+7948242 chore(deps): bump golang.org/x/net from 0.12.0 to 0.14.0 (#1720)
+be113d7 chore(deps): bump golang.org/x/text from 0.11.0 to 0.12.0 (#1721)
+a5d7f23 chore(deps): bump github.com/docker/cli (#1701)
+5eb00cc chore(deps): bump github.com/docker/docker (#1702)
+7dc8d9f chore(deps): bump github.com/onsi/gomega from 1.27.8 to 1.27.10 (#1700)
+dfe4346 chore(deps): bump github.com/docker/cli from 24.0.2+incompatible to 24.0.4+incompatible (#1695)
+32988aa chore(deps): bump golang.org/x/net from 0.11.0 to 0.12.0 (#1692)
+1b3a5d7 chore(deps): bump github.com/docker/docker from 24.0.2+incompatible to 24.0.4+incompatible (#1694)
+787ce72 chore(deps): bump golang.org/x/net from 0.10.0 to 0.11.0 (#1678)
+244e3ce chore(deps): bump github.com/prometheus/client_golang from 1.15.1 to 1.16.0 (#1677)
+243b217 chore(deps): bump alpine from 3.18.0 to 3.18.2 in /dockerfiles (#1679)
+c7c1aee chore(deps): bump github.com/spf13/viper from 1.15.0 to 1.16.0 (#1667)
+170c79d chore(deps): bump github.com/sirupsen/logrus from 1.9.2 to 1.9.3 (#1666)
+a7ca783 chore(deps): bump docker/login-action from 2.1.0 to 2.2.0 (#1672)
+ad644fc chore(deps): bump github.com/onsi/gomega from 1.27.7 to 1.27.8 (#1671)
+b0acc8f chore(deps): bump goreleaser/goreleaser-action from 4.2.0 to 4.3.0 (#1673)
+4495445 chore(deps): bump golang.org/x/text from 0.9.0 to 0.10.0 (#1670)
+1180691 chore(deps): bump github.com/stretchr/testify from 1.8.3 to 1.8.4 (#1668)
+6c9dd50 chore(deps): bump github.com/docker/docker from 23.0.6+incompatible to 24.0.2+incompatible (#1663)
+1fed2a8 chore(deps): bump github.com/docker/cli from 24.0.1+incompatible to 24.0.2+incompatible (#1664)
+4a5c038 chore(deps): bump github.com/docker/cli (#1661)
+89da17a chore(deps): bump github.com/stretchr/testify from 1.8.2 to 1.8.3 (#1660)
+9806c95 chore(deps): bump github.com/onsi/gomega from 1.27.6 to 1.27.7 (#1658)
+bac02e7 chore(deps): bump github.com/sirupsen/logrus from 1.9.0 to 1.9.2 (#1659)
+0a74e50 chore(deps): bump alpine from 3.17.3 to 3.18.0 in /dockerfiles (#1653)
+021e9f3 chore(deps): bump github.com/docker/distribution from 2.8.1+incompatible to 2.8.2+incompatible (#1652)
+43a296a chore(deps): bump github.com/prometheus/client_golang (#1647)
+e271286 chore(deps): bump github.com/docker/cli (#1649)
+0802926 chore(deps): bump golang.org/x/net from 0.9.0 to 0.10.0 (#1648)
+c7499e8 chore(deps): bump github.com/docker/docker (#1650)
+47dcb49 chore(deps): bump github.com/docker/cli (#1640)
+9957fff chore(deps): bump github.com/docker/docker from 23.0.4+incompatible to 23.0.5+incompatible (#1641)
+44436eb chore(deps): bump github.com/docker/docker from 23.0.3+incompatible to 23.0.4+incompatible (#1635)
+311bb93 chore(deps): bump github.com/docker/cli from 23.0.3+incompatible to 23.0.4+incompatible (#1634)
+aec7762 chore(deps): bump github.com/prometheus/client_golang (#1630)
+9d6b008 chore(deps): bump github.com/stretchr/testify from 1.8.1 to 1.8.2 (#1621)
+a34c02f chore(deps): bump github.com/robfig/cron (#1590)
+46f24d2 chore(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0 (#1622)
+288ed11 chore(deps): bump github.com/onsi/gomega from 1.26.0 to 1.27.6 (#1623)
+3f091f1 chore(deps): bump golang.org/x/net from 0.5.0 to 0.9.0 (#1620)
+d0617aa chore(deps): bump golang.org/x/text from 0.6.0 to 0.8.0 (#1575)
+dfcaf07 chore(deps): bump github.com/docker/cli from 20.10.23+incompatible to 23.0.3+incompatible (#1618)
+035572f chore(deps): bump github.com/docker/docker from 23.0.2+incompatible to 23.0.3+incompatible (#1617)
+81d2376 chore(deps): bump actions/setup-go from 3 to 4 (#1596)
+c6c01c8 chore(deps): bump alpine from 3.17.1 to 3.17.3 in /dockerfiles (#1613)
+df1b86b chore(deps): bump docker/docker from 20.10.23+inc to 23.0.2+inc (#1612)
+ee8f293 chore(deps): bump andrewslotin/go-proxy-pull-action from 1.0.3 to 1.1.0 (#1555)
+b94741d chore(deps): bump goreleaser/goreleaser-action from 4.1.0 to 4.2.0
+98d0c47 chore(deps): bump github.com/onsi/gomega from 1.25.0 to 1.26.0
+</details>
+
+## Docker images
+
+- `docker pull containrrr/watchtower:i386-1.6.0`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull ghcr.io/containrrr/watchtower:i386-1.6.0`
+- `docker pull ghcr.io/containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.6.0`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-1.6.0`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:armhf-1.6.0`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-1.6.0`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:amd64-1.6.0`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-1.6.0`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.3 (2023-01-30)</h2>
+      <pre>Hotfix release that fixes the broken e-mail notifications in v1.5.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.2 (2023-01-29)</h2>
+      <pre>## Changelog
+
+264046d feat: update shoutrrr to v0.7 (#1543)
+547d033 feat(notifications): add json template (#1542)
+8464e0d chore(deps): bump github.com/docker/cli from 20.10.22+incompatible to 20.10.23+incompatible (#1535)
+0168cd8 chore(deps): bump github.com/spf13/viper from 1.14.0 to 1.15.0 (#1536)
+ff564ef chore(deps): bump github.com/docker/docker from 20.10.22+incompatible to 20.10.23+incompatible (#1537)
+b62f8d7 chore(deps): bump github.com/onsi/gomega from 1.24.2 to 1.25.0 (#1538)
+14b235a feat: add oci image index support (#1533)
+87c5695 fix: update metrics from sessions started via API (#1531)
+c16ac96 chore(deps): bump golang.org/x/net from 0.4.0 to 0.5.0 (#1519)
+36b3a64 chore(deps): bump dominikh/staticcheck-action from 1.2.0 to 1.3.0 (#1520)
+8b5eb9c chore(deps): bump alpine from 3.17.0 to 3.17.1 in /dockerfiles (#1521)
+84fb391 chore(deps): bump golang.org/x/text from 0.5.0 to 0.6.0 (#1518)
+fe50778 chore(deps): bump github.com/docker/docker (#1507)
+8449d9c chore(deps): bump github.com/docker/cli (#1506)
+2faf4c4 chore(deps): bump github.com/onsi/gomega from 1.24.1 to 1.24.2 (#1508)
+dcb38c6 chore(deps): bump goreleaser/goreleaser-action from 3.2.0 to 4.1.0 (#1509)
+d2cfefb chore(deps): bump github.com/onsi/gomega from 1.24.0 to 1.24.1 (#1473)
+e060e5e chore(deps): bump golang.org/x/net from 0.3.0 to 0.4.0 (#1498)
+3a59664 chore(deps): bump golang.org/x/net from 0.1.0 to 0.3.0 (#1496)
+b71eb2d chore(deps): bump golang.org/x/text from 0.4.0 to 0.5.0 (#1492)
+3190ce2 feat: ignore removal error due to non-existing containers (#1481)
+a4d00bf test: refactor/simplify container mock builders (#1495)
+d5d711b chore(deps): bump alpine from 3.16.2 to 3.17.0 in /dockerfiles (#1484)
+d744c34 chore(deps): bump github.com/spf13/viper from 1.13.0 to 1.14.0 (#1465)
+987f2bb chore(deps): bump github.com/spf13/cobra from 1.6.0 to 1.6.1 (#1464)
+e8df2b2 chore(deps): bump github.com/prometheus/client_golang from 1.13.0 to 1.14.0 (#1467)
+1e6b095 chore(deps): bump github.com/onsi/gomega from 1.23.0 to 1.24.0 (#1462)
+403c600 fix(docs): use correct modern css color syntax (#1461)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.5.2`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-1.5.2`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:i386-1.5.2`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull ghcr.io/containrrr/watchtower:i386-1.5.2`
+- `docker pull ghcr.io/containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-1.5.2`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-1.5.2`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:armhf-1.5.2`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-1.5.2`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.1 (2022-11-05)</h2>
+      <pre>## Changelog
+
+ae8c36f fix: explicitly accept non-commands as root args (#1458)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.5.1`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-1.5.1`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:i386-1.5.1`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull ghcr.io/containrrr/watchtower:i386-1.5.1`
+- `docker pull ghcr.io/containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-1.5.1`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-1.5.1`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:armhf-1.5.1`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-1.5.1`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.0 (2022-11-05)</h2>
+      <pre>## Changelog
+
+5134e15 ci: replace golint with staticcheck
+216d8df chore(deps): bump github.com/docker/cli from 20.10.19+incompatible to 20.10.21+incompatible (#1452)
+5ddca29 chore(deps): bump github.com/docker/docker from 20.10.19+incompatible to 20.10.21+incompatible (#1450)
+d1e6fa8 chore(deps): bump github.com/onsi/gomega from 1.22.1 to 1.23.0 (#1451)
+cb555f5 preparations for soft deprecation of legacy notification args (#1377)
+2102a05 chore(deps): bump goreleaser/goreleaser-action from 3.1.0 to 3.2.0 (#1447)
+ef44ae9 chore(deps): bulk update dependencies (#1453)
+398d271 chore(deps): bump github.com/docker/cli from 20.10.18+incompatible to 20.10.19+incompatible (#1434)
+425684c chore(deps): bump github.com/docker/docker from 20.10.18+incompatible to 20.10.19+incompatible (#1433)
+c3f9d77 chore(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.0 (#1431)
+b855675 chore(deps): bump github.com/onsi/gomega from 1.21.1 to 1.22.1 (#1432)
+9ea5d3b chore(deps): bump golang.org/x/text from 0.3.7 to 0.3.8 (#1430)
+9a2f9c4 [StepSecurity] ci: Harden GitHub Actions (#1426)
+0a0998f docs: add containrrr-dark color scheme (#1427)
+a198875 docs: add dark mode (#1412)
+faa94c4 ci: use pull_request_target for greeting
+fc401da chore(deps): bump github.com/onsi/gomega from 1.20.2 to 1.21.1 (#1419)
+1fc24f6 chore(github): add text render and remove default value (#1407)
+4c4c275 add IAmTamal as a contributor for doc (#1405)
+57e14ac feat : added new issue templates (#1404)
+b50e765 Delete FUNDING.yml
+9cee9e0 ci: fix docs generation
+c1fb00a chore(deps): bump github.com/spf13/viper from 1.12.0 to 1.13.0 (#1383)
+0fddbfb feat: allow log level to be set to any level (#1345)
+230312f chore(deps): bump github.com/docker/cli from 20.10.17+incompatible to 20.10.18+incompatible (#1382)
+1f0fc72 chore(deps): bump github.com/docker/docker from 20.10.17+incompatible to 20.10.18+incompatible (#1384)
+cbbdbb7 chore(deps): bump github/codeql-action from 1 to 2 (#1353)
+626bd54 chore(deps): bump github.com/onsi/gomega from 1.20.1 to 1.20.2 (#1375)
+6c215cc chore(deps): bump github.com/prometheus/client_golang from 1.7.1 to 1.13.0 (#1365)
+f047d75 fix(flags): detect schedule set from env (#1373)
+e04a107 chore(deps): update go version to 1.18 (#1363)
+964879d chore(deps): bump actions/setup-go from 2 to 3 (#1354)
+ab7f823 chore(deps): bump actions/checkout from 2 to 3 (#1368)
+a15c0e3 chore(deps): bump github.com/spf13/viper from 1.6.3 to 1.12.0 (#1367)
+ccc7878 chore(deps): bump github.com/docker/distribution from 2.8.0+incompatible to 2.8.1+incompatible (#1366)
+1745704 chore(deps): bump codecov/codecov-action from 1 to 3 (#1369)
+77b8f82 chore(deps): bump github.com/onsi/gomega from 1.20.0 to 1.20.1 (#1364)
+1465768 chore(deps): bump github.com/stretchr/testify from 1.6.1 to 1.8.0 (#1357)
+7f808d8 chore(deps): bump goreleaser/goreleaser-action from 2 to 3 (#1351)
+cf307db chore(deps): bump alpine from 3.15 to 3.16.2 in /dockerfiles (#1352)
+063e724 chore(deps): bump github.com/onsi/gomega from 1.10.3 to 1.20.0 (#1360)
+6b2ef10 chore(deps): bump github.com/sirupsen/logrus from 1.8.1 to 1.9.0 (#1358)
+d860016 chore(deps): bump actions/setup-python from 3 to 4 (#1356)
+e02227f chore(deps): bump docker/login-action from 1 to 2 (#1355)
+54f19df chore(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0 (#1359)
+e316f9e chore(deps): bump github.com/onsi/ginkgo from 1.14.2 to 1.16.5 (#1361)
+3849b48 docs: add jauderho as a contributor for code (#1350)
+27e936c Create dependabot.yml to update versions for GitHub Actions, Go modules and Docker images (#1347)
+7900471 feat: add porcelain output (#1337)
+a429c37 feat: regex container name filtering (#1241)
+36d3569 docs: add EDIflyer as a contributor for doc (#1339)
+1569445 Expand docker.config section (#1316)
+bd2adf6 Support secrets for notification_url (#1300)
+489356a fix(notifications): include icon in slack legacy url (#1303)
+08831f7 feat(shoutrrr): update shoutrrr to v0.6.1 (#1326)
+5f85655 docs(private-regs): change example region to a replace-me token (#1264)
+ae33e77 feat(shoutrrr): update shoutrrr to v0.6.1 (#1325)
+2aa01da docs: clarify container label usage (#1319)
+30f36b3 docs: add Foxite as a contributor for code (#1307)
+739f328 feat(http): optional query parameter to update only containers of a specified image (#1289)
+33b8a98 fix(templates): fix typo in grafana dashboard.json (#1305)
+e983beb fix: gracefully skip pinned images (#1277)
+de40b0c docs: add ksurl as a contributor for infra (#1293)
+3e4b269 ci: add pip caching for docs workflow (#1292)
+56368a7 fix: testing for flag files on windows (#1249)
+2f4d587 fix(notifications): title customization (#1219)
+e9c83af fix: correctly handle non-stale restarts (#1220)
+d12ce7c bump shoutrrr to v0.5.3 (#1271)
+a5c60a9 feat(notifications): add general notification delay (#1246)
+f79e4b5 Update greetings.yml
+25a9639 chore(deps): bump github.com/docker/distribution from 2.7.1+incompatible to 2.8.0+incompatible (#1223)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.5.0`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-1.5.0`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:amd64-1.5.0`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-1.5.0`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:i386-1.5.0`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull ghcr.io/containrrr/watchtower:i386-1.5.0`
+- `docker pull ghcr.io/containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:armhf-1.5.0`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-1.5.0`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.0 (2022-01-22)</h2>
+      <pre>## Changelog
+
+70ca4c2 bump vulnerable packages (#1196)
+be33c64 fix: move invalid token to log field (#1171)
+04db93c fix: add missing portmap when needed (#1183)
+a1bdd26 Fix typo on --http-api-update environment variable and add warning note for --http-api-periodic-polls (#1195)
+9114447 docs: add jamesmacwhite as a contributor for doc (#1194)
+8590d88 Add additional information for metrics.md (#1193)
+084249c fix: linked/depends-on container restarting (#1103)
+aa02d8d feat(notifications): add title field to template data (#1125)
+1d59fb8 feat(notifications): support delayed sending (#1142)
+2fa8a2a Fix docker-compose syntax in quick-start. GH #1105 (#1169)
+93ccce8 docs: add note about docker hub private images (#1132)
+ebdbe29 bump version of vulnerable dependencies (#1172)
+6ff1d8a chore: bump alpine version in dockerfile (#1151)
+d2f1185 docs: fix redirect link (#1146)
+e14cc29 feat: improve HTTP API logging, honor no-startup-message (#1091)
+b3b45ab docs: add patricegautier as a contributor for code (#1139)
+b4a225c Post update time out (#1124)
+782529d feat: improve session result logging (#1123)
+d9d6f79 feat: use a more specific error type for no container info (#1115)
+ac00e48 docs: add hypnoglow as a contributor for code (#1130)
+81036b0 fix(api): return appropriate status for unauthorized requests (#1116)
+c0fd77d fixing flags usage text to first capital letter. (#1102)
+cb4e60c Prefer long flags in quick start example (#1029)
+0060cd6 test: fully reset ghttp server (#1121)
+1b405d4 test: container client tests refactor (#1117)
+2c86956 test: reduce test output noise
+ec43ece test: remove unused cross package dependency on mock api server
+26fba69 test: refactor client tests
+3bf9340 Create pull_request_template.md (#1110)
+4a66a69 chore(deps): bump shoutrrr and containrd (#1088)
+db13bde docs: add modem7 as a contributor for doc (#1083)
+1ec5234 Update README.md (#1077)
+47a640b update dependencies (sane go.mod) (#1061)
+697397f feat(log): add context fields to lifecycle events (#1007)
+cd0ec88 fix(notifications): default templates and logic (#1010)
+fc31c6e feat(shoutrrr): update to v0.5 (#1055)
+bd74c05 Use golang:1.15 in ECR credential helper example (#965)
+52fe365 docs: add djquan as a contributor for doc (#1038)
+c33bb05 docs: remove broken badge and fix docker-compose snippet (#1025)
+9bb8991 fix(digest): check container image info for nil (#1027)
+7221704 docs: link to versioned shoutrrr docs
+ea300b7 ci: fix version in non-dev dockerfile
+8b7b7d3 ci: fix version in dev dockerfile
+45dbfca ci: add executable bit to build (#1006)
+2f33620 ci: build latest-dev with script (#1005)
+e396711 docs: fix note paragraph on Arguments page (#1001)
+e3dd8d6 Session report collection and report templates (#981)
+d0ecc23 docs: fix markdown lint issues (#995)
+145fe6d Pre-update lifecycle hook (#793)
+dc12a1a feat: allow hostname override for notifiers (#994)
+f508c92 * feat: custom user agent (#990)
+b196629 docs: add zenjabba as a contributor (#983)
+4e7b1e7 Update index.md (#976)
+dec6f84 test: fix metrics api test stability (#930)
+61b715a docs: remove stray paragraph in notifications (#949)
+91bbe74 docs: add DasSkelett as a contributor (#944)
+6b155a1 Allow running periodic updates with enabled HTTP API (#916)
+e308521 docs: fix more auto-format casualties (#943)
+0c53b71 ci: move docs to separate action (#942)
+26dbc64 Documentation updates (#936)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.4.0`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-1.4.0`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:i386-1.4.0`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull ghcr.io/containrrr/watchtower:i386-1.4.0`
+- `docker pull ghcr.io/containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-1.4.0`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-1.4.0`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:armhf-1.4.0`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-1.4.0`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.3.0 (2021-04-24)</h2>
+      <pre>## Changelog
+
+cc3ff5a fix more spelling mistakes
+ef4873b fix goreleaser GHCR login
+692f66b fix goreleaser tags for ghcr.io
+d0148ab fix manifest creation in release job
+1246771 feat: check container config before update (#925)
+fdf6e46 fix: use default http transport for head (#926)
+d38e52b fix: merge artifacts and broken shoutrrr tests (#929)
+dff8378 Feat/head failure toggle (#928)
+6f281b7 feat: update shoutrrr to v0.4.4 (#914)
+b4cf17d feat: make head pull failure warning toggleable (#912)
+23572ad docs: add ksurl as a contributor (#917)
+058e3c6 Update bug_report.md
+028f19a Move token logs to trace
+6a7e5a9 Create SECURITY.md
+29f5c4b add ghcr (#850)
+3de202a fix depends on behavior and simplify some of its logic (#908)
+4142f79 fix: move notify URL to trace log (#907)
+6a9d985 feat(log): use short image/container IDs in logs (#888)
+62a6d31 docs: suggest mounting localtime, not of timezone (#877)
+bf8dec1 chore(ci): run code coverage on main push (#870)
+b644ec6 fix(notifier): don't panic on unconfigured notifier (#869)
+3b60afe docs: remove the explicit file name from edit url (#879)
+a5ffb65 chore(ci): fix default branch in Dockerfiles (#875)
+da56c21 rem vals we dont need or use from the gr config
+fac88f9 add version info to goreleasers ldflags
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.3.0`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-1.3.0`
+- `docker pull ghcr.io/containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:i386-1.3.0`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull ghcr.io/containrrr/watchtower:i386-1.3.0`
+- `docker pull ghcr.io/containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:armhf-1.3.0`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-1.3.0`
+- `docker pull ghcr.io/containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:amd64-1.3.0`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-1.3.0`
+- `docker pull ghcr.io/containrrr/watchtower:amd64-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2.1 (2021-03-28)</h2>
+      <pre>## Changelog
+
+69b7480 permanently disable cgo for production releases
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.2.1`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:i386-1.2.1`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:armhf-1.2.1`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:amd64-1.2.1`
+- `docker pull containrrr/watchtower:amd64-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2.0 (2021-03-28)</h2>
+      <pre>## Changelog
+
+bde9aec fix docker secrets
+b7f3e68 Update release.yml
+8448851 fix tag name parsing, hopefully
+c4c0533 add dockerhub login step
+027584a add gh token to goreleaser
+228dd75 Update release-dev.yaml
+9fa2fd8 feat: include additional info in startup (#809)
+5e17ef6 docs: add reinout as a contributor (#857)
+45168e8 Doc fix: default interval is 24h instead of 5m (#856)
+738215a Update Shoutrrr to v0.4 (#810)
+60a6300 Set different default branch for mkdocs edit (#846)
+70c737c Typo in --http-api (#841)
+88d1dcf docs: add hydrargyrum as a contributor (#839)
+ce9e102 docs: fix broken markup of "HTTP API Token" (#834)
+f10b4e3 Update HTTP API docs (#827)
+52e6e11 docs: update changed contributor username (#817)
+d0943c3 chore(ci): set image platform on image build (#811)
+a068203 delete unused circleci config
+1886fde docs: add nymous as a contributor (#788)
+a5b200e Fix arguments doc formatting (#782)
+aecac40 docs: add SrihariThalla as a contributor (#787)
+d60c0d6 chore: fix badge url for contributors and docker pulls (#774)
+9cee66c ci: Update code of conduct URL in github action (#778)
+ae6bd20 docs: add zoispag as a contributor (#771)
+0961c74 ci: Add codeQL analysis checks (#770)
+d04d715 fix: Disallow log level 'trace' (#765)
+eccf87a make test command windows compatible
+8b95e8c docs: add SrihariThalla as a contributor (#769)
+bfd57c7 chore: Update Badges on Docs (#764)
+b6af45b chore(ci): disable fail-fast for pr tests (#766)
+4689853 fix: Set log level to debug for message about API token (#757)
+fb9469e remove cgo_enable flag for the test step
+3369d24 chore(ci): add coverage upload
+5532c4e chore(ci): set up release workflow
+140cc4e add macos to the testing matrix
+ea53cdb add names to steps
+668e7a1 fix(ci): set correct get url for linter
+2ba51c0 chore(ci): add manual dispatch
+aa3ed88 chore(ci): rename workflow
+4e0ce6e chore(ci): move to github actions
+5b349e5 Update README.md
+47e53ad Update README.md
+e18b57e Cleanup readme
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.2.0`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:i386-1.2.0`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-1.2.0`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:armhf-1.2.0`
+- `docker pull containrrr/watchtower:armhf-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.6 (2021-01-10)</h2>
+      <pre>## Changelog
+
+40ab6fd Fix notifications and old instance cleanup (#748)
+06e705d Create post-release.yml
+99eaf42 fix doc typo
+e230967 Add WATCHTOWER_INCLUDE_RESTARTING env for include-restarting flag (#720)
+352574d add details/summary to issue template (#732)
+847261c Added a link to HTTP API documentation (#734)
+d7d5b25 Prometheus support (#450)
+35490c8 cherrypick notification changes from #450 (#745)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.1.6`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:armhf-1.1.6`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:amd64-1.1.6`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:i386-1.1.6`
+- `docker pull containrrr/watchtower:i386-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.5 (2021-01-06)</h2>
+      <pre>## Changelog
+
+3bbe1bd fix manifest tag index in manifest.go (#731)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-1.1.5`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:i386-1.1.5`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-1.1.5`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.1.5`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.4 (2020-12-23)</h2>
+      <pre>## Changelog
+
+2fb1f5f docs: add tkalus as a contributor (#721)
+5983d58 Log based on registry known-support - reduce noise on notifications (#716)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-1.1.4`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:i386-1.1.4`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.1.4`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:amd64-1.1.4`
+- `docker pull containrrr/watchtower:amd64-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.3 (2020-12-21)</h2>
+      <pre>## Changelog
+
+8b81fbd Revert "feat(config): swap viper and cobra for config (#684)"
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:amd64-1.1.3`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.1.3`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:i386-1.1.3`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:armhf-1.1.3`
+- `docker pull containrrr/watchtower:armhf-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.2 (2020-12-21)</h2>
+      <pre>## Changelog
+
+8911951 clean up scope builder and remove fmt print
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-1.1.2`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:i386-1.1.2`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-1.1.2`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.1.2`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.1 (2020-12-21)</h2>
+      <pre>## Changelog
+
+cf6a71d fix linting issues
+eb8580f make sure all different ref formats are supported
+ff8cb88 feat(config): swap viper and cobra for config (#684)
+cbe9ab8 move secret value "credentials" to trace log (#707)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:arm64v8-1.1.1`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:armhf-1.1.1`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:i386-1.1.1`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-1.1.1`
+- `docker pull containrrr/watchtower:amd64-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.0 (2020-12-20)</h2>
+      <pre>## Changelog
+
+4d17cf1 fix cleanup for rolling updates (#706)
+ea16683 add defered closer calls for the http clients (#705)
+9ac1bf6 fix typo (#702)
+33b4957, 023919e, f697870 fix default interval to be the intended value (#700)
+cb62b16 add http head based digest comparison to avoid dockerhub rate limits
+589b00b fix host flag (#685)
+2842b97 Allow watchtower to update rebooting containers (#651)
+64d48b7 fix: return nil imageinfo when retrieve fails (#680)
+
+## Docker images
+
+- `docker pull containrrr/watchtower:i386-1.1.0`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:armhf-1.1.0`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:amd64-1.1.0`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.1.0`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.3 (2020-10-03)</h2>
+      <pre>## Changelog
+
+16a79d9 Update to improve the private registry docs (#633)
+bde421b Monitor-only for individual containers (#652)
+158b693 Disabling color through environment variables (#598)
+c56e0a9 Rolling restart (#619)
+6a18ee9 Adds scopeUID config to enable multiple instances of Watchtower (#511)
+5efb249 Skip updating containers where no local image info can be retrieved (#612)
+fdecd40 Make sure all shoutrrr notifications are sent (#564)
+966972b Warning if `WATCHTOWER_NO_PULL` and` WATCHTOWER_MONITOR_ONLY` are used simultaneously. (#594)
+f6c1989 lifecycle logs as Debug instead of Info (#610)
+d40a88f docs: fix environment variable name typo (#606)
+f76c48a Add string functions for lowercase, uppercase and capitalize to shoutrrr templates (#593)
+d0f3ea3 docs: document DOCKER_CONFIG environment variable (#602)
+46d4d84 Update private-registries.md (#597)
+21011fd Removed accidental dot (#578)
+12d3233 Allows flags containing sensitive stuff to be passed as files (#545)
+6da66fb Image of running container no longer needed locally (#571)
+ac49c45 docs: add mattdoran as a contributor (#574)
+b436c04 Notification docs: Add SMTP port to gmail configuration (#573)
+9e7dfe7 `config.json` symlink workaround described (#566)
+d043c20 Create config.yml
+
+## Docker images
+
+- `docker pull containrrr/watchtower:amd64-1.0.3`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:armhf-1.0.3`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.0.3`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:i386-1.0.3`
+- `docker pull containrrr/watchtower:i386-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.2 (2020-06-01)</h2>
+      <pre>## Changelog
+
+7787e1e Update shoutrrr to get latest and updated services (#563)
+1081f3c fix(shoutrrr): make shoutrrr init failure a fatal error (#561)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:amd64-1.0.2`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:armhf-1.0.2`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:i386-1.0.2`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.0.2`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.1 (2020-05-29)</h2>
+      <pre>## Changelog
+
+70bd4e2 fix(shoutrrr): display errors on init failure (#558)
+86b1b04 docs: add pgrimaud as a contributor (#559)
+bd9246b Fix typos (#554)
+cd21516 docs: add andrewjmetzger as a contributor (#553)
+02b3b6b remove dockerhub readme sync
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-1.0.1`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:amd64-1.0.1`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:i386-1.0.1`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.0.1`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0 (2020-05-22)</h2>
+      <pre>## Changelog
+
+ebb715b Disable godacov
+a70f619 Comment out test that is incompatible with CircleCI
+dccdf70 Adds the option to skip TLS verification for a Gotify instance (#544)
+10fd81a feat: add template support for shoutrrr notifications (#515)
+7052346 Added --trace flag and new log.Trace() lines for sensitive information (#541)
+4f47851 docs: add miosame as a contributor (#543)
+a4441da Add blacklist behavior description (#540)
+3b60add Bump minimum API version to 1.25
+0667090 docs: add tammert as a contributor (#538)
+b34a2f9 Removed all potential debug password prints, both plaintext and encoded (#537)
+46f4376 fix(email): always use configured delay for notifications (#536)
+adaeb33 docs: add ogmueller as a contributor (#530)
+9b58ac7 added documentation using an SMTP relay to #508 (#527)
+2822427 docs: add bopoh24 as a contributor (#529)
+45c9dcc Increases stopContainer timeout to 10min (#528)
+42d0886 Update README.md
+291627d add logo to repo
+006c421 Increases stopContainer timeout from 60 seconds to 10min (#526)
+3e069a7 add automatic issue locking
+4672811 fix linting and formatting
+00715e4 docs: add Saicheg as a contributor (#512)
+b32cb5d Add ability to overrider depending containers with special label (#489)
+7b0d311 docs: add victorcmoura as a contributor (#509)
+0217e11 Watchtower HTTP API based updates (#432)
+557f4ab docs: add patski123 as a contributor (#505)
+a86ec36 Typo Correction (#503)
+1fad787 Merge pull request #494 from containrrr/all-contributors/add-mbrandau
+1d55d22 Merge branch 'master' into all-contributors/add-mbrandau
+fbd2723 docs: update .all-contributorsrc [skip ci]
+3831f5c docs: update README.md [skip ci]
+7200155 Merge pull request #493 from containrrr/all-contributors/add-arnested
+928da2b docs: update .all-contributorsrc [skip ci]
+1d296a3 docs: update README.md [skip ci]
+cb4c58f Merge pull request #470 from mbrandau/add-shoutrrr
+d17e288 remove old shoutrrr version
+a8d453b update shoutrrr
+0110170 Merge pull request #491 from containrrr/all-contributors/add-piksel
+8cbc9eb docs: update .all-contributorsrc [skip ci]
+c49cc50 docs: update README.md [skip ci]
+769c6a4 Merge pull request #490 from containrrr/fix-cron-doc-link
+2381c27 docs: update cron docs link
+21e8799 Update documentation
+90ef402 add additional note on gcloud credentials
+cddd6c3 Merge pull request #486 from containrrr/all-contributors/add-sixcorners
+6590ef2 docs: update .all-contributorsrc [skip ci]
+0e131e3 docs: update README.md [skip ci]
+ec5bfb8 Merge pull request #483 from sixcorners/patch-2
+a0bb13d Merge pull request #480 from containrrr/feature/367
+98c60d7 fix some errors and clean up
+c1a0da9 feature/367 fix: skip container if pre-update command fails
+fac26df fix: improve logging
+1d3ffc7 fix: update mock client for tests
+1d1c630 feat: add timeout override for pre-update lifecycle hook
+7e7d4bf Merge pull request #485 from containrrr/all-contributors/add-aneisch
+0c35e46 docs: update .all-contributorsrc [skip ci]
+d001fbc docs: update README.md [skip ci]
+fea11bc Merge pull request #484 from aneisch/patch-1
+52a8bd3 Update arguments.md
+ce45963 Update arguments.md
+638c697 Copy note about setting both interval and schedule
+7542a24 Update container-selection.md
+0462c30 clarify container selection
+ab0723d Merge pull request #482 from containrrr/all-contributors/add-mbrandau
+04215bf Merge pull request #477 from mbrandau/no-startup-message
+fc8636d docs: update .all-contributorsrc [skip ci]
+5657363 docs: update README.md [skip ci]
+8b15240 Merge pull request #481 from containrrr/all-contributors/add-victorcmoura
+ffcf7af docs: update .all-contributorsrc [skip ci]
+5ed3902 docs: update README.md [skip ci]
+5a9459c Time Zone improvements (#471)
+be673c2 docs: add auanasgheps as a contributor (#479)
+8264095 Start up notification (#473)
+205b176 fix #472
+480f4c8 reuse router
+b5df482 Adjust documentation
+5869bc5 Use CreateSender instead of calling Send multiple times
+59ce378 Adjust flags
+2b21bd4 add shoutrrr.go
+be2376a add shoutrrr
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-1.0.0`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:amd64-1.0.0`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:i386-1.0.0`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:arm64v8-1.0.0`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.3.11 (2020-03-22)</h2>
+      <pre>## Changelog
+
+7a402fd Merge pull request #469 from containrrr/all-contributors/add-lukwil
+dc4d6ac Merge pull request #465 from lukwil/feature/443
+2d2013e docs: update .all-contributorsrc [skip ci]
+d92e34e docs: update README.md [skip ci]
+0b7069f Fix according to remarks
+7a18823 Merge pull request #455 from pagdot/patch-1
+fc3decc add --no-startup-message flag
+b051327 Update README.md
+15d370a Add "help needed" section to readme
+1e09b33 Merge pull request #463 from containrrr/all-contributors/add-Germs2004
+6941c61 docs: update .all-contributorsrc [skip ci]
+67c242f docs: update README.md [skip ci]
+8f5c97a Merge pull request #461 from Germs2004/patch-1
+ddd6ef5 document the TZ environment variable
+549fde5 Merge pull request #459 from containrrr/all-contributors/add-jsclayton
+709239a docs: update .all-contributorsrc [skip ci]
+7f68dd0 docs: update README.md [skip ci]
+4748610 Merge pull request #418 from jsclayton/fix/retain-cmd
+e1239b2 Merge branch 'master' into fix/retain-cmd
+ecc96d6 return on error after http.Post to gotify instance
+3c89eb0 Merge pull request #449 from containrrr/all-contributors/add-raymondelooff
+6c4a5eb docs: update .all-contributorsrc [skip ci]
+18b8378 docs: update README.md [skip ci]
+bd1b3c1 Merge pull request #448 from raymondelooff/bugfix/188
+fde6e73 Unset Hostname when NetworkMode is container
+af5d175 Update .all-contributorsrc
+3fb2997 refactor: tidy up mod and sum files
+d1abce8 refactor: extract code from the container package
+4130b11 Update publish-dev-dockerimage.yaml
+360f077 Merge pull request #438 from zoispag/feature/437-push-latest-dev-on-master-commit
+2c39d29 Add github action to build and publish dev image to dockerhub
+8aad258 #387 fix: add comments to pass linting
+7b8b8e8 #387 fix: switch to image id map and add additional tests
+4e000fa Merge pull request #436 from containrrr/feature/multiple-email-recipients
+15a9281 feat: add support for multiple email recipients
+e6c8b5e Merge pull request #431 from victorcmoura/feature/430
+a896585 Merge branch 'master' of https://github.com/containrrr/watchtower into feature/430
+2e619d4 Merge pull request #434 from containrrr/all-contributors/add-codingCoffee
+c468956 Merge pull request #433 from codingCoffee/bump_version
+1e7296a docs: update .all-contributorsrc [skip ci]
+8b16f6d docs: update README.md [skip ci]
+4533cae fix: 🐛 bump alpine version
+798f48a Adds development self-contained builds instructions to CONTRIBUTING.md
+85d39dd Edits goreleaser to match exclusive dockerfiles folder
+503d693 Moved dockerfiles to an exclusive folder
+545c76f Adds self-contained dev Dockerfile
+0fadf45 Merge pull request #425 from containrrr/all-contributors/add-mindrunner
+3d23186 docs: update .all-contributorsrc [skip ci]
+c4f1d2e docs: update README.md [skip ci]
+9712fb1 Merge pull request #393 from mindrunner/master
+39d6ca1 Merge branch 'master' into master
+fa1b8d5 proper set implementation
+4f120ef Don’t delete cmd when runtime entrypoint is different
+a2a62fb do not delete same image twice when cleaning up
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:i386-0.3.11`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-0.3.11`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:armhf-0.3.11`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:arm64v8-0.3.11`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.3.10 (2019-12-27)</h2>
+      <pre>## Changelog
+
+a252513 Merge pull request #423 from zoispag/feature/413-change-initial-log-from-debug-to-info
+42343e7 Merge pull request #424 from jnidzwetzki/documentation-private-registries
+a798457 Update private-registries.md
+8f8da6a Update private-registries.md
+0c3133f Documented private registries
+1ca1e20 Renamed documentation file
+157ddb8 #413 Change initial logging message from debug to info
+7c2e509 Merge pull request #422 from containrrr/all-contributors/add-zoispag
+5927c6c Merge branch 'master' into all-contributors/add-zoispag
+525d293 Merge pull request #421 from containrrr/all-contributors/add-jnidzwetzki
+e16fd74 Merge pull request #420 from jnidzwetzki/bugfix-doc-credential
+893fd03 Fixed small typo
+f28093e Update credential-helpers.md
+35be6ce Changed codeblock language
+3b83059 Added full path to config file
+0784aa5 Fixed wrong filename in documentation
+9389e8f update instruction on multiple notifications
+68a6903 Update notifications.md
+940e25a Sync (#1)
+8c97410 remove welcome bot config
+3464dda Update greetings.yml
+341d1b0 Greet new reporters and contributors using actions
+ea596ea fix some var ref errors
+6910ad8 Merge pull request #409 from containrrr/all-contributors/add-pjknkda
+ac58162 Merge pull request #404 from pjknkda/master
+c1a096a docs: update .all-contributorsrc
+9144785 docs: update README.md
+93838e1 Merge pull request #408 from containrrr/all-contributors/add-8ear
+2a6e296 Added Mail Subject Tag to email.go (#389)
+8b2eda7 Update notifications.md
+2d8507c Add --revive-stopped flag to start stopped containers after an update (#403)
+63e5049 Add lifecycle hooks to documentation nav (#401)
+d53eed0 docs: add missing arguments
+81540bc Insert nota bene about docker-compose into notification doc page (#392)
+9198f89 Update flags.go
+6840a8c Update flags.go
+fd2a006 Update email.go
+1954520 Fix a small typo (#384)
+505a5ec Update email.go
+220dc5a Update email.go
+5246d1a Update email.go
+135467d add pre/post update check lifecycle hooks (#373)
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-0.3.10`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:arm64v8-0.3.10`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:amd64-0.3.10`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:i386-0.3.10`
+- `docker pull containrrr/watchtower:i386-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.3.9 (2019-09-15)</h2>
+      <pre>## Changelog
+
+1b3db5e remove dead code and goverage dependency
+ce6ba08 feature: add optional email delay
+17cbf86 fix: switch exit code for run once to 0
+6ce142b docs: add sixth as a contributor (#375)
+bea8b92 Update check.go (#370)
+ad6fd0e docs: add kaloyan-raev as a contributor (#374)
+f820eb5 Add docker api version parameter (#372)
+7f7db72 add new documentation to menu
+f20bdb1 add information on how to use credential helpers
+5a6b63a docs: add rjbudke as a contributor (#365)
+573a3b3 Wording clarification on "Filter by enable label" (#357)
+7b01670 docs: add noplanman as a contributor (#364)
+7a30fd7 Correcting a few typos and text styling. (#359)
+56fbede add docker pull count badge
+b05cb17 fix exempt labels
+dea3b6d docs: add chugunov as a contributor (#356)
+ab92140 Fix typo in arguments docs (#355)
+3cab312 docs: add alexandremenif as a contributor (#353)
+bfae38d Feat/lifecycle hooks (#351)
+874180a fix: resolve merge issues
+dff16dc Add support for Gotify notifications (#346)
+d744b5d docs: add lukapeschke as a contributor (#350)
+e4e1127 fix: remove linting issues
+6c50743 refactor: split out more code into separate files
+a425bf1 refactor: move actions into internal
+62f603b refactor: move actions into pkg
+74ce927 refactor: move container into pkg
+e109a7a refactor: extract types and pkgs to new files
+4a92a03 Merge branch 'all-contributors/add-zoispag' of https://github.com/containrrr/watchtower
+baf5e50 Re-apply based on new go flags package (#336)
+635e295 docs: update .all-contributorsrc
+71efb67 docs: update README.md
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-0.3.9`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:arm64v8-0.3.9`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:amd64-0.3.9`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:i386-0.3.9`
+- `docker pull containrrr/watchtower:i386-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.3.8 (2019-07-02)</h2>
+      <pre>## Changelog
+
+9eca883 fix: remove unnecessary cronSet check
+b4846ef turn on publish filter again
+0e268a2 change fingerprint
+79bf0bd inject ssh key during publish
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-0.3.8`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:i386-0.3.8`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:amd64-0.3.8`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:arm64v8-0.3.8`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.3.7 (2019-07-02)</h2>
+      <pre>## Changelog
+
+76fdabf add githubs fingerprint to known host for mkdocs
+061e958 fix port typing issue introduced in 998e805
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-0.3.7`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:amd64-0.3.7`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:i386-0.3.7`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:arm64v8-0.3.7`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.3.6 (2019-06-26)</h2>
+      <pre>## Changelog
+
+37069d5 resolve pip issue
+972b0b2 fix linter errors
+998e805 switch urfave to cobra
+339df55 fix: stop marking milestone issues as stale
+d1f7c11 Delete _config.yml
+34b7659 move documentation from readme to gh pages
+985a922 Add sponsorship option
+ea249d1 add probot: welcome
+d5dc0da add probot: stale
+64d18b2 add all contributors
+
+## Docker images
+
+- `docker pull containrrr/watchtower:armhf-0.3.6`
+- `docker pull containrrr/watchtower:armhf-latest`
+- `docker pull containrrr/watchtower:arm64v8-0.3.6`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:amd64-0.3.6`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:i386-0.3.6`
+- `docker pull containrrr/watchtower:i386-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.3.5 (2019-05-12)</h2>
+      <pre>## Changelog
+
+e584f8b Make it possible to use watchtower to update exited or created containers as well (#289)
+1631c8c Add a Gitter chat badge to README.md (#290)
+984d69e Set theme jekyll-theme-minimal
+16bbe3f Set theme jekyll-theme-tactile
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:amd64-0.3.5`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:arm64v8-0.3.5`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:i386-0.3.5`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:armhf-0.3.5`
+- `docker pull containrrr/watchtower:armhf-latest`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.3.4 (2019-04-21)</h2>
+      <pre>## Changelog
+
+46ffa16 add tests for check action, resolve wt cleanup bug (#284)
+90bd4a1 Add Dockerfile.self-contained (#283)
+fcdd601 update tls example
+498d500 exclude markdown files from coverage analysis
+62a95f0 Fix linting errors
+e2228f1 improve test coverage and add an api-server mock
+3a63b55 Add placeholder client test
+f8dd9bb improve test coverage
+16b66ac pin down dockerfile alpine version
+ccd746e 281: fix mail notification regression
+cdb0123 add test coverage badge
+3c38437 send coverage to codacy
+86a5445 Update issue templates
+3b0aafa Delete .hound.yml
+2faf3cf Merge pull request #282 from techknowlogick/check-if-len-gt-0
+ba5ac33 check if schedule len > 0 to prevent collisions
+fc739c5 switch from hound to codacy
+
+
+## Docker images
+
+- `docker pull containrrr/watchtower:amd64-0.3.4`
+- `docker pull containrrr/watchtower:amd64-latest`
+- `docker pull containrrr/watchtower:i386-0.3.4`
+- `docker pull containrrr/watchtower:i386-latest`
+- `docker pull containrrr/watchtower:arm64v8-0.3.4`
+- `docker pull containrrr/watchtower:arm64v8-latest`
+- `docker pull containrrr/watchtower:armhf-0.3.4`
+- `docker pull containrrr/watchtower:armhf-latest`
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

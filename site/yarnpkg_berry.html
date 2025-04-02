@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for yarnpkg/berry"/>
+  <title>yarnpkg/berry Release Notes</title>
+</head>
+<body>
+  <h1>🚀 yarnpkg/berry - Release Notes</h1>
+  
+    <section>
+      <h2>v4.8.1 (2025-03-30)</h2>
+      <pre>## What's Changed
+* Fix memory leak introduced in 4.8.0 (https://github.com/yarnpkg/berry/pull/6743)
+
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.8.0...@yarnpkg/cli/4.8.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.8.0 (2025-03-28)</h2>
+      <pre>## What's Changed
+* Adds support for argument passing to "yarn init <initializer>" by @arcanis in https://github.com/yarnpkg/berry/pull/6709
+* Fixes topLevel dependencies by @arcanis in https://github.com/yarnpkg/berry/pull/6712
+* Refactors tests to abstract implementation details by @arcanis in https://github.com/yarnpkg/berry/pull/6711
+* Add configuration option to configure .store folder in pnpm mode by @dannyvv in https://github.com/yarnpkg/berry/pull/6710
+* Fix Integration tests for Big endian on GA CI by @sangitanalkar in https://github.com/yarnpkg/berry/pull/6720
+* Replace deprecated ESLint rules by @MikeMcC399 in https://github.com/yarnpkg/berry/pull/6719
+* fix(workspaces-tools): promote --no-private in foreach usage by @GauBen in https://github.com/yarnpkg/berry/pull/6727
+* fix(npm-audit): ensure message is a string before trimming for deprec… by @JohannesWill in https://github.com/yarnpkg/berry/pull/6742
+* fix: correction to the set resolution docs by @darren-dooley in https://github.com/yarnpkg/berry/pull/6739
+* Fix deduplication of virtual packages installed under aliases by @clemyan in https://github.com/yarnpkg/berry/pull/6735
+* Yarn config respect --no-defaults with --json (fixes #6341) by @sparrowt in https://github.com/yarnpkg/berry/pull/6635
+* Support version apply exact by @snowystinger in https://github.com/yarnpkg/berry/pull/6629
+* Use RefCountedCache for ZipFs instances in Cache to avoid duplicate allocations by @dannyvv in https://github.com/yarnpkg/berry/pull/6723
+
+## New Contributors
+* @dannyvv made their first contribution in https://github.com/yarnpkg/berry/pull/6710
+* @JohannesWill made their first contribution in https://github.com/yarnpkg/berry/pull/6742
+* @darren-dooley made their first contribution in https://github.com/yarnpkg/berry/pull/6739
+* @sparrowt made their first contribution in https://github.com/yarnpkg/berry/pull/6635
+* @snowystinger made their first contribution in https://github.com/yarnpkg/berry/pull/6629
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.7.0...@yarnpkg/cli/4.8.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.7.0 (2025-03-01)</h2>
+      <pre>## What's Changed
+* test: don't use `.ts` for unknown extension tests by @merceyz in https://github.com/yarnpkg/berry/pull/6649
+* fix: typo in yarn pack by @GauBen in https://github.com/yarnpkg/berry/pull/6663
+* Fix error handling when looking for configuration files by @yannayl in https://github.com/yarnpkg/berry/pull/6676
+* Removes CRA from the E2E tests by @arcanis in https://github.com/yarnpkg/berry/pull/6692
+* Upgrades Eslint to v9 by @arcanis in https://github.com/yarnpkg/berry/pull/6694
+* ci: migrate e2e to eslint v9 flat config by @MikeMcC399 in https://github.com/yarnpkg/berry/pull/6699
+* Fix Integration test failures for Big endian on GA CI by @sangitanalkar in https://github.com/yarnpkg/berry/pull/6702
+* fix: use a repository URL supported by npm by @aduh95 in https://github.com/yarnpkg/berry/pull/6700
+* Improves `yarn init` by @arcanis in https://github.com/yarnpkg/berry/pull/6703
+* Fix #6029 Avoid undefined checksums after merge conflict resolution by @ReDrUm in https://github.com/yarnpkg/berry/pull/6704
+* fix(6706): pack creates sub-directories by @GauBen in https://github.com/yarnpkg/berry/pull/6707
+
+## New Contributors
+* @yannayl made their first contribution in https://github.com/yarnpkg/berry/pull/6676
+* @MikeMcC399 made their first contribution in https://github.com/yarnpkg/berry/pull/6699
+* @sangitanalkar made their first contribution in https://github.com/yarnpkg/berry/pull/6702
+* @ReDrUm made their first contribution in https://github.com/yarnpkg/berry/pull/6704
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.6.0...@yarnpkg/cli/4.7.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.6.0 (2024-12-29)</h2>
+      <pre>## What's Changed
+* fix(pnp): support `require(esm)` by @merceyz in https://github.com/yarnpkg/berry/pull/6639
+* feat: add yarnpkg/core sub exports by @ChALkeR in https://github.com/yarnpkg/berry/pull/6614
+* add a config option to disallow the cache clean command by @elbywan in https://github.com/yarnpkg/berry/pull/6610
+* Small typo in `yarn workspaces foreach`: include -> exclude by @miorel in https://github.com/yarnpkg/berry/pull/6561
+
+## New Contributors
+* @elbywan made their first contribution in https://github.com/yarnpkg/berry/pull/6610
+* @miorel made their first contribution in https://github.com/yarnpkg/berry/pull/6561
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.5.3...@yarnpkg/cli/4.6.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.7 (2024-12-04)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.8.6...@yarnpkg/cli/3.8.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.5.3 (2024-11-25)</h2>
+      <pre>## What's Changed
+* fix(plugin-workspace-tools): properly report errors for all non-zero exit codes by @kumavis in https://github.com/yarnpkg/berry/pull/6535
+* feat: add yarnpkg/nm/hoist export by @ChALkeR in https://github.com/yarnpkg/berry/pull/6611
+* chore: unlock cross-spawn range by @lswith in https://github.com/yarnpkg/berry/pull/6606
+
+## New Contributors
+* @kumavis made their first contribution in https://github.com/yarnpkg/berry/pull/6535
+* @ChALkeR made their first contribution in https://github.com/yarnpkg/berry/pull/6611
+* @lswith made their first contribution in https://github.com/yarnpkg/berry/pull/6606
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.5.2...@yarnpkg/cli/4.5.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.5.2 (2024-11-22)</h2>
+      <pre>## What's Changed
+* Use Node 22 for GitHub actions for now by @clemyan in https://github.com/yarnpkg/berry/pull/6575
+* fix(extensions): notistack@^3.0.0 by @aqeelat in https://github.com/yarnpkg/berry/pull/6593
+* fix(fslib): handle symlinks to zip files by @thatsmydoing in https://github.com/yarnpkg/berry/pull/6603
+* fix(compat): update patch for `typescript@5.7.1-rc` by @merceyz in https://github.com/yarnpkg/berry/pull/6591
+
+## New Contributors
+* @aqeelat made their first contribution in https://github.com/yarnpkg/berry/pull/6593
+* @thatsmydoing made their first contribution in https://github.com/yarnpkg/berry/pull/6603
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.5.1...@yarnpkg/cli/4.5.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.5.1 (2024-10-18)</h2>
+      <pre>## What's Changed
+* Fix CLI docs links by @TyMick in https://github.com/yarnpkg/berry/pull/6496
+* fix(nm): optimize hoisting by treating peer deps same as other deps by @akwodkiewicz in https://github.com/yarnpkg/berry/pull/6517
+* chore(libui): update ink by @BasixKOR in https://github.com/yarnpkg/berry/pull/6524
+* Website: add netlify.toml by @clemyan in https://github.com/yarnpkg/berry/pull/6432
+* ci(e2e): fix E2E Storybook by @k1tikurisu in https://github.com/yarnpkg/berry/pull/6543
+* ci(e2e): fix syntax error in the Parcel workflow by @k1tikurisu in https://github.com/yarnpkg/berry/pull/6548
+* Fix (partially) Svelte E2E test by @clemyan in https://github.com/yarnpkg/berry/pull/6428
+* Website: Wrap navbar when there is not enough space by @clemyan in https://github.com/yarnpkg/berry/pull/6541
+* fix(compat): update patch for `typescript@5.7.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/6533
+* fix(cli): Set COREPACK_ENABLE_AUTO_PIN=0 during local pack of github packages by @islandryu in https://github.com/yarnpkg/berry/pull/6529
+* chore: add script to generate e2e status list by @merceyz in https://github.com/yarnpkg/berry/pull/6434
+
+## New Contributors
+* @TyMick made their first contribution in https://github.com/yarnpkg/berry/pull/6496
+* @k1tikurisu made their first contribution in https://github.com/yarnpkg/berry/pull/6543
+* @islandryu made their first contribution in https://github.com/yarnpkg/berry/pull/6529
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.5.0...@yarnpkg/cli/4.5.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.6 (2024-10-18)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.8.5...@yarnpkg/cli/3.8.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.5.0 (2024-09-14)</h2>
+      <pre>## What's Changed
+* feat(builder): transform `node:` imports as needed by @jkowalleck in https://github.com/yarnpkg/berry/pull/6356
+* fix(core): determine if a module is a builtin using `module.isBuiltin` by @zouguangxian in https://github.com/yarnpkg/berry/pull/5997
+* feat(shell): add unset command by @tthijm in https://github.com/yarnpkg/berry/pull/6430
+* fix(nm): Stop hoisting rounds only when nothing were hoisted by @larixer in https://github.com/yarnpkg/berry/pull/6495
+* Avoid crash in simplifyRanges by removing subsets up front by @smikula in https://github.com/yarnpkg/berry/pull/6459
+* fix(ci): add workaround for Parcel not working with Yarn PnP by @wojtekmaj in https://github.com/yarnpkg/berry/pull/6447
+
+## New Contributors
+* @zouguangxian made their first contribution in https://github.com/yarnpkg/berry/pull/5997
+* @tthijm made their first contribution in https://github.com/yarnpkg/berry/pull/6430
+* @smikula made their first contribution in https://github.com/yarnpkg/berry/pull/6459
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.4.1...@yarnpkg/cli/4.5.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.1 (2024-08-24)</h2>
+      <pre>## What's Changed
+* test: fix custom certification tests on Windows by @Gudahtt in https://github.com/yarnpkg/berry/pull/6450
+* feat(nm): Add support for user-defined <workspace>/node_modules symlinks by @larixer in https://github.com/yarnpkg/berry/pull/6416
+* fix(compat): update patch for `typescript@5.6.1-rc` by @merceyz in https://github.com/yarnpkg/berry/pull/6461
+
+## New Contributors
+* @Gudahtt made their first contribution in https://github.com/yarnpkg/berry/pull/6450
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.4.0...@yarnpkg/cli/4.4.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.5 (2024-08-24)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.8.4...@yarnpkg/cli/3.8.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.4 (2024-08-05)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.8.3...@yarnpkg/cli/3.8.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.0 (2024-08-02)</h2>
+      <pre>## What's Changed
+* chore: lint mjs files and ignore json files by @merceyz in https://github.com/yarnpkg/berry/pull/6352
+* test: transpile using esbuild by @merceyz in https://github.com/yarnpkg/berry/pull/5581
+* Adds a guard against WebGL errors by @arcanis in https://github.com/yarnpkg/berry/pull/6371
+* chore: Upgrade ci-info to 4.0.0 by @clemyan in https://github.com/yarnpkg/berry/pull/6377
+* fix(cli): ensure an empty event loop counts as an error by @merceyz in https://github.com/yarnpkg/berry/pull/6399
+* docs(cli): add docs on installing local package by @marksy in https://github.com/yarnpkg/berry/pull/6392
+* Generate CLI docs as a Docusaurus plugin by @clemyan in https://github.com/yarnpkg/berry/pull/6218
+* doc: update npmAuditExcludePackages description by @jgravois in https://github.com/yarnpkg/berry/pull/6390
+* Enhance ESLint config by @clemyan in https://github.com/yarnpkg/berry/pull/6357
+* fix typo workerPoolMode by @mifi in https://github.com/yarnpkg/berry/pull/6407
+* Fixes `immutablePatterns` when running an install from a subdirectory by @arcanis in https://github.com/yarnpkg/berry/pull/6410
+* Upgrades docusaurus by @arcanis in https://github.com/yarnpkg/berry/pull/6412
+* Adds support for cwd in the git protocol by @arcanis in https://github.com/yarnpkg/berry/pull/6362
+* fix(cli): always disable interactive mode in non-TTYs by @paul-soporan in https://github.com/yarnpkg/berry/pull/6419
+* ci(e2e): fix docusaurus javascript test by @merceyz in https://github.com/yarnpkg/berry/pull/6417
+* Fixing CI jobs for Big Endian by @Prashant-Jagtap in https://github.com/yarnpkg/berry/pull/6414
+* Adds support for user-defined wrappers in the SDK by @arcanis in https://github.com/yarnpkg/berry/pull/6370
+* Cleanups some tests by @arcanis in https://github.com/yarnpkg/berry/pull/6388
+* fix(compat): update patch for `typescript@5.6.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/6409
+* deps: update to `esbuild-wasm@0.23.0` by @merceyz in https://github.com/yarnpkg/berry/pull/6387
+* Fix peer warning message requester by @clemyan in https://github.com/yarnpkg/berry/pull/6376
+
+## New Contributors
+* @marksy made their first contribution in https://github.com/yarnpkg/berry/pull/6392
+* @jgravois made their first contribution in https://github.com/yarnpkg/berry/pull/6390
+* @Prashant-Jagtap made their first contribution in https://github.com/yarnpkg/berry/pull/6414
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.3.1...@yarnpkg/cli/4.4.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.3.1 (2024-06-21)</h2>
+      <pre>## What's Changed
+* Minor tweaks to website by @clemyan in https://github.com/yarnpkg/berry/pull/6264
+* Fix incorrect `node:…` module warnings in doctor by @bradleyayers in https://github.com/yarnpkg/berry/pull/6347
+* Update links for yarn explain to Docosaurus versions by @skagedal in https://github.com/yarnpkg/berry/pull/6321
+* remove useless "readyPackages" by @ShuiRuTian in https://github.com/yarnpkg/berry/pull/6319
+* fix: update contributing file reference by @emmanuel-ferdman in https://github.com/yarnpkg/berry/pull/6351
+* fix(compat): update patch for `typescript@5.5.2` by @merceyz in https://github.com/yarnpkg/berry/pull/6349
+
+## New Contributors
+* @skagedal made their first contribution in https://github.com/yarnpkg/berry/pull/6321
+* @ShuiRuTian made their first contribution in https://github.com/yarnpkg/berry/pull/6319
+* @emmanuel-ferdman made their first contribution in https://github.com/yarnpkg/berry/pull/6351
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.3.0...@yarnpkg/cli/4.3.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.3 (2024-06-21)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.8.2...@yarnpkg/cli/3.8.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.3.0 (2024-06-10)</h2>
+      <pre>## What's Changed
+* Adds TEST_BINARY by @arcanis in https://github.com/yarnpkg/berry/pull/6291
+* Rework peer requirement and warning system by @clemyan in https://github.com/yarnpkg/berry/pull/6205
+* Remove "sherlock" from bug report template by @mitchhentgesspotify in https://github.com/yarnpkg/berry/pull/6306
+* Migrates to Eslint's flat config by @arcanis in https://github.com/yarnpkg/berry/pull/6276
+
+## New Contributors
+* @mitchhentgesspotify made their first contribution in https://github.com/yarnpkg/berry/pull/6306
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.2.2...@yarnpkg/cli/4.3.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.2.2 (2024-05-08)</h2>
+      <pre>## What's Changed
+* fix(pnp): esm - support import attributes by @merceyz in https://github.com/yarnpkg/berry/pull/6268
+* feat(fslib): add `rmPromise`/`rmSync` methods by @aduh95 in https://github.com/yarnpkg/berry/pull/6226
+* fix: keep NODE_OPTIONS unset when the calculated value is empty by @DanielRose in https://github.com/yarnpkg/berry/pull/6255
+* Fixes `yarn why -R` by @arcanis in https://github.com/yarnpkg/berry/pull/6251
+* chore: Update GitHub actions versions by @RDIL in https://github.com/yarnpkg/berry/pull/6279
+
+## New Contributors
+* @DanielRose made their first contribution in https://github.com/yarnpkg/berry/pull/6255
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.2.1...@yarnpkg/cli/4.2.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.2.1 (2024-05-02)</h2>
+      <pre>## What's Changed
+* build: explicitly set `noEmit: false` in the build script by @merceyz in https://github.com/yarnpkg/berry/pull/6266
+
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.2.0...@yarnpkg/cli/4.2.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.2.0 (2024-05-02)</h2>
+      <pre>## What's Changed
+* fix(extensions): `eslint-import-resolver-vite@<2.0.1` by @n0099 in https://github.com/yarnpkg/berry/pull/6154
+* chore: fix typo: `overriden` -> `overridden` by @junhoyeo in https://github.com/yarnpkg/berry/pull/6155
+* Adds ts-nocheck to the PnP file by @arcanis in https://github.com/yarnpkg/berry/pull/6183
+* Improve libc presence detection by @dstaley in https://github.com/yarnpkg/berry/pull/6170
+* Exclude binaries when searching in VS Code by @clemyan in https://github.com/yarnpkg/berry/pull/6213
+* build(compat): fix building TypeScript patches by @merceyz in https://github.com/yarnpkg/berry/pull/6186
+* feat(builder): add `--metafile` flag by @jkowalleck in https://github.com/yarnpkg/berry/pull/6212
+* feat(plugin-typescript): check workspace tsconfig.json by @nmussy in https://github.com/yarnpkg/berry/pull/6175
+* build(compat): use a treeless TypeScript clone by @merceyz in https://github.com/yarnpkg/berry/pull/6193
+* Migrate docs to Docusaurus v3 by @clemyan in https://github.com/yarnpkg/berry/pull/6133
+* fix(version) use correct counter placeholder in documentation by @bgotink in https://github.com/yarnpkg/berry/pull/6241
+* Use title for issue sesctions by @Ayc0 in https://github.com/yarnpkg/berry/pull/6244
+* fix(docs): Fixes SysGears logo in the README and SysGears name spelling by @larixer in https://github.com/yarnpkg/berry/pull/6245
+* fix(compat): update patch for `typescript@5.5.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/6248
+* Fix parser stringify subshell brackets by @clemyan in https://github.com/yarnpkg/berry/pull/6254
+* Simplify documentation of "constraints" overview by @jeremy-daley-kr in https://github.com/yarnpkg/berry/pull/6257
+* fix(sdks): only patch typescript entry point for >= 5.5 by @merceyz in https://github.com/yarnpkg/berry/pull/6263
+
+## New Contributors
+* @n0099 made their first contribution in https://github.com/yarnpkg/berry/pull/6154
+* @junhoyeo made their first contribution in https://github.com/yarnpkg/berry/pull/6155
+* @jkowalleck made their first contribution in https://github.com/yarnpkg/berry/pull/6212
+* @nmussy made their first contribution in https://github.com/yarnpkg/berry/pull/6175
+* @jeremy-daley-kr made their first contribution in https://github.com/yarnpkg/berry/pull/6257
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.1.1...@yarnpkg/cli/4.2.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.2 (2024-05-02)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.8.1...@yarnpkg/cli/3.8.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.1.1 (2024-03-04)</h2>
+      <pre>## What's Changed
+* docs(plugin-essentials): Improve `install` command formatting by @bbodenmiller in https://github.com/yarnpkg/berry/pull/6127
+* fix(compat): update patch for `typescript@5.4.1-rc` by @merceyz in https://github.com/yarnpkg/berry/pull/6134
+* docs: change i.e. to e.g. in search placeholder by @pwbriggs in https://github.com/yarnpkg/berry/pull/6142
+
+## New Contributors
+* @bbodenmiller made their first contribution in https://github.com/yarnpkg/berry/pull/6127
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.1.0...@yarnpkg/cli/4.1.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.1 (2024-03-04)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.8.0...@yarnpkg/cli/3.8.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.0 (2024-02-01)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.7.0...@yarnpkg/cli/3.8.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.1.0 (2024-01-30)</h2>
+      <pre>## What's Changed
+* Add API Reference to website by @clemyan in https://github.com/yarnpkg/berry/pull/5922
+* fix(plugin-npm-cli): fix login with Verdaccio by @demurgos in https://github.com/yarnpkg/berry/pull/5983
+* fix(version) stop --dry-run from changing anything by @bgotink in https://github.com/yarnpkg/berry/pull/6015
+* docs: correct default globalFolder in docs by @blimmer in https://github.com/yarnpkg/berry/pull/6003
+* test: update Node.js range for extensionless files by @merceyz in https://github.com/yarnpkg/berry/pull/6035
+* Add second level of --verbose to `workspaces foreach` to permit specifying less logging. by @seansfkelley in https://github.com/yarnpkg/berry/pull/6034
+* Fix site navigation being somewhat jumbled at certain viewport widths by @strogonoff in https://github.com/yarnpkg/berry/pull/6022
+* ci: use Node.js current release for e2e tests and benchmarks by @merceyz in https://github.com/yarnpkg/berry/pull/6082
+* docs: fix links in zero-installs explanation by @bitjson in https://github.com/yarnpkg/berry/pull/6075
+* fix(pnp): ensure `URL` is imported on Node.js < 20 by @merceyz in https://github.com/yarnpkg/berry/pull/6060
+* ci(e2e): use Node.js v20 for angular pnp test by @merceyz in https://github.com/yarnpkg/berry/pull/6085
+* ci(e2e): remove gatsby development server test by @merceyz in https://github.com/yarnpkg/berry/pull/6084
+* Deprecates implicit cache keys by @arcanis in https://github.com/yarnpkg/berry/pull/6083
+* feat: yarn run --json by @jplukas in https://github.com/yarnpkg/berry/pull/5988
+* fix(nm): Fixes nm linker `link:` dependencies mistreatment as inner workspaces by @larixer in https://github.com/yarnpkg/berry/pull/6058 and @joshhunt in https://github.com/yarnpkg/berry/pull/6089
+* chore(extensions): update list by @merceyz in https://github.com/yarnpkg/berry/pull/6095
+* Fixes the optional check depending on the order the tree is traversed by @arcanis in https://github.com/yarnpkg/berry/pull/5840
+* Fix #5165 - missing executable perms when installing with pnpm linker by @fancyfractal in https://github.com/yarnpkg/berry/pull/6066
+* fix(npm): stale metadata cache issue by @arcanis in https://github.com/yarnpkg/berry/pull/6101
+* Upgrades TypeScript by @arcanis in https://github.com/yarnpkg/berry/pull/6108
+* fix(compat): update patch for `typescript@5.4.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/6110
+
+## New Contributors
+* @demurgos made their first contribution in https://github.com/yarnpkg/berry/pull/5983
+* @blimmer made their first contribution in https://github.com/yarnpkg/berry/pull/6003
+* @strogonoff made their first contribution in https://github.com/yarnpkg/berry/pull/6022
+* @bitjson made their first contribution in https://github.com/yarnpkg/berry/pull/6075
+* @jplukas made their first contribution in https://github.com/yarnpkg/berry/pull/5988
+* @fancyfractal made their first contribution in https://github.com/yarnpkg/berry/pull/6066
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.0.2...@yarnpkg/cli/4.1.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.2 (2023-11-14)</h2>
+      <pre>## What's Changed
+* ci: add `vitest` e2e tests by @wojtekmaj in https://github.com/yarnpkg/berry/pull/5896
+* docs: navigate Plugins path link general reference lexicon See also section by @guspan-tanadi in https://github.com/yarnpkg/berry/pull/5894
+* Update CHANGELOG.md by @arcanis in https://github.com/yarnpkg/berry/pull/5900
+* Fix grammar in benefits.md by @pwbriggs in https://github.com/yarnpkg/berry/pull/5903
+* fix(core): handle self referencing workspaces field by @merceyz in https://github.com/yarnpkg/berry/pull/5917
+* docs: fix package bundled TS type check by @clemyan in https://github.com/yarnpkg/berry/pull/5867
+* fix(yarnpkg-nm): Fixes creation of symlinks when inner workspace depends on outer workspace by @larixer in https://github.com/yarnpkg/berry/pull/5913
+* ci: use latest actions/setup-node version by @wojtekmaj in https://github.com/yarnpkg/berry/pull/5901
+* fix: remove unused --save option for set resolution command by @akwodkiewicz in https://github.com/yarnpkg/berry/pull/5868
+* Various minor tweaks for website by @clemyan in https://github.com/yarnpkg/berry/pull/5863
+* Reverts the INIT_CWD change by @arcanis in https://github.com/yarnpkg/berry/pull/5930
+* Fixes missing `--json` output on `yarn install` by @arcanis in https://github.com/yarnpkg/berry/pull/5933
+* Stops reporting identical objects as being different by @arcanis in https://github.com/yarnpkg/berry/pull/5934
+* Adds extensionless url support by @arcanis in https://github.com/yarnpkg/berry/pull/5931
+* Update CHANGELOG.md by @arcanis in https://github.com/yarnpkg/berry/pull/5940
+* Fix type for postinstall documentation by @RahulReddy75 in https://github.com/yarnpkg/berry/pull/5955
+* Documentation improvements by @arcanis in https://github.com/yarnpkg/berry/pull/5968
+* fix(compat): update patch for `typescript@5.3.1-rc` by @merceyz in https://github.com/yarnpkg/berry/pull/5916
+* fix(set version) - fix build workflow for windows by @x318 in https://github.com/yarnpkg/berry/pull/5966
+* Injects the PnP runtime in the process before requiring the user config by @arcanis in https://github.com/yarnpkg/berry/pull/5954
+* Update Svelte Language Server PnP Configuration by @DavidArchibald in https://github.com/yarnpkg/berry/pull/5953
+* Adds a warning when the hardened mode is enabled by @arcanis in https://github.com/yarnpkg/berry/pull/5969
+* Improves the check for the libc presence by @arcanis in https://github.com/yarnpkg/berry/pull/5971
+* fix(pnp) esm - support loaders importing named exports from commonjs by @merceyz in https://github.com/yarnpkg/berry/pull/5961
+
+## New Contributors
+* @guspan-tanadi made their first contribution in https://github.com/yarnpkg/berry/pull/5894
+* @pwbriggs made their first contribution in https://github.com/yarnpkg/berry/pull/5903
+* @akwodkiewicz made their first contribution in https://github.com/yarnpkg/berry/pull/5868
+* @RahulReddy75 made their first contribution in https://github.com/yarnpkg/berry/pull/5955
+* @x318 made their first contribution in https://github.com/yarnpkg/berry/pull/5966
+* @DavidArchibald made their first contribution in https://github.com/yarnpkg/berry/pull/5953
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.0.1...@yarnpkg/cli/4.0.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.7.0 (2023-11-14)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.6.4...@yarnpkg/cli/3.7.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.1 (2023-10-28)</h2>
+      <pre>## What's Changed
+* Adds a blog section by @arcanis in https://github.com/yarnpkg/berry/pull/5784
+* Fixes the progress bar max width by @arcanis in https://github.com/yarnpkg/berry/pull/5836
+* Fixes bugs in yarn npm audit by @arcanis in https://github.com/yarnpkg/berry/pull/5833
+* Reimplements yarn explain peer-requirements by @arcanis in https://github.com/yarnpkg/berry/pull/5834
+* Adds `injectEnvironmentFiles` to the documentation by @arcanis in https://github.com/yarnpkg/berry/pull/5838
+* Prevent crash while reading non-existent file on GITHUB_EVENT_PATH by @Brooooooklyn in https://github.com/yarnpkg/berry/pull/5835
+* docs(yarnrc): set default compressionLevel to '0' by @trivikr in https://github.com/yarnpkg/berry/pull/5844
+* docs(yarnrc): move compressionLevel 'mixed' enum value to the end by @trivikr in https://github.com/yarnpkg/berry/pull/5846
+* docs: fix link to the portal protocol by @thorn0 in https://github.com/yarnpkg/berry/pull/5852
+* chore(plugin-pnp): add 'pnpm' option in nodeLinker config description by @trivikr in https://github.com/yarnpkg/berry/pull/5850
+* docs(yarnrc): create list item for cacheMigrationMode 'always' option by @trivikr in https://github.com/yarnpkg/berry/pull/5855
+* docs(yarnrc): remove invalid 'auto' option for cacheMigrationMode by @trivikr in https://github.com/yarnpkg/berry/pull/5857
+* fix: Update link to plugin tutorial by @antonbauhofer in https://github.com/yarnpkg/berry/pull/5862
+* fix : Update link to difference between link and portal by @Shreyas0410 in https://github.com/yarnpkg/berry/pull/5870
+* Waits for the manifests to be written before running the second loops by @arcanis in https://github.com/yarnpkg/berry/pull/5871
+* Adds tests for the pack list generation by @arcanis in https://github.com/yarnpkg/berry/pull/5873
+* chore(core): fix typo in Project.ts by @eltociear in https://github.com/yarnpkg/berry/pull/5876
+* Runs more tests by @arcanis in https://github.com/yarnpkg/berry/pull/5875
+* fix typos in blogs by @shresthasurav in https://github.com/yarnpkg/berry/pull/5877
+* Update README.md by @Shivam250702 in https://github.com/yarnpkg/berry/pull/5887
+
+## New Contributors
+* @Brooooooklyn made their first contribution in https://github.com/yarnpkg/berry/pull/5835
+* @thorn0 made their first contribution in https://github.com/yarnpkg/berry/pull/5852
+* @antonbauhofer made their first contribution in https://github.com/yarnpkg/berry/pull/5862
+* @Shreyas0410 made their first contribution in https://github.com/yarnpkg/berry/pull/5870
+* @shresthasurav made their first contribution in https://github.com/yarnpkg/berry/pull/5877
+* @Shivam250702 made their first contribution in https://github.com/yarnpkg/berry/pull/5887
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/4.0.0...@yarnpkg/cli/4.0.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.0 (2023-10-22)</h2>
+      <pre>**Blog post**: https://yarnpkg.com/blog/release/4.0
+
+## What's Changed
+* perf(core): skip unnecessary stat call in `tgzUtils.convertToZip` by @merceyz in https://github.com/yarnpkg/berry/pull/4166
+* chore(core): use const for pkg variable in getCandidates by @trivikr in https://github.com/yarnpkg/berry/pull/4161
+* refactor(nm): return object with linkType and target by @trivikr in https://github.com/yarnpkg/berry/pull/4143
+* add extension for '@cypress/snapshot' dependency on 'debug' by @devrelm in https://github.com/yarnpkg/berry/pull/4193
+* docs: Add Ukraine support banner to Yarn website by @larixer in https://github.com/yarnpkg/berry/pull/4190
+* docs: Add `yarn-plugin-publishconfig` to Contrib plugins by @alizeait in https://github.com/yarnpkg/berry/pull/4188
+* docs: add `yarn-plugin-http-proxy` contrib plugin by @arontsang in https://github.com/yarnpkg/berry/pull/4180
+* refactor(git): use const for protocol/request by @trivikr in https://github.com/yarnpkg/berry/pull/4183
+* docs: Updates the link to support Ukraine by @larixer in https://github.com/yarnpkg/berry/pull/4198
+* chore: remove unused dependencies by @merceyz in https://github.com/yarnpkg/berry/pull/4186
+* chore: informations => information by @francisu in https://github.com/yarnpkg/berry/pull/4082
+* chore(nm): use for loop in buildTree fn by @trivikr in https://github.com/yarnpkg/berry/pull/4200
+* Don't run the tests anymore on Node 12 by @arcanis in https://github.com/yarnpkg/berry/pull/4196
+* refactor: move and document getNpmAuthenticationHeader by @paul-soporan in https://github.com/yarnpkg/berry/pull/3888
+* fix(esbuild): make `foo/bar` external if package `foo` is external by @bgotink in https://github.com/yarnpkg/berry/pull/4209
+* fix(esbuild): resolve to ESM when requested by @bgotink in https://github.com/yarnpkg/berry/pull/4220
+* fix(nm): Support portals to external interdependent workspaces by @larixer in https://github.com/yarnpkg/berry/pull/4207
+* fix(pnpm): pnpm linker no longer removes node_modules when nm linker is active by @larixer in https://github.com/yarnpkg/berry/pull/4206
+* fix(nm): apply hoisting algorithm on aliased dependencies by @larixer in https://github.com/yarnpkg/berry/pull/4237
+* feat(patch)!: Improves patches by @arcanis in https://github.com/yarnpkg/berry/pull/4218
+* chore: remove leftover test code by @merceyz in https://github.com/yarnpkg/berry/pull/4246
+* docs: fix a typo s/then/them by @jameskerr in https://github.com/yarnpkg/berry/pull/4230
+* perf(libzip): migrate to zlib-ng by @merceyz in https://github.com/yarnpkg/berry/pull/4247
+* test: disable flaky tests by @merceyz in https://github.com/yarnpkg/berry/pull/4248
+* fix(docs): move Ukrainain banner to the home page only to not disrupt docs UX by @larixer in https://github.com/yarnpkg/berry/pull/4251
+* refactor(parsers): use const for vars `data` and `sort` by @trivikr in https://github.com/yarnpkg/berry/pull/4202
+* fix(nm): Reinstall removed module directories by @larixer in https://github.com/yarnpkg/berry/pull/3467
+* Make the local cache opt-in (rather than opt-out) by @arcanis in https://github.com/yarnpkg/berry/pull/4252
+* fix(nm): takes into account scoped packages during syncing tree with disk by @larixer in https://github.com/yarnpkg/berry/pull/4266
+* docs: add reference to `libc` key in `supportedArchitectures` documentation by @julienfouilhe in https://github.com/yarnpkg/berry/pull/4264
+* chore(git): remove redundant variable match by @trivikr in https://github.com/yarnpkg/berry/pull/4255
+* Removes the compatibility layer for Clipanion 2 by @arcanis in https://github.com/yarnpkg/berry/pull/4262
+* Improves boot time by @arcanis in https://github.com/yarnpkg/berry/pull/4261
+* test(nm): Adds a unit test which checks that two-branch circular graphs handled properly by @larixer in https://github.com/yarnpkg/berry/pull/4272
+* fix(nm): improves external soft links hoisting by @larixer in https://github.com/yarnpkg/berry/pull/4269
+* chore(file): use const for path in getCandidates by @trivikr in https://github.com/yarnpkg/berry/pull/4281
+* fix(plugin-pnp): wait for unplugging to finish before finalizing by @merceyz in https://github.com/yarnpkg/berry/pull/4278
+* fix(parsers): correctly stringify keys longer than 1024 chars by @elado in https://github.com/yarnpkg/berry/pull/4275
+* test: don't use git repositories we don't control by @merceyz in https://github.com/yarnpkg/berry/pull/4276
+* feat: support auth in proxy url by @Leksat in https://github.com/yarnpkg/berry/pull/4243
+* Enables all official plugins by default by @arcanis in https://github.com/yarnpkg/berry/pull/4253
+* Prefer using exclusively Corepack when possible by @arcanis in https://github.com/yarnpkg/berry/pull/4254
+* Soften CI coverage by @arcanis in https://github.com/yarnpkg/berry/pull/4286
+* chore: cleanup root dependencies by @merceyz in https://github.com/yarnpkg/berry/pull/4273
+* fix(pnp): esm - handle symlinked extensionless entrypoints by @merceyz in https://github.com/yarnpkg/berry/pull/4289
+* ci: don't continue running when cancelled by @merceyz in https://github.com/yarnpkg/berry/pull/4290
+* Fixes {} parsing inside shell scripts by @arcanis in https://github.com/yarnpkg/berry/pull/4288
+* feat(pack): support `publishConfig.type` by @cometkim in https://github.com/yarnpkg/berry/pull/4204
+* chore(compat): lock `@apollographql/apollo-tools` range by @trevor-scheer in https://github.com/yarnpkg/berry/pull/4293
+* fix(parsers): correctly indent keys longer than 1024 chars by @elado in https://github.com/yarnpkg/berry/pull/4294
+* Resolves tags before storing them in the manifest by @arcanis in https://github.com/yarnpkg/berry/pull/4291
+* Normalizes dependencies by @arcanis in https://github.com/yarnpkg/berry/pull/4305
+* Implements `--check-resolutions` by @arcanis in https://github.com/yarnpkg/berry/pull/4302
+* Implements `--refresh-lockfile` by @arcanis in https://github.com/yarnpkg/berry/pull/4299
+* Implements enableHardenedMode by @arcanis in https://github.com/yarnpkg/berry/pull/4307
+* perf(pnp): hoist data string by @merceyz in https://github.com/yarnpkg/berry/pull/4320
+* feat(libzip): add function types by @merceyz in https://github.com/yarnpkg/berry/pull/4318
+* fix(essentials): correct typo in prompt by @GauBen in https://github.com/yarnpkg/berry/pull/4324
+* fix(pack): handle excluding from included parent directory by @merceyz in https://github.com/yarnpkg/berry/pull/4317
+* fix(sdks): update for VSCode 1.66 by @merceyz in https://github.com/yarnpkg/berry/pull/4330
+* perf: reduce bundle size by @merceyz in https://github.com/yarnpkg/berry/pull/4315
+* Repairs `yarn set version from sources` from 3 to 4 by @arcanis in https://github.com/yarnpkg/berry/pull/4331
+* Fixes `yarn version apply` by @arcanis in https://github.com/yarnpkg/berry/pull/4336
+* feat(essentials): add `preferReuse` setting by @marionebl in https://github.com/yarnpkg/berry/pull/4221
+* fix(pnp): suppress experimental ESM loader warning by @merceyz in https://github.com/yarnpkg/berry/pull/4338
+* chore(compat): add extension for 'auto-relay' peerDependency on 'reflect-metadata' by @Justkant in https://github.com/yarnpkg/berry/pull/4312
+* fix(compat): update patch for `typescript@4.7.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/4339
+* fix(plugin-nm): handle `supportedArchitectures` by @merceyz in https://github.com/yarnpkg/berry/pull/4343
+* docs: Fix plugin author name by @oliversalzburg in https://github.com/yarnpkg/berry/pull/4361
+* perf(core): skip unnecessary `access` call in `fetchPackageFromCache` by @merceyz in https://github.com/yarnpkg/berry/pull/4352
+* Yarn npm audit json exitcode by @hughdavenport in https://github.com/yarnpkg/berry/pull/4358
+* Updates benchmark dependencies by @arcanis in https://github.com/yarnpkg/berry/pull/4374
+* feat(essentials): support forwarding `--require` in `yarn run` by @juan-fernandez in https://github.com/yarnpkg/berry/pull/4376
+* fix(compat): update `vue-loader` entry by @merceyz in https://github.com/yarnpkg/berry/pull/4389
+* fix(git): respect `GIT_SSH_COMMAND` and `GIT_SSH` by @cwstra in https://github.com/yarnpkg/berry/pull/4381
+* Fixes the "yarn up" command when the dependency doesnt need upgrades by @arcanis in https://github.com/yarnpkg/berry/pull/4378
+* Fixes e2e tests by @arcanis in https://github.com/yarnpkg/berry/pull/4377
+* fix(dlx): preserve tags by @merceyz in https://github.com/yarnpkg/berry/pull/4395
+* fix(compat): `react-scripts` by @merceyz in https://github.com/yarnpkg/berry/pull/4346
+* Fixes the Parcel E2E test by @arcanis in https://github.com/yarnpkg/berry/pull/4400
+* fix(essentials): different error when importing built-in plugins by @merceyz in https://github.com/yarnpkg/berry/pull/4401
+* chore: add lint rule for `semver.validRange` and `semver.Range` by @merceyz in https://github.com/yarnpkg/berry/pull/4407
+* fix(core): skip cache cleanup when enableGlobalCache is true by @stevenxu-db in https://github.com/yarnpkg/berry/pull/4402
+* fix(fslib): fix return shape of promisified `fs.write` by @mhassan1 in https://github.com/yarnpkg/berry/pull/4411
+* docs: fix incorrect grammar in README by @osBins in https://github.com/yarnpkg/berry/pull/4422
+* Use cygpath for MINGW (Git Bash) by @dahlbyk in https://github.com/yarnpkg/berry/pull/4409
+* ci: update pnpm store location by @merceyz in https://github.com/yarnpkg/berry/pull/4440
+* fix(core): ensure proper install for git dependency using Yarn classic and npm by @colincasey in https://github.com/yarnpkg/berry/pull/4403
+* feat: move compat database to separate package by @zkochan in https://github.com/yarnpkg/berry/pull/4436
+* fix(cli): correct the cli's dev version to match semver spec by @edvardchen in https://github.com/yarnpkg/berry/pull/4458
+* fix(extensions): allow `consolidate@<0.16.0` to use `mustache@^3.0.0` by @andreyfel in https://github.com/yarnpkg/berry/pull/4465
+* feat(fslib): add `ftruncate` support by @merceyz in https://github.com/yarnpkg/berry/pull/4477
+* test(fslib): add more tests for `ZipFS` by @merceyz in https://github.com/yarnpkg/berry/pull/4474
+* Add `yarn-plugin-version-tools` to Contrib plugins by @indooorsman in https://github.com/yarnpkg/berry/pull/4222
+* docs: Add `changed`, `docker-build`, `tsconfig-references` to plugin list by @tommy351 in https://github.com/yarnpkg/berry/pull/4233
+* [plugin-npm-cli]: Add ability to exclude packages, or ignore specific advisories in `yarn npm audit` by @hughdavenport in https://github.com/yarnpkg/berry/pull/4356
+* fix(core): prevent hangs due to degenerate lockfile diff by @xeger in https://github.com/yarnpkg/berry/pull/4453
+* chore(extensions): add `tabbable` dependency to `focus-trap-react` by @smoores-dev in https://github.com/yarnpkg/berry/pull/4492
+* fix(core)!: rename caFilePath to httpsCaFilePath by @jdanil in https://github.com/yarnpkg/berry/pull/4503
+* docs: use monospace for fallback font of PT Mono by @rinsuki in https://github.com/yarnpkg/berry/pull/4495
+* feat!: move getCustomDataKey to Linker by @jdanil in https://github.com/yarnpkg/berry/pull/4505
+* feat!: set default `nmMode` to `hardlinks-local` by @jdanil in https://github.com/yarnpkg/berry/pull/4504
+* test(pnp): escape path in `NODE_OPTIONS` env variable by @merceyz in https://github.com/yarnpkg/berry/pull/4521
+* test: add Babel config to integration tests by @merceyz in https://github.com/yarnpkg/berry/pull/4526
+* fix(plugin-constraints): use proportional prolog limit by @marvinroger in https://github.com/yarnpkg/berry/pull/4538
+* test(fslib): restore timers after each test by @merceyz in https://github.com/yarnpkg/berry/pull/4520
+* test: add env variable TEST_IGNORE_TIMEOUT_FAILURES to suppress timeo… by @edvardchen in https://github.com/yarnpkg/berry/pull/4543
+* fix(sdks): update for VSCode 1.68 by @merceyz in https://github.com/yarnpkg/berry/pull/4485
+* ci: fix the `create-vue` e2e test by @merceyz in https://github.com/yarnpkg/berry/pull/4553
+* docs: Append `yarn-plugin-pin-deps` to Contrib plugins by @milesrichardson in https://github.com/yarnpkg/berry/pull/4552
+* fix(plugin-patch): avoid creating rename diffs by @redabacha in https://github.com/yarnpkg/berry/pull/4557
+* fix(compat): update patch for `typescript@4.8.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/4568
+* feat(plugin-essentials): support specifying multiple paths in `yarn link` by @noahnu in https://github.com/yarnpkg/berry/pull/4573
+* fix(esbuild-plugin-pnp): respect resolveDir by @jenseng in https://github.com/yarnpkg/berry/pull/4569
+* fix(fslib): make recursive mkdir return the first created directory by @merceyz in https://github.com/yarnpkg/berry/pull/4462
+* docs: update Node.js versions in migration guide by @dhruvkrishnavaid in https://github.com/yarnpkg/berry/pull/4576
+* feat(fslib): add `fchmod` support by @merceyz in https://github.com/yarnpkg/berry/pull/4466
+* fix(cli): fix dev version by @paul-soporan in https://github.com/yarnpkg/berry/pull/4582
+* refactor(libui)!: require `renderForm` streams to be specified by @paul-soporan in https://github.com/yarnpkg/berry/pull/4589
+* fix(core): don't normalize package extension peer dependency ranges by @paul-soporan in https://github.com/yarnpkg/berry/pull/4588
+* Adds tests accidentally removed in #4305 by @arcanis in https://github.com/yarnpkg/berry/pull/4590
+* chore: add `sponsor` field to vscode-zipfs by @paul-soporan in https://github.com/yarnpkg/berry/pull/4592
+* feat(foreach)!: automatically enable `--verbose` in tty environments by @paul-soporan in https://github.com/yarnpkg/berry/pull/4595
+* fix(esbuild-plugin-pnp): return `resolveDir` from `onLoad` by @alisd23 in https://github.com/yarnpkg/berry/pull/4597
+* test(essentials): dedupe aliased dependency by @mchill in https://github.com/yarnpkg/berry/pull/4241
+* docs(patch): document plugin options by @RDIL in https://github.com/yarnpkg/berry/pull/4481
+* ci: remove workaround for Angular PnP e2e test by @merceyz in https://github.com/yarnpkg/berry/pull/4614
+* ci: run tests on Node.js v18 by @merceyz in https://github.com/yarnpkg/berry/pull/4618
+* fix(dlx): don't report `UNUSED_PACKAGE_EXTENSION` warnings by @paul-soporan in https://github.com/yarnpkg/berry/pull/4583
+* feat(fslib): add `throwIfNoEntry` support by @merceyz in https://github.com/yarnpkg/berry/pull/4475
+* fix(core): set `npm_package_json` environment variable when running scripts by @uhop in https://github.com/yarnpkg/berry/pull/4546
+* docs(pnp): add Putout to native support table by @coderaiser in https://github.com/yarnpkg/berry/pull/3880
+* docs: update logos by @treboryx in https://github.com/yarnpkg/berry/pull/3567
+* docs: clarify the zero-installs requirements by @eoingroat in https://github.com/yarnpkg/berry/pull/4619
+* feat: big-endian support by @paul-soporan in https://github.com/yarnpkg/berry/pull/3669
+* fix(pnp): return `shortCircuit` from the ESM loader hooks by @merceyz in https://github.com/yarnpkg/berry/pull/4624
+* fix(dlx): handle scoped `create` commands by @merceyz in https://github.com/yarnpkg/berry/pull/4627
+* chore(extensions): update list by @merceyz in https://github.com/yarnpkg/berry/pull/4631
+* fix(pnp): automatically unplug `open` and `opn` by @merceyz in https://github.com/yarnpkg/berry/pull/4633
+* fix(pnp): resolve virtual paths in `process.dlopen` by @merceyz in https://github.com/yarnpkg/berry/pull/4630
+* Implements content addressing inside copyPromise by @arcanis in https://github.com/yarnpkg/berry/pull/4586
+* fix(plugin-pnpm) Pnpm linker avoids symlink loops on the file system by @larixer in https://github.com/yarnpkg/berry/pull/4542
+* fix(audit)!: remove fallback to publish registries by @paul-soporan in https://github.com/yarnpkg/berry/pull/4639
+* chore: fix `scripts/bin/yarnpkg` symlink by @paul-soporan in https://github.com/yarnpkg/berry/pull/4647
+* refactor!: remove deprecated versionUtils by @paul-soporan in https://github.com/yarnpkg/berry/pull/4648
+* refactor(manifest)!: remove deprecated compatibility check methods by @paul-soporan in https://github.com/yarnpkg/berry/pull/4644
+* refactor(core): remove `InstallOptions.skipBuild` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4643
+* refactor(core)!: remove `MapConfigurationValue` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4645
+* refactor(init)!: remove `--assume-fresh-project` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4649
+* refactor!: remove FetchOptions.skipIntegrityCheck by @paul-soporan in https://github.com/yarnpkg/berry/pull/4641
+* test: don't hardcode timeout interval and don't rely on jasmine by @paul-soporan in https://github.com/yarnpkg/berry/pull/4646
+* ci: run tests in parallel by @paul-soporan in https://github.com/yarnpkg/berry/pull/4642
+* fix(fslib): correct the `FileHandle` implementation by @merceyz in https://github.com/yarnpkg/berry/pull/3889
+* fix(shell): wait for stdio streams of process to close by @merceyz in https://github.com/yarnpkg/berry/pull/4651
+* deps: update to `tslib@2.4.0` by @RDIL in https://github.com/yarnpkg/berry/pull/4693
+* refactor(sdks)!: drop fallback on createRequireFromPath by @paul-soporan in https://github.com/yarnpkg/berry/pull/4697
+* chore(libzip): set TEXTDECODER to 2 by @paul-soporan in https://github.com/yarnpkg/berry/pull/4699
+* docs: use explicit version instead of `next` tag for `typedoc` by @merceyz in https://github.com/yarnpkg/berry/pull/4660
+* refactor: deprecate old `INCOMPATIBLE_*` message names by @paul-soporan in https://github.com/yarnpkg/berry/pull/4703
+* fix(core): support migrating resolutions from JFrog Artifactory registries regardless of the domain by @sargunv in https://github.com/yarnpkg/berry/pull/4702
+* fix(core): use the current CLI to prepare external Yarn classic projects by @merceyz in https://github.com/yarnpkg/berry/pull/4682
+* Writes a PnP spec by @arcanis in https://github.com/yarnpkg/berry/pull/4671
+* docs: document libc in `manifest.json` schema by @paul-soporan in https://github.com/yarnpkg/berry/pull/4705
+* chore: remove `@yarnpkg/json-proxy` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4707
+* docs: add missing commas on configuration pages by @paul-soporan in https://github.com/yarnpkg/berry/pull/4706
+* fix(formatUtils): apply colors to `Type.NUMBER` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4709
+* test: jest improvements by @paul-soporan in https://github.com/yarnpkg/berry/pull/4650
+* test: clear timeout after test finishes by @edvardchen in https://github.com/yarnpkg/berry/pull/4715
+* Fixes errors in the PnP spec by @arcanis in https://github.com/yarnpkg/berry/pull/4724
+* refactor: deprecate `FormatType` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4725
+* Faster copy through index by @arcanis in https://github.com/yarnpkg/berry/pull/4728
+* chore(extensions): Add `webpack` optional peerDependency to xo by @flying-sheep in https://github.com/yarnpkg/berry/pull/4723
+* docs: Cleans up a couple of errors by @arcanis in https://github.com/yarnpkg/berry/pull/4729
+* fix(fs): Fixes the Zip magic fd bits by @arcanis in https://github.com/yarnpkg/berry/pull/4737
+* fix(pnp): esm - correct named commonjs imports regression by @merceyz in https://github.com/yarnpkg/berry/pull/4739
+* chore: remove release entries for `@yarnpkg/json-proxy` by @merceyz in https://github.com/yarnpkg/berry/pull/4740
+* docs: update ESBuild PnP support status by @dritter in https://github.com/yarnpkg/berry/pull/4726
+* refactor: tweak fs.promises patch by @paul-soporan in https://github.com/yarnpkg/berry/pull/4762
+* docs: highlight the fact that the spec assumes the unix path format by @paul-soporan in https://github.com/yarnpkg/berry/pull/4747
+* docs: update `error-codes` by @ctrlaltdylan in https://github.com/yarnpkg/berry/pull/4765
+* chore: use `not_planned` reason for stale issues by @paul-soporan in https://github.com/yarnpkg/berry/pull/4759
+* fix: use `MessageName.NETWORK_DISABLED` in `gitUtils` too by @paul-soporan in https://github.com/yarnpkg/berry/pull/4777
+* fix(pnpm-linker): warn only once about virtuals by @paul-soporan in https://github.com/yarnpkg/berry/pull/4776
+* refactor!: stop removing old `.pnp.js` files when migrating by @paul-soporan in https://github.com/yarnpkg/berry/pull/4774
+* fix: remove unplugged folder when switching to a different linker by @paul-soporan in https://github.com/yarnpkg/berry/pull/4772
+* perf(core): remove dead code in `setupWorkspaces` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4771
+* refactor: update node types by @paul-soporan in https://github.com/yarnpkg/berry/pull/4764
+* ci: use shards for big-endian by @paul-soporan in https://github.com/yarnpkg/berry/pull/4746
+* docs: update `getSatisfying` JSDoc by @paul-soporan in https://github.com/yarnpkg/berry/pull/4745
+* ci(e2e): use non-minified bundle by @paul-soporan in https://github.com/yarnpkg/berry/pull/4744
+* fix(compat): update patch for `typescript@4.8.1-rc` by @merceyz in https://github.com/yarnpkg/berry/pull/4738
+* test: add tests for our changes to `libzip` by @merceyz in https://github.com/yarnpkg/berry/pull/4736
+* refactor: remove some duplicate fs implementations from pkg-tests-core by @paul-soporan in https://github.com/yarnpkg/berry/pull/4766
+* refactor!: remove pnpDataPath by @paul-soporan in https://github.com/yarnpkg/berry/pull/4773
+* Adds a note about workspaces in the `enableScripts` documentation by @arcanis in https://github.com/yarnpkg/berry/pull/4781
+* chore(extensions): update list by @merceyz in https://github.com/yarnpkg/berry/pull/4779
+* fix(pnp): esm - support unflagged JSON modules by @merceyz in https://github.com/yarnpkg/berry/pull/4786
+* refactor: update `esbuild` and remove `esbuild-plugin-pnp` by @RDIL in https://github.com/yarnpkg/berry/pull/4732
+* perf(pnp): enable strict mode in `.pnp.cjs` by @merceyz in https://github.com/yarnpkg/berry/pull/4813
+* docs: add yarn corepack activation by @jshanson7 in https://github.com/yarnpkg/berry/pull/4815
+* fix(essentials): yarn add `--peer` and `--dev` do not work when used together by @jj811208 in https://github.com/yarnpkg/berry/pull/4800
+* chore: lock Alpine version in `Dockerfile`s by @merceyz in https://github.com/yarnpkg/berry/pull/4814
+* deps: update to `node-gyp@9.1.0` by @amitdahan in https://github.com/yarnpkg/berry/pull/4812
+* docs: fix small grammar error by @jpulec in https://github.com/yarnpkg/berry/pull/4792
+* perf(NodeModulesLinker): remove `extractHint` from custom data by @paul-soporan in https://github.com/yarnpkg/berry/pull/4743
+* refactor(init)!: disable zero-installs by default by @paul-soporan in https://github.com/yarnpkg/berry/pull/4698
+* feat(fslib): add `fchown` support by @jj811208 in https://github.com/yarnpkg/berry/pull/4801
+* feat: Moves the bulk of ZipOpenFS into a new MountFS by @arcanis in https://github.com/yarnpkg/berry/pull/4818
+* fix: Always set INIT_CWD to the actual CLI cwd by @arcanis in https://github.com/yarnpkg/berry/pull/4817
+* fix: Fixes MountFS export by @arcanis in https://github.com/yarnpkg/berry/pull/4821
+* Fixes the version used for set version classic by @arcanis in https://github.com/yarnpkg/berry/pull/4827
+* feat(essentials): Add `--no-private` flag to list command by @RDIL in https://github.com/yarnpkg/berry/pull/4830
+* docs: mention zero-installs repo size by @joepio in https://github.com/yarnpkg/berry/pull/4839
+* Add `export` fields to manifests to prevent deep imports by @Larry1123 in https://github.com/yarnpkg/berry/pull/4834
+* chore(playground): fix cors issue by @paul-soporan in https://github.com/yarnpkg/berry/pull/4854
+* test(integration): tweak timeout by @paul-soporan in https://github.com/yarnpkg/berry/pull/4861
+* chore: update `actions/stale` to v5 by @paul-soporan in https://github.com/yarnpkg/berry/pull/4858
+* chore: remove @yarnpkg/core CODEOWNERS by @paul-soporan in https://github.com/yarnpkg/berry/pull/4860
+* refactor(MessageName): deprecate `CROSS_DRIVE_VIRTUAL_LOCAL` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4859
+* refactor(plugin-link)!: rename resolvers and fetchers by @paul-soporan in https://github.com/yarnpkg/berry/pull/4865
+* chore(bench): remove pnpm metadata cache in full-cold by @paul-soporan in https://github.com/yarnpkg/berry/pull/4866
+* feat(shell): support whitespace-only commands by @paul-soporan in https://github.com/yarnpkg/berry/pull/4864
+* refactor!: move `ZipFS` and `ZipOpenFS` into `@yarnpkg/libzip` by @arcanis in https://github.com/yarnpkg/berry/pull/4853
+* Removes dependency cycle by @arcanis in https://github.com/yarnpkg/berry/pull/4871
+* fix: update pnp file to fix chore testing error by @jj811208 in https://github.com/yarnpkg/berry/pull/4878
+* docs(gatsby): Remove outdated information of `plugin-tutorial.mdx` by @jj811208 in https://github.com/yarnpkg/berry/pull/4887
+* ci: fix the typescript e2e test by @jj811208 in https://github.com/yarnpkg/berry/pull/4888
+* refactor!: cleanup lutimes by @paul-soporan in https://github.com/yarnpkg/berry/pull/4899
+* fix(compat): update patch for `typescript@4.8.4` and `typescript@4.9.1-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/4903
+* refactor(core): remove `tolerateMissingPackages` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4897
+* fix(pnp): handle private import mappings by @merceyz in https://github.com/yarnpkg/berry/pull/4862
+* fix(pnp): report loaded modules in watch mode by @merceyz in https://github.com/yarnpkg/berry/pull/4934
+* fix: update some dependency to reduce peer dependency warning by @jj811208 in https://github.com/yarnpkg/berry/pull/4935
+* fix(essentials): set `yarnPath` in project `.yarnrc.yml` regardless if it's set in a parent directory by @merceyz in https://github.com/yarnpkg/berry/pull/4928
+* perf: avoid unnecessary `structUtils.convertToIdent` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4936
+* refactor(core): use const for descriptor in `LegacyMigrationResolver` by @trivikr in https://github.com/yarnpkg/berry/pull/4292
+* fix(fslib): support utf8 buffers by @paul-soporan in https://github.com/yarnpkg/berry/pull/4943
+* fix(suggestUtils): use `workspace.anchoredLocator` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4937
+* refactor(core)!: replace `workspace.dependencies` with `worskpace.anchoredPackage` by @paul-soporan in https://github.com/yarnpkg/berry/pull/4898
+* fix: handle unintentional floating promises by @merceyz in https://github.com/yarnpkg/berry/pull/4947
+* docs: update the install section of all plugin's readme by @jj811208 in https://github.com/yarnpkg/berry/pull/4948
+* feat(nm): export the hoist function by @zkochan in https://github.com/yarnpkg/berry/pull/4951
+* fix(nm): declare `@yarnpkg/pnp` as a dependency by @zkochan in https://github.com/yarnpkg/berry/pull/4958
+* fix(shell): fix alternative value not working as expected by @jj811208 in https://github.com/yarnpkg/berry/pull/4959
+* ci: use latest stable version of actions by @jj811208 in https://github.com/yarnpkg/berry/pull/4954
+* docs: add `yarn-plugin-scripts` to Contrib plugins by @jgttech in https://github.com/yarnpkg/berry/pull/4949
+* feat: when initializing the `Configuration`, auto fetch the missing plugins by @jj811208 in https://github.com/yarnpkg/berry/pull/4912
+* test(shell): ensure that fields that aren't checked are empty by @paul-soporan in https://github.com/yarnpkg/berry/pull/4900
+* docs(plugnplay.md): added reference to google cloud by @francjpd in https://github.com/yarnpkg/berry/pull/4962
+* test(shell): fix failing tests by @arcanis in https://github.com/yarnpkg/berry/pull/4969
+* fix(plugin-nm): Avoid duplicate copies inside aliased dependencies. by @larixer in https://github.com/yarnpkg/berry/pull/4571
+* chore: update Jest and run tests on Node.js v19 by @merceyz in https://github.com/yarnpkg/berry/pull/4972
+* perf(nm): Speedup `hardlinks-global` link step by 1.5-1.7x by @larixer in https://github.com/yarnpkg/berry/pull/4532
+* ci: migrate from `::set-output` to `$GITHUB_OUTPUT` environment file by @merceyz in https://github.com/yarnpkg/berry/pull/4983
+* ci: remove outdated workflow by @jj811208 in https://github.com/yarnpkg/berry/pull/4960
+* feat(plugin-nm): support configuring link mode by @jeff-wishnie in https://github.com/yarnpkg/berry/pull/4981
+* feat(core): implement `checksumBehavior: reset` by @goloveychuk in https://github.com/yarnpkg/berry/pull/4716
+* fix(essentials): fix a typo in the `--mode` flag documentation by @JLHwung in https://github.com/yarnpkg/berry/pull/4996
+* perf(patch): compute hash from the effects of the patch by @merceyz in https://github.com/yarnpkg/berry/pull/4945
+* docs: add Node.js versions for `corepack prepare yarn@stable` by @mrienstra in https://github.com/yarnpkg/berry/pull/4850
+* ci: add `vite` e2e tests by @merceyz in https://github.com/yarnpkg/berry/pull/5002
+* perf(pack): remove duplicated assignment of `browser` in `publishConfig` by @raon0211 in https://github.com/yarnpkg/berry/pull/5004
+* docs: correct example value for `.yarnrc.yml` `cpu` field by @jeff-wishnie in https://github.com/yarnpkg/berry/pull/4999
+* feat: support configuring link mode across plugins by @jeff-wishnie in https://github.com/yarnpkg/berry/pull/4990
+* fix(core): add `WarpTerminal` and `vscode` to list of terminals that support emoji by @amitdahan in https://github.com/yarnpkg/berry/pull/5003
+* build(compat): avoid rebuilding patches when changing the range by @merceyz in https://github.com/yarnpkg/berry/pull/5001
+* Adds a docusaurus workspace by @arcanis in https://github.com/yarnpkg/berry/pull/4851
+* Adds notice support to the login command by @arcanis in https://github.com/yarnpkg/berry/pull/4308
+* fix(compat): update patch for `typescript@4.9.2-rc` by @merceyz in https://github.com/yarnpkg/berry/pull/5020
+* Implements JavaScript constraints by @arcanis in https://github.com/yarnpkg/berry/pull/5026
+* deps(git): update `git-url-parse` by @dkhaye in https://github.com/yarnpkg/berry/pull/4635
+* Adds support for Windows when opening urls by @arcanis in https://github.com/yarnpkg/berry/pull/5031
+* fix(plugin-nm): Fixes binaries finding when the same version is duplicated in a root and non-root workspace by @larixer in https://github.com/yarnpkg/berry/pull/5038
+* Fixes `resolutions` w/ reference by @arcanis in https://github.com/yarnpkg/berry/pull/5043
+* feat(exec)!: Adds support for enableInlineBuilds to the exec: fetcher by @arcanis in https://github.com/yarnpkg/berry/pull/5040
+* Fixes Corepack incorrectly calling v1 when preparing a git repo without lockfile by @arcanis in https://github.com/yarnpkg/berry/pull/5049
+* Reimplements the Git merge conflict resolution by @arcanis in https://github.com/yarnpkg/berry/pull/5046
+* ci: update to Node.js v18 by @merceyz in https://github.com/yarnpkg/berry/pull/5051
+* feat!: make all settings mergeable by @jj811208 in https://github.com/yarnpkg/berry/pull/4982
+* Improves init by @arcanis in https://github.com/yarnpkg/berry/pull/5053
+* test: fix constraints test to handle paths containing spaces by @merceyz in https://github.com/yarnpkg/berry/pull/5073
+* build(libzip): use Docker by @merceyz in https://github.com/yarnpkg/berry/pull/5056
+* deps: update to `esbuild-wasm@0.15.15` by @merceyz in https://github.com/yarnpkg/berry/pull/5078
+* perf(libzip): enable more compiler optimizations by @merceyz in https://github.com/yarnpkg/berry/pull/5077
+* fix(core): fixed `SettingsType.ANY` field not parsing correctly by @jj811208 in https://github.com/yarnpkg/berry/pull/5091
+* Makes `parseIdent` less tolerant by @arcanis in https://github.com/yarnpkg/berry/pull/5088
+* Fixes rebase and cherry-pick conflict resolution by @arcanis in https://github.com/yarnpkg/berry/pull/5102
+* fix(git): normalize repo url without legacy `url.parse` by @merceyz in https://github.com/yarnpkg/berry/pull/5100
+* fix(plugin-nm): Changes the default nmMode back to classic by @larixer in https://github.com/yarnpkg/berry/pull/5099
+* Upgrades pem to solve openssl 3 errors by @arcanis in https://github.com/yarnpkg/berry/pull/5130
+* fix(compat): update patch for `typescript@4.9.4` by @merceyz in https://github.com/yarnpkg/berry/pull/5127
+* ci: disable stale bot by @merceyz in https://github.com/yarnpkg/berry/pull/5122
+* feat(fslib): add `FileHandle.readLines` by @merceyz in https://github.com/yarnpkg/berry/pull/5121
+* chore(extensions): update list by @merceyz in https://github.com/yarnpkg/berry/pull/5131
+* docs(gatsby): wrong link & line breaks in Lexicon by @devheedoo in https://github.com/yarnpkg/berry/pull/5105
+* fix(pnp): report missing files in watch mode by @merceyz in https://github.com/yarnpkg/berry/pull/5132
+* fix(workspace-tools): remove message prefix from `workspaces foreach` by @qrohlf in https://github.com/yarnpkg/berry/pull/5152
+* chore: fix creation of `@yarnpkg/cli-dist` and artifact updating by @merceyz in https://github.com/yarnpkg/berry/pull/5148
+* fix(builder): restore resolution of `.mjs` files by @merceyz in https://github.com/yarnpkg/berry/pull/5174
+* fix(core): wait for package dependencies to build by @merceyz in https://github.com/yarnpkg/berry/pull/5162
+* fix(ZipFS): support empty archives resulting from an unlink after write in `getBufferAndClose` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5179
+* fix(pnp): watch mode on Node.js v18.13.0 by @merceyz in https://github.com/yarnpkg/berry/pull/5182
+* chore: use `os.availableParallelism` when available by @merceyz in https://github.com/yarnpkg/berry/pull/5183
+* perf: remove obsolete forced unplug entries by @paul-soporan in https://github.com/yarnpkg/berry/pull/5181
+* Implements automated constraints checks by @arcanis in https://github.com/yarnpkg/berry/pull/5204
+* Detects when file:./foo.tgz files have changed by @arcanis in https://github.com/yarnpkg/berry/pull/5203
+* build(core): fix zip worker build by @merceyz in https://github.com/yarnpkg/berry/pull/5197
+* fix(core): don't mark package as built if any of its scripts fails by @merceyz in https://github.com/yarnpkg/berry/pull/5176
+* perf(zip)!: don't access the filesystem from wasm by @paul-soporan in https://github.com/yarnpkg/berry/pull/5178
+* fix(core): handle self-referencing build dependencies by @merceyz in https://github.com/yarnpkg/berry/pull/5177
+* docs (migration): `yarn list` --> `yarn info --recursive` by @mrienstra in https://github.com/yarnpkg/berry/pull/4931
+* feat(plugin-init): generate .gitattributes file by @cometkim in https://github.com/yarnpkg/berry/pull/5205
+* Fixes importing the PnP API from ES modules by @arcanis in https://github.com/yarnpkg/berry/pull/5206
+* docs: fix plugin-compat database link by @sudosubin in https://github.com/yarnpkg/berry/pull/5217
+* feat(sdks): add `@astrojs/language-server` to vscode sdks by @ezracelli in https://github.com/yarnpkg/berry/pull/5223
+* fix(compat): update patch for `typescript@5.0.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/5210
+* feat(pnp): support the `--conditions` flag by @merceyz in https://github.com/yarnpkg/berry/pull/5228
+* feat: Tolerate string literals w/ `ppath.join` / `ppath.resolve` by @arcanis in https://github.com/yarnpkg/berry/pull/5250
+* build(libui): build using typescript by @merceyz in https://github.com/yarnpkg/berry/pull/5266
+* docs: Add contributed plugin by @rgischk in https://github.com/yarnpkg/berry/pull/5261
+* Keep docs up-to-date with changes around `plugin-compat` by @smorimoto in https://github.com/yarnpkg/berry/pull/5257
+* Docs: add `yarn-plugin-npm-audit-fix` to contrib plugins list by @sargunv in https://github.com/yarnpkg/berry/pull/5252
+* chore: replace `@babel/register` with `esbuild-wasm` by @merceyz in https://github.com/yarnpkg/berry/pull/5180
+* fix(pack): Adds support for "imports" in publishConfig by @arcanis in https://github.com/yarnpkg/berry/pull/5274
+* test: reference functions directly by @merceyz in https://github.com/yarnpkg/berry/pull/5277
+* doc: Fix typo by @rgischk in https://github.com/yarnpkg/berry/pull/5278
+* test: use `stream.pipeline` by @merceyz in https://github.com/yarnpkg/berry/pull/5283
+* Update pnp docs for webstorm by @RDIL in https://github.com/yarnpkg/berry/pull/5286
+* test: replace custom `walk` function with `fs.readdir` by @merceyz in https://github.com/yarnpkg/berry/pull/5279
+* Exposes the error function through the workspace by @arcanis in https://github.com/yarnpkg/berry/pull/5289
+* fix(compat): update patch for `typescript@5.0.1-rc` by @merceyz in https://github.com/yarnpkg/berry/pull/5296
+* fix(npm-cli): count all instances of ignored advisories by @B4ckslash in https://github.com/yarnpkg/berry/pull/5194
+* fix(core): ignore YARN_REGISTRY when resolving configuration by @nfantone in https://github.com/yarnpkg/berry/pull/5338
+* fix: Fixes grammatical errors in version.ts by @kamronbatman in https://github.com/yarnpkg/berry/pull/5317
+* Improves JS constraints by @arcanis in https://github.com/yarnpkg/berry/pull/5341
+* fix(pnp): use exports implementation from Node.js by @merceyz in https://github.com/yarnpkg/berry/pull/5331
+* feat(workspace-tools): add path support to --include, --exclude, and --from flags in foreach by @me4502 in https://github.com/yarnpkg/berry/pull/5308
+* Makes the workspace: protocol tolerate aliasing workspaces by @arcanis in https://github.com/yarnpkg/berry/pull/5357
+* Fixes `@yarnpkg/types` by @arcanis in https://github.com/yarnpkg/berry/pull/5348
+* fix(compat): typescript - improve PnP support by @merceyz in https://github.com/yarnpkg/berry/pull/5351
+* perf(core): setup workspaces in parallel by @merceyz in https://github.com/yarnpkg/berry/pull/5367
+* test: fix editor SDK test by @merceyz in https://github.com/yarnpkg/berry/pull/5363
+* fix(pnp): disable patching `binding.fstat` when possible by @merceyz in https://github.com/yarnpkg/berry/pull/5402
+* fix(types): avoid using `import type * as` by @merceyz in https://github.com/yarnpkg/berry/pull/5400
+* fix(compat): update patch for `typescript@5.1.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/5391
+* chore: update benchmark dependencies by @merceyz in https://github.com/yarnpkg/berry/pull/5390
+* docs: Fix typos and errors in yarnrc.json file by @chialuka in https://github.com/yarnpkg/berry/pull/5404
+* docs: additional coc vim sdk configuration step by @unrealsolver in https://github.com/yarnpkg/berry/pull/5387
+* fix(fslib): export `CustomDir` by @bruce-one in https://github.com/yarnpkg/berry/pull/5371
+* perf(core): use a reverse lookup in `forgetTransientResolutions` by @merceyz in https://github.com/yarnpkg/berry/pull/5372
+* perf(core): persist workspaces in parallel by @merceyz in https://github.com/yarnpkg/berry/pull/5368
+* fix(pnp): esm - use correct error code when module not found by @clemyan in https://github.com/yarnpkg/berry/pull/5355
+* Prints the constraints errors on CI by @arcanis in https://github.com/yarnpkg/berry/pull/5444
+* Re-reports errors after the current group ends by @arcanis in https://github.com/yarnpkg/berry/pull/5443
+* Autocorrects git:// into https:// for GitHub by @arcanis in https://github.com/yarnpkg/berry/pull/5440
+* Update plugins.md with yarn-plugin-env-vars by @scinos in https://github.com/yarnpkg/berry/pull/5433
+* feat(builder): streamline generated template by @mataha in https://github.com/yarnpkg/berry/pull/5426
+* fix(plugin-interactive-tools): don’t list folder aliases as outdated dependencies by @lensbart in https://github.com/yarnpkg/berry/pull/5442
+* feat: add --always-auth flag to npm login by @bgotink in https://github.com/yarnpkg/berry/pull/5406
+* feat(plugin-essentials): upgrade all packages with wildcard by @Gelio in https://github.com/yarnpkg/berry/pull/5381
+* add readme to publishBody by @hindicator in https://github.com/yarnpkg/berry/pull/5374
+* docs: add `yarn-plugin-env` to contrib plugins by @MDReal32 in https://github.com/yarnpkg/berry/pull/5306
+* chore: add `git-hooks` to plugins list by @Fyko in https://github.com/yarnpkg/berry/pull/5343
+* Update plugins.md - add yarn-plugin-fetch by @devthejo in https://github.com/yarnpkg/berry/pull/5384
+* fix(core): correct `.yarnrc.yml` validation error by @heyheyhello in https://github.com/yarnpkg/berry/pull/5213
+* docs: explain where the `.yarnrc.yml` should be placed in `migration.md` by @atheistengineer in https://github.com/yarnpkg/berry/pull/5142
+* docs: add theme colour by @sanjaiyan-dev in https://github.com/yarnpkg/berry/pull/5141
+* Fixes typecheck by @arcanis in https://github.com/yarnpkg/berry/pull/5447
+* fix(pnp): esm - handle `parentURL` without a `file:` protocol by @lizthegrey in https://github.com/yarnpkg/berry/pull/5362
+* fix(compat): update patch for `typescript@5.1.1-rc` by @merceyz in https://github.com/yarnpkg/berry/pull/5448
+* Adds legacy plugin removal behavior by @arcanis in https://github.com/yarnpkg/berry/pull/5446
+* test: fix range for parent URL test by @merceyz in https://github.com/yarnpkg/berry/pull/5463
+* Release workflow for stable releases by @arcanis in https://github.com/yarnpkg/berry/pull/5476
+* Followups on the release branch workflow by @arcanis in https://github.com/yarnpkg/berry/pull/5478
+* ci(release): push release to `master` and allow retrying releases by @merceyz in https://github.com/yarnpkg/berry/pull/5482
+* ci(release): create GitHub release by @merceyz in https://github.com/yarnpkg/berry/pull/5481
+* docs: fix questions and answers typo by @gabrielyotoo in https://github.com/yarnpkg/berry/pull/5500
+* Updates the audit implementation to the bulk endpoint by @arcanis in https://github.com/yarnpkg/berry/pull/5501
+* chore: convert gatsby portal dependencies into workspaces by @paul-soporan in https://github.com/yarnpkg/berry/pull/5499
+* feat(sdks): add `relay-compiler` to vscode sdks by @XiNiHa in https://github.com/yarnpkg/berry/pull/5492
+* perf(pnp): use default `Module._load` by @merceyz in https://github.com/yarnpkg/berry/pull/5483
+* Fixes merge conflict resolution always querying the network by @arcanis in https://github.com/yarnpkg/berry/pull/5504
+* Adds support for running native binaries without JS intermediaries by @arcanis in https://github.com/yarnpkg/berry/pull/5508
+* perf(libzip): update to `zlib-ng@2.1.2` by @merceyz in https://github.com/yarnpkg/berry/pull/5510
+* Modernizes installs' output by @arcanis in https://github.com/yarnpkg/berry/pull/5509
+* perf: use `buffer.isUtf8` in `NodePathFS` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5516
+* Implements the readdir recursive flag by @arcanis in https://github.com/yarnpkg/berry/pull/5514
+* Bumps Node requirements from 14 to 18 by @arcanis in https://github.com/yarnpkg/berry/pull/5445
+* perf(core): optimize changed package detection by @paul-soporan in https://github.com/yarnpkg/berry/pull/5515
+* feat: cache npm metadata by @paul-soporan in https://github.com/yarnpkg/berry/pull/5491
+* chore: delete global folder in benchmarks by @merceyz in https://github.com/yarnpkg/berry/pull/5523
+* ci: cache metadata by @merceyz in https://github.com/yarnpkg/berry/pull/5524
+* fix(sdks): support Prettier v3 by @merceyz in https://github.com/yarnpkg/berry/pull/5411
+* Sets the default compression to 0 by @arcanis in https://github.com/yarnpkg/berry/pull/5526
+* chore: fix tsconfig excludes by @merceyz in https://github.com/yarnpkg/berry/pull/5525
+* Implements .env file support by @arcanis in https://github.com/yarnpkg/berry/pull/5531
+* Implements MOTD mechanism by @arcanis in https://github.com/yarnpkg/berry/pull/5530
+* Fixes registry used to check for deprecation settings by @arcanis in https://github.com/yarnpkg/berry/pull/5534
+* Implements a benchmarking script by @arcanis in https://github.com/yarnpkg/berry/pull/5536
+* Fixes readdir w/ recursive: true by @arcanis in https://github.com/yarnpkg/berry/pull/5543
+* Fixes settings interpolation with dotenv variables by @arcanis in https://github.com/yarnpkg/berry/pull/5544
+* fix(compat): update patch for `typescript@5.2.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/5537
+* Tweaks the .env implementation by @arcanis in https://github.com/yarnpkg/berry/pull/5548
+* ci(release): set `GH_TOKEN` when creating GitHub release by @merceyz in https://github.com/yarnpkg/berry/pull/5550
+* chore: compute Node.js build target from `engines.node` by @merceyz in https://github.com/yarnpkg/berry/pull/5554
+* Migrates the constraints on the Yarn repository from Prolog to JS by @arcanis in https://github.com/yarnpkg/berry/pull/5553
+* Implements aggregate peer deps by @arcanis in https://github.com/yarnpkg/berry/pull/5552
+* Fixes hardcoded Yarn version by @arcanis in https://github.com/yarnpkg/berry/pull/5556
+* Exposes packages to constraints by @arcanis in https://github.com/yarnpkg/berry/pull/5555
+* chore: remove unused `Report#buffered` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5559
+* refactor: remove duplicate `enableMotd` check by @paul-soporan in https://github.com/yarnpkg/berry/pull/5558
+* chore!: update ECMAScript version target by @merceyz in https://github.com/yarnpkg/berry/pull/5557
+* refactor: rename `motd` to `tips` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5561
+* fix: use `httpUtils.get` instead of `fetch` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5560
+* docs: fix typo by @LiuL0703 in https://github.com/yarnpkg/berry/pull/5568
+* ci: use latest Node.js v20 version by @merceyz in https://github.com/yarnpkg/berry/pull/5573
+* Cache tolerance for old archives by @arcanis in https://github.com/yarnpkg/berry/pull/5564
+* fix(plugin-npm): normalize registry by @merceyz in https://github.com/yarnpkg/berry/pull/5582
+* test(core): avoid mocking `got` by @merceyz in https://github.com/yarnpkg/berry/pull/5585
+* chore(libzip)!: remove unused code by @merceyz in https://github.com/yarnpkg/berry/pull/5586
+* fix: pass mode to `yarn up --recursive` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5517
+* fix npm tag resolver when dedupe by @goloveychuk in https://github.com/yarnpkg/berry/pull/5497
+* Refactors the CLI spawn by @arcanis in https://github.com/yarnpkg/berry/pull/5600
+* refactor!: remove `ignoreCwd` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5602
+* feat(builder): make bundle executable by @paul-soporan in https://github.com/yarnpkg/berry/pull/5609
+* test: use `stream.promises.pipeline` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5611
+* test: increase timeout by @paul-soporan in https://github.com/yarnpkg/berry/pull/5612
+* refactor: remove `MercurialDriver` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5605
+* perf: use `fast-glob` instead of `globby` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5606
+* chore: enable `prefer-object-has-own` and update eslint by @paul-soporan in https://github.com/yarnpkg/berry/pull/5614
+* bench(script): support clipboard copy on linux by @paul-soporan in https://github.com/yarnpkg/berry/pull/5610
+* perf(plugin-pnp): remove redundant node check by @paul-soporan in https://github.com/yarnpkg/berry/pull/5615
+* test: remove unnecessary node version checks by @merceyz in https://github.com/yarnpkg/berry/pull/5617
+* refactor(pnp)!: remove unnecessary node bug workaround by @merceyz in https://github.com/yarnpkg/berry/pull/5618
+* refactor: use `timers/promises` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5620
+* Improves string escaping during serialization by @arcanis in https://github.com/yarnpkg/berry/pull/5621
+* Extracts the repository plugin hooks into their own file by @arcanis in https://github.com/yarnpkg/berry/pull/5622
+* Refactors context passing by @arcanis in https://github.com/yarnpkg/berry/pull/5623
+* Updates Clipanion to 4.0.0-rc.1 by @arcanis in https://github.com/yarnpkg/berry/pull/5624
+* Website: work in progress by @arcanis in https://github.com/yarnpkg/berry/pull/5587
+* refactor!: remove `lockfileFilename` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5604
+* Moves back the changelog to the root by @arcanis in https://github.com/yarnpkg/berry/pull/5625
+* refactor(core)!: remove `workspace.locator` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5619
+* fix(plugin-pnp): unset `NODE_OPTIONS` when preparing the environment after switching linkers by @paul-soporan in https://github.com/yarnpkg/berry/pull/5616
+* chore: remove outdated comment by @paul-soporan in https://github.com/yarnpkg/berry/pull/5593
+* perf: remove unnecessary `realpath` on `--cwd` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5603
+* perf(cli): avoid resolving `ppath.cwd()` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5626
+* Refactors `yarn workspaces foreach` by @arcanis in https://github.com/yarnpkg/berry/pull/5644
+* fix: support fragment in tar regex by @drodil in https://github.com/yarnpkg/berry/pull/5631
+* Improvements on the Docusaurus website by @arcanis in https://github.com/yarnpkg/berry/pull/5643
+* Fixes the sponsor link on the new website by @arcanis in https://github.com/yarnpkg/berry/pull/5645
+* Adds a warning on the website about the document being intended for Yarn 4 by @arcanis in https://github.com/yarnpkg/berry/pull/5655
+* Social preview on the website by @arcanis in https://github.com/yarnpkg/berry/pull/5665
+* fix(compat): update patch for `typescript@5.2.1-rc` by @merceyz in https://github.com/yarnpkg/berry/pull/5648
+* Website fixes by @arcanis in https://github.com/yarnpkg/berry/pull/5668
+* fix(pnp): fix infinite recursion when .pnp.cjs is a symlink and pnp inlining is disabled by @shYkiSto in https://github.com/yarnpkg/berry/pull/5673
+* fix(cli): propagate proper exit status code when running yarnPath binary by @shYkiSto in https://github.com/yarnpkg/berry/pull/4798
+* fix(pnp): esm - return undefined source for commonjs by @merceyz in https://github.com/yarnpkg/berry/pull/5677
+* simplifyRanges now handles wildcards by @ulrik-s in https://github.com/yarnpkg/berry/pull/5679
+* Couple of website improvements by @arcanis in https://github.com/yarnpkg/berry/pull/5691
+* Small fixes for the website by @arcanis in https://github.com/yarnpkg/berry/pull/5697
+* fix(pnpapi): dedupe pnpapi instances where .pnp.cjs is a symlink by @shYkiSto in https://github.com/yarnpkg/berry/pull/5674
+* Improves the website by @arcanis in https://github.com/yarnpkg/berry/pull/5705
+* Fixes custom errors in constraints by @arcanis in https://github.com/yarnpkg/berry/pull/5704
+* Fixes a bug in `yarn unplug --all` by @arcanis in https://github.com/yarnpkg/berry/pull/5711
+* Improves the message when a package isn't found due to an incomplete `supportedArchitectures` setting by @arcanis in https://github.com/yarnpkg/berry/pull/5712
+* "Yarn may [+not] solve all your problems" and "will always be to[+at]" by @nbrader in https://github.com/yarnpkg/berry/pull/5727
+* Renames yarn.config.js -> yarn.config.cjs by @arcanis in https://github.com/yarnpkg/berry/pull/5733
+* Fixes types for @types/node 18.17 by @arcanis in https://github.com/yarnpkg/berry/pull/5731
+* Fixes couple of release blockers by @arcanis in https://github.com/yarnpkg/berry/pull/5730
+* Implements enableOfflineMode by @arcanis in https://github.com/yarnpkg/berry/pull/5710
+* Fixes global cache by @arcanis in https://github.com/yarnpkg/berry/pull/5739
+* Perf work by @arcanis in https://github.com/yarnpkg/berry/pull/5740
+* refactor!: simplify `Configuration.findProjectCwd` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5627
+* fix(core): Ignore empty bin value in Manifest#load by @rally25rs in https://github.com/yarnpkg/berry/pull/5743
+* Removes Gatsby from the repository by @arcanis in https://github.com/yarnpkg/berry/pull/5742
+* Use ubuntu-20.04 to run the integration tests by @arcanis in https://github.com/yarnpkg/berry/pull/5755
+* Add arm64 to example supported cpu values by @MasterOdin in https://github.com/yarnpkg/berry/pull/5756
+* Improves the output of "yarn config" by @arcanis in https://github.com/yarnpkg/berry/pull/5713
+* Disables emoji in our Windows tests until Node is fixed by @arcanis in https://github.com/yarnpkg/berry/pull/5763
+* Reworks the worker pool to be more configurable by @arcanis in https://github.com/yarnpkg/berry/pull/5764
+* fix(compat): update patch for `typescript@5.3.0-beta` by @merceyz in https://github.com/yarnpkg/berry/pull/5759
+* Update alpine version for sherlock workflow by @clemyan in https://github.com/yarnpkg/berry/pull/5718
+* docs: fix `:::warning` aside by @tsxoxo in https://github.com/yarnpkg/berry/pull/5778
+* docs: change wording in changelog by @FabianWarnecke in https://github.com/yarnpkg/berry/pull/5777
+* ci: e2e - use Node.js 18 for Preact CLI tests by @wojtekmaj in https://github.com/yarnpkg/berry/pull/5780
+* ci: e2e - fix installing @types/testing-library__jest-dom v6 instead of v5 in CRA tests by @wojtekmaj in https://github.com/yarnpkg/berry/pull/5782
+* docs: fix broken "Current status" badges by @wojtekmaj in https://github.com/yarnpkg/berry/pull/5783
+* Fixes the iarna test by @arcanis in https://github.com/yarnpkg/berry/pull/5794
+* Documentation fixes by @pascalwill in https://github.com/yarnpkg/berry/pull/5776
+* docs: fix old info in contributing guide by @tsxoxo in https://github.com/yarnpkg/berry/pull/5779
+* ci(e2e): remove preact-cli test by @merceyz in https://github.com/yarnpkg/berry/pull/5790
+* Fix sherlock workflow again by @clemyan in https://github.com/yarnpkg/berry/pull/5788
+* docs: Fix package "types available" check by @clemyan in https://github.com/yarnpkg/berry/pull/5789
+* docs: fix typo by @guidanoli in https://github.com/yarnpkg/berry/pull/5770
+* Infer which files should SDKs include using manifest data by @clemyan in https://github.com/yarnpkg/berry/pull/5703
+* docs: fix typo in migration guide by @Flamenco in https://github.com/yarnpkg/berry/pull/5807
+* docs: replace `@babel/register` with `esbuild` by @clemyan in https://github.com/yarnpkg/berry/pull/5808
+* ci(e2e): disable storybook telemetry by @shilman in https://github.com/yarnpkg/berry/pull/5267
+* fix(core): Remove type dependency on lodash by @clemyan in https://github.com/yarnpkg/berry/pull/5815
+* perf!: lazy load `packageExtensions` by @paul-soporan in https://github.com/yarnpkg/berry/pull/5608
+
+## New Contributors
+* @devrelm made their first contribution in https://github.com/yarnpkg/berry/pull/4193
+* @arontsang made their first contribution in https://github.com/yarnpkg/berry/pull/4180
+* @francisu made their first contribution in https://github.com/yarnpkg/berry/pull/4082
+* @jameskerr made their first contribution in https://github.com/yarnpkg/berry/pull/4230
+* @julienfouilhe made their first contribution in https://github.com/yarnpkg/berry/pull/4264
+* @elado made their first contribution in https://github.com/yarnpkg/berry/pull/4275
+* @Leksat made their first contribution in https://github.com/yarnpkg/berry/pull/4243
+* @trevor-scheer made their first contribution in https://github.com/yarnpkg/berry/pull/4293
+* @GauBen made their first contribution in https://github.com/yarnpkg/berry/pull/4324
+* @marionebl made their first contribution in https://github.com/yarnpkg/berry/pull/4221
+* @Justkant made their first contribution in https://github.com/yarnpkg/berry/pull/4312
+* @hughdavenport made their first contribution in https://github.com/yarnpkg/berry/pull/4358
+* @juan-fernandez made their first contribution in https://github.com/yarnpkg/berry/pull/4376
+* @cwstra made their first contribution in https://github.com/yarnpkg/berry/pull/4381
+* @stevenxu-db made their first contribution in https://github.com/yarnpkg/berry/pull/4402
+* @osBins made their first contribution in https://github.com/yarnpkg/berry/pull/4422
+* @dahlbyk made their first contribution in https://github.com/yarnpkg/berry/pull/4409
+* @colincasey made their first contribution in https://github.com/yarnpkg/berry/pull/4403
+* @zkochan made their first contribution in https://github.com/yarnpkg/berry/pull/4436
+* @edvardchen made their first contribution in https://github.com/yarnpkg/berry/pull/4458
+* @andreyfel made their first contribution in https://github.com/yarnpkg/berry/pull/4465
+* @indooorsman made their first contribution in https://github.com/yarnpkg/berry/pull/4222
+* @tommy351 made their first contribution in https://github.com/yarnpkg/berry/pull/4233
+* @xeger made their first contribution in https://github.com/yarnpkg/berry/pull/4453
+* @smoores-dev made their first contribution in https://github.com/yarnpkg/berry/pull/4492
+* @rinsuki made their first contribution in https://github.com/yarnpkg/berry/pull/4495
+* @marvinroger made their first contribution in https://github.com/yarnpkg/berry/pull/4538
+* @milesrichardson made their first contribution in https://github.com/yarnpkg/berry/pull/4552
+* @redabacha made their first contribution in https://github.com/yarnpkg/berry/pull/4557
+* @jenseng made their first contribution in https://github.com/yarnpkg/berry/pull/4569
+* @dhruvkrishnavaid made their first contribution in https://github.com/yarnpkg/berry/pull/4576
+* @alisd23 made their first contribution in https://github.com/yarnpkg/berry/pull/4597
+* @mchill made their first contribution in https://github.com/yarnpkg/berry/pull/4241
+* @uhop made their first contribution in https://github.com/yarnpkg/berry/pull/4546
+* @coderaiser made their first contribution in https://github.com/yarnpkg/berry/pull/3880
+* @treboryx made their first contribution in https://github.com/yarnpkg/berry/pull/3567
+* @eoingroat made their first contribution in https://github.com/yarnpkg/berry/pull/4619
+* @flying-sheep made their first contribution in https://github.com/yarnpkg/berry/pull/4723
+* @dritter made their first contribution in https://github.com/yarnpkg/berry/pull/4726
+* @ctrlaltdylan made their first contribution in https://github.com/yarnpkg/berry/pull/4765
+* @jshanson7 made their first contribution in https://github.com/yarnpkg/berry/pull/4815
+* @jj811208 made their first contribution in https://github.com/yarnpkg/berry/pull/4800
+* @amitdahan made their first contribution in https://github.com/yarnpkg/berry/pull/4812
+* @jpulec made their first contribution in https://github.com/yarnpkg/berry/pull/4792
+* @joepio made their first contribution in https://github.com/yarnpkg/berry/pull/4839
+* @jgttech made their first contribution in https://github.com/yarnpkg/berry/pull/4949
+* @francjpd made their first contribution in https://github.com/yarnpkg/berry/pull/4962
+* @jeff-wishnie made their first contribution in https://github.com/yarnpkg/berry/pull/4981
+* @goloveychuk made their first contribution in https://github.com/yarnpkg/berry/pull/4716
+* @dkhaye made their first contribution in https://github.com/yarnpkg/berry/pull/4635
+* @devheedoo made their first contribution in https://github.com/yarnpkg/berry/pull/5105
+* @qrohlf made their first contribution in https://github.com/yarnpkg/berry/pull/5152
+* @sudosubin made their first contribution in https://github.com/yarnpkg/berry/pull/5217
+* @ezracelli made their first contribution in https://github.com/yarnpkg/berry/pull/5223
+* @rgischk made their first contribution in https://github.com/yarnpkg/berry/pull/5261
+* @smorimoto made their first contribution in https://github.com/yarnpkg/berry/pull/5257
+* @B4ckslash made their first contribution in https://github.com/yarnpkg/berry/pull/5194
+* @nfantone made their first contribution in https://github.com/yarnpkg/berry/pull/5338
+* @kamronbatman made their first contribution in https://github.com/yarnpkg/berry/pull/5317
+* @me4502 made their first contribution in https://github.com/yarnpkg/berry/pull/5308
+* @chialuka made their first contribution in https://github.com/yarnpkg/berry/pull/5404
+* @unrealsolver made their first contribution in https://github.com/yarnpkg/berry/pull/5387
+* @scinos made their first contribution in https://github.com/yarnpkg/berry/pull/5433
+* @mataha made their first contribution in https://github.com/yarnpkg/berry/pull/5426
+* @lensbart made their first contribution in https://github.com/yarnpkg/berry/pull/5442
+* @Gelio made their first contribution in https://github.com/yarnpkg/berry/pull/5381
+* @hindicator made their first contribution in https://github.com/yarnpkg/berry/pull/5374
+* @MDReal32 made their first contribution in https://github.com/yarnpkg/berry/pull/5306
+* @Fyko made their first contribution in https://github.com/yarnpkg/berry/pull/5343
+* @devthejo made their first contribution in https://github.com/yarnpkg/berry/pull/5384
+* @heyheyhello made their first contribution in https://github.com/yarnpkg/berry/pull/5213
+* @atheistengineer made their first contribution in https://github.com/yarnpkg/berry/pull/5142
+* @sanjaiyan-dev made their first contribution in https://github.com/yarnpkg/berry/pull/5141
+* @lizthegrey made their first contribution in https://github.com/yarnpkg/berry/pull/5362
+* @gabrielyotoo made their first contribution in https://github.com/yarnpkg/berry/pull/5500
+* @XiNiHa made their first contribution in https://github.com/yarnpkg/berry/pull/5492
+* @LiuL0703 made their first contribution in https://github.com/yarnpkg/berry/pull/5568
+* @drodil made their first contribution in https://github.com/yarnpkg/berry/pull/5631
+* @shYkiSto made their first contribution in https://github.com/yarnpkg/berry/pull/5673
+* @ulrik-s made their first contribution in https://github.com/yarnpkg/berry/pull/5679
+* @nbrader made their first contribution in https://github.com/yarnpkg/berry/pull/5727
+* @rally25rs made their first contribution in https://github.com/yarnpkg/berry/pull/5743
+* @MasterOdin made their first contribution in https://github.com/yarnpkg/berry/pull/5756
+* @tsxoxo made their first contribution in https://github.com/yarnpkg/berry/pull/5778
+* @FabianWarnecke made their first contribution in https://github.com/yarnpkg/berry/pull/5777
+* @pascalwill made their first contribution in https://github.com/yarnpkg/berry/pull/5776
+* @guidanoli made their first contribution in https://github.com/yarnpkg/berry/pull/5770
+* @Flamenco made their first contribution in https://github.com/yarnpkg/berry/pull/5807
+* @shilman made their first contribution in https://github.com/yarnpkg/berry/pull/5267
+
+**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.6.4...@yarnpkg/cli/4.0.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.4 (2023-10-03)</h2>
+      <pre>**Full Changelog**: https://github.com/yarnpkg/berry/compare/@yarnpkg/cli/3.6.3...@yarnpkg/cli/3.6.4</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

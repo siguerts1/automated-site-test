@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for nvm-sh/nvm"/>
+  <title>nvm-sh/nvm Release Notes</title>
+</head>
+<body>
+  <h1>🚀 nvm-sh/nvm - Release Notes</h1>
+  
+    <section>
+      <h2>v0.40.2 (2025-03-11)</h2>
+      <pre>## New Stuff
+ - `install.sh`: add `$ZDOTDIR` to zsh search (#3458)
+
+## Fixes
+ - `reinstall-packages`: do not reinstall corepack (#3544)
+ - avoid bash-specific syntax (#3499)
+ - `install-latest-npm`: npm v11 is out
+ - `nvm_install_latest_npm`: avoid unbound variable (#3447)
+ - give a more helpful message when `lts` alias is mistakenly used (#3441)
+ - `nvm ls`, `nvm alias`, `nvm install`: error when an LTS name is invalid
+ - `nvm_normalize_lts`: error when an LTS name is not lowercase (#3417)
+
+## Documentation
+ - [readme] update link
+ - [readme] fix `--no-use` example (#3479)
+ - [readme] update copyright notice (#3507)
+ - [readme] note zsh-nvm's AUTO_USE option (#2670)
+ - [readme] add note about reloading zshrc after editing (#3052)
+ - [readme] Update shell profile file install notes (#2241)
+ - [readme] add docker tips (#2318)
+ - [readme] remove `avn` from readme (#3469)
+ - [readme] fnm -> nvm.fish (#2541)
+
+## Refactors
+ - prefer `case` over if/else chains
+ - combine `sed -e` invocations/arguments
+
+## Tests
+ - `nvm exec`/`nvm run`: add `--silent` tests (#1259)
+ - [actions] release test needs git tags
+ - migrate `installation_iojs` test suite to GitHub Actions (#3476)
+ - Migrate slow test suite from Travis CI (#3470)
+ - temporarily skip this failing travis test to unblock progress
+ - [actions] TOC: use latest LTS node
+ - `install.sh`: clean up `nvm_detect_profile` tests
+ - `nvm_detect_profile`: refactor (#3467)
+ - run urchin tests on pull requests (#3466)
+ - update mocks
+ - ensure that unit tests use only mocked LTS names
+ - [actions] use `node/install` instead of `node/run`
+
+## Meta
+ - disable blank issues
+ - update issue template
+ - add DCO (#3456)
+ - Rename .github/ISSUE_TEMPLATE.md to .github/ISSUE_TEMPLATE/ISSUE_TEMPLATE.md (#3454)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.40.1 (2024-08-27)</h2>
+      <pre>## Fixes
+ - `nvm_download`: ensure all args are quoted
+ - `--save`: avoid a conflict with `set -e`
+ - `nvm_has_colors`: avoid an aliased `tput`
+ - declare an unbound variable
+ - `nvm install -b`: do not attempt to download source on a failed binary download with `-b`
+ - `nvm install -b`: when no binary is available, fail and output a clear message
+
+## Refactors
+ - `--save`: clean up some usage
+ - `install.sh`: fix node capitalization
+
+## Tests
+ - set proper permissions on test files
+ - move sourcing suite to GHA
+ - fix `nvm ls-remote` unit test
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.40.0 (2024-07-30)</h2>
+      <pre>## New Stuff
+ - `nvm use`/`nvm install`: add `--save` option (#2869)
+ - Add support for `NVM_AUTH_HEADER` env var (#3380)
+ - allow `.nvmrc` files to support comments
+
+## Fixes
+ - `nvm_get_default_packages`: use `awk` for more reliable file processing
+ - Fix issue where zsh global aliases would break nvm help (#3394)
+ - `install-latest-npm`: npm ^8.7 breaks `npm ls` with file: deps
+
+## Refactors
+ - `nvm_has_colors`: also check the env var
+
+## Docs
+ - [readme] add OpenJS Ecosystem Sustainability Program partner (#2232)
+ - [readme] update CII badge URLs
+ - [readme] Fix uninstall instructions (#3286)
+ - [readme] Fix typo in WSL section of README (#3295)
+ - [Docs] add `nvm unload` to uninstall nvm instructions (#3267)
+ - [security] fix typo in threat model
+
+## Tests
+ - ignore travis-ci env vars; improve debug output
+ - [debug] adding logging to makefile
+ - only install python 2.7 if not already installed
+ - use a better JSON parsing implementation
+ - ensure travis can access public repo submodules
+ - [actions] improve default action permissions
+ - [actions] update vampire/setup-wsl action
+ - [actions] finisher tweaks
+ - [actions] update action versions to use node 20 (#3299)
+ - [Dev Deps] update `markdown-link-check`, `semver`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.39.7 (2023-12-06)</h2>
+      <pre>## Fixes
+
+ - use `\hash` instead of `command hash` for `zsh` (#3239, #3247, #3246)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.39.6 (2023-12-05)</h2>
+      <pre>## New Stuff
+ - `nvm_resolve_alias`: only resolve one line of a multiline alias file
+ - aliases: skip leading blank lines in alias file
+
+## Fixes
+ - `nvm_get_mirror`: ensure only a valid URL is allowed
+ - avoid overridden `hash`
+ - `install.sh`: when `NVM_INSTALL_GITHUB_REPO` is set, issue a warning (#2868)
+ - `nvm_get_mirror`: disallow some non-URL characters
+ - `nvm_get_arch`: proper value for alpine linux (#3212)
+ - `nvm_normalize_lts`: switch from expr to case
+
+## Robustness
+ - `nvm_list_aliases`: avoid overwritten sort
+
+## Performance
+ - `nvm_check_file_permissions`: do not traverse into symlinks
+
+## Dockerfile
+ - Remove apt src disabling, no longer needed (#3199)
+ - [Fix] add missing leading slash in path (#3195)
+
+## Documentation
+ - [readme] fix level of headings (#3230)
+ - [readme] add section on bare `nvm install` (#3221)
+ - [readme] missing parenthesis (#3215)
+ - [readme] update M1 to “Apple Silicon” because of M2 and M3; fix typos (#3242)
+ - [readme] rearrange install args (#3222)
+ - [readme] reorganize “deeper shell integration” instructions (#1569)
+ - [security] add prose explaining OpenSSF CII Best Practices badge results
+ - [security] add threat model
+
+## Tests
+ - temporarily allow  cygwin tests to fail
+ - temporarily allow WSL tests to fail
+ - ensure windows tests install a node that actually works
+ - update test mocks (new LTS, iron)
+ - switch cygwin mirror
+ - fix filename typo (#3217)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.39.5 (2023-08-22)</h2>
+      <pre>## Fixes
+ - `nvm_strip_path`: Preserve leading/trailing colons (#3145)
+ - allow checksums to pass with a leading backslash
+ - `nvm install-latest-npm`: ensure npm 10 does not install on unsupported nodes
+ 
+## Docs
+ - [readme] add examples of setting specific versions as default (#3151)
+ 
+## Tests
+ - add some `nvm_do_install` tests
+ - a cleaner name for the windows tests
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.39.4 (2023-07-25)</h2>
+      <pre>## Fixes
+ - fix node download link for armv8l (#3102)
+ - `nvm exec`: no longer error with '-q: invalid option' for zsh users (#2800)
+ - `nvm_print_npm_version`: if `npm` exists but its node crashes, do not print the npm version
+ - `nvm_ls_current`: when `node` is present but crashes immediately, echo "none"
+ - fix directory traversal when workdir path is not readable (#3080)
+ - recognize 32Bit docker container and use x86 arch (#3051)
+ - Remove unneeded call to `ls` in `nvm_arch` (#3012)
+
+## Perf
+ - Improve performance of listing aliases (#3060)
+
+## Docker
+ - Update base image from Ubuntu 20.04 to 22.04, cc #2877 (#3078)
+
+## Docs
+ - [readme] add `nvshim` tool alongside `avn` (#2193)
+ - [readme] fix typo in resolv.conf filename (#3135)
+ - [readme] Update logo header (#3123)
+ - [readme] Add instructions on how to install without editing shell config (#3100)
+ - [readme] `cdnvm` function: fix shellcheck errors (#3082)
+ - [readme] Update Travis CI badge and link url (#3077)
+
+## Miscellaneous
+ - [meta] Remove unavailable testing script (#3105)
+ - [Dev Deps] update `markdown-link-check`, `semver`
+ - [actions] allow nvm to be installed
+
+## Tests
+ - add unit tests for `nvm_download_artifact`
+ - `npm bin` has been removed
+ - downgrade python to v2 on travis (#3067)
+ - move install script tests to github actions
+ - improve debug output on failure
+ - force the NVM_DIR to the expected location, for tests
+ - Update urchin repository link (#2989)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.39.3 (2022-12-23)</h2>
+      <pre>## Fixes
+ - `nvm install-latest-npm`: npm v6.14.18 can not be installed from npm < v4.4.4
+ - ensure this variable is bound
+ - `debug`: correct mistaken `-V` to `--version` from #2922
+ - `debug`: `awk`: not an option: `--version` (#2922)
+ - grep: warning: stray \ before / (#2919)
+ - improve backward compatibility for non-gnu awk (#2917)
+ - fix `nvm install` error `unknown condition: -ne` (#2915)
+
+## Tests
+ - update test mocks (#2933)
+ - move installation_node tests back to xenial
+ - move tests that fail on focal to a separate suite that runs on xenial
+ - update travis to use focal
+ - [actions] fix `latest-npm` tests so they use this repo’s nvm instead of the last published one
+ - fix nvm_list_aliases test to use mocks for LTS aliases
+
+## Docs
+ - [meta] Improve contributors documentation (#2791)
+ - [Docs] added WSL troubleshooting with solution to (6) Could not resolve host: raw.githubusercontent.com (#2961)
+
+## Refactors
+ - add `nvm_wrap_with_color_code`; allow no color code</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.39.2 (2022-10-13)</h2>
+      <pre>## Fixes
+ - `--help`: proper default `NVM_COLORS` info
+ - `nvm install-latest-npm`: ensure npm 9 does not install on unsupported nodes
+ - `install.sh`: support `~/.zprofile` (#2892, #2868, #2232)
+ - Don't override Mac M1 architecture for node ^14.17 (#2777)
+ - `nvm install`: show proper version in `.nvmrc` install instructions (#2770)
+ - `install.sh`: error out if the install instructions are not followed (#2742)
+ - `install`: better error message when xcode command line tools are needed
+ - avoid OpenBSD `nvm install` error when /sbin/init doesn't exist (#2698)
+ - `set -E`: Add test for `node install` on Bash with an ERR trap and `set -E`
+ - add missing `local` (handle nonexisting /sbin/init a bit more cleanly) (#2678)
+ - Update `nvm_extract_tarball` to support OpenBSD (#2693)
+
+ ## Performance
+ - `nvm_print_versions`: re-implement using awk
+
+ ## Robustness
+ - avoid a clobbered `ls` (#2727)
+
+ ## Refactors
+ - nvm install/`nvm_install_default_packages`: move "get" logic inside helper
+ - add `nvm_extract_tarball` to consolidate extraction logic
+
+ ## Docs / Read Me
+ - Update Alpine Linux Section (#2896)
+ - optimize calling of `nvm version` in zsh (#2874)
+ - Fix Ansible Linting Errors (#2861)
+ - cdnvm(): handle failed dir change (#2840)
+ - Fix Git Install instruction list structure (#2823)
+ - add logo
+ - minor cleanup
+ - Add note about creating .bashrc file *as well as* .bash_profile (#2729)
+ - `fish`: send output from `load_nvm` to `/dev/stderr` (#2783)
+ - fix fish load_nvm variable interpolations (#2776)
+ - Correct typos in "Macs with M1 chip" section (#2760)
+ - HTTP => HTTPS (#2735, #2713)
+ - clarify instructions for running Node on M1 Mac (#2675)
+
+## Dockerfile
+ - Update base image from Ubuntu 18.04 to 20.04, cc #2877 (#2882)
+
+## Misc
+ - [meta] Update CODE_OF_CONDUCT to current version (#2790)
+
+## Tests
+ - update test mocks
+ - github actions removed homebrew and broke shellcheck (#2907)
+ - node 18 no longer builds in travis-ci (#2907)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.39.1 (2021-12-17)</h2>
+      <pre>## New Stuff
+ - Add OpenBSD support (#1062)
+ 
+## Fixes
+ - `ls-remote`/`install`: support `lts/-X` patterns in installs
+ - `ls-remote`/`install`: properly handle `lts/x` patterns
+ - `nvm alias`/`nvm_list_aliases`: support `lts/` aliases
+ - `nvm_get_download_slug`: better architecture selection for M1 Macs
+ - `install`: fix method=script install condition (#2668)
+ - `install`: properly check for curl/wget
+ - install script: Add `--no-pager` option to git branch (#2637)
+ 
+## Refactors
+ - create `nvm_normalize_lts` helper
+ - [shellcheck] apply v0.8.0 updates
+
+## Docs
+ - [readme] Balance the if statement in bash example (#2658)
+ - [readme] Describe another failure case for installing node versions from source on mac arm64 machines (#2653)
+
+## Tests
+ - [actions] add step security runner (#2659)
+ - [Tests] update test mocks
+ - [Tests] `nvm_get_download_slug`: add unit tests (#2657, #2232)
+ - [Tests] fix windows WSL tests
+ - [Dev Deps] update `doctoc`, `markdown-link-check`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.39.0 (2021-10-07)</h2>
+      <pre>## New Stuff
+ - maybe support Windows with WSL, MSYS, Cygwin (#2391)
+
+## Fixes
+ - `nvm install-latest-npm`: ensure npm 8 does not install on unsupported nodes
+ - `nvm_die_on_prefix`: filter prefixed env vars on name only, ignoring values (#2368)
+ - `set -a`: when this option is set, some `sh` shells break
+ - `bash_completion`: be robust when `cd` is overridden (#2585)
+ - `nvm_die_on_prefix`: avoid grepping env functions in bash (2dad0455ec61e2842f8d0820bae40114a343ae3b, #2606)
+ - `reinstall-packages`: handle global symlink locations properly
+ - `nvm_ls_remote_index_tab`: handle long version lists (#2581)
+ - `nvm ls`/`nvm alias`/`nvm_list_aliases`: zsh: when no LTS aliases, no error
+ - `install`: Detect correct profile based on $SHELL var (#2556)
+ - `nvm_get_arch`: suppress error output if `/sbin` does not exist
+ - `bash_completion`: check if `compinit` is called before calling it (#2490)
+ - `nvm_get_arch`: Rasbperry Pi: armv7l with arm64 kernel, get correct arch (#2469)
+ - install script: check the proper version; fetch tags also (#9)
+
+## Robustness
+ - avoid IFS shenanigans: quote arg count/return codes
+
+## Refactors
+ - Use awk for path stripping (#1360)
+ - [shellcheck] disable additional `-x` warning from v0.7.2
+ - [shellcheck] update for new warnings in v0.7.2
+
+## Dockerfile
+ - Update dated base image from Ubuntu 16.04 to 18.04 (#2571)
+
+## Docs
+ - [readme] link "Windows WSL" down to the "important notes" section (#2502)
+ - [readme] Add bash_completion in "manual install" section (#2620)
+ - [readme] Use absolute URL for #606 in README.md (#1656)
+ - [readme] Add quick intro to `nvm` (#1343)
+ - [readme] Add info to restart bash if verification not working in verification section (#1749)
+ - [readme] Avoid infinite loop in cdnvm() (#2605)
+ - [readme] remove duplicate word 'run' (#2609)
+ - [readme] updated automatic call script for bash (#2604)
+ - [readme] fixed small typo afew to a few (#2517)
+ - [readme] fix typo regarding docker image base in Dockerfile (#2573)
+ - [readme] move License and Copyright notice sections to the bottom
+ - [readme] remove redundant "license" section text in favor of LICENSE.md
+ - [readme] Improve README about Macs with M1 chips (#2479)
+
+## Meta Stuff
+ - add project charter and governance
+ - add OpenJS Foundation copyright notices/links
+ - add `SECURITY.md`
+
+## Tests
+ - use a matrix on the `nvm install-latest-npm` tests
+ - blacklist expired LetsEncrypt CA (#2623)
+ - Add `markdown-link-check` script
+ - `nvm install-latest-npm`: node < 0.10 breaks with npm with dropped support for TLS < 1.2
+ - Print shell version in Travis CI (#1471)
+ - [actions] restrict permissions for `GITHUB_TOKEN` (#2584)
+ - `postcss` v7.0.36 stopped working on node 0.10; downgrade to v4
+ - update mocks
+ - disable `fail-fast`
+ - [actions] fix typo in dockerfile_lint job
+ - [actions] use `node/install` instead of `node/run`
+ - [actions] adjust shellcheck/windows tests to9 have a final "done" job
+ - Add unit tests for `nvm_is_version_installed`
+ - `node-gyp` v8 breaks a test
+
+### New Contributors
+* @Botspot made their first contribution in https://github.com/nvm-sh/nvm/pull/2469
+* @leafac made their first contribution in https://github.com/nvm-sh/nvm/pull/2479
+* @akefirad made their first contribution in https://github.com/nvm-sh/nvm/pull/2490
+* @tg90nor made their first contribution in https://github.com/nvm-sh/nvm/pull/2556
+* @IYaksha made their first contribution in https://github.com/nvm-sh/nvm/pull/2573
+* @kstolp made their first contribution in https://github.com/nvm-sh/nvm/pull/2581
+* @varunsh-coder made their first contribution in https://github.com/nvm-sh/nvm/pull/2584
+* @giladbarnea made their first contribution in https://github.com/nvm-sh/nvm/pull/2585
+* @donnikitos made their first contribution in https://github.com/nvm-sh/nvm/pull/2604
+* @GeorgiChochov made their first contribution in https://github.com/nvm-sh/nvm/pull/2609
+* @svenssonaxel made their first contribution in https://github.com/nvm-sh/nvm/pull/2606
+* @tim-connolly made their first contribution in https://github.com/nvm-sh/nvm/pull/2605
+* @strouja made their first contribution in https://github.com/nvm-sh/nvm/pull/2517
+* @asab-se made their first contribution in https://github.com/nvm-sh/nvm/pull/1749
+* @alisternorris made their first contribution in https://github.com/nvm-sh/nvm/pull/1343
+* @umireon made their first contribution in https://github.com/nvm-sh/nvm/pull/1360
+* @Igot953 made their first contribution in https://github.com/nvm-sh/nvm/pull/2624
+* @rickbutton made their first contribution in https://github.com/nvm-sh/nvm/pull/2623
+* @felipear89 made their first contribution in https://github.com/nvm-sh/nvm/pull/2620
+* @SimonEast made their first contribution in https://github.com/nvm-sh/nvm/pull/2502</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.38.0 (2021-03-29)</h2>
+      <pre>## New Stuff
+ - `install`: add parallel build support for openbsd (#2390)
+ - `install`: add `-b` flag to skip building from source (#2439)
+ - install script: Allow installation from other repository also for git method (#2401)
+ - install script: Allow installation from other repository (#2394)
+
+## Fixes
+ - `exec`: `--` should stop argument parsing (#2354)
+ - `nvm_alias`: ensure `lts/-1` returns the one before `lts/*` (#2462)
+ - install script: define `nvm_echo`
+ - Fix potential unbound var error on nvm install (#2421)
+ - avoid parse error with common omz global aliases, in `nvm_print_color_code` (#2365)
+ - install script: sync `nvm_download` implementation from nvm.sh (#2406)
+ - remove `nvm_supports_source_options` (#2402)
+ - `bash_completion`: move compinit before bashcompinit (#2393)
+ - relax `$PREFIX` checking, to accomodate `npm exec`
+ - Use local variable when looping over args (#2377)
+ - `install`: Ignore npm command under $NVM_DIR when checking for global modules (#2348)
+
+## Refactors
+ - add `nvm_install_binary_extract`
+ - add `nvm_get_artifact_compression`
+ - fix silly shellcheck complaint
+
+## Docs
+ - Add macOS troubleshooting instructions for M1 chip (#2416, #2436, #2232)
+ - Update source command to include s in zsh (#2466)
+ - Add `nvs` as one of the Windows alternatives (#2454)
+ - add headings to certain sections (#2457)
+ - add commands to help troubleshoot without closing the current shell (#2202)
+ - update `cdnvm` implementation (#2442)
+ - add install error tips (#2400)
+ - quote asterisk in shell command on `--latest-npm` example (#2431)
+ - Updated README.md to include homebrew unsecure dirs warning (#2388)
+ - source `./nvm.sh` instead of `nvm.sh`, for `zsh` (#2205)
+ - add CODE_OF_CONDUCT.md
+
+## Tests
+ - Rename some files to be more cross platform (#2397)
+ - [actions] update workflows (#2427)
+ - [Dev Deps] update `dockerfile_lint`, `doctoc`, `eclint`, `replace`, `semver`
+ - ensure `doctoc` action fails when it should
+ - update mocks
+ - Add unit test for nvm_download
+ - add `nvm_grep` to install script, fix tests (#2403
+ - `.npm` is now cached by default (#2104)
+ - `release`: clobber local tags</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.37.2 (2020-11-28)</h2>
+      <pre>## Fixes
+ - Revert "[Fix] `nvm_die_on_prefix`: only grep lines starting with env var name" (#2347, #2360, #2364, #2366)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.37.1 (2020-11-25)</h2>
+      <pre>## New Stuff
+ - Added `set-colors` command (#2291, #2232)
+ 
+## Fixes
+ - `nvm_die_on_prefix`: only grep lines starting with env var name (#2347)
+
+## Tests
+ - Run fast test suite in clean environment (#2336)
+ - partially migrate to Github Actions
+ - Add shellcheck workflow (#2351)
+ - Add release test workflow (#2355)
+ - add "Allow Edits" workflow
+ - switch Automatic Rebase workflow to `pull_request_target` event</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.37.0 (2020-11-06)</h2>
+      <pre>## Major Performance Enhancement
+ - `use`/`nvm_die_on_prefix`: replicate npm config algorithm and remove `npm config` call (#2317)
+
+## Fixes
+ - `nvm ls-remote`: accept versions that end with a dot (#2310)
+ - `nvm_ls`: zsh: unset `markdirs` and `local_options` (#2316)
+ - `nvm_die_on_prefix`: use directory comparison rather than string (#2316)
+
+## Docs
+ - improve `nvm --help` output (#2301)
+ - [readme] bash shell integration: amend example (#2313)
+
+## Tests
+ - Fix `nvm_ls_current` fast test (#2322)
+ - Fix nvm unload fast test cleanup (#2332)
+ - Drop deprecated `sudo:` option in TravisCI config (#2307)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.36.0 (2020-09-25)</h2>
+      <pre>v0.36.0
+
+## New Stuff
+ - add `nvm -v` as an alias for `nvm --version` (#2270)
+ - `nvm deactivate`/`nvm which`: add `--silent`
+ - adding default and alias option to `nvm install` (#2274, #1929)
+ - `nvm_supports_xz`: Add Mac/FreeBSD xz platform support checks (#2156)
+ - add `nvm_find_project_dir` helper
+
+## Fixes
+ - `latest-npm`: ensure npm 7 is not installed on node < 10
+ - `nvm_die_on_prefix`: check that the prefix is inside the version dir, not just the nvm dir
+ - `nvm use`: fix `--silent` when version is omitted
+ - ensure `--help` is intercepted on any command (#2277)
+ - `--help`: Add more examples (#2272)
+ - `install`: improved arg parsing around `--reinstall-packages-from` (#1762)
+ - `reinstall-packages`: do not include unmet peer deps (#1948)
+ - `--help`: explain more clearly that <version> parameter is optional and can be provided by .nvmrc on `nvm install`, `nvm use`, `nvm exec`, and `nvm run` (#2242)
+ - [Robustness] add `command` to `xargs`/`rm` in `nvm_get_default_packages` (#2281)
+ - [debug] add `whoami` output
+ - [performance] `nvm_auto`: only call `nvm_ls_current` in `use` mode (#2286)
+
+## Refactors
+ - [Refactor] add `nvm_get_checksum_binary`; use it in `nvm debug`
+ - [Refactor] remove unused `nvm_checksum` function
+ - [Refactor] Rename solaris and iojs helper functions to be nvm_ prefixed (#2213)
+ - [Refactor] `nvm run`/`nvm exec`: use `NVM_SILENT` consistently internally (#2279)
+
+## Dockerfile
+ - [dockerfile] Add missing apt package `locales` (#2306)
+ - [dockerfile] Remove ShellCheck Segmentation fault workaround (#2305)
+ - [dockerfile] Update ShellCheck download URL in Dockerfile (#2304, #2232)
+ - [dockerfile] Update Dockerfile base image to Ubuntu 16.04, cc #2008 (#2187)
+
+## Docs
+ - [readme] fix LTS upgrade command (#2294)
+ - [readme] update autocompletion output examples
+ - [readme] Mention problem with windows cmd echo (#2282)
+ - [readme] Add documentation for LTS updates which reinstall existing packages (#2271)
+ - [readme] Fix fish load_nvm function (#2252)
+ - [readme] Update macOS troubleshooting w/ 10.15 zsh default (#2248)
+ - [readme] Update install instructions troubleshooting (#2225)
+ - [readme] Syntax highlight for Ansible task example in README.md (#2228)
+ - [readme] Update README for environment variables (#2159)
+ - [readme] Stop removing spaces from nvm_path (#2235)
+ - [readme] include deeper integration instructions for fish (#2208)
+ - [patch] Update docs and add warning for 'nvm is not compatible with the npm config "prefix" option' edgecase error on Mac OS (#2263)
+
+## Tests
+ - pin postcss to v7
+ - Source nvm.sh before defining FILE (#2182)
+
+## Meta Stuff
+- fix TOC action
+- add actions: Automatic Rebase for PRs, auto-update-TOC for push</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.35.3 (2020-03-06)</h2>
+      <pre>v0.35.3
+
+## New
+ - add `lts/-1` etc, to point to an LTS line relative to "latest"
+ - `use`: set `NVM_INC` to expose the node include path
+ - `uninstall`: add `NVM_DEBUG` to print out a filename as its permissions are checked
+
+## Fixes
+ - `nvm ls-remote`: properly label latest LTS versions instead of just the latest one in the filter
+
+## Docs
+ - [readme] restore broken anchor
+ - [readme] add nvm intro
+ - Improve readme clarity and troubleshooting (#2125)
+ - Fix small typo in README (#2130)
+
+## Tests
+ - update mocks
+ - fix update mocks script
+ - update test mocks
+ - try to make `nvm unload` test more robust
+ - ensure `nvm unload` unsets env vars too</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.35.2 (2019-12-18)</h2>
+      <pre>## Fixes
+ - if a prefix env var is set (as in npm run), but is correct, do not fail (#2106)
+ - allow `nvm unalias x` when `x` is a default alias, but shadowed (#2122)
+
+## Tests
+ - pin `david` to v11
+
+## Docs
+ - [readme] Fix a typo (#2121)
+
+## Meta
+ - create FUNDING.yml
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.35.1 (2019-11-03)</h2>
+      <pre>## Fixes
+ - `install-latest-npm`: `npm` `v6.10` breaks on `node` `v6.0`, `v6.1`, and `v9.0`-`v9.2`
+ - `nvm use`: improve help output with bare `nvm use` and no `.nvmrc`
+
+## Docs
+ - Add description if instructions don't work; make install instructions more readable (#2112)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.35.0 (2019-10-02)</h2>
+      <pre>## New Stuff
+ - `nvm ls`: add `--no-alias` to suppress alias output
+
+## Fixes
+ - `set -u`: Add default empty value for `$NVM_NO_ALIAS` (#2054, #2047)
+ - Determine correct sub directory if XDG_CONFIG_HOME is set (#2035)
+ - Set $NVM_DIR to ".nvm" instead of "nvm" (#2069, #2033)
+ - `default_packages`: work when the file lacks a trailing newline
+ - `install`: Add missing io.js installation message (#1989)
+ - Make installation less restrictive when NVM_DIR is set (#1986)
+ - Enhance nvm debug for different environments (#1654)
+ - `nvm_supports_source_options`: work around a bug in bash 3.2
+ - `install`: error out when an argument has `---`
+ - attempt to fix a bug in bash 3.2, fixed in 4.4, that improperly exits on `-e` in a test.
+ - `nvm ls`: `--no-colors`: `system`: print an asterisk
+
+## Refactors
+ - add `nvm_stdout_is_terminal` helper (#2012, #2007)
+ - extract “get default packages” logic to `nvm_get_default_packages`
+ - `nvm.sh`: make coding style more consistent (#1819)
+
+## Docs
+ - Fix bash auto-use nvm command (#2086)
+ - Updated note about Windows (#2037)
+ - sync node release schedule url (#2001)
+ - clarify how to specify default packages (#1981)
+ - clean up formatting in readme (#2038)
+ - clean up a bit (#1627)
+ - Add `--latest-npm` info to Migrating global packages section (#1970)
+ - Set $NVM_DIR to ".nvm" instead of "nvm" (#2069, #2033)
+ - update `bash` `cdnvm` script to properly handle aliases (#2017)
+ - Add note about what version of node new shells run with (#2003)
+ - `--help`: consolidate some help output
+ - README.md: mention --no-colors option (#2004)
+ - `nvm --help`: add `--no-colors` and `--no-alias`
+ - add version number to `nvm —help` output (#1993)
+ - add “update” terminology to installation section
+ - `unalias`: add more specific error message for builtin aliases (#1992)
+
+## Tests
+ - `jspm` v2 beta started breaking tests; pin to < v2
+ - use rimraf over `rmdir` in teardowns (#2010)
+ - update dist from trusty to xenial (#2008)
+ - `nvm_command_info`: make error output more helpful
+ - `nvm ls`: ensure `nvm alias` is called
+ - add more checks to make_fake_* helpers
+ - fix fake node versions
+ - Improve syntax in "test/installation_iojs/nvm install v1 works" (#1990)
+ - [shellcheck] remove unnecessary overrides
+ - [shellcheck] add overrides
+
+## Dockerfile
+ - install shellcheck v0.6.0 in Dockerfile (#1836)
+ - add libssl-dev to Docker image (#1835)
+
+## Meta
+ - add copyright line to license file
+ - update repo links to point to org</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.34.0 (2019-01-08)</h2>
+      <pre>## New Stuff
+ - Support `--no-progress` for `nvm install` (#1422)
+ - `install.sh`: allow user to explicitly opt out of nvm adding the source string (#1804)
+ - Respect previously nvm-loaded node version when sourcing (#1315)
+ - add support for `$XDG_CONFIG_HOME` (#1888)
+ - `bash_completion`: Add support for `ZSH_DISABLE_COMPFIX` flag (#1911)
+
+## Fixes
+ - Improve .nvmrc reading process (#1740)
+ - `nvm debug`: Fix sed syntax error in nvm_command_info (#1528)
+ - Remove $NVM_DIR trailing slash automatically (#1734)
+ - `install -s`: `zsh`: ensure `shwordsplit` opt is set (#1719)
+ - `ls-remote`: fix issues in zsh when using a mirror with a ton of entries (#1818)
+ - Improve `nvm_is_version_installed` to check for a node executable instead of root dir (#1824)
+ - `use`: Prepend instead of changing if shadowed by system dirs (#1830)
+ - Improve and update Dockerfile (#1861, #1863)
+ - `install.sh`: Print an error and exit the script if $METHOD is set to something unexpected (#1917)
+ - Allow zsh users to have the nomatch option set (#1938)
+ - avoid unbound variable (#1949)
+
+## Refactors
+ - Speedup nvm_list_aliases (#1517)
+ - `bash_completion`: Improve coding style (#1816)
+ - [shellcheck] use `{ …; }` instead of `(…)` to group test commands (#1825)
+ - [shellcheck] quote variables in for loops to avoid unintentional expansion
+ - [shellcheck] ignore SC2230 errors
+ - [shellcheck] Use `-n/-z` instead of `! -z/! -n` condition (#1955)
+
+## Tests
+ - add `nvm install-latest-npm` tests for all node versions
+ - fix failing tests on master due to npm registry SSL changes
+ - Enable ccache on Travis CI to speed up compilation (#1947)
+ - print out shellcheck version
+ - avoid using shopt in zsh
+
+## Docs
+ - add --tags to git fetch in manual upgrade (#1793)
+ - fix failing if check in autoload script (#1821)
+ - Grammar update (#1822)
+ - fix for .nvmrc script (#1823)
+ - add --no-use option to installation (#1839, #1840, #1862)
+ - add instructions for installing a specific version (#1901)
+ - Added fish nvm (#1926)
+ - Add section on automatic `nvm use` in Bash (#1865)
+ - improve instructions for manual install (#1930)
+ - update README to fix docker run command flag order (#1925)
+ - Improve md file syntax (#1864)
+ - Add Ansible task example (#1964)
+ - Improve indent of output block in GitHub Issue template (#1967)
+ - fixing cdnvm on .bashrc (#1971)
+ - Improve phrasing of 'nvm current' (#1974)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.33.11 (2018-04-25)</h2>
+      <pre>## Fix
+  - `install-latest-npm`: node v4.5 and v4.6 work on npm v5.4.1, but not v5.4.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.33.10 (2018-04-25)</h2>
+      <pre>## Fix
+ - `install-latest-npm`: npm 6 is out, and requires node 6 or higher</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.33.9 (2018-04-15)</h2>
+      <pre>## New Stuff
+ - `nvm debug`: Print $SHLVL, add $PATH (#1655, #1745)
+
+## Fixes
+ - `install.sh`: detect a defined but nonexistent $NVM_DIR (#1700)
+ - `install.sh`: Don't give detached HEAD advice when installing (#1704)
+ - Add missing "command" prefixes for few commands (#1735, #1725, #1736)
+ - Use `nvm_echo` instead of `echo` directly (#1751)
+ - `reinstall-packages`: Prevent install/link when no packages found (#1750)
+ - ensure --reinstall-packages-from has a version number (#1760)
+ - `bash_completion`: Reduce startup time (#1759)
+ - installing with an LTS name should lowercase the name before ensuring a default (#1781)
+ - Add autocompletion support to zsh (#1707)
+ - `install.sh`: Detect profile with $BASH_VERSION and $ZSH_VERSION (#1780)
+ - Turn off wget's output in nvm_get_latest (#1785)
+ - `nvm debug`: Improve OS version detection (#1746)
+
+## Refactors
+ - Various style and shellcheck fixes (#1684, #1724, #1747, #1748)
+ - Optimize ShellCheck installation in Docker image (#1729)
+ - Remove duplicate code in nvm_npm_global_modules() (#1742)
+ - Use grep `-q` parameter instead of redirect to /dev/null (#1741)
+ - `install.sh`: Improve install.sh prompt output, add a newline (#1783)
+
+## Docs
+ - Explain `.nvmrc` better (#1673)
+ - Update minimum git version to v1.17.10
+ - Add escape sequences (#1701)
+ - add `nvm which current` to `nvm --help` output
+ - avoid need for future copyright year updates (#1713)
+ - Add reminder that NVM_DIR should not contain trailing slash (#1726, #1708)
+ - Display FreeBSD and SunOS with correct caps (#1728)
+ - Update Docker image build info in README.md (#1733)
+ - Various typo fixes (#1756, #1753)
+ - removed global install on README.md (#1775, #1773)
+ - Add removal instructions to README.md (#1777, #1767)
+ - Fix manual install & upgrade guide (#1786, #1772)
+ - Add macOS install script note about git (#1787, #1782)
+
+## Tests
+ - add test for aliased `.` (#1701)
+ - fix mirrors in mocks update script, update mocks
+ - Add EditorConfig to help maintain part of coding style (#1739)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.33.8 (2017-12-12)</h2>
+      <pre>## Fix
+  - `nvm install-latest-npm`: fix for node 4.5/4.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.33.7 (2017-12-09)</h2>
+      <pre>## Fixes
+ - fix unassigned variable (#1665, #1664)
+ - Fix for $path used by zsh (#1669)
+ - `set -u`: ensure `NVM_USE_OUTPUT` is always set (#1671)
+ - `install.sh`: Fix a bug that block that installation of node in install.sh (#1676)
+ - `nvm install-latest-npm`: fix node 4-4.6
+
+## Documentation
+ - Make `nvm cache clear` message less ambiguous (#1644)
+ - Added missing piece (#1658)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.33.6 (2017-10-24)</h2>
+      <pre>## Fixes
+  - `install.sh` do not use nonexistent variable (#1605)
+  - `install-latest-npm`: `npm` `v5.4`+ breaks on `node` `v4.5` and `v4.6`
+
+## Documentation
+  - Improve git installation instructions (#1636)
+  - Fix typos (#1640)
+
+## Tests
+ - [Cleanup] Remove ghc related things in .travis.yml (#1639, #1619)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.33.5 (2017-10-24)</h2>
+      <pre>## New Stuff
+ - `debug`: Enhance nvm debug with more tools info (#1613)
+
+## Fixes
+ - `install-latest-npm`: `io.js` `v1.0.x` has weird behavior with npm v4.6.x.
+ - unset `NVM_RC_VERSION` when unloading (#1607)
+ - Preserve PATH locations order when changing versions (#1316)
+ - ensure all `grep` calls go through `nvm_grep` (#1615)
+
+## Documentation
+ - Update README.md for Alpine linux reference (#1606)
+
+## Tests
+ - retry io.js test runs, since iojs.org is flaky
+ - Remove the manual ShellCheck install proecss on Travis CI (#1619)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.33.4 (2017-09-05)</h2>
+      <pre>## Fixes
+ - [Fix] `install-latest-npm`: `io.js` `v1.0.0` has weird behavior with npm v4.6.x</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.33.3 (2017-09-04)</h2>
+      <pre>## New Stuff
+ - `nvm install`: add `--latest-npm` option to automatically try to upgrade to the latest working version of `npm`
+ - add support for `$NVM_DIR/default-packages` file (#1463)
+ - Introduce Docker environment for nvm (#1472, #1575)
+ - Print $TERM_PROGRAM in nvm debug if it exists (#1578)
+ - `install.sh`: Speedup process to install nvm from git by dropping commit history (#1476)
+ - `install.sh`: Add `--auto` to git gc to speed up install & upgrade (#1576)
+ - `install.sh`: Clean up git reflog history before git gc (#1579)
+ - `install.sh`: install bash_completion via script method (#1588)
+
+## Fixes
+ - `set -u`: ensure that potentially unbound variables aren’t called unchecked (#1363, #1516)
+ - ensure if `npm link` fails, that `$IFS` is not improperly set (#1519)
+ - set IFS to default for all nvm commands (#1227, #1244, #1514, #1518)
+ - `set -u`: when `ALIAS` is unset, don’t reference an unbound variable (#1526)
+ - Fix `--version` help text (#1538)
+ - enable curl compression only on curl >=7.21.0 (#1550)
+ - `nvm install -s`: properly precompute clang version (#1554)
+ - curl should fail if something wrong (#1556, #1557)
+ - Adjust $CURL_COMPRESSED_FLAG usage for curl (#1562, #1567)
+ - `set -u`: `nvm install`/`nvm use`: fix unbound vars (#1587)
+ - [bash completion] add missing `install-latest-npm`; remove undocumented `clear-cache` (#1564)
+
+## Documentation
+ - move the install script to the top; put the notes in a separate section
+ - Install script - Improve installation guide (#1544)
+ - bump sample version numbers (#1539)
+ - add note about Linux troubleshooting (#1566)
+ - updated to reflect current script output (#1574)
+
+## Testing
+ - Fix cache for WITHOUT_CURL tests in Travis (#1529)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

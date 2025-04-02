@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for preactjs/preact"/>
+  <title>preactjs/preact Release Notes</title>
+</head>
+<body>
+  <h1>🚀 preactjs/preact - Release Notes</h1>
+  
+    <section>
+      <h2>10.26.4 (2025-02-28)</h2>
+      <pre>## Fixes
+
+- Address context fragments issue (#4717, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.26.3 (2025-02-27)</h2>
+      <pre>## Fixes
+
+- Keyed nullish placeholders cause re-mounts (#4700, thanks @JoviDeCroock)
+
+## Types
+
+- Add command invoker types (#4692, thanks @lukewarlow)
+- Flesh out HTMLMediaElement types (#4705, thanks @rschristian)
+- Add `onBeforeToggle` event handler type (#4694, thanks @lukewarlow)
+- Add dialog `closedby` types (#4693, thanks @lukewarlow)
+- Add `fetchPriority` to `img` (#4713, thanks @JoviDeCroock)
+- Refactor `AllHTMLAttributes` interface (#4706, thanks @rschristian)
+
+## Maintenance
+
+- Remove console log in debug package (#4709, thanks @rschristian)
+- Remove unused deps (#4707, thanks @JoviDeCroock)
+- Fix mocha in Node v22+ (#4701, thanks @rschristian)
+- Fix TS lang server support in our `.d.ts` files (#4698, thanks @rschristian)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.26.2 (2025-02-18)</h2>
+      <pre>This is a hotfix release! If you are encountering bundling issues with regards to unallowed `import` syntax, this will fix it!
+
+## Fixes
+
+- Remove pkg type (#4689, thanks @rschristian)
+
+## Maintenance
+
+- Skip benches during release workflows (#4686, thanks @rschristian)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.26.1 (2025-02-18)</h2>
+      <pre>## Fixes
+
+- Fixes memory leak when wrapping Fragment is captured by an effect closure (#4680, thanks @JoviDeCroock)
+
+## Optimization
+
+- Created NULL constant (#4682, thanks @Ben-Brady)
+
+## Maintenance
+
+
+- Simplify compat build script (#4677, thanks @rschristian)
+- Add renderToReadableStream export (#4678, thanks @JoviDeCroock)
+- Fix mocha in Node v22+ (#4629, thanks @rschristian)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.26.0 (2025-02-16)</h2>
+      <pre>## Features
+
+- Support the template tag (#4639, thanks @JoviDeCroock)
+- Allow for Context as JSX (#4618, thanks @JoviDeCroock)
+
+## Fixes
+
+- Typo in `_hasScuFromHooks` mangle (#4645, thanks @rschristian)
+- Switch _contextRef and _id (#4632, thanks @JoviDeCroock)
+- Add hasScuFromHooks to mangle (#4627, thanks @JoviDeCroock)
+- Ref unmount imperative handle (#4625, thanks @JoviDeCroock)
+
+## Types
+
+- Correct `HTMLProps` to extend all known props (#4651, thanks @rschristian)
+- Fix `ComponentProps` type (#4634, thanks @rschristian)
+- Remove `generic` aria role from types (#4610, thanks @rschristian)
+- Add `FowardRefRenderFunction` type to compat (#4675, thanks @rschristian)
+- Expose EventHandler from compat (#4674, thanks @rschristian)
+- Expose AriaAttributes from compat (#4673, thanks @rschristian)
+- Add auxClick event types (#4672, thanks @rschristian)
+
+## Maintenance
+
+- Silence Karma warning over node:stream from RTS (#4660, thanks @rschristian)
+- Fix path filter in reporter workflow (#4654, thanks @rschristian)
+- Fix path filter in PR Reporter action (#4644, thanks @rschristian)
+- Run PR Reporter even against PRs from forks (#4643, thanks @rschristian)
+- Update http:// links to https:// (#4638, thanks @jviide)
+- Refactor component.js process() (#4637, thanks @jviide)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.25.4 (2024-12-28)</h2>
+      <pre>## Types
+
+- Incorrect onToggle event type (#4615, thanks @rschristian)
+
+## Fixes
+
+- Support multiple synchronous timings for act (#4619, thanks @rock-57blocks)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.25.3 (2024-12-18)</h2>
+      <pre>## Fixes
+
+- Wrap hydration debug message node types in quotes (#4609, thanks @rschristian)
+- Revert "Improve performance and reduce memory allocation" (#4611, thanks @JoviDeCroock)
+
+## Types
+
+- Add default event target types for HTML attribute interfaces (#4606, thanks @rschristian)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.25.2 (2024-12-12)</h2>
+      <pre>## Notable
+
+### Revert unkeyed no-search (#4604, thanks @JoviDeCroock)
+
+We noticed that there's a few unpleasant scenario's that could form from this change, we wanted to be on the safe side here and revert this for the time being. if you run into issues with swapping components placement wise in a list use the `key` property.
+
+## Fixes
+
+- Add missing space in hydration mismatch message (#4602, thanks @sirreal)
+
+## Types
+
+- fix max and min type definition to allow number (#4598, thanks @devlux)
+
+## Performance
+
+- Use == where possible and precompute .length (#4599, thanks @JoviDeCroock)
+- Check preallocate new children array perf (#4595, thanks @JoviDeCroock)
+
+## Maintenance
+
+- Replace npm-run-all and lint-staged (#4600, thanks @JoviDeCroock)
+- Remove benches folder (#4592, thanks @JoviDeCroock)
+- Dependency maintenance (#4594, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.25.1 (2024-12-02)</h2>
+      <pre>## Fixes
+
+- Revert handle event (#4584, thanks @JoviDeCroock) we had to revert this due to an inherent type incompatibility, apologies for missing this!
+- Fix portal children ordering (#4573, thanks @JoviDeCroock)
+- Handle errors during hydration (#4563, thanks @JoviDeCroock)
+
+## Types
+
+- Ensure resolution of core types goes through typesVersions resolution (#4576, thanks @rschristian)
+- Correct `defaultValue` property types for inputs, selects, & textareas (#4585, thanks @rschristian)
+- Add missing SVG `type` attribute (#4582, thanks @rschristian)
+- `createElement` & `h` types (#4578, thanks @rschristian)
+- `href` & `hreflang` attribute types (#4575, thanks @rschristian)
+- Mark `datetime` on `<del>` as optional (#4570, thanks @marvinhagemeister)
+- `max` and `min` properties on input element types (#4568, thanks @rschristian)
+- Add missing `ElementRef` type to compat (#4557, thanks @rschristian)
+
+## Maintenance
+
+- Correct some internal test types (#4588, thanks @rschristian)
+- Reduce byte-size by reducing bit-flag size (#4586, thanks @JoviDeCroock)
+- Remove `declare global` from internal types (#4583, thanks @rschristian)
+- Move some frequently used things to constants (#4579, thanks @JoviDeCroock)
+- Remove _nextDom usage (#4553, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.25.0 (2024-11-22)</h2>
+      <pre>## Features
+
+### Move per-element type interfaces into core and more strictly type IntrinsicElements (#4546, thanks @rschristian)
+
+This adds per-element typings for every DOM-node type, this means that our types might become slightly stricter when you are using DOM attributes/properties where they are not allowed, an example of this might be `<div src="x" />`.
+
+If you notice any issues when upgrading tell us about them, we can evaluate whether we have missed a case.
+
+### Recreate unkeyed functional components when they change position. (#4550, thanks @JoviDeCroock)
+
+This is a long time bugfix, when we have elements that look like
+
+```js
+return (
+	{condition ? <Element /> : null}
+	{condition ? null : <Element />
+)
+```
+
+We would reuse the state of the first VNode to render the second one when the condition switches. When you are using `key`, this issue was not present.
+
+### Support `{ handleEvent() {} }` object interface as a listener (#4538, thanks @lilnasy)
+
+We've added support for attaching object/class event-handlers
+
+```js
+let handler = {
+	onclick,
+	handleEvent() {
+		this.onclick()
+	}
+}
+
+<div onClick={handler} />
+```
+
+## Fixes
+
+- Ensure state updates work in signals (#4560, thanks @JoviDeCroock)
+- Ensure SVGAttributes includes height & width (#4556, thanks @rschristian)
+- Fork types for TS 5.1 and beyond (#4548, thanks @JoviDeCroock)
+- Re-add missing properties & property casings (#4554, thanks @rschristian)
+- Ensure we unwrap custom .then() (#4547, thanks @JoviDeCroock)
+- Fix error message when nesting invalid elements within \<p\> tags (#4534, thanks @jubalm)
+
+## Maintenance
+
+- Try constant for undefined (#4552, thanks @JoviDeCroock)
+- Fix demo (#4551, thanks @JoviDeCroock)
+- Use `Signalish` helper to reduce verbosity (#4545, thanks @rschristian)
+- Re-export ErrorInfo type (#4541, thanks @jose-torres-marin)
+- Skip PR reporter action on non-pull request triggers (#4536, thanks @rschristian)
+- upgrade biome to 1.9.4 (#4535, thanks @unvalley)
+- oxlint violation of `react/iframe-missing-sandbox` (#4533, thanks @DonIsaac)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.24.3 (2024-10-14)</h2>
+      <pre>## Fixes
+
+- We should not always set to hydration when suspending (#4529, thanks @JoviDeCroock)
+- refactor: Warn on NaN in dep arrays instead of throwing (#4527, thanks @rschristian)
+
+## Performance
+
+- Context consumer unmounting perf (#4526, thanks @JoviDeCroock)
+
+## Maintenance
+
+- ci: Fix PR reporter (#4531, thanks @rschristian)
+- ci: Remove saucelabs (#4530, thanks @rschristian)
+- ci: Ensure paths-filter action works on push events (#4528, thanks @rschristian)
+- ci: Unify workflows into singular pipeline (#4520, thanks @rschristian)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.24.2 (2024-10-04)</h2>
+      <pre>## Performance
+
+- Improve performance and reduce memory allocation (#4521, thanks @JoviDeCroock)
+
+## Types
+
+- Re-export types for events and event handlers (#4512, thanks @jose-torres-marin)
+
+## Maintenance
+
+- Merge upload actions to fix usage in v4 (#4515, thanks @rschristian)
+- Update Tachometer reporter glob to support subdirs (#4519, thanks @rschristian)
+- Fix download artifact regexp (#4517, thanks @rschristian)
+- Switch to regexp for download-artifact action (#4516, thanks @rschristian)
+- Bump upload/download-artifact action versions (#4511, thanks @rschristian)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.24.1 (2024-09-24)</h2>
+      <pre>## Fixes
+
+- Prevent debug crash when analyzing hydration mismatches (#4507, thanks @JoviDeCroock)
+
+## Types
+
+- Correct some missing & incorrect SVG types (#4505, thanks @rschristian)
+- Remove incorrect `spellCheck` type (#4497, thanks @rschristian)
+- React props with children didn't allow for multiple children (#4493, thanks @hesxenon)
+
+## Maintenance 
+
+- Bump to oxlint v0.9.6 (#4503, thanks @Boshen)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.24.0 (2024-09-14)</h2>
+      <pre>## Features
+
+- Warn our user for hydration mismatches (#4490, thanks @JoviDeCroock)
+
+## Fixes
+
+- Avoid setting value for progress with nullish value (#4492, thanks @JoviDeCroock)
+- Fix skewedIndex becoming outrageously big and document tradeoffs of our decisions (#4483, thanks @JoviDeCroock)
+
+## Types
+
+- `AnyComponent` type to support classes (#4479, thanks @rschristian)
+
+## Maintenance
+
+- Fix typo in comment (#4494, thanks @rburgst)
+- Update fake compat version (#4488, thanks @rschristian)
+- Remove impossible branch (#4491, thanks @JoviDeCroock)
+- Golf down diffChildren (#4485, thanks @JoviDeCroock)
+- Get rid of eager unmounting (#4484, thanks @JoviDeCroock)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.23.2 (2024-08-12)</h2>
+      <pre>## Fixes
+
+- Fix shifting VNode children to the front (#4472, thanks @JoviDeCroock)
+
+## Types
+
+- Add TypeScript support for Container.contains (#4471, thanks @sjoerdmulder)
+- Add AriaRole types export (#4466, thanks @kuronijin)
+
+## Maintenance
+
+- Bump to oxlint v0.7.0 (#4469, thanks @Boshen)
+- General performance improvements for folks using compat (#4459, thanks @JoviDeCroock)
+- Prepare for no-unused-vars (#4462, thanks @DonIsaac) </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.23.1 (2024-07-25)</h2>
+      <pre>## Fixes
+
+- Fix debug-issue in testing libraries where there might not be a DOM node (#4454, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.23.0 (2024-07-23)</h2>
+      <pre>## Features
+
+- Support ref cleanup functions (#4436, thanks @marvinhagemeister)
+
+This adds support for returning a function in functional refs, example
+
+```jsx
+<input
+  ref={(ref) => {
+    // Assign ref, do something with it
+    return () => {
+      // ref cleanup, when the element unmounts
+      // we run the cleanup
+    };
+  }}
+/>
+```
+
+## Fixes
+
+- Child-diffing should shift keyed fragmented lists (#4448, thanks @JoviDeCroock)
+- Invalid DOM check not firing when p/a/button have a parent (#4449, thanks @JoviDeCroock)
+- Support comments for streaming renders (#4446, thanks @JoviDeCroock)
+- Import renderToPipeableStream in server.mjs for re-exporting (#4440, thanks @3846masa)
+
+## Types
+
+- Add missing types ElementType and ComponentPropsWithoutRef (#4433, thanks @hamza0867)
+- Add html attributes types #4099 (#4100, thanks @samsam-ahmadi)
+
+## Maintenance
+
+- Dependency maintenance (#4431, thanks @JoviDeCroock)
+- Fix coveralls reporting on PRs (#4430, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.22.1 (2024-07-01)</h2>
+      <pre>## Fixes
+
+- Only check is connected for dom nodes (#4409, thanks @JoviDeCroock)
+- Prevent useMemo from being too lazy with repeated renders (#4426, thanks @JoviDeCroock)
+- Replace isConnected with parentDom.contains (#4421, thanks @JoviDeCroock)
+- Graciously handle array shuffling (#4413, thanks @JoviDeCroock)
+- Support popover boolean attribute (#4393, thanks @JoviDeCroock)
+
+## Types
+
+- Improve React compatibility for `Ref` type. (#4403, thanks @maxbrieiev)
+- Expose stream render from `preact-render-to-string` (#4395, thanks @Austaras)
+
+## Maintenance
+
+- Prefer `globalThis` over `window` if available (#4401, thanks @marvinhagemeister)
+- Bump lockfile version to v3 (#4398, thanks @rschristian)
+
+## Performance
+
+- Improve perf by skipping some lifecycle hooks for perf (#4366, thanks @JoviDeCroock)
+- Create hot path for unmounting a tree of context (#4396, thanks @JoviDeCroock)
+- Migrate husky v9 (#4390, thanks @castrogarciajs)
+- Migrate to oxlint (#4387, thanks @JoviDeCroock)
+- Migrate to biome (#4386, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.22.0 (2024-05-15)</h2>
+      <pre>## Features
+
+- Support MathML namespace (#4364, thanks @rschristian)
+
+## Types
+
+- Add popover types (#4378, thanks @rschristian)
+
+## Maintenance
+
+- Skip running compressed-size builds twice (#4377, thanks @rschristian)
+- Test types and warnings (#4369, thanks @rschristian)
+- Bump compressed-size-action (#4368, thanks @rschristian)
+
+## Fixes
+
+- Allow the same component to render many times across different phases (#4382, thanks @JoviDeCroock)
+- Provide error for illegal nesting of `<button>` and `<a>` (#4376, thanks @rschristian)
+- Disallow `<tr>` as a child of `<table>` (#4375, thanks @rschristian)
+- Change syntax in `compat/client` for IE11 support (#4372, thanks @rschristian)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.21.0 (2024-04-30)</h2>
+      <pre>## Features
+
+- Debug throw on too many rerenders (#4349, thanks @rschristian)
+- Add compat/client types (#4345, thanks @rschristian)
+
+## Fixes
+
+- Expose hooks through compat's `ReactCurrentDispatcher` (#4342, thanks @rschristian)
+- Respect default value (#4341, thanks @JoviDeCroock)
+- Incorrect "missing transform-jsx-source" warning (#4350, thanks @rschristian)
+
+## Types
+
+- Support ComponentChild(ren) in compat render/hydrate/createPortal (#4346, thanks @rschristian)
+- Import and re-export PreactElement (#3228, thanks @henryqdineen)
+
+## Maintenance
+
+- Add zustand and redux-toolkit to the demo. (#3523, thanks @MortezaMirjavadi)
+- Optimise jsx runtime (#4337, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.20.2 (2024-04-09)</h2>
+      <pre>## Fixes
+
+- Check whether `oldDom` is present in the DOM (#4318, thanks @JoviDeCroock)
+- Simplify the logic introduced in #4322 & use eventClock for capture events too (#4324, thanks @jviide)
+- Use a virtual clock instead of Date.now() for event dispatch times (#4322, thanks @jviide)
+
+## Types
+
+- Add template tag JSX type (#4334, thanks @marvinhagemeister)
+
+## Maintenance
+
+- Integrate the new benchmarks repo and update  (#4310, thanks @andrewiggins)
+- Some byte improvements (#4321, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.20.1 (2024-03-23)</h2>
+      <pre>## Fixes
+
+- Add special case for focusIn and focusOut (#4316, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.20.0 (2024-03-20)</h2>
+      <pre>## Features
+
+- Add isMemo to compact to allow compatibility with react-is dependant libraries (#4302, thanks @ziongh)
+
+## Fixes
+
+- Fix case where shrinking a list would cause an exception (#4312, thanks @JoviDeCroock)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.19.7 (2024-03-18)</h2>
+      <pre>## Types
+
+- Bring consistency to our focus-event types (#4307, thanks @JoviDeCroock)
+- Add onScrollend listener type (#4305, thanks @JoviDeCroock)
+- Align state updater type with Raeect (#4306, thanks @JoviDeCroock)
+
+## Fixes
+
+- Revert batch commit callbacks from all components in the render queue (#4297, thanks @JoviDeCroock)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.19.6 (2024-02-22)</h2>
+      <pre>**tl;dr:** This release contains bug fixes for incorrect ordering of unkeyed children.
+
+## Fixes
+
+* Match `null` placeholders using skewed index (#4290, thanks @andrewiggins)
+* Fix increment skew when we aren't removing the first pointer (#4284, thanks @JoviDeCroock)
+* Fix invalid vnode internal id for text nodes (#4291, thanks @marvinhagemeister)
+* Fix unkeyed reconciliation order in certain scenarios (#4287, thanks @marvinhagemeister, thanks @JoviDeCroock)
+
+**Full Changelog**: https://github.com/preactjs/preact/compare/10.19.5...10.19.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.19.5 (2024-02-16)</h2>
+      <pre>## Fixes
+
+- Address scenario where we would crash when replacing a matched vnode with null (#4281, thanks @JoviDeCroock)
+- Correctly restore _original (#4280, thanks @JoviDeCroock)
+- Protect against nullish render (#4278, thanks @JoviDeCroock)
+- Support setting translate through direct access (#3800, thanks @JoviDeCroock)
+
+## Types
+
+- Add dpub aria 1.0 role JSX types (#4276, thanks @novari)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.19.4 (2024-02-08)</h2>
+      <pre>## Fixes
+
+- event-listeners in safari 12.3 fix (#4253, thanks @JoviDeCroock)     
+- support passing context into pure component (#4269, thanks @JoviDeCroock)     
+- retain masks across render invocations (#4245, thanks @JoviDeCroock)
+- skip comment nodes for placeChild (#4128, thanks @JoviDeCroock)
+- ensure we are able to support capture events from compat (#4243, thanks @JoviDeCroock)
+- batch commit callbacks from all components in the render queue (#4234, thanks @developit)
+
+## Types
+
+- improve preact compat types adding a few missing @types/react used by styled-components (#4271, thanks @jduthon)
+- add ComponentType to preact/compat (#4239, thanks @ianobermiller)
+- add missing contenteditable "inherit" value (#4242, thanks @marvinhagemeister)
+
+## Maintenance
+
+- add some sensible timeouts to actions that call out to external services (#4259, thanks @andrewiggins)
+- improve types of hook source (#4229, thanks @andrewiggins)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.19.3 (2023-12-08)</h2>
+      <pre>## Bug Fixes
+
+- Add `MathML` types (#4214, thanks @fekete965)
+- Fix event handler event types for `onInput`, `onBeforeInput` and `onSubmit` (#4226, #4220, thanks @marvinhagemeister)
+- Fix invalid vnodes not filtered out in children (#4219 , thanks @billti)
+
+## Maintenance
+
+- Remove focus from event capturing tests (#4217, @andrewiggins)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.19.2 (2023-11-14)</h2>
+      <pre>## Fixes
+
+- Call options.vnode on rerender (#4209, thanks @andrewiggins)
+
+## Maintenance
+
+- Fix tests in IE11 (#4211, thanks @andrewiggins)
+- Add test for removing children of memoed components (#4210, thanks @andrewiggins)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>10.19.1 (2023-11-11)</h2>
+      <pre>## Fixes
+
+- Missing preact import error when using compat (#4206, thanks @JoviDeCroock)
+
+## Types
+
+- Make `children` optional in `Provider`'s typings (#4205, thanks @shicks)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

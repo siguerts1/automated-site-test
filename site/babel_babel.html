@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for babel/babel"/>
+  <title>babel/babel Release Notes</title>
+</head>
+<body>
+  <h1>🚀 babel/babel - Release Notes</h1>
+  
+    <section>
+      <h2>v7.27.0 (2025-03-24)</h2>
+      <pre>## v7.27.0 (2025-03-24)
+
+Thanks @ishchhabra and @vovkasm for your first PRs!
+
+#### :eyeglasses: Spec Compliance
+* `babel-generator`, `babel-parser`
+  * [#16977](https://github.com/babel/babel/pull/16977) Default `importAttributesKeyword` to `with` ([@JLHwung](https://github.com/JLHwung))
+
+#### :rocket: New Feature
+* `babel-helper-create-class-features-plugin`, `babel-traverse`, `babel-types`
+  * [#17169](https://github.com/babel/babel/pull/17169) Allow `traverseFast` to exit early ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-parser`, `babel-types`
+  * [#17110](https://github.com/babel/babel/pull/17110) Add `ImportAttributes` to `Standardized` and move its parser test fixtures ([@JLHwung](https://github.com/JLHwung))
+* `babel-generator`
+  * [#17100](https://github.com/babel/babel/pull/17100) fix(babel-generator): add named export of generate function ([@vovkasm](https://github.com/vovkasm))
+* `babel-parser`, `babel-template`
+  * [#17149](https://github.com/babel/babel/pull/17149) Add `allowYieldOutsideFunction` to parser ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-plugin-transform-typescript`, `babel-traverse`
+  * [#17102](https://github.com/babel/babel/pull/17102) feat: Add `upToScope` parameter to `hasBinding` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-parser`
+  * [#17082](https://github.com/babel/babel/pull/17082) Support ESTree AccessorProperty ([@JLHwung](https://github.com/JLHwung))
+* `babel-types`
+  * [#17162](https://github.com/babel/babel/pull/17162) feat(babel-types): Add support for BigInt literal conversion in valueToNode ([@ishchhabra](https://github.com/ishchhabra))
+
+#### :bug: Bug Fix
+* `babel-helper-create-class-features-plugin`, `babel-plugin-transform-class-properties`
+  * [#16816](https://github.com/babel/babel/pull/16816) fix: Class reference in type throws error ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-traverse`
+  * [#17170](https://github.com/babel/babel/pull/17170) fix: Reset child scopes when `scope.crawl()` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-helpers`, `babel-preset-typescript`, `babel-runtime-corejs2`, `babel-runtime-corejs3`, `babel-runtime`
+  * [#17118](https://github.com/babel/babel/pull/17118) Fix: align behaviour to tsc `rewriteRelativeImportExtensions` ([@JLHwung](https://github.com/JLHwung))
+* `babel-cli`
+  * [#17182](https://github.com/babel/babel/pull/17182) fix: `@babel/cli` generates duplicate inline source maps ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-plugin-transform-named-capturing-groups-regex`, `babel-types`
+  * [#17175](https://github.com/babel/babel/pull/17175) Generate computed proto key ([@JLHwung](https://github.com/JLHwung))
+
+#### :running_woman: Performance
+* `babel-types`
+  * [#16870](https://github.com/babel/babel/pull/16870) perf: Improve builders of `@babel/types` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-helper-create-regexp-features-plugin`
+  * [#17176](https://github.com/babel/babel/pull/17176) fix: improve duplicate named groups check ([@JLHwung](https://github.com/JLHwung))
+
+#### Committers: 5
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Ish Chhabra ([@ishchhabra](https://github.com/ishchhabra))
+- Vladimir Timofeev ([@vovkasm](https://github.com/vovkasm))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v8.0.0-alpha.17 (2025-03-11)</h2>
+      <pre>## v8.0.0-alpha.17 (2025-03-11)
+
+This release also includes all changes from v7.26.10.
+
+This release includes a fix for [GHSA-968p-4wvh-cqc8](https://github.com/babel/babel/security/advisories/GHSA-968p-4wvh-cqc8), a security vulnerability which affects the `.replace` method of transpiled regular expressions that use named capturing groups.
+
+#### :boom: Breaking Change
+* `babel-parser`, `babel-types`
+  * [#17139](https://github.com/babel/babel/pull/17139) [Babel 8] Parse TSHeritageBase.expression as an expression ([@JLHwung](https://github.com/JLHwung))
+
+#### Committers: 6
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- Yunyoung Jordan Choi ([@jordan-choi](https://github.com/jordan-choi))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)
+- [@mmmsssttt404](https://github.com/mmmsssttt404)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.10 (2025-03-11)</h2>
+      <pre>## v7.26.10 (2025-03-11)
+
+Thanks @jordan-choi and @mmmsssttt404 for your first PRs!
+
+This release includes a fix for https://github.com/babel/babel/security/advisories/GHSA-968p-4wvh-cqc8, a security vulnerability which affects the `.replace` method of transpiled regular expressions that use named capturing groups.
+
+#### :eyeglasses: Spec Compliance
+* `babel-parser`
+  * [#17159](https://github.com/babel/babel/pull/17159) Disallow decorator in array pattern ([@JLHwung](https://github.com/JLHwung))
+
+#### :bug: Bug Fix
+* `babel-parser`, `babel-template`
+  * [#17164](https://github.com/babel/babel/pull/17164) Fix: always initialize ExportDeclaration attributes ([@JLHwung](https://github.com/JLHwung))
+* `babel-core`
+  * [#17142](https://github.com/babel/babel/pull/17142) fix: "Map maximum size exceeded" in deepClone ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-parser`, `babel-plugin-transform-typescript`
+  * [#17154](https://github.com/babel/babel/pull/17154) Update typescript parser tests ([@JLHwung](https://github.com/JLHwung))
+* `babel-traverse`
+  * [#17151](https://github.com/babel/babel/pull/17151) fix: Should not evaluate vars in child scope ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-generator`
+  * [#17153](https://github.com/babel/babel/pull/17153) fix: Correctly generate `abstract override` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-parser`
+  * [#17107](https://github.com/babel/babel/pull/17107) Fix source type detection when parsing TypeScript ([@JLHwung](https://github.com/JLHwung))
+* `babel-helpers`, `babel-runtime`, `babel-runtime-corejs2`, `babel-runtime-corejs3`
+  * [#17173](https://github.com/babel/babel/pull/17173) Fix processing of replacement pattern with named capture groups ([@mmmsssttt404](https://github.com/[mmmsssttt404](https://github.com/mmmsssttt404)))
+
+#### :nail_care: Polish
+* `babel-standalone`
+  * [#17158](https://github.com/babel/babel/pull/17158) Avoid warnings when re-bundling @babel/standalone with webpack ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :house: Internal
+* `babel-parser`
+  * [#17160](https://github.com/babel/babel/pull/17160) Left-value parsing cleanup ([@JLHwung](https://github.com/JLHwung))
+
+#### Committers: 6
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- Yunyoung Jordan Choi ([@jordan-choi](https://github.com/jordan-choi))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)
+- [@mmmsssttt404](https://github.com/mmmsssttt404)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v8.0.0-alpha.16 (2025-02-14)</h2>
+      <pre>## v8.0.0-alpha.16 (2025-02-14)
+
+In addition to the changelog below, this release includes changes from [v7.26.6](https://github.com/babel/babel/releases/tag/v7.26.6) to [v7.26.9](https://github.com/babel/babel/releases/tag/v7.26.9).
+
+#### :boom: Breaking Change
+* `babel-types`
+  * [#17099](https://github.com/babel/babel/pull/17099) [babel 8] Remove legacy `.d.ts` for TypeScript <= 4.0 ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`, `babel-parser`, `babel-plugin-transform-template-literals`, `babel-traverse`, `babel-types`
+  * [#17066](https://github.com/babel/babel/pull/17066) [Babel 8] Create TSTemplateLiteralType ([@JLHwung](https://github.com/JLHwung))
+* `babel-generator`, `babel-parser`, `babel-plugin-transform-typescript`, `babel-types`
+  * [#17073](https://github.com/babel/babel/pull/17073) [Babel 8] Parse `export import =` as an ExportNamedDeclaration ([@JLHwung](https://github.com/JLHwung))
+* `babel-preset-env`
+  * [#17078](https://github.com/babel/babel/pull/17078) [babel 8] Remove bugfixes option ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-parser`
+  * [#17063](https://github.com/babel/babel/pull/17063) [Babel 8] Create TSEmptyBodyFunctionExpression also on invalid input ([@JLHwung](https://github.com/JLHwung))
+* `babel-parser`, `babel-plugin-transform-typescript`, `babel-types`
+  * [#17059](https://github.com/babel/babel/pull/17059) [Babel 8] Create ThisExpression for `typeof this` ([@JLHwung](https://github.com/JLHwung))
+
+#### :bug: Bug Fix
+* `babel-generator`
+  * [#17131](https://github.com/babel/babel/pull/17131) [Babel 8] Add several TS type parentheses rules ([@JLHwung](https://github.com/JLHwung))
+  * [#17125](https://github.com/babel/babel/pull/17125) fix: Missing parentheses when printing a TS arrow function type in a union ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-parser`
+  * [#17106](https://github.com/babel/babel/pull/17106) Fix TS non-array type start ([@JLHwung](https://github.com/JLHwung))
+
+#### :house: Internal
+* `babel-parser`, `babel-plugin-proposal-pipeline-operator`, `babel-plugin-syntax-pipeline-operator`
+  * [#17058](https://github.com/babel/babel/pull/17058) [babel 8] Remove remaining references to minimal/smart pipelines ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 7
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Jamie Kyle ([@jamiebuilds-signal](https://github.com/jamiebuilds-signal))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- Tony Quetano ([@tquetano-netflix](https://github.com/tquetano-netflix))
+- [@branchseer](https://github.com/branchseer)
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.9 (2025-02-14)</h2>
+      <pre>## v7.26.9 (2025-02-14)
+
+#### :bug: Bug Fix
+* `babel-types`
+  * [#17103](https://github.com/babel/babel/pull/17103) fix: Definition for `TSPropertySignature.kind` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-generator`, `babel-types`
+  * [#17062](https://github.com/babel/babel/pull/17062) Print TypeScript optional/definite in ClassPrivateProperty ([@jamiebuilds-signal](https://github.com/jamiebuilds-signal))
+
+#### :house: Internal
+* `babel-types`
+  * [#17130](https://github.com/babel/babel/pull/17130) Use `.ts` files with explicit reexports to solve name conflicts ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-core`
+  * [#17127](https://github.com/babel/babel/pull/17127) Do not depend on `@types/gensync` in Babel 7 ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 5
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Jamie Kyle ([@jamiebuilds-signal](https://github.com/jamiebuilds-signal))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.8 (2025-02-08)</h2>
+      <pre>## v7.26.8 (2025-02-08)
+
+#### :house: Internal
+* `babel-preset-env`
+  * [#17097](https://github.com/babel/babel/pull/17097) Update dependency babel-plugin-polyfill-corejs3 to ^0.11.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.7 (2025-01-24)</h2>
+      <pre>## v7.26.7 (2025-01-24)
+
+Thanks @branchseer and @tquetano-netflix for your first PRs!
+
+#### :bug: Bug Fix
+* `babel-helpers`, `babel-preset-env`, `babel-runtime-corejs3`
+  * [#17086](https://github.com/babel/babel/pull/17086) Make "object without properties" helpers ES6-compatible ([@tquetano-netflix](https://github.com/tquetano-netflix))
+* `babel-plugin-transform-typeof-symbol`
+  * [#17085](https://github.com/babel/babel/pull/17085) fix: Correctly handle `typeof` in arrow functions ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-parser`
+  * [#17079](https://github.com/babel/babel/pull/17079) Respect `ranges` option in estree method value ([@JLHwung](https://github.com/JLHwung))
+* `babel-core`
+  * [#17052](https://github.com/babel/babel/pull/17052) Do not try to parse .ts configs as JSON if natively supported ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-plugin-transform-typescript`
+  * [#17050](https://github.com/babel/babel/pull/17050) fix: correctly resolve references to non-constant enum members ([@branchseer](https://github.com/branchseer))
+* `babel-plugin-transform-typescript`, `babel-traverse`, `babel-types`
+  * [#17025](https://github.com/babel/babel/pull/17025) fix: Remove type-only `import x = y.z` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### Committers: 6
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- Tony Quetano ([@tquetano-netflix](https://github.com/tquetano-netflix))
+- [@branchseer](https://github.com/branchseer)
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.6 (2025-01-13)</h2>
+      <pre>## v7.26.6 (2025-01-13)
+
+#### :bug: Bug Fix
+* `babel-plugin-transform-nullish-coalescing-operator`
+  * [#17061](https://github.com/babel/babel/pull/17061) fix: Chaining nullish coalescing operators output size regression ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### Committers: 1
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v8.0.0-alpha.15 (2025-01-10)</h2>
+      <pre>## v8.0.0-alpha.15 (2025-01-10)
+
+In addition to the changelog below, this release includes changes from [v7.26.5](https://github.com/babel/babel/releases/tag/v7.26.5).
+
+#### :boom: Breaking Change
+* `babel-generator`, `babel-parser`, `babel-plugin-transform-typescript`, `babel-traverse`, `babel-types`
+  * [#16979](https://github.com/babel/babel/pull/16979) [Babel 8] Create TSEnumBody for TSEnumDeclaration ([@JLHwung](https://github.com/JLHwung))
+* `babel-parser`, `babel-types`
+  * [#17046](https://github.com/babel/babel/pull/17046) [Babel 8]: wrap the TSImportType's argument within a TSLiteralType ([@JLHwung](https://github.com/JLHwung))
+* `babel-generator`, `babel-parser`, `babel-types`
+  * [#17042](https://github.com/babel/babel/pull/17042) [Babel 8] Rename `typeParameters` to `typeArguments` in `TSImportType` ([@JLHwung](https://github.com/JLHwung))
+  * [#17017](https://github.com/babel/babel/pull/17017) [Babel 8]: rename `typeParameters` to `typeArguments` for `TSClassImplements` and `TSInterfaceHeritage` ([@JLHwung](https://github.com/JLHwung))
+  * [#17012](https://github.com/babel/babel/pull/17012) Rename `typeParameters` to `typeArguments` for `TSTypeQuery` ([@JLHwung](https://github.com/JLHwung))
+* `babel-generator`, `babel-parser`, `babel-plugin-transform-typescript`, `babel-types`
+  * [#17020](https://github.com/babel/babel/pull/17020) Rename `typeParameters` to `typeArguments` for call expression alike ([@JLHwung](https://github.com/JLHwung))
+* `babel-parser`
+  * [#17014](https://github.com/babel/babel/pull/17014) [Babel 8] Create TSAbstract{Method,Property}Definition ([@JLHwung](https://github.com/JLHwung))
+
+#### :house: Internal
+* `babel-generator`
+  * [#17057](https://github.com/babel/babel/pull/17057) [babel 8] Remove `DecimalLiteral` printing logic ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 5
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)
+- fisker Cheung ([@fisker](https://github.com/fisker))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.5 (2025-01-10)</h2>
+      <pre>## v7.26.5 (2025-01-10)
+
+#### :eyeglasses: Spec Compliance
+* `babel-parser`
+  * [#17011](https://github.com/babel/babel/pull/17011) Allow the dynamic `import.defer()` form of `import defer` ([@babel-bot](https://github.com/babel-bot))
+
+#### :bug: Bug Fix
+* `babel-plugin-transform-block-scoped-functions`
+  * [#17024](https://github.com/babel/babel/pull/17024) chore: Avoid calling `isInStrictMode` in Babel 7 ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-plugin-transform-typescript`
+  * [#17026](https://github.com/babel/babel/pull/17026) fix: Correctly generate exported const enums in namespace ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-parser`
+  * [#17045](https://github.com/babel/babel/pull/17045) [estree] Unify method type parameters handling ([@JLHwung](https://github.com/JLHwung))
+  * [#17013](https://github.com/babel/babel/pull/17013) fix: Correctly set position for `@(a.b)()` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+  * [#16996](https://github.com/babel/babel/pull/16996) [estree] Adjust the start loc of class methods with type params ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`, `babel-parser`, `babel-plugin-transform-flow-strip-types`, `babel-types`
+  * [#17028](https://github.com/babel/babel/pull/17028) Support flow jsx opening element type arguments ([@JLHwung](https://github.com/JLHwung))
+* `babel-compat-data`, `babel-preset-env`
+  * [#17031](https://github.com/babel/babel/pull/17031) fix: More accurate `transform-typeof-symbol` compat data ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-generator`, `babel-parser`, `babel-types`
+  * [#17019](https://github.com/babel/babel/pull/17019) Fix incomplete visitor keys ([@JLHwung](https://github.com/JLHwung))
+
+#### :microscope: Output optimization
+* `babel-plugin-transform-nullish-coalescing-operator`
+  * [#16612](https://github.com/babel/babel/pull/16612) Improve nullish coalescing operator output ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### Committers: 5
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)
+- fisker Cheung ([@fisker](https://github.com/fisker))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v8.0.0-alpha.14 (2024-12-09)</h2>
+      <pre>## v8.0.0-alpha.14 (2024-12-06)
+
+In addition to the changelog below, this release includes changes from [v7.26.1](https://github.com/babel/babel/releases/tag/v7.26.1) to [v7.26.4](https://github.com/babel/babel/releases/tag/v7.26.4)
+
+#### :boom: Breaking Change
+* `babel-generator`, `babel-parser`, `babel-types`
+  * [#17008](https://github.com/babel/babel/pull/17008) Rename `TSTypeReference.typeParameters` to `typeArguments` ([@JLHwung](https://github.com/JLHwung))
+  * [#16952](https://github.com/babel/babel/pull/16952) [Babel 8] Remove `TSModuleDeclaration.global` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-generator`, `babel-parser`, `babel-plugin-transform-flow-comments`, `babel-plugin-transform-typescript`, `babel-types`
+  * [#16997](https://github.com/babel/babel/pull/16997) [babel 8] Rename `superTypeParameters` -> `superTypeArguments` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`, `babel-parser`, `babel-plugin-transform-typescript`, `babel-types`
+  * [#16982](https://github.com/babel/babel/pull/16982) [Babel 8] Use `TSQualifiedName` for `namespace X.Y {}`'s name ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :bug: Bug Fix
+* Other
+  * [#17010](https://github.com/babel/babel/pull/17010) fix: build updated babel-type helpers ([@JLHwung](https://github.com/JLHwung))
+* `babel-preset-react`, `babel-standalone`
+  * [#16927](https://github.com/babel/babel/pull/16927) [react] Make `development` option default to the configured env ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :house: Internal
+* `babel-cli`, `babel-helper-transform-fixture-test-runner`
+  * [#17007](https://github.com/babel/babel/pull/17007) fix: migrate to dirent.parentPath ([@JLHwung](https://github.com/JLHwung))
+
+#### Committers: 6
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Dylan Piercey ([@DylanPiercey](https://github.com/DylanPiercey))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)
+- fisker Cheung ([@fisker](https://github.com/fisker))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.4 (2024-12-05)</h2>
+      <pre>## v7.26.4 (2024-12-05)
+
+#### :leftwards_arrow_with_hook: Revert
+* `babel-traverse`
+  * [#17005](https://github.com/babel/babel/pull/17005) Revert "perf: Improve scope information collection performance" ([@JLHwung](https://github.com/JLHwung))
+
+#### Committers: 2
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.3 (2024-12-04)</h2>
+      <pre>## v7.26.3 (2024-12-04)
+
+#### :bug: Bug Fix
+* `babel-generator`
+  * [#16958](https://github.com/babel/babel/pull/16958) [preserveFormat] force semicolons when invalidating ASI ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :house: Internal
+* `babel-helper-builder-binary-assignment-operator-visitor`, `babel-plugin-transform-exponentiation-operator`
+  * [#16895](https://github.com/babel/babel/pull/16895) Remove helper-builder-binary-assignment-operator-visitor ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :running_woman: Performance
+* `babel-generator`
+  * [#16959](https://github.com/babel/babel/pull/16959) perf: Reduce the use of temporary objects ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-traverse`
+  * [#16923](https://github.com/babel/babel/pull/16923) perf: Improve scope information collection performance ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+  * [#16964](https://github.com/babel/babel/pull/16964) perf: Avoid repeated traversal when creating scope ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-plugin-transform-modules-commonjs`
+  * [#16954](https://github.com/babel/babel/pull/16954) perf: Remove use of `simplifyAccess` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### Committers: 4
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.2 (2024-10-30)</h2>
+      <pre>## v7.26.2 (2024-10-30)
+
+#### :bug: Bug Fix
+* `babel-parser`
+  * [#16903](https://github.com/babel/babel/pull/16903) fix: Parse placeholder for TS namespace ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+  * [#16937](https://github.com/babel/babel/pull/16937) fix: Account for offsets when creating new Position instances ([@DylanPiercey](https://github.com/DylanPiercey))
+* `babel-generator`
+  * [#16948](https://github.com/babel/babel/pull/16948) Fix mapping of tokens with generated nodes in between ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 6
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Dylan Piercey ([@DylanPiercey](https://github.com/DylanPiercey))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)
+- fisker Cheung ([@fisker](https://github.com/fisker))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v8.0.0-alpha.13 (2024-10-25)</h2>
+      <pre>## v8.0.0-alpha.13 (2024-10-25)
+
+In addition to the changelog below, this release includes changes from [v7.25.1](https://github.com/babel/babel/releases/tag/v7.25.1) to [v7.26.0](https://github.com/babel/babel/releases/tag/v7.26.0)
+
+#### :boom: Breaking Change
+* `babel-generator`, `babel-parser`, `babel-plugin-transform-typescript`, `babel-traverse`, `babel-types`
+  * [#16731](https://github.com/babel/babel/pull/16731) Add `TSClassImplements|TSInterfaceHeritage` and rename `TsExpressionWithTypeArguments` in Babel 8 ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-generator`, `babel-parser`, `babel-plugin-proposal-pipeline-operator`, `babel-plugin-syntax-pipeline-operator`, `babel-standalone`
+  * [#16801](https://github.com/babel/babel/pull/16801) [Babel 8] Remove `minimal,smart` option of Pipeline Operator ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-parser`
+  * [#16813](https://github.com/babel/babel/pull/16813) [Flow] Drop support for annotations inside array patterns ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-plugin-transform-class-static-block`, `babel-plugin-transform-destructuring`, `babel-plugin-transform-spread`, `babel-traverse`
+  * [#16705](https://github.com/babel/babel/pull/16705) [Babel 8] Remove some `Scope` methods ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-generator`, `babel-parser`, `babel-plugin-proposal-import-wasm-source`, `babel-template`, `babel-types`
+  * [#16770](https://github.com/babel/babel/pull/16770) Remove `importAssertions` parser plugin ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`, `babel-parser`, `babel-standalone`
+  * [#16808](https://github.com/babel/babel/pull/16808) Remove `importReflection` parser plugin ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`, `babel-traverse`, `babel-types`
+  * [#16807](https://github.com/babel/babel/pull/16807) [Babel 8] Remove `DecimalLiteral` AST ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-generator`, `babel-parser`, `babel-plugin-proposal-destructuring-private`, `babel-plugin-syntax-decimal`, `babel-standalone`
+  * [#16741](https://github.com/babel/babel/pull/16741) [Babel 8] Remove `decimal` from parser ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-generator`, `babel-parser`, `babel-types`
+  * [#16733](https://github.com/babel/babel/pull/16733) [Babel 8] Split `typeParameter` of `TSMappedType` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-plugin-proposal-async-do-expressions`, `babel-traverse`
+  * [#16655](https://github.com/babel/babel/pull/16655) Remove some `NodePath` methods ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :rocket: New Feature
+* `babel-parser`, `babel-plugin-syntax-flow`, `babel-preset-typescript`
+  * [#16792](https://github.com/babel/babel/pull/16792) [Babel 8] Remove `enums` option of flow plugin ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :bug: Bug Fix
+* `babel-core`
+  * [#16925](https://github.com/babel/babel/pull/16925) Only parse # as comment in .babelignore at line start ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-template`, `babel-types`
+  * [#16830](https://github.com/babel/babel/pull/16830) fix: ObjectPattern used as id inside for-of ([@coderaiser](https://github.com/coderaiser))
+* `babel-plugin-transform-async-generator-functions`, `babel-plugin-transform-block-scoped-functions`, `babel-plugin-transform-block-scoping`
+  * [#16398](https://github.com/babel/babel/pull/16398) Refactor `transform-block-scoped-function` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-helper-transform-fixture-test-runner`, `babel-node`
+  * [#16706](https://github.com/babel/babel/pull/16706) [babel 8] Align `@babel/node` args parsing to Node.js ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-parser`
+  * [#16668](https://github.com/babel/babel/pull/16668) [Babel 8] Fix spelling of error code ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :nail_care: Polish
+* `babel-core`
+  * [#16836](https://github.com/babel/babel/pull/16836) [Babel 8] fix: Throwing exceptions synchronously ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :house: Internal
+* `babel-generator`, `babel-helper-create-class-features-plugin`, `babel-helper-module-transforms`, `babel-plugin-proposal-destructuring-private`, `babel-plugin-transform-destructuring`, `babel-plugin-transform-modules-commonjs`, `babel-plugin-transform-object-rest-spread`, `babel-plugin-transform-parameters`, `babel-traverse`, `babel-types`
+  * [#16817](https://github.com/babel/babel/pull/16817) Remove `BABEL_TYPES_8_BREAKING` flag and enable it by default ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* _Every package_
+  * [#16800](https://github.com/babel/babel/pull/16800) [babel 8] Require Node.js `^18.20.0 || ^20.17.0 || >=22.8.0` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`, `babel-parser`, `babel-plugin-bugfix-v8-spread-parameters-in-optional-chaining`, `babel-plugin-syntax-typescript`, `babel-plugin-transform-class-properties`, `babel-plugin-transform-modules-commonjs`, `babel-plugin-transform-private-methods`, `babel-plugin-transform-unicode-sets-regex`, `babel-traverse`
+  * [#16572](https://github.com/babel/babel/pull/16572) Clean all always enabled parser plugins ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### Committers: 13
+- Adrian ([@nerodesu017](https://github.com/nerodesu017))
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Dylan Piercey ([@DylanPiercey](https://github.com/DylanPiercey))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- Timofei Iatsenko ([@timofei-iatsenko](https://github.com/timofei-iatsenko))
+- Viktar Vaŭčkievič ([@victorenator](https://github.com/victorenator))
+- [@j4k0xb](https://github.com/j4k0xb)
+- [@keiseiTi](https://github.com/keiseiTi)
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)
+- coderaiser ([@coderaiser](https://github.com/coderaiser))
+- fisker Cheung ([@fisker](https://github.com/fisker))
+- hwook ([@YuHyeonWook](https://github.com/YuHyeonWook))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.1 (2024-10-25)</h2>
+      <pre>## v7.26.1 (2024-10-25)
+
+#### :bug: Bug Fix
+* `babel-parser`
+  * [#16936](https://github.com/babel/babel/pull/16936) fix(parser): offset internal index locations by startIndex ([@DylanPiercey](https://github.com/DylanPiercey))
+
+#### Committers: 3
+- Dylan Piercey ([@DylanPiercey](https://github.com/DylanPiercey))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.26.0 (2024-10-25)</h2>
+      <pre>## v7.26.0 (2024-10-25)
+
+Thanks @timofei-iatsenko for your first PR!
+
+You can find the release blog post with some highlights at https://babeljs.io/blog/2024/10/25/7.26.0.
+
+#### :rocket: New Feature
+* `babel-core`, `babel-generator`, `babel-parser`, `babel-plugin-syntax-import-assertions`, `babel-plugin-syntax-import-attributes`, `babel-preset-env`, `babel-standalone`, `babel-types`
+  * [#16850](https://github.com/babel/babel/pull/16850) Enable import attributes parsing by default ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-core`
+  * [#16862](https://github.com/babel/babel/pull/16862) feat: support async plugin's pre/post ([@timofei-iatsenko](https://github.com/timofei-iatsenko))
+* `babel-compat-data`, `babel-plugin-proposal-regexp-modifiers`, `babel-plugin-transform-regexp-modifiers`, `babel-preset-env`, `babel-standalone`
+  * [#16692](https://github.com/babel/babel/pull/16692) Add `transform-regexp-modifiers` to `preset-env` ([@JLHwung](https://github.com/JLHwung))
+* `babel-parser`
+  * [#16849](https://github.com/babel/babel/pull/16849) feat: add `startIndex` parser option ([@DylanPiercey](https://github.com/DylanPiercey))
+* `babel-generator`, `babel-parser`, `babel-plugin-syntax-flow`
+  * [#16841](https://github.com/babel/babel/pull/16841) Always enable parsing of Flow enums ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-helpers`, `babel-preset-typescript`, `babel-runtime-corejs3`
+  * [#16794](https://github.com/babel/babel/pull/16794) Support `import()` in `rewriteImportExtensions` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-generator`, `babel-parser`
+  * [#16708](https://github.com/babel/babel/pull/16708) Add experimental format-preserving mode to `@babel/generator` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :bug: Bug Fix
+* `babel-core`
+  * [#16928](https://github.com/babel/babel/pull/16928) Workaround Node.js bug for parallel loading of TLA modules ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+  * [#16926](https://github.com/babel/babel/pull/16926) Fix loading of modules with TLA in Node.js 23 ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :nail_care: Polish
+* `babel-plugin-proposal-json-modules`, `babel-plugin-transform-json-modules`, `babel-standalone`
+  * [#16924](https://github.com/babel/babel/pull/16924) Rename `proposal-json-modules` to `transform-json-modules` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :house: Internal
+* `babel-code-frame`, `babel-highlight`
+  * [#16896](https://github.com/babel/babel/pull/16896) Inline `@babel/highlight` in `@babel/code-frame` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`, `babel-parser`, `babel-types`
+  * [#16732](https://github.com/babel/babel/pull/16732) Add `kind` to `TSModuleDeclaration` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :running_woman: Performance
+* `babel-helper-module-transforms`, `babel-plugin-transform-modules-commonjs`
+  * [#16882](https://github.com/babel/babel/pull/16882) perf: Improve module transforms ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### Committers: 5
+- Dylan Piercey ([@DylanPiercey](https://github.com/DylanPiercey))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- Timofei Iatsenko ([@timofei-iatsenko](https://github.com/timofei-iatsenko))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.9 (2024-10-22)</h2>
+      <pre>## v7.25.9 (2024-10-22)
+
+Thanks @victorenator for your first PR!
+
+#### :bug: Bug Fix
+* `babel-parser`, `babel-template`, `babel-types`
+  * [#16905](https://github.com/babel/babel/pull/16905) fix: Keep type annotations in `syntacticPlaceholders` mode ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-helper-compilation-targets`, `babel-preset-env`
+  * [#16907](https://github.com/babel/babel/pull/16907) fix: support BROWSERSLIST{,_CONFIG} env ([@JLHwung](https://github.com/JLHwung))
+* Other
+  * [#16884](https://github.com/babel/babel/pull/16884) Analyze `ClassAccessorProperty` to prevent the `no-undef` rule ([@victorenator](https://github.com/victorenator))
+
+#### :house: Internal
+* `babel-helper-transform-fixture-test-runner`
+  * [#16914](https://github.com/babel/babel/pull/16914) remove test options flaky ([@JLHwung](https://github.com/JLHwung))
+* _Every package_
+  * [#16917](https://github.com/babel/babel/pull/16917) fix: Accidentally published `tsconfig` files ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :running_woman: Performance
+* `babel-parser`, `babel-types`
+  * [#16918](https://github.com/babel/babel/pull/16918) perf: Make `VISITOR_KEYS` etc. faster to access ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### Committers: 4
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Viktar Vaŭčkievič ([@victorenator](https://github.com/victorenator))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.8 (2024-10-10)</h2>
+      <pre>## v7.25.8 (2024-10-10)
+
+#### :bug: Bug Fix
+* `babel-core`
+  * [#16888](https://github.com/babel/babel/pull/16888) Restore public API of `resolvePlugin`/`resolvePreset` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :house: Internal
+* `babel-parser`, `babel-plugin-proposal-async-do-expressions`, `babel-plugin-proposal-destructuring-private`, `babel-plugin-proposal-do-expressions`, `babel-plugin-proposal-explicit-resource-management`, `babel-plugin-proposal-export-default-from`, `babel-plugin-proposal-function-bind`, `babel-plugin-proposal-function-sent`, `babel-plugin-proposal-import-defer`, `babel-plugin-proposal-partial-application`, `babel-plugin-proposal-throw-expressions`, `babel-plugin-transform-async-generator-functions`, `babel-plugin-transform-class-static-block`, `babel-plugin-transform-dynamic-import`, `babel-plugin-transform-export-namespace-from`, `babel-plugin-transform-json-strings`, `babel-plugin-transform-logical-assignment-operators`, `babel-plugin-transform-nullish-coalescing-operator`, `babel-plugin-transform-numeric-separator`, `babel-plugin-transform-object-rest-spread`, `babel-plugin-transform-optional-catch-binding`, `babel-plugin-transform-optional-chaining`, `babel-plugin-transform-private-property-in-object`, `babel-preset-env`
+  * [#16824](https://github.com/babel/babel/pull/16824) Inline one-line syntax plugins ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 3
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.7 (2024-10-02)</h2>
+      <pre>## v7.25.7 (2024-10-02)
+
+Thanks @DylanPiercey and @YuHyeonWook for your first PRs!
+
+#### :bug: Bug Fix
+* `babel-helper-validator-identifier`
+  * [#16825](https://github.com/babel/babel/pull/16825) fix: update identifier to unicode 16 ([@JLHwung](https://github.com/JLHwung))
+* `babel-traverse`
+  * [#16814](https://github.com/babel/babel/pull/16814) fix: issue with node path keys updated on unrelated paths ([@DylanPiercey](https://github.com/DylanPiercey))
+* `babel-plugin-transform-classes`
+  * [#16797](https://github.com/babel/babel/pull/16797) Use an inclusion rather than exclusion list for `super()` check ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`
+  * [#16788](https://github.com/babel/babel/pull/16788) Fix printing of TS `infer` in compact mode ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+  * [#16785](https://github.com/babel/babel/pull/16785) Print TS type annotations for destructuring in assignment pattern ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+  * [#16778](https://github.com/babel/babel/pull/16778) Respect `[no LineTerminator here]` after nodes ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :nail_care: Polish
+* `babel-types`
+  * [#16852](https://github.com/babel/babel/pull/16852) Add deprecated JSDOC for fields ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :house: Internal
+* `babel-core`
+  * [#16820](https://github.com/babel/babel/pull/16820) Allow sync loading of ESM when `--experimental-require-module` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-helper-compilation-targets`, `babel-helper-plugin-utils`, `babel-preset-env`
+  * [#16858](https://github.com/babel/babel/pull/16858) Add browserslist config to external dependency ([@JLHwung](https://github.com/JLHwung))
+* `babel-plugin-proposal-destructuring-private`, `babel-plugin-syntax-decimal`, `babel-plugin-syntax-import-reflection`, `babel-standalone`
+  * [#16809](https://github.com/babel/babel/pull/16809) Archive syntax-import-reflection and syntax-decimal ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`
+  * [#16779](https://github.com/babel/babel/pull/16779) Simplify logic for `[no LineTerminator here]` before nodes ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :running_woman: Performance
+* `babel-plugin-transform-typescript`
+  * [#16875](https://github.com/babel/babel/pull/16875) perf: Avoid extra cloning of namespaces ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-types`
+  * [#16842](https://github.com/babel/babel/pull/16842) perf: Improve @babel/types builders ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+  * [#16828](https://github.com/babel/babel/pull/16828) Only access `BABEL_TYPES_8_BREAKING` at startup ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 8
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Dylan Piercey ([@DylanPiercey](https://github.com/DylanPiercey))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)
+- coderaiser ([@coderaiser](https://github.com/coderaiser))
+- fisker Cheung ([@fisker](https://github.com/fisker))
+- hwook ([@YuHyeonWook](https://github.com/YuHyeonWook))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.6 (2024-08-30)</h2>
+      <pre>## v7.25.6 (2024-08-29)
+
+Thanks @j4k0xb for your first PR!
+
+#### :bug: Bug Fix
+* `babel-generator`
+  * [#16783](https://github.com/babel/babel/pull/16783) Properly print inner comments in TS array types ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+  * [#16775](https://github.com/babel/babel/pull/16775) fix: jsx whitespace is not properly preserved when retainLines ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-traverse`
+  * [#16727](https://github.com/babel/babel/pull/16727) fix: `path.getAssignmentIdentifiers` may be `undefined` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-parser`
+  * [#16761](https://github.com/babel/babel/pull/16761) fix: improve static canFollowModifier checks ([@JLHwung](https://github.com/JLHwung))
+* `babel-helpers`, `babel-plugin-transform-optional-chaining`, `babel-runtime-corejs3`
+  * [#16769](https://github.com/babel/babel/pull/16769) Only wrap functions in `superPropertyGet` helper ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :nail_care: Polish
+* `babel-generator`, `babel-plugin-transform-async-to-generator`, `babel-plugin-transform-block-scoping`, `babel-plugin-transform-class-properties`, `babel-plugin-transform-classes`, `babel-plugin-transform-duplicate-named-capturing-groups-regex`, `babel-plugin-transform-named-capturing-groups-regex`, `babel-plugin-transform-react-jsx-development`, `babel-plugin-transform-react-jsx`, `babel-plugin-transform-react-pure-annotations`, `babel-plugin-transform-regenerator`, `babel-plugin-transform-runtime`, `babel-preset-env`
+  * [#16780](https://github.com/babel/babel/pull/16780) Do not enforce printing space between `(` and comments ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-plugin-syntax-import-assertions`, `babel-plugin-syntax-import-attributes`
+  * [#16781](https://github.com/babel/babel/pull/16781) Don't throw when enabling both syntax-import-{assertions,attributes} ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`
+  * [#16782](https://github.com/babel/babel/pull/16782) TS union/intersection nested in union does not need parens ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :house: Internal
+* `babel-generator`
+  * [#16777](https://github.com/babel/babel/pull/16777) Remove unused `parent` params in the generator ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 5
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@j4k0xb](https://github.com/j4k0xb)
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.5 (2024-08-23)</h2>
+      <pre>## v7.25.5 (2024-08-23)
+
+#### :bug: Bug Fix
+* `babel-generator`, `babel-traverse`
+  * [#16764](https://github.com/babel/babel/pull/16764) fix: Generate sequence expression parentheses correctly ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :nail_care: Polish
+* `babel-generator`
+  * [#16738](https://github.com/babel/babel/pull/16738) Only force-parenthesize `satisfies`'s LHS if it has newlines ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 2
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.4 (2024-08-22)</h2>
+      <pre>## v7.25.4 (2024-08-22)
+
+#### :bug: Bug Fix
+* `babel-traverse`
+  * [#16756](https://github.com/babel/babel/pull/16756) fix: Skip computed key when renaming ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-helper-create-class-features-plugin`, `babel-plugin-proposal-decorators`
+  * [#16755](https://github.com/babel/babel/pull/16755) fix: Decorator 2018-09 may throw an exception ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-types`
+  * [#16710](https://github.com/babel/babel/pull/16710) Visit AST fields nodes according to their syntactical order ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`
+  * [#16709](https://github.com/babel/babel/pull/16709) Print semicolon after TS `export namespace as A` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :nail_care: Polish
+* `babel-generator`, `babel-plugin-proposal-decorators`, `babel-plugin-proposal-destructuring-private`, `babel-plugin-proposal-pipeline-operator`, `babel-plugin-transform-class-properties`, `babel-plugin-transform-destructuring`, `babel-plugin-transform-optional-chaining`, `babel-plugin-transform-private-methods`, `babel-plugin-transform-private-property-in-object`, `babel-plugin-transform-typescript`, `babel-runtime-corejs2`, `babel-runtime`, `babel-traverse`
+  * [#16722](https://github.com/babel/babel/pull/16722) Avoid unnecessary parens around sequence expressions ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`, `babel-plugin-transform-class-properties`
+  * [#16714](https://github.com/babel/babel/pull/16714) Avoid unnecessary parens around exported arrow functions ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-generator`, `babel-plugin-proposal-decorators`, `babel-plugin-proposal-destructuring-private`, `babel-plugin-transform-object-rest-spread`
+  * [#16712](https://github.com/babel/babel/pull/16712) Avoid printing unnecessary parens around object destructuring ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :microscope: Output optimization
+* `babel-generator`
+  * [#16740](https://github.com/babel/babel/pull/16740) Avoid extra spaces between comments/regexps in compact mode ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 4
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.3 (2024-07-31)</h2>
+      <pre>## v7.25.3 (2024-07-31)
+
+#### :bug: Bug Fix
+* `babel-plugin-bugfix-firefox-class-in-computed-class-key`, `babel-traverse`
+  * [#16699](https://github.com/babel/babel/pull/16699) Avoid validating visitors produced by `traverse.visitors.merge` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :house: Internal
+* `babel-parser`
+  * [#16688](https://github.com/babel/babel/pull/16688) Add `@babel/types` as a dependency of `@babel/parser` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 2
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.2 (2024-07-30)</h2>
+      <pre>## v7.25.2 (2024-07-30)
+
+#### :bug: Bug Fix
+* `babel-core`, `babel-traverse`
+  * [#16695](https://github.com/babel/babel/pull/16695) Ensure that `requeueComputedKeyAndDecorators` is available ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 2
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.1 (2024-07-28)</h2>
+      <pre>## v7.25.1 (2024-07-28)
+
+#### :bug: Bug Fix
+* `babel-plugin-transform-function-name`
+  * [#16683](https://github.com/babel/babel/pull/16683) fix: `ensureFunctionName` may be undefined ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-plugin-transform-react-constant-elements`
+  * [#16582](https://github.com/babel/babel/pull/16582) fix plugin-transform-react-constant-elements transform JSXFrament but not add JSXExpressionContainer ([@keiseiTi](https://github.com/keiseiTi))
+* `babel-traverse`
+  * [#16587](https://github.com/babel/babel/pull/16587) fix: fixed issue16583 + test ([@nerodesu017](https://github.com/nerodesu017))
+
+#### :house: Internal
+* [#16663](https://github.com/babel/babel/pull/16663) Test eslint plugin against eslint 9 ([@JLHwung](https://github.com/JLHwung))
+
+#### Committers: 4
+- Adrian ([@nerodesu017](https://github.com/nerodesu017))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- [@keiseiTi](https://github.com/keiseiTi)
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v8.0.0-alpha.12 (2024-07-26)</h2>
+      <pre>## v8.0.0-alpha.12 (2024-07-26)
+
+In addition to the changelog below, this release includes changes from [v7.24.8](https://github.com/babel/babel/releases/tag/v7.24.8) to [v7.25.0](https://github.com/babel/babel/releases/tag/v7.25.0).
+
+#### :boom: Breaking Change
+* `babel-traverse`
+  * [#16504](https://github.com/babel/babel/pull/16504) [babel 8] Remove methods starting with `_` in `@babel/traverse` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### Committers: 12
+- Amjad Yahia Robeen Hassan ([@amjed-98](https://github.com/amjed-98))
+- Artem ([@slatereax](https://github.com/slatereax))
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- David Taylor ([@davidtaylorhq](https://github.com/davidtaylorhq))
+- Guy Bedford ([@guybedford](https://github.com/guybedford))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Jon Kuperman ([@jkup](https://github.com/jkup))
+- Nagendran N ([@SreeXD](https://github.com/SreeXD))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- Sukka ([@SukkaW](https://github.com/SukkaW))
+- [@H0onnn](https://github.com/H0onnn)
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.25.0 (2024-07-26)</h2>
+      <pre>## v7.25.0 (2024-07-26)
+
+Thanks @davidtaylorhq and @slatereax for your first PR!
+
+You can find the release blog post with some highlights at https://babeljs.io/blog/2024/07/26/7.25.0.
+
+#### :eyeglasses: Spec Compliance
+* `babel-helpers`, `babel-plugin-proposal-explicit-resource-management`, `babel-runtime-corejs3`
+  * [#16537](https://github.com/babel/babel/pull/16537) `await using` normative updates ([@JLHwung](https://github.com/JLHwung))
+* `babel-plugin-transform-typescript`
+  * [#16602](https://github.com/babel/babel/pull/16602) Ensure enum members syntactically determinable to be strings do not get reverse mappings ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :rocket: New Feature
+* `babel-helper-create-class-features-plugin`, `babel-helper-function-name`, `babel-helper-plugin-utils`, `babel-helper-wrap-function`, `babel-plugin-bugfix-safari-class-field-initializer-scope`, `babel-plugin-bugfix-safari-id-destructuring-collision-in-function-expression`, `babel-plugin-transform-classes`, `babel-plugin-transform-function-name`, `babel-preset-env`, `babel-traverse`, `babel-types`
+  * [#16658](https://github.com/babel/babel/pull/16658) Move `ensureFunctionName` to `NodePath.prototype` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-helper-hoist-variables`, `babel-helper-plugin-utils`, `babel-plugin-proposal-async-do-expressions`, `babel-plugin-transform-modules-systemjs`, `babel-traverse`
+  * [#16644](https://github.com/babel/babel/pull/16644) Move `hoistVariables` to `Scope.prototype` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-helper-create-class-features-plugin`, `babel-helper-module-transforms`, `babel-helper-plugin-utils`, `babel-helper-split-export-declaration`, `babel-plugin-transform-classes`, `babel-traverse`, `babel-types`
+  * [#16645](https://github.com/babel/babel/pull/16645) Move `splitExportDeclaration` to `NodePath.prototype` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-helper-create-class-features-plugin`, `babel-helper-environment-visitor`, `babel-helper-module-transforms`, `babel-helper-plugin-utils`, `babel-helper-remap-async-to-generator`, `babel-helper-replace-supers`, `babel-plugin-bugfix-firefox-class-in-computed-class-key`, `babel-plugin-bugfix-v8-static-class-fields-redefine-readonly`, `babel-plugin-transform-async-generator-functions`, `babel-plugin-transform-classes`, `babel-traverse`
+  * [#16649](https://github.com/babel/babel/pull/16649) Move `environment-visitor` helper into `@babel/traverse` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-core`, `babel-parser`
+  * [#16480](https://github.com/babel/babel/pull/16480) Expose wether a module has TLA or not as `.extra.async` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-compat-data`, `babel-plugin-bugfix-safari-class-field-initializer-scope`, `babel-preset-env`
+  * [#16569](https://github.com/babel/babel/pull/16569) Introduce `bugfix-safari-class-field-initializer-scope` ([@davidtaylorhq](https://github.com/davidtaylorhq))
+* `babel-plugin-transform-block-scoping`, `babel-traverse`, `babel-types`
+  * [#16551](https://github.com/babel/babel/pull/16551) Add `NodePath#getAssignmentIdentifiers` ([@JLHwung](https://github.com/JLHwung))
+* `babel-helper-import-to-platform-api`, `babel-plugin-proposal-json-modules`
+  * [#16579](https://github.com/babel/babel/pull/16579) Add `uncheckedRequire` option for JSON imports to CJS ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-helper-transform-fixture-test-runner`, `babel-node`
+  * [#16642](https://github.com/babel/babel/pull/16642) Allow using custom config in `babel-node --eval` ([@slatereax](https://github.com/slatereax))
+* `babel-compat-data`, `babel-helper-create-regexp-features-plugin`, `babel-plugin-proposal-duplicate-named-capturing-groups-regex`, `babel-plugin-transform-duplicate-named-capturing-groups-regex`, `babel-preset-env`, `babel-standalone`
+  * [#16445](https://github.com/babel/babel/pull/16445) Add `duplicate-named-capturing-groups-regex` to `preset-env` ([@JLHwung](https://github.com/JLHwung))
+
+#### :bug: Bug Fix
+* `babel-generator`
+  * [#16678](https://github.com/babel/babel/pull/16678) Print parens around as expressions on the LHS ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-template`, `babel-types`
+  * [#15286](https://github.com/babel/babel/pull/15286) fix: Props are lost when the template replaces the node ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :house: Internal
+* Other
+  * [#16674](https://github.com/babel/babel/pull/16674) bump gulp to 5 ([@JLHwung](https://github.com/JLHwung))
+* `babel-generator`
+  * [#16651](https://github.com/babel/babel/pull/16651) Simplify the printing logic for `(` before ambiguous tokens ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-helper-function-name`, `babel-plugin-transform-arrow-functions`, `babel-plugin-transform-function-name`, `babel-preset-env`, `babel-traverse`
+  * [#16652](https://github.com/babel/babel/pull/16652) Simplify `helper-function-name` logic ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :running_woman: Performance
+* `babel-parser`, `babel-plugin-proposal-pipeline-operator`
+  * [#16461](https://github.com/babel/babel/pull/16461) Some minor parser performance improvements for ts ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+
+#### :microscope: Output optimization
+* `babel-plugin-transform-classes`
+  * [#16670](https://github.com/babel/babel/pull/16670) Reduce redundant `assertThisInitialized` ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-helper-create-class-features-plugin`, `babel-helper-replace-supers`, `babel-helpers`, `babel-plugin-proposal-decorators`, `babel-plugin-transform-class-properties`, `babel-plugin-transform-classes`, `babel-plugin-transform-exponentiation-operator`, `babel-plugin-transform-object-super`, `babel-plugin-transform-private-methods`, `babel-runtime-corejs2`, `babel-runtime-corejs3`, `babel-runtime`
+  * [#16374](https://github.com/babel/babel/pull/16374) Improve `super.x` output ([@liuxingbaoyu](https://github.com/liuxingbaoyu))
+* `babel-plugin-transform-class-properties`, `babel-plugin-transform-classes`
+  * [#16656](https://github.com/babel/babel/pull/16656) Simplify output for anonymous classes with no methods ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 6
+- Artem ([@slatereax](https://github.com/slatereax))
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- David Taylor ([@davidtaylorhq](https://github.com/davidtaylorhq))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.24.10 (2024-07-25)</h2>
+      <pre>## v7.24.10 (2024-07-16)
+
+#### :bug: Bug Fix
+* `babel-generator`
+  * [#16648](https://github.com/babel/babel/pull/16648) Fix parens detection for object&function in `as`/`satisfies` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### Committers: 1
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.24.9 (2024-07-15)</h2>
+      <pre>## v7.24.9 (2024-07-15)
+
+#### :bug: Bug Fix
+* `babel-core`, `babel-standalone`
+  * [#16639](https://github.com/babel/babel/pull/16639) Avoid `require()` call in `@babel/standalone` bundle ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+* `babel-types`
+  * [#16638](https://github.com/babel/babel/pull/16638) fix: provide legacy typings for TS < 4.1 ([@JLHwung](https://github.com/JLHwung))
+
+#### :nail_care: Polish
+* `babel-generator`, `babel-plugin-transform-optional-chaining`
+  * [#16617](https://github.com/babel/babel/pull/16617) Avoid extra parens in TS `as`/`satisfies` ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+
+#### :house: Internal
+* `babel-helper-module-transforms`
+  * [#16629](https://github.com/babel/babel/pull/16629) Lazy top-level initializations for module transforms ([@guybedford](https://github.com/guybedford))
+
+#### Committers: 5
+- Babel Bot ([@babel-bot](https://github.com/babel-bot))
+- Guy Bedford ([@guybedford](https://github.com/guybedford))
+- Huáng Jùnliàng ([@JLHwung](https://github.com/JLHwung))
+- Nicolò Ribaudo ([@nicolo-ribaudo](https://github.com/nicolo-ribaudo))
+- [@liuxingbaoyu](https://github.com/liuxingbaoyu)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

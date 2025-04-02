@@ -1,0 +1,2837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for lightning-ai/lightning"/>
+  <title>lightning-ai/lightning Release Notes</title>
+</head>
+<body>
+  <h1>🚀 lightning-ai/lightning - Release Notes</h1>
+  
+    <section>
+      <h2>Lightning v2.5.1 (2025-03-19)</h2>
+      <pre># Changes
+
+<a name="changelog-pytorch"></a>
+
+## PyTorch Lightning
+
+<details open><summary>Changed</summary>
+
+- Allow LightningCLI to use a customized argument parser class ([#20596](https://github.com/Lightning-AI/pytorch-lightning/pull/20596))
+- Change `wandb` default x-axis to `tensorboard`'s `global_step` when `sync_tensorboard=True` ([#20611](https://github.com/Lightning-AI/pytorch-lightning/pull/20611))
+- Added a new `checkpoint_path_prefix` parameter to the MLflow logger which can control the path to where the MLflow artifacts for the model checkpoints are stored ([#20538](https://github.com/Lightning-AI/pytorch-lightning/pull/20538))
+- CometML logger was updated to support the recent Comet SDK ([#20275](https://github.com/Lightning-AI/pytorch-lightning/pull/20275))
+- bump: testing with latest `torch` 2.6 ([#20509](https://github.com/Lightning-AI/pytorch-lightning/pull/20509))
+
+</details>
+
+<details open><summary>Fixed</summary>
+
+- Fixed CSVLogger logging hyperparameter at every write which increases latency  ([#20594](https://github.com/Lightning-AI/pytorch-lightning/pull/20594))
+- Fixed OverflowError when resuming from checkpoint with an iterable dataset ([#20565](https://github.com/Lightning-AI/pytorch-lightning/issues/20565))
+- Fixed swapped `_R_co` and `_P` to prevent type error ([#20508](https://github.com/Lightning-AI/pytorch-lightning/issues/20508))
+- Always call `WandbLogger.experiment` first in `_call_setup_hook` to ensure `tensorboard` logs can sync to `wandb` ([#20610](https://github.com/Lightning-AI/pytorch-lightning/pull/20610))
+- Fixed TBPTT example ([#20528](https://github.com/Lightning-AI/pytorch-lightning/pull/20528))
+- Fixed test compatibility as AdamW became a subclass of Adam ([#20574](https://github.com/Lightning-AI/pytorch-lightning/pull/20574))
+- Fixed file extension of model checkpoints uploaded by NeptuneLogger ([#20581](https://github.com/Lightning-AI/pytorch-lightning/pull/20581))
+- Reset trainer variable `should_stop` when `fit` is called ([#19177](https://github.com/Lightning-AI/pytorch-lightning/pull/19177))
+- Fixed making `WandbLogger` upload models from all `ModelCheckpoint` callbacks, not just one ([#20191](https://github.com/Lightning-AI/pytorch-lightning/pull/20191))
+- Error when logging to MLFlow deleted experiment ([#20556](https://github.com/Lightning-AI/pytorch-lightning/pull/20556))
+
+</details>
+
+<a name="changelog-fabric"></a>
+
+## Lightning Fabric
+
+<details open><summary>Changed</summary>
+
+- Added logging support for a list of dicts without collapsing to a single key ([#19957](https://github.com/Lightning-AI/pytorch-lightning/issues/19957))
+- bump: testing with latest `torch` 2.6 ([#20509](https://github.com/Lightning-AI/pytorch-lightning/pull/20509))
+
+</details>
+
+<details open><summary>Removed</summary>
+
+- Removed legacy support for `lightning run model`; use `fabric run` instead. ([#20588](https://github.com/Lightning-AI/pytorch-lightning/pull/20588))
+
+</details>
+
+
+</br>
+
+**Full commit list**: [2.5.0 -> 2.5.1](https://github.com/Lightning-AI/pytorch-lightning/compare/2.5.0...2.5.1)
+
+<a name="contributors"></a>
+
+# Contributors
+
+We thank **all folks** who submitted issues, features, fixes and doc changes. It's the only way we can **collectively** make Lightning :zap: better for everyone, nice job!
+
+In particular, we would like to thank the authors of the pull-requests above, in no particular order:
+
+@benglewis, @Borda, @cgebbe, @duydl, @haifeng-jin, @japdubengsub, @justusschock, @lantiga, @mauvilsa, @millskyle, @ringohoffman, @ryan597, @senarvi, @TresYap
+
+Thank you :heart: and we hope you'll keep them coming!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Lightning v2.5 post0 (2024-12-21)</h2>
+      <pre>**Full Changelog**: https://github.com/Lightning-AI/pytorch-lightning/compare/2.5.0...2.5.0.post0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Lightning v2.5 (2024-12-20)</h2>
+      <pre>[Lightning AI](https://lightning.ai) :zap: is excited to announce the release of Lightning 2.5. 
+
+Lightning 2.5 comes with improvements on several fronts, with **zero** API changes. Our users love it stable, we keep it stable :smile:.
+
+Talking about love :heart:, the `lightning`, `pytorch-lightning` and `lightning-fabric` packages are collectively getting more than **10M downloads per month** :open_mouth:, for a total of over **180M downloads** :exploding_head: since the early days . It's incredible to see PyTorch Lightning getting such a strong adoption across the industry and the sciences.
+
+Release 2.5 embraces PyTorch 2.5, and it marks some of its more recent directions as officially supported, namely tensor subclass-based APIs like [Distributed Tensors](https://pytorch.org/docs/stable/distributed.tensor.html) and [TorchAO](https://pytorch.org/blog/pytorch-native-architecture-optimization/), in combination with `torch.compile`.
+
+Here's a couple of examples:
+
+<details><summary>Distributed FP8 transformer with PyTorch Lightning</summary>
+
+Full example [here](https://github.com/Lightning-AI/pytorch-lightning/tree/master/examples/pytorch/fp8_distributed_transformer)
+
+```python
+import lightning as L
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from lightning.pytorch.demos import Transformer, WikiText2
+from lightning.pytorch.strategies import ModelParallelStrategy
+from torch.distributed._composable.fsdp.fully_shard import fully_shard
+from torch.utils.data import DataLoader
+from torchao.float8 import Float8LinearConfig, convert_to_float8_training
+
+class LanguageModel(L.LightningModule):
+    def __init__(self, vocab_size):
+        super().__init__()
+        self.vocab_size = vocab_size
+        self.model = None
+
+    def configure_model(self):
+        if self.model is not None:
+            return
+
+        with torch.device("meta"):
+            model = Transformer(
+                vocab_size=self.vocab_size,
+                nlayers=16,
+                nhid=4096,
+                ninp=1024,
+                nhead=32,
+            )
+
+        float8_config = Float8LinearConfig(
+            # pip install -U --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple/ triton-nightly  # noqa
+            pad_inner_dim=True,
+        )
+
+        def module_filter_fn(mod: torch.nn.Module, fqn: str):
+            # we skip the decoder because it typically vocabulary size
+            # is not divisible by 16 as required by float8
+            return fqn != "decoder"
+
+        convert_to_float8_training(model, config=float8_config, module_filter_fn=module_filter_fn)
+
+        for module in model.modules():
+            if isinstance(module, (nn.TransformerEncoderLayer, nn.TransformerDecoderLayer)):
+                fully_shard(module, mesh=self.device_mesh)
+
+        fully_shard(model, mesh=self.device_mesh)
+
+        self.model = torch.compile(model)
+
+    def training_step(self, batch):
+        input, target = batch
+        output = self.model(input, target)
+        loss = F.nll_loss(output, target.view(-1))
+        self.log("train_loss", loss, prog_bar=True)
+        return loss
+
+    def configure_optimizers(self):
+        return torch.optim.Adam(self.parameters(), lr=1e-4)
+
+def train():
+    L.seed_everything(42)
+
+    dataset = WikiText2()
+    train_dataloader = DataLoader(dataset, num_workers=8, batch_size=1)
+
+    model = LanguageModel(vocab_size=dataset.vocab_size)
+
+    mp_strategy = ModelParallelStrategy(
+        data_parallel_size=4,
+        tensor_parallel_size=1,
+    )
+
+    trainer = L.Trainer(strategy=mp_strategy, max_steps=100, precision="bf16-true", accumulate_grad_batches=8)
+
+    trainer.fit(model, train_dataloader)
+
+    trainer.print(torch.cuda.memory_summary())
+
+if __name__ == "__main__":
+    torch.set_float32_matmul_precision("high")
+
+    train()
+```
+
+</details>
+
+<details><summary>Distributed FP8 transformer with Fabric</summary>
+
+Full example [here](https://github.com/Lightning-AI/pytorch-lightning/tree/master/examples/fabric/fp8_distributed_transformer)
+
+```python
+import lightning as L
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from lightning.fabric.strategies import ModelParallelStrategy
+from lightning.pytorch.demos import Transformer, WikiText2
+from torch.distributed._composable.fsdp.fully_shard import fully_shard
+from torch.distributed.device_mesh import DeviceMesh
+from torch.utils.data import DataLoader
+from torchao.float8 import Float8LinearConfig, convert_to_float8_training
+from tqdm import tqdm
+
+def configure_model(model: nn.Module, device_mesh: DeviceMesh) -> nn.Module:
+    float8_config = Float8LinearConfig(
+        # pip install -U --index-url <https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple/> triton-nightly  # noqa
+        pad_inner_dim=True,
+    )
+
+    def module_filter_fn(mod: torch.nn.Module, fqn: str):
+        # we skip the decoder because it typically vocabulary size
+        # is not divisible by 16 as required by float8
+        return fqn != "decoder"
+
+    convert_to_float8_training(model, config=float8_config, module_filter_fn=module_filter_fn)
+
+    for module in model.modules():
+        if isinstance(module, (torch.nn.TransformerEncoderLayer, torch.nn.TransformerDecoderLayer)):
+            fully_shard(module, mesh=device_mesh)
+
+    fully_shard(model, mesh=device_mesh)
+
+    return torch.compile(model)
+
+def train():
+    L.seed_everything(42)
+
+    batch_size = 8
+    micro_batch_size = 1
+
+    max_steps = 100
+
+    dataset = WikiText2()
+    dataloader = DataLoader(dataset, num_workers=8, batch_size=micro_batch_size)
+
+    with torch.device("meta"):
+        model = Transformer(
+            vocab_size=dataset.vocab_size,
+            nlayers=16,
+            nhid=4096,
+            ninp=1024,
+            nhead=32,
+        )
+
+    strategy = ModelParallelStrategy(data_parallel_size=4, tensor_parallel_size=1, parallelize_fn=configure_model)
+
+    fabric = L.Fabric(precision="bf16-true", strategy=strategy)
+    fabric.launch()
+
+    model = fabric.setup(model)
+
+    optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
+    optimizer = fabric.setup_optimizers(optimizer)
+
+    dataloader = fabric.setup_dataloaders(dataloader)
+
+    iterable = tqdm(enumerate(dataloader), total=len(dataloader)) if fabric.is_global_zero else enumerate(dataloader)
+
+    steps = 0
+
+    for i, batch in iterable:
+        input, target = batch
+
+        is_accumulating = i % (batch_size // micro_batch_size) != 0
+
+        with fabric.no_backward_sync(model, enabled=is_accumulating):
+            output = model(input, target)
+            loss = F.nll_loss(output, target.view(-1))
+            fabric.backward(loss)
+
+        if not is_accumulating:
+            fabric.clip_gradients(model, optimizer, max_norm=1.0)
+            optimizer.step()
+            optimizer.zero_grad()
+            steps += 1
+
+        if fabric.is_global_zero:
+            iterable.set_postfix_str(f"train_loss={loss.item():.2f}")
+
+        if steps == max_steps:
+            break
+
+    fabric.print(torch.cuda.memory_summary())
+
+if __name__ == "__main__":
+    torch.set_float32_matmul_precision("high")
+
+    train()
+```
+
+</details>
+
+As these examples show, it's now easier than ever to take your PyTorch Lightning module and run it with **FSDP2 and/or tensor parallelism in FP8 precision**, using the `ModelParallelStrategy` we introduced in 2.4.
+
+Also note the use of distributed tensor APIs, TorchAO APIs, and `torch.compile` directly in the `configure_model` hook (or in the parallelize function in Fabric's `ModelParallelStrategy`), as opposed to the `LightningModule` as a whole. The advantage with this approach is that you can just **copy-paste the parallelize functions** that come with native PyTorch models directly in `configure_model` and get the same effect, no head-scratching involved :nerd_face:.
+
+Talking about head scratching, we also made a pass at the PyTorch Lightning internals and **hardened** the parts where we keep track of **progress counters** during training, validation, testing, as well as learning rate scheduling, in relation to **resuming from checkpoints**. We now made sure there are no (to the best of our knowledge) edge cases where stopping and resuming from checkpoints can change the sequence of loops or other internal states. **Fault tolerance for the win** :partying_face:!
+
+Alright! Feel free to take a look at the **full changelog** below.
+
+And of course: the best way to use PyTorch Lightning and Fabric is through [Lightning Studio](https://lightning.ai/) :zap:. Access GPUs, train models, deploy and more with **zero setup**. Focus on data and models - not infrastructure.
+
+<a name="changelog"></a>
+
+# Changes
+
+<a name="changelog-pytorch"></a>
+
+## PyTorch Lightning
+
+<details open><summary>Added</summary>
+
+- Added `step` parameter to `TensorBoardLogger.log_hyperparams` to visualize changes during training ([#20176](https://github.com/Lightning-AI/pytorch-lightning/pull/20176))
+- Added `str` method to datamodule ([#20301](https://github.com/Lightning-AI/pytorch-lightning/pull/20301))
+- Added timeout to DeepSpeedStrategy ([#20474](https://github.com/Lightning-AI/pytorch-lightning/pull/20474))
+- Added doc for Truncated Back-Propagation Through Time ([#20422](https://github.com/Lightning-AI/pytorch-lightning/pull/20422))
+- Added FP8 + FSDP2 + torch.compile examples for PyTorch Lightning ([#20440](https://github.com/Lightning-AI/pytorch-lightning/pull/20440))
+- Added profiling to `Trainer.save_checkpoint` ([#20405](https://github.com/Lightning-AI/pytorch-lightning/pull/20405))
+- Added after_instantiate_classes hook to CLI ([#20401](https://github.com/Lightning-AI/pytorch-lightning/pull/20401))
+
+</details>
+
+<details open><summary>Changed</summary>
+
+- Updated checkpointing documentation to mark `resume_from_checkpoint` as deprecated ([#20477](https://github.com/Lightning-AI/pytorch-lightning/pull/20477))
+- Made plugin type checks more flexible ([#20186](https://github.com/Lightning-AI/pytorch-lightning/pull/20186))
+- Changed seeding NumPy using `np.random.SeedSequence()` in `pl_worker_init_function()` to robustly seed NumPy-dependent dataloader workers ([#20369](https://github.com/Lightning-AI/pytorch-lightning/pull/20369))
+- Allowed callbacks to be restored not just during training ([#20403](https://github.com/Lightning-AI/pytorch-lightning/pull/20403))
+- Changed LightningCLI tests to account for future fix in jsonargparse ([#20372](https://github.com/Lightning-AI/pytorch-lightning/pull/20372))
+- Bumped PyTorch to version `2.5` ([#20351](https://github.com/Lightning-AI/pytorch-lightning/pull/20351))
+- Decoupled checkpoint artifact path from model artifact path ([#20325](https://github.com/Lightning-AI/pytorch-lightning/pull/20325))
+- Updated BitsAndBytes version ([#20313](https://github.com/Lightning-AI/pytorch-lightning/pull/20313))
+- Changed merging of hparams when logging to ignore parameter names that start with an underscore `_` ([#20221](https://github.com/Lightning-AI/pytorch-lightning/pull/20221))
+- Re-enabled passing `BytesIO` as path in `.to_onnx()` ([#20172](https://github.com/Lightning-AI/pytorch-lightning/pull/20172))
+
+</details>
+
+<details open><summary>Removed</summary>
+
+- Removed `List[int]` as input type for Trainer when `accelerator="cpu"` ([#20399](https://github.com/Lightning-AI/pytorch-lightning/pull/20399))
+
+</details>
+
+<details open><summary>Fixed</summary>
+
+- Fixed UnboundLocalError when using the predict method with return_predictions=False. ([#20484](https://github.com/Lightning-AI/pytorch-lightning/pull/20484))
+- Fixed use of `convert_module` in FSDP to avoid using more memory than necessary during initialization ([#20323](https://github.com/Lightning-AI/pytorch-lightning/pull/20323))
+- Fixed TypeError in `configure_optimizers` when running with `ReduceLROnPlateau` ([#20471](https://github.com/Lightning-AI/pytorch-lightning/pull/20471))
+- Fixed return type in `configure_optimizers` example ([#20420](https://github.com/Lightning-AI/pytorch-lightning/pull/20420))
+- Fixed in ncorrect URI prefix stripping in MLFlowLogger ([#20365](https://github.com/Lightning-AI/pytorch-lightning/pull/20365))
+- Fixed shuffling behavior when using a custom sampler in data module ([#20327](https://github.com/Lightning-AI/pytorch-lightning/pull/20327))
+- Ensured restarting from checkpoints leads to consistent internal counters compared to uninterrupted training ([#20379](https://github.com/Lightning-AI/pytorch-lightning/pull/20379))
+- Fixed LightningCLI failing when both module and data module save hyperparameters due to conflicting internal `_class_path` parameter ([#20221](https://github.com/Lightning-AI/pytorch-lightning/pull/20221))
+
+</details>
+
+<a name="changelog-fabric"></a>
+
+## Lightning Fabric
+
+<details open><summary>Added</summary>
+
+- Added `step` parameter to `TensorBoardLogger.log_hyperparams` to visualize changes during training ([#20176](https://github.com/Lightning-AI/pytorch-lightning/pull/20176))
+- Added timeout to DeepSpeedStrategy ([#20474](https://github.com/Lightning-AI/pytorch-lightning/pull/20474))
+- Added FP8 + FSDP2 + torch.compile examples for Fabric ([#20440](https://github.com/Lightning-AI/pytorch-lightning/pull/20440))
+- Added RTX 4080 super to chips dictionary ([#20285](https://github.com/Lightning-AI/pytorch-lightning/pull/20285))
+- Added device property to lazy load functionality ([#20183](https://github.com/Lightning-AI/pytorch-lightning/pull/20183))
+- Added `ddp_find_unused_parameters_true` alias in Fabric's DDPStrategy ([#20125](https://github.com/Lightning-AI/pytorch-lightning/pull/20125))
+
+</details>
+
+<details open><summary>Changed</summary>
+
+- Changed seeding NumPy using `np.random.SeedSequence()` in `pl_worker_init_function()` to robustly seed NumPy-dependent dataloader workers ([#20369](https://github.com/Lightning-AI/pytorch-lightning/pull/20369))
+- Bumped PyTorch to version `2.5` ([#20351](https://github.com/Lightning-AI/pytorch-lightning/pull/20351))
+- Update BitsAndBytes version ([#20313](https://github.com/Lightning-AI/pytorch-lightning/pull/20313))
+
+</details>
+
+<details open><summary>Removed</summary>
+
+- Nothing to see here :smile:
+
+</details>
+
+<details open><summary>Fixed</summary>
+
+- Fixed use of `convert_module` in FSDP to avoid using more memory than necessary during initialization ([#20323](https://github.com/Lightning-AI/pytorch-lightning/pull/20323))
+
+</details>
+
+</br>
+
+**Full commit list**: [2.4.0 -> 2.5.0](https://github.com/Lightning-AI/pytorch-lightning/compare/2.4.0...2.5.0)
+
+<a name="contributors"></a>
+
+# Contributors
+
+We thank **all folks** who submitted issues, features, fixes and doc changes. It's the only way we can **collectively** make Lightning :zap: better for everyone, nice job!
+
+In particular, we would like to thank the authors of the pull-requests above, in no particular order:
+
+@ringohoffman @MrWhatZitToYaa @jedyang97 @chualanagit @lantiga @AlessandroW @kazuar @t-vi @01AbhiSingh @WangYue0000 @amorehead @EricCousineau-TRI @mauvilsa @Borda @pete-mcelroy @ali-alshaar7 @GdoongMathew @farhadrgh @tshu-w @LukasSalchow @awindmann @dadwadw233 @qingquansong
+
+Thank you :heart: and we hope you'll keep them coming!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Lightning 2.5 RC (2024-12-12)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Lightning v2.4 (2024-08-07)</h2>
+      <pre>[Lightning AI](https://lightning.ai) :zap: is excited to announce the release of Lightning 2.4. This is mainly a compatibility upgrade for PyTorch 2.4 and Python 3.12, with a sprinkle of a few features and bug fixes.
+
+**Did you know?** The Lightning philosophy extends beyond a boilerplate-free deep learning framework: We've been hard at work bringing you [Lightning Studio](https://lightning.ai/). Code together, prototype, train, deploy, host AI web apps. All from your browser, with zero setup.
+
+<a name="changelog"></a>
+# Changes
+
+<a name="changelog-pytorch"></a>
+## PyTorch Lightning
+
+<details open><summary>Added</summary>
+
+- Made saving non-distributed checkpoints fully atomic ([#20011](https://github.com/Lightning-AI/pytorch-lightning/pull/20011))
+- Added `dump_stats` flag to `AdvancedProfiler` ([#19703](https://github.com/Lightning-AI/pytorch-lightning/issues/19703))
+- Added a flag `verbose` to the `seed_everything()` function ([#20108](https://github.com/Lightning-AI/pytorch-lightning/pull/20108))
+- Added support for PyTorch 2.4 ([#20010](https://github.com/Lightning-AI/pytorch-lightning/pull/20010))
+- Added support for Python 3.12 ([20078](https://github.com/Lightning-AI/pytorch-lightning/pull/20078))
+- The `TQDMProgressBar` now provides an option to retain prior training epoch bars ([#19578](https://github.com/Lightning-AI/pytorch-lightning/pull/19578))
+- Added the count of modules in train and eval mode to the printed `ModelSummary` table ([#20159](https://github.com/Lightning-AI/pytorch-lightning/pull/20159))
+
+</details>
+
+<details open><summary>Changed</summary>
+
+- Triggering KeyboardInterrupt (Ctrl+C) during `.fit()`, `.evaluate()`, `.test()` or `.predict()` now terminates all processes launched by the Trainer and exits the program ([#19976](https://github.com/Lightning-AI/pytorch-lightning/pull/19976))
+- Changed the implementation of how seeds are chosen for dataloader workers when using `seed_everything(..., workers=True)` ([#20055](https://github.com/Lightning-AI/pytorch-lightning/pull/20055))
+- NumPy is no longer a required dependency ([#20090](https://github.com/Lightning-AI/pytorch-lightning/issues/20090))
+
+</details>
+
+<details open><summary>Removed</summary>
+
+- Removed support for PyTorch 2.1 ([#20009](https://github.com/Lightning-AI/lightning/pull/20009))
+- Removed support for Python 3.8 ([#20071](https://github.com/Lightning-AI/lightning/pull/20071))
+
+</details>
+
+<details open><summary>Fixed</summary>
+
+- Avoid LightningCLI saving hyperparameters with `class_path` and `init_args` since this would be a breaking change ([#20068](https://github.com/Lightning-AI/pytorch-lightning/pull/20068))
+- Fixed an issue that would cause too many printouts of the seed info when using `seed_everything()` ([#20108](https://github.com/Lightning-AI/pytorch-lightning/pull/20108))
+- Fixed `_LoggerConnector`'s `_ResultMetric` to move all registered keys to the device of the logged value if needed ([#19814](https://github.com/Lightning-AI/pytorch-lightning/issues/19814))
+- Fixed `_optimizer_to_device` logic for special 'step' key in optimizer state causing performance regression ([#20019](https://github.com/Lightning-AI/lightning/pull/20019))
+- Fixed parameter counts in `ModelSummary` when model has distributed parameters (DTensor) ([#20163](https://github.com/Lightning-AI/pytorch-lightning/pull/20163))
+
+</details>
+
+<a name="changelog-fabric"></a>
+## Lightning Fabric
+
+<details open><summary>Added</summary>
+
+- Made saving non-distributed checkpoints fully atomic ([#20011](https://github.com/Lightning-AI/pytorch-lightning/pull/20011))
+- Added a flag `verbose` to the `seed_everything()` function ([#20108](https://github.com/Lightning-AI/pytorch-lightning/pull/20108))
+- Added support for PyTorch 2.4 ([#20028](https://github.com/Lightning-AI/pytorch-lightning/pull/20028))
+- Added support for Python 3.12 ([20078](https://github.com/Lightning-AI/pytorch-lightning/pull/20078))
+
+</details>
+
+<details open><summary>Changed</summary>
+
+- Changed the implementation of how seeds are chosen for dataloader workers when using `seed_everything(..., workers=True)` ([#20055](https://github.com/Lightning-AI/pytorch-lightning/pull/20055))
+- NumPy is no longer a required dependency ([#20090](https://github.com/Lightning-AI/pytorch-lightning/issues/20090))
+
+</details>
+
+<details open><summary>Removed</summary>
+
+- Removed support for PyTorch 2.1 ([#20009](https://github.com/Lightning-AI/lightning/pull/20009))
+- Removed support for Python 3.8 ([#20071](https://github.com/Lightning-AI/lightning/pull/20071))
+
+</details>
+
+<details open><summary>Fixed</summary>
+
+- Fixed an attribute error when loading a checkpoint into a quantized model using the `_lazy_load()` function ([#20121](https://github.com/Lightning-AI/lightning/pull/20121))
+- Fixed `_optimizer_to_device` logic for special 'step' key in optimizer state causing performance regression ([#20019](https://github.com/Lightning-AI/lightning/pull/20019))
+
+</details>
+
+</br>
+
+**Full commit list**: [2.3.0 -> 2.4.0](https://github.com/Lightning-AI/pytorch-lightning/compare/2.3.0...2.4.0)
+
+<a name="contributors"></a>
+# Contributors
+
+We thank all our contributors who submitted pull requests for features, bug fixes and documentation updates.
+
+### New Contributors
+* @SamuelLarkin made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19969
+* @liambsmith made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19986
+* @EtayLivne made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19915
+* @elmuz made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19998
+* @swyo made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19982
+* @corwinjoy made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/20011
+* @omahs made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19979
+* @linbo0518 made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/20040
+* @01AbhiSingh made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/20055
+* @K-H-Ismail made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/20099
+* @adosar made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/20146
+* @jojje made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19578
+
+### Did you know?
+
+Chuck Norris can solve NP-hard problems in polynomial time. In fact, any problem is easy when Chuck Norris solves it.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Patch release v2.3.3 (2024-07-08)</h2>
+      <pre>This release removes the code from the main `lightning` package that was reported in [CVE-2024-5980](https://github.com/advisories/GHSA-mr7h-w2qc-ffc2).</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Patch release v2.3.2 (2024-07-04)</h2>
+      <pre>Includes a minor bugfix that avoids a conflict with the entrypoint command with another package [#20041](https://github.com/Lightning-AI/pytorch-lightning/pull/20041).
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Patch release v2.3.1 (2024-06-27)</h2>
+      <pre>Includes minor bugfixes and stability improvements.
+
+
+**Full Changelog**: https://github.com/Lightning-AI/pytorch-lightning/compare/2.3.0...2.3.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Lightning v2.3: Tensor Parallelism and 2D Parallelism (2024-06-13)</h2>
+      <pre>[Lightning AI](https://lightning.ai) is excited to announce the release of Lightning 2.3 :zap:
+
+**Did you know?** The Lightning philosophy extends beyond a boilerplate-free deep learning framework: We've been hard at work bringing you [Lightning Studio](https://lightning.ai/). Code together, prototype, train, deploy, host AI web apps. All from your browser, with zero setup.
+
+This release introduces experimental support for Tensor Parallelism and 2D Parallelism, [PyTorch 2.3](https://pytorch.org/blog/pytorch2-3/) support, and several bugfixes and stability improvements.
+
+
+- [Highlights](#highlights)
+    - [Tensor Parallelism (beta)](https://github.com/Lightning-AI/lightning/releases/tag/2.3.0#highlights-tensor-parallel)
+    - [2D Parallelism (beta)](https://github.com/Lightning-AI/lightning/releases/tag/2.3.0#highlights-2d-parallel)
+    - [Training Mode in Model Summary](https://github.com/Lightning-AI/lightning/releases/tag/2.3.0#highlights-model-summary)
+    - [Special Forward Methods in Fabric](https://github.com/Lightning-AI/lightning/releases/tag/2.3.0#highlights-forward-methods)
+- [Notable Changes](https://github.com/Lightning-AI/lightning/releases/tag/2.3.0#bc-changes)
+- [Full Changelog](https://github.com/Lightning-AI/lightning/releases/tag/2.3.0#changelog)
+    - [PyTorch Lightning](https://github.com/Lightning-AI/lightning/releases/tag/2.3.0#changelog-pytorch)
+    - [Lightning Fabric](https://github.com/Lightning-AI/lightning/releases/tag/2.3.0#changelog-fabric)
+- [Contributors](https://github.com/Lightning-AI/lightning/releases/tag/2.3.0#contributors)
+
+
+<a name="highlights"></a>
+# Highlights
+
+<a name="highlights-tensor-parallel"></a>
+## Tensor Parallelism (beta)
+
+Tensor parallelism (TP) is a technique that splits up the computation of selected layers across GPUs to save memory and speed up distributed models. To enable TP as well as other forms of parallelism, we introduce a `ModelParallelStrategy` for both Lightning Trainer and Fabric. Under the hood, TP is enabled through new experimental PyTorch APIs like [DTensor](https://github.com/pytorch/pytorch/blob/main/torch/distributed/_tensor/README.md) and [`torch.distributed.tensor.parallel`](https://pytorch.org/docs/stable/distributed.tensor.parallel.html).
+
+### PyTorch Lightning
+
+Enabling TP in a model with PyTorch Lightning requires you to implement the `LightningModule.configure_model()` method where you convert selected layers of a model to paralellized layers. This is an advanced feature, because it requires a deep understanding of the model architecture. Open the [tutorial Studio](https://lightning.ai/lightning-ai/studios/tensor-parallelism-supercharging-large-model-training-with-pytorch-lightning) to learn the basics of Tensor Parallelism.
+
+<a target="_blank" href="https://lightning.ai/lightning-ai/studios/tensor-parallelism-supercharging-large-model-training-with-pytorch-lightning">
+  <img src="https://pl-bolts-doc-images.s3.us-east-2.amazonaws.com/app-2/studio-badge.svg" alt="Open In Studio"/>
+</a>
+
+&nbsp;
+
+```python
+import lightning as L
+from lightning.pytorch.strategies import ModelParallelStrategy
+from torch.distributed.tensor.parallel import ColwiseParallel, RowwiseParallel
+from torch.distributed.tensor.parallel import parallelize_module
+
+
+# 1. Implement the `configure_model()` method in LightningModule
+class LitModel(L.LightningModule):
+    def __init__(self):
+        super().__init__()
+        self.model = FeedForward(8192, 8192)
+
+    def configure_model(self):
+        # Lightning will set up a `self.device_mesh` for you
+        tp_mesh = self.device_mesh["tensor_parallel"]
+        # Use PyTorch's distributed tensor APIs to parallelize the model
+        plan = {
+            "w1": ColwiseParallel(),
+            "w2": RowwiseParallel(),
+            "w3": ColwiseParallel(),
+        }
+        parallelize_module(self.model, tp_mesh, plan)
+
+    def training_step(self, batch):
+        ...
+
+
+# 2. Create the strategy
+strategy = ModelParallelStrategy()
+
+# 3. Configure devices and set the strategy in Trainer
+trainer = L.Trainer(accelerator="cuda", devices=2, strategy=strategy)
+trainer.fit(...)
+
+```
+
+<details><summary>Full training example (requires at least 2 GPUs).</summary>
+    
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from torch.distributed.tensor.parallel import ColwiseParallel, RowwiseParallel
+from torch.distributed.tensor.parallel import parallelize_module
+
+import lightning as L
+from lightning.pytorch.demos.boring_classes import RandomDataset
+from lightning.pytorch.strategies import ModelParallelStrategy
+
+
+class FeedForward(nn.Module):
+    def __init__(self, dim, hidden_dim):
+        super().__init__()
+        self.w1 = nn.Linear(dim, hidden_dim, bias=False)
+        self.w2 = nn.Linear(hidden_dim, dim, bias=False)
+        self.w3 = nn.Linear(dim, hidden_dim, bias=False)
+
+    def forward(self, x):
+        return self.w2(F.silu(self.w1(x)) * self.w3(x))
+
+
+class LitModel(L.LightningModule):
+    def __init__(self):
+        super().__init__()
+        self.model = FeedForward(8192, 8192)
+
+    def configure_model(self):
+        if self.device_mesh is None:
+            return
+
+        # Lightning will set up a `self.device_mesh` for you
+        tp_mesh = self.device_mesh["tensor_parallel"]
+        # Use PyTorch's distributed tensor APIs to parallelize the model
+        plan = {
+            "w1": ColwiseParallel(),
+            "w2": RowwiseParallel(),
+            "w3": ColwiseParallel(),
+        }
+        parallelize_module(self.model, tp_mesh, plan)
+
+    def training_step(self, batch):
+        output = self.model(batch)
+        loss = output.sum()
+        return loss
+
+    def configure_optimizers(self):
+        return torch.optim.AdamW(self.model.parameters(), lr=3e-3)
+
+    def train_dataloader(self):
+        # Trainer configures the sampler automatically for you such that
+        # all batches in a tensor-parallel group are identical
+        dataset = RandomDataset(8192, 64)
+        return torch.utils.data.DataLoader(dataset, batch_size=8, num_workers=2)
+
+
+strategy = ModelParallelStrategy()
+trainer = L.Trainer(
+    accelerator="cuda",
+    devices=2,
+    strategy=strategy,
+    max_epochs=1,
+)
+
+model = LitModel()
+trainer.fit(model)
+
+trainer.print(f"Peak memory usage: {torch.cuda.max_memory_allocated() / 1e9:.02f} GB")
+```
+
+</details>
+
+</br>
+
+### Lightning Fabric
+
+Applying TP in a model with Fabric requires you to implement a special function where you convert selected layers of a model to paralellized layers. This is an advanced feature, because it requires a deep understanding of the model architecture. Open the [tutorial Studio](https://lightning.ai/lightning-ai/studios/tensor-parallelism-supercharging-large-model-training-with-lightning-fabric) to learn the basics of Tensor Parallelism.
+
+<a target="_blank" href="https://lightning.ai/lightning-ai/studios/tensor-parallelism-supercharging-large-model-training-with-lightning-fabric">
+  <img src="https://pl-bolts-doc-images.s3.us-east-2.amazonaws.com/app-2/studio-badge.svg" alt="Open In Studio"/>
+</a>
+
+&nbsp;
+
+```python
+import lightning as L
+from lightning.fabric.strategies import ModelParallelStrategy
+from torch.distributed.tensor.parallel import ColwiseParallel, RowwiseParallel
+from torch.distributed.tensor.parallel import parallelize_module
+
+
+# 1. Implement the parallelization function for your model
+def parallelize_feedforward(model, device_mesh):
+    # Lightning will set up a device mesh for you
+    tp_mesh = device_mesh["tensor_parallel"]
+    # Use PyTorch's distributed tensor APIs to parallelize the model
+    plan = {
+        "w1": ColwiseParallel(),
+        "w2": RowwiseParallel(),
+        "w3": ColwiseParallel(),
+    }
+    parallelize_module(model, tp_mesh, plan)
+    return model
+
+
+# 2. Pass the parallelization function to the strategy
+strategy = ModelParallelStrategy(parallelize_fn=parallelize_feedforward)
+
+# 3. Configure devices and set the strategy in Fabric
+fabric = L.Fabric(accelerator="cuda", devices=2, strategy=strategy)
+fabric.launch()
+```
+
+
+<details><summary>Full training example (requires at least 2 GPUs).</summary>
+    
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+from torch.distributed.tensor.parallel import ColwiseParallel, RowwiseParallel
+from torch.distributed.tensor.parallel import parallelize_module
+
+import lightning as L
+from lightning.pytorch.demos.boring_classes import RandomDataset
+from lightning.fabric.strategies import ModelParallelStrategy
+
+
+class FeedForward(nn.Module):
+    def __init__(self, dim, hidden_dim):
+        super().__init__()
+        self.w1 = nn.Linear(dim, hidden_dim, bias=False)
+        self.w2 = nn.Linear(hidden_dim, dim, bias=False)
+        self.w3 = nn.Linear(dim, hidden_dim, bias=False)
+
+    def forward(self, x):
+        return self.w2(F.silu(self.w1(x)) * self.w3(x))
+
+
+def parallelize_feedforward(model, device_mesh):
+    # Lightning will set up a device mesh for you
+    tp_mesh = device_mesh["tensor_parallel"]
+    # Use PyTorch's distributed tensor APIs to parallelize the model
+    plan = {
+        "w1": ColwiseParallel(),
+        "w2": RowwiseParallel(),
+        "w3": ColwiseParallel(),
+    }
+    parallelize_module(model, tp_mesh, plan)
+    return model
+
+
+strategy = ModelParallelStrategy(parallelize_fn=parallelize_feedforward)
+fabric = L.Fabric(accelerator="cuda", devices=2, strategy=strategy)
+fabric.launch()
+
+# Initialize the model
+model = FeedForward(8192, 8192)
+model = fabric.setup(model)
+
+# Define the optimizer
+optimizer = torch.optim.AdamW(model.parameters(), lr=3e-3)
+optimizer = fabric.setup_optimizers(optimizer)
+
+# Define dataset/dataloader
+dataset = RandomDataset(8192, 64)
+dataloader = torch.utils.data.DataLoader(dataset, batch_size=8)
+dataloader = fabric.setup_dataloaders(dataloader)
+
+# Simplified training loop
+for i, batch in enumerate(dataloader):
+    output = model(batch)
+    loss = output.sum()
+    fabric.backward(loss)
+    optimizer.step()
+    optimizer.zero_grad()
+    fabric.print(f"Iteration {i} complete")
+
+fabric.print(f"Peak memory usage: {torch.cuda.max_memory_allocated() / 1e9:.02f} GB")
+```
+
+</details>
+
+</br>
+
+
+<a name="highlights-2d-parallel"></a>
+## 2D Parallelism (beta)
+
+Tensor Parallelism by itself can be very effective for efficient inference of very large models. For training, TP is typically combined with other forms of parallelism, such as FSDP, to increase throughput and scalability on large clusters with 100s of GPUs. The new `ModelParallelStrategy` in this release supports the combination of TP + FSDP, which is referred to as 2D parallelism.
+
+For an introduction to this feature, please also refer to the tutorial Studios ([PyTorch Lightning](https://lightning.ai/lightning-ai/studios/tensor-parallelism-supercharging-large-model-training-with-pytorch-lightning), [Lightning Fabric](https://lightning.ai/lightning-ai/studios/tensor-parallelism-supercharging-large-model-training-with-lightning-fabric)). At the moment, the PyTorch team is reimplementing FSDP under the name [FSDP2](https://github.com/pytorch/pytorch/issues/114299) with the aim to make it compose well with other parallelisms such as TP. Therefore, for the experimental 2D parallelism support, you'll need to switch to using FSDP2 with the new `ModelParallelStrategy`. Please refer to our docs ([PyTorch Lightning](https://lightning.ai/docs/pytorch/latest/advanced/model_parallel/tp_fsdp.html), [Lightning Fabric](https://lightning.ai/docs/fabric/latest/advanced/model_parallel/tp_fsdp.html)) and stay tuned for future releases as these APIs mature.
+
+
+<a name="highlights-model-summary"></a>
+## Training Mode in Model Summary
+
+The model summary table that gets displayed when you run `Trainer.fit()` now contains a new column "Mode" that shows the training mode each layer is in ([#19468](https://github.com/Lightning-AI/lightning/pull/19468)).
+
+```
+  | Name                 | Type            | Params | Mode 
+-----------------------------------------------------------------
+0 | model                | Sam             | 93.7 M | train
+1 | model.image_encoder  | ImageEncoderViT | 89.7 M | eval 
+2 | model.prompt_encoder | PromptEncoder   | 6.2 K  | train
+3 | model.mask_decoder   | MaskDecoder     | 4.1 M  | train
+-----------------------------------------------------------------
+93.7 M    Trainable params
+0         Non-trainable params
+93.7 M    Total params
+374.942   Total estimated model params size (MB)
+```
+
+A module in PyTorch is always either in `train` (default) or `eval` mode.
+This improvement should give users more visibility into the state of their model and help debug issues, for example when you need to make sure certain layers of the model are frozen.
+
+
+<a name="highlights-forward-methods"></a>
+## Special Forward Methods in Fabric
+
+Until now, Lightning Fabric warned the user in case the forward pass of the model or a subset of its modules was conducted through methods other than the dedicated `forward` method of the PyTorch module. The reason for this is that PyTorch needs to run special hooks in case of DDP/FSDP and other strategies to function properly, and not running through the real `forward` method would skip these hooks and lead to correctness issues.
+
+In Lightning Fabric 2.3, we added a [feature to explicitly mark alternative forward methods](https://lightning.ai/docs/fabric/latest/api/wrappers.html#using-methods-other-than-forward-for-computation) so that Fabric can add the necessary rerouting behind the scenes:
+
+```python
+import lightning as L
+
+fabric = L.Fabric(devices=2, strategy="ddp")
+fabric.launch()
+
+model = MyModel()
+model = fabric.setup(model)
+
+# OK: Calling the model directly
+output = model(input)
+
+# ERROR: Calling another method that calls forward indirectly
+prediction = model.generate(input)
+
+# New: Mark special forward methods explicitly before using them
+model.mark_forward_method(model.generate)
+
+# OK: Now can use `model.generate()` in DDP/FSDP without issues
+prediction = model.generate(input)
+```
+
+Find the [full example](https://lightning.ai/docs/fabric/latest/api/wrappers.html#using-methods-other-than-forward-for-computation) and more details in our docs.
+
+
+<a name="bc-changes"></a>
+# Notable Changes
+
+The 2.0 series of Lightning releases guarantees core API stability: No name changes, argument renaming, hook removals etc. on core interfaces (Trainer, LightningModule, etc.) unless a feature is specifically marked experimental. Here we list a few behavioral changes made in places where the change was justified if it significantly improves the user experience, improves performance, or fixes the correctness of a feature. These changes will likely not impact most users.
+
+### Skipping the training step in DDP
+
+It is no longer allowed to skip `training_step()` by returning `None` in distributed training ([#19918](https://github.com/Lightning-AI/pytorch-lightning/pull/19918)). The following usage was previously possible but would result in unpredictable hangs and timeouts in distributed training:
+
+```python
+def training_step(self, batch):
+    loss = ...
+    if loss.isnan():
+        # No longer allowed in multi-GPU!
+        # Raises error in Lightning >= 2.3
+        return None
+    return loss
+```
+
+We decided to raise an error if the user attempts to return `None` when running in a multi-GPU setting. 
+
+
+## Miscellaneous Changes
+
+- Dropped support for PyTorch 1.13 ([#19300](https://github.com/Lightning-AI/lightning/pull/19300)). With every new Lightning release, we add official support for the latest PyTorch stable version and drop the oldest version in our support window.
+- The `prepare_data()` hook in `LightningModule` and `LightningDataModule` is now subject to a barrier without timeout to avoid long-running tasks to be interrupted ([#19448](https://github.com/Lightning-AI/lightning/pull/19448)). Similarly, also in Fabric the `Fabric.rank_zero_first` context manager now uses an infinite barrier ([#19448](https://github.com/Lightning-AI/lightning/pull/19448)).
+
+<a name="changelog"></a>
+# CHANGELOG
+
+<a name="changelog-pytorch"></a>
+## PyTorch Lightning
+
+<details><summary>Added</summary>
+
+- The `ModelSummary` and `RichModelSummary` callbacks now display the training mode of each layer in the column "Mode" ([#19468](https://github.com/Lightning-AI/lightning/pull/19468))
+- Added `load_from_checkpoint` support for `LightningCLI` when using dependency injection ([#18105](https://github.com/Lightning-AI/lightning/pull/18105))
+- Added robust timer duration parsing with an informative error message when parsing fails ([#19513](https://github.com/Lightning-AI/pytorch-lightning/pull/19513))
+- Added `on_exception` hook to `LightningDataModule` ([#19601](https://github.com/Lightning-AI/pytorch-lightning/pull/19601))
+- Added support for PyTorch 2.3 ([#19708](https://github.com/Lightning-AI/pytorch-lightning/pull/19708))
+- Added `ModelParallelStrategy` to support 2D parallelism ([#19878](https://github.com/Lightning-AI/pytorch-lightning/pull/19878), [#19888](https://github.com/Lightning-AI/pytorch-lightning/pull/19888))
+- Added a call to `torch.distributed.destroy_process_group` in atexit handler if process group needs destruction ([#19931](https://github.com/Lightning-AI/pytorch-lightning/pull/19931))
+- Added support for configuring hybrid-sharding by passing a tuple for the `FSDPStrategy(device_mesh=...)` argument ([#19504](https://github.com/Lightning-AI/pytorch-lightning/pull/19504))
+
+</details>
+
+<details><summary>Changed</summary>
+    
+- The `prepare_data()` hook in `LightningModule` and `LightningDataModule` is now subject to a barrier without timeout to avoid long-running tasks to be interrupted ([#19448](https://github.com/Lightning-AI/lightning/pull/19448))
+- Relaxed the requirement for custom batch samplers to expose `drop_last` for prediction ([#19678](https://github.com/Lightning-AI/pytorch-lightning/pull/19678))
+- It is no longer allowed to skip `training_step()` by returning `None` in distributed training ([#19918](https://github.com/Lightning-AI/pytorch-lightning/pull/19918))
+
+</details>
+
+<details><summary>Removed</summary>
+
+- Removed the Bagua integration (`Trainer(strategy="bagua")`) ([#19445](https://github.com/Lightning-AI/lightning/pull/19445))
+- Removed support for PyTorch 1.13 ([#19706](https://github.com/Lightning-AI/lightning/pull/19706))
+
+
+</details>
+
+<details><summary>Fixed</summary>
+
+- Fixed a matrix shape mismatch issue when running a model loaded from a quantized checkpoint (bitsandbytes) ([#19886](https://github.com/Lightning-AI/lightning/pull/19886))
+- Fixed `WandbLogger.log_hyperparameters()` raising an error if hyperparameters are not JSON serializable ([#19769](https://github.com/Lightning-AI/pytorch-lightning/pull/19769))
+- Fixed an issue with the LightningCLI not being able to set the `ModelCheckpoint(save_last=...)` argument ([#19808](https://github.com/Lightning-AI/pytorch-lightning/pull/19808))
+- Fixed an issue causing ValueError for certain object such as TorchMetrics when dumping hyperparameters to YAML ([#19804](https://github.com/Lightning-AI/pytorch-lightning/pull/19804))
+- Fixed resetting `epoch_loop.restarting` to avoid full validation run after `LearningRateFinder` ([#19818](https://github.com/Lightning-AI/pytorch-lightning/issues/19818))
+
+
+</details>
+
+<a name="changelog-fabric"></a>
+## Lightning Fabric
+
+<details><summary>Added</summary>
+
+- Added sanitization for classes before logging them as hyperparameters ([#19771](https://github.com/Lightning-AI/pytorch-lightning/pull/19771))
+- Enabled consolidating distributed checkpoints through `fabric consolidate` in the new CLI ([#19560](https://github.com/Lightning-AI/pytorch-lightning/pull/19560))
+- Added the ability to explicitly mark forward methods in Fabric via `_FabricModule.mark_forward_method()` ([#19690](https://github.com/Lightning-AI/pytorch-lightning/pull/19690))
+- Added support for PyTorch 2.3 ([#19708](https://github.com/Lightning-AI/pytorch-lightning/pull/19708))
+- Added `ModelParallelStrategy` to support 2D parallelism ([#19846](https://github.com/Lightning-AI/pytorch-lightning/pull/19846), [#19852](https://github.com/Lightning-AI/pytorch-lightning/pull/19852), [#19870](https://github.com/Lightning-AI/pytorch-lightning/pull/19870), [#19872](https://github.com/Lightning-AI/pytorch-lightning/pull/19872))
+- Added a call to `torch.distributed.destroy_process_group` in atexit handler if process group needs destruction ([#19931](https://github.com/Lightning-AI/pytorch-lightning/pull/19931))
+- Added support for configuring hybrid-sharding by passing a tuple for the `FSDPStrategy(device_mesh=...)` argument ([#19504](https://github.com/Lightning-AI/pytorch-lightning/pull/19504))
+
+</details>
+
+<details><summary>Changed</summary>
+
+- Renamed `lightning run model` to `fabric run` ([#19442](https://github.com/Lightning-AI/pytorch-lightning/pull/19442), [#19527](https://github.com/Lightning-AI/pytorch-lightning/pull/19527))
+- The `Fabric.rank_zero_first` context manager now uses a barrier without timeout to avoid long-running tasks to be interrupted ([#19448](https://github.com/Lightning-AI/lightning/pull/19448))
+- Fabric now raises an error if you forget to call `fabric.backward()` when it is needed by the strategy or precision selection ([#19447](https://github.com/Lightning-AI/lightning/pull/19447), [#19493](https://github.com/Lightning-AI/lightning/pull/19493))
+- `_BackwardSyncControl` can now control what to do when gradient accumulation is disabled ([#19577](https://github.com/Lightning-AI/lightning/pull/19577))
+
+</details>
+
+<details><summary>Removed</summary>
+
+- Removed support for PyTorch 1.13 ([#19706](https://github.com/Lightning-AI/lightning/pull/19706))
+
+</details>
+
+<details><summary>Fixed</summary>
+
+- Fixed a matrix shape mismatch issue when running a model loaded from a quantized checkpoint (bitsandbytes) ([#19886](https://github.com/Lightning-AI/lightning/pull/19886))
+
+</details>
+
+</br>
+
+**Full commit list**: [2.2.0 -> 2.3.0](https://github.com/Lightning-AI/lightning/compare/2.2.0...2.3.0)
+
+<a name="contributors"></a>
+# Contributors
+
+We thank all our contributors who submitted pull requests for features, bug fixes and documentation updates.
+
+### New Contributors
+* @cauyxy made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19437
+* @mwip made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19518
+* @kylebgorman made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19513
+* @kashif made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19520
+* @ash0ts made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19451
+* @dimitri-voytan made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19524
+* @ankitgola005 made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19615
+* @invisprints made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19629
+* @kvenkman made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19465
+* @fnhirwa made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19640
+* @inyong37 made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19677
+* @clumsy made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19601
+* @judidoko made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19692
+* @Lunamos made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19701
+* @dominicgkerr made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19727
+* @daavoo made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19774
+* @Peiffap made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19805
+* @IvanYashchuk made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19926
+* @ringohoffman made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19904
+* @afspies made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19847
+* @fedebotu made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19822
+* @mariovas3 made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19808
+* @Bhavay-2001 made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19947
+* @V0XNIHILI made their first contribution in https://github.com/Lightning-AI/pytorch-lightning/pull/19771
+
+### Did you know?
+
+Chuck Norris is a big fan and daily user of Lightning Studio.
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Patch release v2.2.5 (2024-05-22)</h2>
+      <pre>## PyTorch Lightning + Fabric
+
+### Fixed
+
+- Fixed a matrix shape mismatch issue when running a model loaded from a quantized checkpoint (bitsandbytes) ([#19886](https://github.com/Lightning-AI/lightning/pull/19886))
+
+
+----
+
+**Full Changelog**: https://github.com/Lightning-AI/pytorch-lightning/compare/2.2.4...2.2.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Patch release v2.2.4 (2024-05-01)</h2>
+      <pre>## App
+
+### Fixed
+
+- Fixed HTTPClient retry for flow/work queue ([#19837](https://github.com/Lightning-AI/pytorch-lightning/pull/19837))
+
+
+## PyTorch
+
+No Changes.
+
+## Fabric
+
+No Changes.
+
+
+**Full Changelog**: https://github.com/Lightning-AI/pytorch-lightning/compare/2.2.3...2.2.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Patch release v2.2.3 (2024-04-23)</h2>
+      <pre>## PyTorch
+
+### Fixed
+
+- Fixed `WandbLogger.log_hyperparameters()` raising an error if hyperparameters are not JSON serializable ([#19769](https://github.com/Lightning-AI/pytorch-lightning/pull/19769))
+
+
+## Fabric
+
+No Changes.
+
+
+**Full Changelog**: https://github.com/Lightning-AI/pytorch-lightning/compare/2.2.2...2.2.3
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Patch release v2.2.2 (2024-04-11)</h2>
+      <pre>## PyTorch
+
+### Fixed
+
+- Fixed an issue causing a TypeError when using `torch.compile` as a decorator ([#19627](https://github.com/Lightning-AI/pytorch-lightning/pull/19627))
+- Fixed a KeyError when saving a FSDP sharded checkpoint and setting `save_weights_only=True` ([#19524](https://github.com/Lightning-AI/pytorch-lightning/pull/19524))
+
+## Fabric
+
+### Fixed
+
+
+- Fixed an issue causing a TypeError when using `torch.compile` as a decorator ([#19627](https://github.com/Lightning-AI/pytorch-lightning/pull/19627))
+- Fixed issue where some model methods couldn't be monkeypatched after being Fabric wrapped ([#19705](https://github.com/Lightning-AI/pytorch-lightning/pull/19705))
+- Fixed an issue causing weights to be reset in `Fabric.setup()` when using FSDP ([#19755](https://github.com/Lightning-AI/pytorch-lightning/pull/19755))
+
+
+**Full Changelog**: https://github.com/Lightning-AI/pytorch-lightning/compare/2.2.1...2.2.2
+
+## Contributors
+
+@ankitgola005 @awaelchli @Borda @carmocca @dmitsf @dvoytan-spark @fnhirwa 
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Patch release v2.2.1 (2024-03-04)</h2>
+      <pre>## PyTorch
+
+### Fixed
+
+- Fixed an issue with CSVLogger trying to append to file from a previous run when the version is set manually ([#19446](https://github.com/Lightning-AI/lightning/pull/19446))
+- Fixed the divisibility check for `Trainer.accumulate_grad_batches` and `Trainer.log_every_n_steps` in ThroughputMonitor ([#19470](https://github.com/Lightning-AI/lightning/pull/19470))
+- Fixed support for Remote Stop and Remote Abort with NeptuneLogger ([#19130](https://github.com/Lightning-AI/pytorch-lightning/pull/19130))
+- Fixed infinite recursion error in precision plugin graveyard ([#19542](https://github.com/Lightning-AI/pytorch-lightning/pull/19542))
+
+
+## Fabric
+
+### Fixed
+
+- Fixed an issue with CSVLogger trying to append to file from a previous run when the version is set manually ([#19446](https://github.com/Lightning-AI/lightning/pull/19446))
+
+
+
+
+**Full Changelog**: https://github.com/Lightning-AI/pytorch-lightning/compare/2.2.0post...2.2.1
+
+## Contributors
+@Raalsky @awaelchli @carmocca @Borda
+
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Minor release correction (2024-02-12)</h2>
+      <pre>**Full Changelog**: https://github.com/Lightning-AI/pytorch-lightning/compare/2.2.0...2.2.0.post0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Lightning v2.2 (2024-02-07)</h2>
+      <pre>[Lightning AI](https://lightning.ai) is excited to announce the release of Lightning 2.2 :zap:
+
+**Did you know?** The Lightning philosophy extends beyond a boilerplate-free deep learning framework: We've been hard at work bringing you [Lightning Studio](https://lightning.ai/). Code together, prototype, train, deploy, host AI web apps. All from your browser, with zero setup.
+
+While our previous release was packed with many big new features, this time around we're rolling out mainly improvements based on feedback from the community. And of course, as the name implies, this release fully supports the latest [PyTorch 2.2](https://pytorch.org/blog/pytorch2-2/) :tada:
+
+
+- [Highlights](#highlights)
+    - [Monitoring Throughput](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#highlights-throughput)
+    - [Improved Handling of Evaluation Mode](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#highlights-eval)
+    - [Converting FSDP Checkpoints](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#highlights-consolidate-fsdp)
+    - [Improvements to Compiling DDP/FSDP in Fabric](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#highlights-compile)
+    - [Saving and Loading DataLoader State](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#highlights-dataloader-state)
+    - [Non-strict Checkpoint Loading in Trainer](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#highlights-non-strict)
+- [Notable Changes](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#bc-changes)
+- [Full Changelog](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#changelog)
+    - [PyTorch Lightning](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#changelog-pytorch)
+    - [Lightning Fabric](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#changelog-fabric)
+- [Contributors](https://github.com/Lightning-AI/lightning/releases/tag/2.2.0#contributors)
+
+
+<a name="highlights"></a>
+# Highlights
+
+<a name="highlights-throughput"></a>
+## Monitoring Throughput
+
+Lightning now has built-in utilities to measure throughput metrics such as batches/sec, samples/sec and Model FLOP Utilization (MFU) ([#18848](https://github.com/Lightning-AI/lightning/pull/18848)).
+
+**Trainer:**
+
+For the Trainer, this comes in form of a `ThroughputMonitor` callback. In order to track samples/sec, you need to provide a function to tell the monitor how to extract the batch dimension from your input. Furthermore, if you want to track MFU, you can provide a sample forward pass and the `ThroughputMonitor` will automatically estimate the utilization based on the hardware you are running on:
+
+```python
+import lightning as L
+from lightning.pytorch.callbacks import ThroughputMonitor
+from lightning.fabric.utilities.throughput import measure_flops
+
+
+class MyModel(LightningModule):
+    def setup(self, stage):
+        with torch.device("meta"):
+            model = MyModel()
+
+        def sample_forward():
+            batch = torch.randn(..., device="meta")
+            return model(batch)
+
+        self.flops_per_batch = measure_flops(model, sample_forward, loss_fn=torch.Tensor.sum)
+
+
+throughput = ThroughputMonitor(
+    batch_size_fn=lambda batch: batch.size(0),
+    # optional, if your samples have a length (like number of tokens)
+    sample_fn=lambda batch: batch.size(1)
+)
+trainer = L.Trainer(log_every_n_steps=10, callbacks=throughput, logger=...)
+model = MyModel()
+trainer.fit(model)
+
+```
+
+The results get automatically sent to the logger if one is configured on the Trainer.
+
+**Fabric:**
+
+For Fabric, the `ThroughputMonitor` is a simple utility object on which you call `.update()` and `compute_and_log()` during the training loop:
+
+```python
+import lightning as L
+from lightning.fabric.utilities import ThroughputMonitor
+
+
+fabric = L.Fabric(logger=...)
+throughput = ThroughputMonitor(fabric)
+
+t0 = time()
+for batch_idx, batch in enumerate(train_dataloader):
+    do_work()
+    torch.cuda.synchronize()  # required or else time() won't be correct
+    throughput.update(
+        time=(time() - t0), 
+        batches=batch_idx, 
+        samples=(batch_idx * batch_size)
+    )
+    if batch_idx % 10 == 0:
+        throughput.compute_and_log(step=batch_idx)
+```
+
+Check out [our TinyLlama LLM pretraining script](https://github.com/Lightning-AI/lit-gpt/blob/6150d04ff3b199ddefbe55e58d593ecae587b9d9/pretrain/tinyllama.py) for a full example using Fabric's `ThroughputMonitor`. 
+
+The troughput utilities can report:
+- batches per second (per process and across process)
+- samples per second (per process and across process)
+- items per second (e.g. tokens) (per process and across process)
+- flops per second (per process and across process)
+- model flops utilization (MFU) (per process)
+- total time, total samples, total batches, and total items (per process)
+
+
+<a name="highlights-eval"></a>
+## Improved Handling of Evaluation Mode
+
+When you train a model and have validation enabled, the Trainer automatically calls `.eval()` when transitioning to the validation loop, and `.train()` when validation ends. Until now, this had the unfortunate side effect that any submodules in your LightningModule that were in evaluation mode get reset to train mode. In Lightning 2.2, the Trainer now captures the mode of every submodule before switching to validation, and restores the mode the modules were in when validation ends ([#18951](https://github.com/Lightning-AI/lightning/pull/18951), [#18951](https://github.com/Lightning-AI/lightning/pull/18951), [#18951](https://github.com/Lightning-AI/lightning/pull/18951)). This improvement will help users avoid silent correctness bugs and removes boilerplate code for managing frozen layers.
+
+
+```python
+import lightning as L
+
+
+class LitModel(L.LightningModule):
+    def __init__(self):
+        super().__init__()
+        self.trainable_module = ...
+        
+        # This will now stay in eval mode
+        self.frozen_module = ...
+        self.frozen_module.eval()
+        
+    def training_step(self, batch):
+        # Previously, modules were all in train mode
+        # Now: Modules are in mode they were set up with
+        assert self.trainable_module.training
+        assert not self.frozen_module.training
+        ...
+        
+    def validation_step(self, batch):
+        # All modules are in eval mode
+        ...
+    
+    
+model = LitModel()
+trainer = L.Trainer()
+trainer.fit(model)
+```
+
+If you have overridden any of the `LightningModule.on_{validation,test,predict}_model_{eval,train}` hooks, they will still get called and execute your custom logic, but they are no longer required if you added them to preserve the eval mode of frozen modules.
+
+> [!IMPORTANT]
+> In some libraries, for example HuggingFace, models are created in evaluation mode by default (e.g. `HFModel.from_pretrained(...)`). Starting from 2.2, you will have to set `.train()` on these models if you intend to train them.
+
+
+<a name="highlights-consolidate-fsdp"></a>
+## Converting FSDP Checkpoints
+
+In the previous release, we introduced distributed checkpointing with FSDP to speed up saving and loading checkpoints for big models. These checkpoints are in a special format saved in a folder with shards from each GPU in a separate file. While these checkpoints can be loaded back with Lightning Trainer or Fabric very easily, they aren't easy to load or process externally. In Lightning 2.2, we introduced a CLI utility that lets you consolidate the checkpoint folder to a single file that can be loaded in raw PyTorch with `torch.load()` for example ([#19213](https://github.com/Lightning-AI/lightning/pull/19213)).
+
+Given you saved a distributed checkpoint, you can then convert it like so:
+
+```bash
+# For Trainer checkpoints:
+python -m lightning.pytorch.utilities.consolidate_checkpoint path/to/my/checkpoint
+
+
+# For Fabric checkpoints:
+python -m lightning.fabric.utilities.consolidate_checkpoint path/to/my/checkpoint
+```
+
+Read more about distributed checkpointing in our documentation: [Trainer](https://lightning.ai/docs/pytorch/2.2.0/common/checkpointing_expert.html#convert-a-distributed-checkpoint), [Fabric](https://lightning.ai/docs/fabric/2.2.0/guide/checkpoint/distributed_checkpoint.html#convert-a-distributed-checkpoint).
+
+
+<a name="highlights-compile"></a>
+## Improvements to Compiling DDP/FSDP in Fabric
+
+PyTorch 2.0+ introduced `torch.compile`, a powerful tool to speed up your models without changing the code.
+We now added [a comprehensive guide how to use `torch.compile`](https://lightning.ai/docs/fabric/2.2.0/advanced/compile.html) correctly with tips and tricks to help you troubleshoot common issues. On top of that, `Fabric.setup()` will now reapply `torch.compile` on top of DDP/FSDP if you are enabling these strategies ([#19280](https://github.com/Lightning-AI/lightning/pull/19280)).
+
+```python
+import lightning as L
+
+# Select a distributed strategy (DDP, FSDP, ...)
+fabric = L.Fabric(strategy="ddp", devices=8)
+
+# Compile your model before `.setup()`
+model = torch.compile(model)
+
+# Now automatically handles compiling also over DDP/FSDP
+model = fabric.setup(model)
+
+# You can opt-out if it is causing trouble
+model = fabric.setup(model, _reapply_compile=False)
+```
+
+You might see fewer graph breaks, but there won't be any significant speed-ups with this. We introduced this mainly to make Fabric ready for future improvements from PyTorch to optimizing distributed operations.
+
+
+<a name="highlights-dataloader-state"></a>
+## Saving and Loading DataLoader State
+
+If you use a dataloader/iterable that implements the `.state_dict()` and `.load_state_dict()` interface, the Trainer will now automatically save and load their state in the checkpoint ([#19361](https://github.com/Lightning-AI/lightning/pull/19361)).
+
+```python
+import lightning as L
+
+
+class MyDataLoader:
+    """A dataloader that implements the 'stateful' interface."""
+    
+    def state_dict(self):
+        # Return a dictionary with state
+        return {"batches_fetched": ...}
+    
+    def load_state_dict(self, state_dict):
+        # Load the state from the checkpoint
+        self.batches_fetched = state_dict["batches_fetched"]
+
+
+model = ...
+dataloader = MyDataLoader()
+trainer = L.Trainer()
+
+# Saves checkpoints that include the dataloader state
+trainer.fit(model, dataloader)
+
+# When you resume training, the dataloader can now load its state
+trainer.fit(model, dataloader, ckpt_path="path/to/my/checkpoint")
+```
+
+Note that the standard [PyTorch DataLoader](https://pytorch.org/docs/stable/data.html) does not support this stateful interface. This feature only works on loaders that implement these two methods. A dataloader that supports full fault-tolerance will be included in our upcoming release of Lightning Data - a library to optimize data preprocessing and streaming in the cloud. Stay tuned!
+
+<a name="highlights-non-strict"></a>
+## Non-strict Checkpoint Loading in Trainer
+
+A feature that has been requested for a long time by the community is non-strict checkpoint loading. By default, a checkpoint in PyTorch is loaded with `strict=True` to ensure all keys in the saved checkpoint match what's in the model's state dict.
+However, in some use cases it might make sense to exclude certain weights from being included in the checkpoint. When resuming training, the user would then be required to set `strict=False`, which wasn't configurable until now.
+
+You can now set the attribute `strict_loading=False` on your LightningModule if you want to allow loading partial checkpoints ([#19404](https://github.com/Lightning-AI/lightning/pull/19404)).
+
+```python
+import lightning as L
+
+class LitModel(L.LightningModule):
+    def __init__(self):
+        super().__init__()
+        
+        # This model only trains the decoder, we don't save the encoder
+        self.encoder = from_pretrained(...).requires_grad_(False)
+        self.decoder = Decoder()
+        
+        # Set to False because we only care about the decoder
+        self.strict_loading = False
+    
+    def state_dict(self):
+        # Don't save the encoder, it is not being trained
+        return {k: v for k, v in super().state_dict().items() if "encoder" not in k}
+
+...
+
+trainer = L.Trainer()
+model = LitModel()
+
+# Will load weights with `.load_state_dict(strict=model.strict_loading)`
+trainer.fit(model, ckpt_path="path/to/checkpoint")
+```
+
+Full documentation [here](https://lightning.ai/docs/pytorch/2.2.0/common/checkpointing_advanced.html#resume-from-a-partial-checkpoint).
+
+
+
+<a name="bc-changes"></a>
+# Notable Changes
+
+The 2.0 series of Lightning releases guarantees core API stability: No name changes, argument renaming, hook removals etc. on core interfaces (Trainer, LightningModule, etc.) unless a feature is specifically marked experimental. Here we list a few behavioral changes made in places where the change was justified if it significantly improves the user experience, improves performance, or fixes the correctness of a feature. These changes will likely not impact most users.
+
+<a name="highlights-save-last"></a>
+## ModelCheckpoint's save-last Feature
+
+In Lightning 2.1, we made the `ModelCheckpoint(..., save_last=True)` feature save a symbolic link to the last saved checkpoint instead of rewriting the checkpoint ([#18748](https://github.com/Lightning-AI/lightning/pull/18748)). This time saver is especially useful for large models who take a while to save. However, many users were confused by the new behavior and wanted it turned off, saving a copy instead of a symbolic link like before. In Lightning 2.2, we are reverting this decision and make the linking opt-in ([#19191](https://github.com/Lightning-AI/lightning/pull/19191)):
+
+```python
+from lightning.pytorch.callbacks import ModelCheckpoint
+
+# In 2.1 saves a symbolic link "last.ckpt" to the last checkpoint saved
+# In 2.2 saves "last.ckpt" as a copy of the last checkpoint saved
+checkpoint = ModelCheckpoint("./my_checkpoints", save_last=True)
+
+# You can opt-in to save a symlink (if possible)
+checkpoint = ModelCheckpoint("./my_checkpoints", save_last="link")
+```
+
+
+<a name="highlights-seed-everything"></a>
+## Removed Problematic Default Seeding
+
+The `seed_everything(x)` utility function is useful to set the seed for several libraries like PyTorch, NumPy and Python in a single line of code. However, until now you were allowed to omit passing a seeding value, in which case the function picked a seed value *randomly*. In certain cases, for example when processes are launched externally (e.g., SLURM, torchelastic etc.), this default behavior is dangerous because each process will independently choose a random seed. This can affect sampling, randomized validation splits, and other behaviors that rely on each process having the same seed. In 2.2, we removed this default behavior and default to a seed value 0 ([#18846](https://github.com/Lightning-AI/lightning/pull/18846)):
+
+```python
+from lightning.pytorch.utilities import seed_everything
+
+# Set the random seed for PyTorch, NumPy, Python etc.
+seed_everything(42)
+
+# Not setting a value now defaults to 0
+seed_everything()
+```
+
+In the unlikely event that you relied on the previous behavior, you now have to choose the seed randomly yourself:
+
+```python
+seed_everything(random.randint(0, 1000000))
+```
+
+
+## Miscellaneous Changes
+
+- Dropped support for PyTorch 1.12 ([#19300](https://github.com/Lightning-AI/lightning/pull/19300))
+- The columns in the `metrics.csv` file produced by `CSVLogger` are now sorted alphabetically ([#19159](https://github.com/Lightning-AI/lightning/pull/19159))
+- Added support for meta-device initialization and materialization of 4-bit Bitsandbytes layers ([#19150](https://github.com/Lightning-AI/lightning/pull/19150))
+- Added `TransformerEnginePrecision(fallback_compute_dtype=)` to control the dtype of operations that don't support fp8 ([#19082](https://github.com/Lightning-AI/lightning/pull/19082))
+- We renamed the `TransformerEnginePrecision(dtype=)` argument to `weights_dtype` and made it required ([#19082](https://github.com/Lightning-AI/lightning/pull/19082))
+- The `LightningModule.load_from_checkpoint()` function now calls `.configure_model()` on the model if it is overridden, to ensure all layers can be loaded from the checkpoint ([#19036](https://github.com/Lightning-AI/lightning/pull/19036))
+
+
+<a name="changelog"></a>
+# CHANGELOG
+
+<a name="changelog-pytorch"></a>
+## PyTorch Lightning
+
+<details><summary>Added</summary>
+    
+- Added `lightning.pytorch.callbacks.ThroughputMonitor` to track throughput and log it ([#18848](https://github.com/Lightning-AI/lightning/pull/18848))
+- The Trainer now restores the training mode set through `.train()` or `.eval()` on a submodule-level when switching from validation to training ([#18951](https://github.com/Lightning-AI/lightning/pull/18951))
+- Added support for meta-device initialization and materialization of 4-bit Bitsandbytes layers ([#19150](https://github.com/Lightning-AI/lightning/pull/19150))
+- Added `TransformerEnginePrecision(fallback_compute_dtype=)` to control the dtype of operations that don't support fp8 ([#19082](https://github.com/Lightning-AI/lightning/pull/19082))
+- Added the option `ModelCheckpoint(save_last='link')` to create a symbolic link for the 'last.ckpt' file ([#19191](https://github.com/Lightning-AI/lightning/pull/19191))
+- Added a utility function and CLI to consolidate FSDP sharded checkpoints into a single file ([#19213](https://github.com/Lightning-AI/lightning/pull/19213))
+- The TQDM progress bar now respects the env variable `TQDM_MINITERS` for setting the refresh rate ([#19381](https://github.com/Lightning-AI/lightning/pull/19381))
+- Added support for saving and loading stateful training DataLoaders ([#19361](https://github.com/Lightning-AI/lightning/pull/19361))
+- Added shortcut name `strategy='deepspeed_stage_1_offload'` to the strategy registry ([#19075](https://github.com/Lightning-AI/lightning/pull/19075))
+- Added support for non-strict state-dict loading in Trainer via the new `LightningModule.strict_loading = True | False` attribute ([#19404](https://github.com/Lightning-AI/lightning/pull/19404))
+
+</details>
+
+<details><summary>Changed</summary>
+    
+- `seed_everything()` without passing in a seed no longer randomly selects a seed, and now defaults to `0` ([#18846](https://github.com/Lightning-AI/lightning/pull/18846))
+- The `LightningModule.on_{validation,test,predict}_model_{eval,train}` now only get called if they are overridden by the user ([#18951](https://github.com/Lightning-AI/lightning/pull/18951))
+- The `Trainer.fit()` loop no longer calls `LightningModule.train()` at the start; it now preserves the user's configuration of frozen layers ([#18951](https://github.com/Lightning-AI/lightning/pull/18951))
+- The `LightningModule.load_from_checkpoint()` function now calls `.configure_model()` on the model if it is overridden, to ensure all layers can be loaded from the checkpoint ([#19036](https://github.com/Lightning-AI/lightning/pull/19036))
+- Restored usage of `step` parameter when logging metrics with `NeptuneLogger` ([#19126](https://github.com/Lightning-AI/pytorch-lightning/pull/19126))
+- Changed the `TransformerEnginePrecision(dtype=)` argument to `weights_dtype` and made it required ([#19082](https://github.com/Lightning-AI/lightning/pull/19082))
+- The columns in the `metrics.csv` file produced by `CSVLogger` are now sorted alphabetically ([#19159](https://github.com/Lightning-AI/lightning/pull/19159))
+- Reverted back to creating a checkpoint copy when `ModelCheckpoint(save_last=True)` instead of creating a symbolic link ([#19191](https://github.com/Lightning-AI/lightning/pull/19191))
+
+</details>
+
+
+<details><summary>Deprecated</summary>
+    
+- Deprecated all precision plugin classes under `lightning.pytorch.plugins` with the suffix `Plugin` in the name ([#18840](https://github.com/Lightning-AI/lightning/pull/18840))
+
+</details>
+
+<details><summary>Removed</summary>
+    
+- Removed support for PyTorch 1.12 ([#19300](https://github.com/Lightning-AI/lightning/pull/19300))
+
+</details>
+
+<details><summary>Fixed</summary>
+    
+- Fixed issue where the `precision="transformer-engine"` argument would not replace layers by default ([#19082](https://github.com/Lightning-AI/lightning/pull/19082))
+- Fixed issue where layers created in `LightningModule.setup` or `LightningModule.configure_model` wouldn't get converted when using the Bitsandbytes or TransformerEngine plugins ([#19061](https://github.com/Lightning-AI/lightning/pull/19061))
+- Fixed the input validation logic in `FSDPStrategy` to accept a `device_mesh` ([#19392](https://github.com/Lightning-AI/lightning/pull/19392))
+
+</details>
+
+<a name="changelog-fabric"></a>
+## Lightning Fabric
+
+<details><summary>Added</summary>
+  
+- Added `lightning.fabric.utilities.ThroughputMonitor` and `lightning.fabric.utilities.Throughput` to track throughput and log it ([#18848](https://github.com/Lightning-AI/lightning/pull/18848))
+- Added `lightning.fabric.utilities.AttributeDict` for convenient dict-attribute access to represent state in script ([#18943](https://github.com/Lightning-AI/lightning/pull/18943))
+- Added support for meta-device initialization and materialization of 4-bit Bitsandbytes layers ([#19150](https://github.com/Lightning-AI/lightning/pull/19150))
+- Added `TransformerEnginePrecision(fallback_compute_dtype=)` to control the dtype of operations that don't support fp8 ([#19082](https://github.com/Lightning-AI/lightning/pull/19082))
+- Added support for clipping gradients by value with FSDP ([#19236](https://github.com/Lightning-AI/lightning/pull/19236))
+- Added a utility function and CLI to consolidate FSDP sharded checkpoints into a single file ([#19213](https://github.com/Lightning-AI/lightning/pull/19213))
+- Added support for re-compiling the model inside `Fabric.setup()` over the FSDP/DDP wrappers ([#19280](https://github.com/Lightning-AI/lightning/pull/19280))
+
+</details>
+
+<details><summary>Changed</summary>
+    
+- `seed_everything()` without passing in a seed no longer randomly selects a seed, and now defaults to `0` ([#18846](https://github.com/Lightning-AI/lightning/pull/18846))
+- Changed the `TransformerEnginePrecision(dtype=)` argument to `weights_dtype` and made it required ([#19082](https://github.com/Lightning-AI/lightning/pull/19082))
+- The columns in the `metrics.csv` file produced by `CSVLogger` are now sorted alphabetically ([#19159](https://github.com/Lightning-AI/lightning/pull/19159))
+
+</details>
+
+<details><summary>Removed</summary>
+
+- Removed support for PyTorch 1.12 ([#19300](https://github.com/Lightning-AI/lightning/pull/19300))
+
+</details>
+
+<details><summary>Fixed</summary>
+
+- Fixed parsing of v100s GPUs in `get_available_flops` ([#18952](https://github.com/Lightning-AI/lightning/pull/18952))
+- Fixed issue where the `precision="transformer-engine"` argument would not replace layers by default ([#19082](https://github.com/Lightning-AI/lightning/pull/19082))
+- Fixed the input validation logic in `FSDPStrategy` to accept a `device_mesh` ([#19392](https://github.com/Lightning-AI/lightning/pull/19392))
+
+</details>
+
+</br>
+
+**Full commit list**: [2.1.0 -> 2.2.0](https://github.com/Lightning-AI/lightning/compare/2.1.0...2.2.0)
+
+<a name="contributors"></a>
+# Contributors
+
+Everyone who contributed between 2.1 and 2.2, in no particular order:
+
+### Veteran
+
+@nik777 @Raalsky @wouterzwerink @AleksanderWWW @awaelchli @nohalon @ioangatop @Borda @ethanwharris @BoringDonut @mauvilsa @parambharat @tchaton @ryan597 @adamjstewart @rasbt @carmocca
+
+
+### New
+
+@hiaoxui @VictorPrins @jaswon @AMHermansen @JalinWang @MF-FOOM @unacanal @Jamim @harishb00 @asingh9530 @dipta007 @daturkel @jerrymannil @mjbommar @shenmishajing @paganpasta @lauritsf @andyland @mathematicalmichael
+
+### Did you know?
+
+Chuck Norris is a big fan and daily user of PyTorch Lightning.
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Lightning 2.2 Release Candidate (2024-02-01)</h2>
+      <pre>This is a preview release for Lightning 2.2.0.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Minor patch release v2.1.4 (2024-02-01)</h2>
+      <pre>## Fabric
+
+### Fixed
+
+- Fixed an issue preventing Fabric to run on CPU when the system's CUDA driver is outdated or broken ([#19234](https://github.com/Lightning-AI/lightning/pull/19234))
+- Fixed typo in kwarg in SpikeDetection ([#19282](https://github.com/Lightning-AI/lightning/pull/19282))
+
+
+---
+
+## PyTorch
+
+### Fixed
+
+- Fixed `Trainer` not expanding the `default_root_dir` if it has the `~` (home) prefix ([#19179](https://github.com/Lightning-AI/lightning/pull/19179))
+- Fixed warning for Dataloader if `num_workers=1` and CPU count is 1 ([#19224](https://github.com/Lightning-AI/lightning/pull/19224))
+- Fixed `WandbLogger.watch()` method annotation to accept `None` for the log parameter ([#19237](https://github.com/Lightning-AI/lightning/pull/19237))
+- Fixed an issue preventing the Trainer to run on CPU when the system's CUDA driver is outdated or broken ([#19234](https://github.com/Lightning-AI/lightning/pull/19234))
+- Fixed an issue with the ModelCheckpoint callback not saving relative symlinks with `ModelCheckpoint(save_last="link")` ([#19303](https://github.com/Lightning-AI/lightning/pull/19303))
+- Fixed issue where the `_restricted_classmethod_impl` would incorrectly raise a TypeError on inspection rather than on call ([#19332](https://github.com/Lightning-AI/lightning/pull/19332))
+- Fixed exporting `__version__` in `__init__` ([#19221](https://github.com/Lightning-AI/lightning/pull/19221))
+
+
+---
+
+**Full Changelog**: https://github.com/Lightning-AI/pytorch-lightning/compare/2.1.3...2.1.4
+
+## Contributors
+
+@andyland @asingh9530 @awaelchli @Borda @daturkel @dipta007 @lauritsf @mjbommar @shenmishajing @tchaton
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Minor patch release v2.1.3 (2023-12-21)</h2>
+      <pre>## App
+
+### Changed
+
+- Lightning App: Use the batch get endpoint (#19180)
+- Drop starsessions from App's requirements (#18470)
+- Optimize loading time for chunks to be there (#19109)
+
+---
+
+## Data
+
+### Added
+
+- Add fault tolerance `StreamingDataset` (#19052)
+- Add numpy support for the `StreamingDataset` (#19050)
+- Add fault tolerance for the `StreamingDataset` (#19049)
+- Add direct s3 support to the `StreamingDataset` (#19044)
+- Add disk usage check before downloading files (#19041)
+
+### Changed
+
+- Cleanup chunks right away if the dataset doesn't fit within the cache in `StreamingDataset` (#19168)
+- `StreamingDataset` improve deletion strategy (#19118)
+- Improve `StreamingDataset` Speed (#19114)
+- Remove time in the Data Processor progress bar (#19108)
+- Optimize loading time for chunks to be there (#19109)
+- Resolve path for `StreamingDataset` (#19094)
+- Make input dir in `DataProcessor` required (#18910)
+- Remove the `LightningDataset` relying on un-maintained torchdata (#19019)
+
+### Fixed
+
+- Resolve checkpointing for the Streaming Dataset (#19123)
+- Resolve Item Loader bugs (#19017)
+
+---
+
+## Fabric
+
+### Fixed
+
+- Avoid moving the model to device if `move_to_device=False` is passed (#19152)
+- Fixed broadcast at initialization in `MPIEnvironment` (#19074)
+
+---
+
+## PyTorch
+
+### Changed
+
+- `LightningCLI` no longer allows setting a normal class instance as default. A `lazy_instance` can be used instead (#18822)
+
+### Fixed
+
+- Fixed checks for local file protocol due to fsspec changes in 2023.10.0 (#19023)
+- Fixed automatic detection of 'last.ckpt' files to respect the extension when filtering (#17072)
+- Fixed an issue where setting `CHECKPOINT_JOIN_CHAR` or `CHECKPOINT_EQUALS_CHAR` would only work on the `ModelCheckpoint` class but not on an instance (#19054)
+- Fixed `ModelCheckpoint` not expanding the `dirpath` if it has the `~` (home) prefix (#19058)
+- Fixed handling checkpoint dirpath suffix in NeptuneLogger (#18863)
+- Fixed an edge case where `ModelCheckpoint` would alternate between versioned and unversioned filename (#19064)
+- Fixed broadcast at initialization in `MPIEnvironment` (#19074)
+- Fixed the tensor conversion in `self.log` to respect the default dtype (#19046)
+
+---
+
+**Full Changelog**: https://github.com/Lightning-AI/lightning/compare/2.1.2...2.1.3
+
+## Contributors
+
+@AleksanderWWW, @awaelchli, @borda, @carmocca, @dependabot[bot], @mauvilsa, @MF-FOOM, @tchaton, @yassersouri
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Minor patch release v2.1.2 (2023-11-15)</h2>
+      <pre>## App
+
+### Changed
+
+- Forced plugin server to use localhost (#18976)
+- Enabled bundling additional files into app source (#18980)
+- Limited rate of requests to http queue (#18981)
+
+---
+
+## Fabric
+
+### Fixed
+
+- Fixed precision default from environment (#18928)
+
+---
+
+## PyTorch
+
+### Fixed
+
+- Fixed an issue causing permission errors on Windows when attempting to create a symlink for the "last" checkpoint (#18942)
+- Fixed an issue where Metric instances from `torchmetrics` wouldn't get moved to the device when using FSDP (#18954)
+- Fixed an issue preventing the user to `Trainer.save_checkpoint()` an FSDP model when `Trainer.test/validate/predict()` ran after `Trainer.fit()` (#18992)
+
+---
+
+## Contributors
+
+@awaelchli, @carmocca, @ethanwharris, @tchaton 
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_
+
+**Full Changelog**: https://github.com/Lightning-AI/lightning/compare/2.1.1...2.1.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Minor patch release v2.1.1 (2023-11-06)</h2>
+      <pre>## App
+
+### Added
+
+- add flow `fail()` (#18883)
+
+### Fixed
+
+- Fix failing lightning cli entry point (#18821)
+
+---
+
+## Fabric
+
+### Changed
+
+- Calling a method other than `forward` that invokes submodules is now an error when the model is wrapped (e.g., with DDP) (#18819)
+
+### Fixed
+
+- Fixed false-positive warnings about method calls on the Fabric-wrapped module (#18819)
+- Refined the FSDP saving logic and error messaging when the path exists (#18884)
+- Fixed layer conversion under `Fabric.init_module()` context manager when using the `BitsandbytesPrecision` plugin (#18914)
+
+---
+
+## PyTorch
+
+### Fixed
+
+- Fixed an issue when replacing an existing `last.ckpt` file with a symlink (#18793)
+- Fixed an issue when `BatchSizeFinder` `steps_per_trial` parameter ends up defining how many validation batches to run during the entire training (#18394)
+- Fixed an issue saving the `last.ckpt` file when using `ModelCheckpoint` on a remote filesystem, and no logger is used (#18867)
+- Refined the FSDP saving logic and error messaging when the path exists (#18884)
+- Fixed an issue parsing the version from folders that don't include a version number in `TensorBoardLogger` and `CSVLogger` (#18897)
+
+---
+
+## Contributors
+
+@awaelchli, @borda, @BoringDonut, @carmocca, @hiaoxui, @ioangatop, @nohalon, @rasbt, @tchaton
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_
+
+**Full Changelog**: https://github.com/Lightning-AI/lightning/compare/2.1.0...2.1.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Lightning 2.1: Train Bigger, Better, Faster (2023-10-12)</h2>
+      <pre>[Lightning AI](https://lightning.ai) is excited to announce the release of Lightning 2.1 :zap: It's the culmination of work from 79 contributors who have worked on features, bug-fixes, and documentation for a total of over 750+ commits since v2.0.
+
+The theme of 2.1 is "bigger, better, faster": **Bigger** because training large multi-billion parameter models has gotten even more efficient thanks to FSDP, efficient initialization and sharded checkpointing improvements, **better** because it's easier than ever to scale models without making substantial code changes or installing third-party packages and **faster** because it leverages the latest hardware features to speed up training in low-bit precision thanks to new precision plugins like bitsandbytes and transformer engine.
+And of course, as the name implies, this release fully leverages the latest features in [PyTorch 2.1](https://pytorch.org/blog/pytorch-2-1/) :tada: 
+
+
+- [Highlights](#highlights)
+    - [Improvements To Large-Scale Training With FSDP](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#highlights-fsdp)
+    - [True Half-Precision](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#highlights-half-precision)
+    - [Bitsandbytes Quantization](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#highlights-bitsandbytes)
+    - [Transformer Engine](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#highlights-transformer-engine)
+    - [Lightning on TPU Goes Brrr](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#highlights-tpu)
+    - [Granular Control Over Checkpoints in Fabric](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#highlights-fabric-checkpoints)
+- [Backward Incompatible Changes](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#bc-changes)
+    - [PyTorch Lightning](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#bc-changes-pytorch)
+    - [Lightning Fabric](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#bc-changes-fabric)
+- [Full Changelog](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#changelog)
+    - [PyTorch Lightning](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#changelog-pytorch)
+    - [Lightning Fabric](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#changelog-fabric)
+    - [Lightning App](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#changelog-app)
+- [Contributors](https://github.com/Lightning-AI/lightning/releases/tag/2.1.0#contributors)
+
+
+<a name="highlights"></a>
+# Highlights
+
+<a name="highlights-fsdp"></a>
+## Improvements To Large-Scale Training With FSDP
+
+The FSDP strategy for training large billion-parameter models gets substantial improvements and new features in Lightning 2.1, both in Trainer and Fabric (in case you didn't know, [Fabric](https://lightning.ai/docs/fabric/stable) is the latest addition to the Lightning family of tools to scale models without the boilerplate code).
+FSDP is now more user-friendly to configure, has memory management and speed improvements, and we have a brand new end-to-end user guide with best practices ([Trainer](https://lightning.ai/docs/pytorch/latest/advanced/model_parallel/fsdp.html), [Fabric](https://lightning.ai/docs/fabric/latest/advanced/model_parallel/fsdp.html)).
+
+
+### Efficient Saving and Loading of Large Checkpoints
+
+When training large billion-parameter models with FSDP, saving and resuming training, or even just loading model parameters for finetuning can be challenging, as users are are often plagued by out-of-memory errors and speed bottlenecks.
+
+In 2.1, we made several improvements. Starting with saving checkpoints, we added support for distributed/sharded checkpoints, enabled through the setting `state_dict_type` in the strategy ([#18364](https://github.com/Lightning-AI/lightning/pull/18364), [#18358](https://github.com/Lightning-AI/lightning/pull/18358)):
+
+
+**Trainer:**
+```python
+import lightning as L
+from lightning.pytorch.strategies import FSDPStrategy
+
+# Default used by the strategy
+strategy = FSDPStrategy(state_dict_type="full")
+
+# Enable saving distributed checkpoints
+strategy = FSDPStrategy(state_dict_type="sharded")
+
+trainer = L.Trainer(strategy=strategy, ...)
+```
+
+**Fabric:**
+```python
+import lightning as L
+from lightning.fabric.strategies import FSDPStrategy
+
+# Saving distributed checkpoints is the default
+strategy = FSDPStrategy(state_dict_type="sharded")
+
+# Save consolidated (single file) checkpoints
+strategy = FSDPStrategy(state_dict_type="full")
+
+fabric = L.Fabric(strategy=strategy, ...)
+```
+
+Distributed checkpoints are the fastest and most memory efficient way to save the state of very large models.
+The distributed checkpoint format also makes it efficient to load these checkpoints back for resuming training in parallel, and it reduces the impact on CPU memory usage significantly. Furthermore, we've also introduced lazy-loading for non-distributed checkpoints ([#18150](https://github.com/Lightning-AI/lightning/pull/18150), [#18379](https://github.com/Lightning-AI/lightning/pull/18379)), which greatly reduces the impact on CPU memory usage when loading a consolidated (single-file) checkpoint (e.g. for finetuning). Learn more about these features in our FSDP guides ([Trainer](https://lightning.ai/docs/pytorch/latest/advanced/model_parallel/fsdp.html), [Fabric](https://lightning.ai/docs/fabric/latest/advanced/model_parallel/fsdp.html)).
+
+
+### Fast and Memory-Optimized Initialization
+
+A major challenge that users face when working with large models such as LLMs is dealing with the extreme memory requirements. Even something as simple as instantiating a model becomes non-trivial if the model is so large it won't fit in a single GPU or even a single machine. In Lightning 2.1, we are introducing empty-weights initialization through the `Fabric.init_module()` ([#17462](https://github.com/Lightning-AI/lightning/pull/17462), [#17627](https://github.com/Lightning-AI/lightning/pull/17627)) and `Trainer.init_module()`/`LightningModule.configure_model()` ([#18004](https://github.com/Lightning-AI/lightning/pull/18004), [#18004](https://github.com/Lightning-AI/lightning/pull/18004), [#18385](https://github.com/Lightning-AI/lightning/pull/18385)) methods:
+
+
+**Trainer:**
+```python
+import lightning as L
+
+class MyModel(L.LightningModule):
+    def __init__(self):
+        super().__init__()
+        # Delay initialization of model to `configure_model()`
+
+    def configure_model(self):
+        # Model initialized in correct precision and weights on meta-device
+        self.model = ...
+
+    ...
+
+trainer = L.Trainer(strategy="fsdp", ...)
+trainer.fit(model)
+```
+
+**Fabric:**
+```python
+import lightning as L
+
+fabric = L.Fabric(strategy="fsdp", ...)
+
+# Model initialized in correct precision and weights on meta-device
+with fabric.init_module(empty_init=True):
+    model = ...
+    
+
+# You can also initialize buffers and tensors directly on device and dtype
+with fabric.init_tensor():
+    model.mask.create()
+    model.kv_cache.create()
+    x = torch.randn(4, 128)
+
+# Materialization and sharding of model happens inside here
+model = fabric.setup(model)
+```
+
+Read more about this new feature and its other benefits in our docs ([Trainer](https://lightning.ai/docs/pytorch/latest/advanced/model_init.html), [Fabric](https://lightning.ai/docs/fabric/latest/advanced/model_init.html)).
+
+
+### User-Friendly Configuration
+
+We made it super easy to configure the sharding- and activation-checkpointing policy when you want to auto-wrap particular layers of your model for advanced control ([#18045](https://github.com/Lightning-AI/lightning/pull/18045), [#18084](https://github.com/Lightning-AI/lightning/pull/18084)).
+
+```diff
+  import lightning as L
+  from lightning.pytorch.strategies import FSDPStrategy
+- from torch.distributed.fsdp.wrap import ModuleWrapPolicy
+
+- strategy = FSDPStrategy(auto_wrap_policy=ModuleWrapPolicy({MyTransformerBlock}))
++ strategy = FSDPStrategy(auto_wrap_policy={MyTransformerBlock})
+  trainer = L.Trainer(strategy=strategy, ...)
+```
+
+Furthermore, the sharding strategy can now be conveniently set with a string value ([#18087](https://github.com/Lightning-AI/lightning/pull/18087)):
+
+```diff
+  import lightning as L
+  from lightning.pytorch.strategies import FSDPStrategy
+- from torch.distributed.fsdp.fully_sharded_data_parallel import ShardingStrategy
+
+- strategy = FSDPStrategy(sharding_strategy=ShardingStrategy.SHARD_GRAD_OP)
++ strategy = FSDPStrategy(sharding_strategy="SHARD_GRAD_OP")
+  trainer = L.Trainer(strategy=strategy, ...)
+```
+You no longer need to remember the long PyTorch imports! Fabric also supports all these improvements shown above.
+
+<a name="highlights-half-precision"></a>
+## True Half-Precision
+
+Lightning now supports true half-precision for training and inference with all built-in strategies ([#18193](https://github.com/Lightning-AI/lightning/pull/18193), [#18217](https://github.com/Lightning-AI/lightning/pull/18217), [#18213](https://github.com/Lightning-AI/lightning/pull/18213), [#18219](https://github.com/Lightning-AI/lightning/pull/18219)). With this setting, the memory required to store the model weights is only half of what is normally needed when running with float32. In addition, you get the same speed benefits as mixed precision training (`precision="16-mixed"`) has:
+
+```python
+import lightning as L
+
+# default
+trainer = L.Trainer(precision="32-true")
+
+# train with model weights in `torch.float16`
+trainer = L.Trainer(precision="16-true")
+
+# train with model weights in `torch.bfloat16`
+# (if hardware supports it)
+trainer = L.Trainer(precision="bf16-true")
+```
+
+The same settings are also available in Fabric! We recommend to try bfloat16 training (`precision="bf16-true"`) as it is often more numerically stable than regular 16-bit precision (`precision="16-true"`).
+
+<a name="highlights-bitsandbytes"></a>
+## Bitsandbytes Quantization
+
+With the new [Bitsandbytes precision plugin](https://lightning.ai/docs/pytorch/latest/common/precision_intermediate.html#quantization-via-bitsandbytes) [#18655](https://github.com/Lightning-AI/lightning/pull/18655), you can now quantize your model for significant memory savings during training, finetuning, or inference with a selection of several state-of-the-art quantization algorithms (int8, fp4, nf4 and more). For the first time, Trainer and Fabric make [bitsandbytes](https://github.com/TimDettmers/bitsandbytes) easy to use for general models.
+
+
+**Trainer:**
+```python
+import lightning as L
+from lightning.pytorch.plugins import BitsandbytesPrecisionPlugin
+
+# this will pick out the compute dtype automatically, by default `bfloat16`
+precision = BitsandbytesPrecisionPlugin("nf4-dq")
+trainer = L.Trainer(plugins=precision)
+```
+
+**Fabric:**
+```python
+import lightning as L
+from lightning.fabric.plugins import BitsandbytesPrecision
+
+# this will pick out the compute dtype automatically, by default `bfloat16`
+precision = BitsandbytesPrecision("nf4-dq")
+trainer = L.Fabric(plugins=precision)
+```
+
+[Learn more!](https://lightning.ai/docs/pytorch/latest/common/precision_intermediate.html#quantization-via-bitsandbytes)
+
+<a name="highlights-transformer-engine"></a>
+## Transformer Engine
+
+The [Transformer Engine by NVIDIA](https://docs.nvidia.com/deeplearning/transformer-engine) is a library for accelerating transformer layers on the new Hopper (H100) generation of GPUs. With the integration in Lightning Trainer and Fabric ([#17597](https://github.com/Lightning-AI/lightning/pull/17597), [#18459](https://github.com/Lightning-AI/lightning/pull/18459)), you have easy access to the 8-bit mixed precision for significant speed ups:
+
+**Trainer:**
+```python
+import lightning as L
+
+# Select 8-bit mixed precision via TransformerEngine, with model weights in float16
+trainer = L.Trainer(precision="transformer-engine-float16")
+```
+
+**Fabric:**
+```python
+import lightning as L
+
+# Select 8-bit mixed precision via TransformerEngine, with model weights in float16
+fabric = L.Fabric(precision="transformer-engine-float16")
+```
+
+More configuration options are available through the respective plugins in [Trainer](https://lightning.ai/docs/pytorch/latest/common/precision_intermediate.html#float8-mixed-precision-via-nvidia-s-transformerengine) and [Fabric](https://lightning.ai/docs/fabric/latest/fundamentals/precision.html#float8-mixed-precision-via-nvidia-s-transformerengine).
+
+
+<a name="highlights-tpu"></a>
+## Lightning on TPU Goes Brrr
+
+Lightning 2.1 runs on the latest generation of TPU hardware on Google Cloud! TPU-v4 and TPU-v5 ([#17227](https://github.com/Lightning-AI/lightning/pull/17227)) are now fully supported both in Fabric and Trainer and run using the new PjRT runtime by default ([#17352](https://github.com/Lightning-AI/lightning/pull/17352)). PjRT is the runtime used by Jax and has shown an average improvement of 35% on benchmarks.
+
+**Trainer:**
+```python
+import lightning as L
+
+trainer = L.Trainer(accelerator="tpu", devices=8)
+model = MyModel()
+trainer.fit(model)  # uses PjRT if available
+```
+
+**Fabric:**
+```python
+import lightning as L
+
+
+def train(fabric):
+    ...
+
+fabric = L.Fabric(accelerator="tpu")
+fabric.launch(train)  # uses PjRT if available
+```
+
+And what's even more exciting, you can now scale massive multi-billion parameter models on TPUs using FSDP ([#17421](https://github.com/Lightning-AI/lightning/pull/17421)).
+
+```python
+import lightning as L
+from lightning.fabric.strategies import XLAFSDPStrategy
+
+strategy = XLAFSDPStrategy(
+    # Most arguments from the PyTorch native FSDP strategy are also available here!
+    auto_wrap_policy={Block},
+    activation_checkpointing_policy={Block},
+    state_dict_type="full",
+    sequential_save=True,
+)
+    
+fabric = L.Fabric(devices=8, strategy=strategy)
+fabric.launch(finetune)
+```
+You can find a full end-to-end finetuning example script in our [Lit-GPT repository](https://github.com/Lightning-AI/lit-gpt/blob/main/xla/finetune/adapter.py). The new XLA-FSDP strategy is experimental and currently only available in Fabric. Support in the Trainer will follow in the future.
+
+
+<a name="highlights-fabric-checkpoints"></a>
+## Granular Control Over Checkpoints in Fabric
+
+Several improvements for checkpoint saving and loading have landed in Fabric, enabling more fine-grained control over what is saved/loaded while reducing boilerplate code:
+
+1. There is a new `Fabric.load_raw()` method with which you can load model- or optimizer state-dicts saved externally by a non-Fabric application (e.g., raw PyTorch) ([#18049](https://github.com/Lightning-AI/lightning/pull/18049))
+
+    ```python
+    import lightning as L
+    
+    fabric = L.Fabric()
+    model = MyModel()
+
+    # A model weights file saved by your friend who doesn't use Fabric
+    fabric.load_raw("path/to/model.pt", model)
+
+    # Equivalent to this:
+    # model.load_state_dict(torch.load("path/to/model.pt"))
+    ```
+
+2. A new parameter `Fabric.load(..., strict=True|False)` to disable strict loading ([#17645](https://github.com/Lightning-AI/lightning/pull/17645))
+
+    ```python
+    import lightning as L
+    
+    fabric = L.Fabric()
+    model = MyModel()
+    state = {"model": model}
+
+    # strict loading is the default
+    fabric.load("path/to/checkpoint.ckpt", state, strict=True)
+
+    # disable strict loading
+    fabric.load("path/to/checkpoint.ckpt", state, strict=False)
+    ```
+
+3. A new parameter `Fabric.save(..., filter=...)` that enables you to exclude certain parameters of your model without writing boilerplate code for it ([#17845](https://github.com/Lightning-AI/lightning/pull/17845))
+
+
+    ```python
+    import lightning as L
+    
+    fabric = L.Fabric()
+    model, optimizer = ...
+
+    state = {"model": model, "optimizer": optimizer, "foo": 123}
+
+    # save only the weights that match a pattern
+    filter = {"model": lambda k, v: "weight" in k}
+    fabric.save("path/to/checkpoint.ckpt", state, filter=filter)
+    ```
+
+You can read more about the new options in our [checkpoint guide](https://lightning.ai/docs/fabric/latest/guide/checkpoint.html).
+
+
+<a name="bc-changes"></a>
+# Backward Incompatible Changes
+
+The release of PyTorch Lightning 2.0 was a big step into a new chapter: It brought a more polished API and removed a lot of legacy code and outdated as well as experimental features, at the cost of a long list of breaking changes resulting in more work needed than usual to upgrade from 1.9 to 2.0. Moving forward, we promised to maintain full backward compatibility of our public core APIs to guarantee a smooth upgrade experience for everyone, and with 2.1 we are happy to deliver on this promise. A few exceptions were made in places where the change was justified if it significantly improves the user experience, improves performance, or fixes the correctness of a feature. These changes will likely not impact most users.
+
+
+
+<a name="bc-changes-pytorch"></a>
+## PyTorch Lightning
+
+### TPU/XLA Changes
+
+When selecting device indices via `devices=[i]`, the Trainer now selects the i-th TPU core (0-based, previously it was 1-based) ([#17227](https://github.com/Lightning-AI/lightning/pull/17227))
+
+**Before:**
+```python
+# Selects the first TPU core (1-based index)
+trainer = Trainer(accelerator="tpu", devices=[1])
+```
+
+**Now:**
+```python
+# Selects the second TPU core (0-based index)
+trainer = Trainer(accelerator="tpu", devices=[1])
+```
+
+### Multi-GPU in Jupyter Notebooks
+
+Due to lack of reliability, Trainer now only runs on one GPU instead of all GPUs in a Jupyter notebook if `devices="auto"` (default) ([#18291](https://github.com/Lightning-AI/lightning/pull/18291))
+
+
+**Before:**
+```python
+import lightning as L
+
+# In Jupyter notebooks, this would select all available GPUs (DDP)
+trainer = L.Trainer(accelerator="cuda", devices="auto")
+```
+
+**Now:**
+```python
+# In Jupyter notebooks, this now selects only one GPU (the first)
+trainer = L.Trainer(accelerator="cuda", devices="auto")
+
+# You can still explicitly select multiple
+trainer = L.Trainer(accelerator="cuda", devices=8)
+```
+
+### Device Access in Setup Hook
+
+- During `LightningModule.setup()`, the `self.device` now returns the device the module *will be placed on* instead of `cpu` ([#18021](https://github.com/Lightning-AI/lightning/pull/18021))
+
+**Before:**
+```python
+def setup(self, stage):
+    # CPU regardless of the accelerator used
+    print(self.device)
+```
+
+**Now:**
+```python
+def setup(self, stage):
+    # CPU/CUDA/MPS/XLA depending on accelerator
+    print(self.device)
+```
+    
+### Miscellaneous Changes
+
+- `self.log`ed tensors are now kept in the original device to reduce unnecessary host-to-device synchronizations ([#17334](https://github.com/Lightning-AI/lightning/pull/17334))
+- The `FSDPStrategy` now loads checkpoints after the `configure_model`/`configure_sharded_model` hook ([#18358](https://github.com/Lightning-AI/lightning/pull/18358))
+- The `FSDPStrategy.load_optimizer_state_dict` and `FSDPStrategy.load_model_state_dict` are a no-op now ([#18358](https://github.com/Lightning-AI/lightning/pull/18358))
+- Removed experimental support for `torchdistx` due to a lack of project maintenance ([#17995](https://github.com/Lightning-AI/lightning/pull/17995))
+- Dropped support for PyTorch 1.11 ([#18691](https://github.com/Lightning-AI/lightning/pull/18691))
+
+
+<a name="bc-changes-fabric"></a>
+## Lightning Fabric
+
+We thank the community for the amazing feedback we got for [Fabric](https://lightning.ai/docs/fabric/stable/) so far - keep it coming. The list of breaking changes is short and won't affect the vast majority of users.
+
+### Sharding Context Manager in Fabric.run()
+
+We removed automatic sharding support with `Fabric.run` or using `fabric.launch(fn)`. This only impacts FSDP and DeepSpeed strategy users who use this way of launching. Please note that `Fabric.run` is a legacy construct from the `LightningLite` days, and is not recommended today. Please instantiate your large FSDP or DeepSpeed model under the newly added `fabric.init_module` context manager ([#17832](https://github.com/Lightning-AI/lightning/pull/17832)).
+
+**Before:**
+```python
+import lightning as L
+
+def train(fabric):
+    # FSDP's `enable_wrap` context or `deepspeed.zero.Init()`
+    # were applied automaticaly here
+    model = LargeModel()
+    ...
+        
+fabric = L.Fabric()
+fabric.launch(train)
+```
+
+**Now:**
+```python
+def train(fabric):
+    # Use `init_module` explicitly to apply these context managers
+    with fabric.init_module():
+        model = LargeModel()
+    ...
+```
+
+### Multi-GPU in Jupyter Notebooks
+
+Due to lack of reliability, Fabric now only runs on one GPU instead of all GPUs in a Jupyter notebook if `devices="auto"` (default) ([#18291](https://github.com/Lightning-AI/lightning/pull/18291))
+
+
+**Before:**
+```python
+import lightning as L
+
+# In Jupyter notebooks, this would select all available GPUs (DDP)
+fabric = L.Fabric(accelerator="cuda", devices="auto")
+```
+
+**Now:**
+```python
+# In Jupyter notebooks, this now selects only one GPU (the first)
+fabric = L.Fabric(accelerator="cuda", devices="auto")
+
+# You can still explicitly select multiple
+fabric = L.Fabric(accelerator="cuda", devices=8)
+```
+
+
+
+<a name="changelog"></a>
+# CHANGELOG
+
+<a name="changelog-pytorch"></a>
+## PyTorch Lightning
+
+<details><summary>Added</summary>
+
+- Added `metrics_format` attribute to `RichProgressBarTheme` class ([#18373](https://github.com/Lightning-AI/lightning/pull/18373))
+- Added `CHECKPOINT_EQUALS_CHAR` attribute to `ModelCheckpoint` class ([#17999](https://github.com/Lightning-AI/lightning/pull/17999))
+- Added `**summarize_kwargs` to `ModelSummary` and `RichModelSummary` callbacks ([#16788](https://github.com/Lightning-AI/lightning/pull/16788))
+- Added support for the `max_size_cycle|max_size|min_size` iteration modes during evaluation ([#17163](https://github.com/Lightning-AI/lightning/pull/17163))
+- Added support for the TPU-v4 architecture ([#17227](https://github.com/Lightning-AI/lightning/pull/17227))
+- Added support for XLA's new PJRT runtime ([#17352](https://github.com/Lightning-AI/lightning/pull/17352))
+- Check for invalid TPU device inputs ([#17227](https://github.com/Lightning-AI/lightning/pull/17227))
+- Added `XLAStrategy(sync_module_states=bool)` to control whether to broadcast the parameters to all devices ([#17522](https://github.com/Lightning-AI/lightning/pull/17522))
+- Added support for multiple optimizer parameter groups when using the FSDP strategy ([#17309](https://github.com/Lightning-AI/lightning/pull/17309))
+- Enabled saving the full model state dict when using the `FSDPStrategy` ([#16558](https://github.com/Lightning-AI/lightning/pull/16558))
+- Update `LightningDataModule.from_datasets` to support arbitrary iterables ([#17402](https://github.com/Lightning-AI/lightning/pull/17402))
+- Run the DDP wrapper in a CUDA stream ([#17334](https://github.com/Lightning-AI/lightning/pull/17334))
+- Added `SaveConfigCallback.save_config` to ease use cases such as saving the config to a logger ([#17475](https://github.com/Lightning-AI/lightning/pull/17475))
+- Enabled optional file versioning of model checkpoints ([#17320](https://github.com/Lightning-AI/lightning/pull/17320))
+- Added the process group timeout argument `FSDPStrategy(timeout=...)` for the FSDP strategy ([#17274](https://github.com/Lightning-AI/lightning/pull/17274))
+- Added `FSDPStrategy(activation_checkpointing_policy=...)` to customize the layer policy for automatic activation checkpointing (requires torch>=2.1) ([#18045](https://github.com/Lightning-AI/lightning/pull/18045))
+- Added CLI option `--map-to-cpu` to the checkpoint upgrade script to enable converting GPU checkpoints on a CPU-only machine ([#17527](https://github.com/Lightning-AI/lightning/pull/17527))
+- Added non-layer param count to the model summary ([#17005](https://github.com/Lightning-AI/lightning/pull/17005))
+- Updated `LearningRateMonitor` to log monitored values to `trainer.callback_metrics` ([#17626](https://github.com/Lightning-AI/lightning/pull/17626))
+- Added `log_weight_decay` argument to `LearningRateMonitor` callback ([#18439](https://github.com/Lightning-AI/lightning/pull/18439))
+- Added `Trainer.print()` to print on local rank zero only ([#17980](https://github.com/Lightning-AI/lightning/pull/17980))
+- Added `Trainer.init_module()` context manager to instantiate large models efficiently directly on device, dtype ([#18004](https://github.com/Lightning-AI/lightning/pull/18004))
+  * Creates the model parameters in the desired dtype (`torch.float32`, `torch.float64`) depending on the 'true' precision choice in `Trainer(precision='32-true'|'64-true')`
+- Added the `LightningModule.configure_model()` hook to instantiate large models efficiently directly on device, dtype, and with sharding support ([#18004](https://github.com/Lightning-AI/lightning/pull/18004))
+  * Handles initialization for FSDP models before wrapping and the Zero stage 3 initialization for DeepSpeed before sharding
+- Added support for meta-device initialization with `Trainer.init_module(empty_init=True)` in FSDP ([#18385](https://github.com/Lightning-AI/lightning/pull/18385))
+- Added `lightning.pytorch.plugins.PrecisionPlugin.module_init_context()` and `lightning.pytorch.strategies.Strategy.tensor_init_context()` context managers to control model and tensor instantiation ([#18004](https://github.com/Lightning-AI/lightning/pull/18004))
+- Automatically call `xla_model.mark_step()` before saving checkpoints with XLA ([#17882](https://github.com/Lightning-AI/lightning/pull/17882))
+- Added a callback for spike-detection ([#18014](https://github.com/Lightning-AI/lightning/pull/18014))
+- Added the ability to set the `torch.distributed.fsdp.ShardingStrategy` via string in `FSDPStrategy` ([#18087](https://github.com/Lightning-AI/lightning/pull/18087))
+- Improved error messages when attempting to load a DeepSpeed checkpoint at an invalid path ([#17795](https://github.com/Lightning-AI/lightning/pull/17795))
+- Allowed accessing rank information in the main process before processes are launched when using the `XLAStrategy` ([#18194](https://github.com/Lightning-AI/lightning/pull/18194))
+- Added support for true half-precision training via `Trainer(precision="16-true"|"bf16-true")` ([#18193](https://github.com/Lightning-AI/lightning/pull/18193), [#18217](https://github.com/Lightning-AI/lightning/pull/18217), [#18213](https://github.com/Lightning-AI/lightning/pull/18213), [#18219](https://github.com/Lightning-AI/lightning/pull/18219))
+- Added automatic process cleanup to avoid zombie child processes and stalls when exceptions are raised ([#18218](https://github.com/Lightning-AI/lightning/pull/18218))
+- Added validation of user input for `devices` and `num_nodes` when running with `SLURM` or `TorchElastic` ([#18292](https://github.com/Lightning-AI/lightning/pull/18292))
+- Added support for saving checkpoints with either full state-dict or sharded state dict via `FSDPStrategy(state_dict_type="full"|"sharded")` ([#18364](https://github.com/Lightning-AI/lightning/pull/18364))
+- Added support for loading sharded/distributed checkpoints in FSDP ([#18358](https://github.com/Lightning-AI/lightning/pull/18358))
+- Made the text delimiter in the rich progress bar configurable ([#18372](https://github.com/Lightning-AI/lightning/pull/18372))
+- Improved the error messaging and instructions when handling custom batch samplers in distributed settings ([#18402](https://github.com/Lightning-AI/lightning/pull/18402))
+- Added support for mixed 8-bit precision as `Trainer(precision="transformer-engine")` using [Nvidia's Transformer Engine](https://docs.nvidia.com/deeplearning/transformer-engine) ([#18459](https://github.com/Lightning-AI/lightning/pull/18459))
+- Added support for linear layer quantization with `Trainer(plugins=BitsandbytesPrecision())` using [bitsandbytes](https://github.com/TimDettmers/bitsandbytes) ([#18655](https://github.com/Lightning-AI/lightning/pull/18655))
+- Added support for passing the process group to the `FSDPStrategy` ([#18583](https://github.com/Lightning-AI/lightning/pull/18583))
+- Enabled the default process group configuration for FSDP's hybrid sharding ([#18583](https://github.com/Lightning-AI/lightning/pull/18583))
+- Added `lightning.pytorch.utilities.suggested_max_num_workers` to assist with setting a good value in distributed settings ([#18591](https://github.com/Lightning-AI/lightning/pull/18591))
+- Improved the `num_workers` warning to give a more accurate upper limit on the `num_workers` suggestion ([#18591](https://github.com/Lightning-AI/lightning/pull/18591))
+- Added `lightning.pytorch.utilities.is_shared_filesystem` utility function to automatically check whether the filesystem is shared between machines ([#18586](https://github.com/Lightning-AI/lightning/pull/18586))
+- Added support for returning an object of type `Mapping` from `LightningModule.training_step()` ([#18657](https://github.com/Lightning-AI/lightning/pull/18657))
+- Added the hook `LightningModule.on_validation_model_zero_grad()` to allow overriding the behavior of zeroing the gradients before entering the validation loop ([#18710](https://github.com/Lightning-AI/lightning/pull/18710))
+
+</details>
+
+<details><summary>Changed</summary>
+
+- Changed default metric formatting from `round(..., 3)` to `".3f"` format string in `MetricsTextColumn` class ([#18483](https://github.com/Lightning-AI/lightning/pull/18483))
+- Removed the limitation to call `self.trainer.model.parameters()` in `LightningModule.configure_optimizers()` ([#17309](https://github.com/Lightning-AI/lightning/pull/17309))
+- `Trainer(accelerator="tpu", devices=[i])"` now selects the i-th TPU core (0-based, previously it was 1-based) ([#17227](https://github.com/Lightning-AI/lightning/pull/17227))
+- Allow using iterable-style datasets with TPUs ([#17331](https://github.com/Lightning-AI/lightning/pull/17331))
+- Increased the minimum XLA requirement to 1.13 ([#17368](https://github.com/Lightning-AI/lightning/pull/17368))
+- `self.log`ed tensors are now kept in the original device to reduce unnecessary host-to-device synchronizations ([#17334](https://github.com/Lightning-AI/lightning/pull/17334))
+- Made the run initialization in `WandbLogger` lazy to avoid creating artifacts when the CLI is used ([#17573](https://github.com/Lightning-AI/lightning/pull/17573))
+- Simplified redirection of `*_step` methods in strategies by removing the `_LightningModuleWrapperBase` wrapper module ([#17531](https://github.com/Lightning-AI/lightning/pull/17531))
+- Support kwargs input for LayerSummary ([#17709](https://github.com/Lightning-AI/lightning/pull/17709))
+- Dropped support for `wandb` versions older than 0.12.0 in `WandbLogger` ([#17876](https://github.com/Lightning-AI/lightning/pull/17876))
+- During `LightningModule.setup()`, the `self.device` now returns the device the module will be placed on instead of `cpu` ([#18021](https://github.com/Lightning-AI/lightning/pull/18021))
+- Increased the minimum supported `wandb` version for `WandbLogger` from 0.12.0 to 0.12.10 ([#18171](https://github.com/Lightning-AI/lightning/pull/18171))
+- The input tensors now get cast to the right precision type before transfer to the device ([#18264](https://github.com/Lightning-AI/lightning/pull/18264))
+- Improved the formatting of emitted warnings ([#18288](https://github.com/Lightning-AI/lightning/pull/18288))
+- Broadcast and reduction of tensors with XLA-based strategies now preserve the input's device ([#18275](https://github.com/Lightning-AI/lightning/pull/18275))
+- The `FSDPStrategy` now loads checkpoints after the `configure_model`/`configure_sharded_model` hook ([#18358](https://github.com/Lightning-AI/lightning/pull/18358))
+- The `FSDPStrategy.load_optimizer_state_dict` and `FSDPStrategy.load_model_state_dict` are a no-op now ([#18358](https://github.com/Lightning-AI/lightning/pull/18358))
+- The `Trainer.num_val_batches`, `Trainer.num_test_batches` and `Trainer.num_sanity_val_batches` now return a list of sizes per dataloader instead of a single integer ([#18441](https://github.com/Lightning-AI/lightning/pull/18441))
+- The `*_step(dataloader_iter)` flavor now no longer takes the `batch_idx` in the signature ([#18390](https://github.com/Lightning-AI/lightning/pull/18390))
+- Calling `next(dataloader_iter)` now returns a triplet `(batch, batch_idx, dataloader_idx)` ([#18390](https://github.com/Lightning-AI/lightning/pull/18390))
+- Calling `next(combined_loader)` now returns a triplet `(batch, batch_idx, dataloader_idx)` ([#18390](https://github.com/Lightning-AI/lightning/pull/18390))
+- Due to lack of reliability, Trainer now only runs on one GPU instead of all GPUs in a Jupyter notebook if `devices="auto"` (default) ([#18291](https://github.com/Lightning-AI/lightning/pull/18291))
+- Made the `batch_idx` argument optional in `validation_step`, `test_step` and `predict_step` to maintain consistency with `training_step` ([#18512](https://github.com/Lightning-AI/lightning/pull/18512))
+- The `TQDMProgressBar` now consistently shows it/s for the speed even when the iteration time becomes larger than one second ([#18593](https://github.com/Lightning-AI/lightning/pull/18593))
+- The `LightningDataModule.load_from_checkpoint` and `LightningModule.load_from_checkpoint` methods now raise an error if they are called on an instance instead of the class ([#18432](https://github.com/Lightning-AI/lightning/pull/18432))
+- Enabled launching via `torchrun` in a SLURM environment; the `TorchElasticEnvironment` now gets chosen over the `SLURMEnvironment` if both are detected ([#18618](https://github.com/Lightning-AI/lightning/pull/18618))
+- If not set by the user, Lightning will set `OMP_NUM_THREADS` to `num_cpus / num_processes` when launching subprocesses (e.g. when DDP is used) to avoid system overload for CPU-intensive tasks ([#18677](https://github.com/Lightning-AI/lightning/pull/18677))
+- The `ModelCheckpoint` no longer deletes files under the save-top-k mechanism when resuming from a folder that is not the same as the current checkpoint folder ([#18750](https://github.com/Lightning-AI/lightning/pull/18750))
+- The `ModelCheckpoint` no longer deletes the file that was passed to `Trainer.fit(ckpt_path=...)` ([#18750](https://github.com/Lightning-AI/lightning/pull/18750))
+- Calling `trainer.fit()` twice now raises an error with strategies that spawn subprocesses through `multiprocessing` (ddp_spawn, xla) ([#18776](https://github.com/Lightning-AI/lightning/pull/18776))
+- The `ModelCheckpoint` now saves a symbolic link if `save_last=True` and `save_top_k != 0` ([#18748](https://github.com/Lightning-AI/lightning/pull/18748))
+
+</details>
+
+
+<details><summary>Deprecated</summary>
+
+- Deprecated the `SingleTPUStrategy` (`strategy="single_tpu"`) in favor of `SingleDeviceXLAStrategy` (`strategy="single_xla"`) ([#17383](https://github.com/Lightning-AI/lightning/pull/17383))
+- Deprecated the `TPUAccelerator` in favor of `XLAAccelerator` ([#17383](https://github.com/Lightning-AI/lightning/pull/17383))
+- Deprecated the `TPUPrecisionPlugin` in favor of `XLAPrecisionPlugin` ([#17383](https://github.com/Lightning-AI/lightning/pull/17383))
+- Deprecated the `TPUBf16PrecisionPlugin` in favor of `XLABf16PrecisionPlugin` ([#17383](https://github.com/Lightning-AI/lightning/pull/17383))
+- Deprecated the `Strategy.post_training_step` method ([#17531](https://github.com/Lightning-AI/lightning/pull/17531))
+- Deprecated the `LightningModule.configure_sharded_model` hook in favor of `LightningModule.configure_model` ([#18004](https://github.com/Lightning-AI/lightning/pull/18004))
+- Deprecated the `LightningDoublePrecisionModule` wrapper in favor of calling `Trainer.precision_plugin.convert_input()` ([#18209](https://github.com/Lightning-AI/lightning/pull/18209))
+
+    
+</details>
+
+<details><summary>Removed</summary>
+
+- Removed the `XLAStrategy.is_distributed` property. It is always True ([#17381](https://github.com/Lightning-AI/lightning/pull/17381))
+- Removed the `SingleTPUStrategy.is_distributed` property. It is always False ([#17381](https://github.com/Lightning-AI/lightning/pull/17381))
+- Removed experimental support for `torchdistx` due to a lack of project maintenance ([#17995](https://github.com/Lightning-AI/lightning/pull/17995))
+- Removed support for PyTorch 1.11 ([#18691](https://github.com/Lightning-AI/lightning/pull/18691))
+
+    
+</details>
+
+<details><summary>Fixed</summary>
+
+- Fixed an issue with reusing the same model across multiple trainer stages when using the `DeepSpeedStrategy` ([#17531](https://github.com/Lightning-AI/lightning/pull/17531))
+- Fixed the saving and loading of FSDP optimizer states ([#17819](https://github.com/Lightning-AI/lightning/pull/17819))
+- Fixed FSDP re-applying activation checkpointing when the user had manually applied it already ([#18006](https://github.com/Lightning-AI/lightning/pull/18006))
+- Fixed issue where unexpected exceptions would leave the default torch dtype modified when using true precision settings ([#18500](https://github.com/Lightning-AI/lightning/pull/18500))
+- Fixed issue where not including the `batch_idx` argument in the `training_step` would disable gradient accumulation ([#18619](https://github.com/Lightning-AI/lightning/pull/18619))
+- Fixed the replacement of callbacks returned in `LightningModule.configure_callbacks` when the callback was a subclass of an existing Trainer callback ([#18508](https://github.com/Lightning-AI/lightning/pull/18508))
+- Fixed `Trainer.log_dir` not returning the correct directory for the `CSVLogger` ([#18548](https://github.com/Lightning-AI/lightning/pull/18548))
+- Fixed redundant input-type casting in FSDP precision ([#18630](https://github.com/Lightning-AI/lightning/pull/18630))
+- Fixed numerical issues when reducing values in low precision with `self.log` ([#18686](https://github.com/Lightning-AI/lightning/pull/18686))
+- Fixed an issue that would cause the gradients to be erased if validation happened in the middle of a gradient accumulation phase ([#18710](https://github.com/Lightning-AI/lightning/pull/18710))
+- Fixed redundant file writes in `CSVLogger` ([#18567](https://github.com/Lightning-AI/lightning/pull/18567))
+- Fixed an issue that could lead to checkpoint files being deleted accidentally when resuming training ([#18750](https://github.com/Lightning-AI/lightning/pull/18750))
+
+
+</details>
+
+<a name="changelog-fabric"></a>
+## Lightning Fabric
+
+<details><summary>Added</summary>
+  
+- Added support for the TPU-v4 architecture ([#17227](https://github.com/Lightning-AI/lightning/pull/17227))
+- Added support for XLA's new PJRT runtime ([#17352](https://github.com/Lightning-AI/lightning/pull/17352))
+- Added support for Fully Sharded Data Parallel (FSDP) training with XLA ([#18126](https://github.com/Lightning-AI/lightning/pull/18126), [#18424](https://github.com/Lightning-AI/lightning/pull/18424), [#18430](https://github.com/Lightning-AI/lightning/pull/18430))
+- Check for invalid TPU device inputs ([#17227](https://github.com/Lightning-AI/lightning/pull/17227))
+- Added `XLAStrategy(sync_module_states=bool)` to control whether to broadcast the parameters to all devices ([#17522](https://github.com/Lightning-AI/lightning/pull/17522))
+- Added support for joint setup of model and optimizer with FSDP ([#17305](https://github.com/Lightning-AI/lightning/pull/17305))
+- Added support for handling multiple parameter groups in optimizers set up with FSDP ([#17305](https://github.com/Lightning-AI/lightning/pull/17305))
+- Added support for saving and loading sharded model and optimizer state with `FSDPStrategy` ([#17323](https://github.com/Lightning-AI/lightning/pull/17323))
+- Added a warning when calling methods on `_FabricModule` that bypass the strategy-specific wrappers ([#17424](https://github.com/Lightning-AI/lightning/pull/17424))
+- Added `Fabric.init_tensor()` context manager to instantiate tensors efficiently directly on device and dtype ([#17488](https://github.com/Lightning-AI/lightning/pull/17488))
+- Added `Fabric.init_module()` context manager to instantiate large models efficiently directly on device, dtype, and with sharding support ([#17462](https://github.com/Lightning-AI/lightning/pull/17462))
+  * Creates the model parameters in the desired dtype (`torch.float32`, `torch.float64`, `torch.float16`, or `torch.bfloat16`) depending on the 'true' precision choice in `Fabric(precision='32-true'|'64-true'|'16-true'|'bf16-true')`
+  * Handles initialization for FSDP models before wrapping and the Zero stage 3 initialization for DeepSpeed before sharding
+- Added support for empty weight initialization with `Fabric.init_module(empty_init=True)` for checkpoint loading ([#17627](https://github.com/Lightning-AI/lightning/pull/17627))
+- Added support for meta-device initialization with `Fabric.init_module(empty_init=True)` in FSDP ([#18122](https://github.com/Lightning-AI/lightning/pull/18122))
+- Added `lightning.fabric.plugins.Precision.module_init_context()` and `lightning.fabric.strategies.Strategy.module_init_context()` context managers to control model and tensor instantiation ([#17462](https://github.com/Lightning-AI/lightning/pull/17462))
+- `lightning.fabric.strategies.Strategy.tensor_init_context()` context manager to instantiate tensors efficiently directly on device and dtype ([#17607](https://github.com/Lightning-AI/lightning/pull/17607))
+- Run the DDP wrapper in a CUDA stream ([#17334](https://github.com/Lightning-AI/lightning/pull/17334))
+- Added support for true half-precision as `Fabric(precision="16-true"|"bf16-true")` ([#17287](https://github.com/Lightning-AI/lightning/pull/17287))
+- Added support for mixed 8-bit precision as `Fabric(precision="transformer-engine")` using [Nvidia's Transformer Engine](https://docs.nvidia.com/deeplearning/transformer-engine) ([#17597](https://github.com/Lightning-AI/lightning/pull/17597))
+- Added support for linear layer quantization with `Fabric(plugins=BitsandbytesPrecision())` using [bitsandbytes](https://github.com/TimDettmers/bitsandbytes) ([#18655](https://github.com/Lightning-AI/lightning/pull/18655))
+- Added error messaging for missed `.launch()` when it is required ([#17570](https://github.com/Lightning-AI/lightning/pull/17570))
+- Added support for saving checkpoints with either full state-dict or sharded state dict via `FSDPStrategy(state_dict_type="full"|"sharded")` ([#17526](https://github.com/Lightning-AI/lightning/pull/17526))
+- Added support for loading a full-state checkpoint file into a sharded model ([#17623](https://github.com/Lightning-AI/lightning/pull/17623))
+- Added support for calling hooks on a LightningModule via `Fabric.call` ([#17874](https://github.com/Lightning-AI/lightning/pull/17874))
+- Added the parameter `Fabric.load(..., strict=True|False)` to enable non-strict loading of partial checkpoint state ([#17645](https://github.com/Lightning-AI/lightning/pull/17645))
+- Added the parameter `Fabric.save(..., filter=...)` to enable saving a partial checkpoint state ([#17845](https://github.com/Lightning-AI/lightning/pull/17845))
+- Added support for loading optimizer states from a full-state checkpoint file ([#17747](https://github.com/Lightning-AI/lightning/pull/17747))
+- Automatically call `xla_model.mark_step()` before saving checkpoints with XLA ([#17882](https://github.com/Lightning-AI/lightning/pull/17882))
+- Automatically call `xla_model.mark_step()` after `optimizer.step()` with XLA ([#17883](https://github.com/Lightning-AI/lightning/pull/17883))
+- Added support for all half-precision modes in FSDP precision plugin ([#17807](https://github.com/Lightning-AI/lightning/pull/17807))
+- Added `FSDPStrategy(activation_checkpointing_policy=...)` to customize the layer policy for automatic activation checkpointing (requires torch>=2.1) ([#18045](https://github.com/Lightning-AI/lightning/pull/18045))
+- Added a callback for spike-detection ([#18014](https://github.com/Lightning-AI/lightning/pull/18014))
+- Added the ability to set the `torch.distributed.fsdp.ShardingStrategy` via string in `FSDPStrategy` ([#18087](https://github.com/Lightning-AI/lightning/pull/18087))
+- Improved error messages when attempting to load a DeepSpeed checkpoint at an invalid path ([#17795](https://github.com/Lightning-AI/lightning/pull/17795))
+- Added `Fabric.load_raw()` for loading raw PyTorch state dict checkpoints for model or optimizer objects ([#18049](https://github.com/Lightning-AI/lightning/pull/18049))
+- Allowed accessing rank information in the main process before processes are launched when using the `XLAStrategy` ([#18194](https://github.com/Lightning-AI/lightning/pull/18194))
+- Added automatic process cleanup to avoid zombie child processes and stalls when exceptions are raised ([#18218](https://github.com/Lightning-AI/lightning/pull/18218))
+- Added validation of user input for `devices` and `num_nodes` when running with `SLURM` or `TorchElastic` ([#18292](https://github.com/Lightning-AI/lightning/pull/18292))
+- Improved the error messaging and instructions when handling custom batch samplers in distributed settings ([#18402](https://github.com/Lightning-AI/lightning/pull/18402))
+- Added support for saving and loading stateful objects other than modules and optimizers ([#18513](https://github.com/Lightning-AI/lightning/pull/18513))
+- Enabled the default process group configuration for FSDP's hybrid sharding ([#18583](https://github.com/Lightning-AI/lightning/pull/18583))
+- Added `lightning.fabric.utilities.suggested_max_num_workers` to assist with setting a good value in distributed settings ([#18591](https://github.com/Lightning-AI/lightning/pull/18591))
+- Added `lightning.fabric.utilities.is_shared_filesystem` utility function to automatically check whether the filesystem is shared between machines ([#18586](https://github.com/Lightning-AI/lightning/pull/18586))
+- Removed support for PyTorch 1.11 ([#18691](https://github.com/Lightning-AI/lightning/pull/18691))
+- Added support for passing the argument `.load_state_dict(..., assign=True|False)` on Fabric-wrapped modules in PyTorch 2.1 or newer ([#18690](https://github.com/Lightning-AI/lightning/pull/18690))
+
+</details>
+
+<details><summary>Changed</summary>
+
+- Allow using iterable-style datasets with TPUs ([#17331](https://github.com/Lightning-AI/lightning/pull/17331))
+- Increased the minimum XLA requirement to 1.13 ([#17368](https://github.com/Lightning-AI/lightning/pull/17368))
+- Fabric argument validation now only raises an error if conflicting settings are set through the CLI ([#17679](https://github.com/Lightning-AI/lightning/pull/17679))
+- DataLoader re-instantiation is now only performed when a distributed sampler is required ([#18191](https://github.com/Lightning-AI/lightning/pull/18191))
+- Improved the formatting of emitted warnings ([#18288](https://github.com/Lightning-AI/lightning/pull/18288))
+- Broadcast and reduction of tensors with XLA-based strategies now preserve the input's device ([#18275](https://github.com/Lightning-AI/lightning/pull/18275))
+- Due to lack of reliability, Fabric now only runs on one GPU instead of all GPUs in a Jupyter notebook if `devices="auto"` (default) ([#18291](https://github.com/Lightning-AI/lightning/pull/18291))
+- Enabled launching via `torchrun` in a SLURM environment; the `TorchElasticEnvironment` now gets chosen over the `SLURMEnvironment` if both are detected ([#18618](https://github.com/Lightning-AI/lightning/pull/18618))
+- If not set by the user, Lightning will set `OMP_NUM_THREADS` to `num_cpus / num_processes` when launching subprocesses (e.g. when DDP is used) to avoid system overload for CPU-intensive tasks ([#18677](https://github.com/Lightning-AI/lightning/pull/18677))
+
+</details>
+
+<details><summary>Deprecated</summary>
+
+- Deprecated the `DDPStrategy.is_distributed` property. This strategy is distributed by definition ([#17381](https://github.com/Lightning-AI/lightning/pull/17381))
+- Deprecated the `SingleTPUStrategy` (`strategy="single_tpu"`) in favor of `SingleDeviceXLAStrategy` (`strategy="single_xla"`) ([#17383](https://github.com/Lightning-AI/lightning/pull/17383))
+- Deprecated the `TPUAccelerator` in favor of `XLAAccelerator` ([#17383](https://github.com/Lightning-AI/lightning/pull/17383))
+- Deprecated the `TPUPrecision` in favor of `XLAPrecision` ([#17383](https://github.com/Lightning-AI/lightning/pull/17383))
+- Deprecated the `TPUBf16Precision` in favor of `XLABf16Precision` ([#17383](https://github.com/Lightning-AI/lightning/pull/17383))
+
+</details>
+
+<details><summary>Removed</summary>
+
+- Removed automatic sharding support with `Fabric.run` or using `fabric.launch(fn)`. This only impacts FSDP and DeepSpeed strategy users. Please instantiate your module under the newly added `fabric.init_module` context manager ([#17832](https://github.com/Lightning-AI/lightning/pull/17832))
+- Removed the unsupported `checkpoint_io` argument from the `FSDPStrategy` ([#18192](https://github.com/Lightning-AI/lightning/pull/18192))
+
+</details>
+
+<details><summary>Fixed</summary>
+
+- Fixed issue where running on TPUs would select the wrong device index ([#17227](https://github.com/Lightning-AI/lightning/pull/17227))
+- Removed the need to call `.launch()` when using the DP-strategy (`strategy="dp"`) ([#17931](https://github.com/Lightning-AI/lightning/pull/17931))
+- Fixed FSDP re-applying activation checkpointing when the user had manually applied it already ([#18006](https://github.com/Lightning-AI/lightning/pull/18006))
+- Fixed FSDP re-wrapping the module root when the user had manually wrapped the model ([#18054](https://github.com/Lightning-AI/lightning/pull/18054))
+- Fixed issue where unexpected exceptions would leave the default torch dtype modified when using true precision settings ([#18500](https://github.com/Lightning-AI/lightning/pull/18500))
+- Fixed redundant input-type casting in FSDP precision ([#18630](https://github.com/Lightning-AI/lightning/pull/18630))
+- Fixed an issue with `find_usable_cuda_devices(0)` incorrectly returning a list of devices ([#18722](https://github.com/Lightning-AI/lightning/pull/18722))
+- Fixed redundant file writes in `CSVLogger` ([#18567](https://github.com/Lightning-AI/lightning/pull/18567))
+
+</details>
+
+<a name="changelog-app"></a>
+## Lightning App
+
+<details><summary>Added</summary>
+
+- Allow customizing `gradio` components with lightning colors ([#17054](https://github.com/Lightning-AI/lightning/pull/17054))
+
+</details>
+
+<details><summary>Changed</summary>
+    
+- Changed `LocalSourceCodeDir` cache_location to not use home in some certain cases ([#17491](https://github.com/Lightning-AI/lightning/pull/17491))
+
+</details>
+
+<details><summary>Removed</summary>
+    
+- Remove cluster commands from the CLI ([#18151](https://github.com/Lightning-AI/lightning/pull/18151))
+
+</details>
+
+
+**Full commit list**: https://github.com/Lightning-AI/lightning/compare/2.0.0...2.1.0
+
+<a name="contributors"></a>
+# Contributors
+
+### Veteran
+
+@adamjstewart @akreuzer @ethanwharris @dmitsf @lantiga @nicolai86 @pl-ghost @carmocca @awaelchli @justusschock @edenlightning @belerico @lightningforever @nisheethlahoti @tchaton @yurijmikhalevich @mauvilsa @rlizzo @rusmux @yhl48 @Liyang90 @jerome-habana @JustinGoheen @Borda @speediedan @SkafteNicki @dcfidalgo
+
+### New
+
+@saryazdi @parambharat @kshitij12345 @woqidaideshi @colehawkins @md-121 @gkroiz @idc9 @BoringDonut @OmerShubi @ishandutta0098 @ryan597 @leng-yue @alicanb @One-sixth @santurini @SpirinEgor @KogaiIrina @shanmugamr1992 @janeyx99 @asmith26 @dingusagar @AleksanderWWW @strawberrypie @solyaH @kaczmarj @voidful @water-vapor @bkiat1123 @rhiga2 @baskrahmer @felipewhitaker @mukhery @Quasar-Kim @robieta @one-matrix @jere357 @schmidt-ai @schuhschuh @anio @rjarun8 @callumhay @minhlong94 @klieret @giorgioskij @shihaoyin @JonathanRayner @NripeshN @marcimarc1 @bilelomrani1 @NikolasWolke @0x404 @quintenroets @Borodin @amorehead @SebastianGer @ioangatop @Tribhuvan0 @f0k @sameertantry @kwsp @nik777 @matsumotosan
+
+### Did you know?
+
+When Chuck Norris trains a neural network, it not only learns, but it also gains the ability to defend itself from adversarial attacks by roundhouse kicking them into submission.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Feature teaser (2023-10-10)</h2>
+      <pre>:rabbit: </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Hotfix for Conda package (2023-09-28)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Weekly patch release (2023-09-14)</h2>
+      <pre>## App
+
+### Fixed
+
+- Replace LightningClient with import from lightning_cloud (#18544)
+
+---
+
+## Fabric
+
+### Fixed
+
+- Fixed an issue causing the `_FabricOptimizer.state` to remain outdated after loading with `load_state_dict` (#18488)
+
+---
+
+## PyTorch
+
+### Fixed
+
+- Fixed an issue that wouldn't prevent the user to set the `log_model` parameter in `WandbLogger` via the LightningCLI (#18458)
+- Fixed the display of `v_num` in the progress bar when running with `Trainer(fast_dev_run=True)` (#18491)
+- Fixed `UnboundLocalError` when running with `python -O` (#18496)
+- Fixed visual glitch with the TQDM progress bar leaving the validation bar incomplete before switching back to the training display (#18503)
+- Fixed false positive warning about logging interval when running with `Trainer(fast_dev_run=True)` (#18550)
+
+---
+
+## Contributors
+
+@awaelchli, @borda, @justusschock, @SebastianGer
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Weekly patch release (2023-08-30)</h2>
+      <pre>## App
+
+## Changed
+
+- Change top folder (#18212)
+- Remove `_handle_is_headless` calls in app run loop (#18362)
+
+### Fixed
+
+- refactor path to root preventing circular import (#18357)
+
+---
+
+## Fabric
+
+### Changed
+
+- On XLA, avoid setting the global rank before processes have been launched as this will initialize the PJRT computation client in the main process (#16966)
+
+### Fixed
+
+- Fixed model parameters getting shared between processes when running with `strategy="ddp_spawn"` and `accelerator="cpu"`; this has a necessary memory impact, as parameters are replicated for each process now (#18238)
+- Removed false positive warning when using `fabric.no_backward_sync` with XLA strategies (#17761)
+- Fixed issue where Fabric would not initialize the global rank, world size, and rank-zero-only rank after initialization and before launch (#16966)
+- Fixed FSDP full-precision `param_dtype` training (`16-mixed`, `bf16-mixed` and `32-true` configurations) to avoid FSDP assertion errors with PyTorch < 2.0 (#18278)
+
+---
+
+## PyTorch
+
+### Changed
+
+- On XLA, avoid setting the global rank before processes have been launched as this will initialize the PJRT computation client in the main process (#16966)
+- Fix inefficiency in rich progress bar (#18369)
+
+### Fixed
+
+- Fixed FSDP full-precision `param_dtype` training (`16-mixed` and `bf16-mixed` configurations) to avoid FSDP assertion errors with PyTorch < 2.0 (#18278)
+- Fixed an issue that prevented the use of custom logger classes without an `experiment` property defined (#18093)
+- Fixed setting the tracking uri in `MLFlowLogger` for logging artifacts to the MLFlow server (#18395)
+- Fixed redundant `iter()` call to dataloader when checking dataloading configuration (#18415)
+- Fixed model parameters getting shared between processes when running with `strategy="ddp_spawn"` and `accelerator="cpu"`; this has a necessary memory impact, as parameters are replicated for each process now (#18238)
+- Properly manage `fetcher.done` with `dataloader_iter` (#18376)
+
+---
+
+## Contributors
+
+@awaelchli, @Borda, @carmocca, @quintenroets, @rlizzo, @speediedan, @tchaton
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Weekly patch release (2023-08-16)</h2>
+      <pre>## App
+
+### Changed
+
+- Removed the top-level import `lightning.pdb`; import `lightning.app.pdb` instead (#18177)
+- Client retries forever (#18065)
+
+### Fixed
+
+- Fixed an issue that would prevent the user to set the multiprocessing start method after importing lightning (#18177)
+
+---
+
+## Fabric
+
+### Changed
+
+- Disabled the auto-detection of the Kubeflow environment (#18137)
+
+### Fixed
+
+- Fixed issue where DDP subprocesses that used Hydra would set hydra's working directory to current directory (#18145)
+- Fixed an issue that would prevent the user to set the multiprocessing start method after importing lightning (#18177)
+- Fixed an issue with `Fabric.all_reduce()` not performing an inplace operation for all backends consistently (#18235)
+
+---
+
+## PyTorch
+
+### Added
+
+- Added `LightningOptimizer.refresh()` to update the `__dict__` in case the optimizer it wraps has changed its internal state (#18280)
+
+### Changed
+
+- Disabled the auto-detection of the Kubeflow environment (#18137))
+
+### Fixed
+
+- Fixed a `Missing folder` exception when using a Google Storage URL as a `default_root_dir` (#18088)
+- Fixed an issue that would prevent the user to set the multiprocessing start method after importing lightning (#18177)
+- Fixed the gradient unscaling logic if the training step skipped backward (by returning `None`) (#18267)
+- Ensure that the closure running inside the optimizer step has gradients enabled, even if the optimizer step has it disabled (#18268)
+- Fixed an issue that could cause the `LightningOptimizer` wrapper returned by `LightningModule.optimizers()` have different internal state than the optimizer it wraps (#18280)
+
+
+---
+
+## Contributors
+
+@0x404, @awaelchli, @bilelomrani1, @borda, @ethanwharris, @nisheethlahoti
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Minor patch release (2023-07-24)</h2>
+      <pre>## 2.0.6
+
+### App
+
+- Fixed handling a `None` request in the file orchestration queue (#18111)
+
+---
+
+### Fabric
+
+- Fixed `TensorBoardLogger.log_graph` not unwrapping the `_FabricModule` (#17844)
+
+---
+
+### PyTorch
+
+- `LightningCLI` not saving correctly `seed_everything` when `run=True` and `seed_everything=True` (#18056)
+- Fixed validation of non-PyTorch LR schedulers in manual optimization mode (#18092)
+- Fixed an attribute error for `_FaultTolerantMode` when loading an old checkpoint that pickled the enum (#18094)
+
+
+---
+
+## Contributors
+
+@awaelchli, @lantiga, @mauvilsa, @shihaoyin
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Minor patch release (2023-07-10)</h2>
+      <pre>## App
+
+### Added
+
+- plugin: store source app (#17892)
+- added colocation identifier (#16796)
+- Added exponential backoff to HTTPQueue put (#18013)
+- Content for plugins (#17243)
+
+### Changed
+
+- Save a reference to created tasks, to avoid tasks disappearing (#17946)
+
+---
+
+## Fabric
+
+### Added
+
+- Added validation against misconfigured device selection when using the DeepSpeed strategy (#17952)
+
+### Changed
+
+- Avoid info message when loading 0 entry point callbacks (#17990)
+
+### Fixed
+
+- Fixed the emission of a false-positive warning when calling a method on the Fabric-wrapped module that accepts no arguments (#17875)
+- Fixed check for FSDP's flat parameters in all parameter groups (#17914)
+- Fixed automatic step tracking in Fabric's CSVLogger (#17942)
+- Fixed an issue causing the `torch.set_float32_matmul_precision` info message to show multiple times (#17960)
+- Fixed loading model state when `Fabric.load()` is called after `Fabric.setup()` (#17997)
+
+---
+
+## PyTorch
+
+### Fixed
+
+- Fixed delayed creation of experiment metadata and checkpoint/log dir name when using `WandbLogger` (#17818)
+- Fixed incorrect parsing of arguments when augmenting exception messages in DDP (#17948)
+- Fixed an issue causing the `torch.set_float32_matmul_precision` info message to show multiple times (#17960)
+- Added missing `map_location` argument for the `LightningDataModule.load_from_checkpoint` function (#17950)
+- Fix support for `neptune-client` (#17939)
+
+
+---
+
+## Contributors
+
+@anio, @awaelchli, @borda, @ethanwharris, @lantiga, @nicolai86, @rjarun8, @schmidt-ai, @schuhschuh, @wouterzwerink, @yurijmikhalevich
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Minor patch release (2023-06-22)</h2>
+      <pre>## App
+
+### Fixed
+
+- bumped several dependencies to address security vulnerabilities.
+
+---
+
+## Fabric
+
+### Fixed
+
+- Fixed validation of parameters of `plugins.precision.MixedPrecision` (#17687)
+- Fixed an issue with HPU imports leading to performance degradation  (#17788)
+
+---
+
+## PyTorch
+
+### Changed
+
+- Changes to the `NeptuneLogger` (#16761):
+  * It now supports neptune-client 0.16.16 and neptune >=1.0, and we have replaced the `log()` method with `append()` and `extend()`.
+  * It now accepts a namespace `Handler` as an alternative to `Run` for the `run` argument. This means that you can call it `NeptuneLogger(run=run["some/namespace"])` to log everything to the `some/namespace/` location of the run.
+
+### Fixed
+
+- Fixed validation of parameters of `plugins.precision.MixedPrecisionPlugin` (#17687)
+- Fixed deriving default map location in `LightningModule.load_from_checkpoint` when there is an extra state (#17812)
+
+
+---
+
+## Contributors
+
+@akreuzer, @awaelchli, @borda, @jerome-habana, @kshitij12345
+
+_If we forgot someone due to not matching commit email with GitHub account, let us know :]_</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

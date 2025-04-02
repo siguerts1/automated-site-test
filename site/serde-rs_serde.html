@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for serde-rs/serde"/>
+  <title>serde-rs/serde Release Notes</title>
+</head>
+<body>
+  <h1>🚀 serde-rs/serde - Release Notes</h1>
+  
+    <section>
+      <h2>v1.0.219 (2025-03-09)</h2>
+      <pre>- Prevent `absolute_paths` Clippy restriction being triggered inside macro-generated code (#2906, thanks @davidzeng0)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.218 (2025-02-20)</h2>
+      <pre>- Documentation improvements</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.217 (2024-12-27)</h2>
+      <pre>- Support serializing externally tagged unit variant inside flattened field (#2786, thanks @Mingun)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.216 (2024-12-11)</h2>
+      <pre>- Mark all generated impls with #\[automatically_derived\] to exclude from code coverage (#2866, #2868, thanks @tdittr)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.215 (2024-11-11)</h2>
+      <pre>- Produce warning when multiple fields or variants have the same deserialization name (#2855, #2856, #2857)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.214 (2024-10-28)</h2>
+      <pre>- Implement IntoDeserializer for all Deserializers in serde::de::value module (#2568, thanks @Mingun)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.213 (2024-10-22)</h2>
+      <pre>- Fix support for macro-generated `with` attributes inside a newtype struct (#2847)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.212 (2024-10-22)</h2>
+      <pre>- Fix hygiene of macro-generated local variable accesses in serde(with) wrappers (#2845)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.211 (2024-10-22)</h2>
+      <pre>- Improve error reporting about mismatched signature in `with` and `default` attributes (#2558, thanks @Mingun)
+- Show variant aliases in error message when variant deserialization fails (#2566, thanks @Mingun)
+- Improve binary size of untagged enum and internally tagged enum deserialization by about 12% (#2821)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.210 (2024-09-06)</h2>
+      <pre>- Support serializing and deserializing `IpAddr` and `SocketAddr` in no-std mode on Rust 1.77+ (#2816, thanks @MathiasKoch)
+- Make `serde::ser::StdError` and `serde::de::StdError` equivalent to `core::error::Error` on Rust 1.81+ (#2818)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.209 (2024-08-24)</h2>
+      <pre>- Fix deserialization of empty structs and empty tuples inside of untagged enums (#2805, thanks @Mingun)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.208 (2024-08-15)</h2>
+      <pre>- Support serializing and deserializing unit structs in a `flatten` field (#2802, thanks @jonhoo)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.207 (2024-08-12)</h2>
+      <pre>- Improve interactions between `flatten` attribute and `skip_serializing`/`skip_deserializing` (#2795, thanks @Mingun)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.206 (2024-08-11)</h2>
+      <pre>- Improve support for `flatten` attribute inside of enums (#2567, thanks @Mingun)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.205 (2024-08-08)</h2>
+      <pre>- Use serialize_entry instead of serialize_key + serialize_value when serialize flattened newtype enum variants (#2785, thanks @Mingun)
+- Avoid triggering a collection_is_never_read lint in the deserialization of enums containing flattened fields (#2791)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.204 (2024-07-06)</h2>
+      <pre>- Apply #\[diagnostic::on_unimplemented\] attribute on Rust 1.78+ to suggest adding serde derive or enabling a "serde" feature flag in dependencies (#2767, thanks @weiznich)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.203 (2024-05-25)</h2>
+      <pre>- Documentation improvements (#2747)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.202 (2024-05-15)</h2>
+      <pre>- Provide public access to RenameAllRules in serde_derive_internals (#2743)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.201 (2024-05-08)</h2>
+      <pre>- Resolve unexpected_cfgs warning (#2737)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.200 (2024-05-01)</h2>
+      <pre>- Fix formatting of "invalid type" and "invalid value" deserialization error messages containing NaN or infinite floats (#2733, thanks @jamessan)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.199 (2024-04-27)</h2>
+      <pre>- Fix ambiguous associated item when `forward_to_deserialize_any!` is used on an enum with `Error` variant (#2732, thanks @aatifsyed)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.198 (2024-04-16)</h2>
+      <pre>- Support serializing and deserializing `Saturating<T>` (#2709, thanks @jbethune)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.197 (2024-02-20)</h2>
+      <pre>- Fix unused_imports warnings when compiled by rustc 1.78
+- Optimize code size of some Display impls (#2697, thanks @nyurik)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.196 (2024-01-26)</h2>
+      <pre>- Improve formatting of "invalid type" error messages involving floats (#2682)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.195 (2024-01-06)</h2>
+      <pre>- Prevent remote definitions of tuple struct or tuple variant from triggering dead_code warning (#2671)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.194 (2024-01-02)</h2>
+      <pre>- Update proc-macro2 to fix caching issue when using a rustc-wrapper such as sccache</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.193 (2023-11-21)</h2>
+      <pre>- Fix field names used for the deserialization of `RangeFrom` and `RangeTo` (#2653, #2654, #2655, thanks @emilbonnek)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.192 (2023-11-07)</h2>
+      <pre>- Allow internal tag field in untagged variant (#2646, thanks @robsdedude)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.191 (2023-11-06)</h2>
+      <pre>- Documentation improvements</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.190 (2023-10-26)</h2>
+      <pre>- Preserve NaN sign when deserializing f32 from f64 or vice versa (#2637)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

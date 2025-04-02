@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for ParityTech/substrate"/>
+  <title>ParityTech/substrate Release Notes</title>
+</head>
+<body>
+  <h1>🚀 ParityTech/substrate - Release Notes</h1>
+  
+    <section>
+      <h2>monthly-2023-08 (2023-08-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2023-08
+
+## Changes since last snapshot (monthly-2023-07)
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2023-07 (2023-07-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2023-07
+
+## Changes since last snapshot (monthly-2023-06)
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2023-06 (2023-06-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2023-06
+
+## Changes since last snapshot (monthly-2023-05)
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2023-05 (2023-05-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2023-05
+
+## Changes since last snapshot (monthly-2023-04)
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2023-04 (2023-04-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2023-04
+
+## Changes since last snapshot (monthly-2023-03)
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2023-03 (2023-03-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2023-03
+
+## Changes since last snapshot (monthly-2023-02)
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2023-02 (2023-02-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2023-02
+
+## Changes since last snapshot (monthly-2023-01)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Remove `uncles` related code (#13216)
+* migrate new benchmarking syntax from `frame_support::benchmarking` to `frame_benchmarking::v2` (#13235)
+* Add Proof Size to Weight Output (#11637)
+* Correct arithmetical semantic of `PerDispatchClass` (#13194)
+* contracts: Deprecate random interface (#13204)
+* [Fix] CountedMap::set now takes Counter into account (#13214)
+* Scheduler is already at V4 (#13105)
+* Allow duplicate topics in smart contract events (#13065)
+* Remove `Copy` from `Ensure*` traits (#13043)
+* Selectable on-runtime-upgrade checks (#13045)
+
+Client
+------
+
+* Add task type label to metrics (#13240)
+* Rename `*-private-ipv4` to `*-private-ip` CLI args (#13208)
+* sc-network: Ensure private addresses are disabled if requested (#13185)
+* Fix the `storage_size`/`state_getStorageSize` RPC call (#13154)
+* [client/network] Add support  for `/wss` addresses (#13152)
+* Selectable on-runtime-upgrade checks (#13045)
+
+API
+---
+
+* Add WeightToFee and LengthToFee impls to transaction-payment Runtime API (#13110)
+* new proc-macro-based benchmarking syntax (#12924)
+* Fix the `storage_size`/`state_getStorageSize` RPC call (#13154)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2023-01 (2023-01-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2023-01
+
+## Changes since last snapshot (monthly-2022-12)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Add ensure-ops family methods (#12967)
+* Allow StakingAdmin to set `min_commission` (#13018)
+* Ignore empty authority changes (#13010)
+* NFTs 2.0 (#12765)
+* contracts: Improve contract address derivation (#12883)
+* Add CallbackHandle to pallet-assets (#12307)
+* `frame_support::storage`: Add `StorageStreamIter` (#12721)
+* Warn on missing `pallet::call_index` (#12894)
+* Automatic `withdraw_unbonded` upon `unbond`  (#12582)
+* Staking: store last `min-active-bond` on-chain (#12889)
+* Remove implicit approval chilling upon slash. (#12420)
+* General Message Queue Pallet (#12485)
+* contracts: Add `instantiation_nonce` API (#12800)
+* Add `with_weight` extrinsic (#12848)
+* OpenGov: Abstentions (#12842)
+* Non-Interactive Staking (#12610)
+* Add `Weightless` benchmark bailing (#12829)
+* Bounties use SpendOrigin (#12808)
+
+Client
+------
+
+* try-runtime: add cli option --export-proof (#12539)
+* Print "stalled" task on shutdown (#13022)
+* babe: allow skipping over empty epochs (#11727)
+* Fix missing block number issue on forced canonicalization (#12949)
+* improve ocw validator/collator CLI description (#12931)
+* rpc server with HTTP/WS on the same socket (#12663)
+* Remove sandboxing host function interface (#12852)
+* Remove `mem_info` and references to `parity-util-mem` (#12795)
+
+API
+---
+
+* rpc: Implement `chainHead` RPC API (#12544)
+* Try-runtime Revamp and Facelift (#12537)
+* [pallet-assets] add asset_exists(id: AssetId) function (#12782)
+* Move LockableCurrency trait to fungibles::Lockable and deprecate LockableCurrency (#12798)
+* Refund referendum submission deposit (#12788)
+* Rename some crates for publishing to crates.io (#12837)
+* Reduce provisioner work (#12749)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-12 (2022-12-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-12
+
+## Changes since last snapshot (monthly-2022-11)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Allow Alliance Fellows to Give Up Voting Rights (#12730)
+* contracts: Replace `sp-sandbox` and `wasmi-validation` by newest wasmi (#12501)
+* `seal_reentrant_count` returns contract reentrant count (#12695)
+* Asset Pallet: Support repeated destroys to safely destroy large assets (#12310)
+* Contracts pallet: Bump Runtime API (#12677)
+* Add `CreateOrigin` to Assets Pallet (#12586)
+* New Weights for All Pallets (#12325)
+* Add pallet dev mode (#12536)
+* pallet-sudo: add `CheckOnlySudoAccount` signed extension (#12496)
+* Fix fungible unbalanced trait (#12569)
+* fix: construct_runtime multiple features (#12594)
+
+Client
+------
+
+* ed25519_verify: Support using dalek for historical blocks (#12661)
+* Remove the `wasmtime` feature flag (#12684)
+* Fix `cargo check` for `pallet-contracts-proc-macro` (#12706)
+* Remove `sp_tasks::spawn` API and related code + host functions (#12639)
+* update paritydb and remove dev deps on rocksdb (#12641)
+
+API
+---
+
+* contracts: Replace cargo feature `unstable-interface` with config (#12787)
+* Remove Default, HasCompact, and TypeInfo trait bounds on AssetId (#12740)
+* Assets Pallet: reintroduce fungibles::Destroy trait  (#12708)
+* Allow other pallets to check asset ids. (#12666)
+* Remove `sp_tasks::spawn` API and related code + host functions (#12639)
+* Consolidate and deduplicate MMR API methods (#12530)
+* Bound Election and Staking by MaxActiveValidators (#12436)
+* stabilize 4 storage host funcs (#12611)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-11 (2022-11-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-11
+
+## Changes since last snapshot (monthly-2022-10)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Update `pallet-multisig` benches (#12558)
+* Make Multisig Pallet Bounded (#12457)
+* contracts: Allow indeterministic instructions off-chain (#12469)
+* Add `DefensiveTruncateFrom` (#12515)
+* registrar: Avoid freebies in provide_judgement (#12465)
+* Vesting pallet - make WithdrawReasons configurable (#12109)
+* macro stubs for all pallet:: macros to improve documentation visibility and discovery + revamp of pallet macro documentation (#12334)
+* Maximum value for `MultiplierUpdate` (#12282)
+* Use `Option<Weight>` for contract dry-runs (#12429)
+* Bound uses of `Call` (#11649)
+* Adapt `pallet-contracts` to WeightV2 (#12421)
+* Remove contracts RPCs (#12358)
+
+Client
+------
+
+* Decrease default --out-peers from 25 to 15 (#12434)
+* Don't send back empty proofs if light request fails (#12372)
+* Remove contracts RPCs (#12358)
+
+API
+---
+
+* pallet-mmr: RPC API and Runtime API work with block numbers (#12345)
+* rpc: Implement `transaction` RPC API (#12328)
+* Bound uses of `Call` (#11649)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-10 (2022-10-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-10
+
+## Changes since last snapshot (monthly-2022-09)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Add storage size component to weights (#12277)
+* [Feature] Add deposit to fast-unstake (#12366)
+* Add base-weight to `System::Extrinsic*` events (#12329)
+* Rename anonymous to pure proxy (#12283)
+* Make automatic storage deposits resistant against changing deposit prices (#12083)
+* Bound staking storage items (#12230)
+* BREAKING: Rename Origin (#12258)
+* contracts: Use `WeakBoundedVec` for instrumented code (#12186)
+* [Feature] Part 1: add TargetList for validator ranking (#12034)
+* Add special tag to exclude runtime storage items from benchmarking (#12205)
+* Improve base weights consistency and make sure they're never zero (#11806)
+* Add inspect trait for asset roles (#11738)
+* BREAKING: Rename Call & Event (#11981)
+* Add `ConstFeeMultiplier` to the transaction payment pallet (#12222)
+* pallet-identity: Be more paranoid ;) (#12170)
+* [Fix] Make sure pool metadata is removed on pool dissolve (#12154)
+* Emit events for inter contract calls (#12136)
+* Uniques: Reset approved account after transfer  (#12145)
+
+Client
+------
+
+* unsafe_pruning flag removed (#12385)
+* Remove discarded blocks and states from database by default (#11983)
+* Proper naming wrt expectations (#12311)
+* benches: disable caching per default (#12232)
+* Add `--header` to `benchmark overhead + storage` (#12204)
+* Add benchmarking support for digest items (#12159)
+* Runtime State Test + Integration with `try-runtime` (#10174)
+
+API
+---
+
+* [fix] Bound staking ledger correctly with MaxUnlockingChunks from configuration (#12343)
+* Allow specifying immediate finalize for `manual-seal` (#12106)
+* rpc: Implement `chainSpec` RPC API (#12261)
+* Create sp-weights crate to store weight primitives (#12219)
+* BREAKING: Rename Call & Event (#11981)
+* [contracts] API host functions: remove `seal_` name prefix + enable aliasing (#12126)
+* Alliance pallet: add force_set_members instead of init_members function (#11997)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-09 (2022-09-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-09
+
+## Changes since last snapshot (monthly-2022-08)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Weight v1.5: Opaque Struct (#12138)
+* Fix nomination pools pending rewards RPC (#12095)
+* Revert "Auto-incremental CollectionId (#11796)" (#12059)
+* Replace `T::AccountId` with `<T::Lookup as StaticLookup>::Source` (#11670)
+* Make state types public (#12032)
+* Proposal: Flatten `AllPallets` and similar types (#11813)
+* transactional: Wrap `pallet::calls` directly in storage layers (#11927)
+* Transaction payment runtime api: query call info and fee details (#11819)
+* contracts: Apply depth limit when decoding (#11991)
+* Fix 16bit func_id (#11985)
+
+Client
+------
+
+* Weight v1.5: Opaque Struct (#12138)
+* Introduce trie level cache and remove state cache (#11407)
+* swap ed25519-dalek for ed25519-zebra (#11781)
+* Rename --pruning and --keep-blocks to be more similar to one another (#11934)
+* Beefy: use VersionedFinalityProof instead of SignedCommitment (#11962)
+* Rename `node-runtime` to `node-kitchensink-runtime` (#11930)
+
+API
+---
+
+* Weight v1.5: Opaque Struct (#12138)
+* Alliance pallet: retirement notice call (#11970)
+* Allow construct_runtime to take cfg attributes for pallets (#11818)
+* Implement ResultQuery (#11257)
+* Fix Origins Used in Runtime Benchmarks (#12037)
+* Proposal: Flatten `AllPallets` and similar types (#11813)
+* Runtime API versioning (#11779)
+* Transaction payment runtime api: query call info and fee details (#11819)
+* Change on-the-wire protocol names to include genesis hash & fork id (#11938)
+* Rename `node-runtime` to `node-kitchensink-runtime` (#11930)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-08 (2022-08-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-08
+
+## Changes since last snapshot (monthly-2022-07)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Auto-incremental CollectionId (#11796)
+* Add Event to Pallet Asset-Tx-Payment (#11690)
+* Make New Storage Layer Truly Default (#11918)
+* contracts: Allow `ChainExtension::call()` to access `&mut self` (#11874)
+* Add era to `Unbonded` event (#11770)
+* contracts: Composable `ChainExtension` (#11816)
+* Fix nomination pools unbonding logic (#11746)
+* Revamp nomination pool reward scheme (#11669)
+* Buy&Sell methods for Uniques (#11398)
+* Un-deprecate Transactional Macro (#11807)
+* [contracts] Fixed the bug with transfer value for delegate call (#11771)
+
+Client
+------
+
+* Rpc for pending rewards (#11831)
+* Add `benchmark extrinsic` command (#11456)
+* CLI flag to configure tx ban duration (#11786)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-07 (2022-07-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-07
+
+## Changes since last snapshot (monthly-2022-06)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* contracts: Reduce size of deletion queue depth (#11696)
+* MEL: Origin, Referenda, ConvictionVoting (#11631)
+* Add Event to Pallet Transaction Payment (#11618)
+* Allow nomination pools to chill + fix dismantle scenario (#11426)
+* pallet alliance (#11112)
+
+Client
+------
+
+* pallet-beefy-mmr: add API for BEEFY Authority Sets (#11406)
+* Pump the gossip engine while waiting for the BEEFY runtime pallet (memory leak fix) (#11694)
+
+API
+---
+
+* Democracy.fast_track not allowed with zero voting period (#11666)
+* [contracts] Implement transparent hashing for contract storage (#11501)
+* Make it possible to disable RocksDB completely (#11537)
+* Reduce call size of Referenda pallet (#11578)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-06 (2022-06-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-06
+
+## Changes since last snapshot (monthly-2022-05)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Several tweaks needed for Governance 2.0 (#11124)
+* Safe and sane multi-item storage removal (#11490)
+* Storage Layer for All FRAME Extrinsics (#11431)
+* Create Script to Run All Benchmarks (#11493)
+* Introduce #[pallet::call_index] attribute to dispatchables (#11381)
+* Add Score to Bags List (#11357)
+* contracts: Add `set_code` root dispatchable (#11451)
+* Allow to set the max supply for collection (#11441)
+* Explicitly note that existing `AccountIdConversion` is truncating and add fallible `try_into...` (#10719)
+* Use 'Items' and 'Collections' in uniques pallet (#11389)
+* make pool roles optional (#11411)
+* contracts: Prevent PoV attack vector with minimal viable solution (#11372)
+* Add force_batch to utility pallet (#11148)
+
+Client
+------
+
+* Switch to pooling copy-on-write instantiation strategy for WASM (#11232)
+
+API
+---
+
+* Safe and sane multi-item storage removal (#11490)
+* Stabilize ecdsa_ functions (#11486)
+* Use 'Items' and 'Collections' in uniques pallet (#11389)
+* jsonrpsee integration (#8783)
+* stabilize `seal_contains_storage` (`seal0`) and `seal_set_storage` (`seal1`) (#11378)
+* Remove the `--unsafe-pruning` CLI-argument (step 1) (#10995)
+* [contracts] stabilize `seal_code_hash`, `seal_set_code_hash` and `seal_own_code_hash` (#11337)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-05 (2022-05-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-05
+
+## Changes since last snapshot (monthly-2022-04)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Nomination Pools (#10694)
+* staking: Proportional ledger slashing (#10982)
+* Configurable call fee refund for signed submissions (#11002)
+* Remark storage (#10698)
+* Rb staking pallet validator commission change event (#10827)
+* Fix WASM block producer panic (#11206)
+* Add Limit to Tranasctional Layers (#10808)
+
+Client
+------
+
+* Make wildcard storage change subscriptions RPC-unsafe (#11259)
+* Add `chain-info` Subcommand (#11250)
+* Add `benchmark machine` placeholder (#11198)
+* Finality notification: Optimize calculation of stale heads (#11200)
+* Add new hardware and software metrics (#11062)
+* Sub-commands for `benchmark`  (#11164)
+
+API
+---
+
+* Make wildcard storage change subscriptions RPC-unsafe (#11259)
+* Add `frame_support::crypto::ecdsa::Public.to_eth_address()` (`k256`-based) and use it in pallets (#11087)
+* Apply `WeightToFeePolynomial`s to `pallet_transaction_payment`'s length fee (#10785)
+* Revert "Replace storage access by atomics" (#11156)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-04 (2022-04-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-04
+
+## Changes since last snapshot (monthly-2022-03)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* contracts: add  `seal_code_hash` and `seal_own_code_hash` to API (#10933)
+* Add a bounded fallback on failed elections (#10988)
+* Improve Bounties and Child Bounties Deposit Logic (#11014)
+* Allow pallet error enum variants to contain fields (#10242)
+* Stabilize `seal_delegate_call` (#11037)
+* Minor Uniques pallet improvements and XCM v3 preparations (#10896)
+
+Client
+------
+
+* Add `benchmark-block` command (#11091)
+* Add `dev_getBlockStats` RPC (#10939)
+* Add execution overhead benchmarking (#10977)
+* Additional `benchmark-storage` flags (#11004)
+* Deprecate "paritydb-experimental" CLI in favour or "paritydb" (#10975)
+* Refactored block body database scheme (#10779)
+
+API
+---
+
+* Allow pallet error enum variants to contain fields (#10242)
+* Make bags-list generic over node value and instantiable (#10997)
+* [contracts] Stabilize "seal0" `is_contract` and `caller_is_origin`  (#10971)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-03 (2022-03-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-03
+
+## Changes since last snapshot (monthly-2022-02)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Bring back MaxNominations as a metadata constant (#10947)
+* Upgrading parity-scale-codec to v3 (#10825)
+* contracts: Allow stack height metering to be disabled (#10877)
+* Measure per byte and not kb for certain benchmarks (#10863)
+* Upgradable contracts using `set_code` function (#10690)
+* pallet-staking: Add extrinsic `force_apply_min_commission` (#10786)
+* `seal_delegate_call` api function (support for library contracts)  (#10617)
+* Referenda and Conviction Voting pallets (#10195)
+* contracts: `is_contract(address)` and `caller_is_origin()` are added to API (#10789)
+
+Client
+------
+
+* Storage benchmarking (#10897)
+* Mark sync_state_genSyncSpec JSON-RPC as safe (#10832)
+* Add a new host function for reporting fatal errors; make WASM backtraces readable when printing out errors (#10741)
+* bench-cli: Support `JSON` output (#10771)
+* wasm-builder: Fall back to `release` profile for unknown profiles (#10775)
+
+API
+---
+
+* Fix reentrancy of FrozenBalance::died hook (#10473)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-02 (2022-02-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-02
+
+## Changes since last snapshot (monthly-2022-01)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Fix lazy batch contract removal (#10728)
+* better way to resolve `Phase::Emergency` via governance (#10663)
+* Optimized weights (#10692)
+* Add `MaxEncodeLen` to `implement_per_thing!` (#10715)
+* Require `MaxEncodedLen` per default (#10662)
+* Improve usability of `add`+`list_benchmark!` (#10592)
+* Allow the treasury to have a maximum bound on the bond (#10689)
+* Use free balance rather than total balance for elections phragmen (#10646)
+* reset events before apply runtime upgrade (#10620)
+* Add additionally functionality to contracts storage interface (#10497)
+
+Client
+------
+
+* Split peer slots between full and light nodes (#10688)
+* Increase default rocksdb cache (#10659)
+* code-substitute: Switch from `block_hash` to `block_number` (#10600)
+
+API
+---
+
+* Add stale branches heads to finality notifications (#10639)
+* bench/cli: extend --extrinsic name filtering (#10677)
+* Add feature: `no-metadata-doc` which removes doc from metadata and `full-metadata` which build metadata with all doc (#10493)
+* Name changes for GrandPa and Beefy notifications protocols (#10463)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2022-01 (2022-01-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2022-01
+
+## Changes since last snapshot (monthly-2021-12)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Inner hashing of value in state trie (runtime versioning). (#9732)
+* Emit `ContractReverted` error when revert flag is set (#10481)
+* Fix update_lock (#10485)
+* Remove Default bound for AccountId (#10403)
+* Preimage registrar and Scheduler integration (#10356)
+* Fix reset curator deposit when curator unassigns themself. (#10443)
+* Insufficient asset quota and deposits (#10382)
+* Introduce CheckNonZeroSender (#10413)
+* Add extrinsic to improve position in a bag of bags-list (#9829)
+* Add child-bounties pallet. (#10309)
+* contracts: Add storage deposits (#10082)
+* Minimum commission for validators (#10347)
+
+Client
+------
+
+* Inner hashing of value in state trie (runtime versioning). (#9732)
+* SlotDuration: Always fetch the slot duration from the runtime (#10509)
+* Add ClassAccount storage to unique pallet (#9940)
+* Add logger configuration hook (#10440)
+* Automatically unsubscribe storage listeners when they're dropped (RCP node memory leak fix) (#10454)
+* Remove Prometheus metrics prefix (#9543)
+* allow try-runtime and `TestExternalities` to report PoV size (#10372)
+* No longer include :code and :heappages in execution proofs (#10419)
+
+API
+---
+
+* Inner hashing of value in state trie (runtime versioning). (#9732)
+* Customizable ink address (#10521)
+* add  to (#10524)
+* Authentication of PeerIds in authority discovery records (#10317)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2021-12 (2021-12-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2021-12
+
+## Changes since last snapshot (monthly-2021-11)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Fix order of hook execution (#10043)
+* Support MMR Pruning (#9700)
+* Fix Weight Handlebar Template (#10302)
+* Offence implementations can disable offenders independently from slashing (#10201)
+* rework `staking::reap_stash` (#10178)
+* Kill the light client, CHTs and change tries. (#10080)
+* implement dispatch_as (#9934)
+
+Client
+------
+
+* Add group name in task metrics  (#10196)
+* Add a `trie_root_hash` variant for chain specs genesis (#10140)
+
+API
+---
+
+* Fix order of hook execution (#10043)
+* Stabilize "seal1" seal_call (#10366)
+* Moving `pallet-asset-tx-payment` from cumulus to substrate (#10127)
+* Make authorship soft deadline configurable. (#10125)
+* pallet-session: Migrate the historical part to the new pallet macro (#9878)
+* Kill the light client, CHTs and change tries. (#10080)
+* frame_support::pallet_prelude: Add scale_info::TypeInfo (#10221)
+* Better error for when origin filter prevent the call to be dispatched (#10134)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2021-11 (2021-11-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2021-11
+
+## Changes since last snapshot (monthly-2021-10)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Add Baseline FRAME Benchmarks (#9691)
+* contracts: Fix account counter isn't persisted (#10112)
+* More lenient mechanism for identifying stash accounts in purge_keys (#10004)
+* Root origin always bypass all filter, other origin cannot bypass BaseCallFilter even when constructed from Root origin (#9948)
+* Rework Transaction Priority calculation (#9834)
+
+Client
+------
+
+* Removal of light client from substrate (#9684)
+* Don't print "Discovered new external" line for private IPs (#10055)
+* make the ws buffer size configurable (#10013)
+* sc-executor-wasmtime: upgrade wasmtime to 0.30.0 (#10003)
+* Disable log reloading by default (#9966)
+* `--dev` implies `--tmp` (#9938)
+* Introduce block authorship soft deadline (#9663)
+* Quickly skip invalid transactions during block authorship. (#9789)
+
+API
+---
+
+* fix query details (#10107)
+* Switch to using ss58-registry crate (#9755)
+* pow: add Version for quick-check of metadata state and refactor lock handling (#9698)
+* Add Deposit and Withdraw Events to Balances Pallet (#9425)
+* Support extra constant renaming (#9814)
+* Root origin always bypass all filter, other origin cannot bypass BaseCallFilter even when constructed from Root origin (#9948)
+* Add low level traits to retrieve name, symbol, decimals and allowance in pallet-assets (#9757)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2021-10 (2021-10-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2021-10
+
+## Changes since last snapshot (monthly-2021-09)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Fungibles and Non-Fungibles Create and Destroy Traits + Assets and Uniques Implementation (#9844)
+* Implement a `CountedStorageMap` (#9125)
+* Emit log on Runtime Code change. (#9580)
+* Migrate `pallet-tips` to the new pallet attribute macro (#9711)
+* Use the precise number of approvals when constructing RawOrgin::Members (#9647)
+* Implemented `seal_ecdsa_recovery` function in the contract pallet (#9686)
+* contracts: Remove state rent (#9669)
+* Add VoteLocking config (#9641)
+
+Client
+------
+
+* `follow-chain` testing mode for try-runtime (and revamp CLI configs).  (#9788)
+* Emit log on Runtime Code change. (#9580)
+* Add `childstate_getStorageEntries` RPC (#9459)
+* Use tokio runtime handle instead of `TaskExecutor` abstraction (#9737)
+* Store the database in a role specific subdirectory (#9645)
+* Fixed block response limit check (#9692)
+
+API
+---
+
+* Extend PalletInfoAccess with module_name and crate_version method (#9690)
+* Migrate `pallet-session` to the new pallet macro (#9796)
+* pallet macro: allow to declare individual unbounded storage for those who cannot go into PoV (#9670)
+* Society Pallet to FrameV2 (#9472)
+* Bounties Pallet to FrameV2 (#9566)
+* Generate storage info for pallet im_online (#9654)
+* Enrich metadata with type information (#8615)
+* Emit log on Runtime Code change. (#9580)
+* Migrate `pallet-collective` to the new pallet attribute macro (#9115)
+* Migrate `pallet-tips` to the new pallet attribute macro (#9711)
+* add query types to generate_storage_alias (#9659)
+* Migrate `pallet-membership` to the new pallet attribute macro (#9080)
+* sp-utils => sc-utils (#9677)
+* Add VoteLocking config (#9641)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2021-09 (2021-09-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2021-09
+
+## Changes since last snapshot (monthly-2021-08)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Generate storage info for pallet authority_discovery (#9428)
+* Make System Events Private from the Runtime (#9619)
+* pallet-vesting: Support multiple, merge-able vesting schedules (#9202)
+* Custom Benchmark Errors and Override (#9517)
+* Stabilize `seal_debug_message` (#9550)
+* Improve call, and usage in pallet utility (#9418)
+* Refactor Benchmarks for Less Wasm Memory Usage (#9373)
+
+Client
+------
+
+* Fix `state_subscribeRuntimeVersion` for parachains (#9617)
+* Integrate Wasmer into Substrate sandbox environment (#5920)
+* Make choosing an executor (native/wasm) an explicit part of service construction (#9525)
+* Simplify `NativeExecutionDispatch` and remove the `native_executor_instance!` macro (#9562)
+* Limit the maximum number of wasm memory pages a runtime can have (#9308)
+
+API
+---
+
+* Add methods param for RPC `state_traceBlock` (#9642)
+* Remove dependency on sandboxing host functions (#9592)
+* Better RPC prometheus metrics. (#9358)
+* Integrate Wasmer into Substrate sandbox environment (#5920)
+* DatabaseSource::Auto (#9500)
+* Remove Filter and use Contains instead (#9514)
+* Improve call, and usage in pallet utility (#9418)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2021-08 (2021-08-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2021-08
+
+## Changes since last snapshot (monthly-2021-07)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Add some important events to batch & staking to ensure ease of analysis (#9462)
+* Move `PalletVersion` away from the crate version (#9165)
+* check can_dec_provider when transfer allow death (#9411)
+* include dispatch result in the Executed event (#9315)
+* pallet-collective: Do not vote `aye` with `propose` (#9323)
+* contracts: Allow contracts to dispatch calls into the runtime (#9276)
+* Include `StorageInfo` in Benchmarking Pipeline (#9090)
+
+Client
+------
+
+* Move client consensus parts out of primitives and into client/consensus/api (#9319)
+* Do not call `initialize_block` before any runtime api (#8953)
+
+API
+---
+
+* Add methods to PrefixIterator to support iterating from a specific key (#9313)
+* Benchmarking also benchmark for decoding the call (#9343)
+* Emit error when Config part is imported but without the std feature (#9225)
+* Migrate `pallet-mmr` to the new pallet attribute macro (#9181)
+* pallet-collective: Do not vote `aye` with `propose` (#9323)
+* Migrate `pallet-treasury` to the new pallet attribute macro (#9197)
+* Remove impl_outer_ macros (#9307)
+* Implement `InspectEnumerable` for Uniques (#9117)
+* Implement `iter_keys` function for all types of storage maps (#9238)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2021-07 (2021-07-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2021-07
+
+## Changes since last snapshot (monthly-2021-06)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Improve Staking Limits (#9193)
+* Decouple Staking and Election - Part 3: Signed Phase (#7910)
+* contracts: Remove weight pre charging (#8976)
+* Result<Option<>> rather than Option<Option<>> (#9119)
+* Add Control to Growth of the Staking Pallet (#8920)
+* Frame `remove_all` with size limit. (#9106)
+* staking/election: prolonged era and emergency mode for governance submission. (#8912)
+* Enforce pub calls in pallets (#9085)
+* Migrate pallet-staking to pallet attribute macro (#9083)
+* contracts: Add new `seal_call` that offers new features (#8909)
+* update ss58 type to u16 (#8955)
+* Named reserve (#7778)
+* Add Call Filter That Prevents Nested `batch_all` (#9009)
+* Uniques: An economically-secure basic-featured NFT pallet (#8813)
+
+Client
+------
+
+* Move client only primitives to another dir (#9220)
+* Remove `txpool` as an export of `sc_transaction_pool`, exporting the used components instead. (#9217)
+* Fast sync (#8884)
+* double the allocator limit (#9102)
+* Make it possible to override maximum payload of RPC (#9019)
+* Decommit instance memory after a runtime call on Linux (#8998)
+* `rpc-http-threads` cli arg (#8890)
+* Transaction pool: Ensure that we prune transactions properly (#8963)
+* Update wasmtime to 0.27 (#8913)
+
+API
+---
+
+* Emit error when construct_runtime imports a non-existent pallet part (#8949)
+* Allow renaming storage item prefixes (#9016)
+* Enforce pub calls in pallets (#9085)
+* Stop sending network_state to telemetry (#9026)
+* Use pallet names to name enum variants (#8990)
+* Delete legacy runtime metadata macros (#9043)
+* Storage chain: Runtime module (#8624)
+* Allow usage of path in construct_runtime! (#8801)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2021-06 (2021-06-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2021-06
+
+## Changes since last snapshot (monthly-2021-05)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Make `Schedule` fields public to allow for customization (#8924)
+* Simple `MaxBoundedLen` Implementations (#8793)
+* contracts: Add `seal_rent_status` (#8780)
+* Fix transaction payment fee/tip unbalanceds (#8860)
+* Ensure election offchain workers don't overlap (#8828)
+* Implement StorageNMap (#8635)
+* contracts: Move `Schedule` from Storage to `Config` (#8773)
+* Migrate pallet-offences to pallet attribute macro (#8763)
+* Embed runtime version as a custom section (#8688)
+* Migrate pallet-recovery to pallet attribute macro (#8761)
+* Add arithmetic dispatch errors. (#8726)
+* primitives: remove random_seed from BlockBuilder API (#8718)
+* make custom on runtime upgrade prior to pallet ones (#8687)
+
+Client
+------
+
+* Introduce `code_substitute` (#8898)
+* Make wasmtime the default when the feature is enabled (#8855)
+* Embed runtime version as a custom section (#8688)
+* RPC to trace execution of specified block (#7780)
+* Change to use the same subcommand syntax as subkey (#8678)
+* Add a JSON-RPC layer for reserved nodes (#8704)
+
+API
+---
+
+* Refactor code a little bit (#8932)
+* Migrate pallet-scored-pool to pallet attribute macro (#8825)
+* Migrate pallet-grandpa to attribute macros (#8724)
+* Introduce WeakBoundedVec, StorageTryAppend, and improve BoundedVec API (#8842)
+* Pallet-Multisig to framev2 (#8741)
+* Make hooks and call attributes optional in pallet macro (#8853)
+* Fix transaction payment fee/tip unbalanceds (#8860)
+* Migrate pallet-scheduler to pallet attribute macro  (#8769)
+* Allow to specify some max number of values for storages in pallet macro. (#8735)
+* Use StorageNMap for Approvals in assets pallet (#8816)
+* Migrate pallet-nicks to pallet attribute macro. (#8723)
+* Migrate pallet-im-online to pallet attribute macro. (#8714)
+* Update Identity pallet to Frame V2 (#8697)
+* Rework inherent data client side (#8526)
+* make custom on runtime upgrade prior to pallet ones (#8687)
+* Upgrade authorship pallet to Frame-v2 (#8663)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2021-05 (2021-05-01)</h2>
+      <pre># Automatic snapshot pre-release monthly-2021-05
+
+## Changes since last snapshot (monthly-2021-04)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Ensure inherent are first (#8173)
+* Add PoV Tracking to Benchmarking Pipeline (#8559)
+* Support code blobs compressed with zstd (#8549)
+
+Client
+------
+
+* subkey: display SS58 encoding of public key (#8674)
+* Authority-discovery no longer publishes non-global IP addresses (#8643)
+* Enable --no-private-ipv4 by default for live chains (#8642)
+* Make non-validators listen on /ws by default (#8609)
+* contracts: Add RPC that allows instantiating of a contract (#8451)
+* Add PoV Tracking to Benchmarking Pipeline (#8559)
+* Support code blobs compressed with zstd (#8549)
+
+API
+---
+
+* migrate pallet-elections-phragmen to attribute macros (#8044)
+* Make pallet macro generate accessor to PalletInfo information on pallet placeholder (#8630)
+* expose set_timestamp for runtime benchmarks (#8601)
+* Ensure inherent are first (#8173)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>monthly-2021-04 (2021-04-07)</h2>
+      <pre># Automatic snapshot pre-release monthly-2021-04
+
+## Changes since last snapshot (monthly-2021-03)
+
+Substrate changes
+-----------------
+
+Runtime
+-------
+
+* Add an INDEX to the Instance trait (#8555)
+* Fix account ref-counting in session (#8538)
+* Introduce `OnSetCode` type into system config trait. (#8496)
+* Implement `fungible::*` for Balances (#8454)
+* [pallet-staking] Refund unused weight for `payout_stakers` (#8458)
+* Make the number of nominations configurable (#8368)
+* Add tracing logic in pallet macro for hooks and dispatchables (#8305)
+* contracts: Update deduct block when a contract is excempted (#8418)
+* Decouple Staking and Election - Part 2.1: Unleash Multi Phase (#8113)
+* staking: Flexible generation of reward curve and associated tweaks (#8327)
+* contracts: Expose rent parameter to contracts (#8231)
+* pallet-staking: add RewardDestination::None for explictly not receiving rewards (#8168)
+* Return babe configuration information in the babe api epoch functions (#8072)
+* Assets: Remove zombies, introduce approvals (#8220)
+* Self-sufficient account ref-counting (#8221)
+* Init `RuntimeLogger` automatically for each runtime api call (#8128)
+
+Client
+------
+
+* Storing multiple Justifications per block (#7640)
+* Remove legacy network protocol (#8296)
+* Rework telemetry to replace the use of tracing with an object we pass around (#8143)
+* Decrease the peer reputation on invalid block requests (#8260)
+
+API
+---
+
+* Migrate `pallet-indices` to `pallet!` (#8465)
+* Migrate `pallet-sudo` to `pallet!` (#8448)
+* Upgrade pallet atomic swap (#8452)
+* Migrate pallet-utility to pallet attribute macro. (#8326)
+* contracts: Reduce the API surface (#8359)
+* Add tracing logic in pallet macro for hooks and dispatchables (#8305)
+* Use the log crate to output contract generated messages. (#8403)
+* Replace 'Module' with 'Pallet' in construct_runtime macro (#8372)
+* Migrate pallet-babe to pallet attribute macro. (#8310)
+* Migrate node authorization pallet to FRAME v2 (#8337)
+* Migrate pallet-proxy to pallet attribute macro (#8365)
+* im-online: use EstimateNextSessionRotation to get better estimates of session progress (#8242)
+* Add on_idle hook (#8209)
+* more clear randomness API for BABE (#8180)
+* Custom RPC for Merkle Mountain Range pallet (#8137)
+* pallet_macro: Generate default documentation for well known types (#8276)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Substrate v3.0/0.9 – Apollo 14 (2021-02-10)</h2>
+      <pre># Changelog for Substrate 3.0.0/0.9.0 - Apollo 14
+
+Most notably, this is the first release of the new FRAME (2.0) with its new macro-syntax and some changes in types, and pallet versioning. This release also incorporates the faster and improved version 2.0 of the parity-scale-codec and upgraded dependencies all-around. While the `FinalityTracker` pallet has been dropped, this release marks the first public appearance of a few new pallets, too: Bounties, Lottery, Tips (extracted from the `Treasury`-pallet, see #7536) and Merkle-Mountain-Ranges (MMR).
+
+On the client side, the most notable changes are around the keystore, making it async and switching to a different signing model allowing for remote-signing to be implemented. Various changes to improve networking and light-client support, like adding the Grandpa warp sync request-response protocol (#7711) are also included.
+
+_Contracts_: Please note that the contracts pallet _is not part_ of this release. The pallet is not yet ready and will be released separately in the coming weeks. The currently released contracts pallet _is not compatible_ with the new FRAME, thus if you need the contracts pallet, we recommend you wait with the upgrade until it has been released, too.
+
+### Upgrade instructions
+
+Not too much has changed on the top and API level for developing Substrate betweeen 2.0 and 3.0. The easiest and quickest path for upgrading is to just take the latest node-template and try applying your changes to it:
+1. take a diff between 2.0 and your changes
+2. store that diff
+3. remove everything, copy over the 3.0 node-template
+4. try re-applying your diff, manually, a hunk at a time.
+
+If that doesn't work for you, we are working on an in-depth-guide for all major changes that took place and how you need to adapt your code for it. [You can find the upgrade guide under `docs/` in the repo](https://github.com/paritytech/substrate/blob/master/docs/Upgrading-2.0-to-3.0.md), if you have further questions or problems, please [feel free to ask in the github discussion board](https://github.com/paritytech/substrate/discussions).
+
+
+Runtime
+-------
+
+* Fix elections-phragmen and proxy issue (#7040)
+* Allow validators to block and kick their nominator set. (#7930)
+* Decouple Staking and Election - Part1: Support traits (#7908)
+* Introduces account existence providers reference counting (#7363)
+* Use checked math when calculating storage size (#7885)
+* Fix clear prefix check to avoid erasing child trie roots. (#7848)
+* babe: expose next epoch data (#7829)
+* fix : remove `_{ }` syntax from benchmark macro (#7822)
+* Define ss58 prefix inside the runtime (#7810)
+* Allow council to slash treasury tip (#7753)
+* Don't allow self proxies (#7803)
+* add a `current_epoch` to BabeApi (#7789)
+* Add `pallet` attribute macro to declare pallets (#6877)
+* Make it possible to calculate the storage root as often as you want (#7714)
+* Issue 7143 | Refactor Treasury Pallet into Bounties, Tips, and Proposals (#7536)
+* Participating in Council Governance is Free for First Time Voters and Successful Closing (#7661)
+* Streamline frame_system weight parametrization (#6629)
+* Features needed for reserve-backed stablecoins (#7152)
+* `sudo_as` should return a result (#7620)
+* More Extensible Multiaddress Format (#7380)
+* Fix `on_runtime_upgrade` weight recording (#7480)
+* Implement batch_all and update Utility pallet for weight refunds (#7188)
+* Fix wrong outgoing calculation in election (#7384)
+* Implements pallet versioning (#7208)
+* Runtime worker threads (#7089)
+* Allow `schedule_after(0, ...)` to work (#7284)
+* Fix offchain election to respect the weight (#7215)
+* Fix weight for inner call with new origin (#7196)
+* Move proxies migration (#7205)
+* Introduce `cancel_proposal` to rid us of those pesky proposals (#7111)
+
+Client
+------
+
+* Remove backwards-compatibility networking hack (#8068)
+* Extend SS58 network identifiers (#8039)
+* Update dependencies ahead of next release (#8015)
+* Storage chains: serve transactions over IPFS/bitswap (#7963)
+* Add a send_request function to NetworkService (#8008)
+* Rename system_networkState to system_unstable_networkState (#8001)
+* Allow transaction for offchain indexing (#7290)
+* Grandpa warp sync request-response protocol (#7711)
+* Add explicit limits to notifications sizes and adjust yamux buffer size (#7925)
+* Rework priority groups, take 2 (#7700)
+* Define ss58 prefix inside the runtime (#7810)
+* Expand remote keystore interface to allow for hybrid mode (#7628)
+* Allow capping the amount of work performed when deleting a child trie (#7671)
+* RPC to allow setting the log filter (#7474)
+* Remove sc_network::NetworkService::register_notifications_protocol and partially refactor Grandpa tests (#7646)
+* minor fix and improvements on localkeystore (#7626)
+* contracts: Add `salt` argument to contract instantiation (#7482)
+* contracts: Rework contracts_call RPC (#7468)
+* Make sure to use the optimized method instead of reading the storage. (#7445)
+* WASM Local-blob override (#7317)
+* client/network: Allow configuring Kademlia's disjoint query paths (#7356)
+* client/network: Remove option to disable yamux flow control (#7358)
+* Make `queryStorage` and `storagePairs` unsafe RPC functions (#7342)
+* No longer actively open legacy substreams (#7076)
+* Make `run_node_until_exit` take a future (#7318)
+* Add an system_syncState RPC method (#7315)
+* Async keystore + Authority-Discovery async/await (#7000)
+* Fixes logging of target names with dashes (#7281)
+* Refactor CurrencyToVote (#6896)
+* client/network: Stop sending noise legacy handshake (#7211)
+
+API
+---
+
+* pallet macro: easier syntax for `#[pallet::pallet]` with `struct Pallet<T>(_)` (#8091)
+* WasmExecutor takes a cache directory (#8057)
+* Remove PalletInfo impl for () (#8090)
+* Migrate assets pallet to new macros (#7984)
+* contracts: Make ChainExtension trait generic over the runtime (#8003)
+* Decouple the session validators from im-online (#7127)
+* Update parity-scale-codec to 2.0 (#7994)
+* Merkle Mountain Range pallet improvements (#7891)
+* Cleaner GRANDPA RPC API for proving finality (#7339)
+* Migrate frame-system to pallet attribute macro (#7898)
+* Introduces account existence providers reference counting (#7363)
+* contracts: Lazy storage removal (#7740)
+* contracts: Allow runtime authors to define a chain extension (#7548)
+* Define ss58 prefix inside the runtime (#7810)
+* Add `pallet` attribute macro to declare pallets (#6877)
+* Add keccak-512 to host functions. (#7531)
+* Merkle Mountain Range pallet (#7312)
+* Allow capping the amount of work performed when deleting a child trie (#7671)
+* add an upgrade_keys method for pallet-session (#7688)
+* Streamline frame_system weight parametrization (#6629)
+* Rename pallet trait `Trait` to `Config` (#7599)
+* contracts: Add `salt` argument to contract instantiation (#7482)
+* pallet-evm: move to Frontier (Part IV) (#7573)
+* refactor subtrait/elevated trait as not needed (#7497)
+* Allow BabeConsensusDataProvider fork existing chain (#7078)
+* decouple transaction payment and currency (#6912)
+* contracts: Refactor the runtime API in order to simplify node integration (#7409)
+* client/authority-discovery: Remove sentry node logic (#7368)
+* client/network: Make NetworkService::set_priority_group async (#7352)
+* *: Bump async-std to v1.6.5 (#7306)
+* babe: make secondary slot randomness available on-chain (#7053)
+* allow where clause in decl_error (#7324)
+* reschedule (#6860)
+* SystemOrigin trait (#7226)
+* permit setting treasury pallet initial funding through genesis (#7214)
+
+Runtime Migrations
+------------------
+
+* Migrate pallet-balances to pallet attribute macro (#7936)
+* Migrate pallet-timestamp to pallet attribute macro (#8078)
+* Migrate assets pallet to new macros (#7984)
+* Fix elections-phragmen and proxy issue (#7040)
+* Allow validators to block and kick their nominator set. (#7930)
+* Migrate frame-system to pallet attribute macro (#7898)
+* Implements pallet versioning (#7208)
+* Move proxies migration (#7205)
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

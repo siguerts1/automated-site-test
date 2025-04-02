@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for mozilla/sops"/>
+  <title>mozilla/sops Release Notes</title>
+</head>
+<body>
+  <h1>🚀 mozilla/sops - Release Notes</h1>
+  
+    <section>
+      <h2>v3.10.1 (2025-03-31)</h2>
+      <pre>## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.10.1/sops-v3.10.1.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.10.1.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.10.1/sops-v3.10.1.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.10.1/sops-v3.10.1.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.10.1/sops-v3.10.1.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.10.1.checksums.txt \
+  --certificate sops-v3.10.1.checksums.pem \
+  --signature sops-v3.10.1.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.10.1.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `sops-v3.10.1.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.10.1/sops-v3.10.1.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path sops-v3.10.1.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.10.1
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.10.1`
+- `ghcr.io/getsops/sops:v3.10.1-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.10.1`
+- `quay.io/getsops/sops:v3.10.1-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.10.1 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1826
+* Release 3.10.1 by @felixfontein in https://github.com/getsops/sops/pull/1827
+
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.10.0...v3.10.1
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.10.0 (2025-03-30)</h2>
+      <pre>## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.10.0/sops-v3.10.0.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.10.0.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.10.0/sops-v3.10.0.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.10.0/sops-v3.10.0.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.10.0/sops-v3.10.0.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.10.0.checksums.txt \
+  --certificate sops-v3.10.0.checksums.pem \
+  --signature sops-v3.10.0.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.10.0.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `sops-v3.10.0.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.10.0/sops-v3.10.0.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path sops-v3.10.0.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.10.0
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.10.0`
+- `ghcr.io/getsops/sops:v3.10.0-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.10.0`
+- `quay.io/getsops/sops:v3.10.0-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.10.0 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* build(deps): Bump alpine from 3.18 to 3.21 in /.release in the docker group across 1 directory by @dependabot in https://github.com/getsops/sops/pull/1700
+* Convert changelog to MarkDown by @felixfontein in https://github.com/getsops/sops/pull/1741
+* build(deps): Bump the go group with 7 updates by @dependabot in https://github.com/getsops/sops/pull/1743
+* build(deps): Bump the go group with 9 updates by @dependabot in https://github.com/getsops/sops/pull/1745
+* build(deps): Bump the rust group in /functional-tests with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1744
+* build(deps): Bump github/codeql-action from 3.28.5 to 3.28.8 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1746
+* build(deps): Bump the go group with 12 updates by @dependabot in https://github.com/getsops/sops/pull/1751
+* build(deps): Bump the ci group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1750
+* Add --input-type option for filestatus subcommand by @felixfontein in https://github.com/getsops/sops/pull/1601
+* Use SOPS_EDITOR before EDITOR by @felixfontein in https://github.com/getsops/sops/pull/1611
+* Allow users to disable version check via environment variable by @nicklasfrahm in https://github.com/getsops/sops/pull/1684
+* add duplicate section support to ini store by @reindlt in https://github.com/getsops/sops/pull/1452
+* stores: test for duplicate keys, reserve keyword (yaml only now) by @holiman in https://github.com/getsops/sops/pull/1203
+* Add same process option for exec-env by @ricmatsui in https://github.com/getsops/sops/pull/880
+* outputs: add trailing newline at the end of JSON files by @duthils in https://github.com/getsops/sops/pull/1476
+* set subcommand: add --idempotent flag that will not write the file if no change happened by @felixfontein in https://github.com/getsops/sops/pull/1754
+* Encrypt and decrypt time.Time objects by @felixfontein in https://github.com/getsops/sops/pull/1759
+* build(deps): Bump the go group with 8 updates by @dependabot in https://github.com/getsops/sops/pull/1763
+* build(deps): Bump tempfile from 3.16.0 to 3.17.0 in /functional-tests in the rust group by @dependabot in https://github.com/getsops/sops/pull/1762
+* build(deps): Bump goreleaser/goreleaser-action from 6.1.0 to 6.2.1 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1761
+* fix(docs): typo in README.rst by @Paredev in https://github.com/getsops/sops/pull/1765
+* Add SSH support for age by @haoqixu in https://github.com/getsops/sops/pull/1692
+* make sure that tests do not pick keys.txt from user's HOME dir by @tomaszduda23 in https://github.com/getsops/sops/pull/1766
+* support for age identity with passphrase by @tomaszduda23 in https://github.com/getsops/sops/pull/1400
+* build(deps): Bump the rust group in /functional-tests with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1768
+* build(deps): Bump the go group with 12 updates by @dependabot in https://github.com/getsops/sops/pull/1769
+* build(deps): Bump the ci group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1770
+* build(deps): Bump github.com/go-jose/go-jose/v4 from 4.0.4 to 4.0.5 by @dependabot in https://github.com/getsops/sops/pull/1773
+* feat: add age plugin support by @brianmcgee in https://github.com/getsops/sops/pull/1641
+* Check GnuPG decryption result for non-empty size by @felixfontein in https://github.com/getsops/sops/pull/1776
+* vendored age code: consolidate passphrase reading functionality by @felixfontein in https://github.com/getsops/sops/pull/1775
+* Allow to encrypt and decrypt from stdin by @felixfontein in https://github.com/getsops/sops/pull/1690
+* build(deps): Bump the go group with 11 updates by @dependabot in https://github.com/getsops/sops/pull/1784
+* build(deps): Bump the ci group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1782
+* build(deps): Bump serde_json from 1.0.139 to 1.0.140 in /functional-tests in the rust group; bump Rust to 1.85.0 by @dependabot in https://github.com/getsops/sops/pull/1783
+* build(deps): Bump the go group with 13 updates by @dependabot in https://github.com/getsops/sops/pull/1797
+* build(deps): Bump the rust group in /functional-tests with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1796
+* build(deps): Bump github/codeql-action from 3.28.10 to 3.28.11 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1795
+* build(deps): Bump the go group with 6 updates by @dependabot in https://github.com/getsops/sops/pull/1802
+* build(deps): Bump tempfile from 3.18.0 to 3.19.0 in /functional-tests in the rust group by @dependabot in https://github.com/getsops/sops/pull/1800
+* build(deps): Bump docker/login-action from 3.3.0 to 3.4.0 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1801
+* build(deps): Bump github.com/golang-jwt/jwt/v5 from 5.2.1 to 5.2.2 by @dependabot in https://github.com/getsops/sops/pull/1806
+* goreleaser: add windows arm64 by @duthils in https://github.com/getsops/sops/pull/1791
+* Add a way to set sops config location via envvar by @sledzikowy in https://github.com/getsops/sops/pull/1701
+* build(deps): Bump the go group with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1809
+* build(deps): Bump the ci group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1808
+* build(deps): Bump tempfile from 3.19.0 to 3.19.1 in /functional-tests in the rust group by @dependabot in https://github.com/getsops/sops/pull/1807
+* Support --config option in publish subcommand by @felixfontein in https://github.com/getsops/sops/pull/1779
+* Fix caching of Metadata.DataKey by @felixfontein in https://github.com/getsops/sops/pull/1781
+* Lint by @felixfontein in https://github.com/getsops/sops/pull/1780
+* updatekeys subcommand: rename GroupQuorum to ShamirThreshold by @felixfontein in https://github.com/getsops/sops/pull/1631
+* If --filename-override is specified, convert it to an absolute path same as regular filenames by @felixfontein in https://github.com/getsops/sops/pull/1793
+* Add support for `oauth2.TokenSource` in GCP KMS by @matheuscscp in https://github.com/getsops/sops/pull/1794
+* Added SOPS_AGE_KEY_CMD option to age, fixes #1323 by @danilobuerger in https://github.com/getsops/sops/pull/1811
+* chore: omitempty metadata to reduce the size of stored config by @cgetzen in https://github.com/getsops/sops/pull/1571
+* Improve Shamir Secret Sharing code by @felixfontein in https://github.com/getsops/sops/pull/1813
+* Update all dependencies by @felixfontein in https://github.com/getsops/sops/pull/1814
+* Run 'gofmt -w' on all .go files by @felixfontein in https://github.com/getsops/sops/pull/1817
+* Add option to explicitly check for the latest version; deprecate current default of always doing that unless disabled by @felixfontein in https://github.com/getsops/sops/pull/1816
+* Build using Go 1.24 and drop support for 1.22 by @hiddeco in https://github.com/getsops/sops/pull/1819
+* Support `GOOGLE_OAUTH_ACCESS_TOKEN` for Google Cloud Platform  by @marensofier in https://github.com/getsops/sops/pull/1578
+* Warn about `.sops.yml` files found while searching for `.sops.yaml` by @felixfontein in https://github.com/getsops/sops/pull/1820
+* Release 3.10.0 by @felixfontein in https://github.com/getsops/sops/pull/1815
+* Added support for multiarch windows release binaries by @sabre1041 in https://github.com/getsops/sops/pull/1823
+
+## New Contributors
+* @reindlt made their first contribution in https://github.com/getsops/sops/pull/1452
+* @ricmatsui made their first contribution in https://github.com/getsops/sops/pull/880
+* @Paredev made their first contribution in https://github.com/getsops/sops/pull/1765
+* @haoqixu made their first contribution in https://github.com/getsops/sops/pull/1692
+* @brianmcgee made their first contribution in https://github.com/getsops/sops/pull/1641
+* @sledzikowy made their first contribution in https://github.com/getsops/sops/pull/1701
+* @matheuscscp made their first contribution in https://github.com/getsops/sops/pull/1794
+* @danilobuerger made their first contribution in https://github.com/getsops/sops/pull/1811
+* @cgetzen made their first contribution in https://github.com/getsops/sops/pull/1571
+* @marensofier made their first contribution in https://github.com/getsops/sops/pull/1578
+* @sabre1041 made their first contribution in https://github.com/getsops/sops/pull/1823
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.9.4...v3.10.0
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.9.4 (2025-01-25)</h2>
+      <pre>## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.4/sops-v3.9.4.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.9.4.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.4/sops-v3.9.4.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.4/sops-v3.9.4.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.4/sops-v3.9.4.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.9.4.checksums.txt \
+  --certificate sops-v3.9.4.checksums.pem \
+  --signature sops-v3.9.4.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.9.4.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `sops-v3.9.4.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.9.4/sops-v3.9.4.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path sops-v3.9.4.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.9.4
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.9.4`
+- `ghcr.io/getsops/sops:v3.9.4-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.9.4`
+- `quay.io/getsops/sops:v3.9.4-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.9.4 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* build(deps): Bump the go group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1727
+* build(deps): Bump tempfile from 3.14.0 to 3.15.0 in /functional-tests in the rust group by @dependabot in https://github.com/getsops/sops/pull/1728
+* build(deps): Bump the go group with 16 updates by @dependabot in https://github.com/getsops/sops/pull/1732
+* build(deps): Bump the ci group with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1730
+* build(deps): Bump serde_json from 1.0.134 to 1.0.135 in /functional-tests in the rust group by @dependabot in https://github.com/getsops/sops/pull/1731
+* build(deps): Bump the go group with 12 updates by @dependabot in https://github.com/getsops/sops/pull/1734
+* build(deps): Bump serde_json from 1.0.135 to 1.0.137 in /functional-tests in the rust group by @dependabot in https://github.com/getsops/sops/pull/1735
+* Fix ToString for AWS KMS to include role, context, and profile by @felixfontein in https://github.com/getsops/sops/pull/1733
+* build(deps): Bump the ci group with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1738
+* build(deps): Bump the go group with 6 updates by @dependabot in https://github.com/getsops/sops/pull/1739
+* Release 3.9.4 by @felixfontein in https://github.com/getsops/sops/pull/1740
+
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.9.3...v3.9.4
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.9.3 (2024-12-31)</h2>
+      <pre>## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.3/sops-v3.9.3.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.9.3.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.3/sops-v3.9.3.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.3/sops-v3.9.3.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.3/sops-v3.9.3.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.9.3.checksums.txt \
+  --certificate sops-v3.9.3.checksums.pem \
+  --signature sops-v3.9.3.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.9.3.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `sops-v3.9.3.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.9.3/sops-v3.9.3.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path sops-v3.9.3.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.9.3
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.9.3`
+- `ghcr.io/getsops/sops:v3.9.3-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.9.3`
+- `quay.io/getsops/sops:v3.9.3-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.9.3 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* build(deps): Bump the go group with 10 updates by @dependabot in https://github.com/getsops/sops/pull/1699
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1698
+* build(deps): Bump golang.org/x/crypto from 0.30.0 to 0.31.0 by @dependabot in https://github.com/getsops/sops/pull/1703
+* build(deps): Bump the ci group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1708
+* build(deps): Bump the rust group in /functional-tests with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1707
+* CI: add 'persist-credentials: false' to checkout actions by @felixfontein in https://github.com/getsops/sops/pull/1704
+* build(deps): Bump filippo.io/age from 1.2.0 to 1.2.1 by @dependabot in https://github.com/getsops/sops/pull/1710
+* Bump golang.org/x/net to 0.33.0 to address CVE-2024-45338 by @felixfontein in https://github.com/getsops/sops/pull/1714
+* build(deps): Bump the go group across 1 directory with 13 updates by @dependabot in https://github.com/getsops/sops/pull/1715
+* build(deps): Bump serde_json from 1.0.133 to 1.0.134 in /functional-tests in the rust group by @dependabot in https://github.com/getsops/sops/pull/1716
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1717
+* GnuPG: do not incorrectly trim fingerprint in presence of exclamation marks for specfic subkey selection by @felixfontein in https://github.com/getsops/sops/pull/1720
+* Tests: use container images from https://github.com/getsops/ci-container-images by @felixfontein in https://github.com/getsops/sops/pull/1722
+* updatekeys subcommand: fix input-type CLI flag being ignored by @felixfontein in https://github.com/getsops/sops/pull/1721
+* Update all Go dependencies by @felixfontein in https://github.com/getsops/sops/pull/1723
+* build(deps): Bump the rust group in /functional-tests with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1725
+* Release 3.9.3 by @felixfontein in https://github.com/getsops/sops/pull/1724
+
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.9.2...v3.9.3
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.9.2 (2024-12-02)</h2>
+      <pre>## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.2/sops-v3.9.2.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.9.2.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.2/sops-v3.9.2.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.2/sops-v3.9.2.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.2/sops-v3.9.2.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.9.2.checksums.txt \
+  --certificate sops-v3.9.2.checksums.pem \
+  --signature sops-v3.9.2.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.9.2.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `sops-v3.9.2.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.9.2/sops-v3.9.2.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path sops-v3.9.2.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.9.2
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.9.2`
+- `ghcr.io/getsops/sops:v3.9.2-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.9.2`
+- `quay.io/getsops/sops:v3.9.2-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.9.2 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* build(deps): Bump the go group with 11 updates by @dependabot in https://github.com/getsops/sops/pull/1645
+* build(deps): Bump the ci group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1644
+* build(deps): Bump the go group with 12 updates by @dependabot in https://github.com/getsops/sops/pull/1649
+* build(deps): Bump the ci group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1648
+* build(deps): Bump the go group with 6 updates by @dependabot in https://github.com/getsops/sops/pull/1653
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1654
+* build(deps): Bump serde_json from 1.0.128 to 1.0.132 in /functional-tests in the rust group by @dependabot in https://github.com/getsops/sops/pull/1655
+* fix(azkv): handle whitespace in Azure Key Vault URLs by @sEpt0r in https://github.com/getsops/sops/pull/1652
+* build(deps): Bump the go group with 7 updates by @dependabot in https://github.com/getsops/sops/pull/1662
+* build(deps): Bump the ci group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1664
+* build(deps): Bump the rust group in /functional-tests with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1663
+* build(deps): Bump the ci group across 1 directory with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1673
+* build(deps): Bump the rust group in /functional-tests with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1670
+* build(deps): Bump github/codeql-action from 3.27.1 to 3.27.4 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1677
+* build(deps): Bump the rust group in /functional-tests with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1676
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1685
+* build(deps): Bump the go group across 1 directory with 18 updates by @dependabot in https://github.com/getsops/sops/pull/1686
+* Correctly handle comments during JSON serialization by @felixfontein in https://github.com/getsops/sops/pull/1647
+* Update Rust dependencies by @felixfontein in https://github.com/getsops/sops/pull/1689
+* fix(config): remove unused variables and align error casing by @nicklasfrahm in https://github.com/getsops/sops/pull/1687
+* keyservice: update protobuf to a recent release, and make go code generation reproducible by @felixfontein in https://github.com/getsops/sops/pull/1688
+* build(deps): Bump the go group with 8 updates by @dependabot in https://github.com/getsops/sops/pull/1693
+* Release 3.9.2 by @felixfontein in https://github.com/getsops/sops/pull/1691
+
+## New Contributors
+* @sEpt0r made their first contribution in https://github.com/getsops/sops/pull/1652
+* @nicklasfrahm made their first contribution in https://github.com/getsops/sops/pull/1687
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.9.1...v3.9.2
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.9.1 (2024-10-04)</h2>
+      <pre>## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.1/sops-v3.9.1.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.9.1.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.1/sops-v3.9.1.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.1/sops-v3.9.1.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.1/sops-v3.9.1.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.9.1.checksums.txt \
+  --certificate sops-v3.9.1.checksums.pem \
+  --signature sops-v3.9.1.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.9.1.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `sops-v3.9.1.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.9.1/sops-v3.9.1.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path sops-v3.9.1.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.9.1
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.9.1`
+- `ghcr.io/getsops/sops:v3.9.1-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.9.1`
+- `quay.io/getsops/sops:v3.9.1-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.9.1 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* Explicitly mark goreleaser's version, to avoid confusion with the Go version by @felixfontein in https://github.com/getsops/sops/pull/1548
+* build(deps): Bump the go group with 8 updates by @dependabot in https://github.com/getsops/sops/pull/1550
+* build(deps): Bump github/codeql-action from 3.25.10 to 3.25.11 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1551
+* Fix the URL used for determining the latest SOPS version by @felixfontein in https://github.com/getsops/sops/pull/1553
+* build(deps): Bump the ci group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1555
+* build(deps): Bump the go group with 11 updates by @dependabot in https://github.com/getsops/sops/pull/1554
+* build(deps): Bump the go group with 10 updates by @dependabot in https://github.com/getsops/sops/pull/1558
+* build(deps): Bump the ci group with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1559
+* build(deps): Bump the go group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1562
+* build(deps): Bump the ci group across 1 directory with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1564
+* build(deps): Bump the go group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1565
+* build(deps): Bump github/codeql-action from 3.25.13 to 3.25.15 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1566
+* build(deps): Bump github.com/docker/docker from 27.0.1+incompatible to 27.1.0+incompatible by @dependabot in https://github.com/getsops/sops/pull/1568
+* build(deps): Bump the go group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1575
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1574
+* build(deps): Bump github.com/docker/docker from 27.1.0+incompatible to 27.1.1+incompatible by @dependabot in https://github.com/getsops/sops/pull/1581
+* build(deps): Bump the ci group with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1584
+* Note on the name of the configuration file by @ErraticMaker in https://github.com/getsops/sops/pull/1569
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1586
+* build(deps): Bump the go group across 1 directory with 15 updates by @dependabot in https://github.com/getsops/sops/pull/1589
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1590
+* build(deps): Bump the go group with 7 updates by @dependabot in https://github.com/getsops/sops/pull/1593
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1592
+* tests: ignore env var SOPS_AGE_KEY_FILE by @duthils in https://github.com/getsops/sops/pull/1595
+* build(deps): Bump the go group with 12 updates by @dependabot in https://github.com/getsops/sops/pull/1602
+* build(deps): Bump github.com/opencontainers/runc from 1.1.13 to 1.1.14 by @dependabot in https://github.com/getsops/sops/pull/1603
+* updatekeys subcommand: actually use option `--shamir-secret-sharing-threshold` by @felixfontein in https://github.com/getsops/sops/pull/1608
+* Added example of having age recipients in .sops.yaml by @felixfontein in https://github.com/getsops/sops/pull/1607
+* GitHub Actions linter for Rust formatting by @duthils in https://github.com/getsops/sops/pull/1604
+* github actions: set rust version globally by @duthils in https://github.com/getsops/sops/pull/1612
+* Fix `--config` being ignored by `loadConfig` by @lopter in https://github.com/getsops/sops/pull/1613
+* build(deps): Bump the go group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1618
+* build(deps): Bump github/codeql-action from 3.26.6 to 3.26.7 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1619
+* unit tests: add coverage for unset by @duthils in https://github.com/getsops/sops/pull/1617
+* sops_test: homogenize use of asserts by @duthils in https://github.com/getsops/sops/pull/1622
+* sops_test: add more tests on errors by @duthils in https://github.com/getsops/sops/pull/1624
+* Add 'check' task to CI that makes sure everything is green by @felixfontein in https://github.com/getsops/sops/pull/1621
+* build(deps): Bump the go group with 10 updates by @dependabot in https://github.com/getsops/sops/pull/1629
+* build(deps): Bump github/codeql-action from 3.26.7 to 3.26.8 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1628
+* refactor: specify missing file in error message by @t3hmrman in https://github.com/getsops/sops/pull/1625
+* CI: Build with Go 1.22 and 1.23; update Vault to 1.14 by @reneleonhardt in https://github.com/getsops/sops/pull/1531
+* Allow edit subcommand to create files by @felixfontein in https://github.com/getsops/sops/pull/1596
+* Build release with Go 1.22.x by @felixfontein in https://github.com/getsops/sops/pull/1615
+* GHA: fix checkout action version by @felixfontein in https://github.com/getsops/sops/pull/1630
+* Do not encrypt if a key group is empty, or there are no key groups by @felixfontein in https://github.com/getsops/sops/pull/1600
+* updatekeys subcommand: show changes in shamir_threshold by @felixfontein in https://github.com/getsops/sops/pull/1609
+* Dependabot: fix config for Docker, add config for Rust/Cargo by @felixfontein in https://github.com/getsops/sops/pull/1632
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1634
+* build(deps): Bump the go group with 7 updates by @dependabot in https://github.com/getsops/sops/pull/1635
+* Add Cargo.lock for better reproducability of functional tests by @felixfontein in https://github.com/getsops/sops/pull/1637
+* build(deps): Bump the go group with 7 updates by @dependabot in https://github.com/getsops/sops/pull/1639
+* build(deps): Bump the rust group in /functional-tests with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1638
+* Update all go deps with 'go get -t -u ./...' by @felixfontein in https://github.com/getsops/sops/pull/1640
+* Do not ignore errors when trying to parse a config file by @felixfontein in https://github.com/getsops/sops/pull/1614
+* Release 3.9.1 by @felixfontein in https://github.com/getsops/sops/pull/1642
+
+## New Contributors
+* @ErraticMaker made their first contribution in https://github.com/getsops/sops/pull/1569
+* @lopter made their first contribution in https://github.com/getsops/sops/pull/1613
+* @t3hmrman made their first contribution in https://github.com/getsops/sops/pull/1625
+* @reneleonhardt made their first contribution in https://github.com/getsops/sops/pull/1531
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.9.0...v3.9.1
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.9.0 (2024-06-28)</h2>
+      <pre>## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.0/sops-v3.9.0.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.9.0.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.0/sops-v3.9.0.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.0/sops-v3.9.0.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.9.0/sops-v3.9.0.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.9.0.checksums.txt \
+  --certificate sops-v3.9.0.checksums.pem \
+  --signature sops-v3.9.0.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.9.0.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `sops-v3.9.0.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.9.0/sops-v3.9.0.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path sops-v3.9.0.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.9.0
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.9.0`
+- `ghcr.io/getsops/sops:v3.9.0-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.9.0`
+- `quay.io/getsops/sops:v3.9.0-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.9.0 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* Respect aws_profile from Keygroup Config by @Kouzukii in https://github.com/getsops/sops/pull/1049
+* build(deps): Bump the go group with 6 updates by @dependabot in https://github.com/getsops/sops/pull/1327
+* build(deps): Bump the go group with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1328
+* build(deps): Bump the go group with 1 update by @dependabot in https://github.com/getsops/sops/pull/1330
+* build(deps): Bump github.com/docker/docker from 20.10.24+incompatible to 24.0.7+incompatible by @dependabot in https://github.com/getsops/sops/pull/1336
+* build(deps): Bump the go group with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1334
+* Improve README.rst by @Ph0tonic in https://github.com/getsops/sops/pull/1339
+* Fix typos by @felixfontein in https://github.com/getsops/sops/pull/1337
+* build(deps): Bump the go group with 7 updates by @dependabot in https://github.com/getsops/sops/pull/1344
+* Add --mac-only-encrypted to compute MAC only over values which end up encrypted by @mitar in https://github.com/getsops/sops/pull/973
+* build(deps): Bump the ci group with 1 update by @dependabot in https://github.com/getsops/sops/pull/1347
+* build(deps): Bump the go group with 7 updates by @dependabot in https://github.com/getsops/sops/pull/1348
+* README: Correctly tag code as yaml-stream by @felixfontein in https://github.com/getsops/sops/pull/1350
+* build(deps): Bump the go group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1354
+* use getUserConfigDir also in tests by @bkreitch in https://github.com/getsops/sops/pull/1346
+* Overwrite home dir in vault test by @bkreitch in https://github.com/getsops/sops/pull/1349
+* Allow configuration of indentation for YAML and JSON stores by @Ph0tonic in https://github.com/getsops/sops/pull/1273
+* build(deps): Bump github.com/go-jose/go-jose/v3 from 3.0.0 to 3.0.1 by @dependabot in https://github.com/getsops/sops/pull/1357
+* build(deps): Bump the go group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1360
+* build(deps): Bump the ci group with 1 update by @dependabot in https://github.com/getsops/sops/pull/1359
+* Fix TestGnuPGHome_Validate by @stormentt in https://github.com/getsops/sops/pull/1370
+* build(deps): Bump the go group with 6 updates by @dependabot in https://github.com/getsops/sops/pull/1373
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1376
+* Docs: indent is used both for encryption and decryption by @felixfontein in https://github.com/getsops/sops/pull/1372
+* fix a bug where not having a config results in a panic by @stormentt in https://github.com/getsops/sops/pull/1371
+* Polish the 'sops help' output a bit by @felixfontein in https://github.com/getsops/sops/pull/1341
+* introduce a --pristine flag to sops exec-env by @e-nikolov in https://github.com/getsops/sops/pull/912
+* Allow to pass multiple paths to 'updatekeys' by @sj14 in https://github.com/getsops/sops/pull/1274
+* Warn/fail if the wrong number of arguments is provided by @felixfontein in https://github.com/getsops/sops/pull/1342
+* Allow to override fileName with different value by @felixfontein in https://github.com/getsops/sops/pull/1332
+* Sort masterkeys according to decryption-order by @bkreitch in https://github.com/getsops/sops/pull/1345
+* build(deps): Bump the ci group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1382
+* build(deps): Bump the go group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1381
+* Deprecate the --background option to exec-env and exec-file by @felixfontein in https://github.com/getsops/sops/pull/1379
+* build(deps): Bump golang.org/x/crypto from 0.16.0 to 0.17.0 by @dependabot in https://github.com/getsops/sops/pull/1383
+* build(deps): Bump the ci group with 1 update by @dependabot in https://github.com/getsops/sops/pull/1386
+* build(deps): Bump the go group with 5 updates by @dependabot in https://github.com/getsops/sops/pull/1385
+* Consolidate Flatten/Unflatten pre/post processing by @lancerushing in https://github.com/getsops/sops/pull/1356
+* INI, DotEnv stores: shamir_threshold is an integer by @felixfontein in https://github.com/getsops/sops/pull/1394
+* Improve integration tests: reformat test code, make sure exit codes are always checked by @felixfontein in https://github.com/getsops/sops/pull/1390
+* Make check whether file contains invalid keys for encryption dependent on output store by @felixfontein in https://github.com/getsops/sops/pull/1393
+* Create a constant for the 'sops' metadata key by @felixfontein in https://github.com/getsops/sops/pull/1398
+* build(deps): Bump github.com/cloudflare/circl from 1.3.3 to 1.3.7 by @dependabot in https://github.com/getsops/sops/pull/1408
+* build(deps): Bump the ci group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1425
+* build(deps): Bump github.com/opencontainers/runc from 1.1.5 to 1.1.12 by @dependabot in https://github.com/getsops/sops/pull/1428
+* build(deps): Bump the go group with 10 updates by @dependabot in https://github.com/getsops/sops/pull/1429
+* build(deps): Bump the ci group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1432
+* Warn if more than one command is used by @felixfontein in https://github.com/getsops/sops/pull/1388
+* Move extraction of encryption and rotation options to separate functions by @felixfontein in https://github.com/getsops/sops/pull/1389
+* Add separate subcommands for encryption, decryption, rotating, editing, and setting values by @felixfontein in https://github.com/getsops/sops/pull/1391
+* Add basic tests for exec-env and exec-file by @felixfontein in https://github.com/getsops/sops/pull/1396
+* build with go 1.21 and update dependencies by @b-dean in https://github.com/getsops/sops/pull/1427
+* build(deps): Bump the go group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1439
+* sops: fix typo in interface name by @duthils in https://github.com/getsops/sops/pull/1477
+* Fix function name in comment by @pullmerge in https://github.com/getsops/sops/pull/1484
+* build(deps): Bump the ci group across 1 directory with 9 updates by @dependabot in https://github.com/getsops/sops/pull/1498
+* build(deps): Bump github.com/go-jose/go-jose/v3 from 3.0.1 to 3.0.3 by @dependabot in https://github.com/getsops/sops/pull/1454
+* build(deps): Bump google.golang.org/protobuf from 1.32.0 to 1.33.0 by @dependabot in https://github.com/getsops/sops/pull/1460
+* build(deps): Bump github.com/docker/docker from 24.0.7+incompatible to 24.0.9+incompatible by @dependabot in https://github.com/getsops/sops/pull/1466
+* build(deps): Bump golang.org/x/net from 0.21.0 to 0.23.0 by @dependabot in https://github.com/getsops/sops/pull/1489
+* build(deps): Bump actions/setup-go from 5.0.0 to 5.0.1 in the ci group by @dependabot in https://github.com/getsops/sops/pull/1503
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1508
+* LoadCreationRuleForFile: correctly handle nil without error in callers by @felixfontein in https://github.com/getsops/sops/pull/1506
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1510
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1516
+* Fix CVE-2024-2660 by @TheoBrigitte in https://github.com/getsops/sops/pull/1519
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1521
+* fix(Makefile): set locale to make tests pass by @jonasbadstuebner in https://github.com/getsops/sops/pull/1492
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1524
+* Adjust Makefile to new goreleaser 6.0.0 release by @felixfontein in https://github.com/getsops/sops/pull/1526
+* build(deps): Bump the go group across 1 directory with 23 updates by @dependabot in https://github.com/getsops/sops/pull/1525
+* update documentation for age by @tomaszduda23 in https://github.com/getsops/sops/pull/1399
+* exec-file: if `--filename` is used, use the provided filename without random suffix by @felixfontein in https://github.com/getsops/sops/pull/1474
+* build(deps): Bump github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.5.2 to 1.6.0 by @dependabot in https://github.com/getsops/sops/pull/1528
+* Do not use DotEnv store for exec-env, but specialized environment serializing code by @felixfontein in https://github.com/getsops/sops/pull/1436
+* build(deps): Bump the ci group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1534
+* Decryption: do not fail if no matching creation_rule is present in config file by @felixfontein in https://github.com/getsops/sops/pull/1434
+* add filestatus command by @endorama in https://github.com/getsops/sops/pull/545
+* build(deps): Bump the go group across 1 directory with 16 updates by @dependabot in https://github.com/getsops/sops/pull/1540
+* build(deps): Bump the go group across 1 directory with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1543
+* add command unset by @duthils in https://github.com/getsops/sops/pull/1475
+* Update sops.go comment by @rjeczkow in https://github.com/getsops/sops/pull/1544
+* Support using comments to select parts to encrypt by @felixfontein in https://github.com/getsops/sops/pull/1392
+* Feature: `merge` key for key groups and *make keys unique* by @jonasbadstuebner in https://github.com/getsops/sops/pull/1493
+* Update all go deps by @felixfontein in https://github.com/getsops/sops/pull/1545
+* Release 3.9.0 by @felixfontein in https://github.com/getsops/sops/pull/1546
+
+## New Contributors
+* @Kouzukii made their first contribution in https://github.com/getsops/sops/pull/1049
+* @Ph0tonic made their first contribution in https://github.com/getsops/sops/pull/1339
+* @bkreitch made their first contribution in https://github.com/getsops/sops/pull/1346
+* @stormentt made their first contribution in https://github.com/getsops/sops/pull/1370
+* @e-nikolov made their first contribution in https://github.com/getsops/sops/pull/912
+* @sj14 made their first contribution in https://github.com/getsops/sops/pull/1274
+* @lancerushing made their first contribution in https://github.com/getsops/sops/pull/1356
+* @b-dean made their first contribution in https://github.com/getsops/sops/pull/1427
+* @duthils made their first contribution in https://github.com/getsops/sops/pull/1477
+* @pullmerge made their first contribution in https://github.com/getsops/sops/pull/1484
+* @TheoBrigitte made their first contribution in https://github.com/getsops/sops/pull/1519
+* @jonasbadstuebner made their first contribution in https://github.com/getsops/sops/pull/1492
+* @tomaszduda23 made their first contribution in https://github.com/getsops/sops/pull/1399
+* @endorama made their first contribution in https://github.com/getsops/sops/pull/545
+* @rjeczkow made their first contribution in https://github.com/getsops/sops/pull/1544
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.8.1...v3.9.0
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.1 (2023-10-11)</h2>
+      <pre>## Note from the Maintainers
+
+In this release of SOPS, we have focused on landing a variety of bug fixes to improve the overall user experience.
+
+For a comprehensive list of changes, please refer to [`CHANGELOG.rst`](https://github.com/getsops/sops/blob/v3.8.1/CHANGELOG.rst).
+
+### Important Information for SOPS SDK Users
+
+With the project transitioning from the Mozilla Foundation to the CNCF, the Go module path has been updated to reflect this change in ownership. If you use `go.mozilla.org/sops/v3` as a library, going forward, import the Go Module using `github.com/getsops/sops/v3`. Apart from this small adjustment, the SDK's API remains fully backward compatible.
+
+For a one-liner to quickly implement this change throughout your codebase, please refer to: https://github.com/getsops/sops/issues/1246#issuecomment-1625526429
+
+## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.8.1.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.8.1.checksums.txt \
+  --certificate sops-v3.8.1.checksums.pem \
+  --signature sops-v3.8.1.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.8.1.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `sops-v3.8.1.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path sops-v3.8.1.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.8.1
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.8.1`
+- `ghcr.io/getsops/sops:v3.8.1-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.8.1`
+- `quay.io/getsops/sops:v3.8.1-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.8.1 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* build(deps): Bump the ci group with 3 updates by @dependabot in https://github.com/getsops/sops/pull/1295
+* pgp: improve handling of GnuPG home dir by @hiddeco in https://github.com/getsops/sops/pull/1298
+* Delete sops encrypted file we don't have keys for by @felixfontein in https://github.com/getsops/sops/pull/1288
+* Improve handling of errors when binary store handles bad data by @felixfontein in https://github.com/getsops/sops/pull/1289
+* On macOS, prefer XDG_CONFIG_HOME over os.UserConfigDir() by @felixfontein in https://github.com/getsops/sops/pull/1291
+* Do not crash if an empty YAML file is encrypted by @felixfontein in https://github.com/getsops/sops/pull/1290
+* Fix descriptions of unencrypted-regex and encrypted-regex flags, and ensure unencrypted_regex is considered in config validation by @mitar in https://github.com/getsops/sops/pull/1300
+* build(deps): Bump the go group with 4 updates by @dependabot in https://github.com/getsops/sops/pull/1306
+* build(deps): Bump the ci group with 1 update by @dependabot in https://github.com/getsops/sops/pull/1301
+* Handle return values of dec.Token() to improve error messages by @felixfontein in https://github.com/getsops/sops/pull/1307
+* pgp: make error the last return value by @felixfontein in https://github.com/getsops/sops/pull/1310
+* pgp: do not require abs path for SopsGpgExecEnv  by @holiman in https://github.com/getsops/sops/pull/1309
+* decrypt: fix dropped error by @alrs in https://github.com/getsops/sops/pull/1304
+* Handle errors by @felixfontein in https://github.com/getsops/sops/pull/1311
+* Report key rotation errors by @felixfontein in https://github.com/getsops/sops/pull/1317
+* cmd/sops/main.go: make sure to wrap raw errors with toExitError() by @felixfontein in https://github.com/getsops/sops/pull/1318
+* build(deps): Bump the go group with 7 updates by @dependabot in https://github.com/getsops/sops/pull/1319
+* Enrich AWS authentication documentation by @nsantiago2719 in https://github.com/getsops/sops/pull/1272
+* Better error reporting for missing gpg binary by @makkes in https://github.com/getsops/sops/pull/1286
+* Improve RST and MD files by @felixfontein in https://github.com/getsops/sops/pull/1320
+* Add linting for RST and MD files by @felixfontein in https://github.com/getsops/sops/pull/1287
+* Update dependencies by @hiddeco in https://github.com/getsops/sops/pull/1325
+* Prepare v3.8.1 by @hiddeco in https://github.com/getsops/sops/pull/1324
+
+## New Contributors
+* @mitar made their first contribution in https://github.com/getsops/sops/pull/1300
+* @holiman made their first contribution in https://github.com/getsops/sops/pull/1309
+* @alrs made their first contribution in https://github.com/getsops/sops/pull/1304
+* @nsantiago2719 made their first contribution in https://github.com/getsops/sops/pull/1272
+* @makkes made their first contribution in https://github.com/getsops/sops/pull/1286
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.8.0...v3.8.1
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.0 (2023-09-15)</h2>
+      <pre>## Note from the Maintainers
+
+We are extremely happy to introduce this new minor release of SOPS, now a [CNCF](https://cncf.io) Sandbox project under the stewardship of a new [group of maintainers](https://github.com/getsops/community/blob/main/MAINTAINERS.md).
+
+This release involved significant effort in rewriting and enhancing key source implementations, and includes a number of bug fixes which people had been patiently waiting on for a long period of time. In addition, the release process has been built up from scratch, and now now provides enhanced assurance by publishing SBOMs (Software Bill of Materials), [SLSA3 provenance attestations](https://slsa.dev/spec/v0.1/provenance) and a Cosign signed checksums file as release artifacts.
+
+For a comprehensive list of changes, please refer to [`CHANGELOG.rst`](https://github.com/getsops/sops/blob/v3.8.0/CHANGELOG.rst).
+
+### Important Information for SOPS SDK Users
+
+With the project transitioning from the Mozilla Foundation to the CNCF, the Go module path has been updated to reflect this change in ownership. If you use `go.mozilla.org/sops/v3` as a library, going forward, import the Go Module using `github.com/getsops/sops/v3`. Apart from this small adjustment, the SDK's API remains fully backward compatible.
+
+For a one-liner to quickly implement this change throughout your codebase, please refer to: https://github.com/getsops/sops/issues/1246#issuecomment-1625526429
+
+## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.8.0.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.8.0.checksums.txt \
+  --certificate sops-v3.8.0.checksums.pem \
+  --signature sops-v3.8.0.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.8.0.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `sops-v3.8.0.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path sops-v3.8.0.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.8.0
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.8.0`
+- `ghcr.io/getsops/sops:v3.8.0-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.8.0`
+- `quay.io/getsops/sops:v3.8.0-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.8.0 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* chore: update dependencies by @hiddeco in https://github.com/getsops/sops/pull/1275
+* build: pin actions to full length commit SHA and add CodeQL by @hiddeco in https://github.com/getsops/sops/pull/1276
+* Enable Dependabot for Docker, GitHub Actions and Go Mod by @hiddeco in https://github.com/getsops/sops/pull/1277
+* build(deps): Bump the go group with 2 updates by @dependabot in https://github.com/getsops/sops/pull/1280
+* build(deps): Bump the ci group with 6 updates by @dependabot in https://github.com/getsops/sops/pull/1279
+* release: generate versioned `.intoto.jsonl` by @hiddeco in https://github.com/getsops/sops/pull/1278
+* pgp: remove `DisableAgent` option by @hiddeco in https://github.com/getsops/sops/pull/1282
+* keyservices: address logging regression by @hiddeco in https://github.com/getsops/sops/pull/1281
+* chore: update dependencies by @hiddeco in https://github.com/getsops/sops/pull/1283
+* Prepare v3.8.0 by @hiddeco in https://github.com/getsops/sops/pull/1284
+
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.8.0-rc.1...v3.8.0
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.0-rc.1 (2023-08-25)</h2>
+      <pre>## Note from the Maintainers
+
+We're thrilled to introduce the `v3.8.0-rc.1` release candidate of SOPS, now a [CNCF](https://cncf.io) Sandbox project under the stewardship of a new [group of maintainers](https://github.com/getsops/community/blob/main/MAINTAINERS.md).
+
+This release involved significant effort in rewriting and enhancing key source implementations. Notably, we've modernized the code and updated all SDKs, including updating to AWS SDK v2. Some of these implementations had been neglected, lacking support for newer features. Now, they should be good for extended service.
+
+Moreover, we've completely revamped the release process. Beyond delivering binaries and packages, it now provides enhanced assurance by publishing SBOMs (Software Bill of Materials), [SLSA3 provenance](https://slsa.dev/spec/v0.1/provenance) attestation, and a Cosign signed checksums file as GitHub release artifacts.
+
+Additionally, the Darwin binary is now distributed as a ["fat binary"](https://en.wikipedia.org/wiki/Fat_binary#Apple), making it executable on both AMD64 and ARM64 machines.
+
+The goal of this release candidate is primarily to validate our new release process and the quite impactful changes mentioned above. Take it for a spin and [share your thoughts](https://github.com/getsops/sops/discussions/1270), your feedback is much appreciated!
+
+### Important Information for SOPS SDK Users
+
+With the project transitioning from the Mozilla Foundation to the CNCF, the Go module path has been updated to reflect this change in ownership. If you use `go.mozilla.org/sops/v3` as a library, going forward, import the Go Module using `github.com/getsops/sops/v3`. Apart from this small adjustment, the SDK's API remains fully backward compatible.
+
+For a one-liner to quickly implement this change throughout your codebase, please refer to: https://github.com/getsops/sops/issues/1246#issuecomment-1625526429
+
+## Installation
+
+To install `sops`, download one of the pre-built binaries provided for your platform from the artifacts attached to this release.
+
+For instance, if you are using Linux on an AMD64 architecture:
+
+```shell
+# Download the binary
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.0-rc.1/sops-v3.8.0-rc.1.linux.amd64
+
+# Move the binary in to your PATH
+mv sops-v3.8.0-rc.1.linux.amd64 /usr/local/bin/sops
+
+# Make the binary executable
+chmod +x /usr/local/bin/sops
+```
+
+### Verify checksums file signature
+
+The checksums file provided within the artifacts attached to this release is signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of this file, run the following commands:
+
+```shell
+# Download the checksums file, certificate and signature
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.0-rc.1/sops-v3.8.0-rc.1.checksums.txt
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.0-rc.1/sops-v3.8.0-rc.1.checksums.pem
+curl -LO https://github.com/getsops/sops/releases/download/v3.8.0-rc.1/sops-v3.8.0-rc.1.checksums.sig
+
+# Verify the checksums file
+cosign verify-blob sops-v3.8.0-rc.1.checksums.txt \
+  --certificate sops-v3.8.0-rc.1.checksums.pem \
+  --signature sops-v3.8.0-rc.1.checksums.sig \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com
+```
+
+### Verify binary integrity
+
+To verify the integrity of the downloaded binary, you can utilize the checksums file after having validated its signature:
+
+```shell
+# Verify the binary using the checksums file
+sha256sum -c sops-v3.8.0-rc.1.checksums.txt --ignore-missing
+```
+
+### Verify artifact provenance
+
+The [SLSA provenance](https://slsa.dev/provenance/v0.2) of the binaries, packages, and SBOMs can be found within the artifacts associated with this release. It is presented through an [in-toto](https://in-toto.io/) link metadata file named `provenance.intoto.jsonl`. To verify the provenance of an artifact, you can utilize the [`slsa-verifier`](https://github.com/slsa-framework/slsa-verifier#artifacts) tool:
+
+```shell
+# Download the metadata file
+curl -LO  https://github.com/getsops/sops/releases/download/v3.8.0-rc.1/provenance.intoto.jsonl
+
+# Verify the provenance of the artifact
+slsa-verifier verify-artifact <artifact> \
+  --provenance-path provenance.intoto.jsonl \
+  --source-uri github.com/getsops/sops \
+  --source-tag v3.8.0-rc.1
+```
+
+## Container Images
+
+The `sops` binaries are also available as container images, based on Debian (slim) and Alpine Linux. The Debian-based container images include any dependencies which may be required to make use of certain key services, such as GnuPG, AWS KMS, Azure Key Vault, and Google Cloud KMS. The Alpine-based container images are smaller in size, but do not include these dependencies.
+
+These container images are available for the following architectures: `linux/amd64` and `linux/arm64`.
+
+### GitHub Container Registry
+
+- `ghcr.io/getsops/sops:v3.8.0-rc.1`
+- `ghcr.io/getsops/sops:v3.8.0-rc.1-alpine`
+
+### Quay.io
+
+- `quay.io/getsops/sops:v3.8.0-rc.1`
+- `quay.io/getsops/sops:v3.8.0-rc.1-alpine`
+
+### Verify container image signature
+
+The container images are signed using [Cosign](https://docs.sigstore.dev/cosign/overview/) with GitHub OIDC. To validate the signature of an image, run the following command:
+
+```shell
+cosign verify ghcr.io/getsops/sops:v3.8.0-rc.1 \
+  --certificate-identity-regexp=https://github.com/getsops \
+  --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+  -o text
+```
+
+### Verify container image provenance
+
+The container images include [SLSA provenance](https://slsa.dev/provenance/v0.2) attestations. For more information around the verification of this, please refer to the [`slsa-verifier` documentation](https://github.com/slsa-framework/slsa-verifier#containers).
+
+## Software Bill of Materials
+
+The Software Bill of Materials (SBOM) for each binary is accessible within the artifacts enclosed with this release. It is presented as an [SPDX](https://spdx.dev/) JSON file, formatted as `<binary>.spdx.sbom.json`.
+
+## What's Changed
+* Update to urfave/cli to 1.22.7 by @daurnimator in https://github.com/getsops/sops/pull/1063
+* pgp: modernize and improve, and add tests by @hiddeco in https://github.com/getsops/sops/pull/1054
+* azkv: update SDK to latest, add tests, tidy by @hiddeco in https://github.com/getsops/sops/pull/1067
+* Fix comments displacement by @felixfontein in https://github.com/getsops/sops/pull/1069
+* age: improve identity loading, add tests, tidy by @hiddeco in https://github.com/getsops/sops/pull/1064
+* kms: AWS SDK V2, allow creds config, add tests by @hiddeco in https://github.com/getsops/sops/pull/1065
+* gcpkms: update SDK to latest, add tests, tidy by @hiddeco in https://github.com/getsops/sops/pull/1072
+* hcvault: update API, add tests, tidy by @hiddeco in https://github.com/getsops/sops/pull/1085
+* Upgrade dependencies by @ajvb in https://github.com/getsops/sops/pull/1091
+* --version without network request by @felixfontein in https://github.com/getsops/sops/pull/1115
+* Replace deprecated gopass package with term by @flx5 in https://github.com/getsops/sops/pull/1113
+* Support --input-type for updatekeys by @felixfontein in https://github.com/getsops/sops/pull/1116
+* Add DCO and CoC by @hiddeco in https://github.com/getsops/sops/pull/1233
+* Update rustc functional tests to v1.70.0 by @hiddeco in https://github.com/getsops/sops/pull/1234
+* build: update Go to 1.20 by @hiddeco in https://github.com/getsops/sops/pull/1148
+* azkv: update Azure SDK to v0.10.0 by @hiddeco in https://github.com/getsops/sops/pull/1092
+* chore: update Go dependencies by @hiddeco in https://github.com/getsops/sops/pull/1147
+* Remove remaining CircleCI workflow by @hiddeco in https://github.com/getsops/sops/pull/1237
+* build: run CLI workflow on `main` by @hiddeco in https://github.com/getsops/sops/pull/1243
+* build(deps): bump github.com/docker/docker from 20.10.7+incompatible to 20.10.24+incompatible by @dependabot in https://github.com/getsops/sops/pull/1242
+* Delete obsolete `validation/` artifact by @hiddeco in https://github.com/getsops/sops/pull/1248
+* gcpkms: allow use of Google default credentials by @hiddeco in https://github.com/getsops/sops/pull/1249
+* Revert intro of `WithError` for most key sources by @hiddeco in https://github.com/getsops/sops/pull/1146
+* Rename Go module to `github.com/getsops/sops/v3` by @hiddeco in https://github.com/getsops/sops/pull/1247
+* kms: update dependencies by @hiddeco in https://github.com/getsops/sops/pull/1257
+* gcpkms: update GCP related dependencies by @hiddeco in https://github.com/getsops/sops/pull/1255
+* azkv: update dependencies by @hiddeco in https://github.com/getsops/sops/pull/1256
+* Revamp release automation by @hiddeco in https://github.com/getsops/sops/pull/1250
+* Update various bits of documentation by @hiddeco in https://github.com/getsops/sops/pull/1244
+* Do not report version when upstream check fails by @stoned in https://github.com/getsops/sops/pull/1124
+* Add missing --encrypt flag from Vault example by @hrobertson in https://github.com/getsops/sops/pull/1060
+* fix `set` feature when adding a new root hierarchy by @vbehar in https://github.com/getsops/sops/pull/899
+* Ensure stable order of SOPS parameters in dotenv file by @edofic in https://github.com/getsops/sops/pull/1101
+* Add documentation on how to use age in .sops.yaml by @hramberger in https://github.com/getsops/sops/pull/1192
+* Clean up more Mozilla references by @Gobd in https://github.com/getsops/sops/pull/1260
+* Improve Make targets and address various issues by @hiddeco in https://github.com/getsops/sops/pull/1258
+* Update dependencies by @hiddeco in https://github.com/getsops/sops/pull/1264
+* version: rewrite command to use GitHub endpoints by @hiddeco in https://github.com/getsops/sops/pull/1261
+* Deal with various deprecations of dependencies by @hiddeco in https://github.com/getsops/sops/pull/1262
+* cmd/edit: close temp file before invoking editor by @hiddeco in https://github.com/getsops/sops/pull/1265
+* build: ensure clean working tree by @hiddeco in https://github.com/getsops/sops/pull/1267
+* Fix CHANGELOG.rst formatting by @felixfontein in https://github.com/getsops/sops/pull/1269
+* Prepare v3.8.0-rc.1 by @hiddeco in https://github.com/getsops/sops/pull/1268
+
+## New Contributors
+* @daurnimator made their first contribution in https://github.com/getsops/sops/pull/1063
+* @flx5 made their first contribution in https://github.com/getsops/sops/pull/1113
+* @dependabot made their first contribution in https://github.com/getsops/sops/pull/1242
+* @stoned made their first contribution in https://github.com/getsops/sops/pull/1124
+* @hrobertson made their first contribution in https://github.com/getsops/sops/pull/1060
+* @vbehar made their first contribution in https://github.com/getsops/sops/pull/899
+* @edofic made their first contribution in https://github.com/getsops/sops/pull/1101
+* @hramberger made their first contribution in https://github.com/getsops/sops/pull/1192
+* @Gobd made their first contribution in https://github.com/getsops/sops/pull/1260
+
+**Full Changelog**: https://github.com/getsops/sops/compare/v3.7.3...v3.8.0-rc.1
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.7.3 (2022-05-09)</h2>
+      <pre>## Changes:
+
+* Upgrade dependencies (#1024, #1045)
+* Build alpine container in CI (#1018, #1032, #1025)
+* keyservice: accept KeyServiceServer in LocalClient (#1035)
+* Add support for GCP Service Account within `GOOGLE_CREDENTIALS` (#953)
+
+## Bug fixes:
+
+* Upload the correct binary for the linux amd64 build (#1026)
+* Fix bug when specifying multiple age recipients (#966)
+* Allow for empty yaml maps (#908)
+
+## Commits
+- [[75cd389](https://github.com/mozilla/sops/commit/75cd38950966d3e6713112f3915c8fd314bb28dd)]: Add a test to reproduce #907 (ikedam) [#908](https://github.com/mozilla/sops/pull/908)
+- [[108b211](https://github.com/mozilla/sops/commit/108b211cfb7e05c4973fbf04ee36a48539308e23)]: Allow empty maps for yaml (#907) (ikedam) [#908](https://github.com/mozilla/sops/pull/908)
+- [[ea8b3bb](https://github.com/mozilla/sops/commit/ea8b3bb31dcee893f792fe34c437cf1b69828c84)]: support gcp credentials as env var (Kaplinsky, Joshua B) [#953](https://github.com/mozilla/sops/pull/953)
+- [[c0dc484](https://github.com/mozilla/sops/commit/c0dc48401a592324915816ee44f75979933d455a)]: Update keysource.go (Josh Kaplinsky) [#953](https://github.com/mozilla/sops/pull/953)
+- [[63fa89c](https://github.com/mozilla/sops/commit/63fa89cbfc209fdafa14e5ffc4ac6427077b182c)]: Merge remote-tracking branch 'remotes/origin/develop' into feature/907_FixEmptyYaml (ikedam) [#908](https://github.com/mozilla/sops/pull/908)
+- [[b926cf9](https://github.com/mozilla/sops/commit/b926cf9d844d720d316baf3e41bb96d68aff917b)]: Build alpine container in CI (#870) (ikedam) [#1018](https://github.com/mozilla/sops/pull/1018)
+- [[234bf9f](https://github.com/mozilla/sops/commit/234bf9fb5f26bf7f69f803da1d110a21a55ee4fc)]: Upgrade all dependencies (AJ Bahnken) [#1024](https://github.com/mozilla/sops/pull/1024)
+- [[4277de4](https://github.com/mozilla/sops/commit/4277de44f3af37d18fd202749c5333836845383f)]: Remove duplicated stage from Dockerfile.alpine (Shouichi Kamiya) [#1025](https://github.com/mozilla/sops/pull/1025)
+- [[605fb27](https://github.com/mozilla/sops/commit/605fb271cb848c1c3447ae911411c31d1c704bc7)]: Explicitly build linux amd64 binary (Janis Peisenieks) [#1026](https://github.com/mozilla/sops/pull/1026)
+- [[7ebee3d](https://github.com/mozilla/sops/commit/7ebee3dc7b8f2c5fdf02cac7afca3c72d0af4496)]: This fixes a bug with age encryption when specifying multiple age recipients (Cedric Kienzler) [#966](https://github.com/mozilla/sops/pull/966)
+- [[b5f5f28](https://github.com/mozilla/sops/commit/b5f5f28c3c22d2e6c5fcd67b9a502a3fd90f0bcd)]: Make `masterKeyFromRecipient` private (Cedric Kienzler) [#966](https://github.com/mozilla/sops/pull/966)
+- [[1dc90ad](https://github.com/mozilla/sops/commit/1dc90ad1abeb752713aa5fe7a3a3074156e941f6)]: Add tests for single key (Cedric Kienzler) [#966](https://github.com/mozilla/sops/pull/966)
+- [[3875b00](https://github.com/mozilla/sops/commit/3875b00ab3a6ced3bb1d09c8decb4027ff01b073)]: Use latest dockerd in CI to allow build alpine image (#870) (ikedam) [#1032](https://github.com/mozilla/sops/pull/1032)
+- accept KeyServiceServer in LocalClient [#1035](https://github.com/mozilla/sops/pull/1035) ([Hidde Beydals](https://github.com/mozilla/sops/commit/7138185fbbaecb43bbe8d3da0cecbbb113a6b5c2))
+- [[1bb30e2](https://github.com/mozilla/sops/commit/1bb30e28b484dd0f8611ee1807766c9bbdc941ad)]: Limit role session name length to 64 characters. (AJ Bahnken) [#1037](https://github.com/mozilla/sops/pull/1037)
+- [[a01208c](https://github.com/mozilla/sops/commit/a01208c31e8ffc5452453ebceaa1987402c4f90b)]: Update golang.org/x/crypto (Hidde Beydals) [#1045](https://github.com/mozilla/sops/pull/1045)
+- [[e128fa2](https://github.com/mozilla/sops/commit/e128fa2481beedd9fdc3b50db0d8e90266e0f1cc)]: Update keyservice implementation dependencies (Hidde Beydals) [#1045](https://github.com/mozilla/sops/pull/1045)
+- [[220b652](https://github.com/mozilla/sops/commit/220b652b3336b78999d83e27274eaf2d29fcd799)]: Update golang.org/x/{net,oauth2,sys} dependencies (Hidde Beydals) [#1045](https://github.com/mozilla/sops/pull/1045)
+- [[477b61f](https://github.com/mozilla/sops/commit/477b61f6e6191eb391364d21db0f313fc120dd9d)]: Update remaining dependencies (Hidde Beydals) [#1045](https://github.com/mozilla/sops/pull/1045)
+- [[25817ed](https://github.com/mozilla/sops/commit/25817ed0f5fedc6aa3e417d096cdbe86dfbbb294)]: Replace x/crypto/openpgp with ProtonMail/go-crypto (Hidde Beydals) [#1045](https://github.com/mozilla/sops/pull/1045)
+- [[07aea97](https://github.com/mozilla/sops/commit/07aea979d4e88350654bce209544341c91c512c5)]: Merge remote-tracking branch 'upstream/develop' into develop (Josh Kaplinsky) [#953](https://github.com/mozilla/sops/pull/953)
+- [[4ffb54c](https://github.com/mozilla/sops/commit/4ffb54c791bbef418729d1635cef7bf747706db4)]: Use custom GOOGLE_CREDENTIALS or fallback to default (Josh Kaplinsky) [#953](https://github.com/mozilla/sops/pull/953)
+- [[17fb03f](https://github.com/mozilla/sops/commit/17fb03fd8655b2fc9a61316c21cf32cd29cf0819)]: Merge remote-tracking branch 'upstream/develop' into develop (Josh Kaplinsky) [#953](https://github.com/mozilla/sops/pull/953)
+- [[15583bd](https://github.com/mozilla/sops/commit/15583bdae9e7140a24777fb2ddbec761b391b020)]: prep for v3.7.3 (AJ Bahnken) [#1053](https://github.com/mozilla/sops/pull/1053)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.7.2 (2022-03-09)</h2>
+      <pre>## Changes:
+
+* README updates (#861, #860)
+* Various test fixes (#909, #906, #1008)
+* Added Linux and Darwin arm64 releases (#911, #891)
+* Upgrade to go v1.17 (#1012)
+* Support SOPS_AGE_KEY environment variable (#1006)
+
+## Bug Fixes
+
+- Make sure comments in yaml files are not duplicated (#866)
+- Make sure configuration file paths work correctly relative to the config file in us (#853)
+
+## Commits
+- [[e98451e](https://github.com/mozilla/sops/commit/e98451e9755b33d0e76b362587499225ef3a4ef1)]: Remove unused age code (Hidde Beydals) [#842](https://github.com/mozilla/sops/pull/842)
+- [[2395f07](https://github.com/mozilla/sops/commit/2395f07610e45d507ec0d4b3ad48dbf502ed5bed)]: small release workflow fix (AJ Bahnken)
+- [[c5b1298](https://github.com/mozilla/sops/commit/c5b1298cd89195e6cad8298a7137c011287153bf)]:  Match file path relative to config file's directory (2) (#853) (Paulo Lieuthier) [#853](https://github.com/mozilla/sops/pull/853)
+- [[7626399](https://github.com/mozilla/sops/commit/762639996d9bdd07278b980cd63342bde2443053)]: fix missing argument in encrypting with age section (#860) (Damien Léger) [#860](https://github.com/mozilla/sops/pull/860)
+- [[3acf53e](https://github.com/mozilla/sops/commit/3acf53e7d9b58613cba73fc936a581d19d33c1dc)]: Correct path to age keys.txt in documentation (#861) (Alexey Odinokov) [#861](https://github.com/mozilla/sops/pull/861)
+- [[5af8e63](https://github.com/mozilla/sops/commit/5af8e63ad511783ab3bef5352abb4c0014f11600)]: Prevent comment duplication. (#866) (Felix Fontein) [#866](https://github.com/mozilla/sops/pull/866)
+- [[688fa22](https://github.com/mozilla/sops/commit/688fa225babfc3009764652eb70ba82db0a730bc)]: Remove SOPS_GPG_KEYSERVER reference in README.rst (Enrico204) [#883](https://github.com/mozilla/sops/pull/883)
+- [[02d57ca](https://github.com/mozilla/sops/commit/02d57ca76d36c0b699dc337f1b81b6f54b81fea2)]: Tests should not fail fast (ikedam) [#909](https://github.com/mozilla/sops/pull/909)
+- [[6130ffe](https://github.com/mozilla/sops/commit/6130ffe35c9ff34447a598317e633ff667acbabd)]: Use the key of release@mozilla.com for the unit test (#882) (#906) (ikedam) [#906](https://github.com/mozilla/sops/pull/906)
+- [[56bbf84](https://github.com/mozilla/sops/commit/56bbf847c5ca0470e8c0cdd398354bff2506bb3c)]: Added support for go 1.16 and darwin-arm64 (Nikola Milojević) [#911](https://github.com/mozilla/sops/pull/911)
+- [[f6e9891](https://github.com/mozilla/sops/commit/f6e98911e044c576fc9cde38788bc3c1f22e5cb4)]: fix a typo (brant4test) [#967](https://github.com/mozilla/sops/pull/967)
+- [[086c11d](https://github.com/mozilla/sops/commit/086c11d09bb28c9c214bec24a0784d7b9770b3e6)]: Support SOPS_AGE_KEY environment variable (Christian Hoffmeister) [#1006](https://github.com/mozilla/sops/pull/1006)
+- [[a98768b](https://github.com/mozilla/sops/commit/a98768b3b6017d97e725f907e7f2b2a75a509a6f)]: Fix flakey test run on OSX (Alex Castle) [#1008](https://github.com/mozilla/sops/pull/1008)
+- [[6bfd72d](https://github.com/mozilla/sops/commit/6bfd72d57ba82ca599f7ef1e08f9fe3635fe0f39)]: Merge remote-tracking branch 'origin/develop' into sops-age-key-env (Christian Hoffmeister) [#1006](https://github.com/mozilla/sops/pull/1006)
+- [[dc2267e](https://github.com/mozilla/sops/commit/dc2267e3721a1037895050f4fd02974a31692ded)]: Upgrade to go 1.17 (AJ Bahnken) [#1012](https://github.com/mozilla/sops/pull/1012)
+- [[076f295](https://github.com/mozilla/sops/commit/076f29539434046c7fc76fbac33d90580bfe866f)]: rm extra whitespace in CircleCI config (AJ Bahnken) [#1012](https://github.com/mozilla/sops/pull/1012)
+- [[7f503bc](https://github.com/mozilla/sops/commit/7f503bcbfdab065216b3628a176662d8b1213d41)]: Upgrade release job to go 1.17 (AJ Bahnken) [#1012](https://github.com/mozilla/sops/pull/1012)
+- [[4bd3e5a](https://github.com/mozilla/sops/commit/4bd3e5a9b4399217453ff9b60f99ac0ea97c309f)]: Update pip package name in Dockerfile (AJ Bahnken) [#1012](https://github.com/mozilla/sops/pull/1012)
+- [[b7c58e4](https://github.com/mozilla/sops/commit/b7c58e4e56f69685d083f90fe7018f39dfb78d6d)]: Move age environment variable names to constants (Christian Hoffmeister) [#1006](https://github.com/mozilla/sops/pull/1006)
+- [[684d338](https://github.com/mozilla/sops/commit/684d338ecb2bf9e4c3da6445aa53f2d598cb3437)]: Merge branch 'develop' of https://github.com/mozilla/sops into mozilla-develop (Nikola Milojević) [#911](https://github.com/mozilla/sops/pull/911)
+- [[0cfcae6](https://github.com/mozilla/sops/commit/0cfcae62d9609e1b7064099c5549de017b7a5500)]: Merge branch 'mozilla-develop' into develop (Nikola Milojević) [#911](https://github.com/mozilla/sops/pull/911)
+- [[dff9c31](https://github.com/mozilla/sops/commit/dff9c31411441a4a2850d2d40b808f5e1a7502ed)]: Merge branch 'develop' into sops-age-key-env (AJ Bahnken) [#1006](https://github.com/mozilla/sops/pull/1006)
+- [[c586534](https://github.com/mozilla/sops/commit/c58653474cfc3939f526b2beea5aca9d41b626a0)]: Change labeling and upload linux arm64 (AJ Bahnken) [#1014](https://github.com/mozilla/sops/pull/1014)
+- [[d6bc216](https://github.com/mozilla/sops/commit/d6bc216a862ce16cd096ab79e672deb2796abc54)]: README and author tweaks (AJ Bahnken) [#1016](https://github.com/mozilla/sops/pull/1016)
+- [[822ce48](https://github.com/mozilla/sops/commit/822ce48b82236165a869ddfcb5e2da7c3788206a)]: Add arm64 .deb and .rpm builds (Janis Peisenieks) [#891](https://github.com/mozilla/sops/pull/891)
+- [[baec2a5](https://github.com/mozilla/sops/commit/baec2a50883b1269a360b58c9e57b50401a7705c)]: Merge branch 'develop' into feature/testsSholdNotFailFast (ikedam) [#909](https://github.com/mozilla/sops/pull/909)
+- [[035672f](https://github.com/mozilla/sops/commit/035672f3b492c03ade6dd369926333525a643546)]: prep v3.7.2 (AJ Bahnken) [#1020](https://github.com/mozilla/sops/pull/1020)
+- [[b67c7a7](https://github.com/mozilla/sops/commit/b67c7a7fd95e1e9ca9be741f2957a001e081979e)]: Fixed CHANGELOG formatting (AJ Bahnken) [#1020](https://github.com/mozilla/sops/pull/1020)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.7.1 (2021-04-08)</h2>
+      <pre>## Commits
+- [[9cc95d4](https://github.com/mozilla/sops/commit/9cc95d411b6c87a4336ced6c9552c4f1202ab0b1)]: Add release workflow (AJ Bahnken) [#843](https://github.com/mozilla/sops/pull/843)
+- [[dfc7af2](https://github.com/mozilla/sops/commit/dfc7af220ec8c231f42180aba53dffcb8bfdbeca)]: swap to fork of action-automatic-releases (AJ Bahnken) [#843](https://github.com/mozilla/sops/pull/843)
+- [[fdf4517](https://github.com/mozilla/sops/commit/fdf4517ce8fa6578234105b9d627c1fff571ac1e)]: Trim space from age keys (Johan Fleury) [#846](https://github.com/mozilla/sops/pull/846)
+- [[1504dbc](https://github.com/mozilla/sops/commit/1504dbcad1cff071da2bfbdfeca69abd7f78d88f)]: Run CI tests against master as well (AJ Bahnken) [#848](https://github.com/mozilla/sops/pull/848)
+- [[8a2fbc0](https://github.com/mozilla/sops/commit/8a2fbc0aa423c5772c9fdf346c1e47af10e5a00f)]: Initial patch for advisory (AJ Bahnken) [#852](https://github.com/mozilla/sops/pull/852)
+- [[e5bf171](https://github.com/mozilla/sops/commit/e5bf171f33ffc7126b3ac8c7f69f00699e077245)]: go.sum fix (AJ Bahnken) [#852](https://github.com/mozilla/sops/pull/852)
+- [[706d0c7](https://github.com/mozilla/sops/commit/706d0c7c7e26a1f8d352c23ae0e2481440e7d803)]: Merge pull request from GHSA-x5c7-x7m2-rhmf (AJ Bahnken) [#852](https://github.com/mozilla/sops/pull/852)
+- [[8838db6](https://github.com/mozilla/sops/commit/8838db65fab8908fcd1775bde50156565a21b013)]: v3.7.1 prep (AJ Bahnken) [#852](https://github.com/mozilla/sops/pull/852)
+- [[68e2a82](https://github.com/mozilla/sops/commit/68e2a824bd61c23a8a682f40360559e1da4d3228)]: fix release workflow (AJ Bahnken)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.7.0 (2021-03-24)</h2>
+      <pre>3.7.0
+-----
+Features:
+
+* Add support for age (#688)
+* Add filename to exec-file (#761)
+
+Changes:
+
+* On failed decryption with GPG, return the error returned by GPG to the sops user (#762)
+* Use yaml.v3 instead of modified yaml.v2 for handling YAML files (#791)
+* Update aws-sdk-go to version v1.37.18 (#823)
+
+Project Changes:
+
+* Switch from TravisCI to Github Actions (#792)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.1 (2020-09-14)</h2>
+      <pre>Features:
+* Add support for --unencrypted-regex (#715)
+
+Changes:
+* Use keys.openpgp.org instead of gpg.mozilla.org (#732)
+* Upgrade AWS SDK version (#714)
+* Support --input-type for exec-file (#699)
+
+Bug fixes:
+* Fixes broken Vault tests (#731)
+* Revert "Add standard newline/quoting behavior to dotenv store" (#706)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.0 (2020-07-15)</h2>
+      <pre>Features:
+
+  * Support for encrypting data through the use of Hashicorp Vault (#655)
+  * `sops publish` now supports `--recursive` flag for publishing all files in a directory (#602)
+  * `sops publish` now supports `--omit-extensions` flag for omitting the extension in the destination path (#602)
+  * sops now supports JSON arrays of arrays (#642)
+
+Improvements:
+
+  * Updates and standardization for the dotenv store (#612, #622)
+  * Close temp files after using them for edit command (#685)
+
+Bug fixes:
+
+  * AWS SDK usage now correctly resolves the `~/.aws/config` file (#680)
+  * `sops updatekeys` now correctly matches config rules (#682)
+  * `sops updatekeys` now correctly uses the config path cli flag (#672)
+  * Partially empty sops config files don't break the use of sops anymore (#662)
+  * Fix possible infinite loop in PGP's passphrase prompt call (#690)
+
+Project changes:
+
+  * Dockerfile now based off of golang version 1.14 (#649)
+  * Push alpine version of docker image to Dockerhub (#609)
+  * Push major, major.minor, and major.minor.patch tagged docker images to Dockerhub (#607)
+  * Removed out of date contact information (#668)
+  * Update authors in the cli help text (#645)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.0 (2019-11-21)</h2>
+      <pre>Features:
+
+    * `sops exec-env` and `sops exec-file`, two new commands for utilizing sops secrets within a temporary file or env vars
+
+Bug fixes:
+
+    * Sanitize AWS STS session name, as sops creates it based off of the machines hostname
+    * Fix for `decrypt.Data` to support `.ini` files
+    * Various package fixes related to switching to Go Modules
+    * Fixes for Vault-related tests running locally and in CI.
+
+Project changes:
+
+    * Change to proper use of go modules, changing to primary module name to `go.mozilla.org/sops/v3`
+    * Change tags to requiring a `v` prefix.
+    * Add documentation for `sops updatekeys` command</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.4.0 (2019-09-12)</h2>
+      <pre>Features:
+
+* `sops publish`, a new command for publishing sops encrypted secrets to S3, GCS, or Hashicorp Vault
+* Support for multiple Azure authentication mechanisms
+* Azure Keyvault support to the sops config file
+* `encrypted_regex` option to the sops config file
+
+Bug fixes:
+
+* Return non-zero exit code for invalid CLI flags
+* Broken path handling for sops editing on Windows
+* `go lint/fmt` violations
+* Check for pgp fingerprint before slicing it
+
+Project changes:
+
+* Build container using golang 1.12
+* Switch to using go modules
+* Hashicorp Vault server in Travis CI build
+* Mozilla Publice License file to repo
+* Replaced expiring test gpg keys</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.3.1 (2019-06-11)</h2>
+      <pre>Bug fixes:
+
+* Make sure the pgp key fingerprint is longer than 16 characters before
+  slicing it. (#463)
+* Allow for `--set` value to be a string. (#461)
+
+Project changes:
+
+* Using `develop` as a staging branch to create releases off of. What
+  is in `master` is now the current stable release.
+* Upgrade to using Go 1.12 to build sops
+* Updated all vendored packages
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.3.0 (2019-04-18)</h2>
+      <pre>New features:
+
+* Multi-document support for YAML files
+* Support referencing AWS KMS keys by their alias
+* Support for INI files
+* Support for AWS CLI profiles
+* Comment support in .env files
+* Added vi to the list of known editors
+* Added a way to specify the GPG key server to use through the
+  SOPS_GPG_KEYSERVER environment variable
+
+Bug fixes:
+
+* Now uses $HOME instead of ~ (which didn't work) to find the GPG home
+* Fix panic when vim was not available as an editor, but other
+  alternative editors were
+* Fix issue with AWS KMS Encryption Contexts (#445) with more than one
+  context value failing to decrypt intermittently. Includes an
+  automatic fix for old files affected by this issue.
+
+Project infrastructure changes:
+
+* Added integration tests for AWS KMS
+* Added Code of Conduct
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.2.0 (2018-11-08)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.1.1 (2018-09-27)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.1.0 (2018-09-12)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.0.5 (2018-05-15)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.0.4 (2018-05-15)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.0.3 (2018-04-11)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.0.2 (2018-01-19)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.0.1 (2018-01-18)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>3.0.0 (2017-10-10)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.0.10 (2017-08-25)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

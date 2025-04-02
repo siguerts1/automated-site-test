@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for volta-cli/volta"/>
+  <title>volta-cli/volta Release Notes</title>
+</head>
+<body>
+  <h1>🚀 volta-cli/volta - Release Notes</h1>
+  
+    <section>
+      <h2>v2.0.2 (2024-12-05)</h2>
+      <pre>- Dependency updates
+- Improvements to header handling for HTTP requests (#1822, #1877)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.1 (2024-08-19)</h2>
+      <pre>- Improved accuracy of Node download progress bar on Windows (#1833)
+- You should no longer run into errors about needing the VC++ Runtime on Windows (#1844)
+    - Note: In the initial release of this version, there was a CI issue that caused this to break. The installer and zip files have since been updated.
+- The data provided when installing a new Node version is now more relevant and accurate (#1846, #1848)
+- Increased performance to make Volta even more responsive in typical use (#1849)
+- `volta run` will now correctly handle flags in more situations (#1857)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.0 (2024-08-11)</h2>
+      <pre>- 🚨 (BREAKING) 🚨 We upgraded the version of Rust used to build Volta, which drops support for older versions of glibc & Linux kernel. See [the Rust announcement from August 2022](https://blog.rust-lang.org/2022/08/01/Increasing-glibc-kernel-requirements.html) for details about the supported versions. Notably, this means that we no longer support CentOS 6 (#1611)
+- 🚨 (BREAKING) 🚨 Due to costs and changes in the code signing process, we have dropped the code signing for the Windows installer. We now recommend using `winget` to install Volta on Windows (#1650)
+- 🎉 (NEW) 🎉 We now ship a pre-built binary for ARM Linux & ARM Windows (#1696, #1801)
+- Volta no longer requires Developer Mode to be enabled on Windows (#1755)
+- `volta uninstall` now provides better help & error messages to describe its use and limitations (#1628, #1786)
+- Volta will now use a universal binary on Mac, rather than separate Intel- & ARM-specific builds (#1635)
+- Switched to installing profile scripts into `.zshenv` by default, rather than `.zshrc` (#1657)
+- Added a default shim for the `yarnpkg` command, which is an alias of `yarn` (#1670)
+- Added a new `--very-verbose` flag to enable even more logging (note: we haven't yet implemented much additional logging) (#1815)
+- Simplified the fetching process to remove an extra network request and resolve hangs (#1812)
+- Several dependency upgrades and clean-up refactors from @tottoto </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.1 (2023-01-25)</h2>
+      <pre>- Experimental support for pnpm (requires `VOLTA_FEATURE_PNPM` environment variable) (#1273)
+- Fix to correctly import native root certificates (#1375)
+- Better detection of executables provided by `yarn` (#1388, #1393)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.0 (2022-09-30)</h2>
+      <pre>- Added support for pinning / installing Yarn 3+ (#1305)
+- Improved portability and installer effectiveness by removing dependency on OpenSSL (#1214)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.8 (2022-06-02)</h2>
+      <pre>- Fix for malformed `bin` entries when installing global packages (#997)
+- Dependency updates</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.7 (2022-04-22)</h2>
+      <pre>- Added build for Linux distros with OpenSSL 3.0 (#1211)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.6 (2022-03-21)</h2>
+      <pre>- Fixed panic when `stdout` is closed (#1058)
+- Disabled global package interception when `--prefix` is provided (#1171)
+- Numerous dependency updates</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.5 (2021-09-07)</h2>
+      <pre>- Added error when attempting to install Node using `nvm` syntax (#1020)
+- Avoid modifying shell config if the environment is already correct (#990)
+- Prevent trying to read OS-generated files as package configs (#981)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.4 (2021-04-21)</h2>
+      <pre>- Fetch native Apple silicon versions of Node when available (#974)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.3 (2021-04-14)</h2>
+      <pre>- Fix pinning of `npm@bundled` when there is a custom default npm version (#957)
+- Use correct binary name for scoped packages with a string `bin` entry in `package.json` (#969)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.2 (2021-02-23)</h2>
+      <pre>- Fix issues where `volta list` wasn't showing the correct information in all cases (#778, #926)
+- Make detection of tool name case-insensitive on Windows (#941)
+- Fix problem with `npm link` in a scoped package under npm 7 (#945)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.1 (2021-01-15)</h2>
+      <pre>- Create Native build for Apple Silicon machines (#915, #917)
+    - _Note: As of the time this was published, Node does not have pre-built binaries for Apple Silicon, so Node will still be run through Rosetta 2._</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0 (2020-12-21)</h2>
+      <pre>- Support for `npm link` (#888, #889, #891)
+- Support for `npm update -g` and `yarn global upgrade` (#895)
+- Improvements in the handling of `npm` and `yarn` commands (#886, #887)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.9.99 (2020-12-16)</h2>
+      <pre>This is a Release Candidate version for Volta 1.0.0. It includes the following changes from Volta 0.9.3:
+
+- Support for `npm link` (#888, #889, #891)
+- Support for `npm update -g` and `yarn global upgrade` (#895)
+- Improvements to handling `npm` and `yarn` commands (#886, #887)
+
+Since this is an RC build, it won't be set as the "latest" Volta version. To install it on Unix, use the following command with an extra flag for the installer:
+
+```
+curl https://get.volta.sh | bash -s -- --version 0.9.99
+```</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.9.3 (2020-12-11)</h2>
+      <pre>- Various fixes to event plugin logic (#892, #894, #897)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.9.2 (2020-10-29)</h2>
+      <pre>- Correctly detect Volta binary installation directory (#864)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.9.1 (2020-10-22)</h2>
+      <pre>- Fix an issue with installing globals using npm 7 (#858)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.9.0 (2020-10-21)</h2>
+      <pre>- Support Proxies through environment variables (#809, #851)
+- Avoid unnecessary `exists` calls for files (#834)
+- Rework package installs to allow for directly calling package manager (#848, #849)
+- **Breaking Change**: Remove support for `packages` hooks (#817)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.8.7 (2020-08-25)</h2>
+      <pre>- Support fetching older versions of Yarn (#771)
+- Correctly detect `zsh` environment with `ZDOTDIR` variable (#799)
+- Prevent race conditions when installing tools (#684, #796)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.8.6 (2020-08-03)</h2>
+      <pre>- Improve parsing of `engines` when installing a package (#791, #792)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.8.5 (2020-07-27)</h2>
+      <pre>- Improve the stability of installing tools on systems with virus scanning software (#784)
+- Make `volta uninstall` work correctly when the original install had an issue (#787)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.8.4 (2020-07-20)</h2>
+      <pre>- Add `{{filename}}` and `{{ext}}` (extension) replacements for `template` hooks (#774)
+- Show better error when running `volta install yarn` without a Node version available (#763)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.8.3 (2020-06-29)</h2>
+      <pre>- Fix bug preventing custom `npm` versions from launching on Windows (#777)
+- Fix for completions in `zsh` for `volta list` (#772)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.8.2 (2020-06-17)</h2>
+      <pre>- Add support for workspaces through the `extends` key in `package.json` (#755)
+- Improve `volta setup` to make profile scripts more shareable across machines (#756)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.8.1 (2020-05-26)</h2>
+      <pre>- Fix panic when running `volta completions zsh` (#746)
+- Improve startup latency by reducing binary size (#732, #733, #734, #735)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.8.0 (2020-05-04)</h2>
+      <pre>- Support for pinning / installing custom versions of `npm` (#691)
+- New command: `volta run` which will let you run one-off commands using custom versions of Node / Yarn / npm (#713)
+- Added default pretty formatter for `volta list` (#697)
+- Improved setup of Volta environment to make it work in more scenarios (#666, #725)
+- Bug fixes and performance improvements (#683, #701, #703, #704, #707, #717)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.7.2 (2020-02-13)</h2>
+      <pre>- Added `npm.cmd`, `npx.cmd`, and `yarn.cmd` on Windows to support tools that look for CMD files specifically (#663)
+- Updated `volta setup` to also ensure that the shim symlinks are set up correctly (#662)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.7.1 (2020-01-24)</h2>
+      <pre>- Added warning when attempting to `volta uninstall` a package you don't have installed (#638)
+- Added informational message about pinned project version when running `volta install` (#646)
+- `volta completions` will attempt to create the output directory if it doesn't exist (#647)
+- `volta install` will correctly handle script files that have CRLF as the line ending (#644)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.7.0 (2020-01-13)</h2>
+      <pre>- Removed deprecated commands `volta activate`, `volta deactivate`, and `volta current` (#620, #559)
+- Simplified installer behavior and added data directory migration support (#619)
+- Removed reliance on UNC paths when executing node scripts (#637)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

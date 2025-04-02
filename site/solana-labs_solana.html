@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for solana-labs/solana"/>
+  <title>solana-labs/solana Release Notes</title>
+</head>
+<body>
+  <h1>🚀 solana-labs/solana - Release Notes</h1>
+  
+    <section>
+      <h2>Release v1.18.26 (2024-10-12)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+## What's Changed
+* refreshes ContactInfo.outset before initializing validator by @behzadnouri in https://github.com/anza-xyz/agave/pull/3135
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.18.25 (2024-10-04)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+Note: `solana-install` no longer supports channel names (edge, beta, stable). It still works with explicit version numbers like this: `solana-install init v1.18.25`. `agave-install` is the maintained fork; it supports channel names and explicit version numbers.
+
+All v1.18 releases will be available from both this repo and [Agave](https://github.com/anza-xyz/agave/releases). After v1.18 this repo will be archived. More information about migrating to Agave is available here:
+https://github.com/anza-xyz/agave/wiki/Agave-Transition
+
+
+## What's Changed
+* v1.18: extends Turbine fanout experiment to wider fanout values by @mergify in https://github.com/anza-xyz/agave/pull/2449
+* v1.18: Publish Agave docs by @mergify in https://github.com/anza-xyz/agave/pull/2921
+* v1.18: fix: set allocation size to 0 for transactions known to fail by @mergify in https://github.com/anza-xyz/agave/pull/2988
+* v1.18: ci: ignore the tonic audit as a temporary stopgap by @mergify in https://github.com/anza-xyz/agave/pull/3062</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.18.23 (2024-08-31)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+Note: `solana-install` no longer supports channel names (edge, beta, stable). It still works with explicit version numbers like this: `solana-install init v1.18.21`. `agave-install` is the maintained fork; it supports channel names and explicit version numbers.
+
+All v1.18 releases will be available from both this repo and [Agave](https://github.com/anza-xyz/agave/releases). After v1.18 this repo will be archived. More information about migrating to Agave is available here:
+https://github.com/anza-xyz/agave/wiki/Agave-Transition
+
+
+## What's Changed
+* v1.18: blockstore: only consume duplicate proofs from root_slot + 1 on startup
+* v1.18: RPC: rewards, return error if epoch_boundary_block is a lie
+* v1.18: fix: send votes to the immediate next leader
+* v1.18: replay: do not early return when marking slots duplicate confirmed
+* v1.18: rpc: add more services to getClusterNodes
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.18.22 (2024-08-09)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+Note: `solana-install` no longer supports channel names (edge, beta, stable). It still works with explicit version numbers like this: `solana-install init v1.18.21`. `agave-install` is the maintained fork; it supports channel names and explicit version numbers.
+
+All v1.18 releases will be available from both this repo and [Agave](https://github.com/anza-xyz/agave/releases). After v1.18 this repo will be archived. More information about migrating to Agave is available here:
+https://github.com/anza-xyz/agave/wiki/Agave-Transition
+
+
+## What's Changed
+* Bump rbpf version to 0.8.3 (backport of #2515) in https://github.com/anza-xyz/agave/pull/2513</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.18.21 (2024-08-03)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+Note: `solana-install` no longer supports channel names (edge, beta, stable). It still works with explicit version numbers like this: `solana-install init v1.18.21`. `agave-install` is the maintained fork; it supports channel names and explicit version numbers.
+
+All v1.18 releases will be available from both this repo and [Agave](https://github.com/anza-xyz/agave/releases). After v1.18 this repo will be archived. More information about migrating to Agave is available here:
+https://github.com/anza-xyz/agave/wiki/Agave-Transition
+
+## What's Changed
+* v1.18: ledger-tool: Set initial last full snapshot slot 
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mainnet-beta - v1.18.20 (2024-07-25)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+Note: `solana-install` no longer supports channel names (edge, beta, stable). It still works with explicit version numbers like this: `solana-install init v1.18.20`. `agave-install` is the maintained fork; it supports channel names and explicit version numbers.
+
+All v1.18 releases will be available from both this repo and [Agave](https://github.com/anza-xyz/agave/releases). After v1.18 this repo will be archived. More information about migrating to Agave is available here:
+https://github.com/anza-xyz/agave/wiki/Agave-Transition
+
+## What's Changed
+* v1.18: suppress openssl audit
+* Remove solana-install support for channels since it is already broken.
+* Undo deprecation message edit on RpcClient::get_stake_activation
+* v1.18: Re-enable SPL downstream job with last v1.18 commit
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.18.19 (2024-07-22)</h2>
+      <pre>🚧</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mainnet-beta - v1.18.18 (2024-07-11)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+---
+
+## What's Changed
+* v1.18: Deprecate RpcRequest::GetStakeActivation
+* v1.18: Add suggestion to deprecation message
+* v1.18: Deprecate RpcClient::get_stake_activation
+* v1.18: gossip: do not allow duplicate proofs for incorrect shred versions
+* v1.18: ci: skip spl test when version is too high
+* v1.18: Use updated branch for curve25519-dalek
+* Update scripts/spl-token-cli-version.sh with latest SPL Token CLI version
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet - v1.18.17 (2024-06-17)</h2>
+      <pre>This is a Testnet release. It is NOT recommended for Mainnet Beta.
+
+## What's Changed
+
+* v1.18: adds a metric for number of unverified gossip addresses
+* v1.18: Update patch paths for tokio, crossbeam, and curve25519-dalek
+* v1.18: patches bug in chained Merkle root update
+* v1.18: sdk: Rederive Copy on Rent and EpochSchedule
+* v1.18: accounts-db: fix 8G+ memory spike during hash calculation 
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet - v1.18.16 (2024-06-08)</h2>
+      <pre>This is a Testnet release. It is NOT recommended for Mainnet Beta.
+
+* v1.18: pings received contact-infos on gossip socket address
+* v1.18: ci: improve version update script
+* v1.18: retains chained Merkle root across leader slots</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mainnet v1.18.15 (2024-05-31)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+---
+
+## What's Changed
+* Bump version to v1.18.15
+* v1.18: add ca-certificates to docker image
+* v1.18: Bugfix: clean_queue pushes valid transactions back into queue
+* v1.18: replay: add metrics for threshold failures
+* v1.18: scheduler optimization - worker precompile verification
+* v1.18: consensus: make shallow threshold checks log only</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet v1.18.14 (2024-05-18)</h2>
+      <pre>This is a Testnet release. It is not recommended for Mainnet Beta.
+
+---
+
+* v1.18 - Add detailed metrics reporting for packet filtering
+* v1.18 - Adds error log for replacements in ProgramCache::assign_program()
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.18.13...v1.18.14</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mainnet v1.17.34 (2024-05-18)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+--- 
+* v1.17: ci: don't self-update rustup when using the rust-version script
+* v1.17 - Add detailed metrics reporting for packet filtering
+* v1.17 - Adds error log for replacements in ProgramCache::assign_program()
+
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.17.33...v1.17.34</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet v1.18.13 (2024-05-14)</h2>
+      <pre>This is a Testnet release. It is not recommended for Mainnet Beta.
+
+--- 
+* v1.18: client: Resend transactions using same mechanism as initial send
+* v1.18: cli: use newer blockhashes when deploying large programs
+* v1.18: support Pubkey::to_bytes as constexpr
+* v1.18: RPC: fix numNonVoteTransactions in getPerformanceSamples
+* v1.18: blockstore: relax backwards chained merkle root check for upgrades
+* v1.18: forwarder uses working bank as filter
+* v1.18: Scheduler: throttle thread queueing by CUs
+* v1.18: Replaces DashMap with HashMap in secondary indexes
+* v1.18: blockstore: account for blockstore cleanup during shred insertion
+* v1.18: ci: don't self-update rustup when using the rust-version script
+* v1.18: Fix - Reloading of unload entries after finishing the recompilation phase
+* v1.18: reverts back in SocketAddr dedup in retransmit stage
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.18.12...v1.18.13</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mainnet v1.17.33 (2024-05-07)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+---
+
+- Backport connection stream counter to v1.17
+- v1.17: corrected to not use hardcoded connections count for unstaked
+- v1.17: Change DEFAULT_TPU_CONNECTION_POOL_SIZE to 1
+- v1.17: quic: delay calling set_max_concurrent_uni_streams/set_receive_window
+- v1.17: Disable cache warmer if RPC is not using it
+- v1.17: Parameterize max streams per ms
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.17.32...v1.17.33</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.17.32 (2024-04-27)</h2>
+      <pre>🚧
+---
+
+* v1.17: quic server: set initial window to PACKET_DATA_SIZE
+* v1.17: Limit max concurrent connections
+* v1.17: chore: add CODEOWNERS
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.17.31...v1.17.32</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet v1.18.12 (2024-04-26)</h2>
+      <pre>This is a Testnet release. It is not recommended for Mainnet Beta.
+
+## What's Changed
+
+- v1.18: Disable cache warmer if RPC is not using it
+- v1.18: Change DEFAULT_TPU_CONNECTION_POOL_SIZE to 1
+- v1.18: Limit max concurrent connections
+- v1.18: blockstore: send duplicate proofs for chained merkle root conflicts
+- v1.18: quic: delay calling set_max_concurrent_uni_streams/set_receive_window
+- v1.18: cli: Use --use-rpc flag correctly during program deployments
+- v1.18: sleep instead of drop when stream rate exceeded limit;
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.18.11...v1.18.12</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet v1.18.11 (2024-04-11)</h2>
+      <pre>This is a Testnet release. It is not recommended for Mainnet Beta.
+
+## What's Changed
+
+- v1.18: Show staked vs nonstaked packets sent down/throttled
+- v1.18: BankingStage Forwarding Filter
+- v1.18: Treat super low staked as unstaked in streamer QOS
+- v1.18: quic: use smallvec to aggregate chunks, save 1 alloc per packet
+- v1.18: Fix - `FailedVerification` and `Closed` tombstones
+- v1.18: default staked client in LocalCluster
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.18.10...v1.18.11</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mainnet v1.17.31 (2024-04-12)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+## What's Changed
+
+- v1.17: Show staked vs nonstaked packets sent down/throttled
+- v1.17: quic: use smallvec to aggregate chunks, save 1 alloc per packet
+- v1.17: BankingStage Forwarding Filter
+- tighten the minimal streams per 100ms for staked node
+- v1.17: Treat super low staked as unstaked in streamer QOS
+- v1.17: default staked client in LocalCluster
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.17.30...v1.17.31</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.18.10 (2024-04-08)</h2>
+      <pre>🚧 This is an internal testing release and is not recommended for any network.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.17.30 (2024-04-08)</h2>
+      <pre>🚧 This is an internal testing release and is not recommended for any network.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet - v1.18.9 (2024-03-29)</h2>
+      <pre>This is a Testnet release. It is not recommended for Mainnet Beta.
+
+## What's Changed
+* v1.18: ci: add release pipeline (backport of [#466](https://github.com/anza-xyz/agave/pull/466)) ([#487](https://github.com/anza-xyz/agave/pull/487))
+* v1.18: shred: expose chained merkle root (backport of [#435](https://github.com/anza-xyz/agave/pull/435)) ([#459](https://github.com/anza-xyz/agave/pull/459))
+* v1.18: implements weighted shuffle using N-ary tree (backport of [#259](https://github.com/anza-xyz/agave/pull/259)) ([#429](https://github.com/anza-xyz/agave/pull/429))
+* v1.18: implements weighted shuffle using binary tree (backport of [#185](https://github.com/anza-xyz/agave/pull/185)) ([#425](https://github.com/anza-xyz/agave/pull/425))
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.18.8...v1.18.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.17.29 (2024-03-29)</h2>
+      <pre>🚧</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet - v1.18.8 (2024-03-23)</h2>
+      <pre>This is a Testnet release. It is not recommended for Mainnet Beta.
+
+## Changes
+* v1.18: Make the quic server connection table use an async lock, reducing thrashing
+* v1.18: Fix: deploy program on last slot of epoch during environment change
+* v1.18: client: Timeout resends during `send_and_confirm_in_parallel`
+* v1.18: Add `--with-compute-unit-price` to cli program deploy commands
+* Back-port Bump platform tools version
+* v1.18: client: Start resending sooner during `send_and_confirm_transactions_in_parallel`
+* v1.18: Cli stake-split: adjust transfer amount if recipient has lamports
+* v1.18: Discard packets statically known to fail
+* v1.18: relax stake split destination check
+* v1.18: Scheduler - prioritization fees/cost
+* v1.18: rpc-sts: add config options for stake-weighted qos
+* v1.18: Update maximum credits awarded per vote from 8 to 16
+* v1.18: Revert deprecate executable feature
+* v1.18: cli: skip no-op program buffer writes
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mainnet - v1.17.28 (2024-03-23)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+## Changes
+* v1.17: Discard packets statically known to fail
+* v1.17: rpc-sts: add config options for stake-weighted qos
+* v1.17: blockstore: relax parent slot meta check for clear_unconfirmed_slot
+* v1.17: Make the quic server connection table use an async lock, reducing thrashing
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet - v1.18.7 (2024-03-18)</h2>
+      <pre>This is a Testnet release. It is not recommended for Mainnet Beta.
+
+## Changes
+* v1.18: vote: deprecate unused legacy vote tx plumbing
+* v1.18: Add in metrics for detecting Redundant Pulls
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.18.6...v1.18.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mainnet - v1.17.27 (2024-03-18)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+## Changes
+* v1.17: vote: deprecate unused legacy vote tx plumbing
+* 
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.17.26...v1.17.27</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet - v1.18.6 (2024-03-14)</h2>
+      <pre>This is a Testnet release. It is not recommended for Mainnet Beta.
+
+## What's Changed
+ * v1.18: add precompile signature metrics to cost tracker
+ * v1.18: deprecate `get_client` and `get_multi_client`
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.18.5...v1.18.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mainnet - v1.17.26 (2024-03-13)</h2>
+      <pre>This is a stable release suitable for use on Mainnet Beta.
+
+## What's changed
+* v1.17: add precompile signature metrics to cost tracker
+
+**Full Changelog**: https://github.com/solana-labs/solana/compare/v1.17.25...v1.17.26</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Testnet - v1.18.5 (2024-03-09)</h2>
+      <pre>This is a Testnet release. It is not recommended for Mainnet Beta.
+
+## What's Changed
+* v1.18: blockstore: relax parent slot meta check for clear_unconfirmed_slot
+* v1.18: adds api to obtain the parent node in the turbine retransmit tree
+* v1.18: Rpc: deprecate `getStakeActivation` and make inactive_stake consistent
+* v1.18: windows: Use vcpkg for openssl dep
+* v1.18: ignore mio audit report
+* v1.18: update mio to 0.8.11
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

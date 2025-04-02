@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for webpack/webpack"/>
+  <title>webpack/webpack Release Notes</title>
+</head>
+<body>
+  <h1>🚀 webpack/webpack - Release Notes</h1>
+  
+    <section>
+      <h2>v5.98.0 (2025-02-13)</h2>
+      <pre>### Fixes
+- Avoid the deprecation message #19062 by @alexander-akait
+- Should not escape CSS local ident in JS #19060 by @JSerFeng
+- MF parse range not compatible with Safari #19083 by @alexander-akait
+- Preserve `filenameTemplate` in new split chunk #19104 by @henryqdineen
+- Use module IDs for final render order #19184 by @dmichon-msft
+- Strip `blob:` protocol when public path is `auto` #19199 by @alexander-akait
+- Respect `output.charset` everywhere #19202 by @alexander-akait
+- Node async WASM loader generation #19210 by @ashi009
+- Correct `BuildInfo` and `BuildMeta` type definitions #19200 by @inottn
+
+### Performance Improvements
+- Improve `FlagDependencyExportsPlugin` for large JSON by depth #19058 by @hai-x
+- Optimize assign-depths #19193 by @dmichon-msft
+- Use `startsWith` for matching instead of converting the string to a regex #19207 by @inottn
+
+### Chores
+- Bump `nanoid` from 3.3.7 to 3.3.8 #19063 by @dependabot
+- Fixed incorrect typecast in `DefaultStatsFactoryPlugin` #19156 by @Andarist
+- Improved `readme.md` by adding video links for understanding webpack #19101 by @Vansh5632
+- Typo fix #19205 by @hai-x
+- Adopt the new webpack governance model #18804 by @ovflowd
+
+### Features
+- Implement `/* webpackIgnore: true */` for `require.resolve` #19201 by @alexander-akait
+
+### Continuous Integration
+- CI fix #19196 by @alexander-akait
+## New Contributors
+* @Andarist made their first contribution in https://github.com/webpack/webpack/pull/19156
+* @Vansh5632 made their first contribution in https://github.com/webpack/webpack/pull/19101
+* @ashi009 made their first contribution in https://github.com/webpack/webpack/pull/19210
+* @ovflowd made their first contribution in https://github.com/webpack/webpack/pull/18804
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.97.1...v5.98.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.97.1 (2024-12-05)</h2>
+      <pre>## Bug Fixes
+
+- Performance regression
+- Sub define key should't be renamed when it's a defined variable</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.97.0 (2024-12-03)</h2>
+      <pre>## Bug Fixes
+
+- Don't crash with filesystem cache and unknown scheme
+- Generate a valid code when `output.iife` is `true` and output.library.type is `umd` 
+- Fixed conflict variable name with concatenate modules and runtime code
+- Merge duplicate chunks before 
+- Collisions in ESM library 
+- Use recursive search for versions of shared dependencies
+- **[WASM]** Don't crash WebAssembly with Reference Types (sync and async)
+- **[WASM]** Fixed wasm loading for sync and async webassembly
+- **[CSS]** Don't add `[uniqueName]` to `localIdentName` when it is empty
+- **[CSS]** Parsing strings on Windows
+- **[CSS]** Fixed CSS local escaping
+
+## New Features
+
+- Added support for injecting debug IDs
+- Export the `MergeDuplicateChunks` plugin 
+- Added universal loading for JS chunks and JS worker chunks (only ES modules)
+- **[WASM]** Added universal loading for WebAssembly chunks (only for async WebAssembly)
+- **[CSS]** Allow initial CSS chunks to be placed anywhere - **the `output.cssHeadDataCompression` option was deleted**
+- **[CSS]** Added universal loading for CSS chunks 
+- **[CSS]** Parse ICSS `@value` at-rules in CSS modules
+- **[CSS]** Parse ICSS `:import` rules in CSS modules
+- **[CSS]** Added the `url` and `import` options for CSS
+- **[CSS]** Allow to import custom properties in CSS modules
+
+## Performance
+
+- Faster Queue implementation, also fixed queue iterator state in dequeue method to ensure correct behavior after item removal</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.96.1 (2024-11-01)</h2>
+      <pre>## Bug Fixes
+
+- **[Types]** Add `@types/eslint-scope` to dependencieS
+- **[Types]** Fixed regression in `validate`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.96.0 (2024-10-31)</h2>
+      <pre>## Bug Fixes
+
+- Fixed Module Federation should track all referenced chunks
+- Handle Data URI without base64 word
+- HotUpdateChunk have correct runtime when modified with new runtime
+- Order of chunks ids in generated chunk code
+- No extra Javascript chunks when using asset module as an entrypoint
+- Use optimistically logic for `output.environment.dynamicImport` to determine chunk format when no browserslist or target
+- Collision with global variables for `optimization.avoidEntryIife`
+- Avoid through variables in inlined module
+- Allow chunk template strings in `output.devtoolNamespace`
+- No extra runtime for get javascript/css chunk filename
+- No extra runtime for prefetch and preload in JS runtime when it was unsed in CSS
+- Avoid cache invalidation using ProgressPlugin
+- Increase parallelism when using `importModule` on the execution stage
+- Correctly parsing string in `export` and `import`
+- Typescript types
+- **[CSS]** `css/auto` considers a module depending on its filename as `css` (pure CSS) or `css/local`, before it was `css/global` and `css/local`
+- **[CSS]** Always interpolate classes even if they are not involved in export
+- **[CSS]** No extra runtime in Javascript runtime chunks for asset modules used in CSS 
+- **[CSS]** No extra runtime in Javascript runtime chunks for external asset modules used in CSS 
+- **[CSS]** No extra runtime for the `node` target
+- **[CSS]** Fixed `url()`s and `@import` parsing
+- **[CSS]** Fixed - emit a warning on broken :local and :global
+ 
+
+## New Features
+
+- Export CSS and ESM runtime modules
+- Single Runtime Chunk and Federation eager module hoisting
+- **[CSS]** Support `/* webpackIgnore: true */` for CSS files
+- **[CSS]** Support `src()` support 
+- **[CSS]** CSS nesting in CSS modules </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.95.0 (2024-09-25)</h2>
+      <pre>## Bug Fixes
+
+- Fixed hanging when attempting to read a symlink-like file that it can't read
+- Handle `default` for import context element dependency
+- Merge duplicate chunks call after split chunks
+- Generate correctly code for dynamically importing the same file twice and destructuring
+- Use content hash as [base] and [name] for extracted DataURI's
+- Distinguish `module` and `import` in `module-import` for externals `import`'s
+- [Types] Make `EnvironmentPlugin` default values types less strict
+- [Types] Typescript 5.6 compatibility
+
+## New Features
+
+- Add new `optimization.avoidEntryIife` option (`true` by default for the `production` mode)
+- Pass output.hash* options to loader context
+
+## Performance
+
+- Avoid unneeded re-visit in build chunk graph</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.94.0 (2024-08-22)</h2>
+      <pre>## Bug Fixes
+
+- Added runtime condition for harmony reexport checked
+- Handle properly `data`/`http`/`https` protocols in source maps
+- Make `bigint` optimistic when browserslist not found
+- Move @types/eslint-scope to dev deps
+- Related in asset stats is now always an array when no related found
+- Handle ASI for export declarations
+- Mangle destruction incorrect with export named default properly
+- Fixed unexpected asi generation with sequence expression
+- Fixed a lot of types
+
+## New Features
+
+- Added new external type "module-import"
+- Support `webpackIgnore` for `new URL()` construction
+- [CSS] `@import` pathinfo support
+
+## Security
+
+- Fixed DOM clobbering in auto public path</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.93.0 (2024-07-11)</h2>
+      <pre>## Bug Fixes
+
+- Generate correct relative path to runtime chunks
+- Makes `DefinePlugin` quieter under default log level
+- Fixed mangle destructuring default in namespace import
+- Fixed consumption of eager shared modules for module federation
+- Strip slash for pretty regexp
+- Calculate correct contenthash for CSS generator options
+
+## New Features
+
+- Added the `binary` generator option for asset modules to explicitly keep source maps produced by loaders
+- Added the `modern-module` library value for tree shakable output
+- Added the `overrideStrict` option to override strict or non-strict mode for javascript modules
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.92.1 (2024-06-19)</h2>
+      <pre>## Bug Fixes
+
+- Doesn't crash with an error when the css experiment is enabled and contenthash is used</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.92.0 (2024-06-11)</h2>
+      <pre>## Bug Fixes
+
+- Correct tidle range's comutation for module federation
+- Consider runtime for pure expression dependency update hash
+- Return value in the `subtractRuntime` function for runtime logic
+- Fixed failed to resolve promise when eager import a dynamic cjs
+- Avoid generation extra code for external modules when remapping is not required
+- The `css/global` type now handles the exports name
+- Avoid hashing for `@keyframe` and `@property` at-rules in `css/global` type
+- Fixed mangle with destructuring for JSON modules
+- The `stats.hasWarnings()` method now respects the `ignoreWarnings` option
+- Fixed `ArrayQueue` iterator
+- Correct behavior of `__webpack_exports_info__.a.b.canMangle`
+- Changed to the correct plugin name for the `CommonJsChunkFormatPlugin` plugin
+- Set the `chunkLoading` option to the `import` when environment is unknown and output is module
+- Fixed when runtimeChunk has no exports when `module` chunkFormat used
+- [CSS] Fixed parsing minimized CSS import
+- [CSS] URLs in CSS files now have correct public path
+- [CSS] The `css` module type should not allow parser to switch mode
+- [Types] Improved context module types
+
+## New Features
+
+- Added platform target properties to compiler
+- Improved multi compiler cache location and validating it
+- Support `import attributes` spec (`with` keyword)
+- Support `node:` prefix for Node.js core modules in runtime code
+- Support prefetch/preload for module chunk format
+- Support "..." in the `importsFields` option for resolver
+- Root module is less prone to be wrapped in IIFE
+- Export `InitFragment` class for plugins
+- Export `compileBooleanMatcher` util for plugins
+- Export `InputFileSystem` and `OutputFileSystem` types
+- [CSS] Support the `esModule` generator option for CSS modules
+- [CSS] Support CSS when chunk format is module</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.91.0 (2024-03-20)</h2>
+      <pre>## Bug Fixes
+
+- Deserializer for ignored modules doesn't crash
+- Allow the `unsafeCache` option to be a proxy object
+- Normalize the `snapshot.unmanagedPaths` option
+- Fixed `fs` types
+- Fixed resolve's plugins types
+- Fixed wrongly calculate postOrderIndex
+- Fixed watching types
+- Output import attrbiutes/import assertions for external JS imports
+- Throw an error when DllPlugin needs to generate multiple manifest files, but the path is the same
+- [CSS] Output `layer`/`supports`/`media` for external CSS imports
+
+## New Features
+
+- Allow to customize the stage of BannerPlugin
+- [CSS] Support CSS exports convention
+- [CSS] support CSS local ident name
+- [CSS] Support `__webpack_nonce__` for CSS chunks
+- [CSS] Support `fetchPriority` for CSS chunks
+- [CSS] Allow to use LZW to compress css head meta (enabled in the `production` mode by default)
+- [CSS] Support prefetch/preload for CSS chunks
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.90.3 (2024-02-19)</h2>
+      <pre>## Bug Fixes
+
+- don't mangle when destructuring a reexport
+- types for `Stats.toJson()` and `Stats.toString()`
+- many internal types
+- [CSS] clean up export css local vars
+
+## Perf
+
+- simplify and optimize chunk graph creation</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.90.2 (2024-02-15)</h2>
+      <pre>## Bug Fixes
+
+* use `Math.imul` in `fnv1a32` to avoid loss of precision, directly hash UTF16 values
+* the `setStatus()` of the HMR module should not return an array, which may cause infinite recursion
+* `__webpack_exports_info__.xxx.canMangle` shouldn't always same as default
+* mangle export with destructuring
+* use new runtime to reconsider skipped connections `activeState`
+* make dynamic import optional in `try/catch`
+* improve auto publicPath detection
+
+## Dependencies & Maintenance
+
+* improve CI setup and include Node.js@21</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.90.1 (2024-02-01)</h2>
+      <pre>## Bug Fixes
+
+- set `unmanagedPaths` in defaults
+- correct `preOrderIndex` and `postOrderIndex`
+- add fallback for MIME mismatch error in async wasm loading
+- browsers versions of ECMA features
+
+## Performance
+
+- optimize `compareStringsNumeric`
+- optimize `numberHash` using 32-bit FNV1a for small ranges, 64-bit for larger
+- reuse VM context across webpack magic comments</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.90.0 (2024-01-24)</h2>
+      <pre>## Bug Fixes
+
+* Fixed inner graph for classes
+* Optimized `RemoveParentModulesPlugin` via bigint arithmetic
+* Fixed worklet detection in production mode
+* Fixed an error for cyclic importModule
+* Fixed types for `Server` and `Dirent`
+* Added the `fetchPriority` to hmr runtime's `ensureChunk` function
+* Don't warn about dynamic import for build dependencies
+* External module generation respects the `output.environment.arrowFunction` option
+* Fixed consumimng shared runtime module logic
+* Fixed a runtime logic of multiple chunks
+* Fixed destructing assignment of dynamic import json file
+* Passing errors array for a module hash
+* Added `/*#__PURE__*/` to generated `JSON.parse()`
+* Generated a library manifest after clean plugin
+* Fixed non `amd` externals and `amd` library
+* Fixed a bug in `SideEffectsFlagPlugin` with namespace re-exports
+* Fixed an error message for condition `or`
+* The `strictModuleErrorHandling` is now working
+* Clean up child compilation chunk graph to avoid memory leak
+* [CSS] - Fixed CSS import prefer relative resolution
+* [CSS] - Fixed CSS runtime chunk loading error message
+
+## New Features
+
+* Allow to set `false` for dev server in `webpack.config.js`
+* Added a warning for async external when not supported
+* Added a warning for async module when not supported
+* Added the `node-module` option for the `node.__filename/__dirname` and enable it by default for ESM target
+* Added the `snapshot.unmanagedPaths` option
+* Exposed the `MultiCompilerOptions` type
+* [CSS] - Added CSS parser options to enable/disable named exports
+* [CSS] - Moved CSS the `exportsOnly` option to CSS generator options
+
+## Dependencies & Maintenance
+
+* use node.js LTS version for lint
+* bump actions/cache from 3 to 4
+* bump prettier from 3.2.1 to 3.2.3
+* bump assemblyscript
+* bump actions/checkout from 3 to 4
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.89.0...v5.90.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.89.0 (2023-10-13)</h2>
+      <pre>## New Features 
+* Make CommonJS import preserve chained expressions by @bworline in https://github.com/webpack/webpack/pull/17718
+
+## Dependencies & Maintenance 
+* chore(deps-dev): bump @types/node from 20.3.1 to 20.4.8 by @dependabot in https://github.com/webpack/webpack/pull/17568
+* docs: add example for stats detailed  output by @ersachin3112 in https://github.com/webpack/webpack/pull/17420
+* docs: add example for stats normal  output by @ersachin3112 in https://github.com/webpack/webpack/pull/17426
+* chore(deps-dev): bump core-js from 3.31.0 to 3.32.0 by @dependabot in https://github.com/webpack/webpack/pull/17539
+* chore(deps-dev): bump pretty-format from 29.5.0 to 29.6.2 by @dependabot in https://github.com/webpack/webpack/pull/17536
+* chore(deps-dev): bump @types/node from 20.4.8 to 20.4.9 by @dependabot in https://github.com/webpack/webpack/pull/17583
+* chore(deps-dev): bump less from 4.1.3 to 4.2.0 by @dependabot in https://github.com/webpack/webpack/pull/17580
+* chore(deps): bump semver from 5.7.1 to 5.7.2 by @dependabot in https://github.com/webpack/webpack/pull/17483
+* chore(deps-dev): bump simple-git from 3.19.0 to 3.19.1 by @dependabot in https://github.com/webpack/webpack/pull/17427
+* chore(deps-dev): bump @types/node from 20.4.9 to 20.6.0 by @dependabot in https://github.com/webpack/webpack/pull/17666
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.88.2...v5.89.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.47.0 (2023-09-06)</h2>
+      <pre>## New Features
+* [Security] - Add support for md4 in Node >=18. by @iclanton in https://github.com/webpack/webpack/pull/17628
+
+## New Contributors
+* @iclanton made their first contribution in https://github.com/webpack/webpack/pull/17628
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v4.46.0...v4.47.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.88.2 (2023-07-12)</h2>
+      <pre>## Bug Fixes
+* Fixed a bug where unused identifiers should retain names when using css modules by @burhanuday in https://github.com/webpack/webpack/pull/17444
+
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.88.1...v5.88.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.88.1 (2023-06-28)</h2>
+      <pre>## Developer Experience 
+* Significantly improve TypeScript coverage for Library Plugins by @alexander-akait in https://github.com/webpack/webpack/pull/17414
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.88.0...v5.88.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.88.0 (2023-06-21)</h2>
+      <pre>## New Features
+* [CSS] - Use `css/auto` as the default css mode by @burhanuday in https://github.com/webpack/webpack/pull/17399
+
+## Bug Fixes 
+* Fix bugs related to require.context and layer by @alexander-akait in https://github.com/webpack/webpack/pull/17388
+* Fix bug in runtime for CSS loading by @alexander-akait in https://github.com/webpack/webpack/pull/17400
+* Correct indirect call for tagged template expressions using correct this context by @alexander-akait in https://github.com/webpack/webpack/pull/17397
+* Update environment support for KaiOS browser by @steverep in https://github.com/webpack/webpack/pull/17395
+* Fix async module runtime code for running top-level-await by @ahabhgk in https://github.com/webpack/webpack/pull/17393
+
+## Developer Experience
+* Add example for stats minimal output by @ersachin3112 in https://github.com/webpack/webpack/pull/17406
+* Significantly improve type coverage for Dependency, Runtime, Template classes by @alexander-akait in https://github.com/webpack/webpack/pull/17394
+
+## Dependencies & Maintenance 
+* Bump browserslist from 4.21.8 to 4.21.9 by @dependabot in https://github.com/webpack/webpack/pull/17389
+* Bump acorn from 8.8.2 to 8.9.0 by @dependabot in https://github.com/webpack/webpack/pull/17402
+* Bump eslint from 8.42.0 to 8.43.0 by @dependabot in https://github.com/webpack/webpack/pull/17401
+* Bump eslint-plugin-jest from 27.2.1 to 27.2.2 by @dependabot in https://github.com/webpack/webpack/pull/17407
+
+## New Contributors
+* @steverep made their first contribution in https://github.com/webpack/webpack/pull/17395
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.87.0...v5.88.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.87.0 (2023-06-14)</h2>
+      <pre>## New Features
+* Implement `fetchPriority` feature as parser option and magic comment by @alexander-akait in https://github.com/webpack/webpack/pull/17249
+* [CSS] - Introduce 'css/auto' as a css module type by @ahabhgk in https://github.com/webpack/webpack/pull/16577
+* [CSS] - Style-specific fields now automatically resolve in package.json by @burhanuday in https://github.com/webpack/webpack/pull/17346
+* webpack configuration API now accepts "falsy values" loaders and plugins by @alexander-akait in https://github.com/webpack/webpack/pull/17339
+
+## Bug Fixes 
+* Fix codecov badge in readme by @burhanuday in https://github.com/webpack/webpack/pull/17353
+
+## Developer Experience
+* Add link to svelte loader for webpack by @burhanuday in https://github.com/webpack/webpack/pull/17369
+* Increase parser API types in internal plugins across dependency plugins @alexander-akait in https://github.com/webpack/webpack/pull/17365
+
+## Dependencies & Maintenance
+* Bump memfs from 3.5.2 to 3.5.3 by @dependabot in https://github.com/webpack/webpack/pull/17347
+* Bump webpack-cli from 5.1.3 to 5.1.4 by @dependabot in https://github.com/webpack/webpack/pull/17349
+* Bump es-module-lexer from 1.2.1 to 1.3.0 by @dependabot in https://github.com/webpack/webpack/pull/17362
+* Bump @types/node from 20.2.5 to 20.3.0 by @dependabot in https://github.com/webpack/webpack/pull/17361
+* Bump core-js from 3.30.2 to 3.31.0 by @dependabot in https://github.com/webpack/webpack/pull/17360
+* Bump browserslist from 4.21.6 to 4.21.8 by @dependabot in https://github.com/webpack/webpack/pull/17367
+* Bump @types/node from 20.3.0 to 20.3.1 by @dependabot in https://github.com/webpack/webpack/pull/17366
+
+## New Contributors
+@aboktor made their first contribution in #16991 #16989 
+@silverwind made their first contribution in #17339 via #17329
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.86.0...v5.87.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.86.0 (2023-06-07)</h2>
+      <pre>## New Features
+* Improved cache size performance via better handling of serialization for errors and bigints by @alexander-akait in https://github.com/webpack/webpack/pull/17282
+* Introduce an export default handler function option for `ProgressPlugin` by @alexander-akait in https://github.com/webpack/webpack/pull/17312
+* Support passing `RegExp` to `splitChunks.chunks` by @hyf0 in https://github.com/webpack/webpack/pull/17332
+
+## Bug Fixes
+* Fix layer capabilities for `ContextModule` types by @huozhi in https://github.com/webpack/webpack/pull/17310
+* Fix compatibility of `__non_webpack_require__` with ES modules by @alexander-akait in https://github.com/webpack/webpack/pull/17308
+* Improve type coverage `Chunk`, `ChunkGroup`, and other plugins by @alexander-akait in https://github.com/webpack/webpack/pull/1731
+* Do not add `js` extension for eval source maps when extension is not resolvable by @alexander-akait in https://github.com/webpack/webpack/pull/17331
+
+## Developer Experience
+* Improve type coverage for Json Module type and lazy load json-assertions package by @alexander-akait in https://github.com/webpack/webpack/pull/17301
+
+## Dependencies & Maintenance
+* Bump memfs from 3.5.1 to 3.5.2 by @dependabot in https://github.com/webpack/webpack/pull/17315
+* Bump webpack-cli from 5.1.1 to 5.1.3 by @dependabot in https://github.com/webpack/webpack/pull/17314
+* Bump eslint from 8.41.0 to 8.42.0 by @dependabot in https://github.com/webpack/webpack/pull/17313
+
+## New Contributors
+* @huozhi made their first contribution in https://github.com/webpack/webpack/pull/17310
+* @hyf0 made their first contribution in https://github.com/webpack/webpack/pull/17332
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.85.1...v5.86.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.85.1 (2023-06-05)</h2>
+      <pre>## Bug Fixes
+* Fix bug in handling barrel imports (#17305) by @bworline in https://github.com/webpack/webpack/pull/17307 - _**NOTE**: An internal API `BasicEvaluatedExpression.getMemberRangeStarts` has been changed to `BasicEvaluatedExpression.getMemberRanges`, please see type definition changes and the pull request for more information._ 
+
+## Dependencies & Maintenance 
+* Bump @types/jest from 29.5.1 to 29.5.2 by @dependabot in https://github.com/webpack/webpack/pull/17297
+
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.85.0...v5.85.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.85.0 (2023-05-31)</h2>
+      <pre>## New Features
+* Add `readonly` cache mode by @vankop in https://github.com/webpack/webpack/pull/15470
+* Normalize property accessors for esm namespaces and chained member/call expressions by @bworline in https://github.com/webpack/webpack/pull/17203 
+* Support `environment` in loader context by @alexander-akait in https://github.com/webpack/webpack/pull/17281
+* Introduce a new syntax for `addModule()` support in worklets - `*context.audioWorklet.addModule()` by @alexander-akait in https://github.com/webpack/webpack/pull/17212
+
+## Bug Fixes
+* Fix type regression with unknown module type strings by @alexander-akait in https://github.com/webpack/webpack/pull/17266
+
+## Developer Experience
+* Use global runtime constants for webpack exports by @burhanuday in https://github.com/webpack/webpack/pull/17270
+* Add strict mode type coverage for WASM and Runtime code by @alexander-akait in https://github.com/webpack/webpack/pull/17267
+* Add strict mode type coverage for runtime modules and runtime plugins by @alexander-akait in https://github.com/webpack/webpack/pull/17261
+* Add types for JSON & Asset Modules including their interfacing plugins by @alexander-akait in https://github.com/webpack/webpack/pull/17262
+* Add type coverage for Module subclasses and plugins by @alexander-akait in https://github.com/webpack/webpack/pull/17272
+
+## Dependencies & Maintenance
+* Use GitHub Discussions instead of Gitter in issue templates by @snitin315 in https://github.com/webpack/webpack/pull/17293
+* Bump @types/node from 20.2.3 to 20.2.4 by @dependabot in https://github.com/webpack/webpack/pull/17269
+* Bump browserslist from 4.21.5 to 4.21.6 by @dependabot in https://github.com/webpack/webpack/pull/17275
+* Bump @types/node from 20.2.4 to 20.2.5 by @dependabot in https://github.com/webpack/webpack/pull/17276
+* Bump @babel/core from 7.21.8 to 7.22.1 by @dependabot in https://github.com/webpack/webpack/pull/17278
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.84.1...v5.85.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.84.1 (2023-05-25)</h2>
+      <pre>## Bug Fixes
+* Fix regression in inner graph for reserved identifiers by @alexander-akait in https://github.com/webpack/webpack/pull/17265
+
+## Dependencies & Maintenance
+* Bump @types/jest from 29.5.0 to 29.5.1 by @dependabot in https://github.com/webpack/webpack/pull/17027
+* Bump simple-git from 3.18.0 to 3.19.0 by @dependabot in https://github.com/webpack/webpack/pull/17263
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.84.0...v5.84.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.84.0 (2023-05-24)</h2>
+      <pre>## New Features
+* SourceMapDevToolPlugin now supports `append` option as a function by @snitin315 in https://github.com/webpack/webpack/pull/17252
+
+## Bug Fixes
+* Fix multiple bugs referencing class names when shadowed by import name in properties and methods by @alexander-akait in https://github.com/webpack/webpack/pull/17233
+* Allow DefinePlugin shorthand property by @shamoilarsi in https://github.com/webpack/webpack/pull/17231
+* [CSS] - Fix edge cases in parsing `@import` by @alexander-akait in https://github.com/webpack/webpack/pull/17229
+
+## Developer Experience
+* Increase type coverage for serialization classes by @alexander-akait in https://github.com/webpack/webpack/pull/17243
+* Increase type coverage for `JavascriptParser` and `ModuleDependency` subclasses by @alexander-akait in https://github.com/webpack/webpack/pull/17236
+* Increase type coverage to `strict`-mode quality for Configuration/Normalization objects by @alexander-akait in https://github.com/webpack/webpack/pull/17247
+* Refactor duplicate strings by replacing them with constant for __webpack_require__ instead of string literal by @burhanuday in https://github.com/webpack/webpack/pull/17228
+* Add test case for `with { type: "json" }` by @alexander-akait in https://github.com/webpack/webpack/pull/17230
+* Add test case for destructuring by @alexander-akait in https://github.com/webpack/webpack/pull/17248
+
+## Dependencies & Maintenance 
+* Add GitHub discussions badge in README by @snitin315 in https://github.com/webpack/webpack/pull/17251
+* Bump enhanced-resolve to 5.14.1 by @TheLarkInn in https://github.com/webpack/webpack/pull/17257
+* Bump @types/node from 20.1.7 to 20.2.0 by @dependabot in https://github.com/webpack/webpack/pull/17219
+* Bump @types/node from 20.2.0 to 20.2.1 by @dependabot in https://github.com/webpack/webpack/pull/17226
+* Bump webpack-cli from 5.1.0 to 5.1.1 by @dependabot in https://github.com/webpack/webpack/pull/17164
+* Bump eslint from 8.39.0 to 8.40.0 by @dependabot in https://github.com/webpack/webpack/pull/17148
+* Bump @babel/core from 7.21.4 to 7.21.8 by @dependabot in https://github.com/webpack/webpack/pull/17126
+* Bump @types/node from 20.2.1 to 20.2.3 by @dependabot in https://github.com/webpack/webpack/pull/17238
+* Bump eslint from 8.40.0 to 8.41.0 by @dependabot in https://github.com/webpack/webpack/pull/17237
+
+## New Contributors
+* @shamoilarsi made their first contribution in https://github.com/webpack/webpack/pull/17231
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.83.1...v5.84.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.83.1 (2023-05-17)</h2>
+      <pre>## Bug Fixes
+* Fix regression in import/export normailization effecting mini-css-extract-plugin by @alexander-akait in https://github.com/webpack/webpack/pull/17214
+
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.83.0...v5.83.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.83.0 (2023-05-17)</h2>
+      <pre>## New Features
+* Normalize property access for imports and exports by @bworline in https://github.com/webpack/webpack/pull/17137
+* Top Level Await is now enabled by default by @burhanuday in https://github.com/webpack/webpack/pull/17192
+
+## Bug Fixes
+* Correct `chunkgroup.groupsIterable` return type by @TheLarkInn in https://github.com/webpack/webpack/pull/17196
+* Fix bug in Rule Matcher type by @alexander-akait in https://github.com/webpack/webpack/pull/17207
+* Fixed apply event callback and optimizing callback event type by @nuintun in https://github.com/webpack/webpack/pull/16094
+* Fix types in hot module replacement APIs by @alexander-akait in https://github.com/webpack/webpack/pull/17193
+
+## Developer Experience
+* Expose `ChunkGroup` to type definitions by @TheLarkInn in https://github.com/webpack/webpack/pull/17201
+* Add `NormalModuleFactory`'s `ResolveData` type to public interface by @TheLarkInn in https://github.com/webpack/webpack/pull/17195
+* Document `compilation.afterChunks` hook by @TheLarkInn in https://github.com/webpack/webpack/pull/17202
+
+## Dependencies & Maintenance
+* Bump @webassemblyjs/wasm-edit from 1.11.5 to 1.11.6 by @dependabot in https://github.com/webpack/webpack/pull/17168
+* Bump wast-loader from 1.11.5 to 1.11.6 by @dependabot in https://github.com/webpack/webpack/pull/17163
+* Bump yarn-deduplicate from 6.0.1 to 6.0.2 by @dependabot in https://github.com/webpack/webpack/pull/17184
+* Fix command by @alexander-akait in https://github.com/webpack/webpack/pull/17154
+* Bump @types/node from 18.16.3 to 20.1.7 by @dependabot in https://github.com/webpack/webpack/pull/17205
+
+## New Contributors
+* @bworline made their first contribution in https://github.com/webpack/webpack/pull/17137
+* @nuintun made their first contribution in https://github.com/webpack/webpack/pull/16094
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.82.1...v5.83.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.82.1 (2023-05-10)</h2>
+      <pre>## Bug Fixes
+* [CSS] - Support nesting in CSS modules and bug fixes by @alexander-akait in https://github.com/webpack/webpack/pull/17133
+* [CSS] - Fix crash with `importModule` when CSS enabled by @alexander-akait in https://github.com/webpack/webpack/pull/17140
+* Fix bug where `output.hashFunction` was failing to generate debug hash by @ahabhgk in https://github.com/webpack/webpack/pull/16950
+* Reduce the amount of generated code for chunk loading by @lvivski in https://github.com/webpack/webpack/pull/17151
+* Use module preload for ESM module output by @alexander-akait in https://github.com/webpack/webpack/pull/17143
+
+## Developer Experience
+* Improve module type strictness for Module.prototype.type expand ModuleTypeConstants by @TheLarkInn in https://github.com/webpack/webpack/pull/17136
+
+## Dependencies & Maintenance
+* Update package.json description by @JeraldVin in https://github.com/webpack/webpack/pull/17145
+* Bump webpack-cli from 5.0.2 to 5.1.0 by @dependabot in https://github.com/webpack/webpack/pull/17146
+* Bump core-js from 3.30.1 to 3.30.2 by @dependabot in https://github.com/webpack/webpack/pull/17149
+* Bump enhanced-resolve to v5.14.0 by @snitin315 in https://github.com/webpack/webpack/pull/17160
+
+## New Contributors
+* @JeraldVin made their first contribution in https://github.com/webpack/webpack/pull/17145
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.82.0...v5.82.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.82.0 (2023-05-03)</h2>
+      <pre>## New Features
+* [CSS] - Add URL dependencies support to consume shared module via module federation by @snitin315 in https://github.com/webpack/webpack/pull/16945
+* Allow webpack-cli to be in ESM by @alexander-akait in https://github.com/webpack/webpack/pull/17088
+* Allow specifying "onPolicyCreationFailure" mode for trusted types by @Zlatkovsky in https://github.com/webpack/webpack/pull/16990
+
+## Bug Fixes
+* [CSS] - Respect `media`/`supports`/`layer` from parent CSS module by @alexander-akait in https://github.com/webpack/webpack/pull/17115
+* [CSS] - Add warning & support for any @import rules must precede all other rules by @alexander-akait in https://github.com/webpack/webpack/pull/17118
+* [CSS] - Support handling `#hash` URL as external (similar to Parcel) by @alexander-akait in https://github.com/webpack/webpack/pull/17116
+* Optimize numberHash.js performance by removing inner loops by @alexkuz in https://github.com/webpack/webpack/pull/17074
+* Improve template string comparison algorithm by @An0nie in https://github.com/webpack/webpack/pull/17079
+
+## Tests & Contributor Experience
+* [CSS] - Increase imports external test coverage by @alexander-akait in https://github.com/webpack/webpack/pull/17089
+* Improve PR reliability via ignoring unstable coverage by @alexander-akait in https://github.com/webpack/webpack/pull/17106
+* Update webpack types to support extends property in webpack (for webpack-cli) by @burhanuday in https://github.com/webpack/webpack/pull/17113
+
+## Developer Experience 
+* Increase type coverage and documentation for `StringXor` class.  by @TheLarkInn in https://github.com/webpack/webpack/pull/17070
+* Increase type coverage & docs for `numberHash` by @TheLarkInn in https://github.com/webpack/webpack/pull/17072
+* Increase type coverage & docs for `JavascriptParser` by @TheLarkInn in https://github.com/webpack/webpack/pull/17094
+* Increase type coverage & docs for `BasicEvaluatedExpression` by @TheLarkInn in https://github.com/webpack/webpack/pull/17096
+* Increase type coverage for CSS module type by @alexander-akait in https://github.com/webpack/webpack/pull/17097
+* Increase type coverage for JSON module type by @alexander-akait in https://github.com/webpack/webpack/pull/17095
+* Increase type coverage & docs for multiple utility classes by @alexander-akait in https://github.com/webpack/webpack/pull/17107
+
+## Dependencies & Maintenance
+* chore(deps-dev): bump lint-staged from 13.2.1 to 13.2.2 by @dependabot in https://github.com/webpack/webpack/pull/17075
+* chore(deps-dev): bump eslint from 8.38.0 to 8.39.0 by @dependabot in https://github.com/webpack/webpack/pull/17052
+* chore(deps-dev): bump assemblyscript from 0.27.3 to 0.27.4 by @dependabot in https://github.com/webpack/webpack/pull/17064
+* chore(deps-dev): bump assemblyscript from 0.27.4 to 0.27.5 by @dependabot in https://github.com/webpack/webpack/pull/17109
+* chore(deps-dev): bump @types/node from 18.16.2 to 18.16.3 by @dependabot in https://github.com/webpack/webpack/pull/17112
+* chore(deps-dev): bump @types/node from 18.15.13 to 18.16.2 by @dependabot in https://github.com/webpack/webpack/pull/17084
+* chore(deps-dev): bump webpack-cli from 5.0.1 to 5.0.2 by @dependabot in https://github.com/webpack/webpack/pull/17054
+* chore(deps-dev): bump date-fns from 2.29.3 to 2.30.0 by @dependabot in https://github.com/webpack/webpack/pull/17111
+
+## New Contributors
+* @An0nie made their first contribution in https://github.com/webpack/webpack/pull/17079
+* @burhanuday made their first contribution in https://github.com/webpack/webpack/pull/17113
+* @Zlatkovsky made their first contribution in https://github.com/webpack/webpack/pull/16990
+
+**Full Changelog**: https://github.com/webpack/webpack/compare/v5.81.0...v5.82.0</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

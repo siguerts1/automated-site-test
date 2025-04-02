@@ -1,0 +1,3097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for twbs/bootstrap"/>
+  <title>twbs/bootstrap Release Notes</title>
+</head>
+<body>
+  <h1>🚀 twbs/bootstrap - Release Notes</h1>
+  
+    <section>
+      <h2>v5.3.3 (2024-02-20)</h2>
+      <pre>## Highlights
+
+- Fixed a breaking change introduced with color modes where it was required to manually import `variables-dark.scss` when building Bootstrap with Sass. Now, `_variables.scss` will automatically import `_variables-dark.scss`. If you were already importing `_variables-dark.scss` manually, you should keep doing it as it won't break anything and will be the way to go in v6.
+- Fixed a regression in the selector engine that wasn't able to handle multiple IDs anymore.
+
+## Color modes
+
+- Badges now use the `.text-bg-*` text utilities to be certain that the text is always readable (especially when the customized colors are different in light and dark modes).
+- Fixed our `color-modes.js` script to handle the case where the OS is set to light mode and the auto color mode is used on the website. If you copied the script from our docs, you should apply [this change](https://github.com/twbs/bootstrap/commit/73e1dcf43eff8371dde52ce41bd1d9fdc2b47d1f) to your own script.
+- Fixed color schemes description in the color modes documentation to show that `color-scheme()` only accept `light` and `dark` values as parameters.
+
+## Miscellaneous
+
+- Allowed `<dl>`, `<dt>` and `<dd>` in the sanitizer.
+- Dropped evenly items distribution for modal and offcanvas headers.
+- Fixed the accordion CSS selectors to avoid inheritance issues when nesting accordions.
+- Fixed the focus box-shadow for the validation stated form controls.
+- Fixed the focus ring on focused checked buttons.
+- Fixed the product example mobile navbar toggler.
+- Changed the RTL processing of carousel control icons.
+
+---
+
+## 🎨 CSS
+
+- #37508: Use child combinators to avoid inheriting parent accordion's flush styles
+- #38719: Fix focus box-shadow for validation stated form-controls
+- #38884: fix border-radius on radio-switch
+- #39294: Tests: update navbar in visual modal test
+- #39373: refactor css: modal and offcanvas header spacing
+- #39380: Fix Sass compilation breaking change in v5.3
+- #39387: docs: fix typo
+- #39411: Optimize the accordion icon
+- #39497: Fix a typo
+- #39536: Changed RTL processing of carousel control icons
+- #39560: Drop `--bs-accordion-btn-focus-border-color` and deprecate `$accordion-button-focus-border-color`
+- #39595: CSS: Fix the focus ring on focused checked buttons
+
+## ☕️ JavaScript
+
+- #39201: Selector Engine: fix multiple IDs
+- #39224: Fix edge case in `color-mode.js`
+- #39376: Allow `dl`, `dt` and `dd` in sanitizer
+
+## 📖 Docs
+
+- #39200: Typo Fix
+- #39214: Doc: use `.text-bg-{color}` for all badges
+- #39246: Docs: fix for example code blocks have unnecessary 30px right-margin
+- #39249: Doc: consistent rendering of 'Heads up!' callouts
+- #39281: Fix `getOrCreateInstance()` doc example
+- #39293: Update background.md
+- #39304: Doc: add expanded accordion explanation
+- #39320: Drop `.table-light` from table foot example
+- #39340: Doc: add `dispose()` to Offcanvas methods
+- #39378: Docs: fix sentence in modal
+- #39417: Fix color schemes description in Sass customization documentation
+- #39418: Docs: change vite config path import in vite guide
+- #39435: Docs: add `shift-color()` usage example in sass customization page
+- #39458: Docs: enhance `.card-img-*` description
+- #39503: Minor image compression improvements
+- #39519: Docs: use consistent HTML elements in Utilities -> Background page
+- #39520: Docs: drop unused `.theme-icon` class
+- #39528: docs: clean up example.html
+- #39537: Docs: fix desc around deprecated Sass mixins for alerts and list groups
+- #39539: Update links on get-started page
+- #39592: Update vite.md
+- #39604: Fix typo in 'media-breakpoint-between' in migration docs
+- #39617: Docs: add missing comma in native font stack code source in Content -> Reboot
+- #39663: updated table to be responsive
+
+## 🛠 Examples
+
+- #39657: Fix product example mobile navbar toggler
+- #39585: Docs: Add missing type="button" to Cheatsheet nav buttons
+
+## 🏭 Tests
+
+- #39294: Tests: update navbar in visual modal test
+
+## 🧰 Misc
+
+- #39096: CI: stop running coveralls in forks
+- #39501: CI: switch to Node.js 20
+
+## 📦 Dependencies
+
+- Updated numerous [devDependencies](https://github.com/twbs/bootstrap/pulls?q=is%3Apr+label%3Adependencies+project%3Atwbs%2F32+is%3Aclosed)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.3.2 (2023-09-14)</h2>
+      <pre>## Highlights
+
+- Passing a percentage unit to the global `abs()` is deprecated since Dart Sass v1.65.0. It resulted in a deprecation warning when compiling Bootstrap with Dart Sass. This has been fixed internally by changing the values passed to the `divide()` function. The `divide()` function has not been fixed itself so that we can keep supporting node-sass cross-compatibility. In v6, this won't be an issue as we plan to drop support for node-sass.
+- Using multiple `id`s in a collapse target wasn't working anymore and has been fixed.
+
+## Color modes
+
+- Increased color contrast of form range track background in light and dark modes.
+- Fixed table state rendering for color modes with a focus on the striped table in dark mode to increase color contrast.
+- Allow `<mark>` color customization for color modes.
+
+## Docs
+
+- Added alternative CDNs section in [Getting started -> Download](https://getbootstrap.com/docs/5.3/getting-started/download/#alternative-cdns).
+- Added Discord and Bootstrap subreddit links in [README](https://github.com/twbs/bootstrap/blob/main/README.md) and [Getting started -> Introduction](https://getbootstrap.com/docs/5.3/getting-started/introduction/):
+  - [Discord](https://discord.gg/bZUvakRU3M) maintained by the community
+  - [Bootstrap subreddit](https://reddit.com/r/bootstrap)
+
+---
+
+## 🎨 CSS
+
+- #38816: Use `box-shadow` CSS variables shadow utilities
+- #38955: Fix radios looking like ellipse on responsive mode
+- #38976: Use box-shadow CSS vars instead of Sass vars in assets and variables
+- #39030: Fix dart-sass deprecation warning
+- #39033: Color mode: fix table state rendering
+- #39095: Make form range track background more contrasted
+- #39119: New Sass var `$btn-link-focus-shadow-rgb` to allow customization
+- #39141: New Sass variable to handle `<mark>` dark mode bg color
+
+## ☕️ JavaScript
+
+- #38989: Collapse: Fix multiple `id`s calls
+- #39046: Dropdown: reuse variable
+
+## 📖 Docs
+
+- #38873: Discord reddit bootstrap
+- #38970: docs: add BootstrapVueNext to docs
+- #38977: Docs: Add missing form elements in focusable elements
+- #38978: Docs: Fix popover template role error
+- #38995: introduction: drop `details` element
+- #39037: Further improve image compression with oxipng and the latest jpegoptim
+- #39054: Docs: Remove incorrect mention of `.left-` and `.right-` utilities from migration guide
+- #39060: Migration: add back v5.0.0 heading
+- #39145: Docs: add warning callout to add a workaround when jsDelivr is not available
+- #39177: Fix: make theme selector tick icon visible when active in examples layout
+- #39179: download: Reword CDN paragraph
+
+## 🛠 Examples
+
+- #38994: examples: update 3rd-party packages
+- #39086: Correct grammar error in examples/starter-template
+
+## 🌎 Accessibility
+
+- #38978: Docs: Fix popover template role error
+- #39095: Make form range track background more contrasted
+
+## 🧰 Misc
+
+- #38983: Improve change-version script
+- #38984: Convert build scripts to ESM
+- #39021: CI: update permissions for calibreapp-image-actions.yml
+
+## 📦 Dependencies
+
+- Updated numerous [devDependencies](https://github.com/twbs/bootstrap/pulls?q=is%3Apr+label%3Adependencies+project%3Atwbs%2F30+is%3Aclosed)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.3.1 (2023-07-26)</h2>
+      <pre>## Highlights
+
+- **Color modes:**
+  - Increased color contrast for dark mode by replacing `$gray-500` with `$gray-300` for the body color
+  - Added our color mode switcher JavaScript to our examples ZIP download
+- **Components:**
+  - Improved disabled styling for all `.nav-link`s, providing `.disabled` and `:disabled` for use with anchors and buttons
+  - Add support for `Home` and `End` keys for navigating tabs by keyboard
+  - Added some basic styling to toggle buttons when no modifier class is present
+  - Fixed carousel colors in dark mode
+- **Forms:**
+  - Fixed floating label disabled text color
+- **Utilities:**
+  - `.text-bg-*` utilities now use CSS variables
+- **Sass:**
+  - Add new `$navbar-dark-icon-color` Sass variable
+  - Removed duplicate `$alert` Sass variables
+  - Added a new variable for `$vr-border-width` to customize the vertical rule helper width
+- **Documentation:**
+  - Added search to our homepage
+  - Improved responsive behavior on Dashboard example
+  - Improved dark mode rendering of Cheatsheet examples
+
+---
+
+## 🎨 CSS
+
+- #38913: Floating labels: fix disabled with text inside
+- #38772: `.text-bg-*` helpers now use theme CSS variables
+- #38886: New Sass variable to change vertical rule width
+- #38851: Fix Sass properties order for newer stylelint-config-recess-order
+- #38815: Increase contrast in dark-mode (#38525)
+- #38774: Generalize disabled nav links CSS rules
+- #38673: Add `$navbar-dark-icon-color`
+- #38674: Remove duplicate `$alert-*-scale` Sass vars
+
+## ☕️ JavaScript
+
+- #38498: Support `Home` and `End` keys in tabs
+
+## 📖 Docs
+
+- #38958: Examples: improve spinner buttons accessibility
+- #38947: Fix postcss plugin options
+- #38885: Docs: Update float responsive examples
+- #38946: Docs: remove v4 reference on homepage
+- #38948: Fix some typos in Customize > Sass doc
+- #38840: Docs: fix carousel carousel colors of carousel examples in dark mode
+- #38604: Add dropdown alignment options to button group example
+- #38894: Docs: add blank target and `noopener` rel to footer external links
+- #38902: Fix tooltip generated markup documentation
+- #38883: Docs: Fix incorrect class name on migration guide
+- #38708: add a base class style display for toggle buttons
+- #38827: Docs: add missing `aria-disabled='true'` to disabled anchors
+- #38844: Fix for text-reset example class name
+- #38838: JS/SCSS shortcodes: Add new feature to remove nested calls inside.
+- #38850: Add docs search to homepage
+- #38872: Docs: Improve Text Alignment Example
+- #38865: Fix custom-radio class name on migration guide
+- #38786: Explicitly add missing opacity-0 helper class example for clarity.
+- #38707: Update bottom border on dark navbar example
+- #38726: Update flex utilities link in navs docs
+- #38734: Minor fixes for Docs Versions page
+- #38745: Fix stack examples
+- #38751: Docs (tooltips): Fix "them" typo in markup section
+- #38688: Fix missing word issue on nav-tabs page
+- #38681: Docs: consistency between custom buttons, popovers and tooltips
+- #38600: collate distribution interval
+- #38632: docs(spinners): improve buttons examples accessibility
+- #38583: Docs: add more details on accessibility tips
+- #38554: Doc: fix 'Events' JS example
+- #38592: docs(forms): switch to `aria-describedby`
+- #38542: Use `.d-none` instead of inline styling
+- #38616: Add 'Issues assignment' section to the Contributing Guidelines
+- #38528: Adding a link to `clearfix`
+- #38538: Update Sass docs to mention compiling and including
+- #38623: Fix disabled element tooltip StackBlitz
+
+## 🛠 Examples
+
+- #38958: Examples: improve spinner buttons accessibility
+- #38952: dashboard: fix offcanvas md display
+- #38840: Docs: fix carousel carousel colors of carousel examples in dark mode
+- #38905: Fix dark mode rendering of Cheatsheet examples
+- #38711: Fix link colors in Sidebars example
+
+## 🌎 Accessibility
+
+- #38958: Examples: improve spinner buttons accessibility
+- #38498: Support `Home` and `End` keys in tabs
+- #38827: Docs: add missing `aria-disabled='true'` to disabled anchors
+- #38850: Add docs search to homepage
+- #38774: Generalize disabled nav links CSS rules
+- #38632: docs(spinners): improve buttons examples accessibility
+- #38583: Docs: add more details on accessibility tips
+- #38592: docs(forms): switch to aria-describedby
+
+## 🧰 Misc
+
+- #38747: Add `color-modes.js` to `bootstrap-x.y.z-examples.zip`
+
+## 📦 Dependencies
+
+- Updated numerous [devDependencies](https://github.com/twbs/bootstrap/pulls?q=is%3Apr+label%3Adependencies+project%3Atwbs%2F26+is%3Aclosed) 
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.3.0 (2023-05-30)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.3.0-alpha3 (2023-04-03)</h2>
+      <pre>- Fixed wrong interpolated variables with node-sass/Hugo.
+- Added a check for interpolated variables to catch compilation errors with Node Sass when using Sass variables in `calc()` functions.
+- Started using `--bs-border-radius` variables across more components.
+- Added `.d-inline-grid` utility class.
+- Fixed `.tooltip-inner` placement when using variations in `fallbackPlacements`.
+- Fix selectors for dark mode carousel overrides when compiling with `$color-mode-type: media-query`.
+- Updated the styling of floating labels when "floated" to include a `background-color` to help with multiple lines of text in `textarea`s. This also fixes the colors when form elements are disabled in floating forms.
+- Updated RFS to v10.0.0.
+
+**Full Changelog**: https://github.com/twbs/bootstrap/compare/v5.3.0-alpha2...v5.3.0-alpha3
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.3.0-alpha2 (2023-03-24)</h2>
+      <pre>## 🚀 Features
+
+- #33126: Add `.nav-underline` modifier class
+- #37762: Add new link utilities, icon link helper, and update colored link helpers
+- #38199: Docs: Better scroll
+
+## 🎨 CSS
+
+- #33125: Focus ring helper and utilities
+- #33126: Add `.nav-underline` modifier class
+- #35857: Add dark mode support
+- #36029: Add SCSS testing of the utilities API
+- #36143: Fix Android Chrome input date dimensions
+- #36831: Rework progress bar markup and styles
+- #37526: Fix var `--bs-body-font-family`. Keep quotes in the font stack.
+- #37533: Visually-hidden: Remove `position: absolute` for captions
+- #37617: CSS: `$prefix` to the whole assets
+- #37621: Fix `--bs-form-check-bg` definition
+- #37644: list-group-border-width variables
+- #37687: Fix Sass compilation when `$color-mode-type` is set to `media-query`
+- #37720: Improve consistency of navbar icon declaration
+- #37731: Update color contrast formula with new constant from WCAG 2.2
+- #37734: Add `color-scheme` to dark root selector
+- #37759: Darken some text emphasis and syntax colors
+- #37760: Fix selector for dark mode navbar toggler SVG change
+- #37761: Docs: enhance callouts links on dark mode
+- #37762: Add new link utilities, icon link helper, and update colored link helpers
+- #37777: Fix cards color for contextual color mode
+- #37781: Fix code color in callouts
+- #37784: Change nav focus to focus-visible
+- #37785: Update code syntax colors to use Bootstrap colors
+- #37788: Change stylelint `property-blacklist` to `property-disallowed-list`
+- #37800: Fix heading colors in dark mode
+- #37804: CSS: rename some variables to be consistent
+- #37809: Fix duplicate `--bs-emphasis-color` set value
+- #37816: Remove unused comment in `scss/_maps.scss`
+- #37817: Docs: remove some CSS from `.highlight-toolbar` def
+- #37820: Remove duplicate definition of `--bs-highlight-bg` in `scss/_root.scss`
+- #37822: Switch from none keyword value to a fake shadow for btn-link
+- #37823: Docs: fix `.btn-clipboard` and `.btn-edit` link hover color
+- #37824: Drop unused `.bg-body-emphasis`
+- #37832: Keep shadows black regardless of color mode
+- #37833: Update colored links, add new `.link-body-emphasis` helper
+- #37835: Remove obsolete comment from `_variables.scss`
+- #37843: Add theme maps specific to dark mode
+- #37844: Reduce bootstrap-grid.css content
+- #37857: Drop duplicate `--bs-body-bg-rgb` declaration + reorder props
+- #37868: Remove outdated comment from `$input-border-color` variable
+- #37888: List group: Better use of CSS var
+- #37893: Fix `.form-control` in dark mode
+- #37905: CSS: Proposal to add a border utility
+- #37907: CSS: Proposal to rename the CSS and Sass variables for `.*-text-emphasis`
+- #37936: Remove color picker borders on Chromium based browsers
+- #37953: Theme color improvements
+- #37955: Rewrite selector to help Parcel compiler
+- #37956: Remove `list-style` reset on `.carousel-indicators`
+- #37998: Use color mode adaptive color for disabled dropdown menu items
+- #37999: Avoid inheritance issues on border-width utilities
+- #38003: fix alert-color in v5.3.0-alpha2
+- #38008: Fix list group colors by using `*-text-emphasis` CSS vars in Sass loop
+- #38037: Fix `$grid-breakpoints` SCSS unit tests init
+- #38038: Remove comments from `scss/_nav.scss`
+- #38044: Update form validation styles to use new CSS variables for `color` and `border-color`
+- #38059: Remove `-moz-padding-start` from `.form-select`
+- #38060: Drop duplicate `$btn-close-focus-shadow` definition
+- #38083: Drop duplicate `$nav-link-disabled-color` declaration
+- #38086: Fix shadow of .btn-link
+- #38088: Fix navbar-nav link styling
+- #38095: Drop unused `--bs-focus-ring-box-shadow` and add documentation for `--bs-focus-ring-{x|y|blur}`
+- #38104: Remove useless comment from `scss/_utilities.scss`
+- #38115: Fix button visibility issue on dark theme
+- #38123: Fix dropdown toggle visible focus in headers example
+- #38144: Examples: color mode enhancement
+- #38176: Fix missing modifications when `--bs-{color}-text` was changed to `--bs-{color}-text-emphasis`
+- #38181: Remove comments from scss/_utilities.scss
+- #38201: Sass: remove useless `import` inside `bootstrap-grid`
+- #38209: fix  data-bs-theme="dark" on component carousel itself
+- #38236: Docs: use core mixins in a couple of places
+
+## ☕️ JavaScript
+
+- #37590: fix live toast demo
+- #37836: Remove autofocus on theme switch when page is loaded
+- #38025: unify `offcanvas` `keydown` event logic with `modal`
+- #38034: Minor fix to avoid creating void elements in tooltip test file
+- #38071: Bump Chart.js from 2.9.4 to 4.2.1 in dashboard examples
+- #38223: Fix wrong generation of `aria-labelledby` in tab navigation
+- #38233: Remove empty script tag in js/tests/visual/input.html
+- #38294: Remove version comment from JavaScript src files
+- #38302: Remove version from index.{esm,umd}.js too
+
+## 📖 Docs
+
+- #33428: Use scrollspy on docs pages
+- #34647: Improve readability in docs flex page
+- #36831: Rework progress bar markup and styles
+- #37275: Docs: add explanation of the base `.btn` class
+- #37354: Docs: rewrite/reorganise carousel docs page
+- #37400: Docs: change some title containing '&' to bypass Algolia issue
+- #37535: Docs: Fix Thirteenth typo on Navbars example
+- #37538: Docs: Add black text/background examples
+- #37553: Docs: fix "Usage -> Enable dark mode" code example
+- #37562: Docs: display examples based on the docs current color mode
+- #37568: Remove title from `check2` SVG icon
+- #37570: code-examples.js: switch to `firstElementChild`
+- #37590: fix live toast demo
+- #37608: Drop logo on homepage on mobile
+- #37615: Add new team member to the Teams page
+- #37616: Accessibility: Minor fixes
+- #37617: CSS: `$prefix` to the whole assets
+- #37625: Few miscellaneous docs fixes
+- #37628: Rewrite some callouts to remove most headings and reduce their content
+- #37658: docs: move color-mode script
+- #37670: Docs: Fix typo in guide
+- #37671: Docs: replace `twbs/bootstrap-npm-starter` by `twbs/examples/tree/main/icons-font`
+- #37676: Docs: fix typo for Sass vars references in Customize > Color modes > Building with Sass
+- #37694: Docs: fix overflow:auto horizontal scrollbars covering last line of code blocks
+- #37698: Remove some unused SVGs in Dropdowns example
+- #37717: docs: improve social image partial
+- #37738: Docs: handle light/dark mode in Algolia search modal
+- #37740: Update navbar color-schemes to v5.3
+- #37741: Reduce size of guide dev server images
+- #37742: Fix CSS variables mentioned in our docs
+- #37757: Docs: remove `.btn-*-dark` from Button group docs to avoid issues in dark mode
+- #37763: Include `twbs/examples` repo examples in the Examples page
+- #37766: Docs: Remove unnecessary `id`/`aria-labelledby` from accordion examples
+- #37772: Docs: enhance Focus ring example section desc
+- #37779: Docs: remove remnants of Twitter / bump dates
+- #37780: Docs: Make theme switcher accessible
+- #37781: Fix code color in callouts
+- #37782: Docs: add CSS variables section in close button section
+- #37796: Add webpack build to webpack guide
+- #37798: Docs: fix accordion flush description
+- #37802: Docs: fix headings color in light/dark mode
+- #37803: Docs: Small enhancements
+- #37811: Docs: enhance colors description table
+- #37817: Docs: remove some CSS from `.highlight-toolbar` def
+- #37823: Docs: fix `.btn-clipboard` and `.btn-edit` link hover color
+- #37829: Docs: missing deprecated callout for `list-group-item-variant()` mixin
+- #37836: Remove autofocus on theme switch when page is loaded
+- #37839: Docs: add `.fw-medium` utility class example
+- #37848: Docs: fix typo in migration guide
+- #37855: docs: updates `.text-*-left` changes
+- #37859: Docs: fix broken links in Color modes page
+- #37861: Mention deprecated classes for color mode on offcanvas
+- #37862: Migration guide changes for v5.3.0-alpha2
+- #37863: Docs: update progress markup in Color modes page
+- #37869: Docs: changed `popover` to `tooltip`
+- #37871: Docs: Move form-text paragraph to Form control page
+- #37890: Docs: Deprecate the Sass var and remove any occurence of the `.text-muted`
+- #37894: Add docs callout for utilities that don't respond to color modes
+- #37895: Include variables-dark in the import stacks, plus a customize overview fix
+- #37896: Small color mode docs CSS fixes
+- #37897: Sass docs updates
+- #37898: Docs: Doc Scrollspy correction
+- #37899: Docs: Harmonize the flex doc
+- #37900: Docs: Enhancement proposal
+- #37918: fix typo in gutters doc
+- #37921: Docs: add overflow and text color info to progress bar page
+- #37923: Docs: tweak icon link and callouts
+- #37926: Docs: add scroll-margin-top for keyboard navigation
+- #37965: Attempt to fix focus ring being cut off in table of contents
+- #37994: Docs: remove redundant space in forms/validation.md
+- #38004: Remove unused partials and add some way to automatically detect it
+- #38006: Docs: Use ESM Popper CDN reference in 'Using Bootstrap as a module'
+- #38014: Docs: Progress fix + proposal
+- #38032: Remove `debug` references from DocSearch v2
+- #38040: Docs: uniformize disabled nav links for underline nav
+- #38057: More updates to migration guide
+- #38074: Fix console error in examples pages due to no theme switcher
+- #38087: Docs: Drop unused `.focused` style
+- #38095: Drop unused `--bs-focus-ring-box-shadow` and add documentation for `--bs-focus-ring-{x|y|blur}`
+- #38103: Docs: drop unused icons
+- #38112: Fix code indentation in homepage JavaScript plugins section
+- #38123: Fix dropdown toggle visible focus in headers example
+- #38130: Icon link: envariable + enhance the documentation
+- #38131: Utilities: Add one value for link-underline-opacity
+- #38151: Docs: replace 'popover' by 'tooltip' in tooltip's page's options section
+- #38152: Docs: rollback some modification about `.text-muted` deprecation messages
+- #38153: Docs: `.text-body-secondary` appears two times in Utilities > Colors
+- #38161: Fixed some grammar issues
+- #38164: Drop unused `bootstrap-social-logo.png`
+- #38169: Update buttons.md
+- #38175: Docs: consistent usage of CSS sections
+- #38177: Docs: minor modifications in our migration guide for the v5.3.0-alpha2
+- #38179: Docs: vertically align starters images in example page
+- #38182: Improve docs on Modals, Alerts, Offcanvas and Toasts close triggers examples
+- #38191: Docs: fix focus issue
+- #38192: Remove nesting color modes docs section
+- #38194: Fix typo in `utilities/colors.md`
+- #38196: Docs: Remove unnecessary `href` and `tabindex="-1"`
+- #38197: `scss-docs`: link enhancement
+- #38198: Docs: fix punctuation on Color modes page (it's -> its)
+- #38199: Docs: Better scroll
+- #38220: Docs: Proposal to use `scroll-margin-top` instead `padding` and `margin`
+- #38236: Docs: use core mixins in a couple of places
+- #38246: icon-link.md: remove moot aliases
+- #38247: Docs: consistent deprecation messages in Close Button dark variant
+- #38262: Docs: make all headings use `var(--bs-emphasis-color)`
+- #38263: Fix `placeholder` shortcode color and background params when 'img' markup
+- #38270: Slightly improve examples PNG files
+- #38301: docs: remove moot `v` from docs-versions.yml
+- #38305: Update Vite, Parcel and Webpack guides
+- #38308: Docs: `scss-docs` unindent automatically the code inside shortcode
+- #38310: Fix reference to twbs/examples/icons-font + fine-tune index.html SB location target
+- #38317: Docs: fix two class attributes on same button
+
+## 🛠 Examples
+
+- #36309: New snippet examples
+- #37502: Fix grid and alignment in examples/features
+- #37562: Docs: display examples based on the docs current color mode
+- #37698: Remove some unused SVGs in Dropdowns example
+- #37718: Examples: Remove unnecessary `id`/`aria-labelledby` from cheatsheet accordions
+- #37763: Include `twbs/examples` repo examples in the Examples page
+- #37834: Update snippet examples for dark mode
+- #37889: Examples: Update grid example
+- #38071: Bump Chart.js from 2.9.4 to 4.2.1 in dashboard examples
+- #38074: Fix console error in examples pages due to no theme switcher
+- #38103: Docs: drop unused icons
+- #38123: Fix dropdown toggle visible focus in headers example
+- #38144: Examples: color mode enhancement
+- #38193: Fixes click area for header example snippet
+- #38310: Fix reference to twbs/examples/icons-font + fine-tune index.html SB location target
+
+## 🌎 Accessibility
+
+- #36831: Rework progress bar markup and styles
+- #37354: Docs: rewrite/reorganise carousel docs page
+- #37533: Visually-hidden: Remove `position: absolute` for captions
+- #37587: Use `aria-labelledby` to associate form-text (helper) with input field when it contains mandatory info (e.g. data format)
+- #37616: Accessibility: Minor fixes
+- #37731: Update color contrast formula with new constant from WCAG 2.2
+- #37766: Docs: Remove unnecessary `id`/`aria-labelledby` from accordion examples
+- #37780: Docs: Make theme switcher accessible
+- #37836: Remove autofocus on theme switch when page is loaded
+- #37926: Docs: add scroll-margin-top for keyboard navigation
+- #38014: Docs: Progress fix + proposal
+- #38040: Docs: uniformize disabled nav links for underline nav
+- #38089: Tests: remove unnecessary `id`/`aria-labelledby` from collapse unit tests
+- #38123: Fix dropdown toggle visible focus in headers example
+- #38131: Utilities: Add one value for link-underline-opacity
+- #38191: Docs: fix focus issue
+- #38223: Fix wrong generation of `aria-labelledby` in tab navigation
+
+## 🔧 Utility API
+
+- #38037: Fix `$grid-breakpoints` SCSS unit tests init
+
+## 🏭 Tests
+
+- #36029: Add SCSS testing of the utilities API
+- #37713: Make scss tests work on Windows too
+- #38034: Minor fix to avoid creating void elements in tooltip test file
+- #38037: Fix `$grid-breakpoints` SCSS unit tests init
+- #38089: Tests: remove unnecessary `id`/`aria-labelledby` from collapse unit tests
+
+## 🧰 Misc
+
+- #36325: CI: Add GitHub token permissions for workflows
+- #37565: package.json: include index.{esm,umd}.js files too
+- #37664: README.md: add logos to badges
+- #37690: Update docs and package information
+- #37712: package.json: exclude scss test files
+- #37714: CI: test CSS after build
+- #38195: Update `docs` workflow
+- #38225: Update codeql.yml
+- #38226: Specify lockfile-version=2 for older npm compatibility
+- #38227: Move --printUnusedTemplates in hugo scripts
+- #38228: Tweak stylelint config
+- #38314: vnu-jar.js: add more logging
+
+## 📦 Dependencies
+
+Updated numerous devDependencies: https://github.com/twbs/bootstrap/pulls?q=is%3Apr+label%3Adependencies+project%3Atwbs%2F13+is%3Aclosed
+
+---
+
+Full changelog: https://github.com/twbs/bootstrap/compare/v5.3.0-alpha1...v5.3.0-alpha2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.3.0-alpha1 (2022-12-24)</h2>
+      <pre>## 🚀 Highlights
+
+- #35566: Properly escape IDs in `getSelector()` to handle weird IDs (#35565)
+- #35857: Add dark mode support
+- #36854: Use explicit imports in our JavaScript source files
+
+## 🚀 Features
+
+- #36540: Add new `border-radius` utilities
+- #36781: add `font-weight-medium` (500) / `fw-medium`
+- #37317: Add `z-index` utilities, `.z-*`
+
+## 🎨 CSS
+
+- #36095: Added CSS variables for breakpoints
+- #36456: Add color CSS variables for `.alert-link`
+- #36457: Add color CSS variables for `.btn-close`
+- #36511: Add parameters to caret-related mixins
+- #36540: Add new `border-radius` utilities
+- #36781: add `font-weight-medium` (500) / `fw-medium`
+- #36815: Add new CSS variables for Offcanvas
+- #36831: Rework progress bar markup and styles
+- #36848: Add utilities for overflow and object fit
+- #36979: Add support for customizing a card title color
+- #37125: Floating labels: Add an artificial background to label
+- #37252: Add `$enable-important-utilities` condition in colored links
+- #37257: Remove duplicate CSS variable
+- #37299: Fix disabled floating labels and add some examples of it in the docs
+- #37317: Add `z-index` utilities, `.z-*`
+- #37344: Use `--bs-border-width` for some components
+- #37350: Prevent extraneous whitespace around date time inputs in WebKit
+- #37356: fix negative `border-width` on inputgroup and buttongroup
+- #37408: Fix disabled floating labels color
+- #37413: Grid Gap Updates
+- #37526: Fix var `--bs-body-font-family`; keep quotes in the font stack
+- #37617: CSS: `$prefix` to the whole assets
+- #37621: Fix `--bs-form-check-bg` definition
+- #37644: `list-group-border-width` variables
+- #37687: Fix Sass compilation when `$color-mode-type` is set to `media-query`
+
+## ☕️ JavaScript
+
+- #35566: Properly escape IDs in getSelector() to handle weird IDs
+- #36027: Move `getElementFromSelector` & `getSelectorFromElement`
+- #36652: Boost `execute` function, being able to handle arguments
+- #36854: Use explicit imports in our JavaScript source files
+- #37438: refactor `getSelector` not to be exported
+- #37473: fix: change `replaceAll` usage introduced in #35566
+- #37482: Use `Object.entries` in more places
+- #37483: hydrateObj: use default param
+- #37484: ESLint: enable `prefer-template` rule
+
+## 📖 Docs
+
+- #36523: Update navbars example to include a centered nav with utilities
+- #36831: Rework progress bar markup and styles
+- #37247: Docs: Minor grammatical fixes for Form validation page
+- #37250: Fix typo in documentation for hiding elements
+- #37255: Markdownlint fixes
+- #37267: Rename examples CSS/JS files for consistency
+- #37271: Docs: Slightly improve tooling setup description
+- #37277: Doc: add Sass vars for switches
+- #37279: Improve example of .flex-wrap and -reverse
+- #37282: Docs: standardize usage of `<kbd>`
+- #37299: Fix disabled floating labels and add some examples of it in the docs
+- #37301: docs: fix text buttons to match behavior
+- #37318: Home imports
+- #37320: Organize callouts in partials
+- #37341: Docs: use 'added' page information to display a tag on top of the pages
+- #37354: Docs: rewrite/reorganize carousel docs page
+- #37361: Font style utilities did not contain "-style-" in BS4
+- #37397: Change title of color-background.md page
+- #37399: Only show added in page badge if relevant
+- #37406: Update input-group.md with form text example
+- #37432: Docs: use `<button>` for dropdown/popover examples, explain preference over `<a>` for dropdowns, tweak collapse prose
+- #37491: Make added-in badge page-level for z-index utilities
+- #37492: Docs: add margin between buttons in tooltip examples
+- #37493: Docs: fix margins between cards in examples
+- #37498: Fix accessibility of examples buttons
+- #37535: Docs: Fix Thirteenth typo on Navbars example
+- #37538: Docs: Add black text/background examples
+- #37553: Docs: fix "Usage -> Enable dark mode" code example
+- #37568: Remove title from `check2` SVG icon
+- #37570: code-examples.js: switch to `firstElementChild`
+- #37615: Add new team member to the Teams page
+- #37617: CSS: `$prefix` to the whole assets
+- #37658: docs: move color-mode script
+- #37670: Docs: Fix typo in guide
+- #37676: Docs: fix typo for Sass vars references in Customize > Color modes > Building with Sass
+
+## 🛠 Examples
+
+- #36523: Update navbars example to include a centered nav with utilities
+- #37123: Fix button hover color in the cover example
+- #37267: Rename examples CSS/JS files for consistency
+- #37502: Fix grid and alignment in examples/features
+
+## 🌎 Accessibility
+
+- #36831: Rework progress bar markup and styles
+- #37354: Docs: rewrite/reorganize carousel docs page
+- #37432: Docs: use `<button>` for dropdown/popover examples, explain preference over `<a>` for dropdowns, tweak collapse prose
+- #37498: Fix accessibility of examples buttons
+
+## 🏭 Tests
+
+- #37248: Rename some variables in tab unit tests for consistency
+
+## 🧰 Misc
+
+- #36325: CI: Add GitHub token permissions for workflows
+- #37348: Update authors and copyright to match npm, add repository reference
+- #37459: CI: remove git credentials after checkout
+- #37461: CI: switch to Node.js 18 LTS
+- #37481: Update CodeQL workflow
+- #37485: Update site/.eslintrc.json
+- #37486: CodeQL: ignore dist folder
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies: <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+label%3Adependencies+project%3Atwbs%2F9+is%3Aclosed>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.2.3 (2022-11-22)</h2>
+      <pre>## Fixes
+
+### 🎨 CSS
+
+- #37377: Import root in bootstrap-utilities
+- #37425: Fix deprecation warning with sass 1.56.0
+- #37266: Carousel: Fix RTL `translate()` direction
+
+### ☕️ JavaScript
+
+- #37235: fix tooltip/popper disposal inconsistencies
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.2.2 (2022-10-03)</h2>
+      <pre>## Highlights
+
+- **Accordion**
+  - Use Sass variable for the accordion color instead of an invalid CSS variable
+- **Buttons**
+  - Undo changes to `.btn:hover` from v5.2.1. We now explicitly target `.btn-check` styles instead.
+- **Dropdowns**
+  - Restore the ability for dropdowns to work without an explicit `data` attribute (will be removed again in v6)
+- **Modals**
+  - Improve modal event listeners
+  - Use `<h1>` for all `.modal-title` instances in our docs
+- **Tables**
+  - Don't redefine `$border-color` in `table-variant()` mixin
+- **Tabs**
+  - Tabs no longer autofocus and cause pages to jump on `tab.show()`
+  - Fix `.active` class toggling of tabs within dropdowns
+- **Toasts**
+  - Properly set toast `z-index` on `.toast-container` as opposed to individual `.toast`s that don't receive any other positioning
+- **Tooltips**
+  - Fix tooltip selectors with `title` attribute on dynamically created elements
+
+## 🎨 CSS
+
+- #37118: Set toast z-index variable in the correct spot
+- #37165: Explicitly target `.btn-check` and undo `:hover`
+- #37182: Use Sass variable for accordion color
+- #37239: Don't redefine `$border-color` in `table-variant` mixin
+
+## ☕️ JavaScript
+
+- #36914: Fix tooltip selector usage
+- #37128: Fix modal event listeners
+- #37146: Drop tabs auto-focus
+- #37151: Fix active class toggling of tabs within dropdown
+- #37189: Enrich Tab Test for keyboard handler
+- #37190: Dropdown: fix case with invalid markup
+- #37200: Ensure Tab keyboard functionality after #37146
+
+## 📖 Docs
+
+- #36899: Slightly improve image compression
+- #37142: Add informative note for Tooltip/Popover selector option
+- #37145: Docs: minor fix for Navbar > Offcanvas examples
+- #37153: Fix typo in docs - Configure Vite section
+- #37199: Replace Webpack and Vite PNGs by SVGs
+- #37210: Use `<h1>` for all `modal-title` examples/uses
+- #37214: Docs: Change `view in GitHub` links inside `main`
+
+## 🌎 Accessibility
+
+- #37200: Ensure Tab keyboard functionality after #37146
+- #37210: Use `<h1>` for all `modal-title` examples/uses
+
+## 🏭 Tests
+
+- #36915: Use ES6 on visual tests
+- #37189: Enrich Tab Test for keyboard handler
+
+## 🧰 Misc
+
+- #35079: Add PR template
+- #36421: NuGet: Use license expression
+- #37186: Add eslint-plugin-html to lint JS in HTML files
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies: <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+label%3Adependencies+project%3Atwbs%2F10+is%3Aclosed>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.2.1 (2022-09-07)</h2>
+      <pre>## 🚀 Highlights
+
+- **Accordion**
+  - Update `color` value to use the `$accordion-button-color` Sass variable instead of our color contrast function
+- **Buttons**
+  - Added a `transparent` default hover border color CSS variable for buttons to fix a visual regression
+  - `.btn-link` no longer has a gradient when `$enable-gradients` is set to `true`
+- **Forms**
+  - Input groups have updated `z-index` values to ensure proper rendering of validated form fields
+  - Floating labels now reset their `text-align` to ensure consistent styling
+- **List Groups**
+  - Horizontal list groups with only one child now render the correct `border-radius`
+  - Modified the `list-group-item` selectors to better support nested imports of Bootstrap's CSS
+- **Modals**
+  - Fixed modal event listeners during dismiss click, allowing you to once again click scrollbars without dismissing the modal
+- **Pagination**
+  - Fixed incorrect `border-radius` values inside pagination components
+- **Scrollspy**
+  - Scrollspy threshold option is now configurable
+- **Tooltips**
+  - Reverted some tooltip plugin updates to prevent issues with `selector`, dynamic content, and disposed tooltips using `title`
+
+## 🚀 Features
+
+- #36750: ScrollSpy: make the threshold option configurable
+
+## 🎨 CSS
+
+- #36507: v5/docs: reintroduce `outline` for docs code samples, buttons when `:not(:focus-visible)`
+- #36593: flush variant of accordion border radius
+- #36663: fix #36662 List-group-item margin-top is offset when importing sass in a nested class
+- #36694: Docs: add grid-row-columns variable
+- #36791: Remove a unused sass parameter from banner mixin
+- #36828: Fix pagination page items border radius
+- #36849: Define correctly `$popover-header-color`
+- #36873: Fix floating labels under `.text-center`
+- #36874: Floating labels in input group: Border fix
+- #36921: Accordion color should use $accordion-color
+- #36986: bugfix undefined border color variable for btn #36938
+- #37017: List group: Fix horizontal when only one child
+- #37021: Scss: Adding missing `z-index` CSS variables.
+- #37026: Rework button focus/active styling, with extra changes for checks/radios
+- #37027: Search modal: Set cursor on auto
+- #37034: More consistency for CSS/Sass vars doc for components with dark variants
+- #37059: Fix input group z-index focus + validation
+- #37078: Remove gradient from `.btn-link`
+- #37079: Add workarounds for postcss values parser error
+- #37080: btn-group draws first input margin #36794
+- #37093: Fix accordion button color
+
+## ☕️ JavaScript
+
+- #36750: ScrollSpy: make the threshold option configurable
+- #36751: Re-set tooltip title on disposal
+- #36863: Fix modal event-listeners during dismiss click
+- #37011: Multiple dropdowns: Fix when inside same tag
+- #37019: Docs: Fix js options to what is really inside js
+- #37072: Docs: Put methods in table
+- #37086: Fix tooltip manual toggling
+
+## 📖 Docs
+
+- #36493: Docs: Replace wrong mobile OS Windows with iOS
+- #36587: Document how to extract CSS, SVG for strict CSP
+- #36694: Docs: add grid-row-columns variable
+- #36771: Fix typos after #36762
+- #36804: Simplify social images and add ability to set per-page images
+- #36812: Fix broken url
+- #36819: Rename scrollspy to toast in toasts.md
+- #36824: Move DocSearch out of offcanvas to always show it on mobile
+- #36825: Remove Slack from site and repo docs
+- #36827: Redirect users to different templates of issues rather than an empty one
+- #36829: Docs: correct heading levels in features example
+- #36836: Docs: use added-in shortcode in Offcanvas
+- #36838: Docs: Missing added-in shortcode
+- #36839: Docs: Fix markdown link error
+- #36850: Add navbar image alt text
+- #36867: Docs: expand popover custom container explanation
+- #36871: Fix docs typo of `.form-checkbox` -> `.form-check`
+- #36877: Add default select example in cheatsheet
+- #37019: Docs: Fix js options to what is really inside js
+- #37027: Search modal: Set cursor on auto
+- #37034: More consistency for CSS/Sass vars doc for components with dark variants
+- #37047: Docs: Minor fixes in tables.
+- #37048: Docs: improve cards image overlays markup
+- #37056: Docs: Manage the dark offcanvas slightly differently
+- #37064: Fix padding on starter template
+- #37067: Make docs clearer by dropping precompiled for compiled
+- #37070: Improve language around vertical grid gutters
+- #37072: Docs: Put methods in table
+
+## 🛠 Examples
+
+- #36660: Added new example in `examples/features` page.
+- #36829: Docs: correct heading levels in features example
+- #36877: Add default select example in cheatsheet
+- #37064: Fix padding on starter template
+
+## 🌎 Accessibility
+
+- #36507: v5/docs: reintroduce `outline` for docs code samples, buttons when `:not(:focus-visible)`
+- #36829: Docs: correct heading levels in features example
+- #37026: Rework button focus/active styling, with extra changes for checks/radios
+
+## 📦 Dependencies
+
+* Updated numerous devDependencies: <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+label%3Adependencies+project%3Atwbs%2F8+is%3Aclosed>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.2.0 (2022-07-19)</h2>
+      <pre>## 🚀 Highlights
+
+- #36168: Manually set hover and active backgrounds and borders for dark and light buttons
+- #36327: Truncate text to prevent multiline floating label
+- #36382: Rewrite Webpack guide
+- #36411: Rewrite Parcel guide
+- #36412: Docs: Add a Vite Getting Started guide
+- #36500: Generate local CSS variables on utilities when using state option
+- #36528: Scrollspy: enable `smooth-scroll` behavior
+
+## 🚀 Features
+
+- #36352: Fix StackBlitz examples by embedding snippets.js when needed
+- #36528: Scrollspy: enable `smooth-scroll` behavior
+- #36759: Support input groups in floating forms
+
+## 🎨 CSS
+
+- #36156: Update `.form-control-color` sizing and styles
+- #36168: Manually set hover and active backgrounds and borders for dark and light buttons
+- #36178: Add a banner mixin, helping future releases and maintenance
+- #36327: Truncate text to prevent multiline floating label
+- #36353: Fix offcanvas not showing with `.showing`
+- #36366: add back focus box shadow to `btn-link`
+- #36406: CSS: few proposals
+- #36423: Stylelint: Disable `custom-property-empty-line-before`
+- #36446: Update Sass for computing `.table-group-divider` border
+- #36447: Fix `.dropdown-item` `border-radius` when `$dropdown-padding-y` is `0`
+- #36461: Fix alert border radius
+- #36476: Docs: fix Reboot Horizontal rules using border utilities
+- #36477: Docs: remove unused _algolia.scss
+- #36499: Don't style `readonly` inputs as `disabled`
+- #36500: Generate local CSS variables on utilities when using state option
+- #36509: Remove `--bs-headings-color` CSS variable due to backward compatibility issues
+- #36535: Fix 'Remove from map' Sass description
+- #36608: dashboard example: minor fix
+- #36627: Fix search modal z-index to be on top of all docs showcased components
+- #36646: Fix tooltip/badge border radius when rounded disabled
+- #36680: Revert db61cf3 for `$text-muted` default value
+- #36689: Add missing CSS vars for `.navbar-nav`
+- #36704: Fix missing `--bs-btn-disabled-border-color` in `button-outline-variant` mixin
+- #36711: Add `$display-font-family` and `$display-font-style`
+- #36740: Fixing pagination compile issue
+- #36747: Fix active/focused button link text color
+- #36759: Support input groups in floating forms
+
+## ☕️ JavaScript
+
+- #35679: Force tooltip and popover to recreate content every time it opens
+- #36171: Assorted Event handler patches
+- #36386: Fix interoperability issue regarding Event properties
+- #36398: JS: tests fixes & standardization of spies usage
+- #36401: Change Modal dismiss handler, listening to key down, instead of click
+- #36440: Re-ordering js default objects
+- #36449: Fix StackBlitz Popovers and Tooltips examples
+- #36528: Scrollspy: enable `smooth-scroll` behavior
+- #36561: Fix possible bug on event handler
+- #36588: Handle non-empty whitespace textContent in Tooltip trigger
+- #36622: Remove `.show` from panels dependent-less on the existence of `.fade` class
+- #36668: Fix on #35679
+- #36717: Offcanvas:  activate focustrap when backdrop is enabled
+- #36758: Docs: Fix typos in snippets.js
+- #36772: Fix event handler test
+
+## 📖 Docs
+
+- #36345: docs: add the version in npm/yarn commands
+- #36346: Docs: improve image compression
+- #36352: Fix StackBlitz examples by embedding snippets.js when needed
+- #36362: Update search box styling and position
+- #36363: Add some details on "javascript" page
+- #36367: Docs: Correct rounded sizes number
+- #36376: Fix missing Swag Store URL
+- #36382: Rewrite Webpack guide
+- #36395: Docs: quick fixes for HTML
+- #36406: CSS: few proposals
+- #36410: Update introduction.md
+- #36411: Rewrite Parcel guide
+- #36412: Docs: Add a Vite Getting Started guide
+- #36414: Add docs info for using JS w/ ESM shim
+- #36417: Docs: Remove `.is-invalid` from textarea validation example
+- #36425: CSS: doc fixes
+- #36444: Update import order for utilities API docs
+- #36449: Fix StackBlitz Popovers and Tooltips examples
+- #36450: Docs: Use example shortcode for all Button groups
+- #36476: Docs: fix Reboot Horizontal rules using border utilities
+- #36477: Docs: remove unused _algolia.scss
+- #36487: Remove confusing unnecessary id/aria-labelledby for dropdown menus
+- #36488: Docs: fix some ARIA Authoring Practices Guides broken links
+- #36489: Docs: Update some WCAG links, expand sass.md contrast explanation
+- #36495: Improve accessible name of version dropdown in docs navbar
+- #36503: [docs] Document BootstrapVue being outdated
+- #36510: Add example of dark navbar and offcanvas to docs
+- #36516: Add .active navbar breaking change to 5.0 docs
+- #36535: Fix 'Remove from map' Sass description
+- #36545: Carousel: Remove redundant reference to `interval=false` from docs & tests
+- #36553: Make table responsive on Grid page
+- #36613: Fix popover live demo to use `data-bs-title` instead of `title`
+- #36625: Add some details for non visible scrollspy elements
+- #36627: Fix search modal z-index to be on top of all docs showcased components
+- #36630: Docs: update clipboard.js to v2.0.11
+- #36637: Fix StackBlitz examples needing docs CSS
+- #36644: Added examples for Radios in List Group
+- #36650: update Lighthouse URL
+- #36658: Fix a typo in the documentation masthead
+- #36669: Docs: alphabetical reorder of some events/methods in tables
+- #36672: Docs: fix some ScrollSpy HTML copyable codes
+- #36674: Docs: add indeterminate disabled checkbox example
+- #36679: Remove dead link from translations
+- #36696: add `type="button"` to Bootstrap versions dropdown
+- #36706: Docs: Add 'Icons' link in footer
+- #36712: Docs: fix description on how to alter display values
+- #36717: Offcanvas:  activate focustrap when backdrop is enabled
+- #36732: Add accNames to all progress bar examples
+- #36734: Docs: Capitalize Unicode
+- #36741: Docs: same text for disabled ranges and disabled form controls
+- #36757: Fix indentation in code sample
+- #36760: Add links to Webpack, Parcel, and Vite guides on homepage
+- #36762: Fix various small typos in documentation
+- #36763: Fix typos in code
+
+## 🛠 Examples
+
+- #36608: dashboard example: minor fix
+- #36732: Add accNames to all progress bar examples
+
+## 🌎 Accessibility
+
+- #36487: Remove confusing unnecessary id/aria-labelledby for dropdown menus
+- #36488: Docs: fix some ARIA Authoring Practices Guides broken links
+- #36588: Handle non-empty whitespace textContent in Tooltip trigger
+- #36696: add `type="button"` to Bootstrap versions dropdown
+- #36717: Offcanvas:  activate focustrap when backdrop is enabled
+- #36732: Add accNames to all progress bar examples
+
+## 🏭 Tests
+
+- #36530: Fix typo in dropdown unit test
+- #36667: Minor fix to use self-closing input HTML tag
+- #36742: Standardization of `spyOn` usage
+- #36772: Fix event handler test
+
+## 🧰 Misc
+
+- #36548: Update Code of Conduct with Contributor Covenant 2.1
+- #36624: Use 'needs-example' label to trigger live demo bot message
+- #36700: Replace JS Bin refs by CodePen or StackBlitz references
+
+## 📦 Dependencies
+
+* Updated numerous devDependencies: <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F45>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.6.2 (2022-07-19)</h2>
+      <pre>## Highlights
+
+- Added an example to our Collapse plugin docs to show how to use horizontal collapsing. This has long been possible via our JS, but we never had an official class to utilize it.
+- We've replaced the deprecated `color-adjust` with `print-color-adjust` in our Sass files as part of the Autoprefixer v10.4.6 issues. This should quiet the issues folks have seen from that dependency change. _If you're using our distribution CSS files, like `bootstrap.min.css`, you may still see the warning._
+- Tweaked the size of `small` and `.small` to compute to a whole pixel value (was `12.8px` and now is `14px`).
+- Improved accessibility around our dropdowns, color contrast, and `role` attributes.
+- Fixed some broken links to supporting documentation.
+- Updated dependencies across the board.
+
+## What's Changed
+
+* Removed blurred background reference from the Toast Docs. by @pricop in https://github.com/twbs/bootstrap/pull/35190
+* Update links to CCA, MQ5 prefers-reduced-motion, evergreen WCAG urls, more resources by @patrickhlauke in https://github.com/twbs/bootstrap/pull/35427
+* v4-dev backports and updates by @XhmikosR in https://github.com/twbs/bootstrap/pull/35482
+* Backport #35556 by @julien-deramond in https://github.com/twbs/bootstrap/pull/35558
+* Tweak toast docs by @patrickhlauke in https://github.com/twbs/bootstrap/pull/35633
+* v4-dev backports and updates by @XhmikosR in https://github.com/twbs/bootstrap/pull/35642
+* Doc: Reorder alphabetically lists of components by @julien-deramond in https://github.com/twbs/bootstrap/pull/36128
+* Updated the small-font-size to use a round value by @pricop in https://github.com/twbs/bootstrap/pull/36172
+* v4 dev backports and updates by @XhmikosR in https://github.com/twbs/bootstrap/pull/35767
+* _custom-forms.scss: fix order of attributes by @twin-elements in https://github.com/twbs/bootstrap/pull/36231
+* Replace the deprecated `color-adjust` with `print-color-adjust` by @AdrianCurtin in https://github.com/twbs/bootstrap/pull/36283
+* [v4] Doc: remove `role="group"` from some split drop* buttons by @julien-deramond in https://github.com/twbs/bootstrap/pull/36254
+* Dynamic tabs: use buttons rather than links (backport to v4) by @patrickhlauke in https://github.com/twbs/bootstrap/pull/33163
+* v4 dev updates by @XhmikosR in https://github.com/twbs/bootstrap/pull/36430
+* Fix closing HTML tag in navs docs by @julien-deramond in https://github.com/twbs/bootstrap/pull/36466
+* v4: Horizontal collapse by @mdo in https://github.com/twbs/bootstrap/pull/36434
+* Fixing tabs' tests v4 by @louismaximepiton in https://github.com/twbs/bootstrap/pull/36485
+* Docs: fix some ARIA Authoring Practices Guides broken links by @julien-deramond in https://github.com/twbs/bootstrap/pull/36490
+* v4 - Remove confusing unnecessary id/aria-labelledby for dropdown menus by @patrickhlauke in https://github.com/twbs/bootstrap/pull/36491
+* v4 Docs: outdated ARIA/PF link, expand contrast explanation in `accessibility.md` by @patrickhlauke in https://github.com/twbs/bootstrap/pull/36492
+* v4: Improve accessible name of version dropdown in docs navbar by @patrickhlauke in https://github.com/twbs/bootstrap/pull/36504
+* Update devDependencies by @XhmikosR in https://github.com/twbs/bootstrap/pull/36522
+* Docs: update clipboard.js to v2.0.11 by @julien-deramond in https://github.com/twbs/bootstrap/pull/36631
+* Update devDependencies by @XhmikosR in https://github.com/twbs/bootstrap/pull/36724
+* v4: Add Fathom by @mdo in https://github.com/twbs/bootstrap/pull/36727
+* Docs: Capitalize Unicode by @julien-deramond in https://github.com/twbs/bootstrap/pull/36735
+* Release v4.6.2 by @XhmikosR in https://github.com/twbs/bootstrap/pull/36725
+
+## New Contributors
+
+* @twin-elements made their first contribution in https://github.com/twbs/bootstrap/pull/36231
+* @AdrianCurtin made their first contribution in https://github.com/twbs/bootstrap/pull/36283
+
+**Full Changelog**: https://github.com/twbs/bootstrap/compare/v4.6.1...v4.6.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.2.0-beta1 (2022-05-13)</h2>
+      <pre>## 🚀 Highlights
+
+- #33079: Revamp tabs & follow ARIA 1.1 practices
+- #33354: Column Striping Feature for Tables
+- #33421: Revamp Scrollspy using Intersection observer
+- #33606: Add `.form-check-reverse` modifier class
+- #34334: `make-col-ready()`: remove the unused `$gutter` variable
+- #34443: Convert navbar to CSS variables
+- #34487: Docs offcanvas navbar
+- #34547: Prefer Linux-specific fonts over Arial
+- #34600: Convert buttons to CSS variables
+- #34622: Convert tooltips and popovers to CSS vars
+- #34644: Always set the CSS variables for gutters in containers
+- #34942: Move reassigned Sass maps for colors to another stylesheet
+- #35055: Add `color` and `border-color` CSS variables to tables
+- #35077: Manipulator: Add JSON parse support
+- #35153: Reset `z-index` on `.navbar-expand .offcanvas` and prevent `box-shadow` when collapsed
+- #35399: Convert pagination component to CSS variables
+- #35401: Convert alerts to CSS variables
+- #35402: Convert badges to CSS variables
+- #35409: Convert dropdowns to CSS variables
+- #35514: Popover.js: Accept empty content through `data-bs-content`
+- #35518: Add sticky bottom utility
+- #35736: v5.2.0 design refresh, plus responsive offcanvas classes
+- #35893: Add centered dropdown and dropup options
+- #35908: Remove thicker border on table thead elements
+- #35979: Adjust border-radius values and add some new utilities
+- #36242: Add new `.text-bg-{color}` helpers
+
+## 🚀 Features
+
+- #33354: Column Striping Feature for Tables
+- #33421: Revamp Scrollspy using Intersection observer
+- #33606: Add `.form-check-reverse` modifier class
+- #34519: Add a template factory helper to handle all template cases
+- #35077: Manipulator: Add JSON parse support
+- #35514: Popover.js: Accept empty content through `data-bs-content`
+- #35518: Add sticky bottom utility
+- #35893: Add centered dropdown and dropup options
+- #36272: Toast: provide `isShown` method
+
+## 🎨 CSS
+
+- #32840: Support floating labels on `.form-control-plaintext`
+- #33606: Add `.form-check-reverse` modifier class
+- #34334: `make-col-ready()`: remove the unused `$gutter` variable
+- #34443: Convert navbar to CSS variables
+- #34547: Prefer Linux-specific fonts over Arial
+- #34600: Convert buttons to CSS variables
+- #34622: Convert tooltips and popovers to CSS vars
+- #34627: Remove tooltip and popover styling as it is handled by Popper
+- #34644: Always set the CSS variables for gutters in containers
+- #34863: Color input validation icon
+- #34942: Move reassigned Sass maps for colors to another stylesheet
+- #35055: Add `color` and `border-color` CSS variables to tables
+- #35082: Set `cursor: default` on disabled `.form-check-label`
+- #35085: Fixes missing variable issue with `media-breakpoint-only`
+- #35153: Reset `z-index` on `.navbar-expand .offcanvas` and prevent `box-shadow` when collapsed
+- #35230: Don't override CSS `direction` in code elements
+- #35231: Ensure sufficient contrast in `accordion-item`
+- #35232: Drop prefixed version of `::file-selector-button`
+- #35326: Correctly implement RFS in `:root` CSS variable for `$body-font-size`
+- #35399: Convert pagination component to CSS variables
+- #35401: Convert alerts to CSS variables
+- #35402: Convert badges to CSS variables
+- #35403: Convert breadcrumbs to CSS variables
+- #35406: Bring back webkit calendar picker indicator for datalists
+- #35409: Convert dropdowns to CSS variables
+- #35428: Convert border utilities to CSS variables
+- #35466: Fix typo in `$purples`
+- #35467: Add missing `border-radius` for `btn-group`
+- #35484: Reprocess inline SVGs with the latest SVGO
+- #35491: Rely on `border-width` for `<hr>` size
+- #35518: Add sticky bottom utility
+- #35533: docs: Move `gap` utility API from "Flex" to "Spacing"
+- #35554: Separate modal click functionality, utilizing backdrop callback
+- #35571: Fix alerts color
+- #35592: move theme-colors (vars+map) after color tints definitions
+- #35676: Add black to colors map
+- #35740: Add `!important` property to colored links
+- #35759: Fix position of `.list-group-item-action`
+- #35804: Allow to set active and disabled class also to .page-link
+- #35822: Apply list group numbering to all items
+- #35825: Correct the horizontal padding on grid containers
+- #35829: New CSS variable for Navbars
+- #35844: Fixed border radius var name and .show target in buttons
+- #35850: Rename dropdown-shadow to dropdown-box-shadow for consistency
+- #35858: Add null modal-footer-bg variable
+- #35859: Add z-index for .toast-container
+- #35862: Convert list group to CSS variables
+- #35886: Replace non-existent `--bs-btn-padding` by `--bs-btn-padding-{x|y}`
+- #35894: Base `.text-muted` on body color
+- #35907: Use all dropdowns CSS variables
+- #35908: Remove thicker border on table thead elements
+- #35914: Fix dropdowns
+- #35917: Define Pagination font size CSS var
+- #35918: RTL arrows for popovers and tooltips
+- #35921: Split CSS vars for padding values
+- #35932: v5.2 border-width is disabled
+- #35943: Add missing root border opacity CSS var
+- #35960: Convert spinners to CSS variables
+- #35961: Convert toasts to CSS variables
+- #35962: Convert progress bars to CSS variables
+- #35973: Fix dropdowns
+- #35976: Fix space between popover's arrow and triggering element
+- #35979: Adjust border-radius values and add some new utilities
+- #35981: Add additional root variables, rename `$variable-prefix` to `$prefix`
+- #35984: Update docs syntax colors head of dark mode
+- #35994: Update `$border-color` to use `rgba()`
+- #35995: Ignore warning for `.navbar-light` deprecation
+- #35996: Add some `calc()` for manipulating new CSS variable version of border-width
+- #36003: Set opacity on dropdown-divider for now
+- #36018: Some CSS fixes
+- #36038: v5.2.0 migration updates
+- #36058: Fix proposal for `.dropstart`
+- #36070: Popover : New CSS var
+- #36071: Train PR: CSS variables for accordion, cards, navs, and modals
+- #36082: Fix duplicate border radius CSS var definition
+- #36083: Reuse all breadcrumb CSS vars available
+- #36093: Adding `@include font-size` when not
+- #36098: Use new CSS vars
+- #36100: Adding CSS var to list-group-item-action
+- #36105: Fix for missing CSS variables on `.navbar-nav`
+- #36126: Use the `border-color` property instead of the CSS variable in border color utilities
+- #36145: Improve use of CSS vars in Toasts
+- #36148: Add CSS vars for accordions
+- #36149: Modal : Changing the CSS var management
+- #36157: Add `$input-disabled-color` Sass variable
+- #36179: CSS : Minor fixes
+- #36202: Update _breakpoints.scss
+- #36220: Clean up last `$variable-prefix` usages
+- #36238: Revert `border-color` change
+- #36239: Iterate on border utilities
+- #36242: Add new `.text-bg-{color}` helpers
+- #36277: Fix proposal for Tooltips
+- #36296: Remove leftover abbr styles in Reboot for tooltips
+
+## ☕️ JavaScript
+
+- #31607: Use Babel and ES6 in docs JS files
+- #32692: Clean tooltip component unneeded functionality
+- #32999: Extract Carousel's swipe functionality to a separate Class
+- #33079: Revamp tabs & follow ARIA 1.1 practices
+- #33421: Revamp Scrollspy using Intersection observer
+- #33872: Extract Component config functionality to a separate class
+- #34509: build: read & dynamically resolve `imports` on plugins build
+- #34519: Add a template factory helper to handle all template cases
+- #34945: Carousel cleanup & refactoring
+- #35077: Manipulator: Add JSON parse support
+- #35127: tooltip.js: use array.includes instead of for iteration
+- #35141: Modal tweaks & cleanup
+- #35156: Collapse: refactor active children handling
+- #35157: Dropdown remove redundant code
+- #35161: Swipe: add test to ensure that it ignores `pinch` events
+- #35183: JS: minor refactoring
+- #35388: Scrollbar: remove margin/padding properties properly
+- #35400: Tooltip: Some more changes
+- #35410: BaseComponent: add a couple more tests
+- #35419: Alert: add a couple more tests
+- #35440: Tooltip: remove leftover method
+- #35441: Fix popover arrow & tooltip template after the `setContent` addition
+- #35448: Dropdown tests: Use a function to improve readability
+- #35456: Tooltip: remove title attribute before show & add tests
+- #35492: ScrollBar.js. Minor refactoring and add test
+- #35500: Dropdown: fix toggle focus after dropdown is hidden using the `ESC` button
+- #35506: build/postcss.config.js: minor tweaks
+- #35507: Toast: join multiple `classList` calls
+- #35510: util/index.js: minor refactoring
+- #35511: Tab: minor refactoring
+- #35512: Scrollspy: minor refactoring
+- #35514: Popover.js: Accept empty content through `data-bs-content`
+- #35527: Popover/Tooltip: Fix vertical alignment on arrow of tip elements
+- #35540: Tooltip: remove extraneous call to `_getConfig()`
+- #35546: More tooltip refactoring
+- #35554: Separate modal click functionality, utilizing backdrop callback
+- #35559: Event handler: replace deprecated function & merge `new Event` with `new CustomEvent`
+- #35589: Remove explicit use of aria-hidden for offcanvas when closed
+- #35590: Assorted JS cleanup
+- #35682: fix isVisible behavior with new chrome version
+- #35684: Selector Engine: improve `parents` method to utilize newer JS native methods
+- #35689: Optimize jQueryInterface in Collapse
+- #35734: src/tooltip.js Optimization
+- #35748: Dropdown.js optimizations
+- #35752: Dropdown cleanup and fixes
+- #35753: Carousel tweaks
+- #35754: Event Handler cleanup
+- #35766: Dropdown: use a combined selector to filter not shown instances
+- #35832: Add static backdrop to offcanvas
+- #35856: Make event name helper and use it on tooltip & popover to reduce dist sizes
+- #35866: Dropdown: use a better selector to avoid triggering click if button is disabled
+- #35870: Dropdown: Simplify dataKeyApiHandler
+- #35871: Carousel tweaks
+- #35893: Add centered dropdown and dropup options
+- #35902: Modal: refactor listeners to reduce some code noise
+- #35930: Carousel patches
+- #35973: Fix dropdowns
+- #35983: Carousel tweaks
+- #35990: Carousel patches
+- #35991: Patch dropdown.js
+- #36028: Dropdown test
+- #36169: Handle disabled focused tabs with tab JavaScript plugin
+- #36186: EventHandler: change check method for custom events, avoiding regex
+- #36217: Document incompatibilities between Bootstrap JS and React/.etc
+- #36272: Toast: provide `isShown` method
+- #36273: Separate docs js assets
+- #36324: Revert backdrop utilization, handling clicks over modal
+
+## 📖 Docs
+
+- #31337: JS docs formatting tweaks
+- #31607: Use Babel and ES6 in docs JS files
+- #32953: Replace AnchorJS with a Hugo render hook
+- #34487: Docs offcanvas navbar
+- #35124: Update NuGet docs to specify only .NET Framework projects are supported
+- #35154: Add top placement info to offcanvas docs
+- #35160: Update typography.md to remove an unnecessary `<abbr>` tag
+- #35223: Add missing `role="search"` and `type="search"` in navbar doc and examples
+- #35234: images.md: remove zero-width space
+- #35236: Fix typo in RTL Hello World! sentence
+- #35264: fix(offcanvas): Add missing titles class
+- #35320: Update import stacks required for modifying utilities
+- #35327: floating-labels: remove `aria-label` in the `select` example
+- #35328: Fix spacing utility classes mentioned in navbar supported content documentation
+- #35348: Fix typo in vertical alignment of table cells
+- #35373: Add missing scss/maps imports
+- #35414: Fix variable name in Sass customizing section
+- #35434: Breadcrumb docs: drop confusing currentColor and add new callout
+- #35446: Update edge-to-edge design instructions
+- #35468: Fix variable name in form overview docs
+- #35486: Update api.md
+- #35497: docs: add Tabler Icons to list of icon packs
+- #35532: docs: Add responsive variations for `align-content-between`
+- #35556: docs: Use `param` to set Bootstrap version in Contents page
+- #35563: docs: A fix for CSS Variables and some proposal
+- #35579: docs: add reference to `sticky-xxl` utils
+- #35587: Add note to carousel crossfade docs about bg color
+- #35588: Docs: Strengthen and expand note about dynamic tabs with dropdown menus
+- #35644: docs: add a StackBlitz "Try It" button in code examples
+- #35647: Update cspell config
+- #35649: Docs: group together reusable CSS for examples in a single stylesheet
+- #35696: Docs - Remove duplicate Octicons entry in icons list
+- #35713: Remove incorrect statement about the disabled attribute on `<form>`
+- #35730: Add Spanish translation
+- #35735: Change X to Extra
+- #35736: v5.2.0 design refresh, plus responsive offcanvas classes
+- #35741: docs: remove moot `autocomplete` attributes
+- #35775: Fix dropdown docs about autoclose and esc key.
+- #35778: Fixed typo in documentation form validation section
+- #35814: Remove remaining `.navbar-light` classes
+- #35818: code indentation in readme
+- #35827: Fixes #32082
+- #35828: Fix typo in Badges CSS variables description
+- #35837: Update reboot.md
+- #35878: Improve modal component doc
+- #35895: Mention form height change in migration guide
+- #35903: Separate override for hr's in component examples
+- #35905: Site assets: `.bd-bg-purple-bright` → `.bd-bg-violet` and drop unused `.bd-text-purple-bright`
+- #35909: update ionicons link
+- #35931: Remove unneeded classes from toasts docs
+- #35942: update google material icons link
+- #35948: docs: add missing `.dropup` in dropup centered example
+- #35955: docs: Update Japanese translation
+- #35980: Redesign the "Added in" badges in the docs
+- #35984: Update docs syntax colors head of dark mode
+- #36002: Fix docs error after #35644
+- #36007: Convert added in badges to shortcode
+- #36008: Add v5.1.0 to migration guide, update v5.2.0 additions
+- #36013: Remove duplicate entry in migration.md
+- #36030: Update parcel.md
+- #36038: v5.2.0 migration updates
+- #36040: Fix migration guide typos
+- #36058: Fix proposal for `.dropstart`
+- #36073: Fix typo for StackBlitz edit button's tooltip
+- #36088: Fix StackBlitz edit feature by selecting the closest example
+- #36092: Doc fixes
+- #36099: Changing to btnTitle and btnEdit
+- #36101: Move "Navbar" before "Navs & Tabs" in sidebar
+- #36112: Fix CSpell by adding 'Analyser'
+- #36123: Doc: Reorder alphabetically lists of components
+- #36137: Change second example of dropdown form
+- #36144: Doc: fix modals and navs CSS vars description
+- #36151: Update offcanvas example to include .show class
+- #36163: Doc: Uniformization of nav tabs content panes
+- #36173: Fix Chroma line highlight style
+- #36176: v5.2.0: Migrate to DocSearch 3
+- #36182: Fix containers page in docs to re-order list so it matches sections b…
+- #36188: example: change `.border-right` to `.border-end`
+- #36190: Fix spacing of code snippets
+- #36191: Do some CSS and Migration guide cleanup
+- #36192: One more code snippet fix
+- #36194: Refactor some docs examples CSS
+- #36195: Doc: minor modifications in Scrollspy
+- #36196: Realign Cheatsheet nav tabs example rendering with the doc examples
+- #36199: Minor fixes
+- #36203: Docs: update documentation js examples, using es6
+- #36204: Rewrite Getting Started > Introduction page to be more guide-like
+- #36212: Doc: remove `role="group"` from some split drop* buttons
+- #36217: Document incompatibilities between Bootstrap JS and React/.etc
+- #36218: Doc: mention Popper instead of Popper.js
+- #36219: Doc: fix offset content for examples page
+- #36245: Update new docs version picker to work on home and examples pages
+- #36252: Doc: update path to `@popperjs/core` in parcel.md
+- #36260: Docs(Scrollspy): minor changes to be aligned with new version of javascript
+- #36273: Separate docs js assets
+- #36276: Add proper markup on modal's page tooltips and popovers
+- #36307: Fix search with xs to md breakpoints
+- #36322: Fix contents.md
+- #36328: Remove unused `.border-right` rule from modal example CSS file
+- #36333: Doc: fix text overflow example
+- #36335: Minor changes in 'Usage with JavaScript frameworks' description
+- #36337: docs: drop Scratch usage
+- #36340: Fix a11y keyboard access to docs navigation
+- #36344: docs: link to the root page for the homepage
+
+## 🛠 Examples
+
+- #35223: Add missing `role="search"` and `type="search"` in navbar doc and examples
+- #35308: update grid example docs
+- #35365: Make footer examples responsive to mobile screens
+- #35483: Replace inline styles in example "Dropdowns"
+- #35699: Docs: replace CSS by utilities in examples
+- #35704: Fix spelling mistake in footer example
+- #35733: examples: fix a couple typos found with codespell
+- #35877: remove opacity utilities from example CSS
+- #35898: Remove border of disabled calendar buttons in Dropdowns example
+- #35919: RTL carousel example
+- #35997: Add another list-group snippet example
+- #36075: Fix duplicate `.rounded-*` and `.fw-semibold` defs in examples
+
+## 🌎 Accessibility
+
+- #33079: Revamp tabs & follow ARIA 1.1 practices
+- #35223: Add missing `role="search"` and `type="search"` in navbar doc and examples
+- #35231: Ensure sufficient contrast in `accordion-item`
+- #35588: Docs: Strengthen and expand note about dynamic tabs with dropdown menus
+- #35589: Remove explicit use of aria-hidden for offcanvas when closed
+
+## 🔧 Utility API
+
+- #35428: Convert border utilities to CSS variables
+
+## 🏭 Tests
+
+- #35161: Swipe: add test to ensure that it ignores `pinch` events
+- #35184: tests: try to fix a few random failures
+- #35410: BaseComponent: add a couple more tests
+- #35419: Alert: add a couple more tests
+- #35431: Tests: consistency changes
+- #35448: Dropdown tests: Use a function to improve readability
+- #35455: Tests: Minor fixes
+- #35456: Tooltip: remove title attribute before show & add tests
+- #35492: ScrollBar.js. Minor refactoring and add test
+- #35501: Fix tests fixture type
+- #35585: Fix visual tests
+- #35659: tests: replace 'done' callback with 'Promise' to fix deprecation errors
+- #35757: Fix Popover test that randomly fails on BrowserStack
+- #35765: tests: revisit all tests using Promise.reject instead of throwing an error
+- #36028: Dropdown test
+
+## 🧰 Misc
+
+- #31607: Use Babel and ES6 in docs JS files
+- #34509: build: read & dynamically resolve `imports` on plugins build
+- #35178: Switch to Node.js 16 and npm 8.
+- #35313: README.md remove broken "David DM" dependency badges
+- #35395: build/change-version.js: fix wrong map usage
+- #35447: Remove the now outdated build/svgo.yml
+- #35451: package.json: add GitHub Sponsors and reorder properties
+- #35452: README.md: wrap file contents in a `details` element
+- #35454: CI: add `workflow_dispatch`
+- #35481: JS tests: only test one Node.js version
+- #35573: Move linkinator to GitHub Actions.
+- #35586: build-plugins.js: use globby package
+- #35593: Move cspell to Actions
+- #35641: Update nuget/bootstrap.png
+- #35647: Update cspell config
+- #35680: Update cspell config
+- #35846: CI: add issues-helper
+- #35910: Release Drafter: add highlights
+- #36185: Update CODE_OF_CONDUCT.md
+
+## 📦 Dependencies
+
+* Updated numerous devDependencies: <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F32>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>4.6.1 (2021-10-28)</h2>
+      <pre>### What's changed
+
+- Replace Sass division with multiplication and custom `divide()` function by @mdo in https://github.com/twbs/bootstrap/pull/34571
+- Update RFS to v8.1.0 by @XhmikosR in https://github.com/twbs/bootstrap/pull/34571
+- fix(forms): input-group and validation icons by @ffoodd in https://github.com/twbs/bootstrap/pull/32968
+- Fix minor visual bug in Firefox caused by `moz-focusring` by @kremit in https://github.com/twbs/bootstrap/pull/32821
+- Adjust `SAFE_URL_PATTERN` regex for use with test method of regexes by @nikonthethird in https://github.com/twbs/bootstrap/pull/33153
+- Add `sms` in the `SAFE_URL_PATTERN` for sanitizer by @XhmikosR in https://github.com/twbs/bootstrap/pull/35074
+- Adjust feedback icon position and padding for `select.form-control` by @mdo in https://github.com/twbs/bootstrap/pull/33206
+- Carousel: use buttons, not links, for prev/next controls by @patrickhlauke in https://github.com/twbs/bootstrap/pull/33165
+- v4: Sass docs for default variables by @mdo in https://github.com/twbs/bootstrap/pull/33392
+- Handle complex expressions in `add()` & `subtract()` by @ffoodd in https://github.com/twbs/bootstrap/pull/34047
+- More concise improvements for `add()` and `subtract()` by @ffoodd in https://github.com/twbs/bootstrap/pull/34432
+- Remove `aria-haspopup` from dropdowns by @patrickhlauke in https://github.com/twbs/bootstrap/pull/33624
+- Dropdown: support `.dropdown-item` wrapped in `<li>` tags by @cpsievert in https://github.com/twbs/bootstrap/pull/33649
+- Update Node versions in JS tests (drop Node 10, add Node 16), update docs JS assets and add variables for `vertical-align` in spinners by @XhmikosR in https://github.com/twbs/bootstrap/pull/33807
+- Replace Freenode with Libera IRC server by @midzer https://github.com/twbs/bootstrap/pull/34050
+- Fix repetition in the Navbar docs description by @coliff in https://github.com/twbs/bootstrap/pull/34208
+- Enable `0.x` with negative margins in utilities by @k-utsumi in https://github.com/twbs/bootstrap/pull/33593
+- Remove print `thead` rule by @coliff in https://github.com/twbs/bootstrap/pull/34426
+- Fix prevented `show` event disabling modals with fade class from being displayed again by @alpadev in https://github.com/twbs/bootstrap/pull/34087
+- Input group validation with custom-file input by @ffoodd in https://github.com/twbs/bootstrap/pull/33239
+- Add eslint-plugin-qunit and tighten JS tests by @XhmikosR in https://github.com/twbs/bootstrap/pull/32270
+- Update our tests to Node 16 and npm 8 by @XhmikosR in https://github.com/twbs/bootstrap/pull/35142
+- Disabled link cleanup by @patrickhlauke in https://github.com/twbs/bootstrap/pull/34924
+- Updated our devDependencies including terser; also enabled two passes for terser by @XhmikosR
+
+### Full changelog
+
+<https://github.com/twbs/bootstrap/compare/v4.6.0...v4.6.1>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.1.3 (2021-10-09)</h2>
+      <pre>## Fixes
+
+### 🎨 CSS
+
+- #35143: Revert "Add `align-self: center` to buttons for improved rendering in flex containers"
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.1.2 (2021-10-05)</h2>
+      <pre>## Highlights
+
+- Temporarily patched a [postcss-values-parser](https://github.com/shellscape/postcss-values-parser/issues/138) issue by rearranging our `calc()` functions that use negative numbers. This should restore the ability to import and compile Bootstrap's Sass in `create-react-app`.
+- Added `border-radius` sizes to small and large `.form-select`s
+- Added `align-self: center` to buttons for improved rendering in flex containers
+- Fixed Collapse regression that prevented toggling between sibling children
+- Updated JS Sanitizer to add `sms` in the `SAFE_URL_PATTERN`
+- Improved docs around `.img-fluid`
+- Added `role="switch"` to our form switches in our docs
+- Implemented GitHub Issue forms to replace our previous issue templates.
+
+## Changes
+
+### 🎨 CSS
+
+- #34799: fix custom property values of row overrides individual cell
+- #34834: Add `align-self: center` to buttons for improved rendering in flex containers
+- #34853: Add `border-radius` sizes to small and large `.form-select`s
+- #34861: Separator for table direct children
+- #35017: Use Sass variable instead of RGB components
+- #35033: Add workaround for dart sass compile error
+
+### ☕️ JavaScript
+
+- #34951: Fix Collapse regression of handling toggling between sibling chilldren
+- #34980: Minor refactoring
+- #35074: sanitizer: add `sms` in the `SAFE_URL_PATTERN`
+
+### 📖 Docs
+
+- #34824: docs: Add `role="switch"` to switches
+- #34918: docs: Update RFS version & move "v" prefix to config.yml
+- #34920: Fix Backdroped typo
+- #34921: Fix JavaScript typo
+- #34922: fix predefined typo
+- #34923: fix utilities typo
+- #34926: Improve description of `.img-fluid` in docs
+- #34935: Non-blocking typo fix
+- #34936: replace dummy text with English for Text truncation page
+- #34946: Changes some latin/dummy text to English
+- #35013: Add offcanvas to the components requiring JavaScript
+- #35111: Fix capitalization after period in `contents.md`
+
+### 🛠 Examples
+
+- #35022: examples: Add `role="switch"` to switches
+
+### 🧰 Misc
+
+- #34626: Implement issue forms
+- #34940: Add cSpell custom dictionary and docs-spellcheck script
+- #35070: rollup: specify `generatedCode: 'es2015'`
+- #35086: README.md: fix capitalization after period
+
+### 📦 Dependencies
+
+* Updated numerous devDependencies: <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F43>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.1.1 (2021-09-07)</h2>
+      <pre>## Highlights
+
+## 🎨 CSS
+
+- #34679: Fix font size variable name
+- #34699: Add check to `rgba-css-var` function for body or bg
+- #34773: Include root.scss in all dist builds
+- #34779: Fix `$dropdown-link-hover-color` variable color value in _variable.scss file
+
+## ☕️ JavaScript
+
+- #34621: carousel: move common checks to a function
+- #34701: Fix modal when is triggered by `bs-toggle`, to hide other open instances
+- #34835: Collapse on toggle, should not hide descendant tabpanels
+- #34842: Fix tooltip `data-bs-original-title` issue
+
+## 📖 Docs
+
+- #32781: docs: shortcodes tweaks and consistency changes
+- #34686: docs: Fix placeholders typo
+- #34752: Fix typo in placeholder docs
+- #34769: Enhance Alerts > Live Example section
+- #34781: docs: fix typos in approach and placeholders
+- #34787: Progress page: remove toggle animation button
+- #34840: clarify importing all vs specific plugins
+- #34842: Fix tooltip `data-bs-original-title` issue
+- #34877: docs: add `$enable-smooth-scroll` to Sass options page
+- #34886: Disabled link cleanup
+- #34892: Fix a11y issues in `.hstack` example and placeholder 'How it works' example
+- #34910: Docs: Add Callout to Stacks Helper page about limited flexbox gap support
+- #34913: docs: make use of the `.Site.Params.docs_version` variable
+- #34914: Typo/US locale fixes
+
+## 🛠 Examples
+
+- #34766: dashboard-rtl: use the same scripts as the dashboard example
+
+## 🌎 Accessibility
+
+- #34886: Disabled link cleanup
+
+## 🏭 Tests
+
+- #34077: Add GitHub SHA in BrowserStack build ID.
+- #34912: BrowserStack: add Firefox 60 and Chrome 60
+
+## 📦 Dependencies
+
+* Updated numerous devDependencies: <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F42>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.1.0 (2021-08-04)</h2>
+      <pre>## Highlights
+
+- Added experimental, opt-in CSS Grid support
+- Added support for responsive offcanvas components in navbars
+- Added new placeholders component for skeleton loading screens
+- Added support for horizontal collapsing in the collapse component
+- Added new stack and vertical rule helpers
+- Added tons of new CSS variables for body styles, colors, RGB colors, and more
+- Updated `.bg-*` and `.text-*` utilities to use CSS variables and new RGB CSS variables for real-time customization
+- Added four new component examples for dropdowns, footers, list groups, and modals
+- Updated modal and offcanvas backdrops to make them unique to each component
+- Reverted ability for `.col-*` classes to override `.row-cols-*` classes for now until we can fix some critical bugs
+
+## 🚀 Features
+
+- #31813: Add optional CSS grid
+- #31859: Add a "skeletons" component
+- #32319: Add maps for all colors, document how to extend color utilities
+- #33403: modal: change `data-dismiss` so that it can be outside of a modal using `bs-target`
+- #33781: Add utility classes for opacity
+- #33986: New helpers: `.hstack`, `.vstack`, and `.vr`
+- #34253: Add horizontal collapse support
+- #34273: Offcanvas navbar
+- #34333: Accept argument of different types in the `getInstance` method
+
+## 🎨 CSS
+
+- #31813: Add optional CSS grid
+- #32319: Add maps for all colors, document how to extend color utilities
+- #33781: Add utility classes for opacity
+- #33986: New helpers: `.hstack`, `.vstack`, and `.vr`
+- #34100: Updated utility API (css-vars utils and new bg/color utils), plus new root CSS variables
+- #34253: Add horizontal collapse support
+- #34273: Offcanvas navbar
+- #34432: More concise improvements for `add()` and `subtract()`
+- #34440: Add null `$card-box-shadow` variable
+- #34445: fix(forms): prevent color control from shrinking
+- #34475: Make text decoration consistent with other anchors
+- #34481: Make the `$accordion-icon-color` default value consistent with the `$accordion-button-color`
+- #34572: Clean up a couple CSS Grid issues
+- #34612: Revert "Allow individual grid classes to override `.row-cols`"
+- #34651: Update `$input-bg` to use `$body-bg`
+
+## ☕️ JavaScript
+
+- #33402: Changes to Alert component to match the others
+- #33403: modal: change `data-dismiss` so that it can be outside of a modal using `bs-target`
+- #33603: Fix `Manipulator.offset()`
+- #33610: Toasts: Change showing timings and classes to keep toast `display:none` by default
+- #33865: Add shift-tab keyboard support for dialogs (modal & Offcanvas components)
+- #33866: Add dynamic, live alerts example to docs
+- #34170: Use a streamlined way to trigger component dismiss
+- #34205: Cleanup tooltip & popover components
+- #34207: Make proper use of the SelectorEngine in ScrollSpy
+- #34215: Use the `switch` statement instead of `if`
+- #34220: Do a major cleanup in Collapse.js
+- #34333: Accept argument of different types in the `getInstance` method
+- #34441: util.js: remove `Selector.findOne()` dependency
+- #34458: Dropdown cleanups
+- #34543: Fix `Util.reflow` function and add documentation
+- #34619: tooltip: move repeated strings to constants
+- #34620: Enable a few eslint-config-xo rules
+- #34628: Regression on tooltip template creation process.
+
+## 📖 Docs
+
+- #32319: Add maps for all colors, document how to extend color utilities
+- #33866: Add dynamic, live alerts example to docs
+- #34100: Updated utility API (css-vars utils and new bg/color utils), plus new root CSS variables
+- #34406: Fix site params variable on themes section
+- #34472: Added new Offcanvas file to import example
+- #34517: Update nav-tab.md
+- #34526: Add: GitHub Octicons to the list
+- #34557: docs: minor image compression improvements
+- #34573: Update the custom Sass import docs
+- #34574: Document change to `hr` in v5
+- #34577: Make note of `_root.scss` being required
+- #34578: Rename Build Tools page to Contribute
+- #34605: Collapse page: add a link to the accordion page
+- #34637: Improved docs describing `media-breakpoint-down` breakpoints
+
+## 🛠 Examples
+
+- #33882: Add four new snippet examples
+- #34273: Offcanvas navbar
+- #34336: Remove unneeded `.text-white-50` CSS rule from Offcanvas Example
+
+## 🌎 Accessibility
+
+- #33865: Add shift-tab keyboard support for dialogs (modal & Offcanvas components)
+
+## 🔧 Utility API
+
+- #34100: Updated utility API (css-vars utils and new bg/color utils), plus new root CSS variables
+
+## 🧰 Misc
+
+- #32907: npm scripts: add `aggregate-output`
+- #34389: CONTRIBUTING.md: fix broken link to README.md
+- #34453: CI: make use of the `actions/setup-node`'s `cache` option
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies: https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F31
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.2 (2021-06-22)</h2>
+      <pre>## 🚀 Features
+
+- #34052: Automatically select an item in the dropdown when using arrow keys
+
+## 🎨 CSS
+
+- #33621: Allow individual grid classes to override `.row-cols`
+- #34008: Fix x-paddings for select (with floating label, and in Firefox)
+- #34026: Set the correct color for popover header bottom border
+- #34034: Add missing transition to `.form-select`
+- #34044: Fix wrong comment text for tooltip
+- #34047: Handle complex expressions in `add()` & `subtract()`
+- #34048: Decouple `--bs-table-bg` and `--bs-table-accent-bg`
+- #34062: Document how to make utilities responsive using the API
+- #34124: fix(dropdowns): RTL for `.dropdown-menu-*`
+- #34161: fix(forms): unitless `line-height` for floating labels
+- #34223: docs(style): fix display of nested `<ul><li>`
+- #34245: Replace `/` division with multiplication and custom `divide()` function
+- #34255: Don't set auto margin on offcanvas close
+- #34281: Fix lingering Sass math
+- #34283: Update the `divide()` function and RFS
+- #34332: Fix another Sass division
+
+## ☕️ JavaScript
+
+- #33276: Add `getOrCreateInstance` method in base-component
+- #33371: Popover & Tooltip: Allow `dispose`/`hide` methods usage through `jQueryIntreface`
+- #33608: Utils: add `getNextActiveElement` helper function
+- #33845: Fix handling of transitionend events dispatched by nested elements
+- #33928: Reset inside a Dialog does not work if `data-dismiss="modal"` is set
+- #33947: Refactor scrollbar.js to be used as a Class
+- #33948: Add tests for scrollbar.js & better handling if a style property doesn't exist
+- #33960: fix `isVisible` false positives from deep nesting or alternate means
+- #33982: Don't add empty content holder when there is no content available
+- #34014: Fix backdrop "Cannot read property 'removeChild' of null" when removed from body
+- #34052: Automatically select an item in the dropdown when using arrow keys
+- #34070: Fix test of #34014
+- #34071: Change `element.parentNode.removeChild(element)` to `element.remove()`
+- #34085: Fix prevented show event disables modals with fade class from being displayed again
+- #34092: Backdrop: Fix stale body by removing unnecessary default
+- #34158: Register only one `DOMContentLoaded` event listener in `onDOMContentLoaded`
+- #34266: Fix carousel buttons
+- #34307: fix(carousel): arrow keys break animation if carousel sliding
+
+## 📖 Docs
+
+- #33724: Nav-tabs documentation example: Adjust example to `querySelectorAll`
+- #33749: add Bootstrap 5 Simplified Chinese translation
+- #34009: Drop `BlinkMacSystemFont` in docs
+- #34018: Adjusted z-index to cover "copy" buttons
+- #34040: Placeholder changes to input value in readonly input.
+- #34044: Fix wrong comment text for tooltip
+- #34050: Replace Freenode with Libera IRC server
+- #34062: Document how to make utilities responsive using the API
+- #34074: Update Hugo config and sitemap.xml
+- #34090: Change HTTP to HTTPS
+- #34143: Add positioned badges example to docs
+- #34160: img in horizontal card
+- #34175: Fix typo in sass.md ("theses"→ "these")
+- #34179: Missed explanations for variables override
+- #34180: docs: update dropdowns.md to reflect the correct version
+- #34183: docs: update migration.md to fix a typo
+- #34199: docs: update overview.md to fix typo
+- #34223: docs(style): fix display of nested `<ul><li>`
+- #34239: fix(docs): update docs to match the newest modal-open removal
+- #34251: Document the change to breakpoint mixins
+- #34256: Add important to utilities, mention it's usage and global variable
+- #34263: Fix error in JavaScript doc example
+- #34280: Remove a leftover `sass:math` module call
+
+## 🛠 Examples
+
+- #34007: Dashboard example improvements
+- #34011: Cheatsheet: fix JS errors in `setActiveItem()`
+- #34214: fix accessibility issue on sidebars example
+
+## 🌎 Accessibility
+
+- #34052: Automatically select an item in the dropdown when using arrow keys
+- #34214: fix accessibility issue on sidebars example
+
+## 🔧 Utility API
+
+- #34062: Document how to make utilities responsive using the API
+- #34256: Add important to utilities, mention it's usage and global variable
+
+## 🏭 Tests
+
+- #33948: Add tests for scrollbar.js & better handling if a style property doesn't exist
+
+## 🧰 Misc
+
+- #34075: Improve vnu-jar.js
+- #34250: Replace Freenode with Libera.Chat in the remaining files
+- #34279: build/vnu-jar.js: clean up ignores
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies: https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F41
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.1 (2021-05-13)</h2>
+      <pre>## 🎨 CSS
+
+- #33551: Modals no longer use `.modal-open` to affect the `<body>` scroll
+- #33644: Validated inputs in `.input-group` shouldn't be behind sibling element
+- #33825: Prevent `accent-bg` from leaking in nested table
+- #33870: Don't redefine `$list-group-color` in loop
+- #33961: Revert `:read-only` selector back to `[readonly]`
+
+## ☕️ JavaScript
+
+- #33221: Prevent toast autohiding if focusing or hovering
+- #33288: Remove potential false positive assertions
+- #33327: Move get element functionality to a helper
+- #33381: Popover/Tooltip: streamline `config` property to start with underscore
+- #33609: Merge js-components `transitionend` listener callbacks into one method
+- #33635: Extract static `DATA_KEY` & `EVENT_KEY` to base-component
+- #33740: Refactor: move disposing properties into the base class
+- #33853: Fix backdrop `rootElement` not initialized in Modal
+- #33920: Fix: Click on input outside of dropdown-menu prevents dropdown from closing
+- #33938: Fix dropdown test warning "without expectations"
+
+## 📖 Docs
+
+- #33709: Add Arabic translation
+- #33837: update About text now that Bootstrap 5 is live
+- #33841: Fix typo in scrollspy docs
+- #33842: Fix browser support versions in migration doc
+- #33843: Fix typo in migration.md
+- #33855: Remove extra t in Close button heading in Migration guide
+- #33868: Fix value
+- #33879: Fix "no long require" to "no longer require" typo
+- #33893: Add accessible names to SVG icons in alerts
+- #33896: Fix accordion link
+- #33901: docs: make tooltip anchor properly wrap the svg
+- #33904: Add Fathom Analytics to v5 docs
+- #33915: docs: fix rtlcss stringmap configuration
+- #33916: Remove unneeded "Edge Legacy" mention in Range docs
+- #33924: Fix "directoinal" typo in v5 migration docs
+
+## 🛠 Examples
+
+- #33850: Fix unnecessary classes
+- #33859: Update Sidebars example to fix dividers and rendering on Chrome
+- #33926: Fix offcanvas example, using a custom trigger selector
+
+## 🌎 Accessibility
+
+- #33893: Add accessible names to SVG icons in alerts
+
+## 🏭 Tests
+
+- #33288: Remove potential false positive assertions
+- #33635: Extract static `DATA_KEY` & `EVENT_KEY` to base-component
+- #33927: Fix offcanvas test to expect the initial body `overflow` value
+- #33938: Fix dropdown test warning "without expectations"
+
+## 🧰 Misc
+
+- #33923: CI: remove Node.js 10
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies: https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F38
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0 (2021-05-05)</h2>
+      <pre>## Highlights
+
+#32155: Updated `make-col()` mixin to generate equal columns when no size is specified
+#32763: Added new `color-scheme()` mixin
+#33389: Dropdown menus now have option become clickable
+#33453: Added new docs footer
+#33548: Offcanvas header components are now vertically aligned
+#33549: Added offcanvas-top modifier
+#33634: Added support for `.dropdown-item`s wrapped in `<li>`s
+#33626: Fix v5 regressions in tab dropdown functionality
+
+## 🚀 Features
+
+- #32763: Add `color-scheme` mixin
+- #33389: Dropdown — Add option to make the dropdown menu clickable
+- #33549: Add offcanvas-top modifier
+
+## 🎨 CSS
+
+- #32155: Add equal column mixin
+- #32763: Add `color-scheme` mixin
+- #33292: Make accordion icon rotation more natural
+- #33411: Fix validation feedback icon in select multiple
+- #33478: Make `.nav-link` color consistent when using buttons
+- #33482: Dropdown — Apply positioning only when Popper is not used
+- #33548: Vertically align offcanvas header components
+- #33549: Add offcanvas-top modifier
+- #33550: Spinner alignment changes
+- #33598: Hide validation icons from multiple selects
+- #33600: Have $form-check-input-border's default derive from $black
+- #33607: Reduce color-scheme complexity
+- #33642: use `:read-only` css selector instead `[readonly]` for consistency
+- #33658: fix: use list-group variable instead of alert
+- #33736: accordion: fix `border-top` on Firefox
+
+## ☕️ JavaScript
+
+- #32439: Decouple BackDrop from modal
+- #33245: Decouple Modal's scrollbar functionality
+- #33249: Simplify Modal Config
+- #33250: Simplify ScrollSpy config
+- #33310: fix: make EventHandler better handle mouseenter/mouseleave events
+- #33389: Dropdown — Add option to make the dropdown menu clickable
+- #33429: Remove element event listeners through base component
+- #33451: Add missing things in `hide` method of dropdown
+- #33456: Use our `isDisabled` util on dropdown
+- #33466: Refactor dropdown's hide functionality
+- #33479: Fix dropdown escape propagation
+- #33496:  Use cached `noop` function
+- #33497: Use template literals instead of concatenation
+- #33499: Fix wrong carousel transformation, direction to order
+- #33545: Use the backdrop util in offcanvas, enforcing consistency
+- #33586: Tab.js: Fixes on click handling
+- #33589: refactor: make static `selectMenuItem` method private
+- #33612: tests: fix random BrowserStack failures in scrollbar
+- #33626: Fix v5 regressions in tab dropdown functionality
+- #33634: Dropdown: support `.dropdown-item` wrapped in `<li>` tags
+- #33638: Fix toggle between modals example
+- #33643: fix: clicking an item in navbar dropdown should not collapse the dropdown in firefox
+- #33666: Modal.js: fix test for scrollbar
+- #33677: Offcanvas.js: If scroll is allowed, should allow focus on other elements
+- #33684: Don't change the value for `altBoundary` option
+- #33706: Scrollbar: respect the initial body overflow value
+
+## 📖 Docs
+
+- #33446: Make offcanvas example fully static
+- #33453: Add new docs footer
+- #33521: The spacing margin side identifiers 's' and 'e' may be intuitive for …
+- #33522: Clarify docs accordion example
+- #33543: Update parcel.md
+- #33553: Add example: Panels stay open
+- #33567: Fixed wrong method name _getInstance
+- #33571: footer: fix `rel=noopener` attribute
+- #33583: docs: update clipboard.js to v2.0.8
+- #33597: Docs: Fix wrong dark attribute in Table - Vertical Alignment
+- #33632: Correct the heading for the States section
+- #33638: Fix toggle between modals example
+- #33664: Docs: fix W3C validation errors in list-group example
+- #33668: Update anchor.js to v4.3.1.
+- #33669: Change from preventOverflow to detectOverflow in `boundary` option
+- #33675: Fix typo
+- #33676: Fix Grid System docs
+- #33685: docs: fix the default value of Popper's `boundary` option
+- #33687: Fixes #33686 typo in RTL docs
+- #33690: Add Bootstrap Icons to alerts docs
+- #33726: Replace modal and scrollspy placeholder content
+- #33733: Tooltip/Popover — Minor doc updates
+- #33735: Clarify `boundary` option description
+- #33772: Improve overall new examples' accessibility
+- #33782: Add new team members to the Teams page
+- #33786: Docs: adding intro about web accessibility
+- #33797: Update links to CCA, MQ5 prefers-reduced-motion, evergreen WCAG urls
+- #33810: Tweak toast docs
+- #33829: Update migration guide for some v5 changes
+- #33832: Fix doc typo and Bootstrap Icons link
+- #33833: refactor(docs): Added form file input variables
+- #33834: Rewrite migration guide
+
+## Examples
+
+- #33097: Update RTL examples
+- #33759: fix: change margin breakpoints for bootstrap logo on double header
+- #33681: Fixes signup form in Heroes example
+- #33569: Improve responsiveness of Features examples
+
+## 🌎 Accessibility
+
+- #33772: Improve overall new examples' accessibility
+- #33810: Tweak toast docs
+
+## 🏭 Tests
+
+- #33578: Remove unnecessary `data-bs-backdrop="static"` from modal tests
+- #33612: tests: fix random BrowserStack failures in scrollbar
+- #33666: Modal.js: fix test for scrollbar
+- #33734: Add missing test for clicking select option in a dropdown
+
+## 🧰 Misc
+
+- #33720: JS tests: add Node.js 16
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F27>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0-beta3 (2021-03-23)</h2>
+      <pre>## Highlights
+
+- Added [new offcanvas component](https://getbootstrap.com/docs/5.0/components/offcanvas/) for left, right, and bottom-aligned hidden content
+- Added [four new snippet-based examples](https://getbootstrap.com/docs/5.0/examples/): [headers](https://getbootstrap.com/docs/5.0/examples/headers/), [heroes](https://getbootstrap.com/docs/5.0/examples/heroes/), [features](https://getbootstrap.com/docs/5.0/examples/features/), and [sidebars](https://getbootstrap.com/docs/5.0/examples/sidebars/)
+- Updated the [starter template example](https://getbootstrap.com/docs/5.0/examples/starter-template/) and a few other examples
+- Added [new Sass docs section](https://getbootstrap.com/docs/5.0/components/alerts/#sass) to nearly every page to show variables, mixins, loops, and keyframes from our source code
+- Added [new `.list-group-numbered` variation](https://getbootstrap.com/docs/5.0/components/list-group/#numbered) to list groups that uses pseudo-elements for numbering list group items.
+- Removed explicit focus state suppression in Reboot
+- Improved carousel swipe behaviors for RTL
+- Updated accordions to improve transitions and borders when animating
+- Updated Sass customization docs to show how to properly override default variables
+- Fixed tooltips not appearing after rapid focus in and out
+- Fixed dropdown events not bubbling and forms inside dropdowns not propagating
+- Removed flip option from dropdowns
+- Disabled select now render consistently in Chrome
+- Button elements now grow in `.nav-fill` and `.nav-justified`
+- JavaScript plugin constructors now accept CSS selectors
+- De-duped the `.border-0` utility
+- Fixed event handler removal in dropdown/carousel dispose
+- Added [new Parcel guide](https://getbootstrap.com/docs/5.0/getting-started/parcel/) to the docs
+- Added input focus blur Sass variable
+- Updated `.browserslistrc` to drop Android and add Safari/iOS 12 as the new minimum version (completing our two latest major releases guideline for supported browsers).
+
+## 🚀 Features
+
+- #29017: Offcanvas as component
+- #32245: Allow constructors to accept a CSS selector
+- #33068: Add `ol.list-group` with pseudo-element numbers
+
+## 🎨 CSS
+
+- #32747: Add Sass docs (variables, mixins, and loops) to most pages
+- #32925: Clear duplicated class `border-0`
+- #33029: Remove explicit suppression of focus outline
+- #33031: Add input focus blur variable
+- #33068: Add `ol.list-group` with pseudo-element numbers
+- #33127: Reset `select:disabled` opacity for Chrome
+- #33149: Revamp accordion borders to fix pixel jumping
+- #33154: Fix sibling card links in RTL
+- #33210: Properly set `.list-group-item` color
+- #33211: Validated controls border in input-group
+- #33213: Buttons should grow in nav-fill & nav-justified
+- #33325: Remove duplicate text-decoration style for abbr[title]
+- #33426: Fix flush accordion styles
+
+## ☕️ JavaScript
+
+- #30621: modal: don't add margin & padding when sticky is not full width
+- #32180: refactor: use a Map instead of an Object in dom/data
+- #32245: Allow constructors to accept a CSS selector
+- #32446: util: change `isRTL` to a function
+- #32913: Fix carousel RTL and refactor code, fix rtl swipe issues
+- #33000: Fix event handler removal in dropdown/carousel dispose
+- #33056: modal: move common code to a new `isAnimated` method
+- #33120: Remove the default positioning from `.dropup`
+- #33136: Adjust `SAFE_URL_PATTERN` regex for use with test method of regexes.
+- #33198: Dropdown — Drop `flip` option
+- #33248: Accept data-bs-body option in the configuration object as well
+- #33257: Dynamic tab should not show when triggered on `disabled` element
+- #33261: Change the name of the `Offcanvas` constructor
+- #33289: fix tooltips disappearing after trying to interact during their fade out animation
+- #33382: Allow offcanvas to be initialized in open state
+- #33385: Use more safe check for 'isDisabled' helper
+- #33442: Allow data-toggle="dropdown" and form click events to bubble
+
+## 📖 Docs
+
+- #30909: Add Parcel Bundler doc
+- #32747: Add Sass docs (variables, mixins, and loops) to most pages
+- #33006: docs: add bootstrap5 zh-tw in translations
+- #33049: Docs improvements after beta2
+- #33081: Fix typo in nav-tabs docs
+- #33123: Clarify docs around .navbar-brand
+- #33207: Add an example of v4's media component in the flex utils docs
+- #33246: Update the "Nonblocking files" section in the docs
+- #33267: Grammatically update the doc
+- #33300: Update modal's `show` method to accept `relatedTarget` as an argument
+- #33301: Add example: toggle modal dialogs
+- #33322: Fix Flex utilities documentation to add vertical space in example
+- #33332: Mention .no-gutters removal in migration guide
+- #33333: Fixes some copy around inline forms
+- #33380: Utilities to Utilities API (Borders doc page)
+- #33386: Update Customize > Sass docs to properly place default variable overrides
+- #33430: Add link to new Parcel guide in starter template
+- #33443: offcanvas-navbar: add missing redirect
+
+## 🏭 Tests
+
+- #32662: Unit tests for Popper V2
+- #33045: Simplify karma.conf.js
+- #33060: Add the missing expectations for touch events
+- #33090: Add tests for `DATA_KEY`
+- #33167: visual tests: add missing base-component dist file
+- #33398: BrowserStack: test on iPhone 12
+
+## 🧰 Misc
+
+- #33067: CI: skip release drafter if we are not on our repo
+- #33100: linkinator: replace `--silent` with `--verbosity`
+- #33129: Rename _gh_pages to _site.
+- #33130: CodeQL: skip dependabot PRs too
+- #33148: Improve change-version script
+- #33192: Bundlewatch: stop ignoring dependabot branches
+- #33326: Delete the unused build/ship.sh
+- #33329: @rollup/plugin-replace: specify `preventAssignment: true`
+- #33397: .browserslistrc: remove the Edge workaround.
+- #33399: .browserslistrc: remove Android and make Safari/iOS 12 the minimum
+- #33401: README.md: use shields.io for the tests badge too
+
+## 📦 Dependencies
+
+Updated numerous devDependencies <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F34>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0-beta2 (2021-02-10)</h2>
+      <pre>## Highlights
+
+- **Dropdowns:**
+  - Updated dropdown plugin to add `data-bs-popper="static"` via JS to the `.dropdown-menu` when the trigger has add `data-bs-display="static"` and `data-bs-popper="none"` when in navbars.
+  - Modified several selectors to separate our positioning styles from the Popper.js styles.
+- **Navbars:**
+  - Added a new `.navbar-nav-scroll` class to enable vertical scrolling when a collapsed navbar is opened. It's customizable via Sass and a CSS variable. [Read more in the docs](https://getbootstrap.com/docs/5.0/components/navbar/#scrolling).
+  - We've re-added `flex-grow` to the `.navbar-collapse` to restore the flexbox behaviors from v4 and prevent some content from being inadvertently squished.
+- **Forms:**
+  - Removed `vertical-align` from `.form-select`
+  - Form validation mixin updated with additional parameters
+  - Fixed validation icon placement in `.form-select`
+  - Checkboxes and radio buttons are aligned better in input groups
+- **Buttons:**
+  - Added variables for tinting and shading button state colors
+  - Suppressed the default focus outline for buttons in Chromium
+- **Toasts:**
+  - Added `word-break` to `.toast-body`
+  - Added a live example to the docs to trigger a real toast
+- **Carousels:**
+  - Updated docs examples to use `<button>`s wherever possible instead of `<a>` elements.
+  - CSS selectors changed for using `<button>`s as indicators (from `.carousel-indicators li` to `.carousel-indicators [data-bs-target]`).
+- **Bundles:**
+  - Added our helpers to the utilities CSS bundle
+- **JavaScript:**
+  - Dropdown now emits events on the `.dropdown-toggle` instead of the `.dropdown`.
+  - Restored the offset option for dropdowns.
+  - Fixed modal toggling when clicking on `data-bs-toggle="modal"`.
+  - We now build our base component as a separate `.js` file.
+  - We now prevent `getSelector` from returning URLs as selector which caused errors in dropdown and scrollspy plugins.
+  - Refactored components to use a utility function to define jQuery plugins
+
+## 🚀 Features
+
+- #32037: Add `.navbar-nav-scroll` for vertical scrolling of navbar content
+- #32317: Add variables for modifying button state colours.
+- #32376: Support Popper virtual elements
+
+## ⚡ Performance Improvements
+
+- #32348: Use box shadows instead of linear gradients to colorize tables
+
+## 🎨 CSS
+
+- #31757: Extended Form validation states capabilities
+- #32037: Add `.navbar-nav-scroll` for vertical scrolling of navbar content
+- #32317: Add variables for modifying button state colours.
+- #32318: Remove `vertical-align` from `.form-select`
+- #32324: Add helpers to utilities bundle
+- #32348: Use box shadows instead of linear gradients to colorize tables
+- #32397: Utility API, RFS option: Only generate responsive classes when needed
+- #32415: Reset Popper position in RTL
+- #32419: Tweak `.form-select` padding
+- #32423: Add two new variables for pagination border-radius values
+- #32436: RTL improvements
+- #32440: Expand `visually-hidden-focusable` so it can be used on a container, …
+- #32492: Fix: variables collide with globals
+- #32501: `.ratio` missing variable prefix
+- #32524: Remove the initial margin from dropdown/popover in favor of Popper
+- #32575: docs(sidebar): invalid CSS value
+- #32627: Carousel: use buttons, not links, for prev/next controls
+- #32630: Dynamic tabs: use buttons rather than links
+- #32631: Remove old/unnecessary reboot bug fix
+- #32661: Make carousel indicators actual buttons
+- #32670: Add word-break to `.toast-body`
+- #32689: Suppress focus outline for buttons when it shouldn't be visible in Chromium
+- #32751: Consistently use `outline:0` rather than `outline:none`
+- #32754: Darken dropdown item hover style
+- #32761: Mention stretched-link constraints with table elements
+- #32785: Lighten disabled dropdown text to `$gray-500`
+- #32787: Remove popover-arrow margin to fix alignment of the arrow
+- #32793: Change `.form-check` background to `$input-bg` and change transitions
+- #32819: Color utils docs
+- #32899: Re-add `flex-grow` to `.navbar-collapse`
+- #32912: Update checks and radios in input groups
+- #32930: Fix hardcoded custom prop. in `.navbar-nav-scroll`
+- #32951: fix(accordion): ensure `.accordion-button` stays left-aligned
+- #32986: Dropdown menu alignment fixes
+- #33003: Dropdown - Change the selector to check the use of Popper
+- #33022: Ensure `.navbar-collapse` behaves as intended
+
+## ☕️ JavaScript
+
+- #32285: Refactor components to use a utility function to define jQuery plugins
+- #32303: Use the ternary operator in a few more places
+- #32309: tests: replace deprecated jQuery method
+- #32313: build-plugins: build Base component too
+- #32339: Remove `SelectorEngine.matches()`.
+- #32376: Support Popper virtual elements
+- #32391: SelectorEngine: drop variable used once
+- #32392: alert: rename variables for consistency
+- #32393: carousel: switch to string constants
+- #32394: Remove `TRANSITION_END` from utils
+- #32395: carousel: switch to `if/else`
+- #32405: Add Popper fallback behaviour
+- #32420: Tooltip - check if tip and its parent node exist in dispose method
+- #32436: RTL improvements
+- #32437: Tooltip/popover - change the default value for `fallbackPlacements`
+- #32438: collapse: prevent url change if `A` nested tag is clicked
+- #32443: Restore offset option for dropdown component
+- #32465: Tooltip - Add missing callback in async spec
+- #32511: modal: move common code to reusable functions
+- #32523: Tooltip refactoring
+- #32524: Remove the initial margin from dropdown/popover in favor of Popper
+- #32585: Throw a `TypeError` instead of the generic `Error`
+- #32586: Prevent `getSelector` from returning URLs as selector
+- #32603: Scrollspy - Remove unnecessary event argument
+- #32625: Dropdown - Emit events on the `.dropdown-toggle` button
+- #32661: Make carousel indicators actual buttons
+- #32691: Fix toggling modal when clicking on `data-bs-toggle="modal"`
+- #32750: Fix dropdown keys to open menu
+- #32843: Remove custom `fallbackPlacements` from the dropdown
+- #32845: Fix Popper preventOverflow boundary config
+- #32882: Add function type for `popperConfig` option
+- #32986: Dropdown menu alignment fixes
+
+## 📖 Docs
+
+- #32246: Replace Lorem Ipsum placeholder text with more representative (or at least english language) text
+- #32259: docs: SVG consistency changes
+- #32272: Add a callout for the sanitizer in popovers and tooltips
+- #32284: docs: Add Korean translation
+- #32287: Typo: show on xxl, if only xl should be hidden.
+- #32316: carousel.md: fix `$carousel-transition-duration` reference
+- #32332: Move migration sidebar entry to sidebar.yml
+- #32390: docs: Fix Popper-related docs
+- #32398: Fix missed occurrencies of "Popper.js"
+- #32399: Remove duplicated 'follow Bootstrap on Twitter' link in Getting Started
+- #32401: cheatsheet: Drop redundant `(current)` text
+- #32437: Tooltip/popover - change the default value for `fallbackPlacements`
+- #32449: examples: Update font utility classes to new v5 versions
+- #32455: docs: Add `system-ui` to the native font stack documentation
+- #32461: Docs: style clipboard button on `:focus`, not just `:hover`
+- #32463: Straggler lorem ipsum text
+- #32464: Add missing `has-validation` in checkout examples
+- #32478: Remove redundant `pointer-events: none` override for tooltip and popover disabled buttons
+- #32479: Clean up lorem ipsum text in popover examples
+- #32483: docs: Remove unneeded `.form-group` class
+- #32489: Fix popover docs example
+- #32490: Add keyboard-focusable elements for popover on disabled button
+- #32512: Docs v5: Fix Sass rounding precision and state Sass implementation
+- #32529: Tooltips: add missing space
+- #32534: Documentation: added class selector "." to "dropend"
+- #32543: API docs: add missing comma
+- #32575: docs(sidebar): invalid CSS value
+- #32589: Fix navbar docs - active `nav-link`
+- #32620: docs: work around Toast CSS conflict with utils
+- #32627: Carousel: use buttons, not links, for prev/next controls
+- #32630: Dynamic tabs: use buttons rather than links
+- #32632: Docs: Tweak the wording for collapse to indicate button is preferred/more semantic
+- #32634: Docs: Remove incorrect mention of dropdowns for dynamic tab behavior
+- #32638: Add an actual `data-bs-touch="false"` example in the carousel docs
+- #32661: Make carousel indicators actual buttons
+- #32684: Add functions and variables to the utilities API docs imports
+- #32685: Clarify the `$enable-shadows` option in our docs
+- #32688: Tweak wording for no-touch carousel
+- #32740: Fix typo
+- #32744: Document size and multiple aren't supported on floating label selects
+- #32745: Add a link to v4.x from the v5 homepage
+- #32758: Migration: mention the removal of `.rounded-sm/lg` utilities
+- #32759: Add mention of CSPs and SVGs
+- #32760: Add a live toast example to the docs
+- #32761: Mention stretched-link constraints with table elements
+- #32771: Improve docs regarding RTL migration
+- #32778: Document some basic code conventions for us
+- #32782: [docs] Update toasts.md
+- #32788: Remove role="button" from CTA links in carousel examples
+- #32795: Clarifies Sass variable defaults, adds bootstrap-npm-starter callout
+- #32819: Color utils docs
+- #32842: Docs: add v4.6.0
+- #32846: docs: Fix navbar-nav-scroll description
+- #32911: migration: mention `.form-text` changes
+- #32912: Update checks and radios in input groups
+- #32940: Fix default value for `$enable-deprecation-messages`
+- #32979: Fix boundary config description for dropdown and popover
+- #32995: Add a note to change the case type of option name
+- #33017: Docs on enforcing HTTPS and avoiding mixed content
+- #33027: Revamp sticky header offset to improve a11y
+
+## 🌎 Accessibility
+
+- #32401: cheatsheet: Drop redundant `(current)` text
+- #32661: Make carousel indicators actual buttons
+- #33027: Revamp sticky header offset to improve a11y
+
+## 🏭 Tests
+
+- #32309: tests: replace deprecated jQuery method
+- #32465: Tooltip - Add missing callback in async spec
+- #32486: BrowserStack: test on macOS Catalina instead of High Sierra
+- #32730: Move "active" class from `.nav-item` to `.nav-link`
+- #32769: JS: update karma config
+- #32904: Minor ESLint rules cleanup
+
+## 🧰 Misc
+
+- #32185: terser: use 2 passes instead of the default 1.
+- #32238: CI: add a 30-min timeout for BrowserStack
+- #32312: build-plugins: switch to "bundled" for babel helpers
+- #32313: build-plugins: build Base component too
+- #32314: CONTRIBUTING: mention dist files
+- #32417: Update Release Drafter configuration
+- #32452: Update CodeQL Action
+- #32453: Few updates for v5.0.0-beta1 NuGet support
+- #32469: Improve zip-examples.js
+- #32635: CI: update to actions/setup-node@v2
+- #32737: package.json: move `version_short` variable under the `config` object
+- #32755: GitHub Actions cleanup
+- #32756: Stylelint: disallow some property values
+- #32770: .gitignore: remove Ruby/Jekyll entries
+- #32796: CI: change Node.js to `14`
+- #32799: Update zip-examples.js
+- #32917: change-version: remove vendor, add resources
+- #32919: CI: switch to the coverallsapp/github-action tag
+- #33012: CI: remove the cache fallback and shorten cache key
+- #33016: vnu-jar.js: quote vnu path
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F33
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.6.0 (2021-01-19)</h2>
+      <pre>### Highlights
+
+- Tooltips and popovers can have custom clases via `customClass` option.
+- Added new `.navbar-nav-scroll` class for scrolling expanded navbar contents on mobile devices.
+- For improved accessibiliy, spinners now slow down when `prefers-reduced-motion` is enabled.
+- v4.x docs are now built on Hugo for easier maintenance and backports from v5.x.
+- Darkened `background-color` of `.dropdown-item` for improved hover state contrast, and ligthened the disabled `.dropdown-item` `color`.
+- Improved alignment of form validation tooltips.
+- File inputs no longer extend beyond their containers.
+
+### CSS
+
+- [#31557](https://github.com/twbs/bootstrap/pull/31557): Fix form validation tooltip alignment
+- [#31657](https://github.com/twbs/bootstrap/pull/31657): Handle the Ubuntu sans-serif case
+- [#31700](https://github.com/twbs/bootstrap/pull/31700): Suppress flexbox side effects in breadcrumb
+- [#31882](https://github.com/twbs/bootstrap/pull/31882): Slow down spinners when prefers-reduced-motion
+- [#31886](https://github.com/twbs/bootstrap/pull/31886): Fixed: Undefined mixin "deprecate" when importing "bootstrap-grid-scss"
+- [#32141](https://github.com/twbs/bootstrap/pull/32141): Use correct value order
+- [#32145](https://github.com/twbs/bootstrap/pull/32145): Avoid invisible real file input "spilling" out of container
+- [#32160](https://github.com/twbs/bootstrap/pull/32160): Add overflow suppression to custom file label
+- [#32211](https://github.com/twbs/bootstrap/pull/32211): Move negative margin-bottom from .nav-item to .nav-link
+- [#32212](https://github.com/twbs/bootstrap/pull/32212): Remove needless Stylelint disables
+- [#32833](https://github.com/twbs/bootstrap/pull/32833): Add `.navbar-nav-scroll` for vertical scrolling of navbar content
+- Add two new variables for pagination border-radius values; backport of [#32423](https://github.com/twbs/bootstrap/pull/32423)
+- Remove old/unnecessary reboot bug fix; backport of [#32631](https://github.com/twbs/bootstrap/pull/32631)
+- Suppress focus outline for buttons when it shouldn't be visible in Chromium; backport of [#32689](https://github.com/twbs/bootstrap/pull/32689)
+- Consistently use `outline:0` rather than `outline:none`; backport of [#32751](https://github.com/twbs/bootstrap/pull/32751)
+- Darken dropdown item hover style; backport of [#32754](https://github.com/twbs/bootstrap/pull/32754)
+- Lighten disabled dropdown text to `$gray-500`
+
+### JS
+
+- [#31820](https://github.com/twbs/bootstrap/pull/31820): Check for data-interval on the first slide of carousel
+- [#31834](https://github.com/twbs/bootstrap/pull/31834)/[#32225](https://github.com/twbs/bootstrap/pull/32225): tooltip/popover: add a `customClass` option
+- [#32001](https://github.com/twbs/bootstrap/pull/32001): Move `js/src/index.js` one folder up
+- [#32045](https://github.com/twbs/bootstrap/pull/32045): tests: fix sanitizer test
+- [#32220](https://github.com/twbs/bootstrap/pull/32220): Don't hide modal when `config.keyboard` is false
+- [#32312](https://github.com/twbs/bootstrap/pull/32312): build-plugins: switch to "bundled" for babel helpers
+
+### Docs
+
+- [#31861](https://github.com/twbs/bootstrap/pull/31861): Split up dropdown sizing docs to improve rendering
+- [#31892](https://github.com/twbs/bootstrap/pull/31892): Remove redundant visually hidden "(current)" from pagination controls
+- [#31893](https://github.com/twbs/bootstrap/pull/31893): manifest.json: Switch to relative URLs so that we don't need to change the path with every major/minor release
+- [#31898](https://github.com/twbs/bootstrap/pull/31898): switch to suggesting jsDelivr as a CDN
+- [#31904](https://github.com/twbs/bootstrap/pull/31904):
+  - docs(forms): use a legend for fieldset instead of aria-label
+  - docs(forms): fix incorrect legend nesting in fieldset
+- [#31936](https://github.com/twbs/bootstrap/pull/31936): forms: change inline custom radio name
+- [#31951](https://github.com/twbs/bootstrap/pull/31951): Update anchor-js to v4.3.0
+- [#31960](https://github.com/twbs/bootstrap/pull/31960): Explicitly mention emoji fonts, tweak sentence in typography
+- [#31981](https://github.com/twbs/bootstrap/pull/31981): list-group.md: fix snippet
+- [#32005](https://github.com/twbs/bootstrap/pull/32005): Remove `bugreport.apple.com` since it doesn't work
+- [#32015](https://github.com/twbs/bootstrap/pull/32015): Fix redirects
+- [#32050](https://github.com/twbs/bootstrap/pull/32050): Make docs anchorjs links darker on keyboard focus
+- [#32054](https://github.com/twbs/bootstrap/pull/32054): Add callouts about using light colors ideally on a dark background
+- [#32077](https://github.com/twbs/bootstrap/pull/32077): Switch to Hugo
+- [#32083](https://github.com/twbs/bootstrap/pull/32083): mention "Liberation Sans"
+- [#32087](https://github.com/twbs/bootstrap/pull/32087): download.md: link to JS files comparison too
+- [#32094](https://github.com/twbs/bootstrap/pull/32094): Changes to navbar documentation/explanation
+- [#32106](https://github.com/twbs/bootstrap/pull/32106): Clarify JS bundle docs once more for v4
+- [#32137](https://github.com/twbs/bootstrap/pull/32137): input-group.md: fix wrong class `.visually-hidden`
+- [#32138](https://github.com/twbs/bootstrap/pull/32138): navbar.md: remove `loading=lazy` from snippets
+- [#32147](https://github.com/twbs/bootstrap/pull/32147): Fix caniuse.com redirects
+- [#32151](https://github.com/twbs/bootstrap/pull/32151): Mention user-select-all support in docs
+- [#32196](https://github.com/twbs/bootstrap/pull/32196): homepage: split snippets and show copy buttons
+- [#32203](https://github.com/twbs/bootstrap/pull/32203): Switch to jsDelivr for the remaining docs assets
+- [#32223](https://github.com/twbs/bootstrap/pull/32223): introduction: split comments
+- [#32247](https://github.com/twbs/bootstrap/pull/32247): Fix typos in tooltip/popover docs
+- [#32253](https://github.com/twbs/bootstrap/pull/32253): Add Russian translation
+- [#32363](https://github.com/twbs/bootstrap/pull/32363): Remove useless `.text-left` in Layout / Overview
+- [#32399](https://github.com/twbs/bootstrap/pull/32399): Remove duplicated "follow Bootstrap on Twitter" link in Community section
+- [#32457](https://github.com/twbs/bootstrap/pull/32457): Add mention of the bs-custom-file-input plugin needed for the custom file input
+- [#32461](https://github.com/twbs/bootstrap/pull/32461): style clipboard button on `:focus`, not just `:hover`
+- [#32462](https://github.com/twbs/bootstrap/pull/32462): Replace Lorem Ipsum placeholder text with more representative (or at least english language) text
+- [#32634](https://github.com/twbs/bootstrap/pull/32634): Remove incorrect mention of dropdowns for dynamic tab behavior
+- [#32639](https://github.com/twbs/bootstrap/pull/32639): v4: Add an actual `data-touch="false"` example in the carousel docs
+- [#32728](https://github.com/twbs/bootstrap/pull/32728): add v5.0 in versions
+- [#32761](https://github.com/twbs/bootstrap/pull/32761): Mention stretched-link constraints with table elements
+- [#32789](https://github.com/twbs/bootstrap/pull/32789): Remove `role="button"` from CTA links in carousel example
+- [#32791](https://github.com/twbs/bootstrap/pull/32791): Docs v4: Sass implementation and rounding precision
+- [#32809](https://github.com/twbs/bootstrap/pull/32809):
+  - Clarify Sass import and customize docs for how to modify variable defaults
+  - Add an npm starter project callout to a few pages
+- [#32827](https://github.com/twbs/bootstrap/pull/32827): Add a live toast example to the docs
+- [#32759](https://github.com/twbs/bootstrap/pull/32759): Mention CSP and embedded SVGs in v4 docs
+- docs(dropdowns): clarify where is `.show` applied
+- Require `.has-validation` for input groups with validation
+- Fix mobile menu jump & double border
+- Remove double spaces from homepage SVGs
+- browserconfig.xml: switch to relative image path
+- Tweak the wording for collapse to indicate button is preferred/more semantic; backport of [#32632](https://github.com/twbs/bootstrap/pull/32632)
+- Clarify the `$enable-shadows` option in our docs; backport of [#32685](https://github.com/twbs/bootstrap/pull/32685)
+
+### Examples
+
+- [#31979](https://github.com/twbs/bootstrap/pull/31979): v4 Examples/Floating-labels: fix bad behavior with autofill
+- [#32198](https://github.com/twbs/bootstrap/pull/32198): examples: add the version number in `title`
+
+### Misc
+
+- [#29753](https://github.com/twbs/bootstrap/pull/29753): Improve build/generate-sri.js regex
+- [#32003](https://github.com/twbs/bootstrap/pull/32003): CI: switch to Node.js 14
+- [#32008](https://github.com/twbs/bootstrap/pull/32008): Update Edge's Rendering Engine on CONTRIBUTING.md
+- [#32486](https://github.com/twbs/bootstrap/pull/32486): BrowserStack: test on macOS Catalina instead of High Sierra
+- [#32756](https://github.com/twbs/bootstrap/pull/32756): Stylelint: disallow some property values
+- **Fix for npm 7.x** package.json: move `version_short` variable under the `config` object; backport of [#32737](https://github.com/twbs/bootstrap/pull/32737)
+- Update build-examples script so that the resulting examples zip file includes only the needed files
+- Various CI tweaks
+- Updated devDependencies</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0-beta1 (2020-12-07)</h2>
+      <pre>⚠ Please check our [migration guide](https://getbootstrap.com/docs/5.0/migration/#v500-beta1) for more info!
+
+## 🚀 Features
+
+- #32280: Add toast positioning
+- #30980: Add RTL support
+- #32217: Ability to add custom class in tooltip/popover
+- #31643: Add a state field to create utility pseudo-classes
+
+## 🎨 CSS
+
+- #31178: Update Popper to v2.x
+- #31303: Keep rounded corners for the first `.btn` in vertical button group
+- #31643: Add a state field to create utility pseudo-classes
+- #31735: Simplify `make-container()`
+- #32149: Rename `scale-color()` function to `shift-color()`
+- #32201: fix(container): use `$variable-prefix`
+- #32213: _reboot.scss: remove needless Stylelint disable
+- #32249: breadcrumb: simplify appearance, improve extensibility
+- #32277: Remove default linear gradient
+- #32280: Add toast positioning
+
+## ☕️ JavaScript
+
+- #28849: Accessibility: add `aria-label` for tooltips
+- #29370: create a base component
+- #31178: Update Popper to v2.x
+- #31827: Add namespace "bs" in the data attributes
+- #32095: JS: use more "modern" APIs
+- #32124: tooltip.js: deduplicate `_fixTitle()`
+- #32152: Fix `.close` instances
+- #32154: BrowserStack: test both on iPhone 7 and iPhone X
+- #32173: Make the attribute methods bs specific
+- #32178: Handle Chromium to run Karma
+- #32179: Don't hide modal when `config.keyboard` is false
+- #32217: Ability to add custom class in tooltip/popover
+- #32221: Add missing tags in unit tests
+- #32224: Be consistent with Popper's name.
+- #32233: Update bundle.js in tests/integration
+- #32279: Remove the `show` config option from the modal plugin
+- #32310: Remove Polyfill leftovers
+
+## 📖 Docs
+
+- #31098: Docs: change sidebar collapse controls to actual button elements
+- #31608: Add baseof.html layout to docs
+- #32117: Update _syntax.scss
+- #32131: application.js: remove non-existent selector
+- #32134: Add hyphen between Sass and based
+- #32135: Fix caniuse.com URLs to prevent redirects
+- #32139: floating-labels.md: fix grammar error
+- #32143: example.html: remove extra whitespace
+- #32153: popovers.md: unbreak line
+- #32158: Switch to jsDelivr for the remaining docs assets
+- #32162: docs: Add missing `.has-validation` class for input group example
+- #32163: docs: update selector CodePen example
+- #32174: Position Utilities Docs: Fix the marker SVG color to match the button
+- #32175: skippy.html: reduce whitespace output
+- #32176: docs: use `expanded` Sass output style for development
+- #32177: examples: fix `.btn-block` instances
+- #32187: Manually optimize SVGs
+- #32189: docs(dropdowns): clarify where is `.show` applied
+- #32191: Correct block button breakpoint docs typo
+- #32194: Docs: fix homepage npm install version
+- #32198: examples: add the version number in `title`
+- #32204: Fix a few typos
+- #32223: introduction: split comments
+- #32224: Be consistent with Popper's name.
+- #32226: docs: use `event` instead of `e`
+- #32258: homepage: fix wrong `alt` attribute
+- #32281: Add mention of link underline change to migration and typography
+- #32335: cheatsheet.js: use `event` instead of `e`
+
+## 🌎 Accessibility
+
+- #28849: Accessibility: add `aria-label` for tooltips
+
+## 🧰 Misc
+
+- #29753: Improve build/generate-sri.js regex
+- #30986: Revisit our browserslist config
+- #32125: Update codeql.yml
+- #32154: BrowserStack: test both on iPhone 7 and iPhone X
+- #32222: CI: specify `FORCE_COLOR:2`
+- #32232: npm scripts: run integration tests in parallel
+- #32257: README: fix path to search.js
+- #32310: Remove Polyfill leftovers
+- #32326: Fix `css-prefix-examples-rtl` script
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F26>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0-alpha3 (2020-11-11)</h2>
+      <pre>## Changes
+
+- #31728: Switch to dart-sass
+- #31972: Drop Legacy Edge support.
+- #32012: Remove obsolete prefixes
+
+## 🚀 Features
+
+- #30449: v5: Floating labels
+- #30571: v5: Add `.fs-*` utilities for font-size and rename font-weight/-style utilities
+- #31343: Adding overflow visible and scroll as utilities
+- #31995: Replace `.btn-block` with utilities
+- #32013: Add dedicated accordion component
+- #32066: Add `.d-grid` to our display utilities
+- #32074: Add `.gap` utilities
+
+## 🎨 CSS
+
+- #30449: v5: Floating labels
+- #30571: v5: Add `.fs-*` utilities for font-size and rename font-weight/-style utilities
+- #30622: Colors rewrite
+- #31343: Adding overflow visible and scroll as utilities
+- #31651: Fix disabled checkbox toggle buttons
+- #31657: Handle the Ubuntu sans-serif case
+- #31684: Add Sass variable for CSS variable prefix
+- #31687: Updated `.rounded` utilities
+- #31700: Suppress flexbox side effects in breadcrumb
+- #31826: Alert: Add `z-index` for close button
+- #31839: docs: fix contrast color against `.bg-info`
+- #31877: Apply smooth-scroll when `prefers-reduced-motion: no-preference`
+- #31882: Slow down spinners when `prefers-reduced-motion: reduce`
+- #31953: Fix input group border radii
+- #31955: Drop custom file upload plugin in favor of CSS solution
+- #31964: Remove background-clip from .btn-close
+- #31993: Remove explicit heights on form elements
+- #31995: Replace `.btn-block` with utilities
+- #32013: Add dedicated accordion component
+- #32020: Add `cursor:pointer` to color inputs
+- #32023: Fix color input heights
+- #32031: Fix `.fw` utilities
+- #32064: Remove firefox workaround for `::file-selector-button` margin
+- #32066: Add `.d-grid` to our display utilities
+- #32074: Add `.gap` utilities
+- #32085: Add checks to fix color contrast issues
+- #32121: Use correct value order
+
+## ☕️ JavaScript
+
+- #30740: karma: stop excluding polyfill.js from istanbul
+- #31818: Check for data-interval on the first slide of carousel
+- #31842: Remove `Manipulator.toggleClass`
+- #31951: Update anchor-js to v4.3.0.
+- #32011: polyfill.js minor tweaks
+- #32016: Streamline jQuery comment.
+- #32021: Lint: stop ignoring package.js
+- #32024: Fix TypeError when Bootstrap is included in `head`
+- #32026: toast.spec.js: fix typo
+- #32036: ESLint: enable new-cap rule but ignore properties
+- #32043: tests: switch to using `toContain()` to check for substring presence
+- #32045: tests: fix sanitizer test.
+- #32046: tests: tweak Jasmine usage
+- #32055: dropdown.js: simplify code
+- #32093: karma.conf.js: break lines
+- #32100: search.js: check for `search-input` element early
+- #32101: modal.html: use `textContent`
+
+## 📖 Docs
+
+- #30044: Contrast colors added to theme-colors
+- #30838: Explain the "dispose" method appropriately
+- #31111: Update docs example on how to optimize JavaScript bundle
+- #31583: docs(Modal): Add xxl fullscreen example
+- #31679: Don't wrap the code snippets in our docs
+- #31686: v5: Add disabled examples for .form-control, .form-select, and .form-range
+- #31702: Add keyboard shortcut to focus search field
+- #31775: Update social.html: use `article` `og:type` when it's a page
+- #31791: docs: remove pixels from SVGs
+- #31794: webpack.md: Replace "both of them" with "it"
+- #31795: validation.md: fix \_validation.scss file reference
+- #31796: Update `.btn-close-white` docs to `filter` (not `backdrop-filter`)
+- #31802: Improve callout shortcode.
+- #31803: Update bs-table shortcode
+- #31806: docs: switch to fenced codeblocks
+- #31809: carousel: add missing `to` description and fix `nextwhenvisible` description
+- #31828: docs: Add Russian translation
+- #31835: Move `href` attribute first
+- #31839: docs: fix contrast color against `.bg-info`
+- #31861: Split up dropdown sizing docs to improve rendering
+- #31871: Revert "Improve callout shortcode."
+- #31892: Remove redundant visually hidden "(current)" from pagination controls
+- #31893: Update manifest.json
+- #31894: docs: switch to suggesting jsDelivr as a CDN
+- #31904: Drop useless text faking a label in horizontal forms example
+- #31929: Mention spinners slow down in migration guide
+- #31932: Small typo - remove the unnecessary "the"
+- #31951: Update anchor-js to v4.3.0.
+- #31960: Docs: Explicitly mention emoji fonts, tweak sentence in typography
+- #31965: Rename Navs to Navs and Tabs
+- #31981: Update list-group.md
+- #31982: Fix git conflicts after #30571
+- #31984: Add example with input group between two inputs
+- #32009: Minor Markdown fixes
+- #32015: Fix redirects
+- #32031: Fix .fw utilities
+- #32040: Add callouts about using light colors ideally on a dark background
+- #32049: Update utilities API docs
+- #32050: Make docs anchorjs links darker on keyboard focus
+- #32058: Form file docs and overrides
+- #32076: Partially revert "Move this to a partial to work around the stray `p`…
+- #32084: reboot.md: mention "Liberation Sans"
+- #32086: config.yml: remove the unused "expo" parameter
+- #32087: download.md: link to JS files comparison too
+- #32090: [Docs] Changes to navbar documentation/explanation
+- #32099: search.js: use the current v5.getbootstrap.com URL
+- #32100: search.js: check for `search-input` element early
+- #32102: docs.html: replace backslashes with forward slashes
+- #32105: Clarify JS bundle docs one more time
+- #32116: browsers-devices: add `chomp`
+- #32126: Minor improvements to the Alpha 3 changelog
+- #32129: masthead: add newlines in the snippets and reindent
+
+## 🌎 Accessibility
+
+- #30550: Bump `$dark` to `$gray-900`
+- #31839: docs: fix contrast color against `.bg-info`
+- #31877: Apply smooth-scroll when `prefers-reduced-motion: no-preference`
+- #31882: Slow down spinners when `prefers-reduced-motion: reduce`
+- #31892: Remove redundant visually hidden "(current)" from pagination controls
+- #31904: Drop useless text faking a label in horizontal forms example
+- #32058: Form file docs and overrides
+- #32090: [Docs] Changes to navbar documentation/explanation
+
+## 🧰 Misc
+
+- #30740: karma: stop excluding polyfill.js from istanbul
+- #31728: Switch to dart-sass
+- #31783: Update .gitignore
+- #31878: CI: Allow skipping BrowserStack
+- #31930: Update CodeQL action
+- #32003: CI: switch to Node.js 14.
+- #32005: Remove bugreport.apple.com url
+- #32006: CI: Skip dependabot PR branches.
+- #32008: Update Edge's Rendering Engine on CONTRIBUTING.md
+- #32027: Clarify PRs section
+- #32033: CODE_OF_CONDUCT.md: fix redirect
+- #32036: ESLint: enable new-cap rule but ignore properties
+- #32056: deps: move sirv-cli to npx
+- #32063: stylelint: pass the `--rd` flag
+- #32097: package.json: fix clean-css level switch
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies <https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F22>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.5.3 (2020-10-13)</h2>
+      <pre>### CSS
+
+- [#31653](https://github.com/twbs/bootstrap/pull/31653): Add a comment to our `escape-svg` function to note that data URIs must be quoted.
+- [#31693](https://github.com/twbs/bootstrap/pull/31693): Use the `custom-control` shadow variable instead of the generic `input-focus-box-shadow`.
+- [#31793](https://github.com/twbs/bootstrap/pull/31793): Backport some v5 changes (improved `th` styling in Reboot, custom form field styling when printing, and improvements to `.text-break`).
+  - [#29714](https://github.com/twbs/bootstrap/pull/29714): Keep custom check, radio, and switch theme when printing.
+  - [#30781](https://github.com/twbs/bootstrap/pull/30781): Reboot's `th` updates: Inherit `font-weight: bold` that comes from user agent stylesheets.
+  - [#30932](https://github.com/twbs/bootstrap/pull/30932): `.text-break` changes to drop `overflow-wrap` and use `word-wrap` once again
+  - [#31754](https://github.com/twbs/bootstrap/pull/31754): Improve versions page rendering (also reversed the order while I was here)
+- [#31846](https://github.com/twbs/bootstrap/pull/31846): Backports the z-index change to `.close` buttons in dismissible `.alert`s.
+
+### JS
+
+- [#31000](https://github.com/twbs/bootstrap/pull/31000): Avoid multiple change event trigger in buttons plugin. _Not applicable to v5 since our button JS plugin has been mostly replaced with pure CSS._
+- [#31673](https://github.com/twbs/bootstrap/pull/31673): Fix dropdown variable always evaluating to true.
+- [#31696](https://github.com/twbs/bootstrap/pull/31696): Ensure `hidePrevented.bs.modal` can be prevented.
+- [#31718](https://github.com/twbs/bootstrap/pull/31718): Backports new `$dropdown-padding-x` variable from v5.
+
+### Docs
+
+- [#30811](https://github.com/twbs/bootstrap/pull/30811): Mention GPU acceleration fix in docs callout for popovers. _Doesn't apply to v5 since we're updating to Popper v2._
+- [#30838](https://github.com/twbs/bootstrap/pull/30838): Explain the `dispose` method more appropriately.
+- [#31706](https://github.com/twbs/bootstrap/pull/31706): Backports updated margins for code snippets for improved readability.
+- [#31769](https://github.com/twbs/bootstrap/pull/31769): Backports JS bundle guidance from v5.
+- [#31851](https://github.com/twbs/bootstrap/pull/31851): Backports mention of missing `to` and `nextwhenvisible` methods.
+
+### Misc
+
+- [#31297](https://github.com/twbs/bootstrap/pull/31297): Switch to xo ESLint config
+- Updated devDependencies versions
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0-alpha2 (2020-09-29)</h2>
+      <pre>## Changes
+
+- #30966: Floating labels improvements
+- #31774: Replace ellipsis Unicode symbol with three dots.
+
+## 🚀 Features
+
+- #30171: Add .dropdown-menu-dark
+- #31280: Extra position utilities
+- #31484: Add border width utility
+- #31650: Carousel enhancements, including .carousel-dark
+
+## 🎨 CSS
+
+- #30171: Add .dropdown-menu-dark
+- #30394: `box-shadow()` mixin: allow 'null' and drop support 'none' with multiple args
+- #30572: Add new toasts examples
+- #30639: Easier disabled state customization for button variants
+- #30781: reboot: table th
+- #31035: Add null variables for nav-link
+- #31120: Add missing comma in utils
+- #31131: Darken dropdown divider
+- #31132: Add padding to badges
+- #31139: Rename `sr-only`/`sr-only-focusable` to `visually-hidden`/`visually-hidden-focusable`
+- #31151: Fix scrollable modal
+- #31162: Fix table separator typo
+- #31276: v5: Tweak some colors
+- #31280: Extra position utilities
+- #31338: Removed a broken reference
+- #31346: Turn off scroll anchoring for accordions
+- #31359: Cleanup/fix after the sr-only to visually-hidden renaming
+- #31381: Remove overflow: hidden from toasts
+- #31382: Update copy around breakpoint sizing
+- #31383: Adjust sizing of checks and radios
+- #31396: Add transition to Pagination buttons just like other Bootstrap buttons
+- #31424: Mention that Edge Legacy also supports 'filling' their track
+- #31439: Remove `flex: 1 0 100%` from rows
+- #31473: Give more priority to `.d-none`
+- #31484: Add border width utility
+- #31500: Use next breakpoint when targetting xs only
+- #31571: Add default parameters to each border radius mixin
+- #31641: Revamp close button component
+- #31649: Match container gutters with row gutters
+- #31650: Carousel enhancements, including .carousel-dark
+- #31653: Add a comment for escape-svg function
+- #31659: Update Stylelint rules
+- #31717: Updates responsive embeds with new class names and CSS variables
+- #31718: Add new variable for $dropdown-padding-x
+- #31729: Input group addon sass customization options
+- #31746: Restore `rem` unit
+- #31772: _variables: change $btn-close-bg's attribute order
+
+## ☕️ JavaScript
+
+- #30326: Prevent overflowing static backdrop modal animation
+- #30928: Fix tooltip when hovering a child element (`delegateTarget`)
+- #31066: Change "whitelist" to "allowlist"
+- #31067: data: reword storage key in DOM
+- #31073: Minor JS tweaks
+- #31109: toasts: make default duration 5s
+- #31115: fix tooltip hide method when already hidden
+- #31125: BrowserStack: stop testing on latest Edge.
+- #31155: Clear timeout before showing the toast
+- #31212: Minor JS consistency changes
+- #31358: Docs: Add accessibility note about dismissible alerts and focus
+
+## 📖 Docs
+
+- #30572: Add new toasts examples
+- #30897: Prevent skip links from overlapping header
+- #31036: Docs: Add top/bottom margin to highlighted code samples
+- #31058: Update links to bug and feature request issue templates
+- #31062: Fix Stack Overflow tag
+- #31070: Docs: fix old/broken example capture and typo
+- #31071: Docs: clarify rationale for button group on links
+- #31075: Updated the command to install using yarn
+- #31076: Typo fix: ocassions to occasions
+- #31077: Several typo fixes
+- #31078: Typo fix: individiual to individual
+- #31079: Typo fix: depedending to depending
+- #31081: Docs: add Gaël Poupard to the core team page
+- #31082: Docs: tweak accessibility section
+- #31090: Docs: rename form checks page to "Checks / radios"
+- #31093: Docs: improve/expand button documentation
+- #31102: Docs: Fix typo
+- #31106: Docs: fix typo
+- #31107: Correctly document how to add to Sass maps
+- #31114: Docs: forms accessibility cleanup
+- #31116: Fix links to gutters page
+- #31119: v5: Adjust docs sidebar and navbar
+- #31122: Update migration.md
+- #31130: Add code to method/property tables
+- #31133: Docs: screen reader helper/visibility utility tweaks
+- #31134: Docs: clarify that pointer events classes don't affect keyboard interaction
+- #31135: Docs: move color utility callouts to start of page
+- #31137: Docs: (subjectively) nicer looking accordion example
+- #31165: Remove backdrop-filter from docs subnav and toasts
+- #31190: Fix spelling mistake
+- #31192: Docs: Fix vertical align link
+- #31194: Minor doc tweaks
+- #31196: Fixed typo in docs v5 (Utilities/API) page
+- #31201: Docs: separate button group out of checks/radios, expand button groups page
+- #31211: homepage: Fix wrong indentation
+- #31213: Fix generated example code for RFS
+- #31232: Fix sidebar jump
+- #31240: Single line example for inline forms
+- #31248: v5: Updated About and Brand pages
+- #31254: Fix some hexa in colors docs.
+- #31268: Fix docs sass importing example.
+- #31277: v5: Versions cleanup
+- #31278: Migration update
+- #31300: docs: mention our bundle file clearly.
+- #31339: Add view on GitHub links for easier content editing from the docs
+- #31344: Add toasts to the components requiring JavaScript
+- #31358: Docs: Add accessibility note about dismissible alerts and focus
+- #31382: Update copy around breakpoint sizing
+- #31387: Update migration guide
+- #31424: Mention that Edge Legacy also supports 'filling' their track
+- #31434: make breakpoints specifications consistent with layout/grid.md
+- #31441: docs: Fix issue number typo in migration
+- #31455: Update current_ruby_version to 5.0.0.alpha1
+- #31471: Remove 'both' as its no longer just 2 breakpoints
+- #31505: docs(typography): missing punctuation
+- #31516: Update icons.yml
+- #31556: docs: Fix typo on Customize -> Color page
+- #31572: Fix docs incorrect green and cyan hex codes
+- #31575: SVG placeholders accessibility
+- #31576: Drop h4 color customization in callouts
+- #31578: Scrollspy keyboard access in docs
+- #31579: Ensure examples content sits in landmarks
+- #31580: Wrap home content in <main> & use <section>
+- #31590: Build tools: mention how to get the sources
+- #31610: Docs layout: ensure content sits in main
+- #31636: Add getInstance method in the docs for tooltip
+- #31648: Typo in About / Overview
+- #31668: Webpack page: add `postcssOptions` key
+- #31689: docs: fix a few redirects
+- #31738: docs: link to the Asynchronous functions section
+- #31750: brand: minor consistency changes
+- #31752: v5 alpha 2 migration guide updates
+- #31754: Tweak versions page columns
+- #31767: Convert SVGs in navbar and subnav to pixels
+- #31773: Add new Bootstrap Icons homepage images
+- #31785: v5: Vertical pills fix on mobile
+
+## 🌎 Accessibility
+
+- #30897: Prevent skip links from overlapping header
+- #30989: Ensure to increase contrasts on buttons & colored links hover/active states
+- #31114: Docs: forms accessibility cleanup
+- #31131: Darken dropdown divider
+- #31276: v5: Tweak some colors
+- #31575: SVG placeholders accessibility
+- #31576: Drop h4 color customization in callouts
+- #31578: Scrollspy keyboard access in docs
+- #31579: Ensure examples content sits in landmarks
+- #31580: Wrap home content in <main> & use <section>
+- #31610: Docs layout: ensure content sits in main
+
+## 🧰 Misc
+
+- #31011: Update Babel config
+- #31047: README: remove `.svg` from shields.io badges
+- #31062: Fix Stack Overflow tag
+- #31063: Update bundlewatch.yml
+- #31124: Update .browserslistrc
+- #31259: README.md: show brotli size too
+- #31588: Download link in README
+- #31742: Fix bundlewatch size
+
+## 📦 Dependencies
+
+- Updated numerous devDependencies https://github.com/twbs/bootstrap/pulls?q=is%3Apr+is%3Aclosed+label%3Adependencies+project%3Atwbs%2Fbootstrap%2F21
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.5.2 (2020-08-06)</h2>
+      <pre>This release addresses the following two issues:
+
+- **[#31438](https://github.com/twbs/bootstrap/pull/31438) restores the `make-container-max-widths` mixin.** We won't be using the mixin ourselves, but it will remain in the codebase for the rest of v4 with today's release. We've added a deprecation notice as well.
+- **[#31439](https://github.com/twbs/bootstrap/pull/31439) removes `flex: 1 0 100%` from `.row`s.** This was added to address shrinking rows inside the navbar component after our responsive containers were added in v4.4.0. Removing this rolls us back to the expected grid and flex behavior—your row will shrink unfortunately without further changes. We could add extra custom CSS to address this, but it seems shortsighted to rush into that. Instead, apply `.flex-fill` to the `.row` and your row will behave as usual.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.5.1 (2020-08-04)</h2>
+      <pre>### CSS
+
+- #30808: Simplify `list-group` borders in cards
+- #30810: Add `z-index` to `.custom-check` to fix their rendering in CSS columns
+- #30817: Add `border-radius` to `.card-img-overlay`
+- #30830: Prevent conflicts with components with classes
+- #30922: Fix color on disabled checked state for custom controls
+- #30932: Restore `word-break: break-word;` on `.text-break` utility.
+- #30940: Prevent `.row` from shrinking in flex containers
+- #30957: Nullify custom form states' `box-shadow`
+- #30959: Toasts in IE11
+- #30960: Fix IE11 validation tooltip alignment in input groups
+- #30965: Improve floating labels example in IE
+- #30966: Improve floating labels with Edge and a general refactor
+- #30969: Remove duplicated container breakpoints in compiled CSS
+- #30999: Revert `min-width: 0` on `.col` due to unforeseen side effects
+- #31148: Remove duplicate properties on custom controls
+- #31165: Remove `backdrop-filter` from docs subnav and toasts
+- #31339: Add link to view docs pages on GitHub
+- #31347: Turn off scroll anchoring for accordions
+- #31381: Remove `overflow: hidden` from toasts
+
+### JavaScript
+
+- #30326: Prevent overflowing static backdrop modal animation
+- #30936: Add `role="dialog"` in modals via JavaScript
+- #30992: Avoid preventing input event onclick
+- #31155: Clear timeout before showing the toast
+
+### Build
+
+- #30797: Fix release script docs
+- #31011: Updated Babel config
+- #31296: Update to Ruby 2.7 and Bundler 2.x
+
+### Docs
+
+- #30809: Update docs callout for responsive SVG images
+- #30813: Mention Bootstrap Icons in `extend/icons.md` page
+- #30896: Improve wording on Downloads page
+- #30897: Prevent skip links from overlapping header in docs
+- #30973: Update some nav examples by removing `.nav-item` from `.nav-link` to be more consistent
+- #31070: Fix some broken examples and typos
+- #31135: Move color utility callouts to start of page
+- #31234: Clean up docs forms for accessibility
+- #31344: Mention toasts in the _components requiring JavaScript_ page
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

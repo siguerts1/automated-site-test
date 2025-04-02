@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for vercel/swr"/>
+  <title>vercel/swr Release Notes</title>
+</head>
+<body>
+  <h1>🚀 vercel/swr - Release Notes</h1>
+  
+    <section>
+      <h2>v2.3.3 (2025-03-06)</h2>
+      <pre>### Patches
+* enhance: use empty prototype object by @huozhi in https://github.com/vercel/swr/pull/4099
+* Initialise nextFocusRevalidatedAt on mount by @mgoodfellow in https://github.com/vercel/swr/pull/2857
+
+### Misc
+* Update Twitter references to X by @ManuLpz4 in https://github.com/vercel/swr/pull/4103
+
+## New Contributors
+* @ManuLpz4 made their first contribution in https://github.com/vercel/swr/pull/4103
+* @mgoodfellow made their first contribution in https://github.com/vercel/swr/pull/2857
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.3.2...v2.3.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.3.2 (2025-02-05)</h2>
+      <pre>## Patches
+* (fix) keepPreviousData: return fallback instead of undefined value by @dvoytenko in https://github.com/vercel/swr/pull/4087
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.3.1...v2.3.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.3.1 (2025-02-05)</h2>
+      <pre>### Fixes
+* fix: missing `throwOnError` in SWRMutationHook options by @Ram4GB in https://github.com/vercel/swr/pull/3054
+* fix: sever env detection for deno by @elrrrrrrr in https://github.com/vercel/swr/pull/4064
+* keepPreviousData: return fallback instead of undefined value by @dvoytenko in https://github.com/vercel/swr/pull/4084
+
+### Misc
+* ci: update pnpm setup and lock pnpm vesion by @huozhi in https://github.com/vercel/swr/pull/4085
+* build: bump bundler by @huozhi in https://github.com/vercel/swr/pull/4086
+* refactor: type improvement of `useSWRHandler` by @samuel871211 in https://github.com/vercel/swr/pull/4075
+
+## New Contributors
+* @Ram4GB made their first contribution in https://github.com/vercel/swr/pull/3054
+* @elrrrrrrr made their first contribution in https://github.com/vercel/swr/pull/4064
+* @dvoytenko made their first contribution in https://github.com/vercel/swr/pull/4084
+* @samuel871211 made their first contribution in https://github.com/vercel/swr/pull/4075
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.3.0...v2.3.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.3.0 (2024-12-23)</h2>
+      <pre>### Feature
+
+* Support promises as fallback data by @shuding in https://github.com/vercel/swr/pull/2891
+* Allow to use with React 19 by @vladshcherbin and @devjiwonchoi in https://github.com/vercel/swr/pull/3047, https://github.com/vercel/swr/pull/2963
+
+### Patches
+
+* fix #3030 and run relateive test in edge-runtime by @promer94 in https://github.com/vercel/swr/pull/3036
+* fix: Only suspend when using the `fallback` by @shuding in https://github.com/vercel/swr/pull/3045
+* fix type check in tests by @huozhi in https://github.com/vercel/swr/pull/3052
+* fix: Replace the deprecated 'window' with 'globalThis' for Deno by @saul-atomrigs in https://github.com/vercel/swr/pull/2915
+* fix: check if config.fallback is undefined by @taku-hatano in https://github.com/vercel/swr/pull/2913
+* fix(infinte): export SWRInfiniteKeyedMutator type by @LeoMcA in https://github.com/vercel/swr/pull/2900
+* fix: Improve comparison performance by @shuding in https://github.com/vercel/swr/pull/2973
+* Export ScopedMutator type by @joshkel in https://github.com/vercel/swr/pull/2937
+* Improve-Type-Safety-and-State-Access-in-useStateWithDeps-Hook by @O-BERNARDOFOEGBU in https://github.com/vercel/swr/pull/3027
+
+### Misc
+
+* chore: bump dev deps and change example react version to latest by @huozhi in https://github.com/vercel/swr/pull/2894
+* build: fix beta release job by @huozhi in https://github.com/vercel/swr/pull/2895
+* chore: Improve test coverage by @shuding in https://github.com/vercel/swr/pull/2903
+* chore: simplify test coverage strategy by @huozhi in https://github.com/vercel/swr/pull/2909
+* build: simplify react-server export and update bundler by @huozhi in https://github.com/vercel/swr/pull/2897
+* examples: add RSC streaming pre-render with promise fallback example by @promer94 in https://github.com/vercel/swr/pull/2905
+* Drop client-only by @huozhi in https://github.com/vercel/swr/pull/2910
+* Mark package as side-effect free by @htunnicliff in https://github.com/vercel/swr/pull/2904
+* Drop exports module field by @huozhi in https://github.com/vercel/swr/pull/2911
+* chore: update pkg script watch by @unliar in https://github.com/vercel/swr/pull/2920
+* test: remove console.error times check by @promer94 in https://github.com/vercel/swr/pull/2918
+* build: bump bundler for perf by @huozhi in https://github.com/vercel/swr/pull/2929
+* Fix bundling of client entry chunks  by @huozhi in https://github.com/vercel/swr/pull/2932
+* ci: fix ci error and upgrade action version by @promer94 in https://github.com/vercel/swr/pull/2952
+* Add SWRInfiniteMutatorOptions type to export by @ludwigbacklund in https://github.com/vercel/swr/pull/2954
+* test: update the revalidate function test for useSWRInfinite by @koba04 in https://github.com/vercel/swr/pull/2955
+* chore: upgrade nextjs dev dep for e2e testing by @huozhi in https://github.com/vercel/swr/pull/3044
+* ci: simplify ci config and bump some deps version by @promer94 in https://github.com/vercel/swr/pull/2770
+* chore: reorganize entries by @huozhi in https://github.com/vercel/swr/pull/3048
+* Bump bundler and reorganize serialize exports by @huozhi in https://github.com/vercel/swr/pull/3049
+* upgrade use-sync-external-store to support react 19 by @huozhi in https://github.com/vercel/swr/pull/3050
+
+
+## New Contributors
+* @htunnicliff made their first contribution in https://github.com/vercel/swr/pull/2904
+* @saul-atomrigs made their first contribution in https://github.com/vercel/swr/pull/2915
+* @unliar made their first contribution in https://github.com/vercel/swr/pull/2920
+* @ludwigbacklund made their first contribution in https://github.com/vercel/swr/pull/2954
+* @taku-hatano made their first contribution in https://github.com/vercel/swr/pull/2913
+* @LeoMcA made their first contribution in https://github.com/vercel/swr/pull/2900
+* @devjiwonchoi made their first contribution in https://github.com/vercel/swr/pull/2963
+* @vladshcherbin made their first contribution in https://github.com/vercel/swr/pull/3047
+* @O-BERNARDOFOEGBU made their first contribution in https://github.com/vercel/swr/pull/3027
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.5...v2.3.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.6-beta.4 (2024-06-01)</h2>
+      <pre>## What's Changed
+* fix: Improve comparison performance by @shuding in https://github.com/vercel/swr/pull/2973
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.6-beta.3...v2.2.6-beta.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.6-beta.3 (2024-05-24)</h2>
+      <pre>## What's Changed
+* ci: fix ci error and upgrade action version by @promer94 in https://github.com/vercel/swr/pull/2952
+* Add SWRInfiniteMutatorOptions type to export by @ludwigbacklund in https://github.com/vercel/swr/pull/2954
+* test: update the revalidate function test for useSWRInfinite by @koba04 in https://github.com/vercel/swr/pull/2955
+* Export ScopedMutator type by @joshkel in https://github.com/vercel/swr/pull/2937
+* fix: check if config.fallback is undefined by @taku-hatano in https://github.com/vercel/swr/pull/2913
+* fix(infinte): export SWRInfiniteKeyedMutator type by @LeoMcA in https://github.com/vercel/swr/pull/2900
+* chore: add react peerDeps 19 by @devjiwonchoi in https://github.com/vercel/swr/pull/2963
+
+## New Contributors
+* @ludwigbacklund made their first contribution in https://github.com/vercel/swr/pull/2954
+* @taku-hatano made their first contribution in https://github.com/vercel/swr/pull/2913
+* @LeoMcA made their first contribution in https://github.com/vercel/swr/pull/2900
+* @devjiwonchoi made their first contribution in https://github.com/vercel/swr/pull/2963
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.6-beta.2...v2.2.6-beta.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.6-beta.2 (2024-04-06)</h2>
+      <pre>## Patches
+* build: bump bundler for perf by @huozhi in https://github.com/vercel/swr/pull/2929
+* Fix bundling of client entry chunks  by @huozhi in https://github.com/vercel/swr/pull/2932
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.6-beta.1...v2.2.6-beta.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.6-beta.1 (2024-03-31)</h2>
+      <pre>## What's Changed
+* build: fix beta release job by @huozhi in https://github.com/vercel/swr/pull/2895
+* chore: Improve test coverage by @shuding in https://github.com/vercel/swr/pull/2903
+* chore: simplify test coverage strategy by @huozhi in https://github.com/vercel/swr/pull/2909
+* build: simplify react-server export and update bundler by @huozhi in https://github.com/vercel/swr/pull/2897
+* examples: add RSC streaming pre-render with promise fallback example by @promer94 in https://github.com/vercel/swr/pull/2905
+* Drop client-only by @huozhi in https://github.com/vercel/swr/pull/2910
+* Mark package as side-effect free by @htunnicliff in https://github.com/vercel/swr/pull/2904
+* Drop exports module field by @huozhi in https://github.com/vercel/swr/pull/2911
+* fix: Replace the deprecated 'window' with 'globalThis' for Deno by @saul-atomrigs in https://github.com/vercel/swr/pull/2915
+* chore: update pkg script watch by @unliar in https://github.com/vercel/swr/pull/2920
+* test: remove console.error times check by @promer94 in https://github.com/vercel/swr/pull/2918
+
+## New Contributors
+* @htunnicliff made their first contribution in https://github.com/vercel/swr/pull/2904
+* @saul-atomrigs made their first contribution in https://github.com/vercel/swr/pull/2915
+* @unliar made their first contribution in https://github.com/vercel/swr/pull/2920
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.6-beta.0...v2.2.6-beta.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.5 (2024-02-15)</h2>
+      <pre>## Patches
+* types: isLoading typed as boolean when using fallbackData (#2866) by @yjrhgvbn in https://github.com/vercel/swr/pull/2875
+* fix: allow onErrorRetry on inactive tab without focus/reconnect revalidation by @qkdreyer in https://github.com/vercel/swr/pull/2848
+* feat: pass a function to the revalidate option in mutate by @koba04 in https://github.com/vercel/swr/pull/2862
+* fix: SWRConfiguration type by @hulla-dev in https://github.com/vercel/swr/pull/2882
+
+## Misc
+* build: use new bundle convention by @huozhi in https://github.com/vercel/swr/pull/2865
+* chore: update pnpm-lock.yaml by @koba04 in https://github.com/vercel/swr/pull/2874
+* chore: remove useless comment by @kongmoumou in https://github.com/vercel/swr/pull/2868
+* test: run pnpm test on CI by @koba04 in https://github.com/vercel/swr/pull/2872
+* fix: all act warnings by @koba04 in https://github.com/vercel/swr/pull/2861
+* Update bundler by @huozhi in https://github.com/vercel/swr/pull/2830
+
+## New Contributors
+* @kongmoumou made their first contribution in https://github.com/vercel/swr/pull/2868
+* @yjrhgvbn made their first contribution in https://github.com/vercel/swr/pull/2875
+* @qkdreyer made their first contribution in https://github.com/vercel/swr/pull/2848
+* @hulla-dev made their first contribution in https://github.com/vercel/swr/pull/2882
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.4...v2.2.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.4 (2023-09-25)</h2>
+      <pre>## Patches
+* Revert "Remove `index.js` suffix of `use-sync-external-store/shim` to support React Native" by @huozhi in https://github.com/vercel/swr/pull/2802
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.3...v2.2.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.3 (2023-09-25)</h2>
+      <pre>## Patches
+* fix: remove permissive type by @wcatron in https://github.com/vercel/swr/pull/2759
+* Remove `index.js` suffix of `use-sync-external-store/shim` to support React Native by @malash in https://github.com/vercel/swr/pull/2767
+* fix: default to fetch type in keyed mutator by @linkvt in https://github.com/vercel/swr/pull/2753
+* types: export mutation types by @promer94 in https://github.com/vercel/swr/pull/2780
+
+## Misc
+
+* test: update tests, use matched types for mutate api by @huozhi in https://github.com/vercel/swr/pull/2781
+
+## New Contributors
+* @wcatron made their first contribution in https://github.com/vercel/swr/pull/2759
+* @malash made their first contribution in https://github.com/vercel/swr/pull/2767
+* @linkvt made their first contribution in https://github.com/vercel/swr/pull/2753
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.2...v2.2.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.2 (2023-08-27)</h2>
+      <pre>## What's Changed
+* fix: It should use startTransition only when IS_REACT_LEGACY is false by @TopGrd in https://github.com/vercel/swr/pull/2756
+* fix: simplify `ArgumentsTuple` by @Andarist in https://github.com/vercel/swr/pull/2761
+
+## New Contributors
+* @TopGrd made their first contribution in https://github.com/vercel/swr/pull/2756
+* @Andarist made their first contribution in https://github.com/vercel/swr/pull/2761
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.1...v2.2.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.1 (2023-08-27)</h2>
+      <pre>## What's Changed
+* Add use client directive for client components exports by @huozhi in https://github.com/vercel/swr/pull/2696
+* remove the 'use client' directive and add client-only to useSWR entry. by @promer94 in https://github.com/vercel/swr/pull/2705
+* fix: should serialize subscription fn key by @promer94 in https://github.com/vercel/swr/pull/2711
+* build(deps-dev): bump word-wrap from 1.2.3 to 1.2.4 by @dependabot in https://github.com/vercel/swr/pull/2720
+* fix: only make data and error update as a non-blocking transition by @promer94 in https://github.com/vercel/swr/pull/2691
+* build: generate d.mts for for .mjs, so typescript could resolve types correctly by @promer94 in https://github.com/vercel/swr/pull/2695
+* fix(infinite): Fix the ability to use preload along with useSWRInfinite by @agadzik in https://github.com/vercel/swr/pull/2723
+* fix: Ensure that using preload with useSWRInfinite returns back an array of data by @agadzik in https://github.com/vercel/swr/pull/2726
+* fix: preload request should be consumed within `revalidate` to support `parallel` option by @promer94 in https://github.com/vercel/swr/pull/2727
+* Fix the issue that useSWR revalidation isn't triggered if the useSWR call happens after mutation by @Ponyets in https://github.com/vercel/swr/pull/2731
+* fix(mutate): fix types of mutate/trigger; make mutate/trigger always return the result of fetcher by @Ponyets in https://github.com/vercel/swr/pull/2708
+* build(deps-dev): bump tough-cookie from 4.1.2 to 4.1.3 by @dependabot in https://github.com/vercel/swr/pull/2735
+* build(deps-dev): bump json5 from 2.2.1 to 2.2.3 by @dependabot in https://github.com/vercel/swr/pull/2736
+* docs: use isLoading instead of !data by @pawfa in https://github.com/vercel/swr/pull/2734
+
+## New Contributors
+* @agadzik made their first contribution in https://github.com/vercel/swr/pull/2723
+* @Ponyets made their first contribution in https://github.com/vercel/swr/pull/2731
+* @pawfa made their first contribution in https://github.com/vercel/swr/pull/2734
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.0...v2.2.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.1-beta.1 (2023-07-26)</h2>
+      <pre>## What's Changed
+* fix: Add use client directive for client components exports by @huozhi in https://github.com/vercel/swr/pull/2696
+* fix: only make data and error update as a non-blocking transition by @promer94 in https://github.com/vercel/swr/pull/2691
+* fix: Fix the ability to use preload along with useSWRInfinite by @agadzik in https://github.com/vercel/swr/pull/2723
+* fix: Remove the 'use client' directive and add client-only to useSWR entry. by @promer94 in https://github.com/vercel/swr/pull/2705
+* fix: should serialize subscription fn key by @promer94 in https://github.com/vercel/swr/pull/2711
+* chore: bump word-wrap from 1.2.3 to 1.2.4 by @dependabot in https://github.com/vercel/swr/pull/2720
+* chore: generate d.mts for for .mjs, so typescript could resolve types correctly by @promer94 in https://github.com/vercel/swr/pull/2695
+
+## New Contributors
+* @agadzik made their first contribution in https://github.com/vercel/swr/pull/2723
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.0...v2.2.1-beta.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.0 (2023-06-22)</h2>
+      <pre>
+
+## What's Changed
+* feat: use `React.use` API by @himself65 in https://github.com/vercel/swr/pull/2596
+* feat: improve preload and suspense integration by @promer94 in https://github.com/vercel/swr/pull/2658
+* feat: Add react-server bundle for core and infinite by @huozhi in https://github.com/vercel/swr/pull/2664
+* fix: remove `startTransition` so mutation hook could update immediately by @promer94 in https://github.com/vercel/swr/pull/2654
+* fix: keepPreviousData should also work in suspense by @promer94 in https://github.com/vercel/swr/pull/2649
+* fix: do unsubscribe synchronously by @promer94 in https://github.com/vercel/swr/pull/2648
+* fix: reset the error when mutate succeeded by @koba04 in https://github.com/vercel/swr/pull/2592
+* fix: Fix mutation types order by @huozhi in https://github.com/vercel/swr/pull/2669
+* fix: Conditional Typing in useSWRMutation to Allow Optional ExtraArg Without Explicitly Passing Undefined by @saengmotmi in https://github.com/vercel/swr/pull/2666
+* fix: Pass displayed data as second parameter of functional optimistic data by @francescogior in https://github.com/vercel/swr/pull/2668
+* fix: Adjust rsc exports by @huozhi in https://github.com/vercel/swr/pull/2673
+* fix: Revert "fix: remove startTransition so mutation hook could update immediately (#2654)" by @huozhi in https://github.com/vercel/swr/pull/2681
+* types: fix immutable export paths by @huozhi in https://github.com/vercel/swr/pull/2670
+* types: improve `useSWRMutation` type. by @promer94 in https://github.com/vercel/swr/pull/2604
+* chore: upgrade to pnpm8 by @promer94 in https://github.com/vercel/swr/pull/2605
+* ci: drop unused inputs and step by @nicolewhite in https://github.com/vercel/swr/pull/2624
+* ci: update github token by @huozhi in https://github.com/vercel/swr/pull/2636
+* ci: use gh token credentials for cloning repo by @huozhi in https://github.com/vercel/swr/pull/2637
+* ci: use script to bump semver version by @huozhi in https://github.com/vercel/swr/pull/2651
+* ci: Add daily test job for react canary by @suyanhanx in https://github.com/vercel/swr/pull/2601
+* build: fix equal signs by @huozhi in https://github.com/vercel/swr/pull/2628
+* build: fix bad runner by @huozhi in https://github.com/vercel/swr/pull/2629
+* build: use prepatch/minor/major command for prerelease by @huozhi in https://github.com/vercel/swr/pull/2627
+* build: fix release semver by @huozhi in https://github.com/vercel/swr/pull/2630
+* build: add trigger release job by @huozhi in https://github.com/vercel/swr/pull/2615
+* build: determin release tag by @huozhi in https://github.com/vercel/swr/pull/2616
+* build: fix conflict types for index and index.react-server by @huozhi in https://github.com/vercel/swr/pull/2677
+* test: fix flaky suspense test in canary by @promer94 in https://github.com/vercel/swr/pull/2655
+* test: improve preload test by @promer94 in https://github.com/vercel/swr/pull/2657
+* test: add e2e test for react-server entry by @promer94 in https://github.com/vercel/swr/pull/2671
+* test: add a new test setting to run tests with build files by @koba04 in https://github.com/vercel/swr/pull/2583
+
+## New Contributors
+* @suyanhanx made their first contribution in https://github.com/vercel/swr/pull/2601
+* @nicolewhite made their first contribution in https://github.com/vercel/swr/pull/2624
+* @saengmotmi made their first contribution in https://github.com/vercel/swr/pull/2666
+* @francescogior made their first contribution in https://github.com/vercel/swr/pull/2668
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.1.5...v2.2.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.0-beta.5 (2023-06-20)</h2>
+      <pre>## What's Changed
+* Revert "fix: remove startTransition so mutation hook could update immediately (#2654)" by @huozhi in https://github.com/vercel/swr/pull/2681
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.0-beta.4...v2.2.0-beta.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.0-beta.4 (2023-06-20)</h2>
+      <pre>## What's Changed
+* build: fix conflict types for index and index.react-server by @huozhi in https://github.com/vercel/swr/pull/2677
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.0-beta.3...v2.2.0-beta.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.0-beta.3 (2023-06-18)</h2>
+      <pre>## What's Changed
+* Fix Conditional Typing in useSWRMutation to Allow Optional ExtraArg Without Explicitly Passing Undefined by @saengmotmi in https://github.com/vercel/swr/pull/2666
+* Pass displayed data as second parameter of functional optimistic data by @francescogior in https://github.com/vercel/swr/pull/2668
+* Adjust rsc exports by @huozhi in https://github.com/vercel/swr/pull/2673
+* test: add e2e test for react-server entry by @promer94 in https://github.com/vercel/swr/pull/2671
+
+## New Contributors
+* @saengmotmi made their first contribution in https://github.com/vercel/swr/pull/2666
+* @francescogior made their first contribution in https://github.com/vercel/swr/pull/2668
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.0-beta.2...v2.2.0-beta.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.0-beta.2 (2023-06-16)</h2>
+      <pre>## What's Changed
+* Fix mutation types order by @huozhi in https://github.com/vercel/swr/pull/2669
+* types: fix immutable export paths by @huozhi in https://github.com/vercel/swr/pull/2670
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.0-beta.1...v2.2.0-beta.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.0-beta.1 (2023-06-16)</h2>
+      <pre>## What's Changed
+* fix: do unsubscribe synchronously by @promer94 in https://github.com/vercel/swr/pull/2648
+* fix: reset the error when mutate succeeded by @koba04 in https://github.com/vercel/swr/pull/2592
+* ci: use script to bump semver version by @huozhi in https://github.com/vercel/swr/pull/2651
+* fix: remove `startTransition` so mutation hook could update immediately by @promer94 in https://github.com/vercel/swr/pull/2654
+* fix: keepPreviousData should also work in suspense by @promer94 in https://github.com/vercel/swr/pull/2649
+* test: fix flaky suspense test in canary by @promer94 in https://github.com/vercel/swr/pull/2655
+* test: improve preload test by @promer94 in https://github.com/vercel/swr/pull/2657
+* feat: improve preload and suspense integration by @promer94 in https://github.com/vercel/swr/pull/2658
+* Add react-server bundle for core and infinite by @huozhi in https://github.com/vercel/swr/pull/2664
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.2.0-beta.0...v2.2.0-beta.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.0-beta.0 (2023-05-23)</h2>
+      <pre>## What's Changed
+* test: add a new test setting to run tests with build files by @koba04 in https://github.com/vercel/swr/pull/2583
+* feat: use `React.use` API by @Himself65 in https://github.com/vercel/swr/pull/2596
+* ci: Add daily test job for react canary by @suyanhanx in https://github.com/vercel/swr/pull/2601
+* build: add trigger release job by @huozhi in https://github.com/vercel/swr/pull/2615
+* build: determin release tag by @huozhi in https://github.com/vercel/swr/pull/2616
+* chore: upgrade to pnpm8 by @promer94 in https://github.com/vercel/swr/pull/2605
+* types: improve `useSWRMutation` type. by @promer94 in https://github.com/vercel/swr/pull/2604
+* ci: drop unused inputs and step by @nicolewhite in https://github.com/vercel/swr/pull/2624
+* build: use prepatch/minor/major command for prerelease by @huozhi in https://github.com/vercel/swr/pull/2627
+* build: fix equal signs by @huozhi in https://github.com/vercel/swr/pull/2628
+* build: fix bad runner by @huozhi in https://github.com/vercel/swr/pull/2629
+* build: fix release semver by @huozhi in https://github.com/vercel/swr/pull/2630
+* ci: update github token by @huozhi in https://github.com/vercel/swr/pull/2636
+* ci: use gh token credentials for cloning repo by @huozhi in https://github.com/vercel/swr/pull/2637
+
+## New Contributors
+* @suyanhanx made their first contribution in https://github.com/vercel/swr/pull/2601
+* @nicolewhite made their first contribution in https://github.com/vercel/swr/pull/2624
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.1.5...v2.2.0-beta.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.5 (2023-04-25)</h2>
+      <pre>## What's Changed
+* fix: missing interop helpers in bundle by @huozhi in https://github.com/vercel/swr/pull/2582
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.1.4...v2.1.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.4 (2023-04-23)</h2>
+      <pre>## What's Changed
+* Upgrade bundler by @huozhi in https://github.com/vercel/swr/pull/2557
+* examples: fix invalid links by @fxOne in https://github.com/vercel/swr/pull/2559
+* types: Allow auto-import by improving generated types by @oosawy in https://github.com/vercel/swr/pull/2563
+* fix: pass serialized args to preload fetcher by @oosawy in https://github.com/vercel/swr/pull/2564
+* chore: use provenance for release by @HerringtonDarkholme in https://github.com/vercel/swr/pull/2571
+* deps: update @testing-library/react to v14 by @koba04 in https://github.com/vercel/swr/pull/2578
+* fix: Fix dependency tracking and useSES bug by @shuding and @promer94 in https://github.com/vercel/swr/pull/2576
+
+## New Contributors
+* @fxOne made their first contribution in https://github.com/vercel/swr/pull/2559
+* @oosawy made their first contribution in https://github.com/vercel/swr/pull/2563
+* @HerringtonDarkholme made their first contribution in https://github.com/vercel/swr/pull/2571
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.1.3...v2.1.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.3 (2023-04-10)</h2>
+      <pre>## What's Changed
+* Fix #2548: pass origin key to subcription callback by @Zheaoli in https://github.com/vercel/swr/pull/2550
+* Examples: fix type in axios-typescript example by @daochouwangu in https://github.com/vercel/swr/pull/2552
+* Update Cache Interface types by @dmmulroy in https://github.com/vercel/swr/pull/2554
+* fix: data passed to refreshInterval function is not latest by @hong24 in https://github.com/vercel/swr/pull/2354
+* types: allow passing function as `Data` for `useSWRSubscriptionOptions` by @promer94 in https://github.com/vercel/swr/pull/2551
+
+## New Contributors
+* @Zheaoli made their first contribution in https://github.com/vercel/swr/pull/2550
+* @daochouwangu made their first contribution in https://github.com/vercel/swr/pull/2552
+* @dmmulroy made their first contribution in https://github.com/vercel/swr/pull/2554
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.1.2...v2.1.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.2 (2023-04-02)</h2>
+      <pre>### Patches
+
+* Improved type inferring for `swr/subscription`
+* Adding `SWRSubscriptionOptions` type for `swr/subscription`
+
+## Changes
+* test: add typing test for empty config by @koba04 in https://github.com/vercel/swr/pull/2521
+* test: fix syntax error in Equal type alias implementation by @SACHINnANYAKKARA in https://github.com/vercel/swr/pull/2517
+* chore: remove engines by @promer94 in https://github.com/vercel/swr/pull/2536
+* types: improve `useSWRSubscription` types by @promer94 in https://github.com/vercel/swr/pull/2535
+* Rename subscription types by @huozhi in https://github.com/vercel/swr/pull/2537
+
+## New Contributors
+* @SACHINnANYAKKARA made their first contribution in https://github.com/vercel/swr/pull/2517
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.1.1...v2.1.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.1 (2023-03-22)</h2>
+      <pre>## Patches
+* refactor: remove useless dataRef, always compare cached data by @promer94 in https://github.com/vercel/swr/pull/2431
+* fix: swr infers incorrect `data` type for default `SWRConfig` generic type by @connorch in https://github.com/vercel/swr/pull/2506
+
+## Documentation
+* docs: update subscription example by @huozhi in https://github.com/vercel/swr/pull/2499
+
+## New Contributors
+* @connorch made their first contribution in https://github.com/vercel/swr/pull/2506
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.1.0...v2.1.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.0 (2023-03-06)</h2>
+      <pre>## Feature
+
+* Subscription mode by @huozhi in https://github.com/vercel/swr/pull/1263 
+* parallel option for useSWRInfinite by @koba04 in https://github.com/vercel/swr/pull/2404 
+
+Checkout [subscription docs](https://swr.vercel.app/docs/subscription) and [useSWRInfinite parallel fetching docs](https://swr.vercel.app/docs/pagination#parallel-fetching-mode) for more details
+
+## Patches
+* fix: use the latest config in useSWRMutation by @koba04 in https://github.com/vercel/swr/pull/2468
+* Fix: type support for suspense and fallbackData(#2396) by @taro-28 in https://github.com/vercel/swr/pull/2452
+* Error should be reset when new data comes by @huozhi in https://github.com/vercel/swr/pull/2472
+* fix: avoid creating new snapshot if cache is not updated at client during streaming by @promer94 in https://github.com/vercel/swr/pull/2475
+* refactor: initialize the cache only on first access by @promer94 in https://github.com/vercel/swr/pull/2479
+
+## Misc
+* ci: fix publish workflow by @promer94 in https://github.com/vercel/swr/pull/2453
+* ci: faster e2e test by @promer94 in https://github.com/vercel/swr/pull/2428
+* test: add a test for keepPreviousData without changing key by @koba04 in https://github.com/vercel/swr/pull/2470
+* Always assume subscriptions will return sub count from current key by @huozhi in https://github.com/vercel/swr/pull/2460
+* test: Fix flaky e2e test by @promer94 in https://github.com/vercel/swr/pull/2476
+* chore: Add subscription example by @huozhi in https://github.com/vercel/swr/pull/2480
+
+## New Contributors
+* @taro-28 made their first contribution in https://github.com/vercel/swr/pull/2452
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.0.4...v2.1.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.4 (2023-02-24)</h2>
+      <pre>## Patches
+
+* build: fix release job condition by @huozhi in https://github.com/vercel/swr/pull/2392
+* types: fix some mutation type issue by @promer94 in https://github.com/vercel/swr/pull/2421
+* fix: Error retry should be handled by global revalidator instead of local revalidation function by @promer94 in https://github.com/vercel/swr/pull/2415
+* fix: ensure initCache setter function stays within bounds of subscriptions by @lfbergee in https://github.com/vercel/swr/pull/2411
+
+## Misc
+* test: stream ssr e2e by @promer94 in https://github.com/vercel/swr/pull/2395
+* test: fix an act warning by @koba04 in https://github.com/vercel/swr/pull/2403
+
+
+## New Contributors
+* @lfbergee made their first contribution in https://github.com/vercel/swr/pull/2411
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.0.3...v2.0.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.3 (2023-01-28)</h2>
+      <pre>## Patches
+
+* fix: parameters passed to subscribe is inconsistent with its declaration by @hong24 in https://github.com/vercel/swr/pull/2353
+* fix: when inifinite key changes, should use cached pagesize instead of initialSize by @promer94 in https://github.com/vercel/swr/pull/2386
+* fix: make compare function only compare data (#2375) by @Retrospection and @promer94 in https://github.com/vercel/swr/pull/2387 https://github.com/vercel/swr/pull/2389
+* fix: initial loading state should be false with revalidation is disabed by @promer94 in https://github.com/vercel/swr/pull/2382
+* fix: Ensure hydration matches the SSR result during streaming by @shuding in https://github.com/vercel/swr/pull/2391
+
+## Chores
+
+* ci: only run release when tags pushed by @promer94 in https://github.com/vercel/swr/pull/2388
+* unify `-` characters in README.md by @JanKaifer in https://github.com/vercel/swr/pull/2334
+
+## New Contributors
+* @hong24 made their first contribution in https://github.com/vercel/swr/pull/2353
+* @Retrospection made their first contribution in https://github.com/vercel/swr/pull/2387
+* @JanKaifer made their first contribution in https://github.com/vercel/swr/pull/2334
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.0.2...v2.0.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.2 (2023-01-26)</h2>
+      <pre>## Patches
+
+* fix: delay revalidation if a key is already active and has error by @promer94 in https://github.com/vercel/swr/pull/2338
+* fix: createCacheHelper type by @promer94 in https://github.com/vercel/swr/pull/2365
+
+## Chores
+
+* release workflow by @huozhi in https://github.com/vercel/swr/pull/2374, https://github.com/vercel/swr/pull/2381, https://github.com/vercel/swr/pull/2383, https://github.com/vercel/swr/pull/2384, https://github.com/vercel/swr/pull/2385
+
+
+**Full Changelog**: https://github.com/vercel/swr/compare/v2.0.1...v2.0.2</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

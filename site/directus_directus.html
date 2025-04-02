@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for directus/directus"/>
+  <title>directus/directus Release Notes</title>
+</head>
+<body>
+  <h1>🚀 directus/directus - Release Notes</h1>
+  
+    <section>
+      <h2>v11.6.1 (2025-04-01)</h2>
+      <pre>### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Revert unneeded fixes for editorjs that were causing issues ([#24987](https://github.com/directus/directus/pull/24987) by @AlexGaillard)
+- **@directus/api**
+  - Fixed search applying minimum app permissions when full access is allowed ([#24988](https://github.com/directus/directus/pull/24988) by @ComfortablyCoding)
+  - Reverted adding of implicit _some in #24725 due to regressions ([#24996](https://github.com/directus/directus/pull/24996) by @Nitwel)
+  - Fixed requiring roles and/or policies for admin accountability ([#24977](https://github.com/directus/directus/pull/24977) by @ComfortablyCoding)
+  - Skipped unnecessary fetching of dynamic variables ([#24975](https://github.com/directus/directus/pull/24975) by @licitdev)
+
+### 📦 Published Versions
+
+- `@directus/app@13.8.1`
+- `@directus/api@26.0.1`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.6.0 (2025-03-25)</h2>
+      <pre>### ⚠️ Potential Breaking Changes
+
+- **@directus/api**
+  - Fixed filter hook altered payload not passed to action hook on `create` ([#24812](https://github.com/directus/directus/pull/24812) by @ComfortablyCoding)
+
+### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Added Visual Editor Beta ([#24758](https://github.com/directus/directus/pull/24758) by @formfcw)
+  - After creating a new content version, it will become the current selected version ([#24606](https://github.com/directus/directus/pull/24606) by @robluton)
+  - Added Version support to field rules. This allows conditional rules based on an item's version ([#24646](https://github.com/directus/directus/pull/24646) by @robluton)
+- **@directus/api**
+  - Added Visual Editor Beta ([#24758](https://github.com/directus/directus/pull/24758) by @formfcw)
+  - Added the ability to map OAuth claim groups to Directus roles ([#24558](https://github.com/directus/directus/pull/24558) by @daanh432)
+  - Added `omitKey` option to `getConfigFromEnv` ([#24826](https://github.com/directus/directus/pull/24826) by @jacobcons)
+  - Added support for relational dynamic variables in filters ([#24635](https://github.com/directus/directus/pull/24635) by @Nitwel)
+  - Added `files.upload` event for resumable uploads ([#24771](https://github.com/directus/directus/pull/24771) by @br41nslug)
+  - Fix missing \_some,\_none in GQL ([#24644](https://github.com/directus/directus/pull/24644) by @Nitwel)
+  - Added QUERYSTRING_MAX_PARSE_DEPTH configuration variable ([#24833](https://github.com/directus/directus/pull/24833) by @Nitwel)
+- **@directus/env**
+  - Added QUERYSTRING_MAX_PARSE_DEPTH configuration variable ([#24833](https://github.com/directus/directus/pull/24833) by @Nitwel)
+- **@directus/system-data**
+  - Added Visual Editor Beta ([#24758](https://github.com/directus/directus/pull/24758) by @formfcw)
+- **@directus/types**
+  - Added Visual Editor Beta ([#24758](https://github.com/directus/directus/pull/24758) by @formfcw)
+- **@directus/sdk**
+  - Added an `isDirectusError` type guard function ot improve SDK error handling ([#24764](https://github.com/directus/directus/pull/24764) by @ComfortablyCoding)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Version menu positioned next to breadcrumb and remains visible when header is in its compact state once the user ([#24778](https://github.com/directus/directus/pull/24778) by @robluton)
+    scrolls.
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+  - Fixed Decimal rounding errors by treating them as strings in app ([#24824](https://github.com/directus/directus/pull/24824) by @formfcw)
+  - Automates the value of the version key field basd on the name field. ([#24627](https://github.com/directus/directus/pull/24627) by @robluton)
+  - Fixed deleting of folder after proper reparenting ([#24845](https://github.com/directus/directus/pull/24845) by @Nitwel)
+  - Downgraded Editor.JS to circumvent conflicting inline elements bug until it's fixed ([#24851](https://github.com/directus/directus/pull/24851) by @connorwinston)
+  - Fixed Flow Logs loading all step data when listing logs ([#24809](https://github.com/directus/directus/pull/24809) by @connorwinston)
+  - Fixed Block Editor Interface clearing field values unintentionally when updating an item. ([#24839](https://github.com/directus/directus/pull/24839) by @connorwinston)
+  - Updated translation key input field overflow ([#24769](https://github.com/directus/directus/pull/24769) by @ngluunhatson)
+  - Fixed re-linking new pointer references to existing links ([#24790](https://github.com/directus/directus/pull/24790) by @ComfortablyCoding)
+  - Fixed the appearance of the code interface when an enclosing group is made visible by a condition ([#24834](https://github.com/directus/directus/pull/24834) by @robluton)
+- **@directus/api**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+  - Fixed subscription throwing an unhandled error if a null query is passed ([#24772](https://github.com/directus/directus/pull/24772) by @ComfortablyCoding)
+  - Fixed dynamic variables parsing on field validation ([#24634](https://github.com/directus/directus/pull/24634) by @Nitwel)
+  - Fixed an issue that was caused by improper query binding deduplication needed for groupBy queries ([#24604](https://github.com/directus/directus/pull/24604) by @hanneskuettner)
+  - Added function to escape strings for use in redaction regex ([#24642](https://github.com/directus/directus/pull/24642) by @br41nslug)
+  - Improved invalid asset transformation parameter value error handling ([#24817](https://github.com/directus/directus/pull/24817) by @jacobcons)
+  - Added implicit _some for o2m and m2a relations ([#24725](https://github.com/directus/directus/pull/24725) by @koljam)
+  - Added path information to Validation errors ([#24751](https://github.com/directus/directus/pull/24751) by @Nitwel)
+  - Improved error handling for `/utils/hash/verify` endpoint ([#24788](https://github.com/directus/directus/pull/24788) by @Nitwel)
+  - Fix keys being optional on writes ([#24555](https://github.com/directus/directus/pull/24555) by @Nitwel)
+  - Fixed singleton type for oas spec ([#24768](https://github.com/directus/directus/pull/24768) by @Nitwel)
+  - Added error logging for invalid `PUBLIC_URL` on SSO redirection ([#24836](https://github.com/directus/directus/pull/24836) by @licitdev)
+  - Added id_filter_operators to GQL ([#24757](https://github.com/directus/directus/pull/24757) by @Nitwel)
+  - Fix insertion of keys in o2m relation ([#24609](https://github.com/directus/directus/pull/24609) by @Nitwel)
+  - Improved validation checks for `createOne` in the collections service ([#24960](https://github.com/directus/directus/pull/24960) by @Nitwel)
+- **@directus/components**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/composables**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/constants**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **create-directus-extension**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **create-directus-project**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/env**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/errors**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/extensions-registry**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/extensions-sdk**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+  - Updated esbuild to 0.25 ([#24794](https://github.com/directus/directus/pull/24794) by @br41nslug)
+- **@directus/extensions**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/format-title**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/memory**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/pressure**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/random**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/release-notes-generator**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/schema**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/storage-driver-azure**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/storage-driver-cloudinary**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/storage-driver-gcs**
+  - Updated dependencies ([#24722](https://github.com/directus/directus/pull/24722) by @renovate)
+- **@directus/validation**
+  - Added path information to Validation errors ([#24751](https://github.com/directus/directus/pull/24751) by @Nitwel)
+- **@directus/system-data**
+  - Updated esbuild to 0.25 ([#24794](https://github.com/directus/directus/pull/24794) by @br41nslug)
+- **@directus/types**
+  - Updated policy type definition ([#24791](https://github.com/directus/directus/pull/24791) by @br41nslug)
+- **@directus/sdk**
+  - Updated utilitySort type signature allowing `string | number` ([#24753](https://github.com/directus/directus/pull/24753) by @subtirelumihail)
+
+### 📦 Published Versions
+
+- `@directus/app@13.8.0`
+- `@directus/api@26.0.0`
+- `@directus/components@1.0.3`
+- `@directus/composables@11.1.9`
+- `@directus/constants@13.0.1`
+- `create-directus-extension@11.0.12`
+- `create-directus-project@12.0.1`
+- `@directus/env@5.0.3`
+- `@directus/errors@2.0.1`
+- `@directus/extensions@3.0.4`
+- `@directus/extensions-registry@3.0.4`
+- `@directus/extensions-sdk@13.0.4`
+- `@directus/format-title@12.0.1`
+- `@directus/memory@3.0.3`
+- `@directus/pressure@3.0.3`
+- `@directus/random@2.0.1`
+- `@directus/release-notes-generator@2.0.1`
+- `@directus/schema@13.0.1`
+- `@directus/storage-driver-azure@12.0.3`
+- `@directus/storage-driver-cloudinary@12.0.3`
+- `@directus/storage-driver-gcs@12.0.3`
+- `@directus/storage-driver-s3@12.0.3`
+- `@directus/storage-driver-supabase@3.0.3`
+- `@directus/system-data@3.1.0`
+- `@directus/themes@1.0.10`
+- `@directus/types@13.1.0`
+- `@directus/utils@13.0.3`
+- `@directus/validation@2.0.3`
+- `@directus/sdk@19.1.0`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.5.1 (2025-02-28)</h2>
+      <pre>### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - inside an extension's detail page in the marketplace, the back state is not valid if it's a nullish value and it should ([#24703](https://github.com/directus/directus/pull/24703) by @CiaccoDavide)
+    redirect to the extensions list
+- **@directus/api**
+  - Fixed invalid `item_duplication_fields` paths existing after a field in the path is deleted ([#24654](https://github.com/directus/directus/pull/24654) by @ComfortablyCoding)
+  - Fixed `filter_count` returning incorrect values for relational filters ([#24718](https://github.com/directus/directus/pull/24718) by @ComfortablyCoding)
+- **@directus/system-data**
+  - Fixed invalid `item_duplication_fields` paths existing after a field in the path is deleted ([#24654](https://github.com/directus/directus/pull/24654) by @ComfortablyCoding)
+
+### 📝 Documentation
+
+- Updated incorrect UsersService example in the docs ([#24726](https://github.com/directus/directus/pull/24726) by @br41nslug)
+
+### 📦 Published Versions
+
+- `@directus/app@13.7.1`
+- `@directus/api@25.0.1`
+- `@directus/composables@11.1.8`
+- `create-directus-extension@11.0.11`
+- `@directus/env@5.0.2`
+- `@directus/extensions@3.0.3`
+- `@directus/extensions-registry@3.0.3`
+- `@directus/extensions-sdk@13.0.3`
+- `@directus/memory@3.0.2`
+- `@directus/pressure@3.0.2`
+- `@directus/storage-driver-azure@12.0.2`
+- `@directus/storage-driver-cloudinary@12.0.2`
+- `@directus/storage-driver-gcs@12.0.2`
+- `@directus/storage-driver-s3@12.0.2`
+- `@directus/storage-driver-supabase@3.0.2`
+- `@directus/system-data@3.0.1`
+- `@directus/themes@1.0.9`
+- `@directus/utils@13.0.2`
+- `@directus/validation@2.0.2`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.5.0 (2025-02-26)</h2>
+      <pre>### ⚠️ Potential Breaking Changes
+
+- **@directus/api**
+  - Changed error message when a Flow condition operation fails ([#24716](https://github.com/directus/directus/pull/24716) by @br41nslug)
+
+### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Ensured fields in nested groups are found when searching through filters ([#24522](https://github.com/directus/directus/pull/24522) by @formfcw)
+- **@directus/api**
+  - Added Prometheus support ([#24233](https://github.com/directus/directus/pull/24233) by @ComfortablyCoding)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Ensured that the Kanban layout only resets the group title when the group field changes within the same collection ([#24567](https://github.com/directus/directus/pull/24567) by @formfcw)
+  - Ensured that the “Show Ungrouped” option is disabled and that the “No Group” column doesn’t appear in Kanban layouts if ([#24563](https://github.com/directus/directus/pull/24563) by @formfcw)
+    the group field is not nullable
+  - Ensured that Kanban layout groups can be reordered without admin rights when selecting a non-relational group_by field ([#24537](https://github.com/directus/directus/pull/24537) by @formfcw)
+    by saving updates in the layout presets.
+  - Improved custom translation experience by prefilling existing values ([#24535](https://github.com/directus/directus/pull/24535) by @hanneskuettner)
+  - Ensured that the Kanban layout refreshes after deleting a group column ([#24565](https://github.com/directus/directus/pull/24565) by @formfcw)
+  - Fixed trimmed fields not saving null for empty strings ([#24544](https://github.com/directus/directus/pull/24544) by @connorwinston)
+  - Fixed Opening of Translation Split Pane Overriding 2nd lang when not needed ([#24628](https://github.com/directus/directus/pull/24628) by @connorwinston)
+  - Fixed being able to input non-integer values into an integer input. ([#24569](https://github.com/directus/directus/pull/24569) by @connorwinston)
+  - Ensured that bulk selection and editing in the table layout of the O2M and M2M interfaces works as expected ([#24540](https://github.com/directus/directus/pull/24540) by @formfcw)
+  - Added customizable handling for missing data in time series charts, allowing continuous lines, gaps, or a set value. ([#24529](https://github.com/directus/directus/pull/24529) by @connorwinston)
+  - Fix BlockEditor Duplicating Translated Items ([#24617](https://github.com/directus/directus/pull/24617) by @connorwinston)
+  - Fixed BigInt rounding errors by treating BigInt's as strings in app ([#24599](https://github.com/directus/directus/pull/24599) by @connorwinston)
+  - Fixes sort ordering for bulk updates and m2a relationships ([#24598](https://github.com/directus/directus/pull/24598) by @robluton)
+- **@directus/api**
+  - Optimized local schema caching in memory with object freezing ([#24636](https://github.com/directus/directus/pull/24636) by @br41nslug)
+  - Added semaphore to GraphQL schema generation ([#24667](https://github.com/directus/directus/pull/24667) by @licitdev)
+  - Removed duplicated key validation logic from updateByQuery ([#24709](https://github.com/directus/directus/pull/24709) by @u12206050)
+  - Fixed permissions with $NOW being cached ([#24543](https://github.com/directus/directus/pull/24543) by @Nitwel)
+  - Improved error message when verifying JWT ([#24618](https://github.com/directus/directus/pull/24618) by @licitdev)
+  - Modularized GraphQL service to improve code organization and maintainability ([#24533](https://github.com/directus/directus/pull/24533) by @Nitwel)
+- **@directus/env**
+  - Added Prometheus support ([#24233](https://github.com/directus/directus/pull/24233) by @ComfortablyCoding)
+- **@directus/utils**
+  - Fixed shifting logical operators up in filter parsing ([#24564](https://github.com/directus/directus/pull/24564) by @Nitwel)
+- **@directus/extensions-sdk**
+  - Added the `validate` command to the `package.json` template ([#24610](https://github.com/directus/directus/pull/24610) by @ukmadlz)
+
+### 📝 Documentation
+
+- Added Prometheus support ([#24233](https://github.com/directus/directus/pull/24233) by @ComfortablyCoding)
+
+### 📦 Published Versions
+
+- `@directus/app@13.7.0`
+- `@directus/api@25.0.0`
+- `@directus/composables@11.1.7`
+- `create-directus-extension@11.0.10`
+- `@directus/env@5.0.1`
+- `@directus/extensions@3.0.2`
+- `@directus/extensions-registry@3.0.2`
+- `@directus/extensions-sdk@13.0.2`
+- `@directus/memory@3.0.1`
+- `@directus/pressure@3.0.1`
+- `@directus/storage-driver-azure@12.0.1`
+- `@directus/storage-driver-cloudinary@12.0.1`
+- `@directus/storage-driver-gcs@12.0.1`
+- `@directus/storage-driver-s3@12.0.1`
+- `@directus/storage-driver-supabase@3.0.1`
+- `@directus/themes@1.0.8`
+- `@directus/utils@13.0.1`
+- `@directus/validation@2.0.1`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.4.1 (2025-02-04)</h2>
+      <pre>### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Added confirmation prompt to delete buttons and ensured that they behave consistently ([#24462](https://github.com/directus/directus/pull/24462) by @formfcw)
+  - Exposed `useTranslationsStore` to extensions via `useStores` ([#24475](https://github.com/directus/directus/pull/24475) by @paescuj)
+  - Added support for rendering M2A items in related values display ([#24503](https://github.com/directus/directus/pull/24503) by @formfcw)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed a bug where text did not appear in the markdown interface when switching from preview to editor mode ([#24482](https://github.com/directus/directus/pull/24482) by @formfcw)
+  - Fixed a bug where thumbnails did not appear in the render template ([#24480](https://github.com/directus/directus/pull/24480) by @formfcw)
+  - Fixed label display not handling json field types in templates ([#24437](https://github.com/directus/directus/pull/24437) by @connorwinston)
+  - Fixed conditional interface options incorrectly replacing choices ([#23685](https://github.com/directus/directus/pull/23685) by @Trup3s)
+  - Fixed missing space between v-notice and list items in M2A interface ([#24466](https://github.com/directus/directus/pull/24466) by @formfcw)
+  - Ensured that permissions are applied to kanban layout actions ([#24409](https://github.com/directus/directus/pull/24409) by @formfcw)
+  - Ensured that custom translations used in system-input-translated-string interfaces are displayed correctly ([#24495](https://github.com/directus/directus/pull/24495) by @formfcw)
+  - Fixed a bug where the item limit warning would appear even if the item count was already below the limit after filtering ([#24485](https://github.com/directus/directus/pull/24485) by @formfcw)
+  - Fixed a bug where the header would not collapse under certain circumstances and would unexpectedly move up when ([#24454](https://github.com/directus/directus/pull/24454) by @formfcw)
+    scrolling elements in the view
+  - Fixed inconsistencies in list interfaces ([#24385](https://github.com/directus/directus/pull/24385) by @formfcw)
+  - Added checkboxes/radiobuttons for calendar items when in select mode ([#24444](https://github.com/directus/directus/pull/24444) by @formfcw)
+  - Fixed Field/Collection/Relation Stores not handling error's correctly ([#24436](https://github.com/directus/directus/pull/24436) by @connorwinston)
+  - Fixed alignment of SSO social icons in Safari ([#24474](https://github.com/directus/directus/pull/24474) by @paescuj)
+  - Added support for cc, bcc, and replyTo fields to the email operation ([#24488](https://github.com/directus/directus/pull/24488) by @highvibesonly)
+  - Enhanced Date Formatting Options for DateTime Interface/Display ([#24504](https://github.com/directus/directus/pull/24504) by @connorwinston)
+- **@directus/api**
+  - Added support for cc, bcc, and replyTo fields to the email operation ([#24488](https://github.com/directus/directus/pull/24488) by @highvibesonly)
+  - Reverted version bump of CSV parser dependency due to a regression ([#24441](https://github.com/directus/directus/pull/24441) by @hanneskuettner)
+  - Removed read permissions check during files deletion ([#24511](https://github.com/directus/directus/pull/24511) by @licitdev)
+  - Run cleanup in mutex error case when getting schema ([#24506](https://github.com/directus/directus/pull/24506) by @licitdev)
+  - Fixed multiple nested aliases ([#23948](https://github.com/directus/directus/pull/23948) by @ComfortablyCoding)
+  - Fixed column `default_value` dropped on field schema changes ([#24386](https://github.com/directus/directus/pull/24386) by @ComfortablyCoding)
+- **@directus/sdk**
+  - Removed invalid operation trigger API from SDK and docs ([#24461](https://github.com/directus/directus/pull/24461) by @licitdev)
+  - Fixed SDK policy type for createRole(s) ([#24424](https://github.com/directus/directus/pull/24424) by @ComfortablyCoding)
+- **@directus/themes**
+  - Fixed shadow of header bar to be present in default dark mode ([#24463](https://github.com/directus/directus/pull/24463) by @paescuj)
+
+### 📝 Documentation
+
+- Removed invalid operation trigger API from SDK and docs ([#24461](https://github.com/directus/directus/pull/24461) by @licitdev)
+
+### 🧪 Blackbox Tests
+
+- Patched blackbox tests for v11 ([#24281](https://github.com/directus/directus/pull/24281) by @licitdev)
+
+### 📦 Published Versions
+
+- `@directus/app@13.6.0`
+- `@directus/api@24.0.1`
+- `create-directus-extension@11.0.9`
+- `@directus/extensions@3.0.1`
+- `@directus/extensions-registry@3.0.1`
+- `@directus/extensions-sdk@13.0.1`
+- `@directus/themes@1.0.7`
+- `@directus/sdk@19.0.1`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.4.0 (2025-01-16)</h2>
+      <pre>### ⚠️ Potential Breaking Changes
+
+- **@directus/api**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **create-directus-project**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/constants**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/env**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/errors**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/extensions**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/extensions-registry**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/extensions-sdk**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/format-title**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/memory**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/pressure**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/random**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/release-notes-generator**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/schema**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/sdk**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/storage**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/storage-driver-azure**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/storage-driver-cloudinary**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/storage-driver-gcs**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/storage-driver-local**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/storage-driver-s3**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/storage-driver-supabase**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/system-data**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/types**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/update-check**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/utils**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+- **@directus/validation**
+  - Upgrade required Node.js version to 22 ([#24140](https://github.com/directus/directus/pull/24140) by @rijkvanzanten)
+
+### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Improved flow notification messages to differentiate between async and sync flow execution ([#24419](https://github.com/directus/directus/pull/24419) by @obafemitayor)
+  - Added the ability to toggle translation interface items to make them deleteable and ensure that defaults, conditions and ([#24291](https://github.com/directus/directus/pull/24291) by @formfcw)
+    validations work as expected
+- **@directus/extensions-sdk**
+  - Introduced new `validate` command in the `directus-extension` CLI which checks if an extension meets the requirements ([#24269](https://github.com/directus/directus/pull/24269) by @ukmadlz)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Cleared login error message on successful credentials when TFA is enabled ([#24274](https://github.com/directus/directus/pull/24274) by @bwp91)
+  - Fixed a bug in the kanban layout where setting a related values display broke the layout ([#24335](https://github.com/directus/directus/pull/24335) by @formfcw)
+  - Changed `useRelationMultiple` to only update fetched items when dependents change, not just update ([#24389](https://github.com/directus/directus/pull/24389) by @connorwinston)
+  - Added internationalization to rich text editor toolbar ([#23308](https://github.com/directus/directus/pull/23308) by @SP12893678)
+  - Fixed incorrectly rendering `related-values` for related items in template rendering. Fixed `display-formatted-values` and `display-labels` not handling arrays correctly. Added handling of nested fields to template rendering. ([#24232](https://github.com/directus/directus/pull/24232) by @connorwinston)
+  - Ensured translation fields are validated ([#24220](https://github.com/directus/directus/pull/24220) by @formfcw)
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/api**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+  - Cleaned-up/replaced obsolete dependencies ([#24374](https://github.com/directus/directus/pull/24374) by @paescuj)
+  - Fixed constraint name limits and `is_indexed` behavior for MSSQL/SQLite ([#24203](https://github.com/directus/directus/pull/24203) by @joselcvarela)
+  - Fixed field deletion not being tracked in the activity log ([#24188](https://github.com/directus/directus/pull/24188) by @licitdev)
+  - Fixed O2M/M2O node merging with parent ([#24316](https://github.com/directus/directus/pull/24316) by @ComfortablyCoding)
+- **@directus/components**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/composables**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/constants**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **create-directus-extension**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **create-directus-project**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/env**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/errors**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/extensions-registry**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+  - Cleaned-up/replaced obsolete dependencies ([#24374](https://github.com/directus/directus/pull/24374) by @paescuj)
+- **@directus/extensions-sdk**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/extensions**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+  - Fixed "getSchema" type definition for api extensions ([#24321](https://github.com/directus/directus/pull/24321) by @br41nslug)
+- **@directus/format-title**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/memory**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/pressure**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/random**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/release-notes-generator**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+  - Cleaned-up/replaced obsolete dependencies ([#24374](https://github.com/directus/directus/pull/24374) by @paescuj)
+- **@directus/sdk**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+  - Added system argument for the clearCache function in the SDK ([#24398](https://github.com/directus/directus/pull/24398) by @Dominic-Marcelino)
+  - Fixed the sdk not returning `null` on 204 response ([#24275](https://github.com/directus/directus/pull/24275) by @ComfortablyCoding)
+- **@directus/schema**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+  - Fixed constraint name limits and `is_indexed` behavior for MSSQL/SQLite ([#24203](https://github.com/directus/directus/pull/24203) by @joselcvarela)
+- **@directus/storage-driver-azure**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/storage-driver-cloudinary**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/storage-driver-gcs**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/storage-driver-local**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/storage-driver-s3**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/storage-driver-supabase**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/storage**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/stores**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/system-data**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/themes**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/types**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/update-check**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/utils**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+- **@directus/validation**
+  - Updated dependencies ([#24341](https://github.com/directus/directus/pull/24341) by @renovate)
+
+### 📦 Published Versions
+
+- `@directus/app@13.5.0`
+- `@directus/api@24.0.0`
+- `@directus/components@1.0.2`
+- `@directus/composables@11.1.6`
+- `@directus/constants@13.0.0`
+- `create-directus-extension@11.0.8`
+- `create-directus-project@12.0.0`
+- `@directus/env@5.0.0`
+- `@directus/errors@2.0.0`
+- `@directus/extensions@3.0.0`
+- `@directus/extensions-registry@3.0.0`
+- `@directus/extensions-sdk@13.0.0`
+- `@directus/format-title@12.0.0`
+- `@directus/memory@3.0.0`
+- `@directus/pressure@3.0.0`
+- `@directus/random@2.0.0`
+- `@directus/release-notes-generator@2.0.0`
+- `@directus/schema@13.0.0`
+- `@directus/storage@12.0.0`
+- `@directus/storage-driver-azure@12.0.0`
+- `@directus/storage-driver-cloudinary@12.0.0`
+- `@directus/storage-driver-gcs@12.0.0`
+- `@directus/storage-driver-local@12.0.0`
+- `@directus/storage-driver-s3@12.0.0`
+- `@directus/storage-driver-supabase@3.0.0`
+- `@directus/stores@1.0.2`
+- `@directus/system-data@3.0.0`
+- `@directus/themes@1.0.6`
+- `@directus/types@13.0.0`
+- `@directus/update-check@13.0.0`
+- `@directus/utils@13.0.0`
+- `@directus/validation@2.0.0`
+- `@directus/sdk@19.0.0`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.3.5 (2024-12-18)</h2>
+      <pre>### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Added support for title and text fields to display related values in the kanban layout ([#23538](https://github.com/directus/directus/pull/23538) by @matt-rolley)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Added Marathi (mr-IN) to the list of translations 94% completed ([#24244](https://github.com/directus/directus/pull/24244) by @satputekuldip)
+- **@directus/api**
+  - Fixed incorrect updating of user's role when OIDC role mapping is not set ([#24252](https://github.com/directus/directus/pull/24252) by @licitdev)
+
+### 📦 Published Versions
+
+- `@directus/app@13.4.0`
+- `@directus/api@23.3.2`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.3.4 (2024-12-17)</h2>
+      <pre>### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed flow return data not being shown in flow logs if value is falsey ([#24231](https://github.com/directus/directus/pull/24231) by @hanneskuettner)
+  - Fixed field template sanitization ([#24238](https://github.com/directus/directus/pull/24238) by @connorwinston)
+- **@directus/sdk**
+  - Fixed SDK policy type and updateRole function ([#24208](https://github.com/directus/directus/pull/24208) by @br41nslug)
+
+### 📦 Published Versions
+
+- `@directus/app@13.3.8`
+- `@directus/api@23.3.1`
+- `@directus/sdk@18.0.3`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.3.3 (2024-12-16)</h2>
+      <pre>### ✨ New Features & Improvements
+
+- **@directus/api**
+  - Added ability to map oidc groups to oidc roles ([#24157](https://github.com/directus/directus/pull/24157) by @Audiotape-2)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Ensure floating view will not scroll top after route change ([#23920](https://github.com/directus/directus/pull/23920) by @SP12893678)
+  - Improved perf by preventing an unnecessary permissions lookup ([#24178](https://github.com/directus/directus/pull/24178) by @paescuj)
+  - Fixed permission checks when creating or editing related items ([#24177](https://github.com/directus/directus/pull/24177) by @paescuj)
+  - Fixed calendar layout locale for "Norwegian" ([#24205](https://github.com/directus/directus/pull/24205) by @hanneskuettner)
+  - Fixed the alignment of the select-all checkbox in the notifications drawer ([#24213](https://github.com/directus/directus/pull/24213) by @Dominic-Marcelino)
+  - Enhanced vertical alignment of SSO icons on login page ([#24119](https://github.com/directus/directus/pull/24119) by @robsoncombr)
+  - Fixed an issue with unintentional sorting after editing items in relational interfaces ([#24172](https://github.com/directus/directus/pull/24172) by @osmandvc)
+  - A potential licensing issue was reported in our use of TinyMCE (used for the WYSIWYG interface) after they changed licenses in the new major version. We've downgraded to the previous major which is MIT-licensed to resolve that while we look for a long term solution. ([#24181](https://github.com/directus/directus/pull/24181) by @paescuj)
+  - Fixed the display of relational fields in nested groups ([#24183](https://github.com/directus/directus/pull/24183) by @formfcw)
+  - Improved the default user created display template by using the avatar field ([#24160](https://github.com/directus/directus/pull/24160) by @gavalierm)
+  - Fixed thumbnails not appearing in File Library after upload ([#24087](https://github.com/directus/directus/pull/24087) by @joselcvarela)
+  - Increase raw-editor max-height ([#24199](https://github.com/directus/directus/pull/24199) by @gloriarodrife)
+- **@directus/api**
+  - Prevented websocket heartbeat handler from erroring on startup ([#24211](https://github.com/directus/directus/pull/24211) by @br41nslug)
+  - Added assigning admin policy to a new role created via command line when needed ([#24022](https://github.com/directus/directus/pull/24022) by @NickSettler)
+  - Fixed retention time based query not being database agnostic ([#24179](https://github.com/directus/directus/pull/24179) by @ComfortablyCoding)
+  - Added `idToken` to `providerPayload` in `auth.create` and `auth.update` filter hooks ([#24154](https://github.com/directus/directus/pull/24154) by @m3Lith)
+  - Improved the performance of relational lookups ([#23907](https://github.com/directus/directus/pull/23907) by @jclaveau)
+  - Reverted query generation for M2M relations that share the same junction table in #23879 ([#24149](https://github.com/directus/directus/pull/24149) by @licitdev)
+- **@directus/sdk**
+  - Add a discriminated union scenario to m2a query type resolution ([#23708](https://github.com/directus/directus/pull/23708) by @datner)
+
+### 📝 Documentation
+
+- Added tip to enable System Logs ([#24218](https://github.com/directus/directus/pull/24218) by @licitdev)
+- Added ability to map oidc groups to oidc roles ([#24157](https://github.com/directus/directus/pull/24157) by @Audiotape-2)
+
+### 📦 Published Versions
+
+- `@directus/app@13.3.7`
+- `@directus/api@23.3.0`
+- `@directus/sdk@18.0.2`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.3.2 (2024-12-03)</h2>
+      <pre>### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Added select all and delete buttons for notifications drawer ([#24028](https://github.com/directus/directus/pull/24028) by @NickSettler)
+- **@directus/api**
+  - Fixed an issue that could cause the schema cache to not be invalidated on schema apply ([#24128](https://github.com/directus/directus/pull/24128) by @rijkvanzanten)
+  - Added user existence check when migrating legacy comments ([#24134](https://github.com/directus/directus/pull/24134) by @licitdev)
+
+### 📦 Published Versions
+
+- `@directus/app@13.3.6`
+- `@directus/api@23.2.2`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.3.1 (2024-12-02)</h2>
+      <pre>### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed WYSIWYG file upload extension to use filename_disk ([#24097](https://github.com/directus/directus/pull/24097) by @that1matt)
+- **@directus/api**
+  - Fixed an issue that could cause the migrations to fail on certain database versions ([#24126](https://github.com/directus/directus/pull/24126) by @ComfortablyCoding)
+  - Fix specifications.ts to generate required array in OpenAPI schema ([#24123](https://github.com/directus/directus/pull/24123) by @Zyles)
+
+### 📦 Published Versions
+
+- `@directus/app@13.3.5`
+- `@directus/api@23.2.1`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.3.0 (2024-12-02)</h2>
+      <pre>### ✨ New Features & Improvements
+
+- **@directus/api**
+  - Added retention support for `directus_activity` and `directus_revisions` ([#24058](https://github.com/directus/directus/pull/24058) by @ComfortablyCoding)
+- **@directus/env**
+  - Added retention support for `directus_activity` and `directus_revisions` ([#24058](https://github.com/directus/directus/pull/24058) by @ComfortablyCoding)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed a HTML validity issue in the table component ([#24093](https://github.com/directus/directus/pull/24093) by @robsoncombr)
+  - Prefill sort field on relational interfaces ([#20271](https://github.com/directus/directus/pull/20271) by @Nitwel)
+  - Fixed an issue that would cause content versions to throw an error when used on singleton collections ([#24096](https://github.com/directus/directus/pull/24096) by @rijkvanzanten)
+  - Fixed item permissions not respected in `drawer-item` ([#24045](https://github.com/directus/directus/pull/24045) by @ComfortablyCoding)
+- **@directus/api**
+  - Fixed unauthenticated data access on a public websocket ([#24108](https://github.com/directus/directus/pull/24108) by @br41nslug)
+  - Fixed query generation for M2M relations that share the same junction table ([#23879](https://github.com/directus/directus/pull/23879) by @hanneskuettner)
+  - Removed outdated logic for the versioning service ([#24058](https://github.com/directus/directus/pull/24058) by @ComfortablyCoding)
+  - Fixed thumbnails not being generated after edits using Cloudinary storage ([#24112](https://github.com/directus/directus/pull/24112) by @joselcvarela)
+  - Removed outdated logic for the comment service ([#24058](https://github.com/directus/directus/pull/24058) by @ComfortablyCoding)
+  - Restricted comment create, update and delete to authenticated users ([#24058](https://github.com/directus/directus/pull/24058) by @ComfortablyCoding)
+  - Fixed applying of snapshot changes to/from alias fields ([#24120](https://github.com/directus/directus/pull/24120) by @licitdev)
+  - Fixed SSO GitHub sign up for users without public emails ([#24105](https://github.com/directus/directus/pull/24105) by @alexey-yarmosh)
+  - Allow the login timeout for OpenID SSO login to be adjusted ([#24003](https://github.com/directus/directus/pull/24003) by @g-pichler)
+- **@directus/system-data**
+  - Removed outdated logic for the comment service ([#24058](https://github.com/directus/directus/pull/24058) by @ComfortablyCoding)
+- **@directus/sdk**
+  - Removed outdated logic for the comment service ([#24058](https://github.com/directus/directus/pull/24058) by @ComfortablyCoding)
+
+### 📝 Documentation
+
+- Added retention support for `directus_activity` and `directus_revisions` ([#24058](https://github.com/directus/directus/pull/24058) by @ComfortablyCoding)
+- Restricted comment create, update and delete to authenticated users ([#24058](https://github.com/directus/directus/pull/24058) by @ComfortablyCoding)
+- Allow the login timeout for OpenID SSO login to be adjusted ([#24003](https://github.com/directus/directus/pull/24003) by @g-pichler)
+- fix typos in relational.md ([#24088](https://github.com/directus/directus/pull/24088) by @Leptopoda)
+
+### 📦 Published Versions
+
+- `@directus/app@13.3.4`
+- `@directus/api@23.2.0`
+- `@directus/composables@11.1.5`
+- `create-directus-extension@11.0.7`
+- `@directus/env@4.1.0`
+- `@directus/extensions@2.0.6`
+- `@directus/extensions-registry@2.0.6`
+- `@directus/extensions-sdk@12.1.4`
+- `@directus/memory@2.0.6`
+- `@directus/pressure@2.0.5`
+- `@directus/storage-driver-azure@11.1.2`
+- `@directus/storage-driver-cloudinary@11.1.2`
+- `@directus/storage-driver-gcs@11.1.2`
+- `@directus/storage-driver-s3@11.0.5`
+- `@directus/storage-driver-supabase@2.1.2`
+- `@directus/system-data@2.1.2`
+- `@directus/themes@1.0.5`
+- `@directus/utils@12.0.5`
+- `@directus/validation@1.0.5`
+- `@directus/sdk@18.0.1`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.13.4 (2024-12-02)</h2>
+      <pre>### 🐛 Bug Fixes & Optimizations
+
+- **@directus/api**
+  - Added HTML sanitization in comments
+
+### 📦 Published Versions
+
+- `@directus/api@21.0.2`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.2.2 (2024-11-20)</h2>
+      <pre>### ⚠️ Potential Breaking Changes
+
+- **@directus/env**
+  - Fixed enforcing `chunkSize` when TUS is not enabled and updated the default `TUS_CHUNK_SIZE` to `8mb` ([#24002](https://github.com/directus/directus/pull/24002) by @ComfortablyCoding)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed enforcing `chunkSize` when TUS is not enabled and updated the default `TUS_CHUNK_SIZE` to `8mb` ([#24002](https://github.com/directus/directus/pull/24002) by @ComfortablyCoding)
+  - Added "Item Link" option to M2O interface ([#23997](https://github.com/directus/directus/pull/23997) by @joselcvarela)
+  - Fixed sorting order of collection for grouped collections ([#22392](https://github.com/directus/directus/pull/22392) by @hanneskuettner)
+  - Fixed broken reactivity in format item count composable ([#24039](https://github.com/directus/directus/pull/24039) by @hanneskuettner)
+- **@directus/api**
+  - Fixed an issue in the OracleDB query binding preprocessing ([#24027](https://github.com/directus/directus/pull/24027) by @hanneskuettner)
+  - Fixed enforcing `chunkSize` when TUS is not enabled and updated the default `TUS_CHUNK_SIZE` to `8mb` ([#24002](https://github.com/directus/directus/pull/24002) by @ComfortablyCoding)
+  - Added content version merging to SEARCH method endpoint ([#24040](https://github.com/directus/directus/pull/24040) by @br41nslug)
+  - Fixed an issue in the item access validation that caused problems with CockroachDB ([#24026](https://github.com/directus/directus/pull/24026) by @hanneskuettner)
+- **@directus/storage-driver-cloudinary**
+  - Fixed enforcing `chunkSize` when TUS is not enabled and updated the default `TUS_CHUNK_SIZE` to `8mb` ([#24002](https://github.com/directus/directus/pull/24002) by @ComfortablyCoding)
+- **@directus/storage-driver-supabase**
+  - Fixed enforcing `chunkSize` when TUS is not enabled and updated the default `TUS_CHUNK_SIZE` to `8mb` ([#24002](https://github.com/directus/directus/pull/24002) by @ComfortablyCoding)
+- **@directus/storage-driver-azure**
+  - Fixed enforcing `chunkSize` when TUS is not enabled and updated the default `TUS_CHUNK_SIZE` to `8mb` ([#24002](https://github.com/directus/directus/pull/24002) by @ComfortablyCoding)
+- **@directus/storage-driver-gcs**
+  - Fixed enforcing `chunkSize` when TUS is not enabled and updated the default `TUS_CHUNK_SIZE` to `8mb` ([#24002](https://github.com/directus/directus/pull/24002) by @ComfortablyCoding)
+- **@directus/constants**
+  - Fixed enforcing `chunkSize` when TUS is not enabled and updated the default `TUS_CHUNK_SIZE` to `8mb` ([#24002](https://github.com/directus/directus/pull/24002) by @ComfortablyCoding)
+- **@directus/storage-driver-s3**
+  - Made S3 connection settings configurable ([#24036](https://github.com/directus/directus/pull/24036) by @joselcvarela)
+
+### 📝 Documentation
+
+- Fixed enforcing `chunkSize` when TUS is not enabled and updated the default `TUS_CHUNK_SIZE` to `8mb` ([#24002](https://github.com/directus/directus/pull/24002) by @ComfortablyCoding)
+
+### 📦 Published Versions
+
+- `@directus/app@13.3.3`
+- `@directus/api@23.1.3`
+- `@directus/composables@11.1.4`
+- `@directus/constants@12.0.1`
+- `create-directus-extension@11.0.6`
+- `@directus/env@4.0.0`
+- `@directus/extensions@2.0.5`
+- `@directus/extensions-registry@2.0.5`
+- `@directus/extensions-sdk@12.1.3`
+- `@directus/memory@2.0.5`
+- `@directus/pressure@2.0.4`
+- `@directus/storage-driver-azure@11.1.1`
+- `@directus/storage-driver-cloudinary@11.1.1`
+- `@directus/storage-driver-gcs@11.1.1`
+- `@directus/storage-driver-s3@11.0.4`
+- `@directus/storage-driver-supabase@2.1.1`
+- `@directus/themes@1.0.4`
+- `@directus/types@12.2.2`
+- `@directus/utils@12.0.4`
+- `@directus/validation@1.0.4`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.2.1 (2024-11-06)</h2>
+      <pre>### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed /permissions/me request if primary key contains a / ([#23990](https://github.com/directus/directus/pull/23990) by @hanneskuettner)
+- **@directus/api**
+  - Skipped collection exists check when creating collections and folders ([#23991](https://github.com/directus/directus/pull/23991) by @licitdev)
+
+### 📦 Published Versions
+
+- `@directus/app@13.3.2`
+- `@directus/api@23.1.2`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.2.0 (2024-11-05)</h2>
+      <pre>### ✨ New Features & Improvements
+
+- **@directus/storage-driver-supabase**
+  - Added TUS support to the Supabase storage driver ([#23958](https://github.com/directus/directus/pull/23958) by @ComfortablyCoding)
+- **@directus/storage-driver-azure**
+  - Added TUS support to the Azure storage driver ([#23904](https://github.com/directus/directus/pull/23904) by @ComfortablyCoding)
+- **@directus/storage-driver-cloudinary**
+  - Added TUS support to the Cloudinary storage driver ([#23943](https://github.com/directus/directus/pull/23943) by @ComfortablyCoding)
+- **@directus/storage-driver-gcs**
+  - Added TUS support to the GCS storage driver ([#23897](https://github.com/directus/directus/pull/23897) by @ComfortablyCoding)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed disabled state of the "Add File" empty state button for users without permissions ([#23947](https://github.com/directus/directus/pull/23947) by @osmandvc)
+  - Improved the loading and unloading speed of the data model pages ([#23976](https://github.com/directus/directus/pull/23976) by @hanneskuettner)
+  - Fix permission generation for Shares ([#23716](https://github.com/directus/directus/pull/23716) by @Nitwel)
+  - Fixed regression to item count displaying after vue-i18n upgrade ([#23973](https://github.com/directus/directus/pull/23973) by @hanneskuettner)
+- **@directus/api**
+  - Fix permission generation for Shares ([#23716](https://github.com/directus/directus/pull/23716) by @Nitwel)
+  - Fixed Cloudinary image preview in the File Library ([#23956](https://github.com/directus/directus/pull/23956) by @joselcvarela)
+  - Fixed SQL generation for relational sort fields with permissions ([#23871](https://github.com/directus/directus/pull/23871) by @hanneskuettner)
+  - Fixed invalid legacy permission fetching for comment mentions ([#23972](https://github.com/directus/directus/pull/23972) by @licitdev)
+- **@directus/system-data**
+  - Fix permission generation for Shares ([#23716](https://github.com/directus/directus/pull/23716) by @Nitwel)
+- **@directus/types**
+  - Fix permission generation for Shares ([#23716](https://github.com/directus/directus/pull/23716) by @Nitwel)
+
+### 📦 Published Versions
+
+- `@directus/app@13.3.1`
+- `@directus/api@23.1.1`
+- `@directus/composables@11.1.3`
+- `create-directus-extension@11.0.5`
+- `@directus/env@3.1.3`
+- `@directus/extensions@2.0.4`
+- `@directus/extensions-registry@2.0.4`
+- `@directus/extensions-sdk@12.1.2`
+- `@directus/memory@2.0.4`
+- `@directus/pressure@2.0.3`
+- `@directus/storage-driver-azure@11.1.0`
+- `@directus/storage-driver-cloudinary@11.1.0`
+- `@directus/storage-driver-gcs@11.1.0`
+- `@directus/storage-driver-s3@11.0.3`
+- `@directus/storage-driver-supabase@2.1.0`
+- `@directus/system-data@2.1.1`
+- `@directus/themes@1.0.3`
+- `@directus/types@12.2.1`
+- `@directus/utils@12.0.3`
+- `@directus/validation@1.0.3`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.1.2 (2024-10-29)</h2>
+      <pre>### ⚠️ Potential Breaking Changes
+
+- **@directus/sdk**
+  - Extracted comments to a separate table ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+
+### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Extracted comments to a separate table ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+  - Added support for batch editing in M2M and O2M table interfaces ([#21241](https://github.com/directus/directus/pull/21241) by @u12206050)
+- **@directus/api**
+  - Extracted comments to a separate table ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+- **@directus/system-data**
+  - Extracted comments to a separate table ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+- **@directus/specs**
+  - Extracted comments to a separate table ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+- **@directus/types**
+  - Extracted comments to a separate table ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed display error when selecting kanban layout for the first time ([#23927](https://github.com/directus/directus/pull/23927) by @SP12893678)
+  - Ensured elements on login page are correctly truncated when not enough space is available ([#23746](https://github.com/directus/directus/pull/23746) by @Julias0)
+  - Added condition to only show the "Create Dashboard" if the user has the correct permissions ([#23828](https://github.com/directus/directus/pull/23828) by @SP12893678)
+  - Added save options to role and policies item pages ([#23820](https://github.com/directus/directus/pull/23820) by @ubercj)
+  - Hide alias fields in the export sidebar ([#23866](https://github.com/directus/directus/pull/23866) by @licitdev)
+  - Fixed tags interface to correctly handle reset whitespace option ([#23829](https://github.com/directus/directus/pull/23829) by @SP12893678)
+  - Ensured new operation can reuse same key as previously deleted one in current flow editing session ([#23874](https://github.com/directus/directus/pull/23874) by @SP12893678)
+  - Fixed an issue where the WYSIWYG interface would reload with every keystroke if custom formats are given ([#23881](https://github.com/directus/directus/pull/23881) by @SP12893678)
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+  - Fixed pasting of multiple, comma separated numbers into the filter input ([#23911](https://github.com/directus/directus/pull/23911) by @hanneskuettner)
+- **@directus/api**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+  - Fixed an issue which prevented the deletion of some nested collections when applying a snapshot ([#23851](https://github.com/directus/directus/pull/23851) by @DanielBiegler)
+  - Allow for cachebusting when reading images from cloudinary to use the latest image for preview generation. ([#23639](https://github.com/directus/directus/pull/23639) by @Nitwel)
+  - Added missing fields for `directus_fields` to GraphQL schema, SDK and docs ([#23905](https://github.com/directus/directus/pull/23905) by @br41nslug)
+  - Consolidated Content Versions with a new `delta` field under `directus_versions` ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+  - Fixed an issue where the mail sender is not displayed correctly for instances that use special characters in project name ([#23889](https://github.com/directus/directus/pull/23889) by @shaietz)
+  - Fixed query time logging leaking memory for failed queries ([#23926](https://github.com/directus/directus/pull/23926) by @SP12893678)
+  - Added `is_indexed` to schema snapshot ([#23861](https://github.com/directus/directus/pull/23861) by @ComfortablyCoding)
+- **create-directus-project**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+- **create-directus-extension**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+- **@directus/extensions-sdk**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+- **@directus/memory**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+- **@directus/storage-driver-azure**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+  - Allow for cachebusting when reading images from cloudinary to use the latest image for preview generation. ([#23639](https://github.com/directus/directus/pull/23639) by @Nitwel)
+- **@directus/storage-driver-cloudinary**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+  - Allow for cachebusting when reading images from cloudinary to use the latest image for preview generation. ([#23639](https://github.com/directus/directus/pull/23639) by @Nitwel)
+  - Fixed the cloudinary storage driver to work again with the server health check ([#23821](https://github.com/directus/directus/pull/23821) by @ComfortablyCoding)
+- **@directus/storage-driver-gcs**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+  - Allow for cachebusting when reading images from cloudinary to use the latest image for preview generation. ([#23639](https://github.com/directus/directus/pull/23639) by @Nitwel)
+- **@directus/storage-driver-s3**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+  - Allow for cachebusting when reading images from cloudinary to use the latest image for preview generation. ([#23639](https://github.com/directus/directus/pull/23639) by @Nitwel)
+- **@directus/storage-driver-supabase**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+  - Allow for cachebusting when reading images from cloudinary to use the latest image for preview generation. ([#23639](https://github.com/directus/directus/pull/23639) by @Nitwel)
+- **@directus/themes**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+- **@directus/update-check**
+  - Updated dependencies ([#23819](https://github.com/directus/directus/pull/23819) by @renovate)
+  - Added missing clear cache method ([#23913](https://github.com/directus/directus/pull/23913) by @paescuj)
+- **@directus/storage-driver-local**
+  - Allow for cachebusting when reading images from cloudinary to use the latest image for preview generation. ([#23639](https://github.com/directus/directus/pull/23639) by @Nitwel)
+- **@directus/storage**
+  - Allow for cachebusting when reading images from cloudinary to use the latest image for preview generation. ([#23639](https://github.com/directus/directus/pull/23639) by @Nitwel)
+- **@directus/sdk**
+  - Added missing fields for `directus_fields` to GraphQL schema, SDK and docs ([#23905](https://github.com/directus/directus/pull/23905) by @br41nslug)
+  - Consolidated Content Versions with a new `delta` field under `directus_versions` ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+  - Improved SDK relation function type ([#23877](https://github.com/directus/directus/pull/23877) by @br41nslug)
+  - Ensured failing GraphQL requests are properly handled by throwing an error and exposing `errors` and `data` information ([#22666](https://github.com/directus/directus/pull/22666) by @GuyShane)
+- **@directus/specs**
+  - Consolidated Content Versions with a new `delta` field under `directus_versions` ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+- **@directus/system-data**
+  - Consolidated Content Versions with a new `delta` field under `directus_versions` ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+- **@directus/types**
+  - Consolidated Content Versions with a new `delta` field under `directus_versions` ([#23612](https://github.com/directus/directus/pull/23612) by @licitdev)
+- **@directus/extensions**
+  - Fixed extension-sdk defineHook and defineEndpoint types ([#23836](https://github.com/directus/directus/pull/23836) by @br41nslug)
+
+### 📝 Documentation
+
+- Added missing fields for `directus_fields` to GraphQL schema, SDK and docs ([#23905](https://github.com/directus/directus/pull/23905) by @br41nslug)
+
+### 📦 Published Versions
+
+- `@directus/app@13.3.0`
+- `@directus/api@23.1.0`
+- `@directus/composables@11.1.2`
+- `create-directus-extension@11.0.4`
+- `create-directus-project@11.0.2`
+- `@directus/env@3.1.2`
+- `@directus/errors@1.0.1`
+- `@directus/extensions@2.0.3`
+- `@directus/extensions-registry@2.0.3`
+- `@directus/extensions-sdk@12.1.1`
+- `@directus/memory@2.0.3`
+- `@directus/pressure@2.0.2`
+- `@directus/specs@11.1.0`
+- `@directus/storage@11.0.1`
+- `@directus/storage-driver-azure@11.0.2`
+- `@directus/storage-driver-cloudinary@11.0.3`
+- `@directus/storage-driver-gcs@11.0.2`
+- `@directus/storage-driver-local@11.0.1`
+- `@directus/storage-driver-s3@11.0.2`
+- `@directus/storage-driver-supabase@2.0.2`
+- `@directus/system-data@2.1.0`
+- `@directus/themes@1.0.2`
+- `@directus/types@12.2.0`
+- `@directus/update-check@12.0.2`
+- `@directus/utils@12.0.2`
+- `@directus/validation@1.0.2`
+- `@directus/sdk@18.0.0`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.1.1 (2024-10-08)</h2>
+      <pre>### ⚠️ Potential Breaking Changes
+
+- **@directus/api**
+  - Dropped support for the SendGrid email transport option ([#23392](https://github.com/directus/directus/pull/23392) by @McSundae)
+
+### ✨ New Features & Improvements
+
+- **@directus/types**
+  - Add `Prettify` type helper ([#23714](https://github.com/directus/directus/pull/23714) by @hanneskuettner)
+- **@directus/extensions-sdk**
+  - Added support for disabling terminal screen clearing on rebuild in watch mode ([#23556](https://github.com/directus/directus/pull/23556) by @GuyShane)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed empty preview in Markdown interface ([#23599](https://github.com/directus/directus/pull/23599) by @joselcvarela)
+  - Fixed spacing of expand/collapse button in the data model view ([#23581](https://github.com/directus/directus/pull/23581) by @formfcw)
+  - Fixed dialog/drawer order when creating a bookmark in the collection view ([#23505](https://github.com/directus/directus/pull/23505) by @hanneskuettner)
+  - Fixed SVG truncation issue in image interface preview ([#23389](https://github.com/directus/directus/pull/23389) by @SP12893678)
+  - Fixed an issue that would cause custom role names to not be translated in the role navigation sidebar ([#23651](https://github.com/directus/directus/pull/23651) by @SP12893678)
+  - Fixed WYSIWYG interface to be updated when interface options are changed via conditions ([#23773](https://github.com/directus/directus/pull/23773) by @SP12893678)
+  - Improved behavior of the translations interface when setting 'use users language' option ([#23597](https://github.com/directus/directus/pull/23597) by @SP12893678)
+  - Fixed an issue blocking collection view after switching between Kanban bookmarks ([#23774](https://github.com/directus/directus/pull/23774) by @hanneskuettner)
+  - Improved calendar layout styling to be more consistent ([#23550](https://github.com/directus/directus/pull/23550) by @formfcw)
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+  - Ensured data in sidebar is re-fetched when switching pages while a sidebar pane is already opened ([#23553](https://github.com/directus/directus/pull/23553) by @SP12893678)
+  - Ensured errors occured within the cards layout are always shown ([#23802](https://github.com/directus/directus/pull/23802) by @SP12893678)
+  - Fixed format warnings in `api/src/request/is-denied-ip.ts` and `app/src/interfaces/input-rich-text-html/input-rich-text-html.vue` ([#23584](https://github.com/directus/directus/pull/23584) by @ComfortablyCoding)
+  - Fixed an issue that would cause log streaming to fail on Directus installations that use a subpath in the URL ([#23569](https://github.com/directus/directus/pull/23569) by @JoshTheDerf)
+  - Fixed an issue that could cause the color picker interface to crash when a invalid color was used and improved the UX of interacting with the text input of the color picker interface. ([#23654](https://github.com/directus/directus/pull/23654) by @connorwinston)
+  - Ensured users are redirected to the intended page after login via LDAP ([#23788](https://github.com/directus/directus/pull/23788) by @mmsardar)
+  - Fixed failing validation of `$CURRENT_POLICIES` and `$CURRENT_ROLES` in the filter interface ([#23730](https://github.com/directus/directus/pull/23730) by @hanneskuettner)
+  - Fixed the truncation of long collection names in the permission configuration interface ([#23700](https://github.com/directus/directus/pull/23700) by @hanneskuettner)
+- **@directus/api**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+  - Fixed format warnings in `api/src/request/is-denied-ip.ts` and `app/src/interfaces/input-rich-text-html/input-rich-text-html.vue` ([#23584](https://github.com/directus/directus/pull/23584) by @ComfortablyCoding)
+  - Fixed unit tests for get-address util ([#23583](https://github.com/directus/directus/pull/23583) by @ComfortablyCoding)
+  - Fixed injection of the $CURRENT_POLICIES into permissions ([#23728](https://github.com/directus/directus/pull/23728) by @hanneskuettner)
+  - Added option to sync SSO user information on login for LDAP, OpenID and OAuth2 ([#23595](https://github.com/directus/directus/pull/23595) by @br41nslug)
+  - Fixed an issue enforcing database specific Primary Key constraints on field updates for all vendors ([#23706](https://github.com/directus/directus/pull/23706) by @ComfortablyCoding)
+  - Added optional ignoreRules option to Schema Apply CLI ([#23465](https://github.com/directus/directus/pull/23465) by @keesvanbemmel)
+  - Fixed authentication handling between logs streaming and regular websocket connections ([#23691](https://github.com/directus/directus/pull/23691) by @br41nslug)
+- **create-directus-project**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+- **@directus/components**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+- **@directus/extensions-registry**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+- **@directus/release-notes-generator**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+- **@directus/stores**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+- **@directus/storage-driver-s3**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+- **@directus/themes**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+- **@directus/update-check**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+- **@directus/utils**
+  - Updated dependencies ([#23796](https://github.com/directus/directus/pull/23796) by @renovate)
+- **@directus/env**
+  - Added option to sync SSO user information on login for LDAP, OpenID and OAuth2 ([#23595](https://github.com/directus/directus/pull/23595) by @br41nslug)
+- **@directus/sdk**
+  - Fixed the precedence of `withToken` if a token is already saved in the SDK instance ([#23739](https://github.com/directus/directus/pull/23739) by @hanneskuettner)
+  - Made the output types of SDK requests better readable in IDEs ([#23494](https://github.com/directus/directus/pull/23494) by @fapspirit)
+- **@directus/schema**
+  - Fixed an issue that would cause a server crash on unexpected PostgreSQL database schema contents ([#23664](https://github.com/directus/directus/pull/23664) by @rijkvanzanten)
+- **@directus/extensions-sdk**
+  - Prevented nesting bundle extensions via the `extensions-sdk` add command ([#23663](https://github.com/directus/directus/pull/23663) by @ComfortablyCoding)
+- **@directus/extensions**
+  - Improve `defineX` typings to properly type the known config options ([#23714](https://github.com/directus/directus/pull/23714) by @hanneskuettner)
+
+### 📝 Documentation
+
+- Fixed a typo in the docs ([#23585](https://github.com/directus/directus/pull/23585) by @rijkvanzanten)
+
+### 📦 Published Versions
+
+- `@directus/app@13.2.1`
+- `@directus/api@23.0.0`
+- `@directus/components@1.0.1`
+- `@directus/composables@11.1.1`
+- `create-directus-extension@11.0.3`
+- `create-directus-project@11.0.1`
+- `@directus/env@3.1.1`
+- `@directus/extensions@2.0.2`
+- `@directus/extensions-registry@2.0.2`
+- `@directus/extensions-sdk@12.1.0`
+- `@directus/memory@2.0.2`
+- `@directus/pressure@2.0.1`
+- `@directus/release-notes-generator@1.0.1`
+- `@directus/schema@12.1.1`
+- `@directus/storage-driver-azure@11.0.1`
+- `@directus/storage-driver-cloudinary@11.0.2`
+- `@directus/storage-driver-gcs@11.0.1`
+- `@directus/storage-driver-s3@11.0.1`
+- `@directus/storage-driver-supabase@2.0.1`
+- `@directus/stores@1.0.1`
+- `@directus/themes@1.0.1`
+- `@directus/types@12.1.0`
+- `@directus/update-check@12.0.1`
+- `@directus/utils@12.0.1`
+- `@directus/validation@1.0.1`
+- `@directus/sdk@17.0.2`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.1.0 (2024-09-03)</h2>
+      <pre>### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Added support for creating database indexes on fields ([#23149](https://github.com/directus/directus/pull/23149) by @ComfortablyCoding)
+  - Ensured the opened detail in the sidebar is persisted across site navigation and reloads (per browser tab) ([#23383](https://github.com/directus/directus/pull/23383) by @Dominic-Marcelino)
+  - Added a system interface for showing a password field with visibility toggle ([#23387](https://github.com/directus/directus/pull/23387) by @AlexGaillard)
+  - Added item count to the notification drawer ([#23414](https://github.com/directus/directus/pull/23414) by @Dominic-Marcelino)
+  - Implemented selection mode for kanban layouts ([#23489](https://github.com/directus/directus/pull/23489) by @hanneskuettner)
+  - Added default view option to the markdown interface to select which view should be shown by default ([#23353](https://github.com/directus/directus/pull/23353) by @hanneskuettner)
+- **@directus/api**
+  - Implemented logs websocket ([#23016](https://github.com/directus/directus/pull/23016) by @licitdev)
+  - Introduced the `USER_INVITE_TOKEN_TTL` option, allowing to configure the expiration of user invitations ([#22986](https://github.com/directus/directus/pull/22986) by @matt-rolley)
+  - Fixed OracleDB error when updating nullable option with the same value as before ([#23436](https://github.com/directus/directus/pull/23436) by @jaads)
+  - Enabled `gen_random_uuid()` to be used as default value for a field ([#23359](https://github.com/directus/directus/pull/23359) by @jaads)
+  - Added support for creating database indexes on fields ([#23149](https://github.com/directus/directus/pull/23149) by @ComfortablyCoding)
+- **@directus/env**
+  - Implemented logs websocket ([#23016](https://github.com/directus/directus/pull/23016) by @licitdev)
+- **@directus/schema**
+  - Added support for creating database indexes on fields ([#23149](https://github.com/directus/directus/pull/23149) by @ComfortablyCoding)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Ensured notifications are reloaded after manually running a Flow to provide users with the latest notifications generated by the Flow ([#23381](https://github.com/directus/directus/pull/23381) by @Dominic-Marcelino)
+  - Ensured warning about unsaved changes is displayed for Flows with custom confirmation config too ([#23408](https://github.com/directus/directus/pull/23408) by @Dominic-Marcelino)
+  - Improved selection label of the "New Tab" checkbox in the html rich text editor ([#23502](https://github.com/directus/directus/pull/23502) by @simboonlong)
+  - Added notice in notifications drawer when no items are found due to applied search/filter ([#23428](https://github.com/directus/directus/pull/23428) by @paescuj)
+  - Fixed styling issues with the related-values display ([#21854](https://github.com/directus/directus/pull/21854) by @formfcw)
+  - Added system logs to the app ([#23066](https://github.com/directus/directus/pull/23066) by @licitdev)
+  - Fixed the "Archive All" notifications functionality ([#23411](https://github.com/directus/directus/pull/23411) by @Dominic-Marcelino)
+  - Fixed a syntax error that did not correctly apply the border for the v-chip component ([#23540](https://github.com/directus/directus/pull/23540) by @formfcw)
+  - Prevented a crash in the Data Studio when switching to the "Date" type while configuring Datetime interface ([#23384](https://github.com/directus/directus/pull/23384) by @SP12893678)
+  - Dropped unused translations ([#23503](https://github.com/directus/directus/pull/23503) by @hanneskuettner)
+  - Fixed the image tune menu toggle state indication in the block editor interface ([#23510](https://github.com/directus/directus/pull/23510) by @HeikoMueller)
+  - Ensured the notifications unread count is updated when un-/archiving notifications ([#23407](https://github.com/directus/directus/pull/23407) by @paescuj)
+  - Improved the grid layout for radio and checkboxes interface ([#23358](https://github.com/directus/directus/pull/23358) by @SP12893678)
+- **@directus/api**
+  - Fixed an issue that would prevent extensions from loading ([#23492](https://github.com/directus/directus/pull/23492) by @rijkvanzanten)
+  - Fixed server address undefined for `graphql` and `websocket` logs ([#23488](https://github.com/directus/directus/pull/23488) by @ComfortablyCoding)
+  - Fixed the length of icon fields in system collections, allowing to use icons with longer names ([#23391](https://github.com/directus/directus/pull/23391) by @SP12893678)
+  - Fixed SQL query generation for MSSQL queries that use field level permissions and sort ([#23518](https://github.com/directus/directus/pull/23518) by @hanneskuettner)
+  - Fixed the preprocessing of SQL bindings that is necessary to deduplicate identical value bindings for some SQL dialects ([#23453](https://github.com/directus/directus/pull/23453) by @joselcvarela)
+  - Fixed an issue that could cause the response cache to misbehave ([`769fa22`](https://github.com/directus/directus/commit/769fa22797bff5a9231599883b391e013f122e52) by @rijkvanzanten)
+  - Fixed an issue that would cause local extensions built via workspaces to not be watched when extensions reload is active ([#23100](https://github.com/directus/directus/pull/23100) by @bernatvadell)
+  - Fixed the `email.send` filter to be usable in Flows in conjunction with the "Run Script" operation ([#23446](https://github.com/directus/directus/pull/23446) by @joselcvarela)
+  - Fixed the generated OpenAPI specs to include POST, PATCH and DELETE paths again ([#23460](https://github.com/directus/directus/pull/23460) by @u12206050)
+  - Fixed an issue where creating notifications could hang on SQLite ([#23405](https://github.com/directus/directus/pull/23405) by @paescuj)
+- **@directus/memory**
+  - Fixed an issue that would prevent extensions from loading ([#23492](https://github.com/directus/directus/pull/23492) by @rijkvanzanten)
+- **@directus/env**
+  - Fixed an issue that would prevent extensions from loading ([#23492](https://github.com/directus/directus/pull/23492) by @rijkvanzanten)
+  - Fixed server address undefined for `graphql` and `websocket` logs ([#23488](https://github.com/directus/directus/pull/23488) by @ComfortablyCoding)
+  - Expanded `0.0.0.0` matching of loopback ranges ([`8cbf943`](https://github.com/directus/directus/commit/8cbf943b65fd4a763d09a5fdbba8996b1e7797ff) by @br41nslug)
+  - Introduced the `USER_INVITE_TOKEN_TTL` option, allowing to configure the expiration of user invitations ([#22986](https://github.com/directus/directus/pull/22986) by @matt-rolley)
+- **@directus/sdk**
+  - Fixed an outdated property name in the permissions typing ([#23380](https://github.com/directus/directus/pull/23380) by @EdouardDem)
+  - Fix DirectusPolicy typescript declaration ([#23442](https://github.com/directus/directus/pull/23442) by @Lfillon)
+  - Reset attempts after reconnection failure ([#23016](https://github.com/directus/directus/pull/23016) by @licitdev)
+- **@directus/specs**
+  - Fixed a duplicate operationId ([`d90d1bd`](https://github.com/directus/directus/commit/d90d1bd39076ba6a9c1041bfb4e82169391ef488) by @rijkvanzanten)
+- **@directus/storage-driver-cloudinary**
+  - Fixed an issue that could cause cloudinary to throw an inconsistent chunk size ([#23554](https://github.com/directus/directus/pull/23554) by @AndriyStankevych)
+
+### 📝 Documentation
+
+- Implemented logs websocket ([#23016](https://github.com/directus/directus/pull/23016) by @licitdev)
+- Fixed an issue that would prevent extensions from loading ([#23492](https://github.com/directus/directus/pull/23492) by @rijkvanzanten)
+- Added support for creating database indexes on fields ([#23149](https://github.com/directus/directus/pull/23149) by @ComfortablyCoding)
+- Fixed missing import in auth example ([#23490](https://github.com/directus/directus/pull/23490) by @rijkvanzanten)
+
+### 📦 Published Versions
+
+- `@directus/app@13.2.0`
+- `@directus/api@22.2.0`
+- `create-directus-extension@11.0.2`
+- `@directus/env@3.1.0`
+- `@directus/extensions@2.0.1`
+- `@directus/extensions-registry@2.0.1`
+- `@directus/extensions-sdk@12.0.2`
+- `@directus/memory@2.0.1`
+- `@directus/schema@12.1.0`
+- `@directus/specs@11.0.1`
+- `@directus/storage-driver-cloudinary@11.0.1`
+- `@directus/types@12.0.1`
+- `@directus/sdk@17.0.1`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.13.3 (2024-09-03)</h2>
+      <pre>### 🐛 Bug Fixes & Optimizations
+
+- **@directus/api**
+  - Fixed an issue that would prevent extensions from loading ([#23328](https://github.com/directus/directus/pull/23328) by @joselcvarela)
+  - Fixed an issue that could cause the response cache to misbehave ([`4aace0b`](https://github.com/directus/directus/commit/4aace0bbe57232e38cd6a287ee475293e46dc91b) by @rijkvanzanten)
+- **@directus/memory**
+  - Fixed an issue that would prevent extensions from loading ([#23328](https://github.com/directus/directus/pull/23328) by @joselcvarela)
+- **@directus/env**
+  - Fixed an issue that would prevent extensions from loading ([#23328](https://github.com/directus/directus/pull/23328) by @joselcvarela)
+  - Expanded `0.0.0.0` matching of loopback ranges ([`c1f3ccc`](https://github.com/directus/directus/commit/c1f3ccc681595038d094ce110ddeee38cb38f431) by @rijkvanzanten)
+
+### 📝 Documentation
+
+- Fixed an issue that would prevent extensions from loading ([#23328](https://github.com/directus/directus/pull/23328) by @joselcvarela)
+
+### 📦 Published Versions
+
+- `@directus/app@12.2.3`
+- `@directus/api@21.0.1`
+- `@directus/env@1.3.2`
+- `@directus/memory@1.0.12`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.2 (2024-08-14)</h2>
+      <pre>### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Added the option to select a default sort field in the O2M interface ([#23019](https://github.com/directus/directus/pull/23019) by @alexvdvalk)
+- **@directus/composables**
+  - Enhanced & aligned item counts in collections, providing more detailed information ([#22519](https://github.com/directus/directus/pull/22519) by @paescuj)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed bookmark duplication when rapidly switching between bookmarks ([#23324](https://github.com/directus/directus/pull/23324) by @SP12893678)
+  - Fixed translations interface that attempted to query the language direction field, even if unconfigured and unavailable ([#23300](https://github.com/directus/directus/pull/23300) by @hanneskuettner)
+  - Fixed readonly mutation to fields in the store via item drawer ([#23277](https://github.com/directus/directus/pull/23277) by @azrikahar)
+  - Fixed the sorting behavior when adding new items to a O2M relation that uses a string sort field (e.g. through manual ([#23348](https://github.com/directus/directus/pull/23348) by @hanneskuettner)
+    sorting in the table interface)
+  - Enhanced & aligned item counts in collections, providing more detailed information ([#22519](https://github.com/directus/directus/pull/22519) by @paescuj)
+  - Improved WYSIWYG editor to hide the toolbar if no toolbar items are selected ([#23310](https://github.com/directus/directus/pull/23310) by @Dominic-Marcelino)
+  - Fixed the WYSIWYG interface to correctly apply the font configured in the interface settings ([#23343](https://github.com/directus/directus/pull/23343) by @formfcw)
+- **@directus/api**
+  - Persist default value and nullable during field schema update ([#23151](https://github.com/directus/directus/pull/23151) by @echocrow)
+  - Fixed caching behavior of permissions that contain dynamic variables ([#23321](https://github.com/directus/directus/pull/23321) by @hanneskuettner)
+  - Fixed the permission application for relational `_some` and `_none` filters ([#23272](https://github.com/directus/directus/pull/23272) by @hanneskuettner)
+  - Fixed an issue where the first column would be missing when importing UTF-8 BOM CSV files ([#23332](https://github.com/directus/directus/pull/23332) by @azrikahar)
+  - Fixed sort field default for related o2m items in case of missing permissions ([#23267](https://github.com/directus/directus/pull/23267) by @hanneskuettner)
+  - Fixed typo for invalid aggregate query parameter log ([#23334](https://github.com/directus/directus/pull/23334) by @azrikahar)
+  - Fixed item permission checking for collections that have permissions with no field access ([#23357](https://github.com/directus/directus/pull/23357) by @hanneskuettner)
+  - Fixed deep `groupBy` queries for O2M relations, where results were not correctly grouped under their respective parent ([#23279](https://github.com/directus/directus/pull/23279) by @hanneskuettner)
+    items
+  - Fixed the notification for finished file exports to be sent out to users without requiring any permissions on `directus_notifications` ([#23336](https://github.com/directus/directus/pull/23336) by @azrikahar)
+  - Fixed the retrieval of updatable singleton field permissions in the `/permissions/me/<collection>` endpoint ([#23269](https://github.com/directus/directus/pull/23269) by @hanneskuettner)
+  - Fixed permissions migration to work with more MySQL flavors ([#23327](https://github.com/directus/directus/pull/23327) by @hanneskuettner)
+  - Fixed `"DB_CLIENT" Environment Variable is missing.` appearing during `directus init` ([#23256](https://github.com/directus/directus/pull/23256) by @ComfortablyCoding)
+  - Fixed M2A querying when the user does not have access to all related collections ([#23340](https://github.com/directus/directus/pull/23340) by @hanneskuettner)
+  - Ensured payload validation accounts for preset data ([#23346](https://github.com/directus/directus/pull/23346) by @hanneskuettner)
+
+### 📦 Published Versions
+
+- `@directus/app@13.1.0`
+- `@directus/api@22.1.1`
+- `@directus/composables@11.1.0`
+- `create-directus-extension@11.0.1`
+- `@directus/extensions-sdk@12.0.1`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.1 (2024-08-08)</h2>
+      <pre>There were a handful reports about the migrations from v10-v11 failing, so we pushed a couple patches to make it more reliable 🙂 
+
+### ✨ New Features & Improvements
+
+- **@directus/api**
+  - Added transaction retry mechanism for SQLite if a `SQLITE_BUSY` errors occurs ([#23243](https://github.com/directus/directus/pull/23243) by @joggienl)
+  - Added support for listening on unix sockets via a new `UNIX_SOCKET_PATH` variable ([#23150](https://github.com/directus/directus/pull/23150) by @McSundae)
+- **@directus/env**
+  - Added support to provide a cast prefix to config variables which are read from a file using the `_FILE` suffix ([#22164](https://github.com/directus/directus/pull/22164) by @joselcvarela)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Removed update delay in the block editor interface ([#23115](https://github.com/directus/directus/pull/23115) by @SP12893678)
+  - Fixed list structure in draggable lists ([#23116](https://github.com/directus/directus/pull/23116) by @SP12893678)
+  - Fixed an issue that would cause the translations display not to use the correct language if the user relied on "system ([#23240](https://github.com/directus/directus/pull/23240) by @danilobuerger)
+    language"
+- **@directus/api**
+  - Improved policies migration to handle a missing foreign key on `directus_permissions.role` more gracefully ([#23251](https://github.com/directus/directus/pull/23251) by @hanneskuettner)
+  - Ensured the migrations are properly executed when bootstrapping MySQL ([#23233](https://github.com/directus/directus/pull/23233) by @paescuj)
+  - Fixed drop foreign key if has different constraint name on permissions policies migrations ([#23253](https://github.com/directus/directus/pull/23253) by @joselcvarela)
+  - Fixed the init CLI command for MySQL to use the new `mysql2` package ([#23231](https://github.com/directus/directus/pull/23231) by @paescuj)
+
+### 📝 Documentation
+
+- Added support for listening on unix sockets via a new `UNIX_SOCKET_PATH` variable ([#23150](https://github.com/directus/directus/pull/23150) by @McSundae)
+- Added support to provide a cast prefix to config variables which are read from a file using the `_FILE` suffix ([#22164](https://github.com/directus/directus/pull/22164) by @joselcvarela)
+
+### 📦 Published Versions
+
+- `@directus/app@13.0.1`
+- `@directus/api@22.1.0`
+- `@directus/env@3.0.0`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.0 (2024-08-06)</h2>
+      <pre>## Policies
+
+Directus v11 contains a brand new permissions system that's based on policies. We've provided a migration, so the upgrade path is the same as with other releases. This is a big release, which changes the paradigm on how permissions are attached and executed. Please make a database backup before upgrading your version of Directus.
+
+### ⚠️ Potential Breaking Changes
+
+- **@directus/app**
+  - Added a new policy based permissions system ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/api**
+  - Replaced the database client library `mysql` with `mysql2`, used for MySQL/MariaDB ([#22534](https://github.com/directus/directus/pull/22534) by @paescuj)
+  - Added a new policy based permissions system ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/extensions**
+  - Changed module `preRegisterCheck` signature to align with the changes made for Policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/system-data**
+  - Added new collections and fields and updated existing fields and permissions needed for Policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/types**
+  - Added new types and modified existing types required for Policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/utils**
+  - Added new dynamic variables to `parseFilter` and added the `processChunk` helper ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+
+### ✨ New Features & Improvements
+
+- **@directus/api**
+  - Updated WebSocket subscriptions to include the new policies collection ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+  - Used explicit headings for CSV export ([#23140](https://github.com/directus/directus/pull/23140) by @jaads)
+  - Implemented new GraphQL queries for policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/constants**
+  - Added permission actions constant ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/sdk**
+  - Implemented new SDK functions for policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/memory**
+  - Added new `clear` method to cache implementations ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/errors**
+  - Added error extension to the `ForbiddenError` ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Ensured collections in system permissions interface are scrolled into view when added but out of view ([#23036](https://github.com/directus/directus/pull/23036) by @paescuj)
+  - Ensured the permissions table under policies is displayed correctly on mobile devices ([#22985](https://github.com/directus/directus/pull/22985) by @paescuj)
+  - Fixed table layout default query, to not include presetational fields ([#22840](https://github.com/directus/directus/pull/22840) by @hanneskuettner)
+  - Fixed missing policies in public role policy selection ([#23192](https://github.com/directus/directus/pull/23192) by @hanneskuettner)
+- **@directus/api**
+  - Fixed `groupBy` behavior that resulted in an internal server error when used with relational item permissions ([#23185](https://github.com/directus/directus/pull/23185) by @hanneskuettner)
+  - Fixed an issue that would cause the API to return an error when a root field in a m2a builder was queried ([#23181](https://github.com/directus/directus/pull/23181) by @rijkvanzanten)
+  - Fixed `reduceSchema` to strip out collection the user does not have access to ([#22916](https://github.com/directus/directus/pull/22916) by @hanneskuettner)
+  - Fixed user counting where users were double counted and inactive users with policies were counted as well ([#23184](https://github.com/directus/directus/pull/23184) by @rijkvanzanten)
+  - Fixed filter creation in `fetchPolicies` for users without roles ([#22936](https://github.com/directus/directus/pull/22936) by @hanneskuettner)
+  - Fixed aggregation field existence and permission checks ([#23022](https://github.com/directus/directus/pull/23022) by @hanneskuettner)
+  - Fixed down migration erroring on post migration permissions ([#23097](https://github.com/directus/directus/pull/23097) by @ComfortablyCoding)
+  - Fixed permission checking for o2m related fields ([#23199](https://github.com/directus/directus/pull/23199) by @hanneskuettner)
+  - Ensured that policies attached to a user, role and parent roles are correctly prioritized ([#22967](https://github.com/directus/directus/pull/22967) by @paescuj)
+  - Ensured the default `DB_FILENAME` option from the Docker Image is not applied when using MySQL/MariaDB, fixing a corresponding warning ([#22970](https://github.com/directus/directus/pull/22970) by @cliqer)
+  - Fixed the policies migration for the case where permissions had been configured for the public role ([#22811](https://github.com/directus/directus/pull/22811) by @paescuj)
+  - Fix query error on some DB vendors when using multi relation sort ([#22872](https://github.com/directus/directus/pull/22872) by @hanneskuettner)
+  - Migrated `NotificationsService` to new policies system ([#22914](https://github.com/directus/directus/pull/22914) by @hanneskuettner)
+  - Fixed broken permissions for sorting of aggregate query when using the aggregate result as sort field ([#23193](https://github.com/directus/directus/pull/23193) by @hanneskuettner)
+  - Fixed an issue where keys in filter operand objects where incorrectly checked for field permissions ([#22915](https://github.com/directus/directus/pull/22915) by @hanneskuettner)
+
+### 📦 Published Versions
+
+- `@directus/app@13.0.0`
+- `@directus/api@22.0.0`
+- `@directus/components@1.0.0`
+- `@directus/composables@11.0.0`
+- `@directus/constants@12.0.0`
+- `create-directus-extension@11.0.0`
+- `create-directus-project@11.0.0`
+- `@directus/env@2.0.0`
+- `@directus/errors@1.0.0`
+- `@directus/extensions@2.0.0`
+- `@directus/extensions-registry@2.0.0`
+- `@directus/extensions-sdk@12.0.0`
+- `@directus/format-title@11.0.0`
+- `@directus/memory@2.0.0`
+- `@directus/pressure@2.0.0`
+- `@directus/random@1.0.0`
+- `@directus/release-notes-generator@1.0.0`
+- `@directus/schema@12.0.0`
+- `@directus/specs@11.0.0`
+- `@directus/storage@11.0.0`
+- `@directus/storage-driver-azure@11.0.0`
+- `@directus/storage-driver-cloudinary@11.0.0`
+- `@directus/storage-driver-gcs@11.0.0`
+- `@directus/storage-driver-local@11.0.0`
+- `@directus/storage-driver-s3@11.0.0`
+- `@directus/storage-driver-supabase@2.0.0`
+- `@directus/stores@1.0.0`
+- `@directus/system-data@2.0.0`
+- `@directus/themes@1.0.0`
+- `@directus/tsconfig@2.0.0`
+- `@directus/types@12.0.0`
+- `@directus/update-check@12.0.0`
+- `@directus/utils@12.0.0`
+- `@directus/validation@1.0.0`
+- `@directus/sdk@17.0.0`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.13.2 (2024-08-06)</h2>
+      <pre>### ⚠️ Potential Breaking Changes
+
+- **@directus/api**
+  - Introduced `created_on` date field for files and adjusted `uploaded_on` to be updated with every upload ([#23035](https://github.com/directus/directus/pull/23035) by @paescuj)
+
+### ✨ New Features & Improvements
+
+- **@directus/api**
+  - Enabled caching of field information as part of schema caching ([#19480](https://github.com/directus/directus/pull/19480) by @u12206050)
+  - Enabled caching of foreign keys as part of schema caching ([#19391](https://github.com/directus/directus/pull/19391) by @u12206050)
+  - Introduced the `email.send` filter event, allowing to modify email options via Flows or Custom Extensions ([#23024](https://github.com/directus/directus/pull/23024) by @joselcvarela)
+- **@directus/errors**
+  - Added InternalServerError ([#22379](https://github.com/directus/directus/pull/22379) by @paescuj)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Introduced `created_on` date field for files and adjusted `uploaded_on` to be updated with every upload ([#23035](https://github.com/directus/directus/pull/23035) by @paescuj)
+  - Fixed TUS file upload logic to include the file UUID to enable file info fetching ([#23086](https://github.com/directus/directus/pull/23086) by @hanneskuettner)
+  - Introduced the `email.send` filter event, allowing to modify email options via Flows or Custom Extensions ([#23024](https://github.com/directus/directus/pull/23024) by @joselcvarela)
+  - Ensured that the expand-collapse-buttons of the data model view appear just as important as they are ([#22988](https://github.com/directus/directus/pull/22988) by @formfcw)
+  - Ensured dropdown interface correctly handles case when no options are provided ([#23092](https://github.com/directus/directus/pull/23092) by @SP12893678)
+  - Ensured that the metadata of the Marketplace extension page is well aligned with the content column ([#22980](https://github.com/directus/directus/pull/22980) by @formfcw)
+  - Fixed SVG support on image interface ([#23084](https://github.com/directus/directus/pull/23084) by @joselcvarela)
+  - Added auto reset of value to dropdown interface after conditional update of options ([#23007](https://github.com/directus/directus/pull/23007) by @SP12893678)
+  - Fixed an issue that would cause the versioning dropdown to be displayed squashed on long version names ([#23162](https://github.com/directus/directus/pull/23162) by @SP12893678)
+  - Fixed an issue that would cause detail groups to be collapsed on save and stay ([#23099](https://github.com/directus/directus/pull/23099) by @SP12893678)
+  - Ensured the "Expand All/None" buttons under Data Model are only shown if there are grouped collections ([#22989](https://github.com/directus/directus/pull/22989) by @paescuj)
+  - Fixed an issue that could cause the calendar layout to crash on invalid dates ([#23106](https://github.com/directus/directus/pull/23106) by @SP12893678)
+  - Added first and last page buttons to pagination in relational interfaces ([#23063](https://github.com/directus/directus/pull/23063) by @joselcvarela)
+- **@directus/api**
+  - Simplified schema caching by removing sharedSchemaCache ([#23098](https://github.com/directus/directus/pull/23098) by @licitdev)
+  - Redacted `access_token` in the query string when `LOG_STYLE=raw` ([`2e893f9`](https://github.com/directus/directus/commit/2e893f9c576d5a02506272fe2c0bcc12e6c58768) by @licitdev)
+  - Fixed filename_disk extension not getting updated when replacing an image with another file extension ([#23127](https://github.com/directus/directus/pull/23127) by @that1matt)
+  - Added null filtering to equality operators ([#23163](https://github.com/directus/directus/pull/23163) by @licitdev)
+  - Ensured the error message of unknown errors is returned correctly for admin users ([#22379](https://github.com/directus/directus/pull/22379) by @paescuj)
+  - Treat exif metadata as a progressive enhancement by no longer crashing a file upload on metadata load failure ([#23075](https://github.com/directus/directus/pull/23075) by @rijkvanzanten)
+  - Fixed environment variable parsing to always convert to number of bytes ([#22957](https://github.com/directus/directus/pull/22957) by @hanneskuettner)
+  - Fixed an issue where the query trace logger could lead to a crash with a failing query on MySQL ([#23095](https://github.com/directus/directus/pull/23095) by @paescuj)
+  - Fixed TUS file upload logic to include the file UUID to enable file info fetching ([#23086](https://github.com/directus/directus/pull/23086) by @hanneskuettner)
+  - Ensured `ASSETS_TRANSFORM_IMAGE_MAX_DIMENSION` is also respected for extraction of metadata during image upload ([#23064](https://github.com/directus/directus/pull/23064) by @AndriyAntonenko)
+  - Fixed cached schema infinite loop in slow network environments ([#23141](https://github.com/directus/directus/pull/23141) by @joselcvarela)
+  - Fixed an issue that would cause the logger redactor to fail when an invalid URL was requested ([#22960](https://github.com/directus/directus/pull/22960) by @rijkvanzanten)
+- **@directus/types**
+  - Added null filtering to equality operators ([#23163](https://github.com/directus/directus/pull/23163) by @licitdev)
+  - Introduced `created_on` date field for files and adjusted `uploaded_on` to be updated with every upload ([#23035](https://github.com/directus/directus/pull/23035) by @paescuj)
+- **@directus/system-data**
+  - Introduced `created_on` date field for files and adjusted `uploaded_on` to be updated with every upload ([#23035](https://github.com/directus/directus/pull/23035) by @paescuj)
+  - SDK removed dependency on system-data package ([#23146](https://github.com/directus/directus/pull/23146) by @br41nslug)
+- **@directus/specs**
+  - Introduced `created_on` date field for files and adjusted `uploaded_on` to be updated with every upload ([#23035](https://github.com/directus/directus/pull/23035) by @paescuj)
+- **@directus/sdk**
+  - SDK removed dependency on system-data package ([#23146](https://github.com/directus/directus/pull/23146) by @br41nslug)
+  - Disabled websocket reconnection after manual disconnection ([#23065](https://github.com/directus/directus/pull/23065) by @licitdev)
+  - Fixed built-in collection merging for SDK relational fields ([#21089](https://github.com/directus/directus/pull/21089) by @br41nslug)
+- **@directus/schema**
+  - Fixed remaining performance issues with schema introspection on MS SQL ([#23198](https://github.com/directus/directus/pull/23198) by @paescuj)
+
+### 📝 Documentation
+
+- Updated regions on Cloud list ([#23074](https://github.com/directus/directus/pull/23074) by @joselcvarela)
+
+### 📦 Published Versions
+
+- `@directus/app@12.2.2`
+- `@directus/api@21.0.0`
+- `@directus/composables@10.1.16`
+- `create-directus-extension@10.1.15`
+- `@directus/env@1.3.1`
+- `@directus/errors@0.4.0`
+- `@directus/extensions@1.0.10`
+- `@directus/extensions-registry@1.0.10`
+- `@directus/extensions-sdk@11.0.10`
+- `@directus/memory@1.0.11`
+- `@directus/pressure@1.0.22`
+- `@directus/schema@11.0.4`
+- `@directus/specs@10.2.11`
+- `@directus/storage-driver-azure@10.0.24`
+- `@directus/storage-driver-cloudinary@10.0.24`
+- `@directus/storage-driver-gcs@10.0.25`
+- `@directus/storage-driver-s3@10.1.1`
+- `@directus/storage-driver-supabase@1.0.16`
+- `@directus/system-data@1.1.1`
+- `@directus/themes@0.3.11`
+- `@directus/types@11.2.1`
+- `@directus/utils@11.0.11`
+- `@directus/validation@0.0.19`
+- `@directus/sdk@16.1.2`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.0-rc.3 (2024-07-10)</h2>
+      <pre>### ⚠️ Potential Breaking Changes
+
+- **@directus/app**
+  - Added a new policy based permissions system ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/api**
+  - Replaced the database client library `mysql` with `mysql2`, used for MySQL/MariaDB ([#22534](https://github.com/directus/directus/pull/22534) by @paescuj)
+  - Added a new policy based permissions system ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/utils**
+  - Added new dynamic variables to `parseFilter` and added the `processChunk` helper ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/types**
+  - Added new types and modified existing types required for Policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/extensions**
+  - Changed module `preRegisterCheck` signature to align with the changes made for Policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/system-data**
+  - Added new collections and fields and updated existing fields and permissions needed for Policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+
+### ✨ New Features & Improvements
+
+- **@directus/api**
+  - Updated WebSocket subscriptions to include the new policies collection ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+  - Implemented new GraphQL queries for policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/constants**
+  - Added permission actions constant ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/sdk**
+  - Implemented new SDK functions for policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/memory**
+  - Added new `clear` method to cache implementations ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/errors**
+  - Added error extension to the `ForbiddenError` ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed table layout default query, to not include presetational fields ([#22840](https://github.com/directus/directus/pull/22840) by @hanneskuettner)
+- **@directus/api**
+  - Fixed `reduceSchema` to strip out collection the user does not have access to ([#22916](https://github.com/directus/directus/pull/22916) by @hanneskuettner)
+  - Fixed environment variable parsing to always convert to number of bytes ([#22957](https://github.com/directus/directus/pull/22957) by @hanneskuettner)
+  - Fixed filter creation in `fetchPolicies` for users without roles ([#22936](https://github.com/directus/directus/pull/22936) by @hanneskuettner)
+  - Fixed the policies migration for the case where permissions had been configured for the public role ([#22811](https://github.com/directus/directus/pull/22811) by @paescuj)
+  - Fix query error on some DB vendors when using multi relation sort ([#22872](https://github.com/directus/directus/pull/22872) by @hanneskuettner)
+  - Migrated `NotificationsService` to new policies system ([#22914](https://github.com/directus/directus/pull/22914) by @hanneskuettner)
+  - Fixed an issue where keys in filter operand objects where incorrectly checked for field permissions ([#22915](https://github.com/directus/directus/pull/22915) by @hanneskuettner)
+  - Fixed an issue that would cause the logger redactor to fail when an invalid URL was requested ([#22960](https://github.com/directus/directus/pull/22960) by @rijkvanzanten)
+
+### 📦 Published Versions
+
+- `@directus/app@13.0.0-rc.2`
+- `@directus/api@21.0.0-rc.0`
+- `@directus/composables@10.1.16-rc.0`
+- `@directus/constants@11.1.0-rc.1`
+- `create-directus-extension@10.1.15-rc.0`
+- `@directus/env@1.3.1-rc.0`
+- `@directus/errors@0.4.0-rc.1`
+- `@directus/extensions@2.0.0-rc.1`
+- `@directus/extensions-registry@1.0.10-rc.0`
+- `@directus/extensions-sdk@11.0.10-rc.0`
+- `@directus/memory@1.1.0-rc.1`
+- `@directus/pressure@1.0.22-rc.0`
+- `@directus/storage-driver-azure@10.0.24-rc.0`
+- `@directus/storage-driver-cloudinary@10.0.24-rc.0`
+- `@directus/storage-driver-gcs@10.0.25-rc.0`
+- `@directus/storage-driver-s3@10.1.1-rc.0`
+- `@directus/storage-driver-supabase@1.0.16-rc.0`
+- `@directus/system-data@2.0.0-rc.1`
+- `@directus/themes@0.3.11-rc.0`
+- `@directus/types@12.0.0-rc.1`
+- `@directus/utils@12.0.0-rc.1`
+- `@directus/validation@0.0.19-rc.0`
+- `@directus/sdk@16.2.0-rc.1`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.13.1 (2024-07-09)</h2>
+      <pre>### ✨ New Features & Improvements
+
+- **@directus/api**
+  - Added support for the ADMIN_TOKEN environment variable ([#22724](https://github.com/directus/directus/pull/22724) by @burka)
+- **@directus/env**
+  - Added support for the ADMIN_TOKEN environment variable ([#22724](https://github.com/directus/directus/pull/22724) by @burka)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed an issue causing the tus uplaods not to respect the relative path of the app ([#22918](https://github.com/directus/directus/pull/22918) by @JoshTheDerf)
+- **@directus/api**
+  - Fixed truncating of results when sorted by relational field ([#22787](https://github.com/directus/directus/pull/22787) by @VincentKempers)
+  - Fixed reliance on `tus_id` field when reading files, even if TUS is not enabled ([#22929](https://github.com/directus/directus/pull/22929) by @hanneskuettner)
+  - Prioritized access_token in query over cookies for websocket authentication ([#22888](https://github.com/directus/directus/pull/22888) by @useEffects)
+  - Added error logging for TUS write errors ([#22954](https://github.com/directus/directus/pull/22954) by @hanneskuettner)
+  - Fixed cookie authentication in websocket strict mode ([#22912](https://github.com/directus/directus/pull/22912) by @br41nslug)
+  - Optimized the type signature of the items service collection parameter ([#22896](https://github.com/directus/directus/pull/22896) by @Dominic-Preap)
+
+### 📝 Documentation
+
+- Added support for the ADMIN_TOKEN environment variable ([#22724](https://github.com/directus/directus/pull/22724) by @burka)
+
+### 📦 Published Versions
+
+- `@directus/app@12.2.1`
+- `@directus/api@20.1.0`
+- `@directus/env@1.3.0`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.13.0 (2024-07-02)</h2>
+      <pre>### ⚠️ Potential Breaking Changes
+
+- **@directus/api**
+  - Ensured service integrity, by calling corresponding specified services out of other services ([#22738](https://github.com/directus/directus/pull/22738) by @paescuj)
+  - Included admin users under the app access limit ([#22760](https://github.com/directus/directus/pull/22760) by @licitdev)
+
+### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Added toggles to quickly expand or collapse all rows on the data model view ([#22780](https://github.com/directus/directus/pull/22780) by @drennvinn)
+  - Added a default preset for bookmarks to display the relevant fields by default ([#22699](https://github.com/directus/directus/pull/22699) by @paescuj)
+  - Implemented support for chunked uploads using the TUS protocol ([#22901](https://github.com/directus/directus/pull/22901) by @br41nslug)
+- **@directus/api**
+  - Implemented support for chunked uploads using the TUS protocol ([#22901](https://github.com/directus/directus/pull/22901) by @br41nslug)
+- **@directus/env**
+  - Implemented support for chunked uploads using the TUS protocol ([#22901](https://github.com/directus/directus/pull/22901) by @br41nslug)
+- **@directus/storage**
+  - Implemented support for chunked uploads using the TUS protocol ([#22901](https://github.com/directus/directus/pull/22901) by @br41nslug)
+- **@directus/storage-driver-local**
+  - Implemented support for chunked uploads using the TUS protocol ([#22901](https://github.com/directus/directus/pull/22901) by @br41nslug)
+- **@directus/storage-driver-s3**
+  - Implemented support for chunked uploads using the TUS protocol ([#22901](https://github.com/directus/directus/pull/22901) by @br41nslug)
+- **@directus/system-data**
+  - Implemented support for chunked uploads using the TUS protocol ([#22901](https://github.com/directus/directus/pull/22901) by @br41nslug)
+- **@directus/types**
+  - Implemented support for chunked uploads using the TUS protocol ([#22901](https://github.com/directus/directus/pull/22901) by @br41nslug)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Improved bookmark edit view, arranging fields by purpose and giving more space to the filter ([#22701](https://github.com/directus/directus/pull/22701) by @paescuj)
+  - Include image file extensions inside WYSIWYG ([#22789](https://github.com/directus/directus/pull/22789) by @that1matt)
+  - Fixed the input pattern check in the filter component ([#22697](https://github.com/directus/directus/pull/22697) by @paescuj)
+  - Improved tooltip arrow rendering for high resultion displays ([#22858](https://github.com/directus/directus/pull/22858) by @hanneskuettner)
+- **@directus/api**
+  - Fixed session verification for shares ([#22865](https://github.com/directus/directus/pull/22865) by @ikovac)
+  - Fixed an issue where copying-to-clipboard displayed a success notification even though it failed ([#22797](https://github.com/directus/directus/pull/22797) by @DanielBiegler)
+  - Added missing share ID when refreshing/updating share sessions ([#22867](https://github.com/directus/directus/pull/22867) by @paescuj)
+  - Added total file size to the telemetry report ([#22736](https://github.com/directus/directus/pull/22736) by @licitdev)
+  - Fixed error extraction for MySQL unique primary key constraints ([#22434](https://github.com/directus/directus/pull/22434) by @hanneskuettner)
+  - Fixed an issue that would ignore the filename_disk value if it was provided during file uploads ([#22848](https://github.com/directus/directus/pull/22848) by @rijkvanzanten)
+  - Fixed an issue that could cause time type fields to be treated as a string in GraphQL ([#22726](https://github.com/directus/directus/pull/22726) by @joselcvarela)
+  - Fixed the interpretation of CORS config options, allowing to use "falsy" values like `CORS_ORIGIN: false` and `CORS_MAX_AGE: 0` ([#22721](https://github.com/directus/directus/pull/22721) by @joselcvarela)
+- **@directus/system-data**
+  - Fixed an issue that caused the `uploaded_on` time to be set in a different format than `modified_on` in SQLite ([#22885](https://github.com/directus/directus/pull/22885) by @rijkvanzanten)
+  - Added missing system relations to prevent them showing up in a schema snapshot ([#22844](https://github.com/directus/directus/pull/22844) by @hanneskuettner)
+- **@directus/storage-driver-cloudinary**
+  - Fixed upload resource type guessing to consider the file extension in a case insensitive manner ([#22744](https://github.com/directus/directus/pull/22744) by @hanneskuettner)
+- **@directus/sdk**
+  - Fixed an issue where request could sometimes fail when using a custom storage implementation with async setter ([#22672](https://github.com/directus/directus/pull/22672) by @br41nslug)
+- **@directus/errors**
+  - Added `primaryKey` flag in `RecordNotUniqueError` extensions ([#22434](https://github.com/directus/directus/pull/22434) by @hanneskuettner)
+
+### 📦 Published Versions
+
+- `@directus/app@12.2.0`
+- `@directus/api@20.0.0`
+- `@directus/composables@10.1.15`
+- `create-directus-extension@10.1.14`
+- `@directus/env@1.2.0`
+- `@directus/errors@0.3.3`
+- `@directus/extensions@1.0.9`
+- `@directus/extensions-registry@1.0.9`
+- `@directus/extensions-sdk@11.0.9`
+- `@directus/memory@1.0.10`
+- `@directus/pressure@1.0.21`
+- `@directus/storage@10.1.0`
+- `@directus/storage-driver-azure@10.0.23`
+- `@directus/storage-driver-cloudinary@10.0.23`
+- `@directus/storage-driver-gcs@10.0.24`
+- `@directus/storage-driver-local@10.1.0`
+- `@directus/storage-driver-s3@10.1.0`
+- `@directus/storage-driver-supabase@1.0.15`
+- `@directus/system-data@1.1.0`
+- `@directus/themes@0.3.10`
+- `@directus/types@11.2.0`
+- `@directus/utils@11.0.10`
+- `@directus/validation@0.0.18`
+- `@directus/sdk@16.1.1`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.0-rc.2 (2024-06-21)</h2>
+      <pre>[Directus v11 RC Docs](https://v11-docs--directus-docs.netlify.app/)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/api**
+  - Fixed the policies migration for the case where permissions had been configured for the public role ([#22811](https://github.com/directus/directus/pull/22811) by @paescuj)
+
+### 📦 Published Versions
+
+- `@directus/app@13.0.0-rc.1`
+- `@directus/api@20.0.0-rc.1`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.0-rc.1 (2024-06-20)</h2>
+      <pre>[Directus v11 RC Docs](https://v11-docs--directus-docs.netlify.app/)
+
+### ⚠️ Potential Breaking Changes
+
+- **@directus/app**
+  - Added a new policy based permissions system ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/api**
+  - Added a new policy based permissions system ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+  - Replaced the database client library `mysql` with `mysql2`, used for MySQL/MariaDB ([#22534](https://github.com/directus/directus/pull/22534) by @paescuj)
+  - Ensured service integrity, by calling corresponding specified services out of other services ([#22738](https://github.com/directus/directus/pull/22738) by @paescuj)
+  - Included admin users under the app access limit ([#22760](https://github.com/directus/directus/pull/22760) by @licitdev)
+- **@directus/utils**
+  - Added new dynamic variables to `parseFilter` and added the `processChunk` helper ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/types**
+  - Added new types and modified existing types required for Policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/extensions**
+  - Changed module `preRegisterCheck` signature to align with the changes made for Policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/system-data**
+  - Added new collections and fields and updated existing fields and permissions needed for Policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+
+### ✨ New Features & Improvements
+
+- **@directus/app**
+  - Added a default preset for bookmarks to display the relevant fields by default ([#22699](https://github.com/directus/directus/pull/22699) by @paescuj)
+- **@directus/api**
+  - Updated WebSocket subscriptions to include the new policies collection ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+  - Implemented new GraphQL queries for policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/constants**
+  - Added permission actions constant ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/sdk**
+  - Implemented new SDK functions for policies ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/memory**
+  - Added new `clear` method to cache implementations ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+- **@directus/errors**
+  - Added error extension to the `ForbiddenError` ([#22773](https://github.com/directus/directus/pull/22773) by @rijkvanzanten)
+
+### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Improved bookmark edit view, arranging fields by purpose and giving more space to the filter ([#22701](https://github.com/directus/directus/pull/22701) by @paescuj)
+  - Fixed the input pattern check in the filter component ([#22697](https://github.com/directus/directus/pull/22697) by @paescuj)
+- **@directus/api**
+  - Fixed an issue where copying-to-clipboard displayed a success notification even though it failed ([#22797](https://github.com/directus/directus/pull/22797) by @DanielBiegler)
+  - Added total file size to the telemetry report ([#22736](https://github.com/directus/directus/pull/22736) by @licitdev)
+  - Fixed error extraction for MySQL unique primary key constraints ([#22434](https://github.com/directus/directus/pull/22434) by @hanneskuettner)
+  - Fixed an issue that could cause time type fields to be treated as a string in GraphQL ([#22726](https://github.com/directus/directus/pull/22726) by @joselcvarela)
+  - Fixed the interpretation of CORS config options, allowing to use "falsy" values like `CORS_ORIGIN: false` and `CORS_MAX_AGE: 0` ([#22721](https://github.com/directus/directus/pull/22721) by @joselcvarela)
+- **@directus/sdk**
+  - Fixed an issue where request could sometimes fail when using a custom storage implementation with async setter ([#22672](https://github.com/directus/directus/pull/22672) by @br41nslug)
+- **@directus/storage-driver-cloudinary**
+  - Fixed upload resource type guessing to consider the file extension in a case insensitive manner ([#22744](https://github.com/directus/directus/pull/22744) by @hanneskuettner)
+- **@directus/errors**
+  - Added `primaryKey` flag in `RecordNotUniqueError` extensions ([#22434](https://github.com/directus/directus/pull/22434) by @hanneskuettner)
+
+### 📦 Published Versions
+
+- `@directus/app@13.0.0-rc.0`
+- `@directus/api@20.0.0-rc.0`
+- `@directus/composables@10.1.15-rc.0`
+- `@directus/constants@11.1.0-rc.0`
+- `create-directus-extension@10.1.14-rc.0`
+- `@directus/env@1.1.7-rc.0`
+- `@directus/errors@0.4.0-rc.0`
+- `@directus/extensions@2.0.0-rc.0`
+- `@directus/extensions-registry@1.0.9-rc.0`
+- `@directus/extensions-sdk@11.0.9-rc.0`
+- `@directus/memory@1.1.0-rc.0`
+- `@directus/pressure@1.0.21-rc.0`
+- `@directus/storage-driver-azure@10.0.23-rc.0`
+- `@directus/storage-driver-cloudinary@10.0.23-rc.0`
+- `@directus/storage-driver-gcs@10.0.24-rc.0`
+- `@directus/storage-driver-s3@10.0.24-rc.0`
+- `@directus/storage-driver-supabase@1.0.15-rc.0`
+- `@directus/system-data@2.0.0-rc.0`
+- `@directus/themes@0.3.10-rc.0`
+- `@directus/types@12.0.0-rc.0`
+- `@directus/utils@12.0.0-rc.0`
+- `@directus/validation@0.0.18-rc.0`
+- `@directus/sdk@16.2.0-rc.0`</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.12.1 (2024-06-10)</h2>
+      <pre>### 🐛 Bug Fixes & Optimizations
+
+- **@directus/app**
+  - Fixed the lookup of the M2M junction relation in case of multiple relations using the same junction table ([#22653](https://github.com/directus/directus/pull/22653) by @hanneskuettner)
+  - Fixed Live Preview when the URL contains `version` field while the user doesn't have full field permissions on the collection ([#22646](https://github.com/directus/directus/pull/22646) by @joselcvarela)
+- **@directus/api**
+  - Optimized user limit checks by skipping them early if no limit is configured ([#22702](https://github.com/directus/directus/pull/22702) by @licitdev)
+- **@directus/schema**
+  - Fixed performance issues with schema introspection on MS SQL ([#22522](https://github.com/directus/directus/pull/22522) by @boring-joey)
+
+### 📦 Published Versions
+
+- `@directus/app@12.1.4`
+- `@directus/api@19.3.1`
+- `create-directus-extension@10.1.13`
+- `@directus/extensions@1.0.8`
+- `@directus/extensions-registry@1.0.8`
+- `@directus/extensions-sdk@11.0.8`
+- `@directus/schema@11.0.3`
+- `@directus/types@11.1.3`</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

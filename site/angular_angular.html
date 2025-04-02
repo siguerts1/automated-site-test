@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for angular/angular"/>
+  <title>angular/angular Release Notes</title>
+</head>
+<body>
+  <h1>🚀 angular/angular - Release Notes</h1>
+  
+    <section>
+      <h2>20.0.0-next.4 (2025-03-27)</h2>
+      <pre>### common
+| Commit | Description |
+| -- | -- |
+| [![fix - 785a1110e60](https://img.shields.io/badge/785a1110e60-fix-green)](https://github.com/angular/angular/commit/785a1110e603a3573261528f2fda28718f548b4a) | resolve host binding type issues (#60481) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - cf5c61c8490](https://img.shields.io/badge/cf5c61c8490-fix-green)](https://github.com/angular/angular/commit/cf5c61c8490cdb9a7633905eb5ab55ca76d72e77) | fix used templates are not deleted (#60459) |
+| [![fix - 13d1c8ab387](https://img.shields.io/badge/13d1c8ab387-fix-green)](https://github.com/angular/angular/commit/13d1c8ab38707b06dbed4941a556f982665b3304) | fixes timing of hydration cleanup on control flow (#60425) |
+### forms
+| Commit | Description |
+| -- | -- |
+| [![fix - bdd5e204233](https://img.shields.io/badge/bdd5e204233-fix-green)](https://github.com/angular/angular/commit/bdd5e204233eeb79e04a782a51c08429991eb03e) | resolve host binding type issues (#60481) |
+### localize
+| Commit | Description |
+| -- | -- |
+| [![fix - 7408a1f58b3](https://img.shields.io/badge/7408a1f58b3-fix-green)](https://github.com/angular/angular/commit/7408a1f58b3d0b4c535217875412573fb4f34bdd) | handle @angular/build:karma in ng add (#60513) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - 70bdb88b0c9](https://img.shields.io/badge/70bdb88b0c9-fix-green)](https://github.com/angular/angular/commit/70bdb88b0c9937ecb6d1adce5f02da32681782b3) | ensure `platformBrowserTesting` includes `platformBrowser` providers (#60480) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>19.2.4 (2025-03-27)</h2>
+      <pre>### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 081f5f5a83f](https://img.shields.io/badge/081f5f5a83f-fix-green)](https://github.com/angular/angular/commit/081f5f5a83fef99718952519bed9fe39005d6d37) | fix used templates are not deleted (#60459) |
+### localize
+| Commit | Description |
+| -- | -- |
+| [![fix - a2f622d82d6](https://img.shields.io/badge/a2f622d82d6-fix-green)](https://github.com/angular/angular/commit/a2f622d82d6c0f93a5fdf34fc8e5829db04c7380) | handle @angular/build:karma in ng add (#60513) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - 8e8ccc79279](https://img.shields.io/badge/8e8ccc79279-fix-green)](https://github.com/angular/angular/commit/8e8ccc792790c876cf5831f3d7a504290c665a1b) | ensure `platformBrowserTesting` includes `platformBrowser` providers (#60480) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>20.0.0-next.3 (2025-03-19)</h2>
+      <pre>### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![feat - bec1610da2](https://img.shields.io/badge/bec1610da2-feat-blue)](https://github.com/angular/angular/commit/bec1610da241f24bdb9120843a91973a3823a004) | add extended diagnostic for invalid nullish coalescing (#60279) |
+| [![feat - 1971e57a45](https://img.shields.io/badge/1971e57a45-feat-blue)](https://github.com/angular/angular/commit/1971e57a457ff9fd4dc8a353b59b51364e08b443) | support type checking of host bindings (#60267) |
+| [![fix - 29eded6457](https://img.shields.io/badge/29eded6457-fix-green)](https://github.com/angular/angular/commit/29eded6457b72e7c8a2d53c847ec43996b73c054) | report more accurate diagnostic for invalid import (#60455) |
+| [![fix - 2d51a203dc](https://img.shields.io/badge/2d51a203dc-fix-green)](https://github.com/angular/angular/commit/2d51a203dc87d6d880c3cf6d68bf8590f5dd689b) | wrong event name for host listener decorators (#60460) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - 22d3f0562c](https://img.shields.io/badge/22d3f0562c-feat-blue)](https://github.com/angular/angular/commit/22d3f0562cc6c21ebf7c29ff0e01bce40dcd50a0) | add hook for producer creation side effects (#60333) |
+| [![feat - b154fb3911](https://img.shields.io/badge/b154fb3911-feat-blue)](https://github.com/angular/angular/commit/b154fb391142db6139cddad820a9a72838f0f16c) | add support for two-way bindings on dynamically-created components (#60342) |
+| [![feat - 644d9f3bbd](https://img.shields.io/badge/644d9f3bbd-feat-blue)](https://github.com/angular/angular/commit/644d9f3bbdb5e77a78d95669cfd6b0f6d8cb09b9) | mark the toSignal API as stable (#60442) |
+| [![feat - 5e209cb560](https://img.shields.io/badge/5e209cb560-feat-blue)](https://github.com/angular/angular/commit/5e209cb560fdfb943169a09d35389c703fa71418) | remove TestBed.get (#60414) |
+| [![fix - b461e06ecb](https://img.shields.io/badge/b461e06ecb-fix-green)](https://github.com/angular/angular/commit/b461e06ecb93c9c03e6f41700558731e1f0d3b70) | catch hydration marker with implicit body tag (#60429) |
+| [![fix - b8daf472d8](https://img.shields.io/badge/b8daf472d8-fix-green)](https://github.com/angular/angular/commit/b8daf472d83b41b3d97d4014737d31c7cfc0ace0) | execute timer trigger outside zone (#60392) |
+| [![fix - 8953e45a43](https://img.shields.io/badge/8953e45a43-fix-green)](https://github.com/angular/angular/commit/8953e45a43fcb6ea694e77fb9ae779c5d3973524) | include input name in error message (#60404) |
+| [![fix - 48974c3cf8](https://img.shields.io/badge/48974c3cf8-fix-green)](https://github.com/angular/angular/commit/48974c3cf88ab1a70411bea4950823f975994087) | remove `rejectErrors` option encourages uncaught exceptions (#60397) |
+| [![fix - 04d963c0a5](https://img.shields.io/badge/04d963c0a5-fix-green)](https://github.com/angular/angular/commit/04d963c0a5f68c93015c13973d29107fe35bb942) | remove unused parameter from listener instruction (#60406) |
+### platform-browser-dynamic
+| Commit | Description |
+| -- | -- |
+| [![fix - 3606aabd6b](https://img.shields.io/badge/3606aabd6b-fix-green)](https://github.com/angular/angular/commit/3606aabd6b7b9ec9f1b7438f33505f715eeeebe5) | ensure compiler is loaded before `@angular/common` (#60458) |
+### upgrade
+| Commit | Description |
+| -- | -- |
+| [![fix - cd7c170763](https://img.shields.io/badge/cd7c170763-fix-green)](https://github.com/angular/angular/commit/cd7c170763b9f1f0b4215bf151a431481591ce73) | handle output emitters when downgrading a component (#60369) |
+## Breaking Changes
+### core
+- * `TestBed.get` has been removed. Use `TestBed.inject` instead.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>19.2.3 (2025-03-19)</h2>
+      <pre>### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - aa8ea7a5b2](https://img.shields.io/badge/aa8ea7a5b2-fix-green)](https://github.com/angular/angular/commit/aa8ea7a5b227913e3f15270dac48479481c47f9a) | report more accurate diagnostic for invalid import (#60455) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 13a8709b2b](https://img.shields.io/badge/13a8709b2b-fix-green)](https://github.com/angular/angular/commit/13a8709b2ba29ef3ab7d38bfb41cdd3d44c24c51) | catch hydration marker with implicit body tag (#60429) |
+| [![fix - 296aded9da](https://img.shields.io/badge/296aded9da-fix-green)](https://github.com/angular/angular/commit/296aded9daaf04edd3cda623a220cbd2bf57e0f1) | execute timer trigger outside zone (#60392) |
+| [![fix - 0615ffb4f7](https://img.shields.io/badge/0615ffb4f7-fix-green)](https://github.com/angular/angular/commit/0615ffb4f7a41cca2a408419830411897d1826e6) | include input name in error message (#60404) |
+### platform-browser-dynamic
+| Commit | Description |
+| -- | -- |
+| [![fix - 1e06c8e8b6](https://img.shields.io/badge/1e06c8e8b6-fix-green)](https://github.com/angular/angular/commit/1e06c8e8b6473a19584ceb66945fd435ea4e6af9) | ensure compiler is loaded before `@angular/common` (#60458) |
+### upgrade
+| Commit | Description |
+| -- | -- |
+| [![fix - 9e1a1030c8](https://img.shields.io/badge/9e1a1030c8-fix-green)](https://github.com/angular/angular/commit/9e1a1030c818e9849c00ded5f79535ea56976ea8) | handle output emitters when downgrading a component (#60369) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v20.0.0-next.2 (2025-03-12)</h2>
+      <pre><a name="20.0.0-next.2"></a>
+# 20.0.0-next.2 (2025-03-12)
+### common
+| Commit | Description |
+| -- | -- |
+| [![fix - 92250493ff](https://img.shields.io/badge/92250493ff-fix-green)](https://github.com/angular/angular/commit/92250493ffc2201e118f399f2ae46d792390fb47) | support equality function in httpResource (#60026) |
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![fix - ef1fd137a9](https://img.shields.io/badge/ef1fd137a9-fix-green)](https://github.com/angular/angular/commit/ef1fd137a9e180059963b1f3a025c3acc1610b8f) | incorrect spans for template literals (#60323) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - a1cacc5b17](https://img.shields.io/badge/a1cacc5b17-fix-green)](https://github.com/angular/angular/commit/a1cacc5b17d6f865bb260f475f1d2ef37dc845f1) | avoid fatal diagnostics for missing template files (#58673) |
+| [![fix - 9be2b334ed](https://img.shields.io/badge/9be2b334ed-fix-green)](https://github.com/angular/angular/commit/9be2b334edd20724dc54646ee11622e7ae4b4b0b) | handle transformed classes when generating HMR code (#60298) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - 611baaf069](https://img.shields.io/badge/611baaf069-feat-blue)](https://github.com/angular/angular/commit/611baaf0695882f1684baa1c007f7ae112afa5d4) | remove InjectFlags from public API (#60318) |
+| [![fix - e170d24240](https://img.shields.io/badge/e170d24240-fix-green)](https://github.com/angular/angular/commit/e170d242402f5ee4671dd425c24e5f31fbc67b21) | add migration away from InjectFlags (#60318) |
+| [![fix - 79ae35577e](https://img.shields.io/badge/79ae35577e-fix-green)](https://github.com/angular/angular/commit/79ae35577efc7d2fb2fbf87e7783daf938c576ff) | check whether application is destroyed before initializing event replay (#59789) |
+| [![fix - c82384104f](https://img.shields.io/badge/c82384104f-fix-green)](https://github.com/angular/angular/commit/c82384104fd9db292e093aa9e62fe6346bdb4a8f) | ensures immediate trigger fires properly with lazy loaded routes (#60203) |
+| [![fix - de2bfc0913](https://img.shields.io/badge/de2bfc0913-fix-green)](https://github.com/angular/angular/commit/de2bfc09132d19d954d367622c8704993c21da1e) | fix removal of a container reference used in the component file (#60210) |
+| [![fix - ff772d7800](https://img.shields.io/badge/ff772d7800-fix-green)](https://github.com/angular/angular/commit/ff772d780089b7b1fcaa14fbd9139d6eeca2f596) | fix typing on injector.get to omit 'any' (#60202) |
+| [![fix - 338818ce89](https://img.shields.io/badge/338818ce89-fix-green)](https://github.com/angular/angular/commit/338818ce8992294a6b3ab15947e65eb0c6d01391) | Surface errors from `ApplicationRef.tick` to callsite (#60102) |
+### forms
+| Commit | Description |
+| -- | -- |
+| [![fix - 81fe0536fd](https://img.shields.io/badge/81fe0536fd-fix-green)](https://github.com/angular/angular/commit/81fe0536fdb86ba2428954ac5305c2424f369339) | Make sure statusChanges is emitted (#57098) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![refactor - a980ac9a6a](https://img.shields.io/badge/a980ac9a6a-refactor-yellow)](https://github.com/angular/angular/commit/a980ac9a6a9b47246db8690e7779e563bf231a90) | Deprecate the HammerJS integration (#60257) |
+### platform-server
+| Commit | Description |
+| -- | -- |
+| [![fix - 0cff9a12d3](https://img.shields.io/badge/0cff9a12d3-fix-green)](https://github.com/angular/angular/commit/0cff9a12d3701b994d25d241e44126f536b15c2f) | add missing peer dependency for `rxjs` (#60308) |
+### router
+| Commit | Description |
+| -- | -- |
+| [![fix - 219f41d049](https://img.shields.io/badge/219f41d049-fix-green)](https://github.com/angular/angular/commit/219f41d049cf6798f81fbb393b4e23b2a030ff48) | Prevent dangling promise rejections from internal navigations (#60162) |
+| [![fix - cae1fe519b](https://img.shields.io/badge/cae1fe519b-fix-green)](https://github.com/angular/angular/commit/cae1fe519b4fc093ca99d0183a2c4da86a96bde1) | update symbols (#60233) |
+## Breaking Changes
+### core
+- * `InjectFlags` has been removed.
+  * `inject` no longer accepts `InjectFlags`.
+  * `Injector.get` no longer accepts `InjectFlags`.
+  * `EnvironmentInjector.get` no longer accepts `InjectFlags`.
+  * `TestBed.get` no longer accepts `InjectFlags`.
+  * `TestBed.inject` no longer accepts `InjectFlags`.
+- The `any` overload has been removed from
+  `injector.get`. It now only supports `ProviderToken<T>` and (deprecated
+  since v4) `string`.
+- `ApplicationRef.tick` will no longer catch and report
+  errors to the appplication `ErrorHandler`. Errors will instead be thrown out of
+  the method and will allow callers to determine how to handle these
+  errors, such as aborting follow-up work or reporting the error and
+  continuing.
+## Deprecations
+### platform-browser
+- HammerJS support is deprecated and will be removed in a future major version.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.2.2 (2025-03-12)</h2>
+      <pre><a name="19.2.2"></a>
+# 19.2.2 (2025-03-12)
+### common
+| Commit | Description |
+| -- | -- |
+| [![fix - 90a16a1088](https://img.shields.io/badge/90a16a1088-fix-green)](https://github.com/angular/angular/commit/90a16a10888eee37d8a61cdbfad070e002a3cfdf) | support equality function in httpResource (#60026) |
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![fix - 56b551d273](https://img.shields.io/badge/56b551d273-fix-green)](https://github.com/angular/angular/commit/56b551d273a0978e1f2e2ef914c1d7ae942a28a8) | incorrect spans for template literals (#60323) (#60331) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - 23ca88522b](https://img.shields.io/badge/23ca88522b-fix-green)](https://github.com/angular/angular/commit/23ca88522bbc23e24a2b20e48e62edcce3a42eb6) | handle transformed classes when generating HMR code (#60298) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 6dc41265fd](https://img.shields.io/badge/6dc41265fd-fix-green)](https://github.com/angular/angular/commit/6dc41265fd47df3fd0462bcd8f451eb6aea972ef) | check whether application is destroyed before initializing event replay (#59789) |
+| [![fix - bb12b30d52](https://img.shields.io/badge/bb12b30d52-fix-green)](https://github.com/angular/angular/commit/bb12b30d5213912f50f53aff60a11e6d47349c82) | ensures immediate trigger fires properly with lazy loaded routes (#60203) |
+| [![fix - b144dd946e](https://img.shields.io/badge/b144dd946e-fix-green)](https://github.com/angular/angular/commit/b144dd946e38e52ce716aca7c6ba7c1a1a02f13d) | fix removal of a container reference used in the component file (#60210) |
+### platform-server
+| Commit | Description |
+| -- | -- |
+| [![fix - 15c42969fc](https://img.shields.io/badge/15c42969fc-fix-green)](https://github.com/angular/angular/commit/15c42969fc42c76e3bd593201164183fb82d70f6) | add missing peer dependency for `rxjs` (#60308) |
+### router
+| Commit | Description |
+| -- | -- |
+| [![fix - 7bcdf7c143](https://img.shields.io/badge/7bcdf7c143-fix-green)](https://github.com/angular/angular/commit/7bcdf7c1435f766b2b0bbd383358ef2ddabf217a) | update symbols (#60233) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v20.0.0-next.1 (2025-03-05)</h2>
+      <pre><a name="20.0.0-next.1"></a>
+# 20.0.0-next.1 (2025-03-05)
+### common
+| Commit | Description |
+| -- | -- |
+| [![fix - 36b60a9705](https://img.shields.io/badge/36b60a9705-fix-green)](https://github.com/angular/angular/commit/36b60a97059d583453888786bf2c4b456d8f2e83) | clean up `onUrlChange` listener when root scope is destroyed (#60004) |
+| [![fix - 739cadae62](https://img.shields.io/badge/739cadae62-fix-green)](https://github.com/angular/angular/commit/739cadae62fd7302ef5fffa7897c8c4f2701a556) | Handle errors in async pipe subscriptions (#60057) |
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![feat - 51b8ff23ce](https://img.shields.io/badge/51b8ff23ce-feat-blue)](https://github.com/angular/angular/commit/51b8ff23cefb5112937dec9727a5b5d6e913aae6) | support tagged template literals in expressions (#59947) |
+| [![fix - 4fe489f1b4](https://img.shields.io/badge/4fe489f1b4-fix-green)](https://github.com/angular/angular/commit/4fe489f1b4f8d1c0840af1224ee09d44cbb9c583) | exponentiation should be right-to-left associative (#60101) |
+| [![fix - b70ad3c4e6](https://img.shields.io/badge/b70ad3c4e6-fix-green)](https://github.com/angular/angular/commit/b70ad3c4e63158a72b8aea173b1268ec8ab08e2b) | proper handling of typeof, void in RecursiveAstVisitor (#60101) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - f9043e24ac](https://img.shields.io/badge/f9043e24ac-fix-green)](https://github.com/angular/angular/commit/f9043e24aca276fb72ee0245d33ab8d4ea37d4b0) | ensure template IDs are not reused if a source file changes (#60152) |
+| [![fix - ffb19e64f1](https://img.shields.io/badge/ffb19e64f1-fix-green)](https://github.com/angular/angular/commit/ffb19e64f1ced7b5eb55e1c1b96b6f7c54835a1d) | preserve required parens for nullish coalescing (#60060) |
+| [![fix - 7c9b4892e9](https://img.shields.io/badge/7c9b4892e9-fix-green)](https://github.com/angular/angular/commit/7c9b4892e9f6df164e4e289195bff27f2cc9a0ea) | preserve required parens in exponentiation expressions (#60101) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - fe57332fc5](https://img.shields.io/badge/fe57332fc5-feat-blue)](https://github.com/angular/angular/commit/fe57332fc5c4e6b44f01b9b4343385e90b3edf77) | add input binding support to dynamically-created components (#60137) |
+| [![feat - 82aa2c1a52](https://img.shields.io/badge/82aa2c1a52-feat-blue)](https://github.com/angular/angular/commit/82aa2c1a527be85e09f0f660ece56b594bff5a76) | add the ability to apply directives to dynamically-created components (#60137) |
+| [![feat - 326d48afb4](https://img.shields.io/badge/326d48afb4-feat-blue)](https://github.com/angular/angular/commit/326d48afb4266ef9b028860e2f845de005653d75) | drop support for TypeScript older than 5.8 (#60197) |
+| [![feat - d260ca3091](https://img.shields.io/badge/d260ca3091-feat-blue)](https://github.com/angular/angular/commit/d260ca3091a6de215ba31f2516134d1aa11fe04c) | emit template function for template related profiler hooks (#60174) |
+| [![feat - 4812215a7b](https://img.shields.io/badge/4812215a7b-feat-blue)](https://github.com/angular/angular/commit/4812215a7b3bcb54bce3f017d89246aa39af2cc5) | Expose `Injector.destroy` on `Injector` created with `Injector.create` (#60054) |
+| [![feat - 809b5b4596](https://img.shields.io/badge/809b5b4596-feat-blue)](https://github.com/angular/angular/commit/809b5b4596cafcdabdb1c5fa92fcab539c6f637f) | introduce new DI profiling event (#60158) |
+| [![feat - be44cc8f40](https://img.shields.io/badge/be44cc8f40-feat-blue)](https://github.com/angular/angular/commit/be44cc8f40fb2364dbaf20ba24496e4355f84e78) | support listening to outputs on dynamically-created components (#60137) |
+| [![fix - 7eb59d3887](https://img.shields.io/badge/7eb59d3887-fix-green)](https://github.com/angular/angular/commit/7eb59d38872667c73e09a42e4260e8a58f102448) | added @angular/compiler as a peer dependency (#55610) |
+| [![fix - af02914852](https://img.shields.io/badge/af02914852-fix-green)](https://github.com/angular/angular/commit/af02914852cb26106090e07aee155890df1798ff) | cache ComponentRef inputs and outputs (#60156) |
+| [![fix - 7232ce5b17](https://img.shields.io/badge/7232ce5b17-fix-green)](https://github.com/angular/angular/commit/7232ce5b17c9cce87bebe41c81f55043f21e639b) | Catch and report rejections in async function of `PendingTasks.run` (#60044) |
+| [![fix - fd12220a35](https://img.shields.io/badge/fd12220a35-fix-green)](https://github.com/angular/angular/commit/fd12220a35665d2378b74905c998fcff6130eb91) | defer block render failures should report to application error handler (#60149) |
+| [![fix - 3459faadbf](https://img.shields.io/badge/3459faadbf-fix-green)](https://github.com/angular/angular/commit/3459faadbfce9be7b1ca69f4d4db82a65b31de50) | do not allow setInput to be used with inputBinding (#60137) |
+| [![fix - ea5eb28865](https://img.shields.io/badge/ea5eb28865-fix-green)](https://github.com/angular/angular/commit/ea5eb288651a87923edd86b2445d6ed32e52ed85) | input targeting not checking if input exists on host (#60137) |
+| [![fix - 0dbf693a4d](https://img.shields.io/badge/0dbf693a4d-fix-green)](https://github.com/angular/angular/commit/0dbf693a4d6ea0dad6072ebad20158b9e896e4f6) | prevent invoking replay listeners on disconnected nodes (#60103) |
+| [![fix - 7ab0a8d1e7](https://img.shields.io/badge/7ab0a8d1e7-fix-green)](https://github.com/angular/angular/commit/7ab0a8d1e719c9aee862bff0495fcd0138c00a10) | prevents event replay from being called on comment nodes (#60130) |
+### language-service
+| Commit | Description |
+| -- | -- |
+| [![fix - d5e91e04ff](https://img.shields.io/badge/d5e91e04ff-fix-green)](https://github.com/angular/angular/commit/d5e91e04ff32997d87bdf7386ed3822090ac6b29) | Forward the tags for quick info from the type definition (#59524) |
+## Breaking Changes
+### common
+- `AsyncPipe` now directly catches unhandled errors in
+  subscriptions and promises and reports them to the application's
+  `ErrorHandler`. For Zone-based applications, these errors would have
+  been caught by ZoneJS and reported to `ErrorHandler` so the result is
+  generally the same. The change to the exact mechanism for reporting can
+  result in differences in test environments that will require test
+  updates.
+### core
+- * TypeScript versions less than 5.8 are no longer supported.
+- `PendingTasks.run` no longer returns the result of the
+  async function. If this behavior is desired, it can be re-implemented
+  manually with the `PendingTasks.add`. Be aware, however, that promise rejections
+  will need to be handled or they can cause the node process to shut down
+  when using SSR.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.2.1 (2025-03-05)</h2>
+      <pre><a name="19.2.1"></a>
+# 19.2.1 (2025-03-05)
+### common
+| Commit | Description |
+| -- | -- |
+| [![fix - c2de5f68b3](https://img.shields.io/badge/c2de5f68b3-fix-green)](https://github.com/angular/angular/commit/c2de5f68b3d3cd8a0c43b3c4325a1a1db874e132) | clean up `onUrlChange` listener when root scope is destroyed (#60004) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - 1dd94476b3](https://img.shields.io/badge/1dd94476b3-fix-green)](https://github.com/angular/angular/commit/1dd94476b35d08e753766b1d0c5d8af5faa017a9) | ensure template IDs are not reused if a source file changes (#60152) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 1b3b05bf72](https://img.shields.io/badge/1b3b05bf72-fix-green)](https://github.com/angular/angular/commit/1b3b05bf7294963aa50f83b726db620b250b1a5c) | cache ComponentRef inputs and outputs (#60156) |
+| [![fix - 330c24aed9](https://img.shields.io/badge/330c24aed9-fix-green)](https://github.com/angular/angular/commit/330c24aed92e4b916fb7ac6a91fb17c3ae728869) | prevent invoking replay listeners on disconnected nodes (#60103) |
+| [![fix - cfad089cc3](https://img.shields.io/badge/cfad089cc3-fix-green)](https://github.com/angular/angular/commit/cfad089cc359cddf08d462662d2a6bf3acab9b22) | prevents event replay from being called on comment nodes (#60130) |
+### language-service
+| Commit | Description |
+| -- | -- |
+| [![fix - 3f0116607d](https://img.shields.io/badge/3f0116607d-fix-green)](https://github.com/angular/angular/commit/3f0116607dc3ad7e31cb4d895a56094f77c82f5d) | Forward the tags for quick info from the type definition (#59524) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v20.0.0-next.0 (2025-02-26)</h2>
+      <pre><a name="20.0.0-next.0"></a>
+# 20.0.0-next.0 (2025-02-26)
+### common
+| Commit | Description |
+| -- | -- |
+| [![feat - 74cceba587](https://img.shields.io/badge/74cceba587-feat-blue)](https://github.com/angular/angular/commit/74cceba5871e83e77a23536d8b64ff8888862dd3) | throw error for suspicious date patterns (#59798) |
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![feat - f2d5cf7edd](https://img.shields.io/badge/f2d5cf7edd-feat-blue)](https://github.com/angular/angular/commit/f2d5cf7eddb1ca2d946076d7622778fb12273d31) | support exponentiation operator in templates (#59894) |
+| [![feat - 0361c2d81f](https://img.shields.io/badge/0361c2d81f-feat-blue)](https://github.com/angular/angular/commit/0361c2d81f5d2c56597002f465c00e9b1c4003e4) | support void operator in templates (#59894) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 962b59b14e](https://img.shields.io/badge/962b59b14e-fix-green)](https://github.com/angular/angular/commit/962b59b14e9dad166973be72d74d1e04d25db5a4) | Ensure ComponentFixture does not duplicate error reporting from FakeAsync (#60104) |
+| [![fix - 491b0a4ead](https://img.shields.io/badge/491b0a4ead-fix-green)](https://github.com/angular/angular/commit/491b0a4ead98822c767543e1f1c8046ed9d1be20) | Remove duplicate reporting of errors in `CDR.detectChanges` (#60056) |
+### router
+| Commit | Description |
+| -- | -- |
+| [![feat - 7c12cb1df9](https://img.shields.io/badge/7c12cb1df9-feat-blue)](https://github.com/angular/angular/commit/7c12cb1df980734c64a4d127c2b9a7094e0fe9fb) | Allow resolvers to read resolved data from ancestors (#59860) |
+| [![fix - db2f2d99c8](https://img.shields.io/badge/db2f2d99c8-fix-green)](https://github.com/angular/angular/commit/db2f2d99c82aae52d8a0ae46616c6411d070b35e) | Scroller should scroll as soon as change detection completes (#60086) |
+## Breaking Changes
+### common
+- Using the `Y` formatter (week-numbering year) without also including `w` (week number) is now detected as suspicious date pattern, as `y` is typically intended.
+### compiler
+- `void` in an expression now refers to the operator
+  
+  Previously an expression in the template like `{{void}}` referred to a
+  property on the component class. After this change it now refers to the
+  `void` operator, which would make the above example invalid. If you have
+  existing expressions that need to refer to a property named `void`,
+  change the expression to use `this.void` instead: `{{this.void}}`.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.2.0 (2025-02-26)</h2>
+      <pre><a name="19.2.0"></a>
+# 19.2.0 (2025-02-26)
+### common
+| Commit | Description |
+| -- | -- |
+| [![feat - 3e39da593a](https://img.shields.io/badge/3e39da593a-feat-blue)](https://github.com/angular/angular/commit/3e39da593a0a0c047a2a03b8d5fcabf9dbace40f) | introduce experimental `httpResource` (#59876) |
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![feat - 5b20bab96d](https://img.shields.io/badge/5b20bab96d-feat-blue)](https://github.com/angular/angular/commit/5b20bab96d20fe89b5cc4b4af28edbaae2604da1) | Add Skip Hydration diagnostic. (#59576) |
+| [![feat - fe8a68329b](https://img.shields.io/badge/fe8a68329b-feat-blue)](https://github.com/angular/angular/commit/fe8a68329b50363f914a728579392f3fc68670a6) | support untagged template literals in expressions (#59230) |
+
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - 2588985f43](https://img.shields.io/badge/2588985f43-feat-blue)](https://github.com/angular/angular/commit/2588985f433b20a6a5a8d239347291f5d6fb2451) | pass signal node to throwInvalidWriteToSignalErrorFn (#59600) |
+| [![feat - 168516462a](https://img.shields.io/badge/168516462a-feat-blue)](https://github.com/angular/angular/commit/168516462a9673b158fcaa38b8ce17bf684a8ac9) | support default value in `resource()` (#59655) |
+| [![feat - bc2ad7bfd3](https://img.shields.io/badge/bc2ad7bfd3-feat-blue)](https://github.com/angular/angular/commit/bc2ad7bfd37a61992b550943de5da0eab2eec98b) | support streaming resources (#59573) |
+| [![feat - 146ab9a76e](https://img.shields.io/badge/146ab9a76e-feat-blue)](https://github.com/angular/angular/commit/146ab9a76e6b4d8db7d08d34e2571ba5207f8756) | support TypeScript 5.8 (#59830) |
+| [![fix - 6c92d65349](https://img.shields.io/badge/6c92d65349-fix-green)](https://github.com/angular/angular/commit/6c92d653493404a5f13aa59cde390bcbed973fb6) | add `hasValue` narrowing to `ResourceRef` (#59708) |
+| [![fix - 96e602ebe9](https://img.shields.io/badge/96e602ebe9-fix-green)](https://github.com/angular/angular/commit/96e602ebe9cdf7355befad22c11f9f91e0436e01) | cancel in-progress request when same value is assigned (#59280) |
+| [![fix - 6789c7ef94](https://img.shields.io/badge/6789c7ef94-fix-green)](https://github.com/angular/angular/commit/6789c7ef947952551d7598fe37a3d86093b75720) | Defer afterRender until after first CD (#59455) (#59551) |
+| [![fix - c87e581dd9](https://img.shields.io/badge/c87e581dd9-fix-green)](https://github.com/angular/angular/commit/c87e581dd9e240c88cea50f222942873bdccd01d) | Don't run effects in check no changes pass (#59455) (#59551) |
+| [![fix - 127fc0dc84](https://img.shields.io/badge/127fc0dc84-fix-green)](https://github.com/angular/angular/commit/127fc0dc847a4e8b62be36cdd980a067c4da974f) | fix `resource()`'s `previous.state` (#59708) |
+| [![fix - b592b1b051](https://img.shields.io/badge/b592b1b051-fix-green)](https://github.com/angular/angular/commit/b592b1b0516786c52c7d0638c4e7545b0de8a545) | fix race condition in resource() (#59851) |
+| [![fix - a299e02e91](https://img.shields.io/badge/a299e02e91-fix-green)](https://github.com/angular/angular/commit/a299e02e9141cdc4d74185deb58308fa010bb36e) | preserve tracing snapshot until tick finishes (#59796) |
+### forms
+| Commit | Description |
+| -- | -- |
+| [![feat - fa0c3e3210](https://img.shields.io/badge/fa0c3e3210-feat-blue)](https://github.com/angular/angular/commit/fa0c3e3210885a36e5c9e9eb76e821032f5cd215) | support type set in form validators (#45793) |
+### migrations
+| Commit | Description |
+| -- | -- |
+| [![feat - 1cd3a7db83](https://img.shields.io/badge/1cd3a7db83-feat-blue)](https://github.com/angular/angular/commit/1cd3a7db83e1d05a31d23324676420b614cdabe2) | add migration to convert templates to use self-closing tags (#57342) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - e6cb411e43](https://img.shields.io/badge/e6cb411e43-fix-green)](https://github.com/angular/angular/commit/e6cb411e4393a4b1f5852d3d7c5b9622504399b1) | automatically disable animations on the server (#59762) |
+### platform-server
+| Commit | Description |
+| -- | -- |
+| [![fix - fc5d187da5](https://img.shields.io/badge/fc5d187da5-fix-green)](https://github.com/angular/angular/commit/fc5d187da5e8895d60caa35b7b59e234998eddf0) | decouple server from animations module (#59762) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.8 (2025-02-26)</h2>
+      <pre><a name="19.1.8"></a>
+# 19.1.8 (2025-02-26)
+### benchpress
+| Commit | Description |
+| -- | -- |
+| [![fix - f0990c67e6](https://img.shields.io/badge/f0990c67e6-fix-green)](https://github.com/angular/angular/commit/f0990c67e660c61109fa910885da6aa4beaf576a) | Ensure future-proof correct initialization order (#60025) |
+### common
+| Commit | Description |
+| -- | -- |
+| [![fix - 1fbaeab37d](https://img.shields.io/badge/1fbaeab37d-fix-green)](https://github.com/angular/angular/commit/1fbaeab37d5c65436938b6e14e21bc4d57bb517b) | make types for HttpClient more readable (#59901) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - c611c8d212](https://img.shields.io/badge/c611c8d212-fix-green)](https://github.com/angular/angular/commit/c611c8d212b0134365954726c2fd6c98c28e5424) | capture stack for HMR errors (#60067) |
+### language-service
+| Commit | Description |
+| -- | -- |
+| [![fix - 4c9d09c643](https://img.shields.io/badge/4c9d09c643-fix-green)](https://github.com/angular/angular/commit/4c9d09c643cf1232d1f502ff7d6bd25709ba1c6a) | provide correct rename info for elements (#60088) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.2.0-rc.0 (2025-02-19)</h2>
+      <pre><a name="19.2.0-rc.0"></a>
+# 19.2.0-rc.0 (2025-02-19)
+### common
+| Commit | Description |
+| -- | -- |
+| [![feat - 3e39da593a](https://img.shields.io/badge/3e39da593a-feat-blue)](https://github.com/angular/angular/commit/3e39da593a0a0c047a2a03b8d5fcabf9dbace40f) | introduce experimental `httpResource` (#59876) |
+| [![fix - 7bd4be0fa5](https://img.shields.io/badge/7bd4be0fa5-fix-green)](https://github.com/angular/angular/commit/7bd4be0fa585fda8a09d27683ade77b383500768) | clean up `urlChanges` subscribers when root scope is destroyed (#59703) |
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![feat - 5b20bab96d](https://img.shields.io/badge/5b20bab96d-feat-blue)](https://github.com/angular/angular/commit/5b20bab96d20fe89b5cc4b4af28edbaae2604da1) | Add Skip Hydration diagnostic. (#59576) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - 973033abd2](https://img.shields.io/badge/973033abd2-fix-green)](https://github.com/angular/angular/commit/973033abd2d9580cec79948c9c38f977fef2de87) | avoid crash in isolated transform operations (#59869) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - 2588985f43](https://img.shields.io/badge/2588985f43-feat-blue)](https://github.com/angular/angular/commit/2588985f433b20a6a5a8d239347291f5d6fb2451) | pass signal node to throwInvalidWriteToSignalErrorFn (#59600) |
+### forms
+| Commit | Description |
+| -- | -- |
+| [![fix - cf36951f83](https://img.shields.io/badge/cf36951f83-fix-green)](https://github.com/angular/angular/commit/cf36951f8327d461a3ad4bf65d12bb16cf9a9e4b) | Fix typing on `FormRecord`. (#59993) |
+### migrations
+| Commit | Description |
+| -- | -- |
+| [![feat - 1cd3a7db83](https://img.shields.io/badge/1cd3a7db83-feat-blue)](https://github.com/angular/angular/commit/1cd3a7db83e1d05a31d23324676420b614cdabe2) | add migration to convert templates to use self-closing tags (#57342) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.7 (2025-02-19)</h2>
+      <pre><a name="19.1.7"></a>
+# 19.1.7 (2025-02-19)
+### common
+| Commit | Description |
+| -- | -- |
+| [![fix - e9f10eb4c9](https://img.shields.io/badge/e9f10eb4c9-fix-green)](https://github.com/angular/angular/commit/e9f10eb4c950692992098619b9628ecefd1b36ce) | clean up `urlChanges` subscribers when root scope is destroyed (#59703) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - 16fc074689](https://img.shields.io/badge/16fc074689-fix-green)](https://github.com/angular/angular/commit/16fc074689d31ef6886c49525b020bc6c1529d0e) | avoid crash in isolated transform operations (#59869) |
+### forms
+| Commit | Description |
+| -- | -- |
+| [![fix - ec1e4c3d94](https://img.shields.io/badge/ec1e4c3d94-fix-green)](https://github.com/angular/angular/commit/ec1e4c3d9430f5ea4380252098d2b4b71d8a950f) | Fix typing on `FormRecord`. (#59993) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.2.0-next.3 (2025-02-13)</h2>
+      <pre><a name="19.2.0-next.3"></a>
+# 19.2.0-next.3 (2025-02-13)
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![fix - 9e847fc60d](https://img.shields.io/badge/9e847fc60d-fix-green)](https://github.com/angular/angular/commit/9e847fc60d4eef47e665e789ccd2d4f0b4bb94ea) | handle tracking expressions requiring temporary variables (#58520) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - 5cd26a9420](https://img.shields.io/badge/5cd26a9420-fix-green)](https://github.com/angular/angular/commit/5cd26a94206dfe8aabdf0dd15bfc09e7a8c606da) | handle deferred blocks with shared dependencies correctly (#59926) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 6789c7ef94](https://img.shields.io/badge/6789c7ef94-fix-green)](https://github.com/angular/angular/commit/6789c7ef947952551d7598fe37a3d86093b75720) | Defer afterRender until after first CD (#59455) (#59551) |
+| [![fix - c87e581dd9](https://img.shields.io/badge/c87e581dd9-fix-green)](https://github.com/angular/angular/commit/c87e581dd9e240c88cea50f222942873bdccd01d) | Don't run effects in check no changes pass (#59455) (#59551) |
+| [![fix - b0266bda4a](https://img.shields.io/badge/b0266bda4a-fix-green)](https://github.com/angular/angular/commit/b0266bda4ad4efd19710fd0363a50984f48269dc) | invalidate HMR component if replacement throws an error (#59854) |
+### migrations
+| Commit | Description |
+| -- | -- |
+| [![fix - aa285c548c](https://img.shields.io/badge/aa285c548c-fix-green)](https://github.com/angular/angular/commit/aa285c548c164917ebb5760802484843c6830daf) | account for let declarations in control flow migration (#59861) |
+| [![fix - 1119f85ca9](https://img.shields.io/badge/1119f85ca9-fix-green)](https://github.com/angular/angular/commit/1119f85ca935f43641f53ee8bc50efa47ad09717) | count used dependencies inside existing control flow (#59861) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.6 (2025-02-12)</h2>
+      <pre><a name="19.1.6"></a>
+# 19.1.6 (2025-02-12)
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![fix - 01f669a274](https://img.shields.io/badge/01f669a274-fix-green)](https://github.com/angular/angular/commit/01f669a27425c5034a04274763cc60801f961aa2) | handle tracking expressions requiring temporary variables (#58520) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - dcfb9f1959](https://img.shields.io/badge/dcfb9f1959-fix-green)](https://github.com/angular/angular/commit/dcfb9f1959164baf45f5f954b4bf681d650d8a2d) | handle deferred blocks with shared dependencies correctly (#59926) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - cab7a9b69c](https://img.shields.io/badge/cab7a9b69c-fix-green)](https://github.com/angular/angular/commit/cab7a9b69c3a5d789432a87a554e8489c78a0f15) | invalidate HMR component if replacement throws an error (#59854) |
+### migrations
+| Commit | Description |
+| -- | -- |
+| [![fix - 710759ddcc](https://img.shields.io/badge/710759ddcc-fix-green)](https://github.com/angular/angular/commit/710759ddcc0ecbad68deb20821b535fd5deb69c6) | account for let declarations in control flow migration (#59861) |
+| [![fix - 46f36a58bf](https://img.shields.io/badge/46f36a58bf-fix-green)](https://github.com/angular/angular/commit/46f36a58bf3a7b9131b6330e84d4adb3e73f3601) | count used dependencies inside existing control flow (#59861) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.2.0-next.2 (2025-02-06)</h2>
+      <pre><a name="19.2.0-next.2"></a>
+# 19.2.0-next.2 (2025-02-06)
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - a97136052f9](https://img.shields.io/badge/a97136052f9-fix-green)](https://github.com/angular/angular/commit/a97136052f9cfdb696a3b335ed7a1b9fb994d408) | gracefully fall back if const enum cannot be passed through (#59815) |
+| [![fix - bae94b82fda](https://img.shields.io/badge/bae94b82fda-fix-green)](https://github.com/angular/angular/commit/bae94b82fda1669a6aafad975a3a0eb6f2743039) | handle const enums used inside HMR data (#59815) |
+| [![fix - 03bcd30e348](https://img.shields.io/badge/03bcd30e348-fix-green)](https://github.com/angular/angular/commit/03bcd30e3487443983d450a5dfea2d68d551bbd3) | handle enum members without initializers in partial evaluator (#59815) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - 146ab9a76e6](https://img.shields.io/badge/146ab9a76e6-feat-blue)](https://github.com/angular/angular/commit/146ab9a76e6b4d8db7d08d34e2571ba5207f8756) | support TypeScript 5.8 (#59830) |
+| [![fix - b592b1b0516](https://img.shields.io/badge/b592b1b0516-fix-green)](https://github.com/angular/angular/commit/b592b1b0516786c52c7d0638c4e7545b0de8a545) | fix race condition in resource() (#59851) |
+| [![fix - a299e02e914](https://img.shields.io/badge/a299e02e914-fix-green)](https://github.com/angular/angular/commit/a299e02e9141cdc4d74185deb58308fa010bb36e) | preserve tracing snapshot until tick finishes (#59796) |
+### forms
+| Commit | Description |
+| -- | -- |
+| [![feat - fa0c3e32108](https://img.shields.io/badge/fa0c3e32108-feat-blue)](https://github.com/angular/angular/commit/fa0c3e3210885a36e5c9e9eb76e821032f5cd215) | support type set in form validators (#45793) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.5 (2025-02-06)</h2>
+      <pre><a name="19.1.5"></a>
+# 19.1.5 (2025-02-06)
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - d7b5c597ffc](https://img.shields.io/badge/d7b5c597ffc-fix-green)](https://github.com/angular/angular/commit/d7b5c597ffcb6469ae3f08a97e7790599d569cc4) | gracefully fall back if const enum cannot be passed through (#59815) |
+| [![fix - 53a4668b58b](https://img.shields.io/badge/53a4668b58b-fix-green)](https://github.com/angular/angular/commit/53a4668b58b645e41baddc5b67d52ede21c8e945) | handle const enums used inside HMR data (#59815) |
+| [![fix - 976125e0b4c](https://img.shields.io/badge/976125e0b4c-fix-green)](https://github.com/angular/angular/commit/976125e0b4cf4e7fb4621a7203e3f43b009885f0) | handle enum members without initializers in partial evaluator (#59815) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.2.0-next.1 (2025-01-29)</h2>
+      <pre><a name="19.2.0-next.1"></a>
+# 19.2.0-next.1 (2025-01-29)
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - 168516462a9](https://img.shields.io/badge/168516462a9-feat-blue)](https://github.com/angular/angular/commit/168516462a9673b158fcaa38b8ce17bf684a8ac9) | support default value in `resource()` (#59655) |
+| [![fix - 6c92d653493](https://img.shields.io/badge/6c92d653493-fix-green)](https://github.com/angular/angular/commit/6c92d653493404a5f13aa59cde390bcbed973fb6) | add `hasValue` narrowing to `ResourceRef` (#59708) |
+| [![fix - 96e602ebe9c](https://img.shields.io/badge/96e602ebe9c-fix-green)](https://github.com/angular/angular/commit/96e602ebe9cdf7355befad22c11f9f91e0436e01) | cancel in-progress request when same value is assigned (#59280) |
+| [![fix - cf9054248d1](https://img.shields.io/badge/cf9054248d1-fix-green)](https://github.com/angular/angular/commit/cf9054248d1b8b5658c5f8b582cea71535f081c2) | check whether application is destroyed before printing hydration stats (#59716) |
+| [![fix - 82876242e55](https://img.shields.io/badge/82876242e55-fix-green)](https://github.com/angular/angular/commit/82876242e557abbced793cff06c4d68c4721e6d2) | ensure type is preserved during HMR (#59700) |
+| [![fix - 127fc0dc847](https://img.shields.io/badge/127fc0dc847-fix-green)](https://github.com/angular/angular/commit/127fc0dc847a4e8b62be36cdd980a067c4da974f) | fix `resource()`'s `previous.state` (#59708) |
+| [![fix - f862ace1819](https://img.shields.io/badge/f862ace1819-fix-green)](https://github.com/angular/angular/commit/f862ace18191d7fda3b12fc3c6486c035a6b431d) | fixes test timer-based test flakiness in CI (#59674) |
+### elements
+| Commit | Description |
+| -- | -- |
+| [![fix - 0c1ecb453c8](https://img.shields.io/badge/0c1ecb453c8-fix-green)](https://github.com/angular/angular/commit/0c1ecb453c8b01447fb5a9f38fdfe9936a60abe5) | not setting initial value on signal-based input (#59773) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - e6cb411e439](https://img.shields.io/badge/e6cb411e439-fix-green)](https://github.com/angular/angular/commit/e6cb411e4393a4b1f5852d3d7c5b9622504399b1) | automatically disable animations on the server (#59762) |
+| [![fix - 6b09716754b](https://img.shields.io/badge/6b09716754b-fix-green)](https://github.com/angular/angular/commit/6b09716754b979c98489a2710eda977e51fe92d0) | prepend `baseHref` to `sourceMappingURL` in CSS content (#59730) |
+| [![fix - fd7ee47bf70](https://img.shields.io/badge/fd7ee47bf70-fix-green)](https://github.com/angular/angular/commit/fd7ee47bf702029e481ad40362684f0a01ef2ec0) | Update pseudoevent created by createMouseSpecialEvent to populate `_originalEvent` property (#59690) |
+| [![fix - 65cf061feb4](https://img.shields.io/badge/65cf061feb4-fix-green)](https://github.com/angular/angular/commit/65cf061feb402e1532cd06d0fda5d2b7749ac421) | Update pseudoevent created by createMouseSpecialEvent to populate `_originalEvent` property (#59690) |
+| [![fix - af9d74710c4](https://img.shields.io/badge/af9d74710c4-fix-green)](https://github.com/angular/angular/commit/af9d74710c460b0aaeaf3226533e9e544025523c) | Update pseudoevent created by createMouseSpecialEvent to populate `_originalEvent` property (#59690) |
+### platform-server
+| Commit | Description |
+| -- | -- |
+| [![fix - fc5d187da5e](https://img.shields.io/badge/fc5d187da5e-fix-green)](https://github.com/angular/angular/commit/fc5d187da5e8895d60caa35b7b59e234998eddf0) | decouple server from animations module (#59762) |
+### router
+| Commit | Description |
+| -- | -- |
+| [![fix - c7b6e1107c6](https://img.shields.io/badge/c7b6e1107c6-fix-green)](https://github.com/angular/angular/commit/c7b6e1107c6fcc7ed1dbb7c7b8698b09bfa8f1cc) | prevent error handling when injector is destroyed (#59457) |
+### service-worker
+| Commit | Description |
+| -- | -- |
+| [![fix - e2987a1d4ab](https://img.shields.io/badge/e2987a1d4ab-fix-green)](https://github.com/angular/angular/commit/e2987a1d4ab09b1abf1f42597c40f2055db116e1) | add missing `rxjs` peer dependency (#59747) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.4 (2025-01-29)</h2>
+      <pre><a name="19.1.4"></a>
+# 19.1.4 (2025-01-29)
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 544b9ee7ca0](https://img.shields.io/badge/544b9ee7ca0-fix-green)](https://github.com/angular/angular/commit/544b9ee7ca00925e62b7c74cf7930777a10aaf76) | check whether application is destroyed before printing hydration stats (#59716) |
+| [![fix - d6e78c072dc](https://img.shields.io/badge/d6e78c072dc-fix-green)](https://github.com/angular/angular/commit/d6e78c072dcb5b0b6efc2b098fdb911ccddf6e81) | ensure type is preserved during HMR (#59700) |
+| [![fix - c2436702df9](https://img.shields.io/badge/c2436702df9-fix-green)](https://github.com/angular/angular/commit/c2436702df980bbf2db0fe3bee4c72860edb4e63) | fixes test timer-based test flakiness in CI (#59674) |
+### elements
+| Commit | Description |
+| -- | -- |
+| [![fix - 44180645992](https://img.shields.io/badge/44180645992-fix-green)](https://github.com/angular/angular/commit/44180645992f7d9018ccb2d7663530b3cffde36b) | not setting initial value on signal-based input (#59773) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - 1828a840620](https://img.shields.io/badge/1828a840620-fix-green)](https://github.com/angular/angular/commit/1828a8406201827e52549c8afa487bf6364a70c3) | prepend `baseHref` to `sourceMappingURL` in CSS content (#59730) |
+| [![fix - 1c84cbca30e](https://img.shields.io/badge/1c84cbca30e-fix-green)](https://github.com/angular/angular/commit/1c84cbca30e6606e6df3f40346989d9434d89bc6) | Update pseudoevent created by createMouseSpecialEvent to populate `_originalEvent` property (#59690) |
+| [![fix - 12256574626](https://img.shields.io/badge/12256574626-fix-green)](https://github.com/angular/angular/commit/12256574626f04f5fe2b41e805f7bdc93d62df0a) | Update pseudoevent created by createMouseSpecialEvent to populate `_originalEvent` property (#59690) |
+| [![fix - 3f4d5f636aa](https://img.shields.io/badge/3f4d5f636aa-fix-green)](https://github.com/angular/angular/commit/3f4d5f636aac90cabe32ff6c4d75180ced99eb97) | Update pseudoevent created by createMouseSpecialEvent to populate `_originalEvent` property (#59690) |
+### router
+| Commit | Description |
+| -- | -- |
+| [![fix - e3da35ec749](https://img.shields.io/badge/e3da35ec749-fix-green)](https://github.com/angular/angular/commit/e3da35ec749395239731158f89e29d47e7a9ef36) | prevent error handling when injector is destroyed (#59457) |
+### service-worker
+| Commit | Description |
+| -- | -- |
+| [![fix - 522acbf3d7e](https://img.shields.io/badge/522acbf3d7e-fix-green)](https://github.com/angular/angular/commit/522acbf3d7ed502e7802117776acda3529a9a2b4) | add missing `rxjs` peer dependency (#59747) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.2.0-next.0 (2025-01-22)</h2>
+      <pre><a name="19.2.0-next.0"></a>
+# 19.2.0-next.0 (2025-01-22)
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![feat - fe8a68329b](https://img.shields.io/badge/fe8a68329b-feat-blue)](https://github.com/angular/angular/commit/fe8a68329b50363f914a728579392f3fc68670a6) | support untagged template literals in expressions (#59230) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![feat - ed705a856a](https://img.shields.io/badge/ed705a856a-feat-blue)](https://github.com/angular/angular/commit/ed705a856a164f91d33e2173b4f371329d07c472) | detect missing structural directive imports (#59443) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - bc2ad7bfd3](https://img.shields.io/badge/bc2ad7bfd3-feat-blue)](https://github.com/angular/angular/commit/bc2ad7bfd37a61992b550943de5da0eab2eec98b) | support streaming resources (#59573) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.3 (2025-01-22)</h2>
+      <pre><a name="19.1.3"></a>
+# 19.1.3 (2025-01-22)
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![fix - ecfb74d287](https://img.shields.io/badge/ecfb74d287-fix-green)](https://github.com/angular/angular/commit/ecfb74d287bec7bec37d0b476b321b047bef2c43) | handle :host-context with comma-separated child selector (#59276) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - 53160e504d](https://img.shields.io/badge/53160e504d-fix-green)](https://github.com/angular/angular/commit/53160e504df44b05f59cacd9afeb40a0e627b744) | extract parenthesized dependencies during HMR (#59644) |
+| [![fix - 39690969af](https://img.shields.io/badge/39690969af-fix-green)](https://github.com/angular/angular/commit/39690969af14914df0c9b5a009b2df920f5c03e7) | handle conditional expressions when extracting dependencies (#59637) |
+| [![fix - 78af7a5059](https://img.shields.io/badge/78af7a5059-fix-green)](https://github.com/angular/angular/commit/78af7a5059cc3e03704ba63f8512351a40470557) | handle new expressions when extracting dependencies (#59637) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 408af24ff3](https://img.shields.io/badge/408af24ff3-fix-green)](https://github.com/angular/angular/commit/408af24ff3490926e9992cb4f1f71914d71ad6ad) | capture self-referencing component during HMR (#59644) |
+| [![fix - d7575c201c](https://img.shields.io/badge/d7575c201c-fix-green)](https://github.com/angular/angular/commit/d7575c201cfd61010952b3a633eec03e32f58220) | replace metadata in place during HMR (#59644) |
+| [![fix - 26f6d4c485](https://img.shields.io/badge/26f6d4c485-fix-green)](https://github.com/angular/angular/commit/26f6d4c485b566d7bc127c78cc163c376d0fe6b5) | skip component ID collision warning during SSR (#59625) |
+### migrations
+| Commit | Description |
+| -- | -- |
+| [![fix - a62c84bc18](https://img.shields.io/badge/a62c84bc18-fix-green)](https://github.com/angular/angular/commit/a62c84bc188d41ea24cf0eca14ac18c4b917ccd0) | avoid applying the same replacements twice when cleaning up unused imports (#59656) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - b2b3816cb1](https://img.shields.io/badge/b2b3816cb1-fix-green)](https://github.com/angular/angular/commit/b2b3816cb1c5c573dc9368f05fd2971671d7159f) | clear renderer cache during HMR when using async animations (#59644) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.2 (2025-01-20)</h2>
+      <pre><a name="19.1.2"></a>
+# 19.1.2 (2025-01-20)
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![fix - 8dcd889987](https://img.shields.io/badge/8dcd889987-fix-green)](https://github.com/angular/angular/commit/8dcd88998700a94115a542462e6ae6beedbfbd9d) | update `@ng/component` URL to be relative (#59620) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - 95a05bb202](https://img.shields.io/badge/95a05bb202-fix-green)](https://github.com/angular/angular/commit/95a05bb2021acab02df3468212adf023d331a688) | disable tree shaking during HMR (#59595) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - a4eb74c79c](https://img.shields.io/badge/a4eb74c79c-fix-green)](https://github.com/angular/angular/commit/a4eb74c79cca802d8179118cf4d53c73285baadb) | animation sometimes renderer not being destroyed during HMR (#59574) |
+| [![fix - 906413aba3](https://img.shields.io/badge/906413aba3-fix-green)](https://github.com/angular/angular/commit/906413aba31459e6499420ed14519d1280e182ad) | change `Resource` to use explicit `undefined` in its typings (#59024) |
+| [![fix - 4eb541837c](https://img.shields.io/badge/4eb541837c-fix-green)](https://github.com/angular/angular/commit/4eb541837cf28ce1950d782213291165a2436410) | cleanup `_ejsa` when app is destroyed (#59492) |
+| [![fix - 5497102769](https://img.shields.io/badge/5497102769-fix-green)](https://github.com/angular/angular/commit/549710276969ec4cf8c1e3d2f19d1fe9f755976e) | cleanup stash listener when app is destroyed (#59598) |
+| [![fix - 266a8f2f2e](https://img.shields.io/badge/266a8f2f2e-fix-green)](https://github.com/angular/angular/commit/266a8f2f2ebf9f5e310ba5de695be5072790e1e5) | handle shadow DOM encapsulated component with HMR (#59597) |
+| [![fix - 6f7716268a](https://img.shields.io/badge/6f7716268a-fix-green)](https://github.com/angular/angular/commit/6f7716268afa5146f2b2d0dbbea146defa9acfef) | HMR not matching component that injects ViewContainerRef (#59596) |
+| [![fix - d12a186d53](https://img.shields.io/badge/d12a186d53-fix-green)](https://github.com/angular/angular/commit/d12a186d531b41e6a16f84446a1d54eaed010fc4) | treat exceptions in `equal` as part of computation (#55818) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.1 (2025-01-16)</h2>
+      <pre><a name="19.1.1"></a>
+# 19.1.1 (2025-01-16)
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 357795cb96](https://img.shields.io/badge/357795cb96-fix-green)](https://github.com/angular/angular/commit/357795cb96a1cd138ec263c468c9de8ca8b2af9c) | run HMR replacement in the zone (#59562) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - eb0b1851f4](https://img.shields.io/badge/eb0b1851f4-fix-green)](https://github.com/angular/angular/commit/eb0b1851f494adfe72f583763a44bd2528a5956c) | roll back HMR fix (#59557) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.0 (2025-01-15)</h2>
+      <pre><a name="19.1.0"></a>
+# 19.1.0 (2025-01-15)
+### common
+| Commit | Description |
+| -- | -- |
+| [![feat - e4c50b3bea](https://img.shields.io/badge/e4c50b3bea-feat-blue)](https://github.com/angular/angular/commit/e4c50b3bea22ca2afba74465893c36730952f4b9) | expose component instance in NgComponentOutlet (#58698) |
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![fix - ceadd28ea1](https://img.shields.io/badge/ceadd28ea1-fix-green)](https://github.com/angular/angular/commit/ceadd28ea12140e8e78cdb706aff0487f5a87a3c) | allow $any in two-way bindings (#59362) |
+| [![fix - aed49ddaaa](https://img.shields.io/badge/aed49ddaaa-fix-green)](https://github.com/angular/angular/commit/aed49ddaaa40d6e6816198b47ceada4e98cd636c) | use chunk origin in template HMR request URL (#59459) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - c5c20e9d86](https://img.shields.io/badge/c5c20e9d86-fix-green)](https://github.com/angular/angular/commit/c5c20e9d86d72b33840dcf0adea02876437a589f) | check event side of two-way bindings (#59002) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - d010e11b73](https://img.shields.io/badge/d010e11b73-feat-blue)](https://github.com/angular/angular/commit/d010e11b735562ded439989ddb84cc83c6c00e81) | add event listener options to renderer (#59092) |
+| [![feat - 57f3550219](https://img.shields.io/badge/57f3550219-feat-blue)](https://github.com/angular/angular/commit/57f3550219f2a57c7c26c9183e48ee66845e0439) | add utility for resolving defer block information to ng global (#59184) |
+| [![feat - 22f191f763](https://img.shields.io/badge/22f191f763-feat-blue)](https://github.com/angular/angular/commit/22f191f76339a08bb8f0f2dfbc60dde0f2e38e73) | extend the set of profiler events (#59183) |
+| [![feat - e894a5daea](https://img.shields.io/badge/e894a5daea-feat-blue)](https://github.com/angular/angular/commit/e894a5daea401b4e1173b0e66557ae40140eb9a0) | set kind field on template and effect nodes (#58865) |
+| [![feat - bd1f1294ae](https://img.shields.io/badge/bd1f1294ae-feat-blue)](https://github.com/angular/angular/commit/bd1f1294aeb0d47b24421b7b7a608988689a459f) | support TypeScript 5.7 (#58609) |
+| [![fix - 9870b643bf](https://img.shields.io/badge/9870b643bf-fix-green)](https://github.com/angular/angular/commit/9870b643bff46f089a3f0a30514fb7e062a66d56) | Defer afterRender until after first CD (#58250) |
+| [![fix - a5fc962094](https://img.shields.io/badge/a5fc962094-fix-green)](https://github.com/angular/angular/commit/a5fc9620948c59da2146d46d27de388839b93254) | Don't run effects in check no changes pass (#58250) |
+### migrations
+| Commit | Description |
+| -- | -- |
+| [![feat - d298d25426](https://img.shields.io/badge/d298d25426-feat-blue)](https://github.com/angular/angular/commit/d298d254269ff759111fbdef7736bc8b713638bc) | add schematic to clean up unused imports (#59353) |
+| [![fix - 14fb8ce4c0](https://img.shields.io/badge/14fb8ce4c0-fix-green)](https://github.com/angular/angular/commit/14fb8ce4c00fc458cfbe1d7f2c85638c6165b636) | resolve text replacement issue (#59452) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - 8c5db3cfb7](https://img.shields.io/badge/8c5db3cfb7-fix-green)](https://github.com/angular/angular/commit/8c5db3cfb75700dd64f4c8c073554c7086835950) | avoid circular DI error in async renderer (#59256) |
+### router
+| Commit | Description |
+| -- | -- |
+| [![fix - 52a6710f54](https://img.shields.io/badge/52a6710f54-fix-green)](https://github.com/angular/angular/commit/52a6710f54bcec81f4cde23a78b9f78d038156c5) | complete router `events` on dispose (#59327) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.0.7 (2025-01-15)</h2>
+      <pre><a name="19.0.7"></a>
+# 19.0.7 (2025-01-15)
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - 2b4b7c3ebf](https://img.shields.io/badge/2b4b7c3ebf-fix-green)](https://github.com/angular/angular/commit/2b4b7c3ebfb2d4f4fd96fd2f1890b67c832505fd) | handle more node types when extracting dependencies (#59445) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - f893d07232](https://img.shields.io/badge/f893d07232-fix-green)](https://github.com/angular/angular/commit/f893d0723262d699979d55e43e4ddbcf64a3fc13) | destroy renderer when replacing styles during HMR (#59514) |
+### migrations
+| Commit | Description |
+| -- | -- |
+| [![fix - eb2fcd1896](https://img.shields.io/badge/eb2fcd1896-fix-green)](https://github.com/angular/angular/commit/eb2fcd1896e0b834b86fe79e8d806bdab24aabcc) | incorrect stats when migrating queries with best effort mode (#59463) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.0-rc.0 (2025-01-08)</h2>
+      <pre><a name="19.1.0-rc.0"></a>
+# 19.1.0-rc.0 (2025-01-08)
+### compiler
+| Commit | Description |
+| -- | -- |
+| [![fix - ceadd28ea1](https://img.shields.io/badge/ceadd28ea1-fix-green)](https://github.com/angular/angular/commit/ceadd28ea12140e8e78cdb706aff0487f5a87a3c) | allow $any in two-way bindings (#59362) |
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - ce3b6641fb](https://img.shields.io/badge/ce3b6641fb-fix-green)](https://github.com/angular/angular/commit/ce3b6641fbbbc968ee2ddf037dbc5ea70b8f1b07) | account for more expression types when determining HMR dependencies (#59323) |
+| [![fix - ee99879fdc](https://img.shields.io/badge/ee99879fdc-fix-green)](https://github.com/angular/angular/commit/ee99879fdc66f98dca80524c702304066c9882d5) | preserve defer block dependencies during HMR when class metadata is disabled (#59313) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 9870b643bf](https://img.shields.io/badge/9870b643bf-fix-green)](https://github.com/angular/angular/commit/9870b643bff46f089a3f0a30514fb7e062a66d56) | Defer afterRender until after first CD (#58250) |
+| [![fix - a5fc962094](https://img.shields.io/badge/a5fc962094-fix-green)](https://github.com/angular/angular/commit/a5fc9620948c59da2146d46d27de388839b93254) | Don't run effects in check no changes pass (#58250) |
+| [![fix - 5c0d68804e](https://img.shields.io/badge/5c0d68804e-fix-green)](https://github.com/angular/angular/commit/5c0d68804e03bcd425e5398e08d9cbe1846b21ca) | Ensure that a destroyed `effect` never run. (#59415) |
+### migrations
+| Commit | Description |
+| -- | -- |
+| [![feat - d298d25426](https://img.shields.io/badge/d298d25426-feat-blue)](https://github.com/angular/angular/commit/d298d254269ff759111fbdef7736bc8b713638bc) | add schematic to clean up unused imports (#59353) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - 8c5db3cfb7](https://img.shields.io/badge/8c5db3cfb7-fix-green)](https://github.com/angular/angular/commit/8c5db3cfb75700dd64f4c8c073554c7086835950) | avoid circular DI error in async renderer (#59256) |
+| [![fix - 0e23f20c41](https://img.shields.io/badge/0e23f20c41-fix-green)](https://github.com/angular/angular/commit/0e23f20c4117ffd5c871549a8012b8e22b03b5f4) | styles not replaced during HMR when using animations renderer (#59393) |
+### router
+| Commit | Description |
+| -- | -- |
+| [![fix - 5ac6f065ab](https://img.shields.io/badge/5ac6f065ab-fix-green)](https://github.com/angular/angular/commit/5ac6f065ab370ae99657c7a230bfd7ebf1d2f587) | avoid component ID collisions with user code (#59300) |
+| [![fix - 52a6710f54](https://img.shields.io/badge/52a6710f54-fix-green)](https://github.com/angular/angular/commit/52a6710f54bcec81f4cde23a78b9f78d038156c5) | complete router `events` on dispose (#59327) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.0.6 (2025-01-08)</h2>
+      <pre><a name="19.0.6"></a>
+# 19.0.6 (2025-01-08)
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - 06a55e9817](https://img.shields.io/badge/06a55e9817-fix-green)](https://github.com/angular/angular/commit/06a55e98173ff7bdd4e2ac1263309f9b935240f0) | account for more expression types when determining HMR dependencies (#59323) |
+| [![fix - 17fb20f85d](https://img.shields.io/badge/17fb20f85d-fix-green)](https://github.com/angular/angular/commit/17fb20f85db9f3c172c194c0436644f34b7176b1) | preserve defer block dependencies during HMR when class metadata is disabled (#59313) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 07afce81b8](https://img.shields.io/badge/07afce81b8-fix-green)](https://github.com/angular/angular/commit/07afce81b8ce28d1b308ff25017a4d4993881f36) | Ensure that a destroyed `effect` never run. (#59415) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - dbb8980d03](https://img.shields.io/badge/dbb8980d03-fix-green)](https://github.com/angular/angular/commit/dbb8980d03485ad1cf0e19503c4e770b1ba0767e) | avoid circular DI error in async renderer (#59271) |
+| [![fix - 6d00efde95](https://img.shields.io/badge/6d00efde95-fix-green)](https://github.com/angular/angular/commit/6d00efde952971573359b32cab06d0a513600fe0) | styles not replaced during HMR when using animations renderer (#59393) |
+### router
+| Commit | Description |
+| -- | -- |
+| [![fix - 144bccb687](https://img.shields.io/badge/144bccb687-fix-green)](https://github.com/angular/angular/commit/144bccb6872ece8fa1cf4954b5839054ccf20aa1) | avoid component ID collisions with user code (#59300) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.0-next.4 (2024-12-18)</h2>
+      <pre><a name="19.1.0-next.4"></a>
+# 19.1.0-next.4 (2024-12-18)
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - 57f3550219](https://img.shields.io/badge/57f3550219-feat-blue)](https://github.com/angular/angular/commit/57f3550219f2a57c7c26c9183e48ee66845e0439) | add utility for resolving defer block information to ng global (#59184) |
+| [![feat - 22f191f763](https://img.shields.io/badge/22f191f763-feat-blue)](https://github.com/angular/angular/commit/22f191f76339a08bb8f0f2dfbc60dde0f2e38e73) | extend the set of profiler events (#59183) |
+| [![fix - 1f4ff2fa36](https://img.shields.io/badge/1f4ff2fa36-fix-green)](https://github.com/angular/angular/commit/1f4ff2fa36f5d6240cbc4a40839d3d89501519d8) | avoid triggering `on timer` and `on idle` on the server (#59177) |
+| [![fix - cf89f14766](https://img.shields.io/badge/cf89f14766-fix-green)](https://github.com/angular/angular/commit/cf89f14766b0ed0204f7012d44a4732fccb35398) | Fix nested timer serialization (#59173) |
+### platform-server
+| Commit | Description |
+| -- | -- |
+| [![fix - 300b141cc8](https://img.shields.io/badge/300b141cc8-fix-green)](https://github.com/angular/angular/commit/300b141cc8652fd714b02f05c943cb79167ea844) | Warn user when transfer state happens more than once (#58935) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.0.5 (2024-12-18)</h2>
+      <pre><a name="19.0.5"></a>
+# 19.0.5 (2024-12-18)
+### core
+| Commit | Description |
+| -- | -- |
+| [![fix - 3793218e77](https://img.shields.io/badge/3793218e77-fix-green)](https://github.com/angular/angular/commit/3793218e77d699ddfae95a53ad048d4bfb9f042c) | avoid triggering `on timer` and `on idle` on the server (#59177) |
+| [![fix - cfc96ed82c](https://img.shields.io/badge/cfc96ed82c-fix-green)](https://github.com/angular/angular/commit/cfc96ed82cbe958ea7548718f76a2e7a3d6826a9) | Fix nested timer serialization (#59173) |
+### platform-server
+| Commit | Description |
+| -- | -- |
+| [![fix - 9085a8fbd8](https://img.shields.io/badge/9085a8fbd8-fix-green)](https://github.com/angular/angular/commit/9085a8fbd8cb61e3ce45adfa9ca2e96ba0be6f62) | Warn user when transfer state happens more than once (#58935) |
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v19.1.0-next.3 (2024-12-12)</h2>
+      <pre><a name="19.1.0-next.3"></a>
+# 19.1.0-next.3 (2024-12-12)
+### compiler-cli
+| Commit | Description |
+| -- | -- |
+| [![fix - c5c20e9d86](https://img.shields.io/badge/c5c20e9d86-fix-green)](https://github.com/angular/angular/commit/c5c20e9d86d72b33840dcf0adea02876437a589f) | check event side of two-way bindings (#59002) |
+| [![fix - 0dee2681f7](https://img.shields.io/badge/0dee2681f7-fix-green)](https://github.com/angular/angular/commit/0dee2681f782106fdb0fdcf9bc6ad1bca562751d) | consider pre-release versions when detecting feature support (#59061) |
+| [![fix - 1b9492edf8](https://img.shields.io/badge/1b9492edf8-fix-green)](https://github.com/angular/angular/commit/1b9492edf88f8a217c0fd1a8203df489d91b623b) | error in unused standalone imports diagnostic (#59064) |
+### core
+| Commit | Description |
+| -- | -- |
+| [![feat - d010e11b73](https://img.shields.io/badge/d010e11b73-feat-blue)](https://github.com/angular/angular/commit/d010e11b735562ded439989ddb84cc83c6c00e81) | add event listener options to renderer (#59092) |
+| [![fix - 30e676098d](https://img.shields.io/badge/30e676098d-fix-green)](https://github.com/angular/angular/commit/30e676098d72e9e11a6628b9716668df08f18c62) | Fix a bug where snapshotted functions are being run twice if they return a nullish/falsey value. (#59073) |
+### platform-browser
+| Commit | Description |
+| -- | -- |
+| [![fix - 52be35118f](https://img.shields.io/badge/52be35118f-fix-green)](https://github.com/angular/angular/commit/52be35118feee587d2efe5a6c55502c171caaa97) | collect external component styles from server rendering (#59031) |
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

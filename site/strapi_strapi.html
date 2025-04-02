@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for strapi/strapi"/>
+  <title>strapi/strapi Release Notes</title>
+</head>
+<body>
+  <h1>🚀 strapi/strapi - Release Notes</h1>
+  
+    <section>
+      <h2>v5.12.1 (2025-03-28)</h2>
+      <pre>## 5.12.1 (2025-03-28)
+
+### 🔥 Hotfix
+
+- fix broken SSO login introduced in 5.12.0 ([#23247](https://github.com/strapi/strapi/pull/23247))
+
+### ❤️ Thank You
+
+- Bassel Kanso @Bassel17</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.12.0 (2025-03-26)</h2>
+      <pre>## 5.12.0 (2025-03-26)
+
+### 🚀 New feature
+
+- add on-the-fly relation editing in modals (#22997)
+- add preview side editor for growth/ee users (#22997)
+- adding a link to chargebee portal for managing seats ([ccc540ffcb](https://github.com/strapi/strapi/commit/ccc540ffcb))
+
+### 🔥 Bug fix
+
+- bidirectional relations sync ([4e64ec6cec](https://github.com/strapi/strapi/commit/4e64ec6cec))
+- incorrect token source in pr diff ([#23142](https://github.com/strapi/strapi/pull/23142))
+- incorrect file path and parameters for pr_diff ([#23143](https://github.com/strapi/strapi/pull/23143))
+- deprecated step summary output ([#23144](https://github.com/strapi/strapi/pull/23144))
+- bidirectional relations sync ([ad216ff22f](https://github.com/strapi/strapi/commit/ad216ff22f))
+- remove useless rotf future flag ([#23139](https://github.com/strapi/strapi/pull/23139))
+- ui issues on purchae pages ([#23084](https://github.com/strapi/strapi/pull/23084))
+- add z index property to the menu content in blocks and markdown ([#23150](https://github.com/strapi/strapi/pull/23150))
+- relation label fix overflow behaviour ([#23125](https://github.com/strapi/strapi/pull/23125))
+- add the correct locale and document Id when we reorder the relations ([#23152](https://github.com/strapi/strapi/pull/23152))
+- run cronjobs closer to app start ([08528cceda](https://github.com/strapi/strapi/commit/08528cceda))
+- On production build webhooks detail page intermediate value issue #23099 ([#23099](https://github.com/strapi/strapi/issues/23099))
+- correctly read asset stream for dts asset remote providers ([#23169](https://github.com/strapi/strapi/pull/23169))
+- add the correct document in the back button history when we confirm dialog ([#23184](https://github.com/strapi/strapi/pull/23184))
+- issue with layout property in InputRenderer ([#23183](https://github.com/strapi/strapi/pull/23183))
+- removing the Strapi Cloud condition for Manage seats ([cdde94f005](https://github.com/strapi/strapi/commit/cdde94f005))
+- one more Strapi Cloud condition for Manage seats ([4ac8513411](https://github.com/strapi/strapi/commit/4ac8513411))
+- final final Strapi Cloud condition for Manage seats ([4d1d36a71c](https://github.com/strapi/strapi/commit/4d1d36a71c))
+- adding license type with it's typing ([ea6268bc6a](https://github.com/strapi/strapi/commit/ea6268bc6a))
+- reverting licenseType to type ([ff5b6069b9](https://github.com/strapi/strapi/commit/ff5b6069b9))
+- manage seats link for gold license ([1cf3c821d1](https://github.com/strapi/strapi/commit/1cf3c821d1))
+- updating message for Gold licenses ([01abcb251f](https://github.com/strapi/strapi/commit/01abcb251f))
+- removing type because we use the licenseLimitInformation instead ([c7e57b2c40](https://github.com/strapi/strapi/commit/c7e57b2c40))
+- updating tests for Managing seats ([c3f2ca2808](https://github.com/strapi/strapi/commit/c3f2ca2808))
+- now my code is prettier ([7d410c85ab](https://github.com/strapi/strapi/commit/7d410c85ab))
+- prettier translations as well ([8e0423d29d](https://github.com/strapi/strapi/commit/8e0423d29d))
+- handling type === gold check in license notifications ([4be9ba6828](https://github.com/strapi/strapi/commit/4be9ba6828))
+- prettier on my notification file ([31611b4598](https://github.com/strapi/strapi/commit/31611b4598))
+- updating license notifications and their tests ([f4754bded9](https://github.com/strapi/strapi/commit/f4754bded9))
+- prettier notification tests ([16829452be](https://github.com/strapi/strapi/commit/16829452be))
+- preserve cookie in sso login ([#23240](https://github.com/strapi/strapi/pull/23240))
+- **database:** improve sub queries handling in the qb ([#23129](https://github.com/strapi/strapi/pull/23129))
+- **relations:** no components available in relation modal dynamic zone ([#23151](https://github.com/strapi/strapi/pull/23151))
+
+### 📚 Documentation Changes
+
+- add strapi/permissions documentation ([#23091](https://github.com/strapi/strapi/pull/23091))
+
+### ⚙️ Chore
+
+- todo tests ([2f08d92b24](https://github.com/strapi/strapi/commit/2f08d92b24))
+- add GitHub Action to list merged PRs between branches ([#23007](https://github.com/strapi/strapi/pull/23007))
+- fix invalid template workflow to point to proper link ([c8270086d9](https://github.com/strapi/strapi/commit/c8270086d9))
+- release v5.11.3 ([#23185](https://github.com/strapi/strapi/pull/23185))
+- upgrade prismjs to 1.30.0 ([#23191](https://github.com/strapi/strapi/pull/23191))
+- **deps:** upgrade esbuild-loader to 4.3.0 ([#23068](https://github.com/strapi/strapi/pull/23068))
+
+### 💅 Enhancement
+
+- add tracking for editing relations on-the-fly and preview ([#23206](https://github.com/strapi/strapi/pull/23206))
+- admin session presists across tabs ([#23188](https://github.com/strapi/strapi/pull/23188))
+- add advanced preview license check ([#23221](https://github.com/strapi/strapi/pull/23221))
+
+### 🚨 Security
+
+- **deps:** upgrade axios to 1.8.2 for CWE-918 ([#23105](https://github.com/strapi/strapi/pull/23105))
+
+### ❤️ Thank You
+
+- Bassel Kanso @Bassel17
+- Ben Irvin
+- Derrick Mehaffy
+- HichamELBSI
+- Jean-Sébastien Herbaux
+- Lucas Boilly @lucasboilly
+- Marc-Roig
+- markkaylor
+- Rémi de Juvigny @remidej
+- seenabaaz
+- Simon Norris
+- Simone</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.11.3 (2025-03-19)</h2>
+      <pre>## 5.11.3 (2025-03-19)
+
+### 🔥 Bug fix
+
+- prevent switching preview tabs with unsaved changes ([#23115](https://github.com/strapi/strapi/pull/23115))
+- bidirectional relations sync ([4e64ec6cec](https://github.com/strapi/strapi/commit/4e64ec6cec))
+- remove useless rotf future flag ([#23139](https://github.com/strapi/strapi/pull/23139))
+- ui issues on purchae pages ([#23084](https://github.com/strapi/strapi/pull/23084))
+- add z index property to the menu content in blocks and markdown ([#23150](https://github.com/strapi/strapi/pull/23150))
+- fix webhook details page ([#23179](https://github.com/strapi/strapi/pull/23179))
+
+### 📚 Documentation Changes
+
+- add strapi/permissions documentation ([#23091](https://github.com/strapi/strapi/pull/23091))
+
+### ⚙️ Chore
+
+- **ci:** add GitHub Action to list merged PRs between branches ([#23007](https://github.com/strapi/strapi/pull/23007))
+- **ci:** incorrect token source in pr diff ([#23142](https://github.com/strapi/strapi/pull/23142))
+- **ci:** incorrect file path and parameters for pr_diff ([#23143](https://github.com/strapi/strapi/pull/23143))
+- **ci:** deprecated step summary output ([#23144](https://github.com/strapi/strapi/pull/23144))
+- **deps:** upgrade esbuild-loader to 4.3.0 ([#23068](https://github.com/strapi/strapi/pull/23068))
+
+### ❤️ Thank You
+
+- Ben Irvin
+- Jean-Sébastien Herbaux
+- Lucas Boilly @lucasboilly
+- Marc-Roig
+- Rémi de Juvigny @remidej
+- Simone
+- [seenasingh30](https://github.com/seenasingh30)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.25.22 (2025-03-19)</h2>
+      <pre>### 🚨 Security
+
+* [dependencies] security(deps): upgrade axios to 1.8.2 for CVE-2025-27152 (https://github.com/strapi/strapi/pull/23106) @innerdvations
+
+### 📚 Update and Migration Guides
+- General update guide can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/update-version.html)
+- Migration guides can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides.html) 📚</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.11.2 (2025-03-13)</h2>
+      <pre>## 5.11.2 (2025-03-13)
+
+### 🔥 Bug fix
+
+- bidirectional relations sync ([ad216ff22f](https://github.com/strapi/strapi/commit/ad216ff22f))
+
+### ⚙️ Chore
+
+- todo tests ([79b20f0f31](https://github.com/strapi/strapi/commit/79b20f0f31))
+
+### ❤️ Thank You
+
+- Marc-Roig</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.12.0-beta.0 (2025-03-12)</h2>
+      <pre>## 5.12.0-beta.0 (2025-03-12)
+
+### 🚀 New feature
+
+- **relations:** add save and publish actions to relations modal ([#22998](https://github.com/strapi/strapi/pull/22998))
+- **relations:** add back button history ([#23077](https://github.com/strapi/strapi/pull/23077))
+- **relations-on-the-fly:** add the Relation Modal ([#22858](https://github.com/strapi/strapi/pull/22858))
+- **relations-on-the-fly:** remove future flag ([#23020](https://github.com/strapi/strapi/pull/23020))
+- **relations-on-the-fly:** add the full page button in the modal to open the document edit view ([#23003](https://github.com/strapi/strapi/pull/23003))
+
+### 🔥 Bug fix
+
+- missing mock function causes typescript to fail ([#23054](https://github.com/strapi/strapi/pull/23054))
+- add origin to preview message ([#23059](https://github.com/strapi/strapi/pull/23059))
+- disable preview form when status is modified ([#23083](https://github.com/strapi/strapi/pull/23083))
+- find available port for vite to allow multiple develop mode instances ([#23008](https://github.com/strapi/strapi/pull/23008))
+- prevent switching preview tabs with unsaved changes ([#23115](https://github.com/strapi/strapi/pull/23115))
+- preview has a shadow background ([#23121](https://github.com/strapi/strapi/pull/23121))
+- onPreview is not called when updating a relation ([#23122](https://github.com/strapi/strapi/pull/23122))
+- **relations:** cannot dynamic zones and components ([#23100](https://github.com/strapi/strapi/pull/23100))
+
+### ⚙️ Chore
+
+- new iteration on the purchase pages ([2943bee4f4](https://github.com/strapi/strapi/commit/2943bee4f4))
+- add documentId to tracking events ([#23052](https://github.com/strapi/strapi/pull/23052))
+- upgrade vite to 5.4.13 ([#23066](https://github.com/strapi/strapi/pull/23066))
+- drop side editor future flag ([4a4c1f97b3](https://github.com/strapi/strapi/commit/4a4c1f97b3))
+- drop side editor future flag ([#23128](https://github.com/strapi/strapi/pull/23128))
+
+### 💅 Enhancement
+
+- remove warning when project is at seat limit ([6f12c0da79](https://github.com/strapi/strapi/commit/6f12c0da79))
+- **ctb:** add aria data to relations buttons ([#23076](https://github.com/strapi/strapi/pull/23076))
+
+### ❤️ Thank You
+
+- Alexandre Bodin
+- Ben Irvin
+- markkaylor
+- Maxime Castres
+- Rémi de Juvigny @remidej
+- Simone</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.11.1 (2025-03-12)</h2>
+      <pre>## 5.11.1 (2025-03-12)
+
+### 🔥 Bug fix
+
+- missing mock function causes typescript to fail ([#23054](https://github.com/strapi/strapi/pull/23054))
+- add origin to preview message ([#23059](https://github.com/strapi/strapi/pull/23059))
+- disable preview form when status is modified ([#23083](https://github.com/strapi/strapi/pull/23083))
+- find available port for vite to allow multiple develop mode instances ([#23008](https://github.com/strapi/strapi/pull/23008))
+
+### ⚙️ Chore
+
+- new iteration on the purchase pages ([2943bee4f4](https://github.com/strapi/strapi/commit/2943bee4f4))
+- add documentId to tracking events ([#23052](https://github.com/strapi/strapi/pull/23052))
+- upgrade vite to 5.4.13 ([#23066](https://github.com/strapi/strapi/pull/23066))
+
+### 💅 Enhancement
+
+- remove warning when project is at seat limit ([6f12c0da79](https://github.com/strapi/strapi/commit/6f12c0da79))
+- **ctb:** add aria data to relations buttons ([#23076](https://github.com/strapi/strapi/pull/23076))
+
+### 🚨 Security
+
+- **deps:** upgrade axios to 1.8.2 for CWE-918 ([#23105](https://github.com/strapi/strapi/pull/23105))
+
+### ❤️ Thank You
+
+- Alexandre Bodin
+- Ben Irvin
+- markkaylor
+- Maxime Castres
+- Rémi de Juvigny @remidej</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.25.21 (2025-03-12)</h2>
+      <pre>## What's Changed
+* release 4.25.20 by @Marc-Roig in https://github.com/strapi/strapi/pull/22707
+* [V4] fix: error in CM when deleting components from DZ by @Bassel17 in https://github.com/strapi/strapi/pull/23002
+* security(deps): upgrade koa to 2.15.4 by @innerdvations in https://github.com/strapi/strapi/pull/23012
+* security(deps): bump serialize-javascript to 6.0.2 by @innerdvations in https://github.com/strapi/strapi/pull/23018
+* ci: match v4 tooling packages to v5 by @innerdvations in https://github.com/strapi/strapi/pull/23021
+
+
+**Full Changelog**: https://github.com/strapi/strapi/compare/v4.25.20...v4.25.21</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.11.0 (2025-03-05)</h2>
+      <pre>## 5.11.0 (2025-03-05)
+
+### 🚀 New feature
+
+- **preview:** refresh iframe when strapi updates ([#23024](https://github.com/strapi/strapi/pull/23024))
+
+### 🔥 Bug fix
+
+- relation order ([6fdadbae0a](https://github.com/strapi/strapi/commit/6fdadbae0a))
+- remove list aliases ([ff62e5d81e](https://github.com/strapi/strapi/commit/ff62e5d81e))
+- remove additional upgrade aliases ([9f9c564efc](https://github.com/strapi/strapi/commit/9f9c564efc))
+- make sure to clean _cmp tables from orphaned morph types ([#23000](https://github.com/strapi/strapi/pull/23000))
+- types for custom http response APIs ([#21614](https://github.com/strapi/strapi/pull/21614))
+- upgrade koa to 2.15.4 ([#23013](https://github.com/strapi/strapi/pull/23013))
+- missing mock function causes typescript to fail ([60fa8e71fd](https://github.com/strapi/strapi/commit/60fa8e71fd))
+- **admin:** building the admin with webpack ([#22999](https://github.com/strapi/strapi/pull/22999))
+- **data-transfer:** race condition and backpressure in large asset transfers ([#22964](https://github.com/strapi/strapi/pull/22964))
+- **data-transfer:** server crash when remote data transfer is interrupted by client ([#22993](https://github.com/strapi/strapi/pull/22993))
+- **preview:** updating the document causes full page reload ([#22990](https://github.com/strapi/strapi/pull/22990))
+
+### ⚙️ Chore
+
+- apply changes to discard draft ([4d4e78457a](https://github.com/strapi/strapi/commit/4d4e78457a))
+- bump design system to rc.18 ([#23004](https://github.com/strapi/strapi/pull/23004))
+- backmerge main into develop ([6d1dbc97a9](https://github.com/strapi/strapi/commit/6d1dbc97a9))
+- remove or upgrade incorrect packages ([#23047](https://github.com/strapi/strapi/pull/23047))
+
+### 💅 Enhancement
+
+- add additional package scripts to default templates ([7f8710b10e](https://github.com/strapi/strapi/commit/7f8710b10e))
+- add missing Ukrainian translations for various plugins and components ([#22150](https://github.com/strapi/strapi/pull/22150))
+
+### 🚨 Security
+
+- **deps:** upgrade vite to 5.4.11 ([#23023](https://github.com/strapi/strapi/pull/23023))
+
+### ❤️ Thank You
+
+- Bassel Kanso @Bassel17
+- Ben Irvin
+- Derrick Mehaffy
+- dhoko @dhoko
+- Ivan Malaniak
+- Jean-Sébastien Herbaux
+- Jorrit Schippers
+- Marc-Roig
+- Mark Kaylor
+- markkaylor
+- Simone</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.10.4 (2025-02-26)</h2>
+      <pre>## 5.10.4 (2025-02-26)
+
+### 🚀 New feature
+
+- **preview:** save and publish document ([#22902](https://github.com/strapi/strapi/pull/22902))
+- **preview:** add review workflow injection zone ([#22942](https://github.com/strapi/strapi/pull/22942))
+
+### 🔥 Bug fix
+
+- add new email ratelimit middleware and apply to admin pass reset ([#22813](https://github.com/strapi/strapi/pull/22813))
+- apply advanced permissions in content manager home widgets ([#22921](https://github.com/strapi/strapi/pull/22921))
+- invalid documentId type in the getvalues util ([9f1ceb2bf4](https://github.com/strapi/strapi/commit/9f1ceb2bf4))
+- await document exists ([242fecbcf1](https://github.com/strapi/strapi/commit/242fecbcf1))
+- **data-transfer:** surface errors from createassetsreadstream ([#22905](https://github.com/strapi/strapi/pull/22905))
+
+### ⚙️ Chore
+
+- remove files from the old homepage ([#22908](https://github.com/strapi/strapi/pull/22908))
+- bump design system to rc.17 ([#22968](https://github.com/strapi/strapi/pull/22968))
+- document the permission checker service ([#22922](https://github.com/strapi/strapi/pull/22922))
+
+### ❤️ Thank You
+
+- Convly
+- DMehaffy
+- Jamie Howard @jhoward1994
+- Jean-Sébastien Herbaux
+- Lucas Boilly @lucasboilly
+- Marc-Roig
+- markkaylor
+- Rémi de Juvigny @remidej</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.10.3 (2025-02-19)</h2>
+      <pre>## 5.10.3 (2025-02-19)
+
+### 🔥 Bug fix
+
+- 72 byte maximum for creating and updating passwords ([41f8cdf116](https://github.com/strapi/strapi/commit/41f8cdf116))
+- do not validate byte length on empty values ([9efe8c85f4](https://github.com/strapi/strapi/commit/9efe8c85f4))
+- use path in error message ([195eaa367f](https://github.com/strapi/strapi/commit/195eaa367f))
+- validation on front-end forms ([1f8e39868e](https://github.com/strapi/strapi/commit/1f8e39868e))
+- validation message shape ([e07a466901](https://github.com/strapi/strapi/commit/e07a466901))
+- add max length to users-permissions password ([5c1ae79cf1](https://github.com/strapi/strapi/commit/5c1ae79cf1))
+- note md format ([#22859](https://github.com/strapi/strapi/pull/22859))
+- flaky tests ([#22829](https://github.com/strapi/strapi/pull/22829))
+- password validation tests ([#22904](https://github.com/strapi/strapi/pull/22904))
+- add new email ratelimit middleware and apply to admin pass reset ([#22813](https://github.com/strapi/strapi/pull/22813))
+- apply advanced permissions in content manager home widgets ([#22921](https://github.com/strapi/strapi/pull/22921))
+
+### ⚙️ Chore
+
+- remove outdated tutorial ([6cde24cc98](https://github.com/strapi/strapi/commit/6cde24cc98))
+- swap Download icon for Earth icon ([#22881](https://github.com/strapi/strapi/pull/22881))
+- fix build:code not including copy-files step ([#22907](https://github.com/strapi/strapi/pull/22907))
+- **deps:** bump undici from 6.19.2 to 6.21.1 ([#22697](https://github.com/strapi/strapi/pull/22697))
+
+### ❤️ Thank You
+
+- Alexandre BODIN @alexandrebodin
+- Ben Irvin
+- DMehaffy
+- Jamie Howard @jhoward1994
+- Marc-Roig
+- markkaylor
+- Rémi de Juvigny @remidej</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.10.2 (2025-02-13)</h2>
+      <pre>## 5.10.2 (2025-02-13)
+
+### 🔥 Bug fix
+
+- duplicate dep ([7896ed8da1](https://github.com/strapi/strapi/commit/7896ed8da1))
+
+### ❤️ Thank You
+
+- Alexandre Bodin</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.10.1 (2025-02-13)</h2>
+      <pre>## 5.10.1 (2025-02-13)
+
+### 🔥 Bug fix
+
+- issues in 5.10.0 ([dd20031544](https://github.com/strapi/strapi/commit/dd20031544))
+
+### ❤️ Thank You
+
+- Alexandre Bodin</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.10.0 (2025-02-12)</h2>
+      <pre>## 5.10.0 (2025-02-12)
+
+### 🚀 New feature
+
+- responsive blocks editor toolbar ([#22753](https://github.com/strapi/strapi/pull/22753))
+- **content-manager:** make markdown editor responsive ([#22820](https://github.com/strapi/strapi/pull/22820))
+- **relations-on-the-fly:** Setup the Future flag for the Relations on the fly ([#22771](https://github.com/strapi/strapi/pull/22771))
+
+### 🔥 Bug fix
+
+- debounce relation search ([d325780fea](https://github.com/strapi/strapi/commit/d325780fea))
+- handle missing TEST_APP_PATH in e2e utility functions ([4d07dffc75](https://github.com/strapi/strapi/commit/4d07dffc75))
+- admin infinite loading state ([#22763](https://github.com/strapi/strapi/pull/22763))
+- ctb relation types ([#22798](https://github.com/strapi/strapi/pull/22798))
+- removed unexpected padding around accordions ([#22811](https://github.com/strapi/strapi/pull/22811))
+- pagination query params at root level of query return incorrect error message ([#22455](https://github.com/strapi/strapi/pull/22455))
+- ui issues of the avatar button ([#22457](https://github.com/strapi/strapi/pull/22457))
+- corrected typing mistake in translation key ([#22766](https://github.com/strapi/strapi/pull/22766))
+- delete previous relations in morph to many relation ([#22736](https://github.com/strapi/strapi/pull/22736))
+- ctb reload state after save & delete ([#22805](https://github.com/strapi/strapi/pull/22805))
+- color missing in links of rich texts blocks ([#22230](https://github.com/strapi/strapi/pull/22230), [#22350](https://github.com/strapi/strapi/pull/22350))
+- **admin:** display correct version on admin notification ([#22810](https://github.com/strapi/strapi/pull/22810))
+- **upload:** hide checkbox in upload modal by default ([#22093](https://github.com/strapi/strapi/pull/22093))
+- **upload:** window title in media library ([#22806](https://github.com/strapi/strapi/pull/22806))
+
+### ⚙️ Chore
+
+- use rollup ([92055a7fb1](https://github.com/strapi/strapi/commit/92055a7fb1))
+- useDebounce hook ([5f30c63bed](https://github.com/strapi/strapi/commit/5f30c63bed))
+- touch ups ([cffeb3f30b](https://github.com/strapi/strapi/commit/cffeb3f30b))
+- move to rtk slices & improve typings ([7a6c796bd2](https://github.com/strapi/strapi/commit/7a6c796bd2))
+- remove icon for fields without i18n ([#22774](https://github.com/strapi/strapi/pull/22774))
+- **deps:** bump design system to rc.16 ([#22788](https://github.com/strapi/strapi/pull/22788))
+- **deps:** bump design system to rc.16 ([#22788](https://github.com/strapi/strapi/pull/22788))
+- **preview:** prepare layout for side editor ([#22767](https://github.com/strapi/strapi/pull/22767))
+
+### 💅 Enhancement
+
+- add default api token on app creation ([5bd5447232](https://github.com/strapi/strapi/commit/5bd5447232))
+- pre-generated api tokens ([2649ccb00e](https://github.com/strapi/strapi/commit/2649ccb00e))
+- better log informations about the errors for yup validations messages ([#22001](https://github.com/strapi/strapi/pull/22001))
+
+### ❤️ Thank You
+
+- Alexandre Bodin
+- Alexandre BODIN @alexandrebodin
+- Convly
+- dhoko @dhoko
+- Dhruv Maradiya @Dhruv-Maradiya
+- Jean-Sébastien Herbaux
+- Jorrit Schippers
+- Lucas Boilly @lucasboilly
+- Marc-Roig
+- markkaylor
+- Mohamed Dilshad
+- Mukul Padwal @mukulpadwal
+- Prafull Pandey @pandeyprafull
+- Rémi de Juvigny @remidej
+- Simone</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.9.0 (2025-01-29)</h2>
+      <pre>## 5.9.0 (2025-01-29)
+
+### 🚀 New feature
+
+- updating Plan label now that we have a Growth plan ([#22655](https://github.com/strapi/strapi/pull/22655))
+- **content-manager:** add getters to useDocument ([#22683](https://github.com/strapi/strapi/pull/22683))
+- **content-manager:** add container queries to form fields ([#22693](https://github.com/strapi/strapi/pull/22693))
+- **content-manager:** better bulk publish overview ([#22618](https://github.com/strapi/strapi/pull/22618))
+
+### 🔥 Bug fix
+
+- virtual prefix proxy path for vite middleware to work ([#22579](https://github.com/strapi/strapi/pull/22579))
+- can't update admin user without having a last name ([#22360](https://github.com/strapi/strapi/pull/22360))
+- **graphql:** component and association population strategy ([adacf2976c](https://github.com/strapi/strapi/commit/adacf2976c))
+- **plugins/users:** remove redundant grant-koa dependency in favor of grant.koa ([#22622](https://github.com/strapi/strapi/pull/22622))
+- **review-workflows:** mock returned value does not match useDocument return type ([#22719](https://github.com/strapi/strapi/pull/22719))
+
+### ⚙️ Chore
+
+- update node-gyp version ([#22663](https://github.com/strapi/strapi/pull/22663))
+- ci/release workflow changes ([7227f5e629](https://github.com/strapi/strapi/commit/7227f5e629))
+
+### ❤️  Thank You
+
+- Alexandre Bodin
+- Andrei Luca @iamandrewluca
+- Convly
+- Dhruv Maradiya @Dhruv-Maradiya
+- markkaylor
+- Rishith S @Rishith-S
+- Simon Norris
+- Ziyi</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.8.1 (2025-01-22)</h2>
+      <pre>## What's Changed
+* Ci/experimental release script by @Bassel17 in https://github.com/strapi/strapi/pull/22598
+* test(e2e): text fields advanced settings by @innerdvations in https://github.com/strapi/strapi/pull/22635
+* ci: adding release workflow by @Bassel17 in https://github.com/strapi/strapi/pull/22640
+* chore: switch to the new github bug report template system by @derrickmehaffy in https://github.com/strapi/strapi/pull/22608
+* Releases/5.8.0 by @remidej in https://github.com/strapi/strapi/pull/22652
+* fix(i18n): allow unique + un localized fields on i18n content types by @jhoward1994 in https://github.com/strapi/strapi/pull/22634
+* chore(deps): bump katex from 0.16.10 to 0.16.21 by @dependabot in https://github.com/strapi/strapi/pull/22681
+* chore: upgrade jscodeshift to v17 by @innerdvations in https://github.com/strapi/strapi/pull/22678
+* chore(telemetry): smooth event rate limiting by @Baldinof in https://github.com/strapi/strapi/pull/22465
+* fix: adding component to dynamic zone overwrites data by @remidej in https://github.com/strapi/strapi/pull/22656
+* fix: disable lifecycle hooks on transfers [v5] by @Bassel17 in https://github.com/strapi/strapi/pull/22651
+
+
+**Full Changelog**: https://github.com/strapi/strapi/compare/v5.8.0...v5.8.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.25.20 (2025-01-22)</h2>
+      <pre>## What's Changed
+* fix: delete orphan component data when schema changes by @innerdvations in https://github.com/strapi/strapi/pull/22664
+* fix: disable lifecycle hooks on transfers [v4] by @Bassel17 in https://github.com/strapi/strapi/pull/22650
+
+
+**Full Changelog**: https://github.com/strapi/strapi/compare/v4.25.19...v4.25.20</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.8.0 (2025-01-15)</h2>
+      <pre>## 5.8.0 (2025-01-15)
+
+### 🔥 Bug fix
+
+- handle clearing of number field to send null instead of undefined ([#22537](https://github.com/strapi/strapi/pull/22537))
+- add missing `name` to `ColorPickerInput` ([#21976](https://github.com/strapi/strapi/pull/21976))
+- missing hover pointer in bottom of ctb menu add another field to this collection type ([#22393](https://github.com/strapi/strapi/pull/22393))
+- changed active state background color ([#22545](https://github.com/strapi/strapi/pull/22545))
+- add missing borders to widgets ([#22612](https://github.com/strapi/strapi/pull/22612))
+- scripts-front version number ([d7f6a8b2b6](https://github.com/strapi/strapi/commit/d7f6a8b2b6))
+- **database:** only drop indexes that exist; do not drop on create ([#22633](https://github.com/strapi/strapi/pull/22633))
+- **history:** handle nested component images ([#22278](https://github.com/strapi/strapi/pull/22278))
+
+### ⚙️ Chore
+
+- fix version numbers ([27928ae50a](https://github.com/strapi/strapi/commit/27928ae50a))
+- **deps:** bump path-to-regexp in the npm_and_yarn group ([affd279425](https://github.com/strapi/strapi/commit/affd279425))
+- **docs:** document traverseEntity util ([#22573](https://github.com/strapi/strapi/pull/22573))
+- **tests:** enable and update relations ordering test ([#22574](https://github.com/strapi/strapi/pull/22574))
+
+### 💅 Enhancement
+
+- apollo landing page config ([#22285](https://github.com/strapi/strapi/pull/22285))
+
+### ❤️  Thank You
+
+- Ben Irvin
+- Dhruv Maradiya @Dhruv-Maradiya
+- Kaio Duarte @kaioduarte
+- Lucas Boilly @lucasboilly
+- markkaylor
+- Prafull Pandey @pandeyprafull
+- Rémi de Juvigny</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.0 (2025-01-08)</h2>
+      <pre>## 5.7.0 (2025-01-08)
+
+### 🚀 New feature
+
+- add content preview (remove future flag) ([81b62a508e](https://github.com/strapi/strapi/commit/81b62a508e))
+- **content-manager:** add syntax highlighting in the code block type in the Blocks field original solution ([#22332](https://github.com/strapi/strapi/pull/22332))
+
+### 🔥 Bug fix
+
+- check indexes before transaction ([27465bf4d7](https://github.com/strapi/strapi/commit/27465bf4d7))
+- preview back button behavior ([#22432](https://github.com/strapi/strapi/pull/22432))
+- multiple requests locale ([#22273](https://github.com/strapi/strapi/pull/22273))
+- add component button style ([#22425](https://github.com/strapi/strapi/pull/22425))
+- name must be initialized ([8f227a605a](https://github.com/strapi/strapi/commit/8f227a605a))
+- remove double conversion that causes date shift ([#22410](https://github.com/strapi/strapi/pull/22410))
+- renable the basic relations test ([#22464](https://github.com/strapi/strapi/pull/22464))
+- do not filter by locale if no i18n ([9f812af47f](https://github.com/strapi/strapi/commit/9f812af47f))
+- make generate command work ([#22443](https://github.com/strapi/strapi/pull/22443))
+- make ctb loader truly round ([#22433](https://github.com/strapi/strapi/pull/22433))
+- missing pointer cursor when hover top of possible relations ([#22511](https://github.com/strapi/strapi/pull/22511))
+- **blocks:** various ui issues ([#22423](https://github.com/strapi/strapi/pull/22423))
+- **content-manager:** ensure plugin::users-permissions.user is redirected on create ([#22435](https://github.com/strapi/strapi/pull/22435))
+- **database:** delete indexes before creating if they already exist ([#22424](https://github.com/strapi/strapi/pull/22424))
+- **e2e:** remove unused published product from the database ([#22407](https://github.com/strapi/strapi/pull/22407))
+
+### ⚙️ Chore
+
+- fix tests ([59cb734ff4](https://github.com/strapi/strapi/commit/59cb734ff4))
+- fix comment ([e350eaa607](https://github.com/strapi/strapi/commit/e350eaa607))
+- refactor ([cfda358b7f](https://github.com/strapi/strapi/commit/cfda358b7f))
+- add header comment ([f47bf90b3f](https://github.com/strapi/strapi/commit/f47bf90b3f))
+- **deps:** bump nanoid from 3.3.7 to 3.3.8 in /docs ([#22389](https://github.com/strapi/strapi/pull/22389))
+- **deps:** bump path-to-regexp in the npm_and_yarn group ([bbd2f07dff](https://github.com/strapi/strapi/commit/bbd2f07dff))
+
+### 💅 Enhancement
+
+- update purchase page links ([#22419](https://github.com/strapi/strapi/pull/22419))
+- **database:** add repair manager with component deletion fix ([#22267](https://github.com/strapi/strapi/pull/22267))
+
+### 🚨 Security
+
+- **deps:** bump nanoid to 3.3.8 in yarn.lock ([#22397](https://github.com/strapi/strapi/pull/22397))
+- **deps:** upgrade path-to-regexp from 6.3.0 to 8.0.0 ([#22357](https://github.com/strapi/strapi/pull/22357))
+
+### ❤️  Thank You
+
+- Bassel Kanso @Bassel17
+- Ben Irvin
+- Jean-Sébastien Herbaux
+- Lucas Boilly @lucasboilly
+- Marc Roig
+- Mark Kaylor
+- Maxime Castres @Mcastres
+- Prafull Pandey @pandeyprafull
+- Rémi de Juvigny @remidej
+- Simone
+- Ziyi</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.25.19 (2025-01-09)</h2>
+      <pre>## What's Changed
+
+* Fix: logging data-transfer and adding verbose by @Bassel17 in https://github.com/strapi/strapi/pull/22434
+
+**Full Changelog**: https://github.com/strapi/strapi/compare/v4.25.17...v4.25.19</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.0-beta.0 (2024-12-18)</h2>
+      <pre>## 5.7.0-beta.0 (2024-12-18)
+
+### 🚀 New feature
+
+- new admin homepage: https://github.com/strapi/strapi/pull/22346
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.6.0 (2024-12-18)</h2>
+      <pre>## 5.6.0 (2024-12-18)
+
+### 🚀 New feature
+
+- add content preview (remove future flag) ([81b62a508e](https://github.com/strapi/strapi/commit/81b62a508e))
+- **content-manager:** add syntax highlighting in the code block type in the Blocks field original solution ([#22332](https://github.com/strapi/strapi/pull/22332))
+
+### 🔥 Bug fix
+
+- preview back button behavior ([#22432](https://github.com/strapi/strapi/pull/22432))
+- multiple requests locale ([#22273](https://github.com/strapi/strapi/pull/22273))
+- add component button style ([#22425](https://github.com/strapi/strapi/pull/22425))
+- remove double conversion that causes date shift ([#22410](https://github.com/strapi/strapi/pull/22410))
+- **blocks:** various ui issues ([#22423](https://github.com/strapi/strapi/pull/22423))
+
+### ⚙️ Chore
+
+- fix tests ([59cb734ff4](https://github.com/strapi/strapi/commit/59cb734ff4))
+- **deps:** bump nanoid from 3.3.7 to 3.3.8 in /docs ([#22389](https://github.com/strapi/strapi/pull/22389))
+
+### 💅 Enhancement
+
+- update purchase page links ([#22419](https://github.com/strapi/strapi/pull/22419))
+- **database:** add repair manager with component deletion fix ([#22267](https://github.com/strapi/strapi/pull/22267))
+
+### 🚨 Security
+
+- **deps:** bump nanoid to 3.3.8 in yarn.lock ([#22397](https://github.com/strapi/strapi/pull/22397))
+
+### ❤️  Thank You
+
+- Ben Irvin
+- Lucas Boilly @lucasboilly
+- Marc Roig
+- Maxime Castres @Mcastres
+- Rémi de Juvigny @remidej
+- Simone
+- Ziyi</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.5.2 (2024-12-17)</h2>
+      <pre>## 5.5.2 (2024-12-17)
+
+### :warning: Security Fix Notice :warning: 
+
+This version was released to patch a security vulnerability, detailed disclosure has been delayed as per our security policy. We advise all users to update their applications as soon as possible.
+
+### 🔥 Bug fix
+
+- remove lookup param from doc service ([0c6e0953ae](https://github.com/strapi/strapi/commit/0c6e0953ae))
+
+### ❤️  Thank You
+
+- @Boegie19 
+- Ben Irvin @innerdvations
+- Marc Roig @Marc-Roig </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.5.1 (2024-12-11)</h2>
+      <pre>## 5.5.1 (2024-12-11)
+
+### 🔥 Bug fix
+
+- support for reverse proxying ([#21914](https://github.com/strapi/strapi/pull/21914))
+- adjust polymorphic relation encoding and index mapping ([#22380](https://github.com/strapi/strapi/pull/22380))
+- **upload:** cleaner fallback for files preview ([#22351](https://github.com/strapi/strapi/pull/22351))
+- cursor pointer issue in permission checkbox settings icon ([#22328](https://github.com/strapi/strapi/pull/22328))
+- preview back button behavior ([#22334](https://github.com/strapi/strapi/pull/22334))
+
+### ⚙️ Chore
+
+- remove duplicate dependency ([#22394](https://github.com/strapi/strapi/pull/22394))
+- test-snapshots ([#20897](https://github.com/strapi/strapi/pull/20897))
+- added french translations for blocks ([#22195](https://github.com/strapi/strapi/pull/22195))
+- comment out getstarted log ([#22327](https://github.com/strapi/strapi/pull/22327))
+
+### 💅 Enhancement
+
+- cmd+enter and ctrl+enter to save entry ([#22311](https://github.com/strapi/strapi/pull/22311))
+- add Wolof and Xhosa languages ([#21881](https://github.com/strapi/strapi/pull/21881))
+
+### ❤️  Thank You
+
+- Alexandre Bodin @alexandrebodin
+- Bassel Kanso @Bassel17
+- Ben Irvin @innerdvations
+- Jean-Sébastien Herbaux @convly
+- Jacob Bashista @tgb20
+- Lucas Boilly @lucasboilly
+- Mohamed Dilshad @dilshad-knk
+- Prafull Pandey @pandeyprafull
+- Rémi de Juvigny @remidej</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.5.0 (2024-12-04)</h2>
+      <pre>## 5.5.0 (2024-12-04)
+
+### 🚀 New feature
+
+- use mux player for video ([dd53b0048b](https://github.com/strapi/strapi/commit/dd53b0048b))
+- send diagnostic messages from remote strapi ([#22214](https://github.com/strapi/strapi/pull/22214))
+
+### 🔥 Bug fix
+
+- turn on and update i18n settings.spec.ts ([#22282](https://github.com/strapi/strapi/pull/22282))
+- document actions being rendered multiple times ([#22283](https://github.com/strapi/strapi/pull/22283))
+- add documentId to `me` graphql query ([#22321](https://github.com/strapi/strapi/pull/22321))
+- **preview:** page title and disabled link ([#22324](https://github.com/strapi/strapi/pull/22324))
+
+### ⚙️ Chore
+
+- re-add some controls ([e997beffb8](https://github.com/strapi/strapi/commit/e997beffb8))
+- test-snapshots ([651b22d8b9](https://github.com/strapi/strapi/commit/651b22d8b9))
+- remove yarn.lock from templates/website ([#22294](https://github.com/strapi/strapi/pull/22294))
+- use "workspace:*" for internal dependencies ([#22303](https://github.com/strapi/strapi/pull/22303))
+- upgrade vite-plugin-dts ([#22297](https://github.com/strapi/strapi/pull/22297))
+- update sdk-plugin and dedupe yarn.lock ([#22296](https://github.com/strapi/strapi/pull/22296))
+- cleanup removing support for assets without metadata ([#22215](https://github.com/strapi/strapi/pull/22215))
+- **deps:** bump @strapi/design-system from 2.0.0-rc.13 to 2.0.0-rc.14 ([#22274](https://github.com/strapi/strapi/pull/22274))
+- **deps:** update @strapi/pack-up to v5.0.2 ([#22261](https://github.com/strapi/strapi/pull/22261))
+
+### 💅 Enhancement
+
+- disable preview link when changes are not saved ([#22275](https://github.com/strapi/strapi/pull/22275))
+
+### ❤️  Thank You
+
+- Alexandre Bodin
+- Bassel Kanso @Bassel17
+- Ben Irvin
+- Jonas Thelemann
+- Laurens Kling @laurenskling
+- markkaylor
+- Rémi de Juvigny @remidej
+- Sora Morimoto @smorimoto</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.4.2 (2024-11-27)</h2>
+      <pre>### 💅 Enhancement
+
+* [core:content-type-builder] fix: configure the view button missing for components (https://github.com/strapi/strapi/pull/22106) @Rishith-S
+* [core:core] enhancement: add db info to startup logger (https://github.com/strapi/strapi/pull/21876) @innerdvations
+* [core:data-transfer] feat: adding info diagnostics to data-transfer providers (https://github.com/strapi/strapi/pull/22085) @Bassel17
+
+### 🚨 Security
+
+* [plugin:graphql] fix: Remove Private Attributes from GraphQL Filters and Inputs (https://github.com/strapi/strapi/pull/21934) @Convly
+
+### 🚀 New feature
+
+* [core:preview] feat: preview allowed origins config (https://github.com/strapi/strapi/pull/22138) @Marc-Roig
+
+### 🔥 Bug fix
+
+* [core:admin] fix: replaced the Code icon with CodeBlock icon (https://github.com/strapi/strapi/pull/22218) @sg1asgard
+* [core:admin] fix: the confirmation message of restoring a version was updated (https://github.com/strapi/strapi/pull/22223) @sg1asgard
+* [core:content-manager] fix: search param being encoded twice (https://github.com/strapi/strapi/pull/22212) @Marc-Roig
+* [core:database] fix: resolve naming conflict in the v5 `document_id` migration (https://github.com/strapi/strapi/pull/22140) @killthekitten
+* [core:preview] fix: preview title overflow (https://github.com/strapi/strapi/pull/22232) @Marc-Roig
+* [core:upload] fix: change MediaLibraryInput attribute type from required to optional (https://github.com/strapi/strapi/pull/22265) @simotae14
+* [plugin:i18n] fix: hide the locale option in the Edit view dropdown if you don't have permission to read it (https://github.com/strapi/strapi/pull/22229) @simotae14
+* [typescript] fix: unit tests for typescript types gen (https://github.com/strapi/strapi/pull/22246) @Convly
+
+### ⚙️ Chore
+
+* [dependencies] chore: bump design system from 2.0.0-rc.12 to 2.0.0-rc.13 (https://github.com/strapi/strapi/pull/22213) @markkaylor
+* [e2e-tests] chore(e2e): turn on the i18n editview.spec.ts tests (https://github.com/strapi/strapi/pull/22217) @markkaylor
+
+### 📚 Update and Migration Guides
+- General update guide can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/update-version.html)
+- Migration guides can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides.html) 📚</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.4.1 (2024-11-21)</h2>
+      <pre>### 🚀 New feature
+
+* [cli] feat(cloud-cli): add command to link project with environment (https://github.com/strapi/strapi/pull/22062) @gonbaum
+* [cli] feat(cloud-cli): display warning when using deploy command (https://github.com/strapi/strapi/pull/22171) @gonbaum
+
+### 💅 Enhancement
+
+* [core:content-manager] enhancement: add didRestoreHistoryVersion and willNavigate to history (https://github.com/strapi/strapi/pull/22133) @simotae14
+* [core:preview] feat: will navigate event (https://github.com/strapi/strapi/pull/22109) @Marc-Roig
+
+### ⚙️ Chore
+
+* [core:preview] chore: dummy preview page on getstarted (https://github.com/strapi/strapi/pull/22137) @Marc-Roig
+* [dependencies] chore: upgrade cheerio to release version (https://github.com/strapi/strapi/pull/22145) @innerdvations
+
+### 🔥 Bug fix
+
+* [core:admin] fix: Enumeration add "Choose here" as empty value (https://github.com/strapi/strapi/pull/22139) @simotae14
+* [core:admin] fix: replaced translation id for the save button of the edit view (https://github.com/strapi/strapi/pull/22193) @lucasboilly
+* [core:content-manager] fix: the disabled components don’t look like they are disabled inside content history (https://github.com/strapi/strapi/pull/22172) @sg1asgard
+
+### 📚 Update and Migration Guides
+- General update guide can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/update-version.html)
+- Migration guides can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides.html) 📚</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.25.17 (2024-11-21)</h2>
+      <pre>### 🔥 Bug fix
+
+* [core:content-manager] fix: markdown editor auto scrolls (https://github.com/strapi/strapi/pull/21434) @nguyengiang2000
+* [core:upload] fix(v4): allow cross origin sources when cropping images (https://github.com/strapi/strapi/pull/22142) @Marc-Roig
+
+### 📚 Update and Migration Guides
+- General update guide can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/update-version.html)
+- Migration guides can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides.html) 📚</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.4.0 (2024-11-13)</h2>
+      <pre>### 🔥 Bug fix
+
+* [core:core] fix: load strapi before watch (https://github.com/strapi/strapi/pull/21931) @alexandrebodin
+* [core:core] fix: populate media in document service (https://github.com/strapi/strapi/pull/22086) @jhoward1994
+* [core:database] fix: possible query ambiguity during Strapi v5 db migration (https://github.com/strapi/strapi/pull/21596) @mottet
+* [core:review-workflows] fix: stage change should not update modified status (https://github.com/strapi/strapi/pull/22069) @Marc-Roig
+
+### 🚀 New feature
+
+* [core:core] feat: reordering for polymorphic relations in Content API (https://github.com/strapi/strapi/pull/21928) @innerdvations
+
+### ⚙️ Chore
+
+* [dependencies] fix: remove references to prerelease versions of Strapi (https://github.com/strapi/strapi/pull/22143) @innerdvations
+* [e2e-tests] test(e2e): change playwright timeouts (https://github.com/strapi/strapi/pull/22096) @innerdvations
+* [core:upload] chore: migrate media-library pages to Typescript (https://github.com/strapi/strapi/pull/21896) @simotae14 
+
+### 📚 Update and Migration Guides
+- General update guide can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/update-version.html)
+- Migration guides can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides.html) 📚</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.25.16 (2024-11-13)</h2>
+      <pre>### 💅 Enhancement
+
+* [core:admin] enhancement: include Uzbek and Romania as language native names (https://github.com/strapi/strapi/pull/22073) @simotae14
+
+### 📚 Update and Migration Guides
+- General update guide can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/update-version.html)
+- Migration guides can be found [here](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides.html) 📚</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

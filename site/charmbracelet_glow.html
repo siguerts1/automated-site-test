@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for charmbracelet/glow"/>
+  <title>charmbracelet/glow Release Notes</title>
+</head>
+<body>
+  <h1>🚀 charmbracelet/glow - Release Notes</h1>
+  
+    <section>
+      <h2>v2.1.0 (2025-02-26)</h2>
+      <pre># Watch and Learn
+
+At last: Glow will watch your markdown files and reload ’em as they change. No knobs and no settings: it just works.
+
+Also, there is a new flag available to open files with the built-in pager:
+
+```bash
+glow --tui README.md
+```
+
+🤗 Special thanks to @andreynering on the Charm team for implementing both these features and crushin’ a bunch of bugs!
+
+## Changelog
+### New Features
+* e03817b2cb1cb86b454db28aaddd773c2388aea7: feat: add new `--tui` / `-t` flag (#679) (@andreynering)
+* f1b565125fff2ebe99b3c92fb89bd4bc3ab4ced0: feat: make --all configurable globally (#651) (@skatkov)
+* f255f3a60317948820a8f08165e422d1074b0126: feat: support GLAMOUR_STYLE for custom pager styles (#587) (@bashbunni)
+* 05e5b2e279eb07bc4ce7d041ae0f3113948c4bc7: feat: watch for file changes and reload automatically (@andreynering)
+### Bug fixes
+* f689c90084a025da025a957db91bdc3eb373896a: fix: correct abs to rel path conversion (#683) (@Shane-XB-Qian)
+* 3989fe0d5e024fd3ea75c109109bb554b65f9441: fix: ensure `r` key works when filtering files (#648) (@NijeboerFrank)
+* e44e4684e1421f0aebe4e2db3e9bf93d652e7793: fix: fallback to the current directory if no argument was given (@andreynering)
+* 2671509003da4994a4664192fe8f1fc934adf275: fix: make `all` setting `false` by default (@andreynering)
+* 9dd8a6f3fd35efd5429700051d5ff670c3bdbe22: fix: make pipeline for tui work (@Shane-XB-Qian)
+* ae57cced064f77b4f349078ea1bc8962339a9a10: fix: remove more stash-related stuff (#656) (@caarlos0)
+* 009c37602af724f771307006b14da1e001edc323: fix: restore hint for `e` / `edit` on the footer (#678) (@andreynering)
+### Other Stuff
+* 8e363644f685455ddd1a6baf901a23481cd5fb09: chore: add missing line end to `.gitignore` (@andreynering)
+* 7fbc040cc894c0ead8aec492a3e48669485b7905: refactor: rename a var (@andreynering)
+
+---
+
+<details>
+<summary>Verifying the artifacts</summary>
+
+First, download the [`checksums.txt` file](https://github.com/charmbracelet/glow/releases/download/2.1.0/checksums.txt), for example, with `wget`:
+
+```bash
+wget 'https://github.com/charmbracelet/glow/releases/download/v2.1.0/checksums.txt'
+```
+
+Then, verify it using [`cosign`](https://github.com/sigstore/cosign):
+
+```bash
+cosign verify-blob \
+  --certificate-identity 'https://github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main' \
+  --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' \
+  --cert 'https://github.com/charmbracelet/glow/releases/download/v2.1.0/checksums.txt.pem' \
+  --signature 'https://github.com/charmbracelet/glow/releases/download/v2.1.0/checksums.txt.sig' \
+  ./checksums.txt
+```
+
+If the output is `Verified OK`, you can safely use it to verify the checksums of other artifacts you downloaded from the release using `sha256sum`:
+
+```bash
+sha256sum --ignore-missing -c checksums.txt
+```
+
+Done! You artifacts are now verified!
+
+</details>
+
+<a href="https://charm.sh/"><img alt="The Charm logo" src="https://stuff.charm.sh/charm-badge.jpg" width="400"></a>
+
+Thoughts? Questions? We love hearing from you. Feel free to reach out on [Twitter](https://twitter.com/charmcli), [The Fediverse](https://mastodon.technology/@charm), or on [Discord](https://charm.sh/chat).
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.0 (2024-08-23)</h2>
+      <pre># Hello v2!
+
+This release contains a massive amount of bug fixes and rendering improvements, many of which come by way of [Glamour v0.8.0](https://github.com/charmbracelet/glamour/releases/tag/v0.8.0) which was released a few weeks ago.
+
+As a bonus, the latest version of Glamour includes support for Tokyo Night.
+
+```bash
+glow -s "tokyo-night"
+```
+
+<img alt="Tokyo Night x Glamour" src="https://github.com/charmbracelet/glamour/blob/master/styles/gallery/tokyo-night.png" width="600">
+
+Additionally, the stash feature has been removed.
+
+## Changelog
+
+### New!
+
+* d89d79a00ce257fca142b6b4d3b20ea25e377ca7: feat: --preserve-new-lines (#623) (@caarlos0)
+* b1d377237d81d8149f6c0dd3c70ddacd2ac2b5c5: feat: add 'r' to refresh list and document (#624) (@caarlos0)
+* 96d2a38e67d03c08cecb89e8317512bc401825d1: feat: allow --width=0 to disable wordwrap (#366) (@applejag)
+* fe066f214006c51cd87e0e36e86c06cf52dd97d5: feat: allow config from CHARM_CONFIG_HOME and XDG_CONFIG_HOME (#621) (@caarlos0)
+* 9ebe39cd090ac49d4345ba5c8459328ecd146b91: feat: improve gitlab/github readme url (#456) (@caarlos0)
+* f1cf0ba7856ec7d8f203a1a2c9b8597b3a0cdb14: feat: man pages (@caarlos0)
+* 597e56bad4599857dde4c36174ce7a5ec371b7cc: feat: open editor in current line (@caarlos0)
+* d7032fe57f7aa06e3e8f04f810db6796ed8fe42d: feat: shell completions (@caarlos0)
+* 2d5bd3b7995fc7af57d72646d41bb7ad204a6df9: feat: show line numbers configuration option (@caarlos0)
+* 0dcf1271dd6012d686998c6e42efe9c2fea1a476: feat: suspend (@caarlos0)
+* c991ec475d777f9656b29fd861ff4b38f5d8313c: feat: use x/editor (#543) (@caarlos0)
+
+### Fixed!
+
+* 9c79fa1b48d72ed8fdf60517d374790bb694a251: fix(ci): remove soft-serve workflow (@aymanbagabas)
+* bccf3d0cb7a8d87aff73061ba0b47873c3754ac5: fix(ci): update coverage workflow (@aymanbagabas)
+* 08c564c8588e972b920807cca8e5335ddbd6632f: fix: --all bypass .gitignore rules (#285) (#504) (@aitva)
+* 8e5139657547918b8e83c544cf68ec1e7e87b7c4: fix: check other possible readme paths/branches (#450) (@caarlos0)
+* 1133e5047b24cae6a932c15189f81897b74697a4: fix: config failing in tests (#625) (@caarlos0)
+* 2288311e82f616abe9d87f76dbefacd3f5bb0f99: fix: do not hard fail if no config (@caarlos0)
+* 821d51da131170be16469c0692a6dca8f3ccc540: fix: do not show absolute path as note (@caarlos0)
+* 247c707b25ad07808b5a8fc6830b78740fa89dca: fix: glow URL (@caarlos0)
+* a1a85636eafc36192eb1efe110f4f79c2b4eb74a: fix: handle not being able to create log file (@caarlos0)
+* b80e8312f214b662ac298fb9c20c26b903e0f9b2: fix: handle permission denied (@caarlos0)
+* 54dd62a2a43d36e10d075b2b3fe9b0f637f2e2b9: fix: handle running inside a snap (#527) (@caarlos0)
+* ad01f380bd85a9aee962050f83e22c1ad8069145: fix: improve line no (@caarlos0)
+* f44e5b5f5c431eaa6451aa62841659b4fdad00b3: fix: improve message (@caarlos0)
+* 7e471f17877ce2dd69a4f443f6b0c9bf0f95382d: fix: lint issue (@caarlos0)
+* e4cacf7319340b95d6d7d9059218c32251bf9b11: fix: mkdir cache dir (@caarlos0)
+* 1407793c5d11ceed9086c9779322617e633067a0: fix: pass color profile down to glamour (#626) (@caarlos0)
+* 9a3f7a19cbc8b5f272f798041f5f2917c3ccbb27: fix: replace string concatenation in loop with string builder (#505) (@appgurueu)
+* cd99146e9ea95e0b74f82e317f9d2cdb977d3684: fix: update codeowners (#637) (@caarlos0)
+* 3f9102d1162191c4523c1f9fcf109215e4dce6da: fix: yet another log handling fix (@caarlos0)
+
+### Deps
+
+* c89c8bd6e78de0e7d3a30d5b44b14e598ccb443e: feat: update glamour (#634) (@caarlos0)
+* 4578bc149a6d1400edb4ad84bcf0819a822556bc: feat: updating glamour (#631) (@caarlos0)
+
+### Other Stuff
+
+* d2e7742a6abb52866c69d71e430e3eee82785148: chore(ci): enable gofumpt (@aymanbagabas)
+* 736e77dbc66ac95913b77e06095311546e32e2cb: feat!: rename module to /v2 (#640) (@caarlos0)
+
+---
+
+<details>
+<summary>Verifying the artifacts</summary>
+
+First, download the [`checksums.txt` file](https://github.com/charmbracelet/glow/releases/download/2.0.0/checksums.txt), for example, with `wget`:
+
+```bash
+wget 'https://github.com/charmbracelet/glow/releases/download/v2.0.0/checksums.txt'
+```
+
+Then, verify it using [`cosign`](https://github.com/sigstore/cosign):
+
+```bash
+cosign verify-blob \
+  --certificate-identity 'https://github.com/charmbracelet/meta/.github/workflows/goreleaser.yml@refs/heads/main' \
+  --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' \
+  --cert 'https://github.com/charmbracelet/glow/releases/download/v2.0.0/checksums.txt.pem' \
+  --signature 'https://github.com/charmbracelet/glow/releases/download/v2.0.0/checksums.txt.sig' \
+  ./checksums.txt
+```
+
+If the output is `Verified OK`, you can safely use it to verify the checksums of other artifacts you downloaded from the release using `sha256sum`:
+
+```bash
+sha256sum --ignore-missing -c checksums.txt
+```
+
+Done! You artifacts are now verified!
+
+</details>
+
+<a href="https://charm.sh/"><img alt="The Charm logo" src="https://stuff.charm.sh/charm-badge.jpg" width="400"></a>
+
+Thoughts? Questions? We love hearing from you. Feel free to reach out on [Twitter](https://twitter.com/charmcli), [The Fediverse](https://mastodon.technology/@charm), or on [Discord](https://charm.sh/chat).
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.1 (2023-05-09)</h2>
+      <pre>## What's Changed
+* fix: rm emoji from package description by @caarlos0 in https://github.com/charmbracelet/glow/pull/453
+* fix: improve editor handling by @caarlos0 in https://github.com/charmbracelet/glow/pull/449
+* fix: do not use deprecated func by @caarlos0 in https://github.com/charmbracelet/glow/pull/451
+* docs: fix typos by @kianmeng in https://github.com/charmbracelet/glow/pull/471
+* chore(deps): bump actions/setup-go from 3 to 4 by @dependabot in https://github.com/charmbracelet/glow/pull/478
+* fix: lazily init UI by @muesli in https://github.com/charmbracelet/glow/pull/494
+
+* * *
+
+<a href="https://charm.sh/"><img alt="The Charm logo" src="https://stuff.charm.sh/charm-badge.jpg" width="400"></a>
+
+Thoughts? Questions? We love hearing from you. Feel free to reach out on [Twitter](https://twitter.com/charmcli), [The Fediverse](https://mastodon.technology/@charm), or on [Discord](https://charm.sh/chat).</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.0 (2023-01-23)</h2>
+      <pre># Your Terminal Notebook 📒
+
+Use `glow` as your terminal markdown notebook! This release contains several
+quality of life improvements such as copying file contents and editing local
+files.
+
+<img src="https://vhs.charm.sh/vhs-54cJSuTL2z4iuIe56jrbto.gif" width="800" />
+
+### Highlights
+
+#### Copy File Contents
+
+Press <kbd>c</kbd> to copy a file's contents to your clipboard to paste anywhere you'd like!
+
+#### Edit Markdowns
+
+Edit a file by pressing <kbd>e</kbd> with your preferred `$EDITOR` (defaults to `nano`) and reloads the file with the updated changes on save!
+
+#### Hard line break support
+
+When running `glow README.md`, `glow` will preserve line breaks to resemble the markdown file more closely.
+
+### New Features
+* a07fdb73f0cffd5ce027341fb2e98a26cc852d54: feat(ui): `e` to open edit local markdown files in editor (@maaslalani)
+* 071783d9078d9f52ac73f35c1a777d29052ea0af: feat: copy contents of document (#439) (@maaslalani)
+* b36e5ad810b6ef9ee3b32869d2af5d7ce461c2fc: feat: sync glow with git.charm.sh (@aymanbagabas)
+
+### Bug fixes
+* d9bf3b8ee89072cdec42af6d938a1bef0393c748: fix: don't close HTTP body (@maaslalani)
+* 5f14914b7e698523145ee4a5031201f394947b0e: fix: editor with args (#364) (@caarlos0)
+* 01d9858f7c77c1b806d1968fbcf4781cb279bdc2: fix: goreleaser workflow (#358) (@caarlos0)
+* 6543979ed18616ee16f71597618bf02c5ef42de9: fix: performance scrolling (@meowgorithm)
+* 19732a63035e316e3079d15030a573e89d7115cf: fix: support hard line breaks (charmbracelet#212) (@WieeRd)
+* e0d667a48c914ef517fdf35d07ae2ab8bdcb7959: fix: use filepath.Dir instead of path.Dir (@Splode)
+
+### Others
+* 8138788b0a24428e4950d0f0beb280650a9a896e: Automatically read from stdin if stdin is a pipe (@meowgorithm)
+* db7f49b445e38c4649e098be1b16f195cecd2c0c: Bump Bubbles to v0.14.0, update accordingly, and simplify spinners (@meowgorithm)
+* ff59ead353e358c085e12d5323c9863f9882da10: Extend example how to read from stdin (@nilsvu)
+* dd1593b10dbd0602e7eb1e00774c4da9aa837b23: Keybindings for editing the document from the pager (@jmmoser)
+
+* * *
+
+<a href="https://charm.sh/"><img alt="The Charm logo" src="https://stuff.charm.sh/charm-badge.jpg" width="400"></a>
+
+Thoughts? Questions? We love hearing from you. Feel free to reach out on [Twitter](https://twitter.com/charmcli), [The Fediverse](https://mastodon.technology/@charm), or on [Discord](https://charm.sh/chat).
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.1 (2021-04-08)</h2>
+      <pre>This bugfix release prevents a data race and improves compatibility with rxvt-based terminals.
+
+### Fixes
+4863f57 Bump bubbletea, glamour, and go-runewidth deps
+92b8607 Bump termenv to v0.8.1
+
+* * *
+
+Thoughts? Questions? Feel free to reach out on [Twitter](https://twitter.com/charmcli) and [The Fediverse](https://mastodon.technology/@charm).
+
+<a href="https://charm.sh/"><img alt="The Charm logo" src="https://stuff.charm.sh/charm-badge-unrounded.jpg" width="400"></a>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.0 (2021-03-14)</h2>
+      <pre>### Fixes
+e1d8162 Add missing newline in pager
+e9aa607 Fix tab contrast in light mode, particularly in macOS terminal
+cfb746e Pass through all keys when editing filter
+3a57221 Update pagination after changing sections when resetting the filter
+
+### Added
+3285903 Enable/Disable pager from config (#242)
+
+### Changes
+8d0ebb7 If the only argument is a directory open a TUI at that path (see #234)
+2088bac Make TUI find markdowns with a variety of file extensions
+
+* * *
+
+Thoughts? Questions? Feel free to reach out on [Twitter](https://twitter.com/charmcli) and [The Fediverse](https://mastodon.technology/@charm).
+
+<a href="https://charm.sh/"><img alt="The Charm logo" src="https://stuff.charm.sh/charm-badge-unrounded.jpg" width="400"></a>
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.3.0 (2020-12-25)</h2>
+      <pre>Happy holidays! It was one year ago that Glow v0.1 went live as the very first Charm project. We're proud of how far Glow’s come and looking forward to making it even better in 2021. Enjoy the release!
+
+## Highlights
+
+### Tabs
+
+This release features a number of UX improvements, most notably your markdowns have been organized into tabs. To move between tabs press the conveniently labeled <kbd>tab</kbd> key. Filter has been renamed to find, and its results will also be stored in a tab.
+
+<img src="https://stuff.charm.sh/glow/glow-1.3-tabs.gif" width="600" alt="Glow Tabs Demo">
+
+### Paths in Config
+
+You can now use values like `~`, `$HOME`, and `${HOME}` in the Glow config when specifying the path to your custom [Glamour][glam] stylesheet. Environment variables will be expanded, too. Thanks to @shitchell for the idea @penguwin for the ultra-swift implantation.
+
+[glam]: https://github.com/charmbracelet/glamour
+
+## Changelog
+
+### Fixes
+a0fb0e4 Fix a case where file listings could jitter
+426f478 Fix panic that could happen when deleting stuff really fast
+
+### Added
+f1ede23 Add logging for stash/news fetching
+03d9316 Also make news stashable from the pager
+88806c8 Make news stashable in the file listing
+617f098 Handle stash failures
+fd2a6ec Show stash error details in the error message view
+
+### Changes
+58df854 When clearing the filter forget which markdowns were stashed in-session
+dd936ac Adjust "secondary" green color in stash highlight + help
+2d10fb8 Adjust news header style
+53155f1 Adjust spinner thresholds and timing so stashing feels snappier
+4fcf48f Filter against local and stashed files, regardless of the current section
+37a9b68 Filter is now called find
+8f3c5df Highlight the most recent stash item in green in the stash view
+e179741 Lighten mid-gray color for dark backgrounds
+cfba912 Maintain pagination and cursor on a per-section basis
+59f8a00 Make "already stashed" status messages more subtle
+47b24f6 Move status message next to the logo in the file browser
+40a0225 Only show news in news section
+a67f00a Press tab/shift+tab to switch between local, stash and news
+03db9a6 Put filter results in a tab
+dd9179a Remove "News:" prefix from news items
+4febcb4 Render larger help view in the file listing with the ? key
+379dc74 Secret keystroke: navigate tabs with shift+h, shift+l
+c10a84a Sort news by date
+d21802d Style detailed help view and re-style mini help view
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2.1 (2020-11-25)</h2>
+      <pre>## Changelog
+
+### Changes
+56a9edd Filter markdowns asynchronously so filtering doesn't block
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2.0 (2020-11-21)</h2>
+      <pre>## New!
+
+The big feature in this release in filtering. Just press `/` to find your stuff!
+
+<img src="https://stuff.charm.sh/glow/glow-filter.gif" width="600" alt="Glow filtering demo">
+
+## Changelog
+
+### Added
+e985f96 Add fuzzy filtering for stash notes
+e9d728c Add "hidden" command/config for switching on mouse wheel support
+998cbf1 Ignore YAML frontmatter
+4782b99 Display news item count in stash view
+c16a146 Load the whole stash, page by page, automatically
+9ce4ec9 Now in Scoop!
+
+### Changes
+fb5a81f Upgrade to Bubble Tea v0.12.2 and Bubbles v0.7.5
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.0 (2020-10-27)</h2>
+      <pre>## Changelog
+
+### Fixes
+477979b Correct placement of stash hint in pager help
+7f35996 Don't handle filenames with a colon in it as http(s) url
+186d07d Don't show stash/memo info in pager help for news
+3b06ccb Fix bug where pager help isn't updated after an in-pager stash
+d4239a5 Error codes should be in the range of 0 to 125
+8b78086 Remove extra line at the bottom of pager help
+7ea7cc5 Respect width flag/config setting in the TUI; closes #168
+
+### Added
+d5446bf Add config file support
+4b4fb78 Open the configuration file with $EDITOR via 'glow config'
+fcf109a Add flag for local files only (aka disable network) in TUI
+
+### Changes
+0949a66 Update to bubbletea 0.12.0; minimum required changes
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.2 (2020-10-14)</h2>
+      <pre>
+
+## Changelog
+
+9049991 Bump bubbletea dependency for arrow key support on Windows
+11d5858 Don't show add memo help in pager for local items
+d4adf0d Don't use emojis on Windows
+b9e5d6b Enable Windows, FreeBSD, OpenBSD and Alpine builds
+5a6544d Fix typo in README
+66a8ac1 Remove duplicate "down/j" from the "?" help
+8ed7bb7 Restore ANSI support to non-TUI Glow on Windows
+5f9c5b7 Windows support + bump termenv dependency
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.1 (2020-10-07)</h2>
+      <pre>
+
+## Changelog
+
+6a1c227 Disable CGO for goreleaser builds
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0 (2020-10-06)</h2>
+      <pre>## Changelog
+
+be478cb Adapt to upstream gitcha API
+85c121d Add Arabic pagination if the dot nav gets wider than the terminal width
+787b988 Add Charm logo, remove SSH stuff
+d06f491 Add GLOW_DISABLE_GLAMOUR in the env for testing
+7ea7979 Add Glow "logo" to stash browser
+8d6da19 Add Glow logo to README
+994b85b Add Go 1.15.x to build matrix
+ce8ca8f Add Nix installation instructions + note about Charm loving open source
+ba7c9a5 Add Void Linux installation instructions
+c954898 Add basic mouse wheel support to pager
+04f1ebf Add functionality for setting document note in the pager
+71b9387 Add gitcha
+93eea84 Add golangci config
+dde5740 Add info about new Glow version to README
+ea12614 Add memo key to stash help + change memo keys to 'm'
+dc74e17 Add missing comma
+45cde43 Add more checks for nil Charm clients
+20f7168 Add pagination call
+c0daa74 Add periods to comments to make the linter happy
+15459db Add release badge to README
+1971c8a Add right padding to markdown rendering
+e500ed6 Add stash item deletion functionality
+c997990 Add status bar
+5613e36 Adjust dark green color in status message bar
+d941957 Also exit the pager with left arrow, h and delete/backspace
+3ab3b8f Also keep the scroll percentage at 0% or higher
+eba22f0 Also set/edit notes in stash view
+f611b6e Also use f and b to change pages in the file listing view
+cdc55a4 Always show spinner for a minimum amount of time when stashing
+912c806 Apply fine-grained spinner display rules to file listing view
+0897472 Attempt to cleanup the Msg grab bag formatting
+c9af84b Automatically detect terminal width, with a 120 char limit
+9263f82 Avoid potential variable capture situations
+e9c47a1 Be specific that we're deleting only from the stash
+4cfd1fc Better error view language depending on whether error is fatal
+abff9d4 Better header messages depending on what we find
+c2bb505 Break pager off into its own set of Boba functions
+f43a027 Bugfix: scroll percentage could read higher than 100% ater a resize
+18fcf68 Change default rendering width to 80
+1200b86 Cleanup pager status bar view thanks to the latest updates in reflow
+3588f45 Cleanup status message vars
+131685b Clearer const names for stash view stuff
+9179515 Close help when unloading/resetting pager
+40dfa9e Comments
+05a5638 Comments
+cd9ee93 Configure git for private modules
+6e72cbd Consolidate debug config stuff
+c00fe7f Correct env var placement in Makefile
+b2511c5 Correct header counts for local items converted to stashed ones
+7ee203a Correct keystroke in pager help
+3b06c1f Correction help-toggling method name in pager
+e0bd2dd Crudely load local markdown files into the stash
+4792345 Delete from stash command
+3b3bf68 Detect when stash and news loading fails (and update the UI accordingly)
+a5febb9 Disable Windows & FreeBSD builds temporarily
+2821cf2 Disable identity & force-key flags
+d16c13f Disable mouse for now
+fa06996 Dispell a magic number
+2534045 Do it fullscreen
+4140404 Don't allow note-setting on news
+26b3292 Don't allow stashing until authed + introduce "offline mode" in UI
+7b6c3b3 Don't allow users to set notes on local files
+83eec3f Don't change the state when initializing the Charm client
+e685dea Don't query for terminal dimensions when starting up
+74aad53 Don't quit if user uses esc/q to exit the non-fatal error view
+ddef264 Don't quit on "fatal" errors
+f474e24 Don't render stash until both stash and news are loaded
+b831afc Don't say we haven't found anything until we're done searching
+1219d22 Don't set a note if the note didn't actually change
+3409ca3 Don't show navigation help in the stash if there's only one item
+2907abd Don't show status message in file listing when stashing in pager
+198a785 Don't show the paginator if there's only one page
+e8eea0b Don't shut down when we encounter network errors
+61bcd80 Don't try and open stuff if there's nothing to open
+70070d2 Draw a spinner in the file listing while stuff is loading
+2814262 Enable brew Linux builds in the charmbracelet/tap
+6025e73 Enable use of the `GLAMOUR_STYLE` environment variable (#152)
+6b21789 Ensure sorting is stable: type -> timestamp -> path/ID
+9bee37e Fetch and render news markdown
+f203f84 Fix README typos
+b9c02d7 Fix a bug where pressing q would cancel note input
+8370f74 Fix a crash when opening pager help in very narrow windows
+d299ee3 Fix a panic that could happen with very tiny terminal windows
+d3ac07c Fix bottom line jitteriness with performance rendering
+a04ca3f Fix bug where pressing left to exit the pager would also page the stash
+e50aff6 Fix bug where spinner would spin forever if the stash is empty
+60b1d6a Fix bug where user couldn't exit pager in various stash-related states
+b31aba3 Fix case where pager commands could be lost
+9bc86c1 Fix character-chomping weirdness with a well-placed newline
+b39b2e6 Fix checksums in go.sum
+b94615f Fix debug log in stash deletion command
+089b66f Fix extreme edge case error logging where local file has no path
+a3552fd Fix goreportcard link
+05a77ff Fix make target for logging to the local directory
+251aacf Fix markdown sorting error
+939fdef Fix panic when deleting item at end of stash
+2e7b0ec Fix regression where items stashed in the pager were treated as local
+5515460 Fix regression where note-setting on newly stashed items couldn't be done
+b20a06d Fix stash capitalization in help
+d4203ed Fix stash empty/not-empty rendering
+d0542b6 Fix stash spinner
+2688a8c Fix stash view when no items are stashed
+6e13ce3 Fix status bar colors on light backgrouds
+553d064 Fix tests (don't test glow with no arguments)
+dbb3235 Flag stashed items with a little dot
+f3a91f0 For now, keep selection within current page
+805a260 Format help and add examples to stash command
+bd52d1c Get markdown command
+5b20e3e Hide files and dirs starting with a dot by default
+2e16f26 Highlight stash choice in file listing footer
+21eccfd Hop back to Muesli's gitcha repo at master
+6e36891 If a file is currently mid-stash don't let the user stash it again
+9903ea8 Ignore $GOPATH everywhere and ~/Library on macOS
+1443d3e Improve README wording around stashing
+81bcce8 Improve stash item deletion cancellation experience
+c7e584c Improve state on selected items in stash view
+68d2d34 Insert files into the file listing as we find 'em
+b2df0ca Integrate high performance viewport, but not without issue
+091c3be Keep loading stuff in the background while viewing a document
+8bb2812 Keep page in bounds after resetting terminal size
+531645e Keep selection in-bounds when paginating
+8471c52 Keep the stash help view from wrapping in very narrow windows
+ee4ed1b Keybindings for jumping to the top and the bottom of the pager
+676d215 Keybindings for navigating to the start/end of file listing
+fd62ceb Left/right + h/l to navigate pages
+4acb642 Let's just call documents "markdowns"
+ac872bf Let's now refer to userMarkdown as stashedMarkdown
+b4398fc Link to pkg.go.dev instead of godoc.org
+395ae99 List stash
+0534053 Load chosen document into pager
+d6f296c Load document body before stashing when stashing from the file listing
+2581f76 Load local markdown files into the pager
+7a8a1f7 Load more pages, if any, when the user reaches the last page
+c622816 Load selected item from stash into the pager
+bb6904a Load stash + fix spinner issues + render nothing useful
+055ae6e Load, browse and render news
+ddbacff Log IO errors if a logfile is set
+c3ceed2 Log to a given path if `GLOW_LOG_TO_FILE` is set
+3572ef5 Log when local file search finishes
+cdf1113 Log when stash item deletions fail
+28f8f18 Make `--force-key`/`-f` a persistent flag, like `--identity`
+9db7c2e Make general error msg a struct for type safety
+ec9cc0b Make source private
+77ba75d Migrate from Boba to Bubble Tea and Bubbles
+5019331 Mini help view for pager
+c55bb23 Minor comments and cleanup in the TUI
+f302182 More contrasty note titles in pager status bar
+575017e More integrated-looking stash confirmation message in pager
+5554624 More logging around keygen
+82acc62 Move common commands to the main UI file
+a3a05fd Move ignore stuff to gitcha (and temporarily use the meowgorithm fork)
+2b06454 Move markdown types into a separate file
+85cd31d Muesli informs me of the correct capitalization of "macOS"
+5ea351a Navigate over unpaginated stash
+5cd6acc Nice looking system-level errors
+4c6633e Now in Homebrew!
+f00e5cc Only do the dark background check once
+dd8c650 Only show memo key in pager help for user stashed markdown
+964be85 Parse subcommands before main command arguments int the CLI
+5d2ca09 Pass style argument to the Boba program
+d34a687 Pin charm, glamour, and bubbles deps at master
+8695bff Pre-populate note field with exisiting note
+d156142 Press "r" to view errors in the stash
+dde45d9 Pressing 'q' when setting a note in the pager shouldn't cancel the note
+fc2f056 Pressing q quits no matter where you are
+03b7b92 Print successful stash
+d2e2da7 Properly render one page of the stash
+562d02d Properly truncate fullwidth/double-byte chars
+a02cc01 Pull an always-nil return value
+844cdcd Pull out Windows language from README for now
+2a70069 Re-render with Glamour terminal resize
+45163be Refer to local files as "local" instead of "files"
+671eade Remove Boba residue
+29b825b Remove authors in README
+4849e04 Remove commented code
+8ef13d4 Remove deprecated homebrew tap installation note
+f8c4ddc Remove disabled force key/identity file stuff for now
+dd82896 Remove extra height and positioning stuff
+88523ee Remove extraneous formatting call
+6e7cea7 Remove more old code for specifying SSH paths
+2c71185 Remove mysterious "stash may not be totally loaded" dots for now
+c149685 Remove newline
+b296cbb Remove newlines the linter is complaining about
+c663511 Remove replace directive in go.mod
+1b7c70a Remove right document padding per Glamour update (pinned at current master)
+6aba7af Remove some magic numbers to calm the linter down
+fcaa654 Remove spinner custom message stuff which is no longer supported
+6aadaf8 Remove stash list, get and delete commands
+c0ca639 Remove tests for Go 1.11 and 1.12 (keygen is 1.13 and up)
+3619ad1 Remove the bottom gap when closing the pager help whilst at the bottom
+d5045fa Remove windows from CI for now
+c5d7aa0 Rename readerFromArg to sourceFromArg
+2c411a3 Rename stash.go to stash_cmd.go for clarity
+4f250eb Render all errors at the main view level
+7965042 Render stash items
+21b1a28 Render stash view with a strings.Builder
+f5df688 Render with glamour asyncronously
+883fda2 Repaint on terminal resize
+2c3c5a8 Replace commented-out code about stash-related pagination with a note
+048b484 Reset y offset when resetting pager
+fa7c8f0 Respect -i/--identity flag in the TUI
+232a991 Respect high performance flag
+428a315 Restore Glamour rendering, performance pager, and debug logging
+2f9babc Restore original displayed path when deleting a newly stashed item
+56ab8e5 Rework stash design and simplify code
+f52311a Rework/cleanup styling in stash/file listing
+eb6fa55 Run `glow stash` to browse stashed files only
+c5517ad Search for READMEs case-insensitively & recursively
+df95fa6 Selection index in file shouldn't dip below 0
+a5b67ba Separate out the TUI and CLI sections of the README
+5bdf764 Set ID of newly stashed markdowns so we can operate on them
+e5663a5 Set note character limit to 256 to match the database
+40724af Short circuit help view sooner if we can
+e01dc95 Shorten status messages to 2 seconds
+aa0c48f Show local and stashed counts in header
+66dae71 Show spinner in stash view while stashing
+7d67711 Show spinner while stashing in the pager
+359828a Silence this Go linter message
+5c8da55 Simplify environment vars
+2a3fa61 Simplify messaging in (rare) state where there's absolutely nothing to show
+a2fd25d Sort local items by filename rather than date
+58abda8 Sort stash by local files first, then date
+476e014 Sort stash in descending order by date
+8ba5c1f Spilling over top/bottom in stash browser goes to the prev/next page
+1bf2298 Start Glow in the file loader while file and stash listing load
+d4f1924 Start looking for local files the moment Glow starts
+accb5fb Stash documentation draft
+04b6089 Stash documents from the stash view
+593d9f0 Stash local files from the pager
+2fdef64 Stashed docs become local upon delete if they were stashed in-session
+1d434d6 Stashed items get a green indicator in the pager
+17dcda2 Strip cwd from local file paths
+da4e98f Stub out Stash UI + update for Boba v0.5.0
+b58ee10 Stub out Tea UI: create Charm client and generate keys if necessary
+cb8f7fc Take note internally when the local file search is finished
+0483c3d Test against Go 1.14
+651683c Treat Markdown.CreatedAt as values per the updates in the charm lib
+01de366 Truncate long lines in `stash get` command + cosmetic stuff
+95fe84e Truncate long memo title in pager + fix associated panic
+df0a3ba Truncate long memos in stash
+ae5e158 Unstyled indent (for now)
+211e66c Update Charm and Boba libraries
+7166f99 Update Charm badge
+e4091b0 Update README
+5d267e9 Update UI image + minor copy edits
+a705921 Update `-a` help language
+7f9cc95 Update altscreen calls per latest Bubble Tea update
+3c04fc8 Update deprecated homebrew tap section in goreleaser config
+a10e786 Update error message to match new error type
+52e50a4 Update example image with unicode characters
+1f4970e Update for simpler pager library
+87d2a9a Update header depending on what's stashed
+f2537b1 Update loading message if you're just loading your stash
+8903ad8 Update stash help to push the notion that q quits
+d9b1d33 Use "just now" rather than seconds for documents under 1 minute old
+b390935 Use base name when stashing from the CLI if no memo is set
+18e591b Use filepath.Join rather than string concatenation
+5038a7b Use glamour's 'auto' style per default
+5cdf829 Use glamour's WithAutoStyle option as default
+70833af Use keygen directly; we don't need the Bubble Tea component anymore
+06cbbd7 Use lock emoji for stashed item in pager
+9eac9e2 Use new, simplified window resize handling
+51ad1c3 Use relative times when under a week
+1d6341f Use strings.Builder to build pager view
+e0d6d7b Use the little green dot from the TUI when stashing on the CLI
+3d1adee Use the proper method for adding markdown docs to the stash
+d433820 Validate options once
+a35d83d View errors with "!"
+d7974f0 When stashing, replace local file with stashed file in the file listing
+93e8370 Whoops, remove thing where pressing f would synthesize an error
+a106bc0 Working stash command
+60cee4a u/d also pages back/forth in the the file listing
+f8fa5a0 use strings.TrimPrefix instead of Replace when checking paths
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.2.0 (2020-01-09)</h2>
+      <pre>
+
+## Changelog
+
+e7c92dd Add -p flag to render output in default pager
+3262d45 Add go workflow (#119)
+3b38e3c Add tests for root command
+6e83109 Bump glamour dependency to v0.1.0
+c7caed4 Bump indirect goldmark dependency
+4690c26 Document paging in the README
+a358e8c Enable ANSI for Windows consoles
+1d4f5c8 Fix goreleaser deprecations
+b7304db Fix starting glow without sources
+be911b4 Fix typo in comment
+85c0cde Pass writer to executeArg to make code easier to test
+b2c253e Remove TravisCI config
+225f822 Report test coverage in GitHub workflow
+1d89273 Tiny edit to image alt text in README
+c0fd593 Use GitHub Actions badge in README (#120)
+f04f2a8 feat: support multiple files
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.1.6 (2019-12-30)</h2>
+      <pre>
+
+## Changelog
+
+53e4396 Bump glamour dependency to prevent crashing on irregular markdown
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.1.5 (2019-12-28)</h2>
+      <pre>
+
+## Changelog
+
+c1c5dfb Bump glamour dependency
+7e9884c Point out GitLab is also supported in README
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.1.4 (2019-12-28)</h2>
+      <pre>
+
+## Changelog
+
+66e20b2 Add FreeBSD releases to goreleaser config
+79fad4d Bump glamour dependency and adopt functional options API
+fa9d64c Trim unstyled padding spaces from output
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.1.3 (2019-12-24)</h2>
+      <pre>
+
+## Changelog
+
+5a44b9d Add FreeBSD package to README
+aa9ca8a Bump glamour dependency
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.1.2 (2019-12-23)</h2>
+      <pre>
+
+## Changelog
+
+6ab6407 Add badges to README
+f090b74 Fix init when reading from stdin
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.1.1 (2019-12-23)</h2>
+      <pre>
+
+## Changelog
+
+966031b Add TravisCI config (#104)
+92039b3 Update example image
+566a587 Update glamour module
+9e47f7d Update installation instructions
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.1 (2019-12-21)</h2>
+      <pre>
+
+## Changelog
+
+1e28b02 A few minor edits to the README (#98)
+969b3d5 Add .gitignore
+134be1d Add Go modules
+3806317 Add LICENSE
+f92db6b Add example output
+821aa99 Add foreground color for text in default theme
+810cdf1 Add gallery generation script
+68a2909 Add godoc comments to public types
+47ac9b7 Add goreleaser config to help automate builds for various platforms
+9ecd2a8 Add homebrew configuration to .goreleaser.yml
+915cd7a Add light style and style gallery
+353b5ea Add margin to heading element in default dark style
+8681be7 Add margin to lists in default dark style
+0a11c07 Add nfpm configuration to .goreleaser.yml
+27e0e08 Add prefix & suffix for headings in default dark style
+18f3a85 Add screenshot of dark theme
+85ef3db Added enumeration style to default dark theme
+de91f6a Automatically use the notty style when stdout is no terminal
+9ffa4d5 Basic GitLab support
+532fcee Calculate baseURL for local files
+c31c06a Calculate block width from BlockStack & RenderContext
+58c97dc Check for err before trying to access the stat struct
+2bfaa5e Check for supported HTTP/HTTPS protocols explicitly
+5c3ad99 Cleanup/simplify main.go
+1ffe6fe Compacter usage instructions
+73d1d5d Document -w flag in README
+3ddece1 Don't panic, forward the error to the caller
+1f5aa27 Embed default dark style into binary
+292f060 Embed styles in gold library
+2bae07e Enable version command for release builds
+14bc95c Find README(.md) in current working dir when no arg was supplied
+0058cd2 Fix GitHub markdown styling weirdness
+6d3f74d Fix background colors not being applied correctly
+584adfd Fix baseURL for relative paths
+fdbf3b2 Fix brew settings for goreleaser
+5daf00f Fix child element rendering
+5766f35 Fix word-wrapping in colored output
+8eabf0f Handle relative URLs in markdown, when a BaseURL is provided
+6a8462e Import glamour
+3a99f22 Keep code-block style consistent
+8b7dda8 Keep linux archive names lowercase, so we don't break GitHub's sorting
+a6d648d Let user pick a syntax color theme in Gold's style config
+a9651eb Let's put the money shot at the top of the README
+62eaf39 Link to gallery from related Styles paragraph
+95b99c9 Lint/fix READMEs
+dda8816 Load style from json
+974be22 Make document indentable
+cbf6197 Move ANSIRenderer into a separate package
+9adff17 Move Render and RenderBytes to TermRenderer
+8c59f7c Move gallery and images to styles/gallery/
+5fe7e94 Move listitem styling to style JSON
+bb0385f Move screenshot to styles/
+09bb6b3 Much better parsing, README example
+a2c5e27 Only use brew for macOS
+2446b97 README and LICENSE
+2fc9c56 Reference correct build ID for default archives
+a0584ae Release as ZIP archive on Windows
+5d98836 Remove blackfriday requirement from clients
+73b8ffc Remove colon from image prefix
+439ee25 Remove test md
+2a3ea0e Rename style previews
+cb7fedf Rename to glow
+d6c1b7f Render each paragraph individually and reflow text only inside paragraphs
+37c9cfa Return potential error from ioutil.ReadAll
+ee81103 Shorten commit SHA in version output
+f1ee1e5 Show style parameter in gallery
+bbd2e15 Support fetching READMEs from GitHub
+08dd80a Support fetching markdown from arbitrary HTTP sources
+1baefbb Support github URLs without protocol
+b58f777 Support reading from stdin
+4b009b2 Support styled indents for block elements
+c6aae63 Update README
+e40b042 Update README
+29f9503 Update README after rename
+57b5100 Update dark style defaults
+852df5e Update dark style with a background color for the document
+c89ab1c Update default dark style
+7eaf4f2 Update default dark style to use colors from limited ANSI color range
+df17759 Update default dark theme with margins
+951d407 Update glamour module
+08b62ec Update gold usage in README
+c7686d7 Update repo org
+af92548 Update screenshot for default style
+6afd336 Updates to default dark style
+de1e310 Use 'Camera' unicode symbol U+1F4F7 to prefix images in the default dark style
+dca563e Use ElementStyles to determine rendering style
+f09d290 Use a plain-text renderer when not printing to Terminal
+1604835 Use cobra to handle command line parameters
+9567086 When passed a directory as cli-arg, find a README[.md] in it
+240eb4f Word-wrap text at 100 chars per default
+9da65bd init
+
+
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

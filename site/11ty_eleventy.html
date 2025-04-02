@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for 11ty/eleventy"/>
+  <title>11ty/eleventy Release Notes</title>
+</head>
+<body>
+  <h1>🚀 11ty/eleventy - Release Notes</h1>
+  
+    <section>
+      <h2>Eleventy v3.0.1-alpha.5 (2025-03-14)</h2>
+      <pre>- Upgrade to use Eleventy Dev Server v2.0.7 https://github.com/11ty/eleventy-dev-server/releases/tag/v2.0.7
+- Removes `rifraf` dependency by @jeffalo #3622 #3673 gave us some **BIG WINS to node_modules size**: 27.4 MB to 21.8 MB, eliminated 39 total dependency packages!
+- Improve build performance ~50ms (dynamic dev server import only on --serve) by @boehs in https://github.com/11ty/eleventy/pull/3689
+- Internals: consolidates TemplateMap with Dependency Graph for more accurate build order during incremental builds (fixing unrendered template errors) #3410 _(Fair warning: this was a big change!)_
+- Fix duplicate permaink error on Windows after file delete and re-add #3631
+- Fix (and better error messaging) for `link.slice is not a function` errors when using function permalinks #3472 #3619
+- Improvements to bundler-friendiness of imports (using Programmatic API in serverless contexts) #3656
+- Fix when using `eleventyConfig.setUseTemplateCache(false);` and `11ty.js` JavaScript templates #3667
+- Fix for passthrough copy output locations during incremental builds #3285
+- Check `Error.cause` for `TemplateContentPrematureUseError` when rendering by @noelforte in https://github.com/11ty/eleventy/pull/3651
+- Fix `dateValue.toLowerCase() is not a function` error when using addDateParsing API #3674
+
+**Full Milestone**: https://github.com/11ty/eleventy/milestone/47?closed=1
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.1-alpha.4...v3.0.1-alpha.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v3.0.1-alpha.4 (2025-01-29)</h2>
+      <pre>- Internals: adds `remove` method to HtmlTransformer (for Bundle Plugin)
+- Minor dependency upgrades
+	- [Bundle Plugin](https://github.com/11ty/eleventy-plugin-bundle/releases/tag/v3.0.1) adds support for delayed bundle transforms
+	- [Dev Server](https://github.com/11ty/eleventy-dev-server/releases/tag/v2.0.5) minor upgrade to fix issue with 404 errors on video requests.
+	- [PostHTML URLs](https://github.com/11ty/eleventy-posthtml-urls/releases/tag/v1.0.1) dependency cleanup/reduction.
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.1-alpha.3...v3.0.1-alpha.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v3.0.1-alpha.3 (2025-01-14)</h2>
+      <pre>- Changes template rendering concurrency default to 1, fixes `Tried to use templateContent too early` issue in 3.0.1-alpha.1 #3596 (related to #3277)
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.1-alpha.2...v3.0.1-alpha.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v3.0.1-alpha.2 (2025-01-14)</h2>
+      <pre>- Upgrades `@11ty/eleventy-dependency-tree-esm` to fix bug with import attribute parsing https://github.com/11ty/eleventy-dependency-tree-esm/issues/4
+- Upgrades `entities` dependency from v5 to v6 (upstream change related to deep import paths https://github.com/fb55/entities/releases/tag/v6.0.0)
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.1-alpha.1...v3.0.1-alpha.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v3.0.1-alpha.1 (2024-12-20)</h2>
+      <pre>## Try it out in your project
+
+```
+npm install @11ty/eleventy@canary --save-exact
+```
+
+Read more about [getting started with Eleventy](https://www.11ty.dev/docs/) or [why you should use Eleventy](https://www.11ty.dev/#why-should-you-use-eleventy).
+
+## What's Changed
+
+* Support for Import Attributes #3580 e.g. `import data from './data.json' with { type: 'json' };`, see https://github.com/11ty/eleventy-dependency-tree-esm/issues/2
+* Adds `html-relative` Passthrough Copy mode for relative asset references in HTML. Learn more at https://github.com/11ty/eleventy/pull/3573 (from issue #3552)
+* Build performance improvements to v3.0.0 in https://github.com/11ty/eleventy/pull/3493
+* Upgrades to `@11ty/eleventy-utils@2.0.0` #3595 (thank you @Zearin!)
+* Render templates in parallel. by @fqueze in https://github.com/11ty/eleventy/pull/3277
+	* Adds `eleventyConfig.setConcurrency(Number)` API to control concurrency (defaults to `os.availableParallelism()`) #3585
+* Bumps `liquidjs` dependency to `10.19.0` (from `10.17.0`)
+* Replace UserConfig typedef with a subpath export (#3460) by @noelforte in https://github.com/11ty/eleventy/pull/3562
+* Bump cross-spawn from 7.0.3 to 7.0.6 in the npm_and_yarn group by @dependabot in https://github.com/11ty/eleventy/pull/3579
+* Fix import-related error with CommonJS modules in Node 23 by @vrugtehagel in https://github.com/11ty/eleventy/pull/3519 #3518
+* Removes unreliable character encoding detection in debug output #3584
+* Fix for InputPathToUrl plugin to support unencoded paths with spaces #3559 #3583
+* IdAttribute plugin has `checkDuplicates` option (always enabled by default, now allows you to disable) #3560 Docs: https://www.11ty.dev/docs/plugins/id-attribute/#with-options
+* Bug fix for returning non-traditional data with `eleventyConfig.addCollection` API #3467
+* Error messaging improvements:
+	* Improved error messaging when attempting to link to a `permalink: false` template (in the HTML `<base>` plugin) #3503
+	* Better errors with Custom template types with non-string permalink values: #3472
+	* Improved error messaging with syntax errors in `.11ty.js` files #3571
+	* Improved require(esm) error messaging to reflect proper support in Node v22.12 #3568
+	* Error stack improvements by @noelforte in https://github.com/11ty/eleventy/pull/3572
+
+## New Contributors
+* @noelforte made their first contribution in https://github.com/11ty/eleventy/pull/3562
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0...v3.0.1-alpha.1 </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v3.0.0: Possums ❤️ ESM (2024-10-01)</h2>
+      <pre>We did it. After 22 pre-releases and over a year of work, Eleventy 3.0.0 is now available. You can try it out now on your project using:
+
+```js
+npm install @11ty/eleventy@latest
+```
+
+**If you’re upgrading from a previous version** of Eleventy, use the [Upgrade Help plugin](https://v3.11ty.dev/docs/plugins/upgrade-help/) for automated checks and help with your upgrade!
+
+**[Why should you use Eleventy?](https://v3.11ty.dev/#why-should-you-use-eleventy)** Eleventy is a flexible and production-ready site generator known for its zero-client JavaScript footprint, [speedy sites, speedy builds](https://v3.11ty.dev/docs/performance/), and [full control over the output](https://www.youtube.com/watch?v=b4frtsT4Cgo).
+
+A few numbers on the best version of Eleventy yet:
+
+| Stats | `v2.0.1` | `v3.0.0` |
+| - | - | - |
+| 20% smaller | 35.2 MB | 28.1 MB |
+| 11% fewer dependencies | 213 | 189 |
+| 9% faster npm install | 4.511s\* | 4.103s\* |
+
+_\*fastest time of 3 runs (bypassing local cache)_
+
+## Flagship 3.0 features
+
+1. Eleventy is now written in ESM with **full** support for ESM in your projects: configuration, data files, 11ty.js templates, etc. For many projects this won’t be a breaking change and we’ll continue to support CommonJS too. Every example on the docs now includes both a CommonJS and ESM version. Docs: https://v3.11ty.dev/docs/cjs-esm/
+
+```js
+// ESM
+export default function(eleventyConfig) {}
+
+// We’ll keep supporting CommonJS:
+module.exports = function(eleventyConfig) {}
+```
+
+2. Supporting more package managers and runtimes: pnpm, yarn, Deno. More examples on the docs! https://v3.11ty.dev/docs/
+3. Asynchronous configuration #614 Docs: https://v3.11ty.dev/docs/config/
+
+```js
+// ESM
+export default async function(eleventyConfig) {}
+
+// CommonJS
+module.exports = async function(eleventyConfig) {}
+```
+
+4. For-free performance improvement to built-in `slugify`, `inputPathToUrl` universal filters (via memoization) #840 Docs: https://v3.11ty.dev/docs/memoize/
+5. Named `config` export improves consistency for plugins #3246 and `set*Directory` configuration API methods #1503 Docs: https://v3.11ty.dev/docs/config-shapes/#optional-export-config-object and https://v3.11ty.dev/docs/config/#configuration-options
+
+```js
+export default function(eleventyConfig) {
+  eleventyConfig.setInputDirectory(".");
+  eleventyConfig.setOutputDirectory("_site");
+};
+
+export const config = {
+  dir: {
+    input: ".",
+    output: "_site"
+  },
+};
+```
+
+6. Virtual Templates, configuration API to add content (great for plugins, used by the new RSS plugin!) #1612 Docs: https://v3.11ty.dev/docs/virtual-templates/
+
+```js
+export default function(eleventyConfig) {
+  eleventyConfig.addTemplate("robots.njk", "User-agent: *\nAllow: /", {
+    permalink: "/robots.txt",
+  });
+};
+```
+
+7. IdAttribute plugin adds `id` attributes to headings for on-page anchor links (supports all template-languages) #3363 Docs: https://v3.11ty.dev/docs/plugins/id-attribute/
+
+```html
+<h1>Welcome to my web site</h1> becomes <h1 id="welcome-to-my-web-site">Welcome to my web site</h1>
+```
+
+8. Plain-text Bundler included: https://v3.11ty.dev/docs/plugins/bundle/
+
+```js
+export default function(eleventyConfig) {
+  eleventyConfig.addBundle("css"); // Adds {% css %} paired shortcode to create per-page CSS bundles
+};
+```
+
+9. InputPath to URL plugin lets you link directly to an input file path (and we’ll output the right URL) Docs: https://www.11ty.dev/docs/plugins/inputpath-to-url/
+
+```html
+<a href="my-template.md">Home</a> becomes <a href="/my-template/">Home</a>
+```
+
+10. Use arbitrary JavaScript with the `js` Front Matter #2819 Docs: https://v3.11ty.dev/docs/data-frontmatter/#javascript-front-matter
+
+```js
+---js
+const hello = "hi";
+---
+{{ hello }}
+```
+
+11. `page.rawInput` unlocks access to raw template content #1206 https://v3.11ty.dev/docs/data-eleventy-supplied/#page-variable
+12. `addPreprocessor` configuration API to modify raw content before rendering works for file ignores and drafts #188 Docs: https://v3.11ty.dev/docs/config-preprocessors/
+13. `addDateParsing` configuration API to add your own custom date parsing logic #867 Docs: https://v3.11ty.dev/docs/dates/#configuration-api-for-custom-date-parsing
+14. `eleventyDataSchema` data option to validate data cascade values #879 Docs: https://v3.11ty.dev/docs/data-validate/
+15. Reserved Eleventy properties in data cascade are now frozen #1173 Docs: https://v3.11ty.dev/docs/data-eleventy-supplied/#frozen-data
+16. Support for asynchronous plugins and async-friendly `addPlugin` configuration API #2675 Docs: https://v3.11ty.dev/docs/plugins/#plugins-are-configuration
+17. `useLayouts` option for Custom Template Languages allows opt-out of Eleventy Layouts #2830 Docs: https://v3.11ty.dev/docs/languages/custom/#uselayouts
+18. `renderTransforms` Universal Filter will run project transforms on an arbitrary block of content (useful for RSS and other feeds) #3294
+19. `--incremental=filename.md` on the command line #3324 Docs: https://v3.11ty.dev/docs/usage/#incremental-for-partial-incremental-builds
+20. `renderContent` Universal Filter now included with Render Plugin #3370 Docs: https://v3.11ty.dev/docs/plugins/render/#rendercontent-filter
+21. Dev Server updates including [`onRequest` API for handling requests dynamically during development](https://github.com/11ty/eleventy-dev-server/releases/tag/v2.0.0) (used with the new [Image Transform plugin](https://v3.11ty.dev/docs/plugins/image/#eleventy-transform))
+
+## Breaking Changes and Upgrade Path
+
+**Rather than navigating this list manually, use the [Upgrade Help plugin](https://v3.11ty.dev/docs/plugins/upgrade-help/) for automated project checks and upgrade help!**
+
+* Requires Node 18 or newer.
+* Removes Serverless and Edge plugins.
+* Use of bundled Eleventy plugins from CommonJS requires changing `require("@11ty/eleventy")` to `await import("@11ty/eleventy")` for ESM reasons. We provide [helpful error messaging for this](https://www.zachleat.com/web/future-friendly-esm/).
+* `pug`, `ejs`, `haml`, `mustache`, and `handlebars` template languages moved from core to official plugins:
+  * `handlebars`: https://v3.11ty.dev/docs/languages/handlebars/
+  * `mustache`: https://v3.11ty.dev/docs/languages/mustache/
+  * `ejs`: https://v3.11ty.dev/docs/languages/ejs/
+  * `haml`: https://v3.11ty.dev/docs/languages/haml/
+  * `pug`: https://v3.11ty.dev/docs/languages/pug/
+* Throw errors if `--config=` command line file is missing #3373 
+* The `htmlOutputSuffix` feature was removed #3327 
+* Aliased custom templates must be declared in active formats #3302
+* `--formats=` and `--formats=""` on command line means no formats (previously aliased to `*`) #3255
+* Custom Template Language `compileOptions.permalink` option changed from `true` to `"raw"` #2780
+* Major semver updates of dependencies:
+  * `js-yaml` [v3 to v4 Changelog](https://github.com/nodeca/js-yaml/blob/master/CHANGELOG.md#400---2021-01-03) 
+    * Better error messaging when using tabs in YAML
+    * Numbers are now parsed according to YAML 1.2 spec (from 1.1)
+  * `@sindresorhus/slugify` [v2 to v3 Changelog](https://github.com/sindresorhus/slugify/releases/tag/v2.0.0): Node 12+, Pure ESM
+  * `bcp-47-normalize` [v1 to v2 Changelog](https://github.com/wooorm/bcp-47-normalize/releases/tag/2.0.0): Pure ESM
+  * `dependency-graph` [v0.x to v1 Changelog](https://github.com/jriecken/dependency-graph/blob/master/CHANGELOG.md#100-dec-5-2023)
+  * `iso-639-1` [v2 to v3 Changelog](https://github.com/meikidd/iso-639-1/blob/master/CHANGELOG.md#v300): Pure ESM
+  * `markdown-it` [v13 to v14 Changelog](https://github.com/markdown-it/markdown-it/blob/master/CHANGELOG.md#1400---2023-12-08): Pure ESM, removed `dist` folder
+* [Full list of breaking changes](https://github.com/11ty/eleventy/issues?q=milestone%3A%22Eleventy+3.0.0%22+is%3Aclosed+label%3Abreaking-change)
+
+## Minutiae 
+
+* Packages are now published using [npm package provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/).
+* The code base is using tabs 😱😈 #3098
+
+**Full Eleventy v3 Milestone** (177 closed): https://github.com/11ty/eleventy/milestone/40?closed=1
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v2.0.1...v3.0.0
+
+## Thank You Notes
+
+This release would not have been possible without our community and supporters.
+
+* To everyone that has built something with Eleventy: thank you!
+* To everyone that has answered a question about Eleventy: on the Discord, on social media, in GitHub issues or discussion, at your local meetup or coffee shop: thank you!
+* To everyone that attended the [11ty Conference](https://conf.11ty.dev/) earlier this year: thank you!
+* To everyone that brought a well-intentioned complaint about something you didn’t like about Eleventy: thank you! 
+* To everyone that dropped a few nice words of appreciation: **_thank you!_**
+* To everyone that has supported us and made this release possible: **_thank you!_**
+
+Thank you to @bobmonsour, @pdehaan, @Snapstromegon, @cdransf, @5t3ph, @BenDMyers, @siakaramalegos, @shivjm, @dleatherman, @darthmall, @clottman, @nachtfunke, @David-Large, Olivia Nicholson, and @mneumegen for their community contributions!
+
+Thank you for the code contributions from @VividVisions, @mayank99, @Zearin, @chriskirknielsen, @mendhak, @fqueze, @shivjm, @rdela, @w0whitaker, @vrugtehagel, @sachac, @Snapstromegon, @alifeee, @uncenter, @Zwyx, @mayankkamboj47, @aschrab, @jgarber623, @korverdev, @mathertel, @mathieuprog, @epelc, @Ryuno-Ki, @lexoyo, @satgo1546, @KiwiKilian
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v3.0.0-beta.2: The Final Countdown (2024-09-30)</h2>
+      <pre>## What's Changed from [3.0.0-beta.1](https://github.com/11ty/eleventy/releases/tag/v3.0.0-beta.1)
+
+* Includes Dev Server v2.0.4:
+  * https://github.com/11ty/eleventy-dev-server/releases/tag/v2.0.4
+  * https://github.com/11ty/eleventy-dev-server/releases/tag/v2.0.3
+  * Add your own headers (e.g. CORS)
+  * Improvements to DOM Diff algorithm for Declarative Shadow DOM, Custom Elements, inline `<script>`.
+* Fix issue with front matter updates on subsequent builds #3397: https://github.com/11ty/eleventy/pull/3421
+* Fix `TemplateContentUnrenderedTemplateError` issue during incremental builds #3410
+* Fix wildcard in extensions argument in `.addPreprocessor()` by @vrugtehagel in https://github.com/11ty/eleventy/pull/3418
+* Add support for relative paths in InputPath to URL Plugin #3417
+* Commit lockfile for consistent CI by @uncenter in https://github.com/11ty/eleventy/pull/3100
+* fix #3425 import of Liquid.js by @lexoyo in https://github.com/11ty/eleventy/pull/3426
+* fix: encodeURI for passthrough aliases by @satgo1546 in https://github.com/11ty/eleventy/pull/3346
+* Add flag to run event handlers sequentially by @vrugtehagel in https://github.com/11ty/eleventy/pull/3423
+* Add --loader flag to force ESM/CJS mode by @vrugtehagel in https://github.com/11ty/eleventy/pull/3377
+* Fixes conflicts with existing id attributes from IdAttributePlugin https://github.com/11ty/eleventy/pull/3430
+* Adds `filter` callback to IdAttributePlugin #3430
+* Adds `eleventyConfig.once` method for events https://github.com/11ty/eleventy/commit/7a960358d3d1205fe889b6c21e6c6bc80c5c608c
+* Fix type of HtmlTransformer plugins attribute by @aschrab in https://github.com/11ty/eleventy/pull/3403
+* Fix: missing logger when a transform returns an empty string
+* Internals: adds enabled callback to HtmlTransformer
+* `addPreprocessor` support for `11ty.js` and Custom templates (via `useJavaScriptImport` property) in https://github.com/11ty/eleventy/pull/3452
+* Better error messaging on templates that output to files without file extensions (with project or data-cascade opt-out) #3399
+* Adds `eleventy:id-ignore` opt-out for Id Attribute plugin 98f7edc8acdb102ef533f99f364fc68bf94e1e9e
+* Fixes Bundle Plugin to remove nodes that try to use empty bundles: 26c0fcfe7398c98651dfbff485fb7a14173e1aaa https://github.com/11ty/eleventy-plugin-bundle/issues/8
+
+## Minutiae
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-beta.1...v3.0.0-beta.2
+**Full Eleventy v3 Milestone** (176 closed): https://github.com/11ty/eleventy/milestone/40?closed=1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.20 (2024-09-11)</h2>
+      <pre>* Dependency updates, including Dev Server v2.0.4: https://github.com/11ty/eleventy-dev-server/releases/tag/v2.0.4
+* Fix: missing `logger` when a transform returns an empty string
+* Internals: adds `enabled` callback to HtmlTransformer
+
+## Minutiae
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.19...v3.0.0-alpha.20
+**Full Eleventy v3 Milestone** (170 closed): https://github.com/11ty/eleventy/milestone/40?closed=1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.19 (2024-09-04)</h2>
+      <pre>* Includes Dev Server v2.0.3: https://github.com/11ty/eleventy-dev-server/releases/tag/v2.0.3
+  * Add your own headers (e.g. CORS)
+  * Improvements to DOM Diff algorithm for Declarative Shadow DOM, Custom Elements, inline `<script>`.
+* Fix issue with front matter updates on subsequent builds #3397: https://github.com/11ty/eleventy/pull/3421
+* Fix `TemplateContentUnrenderedTemplateError` issue during incremental builds #3410
+* Fix wildcard in extensions argument in `.addPreprocessor()` by @vrugtehagel in https://github.com/11ty/eleventy/pull/3418
+* Add support for relative paths in InputPath to URL Plugin #3417
+* Commit lockfile for consistent CI by @uncenter in https://github.com/11ty/eleventy/pull/3100
+* fix #3425 import of Liquid.js by @lexoyo in https://github.com/11ty/eleventy/pull/3426
+* fix: encodeURI for passthrough aliases by @satgo1546 in https://github.com/11ty/eleventy/pull/3346
+* Add flag to run event handlers sequentially by @vrugtehagel in https://github.com/11ty/eleventy/pull/3423
+* Add --loader flag to force ESM/CJS mode by @vrugtehagel in https://github.com/11ty/eleventy/pull/3377
+* Fixes conflicts with existing id attributes from IdAttributePlugin https://github.com/11ty/eleventy/pull/3430
+* Adds `filter` callback to IdAttributePlugin #3430
+* Adds `eleventyConfig.once` method for events https://github.com/11ty/eleventy/commit/7a960358d3d1205fe889b6c21e6c6bc80c5c608c
+* Fix type of HtmlTransformer plugins attribute by @aschrab in https://github.com/11ty/eleventy/pull/3403
+
+## Minutiae
+
+* New Contributors @aschrab @lexoyo @satgo1546 
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.18...v3.0.0-alpha.19
+**Full Eleventy v3 Milestone** (170 closed): https://github.com/11ty/eleventy/milestone/40?closed=1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v3.0.0-beta.1: ESM like a Phoenix (the mythical bird, not Arizona) (2024-07-31)</h2>
+      <pre>We did it. It’s happening. After 18 alpha pre-releases and over a year of work, our very first beta release of Eleventy 3.0 is now available. We’re still working on shipping documentation for some of these features but you can try it out now on your project using:
+
+```js
+npm install @11ty/eleventy@beta
+```
+
+**If you’re upgrading, use the [Upgrade Help plugin](https://github.com/11ty/eleventy-upgrade-help) for automated project checks and help!**
+
+A few numbers on the best version of Eleventy yet:
+
+| Stats | `v2.0.1` | `v3.0.0-beta.1` |
+| - | - | - |
+| 23% smaller | 35.2 MB | 27.1 MB |
+| 6.6% fewer third-party dependencies | 210 | 196 |
+| 21.7% faster npm install | 6.572s\* | 5.146s\* |
+
+_(\*fastest time of 3 runs bypassing cache)_
+
+## 🙌🏻🚨 We still need your help! 🚨🙌🏻
+
+11ty is now operating independently, with full time development and maintenance funded by our Open Collective supporters. We need your help to keep going! We have a goal of $6000 USD recurring monthly budget. Read [more about this fundraising push](https://www.11ty.dev/blog/sustainability-fundraising/) and head directly to [our Open Collective to **start your recurring contribution**](https://opencollective.com/11ty)!
+
+**Every recurring contribution helps!**
+
+## Flagship 3.0 features
+
+1. Eleventy is now written in [ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) with **full** support for ESM in your projects (#836): configuration, data files, 11ty.js templates, etc. For many projects this won’t be a breaking change and we’ll continue to support CommonJS too. You can read more about what [ECMAScript Modules (ESM) means for Eleventy projects on the 11ty Blog](https://www.11ty.dev/blog/canary-eleventy-v3/#new-features-and-a-short-upgrade-guide).
+
+```js
+// ESM
+export default function(eleventyConfig) {}
+
+// We’ll keep supporting CommonJS:
+module.exports = function(eleventyConfig) {}
+```
+
+2. Supporting more package managers and runtimes: Deno, pnpm, yarn (more to come!)
+3. Asynchronous configuration #614 
+
+```js
+// ESM
+export default async function(eleventyConfig) {}
+
+// CommonJS
+module.exports = async function(eleventyConfig) {}
+```
+
+4. For-free performance improvement to built-in `slugify`, `inputPathToUrl` universal filters (via memoization) #840
+5. Named `config` export improves consistency for plugins #3246 and `set*Directory` configuration API methods #1503
+
+```js
+export default function(eleventyConfig) {
+  eleventyConfig.setInputDirectory(".");
+  eleventyConfig.setOutputDirectory("_site");
+};
+
+export const config = {
+  dir: {
+    input: ".",
+    output: "_site"
+  },
+};
+```
+
+6. Virtual Templates, configuration API to add content (great for plugins, used by the new RSS plugin!) #1612
+
+```js
+export default function(eleventyConfig) {
+  eleventyConfig.addTemplate("robots.njk", "User-agent: *\nAllow: /", {
+    permalink: "/robots.txt",
+  });
+};
+```
+
+7. IdAttribute plugin adds `id` attributes to headings for on-page anchor links (supports all template-languages) #3363
+
+```html
+<h1>Welcome to my web site</h1> becomes <h1 id="welcome-to-my-web-site">Welcome to my web site</h1>
+```
+
+8. Plain-text Bundler included (via [`eleventy-plugin-bundle`](https://github.com/11ty/eleventy-plugin-bundle#usage))
+
+```js
+export default function(eleventyConfig) {
+  eleventyConfig.addBundle("css"); // Adds {% css %} paired shortcode to create per-page CSS bundles
+};
+```
+
+9. [InputPath to URL plugin](https://www.11ty.dev/docs/plugins/inputpath-to-url/) lets you link directly to an input file path (and we’ll output the right URL)
+
+```html
+<a href="my-template.md">Home</a> becomes <a href="/my-template/">Home</a>
+```
+
+10. Use arbitrary JavaScript with the `js` Front Matter #2819 
+
+```js
+---js
+const hello = "hi";
+---
+{{ hello }}
+```
+
+11. `page.rawInput` unlocks access to raw template content #1206
+12. `addPreprocessor` configuration API to modify raw content before rendering works for file ignores and drafts #188 
+13. `addDateParsing` configuration API to add your own custom date parsing logic #867
+14. `eleventyDataSchema` data option to validate data cascade values #879
+15. Reserved Eleventy properties in data cascade are now frozen #1173
+16. Support for asynchronous plugins and async-friendly `addPlugin` configuration API #2675
+17. `useLayouts` option for Custom Template Languages allows opt-out of Eleventy Layouts #2830
+18. `renderTransforms` Universal Filter will run project transforms on an arbitrary block of content (useful for RSS and other feeds) #3294
+19. `--incremental=filename.md` on the command line #3324
+20. `renderContent` Universal Filter now included with Render Plugin #3370
+
+## Breaking Changes and Upgrade Path
+
+**Rather than navigating this list manually, use the [Upgrade Help plugin](https://github.com/11ty/eleventy-upgrade-help) for automated project checks and upgrade help!**
+
+* Requires Node 18 or newer.
+* Removes Serverless and Edge plugins.
+* Use of bundled Eleventy plugins from CommonJS requires changing `require("@11ty/eleventy")` to `await import("@11ty/eleventy")` for ESM reasons. We provide [helpful error messaging for this](https://www.zachleat.com/web/future-friendly-esm/).
+* `pug`, `ejs`, `haml`, `mustache`, and `handlebars` plugins moved from core to [official plugins](https://github.com/11ty/eleventy-plugin-template-languages)
+* Throw errors if `--config=` command line file is missing #3373 
+* The `htmlOutputSuffix` feature was removed #3327 
+* Aliased custom templates must be declared in active formats #3302
+* `--formats=` and `--formats=""` on command line means no formats (previously aliased to `*`) #3255
+* Custom Template Language `compileOptions.permalink` option changed from `true` to `"raw"` #2780
+* Major semver updates of dependencies:
+  * `js-yaml` [v3 to v4 Changelog](https://github.com/nodeca/js-yaml/blob/master/CHANGELOG.md#400---2021-01-03) 
+    * Better error messaging when using tabs in YAML
+    * Numbers are now parsed according to YAML 1.2 spec (from 1.1)
+  * `@sindresorhus/slugify` [v2 to v3 Changelog](https://github.com/sindresorhus/slugify/releases/tag/v2.0.0): Node 12+, Pure ESM
+  * `bcp-47-normalize` [v1 to v2 Changelog](https://github.com/wooorm/bcp-47-normalize/releases/tag/2.0.0): Pure ESM
+  * `dependency-graph` [v0.x to v1 Changelog](https://github.com/jriecken/dependency-graph/blob/master/CHANGELOG.md#100-dec-5-2023)
+  * `iso-639-1` [v2 to v3 Changelog](https://github.com/meikidd/iso-639-1/blob/master/CHANGELOG.md#v300): Pure ESM
+  * `markdown-it` [v13 to v14 Changelog](https://github.com/markdown-it/markdown-it/blob/master/CHANGELOG.md#1400---2023-12-08): Pure ESM, removed `dist` folder
+* [Full list of breaking changes](https://github.com/11ty/eleventy/issues?q=milestone%3A%22Eleventy+3.0.0%22+is%3Aclosed+label%3Abreaking-change)
+
+## Minutiae 
+
+* Packages are now published using [npm package provenance](https://github.blog/security/supply-chain-security/introducing-npm-package-provenance/).
+* The code base isn’t just ESM, it’s using tabs instead of spaces too 😱😈 #3098
+
+**Full Eleventy v3 Milestone** (151 closed): https://github.com/11ty/eleventy/milestone/40?closed=1
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v2.0.1...v3.0.0-beta.1
+
+## Thank You Notes
+
+This release would not have been possible without our community and supporters.
+
+* To everyone that has built something with Eleventy: thank you!
+* To everyone that has answered a question about Eleventy: on the Discord, on social media, in GitHub issues or discussion, at your local meetup or coffee shop: thank you!
+* To everyone that attended the [11ty Conference](https://conf.11ty.dev/) earlier this year: thank you!
+* To everyone that brought a well-intentioned complaint about something you didn’t like about Eleventy: thank you! 
+* To everyone that dropped a few nice words of appreciation: **_thank you!_**
+* To everyone that has chipped in with their hard-earned money and made this release possible: **_thank you!_**
+
+Thank you to @bobmonsour, @pdehaan, @Snapstromegon, @cdransf, @5t3ph, @BenDMyers, @siakaramalegos, @shivjm, @dleatherman, @darthmall, @clottman, @nachtfunke, @David-Large, Olivia Nicholson, and @mneumegen for their community contributions!
+
+Thank you for the code contributions from @VividVisions, @mayank99, @Zearin, @chriskirknielsen, @mendhak, @fqueze, @shivjm, @rdela, @w0whitaker, @vrugtehagel, @sachac, @Snapstromegon, @alifeee, @uncenter, @Zwyx, @mayankkamboj47, @aschrab, @jgarber623, @korverdev, @mathertel, @mathieuprog, @epelc, and @Ryuno-Ki.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.18 (2024-07-30)</h2>
+      <pre>* Published with npm package provenance for improved auditing and security #3392
+* Pre-release 3.0-compatible plugins for Pug, EJS, Handlebars, Mustache, and HAML are now available: https://github.com/11ty/eleventy-plugin-template-languages
+* Upgrade Helper plugin for 3.0 now available: https://github.com/11ty/eleventy-upgrade-help
+* New `eleventyConfig.setLiquidParameterParsing("builtin")` API provides a path forward to opt-in to Liquid’s built-in parameter parser #2679
+* New `renderContent` Universal Filter provided by the Render Plugin allows rendering an arbitrary string of template content #3370
+* Missing file name passed as `--config` on command line now throws an error: #3373
+* Fix to deep merge objects passed to `eleventyConfig.addGlobalData` #3389
+* Fix internal error when folks try to pass non-function to `addFilter`, `addShortcode` configuration API methods #3385 
+* TypeScript improvements for types in configuration API #3097
+* Fix issue with error message on SIGINT server close, removes `process.exit` calls for a graceful stop #3361 #3375
+* Fix bug with async config and manual use of RenderPlugin #3368
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.17...v3.0.0-alpha.18
+**Full Eleventy v3 Milestone**: https://github.com/11ty/eleventy/milestone/40
+
+🥳🥳🥳 2 issues left (150 closed) on the Eleventy 3.0.0 milestone!
+
+## We need your help!
+
+11ty is now operating independently, with full time development and maintenance funded by our Open Collective supporters. We need your help to keep going! We have a goal of $6000 USD recurring monthly budget. Read [more about this fundraising push](https://www.11ty.dev/blog/sustainability-fundraising/) or head directly to [our Open Collective to start your recurring contribution](https://opencollective.com/11ty)!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.17 (2024-07-16)</h2>
+      <pre>* Adds new `eleventyConfig.addPreprocessor` API for improved drafts workflow #188 Workaround for Nunjucks macros import #3345
+* New `IdAttributePlugin` adds `id` attributes to headings across multiple template syntaxes #3363
+* Fix npm audit deprecation warnings from `recursive-copy` package #3299
+* Missing layout error messaging now reports the template path #727
+* Add `{ type: "async" }` option for `getShortcodes`, `getFilters`, and `getPairedShortcodes` configuration API methods (#3310)
+* Fix issue with more complex `export` in `11ty.js` templates #3359 
+* Small tweaks to colorized terminal text
+* Internals: removes `multimatch` dependency, swaps to already in-use `micromatch` https://github.com/11ty/eleventy/commit/9698667bb73e1d8c378dda46291716e3ca789e60
+* Fix bug with Eleventy Image On-request workflow `eleventyConfig.getFilter(...) is not a function` #3365
+* Improvements to benchmarking debug mode outputs: https://www.11ty.dev/docs/debug-performance/
+  * Benchmarking logging output improvement for minimum thresholds #1570
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.16...v3.0.0-alpha.17
+**Full Eleventy v3 Milestone**: https://github.com/11ty/eleventy/milestone/40
+
+🥳🥳🥳 5 issues left (137 closed) on the Eleventy 3.0.0 milestone!
+
+## We need your help!
+
+11ty is now operating independently, with full time development and maintenance funded by our Open Collective supporters. We need your help to keep going! We have a goal of $6000 USD recurring monthly budget. Read [more about this fundraising push](https://www.11ty.dev/blog/sustainability-fundraising/) or head directly to [our Open Collective to start your recurring contribution](https://opencollective.com/11ty)!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.16 (feel free to ignore this one) (2024-07-09)</h2>
+      <pre>* Seeing a `liquidjs`-related project regression (outside of our test suite) in the newest minor version, temporarily reverting from `10.15` to `10.14`.
+  * **Investigation at #3356 revealed an application code error and the revert is unnecessary!**
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.14...v3.0.0-alpha.15
+**Full Eleventy v3 Milestone**: https://github.com/11ty/eleventy/milestone/40
+
+## We need your help!
+
+11ty is now operating independently, with full time development and maintenance funded by our Open Collective supporters. We need your help to keep going! We have a goal of $6000 USD recurring monthly budget. Read [more about this fundraising push](https://www.11ty.dev/blog/sustainability-fundraising/) or head directly to [our Open Collective to start your recurring contribution](https://opencollective.com/11ty)!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.15 (2024-07-09)</h2>
+      <pre>* **BREAKING**: Bump js-yaml dependency from v3 to v4 #2126 
+    * Full js-yaml@v4 release notes: https://github.com/nodeca/js-yaml/blob/master/CHANGELOG.md#400---2021-01-03
+* New `node` front matter has been renamed to `js` and `javascript` (keeping backwards compatibility with previous JavaScript object literal front matter type) #2819 (`node` is still there, but it should be considered deprecated)
+* Support for `pnpm` #2876
+* Add support for `11ty.js` in Virtual Templates: #3347
+* Add support for Virtual Templates to be used as Eleventy Layouts #1612 #2307
+* Memoize internal `slug`, `slugify`, and `inputPathToUrl` filters #840
+* Improved error messaging for filters/shortcodes #3286
+* Adds new `eleventyConfig.getFilters` `eleventyConfig.getShortcodes`, and `eleventyConfig.getPairedShortcodes` methods for plugins and custom template languages to access universal filters/shortcodes #3310
+* New `eleventyConfig.augmentFunctionContext` config API to help with `this.eleventy` and `this.page` on shortcodes/filters in plugins #3355
+* Adds `eleventyConfig.addDateParsing` configuration API to customize date parsing #867
+* Fix regression with JavaScript dependencies cache-busting in 11ty.js Layout files #3338
+* Fix regression with markdown engine simple aliases (without additional options) still using preprocessing engine #3339
+* PR: replace `index.d.ts` with jsdoc `@typedef` by @mayank99 in https://github.com/11ty/eleventy/pull/3349
+* PR: refactor: Use `?.` for terser conditionals by @Zearin in https://github.com/11ty/eleventy/pull/3343
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.14...v3.0.0-alpha.15
+**Full Eleventy v3 Milestone**: https://github.com/11ty/eleventy/milestone/40
+
+🥳🥳🥳 5 issues left (122 solved) on the Eleventy 3.0.0 milestone!
+
+## We need your help!
+
+11ty is now operating independently, with full time development and maintenance funded by our Open Collective supporters. We need your help to keep going! We have a goal of $6000 USD recurring monthly budget. Read [more about this fundraising push](https://www.11ty.dev/blog/sustainability-fundraising/) or head directly to [our Open Collective to start your recurring contribution](https://opencollective.com/11ty)!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.14 (2024-06-27)</h2>
+      <pre>* Adds support for `--incremental=filename` to start an incremental build with an explicitly defined incremental file. Major improvements to dependency mapping for incremental builds (especially with `--ignore-initial`) #3324
+* New `useLayouts` option for Custom template syntax allows opt-out of Eleventy Layouts for custom template files in your `addExtension` definition (you don’t want Layouts on `scss` files) #2830
+* Fixes bugs with cached second-order JavaScript dependencies (e.g. a local import in your config file) #3270
+* `eleventyConfig.resolvePlugin` method for adding bundled-with-Eleventy plugins is now synchronous-friendly for better compatibility with RSS plugin usage: https://github.com/11ty/eleventy/issues/3314#issuecomment-2194966645
+* Breaking: Removes `htmlOutputSuffix` common pitfall when `input` and `output` directories are the same. Instead of renaming output files with an additional suffix, errors are now thrown when output files attempt to overwrite any input file. #3327
+* `eleventyConfig.quietMode` now reflects `--quiet` CLI value #3316
+* Improved error messaging for errors in: Nunjucks filters #3295 and Acorn parsing for JavaScript dependencies for --watch or --serve #3128
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.13...v3.0.0-alpha.14
+**Full Eleventy v3 Milestone**: https://github.com/11ty/eleventy/milestone/40
+
+🥳🥳🥳 10 issues left (107 solved) on the Eleventy 3.0.0 milestone!
+
+## We need your help!
+
+11ty is now operating independently, with full time development and maintenance funded by our Open Collective supporters. We need your help to keep going! We have a goal of $6000 USD recurring monthly budget. Read [more about this fundraising push](https://www.11ty.dev/blog/sustainability-fundraising/) or head directly to [our Open Collective to start your recurring contribution](https://opencollective.com/11ty)!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.13 (2024-06-12)</h2>
+      <pre>* Fixes to facilitate RSS plugin updates: 80d9f980a5a2b655ee28cf1d45fb6e6d3370e707 and #3320
+* Breaking: Changes custom template syntax permalink compilation default to `raw` #2780
+* Breaking: Removes advanced `filters` option in HTML `<base>` plugin to rename Universal Filters for this plugin (`htmlBaseUrl`, `addPathPrefixToFullUrl`, and `transformWithHtmlBase`). Renaming filters in this plugin will cause cross-plugin compatibility issues in other places in your project.
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.12...v3.0.0-alpha.13
+**Full Eleventy v3 Milestone**: https://github.com/11ty/eleventy/milestone/40
+
+## We need your help!
+
+11ty is now operating independently, with full time development and maintenance funded by our Open Collective supporters. We need your help to keep going! We have a goal of $6000 USD recurring monthly budget. Read [more about this fundraising push](https://www.11ty.dev/blog/sustainability-fundraising/) or head directly to [our Open Collective to start your recurring contribution](https://opencollective.com/11ty)!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.12 (2024-06-11)</h2>
+      <pre>Quick follow-up to fix regression introduced in v3.0.0-alpha.11 with the bundled InputPathToUrl plugin: #3319
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.11...v3.0.0-alpha.12
+**Full Eleventy v3 Milestone**: https://github.com/11ty/eleventy/milestone/40
+
+## We need your help!
+
+11ty is now operating independently, with full time development and maintenance funded by our Open Collective supporters. We need your help to keep going! We have a goal of $6000 USD recurring monthly budget. Read [more about this fundraising push](https://www.11ty.dev/blog/sustainability-fundraising/) or head directly to [our Open Collective to start your recurring contribution](https://opencollective.com/11ty)!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release: Eleventy v3.0.0-alpha.11 (2024-06-11)</h2>
+      <pre>## What's Changed
+- New `renderTransforms` filter to execute transforms programmatically in non-HTML content (like RSS feeds) https://github.com/11ty/eleventy/issues/3294
+    - Included automatically with Virtual Template Feeds: https://github.com/11ty/eleventy-plugin-rss/issues/47
+- Support for more extensible custom template syntaxes and aliases. https://github.com/11ty/eleventy/issues/3298
+    - Breaking: Aliased template syntaxes must be listed in valid formats: https://github.com/11ty/eleventy/issues/3302
+    - Unlocks JSX/TS/TSX/MDX templates: https://github.com/11ty/eleventy/issues/3300
+        - TypeScript https://www.11ty.dev/docs/languages/typescript/
+        - JSX https://www.11ty.dev/docs/languages/jsx/
+        - MDX https://www.11ty.dev/docs/languages/mdx/
+- Some internal plugins are now unique. Multiple `addPlugin` calls of the same bundled plugins are de-duplicated. This is important as the RSS plugin Adds new `eleventyConfig.resolvePlugin` method for more ergonomic plugin import in CommonJS projects. https://github.com/11ty/eleventy/issues/3314
+- Bug fix: InputPathToUrl filter and plugin works with hash: thanks `@mendhak`! https://github.com/11ty/eleventy/pull/3276
+- Synchronous template write, thanks `@shivjm`! https://github.com/11ty/eleventy/pull/3272
+- Restore types in package.json, thanks `@chriskirkneilsen`! https://github.com/11ty/eleventy/pull/3291
+
+## We need your help!
+
+11ty is now operating independently, with full time development and maintenance funded by our Open Collective supporters. We need your help to keep going! We have a goal of $6000 USD recurring monthly budget. Read [more about this fundraising push](https://www.11ty.dev/blog/sustainability-fundraising/) or head directly to [our Open Collective to start your recurring contribution](https://opencollective.com/11ty)!
+
+## New Contributors
+* @fqueze made their first contribution in https://github.com/11ty/eleventy/pull/3275
+* @mendhak made their first contribution in https://github.com/11ty/eleventy/pull/3276
+* @shivjm made their first contribution in https://github.com/11ty/eleventy/pull/3272
+* @chriskirknielsen made their first contribution in https://github.com/11ty/eleventy/pull/3291
+
+## Related
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v3.0.0-alpha.10...v3.0.0-alpha.11
+**Full Eleventy v3 Milestone**: https://github.com/11ty/eleventy/milestone/40</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v2.0.1: a Bug Fix Release (2023-03-28)</h2>
+      <pre>Eleventy v2.0.1 is now available! You can try it out in your project now:
+
+```sh
+npm install @11ty/eleventy@latest
+```
+
+* Read more about [project versus global installation](https://v2-0-1.11ty.dev/docs/global-installation/).
+
+## New to Eleventy?
+
+Eleventy is a flexible and production-ready site generator known for its zero-client JavaScript footprint, [speedy sites, speedy builds](https://v2-0-1.11ty.dev/docs/performance/), and [full control over the output](https://www.youtube.com/watch?v=b4frtsT4Cgo).
+
+* [Build a blog from scratch in 6 minutes with Eleventy](https://www.youtube.com/watch?v=kzf9A9tkkl4)
+* Watch [The State of Eleventy in Two Minutes](https://www.youtube.com/watch?v=EZfNr-YblBE)
+* Read more about [Eleventy’s project goals.](https://v2-0-1.11ty.dev/docs/)
+
+## Features and Fixes
+
+* Fixed: `this.eleventy` in JavaScript template functions #2790
+* Fixed: `lodash` security audits #2877
+* Fixed: pagination targets with object bracket notation #2851
+* Fixed: `11ty.js` templates were too aggressively cached on watch/serve #2839 #2838
+* Fixed: Handlebars partials were too aggressively cached on watch/serve #2799
+* Fixed: Configuration reload fixes #2864 #2869 #2867
+* New: Serverless pagination now works with Arrays and Objects #2853 #2544 Learn more: https://www.11ty.dev/docs/plugins/serverless/#dynamic-slugs-to-subset-your-pagination
+* Typo fixes by @deining in #2845
+
+## Housekeeping
+
+* Full milestone/issue list: https://github.com/11ty/eleventy/milestone/43?closed=1
+* Full changelog: https://github.com/11ty/eleventy/compare/v2.0.0...v2.0.1
+
+## Thank You Notes
+
+This project would not be possible without our lovely community. Thank you to everyone that built something with Eleventy ([×684 authors on our web site!](/authors/)), wrote a blog post about Eleventy, [contributed code](https://github.com/11ty/eleventy/graphs/contributors), wrote a plugins, [helped with documentation](https://github.com/11ty/11ty-website/graphs/contributors), asked questions, answered questions, braved [The Leaderboards](https://v2-0-1.11ty.dev/speedlify/), participated on Discord, filed issues, attended (or organized!) a meetup, said a kind word on social media ❤️.
+
+* A **huge thank you to [Netlify](https://www.netlify.com/)**, especially:  @biilmann, Chris Bach, Lauren Sell (alum), and Claire Knight, without whom this release would not have been possible.
+* 🏆 A special thanks to @pdehaan for their tireless contributions on the Eleventy Issue tracker.
+* Yet more thanks to the all star Discord Moderators and Meetup Coordinators @BenDMyers, @clottman, @dleatherman, @darthmall, @nachtfunke, @siakaramalegos and @5t3ph.
+* All of our [supporters on Open Collective](https://opencollective.com/11ty) ❤️
+* [Contribute on Open Collective](https://opencollective.com/11ty)
+* [How else can you contribute to Eleventy?](https://v2-0-1.11ty.dev/docs/community/)
+
+### Open Collective Supporters
+
+* **Gold Sponsors**: [**Sanity.io**](https://www.sanity.io), [**Nordhealth**](https://nordhealth.com), [**CloudCannon**](https://cloudcannon.com/), [**Transloadit**](https://transloadit.com/)
+* **Silver Sponsors**: [**Unabridged Software**](https://www.unabridgedsoftware.com/), [**PQINA**](https://pqina.nl/), [**Bejamas**](https://bejamas.io), [**Nathan Smith**](https://sonspring.com), [**Monarch Air Group**](https://monarchairgroup.com), [**Getform.io**](https://getform.io), [**Mercury Jets**](https://www.mercuryjets.com), [**OCEG**](https://www.oceg.org)
+* **Backers**: Tyler Gaw, [Ariel Salminen](https://arie.ls), [Peter deHaan](https://about.me/peterdehaan), Melanie Sumner, [Ben Nash](https://www.bennash.com), Alejandro Rodríguez, [Mat Marquis](https://hire.wil.to), [Philip Borenstein](https://pborenstein.com/), [Jérôme Coupé](https://www.webstoemp.com), [Nicolas Hoizey](https://nicolas-hoizey.com), [Mike Aparicio](https://mikeaparicio.com), [Ben Myers](https://benmyers.dev), Katie Sylor-Miller, [Mark Buskbjerg](https://markbuskbjerg.dk), [mortendk](https://morten.dk), Aaron Hans, [Lauris Consulting](https://lauris-webdev.com), John Meyerhofer, Todd Libby, shawn j sandy, [Luke Bonaccorsi](https://lukeb.co.uk), [Higby](https://www.higby.io/), [Jenn Schiffer](https://jennmoney.biz), [Dimitrios Grammatikogiannis](https://dgrammatiko.online), Devin Clark, [Eric Bailey](https://ericwbailey.design/), Manuel Matuzovic, [Tim Giles](https://www.tgiles.dev/), Kyosuke Nakamura, [Rob Sterlini](https://robsterlini.co.uk), [Horacio Gonzalez](https://twitter.com/LostInBrittany), [Hans Gerwitz](https://hans.gerwitz.com/), [Makoto Kawasaki](https://makotokw.com), [Josh Crain](https://joshcrain.io), Richard  Hemmer, [Nick Nisi](https://nicknisi.com), [John SJ Anderson](https://genehack.org), Ryan Swaney, [Alistair Shepherd](https://alistairshepherd.uk/), [Ivo Herrmann](https://ivoherrmann.com/), [Flaki](https://flak.is), [Angelique Weger](https://angeliqueweger.com), John Hall, [Scott McCracken](https://scottmccracken.net), [James Steinbach](https://jamessteinbach.com), [Miriam Suzanne](https://oddbird.net/), [Bentley Davis](https://BentleyDavis.com), [Ara Abcarians](https://itsmeara.com), [vince falconi](https://tattooed.dev), [Martin Schneider](https://martinschneider.me), [Stephanie Eckles](https://thinkdobecreate.com), [Frontend Weekly Tokyo](https://frontendweekly.tokyo/), [Dorin Vancea](https://dorinvancea.com), [Chris Burnell](https://chrisburnell.com), [Ximenav Vf.](https://ximenavf.com/), Rich Holman, Kasper Storgaard, [Kevin Healy](https://kevhealy.com), Greg Gibson, Michelle Barker, [Alesandro Ortiz](https://AlesandroOrtiz.com), [David A. Herron](https://www.david-herron.com/), [Paul Robert Lloyd](https://paulrobertlloyd.com), [Andrea Vaghi](https://www.andreavaghi.dev), Bryan Robinson, [Ashur Cabrera](https://ashur.cab/rera), [Raymond Camden](https://www.raymondcamden.com), John Meguerian, [Joe Lamyman](https://joelamyman.co.uk), [Dan Ryan](https://dryan.com/), Sam, [Brett Nelson](https://wipdeveloper.com/), [Paul Welsh](https://www.nonbreakingspace.co.uk), [Ingo Steinke](https://www.ingo-steinke.com/), [Noel Forte](https://forte.is/), [Melanie Richards](http://melanie-richards.com), Marco Zehe, Wes Ruvalcaba, [Luc Poupard](https://www.kloh.ch), [Entle Web Solutions](https://www.entle.co), [Ken Hawkins](https://AllAboutKen.com), [Fershad Irani](https://www.fershad.com), [Nikita Dubko](https://mefody.dev/), [Aaron Gustafson](https://www.aaron-gustafson.com), [Chris](https://www.chrisswithinbank.net/), [Christian Miles](https://cjlm.ca), [Benjamin Geese](https://benjamingeese.de), [Marcus Relacion](https://www.marcusrelacion.com), [Netin nopeustesti](https://netinnopeustesti.com/), [Raphael Höser](https://hoeser.dev), [Cthos](https://alextheward.com), [Sia Karamalegos](https://sia.codes/), [Jon Kuperman](https://jonkuperman.com/), [Saneef Ansari](https://saneef.com), [Michel van der Kroef](https://neckam.nl), [Flemming Meyer](https://fokus.design/), Colin Fahrion, [Dan Burzo](https://danburzo.ro), [Dan Ott](https://dtott.com), [Mobilemall.pk](https://mobilemall.pk/), [Cheap VPS](https://vpsdime.com/), [David Darnes](https://darn.es), [Jon Roobottom](https://roobottom.com), [Dana Byerly](https://danabyerly.com), [Oisín Quinn](https://oisin.io), [Renkaatsopivasti](https://renkaatsopivasti.fi), [Windesol Sähkön Kilpailutus](https://windesol.fi), [Luke Mitchell](https://www.interroban.gg), SignpostMarv, [THE PADDING](https://paddn.com/%e9%a6%99%e6%b8%af%e7%b6%b2%e9%a0%81%e8%a8%ad%e8%a8%88%e5%85%ac%e5%8f%b8/), [Bob Monsour](https://www.bobmonsour.com/), [Richmond Insulation](https://www.centralvainsulation.com), Patrick Byrne, zapscribbles, Frank Reding, quinnanya, [Cory Birdsong](https://birdsong.dev), Aram ZS, Andy Stevenson, Robin Rendle, [HelppoHinta.fi](https://helppohinta.fi/), [Tanner Dolby](https://tannerdolby.com), [jpoehnelt](https://justin.poehnelt.com), [xdesro](https://henry.codes), [Alex Zappa](https://alex.zappa.dev/), [Richmond Concrete](https://www.richmondconcretepros.com), [Alexander Wunschik](https://www.wunschik.it), [Tom](https://tomquinonero.com), [CelineDesign](https://www.celinedesign.com), Nic Chan, Duc Lam, [Stephen Bell](https://steedgood.com), Robert Haselbacher, [Lene](https://www.lenesaile.com), Brett DeWoody, alistairtweedie, [Meta Tier List](https://metatierlist.com), [Iva Tech](https://ivatech.dev), Daniel Saunders, Josh Vickerson, [Dan Urbanowicz](https://danurbanowicz.com), [dan leatherman](https://danleatherman.com/), Jens Grochtdreis, [CBD Review](https://cbd.topreview.com), Eric Gallager, [Softermii](https://www.softermii.com), Eric Carlisle, Claus Conrad, Anna E. Cook, [David Luhr](https://luhr.co/), [Matt Obee](https://mattobee.com/), [Kiekkotorni - Nikotiinipussit](https://kiekkotorni.com/)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v2.0.0: Now with twice as many Possums (2023-02-08)</h2>
+      <pre>**🚨 The full release notes are available on [The Eleventy Blog: Eleventy v2.0.0](https://www.11ty.dev/blog/eleventy-v2/) or you can [watch me talk about v2.0 on YouTube](https://www.youtube.com/watch?v=TcTR0TLqM3I).**
+
+Eleventy v2.0.0 is now available! You can try it out now:
+
+```sh
+# Local project
+npm install @11ty/eleventy@latest
+
+# Global install
+npm install @11ty/eleventy@latest -g
+```
+
+* Read more about [local versus global installation](https://v2-0-0.11ty.dev/docs/global-installation/).
+* Watch a [short video about 2.0 on YouTube](https://www.youtube.com/watch?v=TcTR0TLqM3I).
+
+## New to Eleventy?
+
+Eleventy is a flexible and production-ready site generator known for its zero-client JavaScript footprint, [speedy sites, speedy builds](https://v2-0-0.11ty.dev/docs/performance/), and [full control over the output](https://www.youtube.com/watch?v=b4frtsT4Cgo). Watch [The State of Eleventy in Two Minutes](https://www.youtube.com/watch?v=EZfNr-YblBE) or [read more about Eleventy’s project goals.](https://v2-0-0.11ty.dev/docs/)
+
+## The Big Features
+
+### Smaller, More Secure
+
+* ✅ Dependencies decreased by **32.1%**: [211 modules](https://npmgraph.js.org/?q=@11ty/eleventy@2.0.0) ([311 in v1.0.2](https://npmgraph.js.org/?q=@11ty/eleventy@1.0.2))
+* ✅ `node_modules` file weight decreased by **77.8%**: 34.3 MB (155 MB in v1.0.2)
+* ✅ [**30.5% faster** `npm install` time](https://docs.google.com/spreadsheets/d/1lkeWOhEXTNh0yxWaNOl_UFOHQea2YnSHit4QLjqXUb8/edit?usp=sharing)
+
+### Faster Builds
+
+* Improved build performance (tested on [a sample 500 page site](https://docs.google.com/spreadsheets/d/1-H3wmT7q7m7G7d5M_dCLxQOiAAX3TP0byQdf0pP1fAQ/edit?usp=sharing) against v1.0.2) using:
+  * Liquid: ✅ **18.18% faster**
+  * Nunjucks: ✅ **17.74% faster**
+  * Markdown (with Liquid): ✅ **17.95% faster**
+  * JavaScript (11ty.js): ✅ **8.33% faster**
+* [`--incremental` for incremental builds](https://v2-0-0.11ty.dev/docs/usage/incremental/) [#108](https://github.com/11ty/eleventy/issues/108#issuecomment-1362030361)
+  * Smarter incremental builds with support for layout dependencies, [registered dependencies on custom templates](https://v2-0-0.11ty.dev/docs/languages/custom/#registering-dependencies), dependencies in `pagination` data or [`eleventyImport`](https://v2-0-0.11ty.dev/docs/collections/#declare-your-collections-for-incremental-builds) [#975](https://github.com/11ty/eleventy/issues/975)
+* [`--ignore-initial` command line option](https://v2-0-0.11ty.dev/docs/usage/#ignore-initial-to-run-eleventy-without-an-initial-build) to skip the first build (best paired with `--incremental`)
+* Use [emulated passthrough copy](https://v2-0-0.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve) to serve passthrough files directly without triggering a build (will still work with live reload) [#2456](https://github.com/11ty/eleventy/issues/2456)
+
+### Plugins
+
+* Support for [WebC, the new single file format for web components](https://v2-0-0.11ty.dev/docs/languages/webc/)
+* [Eleventy Edge](https://v2-0-0.11ty.dev/docs/plugins/edge/) will render Eleventy templates in an Edge Function for dynamic content _(bundled with Eleventy)_
+* [Eleventy Dev Server](https://v2-0-0.11ty.dev/docs/dev-server/) replaces Browsersync, adds support for DOM-diffing live reloads. [#1305](https://github.com/11ty/eleventy/issues/1305) _(bundled with Eleventy)_
+* [Render Plugin](https://v2-0-0.11ty.dev/docs/plugins/render/) will render any template syntax inside other files _(bundled with Eleventy)_
+* [Internationalization (i18n) Plugin](https://v2-0-0.11ty.dev/docs/plugins/i18n/) makes it easy to create localized sites _(bundled with Eleventy)_
+* [HTML `<base>` Plugin](https://v2-0-0.11ty.dev/docs/plugins/html-base/) makes it easy to deploy your site to any folder path without changing any content (works great with the path prefix feature) _(bundled with Eleventy)_
+* Support for the [Vite plugin](https://v2-0-0.11ty.dev/docs/server-vite/)
+
+### And more…
+
+* Support for [aliasing to an existing template language](https://v2-0-0.11ty.dev/docs/languages/custom/#aliasing-an-existing-template-language) [#2248](https://github.com/11ty/eleventy/issues/2248#issuecomment-1341732716)
+  * This unlocks TypeScript or JSX in Eleventy when you use `esbuild-register` and alias `11ty.ts` or `11ty.tsx` to `11ty.js`.
+* [Event arguments](https://v2-0-0.11ty.dev/docs/events/#event-arguments) unlock new plugin abilities: `dir` (input/output/includes/data/layouts locations),
+`outputMode` (where the templates are going: `fs`, `json`, `ndjson`), `runMode` (`build`, `watch`, or `serve`), or `results` for the processed Eleventy output.
+* Memory usage improvements to [Pagination](https://v2-0-0.11ty.dev/docs/pagination/)
+
+## Breaking Changes
+
+**⚠️ Rather than review this list, it’d be faster to use the `eleventy-upgrade-helper` plugin, which runs a suite of tests to see whether or not you need to worry about these breaking changes in your project: https://github.com/11ty/eleventy-upgrade-help**
+
+
+* Bump minimum Node version to [Node 14+](https://github.com/nodejs/release#release-schedule) [#2336](https://github.com/11ty/eleventy/issues/2336)
+* [Disable indented code blocks in Markdown](https://v2-0-0.11ty.dev/docs/languages/markdown/#indented-code-blocks) by default [#2438](https://github.com/11ty/eleventy/issues/2438)
+* [Both `.git` and nested `node_modules` folders are ignored by default](https://v2-0-0.11ty.dev/docs/ignores/#configuration-api-added-in-v1.0.0) (previously we ignored `node_modules/**`, now `**/node_modules/**`) [#2436](https://github.com/11ty/eleventy/issues/2436)
+* [Dates will now be stripped from the parent directory for `page.fileSlug` when the file name is `index.*`](https://v2-0-0.11ty.dev/docs/data-eleventy-supplied/#fileslug). e.g. `YYYY-MM-DD-myslug/index.md` has a `page.fileSlug` of `myslug` when previously it was `YYYY-MM-DD-myslug` [#1947](https://github.com/11ty/eleventy/issues/1947) [#2111](https://github.com/11ty/eleventy/pull/2111)
+* Dots in global data file names should be preserved in key name for data cascade [#1242](https://github.com/11ty/eleventy/issues/1242) [#1912](https://github.com/11ty/eleventy/pull/1912)
+* Removes deprecated in v1.0 (and undocumented) `renderData` feature (use Computed Data instead) [#2356](https://github.com/11ty/eleventy/issues/2356)
+* Removes [pre-processing global JSON data files with a template language](https://v2-0-0.11ty.dev/docs/data-preprocessing/) [#2728](https://github.com/11ty/eleventy/issues/2728)
+* Removes [`--passthroughall` command line flag](https://v2-0-0.11ty.dev/docs/copy/#passthrough-everything) [#2682](https://github.com/11ty/eleventy/issues/2682)
+* Major dependency bumps:
+  * `liquidjs` from v9 to v10 [Release notes](https://github.com/harttle/liquidjs/releases/tag/v10.0.0)  [#2678](https://github.com/11ty/eleventy/issues/2678)
+  * `luxon` from v2 to v3 [Release notes](https://github.com/moment/luxon/blob/master/CHANGELOG.md#300-2022-07-09)
+  * `markdown-it` from v12 to v13 [Release notes](https://github.com/markdown-it/markdown-it/blob/master/CHANGELOG.md#1300---2022-04-22)
+
+## The Small Features
+
+* Adds support for configuration default file names `eleventy.config.js` and `eleventy.config.cjs` in addition to `.eleventy.js` [#1029](https://github.com/11ty/eleventy/issues/1029)
+* [`addShortcode` is now async-friendly](https://v2-0-0.11ty.dev/docs/shortcodes/#asynchronous-universal-shortcodes) [#2726](https://github.com/11ty/eleventy/issues/2726)
+* [`addFilter` is now async-friendly](https://v2-0-0.11ty.dev/docs/filters/#asynchronous-universal-filters) [#2536](https://github.com/11ty/eleventy/issues/2536) (also adds an `addAsyncFilter` API method)
+* File watching:
+  * Eleventy Dev Server includes a [`watch` option](https://v2-0-0.11ty.dev/docs/dev-server/#options) to trigger live reloads on file changes outside of your Eleventy build. Works great when you’re using a bundler in parallel!
+  * Decoupled ignore APIs for template processing (`eleventyConfig.ignores`) and [file watching (`eleventyConfig.watchIgnores`)](https://v2-0-0.11ty.dev/docs/watch-serve/#configuration-api) [#893](https://github.com/11ty/eleventy/issues/893)
+* Access [advanced `recursive-copy` options in passthrough file copy](https://v2-0-0.11ty.dev/docs/copy/#advanced-options) [#1686](https://github.com/11ty/eleventy/pull/1686)
+  * Unlocks passthrough copy with symlinks [#530](https://github.com/11ty/eleventy/issues/530)
+* [`log` filter supports chaining](https://v2-0-0.11ty.dev/docs/filters/log/#using-log-in-filter-chains) [#2467](https://github.com/11ty/eleventy/pull/2467)
+* Adds [new `git Created` date option](https://v2-0-0.11ty.dev/docs/dates/#setting-a-content-date-in-front-matter) [#2468](https://github.com/11ty/eleventy/pull/2468)
+* Adds [options for `read` and `encoding` to custom data formats](https://v2-0-0.11ty.dev/docs/data-custom/#usage-with-options)
+  * This unlocks using [binary files (like images) to populate the Data Cascade](https://v2-0-0.11ty.dev/docs/data-custom/#feed-exif-image-data-into-the-data-cascade)
+
+### Even Smaller Features
+
+* Adds `eleventy.env.runMode` to global data. [#2770](https://github.com/11ty/eleventy/issues/2770)
+* [`setDataFileSuffixes` API method to customize Template and Directory data file suffixes](https://v2-0-0.11ty.dev/docs/config/#change-file-suffix-for-data-files) (or opt-out of the Template and Directory Data Files feature) [#2681](https://github.com/11ty/eleventy/issues/2681)
+* [Serverless option `singleTemplateScope: false`](https://v2-0-0.11ty.dev/docs/plugins/serverless/#compile-the-data-cascade-for-the-project) simplifies using collections in serverless mode. [#2736](https://github.com/11ty/eleventy/issues/2736)
+* A variety of bug fixes for `--serve` issues that required server restarts.
+* Data Consistency:
+  * `this.page` and `this.eleventy` are now available on [Shortcodes](https://v2-0-0.11ty.dev/docs/shortcodes/#scoped-data-in-shortcodes), [🆕 Filters](https://v2-0-0.11ty.dev/docs/filters/#scoped-data-in-filters), [🆕 Linters](https://v2-0-0.11ty.dev/docs/config/#linters), and [🆕 Transforms](https://v2-0-0.11ty.dev/docs/config/#transforms)
+  * [`page` and `content` on Collection entries](https://v2-0-0.11ty.dev/docs/collections/#collection-item-data-structure)
+* Adds [`getCollectionItemIndex` universal filter](https://v2-0-0.11ty.dev/docs/filters/collection-items/#getcollectionitemindex) [#2676](https://github.com/11ty/eleventy/issues/2676)
+* Throw error on circular layout dependencies [#2076](https://github.com/11ty/eleventy/pull/2076)
+* Plugins can now reference `eleventyConfig.pathPrefix` [#2526](https://github.com/11ty/eleventy/issues/2526)
+* [`generatePageOnEmptyData` to generate an empty results page](https://v2-0-0.11ty.dev/docs/pagination/#generating-an-empty-results-page) with an empty paginated data set [#1698](https://github.com/11ty/eleventy/pull/1698) [#756](https://github.com/11ty/eleventy/issues/756) [#731](https://github.com/11ty/eleventy/issues/731) [#2208](https://github.com/11ty/eleventy/pull/2208)
+* Creating an empty JSON data file no longer throws an error [#2299](https://github.com/11ty/eleventy/issues/2299)
+
+## Housekeeping
+
+* Full issue list: https://github.com/11ty/eleventy/milestone/38?closed=1
+* Full changelog: https://github.com/11ty/eleventy/compare/v1.0.2...v2.0.0
+
+
+## Thank You Notes
+
+This project would not be possible without our lovely community. Thank you to everyone that built something with Eleventy ([×684 authors on our web site!](/authors/)), wrote a blog post about Eleventy, [contributed code](https://github.com/11ty/eleventy/graphs/contributors), wrote a plugins, [helped with documentation](https://github.com/11ty/11ty-website/graphs/contributors), asked questions, answered questions, braved [The Leaderboards](https://v2-0-0.11ty.dev/speedlify/), participated on Discord, filed issues, attended (or organized!) a meetup, said a kind word on social media ❤️.
+
+* A **huge thank you to [Netlify](https://www.netlify.com/)**, especially:  @biilmann, Chris Bach, Lauren Sell (alum), and Claire Knight, without whom this release would not have been possible.
+* 🏆 A special thanks to @pdehaan for their tireless contributions on the Eleventy Issue tracker.
+* Yet more thanks to the all star Discord Moderators and Meetup Coordinators @BenDMyers, @clottman, @dleatherman, @darthmall, @nachtfunke, @siakaramalegos and @5t3ph.
+* All of our [supporters on Open Collective](https://opencollective.com/11ty) ❤️
+* [Contribute on Open Collective](https://opencollective.com/11ty)
+* [How else can you contribute to Eleventy?](https://v2-0-0.11ty.dev/docs/community/)
+
+### Pull Requests From
+
+@AleksandrHovhannisyan 🆕, @amareshsm ×2 🆕, @binyamin, @DamianOsipiuk 🆕, @epelc ×2 🆕, @j-f1 🆕, @Jaza 🆕, @kentaroi 🆕, @kev4ev 🆕, @LeoSchae 🆕, @milahu ×3, @nasivuela 🆕, @NickColley 🆕, @NotWoods, @Obayanju 🆕, @Snapstromegon ×16 (wow! 🤯), @TheDocTrier 🆕, @thinkverse 🆕, @TigersWay 🆕, @wes-goulet 🆕, @mrmartineau 🆕, @danburzo 🆕
+
+### Read more from the Community
+
+* [New Features and Upgrade Considerations for Eleventy v2.0.0](https://11ty.rocks/posts/new-features-upgrade-considerations-eleventy-version-2/) by @5t3ph
+
+### Open Collective Supporters
+
+* **Gold Sponsors**: [**Sanity.io**](https://www.sanity.io), [**Nordhealth**](https://nordhealth.com), [**CloudCannon**](https://cloudcannon.com/), [**Transloadit**](https://transloadit.com)
+* **Silver Sponsors**: [**Unabridged Software**](https://www.unabridgedsoftware.com/), [**PQINA**](https://pqina.nl/), [**Bejamas**](https://bejamas.io), [**Nathan Smith**](https://sonspring.com), [**Monarch Air Group**](https://monarchairgroup.com), [**Getform.io**](https://getform.io), [**Mercury Jets**](https://www.mercuryjets.com), and [**OCEG**](https://www.oceg.org)
+* **Backers**: Tyler Gaw, [Ariel Salminen](https://arie.ls), [Peter deHaan](https://about.me/peterdehaan), Melanie Sumner, [Ben Nash](https://www.bennash.com), Alejandro Rodríguez, [Mat Marquis](https://hire.wil.to), [Philip Borenstein](https://pborenstein.com), [Jérôme Coupé](https://www.webstoemp.com), [Nicolas Hoizey](https://nicolas-hoizey.com), [Mike Aparicio](https://mikeaparicio.com), [Ben Myers](https://benmyers.dev), Katie Sylor-Miller, [Mark Buskbjerg](https://markbuskbjerg.dk), [mortendk](https://morten.dk), Aaron Hans, [Lauris Consulting](https://lauris-webdev.com), John Meyerhofer, Todd Libby, [Luke Bonaccorsi](https://lukeb.co.uk), shawn j sandy, [Jenn Schiffer](https://jennmoney.biz), [Dimitrios Grammatikogiannis](https://dgrammatiko.online), Devin Clark, [Eric Bailey](https://ericwbailey.design/), Manuel Matuzovic, [Higby](https://higby.io), [Tim Giles](https://www.tgiles.dev/), Kyosuke Nakamura, [Horacio Gonzalez](https://twitter.com/LostInBrittany), [Hans Gerwitz](https://hans.gerwitz.com/), [Makoto Kawasaki](https://makotokw.com), [Rob Sterlini](https://robsterlini.co.uk), [Josh Crain](https://joshcrain.io), [Nick Nisi](https://nicknisi.com), [John SJ Anderson](https://genehack.org), Ryan Swaney, Richard  Hemmer, [Alistair Shepherd](https://alistairshepherd.uk/), [Flaki](https://flak.is), [Angelique Weger](https://angeliqueweger.com), John Hall, [Scott McCracken](https://scottmccracken.net), [James Steinbach](https://jamessteinbach.com), [Miriam Suzanne](https://oddbird.net/), [Ivo Herrmann](https://ivoherrmann.com/), [Bentley Davis](https://BentleyDavis.com), [vince falconi](https://tattooed.dev), [Martin Schneider](https://martinschneider.me), [Stephanie Eckles](https://thinkdobecreate.com), [Frontend Weekly Tokyo](https://frontendweekly.tokyo/), [Chris Burnell](https://chrisburnell.com), [Ximenav Vf.](https://ximenavf.com/), Rich Holman, Kasper Storgaard, [Kevin Healy](https://kevhealy.com), [Dorin Vancea](https://dorinvancea.com), Greg Gibson, [Hidde](https://hidde.blog), Michelle Barker, [Alesandro Ortiz](https://AlesandroOrtiz.com), [David A. Herron](https://www.david-herron.com/), [Paul Robert Lloyd](https://paulrobertlloyd.com), [Andrea Vaghi](https://www.andreavaghi.dev), Bryan Robinson, [Ashur Cabrera](https://ashur.cab/rera), [Raymond Camden](https://www.raymondcamden.com), John Meguerian, [Joe Lamyman](https://joelamyman.co.uk), [Ara Abcarians](https://itsmeara.com), [Dan Ryan](https://dryan.com/), Sam, [Brett Nelson](https://wipdeveloper.com/), [Paul Welsh](https://www.nonbreakingspace.co.uk), [Ingo Steinke](https://www.ingo-steinke.com/), [Melanie Richards](http://melanie-richards.com), [Noel Forte](https://forte.is/), Marco Zehe, Wes Ruvalcaba, [Luc Poupard](https://www.kloh.ch), [Entle Web Solutions](https://www.entle.co), [Ken Hawkins](https://AllAboutKen.com), [Fershad Irani](https://www.fershad.com), [Nikita Dubko](https://mefody.dev/), [Aaron Gustafson](https://www.aaron-gustafson.com), [Chris](https://www.chrisswithinbank.net/), [Christian Miles](https://cjlm.ca), [Benjamin Geese](https://benjamingeese.de), [Marcus Relacion](https://www.marcusrelacion.com), [Netin nopeustesti](https://netinnopeustesti.com/), [Sia Karamalegos](https://sia.codes/), [Raphael Höser](https://hoeser.dev), [Cthos](https://alextheward.com), [Saneef Ansari](https://saneef.com), [Flemming Meyer](https://fokus.design/), Colin Fahrion, [Dan Burzo](https://danburzo.ro), [Jon Kuperman](https://jonkuperman.com/), [Michel van der Kroef](https://neckam.nl), [Dan Ott](https://dtott.com), [Mobilemall.pk](https://mobilemall.pk/), [Cheap VPS](https://vpsdime.com/), [David Darnes](https://darn.es), [Jon Roobottom](https://roobottom.com), [Dana Byerly](https://danabyerly.com), [Oisín Quinn](https://oisin.io), [Renkaatsopivasti](https://renkaatsopivasti.fi), [Windesol Sähkön Kilpailutus](https://windesol.fi), [Luke Mitchell](https://www.interroban.gg), SignpostMarv, [THE PADDING](https://paddn.com/hk), [Bob Monsour](https://www.bobmonsour.com/), Patrick Byrne, zapscribbles, quinnanya, [Richmond Insulation](https://www.centralvainsulation.com), [Cory Birdsong](https://birdsong.dev), Aram ZS, Frank Reding, Andy Stevenson, [HelppoHinta.fi](https://helppohinta.fi/), Robin Rendle, [Tanner Dolby](https://tannerdolby.com), [jpoehnelt](https://justin.poehnelt.com), [Richmond Concrete](https://www.richmondconcretepros.com), [Andrew Weisbeck](https://geauxweisbeck4.dev), [CelineDesign](https://www.celinedesign.com), Nic Chan, Duc Lam, [Alex Zappa](https://alex.zappa.dev/), [Stephen Bell](https://steedgood.com), [xdesro](https://henry.codes), [Alexander Wunschik](https://www.wunschik.it), alistairtweedie, [Tom](https://tomquinonero.com), Robert Haselbacher, [Lene](https://www.lenesaile.com), Brett DeWoody, [Meta Tier List](https://metatierlist.com), [Iva Tech](https://ivatech.dev), kylepfeeley, Daniel Saunders, [Dan Urbanowicz](https://danurbanowicz.com), [dan leatherman](https://danleatherman.com/), Josh Vickerson, [Viewality Media](https://www.viewalitymedia.com/), [Aviator Game](https://aviatorgame.guru), [Softermii](https://www.softermii.com), Eric Carlisle, Claus Conrad, Eric Gallager, [Matt Obee](https://mattobee.com), [CBD Review](https://cbd.topreview.com)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v2.0.0-beta.3: One solitary serverless bug fix. (2023-01-30)</h2>
+      <pre>## What's Changed
+* Fixes serverlessFilePath is not defined (2.0.0-beta.2) #2782 by @mrmartineau in https://github.com/11ty/eleventy/pull/2783
+
+## New Contributors
+* @mrmartineau made their first contribution in https://github.com/11ty/eleventy/pull/2783
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v2.0.0-beta.2...v2.0.0-beta.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v2.0.0-beta.2 (2023-01-26)</h2>
+      <pre>The first bug-fix follow up to the [long awaited 2.0.0-beta.1](https://github.com/11ty/eleventy/releases/tag/v2.0.0-beta.1).
+
+## Features
+
+* Adds `eleventy.env.runMode` to global data. #2770
+
+## Bug Fixes
+
+* Fix for Plugin Compatibility Checks on Vite and WebC plugins. #2758 
+* Fix a large number of issues requiring dev server restart to see content updates. #2773 #2755
+* Use `eleventy-dev-server@1.0.3` (fixes `domDiff` option): https://github.com/11ty/eleventy-dev-server/issues/48
+
+## Housekeeping
+
+**Full Changelog**: https://github.com/11ty/eleventy/compare/v2.0.0-beta.1...v2.0.0-beta.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v2.0.0-beta.1, the very first beta release of Eleventy 2.0 (2023-01-18)</h2>
+      <pre>**🚨 The full release notes are available on [The Eleventy Blog: The Very First Beta Release of Eleventy v2.0](https://www.11ty.dev/blog/eleventy-v2-beta/) or you can [watch me talk about this release on YouTube](https://www.youtube.com/watch?v=TcTR0TLqM3I).**
+
+The very first Eleventy 2.0 Beta release is now available on the `@beta` channel and we’re looking for Beta testers! You can try it out now:
+
+```sh
+# Local project
+npm install @11ty/eleventy@beta
+
+# Global install
+npm install @11ty/eleventy@beta -g
+```
+
+Read more about [local versus global installation](https://www.11ty.dev/docs/global-installation/).
+
+New to Eleventy? Eleventy is a flexible and production-ready site generator known for its zero-client JavaScript footprint, [speedy sites, speedy builds](https://www.11ty.dev/docs/performance/), and [full control over the output](https://www.youtube.com/watch?v=b4frtsT4Cgo). Watch [The State of Eleventy in Two Minutes](https://www.youtube.com/watch?v=EZfNr-YblBE) or [read more about Eleventy’s project goals.](https://www.11ty.dev/docs/)
+
+
+## The Big Features
+
+### Smaller, More Secure
+
+* ✅ Dependencies decreased by **32.1%**: [211 modules](https://npmgraph.js.org/?q=@11ty/eleventy@2.0.0-beta.1) ([311 in v1.0.2](https://npmgraph.js.org/?q=@11ty/eleventy@1.0.2))
+* ✅ `node_modules` file weight decreased by **77.8%**: 34.3 MB (155 MB in v1.0.2)
+* ✅ [**30.5% faster** `npm install`](https://docs.google.com/spreadsheets/d/1lkeWOhEXTNh0yxWaNOl_UFOHQea2YnSHit4QLjqXUb8/edit?usp=sharing)
+
+### Faster Builds
+
+* Improved build performance (tested on [a sample 500 page site](https://docs.google.com/spreadsheets/d/1-H3wmT7q7m7G7d5M_dCLxQOiAAX3TP0byQdf0pP1fAQ/edit?usp=sharing) against v1.0.2) using:
+  * Liquid: ✅ **18.18% faster**
+  * Nunjucks: ✅ **17.74% faster**
+  * Markdown (with Liquid): ✅ **17.95% faster**
+  * JavaScript (11ty.js): ✅ **8.33% faster**
+* [`--incremental` for incremental builds](https://www.11ty.dev/docs/usage/incremental/) [#108](https://github.com/11ty/eleventy/issues/108#issuecomment-1362030361)
+  * Smarter incremental builds with support for layout dependencies, [registered dependencies on custom templates](https://www.11ty.dev/docs/languages/custom/#registering-dependencies), dependencies in `pagination` data or [`eleventyImport`](https://www.11ty.dev/docs/collections/#declare-your-collections-for-incremental-builds) [#975](https://github.com/11ty/eleventy/issues/975)
+* [`--ignore-initial` command line option](https://www.11ty.dev/docs/usage/#ignore-initial-to-run-eleventy-without-an-initial-build) to skip the first build (best paired with `--incremental`)
+* Use [emulated passthrough copy](https://www.11ty.dev/docs/copy/#emulate-passthrough-copy-during-serve) to serve passthrough files directly without triggering a build (will still work with live reload) [#2456](https://github.com/11ty/eleventy/issues/2456)
+
+### Plugins
+
+* Support for [WebC, the new single file format for web components](https://www.11ty.dev/docs/languages/webc/)
+* [Eleventy Edge](https://www.11ty.dev/docs/plugins/edge/) will render Eleventy templates in an Edge Function for dynamic content _(bundled with Eleventy)_
+* [Eleventy Dev Server](https://www.11ty.dev/docs/dev-server/) replaces Browsersync, adds support for DOM-diffing live reloads. [#1305](https://github.com/11ty/eleventy/issues/1305) _(bundled with Eleventy)_
+* [Render Plugin](https://www.11ty.dev/docs/plugins/render/) will render any template syntax inside other files _(bundled with Eleventy)_
+* [Internationalization (i18n) Plugin](https://www.11ty.dev/docs/plugins/i18n/) makes it easy to create localized sites _(bundled with Eleventy)_
+* [HTML `<base>` Plugin](https://www.11ty.dev/docs/plugins/html-base/) makes it easy to deploy your site to any folder path without changing any content (works great with the path prefix feature) _(bundled with Eleventy)_
+* Support for the [Vite plugin](https://www.11ty.dev/docs/server-vite/)
+
+### And more…
+
+* Support for [aliasing to an existing template language](https://www.11ty.dev/docs/languages/custom/#aliasing-an-existing-template-language) [#2248](https://github.com/11ty/eleventy/issues/2248#issuecomment-1341732716)
+  * This unlocks TypeScript or JSX in Eleventy when you use `esbuild-register` and alias `11ty.ts` or `11ty.tsx` to `11ty.js`.
+* [Event arguments](https://www.11ty.dev/docs/events/#event-arguments) unlock new plugin abilities: `dir` (input/output/includes/data/layouts locations),
+`outputMode` (where the templates are going: `fs`, `json`, `ndjson`), `runMode` (`build`, `watch`, or `serve`), or `results` for the processed Eleventy output.
+* Memory usage improvements to [Pagination](https://www.11ty.dev/docs/pagination/)
+
+## Breaking Changes
+
+**⚠️ Rather than review this list, it’d be faster to use the `eleventy-upgrade-helper` plugin, which runs a suite of tests to see whether or not you need to worry about these breaking changes in your project: https://github.com/11ty/eleventy-upgrade-help**
+
+
+* Bump minimum Node version to [Node 14+](https://github.com/nodejs/release#release-schedule) [#2336](https://github.com/11ty/eleventy/issues/2336)
+* [Disable indented code blocks in Markdown](https://www.11ty.dev/docs/languages/markdown/#indented-code-blocks) by default [#2438](https://github.com/11ty/eleventy/issues/2438)
+* [Both `.git` and nested `node_modules` folders are ignored by default](https://www.11ty.dev/docs/ignores/#configuration-api-added-in-v1.0.0) (previously we ignored `node_modules/**`, now `**/node_modules/**`) [#2436](https://github.com/11ty/eleventy/issues/2436)
+* [Dates will now be stripped from the parent directory for `page.fileSlug` when the file name is `index.*`](https://www.11ty.dev/docs/data-eleventy-supplied/#fileslug). e.g. `YYYY-MM-DD-myslug/index.md` has a `page.fileSlug` of `myslug` when previously it was `YYYY-MM-DD-myslug` [#1947](https://github.com/11ty/eleventy/issues/1947) [#2111](https://github.com/11ty/eleventy/pull/2111)
+* Dots in global data file names should be preserved in key name for data cascade [#1242](https://github.com/11ty/eleventy/issues/1242) [#1912](https://github.com/11ty/eleventy/pull/1912)
+* Removes deprecated in v1.0 (and undocumented) `renderData` feature (use Computed Data instead) [#2356](https://github.com/11ty/eleventy/issues/2356)
+* Removes [pre-processing global JSON data files with a template language](https://www.11ty.dev/docs/data-preprocessing/) [#2728](https://github.com/11ty/eleventy/issues/2728)
+* Removes [`--passthroughall` command line flag](https://www.11ty.dev/docs/copy/#passthrough-everything) [#2682](https://github.com/11ty/eleventy/issues/2682)
+* Major dependency bumps:
+  * `liquidjs` from v9 to v10 [Release notes](https://github.com/harttle/liquidjs/releases/tag/v10.0.0)  [#2678](https://github.com/11ty/eleventy/issues/2678)
+  * `luxon` from v2 to v3 [Release notes](https://github.com/moment/luxon/blob/master/CHANGELOG.md#300-2022-07-09)
+  * `markdown-it` from v12 to v13 [Release notes](https://github.com/markdown-it/markdown-it/blob/master/CHANGELOG.md#1300---2022-04-22)
+
+## The Small Features
+
+* Adds support for configuration default file names `eleventy.config.js` and `eleventy.config.cjs` in addition to `.eleventy.js` [#1029](https://github.com/11ty/eleventy/issues/1029)
+* [`addShortcode` is now async-friendly](https://www.11ty.dev/docs/shortcodes/#asynchronous-universal-shortcodes) [#2726](https://github.com/11ty/eleventy/issues/2726)
+* [`addFilter` is now async-friendly](https://www.11ty.dev/docs/filters/#asynchronous-universal-filters) [#2536](https://github.com/11ty/eleventy/issues/2536) (also adds an `addAsyncFilter` API method)
+* File watching:
+  * Eleventy Dev Server includes a [`watch` option](https://www.11ty.dev/docs/dev-server/#options) to trigger live reloads on file changes outside of your Eleventy build. Works great when you’re using a bundler in parallel!
+  * Decoupled ignore APIs for template processing (`eleventyConfig.ignores`) and [file watching (`eleventyConfig.watchIgnores`)](https://www.11ty.dev/docs/watch-serve/#configuration-api) [#893](https://github.com/11ty/eleventy/issues/893)
+* Access [advanced `recursive-copy` options in passthrough file copy](https://www.11ty.dev/docs/copy/#advanced-options) [#1686](https://github.com/11ty/eleventy/pull/1686)
+  * Unlocks passthrough copy with symlinks [#530](https://github.com/11ty/eleventy/issues/530)
+* [`log` filter supports chaining](https://www.11ty.dev/docs/filters/log/#using-log-in-filter-chains) [#2467](https://github.com/11ty/eleventy/pull/2467)
+* Adds [new `git Created` date option](https://www.11ty.dev/docs/dates/#setting-a-content-date-in-front-matter) [#2468](https://github.com/11ty/eleventy/pull/2468)
+* Adds [options for `read` and `encoding` to custom data formats](https://www.11ty.dev/docs/data-custom/#usage-with-options)
+  * This unlocks using [binary files (like images) to populate the Data Cascade](https://www.11ty.dev/docs/data-custom/#feed-exif-image-data-into-the-data-cascade)
+
+### Even Smaller Features
+
+* [`setDataFileSuffixes` API method to customize Template and Directory data file suffixes](https://www.11ty.dev/docs/config/#change-file-suffix-for-data-files) (or opt-out of the Template and Directory Data Files feature) [#2681](https://github.com/11ty/eleventy/issues/2681)
+* [Serverless option `singleTemplateScope: false`](https://www.11ty.dev/docs/plugins/serverless/#compile-the-data-cascade-for-the-project) simplifies using collections in serverless mode. [#2736](https://github.com/11ty/eleventy/issues/2736)
+* A variety of bug fixes for `--serve` issues that required server restarts.
+* Data Consistency:
+  * `this.page` and `this.eleventy` are now available on [Shortcodes](https://www.11ty.dev/docs/shortcodes/#scoped-data-in-shortcodes), [🆕 Filters](https://www.11ty.dev/docs/filters/#scoped-data-in-filters), [🆕 Linters](https://www.11ty.dev/docs/config/#linters), and [🆕 Transforms](https://www.11ty.dev/docs/config/#transforms)
+  * [`page` and `content` on Collection entries](https://www.11ty.dev/docs/collections/#collection-item-data-structure)
+* Adds [`getCollectionItemIndex` universal filter](https://www.11ty.dev/docs/filters/collection-items/#getcollectionitemindex) [#2676](https://github.com/11ty/eleventy/issues/2676)
+* Throw error on circular layout dependencies [#2076](https://github.com/11ty/eleventy/pull/2076)
+* Plugins can now reference `eleventyConfig.pathPrefix` [#2526](https://github.com/11ty/eleventy/issues/2526)
+* [`generatePageOnEmptyData` to generate an empty results page](https://www.11ty.dev/docs/pagination/#generating-an-empty-results-page) with an empty paginated data set [#1698](https://github.com/11ty/eleventy/pull/1698) [#756](https://github.com/11ty/eleventy/issues/756) [#731](https://github.com/11ty/eleventy/issues/731) [#2208](https://github.com/11ty/eleventy/pull/2208)
+* Creating an empty JSON data file no longer throws an error [#2299](https://github.com/11ty/eleventy/issues/2299)
+
+## Housekeeping
+
+* Full issue list: https://github.com/11ty/eleventy/milestone/38?closed=1
+* Full changelog: https://github.com/11ty/eleventy/compare/v1.0.2...v2.0.0-beta.1
+
+
+## Thank You Notes
+
+This project would not be possible without our lovely community. Thank you to everyone that built something with Eleventy ([×669 authors on our web site!](/authors/)), wrote a blog post about Eleventy, [contributed code](https://github.com/11ty/eleventy/graphs/contributors), wrote a plugins, [helped with documentation](https://github.com/11ty/11ty-website/graphs/contributors), asked questions, answered questions, braved [The Leaderboards](https://www.11ty.dev/speedlify/), participated on Discord, filed issues, attended (or organized!) a meetup, said a kind word on social media ❤️.
+
+* A **huge thank you to [Netlify](https://www.netlify.com/)**, especially:  @biilmann, Chris Bach, Lauren Sell (alum), and Claire Knight, without whom this release would not have been possible.
+* 🏆 A special thanks to @pdehaan for their tireless contributions on the Eleventy Issue tracker.
+* Yet more thanks to the all star Discord Moderators and Meetup Coordinators @BenDMyers, @clottman, @dleatherman, @darthmall, @nachtfunke, @siakaramalegos and @5t3ph.
+* All of our [supporters on Open Collective](https://opencollective.com/11ty) ❤️
+* [Contribute on Open Collective](https://opencollective.com/11ty)
+* [How else can you contribute to Eleventy?](https://www.11ty.dev/docs/community/)
+
+### Pull Requests From
+
+@AleksandrHovhannisyan 🆕, @amareshsm ×2 🆕, @binyamin, @DamianOsipiuk 🆕, @epelc ×2 🆕, @j-f1 🆕, @Jaza 🆕, @kentaroi 🆕, @kev4ev 🆕, @LeoSchae 🆕, @milahu ×3, @nasivuela 🆕, @NickColley 🆕, @NotWoods, @Obayanju 🆕, @Snapstromegon ×16 (wow! 🤯), @TheDocTrier 🆕, @thinkverse 🆕, @TigersWay 🆕, @wes-goulet 🆕
+
+### Read more from the Community
+
+* [New Features and Upgrade Considerations for Eleventy v2.0.0](https://11ty.rocks/posts/new-features-upgrade-considerations-eleventy-version-2/) by @5t3ph
+
+### Open Collective Supporters
+
+* **Gold Sponsors**: [**Sanity.io**](https://www.sanity.io), [**Nordhealth**](https://nordhealth.com), [**CloudCannon**](https://cloudcannon.com/), [**Transloadit**](https://transloadit.com)
+* **Silver Sponsors**: [**Unabridged Software**](https://www.unabridgedsoftware.com/), [**PQINA**](https://pqina.nl/), [**Bejamas**](https://bejamas.io), [**Nathan Smith**](https://sonspring.com), [**Monarch Air Group**](https://monarchairgroup.com), [**Getform.io**](https://getform.io), [**Mercury Jets**](https://www.mercuryjets.com), and [**OCEG**](https://www.oceg.org)
+* **Backers**: Tyler Gaw, [Ariel Salminen](https://arie.ls), [Peter deHaan](https://about.me/peterdehaan), Melanie Sumner, [Ben Nash](https://www.bennash.com), Alejandro Rodríguez, [Mat Marquis](https://hire.wil.to), [Philip Borenstein](https://pborenstein.com), [Jérôme Coupé](https://www.webstoemp.com), [Nicolas Hoizey](https://nicolas-hoizey.com), [Mike Aparicio](https://mikeaparicio.com), [Ben Myers](https://benmyers.dev), Katie Sylor-Miller, [Mark Buskbjerg](https://markbuskbjerg.dk), [mortendk](https://morten.dk), Aaron Hans, [Lauris Consulting](https://lauris-webdev.com), John Meyerhofer, Todd Libby, [Luke Bonaccorsi](https://lukeb.co.uk), shawn j sandy, [Jenn Schiffer](https://jennmoney.biz), [Dimitrios Grammatikogiannis](https://dgrammatiko.online), Devin Clark, [Eric Bailey](https://ericwbailey.design/), Manuel Matuzovic, Kyosuke Nakamura, [Tim Giles](https://www.tgiles.dev/), [Hans Gerwitz](https://hans.gerwitz.com/), [Makoto Kawasaki](https://makotokw.com), [Horacio Gonzalez](https://twitter.com/LostInBrittany), [Rob Sterlini](https://robsterlini.co.uk), [Josh Crain](https://joshcrain.io), [Søren Birkemeyer](https://annualbeta.com), Richard  Hemmer, [Nick Nisi](https://nicknisi.com), [John SJ Anderson](https://genehack.org), Ryan Swaney, [Alistair Shepherd](https://alistairshepherd.uk), [Ivo Herrmann](https://ivoherrmann.com/), [Flaki](https://flak.is), John Hall, [Scott McCracken](https://scottmccracken.net), [James Steinbach](https://jamessteinbach.com), [Miriam Suzanne](https://oddbird.net/), [Angelique Weger](https://angeliqueweger.com), [Bentley Davis](https://BentleyDavis.com), [vince falconi](https://tattooed.dev), [Martin Schneider](https://martinschneider.me), [Stephanie Eckles](https://thinkdobecreate.com), [Frontend Weekly Tokyo](https://frontendweekly.tokyo/), [Chris Burnell](https://chrisburnell.com), [Ximenav Vf.](https://ximenavf.com/), Rich Holman, Kasper Storgaard, [Kevin Healy](https://kevhealy.com), Greg Gibson, [Hidde](https://hidde.blog), Michelle Barker, [Alesandro Ortiz](https://AlesandroOrtiz.com), [David A. Herron](https://www.david-herron.com/), [Paul Robert Lloyd](https://paulrobertlloyd.com), [Andrea Vaghi](https://www.andreavaghi.dev), Bryan Robinson, [Ashur Cabrera](https://ashur.cab/rera), [Raymond Camden](https://www.raymondcamden.com), John Meguerian, [Joe Lamyman](https://joelamyman.co.uk), [Dorin Vancea](https://dorinvancea.com), [Ara Abcarians](https://itsmeara.com), [Paul Welsh](https://www.nonbreakingspace.co.uk), [Ingo Steinke](https://www.ingo-steinke.com/), [Dan Ryan](https://dryan.com/), Sam, [Brett Nelson](https://wipdeveloper.com/), [Melanie Richards](http://melanie-richards.com), Marco Zehe, Wes Ruvalcaba, [Luc Poupard](https://www.kloh.ch), [Noel Forte](https://forte.is/), [Entle Web Solutions](https://www.entle.co), [Ken Hawkins](https://AllAboutKen.com), [Fershad Irani](https://www.fershad.com), [Nikita Dubko](https://mefody.dev/), [Aaron Gustafson](https://www.aaron-gustafson.com), [Chris](https://www.chrisswithinbank.net/), [Christian Miles](https://cjlm.ca), [Benjamin Geese](https://benjamingeese.de), [Marcus Relacion](https://www.marcusrelacion.com), [Netin nopeustesti](https://netinnopeustesti.com/), [Cthos](https://alextheward.com), [Sia Karamalegos](https://sia.codes/), [Jon Kuperman](https://jonkuperman.com/), [Raphael Höser](https://hoeser.dev), [Saneef Ansari](https://saneef.com), [Flemming Meyer](https://fokus.design/), Colin Fahrion, [Dan Burzo](https://danburzo.ro), [Dan Ott](https://dtott.com), [Mobilemall.pk](https://mobilemall.pk/), [Cheap VPS](https://vpsdime.com/), [David Darnes](https://darn.es), [Michel van der Kroef](https://neckam.nl), [Jon Roobottom](https://roobottom.com), [Dana Byerly](https://danabyerly.com), [Oisín Quinn](https://oisin.io), [Renkaatsopivasti](https://renkaatsopivasti.fi), [Windesol Sähkön Kilpailutus](https://windesol.fi), [Luke Mitchell](https://www.interroban.gg), SignpostMarv, [THE PADDING](https://paddn.com/hk), [Bob Monsour](https://www.bobmonsour.com/), Patrick Byrne, zapscribbles, Frank Reding, quinnanya, [Richmond Insulation](https://www.centralvainsulation.com), [Cory Birdsong](https://birdsong.dev), Aram ZS, Andy Stevenson, [HelppoHinta.fi](https://helppohinta.fi/), Robin Rendle, [Tanner Dolby](https://tannerdolby.com), [jpoehnelt](https://justin.poehnelt.com), [Richmond Concrete](https://www.richmondconcretepros.com), [Andrew Weisbeck](https://geauxweisbeck4.dev), [Tom](https://tomquinonero.com), [CelineDesign](https://www.celinedesign.com), Nic Chan, Duc Lam, [Alex Zappa](https://alex.zappa.dev/), [Stephen Bell](https://steedgood.com), Brett DeWoody, alistairtweedie, [Meta Tier List](https://metatierlist.com), [xdesro](https://henry.codes), [Alexander Wunschik](https://www.wunschik.it), Robert Haselbacher, [Lene](https://www.lenesaile.com), [Iva Tech](https://ivatech.dev), kylepfeeley, Daniel Saunders, [Dan Urbanowicz](https://danurbanowicz.com), [dan leatherman](https://danleatherman.com/), [Viewality Media](https://www.viewalitymedia.com/), [Aviator Game](https://aviatorgame.guru), [Softermii](https://www.softermii.com), Eric Carlisle, Claus Conrad, [CBD Review](https://cbd.topreview.com), Eric Gallager
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v1.0.2: One bug fix for Liquid Shortcode Argument Parsing (2022-08-16)</h2>
+      <pre>## Eleventy v1.0.2 🎈🐀⚡️🕚
+
+* [Full docs for v1.0.2 on our web site](https://v1-0-2.11ty.dev/docs/)
+
+This project would not be possible without our lovely community. Thank you to everyone that built something with Eleventy ([×595 authors on our web site!](https://v1-0-2.11ty.dev/authors/)), wrote a blog post about Eleventy, [contributed code to core](https://github.com/11ty/eleventy/graphs/contributors) or plugins, [documentation](https://github.com/11ty/11ty-website/graphs/contributors), asked questions, answered questions, braved [The Leaderboards](https://www.11ty.dev/speedlify/), participated on Discord, filed issues, attended (or organized!) a meetup, said a kind word on Twitter ❤️.
+
+* 🏆 A super special thanks to [Peter DeHaan](https://github.com/pdehaan) for their tireless contributions on the Eleventy Issue tracker.
+* All of our [supporters on Open Collective](https://opencollective.com/11ty) ❤️
+  * Gold Sponsors: [**Sanity.io**](https://www.sanity.io), [**Nordhealth**](https://nordhealth.com), [**CloudCannon**](https://cloudcannon.com/eleventy-cms/) and Silver Sponsors: [**Set Creative Studio**](https://set.studio), [**Unabridged Software**](https://www.unabridgedsoftware.com/), [**PQINA**](https://pqina.nl/), [**The Coders Guild**](https://thecodersguild.org.uk/), [**Bejamas**](https://bejamas.io), [**Nathan Smith**](https://sonspring.com), [**Flatirons Development**](https://flatironsdevelopment.com), [**Monarch Air Group**](https://monarchairgroup.com), [**Ben Nash**](https://www.bennash.com/), [**getform.io**](https://getform.io/), [**OCEG**](https://www.oceg.org/), [**Mercury Jets**](https://www.mercuryjets.com/)
+  * A full list of Backers can be found below!
+* [Contribute on Open Collective](https://opencollective.com/11ty)
+* [How else can you contribute to Eleventy?](https://v1-0-2.11ty.dev/docs/how-to-support/)
+
+### Install or Upgrade
+
+* Install to your local project: `npm install @11ty/eleventy`
+* Already installed in your local project? Upgrade your version: `npm update @11ty/eleventy`
+* _Read more about [local project versus global installation](https://v1-0-2.11ty.dev/docs/global-installation/)_
+
+## Features
+
+* Fixes for liquid argument parsing on shortcodes #2154 #2348 #2367 #2369
+  * Help from @epelc @lexoyo @denisenadal @mahnunchik @harttle
+
+### Milestone
+
+All bug fix issues can be perused at the GitHub milestone:
+https://github.com/11ty/eleventy/milestone/39?closed=1
+
+### Major Version Dependency Upgrades
+
+There are no major version dependency updates [between 1.0.2 and 1.0.1](https://github.com/11ty/eleventy/compare/v1.0.1...v1.0.2).
+
+## THANK YOU NOTES
+
+**Gold Sponsors**: [**Sanity.io**](https://www.sanity.io), [**Nordhealth**](https://nordhealth.com), [**CloudCannon**](https://cloudcannon.com/eleventy-cms/)
+
+**Silver Sponsors**: [**Set Creative Studio**](https://set.studio), [**Unabridged Software**](https://www.unabridgedsoftware.com/), [**PQINA**](https://pqina.nl/), [**The Coders Guild**](https://thecodersguild.org.uk/), [**Bejamas**](https://bejamas.io), [**Nathan Smith**](https://sonspring.com), [**Flatirons Development**](https://flatironsdevelopment.com), [**Monarch Air Group**](https://monarchairgroup.com), [**Ben Nash**](https://www.bennash.com/), [**getform.io**](https://getform.io/), [**OCEG**](https://www.oceg.org/), [**Mercury Jets**](https://www.mercuryjets.com/)
+
+**OpenCollective Monthly Backers**: [Viljami Salminen](https://viljamis.com), Tyler Gaw, [Peter deHaan](https://about.me/peterdehaan), Melanie Sumner, Alejandro Rodríguez, [Mat Marquis](https://hire.wil.to), [Philip Borenstein](https://pborenstein.com), [Jérôme Coupé](https://www.webstoemp.com), [Max Böck](https://mxb.dev), [Bryce Wray](https://www.brycewray.com), [Kristof Michiels](https://krs.tf), [Nicolas Hoizey](https://nicolas-hoizey.com), [Mike Aparicio](https://mikeaparicio.com), [Ben Myers](https://benmyers.dev), Katie Sylor-Miller, [Mark Buskbjerg](https://markbuskbjerg.dk), [mortendk](https://morten.dk), Aaron Hans, [Lauris Consulting](https://lauris-webdev.com), John Meyerhofer, Todd Libby, [Luke Bonaccorsi](https://lukeb.co.uk), [Dimitrios Grammatikogiannis](https://dgrammatiko.online), [Wellness Researched](https://wellnessresearched.com), Devin Clark, [Eric Bailey](https://ericwbailey.design/), [Dave Rupert](https://daverupert.com), Manuel Matuzovic, Phil Hawksworth, shawn j sandy, [Jenn Schiffer](https://jennmoney.biz), Tianyu Ge, Kyosuke Nakamura, [Hans Gerwitz](https://hans.gerwitz.com/), [Makoto Kawasaki](https://makotokw.com), [Horacio Gonzalez](https://twitter.com/LostInBrittany), Matthew Tole, [Ivan Buncic](https://ivanbuncic.com), [Rob Sterlini](https://robsterlini.co.uk), Mark Boulton, [Søren Birkemeyer](https://annualbeta.com), Richard  Hemmer, [Nick Nisi](https://nicknisi.com), Andrew Harvard, [John SJ Anderson](https://genehack.org), Ryan Swaney, [Tim Giles](https://www.tgiles.dev/), [Alistair Shepherd](https://alistairshepherd.uk), [Ivo Herrmann](https://ivoherrmann.com/), [Flaki](https://flak.is), John Hall, [Scott McCracken](https://scottmccracken.net), [James Steinbach](https://jamessteinbach.com), [Miriam Suzanne](https://oddbird.net/), [Bentley Davis](https://BentleyDavis.com), [Angelique Weger](https://angeliqueweger.com), [vince falconi](https://tattooed.dev), [Martin Schneider](https://martinschneider.me), [Stephanie Eckles](https://thinkdobecreate.com), [Frontend Weekly Tokyo](https://frontendweekly.tokyo/), [Ferpection](https://ferpection.com), [Josh Crain](https://joshcrain.io), [Chris Burnell](https://chrisburnell.com), [Ximenav Vf.](https://ximenavf.com/), [Juan Miguel](https://www.apirocket.io), Rich Holman, Kasper Storgaard, [Kevin Healy](https://kevhealy.com), Greg Gibson, [Hidde](https://hidde.blog), Michelle Barker, [Alesandro Ortiz](https://AlesandroOrtiz.com), [David A. Herron](https://www.david-herron.com/), [Paul Robert Lloyd](https://paulrobertlloyd.com), [Andrea Vaghi](https://www.andreavaghi.dev), Bryan Robinson, [Ashur Cabrera](https://ashur.cab/rera), [Raymond Camden](https://www.raymondcamden.com), John Meguerian, [Joe Lamyman](https://joelamyman.co.uk), [Jeffrey A Morgan](https://jam1401.dev), [Brett Nelson](https://wipdeveloper.com/), [Paul Welsh](https://www.nonbreakingspace.co.uk), [Ingo Steinke](https://www.ingo-steinke.com/), [Melanie Richards](http://melanie-richards.com), [Dorin Vancea](https://dorinvancea.com), Marco Zehe, Wes Ruvalcaba, [Luc Poupard](https://www.kloh.ch), [Entle Web Solutions](https://www.entle.co), [Ken Hawkins](https://AllAboutKen.com), [Ara Abcarians](https://itsmeara.com), [Fershad Irani](https://www.fershad.com), [Nikita Dubko](https://mefody.dev/), [Aaron Gustafson](https://www.aaron-gustafson.com), [Chris](https://www.chrisswithinbank.net/), Sam, [Benjamin Geese](https://benjamingeese.de), [Marcus Relacion](https://www.marcusrelacion.com), [Netin nopeustesti](https://netinnopeustesti.com/), Bobby Ray, [Christian Miles](https://cjlm.ca), [Cthos](https://alextheward.com), [Sia Karamalegos](https://sia.codes/), [Daniel Ryan](https://twitter.com/dryan), [Raphael Höser](https://hoeser.dev), [Noel Forte](https://forte.is/), [Saneef Ansari](https://saneef.com), [Flemming Meyer](https://fokus.design/), Colin Fahrion, [Dan Burzo](https://danburzo.ro), [Jon Kuperman](https://jonkuperman.com/), [Dan Ott](https://dtott.com), [Mobilemall.pk](https://mobilemall.pk/), [Cheap VPS](https://vpsdime.com/), [David Darnes](https://darn.es), [Jon Roobottom](https://roobottom.com), [Dana Byerly](https://danabyerly.com), [Oisín Quinn](https://oisin.io), [Renkaatsopivasti](https://renkaatsopivasti.fi), [Windesol Sähkön Kilpailutus](https://windesol.fi), [Luke Mitchell](https://www.interroban.gg), SignpostMarv, [THE PADDING](https://paddn.com/hk), [Bob Monsour](https://www.bobmonsour.com/), Patrick Byrne, zapscribbles, Frank Reding, quinnanya, [Richmond Insulation](https://www.centralvainsulation.com), [Cory Birdsong](https://birdsong.dev), Aram ZS, [Michel van der Kroef](https://neckam.nl), Vinicius Depizzol, Andy Stevenson, [HelppoHinta.fi](https://helppohinta.fi/), [Tanner Dolby](https://tannerdolby.com), [jpoehnelt](https://justin.poehnelt.com), [Ingo Sobolewski](https://www.sobolewski.cz), [Andrew Weisbeck](https://geauxweisbeck4.dev), [Richmond Concrete](https://www.richmondconcretepros.com), [Tom](https://tomquinonero.com), CelineDesign, Nic Chan, Duc Lam, [Alex Zappa](https://alex.zappa.dev/), [Stephen Bell](https://steedgood.com), Brett DeWoody, alistairtweedie, [Meta Tier List](https://metatierlist.com), Robert Haselbacher, [Lene](https://www.lene.dev/)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v1.0.1: It’s Elementary (2022-04-18)</h2>
+      <pre>## Eleventy v1.0.1 🎈🐀⚡️🕚
+
+* [Full docs for v1.0.1 on our web site](https://v1-0-1.11ty.dev/docs/)
+
+This project would not be possible without our lovely community. Thank you to everyone that built something with Eleventy ([×524 authors on our web site!](https://v1-0-1.11ty.dev/authors/)), wrote a blog post about Eleventy, [contributed code to core](https://github.com/11ty/eleventy/graphs/contributors) or plugins, [documentation](https://github.com/11ty/11ty-website/graphs/contributors), asked questions, answered questions, braved [The Leaderboards](https://www.11ty.dev/speedlify/), participated on Discord, filed issues, attended (or organized!) a meetup, said a kind word on Twitter ❤️.
+
+* 🏆 A super special thanks to [Peter DeHaan](https://github.com/pdehaan) for their tireless contributions on the Eleventy Issue tracker.
+* All of our [supporters on Open Collective](https://opencollective.com/11ty) ❤️
+  * Gold Sponsors: [**Sanity.io**](https://www.sanity.io), [**Nordhealth**](https://nordhealth.com) and Silver Sponsors: [**Set Creative Studio**](https://set.studio), [**Unabridged Software**](https://www.unabridgedsoftware.com/), [**PQINA**](https://pqina.nl/), [**The Coders Guild**](https://thecodersguild.org.uk/), [**Bejamas**](https://bejamas.io), [**Nathan Smith**](https://sonspring.com), [**Flatirons Development**](https://flatironsdevelopment.com), [**Monarch Air Group**](https://monarchairgroup.com)
+  * A full list of Backers can be found below!
+* [Contribute on Open Collective](https://opencollective.com/11ty)
+* [How else can you contribute to Eleventy?](https://v1-0-1.11ty.dev/docs/how-to-support/)
+
+### Install or Upgrade
+
+* Install to your local project: `npm install @11ty/eleventy`
+* Already installed in your local project? Upgrade your version: `npm update @11ty/eleventy`
+* _Read more about [local project versus global installation](https://v1-0-1.11ty.dev/docs/global-installation/)_
+
+### Features
+
+* Performance improvement to `lodash/isPlainObject` resulted in 28% build time improvement to web.dev (and likely made your project speedier too!) #2214 #2219
+  * [Read more on Twitter](https://twitter.com/eleven_ty/status/1494357363926749185)
+* Adds new `date: git Last Modified` feature to fix issues with Content Dates in production environments #142 
+  * [Content Dates docs](https://v1-0-1.11ty.dev/docs/dates/)
+* New default global data: `eleventy.version` (holds the current version e.g. `1.0.1`) and `eleventy.generator` (for use in `<meta name="generator" content="{{ eleventy.generator }}">`) #1217 #2293
+  * [Eleventy-Supplied Data docs](https://v1-0-1.11ty.dev/docs/data-eleventy-supplied/#eleventy-variable)
+* Extra argument to the pagination `before` callback with current template’s data. #1209
+  * [Pagination docs: The `before` callback](https://v1-0-1.11ty.dev/docs/pagination/#the-before-callback)
+* Improved error messaging with Transforms and Plugins #646
+* jsdoc Comments for ConsoleLogger class #1914
+
+### Milestone
+
+All bug fix issues can be perused at the GitHub milestone:
+https://github.com/11ty/eleventy/milestone/37?closed=1
+
+Some highlights:
+
+* #2221 Changes default serverless generated file content to fix bug with encoded path variables in Eleventy Serverless.
+* #2267 Regression with `addExtension` API and `return;` in the `compile` function to skip/ignore a template.
+* #2217 Fix for `this.defaultRenderer is not a function` error when using an `async function` with `addExtension`’s `compile`
+* #1313 When your config file throws an error, Eleventy would sometimes still process data files when using `--version` and `--help`.
+* #2298 Bug with front matter in layouts
+* #2278 Obscure bug with passthrough copy and --incremental mistakenly creating a file instead an output folder
+* #2145 Fix to allow setting a layout via `addGlobalData` configuration API
+* #2179 Fix `addGlobalData` configuration API to execute once per build
+
+
+### Major Version Dependency Upgrades
+
+There are no major version dependency updates [between 1.0.1 and 1.0.0](https://github.com/11ty/eleventy/compare/v1.0.0...v1.0.1).
+
+## THANK YOU NOTES
+
+**First-time GitHub contributions** from @vseventer
+
+**Gold Sponsors**: [**Sanity.io**](https://www.sanity.io), [**Nordhealth**](https://nordhealth.com)
+
+**Silver Sponsors**: [**Set Creative Studio**](https://set.studio), [**Unabridged Software**](https://www.unabridgedsoftware.com/), [**PQINA**](https://pqina.nl/), [**The Coders Guild**](https://thecodersguild.org.uk/), [**Bejamas**](https://bejamas.io), [**Nathan Smith**](https://sonspring.com), [**Flatirons Development**](https://flatironsdevelopment.com), [**Monarch Air Group**](https://monarchairgroup.com)
+
+**OpenCollective Monthly Backers**: [Viljami Salminen](https://viljamis.com), Tyler Gaw, [Peter deHaan](https://about.me/peterdehaan), Melanie Sumner, Alejandro Rodríguez, [Mat Marquis](https://hire.wil.to), [Philip Borenstein](https://pborenstein.com), [Jérôme Coupé](https://www.webstoemp.com), [Max Böck](https://mxb.dev), [Bryce Wray](https://www.brycewray.com), [Kristof Michiels](https://krs.tf), [Yuhei Yasuda](https://yuheiy.com/), [Nicolas Hoizey](https://nicolas-hoizey.com), [Mike Aparicio](https://mikeaparicio.com), [Ben Myers](https://benmyers.dev), Katie Sylor-Miller, Todd Libby, [Mark Buskbjerg](https://markbuskbjerg.dk), [mortendk](https://morten.dk), Aaron Hans, [Lauris Consulting](https://lauris-webdev.com), John Meyerhofer, [Luke Bonaccorsi](https://lukeb.co.uk), [Dimitrios Grammatikogiannis](https://dgrammatiko.online), [Keenan Payne](https://keenanpayne.com), Devin Clark, [Eric Bailey](https://ericwbailey.design/), [Dave Rupert](https://daverupert.com), Manuel Matuzovic, Phil Hawksworth, [Wellness Researched](https://wellnessresearched.com), Tianyu Ge, Kyosuke Nakamura, [Hans Gerwitz](https://hans.gerwitz.com/), [Makoto Kawasaki](https://makotokw.com), shawn j sandy, [Horacio Gonzalez](https://twitter.com/LostInBrittany), Matthew Tole, [Ivan Buncic](https://ivanbuncic.com), [Ned Zimmerman](https://bight.dev), [Jenn Schiffer](https://jennmoney.biz), Mark Boulton, [Søren Birkemeyer](https://annualbeta.com), Richard  Hemmer, [Nick Nisi](https://nicknisi.com), Andrew Harvard, Takuya Fukuju, [John SJ Anderson](https://genehack.org), Ryan Swaney, [Alistair Shepherd](https://alistairshepherd.uk), [Ivo Herrmann](https://ivoherrmann.com/), [Flaki](https://flak.is), [Rob Sterlini](https://robsterlini.co.uk), Kyle Mitofsky, John Hall, [Scott McCracken](https://scottmccracken.net), [James Steinbach](https://jamessteinbach.com), [Miriam Suzanne](https://oddbird.net/), [Bentley Davis](https://BentleyDavis.com), [Evan Harrison](https://www.evan-harrison.com), [Higby](https://www.higby.io), [vince falconi](https://tattooed.dev), [Martin Schneider](https://martinschneider.me), [Stephanie Eckles](https://thinkdobecreate.com), [Frontend Weekly Tokyo](https://frontendweekly.tokyo/), [Angelique Weger](https://angeliqueweger.com), Ross Kinney, [Tim Giles](https://www.tgiles.dev/), [Matt DeCamp](https://decamp.dev), [Chris Burnell](https://chrisburnell.com), [Ximenav Vf.](https://ximenavf.com/), [Juan Miguel](https://www.apirocket.io), Kasper Storgaard, [Kevin Healy](https://kevhealy.com), Greg Gibson, [hiddedevries.nl](https://hiddedevries.nl/en/blog), [Jeremy Caldwell](https://www.jeremycaldwell.me), Michelle Barker, [Alesandro Ortiz](https://AlesandroOrtiz.com), [David A. Herron](https://www.david-herron.com/), [Paul Robert Lloyd](https://paulrobertlloyd.com), [Andrea Vaghi](https://www.andreavaghi.dev), Bryan Robinson, [Ashur Cabrera](https://ashur.cab/rera), [Raymond Camden](https://www.raymondcamden.com), John Meguerian, [Joe Lamyman](https://joelamyman.co.uk), [Jeffrey A Morgan](https://jam1401.dev), [Brett Nelson](https://wipdeveloper.com/), [Paul Welsh](https://www.nonbreakingspace.co.uk), [Ingo Steinke](https://www.ingo-steinke.com/), [Josh Crain](https://joshcrain.io), [Melanie Richards](http://melanie-richards.com), Rich Holman, Lewis Nyman, [Dorin Vancea](https://dorinvancea.com), Marco Zehe, Wes Ruvalcaba, [Luc Poupard](https://www.kloh.ch), [Ferpection](https://ferpection.com), [Entle Web Solutions](https://www.entle.co), [Ken Hawkins](https://AllAboutKen.com), [Sami Singh](https://httpster.io), [Fershad Irani](https://www.fershad.com), [Nikita Dubko](https://mefody.dev/), [Aaron Gustafson](https://www.aaron-gustafson.com), [Chris](https://www.chrisswithinbank.net/), [Benjamin Geese](https://benjamingeese.de), [Marcus Relacion](https://www.marcusrelacion.com), [Netin nopeustesti](https://netinnopeustesti.com/), Bobby Ray, [Cthos](https://alextheward.com), [Sia Karamalegos](https://sia.codes/), [Christian Miles](https://cjlm.ca), [Raphael Höser](https://hoeser.dev), [Saneef Ansari](https://saneef.com), [Flemming Meyer](https://fokus.design/), Colin Fahrion, [Dan Burzo](https://danburzo.ro), Gaston Rampersad, [Jon Kuperman](https://jonkuperman.com/), [Dan Ott](https://dtott.com), [Mobilemall.pk](https://mobilemall.pk/), [Cheap VPS](https://vpsdime.com/), [David Darnes](https://darn.es), Sam, [Jon Roobottom](https://roobottom.com), [Dana Byerly](https://danabyerly.com), [Oisín Quinn](https://oisin.io), [Renkaatsopivasti](https://renkaatsopivasti.fi), [Windesol Sähkön Kilpailutus](https://windesol.fi), [Luke Mitchell](https://www.interroban.gg), SignpostMarv, [THE PADDING](https://paddn.com/web-design-hong-kong/), [Bob Monsour](https://www.bobmonsour.com/), Marc FILLEUL, Patrick Byrne, [Ara Abcarians](https://itsmeara.com), [Daniel Ryan](https://twitter.com/dryan), zapscribbles, Frank Reding, quinnanya, [Central Va Insulation](https://www.centralvainsulation.com), [Cory Birdsong](https://birdsong.dev), Aram ZS, [Michel van der Kroef](https://neckam.nl), Vinicius Depizzol, Andy Stevenson, [HelppoHinta.fi](https://helppohinta.fi/), [jpoehnelt](https://justin.poehnelt.com), [Jina Anne](https://www.sushiandrobots.com), [Ingo Sobolewski](https://www.sobolewski.cz)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v1.0.0: First! (2022-01-10)</h2>
+      <pre>## Eleventy v1.0.0 🎈🐀⚡️
+
+* [Full docs for v1.0.0 on our web site](https://v1-0-0.11ty.dev/docs/)
+
+This project would not be possible without our lovely community. Thank you to everyone that built something with Eleventy ([×476 authors on our web site!](https://v1-0-0.11ty.dev/authors/)), wrote a blog post about Eleventy, [contributed code to core](https://github.com/11ty/eleventy/graphs/contributors) or plugins, [documentation](https://github.com/11ty/11ty-website/graphs/contributors), asked questions, answered questions, braved [The Leaderboards](https://www.11ty.dev/speedlify/), participated on Discord, filed issues, attended (or organized!) a meetup, said a kind word on Twitter ❤️.
+
+I really wish I had time to list everyone, but I do want to mention a few folks that have made tremendous contributions:
+
+* 🏆 A super special thanks to [Peter DeHaan](https://github.com/pdehaan) and [Binyamin Green](https://github.com/binyamin) for their tireless contributions on the Eleventy Issue tracker.
+* All of our [supporters on Open Collective](https://opencollective.com/11ty) ❤️
+  * Gold Sponsors: [**Sanity.io**](https://www.sanity.io), [**Nordhealth**](https://nordhealth.com), [**Screen recorder for Mac**](https://www.movavi.com/screen-recorder-mac/)
+  * Silver Sponsors: [**Piccalilli**](https://swop.link/open-collective), [**ESLint**](https://eslint.org/), [**Unabridged Software**](https://www.unabridgedsoftware.com/), [**PQINA**](https://pqina.nl/), [**The Coders Guild**](https://thecodersguild.org.uk/), [**Bejamas**](https://bejamas.io)
+  * A full list of Backers can be found below!
+* [Contribute on Open Collective](https://opencollective.com/11ty)
+* [How else can you contribute to Eleventy?](https://v1-0-0.11ty.dev/docs/how-to-support/)
+
+### Install or Upgrade
+
+* Install to your local project: `npm install @11ty/eleventy`
+* Already installed in your local project? Upgrade your version: `npm update @11ty/eleventy`
+* _Read more about [local project versus global installation](https://v1-0-0.11ty.dev/docs/global-installation/)_
+
+#### Upgrading from 0.x? Try out the `eleventy-upgrade-help` plugin.
+
+This will log breaking changes that apply to your project. https://github.com/11ty/eleventy-upgrade-help
+
+### Breaking Changes
+
+* Changes Node requirement to 12+ (previously: 10+)
+* Data Deep Merge is now enabled by default
+  * [Docs: Data Deep Merge](https://v1-0-0.11ty.dev/docs/data-deep-merge/) and _Issue #1753_
+* The ordering in the Data Cascade changed slightly: _Front Matter in Layout_ files moved to be lower precedence, below Template and Data Directory Files (but higher than Global Data).
+  * [Docs: Data Cascade](https://v1-0-0.11ty.dev/docs/data-cascade/) and _Issue #915_
+* `liquidjs` v9 major version upgrade changes:
+  * `setLiquidOptions`: Eleventy default for `dynamicPartials` changed to `true`. _Issue #240_ **Unquoted include paths will need to be updated or revert using `dynamicPartials: false`**
+  * `setLiquidOptions`: Liquid option `strict_filters` renamed to `strictFilters`. _Issue #1390_
+  * `setLiquidOptions`: Eleventy default for `strict_filters`/`strictFilters` changed to `true`. _Issue #222_
+  * Relative path includes (e.g. `{% include "./include.liquid" %}`) now look relative to the file first, and the includes directory second. _[Issue #2090](https://github.com/11ty/eleventy/issues/2090#issuecomment-970440427)_
+* `ejs` v3 major version upgrade changes: _Issue #1392_
+  * Removes `<% include /included %>` style include, use `<%- include('/included') -%>` instead. **Don’t forget the dash `<%-` and `-%>`!**
+* `.gitignore` files outside of your project root are no longer supported when calculating ignored paths in Eleventy. _Issue #364_
+  * ✅ {ROOT}/.gitignore (supported)
+  * 🚫 {INPUT_DIR}/.gitignore (*not* supported)
+  * ✅ {ROOT}/.eleventyignore (supported)
+  * ✅ {INPUT_DIR}/.eleventyignore (supported)
+* If you rely on the `YYYY-MM-DD` format in your file names for content dates, these are now assumed to be UTC instead of local dates. Take care if you use `liquid`’s built-in `date` format with `page.date`!
+  * [Docs: Content Dates](https://v1-0-0.11ty.dev/docs/dates/), _Issue #1752_, and https://github.com/harttle/liquidjs/issues/375
+* `browser-sync`:
+  * Default to `ui: false` _Issue #843_
+  * Default to `ghostMode: false` _Issue #841_
+  * [Re-enable these features using `eleventyConfig.setBrowserSyncConfig`](https://v1-0-0.11ty.dev/docs/watch-serve/#override-browsersync-server-options)
+* Removes the `jstl` template language. Use `11ty.js` instead. _Issue #1084_
+* Change to `dataTemplateEngine: false` by default. _Issue #174_
+
+Please use [`eleventy-upgrade-help`](https://github.com/11ty/eleventy-upgrade-help) to log breaking changes that apply to your project.
+
+### Features
+
+#### Major
+
+* Custom File Extension Handlers: applications and plugins can now add their own template types and tie them to a file extension.
+  * [Docs: Custom Template Languages](https://v1-0-0.11ty.dev/docs/languages/custom/) and _Issue #117_
+* Render Plugin, shortcodes to render other template languages.
+  * [Docs: Render Plugin](https://v1-0-0.11ty.dev/docs/plugins/render/)
+* Serverless Plugin, allow Eleventy templates to run in a serverless function for server side rendering.
+  * Use with [Netlify Functions](https://www.netlify.com/products/functions/) and [On-demand Builders](https://www.netlify.com/blog/2021/10/25/faster-more-reliable-page-loads-with-update-to-on-demand-builders/)
+  * [Docs: Serverless Plugin](https://v1-0-0.11ty.dev/docs/plugins/serverless/)
+* Adds support for `--to=json` and `--to=ndjson`
+  * [Docs: Command Line Usage](https://v1-0-0.11ty.dev/docs/usage/#to-can-output-json)
+  * Use Data Filter Selectors to opt-in data from the Data Cascade. [Docs: Configuration: Data Filter Selectors](https://v1-0-0.11ty.dev/docs/config/#data-filter-selectors)
+* Adds support for programmatic Eleventy (e.g. `new Eleventy()` in your Node.js script)
+  * [Docs: Programmatic API](https://v1-0-0.11ty.dev/docs/programmatic/)
+* Configuration: `addGlobalData` method.
+  * [Docs: Global Data from the Configuration API](https://v1-0-0.11ty.dev/docs/data-global-custom/) and _Issue #1280_
+  * Note also that JavaScript Global Data Files now receive data. [Docs: JavaScript Data Files](https://v1-0-0.11ty.dev/docs/data-js/#arguments-to-global-data-files)
+
+#### Minor
+
+* Passthrough Copy now throws an error if two or more files attempt to copy to the same output location. _Issue #1677_
+* For better URL-safe slugs by default, we now suggest using the new `slugify` global filter instead of the previous `slug`. `slug` is still included for backwards compatiblity. [`slugify` Docs](https://v1-0-0.11ty.dev/docs/filters/slugify/). [`eleventy-upgrade-help`](https://github.com/11ty/eleventy-upgrade-help) includes a permalink checker to compare `slug` and `slugify` output. _Issue #278_
+* Added support for protocol relative URLs in the `url` global filter (though technically accurate, using this method is discouraged). _Issue #1276_
+* New Eleventy supplied data:
+  * `eleventy` Global Data
+    * [Docs: Eleventy Supplied Data: `eleventy` Variable](https://v1-0-0.11ty.dev/docs/data-eleventy-supplied/#eleventy-variable) 
+  * Environment Variables:
+    * [Docs: Eleventy Supplied Data: Environment Variables](https://v1-0-0.11ty.dev/docs/data-eleventy-supplied/#environment-variables)
+    * `ELEVENTY_ROOT`
+    * `ELEVENTY_SOURCE`
+    * `ELEVENTY_SERVERLESS`
+* `tags` are now de-duped. _Issue #1876_
+* JavaScript functions in `eleventyComputed` now have access to global filters.
+  * [Docs: Computed Data](https://v1-0-0.11ty.dev/docs/data-computed/#using-javascript) and _Issue #1862_
+* Ignores
+  * `node_modules` are now ignored by default. [Docs: Ignores](https://v1-0-0.11ty.dev/docs/ignores/#node_modules) and _Issue #383_
+  * Control ignores programmatically. [Docs: Ignores](https://v1-0-0.11ty.dev/docs/ignores/#configuration-api) and _Issue #894_ _#1405_
+* Configuration: Access to `eleventyConfig.dir` in plugins. _Issue #922_
+* Configuration: Events are now Async-friendly
+  * [Docs: Events](https://v1-0-0.11ty.dev/docs/events/) and _Issue #1363_
+* Replace `chalk` dependency with `kleur` _Issue #2113_
+* Adds template language-agnostic compilation caching for speeeeed _Issue #1529_
+* Fixes bug `--input=file.njk --output=.` would process 0 files. _Issue #1129_
+* Fixes bug where Eleventy would stop processing templates in watch/serve mode after a compilation error. _Issue #1658_
+* Front matter parsing errors will now report the filename of the offending file in the error message. _Issue #1152_
+* [Option to opt-out of the `browser-sync` JavaScript snippet](https://v1-0-0.11ty.dev/docs/watch-serve/#opt-out-of-the-browsersync-javascript-snippet)
+* Warning when Transforms that return empty content. _Issue #1487_
+* Transforms now have access to `inputPath` _Issue #789_
+* Shows the preprocessed template engine name on the console for `html` or `md` files _Issue #1478_
+
+#### Nunjucks
+
+* Adds `eleventyConfig.setNunjucksEnvironmentOptions` method. _Issue #895_
+  * [Docs: Nunjucks](https://v1-0-0.11ty.dev/docs/languages/nunjucks/#optional-use-your-nunjucks-environment-options)
+* Adds `eleventyConfig.addNunjucksGlobal` method. _Issue #1060_
+
+#### Liquid
+
+* Adds support for asynchronous filters. _Issue #831_
+
+### Milestone
+
+All bug fix issues can be perused at the GitHub milestone:
+https://github.com/11ty/eleventy/milestone/32?closed=1
+
+Some internals highlights:
+* Improvements to stability with Nunjucks and shortcodes in `{% for %}` loops
+* Fix for `EMFILE: too many open files` errors
+* Use a named `browser-sync` instance. _Issue #1125_
+* Switch from `fs-extra` to `graceful-fs`
+
+### Major Version Dependency Upgrades
+
+These are convenience links provided. Major things of note are summarized in the Breaking Changes section above.
+
+* `liquidjs` from 6 to 9, release notes: [v7](https://github.com/harttle/liquidjs/blob/master/CHANGELOG.md#700-2019-02-14) [v8](https://github.com/harttle/liquidjs/blob/master/CHANGELOG.md#800-2019-03-10) [v9](https://github.com/harttle/liquidjs/blob/master/CHANGELOG.md#900-2019-08-26)
+* `luxon` from 1 to 2: (Node 12+ minimum) [Upgrade Guide](https://moment.github.io/luxon/#/upgrading)
+* `markdown-it` from 10 to 12, release notes: [v11](https://github.com/markdown-it/markdown-it/blob/master/CHANGELOG.md#1100---2020-05-20) [v12](https://github.com/markdown-it/markdown-it/blob/master/CHANGELOG.md#1200---2020-10-14)
+* `ejs` from 2 to 3. Release notes: [v3](https://github.com/mde/ejs/blob/main/CHANGELOG.md#v301-2019-11-23)
+* `mustache` from 2 to 4. Release notes: [v3](https://github.com/janl/mustache.js/blob/master/CHANGELOG.md#300--16-september-2018) [v4](https://github.com/janl/mustache.js/blob/master/CHANGELOG.md#400--16-january-2020)
+
+## THANK YOU NOTES
+
+**First-time GitHub contributions** from @d2s, @Snugug, @slightlyoff, @max, @valtlai, @harttle, @binyamin, @bnb, @NotWoods, @gobeli, @lxg, @GerHobbelt, @hirusi, @stuartpb, @milahu, @oscarotero, @jakemulley, @tannerdolby, @Snapstromegon, @knokmki612, @mariusschulz, @Holben888, @zidingz, @magua-io, @masguit42, @JKC-Codes, @ThewBear, @CodeFoodPixels, @dgrammatiko, @oscard0m, @monochromer 
+
+**Gold Sponsors**: [**Sanity.io**](https://www.sanity.io), [**Nordhealth**](https://nordhealth.com), [**Screen recorder for Mac**](https://www.movavi.com/screen-recorder-mac/)
+
+**Silver Sponsors**: [**Piccalilli**](https://swop.link/open-collective), [**ESLint**](https://eslint.org/), [**Unabridged Software**](https://www.unabridgedsoftware.com/), [**PQINA**](https://pqina.nl/), [**The Coders Guild**](https://thecodersguild.org.uk/), [**Bejamas**](https://bejamas.io)
+
+**OpenCollective Monthly Backers**: [Viljami Salminen](https://viljamis.com), Tyler Gaw, [Peter deHaan](https://about.me/peterdehaan), Melanie Sumner, Alejandro Rodríguez, [Mat Marquis](https://hire.wil.to), [Philip Borenstein](https://pborenstein.com), [Jérôme Coupé](https://www.webstoemp.com), [Max Böck](https://mxb.dev), [Bryce Wray](https://www.brycewray.com), Kristof Michiels, [Yuhei Yasuda](https://yuheiy.com/), [Ed Spencer](https://edspencer.me.uk), [Nicolas Hoizey](https://nicolas-hoizey.com), [Mike Aparicio](https://mikeaparicio.com), Todd Libby, [Luke Bonaccorsi](https://lukeb.co.uk), [Ben Myers](https://benmyers.dev), Katie Sylor-Miller, [Mark Buskbjerg](https://markbuskbjerg.dk), [mortendk](https://morten.dk), Aaron Hans, [Lauris Consulting](https://lauris-webdev.com), John Meyerhofer, Ben Hyrman, [Keenan Payne](https://keenanpayne.com), [Dimitrios Grammatikogiannis](https://dgrammatiko.online), Devin Clark, [Eric Bailey](https://ericwbailey.design/), [Dave Rupert](https://daverupert.com), Manuel Matuzovic, Phil Hawksworth, Brian Koser, Tianyu Ge, Vadim Makeev, Kyosuke Nakamura, [Hans Gerwitz](https://hans.gerwitz.com/), [Makoto Kawasaki](https://makotokw.com), [Horacio Gonzalez](https://twitter.com/LostInBrittany), Matthew Tole, [Wellness Researched](https://wellnessresearched.com), [Ned Zimmerman](https://bight.dev), Mark Boulton, [Søren Birkemeyer](https://annualbeta.com), Richard Hemmer, [Nick Nisi](https://nicknisi.com), Andrew Harvard, shawn j sandy, Takuya Fukuju, [John SJ Anderson](https://genehack.org), Ryan Swaney, [Alistair Shepherd](https://alistairshepherd.uk), [Reach Digital](https://www.reachdigital.nl/), [Ivo Herrmann](https://ivoherrmann.com/), [Flaki](https://flak.is), Kyle Mitofsky, [Jenn Schiffer](https://jennmoney.biz), John Hall, [Scott McCracken](https://scottmccracken.net), [James Steinbach](https://jamessteinbach.com), [Miriam Suzanne](https://oddbird.net/), [Bentley Davis](https://BentleyDavis.com), [Evan Harrison](https://www.evan-harrison.com), [Rob Sterlini](https://robsterlini.co.uk), [vince falconi](https://tattooed.dev), [Martin Schneider](https://martinschneider.me), [Stephanie Eckles](https://thinkdobecreate.com), [Frontend Weekly Tokyo](https://frontendweekly.tokyo/), [Higby](https://www.higby.io), [Matt DeCamp](https://decamp.dev), [Chris Burnell](https://chrisburnell.com), [Ximenav Vf.](https://ximenavf.com/), [Juan Miguel](https://www.apirocket.io), [Angelique Weger](https://angeliqueweger.com), Kasper Storgaard, [Kevin Healy](https://kevhealy.com), Greg Gibson, [hiddedevries.nl](https://hiddedevries.nl/en/blog), [Jeremy Caldwell](https://www.jeremycaldwell.me), Michelle Barker, [Alesandro Ortiz](https://AlesandroOrtiz.com), [David A. Herron](https://www.david-herron.com/), [Paul Robert Lloyd](https://paulrobertlloyd.com), [Andrea Vaghi](https://www.andreavaghi.dev), Bryan Robinson, Ashur Cabrera, [Raymond Camden](https://www.raymondcamden.com), John Meguerian, [Joe Lamyman](https://joelamyman.co.uk), Stuart Robson, [Jeffrey A Morgan](https://jam1401.dev), [Joshua Ray](https://ollomedia.com), Tim Giles, [Brett Nelson](https://wipdeveloper.com/), [Paul Welsh](https://www.nonbreakingspace.co.uk), [Ingo Steinke](https://www.ingo-steinke.com/), [Melanie Richards](http://melanie-richards.com), Rich Holman, Ross Kinney, Lewis Nyman, Dorin Vancea, Marco Zehe, Wes Ruvalcaba, [Luc Poupard](https://www.kloh.ch), [Johan Bové](https://johanbove.info), [Josh Crain](https://joshcrain.io), [Entle Web Solutions](https://www.entle.co), [Ken Hawkins](https://AllAboutKen.com), [Sami Singh](https://httpster.io), Fershad Irani, [Nikita Dubko](https://mefody.dev/), [Aaron Gustafson](https://www.aaron-gustafson.com), [Chris](https://www.chrisswithinbank.net/), [Ferpection](https://ferpection.com), [Benjamin Geese](https://benjamingeese.de), Maël Brunet, [Marcus Relacion](https://www.marcusrelacion.com), [Netin nopeustesti](https://netinnopeustesti.com/), Bobby Ray, [Sia Karamalegos](https://sia.codes/), [Christian Miles](https://cjlm.ca), [Raphael Höser](https://hoeser.dev), [Cthos](https://alextheward.com), [Saneef Ansari](https://saneef.com), [Flemming Meyer](https://fokus.design/), Colin Fahrion, [Dan Burzo](https://danburzo.ro), Gaston Rampersad, [Jon Kuperman](https://jonkuperman.com/), [Dan Ott](https://dtott.com), [Mobilemall.pk](https://mobilemall.pk/), [Cheap VPS](https://vpsdime.com/), [David Darnes](https://darn.es), [Jon Roobottom](https://roobottom.com), [Dana Byerly](https://danabyerly.com), [Renkaatsopivasti](https://renkaatsopivasti.fi), [Windesol Sähkön Kilpailutus](https://windesol.fi), [Luke Mitchell](https://www.interroban.gg), SignpostMarv, [THE PADDING](https://paddn.com/web-design-hong-kong/), Bob Monsour, Patrick Byrne, [Ara Abcarians](https://itsmeara.com), [Oisín Quinn](https://oisin.io), [Central Va Insulation](https://www.centralvainsulation.com), [Septic Richmond Va](https://www.kneedeepseptic.com)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v0.12.1 (2021-03-19)</h2>
+      <pre>## [v0.12.1 Documentation](https://v0-12-1.11ty.dev/docs/)
+
+### Install or Upgrade
+
+* Install to your local project: `npm install @11ty/eleventy`
+* Already installed in your local project? Upgrade your version: `npm update @11ty/eleventy`
+* _Read more about [local project versus global installation](https://v0-12-1.11ty.dev/docs/global-installation/)_
+
+### [How can you support Eleventy?](https://www.11ty.dev/docs/how-to-support/)
+
+* ⭐️ Star us on GitHub!
+* 🐦 Follow us on [Twitter @​eleven_ty](https://twitter.com/eleven_ty)!
+* 🎁 Support us on [Open Collective](https://opencollective.com/11ty)!
+
+Thank you to everyone that contributed code, documentation, answered questions, filed issues, said a kind word on Twitter ❤️
+
+## The TL;DR List
+
+### Fix for error messaging when attempting to use Node 8
+
+As of Eleventy v0.12.0, Node 10 is now required. Node 8 is end of life (EOL) and no longer supported by Node. There was a small bug in the 0.12.0 release that would not show friendly error messaging when attempting to use Node 8 with Eleventy. That has been fixed.
+
+## Administration
+
+* [Issues fixed in v0.12.1 Milestone](https://github.com/11ty/eleventy/milestone/35?closed=1)
+* [All code changes from v0.12.0 to v0.12.1](https://github.com/11ty/eleventy/compare/v0.12.0...v0.12.1)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v0.12.0 (2021-03-19)</h2>
+      <pre>## [v0.12.0 Documentation](https://v0-12-0.11ty.dev/docs/)
+
+### Install or Upgrade
+
+* Install to your local project: `npm install @11ty/eleventy`
+* Already installed in your local project? Upgrade your version: `npm update @11ty/eleventy`
+* _Read more about [local project versus global installation](https://v0-12-0.11ty.dev/docs/global-installation/)_
+
+### [How can you support Eleventy?](https://www.11ty.dev/docs/how-to-support/)
+
+* ⭐️ Star us on GitHub!
+* 🐦 Follow us on [Twitter @​eleven_ty](https://twitter.com/eleven_ty)!
+* 🎁 Support us on [Open Collective](https://opencollective.com/11ty)!
+
+Thank you to everyone that contributed code, documentation, answered questions, filed issues, said a kind word on Twitter ❤️
+
+## The TL;DR List
+
+### Node version support bumped from 8 to 10+
+
+Node 8 is end of life (EOL) and no longer supported by Node.
+
+### Dependency Major Release Bumps
+
+`pug` 2.0.4 to 3.0.2
+* Required for `npm audit` issue, tracking on Eleventy Issue: https://github.com/11ty/eleventy/issues/1674
+* 3.x requires Node 10+
+* `pug` release notes https://github.com/pugjs/pug/releases/tag/pug%403.0.0
+
+`chalk` 3.0.0 to 4.1.0
+* 4.x requires Node 10+
+* `chalk` release notes https://github.com/chalk/chalk/releases/tag/v4.0.0
+
+`fs-extra` 8.1.0 to 9.1.0
+* 9.x requires Node 10+
+* https://github.com/jprichardson/node-fs-extra/blob/master/CHANGELOG.md#900--2020-03-19
+
+## Administration
+
+* [Issues fixed in v0.12.0 Milestone](https://github.com/11ty/eleventy/milestone/34?closed=1)
+* [All code changes from v0.11.1 to v0.12.0](https://github.com/11ty/eleventy/compare/v0.11.1...v0.12.0)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v0.11.1 (2020-10-22)</h2>
+      <pre>## [v0.11.1 Documentation](https://v0-11-1.11ty.dev/docs/)
+
+### Install or Upgrade
+
+* Install to your local project: `npm install @11ty/eleventy`
+* Already installed in your local project? Upgrade your version: `npm update @11ty/eleventy`
+* _Read more about [local project versus global installation](https://v0-11-1.11ty.dev/docs/global-installation/)_
+
+### [How can you support Eleventy?](https://www.11ty.dev/docs/how-to-support/)
+
+* ⭐️ Star us on GitHub!
+* 🐦 Follow us on [Twitter @​eleven_ty](https://twitter.com/eleven_ty)!
+* 🎁 Support us on [Open Collective](https://opencollective.com/11ty)!
+
+Thank you to everyone that contributed code, documentation, answered questions, filed issues, said a kind word on Twitter ❤️
+
+## The TL;DR List
+
+### New Build Events
+
+* `afterBuild`, `beforeBuild` and Changed Files argument passed to `beforeWatch`
+  * Documentation: https://www.11ty.dev/docs/events/
+
+## Administration
+
+* [Issues fixed in v0.11.1 Milestone](https://github.com/11ty/eleventy/milestone/33?closed=1)
+* [All code changes from v0.11.0 to v0.11.1](https://github.com/11ty/eleventy/compare/v0.11.0...v0.11.1)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Eleventy v0.11.0: The Eponymous Release (2020-05-11)</h2>
+      <pre>## [v0.11.0 Documentation](https://v0-11-0.11ty.dev/docs/)
+
+### Install or Upgrade
+
+* Install to your local project: `npm install @11ty/eleventy`
+* Already installed in your local project? Upgrade your version: `npm update @11ty/eleventy`
+* _Read more about [local project versus global installation](https://v0-11-0.11ty.dev/docs/global-installation/)_
+
+### [How can you support Eleventy?](https://www.11ty.dev/docs/how-to-support/)
+
+* ⭐️ Star us on GitHub!
+* 🐦 Follow us on [Twitter @​eleven_ty](https://twitter.com/eleven_ty)!
+* 🎁 Support us on [Open Collective](https://opencollective.com/11ty)!
+
+Thank you to everyone that contributed code, documentation, answered questions, filed issues, said a kind word on Twitter ❤️
+
+## The TL;DR List
+
+### Computed Data
+
+Computed Data is a mechanism to transform the data at the end of the data cascade, before template rendering.
+
+* Read more: https://www.11ty.dev/docs/data-computed/
+* All the related issues: #481 #335 #1061 #1043 #1098 #1085 #1031 #1130 #973 #1114 #1138 #1069 #1137 Supersedes and deprecates old `renderData` feature (not removed yet): #942 #941 #289 #816 #912 
+
+### Incremental Builds
+
+* Incremental support for `--incremental` is ongoing. Follow along at https://github.com/orgs/11ty/projects/3
+* This version supports incremental passthrough copy. Changing a passthrough copy file during `--watch` or `--serve` only copies the changed file and does not trigger a full build. #977 
+
+### Shortcodes
+
+* In shortcodes you can now access page variable data under `this.page` without needing to pass in as an argument (works with Nunjucks, Liquid, 11ty.js JavaScript, Handlebars) #741
+
+### The Road to ESM
+
+* Adds support for `*.11ty.cjs` files (same as `*.11ty.js` files)—thanks @justinfagnani!  #826 #827
+  * Can use `.cjs` in config file, template/directory/global data files—thanks @gloryofrobots! #837 #848 
+
+### New Filters
+
+* Filters to retrieve next/previous items in collections. Thanks @pascalw! #529 #819 #983
+  * Docs: https://www.11ty.dev/docs/filters/collection-items/
+* Adds new `log` filter for easy console.log from inside templates. #929
+  * Docs: https://www.11ty.dev/docs/filters/log/
+
+## The Nitty Gritty List™
+
+* Adds `.npmignore` to streamline npm payload—thanks @pdehaan! #951 #962
+* Adds additional performance-related debug messages to help developers analyze and improve performance of builds: https://www.11ty.dev/docs/debug-performance/ #1078 
+* Make the priority of different file extensions explicit in Global Data—thanks @gloryofrobots! #794 #821 
+* Now parses a directory data file in the top level input directory. #935 #993
+* Support for cooldown period between builds during watch/serve. Adds Configuration API method `setWatchThrottleWaitTime` to set (in milliseconds). Useful if you use a Save All feature in your editor that saves multiple files at the same time. #559 Related to #977 Docs forthcoming: #1003
+* Adds `beforeWatch` build event (runs before a re-build during watch or serve, not the initial build) #1042 
+* To discourage huge passthrough copy in the build, we now show the number of files copied in console log output #1077 
+* Markdown templates (and thus markdown-it plugins) can receive and use data—thanks @blacksquaresa! #643 
+* Throw an error if an 11ty.js JavaScript template doesn’t return anything! Thanks @ithinkihaveacat #1013 #1012 
+* Retrieve a reference to existing Eleventy provided filters in with Configuration API method `getFilter`, docs pending #284 
+
+## Bug fixes
+
+* Fail silently on empty/null dates in front matter—thanks @DirtyF @dceddia! #850 #786
+* Copy improvements in comments/code style cleanup—thanks @samuelpath! #960 #970 #968 #992 #991 #987
+* Fix for errors being swallowed in the Error Handler 😭, reporting as `Cannot read property 'trim' of undefined`
+* A ton of bug fixes for `renderData` (details above in the Computed Data section)
+* `npm audit`: #1023 #1026 #1025
+
+## Administration
+
+* [Issues fixed in v0.11.0 Milestone](https://github.com/11ty/eleventy/milestone/31?closed=1)
+* [All code changes from v0.10.0 to v0.11.0](https://github.com/11ty/eleventy/compare/v0.10.0...v0.11.0)
+* [Code coverage stats for v0.11.0](https://github.com/11ty/eleventy/blob/v0.11.0/docs/coverage.md)
+
+### Dependency Major Release Bumps
+
+* `markdown-it` from v8.4.2 to v10.0.0. Read more: https://github.com/markdown-it/markdown-it/blob/master/CHANGELOG.md</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

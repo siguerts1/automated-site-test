@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for meilisearch/meilisearch"/>
+  <title>meilisearch/meilisearch Release Notes</title>
+</head>
+<body>
+  <h1>🚀 meilisearch/meilisearch - Release Notes</h1>
+  
+    <section>
+      <h2>v1.14.0-rc.2 🦫 (2025-04-01)</h2>
+      <pre>> [!WARNING]
+> Since this is a release candidate (RC), we do NOT recommend using it in a production environment. Is something not working as expected? We welcome [bug reports](https://github.com/meilisearch/meilisearch/issues/new/choose) and [feedback about new features](https://github.com/meilisearch/product/discussions).
+
+## 🦋 Fixes
+* enabling `rankingScoreThreshold` no longer causes `_rankingScore` to be miscalculated by @barloes and @dureuill in https://github.com/meilisearch/meilisearch/pull/5313
+* Validate dimensions of embedding when receiving documents with `_vectors` by @dureuill in https://github.com/meilisearch/meilisearch/pull/5478
+
+
+## ⚡ Performance
+
+* Improve performance of computing document stats by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5465
+
+
+## 🔎 Observability
+
+* More detailed Post Processing progress trace by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5468
+* Prefer camelCase for internal database sizes db name by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5464
+
+
+## New Contributors
+* @barloes made their first contribution in https://github.com/meilisearch/meilisearch/pull/5313
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.14.0-rc.1...v1.14.0-rc.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.14.0-rc.1 🦫 (2025-03-26)</h2>
+      <pre># What's Changed
+
+## Features
+
+### Add more progress levels to measure merging by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5422
+Computes the durations of each indexing step and displays them in the batch route. [#5356](https://github.com/meilisearch/meilisearch/pull/5356)
+
+> ⚠️ When working with it in the doc or the integrations, please consider that the content can change anytime. It must not be enforced.
+
+### Show database sizes batches by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5457
+
+Computes the size of each database and displays them in the batch route. [#5463](https://github.com/meilisearch/meilisearch/issues/5463)
+
+> ⚠️ When working with it in the doc or the integrations, please consider that the content can change anytime. It must not be enforced.
+
+## Other enhancements
+* Accept total batch size in human size by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5421
+* Avoid reindexing searchable order changes by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5402
+
+## Bug fixes
+* Geo update bug by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5407
+* Isolate word fst usage by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5415
+* Fix CI to work with merge queues by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5456
+
+## Dependencies bumps
+* Bump ring to v0.17.14 to compile on old aarch64 by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5423
+* Bump zip from 2.2.2 to 2.3.0 by @dependabot in https://github.com/meilisearch/meilisearch/pull/5426
+* Update Charabia v0.9.3 by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5454
+* Update mini-dashboard to v0.2.19 version by @curquiza in https://github.com/meilisearch/meilisearch/pull/5436
+
+
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.14.0-rc.0...v1.14.0-rc.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.14.0-rc.0 🦫 (2025-03-17)</h2>
+      <pre><!-- The following line should ONLY be put PRE-release changelogs -->
+> [!WARNING]
+> Since this is a release candidate (RC), we do NOT recommend using it in a production environment. Is something not working as expected? We welcome [bug reports[#new]]((https://github.com/meilisearch/meilisearch/issues/new)/choose) and [feedback about new features](https://github.com/meilisearch/product/discussions).
+
+Meilisearch v1.14 exposes a more granular way to express your filterable attributes! 🎉 This release also improves semantic search performance, embedding indexing speed, and a new route to get multiple documents by IDs.
+
+# New features and updates 🔥
+
+## Granular Filterable Attribute Settings
+
+This feature allows for the choice of the filter features of each filterable attribute with high granularity.
+Activating or deactivating a feature will have an impact on the indexing time.
+To use the feature, use the new `filterableAttributes` format in the settings route (`PATCH /indexes/INDEX_UID/settings`):
+
+```json
+{
+	"filterableAttributes": [
+	  {
+	    "attributePatterns": ["genre", "artist"], 
+	    "features": { "facetSearch": true, "filter": { "equality": true, "comparison": false } }
+	  },
+	  {
+	    "attributePatterns": ["rank"],
+	    "features": { "facetSearch": false, "filter": { "equality": true, "comparison": true } }
+	  },
+	  {
+	    "attributePatterns": ["albumId"],
+	    "features": { "facetSearch": false, "filter": { "equality": true, "comparison": false } }
+	  },
+	]
+}
+```
+
+> 🗒️  In this example, we activate/deactivate each feature depending on the usage of each filterable attribute, the `genre` and `artist` are expected to be strings so the facet search and the equality operators (`=`/`!=`) are activated, but, the comparison operators are deactivated (`>=`, `<=`, ...) because it's not useful and will save time during the indexing process.
+> However, the rank is expected to be a number, so the facet search is deactivated in favor of the the comparison operators.
+> Last, the albumId is expected to be unique, so only the equality operators (`=`/`!=`) are activated.
+
+For more details about this feature, please refer to its [public usage page](https://meilisearch.notion.site/API-usage-Settings-to-opt-out-indexing-features-filterableAttributes-1764b06b651f80aba8bdf359b2df3ca8).
+
+Done by @ManyTheFish in [#5254](https://github.com/meilisearch/meilisearch/pull/5254).
+
+## Composite Embedders
+
+This feature allows using different embedders at search and indexing time, which is useful to optimize the embedder to each situation:
+
+- Using a remote embedder for indexing in bulk, as remote embedders provide the highest bandwidth (embeddings/s)
+- Using a local embedder for answering search queries, as local embedders provide the lowest latency (time to first embedding)
+
+To use the feature, follow these steps:
+
+1. Enable the `Composite embedders` feature from the Cloud dashboard or with the following:
+```
+curl -H 'Content-Type: application/json' MEILISEARCH_URL/experimental-features -d '{ "compositeEmbedders": true }'
+```
+2. Send a settings task (`PATCH /indexes/INDEX_UID/settings`) containing an embedder with `source: "composite"`, and with the parameters `searchEmbedder` and `indexingEmbedder` describing the embedder at search time (resp. indexing time). For example, using a [Hugging Face inference endpoint](https://huggingface.co/inference-endpoints/dedicated).
+```jsonc
+{
+    "embedders": {
+        "text": {
+            "source": "composite",
+            "searchEmbedder": {
+                "source": "huggingFace", // locally computed embeddings using a model from the Hugging Face Hub
+                "model": "baai/bge-base-en-v1.5",
+                "revision": "a5beb1e3e68b9ab74eb54cfd186867f64f240e1a"
+            },
+            "indexingEmbedder": {
+                "source": "rest", // remotely computed embeddings using Hugging Face inference endpoints
+                "url": "https://URL.endpoints.huggingface.cloud",
+                "apiKey": "hf_XXXXXXX",
+                "documentTemplate": "Your {{doc.template}}",
+                "request": {
+                    "inputs": [
+                        "{{text}}",
+                        "{{..}}"
+                    ]
+                },
+                "response": [
+                    "{{embedding}}",
+                    "{{..}}"
+                ]
+            }
+        }
+    }
+}
+```
+3. Send documents to the index. They will be indexed remotely using the Hugging Face inference endpoint.
+4. Perform semantic search queries, they will be embedded using the local model fetched from the Hugging Face Hub.
+
+For more details about this feature, please refer to its [public usage page](https://www.notion.so/meilisearch/Composite-embedder-usage-14a4b06b651f81859dc3df21e8cd02a0?pvs=4#19f4b06b651f809ab3ecc0daae7d5856).
+
+Done by @dureuill in [#5371](https://github.com/meilisearch/meilisearch/pull/5371).
+
+## Other improvements
+
+* Get multiple documents by ids by @dureuill in [#5384](https://github.com/meilisearch/meilisearch/pull/5384)
+* Support merging update and replacement operations by @Kerollmops in [#5293](https://github.com/meilisearch/meilisearch/pull/5293)
+* Display the internal indexing steps with timings on the `/batches` route by @Kerollmops in [#5356](https://github.com/meilisearch/meilisearch/pull/5356)
+* exhaustive facet search by @ManyTheFish in [#5369](https://github.com/meilisearch/meilisearch/pull/5369)
+* Reduce RAM consumption of arroy by @irevoire in https://github.com/meilisearch/arroy/pull/105
+* Cache Embeddings in Search with an experimental feature by @dureuill in [#5418](https://github.com/meilisearch/meilisearch/pull/5418)
+* Extend the batch progress view to the indexing of vectors by @irevoire in [5420](https://github.com/meilisearch/meilisearch/pull/5420)
+
+# Fixes 🐞
+
+* Support fetching the pooling method from the model configuration by @dureuill in [#5355](https://github.com/meilisearch/meilisearch/pull/5355)
+* Make sure to delete useless prefixes by @Kerollmops in [#5413](https://github.com/meilisearch/meilisearch/pull/5413)
+
+# Misc
+
+* Dependencies updates
+  * Bump Ubuntu in the CI from 20.04 to 22.04 by @Kerollmops in [#5338](https://github.com/meilisearch/meilisearch/pull/5338)
+  * Bump heed to v0.22 by @irevoire and @Kerollmops in [#5406](https://github.com/meilisearch/meilisearch/pull/5406)
+* CIs and tests
+  * Improve test performance of get_index.rs  by @DerTimonius in [#5210](https://github.com/meilisearch/meilisearch/pull/5210)
+  * Ollama Integration Tests by @Kerollmops in [#5308](https://github.com/meilisearch/meilisearch/pull/5308)
+  * Ensure the settings routes are now configurated when a new field is added to the Settings struct  by @MichaScant in [#5149](https://github.com/meilisearch/meilisearch/pull/5149)
+  * Skip a snapshot test on Windows by @Kerollmops in [#5383](https://github.com/meilisearch/meilisearch/pull/5383)
+* Misc
+  * Rename `callTrace` into `progressTrace` by @Kerollmops in [#5364](https://github.com/meilisearch/meilisearch/pull/5364)
+  * Make composite embedders an experimental feature by @dureuill in [#5401](https://github.com/meilisearch/meilisearch/pull/5401)
+
+❤️ Thanks again to our external contributors:
+- [Meilisearch](https://github.com/meilisearch/meilisearch): @MichaScant
+- [Heed](https://github.com/meilisearch/heed): @oXtxNt9U
+- [Arroy](https://github.com/meilisearch/arroy): @ptondereau</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.3 🕊️ (2025-03-05)</h2>
+      <pre>## What's Changed
+* Bump mini-dashboard v0.2.18 by @Strift in https://github.com/meilisearch/meilisearch/pull/5385
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.13.2...v1.13.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.2 🕊️ (2025-02-27)</h2>
+      <pre>## What's Changed
+* Support dumpless upgrade for all v1.13 patches by @dureuill in https://github.com/meilisearch/meilisearch/pull/5376
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.13.1...v1.13.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.1 🕊️ (2025-02-26)</h2>
+      <pre>## What's Changed
+* Hotfix typo tolerance bug by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5346
+* Bump mini-dashboard to v0.2.17 by @Strift in https://github.com/meilisearch/meilisearch/pull/5367
+* Documents database stats by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5325
+* Fix the dumpless upgrade log by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5360
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.13.0...v1.13.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.0 🕊️ (2025-02-17)</h2>
+      <pre>Meilisearch v1.13 stabilizes AI-powered search integration! 🎉 This release also introduces two new experimental features: upgrading to new Meilisearch releases without generating a dump and making federated requests across multiple Meilisearch instances.
+
+<!-- The following lines should NOT be put in the PRE-release changelogs -->
+🧰 All official Meilisearch integrations (including SDKs, clients, and other tools) are compatible with this Meilisearch release. Integration deployment takes 4 to 48 hours after a new version becomes available.
+
+<!-- The following lines should NOT be put in the PRE-release changelogs -->
+Some SDKs might not include all new features. Consult the project repository for detailed information. Is a feature you need missing from your chosen SDK? Create an issue letting us know you need it, or, for open-source karma points, open a PR implementing it (we'll love you for that ❤️).
+
+# New features and updates 🔥
+
+## AI-powered search and vector store stabilization
+
+With v1.13, AI-powered search is available to all users by default and no longer requires manual activation.
+
+### Breaking Changes
+
+* `vectorStore` is no longer an accepted value for the `/experimental-features` route
+* Ollama URLs must end with either `/api/embed` or `/api/embeddings`
+* Modified error codes:
+  - `invalid_embedder` has been split into `invalid_search_embedder` and `invalid_similar_embedder`. These codes are returned when the `embedder` parameter of a request to `/search`, `/multi-search` or `/similar` specifies a non-existing embedder or is not a string
+  - `invalid_hybrid_query` has been renamed to `invalid_search_hybrid_query`. It is returned when the `hybrid` parameter contains unknown keys or is not either `null` or an object
+
+Done by @dureuill in https://github.com/meilisearch/meilisearch/pull/5232 & https://github.com/meilisearch/meilisearch/pull/5234
+
+## Experimental feature: Dumpless upgrades
+
+Use `--experimental-dumpless-upgrade` after updating the Meilisearch binary to migrate to a new release:
+
+```sh
+./meilisearch --experimental-dumpless-upgrade
+```
+
+This faster and more efficient process does not require you to generate a dump and pass it to Meilisearch when upgrading to a new release.
+
+> [!WARNING]
+> Meilisearch strongly recommends you generate a backup snapshot before migrating. This is an experimental feature, and failed upgrades may lead to database corruption.
+
+Read more about it [on the dedicated product discussion](https://github.com/orgs/meilisearch/discussions/804).
+
+Done by @irevoire and @dureuill in https://github.com/meilisearch/meilisearch/pull/5264
+
+## Experimental feature: Remote federated search requests
+
+Use remote federated search requests together with the `/multi-search` route to query multiple Meilisearch instances simultaneously. This is particularly useful when handling very large databases.
+
+First, use the `/experimental-features` route to enable `network`:
+
+```sh
+curl \
+  -X PATCH 'MEILISEARCH_URL/experimental-features/' \
+  -H 'Content-Type: application/json'  \
+  --data-binary '{
+    "network": true
+  }'
+```
+
+Next, set up your network of Meilisearch instances with a call to `PATCH /network` configuring one `self` and multiple `remotes`:
+
+```sh
+curl \
+  -X PATCH 'MEILISEARCH_URL/network/' \
+  -H 'Content-Type: application/json'  \
+  --data-binary '{
+    "remotes": {
+      "ms-0": {
+        "url": "http://ms-1235.example.meilisearch.io",
+        "searchApiKey": "Ecd1SDDi4pqdJD6qYLxD3y7VZAEb4d9j6LJgt4d6xas"
+      },
+      "ms-1": {
+        "url": "http://ms-4242.example.meilisearch.io",
+        "searchApiKey": "hrVu-OMcjPGElK7692K7bwriBoGyHXTMvB5NmZkMKqQ"
+      }
+    },
+    "self": "ms-0"
+  }'
+```
+Repeat this process with every instance in your network, then add documents. Do not send the same documents to different instances.
+Finally, make a `/multi-search` query with the new `federationOptions.remote`:
+
+```sh
+curl \
+  -X PATCH 'MEILISEARCH_URL/multi-search/' \
+  -H 'Content-Type: application/json'  \
+  --data-binary '{
+    "federation": {},
+    "queries": [
+        {
+            "q": "Batman returns dark",
+            "indexUid": "movies",
+            "federationOptions": {
+                "remote": "ms-0"
+            }
+        },
+        {
+            "q": "Batman returns dark",
+            "indexUid": "movies",
+            "federationOptions": {
+                "remote": "ms-1"
+            }
+        }
+    ]
+}'
+```
+
+Find more information about this feature on the [public usage page](https://meilisearch.notion.site/API-usage-Remote-search-request-f64fae093abf409e9434c9b9c8fab6f3?pvs=74)
+
+## Other improvements
+
+* Improve task auto-batching by exposing a way to limit the total size of a batch by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5223
+* Add Prometheus metrics to measure task queue latency by @takaebato in https://github.com/meilisearch/meilisearch/pull/5178
+* Speed up the request to list indexes by @irevoire in https://github.com/meilisearch/meilisearch/pull/5166
+* Add support for `GITHUB_TOKEN` authentication in installation script by @Sherlouk in https://github.com/meilisearch/meilisearch/pull/5216
+* Expose a new `usedDatabaseSize` field on the `/stats` route by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5314
+* Expose embeddings info on the `/stats` route by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5341
+
+# Fixes 🐞
+
+* Improve error message when an attribute is not filterable by @jameshiew in https://github.com/meilisearch/meilisearch/pull/5135
+* Make sure indexing embeddings is using the right number of threads by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5322
+* Dumpless upgrade will no longer corrupt the database in case of early stop by @irevoire in https://github.com/meilisearch/meilisearch/pull/5316
+* Fix export/import dump that contains batches data by @irevoire in https://github.com/meilisearch/meilisearch/pull/5310
+* Make sure indexing geo points works with PUT requests by @dureuill in https://github.com/meilisearch/meilisearch/pull/5332
+* Add back semantic search timeout from v1.11.3 by @dureuill in https://github.com/meilisearch/meilisearch/pull/5339
+
+# Misc
+
+* Dependency updates
+  * Upgrade dependencies to fix the `idna` severity issue by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5218
+* CIs and tests
+  * Split tests into separate files by @K-Kumar-01 in https://github.com/meilisearch/meilisearch/pull/5134, https://github.com/meilisearch/meilisearch/pull/5171, https://github.com/meilisearch/meilisearch/pull/5174
+  * Remove obsolete test code by @K-Kumar-01 in https://github.com/meilisearch/meilisearch/pull/5173
+  * Fix flaky batches test by @irevoire in https://github.com/meilisearch/meilisearch/pull/5175
+  * Remove hard coded task IDs to prevent flaky tests by @mhmoudr in https://github.com/meilisearch/meilisearch/pull/5182
+  * Improve test performance of get_index.rs by @DerTimonius in https://github.com/meilisearch/meilisearch/pull/5210
+* Other
+  * Instruct users to create custom reports on the benchboard by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5029
+  * Fix typo in a comment by @eltociear in https://github.com/meilisearch/meilisearch/pull/5184
+  * Replace hardcoded string with constants by @Gnosnay in https://github.com/meilisearch/meilisearch/pull/5169
+  * Refactor index-scheduler by @irevoire in https://github.com/meilisearch/meilisearch/pull/5199
+  * Refactor indexer by @dureuill in https://github.com/meilisearch/meilisearch/pull/5168
+  * Auto-generate OpenAPI spec by @irevoire in https://github.com/meilisearch/meilisearch/pull/4867 & https://github.com/meilisearch/meilisearch/pull/5231
+  * Merge bitmaps by using `Extend::extend` by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5221
+  * Fix issue introduced by dumpless upgrade by @manojks1999 in https://github.com/meilisearch/meilisearch/pull/5284
+  * Send the OSS analytics once per day instead of once per hour by @irevoire in https://github.com/meilisearch/meilisearch/pull/5312
+  * Log more metrics around HTTP embedder requests and ANNs in arroy by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5288
+  * Fix internal error when not correctly using the `documentTemplateMaxBytes` parameter by @dureuill in https://github.com/meilisearch/meilisearch/pull/5306
+  * When a batch is deleted it no longer keeps some internal data in the DB @Kerollmops and @irevoire in https://github.com/meilisearch/meilisearch/pull/5272
+  * Fix a rare stack overflow when using remote embedders by @Kerollmops with the help of @dureuill https://github.com/meilisearch/meilisearch/pull/5294 (from v1.12.8)
+  * Fix Dotnet tests in sdks-tests.yml by @curquiza in https://github.com/meilisearch/meilisearch/pull/5291
+  * Debug log the channel congestion by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5177
+  * Improve unexpected panic message by @irevoire in https://github.com/meilisearch/meilisearch/pull/5300
+  * Introduce a compaction subcommand in meilitool by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5235
+  * Expose a route to get the file content associated with a task by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5326
+  * Fix workload sha for the benchmark by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5342
+
+❤️ Thanks again to our external contributors:
+- [Meilisearch](https://github.com/meilisearch/meilisearch): @takaebato, @Sherlouk, @jameshiew, @K-Kumar-01, @mhmoudr, @eltociear, @Gnosnay, @DerTimonius, @manojks1999, @ellnix, @Guikingone, @migueltarga</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.0-rc.3 🕊️ (2025-02-13)</h2>
+      <pre><!-- The following line should ONLY be put PRE-release changelogs -->
+> [!WARNING]
+> Since this is a release candidate (RC), we do NOT recommend using it in a production environment. Is something not working as expected? We welcome [bug reports](https://github.com/meilisearch/meilisearch/issues/new/choose) and [feedback about new features](https://github.com/meilisearch/product/discussions).
+
+# New fields in the stats
+
+* Embeddings stats by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5341
+
+# Internal fixes
+
+* Fix workload sha by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5342
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.13.0-rc.2...v1.13.0-rc.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.0-rc.2 🕊️ (2025-02-12)</h2>
+      <pre><!-- The following line should ONLY be put PRE-release changelogs -->
+> [!WARNING]
+> Since this is a release candidate (RC), we do NOT recommend using it in a production environment. Is something not working as expected? We welcome [bug reports](https://github.com/meilisearch/meilisearch/issues/new/choose) and [feedback about new features](https://github.com/meilisearch/product/discussions).
+
+# Fixes 🦋
+
+* Make sure arroy is using the rayon thread-pool by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5322
+* Fix the dumpless upgrade corruption by @irevoire in https://github.com/meilisearch/meilisearch/pull/5316
+* Fix batch export/import dump by @irevoire in https://github.com/meilisearch/meilisearch/pull/5310
+* Fix geo update by @dureuill in https://github.com/meilisearch/meilisearch/pull/5332
+* Add back timeout from v1.11.3 by @dureuill in https://github.com/meilisearch/meilisearch/pull/5339
+
+# Other ☁️
+
+* Expose a route to get the file content associated with a task by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5326
+
+## Meilitool
+
+* Create a new export documents meilitool subcommand by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/4970
+* Introduce the meilitool Hair Dryer by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5336
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.13.0-rc.1...v1.13.0-rc.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.0-rc.1 🕊️ (2025-02-05)</h2>
+      <pre><!-- The following line should ONLY be put PRE-release changelogs -->
+> [!WARNING]
+> Since this is a release candidate (RC), we do NOT recommend using it in a production environment. Is something not working as expected? We welcome [bug reports](https://github.com/meilisearch/meilisearch/issues/new/choose) and [feedback about new features](https://github.com/meilisearch/product/discussions).
+
+
+# Improvements 📈
+
+* Remote federated search by @dureuill in https://github.com/meilisearch/meilisearch/pull/5299
+* Expose the `usedDatabaseSize` corresponding to the size used to store the "real" data in the database and not the disk size used by LMDB used database size in the `/stats` route by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5314
+
+# Fixes 🦋
+
+* When a batch is deleted it no longer keeps some internal data in the DB  @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5272
+* Fix a rare stack overflow when using remote embedders by @Kerollmops with the help of @dureuill  https://github.com/meilisearch/meilisearch/pull/5294 (from v1.12.8)
+* Fix internal error when passing `documentTemplateMaxBytes` to a source that doesn't support it by @dureuill in https://github.com/meilisearch/meilisearch/pull/5306 reported by @ellnix
+
+# Other ☁️
+
+* Fix Dotnet tests in sdks-tests.yml by @curquiza in https://github.com/meilisearch/meilisearch/pull/5291
+* Debug log  the channel congestion by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5177
+* Improve unexpected panic message by @irevoire in https://github.com/meilisearch/meilisearch/pull/5300
+* Send the OSS analytics once per day instead of once per hour by @irevoire in https://github.com/meilisearch/meilisearch/pull/5312
+* Improve AI logging by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5288
+
+## Benchmarks
+
+* Fix workload files after removing the vectorStore experimental feature by @dureuill in https://github.com/meilisearch/meilisearch/pull/5289
+* Fix workload inversion by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5140
+
+## Meilitool
+
+* Introduce a compaction subcommand in meilitool by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5235
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.13.0-rc.0...v1.13.0-rc.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.8 🦗 (2025-01-30)</h2>
+      <pre>## What's Changed
+* Accept the max readers param by env var and reduce rayon tasks by @Kerollmops with the help of @dureuill in https://github.com/meilisearch/meilisearch/pull/5294
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.7...v1.12.8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.0-rc.0 🕊️ (2025-01-27)</h2>
+      <pre># v1.13.0 release changelogs
+
+<!-- The following line should ONLY be put PRE-release changelogs -->
+> [!WARNING]
+> Since this is a release candidate (RC), we do NOT recommend using it in a production environment. Is something not working as expected? We welcome [bug reports](https://github.com/meilisearch/meilisearch/issues/new/choose) and [feedback about new features](https://github.com/meilisearch/product/discussions).
+
+Meilisearch v1.13 introduces several significant improvements, including stabilizing the Vector Store feature for seamless hybrid search integration! 🎉 This version also simplifies the Meilisearch upgrade process: you don't need a dump for migrating anymore!
+
+# New features and updates 🔥
+
+## Stabilize Vector Store feature
+
+After its initial release in v1.3.0, we have now fully stabilized the Vector Store feature. The experimental feature no longer requires manual activation, and the `vectorStore` field is no longer displayed or accepted by the `/experimental-features` route. This makes it even simpler to utilize our hybrid search capability, which delivers significantly better search relevance by combining traditional full text search with AI-powered semantic search.
+
+### Breaking Changes before Stabilization
+
+* Accepted Ollama URLs can only end with `/api/embed` and `/api/embeddings`.
+* Modified error codes:
+  - `invalid_embedder` has been split into `invalid_search_embedder` and `invalid_similar_embedder`. These codes are returned when the `embedder` parameter of a search (resp. similar) request refers to a non-existing embedder configuration or is not a string.
+  - `invalid_hybrid_query` has been renamed to `invalid_search_hybrid_query`. It is returned when the `hybrid` parameter is invalid: contains unknown keys or is not either `null` or an object.
+
+Done by @dureuill in https://github.com/meilisearch/meilisearch/pull/5232 & https://github.com/meilisearch/meilisearch/pull/5234
+
+## Experimental Dumpless Upgrade: Ease upgrading to the next version without a dump
+
+From now on you can upgrade any database in the v1.12 version or more to the latest version without using a dump.
+That means it's an in-place, way faster upgrade process that consumes only the minimal amount of RAM or disk required.
+
+To upgrade your v1.12 database to v1.13 runs:
+```
+./meilisearch --experimental-dumpless-upgrade
+```
+
+Read more about it [here](https://github.com/orgs/meilisearch/discussions/804).
+
+Done by @irevoire and @dureuill in https://github.com/meilisearch/meilisearch/pull/5264
+
+## Other improvements
+
+* Improve the auto-batching of tasks by exposing a way to limite the total size of a batch by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5223
+* Related to [Prometheus the experimental feature](https://github.com/orgs/meilisearch/discussions/625): Add Prometheus metrics to measure the task queue latency by @takaebato in https://github.com/meilisearch/meilisearch/pull/5178
+* Speed up the request to list the indexes by @irevoire in https://github.com/meilisearch/meilisearch/pull/5166
+* Add support for `GITHUB_TOKEN` authentication in installation script by @Sherlouk in https://github.com/meilisearch/meilisearch/pull/5216
+
+# Fixes 🐞
+
+* Improve the error message when an attributes is not filterable by @jameshiew in https://github.com/meilisearch/meilisearch/pull/5135
+
+# Misc
+
+* Dependencies updates
+  * Upgrade dependencies and fixes the `idna` severity issue by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5218
+* CIs and tests
+  * Split Meilisearch crate tests in separate file by @K-Kumar-01 in https://github.com/meilisearch/meilisearch/pull/5134
+  * Split tests in separate file by @K-Kumar-01 in https://github.com/meilisearch/meilisearch/pull/5171
+  * Remove obsolete test code by @K-Kumar-01 in https://github.com/meilisearch/meilisearch/pull/5173
+  * Fix the flaky batches test by @irevoire in https://github.com/meilisearch/meilisearch/pull/5175
+  * Split tests for option crate meilisearch in a separate test file by @K-Kumar-01 in https://github.com/meilisearch/meilisearch/pull/5174
+  * Remove hard coded task IDs to prevent flaky tests by @mhmoudr in https://github.com/meilisearch/meilisearch/pull/5182
+* Misc
+  * Guide people to create custom reports on the benchboard by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5029
+  * Fix typo in a comment by @eltociear in https://github.com/meilisearch/meilisearch/pull/5184
+  * Replace hardcoded string with constants by @Gnosnay in https://github.com/meilisearch/meilisearch/pull/5169
+  * Refactor the index-scheduler by @irevoire in https://github.com/meilisearch/meilisearch/pull/5199
+  * Refactor indexer by @dureuill in https://github.com/meilisearch/meilisearch/pull/5168
+  * Auto-generate the OpenAPI spec by @irevoire in https://github.com/meilisearch/meilisearch/pull/4867 & https://github.com/meilisearch/meilisearch/pull/5231
+  * Merge bitmaps by using `Extend::extend` by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5221
+  * Fix corrupted task queue errors on index creation by @irevoire in https://github.com/meilisearch/meilisearch/pull/5239
+
+❤️ Thanks again to our external contributors:
+- [Meilisearch](https://github.com/meilisearch/meilisearch): @dureuill, @Kerollmops, @takaebato, @irevoire, @Sherlouk, @jameshiew, @K-Kumar-01, @mhmoudr, @eltociear, @Gnosnay.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.7 🦗 (2025-01-23)</h2>
+      <pre>## What's Changed
+* Fix the stuck indexation due to the internal BBQueue capacity by @Kerollmops and @dureuill in https://github.com/meilisearch/meilisearch/pull/5276
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.6...v1.12.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.6 🦗 (2025-01-21)</h2>
+      <pre>## What's Changed
+* Unify facet strings by their normalized value by @dureuill and @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5258
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.5...v1.12.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.5 🦗 (2025-01-20)</h2>
+      <pre>## Fixes 🪲
+
+* Dump export no longer fails when the task queue contains enqueued or processing tasks, by @dureuill and @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5246
+* Dumps containing enqueued tasks no longer fail to import, also in https://github.com/meilisearch/meilisearch/pull/5246
+* Dumps exported in v1.12 reset the `batch_uid` of all tasks, as batches are not persisted in dumps in v1.12. See <https://github.com/meilisearch/meilisearch/issues/5247> for details.
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.4...v1.12.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.4 🦗 (2025-01-16)</h2>
+      <pre>## Fixes 🪲
+* The indexing process no longer starts an infinite loop in some circumstances by @dureuill in https://github.com/meilisearch/meilisearch/pull/5242
+* The indexing process no longer fails task when attempting to delete keys that are not in the DB, also in https://github.com/meilisearch/meilisearch/pull/5242
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.3...v1.12.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.3 🦗 (2025-01-13)</h2>
+      <pre>## What's Changed
+
+* Field distribution is no longer miscomputed when sending incremental updates to documents via the `PUT` route by @dureuill in https://github.com/meilisearch/meilisearch/pull/5224
+* Improve the panic message when deleting an unknown entry by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5229
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.2...v1.12.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.2 🦗  (2025-01-09)</h2>
+      <pre>## 🪲 Fixes 
+* Fix a performance regression introduced in v1.12.0 when updating a small number of documents in indexes that contain `sortableAttributes` or `filterableAttributes`. By @dureuill in https://github.com/meilisearch/meilisearch/pull/5205
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.1...v1.12.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.1 (2025-01-02)</h2>
+      <pre>## Fixes
+
+There was a bug in the engine when adding an empty payload, it was making the batch fails.
+Fixed by @irevoire in https://github.com/meilisearch/meilisearch/pull/5192
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.0...v1.12.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0 🦗 (2024-12-23)</h2>
+      <pre>Meilisearch v1.12 introduces significant indexing speed improvements, almost halving the time required to index large datasets. This release also introduces new settings to customize and potentially further increase indexing speed.
+
+🧰 All official Meilisearch integrations (including SDKs, clients, and other tools) are compatible with this Meilisearch release. Integration deployment happens between 4 to 48 hours after a new version becomes available.
+
+Some SDKs might not include all new features. Consult the project repository for detailed information. Is a feature you need missing from your chosen SDK? Create an issue letting us know you need it, or, for open-source karma points, open a PR implementing it (we'll love you for that ❤️).
+
+# New features and updates 🔥
+
+## Improve indexing speed
+
+Indexing time is improved across the board!
+
+- Performance is maintained or better on smaller machines
+- On bigger machines with multiple cores and good IO, Meilisearch v1.12 is much faster than Meilisearch v1.11
+    - More than twice as fast for raw document insertion tasks.
+    - More than x4 as fast for incrementally updating documents in a large database.
+    - Embeddings generation was also improved up to x1.5 for some workloads.
+    
+The new indexer also makes task cancellation faster.
+
+Done by @dureuill, @ManyTheFish, and @Kerollmops in #4900.
+
+## New index settings: use `facetSearch` and `prefixSearch` to improve indexing speed
+
+v1.12 introduces two new index settings: `facetSearch` and `prefixSearch`.
+
+Both settings allow you to skip parts of the indexing process. This leads to significant improvements to indexing speed, but may negatively impact search experience in some use cases.
+
+Done by @ManyTheFish in #5091
+
+### `facetSearch`
+
+Use this setting to toggle [facet search](https://www.meilisearch.com/docs/learn/filtering_and_sorting/search_with_facet_filters#searching-facet-values):
+
+```bash
+curl \
+  -X PUT 'http://localhost:7700/indexes/books/settings/facet-search' \
+  -H 'Content-Type: application/json' \
+  --data-binary 'true'
+```
+
+The default value for `facetSearch` is `true`. When set to `false`, this setting disables facet search for all filterable attributes in an index.
+
+### `prefixSearch`
+
+Use this setting to configure the ability to [search a word by prefix](https://www.meilisearch.com/docs/learn/engine/prefix) on an index:
+
+```bash
+curl \
+  -X PUT 'http://localhost:7700/indexes/books/settings/prefix-search' \
+  -H 'Content-Type: application/json' \
+  --data-binary 'disabled'
+```
+
+`prefixSearch` accepts one of the following values:
+
+- `"indexingTime"`: enables prefix processing during indexing. This is the default Meilisearch behavior
+- `"disabled"`: deactivates prefix search completely
+
+
+Disabling prefix search means the query `he` will no longer match the word `hello`. This may significantly impact search result relevancy, but speeds up the indexing process.
+
+## New API route: `/batches`
+
+The new `/batches` endpoint allow you to query information about task batches.
+
+`GET` `/batches` returns a list of batch objects:
+
+```sh
+curl  -X GET 'http://localhost:7700/batches'
+```
+
+This endpoint accepts the same parameters as `GET` `/tasks` route, allowing you to narrow down which batches you want to see. Parameters used with `GET` `/batches` apply to the tasks, not the batches themselves. For example, `GET /batches?uid=0` returns batches containing tasks with a `taskUid` of `0` , not batches with a `batchUid` of `0`.
+
+You may also query `GET` `/batches/:uid` to retrieve information about a single batch object:
+
+```sh
+curl  -X GET 'http://localhost:7700/batches/BATCH_UID'
+```
+
+`/batches/:uid` does not accept any parameters.
+
+Batch objects contain the following fields:
+
+```json5
+{
+  "uid": 160,
+  "progress": {
+    "steps": [
+      {
+        "currentStep": "processing tasks",
+        "finished": 0,
+        "total": 2
+      },
+      {
+        "currentStep": "indexing",
+        "finished": 2,
+        "total": 3
+      },
+      {
+        "currentStep": "extracting words",
+        "finished": 3,
+        "total": 13
+      },
+      {
+        "currentStep": "document",
+        "finished": 12300,
+        "total": 19546
+      }
+    ],
+    "percentage": 37.986263
+  },
+  "details": {
+    "receivedDocuments": 19547,
+    "indexedDocuments": null
+  },
+  "stats": {
+    "totalNbTasks": 1,
+    "status": {
+      "processing": 1
+    },
+    "types": {
+      "documentAdditionOrUpdate": 1
+    },
+    "indexUids": {
+      "mieli": 1
+    }
+  },
+  "duration": null,
+  "startedAt": "2024-12-12T09:44:34.124726733Z",
+  "finishedAt": null
+}
+```
+
+Additionally, task objects now include a new field, `batchUid`. Use this field together with `/batches/:uid` to retrieve data on a specific batch.
+
+```json5
+{
+  "uid": 154,
+  "batchUid": 142,
+  "indexUid": "movies_test2",
+  "status": "succeeded",
+  "type": "documentAdditionOrUpdate",
+  "canceledBy": null,
+  "details": {
+    "receivedDocuments": 1,
+    "indexedDocuments": 1
+  },
+  "error": null,
+  "duration": "PT0.027766819S",
+  "enqueuedAt": "2024-12-02T14:07:34.974430765Z",
+  "startedAt": "2024-12-02T14:07:34.99021667Z",
+  "finishedAt": "2024-12-02T14:07:35.017983489Z"
+}
+```
+
+Done by @irevoire in #5060, #5070, #5080
+
+## Other improvements
+
+* New query parameter for `GET` `/tasks`: `reverse`. If `reverse` is set to `true`, tasks will be returned in reversed order, from oldest to newest tasks. Done by @irevoire in #5048
+* Phrase searches with`showMatchesPosition` set to `true` give a single location for the whole phrase @flevi29 in #4928
+* New Prometheus metrics by @PedroTurik in #5044
+* When a query finds matching terms in document fields with array values,  Meilisearch now includes an `indices` field to `_matchesPosition` specifying which array elements contain the matches by @LukasKalbertodt in #5005
+* ⚠️ Breaking `vectorStore` change: field distribution no longer contains `_vectors`. Its value used to be incorrect, and there is no current use case for the fixed, most likely empty, value. Done as part of #4900
+* Improve error message by adding index name in #5056 by @airycanon
+
+# Fixes 🐞
+
+* Return appropriate error when primary key is greater than 512 bytes, by @flevi29 in #4930
+* Fix issue where numbers were segmented in different ways depending on tokenizer, by @dqkqd in https://github.com/meilisearch/charabia/pull/311
+* Fix pagination when embedding fails by @dureuill in https://github.com/meilisearch/meilisearch/pull/5063
+* Fix issue causing Meilisearch to ignore stop words in some cases by @ManyTheFish in #5062
+* Fix phrase search with `attributesToSearchOn` in #5062 by @ManyTheFish
+# Misc
+
+* Dependencies updates
+  * Update benchmarks to match the new crates subfolder by @Kerollmops in #5021
+  * Fix the benchmarks by @irevoire in #5037
+  * Bump Swatinem/rust-cache from 2.7.1 to 2.7.5 in #5030
+  * Update charabia v0.9.2 by @ManyTheFish in #5098
+  * Update mini-dashboard to v0.2.16 version by @curquiza in #5102
+* CIs and tests
+  * Improve performance of `delete_index.rs` by @DerTimonius in #4963
+  * Improve performance of `create_index.rs` by @DerTimonius in #4962
+  * Improve performance of `get_documents.rs` by @PedroTurik in #5025
+  * Improve performance of `formatted.rs` by @PedroTurik in #5043
+  * Fix the path used in the flaky tests CI by @Kerollmops in #5049
+* Misc
+  * Rollback the Meilisearch Kawaii logo by @Kerollmops in #5017
+  * Add image source label to Dockerfile by @wuast94 in #4990
+  * Hide code complexity into a subfolder by @Kerollmops in #5016
+  * Internal tool: implement offline upgrade from v1.10 to v1.11 by @irevoire in #5034
+  * Internal tool: implement offline upgrade from v1.11 to v1.12 by @ManyTheFish in  #5146
+  * Meilisearch is now able to retrieve Katakana words from a Hiragana query by @tats-u in https://github.com/meilisearch/charabia/pull/312
+  * Improve error handling when writing into LMDB by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5089
+
+❤️ Thanks again to our external contributors:
+- [Meilisearch](https://github.com/meilisearch/meilisearch): @airycanon, @DerTimonius, @flevi29, @LukasKalbertodt, @PedroTurik, @wuast94
+- [Charabia](https://github.com/meilisearch/charabia): @dqkqd @tats-u
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0-rc.6 (2024-12-16)</h2>
+      <pre>> [!WARNING]
+> Since this is a release candidate (RC), we do NOT recommend using it in a production environment. Is something not working as expected? We welcome [bug reports](https://github.com/meilisearch/meilisearch/issues/new/choose) and [feedback about new features](https://github.com/meilisearch/product/discussions).
+
+## User facing changes
+* Exactly 512 bytes docid fails by @dureuill in https://github.com/meilisearch/meilisearch/pull/5144
+* Batch progress by @irevoire in https://github.com/meilisearch/meilisearch/pull/5147
+
+## Internal changes
+* Use bumparaw-collections in Meilisearch/milli by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5145
+* Reintroduce the Document Addition Logs by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5150
+* Do not duplicate NDJson data when unecessary by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5148
+* Offline upgrade v1.12 by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5146
+* Return docid in case of errors while rendering the document template by @dureuill in https://github.com/meilisearch/meilisearch/pull/5153
+* Make xtasks be able to use the specified binary by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5152
+* Indexer edition 2024 fix facet fst by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5158
+* Fix the New Indexer Spilling by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5159
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.0-rc.5...v1.12.0-rc.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0-rc.5 🦗 (2024-12-10)</h2>
+      <pre>## What's Changed
+* Settings opt out error msg by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5119
+* Fix batch details by @irevoire in https://github.com/meilisearch/meilisearch/pull/5123
+* Ignore documents whose selected fields didn't change by @dureuill in https://github.com/meilisearch/meilisearch/pull/5131
+* Allow xtask bench to proceed without a commit message by @dureuill in https://github.com/meilisearch/meilisearch/pull/5138
+* Attach index name in error message by @airycanon in https://github.com/meilisearch/meilisearch/pull/5056
+* Use the right amount of max memory and not impact the settings by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5141
+* Improve the merging of bitmaps in the merger by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5142
+
+## New Contributors
+* @airycanon made their first contribution in https://github.com/meilisearch/meilisearch/pull/5056
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.0-rc.4...v1.12.0-rc.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0-rc.4 🦗 (2024-12-05)</h2>
+      <pre>## What's Changed
+* Update BBQueue repo to point to the Meilisearch org by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5111
+* Change the reserve and grant function to accept a closure by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5118
+* Increase margin on deletion of task by @irevoire in https://github.com/meilisearch/meilisearch/pull/5110
+* Yield the BBQueue writing loop by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5122
+* Add cross tasks by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5120
+* Make the tasks pulling timeout configurable by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5121
+* Fix the Minimum BBQueue channel threshold by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5113
+* Optimize Prefixes and Merges by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5124
+* Change the default max memory usage to 5% of the total memory by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5125
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.0-rc.3...v1.12.0-rc.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0-rc.3 🦗 (2024-12-03)</h2>
+      <pre>## What's Changed
+* While spamming the batches route we could see a processing batch becoming missing and then finished, this commit ensures the batches goes from processing to finished directly by @irevoire in https://github.com/meilisearch/meilisearch/pull/5107
+* Fix autobatch by @dureuill in https://github.com/meilisearch/meilisearch/pull/5109
+* Implement a bbqueue channel between the extractors and the writer by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5094
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.0-rc.2...v1.12.0-rc.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0-rc.2 🦗 (2024-11-28)</h2>
+      <pre>## What's Changed
+* Fix index settings opt out by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5101
+* Update mini-dashboard to v0.2.16 version by @curquiza in https://github.com/meilisearch/meilisearch/pull/5102
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.0-rc.1...v1.12.0-rc.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0-rc.1 🦗 (2024-11-27)</h2>
+      <pre>## What's Changed
+* Use the published crates versions by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5090
+* Improve error handling when writing into LMDB by @Kerollmops in https://github.com/meilisearch/meilisearch/pull/5089
+* Fix bugs for v1.12 by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5062
+* Precise spans for new indexer by @dureuill in https://github.com/meilisearch/meilisearch/pull/5092
+* Settings opt out by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5091
+* Fix pagination when embedding fails by @dureuill in https://github.com/meilisearch/meilisearch/pull/5063
+* Update charabia v0.9.2 by @ManyTheFish in https://github.com/meilisearch/meilisearch/pull/5098
+* Span to measure the part of db writes that is after the merge/extraction by @dureuill in https://github.com/meilisearch/meilisearch/pull/5095
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.12.0-rc.0...v1.12.0-rc.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0-rc.0 🦗 (2024-11-25)</h2>
+      <pre>> [!WARNING]
+> Since this is a release candidate (RC), we do NOT recommend using it in a production environment. Is something not working as expected? We welcome [bug reports](https://github.com/meilisearch/meilisearch/issues/new/choose) and [feedback about new features](https://github.com/meilisearch/product/discussions).
+
+Meilisearch v1.12 introduces huge improvements regarding indexing speed. The team worked hard to divise time to import huge datasets by two. You can also customize your settings to adapt your indexing needs and so, the indexing speed that fits your usage.
+
+# New features and updates 🔥
+
+## Improve indexing speed
+
+Indexing time for huge dataset import (multiple millions of documents) is divided by two!
+
+Done by @dureuill, @ManyTheFish, and @Kerollmops in #4900.
+
+## More visibility around indexing tasks
+
+In order to give more visibility around indexing processing around your `task`, especially when indexing big documents, new routes have been introduced:
+- `GET /batches/:uid`: returns a specific `batch` object
+- `GET /batches`: return a list of `batch` objects
+
+The same query parameters than `GET /tasks` route can be used to apply filtering.
+
+Also, a new field is introduced in the task object: `batch`.
+
+Done by @irevoire in #5060, #5070, #5080
+
+## Other improvements
+
+* Introduce the `reverse` query parameter for `GET /tasks` route set to `false` by default. If set to `true`, then the tasks will be returned in reversed order (the oldest first). Done by @irevoire in #5048.
+* Make matches consider phrases as a single `Match` by @flevi29 in #4928
+* Adds new metrics to prometheus by @PedroTurik in #5044
+* Add `indices` field to `_matchesPosition` to specify where in an array a match comes from, by @LukasKalbertodt in #5005
+
+# Fixes 🐞
+
+* Return an appropriate error when primary keys is greater than 512 bytes, by @flevi29 in #4930
+
+# Misc
+
+* Dependencies updates
+  * Update benchmarks to match the new crates subfolder by @Kerollmops in #5021
+  * Fix the benchmarks by @irevoire in #5037
+  * Bump Swatinem/rust-cache from 2.7.1 to 2.7.5 in #5030
+* CIs and tests
+  * Improve performance of `delete_index.rs` by @DerTimonius in #4963
+  * Improve performance of `create_index.rs` by @DerTimonius in #4962
+  * Improve performance of `get_documents.rs` by @PedroTurik in #5025
+  * Improve performance of `formatted.rs` by @PedroTurik in #5043
+  * Fix the path used in the flaky tests CI by @Kerollmops in #5049
+* Misc
+  * Rollback the Meilisearch Kawaii logo by @Kerollmops in #5017
+  * Add image source label to Dockerfile by @wuast94 in #4990
+  * Hide code complexity into a subfolder by @Kerollmops in #5016
+  * Internal tool: implement offline upgrade from v1.10 to v1.11 by @irevoire in #5034
+
+❤️ Thanks again to our external contributors:
+- [Meilisearch](https://github.com/meilisearch/meilisearch): @DerTimonius, @flevi29, @LukasKalbertodt, @PedroTurik, @wuast94
+- [Charabia](https://github.com/meilisearch/charabia)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.11.3 🐿️  (2024-11-14)</h2>
+      <pre>## What's Changed
+* For REST/OpenAI/ollama autoembedders users: Retry if deserialization of remote response failed by @dureuill in https://github.com/meilisearch/meilisearch/pull/5058
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.11.2...v1.11.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.11.2 🐿️ (2024-11-14)</h2>
+      <pre>## What's Changed
+* Add timeout on read and write operations. by @dureuill in https://github.com/meilisearch/meilisearch/pull/5051
+
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.11.1...v1.11.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.11.1 🐿️ (2024-11-07)</h2>
+      <pre>## What's Changed
+* Add 3s timeout to embedding requests made during search by @dureuill in https://github.com/meilisearch/meilisearch/pull/5039
+
+**Full Changelog**: https://github.com/meilisearch/meilisearch/compare/v1.11.0...v1.11.1</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

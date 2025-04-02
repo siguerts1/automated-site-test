@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for cli/cli"/>
+  <title>cli/cli Release Notes</title>
+</head>
+<body>
+  <h1>🚀 cli/cli - Release Notes</h1>
+  
+    <section>
+      <h2>GitHub CLI 2.69.0 (2025-03-19)</h2>
+      <pre>## What's Changed
+
+### Features
+
+* Commands that accept filepath arguments will do glob expansion for `*` characters, by @iamazeem in https://github.com/cli/cli/pull/10413
+
+### Bug Fixes
+
+
+* `gh issue/pr comment --edit-last` no longer creates a comment in non-interactive mode if there weren't one. A new flag `--create-if-none` provides this behaviour, by @andyfeller in https://github.com/cli/cli/pull/10625
+* `gh repo sync` provides a more informative error for missing workflow permissions when the token is provided by a GitHub app, by @wata727 in https://github.com/cli/cli/pull/10574
+* `gh api` no longer tries to encode URLs incorrectly, by @williammartin in https://github.com/cli/cli/pull/10630
+
+
+### Other
+
+* Add cli-discuss-automation environment to triage.md by @jtmcg in https://github.com/cli/cli/pull/10552
+* chore: remove redundant word in comment by @kevincatty in https://github.com/cli/cli/pull/10586
+* Bump golang.org/x/net from 0.34.0 to 0.36.0 by @dependabot in https://github.com/cli/cli/pull/10593
+
+## New Contributors
+* @kevincatty made their first contribution in https://github.com/cli/cli/pull/10586
+* @wata727 made their first contribution in https://github.com/cli/cli/pull/10574
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.68.1...v2.69.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.68.1 (2025-03-06)</h2>
+      <pre>## What's Changed
+* Fix secret command panic when base repo is determined via cwd by @williammartin in https://github.com/cli/cli/pull/10549
+
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.68.0...v2.68.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.68.0 (2025-03-05)</h2>
+      <pre>## What's Changed
+
+### ✨ Features
+* [gh repo view] Improve error message for forked repo by @iamazeem in https://github.com/cli/cli/pull/10334
+* Add signer-digest, source-ref, and source-digest options for `gh attestation verify` by @malancas in https://github.com/cli/cli/pull/10308
+* [gh pr checkout] Add --no-tags option to git fetch commands in checkout by @latzskim in https://github.com/cli/cli/pull/10479
+* [`gh issue/pr comment`] Add `--create-if-none` and prompts to create a comment if no comment already exists  by @latzskim in https://github.com/cli/cli/pull/10427
+* [gh cache delete --all] Add `--succeed-on-no-caches` flag to return exit code 0 by @iamazeem in https://github.com/cli/cli/pull/10327
+* [gh release create] Fail when there are no new commits since the last release by @iamazeem in https://github.com/cli/cli/pull/10398
+* update default upstream when forking repo during PR creation by @daviddl9 in https://github.com/cli/cli/pull/10458
+
+
+### 🐛 Fixes
+* Refactor `GetLocalAttestations` and clean up custom registry transport by @malancas in https://github.com/cli/cli/pull/10382
+* Check `GH_REPO` too in addition to `--repo` for disambiguation by @williammartin in https://github.com/cli/cli/pull/10539
+    *  (Fixes `gh secret` subcommands not working outside of a repository) 
+* Fix unhandled panic in FindWorkflow and add tests by @jtmcg in https://github.com/cli/cli/pull/10521
+* Fix checkout when URL arg is from fork and cwd is upstream by @williammartin in https://github.com/cli/cli/pull/10512
+* [gh api] Escape package name (URL encoding) for packages endpoint by @iamazeem in https://github.com/cli/cli/pull/10384
+* Fix `remoteResolver` caching issue by @iamazeem in https://github.com/cli/cli/pull/10456
+* Fix gh project item-edit to allow --number 0 as a valid value by @aryanbhosale in https://github.com/cli/cli/pull/10417
+* Add mutex to fix race in attestation test client by @codysoyland in https://github.com/cli/cli/pull/10439
+* Base64 decode GPG passphrase in deployment workflow by @BagToad in https://github.com/cli/cli/pull/10546
+
+### 📚 Docs & Chores
+* Deep Dive Document Release Process by @williammartin in https://github.com/cli/cli/pull/10503
+* Inconsistent format of examples in help text by @iamazeem in https://github.com/cli/cli/pull/10508
+* Inconsistent format of description of flags (starting with lowercase letter) by @iamazeem in https://github.com/cli/cli/pull/10507
+* Update Go version to 1.23 in CONTRIBUTING.md by @williammartin in https://github.com/cli/cli/pull/10504
+* Fix minor auth login help typo by @williammartin in https://github.com/cli/cli/pull/10501
+* docs: document how to revoke `gh` OAuth tokens in `auth logout`'s help by @BagToad in https://github.com/cli/cli/pull/10490
+* chore: update codespaces Go version by @BagToad in https://github.com/cli/cli/pull/10491
+* Allow injection of TUFMetadataDir in tests by @williammartin in https://github.com/cli/cli/pull/10478
+* refactor: use a more straightforward return value by @beforetech in https://github.com/cli/cli/pull/10489
+* Use subtests in attestation verification integration tests by @williammartin in https://github.com/cli/cli/pull/10463
+* Fix typo in README by @iamazeem in https://github.com/cli/cli/pull/10445
+* Update usage to lower-kebab-case by @iamazeem in https://github.com/cli/cli/pull/10447
+* Standardize URLs by @iamazeem in https://github.com/cli/cli/pull/10429
+* Remove trailing whitespace by @iamazeem in https://github.com/cli/cli/pull/10430
+
+
+### :dependabot: Dependencies
+* Bump actions/attest-build-provenance from 2.2.0 to 2.2.2 by @dependabot in https://github.com/cli/cli/pull/10518
+* Bump github.com/go-jose/go-jose/v4 from 4.0.2 to 4.0.5 by @dependabot in https://github.com/cli/cli/pull/10499
+* Bump github.com/spf13/pflag from 1.0.5 to 1.0.6 by @dependabot in https://github.com/cli/cli/pull/10338
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.67.0 (2025-02-11)</h2>
+      <pre>## Security
+
+A bug in `gh attestation verify` may return an incorrect zero exit status when no matching attestations are found for the specified `--predicate-type <value>` or the default `https://slsa.dev/provenance/v1` if not specified. This issue only arises if an artifact has an attestation with a predicate type different from the one provided in the command. As a result, users relying solely on these exit codes may mistakenly believe the attestation has been verified, despite the absence of an attestation with the specified predicate type and the tool printing a verification failure.
+
+Users are advised to update gh to version `v2.67.0` as soon as possible.
+
+For more information, see https://github.com/cli/cli/security/advisories/GHSA-fgw4-v983-mgp8
+
+## `gh pr checkout` now supports interactively selecting a pull request
+
+Similar to commands like `gh workflow run` which prompts for a workflow to run, now `gh pr checkout` will prompt for a pull request to checkout. The list is currently limited to the most recent 10 pull requests in the repository.
+
+https://github.com/user-attachments/assets/0b2e3761-7318-4573-8a23-ae6f1a44b018
+
+Big thank you to @nilvng for implementing this 🙌 
+
+## Contributing guidelines updated
+
+We've updated our [`CONTRIBUTING.md`](https://github.com/cli/cli/blob/trunk/.github/CONTRIBUTING.md) guidelines to give more clarity around old `help wanted` issues.
+
+_TLDR_:
+
+- Please directly mention `@cli/code-reviewers` when an issue you want to work on does not have clear Acceptance Criteria
+- Please only open pull requests for issues with _both_  the help wanted label and clear Acceptance Criteria
+- Please avoid expanding pull request scope to include changes that are not described in the connected issue's Acceptance Criteria
+
+Note: Acceptance Criteria is posted as an issue comment by a core maintainer. 
+
+See https://github.com/cli/cli/pull/10381 and https://github.com/cli/cli/pull/10395 for more information.
+
+
+❓ Have feedback on anything? We'd love to hear from you in a discussion post ❤️ 
+
+## What's Changed
+
+### ✨ Features
+* feat: let user select pr to checkout by @nilvng in https://github.com/cli/cli/pull/9868
+* feat: Add support for deleting autolink references by @hoffm in https://github.com/cli/cli/pull/10362
+* [gh extensions install] Improve help text and error message by @iamazeem in https://github.com/cli/cli/pull/10333
+* Error when `gh repo rename` is used with a new repo name that contains an owner by @timrogers in https://github.com/cli/cli/pull/10364
+* Attestation bundle fetch improvements by @malancas in https://github.com/cli/cli/pull/10233
+* [gh project item-list] Add `iterationId` field in ProjectV2ItemFieldIterationValue by @iamazeem in https://github.com/cli/cli/pull/10329
+
+### 🐛 Fixes
+* [gh api] Fix mutual exclusion messages of `--slurp` flag by @iamazeem in https://github.com/cli/cli/pull/10332
+* Exit with error if no matching predicate type exists by @kommendorkapten in https://github.com/cli/cli/pull/10421
+* Do not try to parse bodies for HEAD requests by @jsoref in https://github.com/cli/cli/pull/10388
+* [gh project item-edit] Fix number type by @iamazeem in https://github.com/cli/cli/pull/10374
+* [gh workflow run] Improve error handling for `--ref` flag by @iamazeem in https://github.com/cli/cli/pull/10328
+* [gh config] Escape pipe symbol in Long desc for website manual by @iamazeem in https://github.com/cli/cli/pull/10371
+
+### 📚 Docs & Chores
+* Fix logic error in contributing docs by @BagToad in https://github.com/cli/cli/pull/10395
+* Docs: Clarify guidelines for `help wanted` issues and pull requests by @BagToad in https://github.com/cli/cli/pull/10381
+* [gh pr status] Mention `gh pr checks` in the `Long` section by @iamazeem in https://github.com/cli/cli/pull/10389
+* [docs/releasing.md] Add basic info for homebrew update flow by @iamazeem in https://github.com/cli/cli/pull/10344
+* [gh issue/pr list] Improve help text by @iamazeem in https://github.com/cli/cli/pull/10335
+* Remove v1 project 'add to board' automation from prauto workflow by @hoffm in https://github.com/cli/cli/pull/10331
+* Note: the following pair of PRs was reverted and never made into a release
+  * [gh repo edit] Allow setting commit message defaults by @iamazeem in https://github.com/cli/cli/pull/10363
+  * Revert "[gh repo edit] Allow setting commit message defaults" by @BagToad in https://github.com/cli/cli/pull/10372
+
+### :dependabot: Dependencies
+* Bump google.golang.org/protobuf from 1.36.4 to 1.36.5 by @dependabot in https://github.com/cli/cli/pull/10379
+
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.66.1...v2.67.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.66.1 (2025-01-31)</h2>
+      <pre>## Hotfix: `gh pr view` fails with provided URL
+
+This addresses a regression in `gh pr view` was reported in #10352. This regression was due to a change in `v2.66.0` that no longer allowed `gh pr` subcommands to execute properly outside of a git repo.
+
+## What's Changed
+
+- Hotfix: `gh pr view` fails with provided URL by @jtmcg in https://github.com/cli/cli/pull/10354
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.66.0...v2.66.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.66.0 (2025-01-30)</h2>
+      <pre>## `gh pr view` and `gh pr status` now respect common triangular workflow configurations
+
+Previously, `gh pr view` and `gh pr status` would fail for pull request's (PR) open in triangular workflows. This was due to `gh` being unable to identify the PR's corresponding remote and branch refs on GitHub. 
+
+Now, `gh pr view` and `gh pr status` should successfully identify the PR's refs when the following common git configurations are used:
+
+- [`branch.<branchName>.pushremote`](https://git-scm.com/docs/git-config#Documentation/git-config.txt-branchltnamegtpushRemote) is set
+- [`remote.pushDefault`](https://git-scm.com/docs/git-config#Documentation/git-config.txt-remotepushDefault) is set
+
+Branch specific configuration, the former, supersedes repo specific configuration, the latter. 
+
+Additionally, if the [`@{push}` revision syntax](https://git-scm.com/docs/gitrevisions#Documentation/gitrevisions.txt-emltbranchnamegtpushemegemmasterpushemempushem) for git resolves for a branch, `gh pr view` and `gh pr status` should work regardless of additional config settings.
+
+For more information, see 
+
+- https://github.com/cli/cli/issues/9363
+- https://github.com/cli/cli/issues/9364
+- https://github.com/cli/cli/issues/9365
+- https://github.com/cli/cli/issues/9374
+
+## `gh secret list`, `gh secret set`, and `gh secret delete` now require repository selection when multiple `git` remotes are present
+
+Previously, `gh secret list`, `gh secret set`, and `gh secret delete` would determine which remote to target for interacting with GitHub Actions secrets.  Remotes marked as default using `gh repo set-default` or through other `gh` commands had higher priority when figuring out which repository to interact with.  This could have unexpected outcomes when using `gh secret` commands with forked repositories as the upstream repository would generally be selected.
+
+Now, `gh secret` commands require users to disambiguate which repository should be the target if multiple remotes are present and the `-R, --repo` flag is not provided.
+
+For more information, see https://github.com/cli/cli/issues/4688
+
+## Extension update notices now notify once every 24 hours per extension and can be disabled
+
+Previously, the GitHub CLI would notify users about newer versions every time an extension was executed.  This did not match GitHub CLI notices, which only notified users once every 24 hours and could be disabled through an environment variable.
+
+Now, extension update notices will behave similar to GitHub CLI notices.  To disable extension update notices, set the `GH_NO_EXTENSION_UPDATE_NOTIFIER` environment variable.
+
+For more information, see https://github.com/cli/cli/issues/9925
+
+## What's Changed
+
+### ✨ Features
+* Draft for discussing testing around extension update checking behavior by @andyfeller in https://github.com/cli/cli/pull/9985
+* Make extension update check non-blocking by @andyfeller in https://github.com/cli/cli/pull/10239
+* Ensure extension update notices only notify once within 24 hours, provide ability to disable all extension update notices by @andyfeller in https://github.com/cli/cli/pull/9934
+* feat: make the extension upgrade fancier by @nobe4 in https://github.com/cli/cli/pull/10194
+* fix: padded display by @nobe4 in https://github.com/cli/cli/pull/10216
+* Update `gh attestation` attestation bundle fetching logic by @malancas in https://github.com/cli/cli/pull/10185
+* Require repo disambiguation for secret commands by @williammartin in https://github.com/cli/cli/pull/10209
+* show error message for rerun workflow older than a month ago by @iamrajhans in https://github.com/cli/cli/pull/10227
+* Update `gh attestation verify` table output by @malancas in https://github.com/cli/cli/pull/10104
+* Enable MSI building for Windows arm64 by @dennisameling in https://github.com/cli/cli/pull/10297
+* feat: Add support for creating autolink references by @hoffm in https://github.com/cli/cli/pull/10180
+* Find PRs using `@{push}` by @Frederick888 in https://github.com/cli/cli/pull/9208
+* feat: Add support for viewing autolink references by @hoffm in https://github.com/cli/cli/pull/10324
+* Update `gh attestation` bundle fetching logic by @malancas in https://github.com/cli/cli/pull/10339
+
+### 🐛 Fixes
+* gh gist delete: prompt for gist id by @danochoa in https://github.com/cli/cli/pull/10154
+* Better handling for waiting for codespaces to become ready by @cmbrose in https://github.com/cli/cli/pull/10198
+* Fix: `gh gist view` and `gh gist edit` prompts with no TTY by @mateusmarquezini in https://github.com/cli/cli/pull/10048
+* Remove naked return values from `ReadBranchConfig` and `prSelectorForCurrentBranch` by @jtmcg in https://github.com/cli/cli/pull/10197
+* Add job to deployment workflow to validate the tag name for a given release by @jtmcg in https://github.com/cli/cli/pull/10121
+* [gh run list] Stop progress indicator on failure from `--workflow` flag by @iamazeem in https://github.com/cli/cli/pull/10323
+* Update deployment.yml by @andyfeller in https://github.com/cli/cli/pull/10340
+
+### 📚 Docs & Chores
+* Add affected version heading to bug report issue form by @BagToad in https://github.com/cli/cli/pull/10269
+* chore: fix some comments by @petercover in https://github.com/cli/cli/pull/10296
+* Update triage.md to reflect FR experiment outcome by @jtmcg in https://github.com/cli/cli/pull/10196
+* Clear up --with-token fine grained PAT usage by @williammartin in https://github.com/cli/cli/pull/10186
+* Correct help documentation around template use in `gh issue create` by @andyfeller in https://github.com/cli/cli/pull/10208
+* chore: fix some function names in comment by @zhuhaicity in https://github.com/cli/cli/pull/10225
+* Tiny typo fix by @robmorgan in https://github.com/cli/cli/pull/10265
+* add install instructions for Manjaro Linux by @AMS21 in https://github.com/cli/cli/pull/10236
+* Update test to be compatible with latest Glamour v0.8.0 by @ottok in https://github.com/cli/cli/pull/10151
+* Add more `gh attestation verify` integration tests by @malancas in https://github.com/cli/cli/pull/10102
+
+### :dependabot: Dependencies
+* Bump github.com/mattn/go-colorable from 0.1.13 to 0.1.14 by @dependabot in https://github.com/cli/cli/pull/10215
+* Bump github.com/sigstore/protobuf-specs from 0.3.2 to 0.3.3 by @dependabot in https://github.com/cli/cli/pull/10214
+* Bump github.com/gabriel-vasile/mimetype from 1.4.7 to 1.4.8 by @dependabot in https://github.com/cli/cli/pull/10184
+* Bump google.golang.org/protobuf from 1.36.2 to 1.36.3 by @dependabot in https://github.com/cli/cli/pull/10250
+* Bump golangci-linter and address failures to prepare for Go 1.24 strictness by @mikelolasagasti in https://github.com/cli/cli/pull/10279
+* Bump github.com/google/go-containerregistry from 0.20.2 to 0.20.3 by @dependabot in https://github.com/cli/cli/pull/10257
+* Bump actions/attest-build-provenance from 2.1.0 to 2.2.0 by @dependabot in https://github.com/cli/cli/pull/10300
+* Bump google.golang.org/protobuf from 1.36.3 to 1.36.4 by @dependabot in https://github.com/cli/cli/pull/10306
+* Upgrade sigstore-go to v0.7.0: fixes #10114 formatting issue by @codysoyland in https://github.com/cli/cli/pull/10309
+* Bump github.com/in-toto/attestation from 1.1.0 to 1.1.1 by @dependabot in https://github.com/cli/cli/pull/10319
+
+## New Contributors
+
+Big thank you to our many new _and_ longtime contributors making this release happen!! ❤️ ✨ 
+
+* @zhuhaicity made their first contribution in https://github.com/cli/cli/pull/10225
+* @danochoa made their first contribution in https://github.com/cli/cli/pull/10154
+* @robmorgan made their first contribution in https://github.com/cli/cli/pull/10265
+* @iamrajhans made their first contribution in https://github.com/cli/cli/pull/10227
+* @AMS21 made their first contribution in https://github.com/cli/cli/pull/10236
+* @petercover made their first contribution in https://github.com/cli/cli/pull/10296
+* @ottok made their first contribution in https://github.com/cli/cli/pull/10151
+* @dennisameling made their first contribution in https://github.com/cli/cli/pull/10297
+* @iamazeem made their first contribution in https://github.com/cli/cli/pull/10323
+* @Frederick888 made their first contribution in https://github.com/cli/cli/pull/9208
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.65.0...v2.66.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.65.0 (2025-01-06)</h2>
+      <pre>## What's Changed
+* Document the base repo resolution functions by @williammartin in https://github.com/cli/cli/pull/10110
+* Update releasing.md by @andyfeller in https://github.com/cli/cli/pull/10116
+* Document how to set gh-merge-base by @heaths in https://github.com/cli/cli/pull/10112
+* Upgrade golang.org/x/net to v0.33.0 by @jtmcg in https://github.com/cli/cli/pull/10135
+* add pending status for workflow runs by @dziamidchyk in https://github.com/cli/cli/pull/10143
+* Remove release discussion posts and clean up related block in deployment yml by @shauryatiwari1 in https://github.com/cli/cli/pull/10145
+* docs(repo): make explicit which branch is used when creating a repo by @nobe4 in https://github.com/cli/cli/pull/10163
+* feat: Add support for listing autolink references by @hoffm in https://github.com/cli/cli/pull/10124
+* Add mention of classic token in gh auth login docs by @jtmcg in https://github.com/cli/cli/pull/10164
+* Feat: Allow setting security_and_analysis settings in gh repo edit by @ChandranshuRao14 in https://github.com/cli/cli/pull/10139
+* Upgrade generated workflows by @jsoref in https://github.com/cli/cli/pull/10181
+* Myriad fixes to provide clarity on determining tracking ref in PR create by @williammartin in https://github.com/cli/cli/pull/10187
+* Handle missing upstream configs for `gh pr create`  by @cmbrose in https://github.com/cli/cli/pull/10177
+* fix(repo fork): add non-TTY output when fork is newly created by @aryanbhosale in https://github.com/cli/cli/pull/10158
+* Bump cli/go-gh for indirect security vulnerability by @andyfeller in https://github.com/cli/cli/pull/10190
+
+## New Contributors
+* @dziamidchyk made their first contribution in https://github.com/cli/cli/pull/10143
+* @shauryatiwari1 made their first contribution in https://github.com/cli/cli/pull/10145
+* @hoffm made their first contribution in https://github.com/cli/cli/pull/10124
+* @ChandranshuRao14 made their first contribution in https://github.com/cli/cli/pull/10139
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.64.0...v2.65.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.64.0 (2024-12-20)</h2>
+      <pre>## What's Changed
+* docs: improve docs for browse command as of #5352 by @ankddev in https://github.com/cli/cli/pull/10025
+* Open PR against gh-merge-base by @heaths in https://github.com/cli/cli/pull/9712
+* Add integration tests for `gh attestation verify` when the `bundle-from-oci` flag is specified by @malancas in https://github.com/cli/cli/pull/10020
+* `gh repo rename` help text clarifies new repo name should not include owner by @BagToad in https://github.com/cli/cli/pull/10044
+* fix: list branches in square brackets in `gh run` and `gh codespace` by @uday-rana in https://github.com/cli/cli/pull/10043
+* Bump actions/attest-build-provenance from 1.4.4 to 2.1.0 by @dependabot in https://github.com/cli/cli/pull/10056
+* Bump golang.org/x/crypto from 0.29.0 to 0.31.0 by @dependabot in https://github.com/cli/cli/pull/10070
+* Improve documentation and error messaging for local extension installations without executables by @BagToad in https://github.com/cli/cli/pull/9933
+* docs: better document auth scopes by @ankddev in https://github.com/cli/cli/pull/10026
+* Sigstore verifier logic updates by @malancas in https://github.com/cli/cli/pull/9999
+* `gh pr merge --delete-branch` exits with error when merge requested via merge queue by @BagToad in https://github.com/cli/cli/pull/10074
+* sundry `gh at inspect` improvements by @phillmv in https://github.com/cli/cli/pull/9954
+* Support `pr view` for intra-org forks by @williammartin in https://github.com/cli/cli/pull/10078
+* Print policy information before verifying attestations by @malancas in https://github.com/cli/cli/pull/9891
+* Improve error handling in apt setup script by @jobegrabber in https://github.com/cli/cli/pull/10055
+* Use Windows compatible file name for downloaded attestations when running `gh attestation download` by @malancas in https://github.com/cli/cli/pull/10051
+* Bump github.com/cpuguy83/go-md2man/v2 from 2.0.5 to 2.0.6 by @dependabot in https://github.com/cli/cli/pull/10094
+* Perform all `gh attestation verify` policy options configuration in the `newEnforcementCriteria()` function by @malancas in https://github.com/cli/cli/pull/10012
+
+## New Contributors
+* @ankddev made their first contribution in https://github.com/cli/cli/pull/10025
+* @uday-rana made their first contribution in https://github.com/cli/cli/pull/10043
+* @jobegrabber made their first contribution in https://github.com/cli/cli/pull/10055
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.63.2...v2.64.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.63.2 (2024-12-05)</h2>
+      <pre>## What's Changed
+* Use consistent slice ordering in run download tests by @williammartin in https://github.com/cli/cli/pull/10006
+* Fix bug when fetching bundles from OCI registry by @malancas in https://github.com/cli/cli/pull/10019
+* Use safepaths for run download by @williammartin in https://github.com/cli/cli/pull/10009
+* Error for mutually exclusive json and watch flags by @andyfeller in https://github.com/cli/cli/pull/10016
+
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.63.1...v2.63.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.63.1 (2024-12-03)</h2>
+      <pre>## What's Changed
+* Fix formatting in `git/client_test.go` comments for linter by @BagToad in https://github.com/cli/cli/pull/9969
+* Bump github.com/gabriel-vasile/mimetype from 1.4.6 to 1.4.7 by @dependabot in https://github.com/cli/cli/pull/9942
+* Clarify which commands correspond to which DNF version under Linux install instructions by @BagToad in https://github.com/cli/cli/pull/9976
+* When renaming an existing remote as part of remote creation in `gh repo fork`, log the change by @timrogers in https://github.com/cli/cli/pull/9983
+* Fix PR checkout panic when base repo is not in remotes by @williammartin in https://github.com/cli/cli/pull/9992
+
+## Security
+
+- A security vulnerability has been identified in GitHub CLI that could create or overwrite files in unintended directories when users download a malicious GitHub Actions workflow artifact through `gh run download`.
+
+    For more information, see https://github.com/cli/cli/security/advisories/GHSA-2m9h-r57g-45pj
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.63.0...v2.63.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.63.0 (2024-11-27)</h2>
+      <pre>## What's Changed
+* Support bare repo creation by @williammartin in https://github.com/cli/cli/pull/9905
+* Refactor the `getAttestations` functions by @malancas in https://github.com/cli/cli/pull/9892
+* Added a section on manual verification of the relases. by @kommendorkapten in https://github.com/cli/cli/pull/9936
+* Adding option to return `baseRefOid` in `pr view` by @daliusd in https://github.com/cli/cli/pull/9938
+* Update verification results printing by @malancas in https://github.com/cli/cli/pull/9937
+* Fix some multiline command documentation to use `heredoc` strings by @BagToad in https://github.com/cli/cli/pull/9948
+* Print friendly error when `release create` fails due to missing `workflow` OAuth scope by @BagToad in https://github.com/cli/cli/pull/9791
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.62.0...v2.63.0
+
+## Security
+
+- A security vulnerability has been identified in the GitHub CLI that could leak authentication tokens when cloning repositories containing git submodules hosted outside of GitHub.com and ghe.com.
+
+  For more information, see https://github.com/cli/cli/security/advisories/GHSA-jwcm-9g39-pmcw
+
+## New Contributors
+* @daliusd made their first contribution in https://github.com/cli/cli/pull/9938</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.62.0 (2024-11-14)</h2>
+      <pre>## What's Changed
+* Update monotonic verification logic and testing by @malancas in https://github.com/cli/cli/pull/9856
+* Check extension for latest version when executed by @andyfeller in https://github.com/cli/cli/pull/9866
+* Shorten extension release checking from 3s to 1s by @andyfeller in https://github.com/cli/cli/pull/9914
+* Mention GitHub CLI team on discussion issues by @andyfeller in https://github.com/cli/cli/pull/9920
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.61.0...v2.62.0
+
+## Security
+
+- A security vulnerability has been identified in GitHub CLI that could allow remote code execution (RCE) when users connect to a malicious Codespace SSH server and use the `gh codespace ssh` or `gh codespace logs` commands. 
+
+  For more information, see https://github.com/cli/cli/security/advisories/GHSA-p2h2-3vg9-4p87
+
+## GitHub CLI notifies users about latest extension upgrades
+
+Similar to the notification of latest `gh` releases, the `v2.62.0` version of GitHub CLI will notify users about latest extension upgrades when the extension is used:
+
+```shell
+$ gh ado2gh
+...
+
+A new release of ado2gh is available: 1.7.0 → 1.8.0
+To upgrade, run: gh extension upgrade ado2gh --force
+https://github.com/github/gh-ado2gh
+```
+
+### Why does this matter?
+
+This removes a common pain point of extension authors as they have had to reverse engineer and implement a similar mechanism within their extensions directly.
+
+With this quality of life improvement, there are 2 big benefits:
+
+1. Extension authors will hopefully see increased adoption of newer releases while having lower bar to maintaining their extensions.
+2. GitHub CLI users will have greater awareness of new features, bug fixes, and security fixes to the extensions used.
+
+### What do you need to do?
+
+Extension authors should review their extensions and consider removing any custom logic previously implemented to notify users of new releases.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.61.0 (2024-11-07)</h2>
+      <pre>## Ensure users understand consequences before making repository visibility changes
+
+In `v2.61.0`, `gh repo edit` command has been enhanced to inform users about [consequences of changing visibility](https://gh.io/setting-repository-visibility) and ensure users are intentional before making irreversible changes:
+
+1. Interactive `gh repo edit` visibility change requires confirmation when changing from `public`, `private`, or `internal`
+1. Non-interactive `gh repo edit --visibility` change requires new `--accept-visibility-change-consequences` flag to confirm 
+1. New content to inform users of consequences
+   - Incorporate [GitHub Docs content](https://gh.io/setting-repository-visibility) into help usage and interactive `gh repo edit` experience
+   - Expanded help usage to call out most concerning consequences
+   - Display repository star and watcher counts to understand impact before confirming
+
+## What's Changed
+* Add acceptance test for `project` command by @jtmcg in https://github.com/cli/cli/pull/9816
+* Add comprehensive testscript for `gh ruleset` by @andyfeller in https://github.com/cli/cli/pull/9815
+* Add comprehensive testscript for gh ext commandset by @andyfeller in https://github.com/cli/cli/pull/9810
+* Require visibility confirmation in `gh repo edit` by @andyfeller in https://github.com/cli/cli/pull/9845
+* Clean up skipped online tests for `gh attestation verify` by @malancas in https://github.com/cli/cli/pull/9838
+* `gh attestation verify` should only verify provenance attestations by default by @malancas in https://github.com/cli/cli/pull/9825
+* Set `dnf5` commands as default by @its-miroma in https://github.com/cli/cli/pull/9844
+* Fix verbiage for deleting workflow runs by @akx in https://github.com/cli/cli/pull/9876
+* Bump github.com/creack/pty from 1.1.23 to 1.1.24 by @dependabot in https://github.com/cli/cli/pull/9862
+* `gh attestation verify` policy enforcement refactor by @malancas in https://github.com/cli/cli/pull/9848
+* Simplify Sigstore verification result handling in `gh attestation verify` by @malancas in https://github.com/cli/cli/pull/9877
+* Print empty array for `gh cache list` when `--json` is provided by @williammartin in https://github.com/cli/cli/pull/9883
+* Bump actions/attest-build-provenance from 1.4.3 to 1.4.4 by @dependabot in https://github.com/cli/cli/pull/9884
+* Create the automatic key when specified with -i by @cmbrose in https://github.com/cli/cli/pull/9881
+* fix: `gh pr create -w`  ignore template flag by @nilvng in https://github.com/cli/cli/pull/9863
+
+## New Contributors
+* @akx made their first contribution in https://github.com/cli/cli/pull/9876
+* @nilvng made their first contribution in https://github.com/cli/cli/pull/9863
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.60.1...v2.61.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.60.1 (2024-10-25)</h2>
+      <pre>This is a small patch release to fix installing `gh` via `go install` which was broken with v2.60.0. 
+
+## What's Changed
+* Update testscript to use hard fork by @williammartin in https://github.com/cli/cli/pull/9821
+
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.60.0...v2.60.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.60.0 (2024-10-24)</h2>
+      <pre>## What's Changed
+* Add ArchivedAt field by @tsukasaI in https://github.com/cli/cli/pull/9790
+* Include startedAt, completedAt in run steps data by @andyfeller in https://github.com/cli/cli/pull/9774
+* Adjust environment help for host and tokens by @williammartin in https://github.com/cli/cli/pull/9809
+* Add handling of empty titles for Issues and PRs by @jtmcg in https://github.com/cli/cli/pull/9701
+* `LiveSigstoreVerifier.Verify` should error if no attestations are present by @phillmv in https://github.com/cli/cli/pull/9742
+* `gh at verify` retries fetching attestations if it receives a 5xx by @phillmv in https://github.com/cli/cli/pull/9797
+* Prevent local extension installations with invalid names and conflicts with core commands and other extensions by @BagToad in https://github.com/cli/cli/pull/9794
+* Rewrite a sentence in CONTRIBUTING.md by @muzimuzhi in https://github.com/cli/cli/pull/9772
+* Use new GitHub preview terms in `working-with-us.md` by @BagToad in https://github.com/cli/cli/pull/9800
+* Use new GitHub previews terminology in attestation commands' help docs by @BagToad in https://github.com/cli/cli/pull/9799
+* Clarify in README that `gh` is supported on GitHub Enterprise Cloud by @BagToad in https://github.com/cli/cli/pull/9805
+* build(deps): bump github.com/gabriel-vasile/mimetype from 1.4.5 to 1.4.6 by @dependabot in https://github.com/cli/cli/pull/9752
+
+### Acceptance Test Changes
+* Add acceptance tests for `workflow`, `run`, and `cache` commands by @BagToad in https://github.com/cli/cli/pull/9766
+* Add basic `api` acceptance tests by @BagToad in https://github.com/cli/cli/pull/9770
+* Add acceptance tests for `release` commands by @BagToad in https://github.com/cli/cli/pull/9771
+* Add acceptance tests for `org` and `ssh-key` commands by @BagToad in https://github.com/cli/cli/pull/9812
+* Add acceptance tests for `gh auth` commands by @jtmcg in https://github.com/cli/cli/pull/9787
+* Add acceptance tests for `repo` commands by @jtmcg in https://github.com/cli/cli/pull/9783
+* Add acceptance tests for `search` command by @BagToad in https://github.com/cli/cli/pull/9786
+* Add acceptance tests for `variable` commands by @andyfeller in https://github.com/cli/cli/pull/978
+* Add testscripts for gpg-key and label commands by @williammartin in https://github.com/cli/cli/pull/9811
+* Use forked testscript for token redaction by @williammartin in https://github.com/cli/cli/pull/9804
+* Add acceptance tests for `secret` commands by @andyfeller in https://github.com/cli/cli/pull/9782
+* Note token redaction in Acceptance test README by @williammartin in https://github.com/cli/cli/pull/9813
+
+## New Contributors
+* @tsukasaI made their first contribution in https://github.com/cli/cli/pull/9790
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.59.0...v2.60.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.59.0 (2024-10-16)</h2>
+      <pre>## What's Changed
+* Allow community submitted design work by @BagToad in https://github.com/cli/cli/pull/9683
+* Improve `SECURITY.md` with expectations for privately reported vulnerabilities by @BagToad in https://github.com/cli/cli/pull/9687
+* Emit a log message when extension installation falls back to a `darwin-amd64` binary on an Apple Silicon macOS device by @timrogers in https://github.com/cli/cli/pull/9650
+* Print the login URL even when opening a browser by @ulfjack in https://github.com/cli/cli/pull/7091
+* configurable maxwidth for markdown WithWrap() by @smemsh in https://github.com/cli/cli/pull/9626
+* Handle errors when parsing hostname in auth flow by @BagToad in https://github.com/cli/cli/pull/9729
+* Add `repo license list/view` and `repo gitignore list/view` by @BagToad in https://github.com/cli/cli/pull/9721
+* Introduce testscript acceptance tests generally, and for the PR command specifically by @williammartin in https://github.com/cli/cli/pull/9745
+* Support `GH_ACCEPTANCE_SCRIPT` env var to target a single script by @williammartin in https://github.com/cli/cli/pull/9756
+* Ensure Acceptance defer failures are debuggable by @williammartin in https://github.com/cli/cli/pull/9754
+* Add acceptance task to makefile by @williammartin in https://github.com/cli/cli/pull/9748
+* Add Acceptance tests for `issue` command by @williammartin in https://github.com/cli/cli/pull/9757
+* Update IsEnterprise and IsTenancy for orthogonality using go-gh by @jtmcg in https://github.com/cli/cli/pull/9755
+* Supporting filtering on `gist list` by @heaths in https://github.com/cli/cli/pull/9728
+
+## New Contributors
+* @ulfjack made their first contribution in https://github.com/cli/cli/pull/7091
+* @smemsh made their first contribution in https://github.com/cli/cli/pull/9626
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.58.0...v2.59.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.58.0 (2024-10-01)</h2>
+      <pre>## What's Changed
+* Better messaging for `attestation verify` custom issuer mismatch error by @bdehamer in https://github.com/cli/cli/pull/9616
+* Enhance gh repo create docs, fix random cmd link by @andyfeller in https://github.com/cli/cli/pull/9630
+* Add HasActiveToken method to AuthConfig to refactor auth check for `attestation trusted-root` command by @BagToad in https://github.com/cli/cli/pull/9635
+* Improve the suggested command for creating an issue when an extension doesn't have a binary for your platform by @timrogers in https://github.com/cli/cli/pull/9608
+* Disable auth check for `attestation trusted-root` command by @bdehamer in https://github.com/cli/cli/pull/9610
+* build(deps): bump github.com/henvic/httpretty from 0.1.3 to 0.1.4 by @dependabot in https://github.com/cli/cli/pull/9645
+* Fix tenant-awareness for `trusted-root` command by @bdehamer in https://github.com/cli/cli/pull/9638
+* Replace "GitHub Enterprise Server" option with "other" in gh auth login prompting by @jtmcg in https://github.com/cli/cli/pull/9642
+* build(deps): bump github.com/cpuguy83/go-md2man/v2 from 2.0.4 to 2.0.5 by @dependabot in https://github.com/cli/cli/pull/9634
+* Add `dnf5` instructions to `docs/install_linux.md` by @its-miroma in https://github.com/cli/cli/pull/9660
+* build(deps): bump github.com/theupdateframework/go-tuf/v2 from 2.0.0 to 2.0.1 by @dependabot in https://github.com/cli/cli/pull/9688
+
+## New Contributors
+* @its-miroma made their first contribution in https://github.com/cli/cli/pull/9660
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.57.0...v2.58.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.57.0 (2024-09-16)</h2>
+      <pre>## What's Changed
+* Move non-integration tests to different test file by @codysoyland in https://github.com/cli/cli/pull/9577
+* Added tenancy aware attestation commands by @kommendorkapten in https://github.com/cli/cli/pull/9542
+* Added `--active` flag to the `gh auth status` command by @velumuruganr in https://github.com/cli/cli/pull/9520
+* build(deps): bump github.com/sigstore/sigstore-go from 0.6.1 to 0.6.2 by @dependabot in https://github.com/cli/cli/pull/9601
+* `gh attestation verify` test for custom OIDC issuers by @bdehamer in https://github.com/cli/cli/pull/9595
+* Suggest installing Rosetta when extension installation fails due to missing `darwin-arm64` binary, but a `darwin-amd64` binary is available by @timrogers in https://github.com/cli/cli/pull/9599
+* Update `gh attestation verify` bundle parsing and validation errors by @malancas in https://github.com/cli/cli/pull/9564
+* Suppress `attestation verify` output when no TTY present by @bdehamer in https://github.com/cli/cli/pull/9612
+* Use api subdomains for tenant hosts by @williammartin in https://github.com/cli/cli/pull/9618
+
+## New Contributors
+* @kommendorkapten made their first contribution in https://github.com/cli/cli/pull/9542
+* @velumuruganr made their first contribution in https://github.com/cli/cli/pull/9520
+* @bdehamer made their first contribution in https://github.com/cli/cli/pull/9595
+* @timrogers made their first contribution in https://github.com/cli/cli/pull/9599
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.56.0...v2.57.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.56.0 (2024-09-09)</h2>
+      <pre>## Important note about renewed GPG key
+
+The Debian and RedHat releases have been signed with a new GPG key. If you are experiencing issues updating your `.deb` or `.rpm` packages, please read  [cli/cli#9569](https://github.com/cli/cli/issues/9569).
+
+## What's Changed
+* Always print URL scheme to stdout by @heaths in https://github.com/cli/cli/pull/9471
+* Quote repo names consistently in `gh repo sync` stdout by @muzimuzhi in https://github.com/cli/cli/pull/9491
+* Fetch bundle from OCI registry for verify  by @ejahnGithub in https://github.com/cli/cli/pull/9421
+* Remove `Internal` from `gh repo create` prompt when owner is not an org by @jtmcg in https://github.com/cli/cli/pull/9465
+* Drop surplus trailing space char in flag names in web by @muzimuzhi in https://github.com/cli/cli/pull/9495
+* fix the trimming of log filenames for `gh run view` by @benebsiny in https://github.com/cli/cli/pull/9482
+* "offline" verification using the bundle of attestations without any additional handling of the file by @aryanbhosale in https://github.com/cli/cli/pull/9523
+* build(deps): bump actions/attest-build-provenance from 1.4.1 to 1.4.2 by @dependabot in https://github.com/cli/cli/pull/9518
+* Fix doc typo for `repo sync` by @muzimuzhi in https://github.com/cli/cli/pull/9509
+* Correct the help message for -F by @Goooler in https://github.com/cli/cli/pull/9525
+* chore: fix some function names by @crystalstall in https://github.com/cli/cli/pull/9555
+* verify 2nd artifact without swapping order by @aryanbhosale in https://github.com/cli/cli/pull/9532
+* `gh attestation verify` handles empty JSONL files by @malancas in https://github.com/cli/cli/pull/9541
+* Enhance Linux installation docs to redirect users to GPG renewal issue, better troubleshooting support by @andyfeller in https://github.com/cli/cli/pull/9573
+* Upgrade sigstore-go to v0.6.1 by @codysoyland in https://github.com/cli/cli/pull/9566
+* Check for nil values to prevent nil dereference panic by @codysoyland in https://github.com/cli/cli/pull/9578
+* build(deps): bump actions/attest-build-provenance from 1.4.2 to 1.4.3 by @dependabot in https://github.com/cli/cli/pull/9575
+
+## New Contributors
+* @aryanbhosale made their first contribution in https://github.com/cli/cli/pull/9523
+* @Goooler made their first contribution in https://github.com/cli/cli/pull/9525
+* @crystalstall made their first contribution in https://github.com/cli/cli/pull/9555
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.55.0...v2.56.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.55.0 (2024-08-20)</h2>
+      <pre>## What's Changed
+* Update `gh variable get` to use repo host by @andyfeller in https://github.com/cli/cli/pull/9411
+* build(deps): bump actions/attest-build-provenance from 1.3.3 to 1.4.0 by @dependabot in https://github.com/cli/cli/pull/9400
+* Unify use of tab indent in non-test source files by @muzimuzhi in https://github.com/cli/cli/pull/9407
+* Add Acceptance Criteria requirement to triage.md for accepted issues by @jtmcg in https://github.com/cli/cli/pull/9435
+* Improve  Unix compliance `gh repo set-default` by @thecaffeinedev in https://github.com/cli/cli/pull/9431
+* Document that `gh run download` downloads the latest artifact by default by @sato11 in https://github.com/cli/cli/pull/9412
+* build(deps): bump github.com/google/go-containerregistry from 0.20.1 to 0.20.2 by @dependabot in https://github.com/cli/cli/pull/9432
+* Replace `--project.*` flags' `name` with `title` in docs by @jtmcg in https://github.com/cli/cli/pull/9443
+* Wrap flags with backticks, continued by @muzimuzhi in https://github.com/cli/cli/pull/9444
+* Improve `gh release create --notes-from-tag` behavior with multiline tag annotation by @babakks in https://github.com/cli/cli/pull/9385
+* Add `pr create --editor` by @benebsiny in https://github.com/cli/cli/pull/9433
+* build(deps): bump actions/attest-build-provenance from 1.4.0 to 1.4.1 by @dependabot in https://github.com/cli/cli/pull/9451
+* Require Sigstore Bundle v0.2+ when verifying with `gh attestation` by @codysoyland in https://github.com/cli/cli/pull/9442
+* build(deps): bump github.com/creack/pty from 1.1.21 to 1.1.23 by @dependabot in https://github.com/cli/cli/pull/9459
+* Update Go and other extension workflow templates to reflect recent enhancements to `cli/gh-extension-precompile` by @BagToad in https://github.com/cli/cli/pull/9462
+* Add note for external contributors to `working-with-us.md` by @BagToad in https://github.com/cli/cli/pull/9468
+* Update attestation TUF root by @codysoyland in https://github.com/cli/cli/pull/9467
+* Improve documentation for pr checks and exit codes by @thecaffeinedev in https://github.com/cli/cli/pull/9452
+* cmd/pr/checks: Describe bucket and state JSON fields by @arunsathiya in https://github.com/cli/cli/pull/9439
+* Add Flox as an installation option by @bryanhonof in https://github.com/cli/cli/pull/9396
+* fix behavior for `gh issue develop -b does-not-exist-on-remote` by @benebsiny in https://github.com/cli/cli/pull/9477
+* Update `--project <number>` flags in `gh search` to `owner/number` by @jtmcg in https://github.com/cli/cli/pull/9453
+
+## New Contributors
+* @jtmcg made their first contribution in https://github.com/cli/cli/pull/9435
+* @thecaffeinedev made their first contribution in https://github.com/cli/cli/pull/9431
+* @sato11 made their first contribution in https://github.com/cli/cli/pull/9412
+* @codysoyland made their first contribution in https://github.com/cli/cli/pull/9442
+* @BagToad made their first contribution in https://github.com/cli/cli/pull/9462
+* @bryanhonof made their first contribution in https://github.com/cli/cli/pull/9396
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.54.0...v2.55.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.54.0 (2024-08-01)</h2>
+      <pre>## What's Changed
+* Remove redundant whitespace by @jessehouwing in https://github.com/cli/cli/pull/9334
+* Remove attestation test that requires being online by @steiza in https://github.com/cli/cli/pull/9340
+* Update documentation for gh api PATCH by @cmbuckley in https://github.com/cli/cli/pull/9352
+* Clarify usage of template flags for PR and issue creation by @williammartin in https://github.com/cli/cli/pull/9354
+* Expose json databaseId field for release commands by @williammartin in https://github.com/cli/cli/pull/9356
+* Expose fullDatabaseId for PR json export by @williammartin in https://github.com/cli/cli/pull/9355
+* Handle `--bare` clone targets by @hyperrealist in https://github.com/cli/cli/pull/9271
+* Slightly clarify when CLI exits with code 4 by @williammartin in https://github.com/cli/cli/pull/9358
+* Update sigstore-go in gh CLI to v0.5.1 by @steiza in https://github.com/cli/cli/pull/9366
+* Exit with 1 on authentication issues by @Stausssi in https://github.com/cli/cli/pull/9240
+* build(deps): bump github.com/gabriel-vasile/mimetype from 1.4.4 to 1.4.5 by @dependabot in https://github.com/cli/cli/pull/9372
+* build(deps): bump github.com/google/go-containerregistry from 0.20.0 to 0.20.1 by @dependabot in https://github.com/cli/cli/pull/9373
+* Add `--remove-milestone` option to `issue edit` and `pr edit` by @babakks in https://github.com/cli/cli/pull/9344
+* handle attest case insensitivity by @ejahnGithub in https://github.com/cli/cli/pull/9392
+
+## New Contributors
+* @cmbuckley made their first contribution in https://github.com/cli/cli/pull/9352
+* @hyperrealist made their first contribution in https://github.com/cli/cli/pull/9271
+* @Stausssi made their first contribution in https://github.com/cli/cli/pull/9240
+* @ejahnGithub made their first contribution in https://github.com/cli/cli/pull/9392
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.53.0...v2.54.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.53.0 (2024-07-17)</h2>
+      <pre>## What's Changed
+* Add `--json` option to `variable get` command by @babakks in https://github.com/cli/cli/pull/9128
+* Add GH_DEBUG to issue template by @TWiStErRob in https://github.com/cli/cli/pull/9167
+* Fetch variable selected repo relationship when required by @williammartin in https://github.com/cli/cli/pull/9256
+* build(deps): bump github.com/hashicorp/go-retryablehttp from 0.7.5 to 0.7.7 by @dependabot in https://github.com/cli/cli/pull/9250
+* Alternate gh attestation trusted-root subcommand by @steiza in https://github.com/cli/cli/pull/9206
+* fix: indentation in 'gh release create --help' by @cchristous in https://github.com/cli/cli/pull/9296
+* build(deps): bump actions/attest-build-provenance from 1.3.2 to 1.3.3 by @dependabot in https://github.com/cli/cli/pull/9305
+* docs: Update documentation for `gh repo create` to clarify owner by @jessehouwing in https://github.com/cli/cli/pull/9309
+* Fix panic when calling `gh pr view --json stateReason` by @williammartin in https://github.com/cli/cli/pull/9307
+* Add `issue create --editor` by @notomo in https://github.com/cli/cli/pull/7193
+* Add `pr update-branch` command by @babakks in https://github.com/cli/cli/pull/8953
+
+## New Contributors
+* @TWiStErRob made their first contribution in https://github.com/cli/cli/pull/9167
+* @cchristous made their first contribution in https://github.com/cli/cli/pull/9296
+* @jessehouwing made their first contribution in https://github.com/cli/cli/pull/9309
+* @notomo made their first contribution in https://github.com/cli/cli/pull/7193
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.52.0...v2.53.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.52.0 (2024-06-24)</h2>
+      <pre>## What's Changed
+* feat: add `-a` flag to `gh run list` by @joshuajtward in https://github.com/cli/cli/pull/9162
+* Attestation Verification - Buffer Fix by @Forrin in https://github.com/cli/cli/pull/9198
+* build(deps): bump actions/attest-build-provenance from 1.2.0 to 1.3.2 by @dependabot in https://github.com/cli/cli/pull/9222
+* build(deps): bump github.com/gorilla/websocket from 1.5.2 to 1.5.3 by @dependabot in https://github.com/cli/cli/pull/9211
+* build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1 by @dependabot in https://github.com/cli/cli/pull/9218
+* build(deps): bump github.com/google/go-containerregistry from 0.19.1 to 0.19.2 by @dependabot in https://github.com/cli/cli/pull/9217
+* Remove `gh at verify` public beta note by @phillmv in https://github.com/cli/cli/pull/9243
+
+## New Contributors
+* @joshuajtward made their first contribution in https://github.com/cli/cli/pull/9162
+* @Forrin made their first contribution in https://github.com/cli/cli/pull/9198
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.51.0...v2.52.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.51.0 (2024-06-13)</h2>
+      <pre>## What's Changed
+* Ensure signed RPMs have attestations by @andyfeller in https://github.com/cli/cli/pull/9143
+* Add `signer-repo` and `signer-workflow` flags to `gh attestation verify` by @malancas in https://github.com/cli/cli/pull/9137
+* Docs: Specify rpm repository to avoid conflicts with community repositories by @hbenali in https://github.com/cli/cli/pull/9151
+* Replace `--json-result` flag with `--format=json` in the attestation cmd by @phillmv in https://github.com/cli/cli/pull/9172
+* Bump go-keyring to fix keepassxc prompt confirmation by @AlanD20 in https://github.com/cli/cli/pull/9179
+* build(deps): bump actions/attest-build-provenance from 1.1.2 to 1.2.0 by @dependabot in https://github.com/cli/cli/pull/9169
+* build(deps): bump goreleaser/goreleaser-action from 5 to 6 by @dependabot in https://github.com/cli/cli/pull/9175
+* build(deps): bump github.com/gorilla/websocket from 1.5.1 to 1.5.2 by @dependabot in https://github.com/cli/cli/pull/9192
+* build(deps): bump google.golang.org/protobuf from 1.34.1 to 1.34.2 by @dependabot in https://github.com/cli/cli/pull/9197
+* watch - handle annotation errors gracefully by @wingleung in https://github.com/cli/cli/pull/9113
+
+## New Contributors
+* @hbenali made their first contribution in https://github.com/cli/cli/pull/9151
+* @AlanD20 made their first contribution in https://github.com/cli/cli/pull/9179
+* @wingleung made their first contribution in https://github.com/cli/cli/pull/9113
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.50.0...v2.51.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.50.0 (2024-05-29)</h2>
+      <pre>## What's Changed
+* Refactor git credential flow code by @williammartin in https://github.com/cli/cli/pull/9089
+* feat: add json output for `gh pr checks` by @nobe4 in https://github.com/cli/cli/pull/9079
+* Rework first auth tests with new gitcredential abstractions by @williammartin in https://github.com/cli/cli/pull/9095
+* list the various alias permutations for the command and subcommands, via '--help' and 'gh reference' by @gabemontero in https://github.com/cli/cli/pull/8824
+* Removed tty message when checking for extension upgrades by @leevic31 in https://github.com/cli/cli/pull/9088
+* Fix doc bug for gh run watch by @jasonodonnell in https://github.com/cli/cli/pull/9052
+* feat: add support for stateReason in `gh pr view` by @nobe4 in https://github.com/cli/cli/pull/9080
+* fix: rename the `Attempts` field to `Attempt`; expose in `gh run view` and `gh run ls` by @cawfeecake in https://github.com/cli/cli/pull/8905
+* Update regex in changedFilesNames to handle quoted paths by @anda3 in https://github.com/cli/cli/pull/9115
+* Add a `gh variable get FOO` command by @arnested in https://github.com/cli/cli/pull/9106
+* Add macOS pkg installer to deployment (#7554) by @paulober in https://github.com/cli/cli/pull/7555
+* Add integration tests for `gh attestation verify` shared workflow use case by @malancas in https://github.com/cli/cli/pull/9107
+* Add build provenance for gh CLI releases by @malancas in https://github.com/cli/cli/pull/9087
+* build(deps): bump github.com/gabriel-vasile/mimetype from 1.4.3 to 1.4.4 by @dependabot in https://github.com/cli/cli/pull/9124
+* Build completions during release on macos by @williammartin in https://github.com/cli/cli/pull/9136
+* Clarify Mac OS Installer packages are unsigned by @andyfeller in https://github.com/cli/cli/pull/9140
+
+## New Contributors
+* @gabemontero made their first contribution in https://github.com/cli/cli/pull/8824
+* @jasonodonnell made their first contribution in https://github.com/cli/cli/pull/9052
+* @anda3 made their first contribution in https://github.com/cli/cli/pull/9115
+* @arnested made their first contribution in https://github.com/cli/cli/pull/9106
+* @paulober made their first contribution in https://github.com/cli/cli/pull/7555
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.49.2...v2.50.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.49.2 (2024-05-13)</h2>
+      <pre>## What's Changed
+* Improve `run list` doc with available `--json` fields by @babakks in https://github.com/cli/cli/pull/8934
+* Fix typos by @szepeviktor in https://github.com/cli/cli/pull/9068
+* Move config interfaces into gh package by @williammartin in https://github.com/cli/cli/pull/9060
+* Creating doc to capture Codespace usage guidance by @andyfeller in https://github.com/cli/cli/pull/9066
+* Fix repo fork regression by @williammartin in https://github.com/cli/cli/pull/9063
+* Add --latest=false to `gh release create` docs by @kuzdogan in https://github.com/cli/cli/pull/8987
+* build(deps): bump github.com/sigstore/protobuf-specs from 0.3.1 to 0.3.2 by @dependabot in https://github.com/cli/cli/pull/9075
+
+## New Contributors
+* @szepeviktor made their first contribution in https://github.com/cli/cli/pull/9068
+* @kuzdogan made their first contribution in https://github.com/cli/cli/pull/8987
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.49.1...v2.49.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.49.1 (2024-05-08)</h2>
+      <pre>## What's Changed
+* Do not mutate headers when initialising tableprinter by @williammartin in https://github.com/cli/cli/pull/9033
+* Document relationship between host and active account by @williammartin in https://github.com/cli/cli/pull/9032
+* build(deps): bump golang.org/x/net from 0.22.0 to 0.23.0 by @dependabot in https://github.com/cli/cli/pull/9034
+* Run `attestation` command set integration tests separately by @malancas in https://github.com/cli/cli/pull/9035
+* Added support for jobs with long filenames by @shayn-orca in https://github.com/cli/cli/pull/8684
+* Fix unused params across project by @williammartin in https://github.com/cli/cli/pull/9059
+* Fix `attestation verify` source repository check bug by @malancas in https://github.com/cli/cli/pull/9053
+
+## New Contributors
+* @shayn-orca made their first contribution in https://github.com/cli/cli/pull/8684
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.49.0...v2.49.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.49.0 (2024-04-30)</h2>
+      <pre>## Support for GitHub Artifact Attestations
+
+`v2.49.0` release introduces the `attestation` command set for downloading and verifying attestations about artifacts built in GitHub Actions! This is part of the larger Artifact Attestations initiative. An artifact attestation is a piece of cryptographically signed metadata that is generated as part of your artifact build process. These attestations bind artifacts to the details of the workflow run that produced them, and allow you to guarantee the integrity and provenance of any artifact built in GitHub Actions.
+
+```shell
+# Verify a local artifact
+gh attestation verify artifact.bin -o <your org>
+
+# Verify a local artifact against a local artifact attestation
+gh attestation verify artifact.bin -b ./artifact-v0.0.1-bundle.json -o <your org>
+
+# Verify an OCI image
+gh attestation verify oci://ghcr.io/foo/bar:latest -o <your org>
+
+# Download artifact attestations
+gh attestation download artifact.bin -o <your org>
+```
+
+To get started, check out gh help attestation. You can also use the `gh at <command>` alias for short.
+
+## What's Changed
+* Improve gh run rerun docs by @sochotnicky in https://github.com/cli/cli/pull/8969
+* build(deps): bump golang.org/x/net from 0.21.0 to 0.23.0 by @dependabot in https://github.com/cli/cli/pull/8981
+* Update `sigstore-go` dependency to v0.3.0 by @malancas in https://github.com/cli/cli/pull/8977
+* `gh attestation tuf-root-verify` offline test fix by @malancas in https://github.com/cli/cli/pull/8975
+* Update `gh attestation verify` output by @malancas in https://github.com/cli/cli/pull/8991
+* build(deps): bump google.golang.org/grpc from 1.62.1 to 1.62.2 by @dependabot in https://github.com/cli/cli/pull/8989
+* Remove `Hidden` flag from `gh attestation` command by @malancas in https://github.com/cli/cli/pull/8998
+* Add colon for `gh secret set` by @NeroBlackstone in https://github.com/cli/cli/pull/9004
+* Improve errors when loading bundle locally fails by @williammartin in https://github.com/cli/cli/pull/8996
+* Support offline mode for `gh attestation verify` by @steiza in https://github.com/cli/cli/pull/8997
+* Add `projectsV2` to JSON fields of `gh repo` commands by @babakks in https://github.com/cli/cli/pull/9007
+* Support long URLs in `gh repo clone` by @babakks in https://github.com/cli/cli/pull/9008
+* Fix issue with closing pager stream by @babakks in https://github.com/cli/cli/pull/9020
+* proof of concept for flag-level disable auth check by @andyfeller in https://github.com/cli/cli/pull/9000
+* Be more general with attestation host checks by @williammartin in https://github.com/cli/cli/pull/9019
+* Add beta designation on attestation command set by @andyfeller in https://github.com/cli/cli/pull/9022
+* Tweaked gh attestation help strings to generate nicer cli manual site. by @phillmv in https://github.com/cli/cli/pull/9025
+* Update cli/go-gh to v2.9.0 by @andyfeller in https://github.com/cli/cli/pull/9023
+* Document repo clone protocol behaviour by @williammartin in https://github.com/cli/cli/pull/9030
+
+## New Contributors
+* @sochotnicky made their first contribution in https://github.com/cli/cli/pull/8969
+* @NeroBlackstone made their first contribution in https://github.com/cli/cli/pull/9004
+* @phillmv made their first contribution in https://github.com/cli/cli/pull/9025
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.48.0...v2.49.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.48.0 (2024-04-17)</h2>
+      <pre>## The Big Stuff
+
+* Added support for `--slurp`ing JSON responses in `gh api` by @heaths in https://github.com/cli/cli/pull/8620
+* Added `--skip-ssh-key` option to `gh auth login` command by @babakks in https://github.com/cli/cli/pull/8935
+* Added `numSelectedRepos` to JSON output of `gh secret list` by @babakks in https://github.com/cli/cli/pull/8899
+* Added support for multiple items in `gh api` nested array by @Ebonsignori in https://github.com/cli/cli/pull/8762
+* Fixed panic when running `gh repo rename` by @babakks in https://github.com/cli/cli/pull/8906
+* Fixed panic when parsing IPv6 remote URLs by @babakks in https://github.com/cli/cli/pull/8893
+* Fixed `gh pr lock/unlock` not working when URL is passed by @t4kamura in https://github.com/cli/cli/pull/8837
+* Fixed viewing run logs with filenames that the regex didn't handle @zdrve in https://github.com/cli/cli/pull/8882
+
+## The Rest
+
+* Tidy `go.mod` by @matthewhughes934 in https://github.com/cli/cli/pull/8958
+* Fix cache contention in Go CI jobs by @matthewhughes934 in https://github.com/cli/cli/pull/8957
+* Fix `go` directive in `go.mod` by @matthewhughes934 in https://github.com/cli/cli/pull/8956
+* Update install_linux.md by @richterdavid in https://github.com/cli/cli/pull/8950
+* build(deps): bump google.golang.org/grpc from 1.61.1 to 1.61.2 by @dependabot in https://github.com/cli/cli/pull/8925
+* Add codeowners entry for the GitHub TUF root included in the `attestation` command set by @malancas in https://github.com/cli/cli/pull/8919
+* Create stronger run log cache abstraction by @williammartin in https://github.com/cli/cli/pull/8931
+* Remove naked returns from git ParseURL by @williammartin in https://github.com/cli/cli/pull/8929
+* Fix api cache test by @williammartin in https://github.com/cli/cli/pull/8932
+* Ensure run log cache creates cache dir if it doesn't exist by @williammartin in https://github.com/cli/cli/pull/8944
+* Close zip file in run view tests by @williammartin in https://github.com/cli/cli/pull/8945
+* Fix `attestation` cmd offline unit test failure by @malancas in https://github.com/cli/cli/pull/8933
+* Add support to `attestation` command for more predicate types. by @steiza in https://github.com/cli/cli/pull/8949
+
+## New Contributors
+* @babakks made their first contribution in https://github.com/cli/cli/pull/8906
+* @t4kamura made their first contribution in https://github.com/cli/cli/pull/8837
+* @zdrve made their first contribution in https://github.com/cli/cli/pull/8882
+* @Ebonsignori made their first contribution in https://github.com/cli/cli/pull/8762
+* @matthewhughes934 made their first contribution in https://github.com/cli/cli/pull/8958
+* @richterdavid made their first contribution in https://github.com/cli/cli/pull/8950
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.47.0...v2.48.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>GitHub CLI 2.47.0 (2024-04-03)</h2>
+      <pre>## What's Changed
+* Fix typo in auth switch help example by @ihommani in https://github.com/cli/cli/pull/8870
+* Bump go-gh to 2.7.0 by @williammartin in https://github.com/cli/cli/pull/8884
+* gh-attestation cmd integration by @malancas in https://github.com/cli/cli/pull/8698
+* Upgrade to Go 1.22 by @yanskun in https://github.com/cli/cli/pull/8836
+* Rely on go.mod go version in all workflows by @williammartin in https://github.com/cli/cli/pull/8911
+* build(deps): bump gopkg.in/go-jose/go-jose.v2 from 2.6.1 to 2.6.3 by @dependabot in https://github.com/cli/cli/pull/8902
+* build(deps): bump github.com/docker/docker from 24.0.7+incompatible to 24.0.9+incompatible by @dependabot in https://github.com/cli/cli/pull/8903
+* Fix segfault in error handling of `gh repo rename` by @satoqz in https://github.com/cli/cli/pull/8888
+* build(deps): bump google.golang.org/grpc from 1.61.0 to 1.61.1 by @dependabot in https://github.com/cli/cli/pull/8912
+* build(deps): bump github.com/gorilla/websocket from 1.5.0 to 1.5.1 by @dependabot in https://github.com/cli/cli/pull/8913
+* build(deps): bump github.com/google/go-containerregistry from 0.19.0 to 0.19.1 by @dependabot in https://github.com/cli/cli/pull/8914
+* build(deps): bump github.com/sigstore/protobuf-specs from 0.3.0 to 0.3.1 by @dependabot in https://github.com/cli/cli/pull/8923
+* Bump glamour to v0.7.0 and go mod tidy by @williammartin in https://github.com/cli/cli/pull/8920
+
+## New Contributors
+* @ihommani made their first contribution in https://github.com/cli/cli/pull/8870
+* @malancas made their first contribution in https://github.com/cli/cli/pull/8698
+* @satoqz made their first contribution in https://github.com/cli/cli/pull/8888
+
+**Full Changelog**: https://github.com/cli/cli/compare/v2.46.0...v2.47.0</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for spf13/cobra"/>
+  <title>spf13/cobra Release Notes</title>
+</head>
+<body>
+  <h1>🚀 spf13/cobra - Release Notes</h1>
+  
+    <section>
+      <h2>v1.9.1 (2025-02-16)</h2>
+      <pre>### 🐛 Fixes
+
+* Fix CompletionFunc implementation by @ccoVeille in https://github.com/spf13/cobra/pull/2234
+* Revert "Make detection for test-binary more universal (#2173)" by @marckhouzam in https://github.com/spf13/cobra/pull/2235
+
+**Full Changelog**: https://github.com/spf13/cobra/compare/v1.9.0...v1.9.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.9.0 (2025-02-15)</h2>
+      <pre>## ✨ Features
+
+* Allow linker to perform deadcode elimination for program using Cobra by @aarzilli in https://github.com/spf13/cobra/pull/1956
+* Add default completion command even if there are no other sub-commands by @marckhouzam in https://github.com/spf13/cobra/pull/1559
+* Add CompletionWithDesc helper by @ccoVeille in https://github.com/spf13/cobra/pull/2231
+
+## 🐛 Fixes
+
+* Fix deprecation comment for Command.SetOutput by @thaJeztah in https://github.com/spf13/cobra/pull/2172
+* Replace deprecated ioutil usage by @nirs in https://github.com/spf13/cobra/pull/2181
+* Fix --version help and output for plugins by @nirs in https://github.com/spf13/cobra/pull/2180
+* Allow to reset the templates to the default by @marckhouzam in https://github.com/spf13/cobra/pull/2229
+
+## 🤖 Completions
+
+* Make Powershell completion work in constrained mode by @lstemplinger in https://github.com/spf13/cobra/pull/2196
+* Improve detection for flags that accept multiple values by @thaJeztah in https://github.com/spf13/cobra/pull/2210
+* add CompletionFunc type to help with completions by @ccoVeille in https://github.com/spf13/cobra/pull/2220
+* Add similar whitespace escape logic to bash v2 completions than in other completions by @kangasta in https://github.com/spf13/cobra/pull/1743
+* Print ActiveHelp for bash along other completions by @marckhouzam in https://github.com/spf13/cobra/pull/2076
+* fix(completions): Complete map flags multiple times by @gabe565 in https://github.com/spf13/cobra/pull/2174
+* fix(bash): nounset unbound file filter variable on empty extension by @scop in https://github.com/spf13/cobra/pull/2228
+
+## 🧪 Testing
+
+* Test also with go 1.23 by @nirs in https://github.com/spf13/cobra/pull/2182
+* Make detection for test-binary more universal by @thaJeztah in https://github.com/spf13/cobra/pull/2173
+
+## ✍🏼 Documentation
+
+* docs: update README.md by @eltociear in https://github.com/spf13/cobra/pull/2197
+* Improve site formatting by @nirs in https://github.com/spf13/cobra/pull/2183
+* doc: add Conduit by @raulb in https://github.com/spf13/cobra/pull/2230
+* doc: azion project added to the list of CLIs that use cobra by @maxwelbm in https://github.com/spf13/cobra/pull/2198
+* Fix broken links in active_help.md by @vuil in https://github.com/spf13/cobra/pull/2202
+* chore: fix function name in comment by @zhuhaicity in https://github.com/spf13/cobra/pull/2216
+
+## 🔧 Dependency upgrades
+
+* build(deps): bump github.com/cpuguy83/go-md2man/v2 from 2.0.5 to 2.0.6 by @thaJeztah in https://github.com/spf13/cobra/pull/2206
+* Update to latest go-md2man by @mikelolasagasti in https://github.com/spf13/cobra/pull/2201
+* Upgrade `pflag` dependencies for v1.9.0 by @jpmcb in https://github.com/spf13/cobra/pull/2233
+
+---
+
+Thank you to all of our amazing contributors and all the great work that's been going into the completions feature!!
+
+### 👋🏼 New Contributors
+
+* @gabe565 made their first contribution in https://github.com/spf13/cobra/pull/2174
+* @maxwelbm made their first contribution in https://github.com/spf13/cobra/pull/2198
+* @lstemplinger made their first contribution in https://github.com/spf13/cobra/pull/2196
+* @vuil made their first contribution in https://github.com/spf13/cobra/pull/2202
+* @mikelolasagasti made their first contribution in https://github.com/spf13/cobra/pull/2201
+* @zhuhaicity made their first contribution in https://github.com/spf13/cobra/pull/2216
+* @ccoVeille made their first contribution in https://github.com/spf13/cobra/pull/2220
+* @kangasta made their first contribution in https://github.com/spf13/cobra/pull/1743
+* @aarzilli made their first contribution in https://github.com/spf13/cobra/pull/1956
+
+**Full Changelog**: https://github.com/spf13/cobra/compare/v1.8.1...v1.9.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.8.1 (2024-06-14)</h2>
+      <pre>## ✨ Features
+* Add env variable to suppress completion descriptions on create by @scop in https://github.com/spf13/cobra/pull/1938
+
+## 🐛 Bug fixes
+* Micro-optimizations by @scop in https://github.com/spf13/cobra/pull/1957
+
+## 🔧 Maintenance
+* build(deps): bump github.com/cpuguy83/go-md2man/v2 from 2.0.3 to 2.0.4 by @dependabot in https://github.com/spf13/cobra/pull/2127
+* Consistent annotation names by @nirs in https://github.com/spf13/cobra/pull/2140
+* Remove fully inactivated linters by @nirs in https://github.com/spf13/cobra/pull/2148
+* Address golangci-lint deprecation warnings, enable some more linters by @scop in https://github.com/spf13/cobra/pull/2152
+
+## 🧪 Testing & CI/CD
+* Add test for func in cobra.go by @korovindenis in https://github.com/spf13/cobra/pull/2094
+* ci: test golang 1.22 by @cyrilico in https://github.com/spf13/cobra/pull/2113
+* Optimized and added more linting by @scop in https://github.com/spf13/cobra/pull/2099
+* build(deps): bump actions/setup-go from 4 to 5 by @dependabot in https://github.com/spf13/cobra/pull/2087
+* build(deps): bump actions/labeler from 4 to 5 by @dependabot in https://github.com/spf13/cobra/pull/2086
+* build(deps): bump golangci/golangci-lint-action from 3.7.0 to 4.0.0 by @dependabot in https://github.com/spf13/cobra/pull/2108
+* build(deps): bump actions/cache from 3 to 4 by @dependabot in https://github.com/spf13/cobra/pull/2102
+
+## ✏️ Documentation
+* Fixes and docs for usage as plugin by @nirs in https://github.com/spf13/cobra/pull/2070
+* flags: clarify documentation that LocalFlags related function do not modify the state by @niamster in https://github.com/spf13/cobra/pull/2064
+* chore: remove repetitive words by @racerole in https://github.com/spf13/cobra/pull/2122
+* Add LXC to the list of projects using Cobra @VaradBelwalkar in https://github.com/spf13/cobra/pull/2071
+* Update projects_using_cobra.md by @marcuskohlberg in https://github.com/spf13/cobra/pull/2089
+* [chore]: update projects using cobra by @cmwylie19 in https://github.com/spf13/cobra/pull/2093
+* Add Taikun CLI to list of projects by @Smidra in https://github.com/spf13/cobra/pull/2098
+* Add Incus to the list of projects using Cobra by @montag451 in https://github.com/spf13/cobra/pull/2118
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## New Contributors
+* @VaradBelwalkar made their first contribution in https://github.com/spf13/cobra/pull/2071
+* @marcuskohlberg made their first contribution in https://github.com/spf13/cobra/pull/2089
+* @cmwylie19 made their first contribution in https://github.com/spf13/cobra/pull/2093
+* @korovindenis made their first contribution in https://github.com/spf13/cobra/pull/2094
+* @niamster made their first contribution in https://github.com/spf13/cobra/pull/2064
+* @Smidra made their first contribution in https://github.com/spf13/cobra/pull/2098
+* @montag451 made their first contribution in https://github.com/spf13/cobra/pull/2118
+* @cyrilico made their first contribution in https://github.com/spf13/cobra/pull/2113
+* @racerole made their first contribution in https://github.com/spf13/cobra/pull/2122
+* @pedromotita made their first contribution in https://github.com/spf13/cobra/pull/2120
+* @cubxxw made their first contribution in https://github.com/spf13/cobra/pull/2128
+
+---
+
+Thank you everyone who contributed to this release and all your hard work! Cobra and this community would never be possible without all of you!!!! 🐍
+
+**Full Changelog**: https://github.com/spf13/cobra/compare/v1.8.0...v1.8.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.8.0 (2023-11-04)</h2>
+      <pre>## ✨ Features 
+
+* Support usage as plugin for tools like kubectl by @nirs in https://github.com/spf13/cobra/pull/2018 - this means that programs that utilize a "plugin-like" structure have much better support and usage (like for completions, command paths, etc.)
+* Move documentation sources to site/content by @umarcor in https://github.com/spf13/cobra/pull/1428
+* Add 'one required flag' group by @marevers in https://github.com/spf13/cobra/pull/1952 - this includes a new `MarkFlagsOneRequired` API for flags which can be used to mark a flag group as required and cause command failure if at least one is not used when invoked.
+* Customizable error message prefix by @5ouma in https://github.com/spf13/cobra/pull/2023 - This adds the `SetErrPrefix` and `ErrPrefix` APIs on the `Command` struct to allow for setting a custom prefix for errors
+* feat: add getters for flag completions by @avirtopeanu-ionos in https://github.com/spf13/cobra/pull/1943
+* Feature: allow running persistent run hooks of all parents by @vkhoroz in https://github.com/spf13/cobra/pull/2044
+* Improve API to get flag completion function by @marckhouzam in https://github.com/spf13/cobra/pull/2063
+
+## 🐛 Bug fixes
+
+* Fix typo in fish completions by @twpayne in https://github.com/spf13/cobra/pull/1945
+* Fix grammar: 'allows to' by @supertassu in https://github.com/spf13/cobra/pull/1978
+* powershell: escape variable with curly brackets by @Luap99 in https://github.com/spf13/cobra/pull/1960
+* Don't complete --help flag when flag parsing disabled by @marckhouzam in https://github.com/spf13/cobra/pull/2061
+* Replace all non-alphanumerics in active help env var program prefix by @scop in https://github.com/spf13/cobra/pull/1940
+
+## 🔧 Maintenance
+
+* build(deps): bump golangci/golangci-lint-action from 3.4.0 to 3.5.0 by @dependabot in https://github.com/spf13/cobra/pull/1971
+* build(deps): bump golangci/golangci-lint-action from 3.5.0 to 3.6.0 by @dependabot in https://github.com/spf13/cobra/pull/1976
+* build(deps): bump golangci/golangci-lint-action from 3.6.0 to 3.7.0 by @dependabot in https://github.com/spf13/cobra/pull/2021
+* build(deps): bump actions/setup-go from 3 to 4 by @dependabot in https://github.com/spf13/cobra/pull/1934
+* build(deps): bump github.com/cpuguy83/go-md2man/v2 from 2.0.2 to 2.0.3 by @dependabot in https://github.com/spf13/cobra/pull/2047
+* build(deps): bump actions/checkout from 3 to 4 by @dependabot in https://github.com/spf13/cobra/pull/2028
+* command: temporarily disable G602 due to securego/gosec#1005 by @umarcor in https://github.com/spf13/cobra/pull/2022
+
+## 🧪 Testing & CI/CD
+
+* test: make fish_completions_test more robust by @branchvincent in https://github.com/spf13/cobra/pull/1980
+* golangci: enable 'unused' and disable deprecated replaced by it by @umarcor in https://github.com/spf13/cobra/pull/1983
+* cleanup: minor corrections to unit tests by @JunNishimura in https://github.com/spf13/cobra/pull/2003
+* ci: test golang 1.21 by @nunoadrego in https://github.com/spf13/cobra/pull/2024
+* Fix linter errors by @marckhouzam in https://github.com/spf13/cobra/pull/2052
+* Add tests for flag completion registration by @marckhouzam in https://github.com/spf13/cobra/pull/2053
+
+## ✏️ Documentation
+
+* doc: fix typo, Deperecated -> Deprecated by @callthingsoff in https://github.com/spf13/cobra/pull/2000
+* Add notes to doc about the execution condition of *PreRun and *PostRun functions by @haoming29 in https://github.com/spf13/cobra/pull/2041
+
+---
+
+Thank you everyone who contributed to this release and all your hard work! Cobra and this community would never be possible without all of you!!!! 🐍
+
+**Full Changelog**: https://github.com/spf13/cobra/compare/v1.7.0...v1.8.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.7.0 (2023-04-04)</h2>
+      <pre>### ✨ Features
+
+- Allow to preserve ordering of completions in `bash`, `zsh`, `pwsh`, & `fish`: @h4ck3rk3y #1903  
+- Add support for PowerShell 7.2+ in completions: @oldium #1916 
+- Allow sourcing zsh completion script: @marckhouzam #1917 
+
+### 🐛 Bug fixes
+
+- Don't remove flag values that match sub-command name: @brianpursley #1781 
+- Fix powershell completions not returning single word: @totkeks #1850 
+- Remove masked `template` import variable name: @yashLadha #1879 
+- Correctly detect completions with dash in argument: @oncilla #1817 
+
+### 🧪 Testing & CI/CD
+
+- Deprecate Go 1.15 in CI: @umarcor #1866 
+- Deprecate Go 1.16 in CI: @umarcor #1926 
+- Add testing for Go 1.20 in CI: @umarcor #1925 
+- Add tests to illustrate unknown flag bug: @brianpursley #1854 
+
+### 🔧 Maintenance
+
+- Update main image to better handle dark backgrounds: @Deleplace and @marckhouzam #1883 
+- Fix `stale.yaml` mispellings: @enrichman #1863 
+- Remove stale bot from GitHub actions: @jpmcb #1908 
+- Add makefile target for installing dependencies: @umarcor #1865 
+- Add Sia to projects using Cobra: @mike76-dev #1844 
+- Add `Vitess` and `Arewefastyet` to projects using cobra: @frouioui #1932 
+- Fixup for Kubescape github org: @dwertent #1874 
+- Fix route for GitHub workflows badge: @sh-cho #1884 
+- Fixup for GoDoc style documentation: @yashLadha #1885 
+- Various bash scripting improvements for completion: @scop #1702
+- Add Constellation to projects using Cobra: @datosh #1829
+ 
+### ✏️ Documentation
+
+- Add documentation about disabling completion descriptions: @Shihta #1901 
+- Improve `MarkFlagsMutuallyExclusive` example in user guide: @janhn #1904 
+- Update `shell_completions.md`: @gusega #1907 
+- Update copywrite year: @umarcor #1927 
+- Document suggested layout of subcommands: @lcarva #1930 
+- Replace deprecated ExactValidArgs with MatchAll in doc: @doniacld #1836 
+---
+
+This release contains several long running fixes, improvements to powershell completions, and further optimizations for completions.
+
+Thank you everyone who contributed to this release and all your hard work! Cobra and this community would never be possible without all of you! 🐍 
+
+Full changelog:  https://github.com/spf13/cobra/compare/v1.6.1...v1.7.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.6.1 (2022-10-24)</h2>
+      <pre>### Bug fixes 🐛
+
+- Fixes a panic when `AddGroup` isn't called before `AddCommand(my-sub-command)` is executed. This can happen within more complex cobra file structures that have many different `init`s to be executed. Now, the check for groups has been moved to `ExecuteC` and provides more flexibility when working with grouped commands - @marckhouzam (and shout out to @aawsome, @andig and @KINGSABRI for a deep investigation into this! 👏🏼)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.6.0 (2022-10-11)</h2>
+      <pre>### Summer 2022 Release
+
+Some exciting changes make their way to Cobra! Command completions continue to get better and better (including adding `--help` and `--version` automatic flags to the completions list). Grouping is now possible in your help output as well! And you can now use the `OnFinalize` method to cleanup things when all "work" is done. Checkout the full changelog below:
+
+---
+
+#### Features 🌠 
+- Add groups for commands in help: @aawsome @marckhouzam #1003 
+- Support for case-insensitive command names: @YuviGold #1802 
+- Expose `ValidateRequiredFlags` and `ValidateFlagGroups`: @skeetwu #1760
+- Add `--version` flag to help output: @fnickels #1707 
+- Add `--help` and `--version` flag in completions: @marckhouzam #1813 
+- Add `OnFinalize` method: @yann-soubeyrand #1788 
+- Allow user to add completion for powershell alias: @marckhouzam #1621
+- Make `InitDefaultcompletionCmd` public: @gssbzn #1467  
+
+#### Deprecation 👎🏼 
+- `ExactValidArgs` is deprecated (but not being removed entirely). This is abit nuanced, so checkout #1643 for further information and the [updated `user_guide.md`](https://github.com/spf13/cobra/blob/main/user_guide.md) on how this may affect you (and how you can take advantage of the _correct_ behavior in the validators): @umarcor #1643
+
+#### Bug fixes 🐛 
+- Fix (bash-v2) `activeHelp` length check syntax: @scop #1762
+- Fix correct command path in `see_also` for yaml documentation: @zregvart #1771
+- Fix showing flags that shadow parent persistent flag in child help messaging: @brianpursley #1776 
+
+#### Dependencies 🗳️ 
+- Upgrade to use `gopkg.in/yaml.v3`: @tklauser #1766
+
+#### Testing 🤔 
+- Test on Golang 1.19: @umarcor & @jpmcb #1782 
+- Renamed powershell completion tests: @marckhouzam #1803 
+- Use `action/setup-go` cache: @umarcor #1783 
+- Add `workflow_dispatch` to CI actions: @umarcor #1387 
+- Add minimum GitHub token permissions for workflows: @varunsh-coder #1792 
+
+#### Docs ✏️ 
+- Fixup spelling for GitHub CLI: @eltociear #1744
+- Clarify `SetContext` documentation: @katexochen #1748 
+- Instruct user to `go install` for binary: @marckhouzam #1726 
+- User guide cleanup: @marckhouzam #1656 
+- Document option to hide the default completion command: @marckhouzam #1779 
+
+#### Misc 💭 
+- Add KubeVirt, CloudQuery, Cilium, Okteto, Zitadel, Allero to projects using cobra: @maiqueb #1741, @yevgenypats #1742, @tklauser #1745, @jLopezbarb #1759, @fforootd #1772, @dimabru #1819 
+- Use correct stale action `exempt` yaml keys: @jpmcb #1800 
+- Add missing license headers: @umarcor #1809 
+
+_Note:_ Per #1804, we will be moving away from "seasonal" releases and doing more generic point release targets. Continue to track the milestones and issues in the `spf13/cobra` GitHub repository for more information!
+
+Great work everyone! Cobra would never be possible without your contributions! 🐍
+
+**Full Changelog**: https://github.com/spf13/cobra/compare/v1.5.0...v1.6.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.0 (2022-06-21)</h2>
+      <pre>## Spring 2022 Release 🌥️ 
+
+Hello everyone! Welcome to another release of cobra. Completions continue to get better and better. This release adds a few really cool new features. We also continue to patch versions of our dependencies as they become available via dependabot. Happy coding!
+
+## Active help 👐🏼 
+Shout out to @marckhouzam for a big value add: Active Help https://github.com/spf13/cobra/pull/1482. With active help, a program can provide some inline warnings or hints for users as they hit tab. Now, your CLIs can be even more intuitive to use!
+
+Currently active help is only supported for bash V2 and zsh. Marc wrote a whole guide on how to do this, so make sure to give it a good read to learn how you can add this to your cobra code! https://github.com/spf13/cobra/blob/master/active_help.md
+
+## Group flags 🧑🏼‍🤝‍🧑🏼 
+
+Cobra now has the ability to mark flags as required or exclusive as a **_group_**. Shout out to our newest maintainer @johnSchnake for this! https://github.com/spf13/cobra/pull/1654 Let's say you have a `username` flag that _**MUST**_ be partnered with a `password` flag. Well, now, you can enforce those as being required together:
+
+```go
+rootCmd.Flags().StringVarP(&u, "username", "u", "", "Username (required if password is set)")
+rootCmd.Flags().StringVarP(&pw, "password", "p", "", "Password (required if username is set)")
+rootCmd.MarkFlagsRequiredTogether("username", "password")
+``` 
+
+Flags may also be marked as "mutally exclusive" with the `MarkFlagsMutuallyExclusive(string, string ... )` command API. Refer to our [user guide documentation](https://github.com/spf13/cobra/blob/master/user_guide.md) for further info!
+
+## Completions 👀 
+* Add backwards-compatibility tests for legacyArgs() by @marckhouzam in https://github.com/spf13/cobra/pull/1547
+* feat: Add how to load completions in your current zsh session by @ondrejsika in https://github.com/spf13/cobra/pull/1608
+* Introduce FixedCompletions by @emersion in https://github.com/spf13/cobra/pull/1574
+* Add shell completion to flag groups by @marckhouzam in https://github.com/spf13/cobra/pull/1659
+* Modify brew prefix path in macOS system by @imxw in https://github.com/spf13/cobra/pull/1719
+* perf(bash-v2): use backslash escape string expansion for tab by @scop in https://github.com/spf13/cobra/pull/1682
+* style(bash-v2): out is not an array variable, do not refer to it as such by @scop in https://github.com/spf13/cobra/pull/1681
+* perf(bash-v2): standard completion optimizations by @scop in https://github.com/spf13/cobra/pull/1683
+* style(bash): out is not an array variable, do not refer to it as such by @scop in https://github.com/spf13/cobra/pull/1684
+* perf(bash-v2): short-circuit descriptionless candidate lists by @scop in https://github.com/spf13/cobra/pull/1686
+* perf(bash-v2): speed up filtering entries with descriptions by @scop in https://github.com/spf13/cobra/pull/1689
+* perf(bash-v2): speed up filtering menu-complete descriptions by @scop in https://github.com/spf13/cobra/pull/1692
+* fix(bash-v2): skip empty completions when filtering descriptions by @scop in https://github.com/spf13/cobra/pull/1691
+* perf(bash-v2): read directly to COMPREPLY on descriptionless short circuit by @scop in https://github.com/spf13/cobra/pull/1700
+* fix: Don't complete _command on zsh by @twpayne in https://github.com/spf13/cobra/pull/1690
+* Improve fish_completions code quality by @t29kida in https://github.com/spf13/cobra/pull/1515
+* Fix handling of descriptions for bash v3 by @marckhouzam in https://github.com/spf13/cobra/pull/1735
+* undefined or nil Args default to ArbitraryArgs by @umarcor in https://github.com/spf13/cobra/pull/1612
+* Add Command.SetContext by @joshcarp in https://github.com/spf13/cobra/pull/1551
+* Wrap printf tab with quotes by @PapaCharlie in https://github.com/spf13/cobra/pull/1665
+
+## Documentation 📝
+* Fixed typos in completions docs - @cuishuang https://github.com/spf13/cobra/pull/1625
+* Removed `CHANGELOG.md` as it isn't updated - @johnSchnake https://github.com/spf13/cobra/pull/1634
+* Minor typo fix in `shell_completion.md` - @danieldn https://github.com/spf13/cobra/pull/1678
+* Changed branch name in the cobra generator link to 'main' - @skywalker2909 https://github.com/spf13/cobra/pull/1645
+* Fix Command.Context comment by @katexochen in https://github.com/spf13/cobra/pull/1639
+* Change appropriate links from http:// to https:// where applicable - @deining https://github.com/spf13/cobra/pull/1695
+
+## Testing & CI ⚙️
+* Test on Golang 1.18 - @umarcor https://github.com/spf13/cobra/pull/1635
+* Use `RICHGO_FORCE_COLOR` - @umarcor https://github.com/spf13/cobra/pull/1647
+* Adds size labeler GitHub action by @jpmcb in https://github.com/spf13/cobra/pull/1610
+* Update `stale-bot` settings - @jpmcb https://github.com/spf13/cobra/pull/1609
+
+## Beep boop, bot commits 🤖 
+* Bumped golangci/golangci-lint-action from 3.1.0 to 3.2.0 - @dependabot https://github.com/spf13/cobra/pull/1697
+* Bump codelytv/pr-size-labeler from 1.8.0 to 1.8.1 - @dependabot https://github.com/spf13/cobra/pull/1661
+* Bump actions/stale from 1 to 5 by @dependabot in https://github.com/spf13/cobra/pull/1618
+* Bump actions/cache from 2 to 3 by @dependabot in https://github.com/spf13/cobra/pull/1640
+* Bump actions/labeler from 3 to 4 by @dependabot in https://github.com/spf13/cobra/pull/1620
+* Bump golangci/golangci-lint-action from 2 to 3.1.0 by @dependabot in https://github.com/spf13/cobra/pull/1615
+* Bump actions/checkout from 2 to 3 by @dependabot in https://github.com/spf13/cobra/pull/1619
+* Bump github.com/cpuguy83/go-md2man/v2 from 2.0.1 to 2.0.2 by @dependabot in https://github.com/spf13/cobra/pull/1688
+* Bump actions/setup-go from 2 to 3 by @dependabot in https://github.com/spf13/cobra/pull/1660
+
+## Misc 💭
+* Use `errors.Is()` to check for errors - @Luap99 https://github.com/spf13/cobra/pull/1730
+* Prefer ReplaceAll instead of Replace(..., -1) by @WhyNotHugo in https://github.com/spf13/cobra/pull/1530
+* Add Kubescape to projects - @avinashupadhya99 https://github.com/spf13/cobra/pull/1642
+* Add Pulumi as a project using cobra by @iwahbe in https://github.com/spf13/cobra/pull/1720
+* Add Polygon Edge as a project using Cobra by @zivkovicmilos in https://github.com/spf13/cobra/pull/1672
+
+Shoutout to _ALL_ our contributors (and all the new first time contributors!!) - great work everyone!! Cobra and it's huge impact wouldn't be possible without you 👏🏼  🚀  🐍 
+
+**Full Changelog**: https://github.com/spf13/cobra/compare/v1.4.0...v1.5.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.0 (2022-03-10)</h2>
+      <pre># Winter 2022 Release ❄️ 
+
+Another season, another release!
+
+## Goodbye viper! 🐍 🚀
+
+The core Cobra library no longer requires Viper and all of its indirect dependencies. This means that Cobra's dependency tree has been drastically thinned! The Viper dependency was included because of the `cobra` CLI generation tool. [This tool has migrated to `spf13/cobra-cli`](https://github.com/spf13/cobra-cli/releases/tag/v1.3.0).
+
+It's _pretty unlikely_ you were importing and using **the bootstrapping CLI tool** as part of your application (after all, it's just a tool to get going with core `cobra`).
+
+But if you were, replace occurrences of
+```
+"github.com/spf13/cobra/cobra"
+```
+with
+```
+"github.com/spf13/cobra-cli"
+```
+
+And in your `go.mod`, you'll want to also include this dependency:
+```
+github.com/spf13/cobra-cli v1.3.0
+```
+
+Again, the maintainers _do not anticipate_ this being a breaking change to users of the core `cobra` library, so minimal work should be required for users to integrate with this new release. Moreover, this means the dependency tree for your application using Cobra should no longer require dependencies that were inherited from Viper. Huzzah! 🥳 
+
+If you'd like to read more
+- issue: https://github.com/spf13/cobra/issues/1597
+- PR: https://github.com/spf13/cobra/pull/1604
+
+## Documentation 📝 
+- Update Go Doc link and badge in README: https://github.com/spf13/cobra/pull/1593
+- Fix to install command, now targets `@latest`: https://github.com/spf13/cobra/pull/1576
+- Added MAINTAINERS file: https://github.com/spf13/cobra/pull/1545
+
+## Other 💭 
+- Bumped license year to 2022 in golden files: https://github.com/spf13/cobra/pull/1575
+- Added Pixie to projects: https://github.com/spf13/cobra/pull/1581
+- Updated labeler for new labeling scheme: https://github.com/spf13/cobra/pull/1613 & syntax fix: https://github.com/spf13/cobra/pull/1624
+
+
+Shoutout to our awesome contributors helping to make this cobra release possible!!
+@spf13 @marckhouzam @johnSchnake @jpmcb @liggitt @umarcor @hiljusti @marians @shyim @htroisi </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.3.0 (2021-12-14)</h2>
+      <pre># v1.3.0 - The Fall 2021 release 🍁 
+
+## Completion fixes & enhancements 💇🏼  
+
+In `v1.2.0`, we introduced a new model for completions. Thanks to everyone for trying it, giving feedback, and providing numerous fixes! Continue to work with the new model as the old one (as noted in code comments) will be deprecated in a coming release. 
+
+- `DisableFlagParsing` now triggers custom completions for flag names #1161
+- Fixed unbound variables in bash completions causing edge case errors #1321 
+- `help` completion formatting improvements & fixes #1444 
+- All completions now follow the `help` example: short desc are now capitalized and removes extra spacing from long description #1455 
+- Typo fixes in bash & zsh completions #1459 
+- Fixed mixed tab/spaces indentation in completion scripts. Now just 4 spaces #1473 
+- Support for different bash completion options. Bash completions v2 supports descriptions and requires descriptions to be removed for `menu-complete`, `menu-complete-backward` and `insert-completions`. These descriptions are now purposefully removed in support of this model. #1509 
+- Fix for invalid shell completions when using `~/.cobra.yaml`. Log message `Using config file: ~/.cobra.yaml` now printed to stderr #1510 
+- Removes unnecessary trailing spaces from completion command descriptions #1520 
+- Option to hide default `completion` command #1541 
+- Remove `__complete` command for programs without subcommands #1563
+
+## Generator changes ⚙️ 
+
+Thanks to @spf13 for providing a number of changes to the Cobra generator tool, streamlining it for new users!
+
+- The Cobra generator now _won't_ automatically include Viper and cleans up a number of unused imports when not using Viper.
+- The Cobra generator's default license is now `none`
+- The Cobra generator now works with Go modules
+- Documentation to reflect these changes
+
+## New Features ⭐  
+- License can be specified by their SPDX identifiers #1159
+- `MatchAll` allows combining several PositionalArgs to work in concert. This now allows for enabling composing `PositionalArgs` #896
+
+## Bug Fixes 🐛 
+- Fixed multiple error message from cobra `init` boilerplates #1463 #1552 #1557
+
+## Testing 👀 
+- Now testing golang 1.16.x and 1.17.x in CI #1425 
+- Fix for running diff test to ignore CR for windows #949 
+- Added helper functions and reduced code reproduction in `args_test` #1426
+- Now using official `golangci-lint` github action #1477 
+
+## Security 🔏 
+- Added GitHub dependabot #1427
+- Now using Viper `v1.10.0`
+  - There is a known CVE in an *indirect* dependency from `viper`: https://github.com/spf13/cobra/issues/1538. This will be patched in a future release
+
+## Documentation 📝 
+- Multiple projects added to the `projects_using_cobra.md` file: #1377 #1501 #1454 
+- Removed ToC from main readme file as it is now automagically displayed by GitHub #1429
+- Documentation correct for when the `--author` flag is specified #1009 
+- `shell_completions.md` has an easier to use snippet for copying and pasting shell completions #1372
+
+## Other 💭 
+- Bump version of  `cpuguy83/go-md2man` to v2.0.1 #1460
+- Removed `lesser` typo from the GPL-2.0 license #880 
+- Fixed spelling errors #1514 
+
+_Thank you to all our amazing contributors_ ⭐🐍🚀</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2.1 (2021-07-02)</h2>
+      <pre>### Bug fixes
+- Quickfix for https://github.com/spf13/cobra/issues/1437 after v1.2.0 where parallel use of the `cmd.RegisterFlagCompletionFunc()` (and subsequent map) now works correctly and flag completions now work again</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2.0 - The completions release (2021-07-01)</h2>
+      <pre># :stars: v1.2.0 - The completions release
+
+Welcome to v1.2.0 of Cobra! This release focuses on code completions, several critical bug fixes, some documentation updates, and security bumps. Upgrading should be simple but please take note of the introduction of bash completions V2 and their default use. The v1 completions library is still available, but will be _deprecated_ in the future. Please open an issue with any problems!
+
+---
+
+## New Features 
+- Automatically adds a `completion` command for shell completions. If a `completion` command is already provided, uses that instead. This will _automatically_ provide shell completions for bash, zsh, fish, and PowerShell  https://github.com/spf13/cobra/pull/1192
+    - Users can configure the command auto creation:
+        - disable the creation of the completion command
+        - disable completion descriptions
+        - disable the `--no-descriptions` flag for "always on" completion descriptions
+- Introduction of bash completions V2, a uniform completion approach which include completion descriptions. The V1 bash completions are still available _but will be deprecated_ in a later release - https://github.com/spf13/cobra/pull/1146
+    - Note that projects providing completion through a different command name (say a command named "complete") will continue to use v1 for their own command but will also provide cobra's implicit "completion" command which will use v2, unless of course, these projects take the time to disable the default "completion" command as noted above.
+- Commands now support context being passed to completions - https://github.com/spf13/cobra/pull/1265
+    - An example can be found here: https://github.com/spf13/cobra/pull/1265#issuecomment-734551031
+- Removed dependency on`mitchellh/go-homedir` in favor of core Go `os.UserHomeDir()` - https://github.com/spf13/cobra/commit/8eaca5f0f49ad747a0722d39dca7a75c34abd21a
+
+## Bug Fixes
+- Fix trailing whitespace not being handled in powershell completion scripts https://github.com/spf13/cobra/pull/1342
+- Bash completion variable leak fix https://github.com/spf13/cobra/pull/1352
+- Fish shell completions correctly ignore trailing empty lines https://github.com/spf13/cobra/pull/1284
+- PowerShell completions fix for "no file comp directive" - https://github.com/spf13/cobra/pull/1363
+- Custom completions now correctly handle multiple shorthand flags together - https://github.com/spf13/cobra/pull/1258
+- zsh completions now correctly handle `ShellDirectiveCompletionNoSpace` and file completion all the time - https://github.com/spf13/cobra/pull/1213
+- Multiple fixes / improvements to the fish shell support - https://github.com/spf13/cobra/pull/1249
+- Fix home directory config not loading correctly - https://github.com/spf13/cobra/pull/1282
+- Fix for `RegisterFlagCompletionFunc` as a global var not working in multi-threaded programs: https://github.com/spf13/cobra/pull/1423
+-  Custom completions correctly do not complete flags after args when interspersed is false #1308 
+
+## Testing
+- Deprecated Travis CI. Now fully using Github Actions - https://github.com/spf13/cobra/commit/d0f318d45bdb46e3c1bc314c6096674426f1a620
+- Added test cases and enhancements (thank you to everyone for taking the time to add tests to your PRs!)
+- Shoutout to @marckhouzam and @Luap99 for their hard work on a cobra command completions testing library. [Check out the repo here!](https://github.com/marckhouzam/cobra-completion-testing)
+
+## Security
+- Bump viper to 1.8.1. This corrects several issues with vulnerabilities existing in the dependency tree - https://github.com/spf13/cobra/pull/1433
+
+## Other
+- Add PR labeler with pull_request_target to enable tests to run from forks - https://github.com/spf13/cobra/pull/1338
+- CI using MSYS2 windows machines pull latest - https://github.com/spf13/cobra/pull/1366
+- Multiple small fixes to spelling / documentation - https://github.com/spf13/cobra/pull/1349 https://github.com/spf13/cobra/pull/1417 https://github.com/spf13/cobra/pull/1434
+
+*_Thank you to _all_ our amazing contributors :snake::rocket:_*
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.3 (2021-02-10)</h2>
+      <pre>* **Fix:** `release-branch.cobra1.1` only: Revert "Deprecate Go < 1.14" to maintain backward compatibility</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.2 (2021-02-10)</h2>
+      <pre>### Notable Changes
+
+* Bump license year to 2021 in golden files (#1309) @Bowbaq
+* Enhance PowerShell completion with custom comp (#1208) @Luap99
+* Update gopkg.in/yaml.v2 to v2.4.0: The previous breaking change in yaml.v2 v2.3.0 has been reverted, see go-yaml/yaml#670
+* Documentation readability improvements (#1228 etc.) @zaataylor etc.
+* Use golangci-lint: Repair warnings and errors resulting from linting (#1044) @umarcor
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.1 (2020-10-18)</h2>
+      <pre>* **Fix:** yaml.v2 2.3.0 contained a unintended breaking change. This release reverts to yaml.v2 v2.2.8 which has recent critical CVE fixes, but does not have the breaking changes. See https://github.com/spf13/cobra/pull/1259 for context.
+* **Fix:** correct internal formatting for go-md2man v2 (which caused man page generation to be broken). See https://github.com/spf13/cobra/issues/1049 for context.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.0 (2020-10-14)</h2>
+      <pre>## Notable Changes
+* Extend Go completions and revamp zsh comp (#1070)
+* Fix man page doc generation - no auto generated tag when `cmd.DisableAutoGenTag = true` (#1104)
+* Add completion for help command (#1136)
+* Complete subcommands when TraverseChildren is set (#1171) 
+* Fix stderr printing functions (#894) 
+* fix: fish output redirection (#1247)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0 (2020-04-10)</h2>
+      <pre>## v1.0.0
+Announcing v1.0.0 of Cobra. :tada: 
+
+### Notable Changes
+* Fish completion (including support for Go custom completion) @marckhouzam 
+* API (urgent): Rename BashCompDirectives to ShellCompDirectives @marckhouzam 
+* Remove/replace SetOutput on Command - deprecated @jpmcb 
+* add support for autolabel stale PR @xchapter7x 
+* Add Labeler Actions @xchapter7x 
+* Custom completions coded in Go (instead of Bash) @marckhouzam 
+* Partial Revert of #922 @jharshman 
+* Add Makefile to project @jharshman 
+* Correct documentation for InOrStdin @desponda 
+* Apply formatting to templates @jharshman 
+* Revert change so help is printed on stdout again @marckhouzam 
+* Update md2man to v2.0.0 @pdf 
+* update viper to v1.4.0 @umarcor 
+* Update cmd/root.go example in README.md @jharshman </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.0.7 (2020-03-27)</h2>
+      <pre>Bug fix to restore previous exit behavior when a command is not runnable.
+
+Issue Ref: #1056 
+Bug Introduced: #922 
+Affected Releases: 0.0.6
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.0.6 (2020-02-20)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.0.5 (2019-06-07)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.0.4 (2019-05-18)</h2>
+      <pre>As requested in #259 and #857.
+
+Changes:
+https://github.com/spf13/cobra/compare/v0.0.3...v0.0.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.0.3 (2018-05-15)</h2>
+      <pre>Tagged release for package managers, as requested in #693.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.0.2 (2018-03-29)</h2>
+      <pre>Tagged release for package managers, as requested in #259.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.0.1 (2017-10-24)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

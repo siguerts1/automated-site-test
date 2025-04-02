@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for OpenVPN/openvpn"/>
+  <title>OpenVPN/openvpn Release Notes</title>
+</head>
+<body>
+  <h1>🚀 OpenVPN/openvpn - Release Notes</h1>
+  
+    <section>
+      <h2>v2.6.13 (2025-01-15)</h2>
+      <pre>### Feature changes:
+
+*  on non-windows clients (MacOS, Linux, Unix) send "release" string from `uname()` call as `IV_PLAT_VER` to server - while highly OS specific this is still helpful to keep track of OS versions used on the client side (​#637)
+* Windows: protect cached username, password and token in client memory (using the `CryptProtectMemory()` windows API)
+* Windows: use new API to get dco-win driver version from driver (newly introduced non-exclusive control device) (OpenVPN/ovpn-dco-win#76)
+* Linux: pass `--timeout=0` argument to systemd-ask-password, to avoid default timeout of 90 seconds ("console prompting also has no timeout") (#649) 
+
+### Security fixes:
+
+* improve server-side handling of clients sending usernames or passwords longer than `USER_PASS_LEN` - this would not result in a crash, buffer overflow or other security issues, but the server would then misparse incoming IV variables and produce misleading error messages. 
+
+### Notable bug fixes:
+
+* FreeBSD DCO: fix memory leaks in nvlist handling (#636)
+* purge proxy authentication credentials from memory after use (if --auth-nocache is in use)
+
+**Windows Client**: Community MSI installer for Windows client can be found at [Community Downloads](https://openvpn.net/community-downloads/).
+
+**Linux Packages**: Instructions for installing community-maintained Linux packages can be found in the [Community Wiki](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos).
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.6.12...v2.6.13</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.5.11 (2024-07-18)</h2>
+      <pre>### Security fixes
+
+- [CVE-2024-5594](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-5594): control channel: refuse control channel messages with
+  nonprintable characters in them.  Security scope: a malicious openvpn
+  peer can send garbage to openvpn log, or cause high CPU load.
+  (Reynir Björnsson)
+
+  (Backport of the security fix in 2.6.11 and the fix for the bugfix
+  in 2.6.12)
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.5.10...v2.5.11</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.12 (2024-07-18)</h2>
+      <pre>Bug fixes:
+------------
+* the fix for CVE-2024-5594 (refuse control channel messages with
+  nonprintable characters) was too strict, breaking user configurations
+  with AUTH_FAIL messages having trailing CR/NL characters.  This often
+  happens if the AUTH_FAIL reason is set by a script.  Strip those before
+  testing the command buffer (github: #568).  Also, add unit test.
+* Http-proxy: fix bug preventing proxy credentials caching (trac [#1187](https://community.openvpn.net/openvpn/ticket/1187)
+
+**Windows Client**: Community MSI installer for Windows client can be found at [Community Downloads](https://openvpn.net/community-downloads/).
+
+**Linux Packages**: Instructions for installing community-maintained Linux packages can be found in the [Community Wiki](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos).
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.6.11...v2.6.12</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.11 (2024-06-20)</h2>
+      <pre>Security fixes:
+-----------
+
+* [CVE-2024-4877](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-4877): Windows: harden interactive service pipe.
+  Security scope: a malicious process with "some" elevated privileges
+  (`SeImpersonatePrivilege`) could open the pipe a second time, tricking
+  openvn GUI into providing user credentials (tokens), getting full
+  access to the account openvpn-gui.exe runs as.
+  (Zeze with TeamT5)
+* [CVE-2024-5594](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-5594): control channel: refuse control channel messages with
+  nonprintable characters in them.  Security scope: a malicious openvpn
+  peer can send garbage to openvpn log, or cause high CPU load.
+  (Reynir Björnsson)
+* [CVE-2024-28882](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-28882): only call `schedule_exit()` once (on a given peer).
+  Security scope: an authenticated client can make the server "keep the
+  session" even when the server has been told to disconnect this client
+  (Reynir Björnsson)
+
+New features:
+-----------
+
+* Windows Crypto-API: Implement Windows CA template match for searching
+  certificates in windows crypto store.
+* Support pre-created DCO interface on FreeBSD (OpenVPN would fail to
+  set ifmode p2p/subnet otherwise)
+
+Bug fixes:
+------------
+
+* Fix connect timeout when using SOCKS proxies (trac [#328](https://community.openvpn.net/openvpn/ticket/328), github #267)
+* Work around LibreSSL crashing on OpenBSD 7.5 when enumerating ciphers
+  (LibreSSL bug, already fixed upstream, but not backported to OpenBSD 7.5,
+  see also LibreSSL/OpenBSD#150)
+* Add bracket in fingerprint message and do not warn about missing
+  verification (github #516)
+
+Documentation:
+---------------
+
+* Remove "experimental" denotation for `--fast-io`
+* Correctly document ifconfig_* variables passed to scripts
+* Documentation: make section levels consistent
+* Samples: Update sample configurations (remove compression & old cipher settings, add more informative comments)
+
+**Windows Client**: Community MSI installer for Windows client can be found at [Community Downloads](https://openvpn.net/community-downloads/).
+
+**Linux Packages**: Instructions for installing community-maintained Linux packages can be found in the [Community Wiki](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos).
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.6.10...v2.6.11</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.5.10 (2024-03-22)</h2>
+      <pre>### Security fixes:
+
+* [​CVE-2024-27459](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-27459): Windows: fix a possible stack overflow in the interactive service component which might lead to a local privilege escalation. Reported-by: Vladimir Tokarev <[​vtokarev@microsoft.com](mailto:vtokarev@microsoft.com)>
+* [​CVE-2024-24974](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-24974): Windows: disallow access to the interactive service pipe from remote computers. Reported-by: Vladimir Tokarev <[​vtokarev@microsoft.com](mailto:vtokarev@microsoft.com)>
+* [​CVE-2024-27903](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-27903): Windows: disallow loading of plugins from untrusted installation paths, which could be used to attack openvpn.exe via a malicious plugin. Plugins can now only be loaded from the OpenVPN install directory, the Windows system directory, and possibly from a directory specified by HKLM\SOFTWARE\OpenVPN\plugin_dir. Reported-by: Vladimir Tokarev <[​vtokarev@microsoft.com](mailto:vtokarev@microsoft.com)>
+* [​CVE-2024-1305](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-1305): Windows TAP driver: Fix potential integer overflow in TapSharedSendPacket. Reported-by: Vladimir Tokarev <[​vtokarev@microsoft.com](mailto:vtokarev@microsoft.com)> 
+
+**Windows Client**: Community MSI installer for Windows client can be found at [Community Downloads](https://openvpn.net/community-downloads/).
+
+Note that OpenVPN 2.5.x is in *Old Stable Support* status (see [SupportedVersions](https://community.openvpn.net/openvpn/wiki/SupportedVersions)). This usually means that we do not provide updated Windows Installers anymore, even for security fixes. Since this release fixes several issues specific to the Windows platform we decided to provide installers anyway. This does not change the support status of 2.5.x branch. We might not provide security updates for issues found in the future. We recommend that everyone switch to the 2.6.x versions of installers as soon as possible.
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.5.9...v2.5.10</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.10 (2024-03-20)</h2>
+      <pre>Security fixes:
+----------
+
+* [CVE-2024-27459](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-27459): Windows: fix a possible stack overflow in the
+  interactive service component which might lead to a local privilege escalation.
+  Reported-by: Vladimir Tokarev <vtokarev@microsoft.com>
+* [CVE-2024-24974](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-24974): Windows: disallow access to the interactive service pipe from remote computers.
+  Reported-by: Vladimir Tokarev <vtokarev@microsoft.com>
+* [CVE-2024-27903](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-27903): Windows: disallow loading of plugins from untrusted installation paths, which could be used to attack `openvpn.exe` via a malicious plugin.  Plugins can now only be loaded from the OpenVPN install directory, the Windows system directory, and possibly from a directory specified by `HKLM\SOFTWARE\OpenVPN\plugin_dir`.
+  Reported-by: Vladimir Tokarev <vtokarev@microsoft.com>
+* [CVE-2024-1305](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-1305): Windows TAP driver: Fix potential integer overflow in !TapSharedSendPacket.
+  Reported-by: Vladimir Tokarev <vtokarev@microsoft.com>
+
+New features:
+------------
+
+* `t_client.sh` can now run pre-tests and skip a test block if needed
+  (e.g. skip NTLM proxy tests if SSL library does not support MD4)
+
+User visible changes:
+---------------
+
+* Update copyright notices to 2024
+
+Bug fixes:
+-------------
+
+* Windows: if the win-dco driver is used (default) and the GUI requests use of a proxy server, the connection would fail.  Disable DCO in this case.  (#522)
+* Compression: minor bugfix in checking option consistency vs. compiled-in algorithm support
+* systemd unit files: remove obsolete syslog.target
+
+**Windows Client**: Community MSI installer for Windows client can be found at [Community Downloads](https://openvpn.net/community-downloads/).
+
+**Linux Packages**: Instructions for installing community-maintained Linux packages can be found in the [Community Wiki](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos).
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.6.9...v2.6.10</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.9 (2024-02-14)</h2>
+      <pre>Security fixes:
+----------
+
+* Windows Installer: fix [CVE-2023-7235](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-7235) where installing to a non-default
+  directory could lead to a local privilege escalation. Reported by Will Dormann.
+
+New features:
+------------
+
+* Add support for building with mbedTLS 3.x.x
+* New option `--force-tls-key-material-export` to only accept clients
+  that can do TLS keying material export to generate session keys
+  (mostly an internal option to better deal with TLS 1.0 PRF failures).
+* Windows: bump vcpkg-ports/pkcs11-helper to 1.30
+* Log incoming SSL alerts in easier to understand form and move logging
+  from `--verb 8` to `--verb 3`.
+* protocol_dump(): add support for printing `--tls-crypt` packets
+
+User visible changes:
+---------------
+
+* License change is now complete, and all code has been re-licensed
+  under the new license (still GPLv2, but with new linking exception
+  for Apache2 licensed code).  See [COPYING](https://github.com/OpenVPN/openvpn/blob/release/2.6/COPYING) for details.
+
+  Code that could not be re-licensed has been removed or rewritten.
+* The original code for the `--tls-export-cert` feature has been removed
+  (due to the re-licensing effort) and rewritten without looking at the
+  original code.  Feature-compatibility has been tested by other developers,
+  looking at both old and new code and documentation, so there *should*
+  not be a user-visible change here.
+* IPv6 route addition/deletion are now logged on the same level (3) as
+  for IPv4.  Previously IPv6 was always logged at `--verb 1`.
+* Better handling of TLS 1.0 PRF failures in the underlying SSL library
+  (e.g. on some FIPS builds) - this is now reported on startup, and
+  clients before 2.6.0 that can not use TLS EKM to generate key material
+  are rejected by the server.  Also, error messages are improved to see
+  what exactly failed.
+
+Notable bug fixes:
+-------------
+
+* FreeBSD: for servers with multiple clients, reporting of peer traffic
+  statistics would fail due to insufficient buffer space (#487)
+
+**Windows Client**: Community MSI installer for Windows client can be found at [Community Downloads](https://openvpn.net/community-downloads/).
+
+**Linux Packages**: Instructions for installing community-maintained Linux packages can be found in the [Community Wiki](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos).
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.6.8...v2.6.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.8 (2023-11-17)</h2>
+      <pre>User visible changes
+--------------------
+- Windows: print warning if pushed options require DHCP (e.g. DOMAIN-SEARCH) and driver in use does not use DHCP (wintun, dco).
+
+Bug fixes
+---------
+- SIGSEGV crash: Do not check key_state buffers that are in S_UNDEF state (Github [​#449](https://github.com/OpenVPN/openvpn/issues/449)) - the new sanity check function introduced in 2.6.7 sometimes tried to use a NULL pointer after an unsuccessful TLS handshake
+- Windows: `--dns` option did not work when tap-windows6 driver was used, because internal flag for "apply DNS option to DHCP server" wasn't set (Github [​#447](https://github.com/OpenVPN/openvpn/issues/447))
+- Windows: fix status/log file permissions, caused by regression after changing to CMake build system (Github: [​#454](https://github.com/OpenVPN/openvpn/issues/454), Trac: [​#1430](https://community.openvpn.net/openvpn/ticket/1430))
+- Windows: fix `--chdir` failures, also caused by error in CMake build system (Github [​#448](https://github.com/OpenVPN/openvpn/issues/448))
+
+
+**Windows Client**: Community MSI installer for Windows client can be found at [Community Downloads](https://openvpn.net/community-downloads/).
+
+**Linux Packages**: Instructions for installing community-maintained Linux packages can be found in the [Community Wiki](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos).
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.6.7...v2.6.8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.7 (2023-11-10)</h2>
+      <pre>Security Fixes
+--------------
+- ​[CVE-2023-46850](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-46850) OpenVPN versions between 2.6.0 and 2.6.6 incorrectly use a send buffer after it has been free()d in some circumstances, causing some free()d memory to be sent to the peer. All configurations using TLS (e.g. not using `--secret`) are affected by this issue. (found while tracking down CVE-2023-46849 / Github ​[#400](https://github.com/OpenVPN/openvpn/issues/400), ​[#417](https://github.com/OpenVPN/openvpn/issues/417))
+​
+- [CVE-2023-46849](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-46849) OpenVPN versions between 2.6.0 and 2.6.6 incorrectly restore `--fragment` configuration in some circumstances, leading to a division by zero when `--fragment` is used. On platforms where division by zero is fatal, this will cause an OpenVPN crash. (Github ​[#400](https://github.com/OpenVPN/openvpn/issues/400), ​[#417](https://github.com/OpenVPN/openvpn/issues/417)).
+
+
+User visible changes
+--------------------
+- DCO: warn if DATA_V1 packets are sent by the other side - this a hard incompatibility between a 2.6.x client connecting to a 2.4.0-2.4.4 server, and the only fix is to use `--disable-dco`.
+
+- Remove OpenSSL Engine method for loading a key. This had to be removed because the original author did not agree to relicensing the code with the new linking exception added. This was a somewhat obsolete feature anyway as it only worked with OpenSSL 1.x, which is end-of-support.
+
+- add warning if p2p NCP client connects to a p2mp server - this is a combination that used to work without cipher negotiation (pre 2.6 on both ends), but would fail in non-obvious ways with 2.6 to 2.6.
+
+- add warning to `--show-groups` that not all supported groups are listed (this is due the internal enumeration in OpenSSL being a bit weird, omitting X448 and X25519 curves).
+
+- `--dns`: remove support for exclude-domains argument (this was a new 2.6 option, with no backend support implemented yet on any platform, and it turns out that no platform supported it at all - so remove option again)
+
+- warn user if INFO control message too long, do not forward to management client (safeguard against protocol-violating server implementations)
+
+
+New features
+------------
+- DCO-WIN: get and log driver version (for easier debugging).
+
+- print "peer temporary key details" in TLS handshake
+
+- log OpenSSL errors on failure to set certificate, for example if the algorithms used are in acceptable to OpenSSL (misleading message would be printed in cryptoapi / pkcs11 scenarios)
+
+- add CMake build system for MinGW and MSVC builds
+
+- remove old MSVC build system
+
+- improve cmocka unit test building for Windows
+
+**Windows Client**: Community MSI installer for Windows client can be found at [Community Downloads](https://openvpn.net/community-downloads/).
+
+**Linux Packages**: Instructions for installing community-maintained Linux packages can be found in the [Community Wiki](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos).
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.6.6...v2.6.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.6 (2023-08-23)</h2>
+      <pre>User visible changes
+--------------------
+- OCC exit messages are now logged more visibly
+  (Github #391)
+
+- OpenSSL error messages are now logged with more details (for example,
+  when loading a provider fails, which .so was tried, and why did it fail)
+  (Github #361)
+
+- print a more user-friendly message when tls-crypt-v2 client auth fails
+
+- packaging now includes all documentation in the tarball
+
+
+New features
+------------
+- set WINS server via interactive service - this adds support for
+  "dhcp-option WINS 192.0.2.1" for DCO + wintun interfaces where no
+  DHCP server is used (Github #373).
+
+Bug fixes / Code cleanup
+------------------------
+- route.c was sometimes ignoring return values of add_route3()
+  (found by coverity)
+
+- ntlm: clarify use of buffer in case of truncated NTLM challenge,
+  no actual code change (reported by Trial of Bits, TOB-OVPN-14)
+
+- pkcs11_openssl.c: disable unused code (found by coverity)
+
+- options.c: do not hide variable from parent scope (found by coverity)
+
+- configure: fix typo in LIBCAPNG_CFALGS (Github #371)
+
+- ignore IPv6 route deletion request on Android, reduce IPv4 route-related
+  message verbosity on Android
+
+- manage.c: document missing KID parameter of "client-pending-auth"
+  (new addition in da083c3b (2.6.2)) in manage interface help text
+
+- vpn-network-options.rst: fix typo of "dhcp-option" (Github #313)
+
+- tun.c/windows: quote WMIC call to set DHCP/DNS domain with hyphen
+  (Github #363)
+
+- fix CR_RESPONSE management message using wrong key_id
+
+- work around false positive compiler warnings with MinGW 12
+
+- work around false positive compiler warnings with GCC 12.2.0
+
+- fix more compiler warnings on FreeBSD
+
+- test_tls_crypt: improve cmocka testing portability
+
+- dco-linux: fix counter print format (signed/unsigned)
+
+- packaging: include everything that is needed for a MSVC build in tarballs
+  (Github #344)
+
+**Windows Client**: Community MSI installer for Windows client can be found at [Community Downloads](https://openvpn.net/community-downloads/).
+
+**Linux Packages**: Instructions for installing community-maintained Linux packages can be found in the [Community Wiki](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos).
+
+**Full Changelog**: https://github.com/OpenVPN/openvpn/compare/v2.6.5...v2.6.6</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for go-kit/kit"/>
+  <title>go-kit/kit Release Notes</title>
+</head>
+<body>
+  <h1>🚀 go-kit/kit - Release Notes</h1>
+  
+    <section>
+      <h2>v0.13.0 (2023-08-25)</h2>
+      <pre>Go kit v0.13.0 is released, containing mostly minor fixes and dependency updates.
+
+## What's Changed
+
+* Remove unused code by @sashamelentyev in https://github.com/go-kit/kit/pull/1188
+* Use errors.Is for error handling by @sashamelentyev in https://github.com/go-kit/kit/pull/1187
+* Fix docs by @sashamelentyev in https://github.com/go-kit/kit/pull/1198
+* Refactor metrics/cloudwatch by @sina-devel in https://github.com/go-kit/kit/pull/1202
+* README: add chaseSpace/kit, closes #1027 by @peterbourgon in https://github.com/go-kit/kit/pull/1052
+* feat: move from `streadway/amqp` to `rabbitmq-amqp091-go` by @Juneezee in https://github.com/go-kit/kit/pull/1210
+* feat(http): make interceptingWriter reimplement common interfaces by @Reasno in https://github.com/go-kit/kit/pull/1212
+* Fixes Framework Beego URL by @vpereira01 in https://github.com/go-kit/kit/pull/1219
+* Fixed instancer loop logic that was causing Consul to get spammed by @jkratz55 in https://github.com/go-kit/kit/pull/1215
+* go.mod | go.sum: update dependencies for prometheus client_golang by @vcruzmj in https://github.com/go-kit/kit/pull/1225
+* ci: add go 1.18 by @sashamelentyev in https://github.com/go-kit/kit/pull/1233
+* Update README.md by @cxtruong70 in https://github.com/go-kit/kit/pull/1239
+* ci: add go 1.19 by @sashamelentyev in https://github.com/go-kit/kit/pull/1245
+* go.mod | go.sum: Update nats-io/jwt/v2 & nats-io/nats-server/v2 dependencies to fix CVE-2021-3127 & CVE-2022-24450 by @denopink in https://github.com/go-kit/kit/pull/1237
+* Update link pointing to protobuf generator by @sagikazarmark in https://github.com/go-kit/kit/pull/1248
+* Update github.com/hashicorp/serf and github.com/hashicorp/consul/api to fix CVE-2019-19794 by @francogeller in https://github.com/go-kit/kit/pull/1250
+* Replace microgen with the maintained fork by @ShayNehmad-RecoLabs in https://github.com/go-kit/kit/pull/1254
+* Remove dead link to code generator from README by @heymatthew in https://github.com/go-kit/kit/pull/1256
+* README: update codegen link to truss by @matthewhartstonge in https://github.com/go-kit/kit/pull/1262
+
+## New Contributors
+
+* @sashamelentyev made their first contribution in https://github.com/go-kit/kit/pull/1188
+* @sina-devel made their first contribution in https://github.com/go-kit/kit/pull/1202
+* @Juneezee made their first contribution in https://github.com/go-kit/kit/pull/1210
+* @Reasno made their first contribution in https://github.com/go-kit/kit/pull/1212
+* @vpereira01 made their first contribution in https://github.com/go-kit/kit/pull/1219
+* @jkratz55 made their first contribution in https://github.com/go-kit/kit/pull/1215
+* @vcruzmj made their first contribution in https://github.com/go-kit/kit/pull/1225
+* @cxtruong70 made their first contribution in https://github.com/go-kit/kit/pull/1239
+* @denopink made their first contribution in https://github.com/go-kit/kit/pull/1237
+* @francogeller made their first contribution in https://github.com/go-kit/kit/pull/1250
+* @ShayNehmad-RecoLabs made their first contribution in https://github.com/go-kit/kit/pull/1254
+* @heymatthew made their first contribution in https://github.com/go-kit/kit/pull/1256
+* @matthewhartstonge made their first contribution in https://github.com/go-kit/kit/pull/1262
+
+**Full Changelog**: https://github.com/go-kit/kit/compare/v0.12.0...v0.13.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.12.0 (2021-09-23)</h2>
+      <pre>A mostly procedural update to Go kit, including support for the latest version of Go, and updates for dependencies, including a long-awaited update to avoid a CVE in the JWT dependency.
+
+- Update for Go 1.17 (#1183) — thanks, @sagikazarmark, @ChrisHines
+- Update depedency speed (#1177) — thanks, @sagikazarmark
+- Improve code quality (#1168, #1064) — thanks, @withshubh, @sagikazarmark
+- Update hudl/fargo (#1167) — thanks, @sagikazarmark
+- Update JWT dependency (#1172) — thanks, @vovinacci
+- Replace kit/log with log ((#1173) — thanks, @ChrisHines
+- Update repo issue forms (#1169, #1166) — thanks, @sagikazarmark</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.11.0 (2021-07-04)</h2>
+      <pre>A new release with several improvements and enhancements. The first one in a long while! Huge thanks to @sagikazarmark for putting in most of the gruntwork to make it happen! You're a superstar.
+
+The biggest thing: package log has been extracted to a separate repository and module, [go-kit/log](https://github.com/go-kit/log). This means that if you or your project was importing go-kit/kit just to get package log, you can significantly reduce your go.mod and dep graph by switching to the new module. Note that we have no current plans to alias the existing go-kit/kit/log to the new go-kit/log module and package, nor to deprecate the current package in favor of the new one. They are two distinct packages with no defined relationship to each other. This may change in the future.
+
+Major changes:
+
+- The log package was extracted to a [separate repository](https://github.com/go-kit/log)
+- Examples were moved to a separate [repository](https://github.com/go-kit/examples)
+- Deprecated kitgen was removed
+
+Thanks to the 22 contributors who contributed to this release! 🏌️‍♂️
+
+# Bug fixes
+
+* metrics/cloudwatch: log CloudWatch response error (#961) (thanks @Trane9991)
+* log: defer mutex unlocks for panic safety in SyncLogger (#974)
+* util/conn: close old connection before reconnect (#982) (thanks @chikaku)
+* log/term: fix build on GOOS=js GOARCH=wasm (#993) (thanks @mvdan)
+* transport/http/jsonrpc: move the ClientAfter calls to before the decode (#1008) (thanks @directionless)
+* sd/etcdv3: fix etcdv3 client won't return error when no endpoint is available (#1009) (thanks @wayjam)
+* metrics/generic: fix uint64 alignment (#1007) (thanks @ldez)
+* log: fix stdlibadapter when prefixed (#1036) (thanks @soven)
+* log: capture newlines in log stdlib (#1041) (thanks @SuperQ)
+
+# Enhancements
+
+* metrics/cloudwatch: use batch values API for CloudWatch PutMetric data call (#960) (thanks @Trane9991)
+* log: allow to use specific logrus level in the adaptor (#962) (thanks @Trane9991)
+* transport/http: add NewExplicitClient (#971)
+* transport/http/jsonrpc: add RequestID in error body when using the DefaultErrorEncoder (#969) (thanks @esenac)
+* transport/http/jsonrpc: add Version to JSON-RPC client request (#990) (thanks @shirolimit)
+* log: add WithSuffix to append key-value pairs to those passed to Log (#992) (thanks @vinayvinay)
+* sd/consul: improve inconsistent Consul SD index handling (#999) (thanks @vinayvinay)
+* all: dependency updates (#1029, #1095, #1097, #1098, #1106, #1118, #1115, #1119, #1124) (thanks @ChrisHines, @Enrico204, @sagikazarmark)
+* tracing/opencensus: add support for JSONRPC (#1022) (thanks @ryan-lang)
+* tracing/opentracing: improve endpoint middleware options (#1072) (thanks @alebabai)
+* auth/jwt: fix repetition of the word "token" in JWT (#1070) (thanks @amidam)
+* sd/zk: replace unmaintained zk library with drop-in replacement (#1120) (thanks @sagikazarmark)
+* cmd/kitgen: remove deprecated kitgen (#1121) (thanks @sagikazarmark)
+
+# Documentation, examples, tests
+
+* readme: change godoc to pkg.go.dev (#963) (thanks @relunctance)
+* readme: add links to generator tools (#964)
+* metrics/cloudwatch: fix bad Gauge test (#975) (thanks @Trane9991)
+* readme: update the link and description for go-micro (#989) (thanks @asim)
+* examples: add missing "to" preposition (#1014)
+* tracing/opencensus: fix failing tests (#1021) (thanks @ryan-lang)
+* log: fix doc comment (#1028) (thanks @vrazdalovschi)
+* ci: upgrade to the latest version of the setup-go github action (#1040) (thanks @AntonNguyen)
+* ci: update Go versions for CI (#1054, #1062) (thanks @codefromthecrypt)
+* examples: relocate examples to a separate repository (#1100) (thanks @sagikazarmark)
+* transport/awslambda: replace aws lambda structs with stubs in tests (#1117) (thanks @sagikazarmark)
+* transport/nats: fix panic in tests (#1122) (thanks @sagikazarmark)
+* tracing: add a link to opentelemetry instrumentation (#1112) (thanks @sagikazarmark)
+
+See more details in the [0.11.0](https://github.com/go-kit/kit/milestone/1?closed=1) milestone.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.10.0 (2020-02-17)</h2>
+      <pre>A new release with several minor improvements and enhancements. The major change is the adoption of Go modules: Go kit now includes a go.mod (and go.sum) specifying the precise version of our dependencies. We'll try to keep these dependencies updated, but consumers can always specify overrides, if necessary.
+
+Thanks to the 10 contributors who contributed to this release! 🏌️‍♂️
+
+# Bug fixes
+
+* dogstatsd: Drop metrics according to sample rate (#884) (thanks @martin-sucha)
+* update_deps.bash: breakfixes
+* Fix tracing tests by replacing test.com endpoint with httpbin.org (#952) (thanks @sagikazarmark)
+
+# Enhancements
+
+* modules: Add initial go.mod file (#945) (thanks @ChrisHines, @sagikazarmark, @basvanbeek)
+* sd/dnssrv: Consider SRV records with port 0 as an error (#900)
+* transport: Introduce ErrorHandlerFunc (#915) (thanks @maratori)
+* log: Disable HTML escaping in JSON Logger (#914) (thanks @treuherz)
+* auth/casbin: Update imports to casbin/v2 
+* tracing/opencensus: Add a span name getter to opencensus endpoint options (#948) (thanks @sagikazarmark)
+
+# Documentation, examples, tests
+
+* metrics/prometheus: Fix typo: "construts" --> "constructs" (#925) (thanks @jeffwidman)
+* examples: removed mention about ServiceMiddleware (#936) (thanks @icamys)
+* examples: Clarify rate limiter expressions in addsvc example (#943) (thanks @marselester)
+* log/level: Fix typo: "thte" -> "the" (#956) (thanks @HCoban)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.9.0 (2019-06-27)</h2>
+      <pre>A new major release with incremental improvements and enhancements. Major features include support for AWS Lambda as a transport, and improved error handling in all transports. Thanks to the 26 contributors who contributed to this release! 🏌 
+
+Note that **this release includes breaking changes in the metrics package**, please review [the documentation](https://godoc.org/github.com/go-kit/kit/metrics) for changes.
+
+# Bug fixes
+
+- sd/etcdv3: serve the keepalive response channel (#803) (thanks @fangdingjun)
+- tracing/zipkin: swaps tested conditions (#812) (thanks @jcchavezs)
+- metrics/influx: Fix InfluxDB import path (#826) (thanks @flowchartsman)
+- kitgen: normalize backSlashes in path (#831) (thanks @obeyda)
+- sd/etcdv3: fix dead loop (#848) (thanks @zii)
+- sd/zk: fix: `ProtectedEphemeralSequential` in the wrong zk path (#849) (thanks @RedDragonet)
+- metrics/cloudwatch2: fix context in Send() (#857) (thanks @h8liu)
+- sd: fix data race (#865) (thanks @toffaletti)
+- tracing/opentracing: fix port assignment (#866) (thanks @kevinreed8263)
+- transport/nats: Update imports (#881) (thanks @wallyqs)
+- metrics/prometheus: fix for latest HEAD (#885)
+- metrics/dogstatsd: Drop metrics according to sample rate (#884) (thanks @martin-sucha)
+
+# Enhancements
+
+- log: Support logrus.Field logger in the logrus adapter (#793) (thanks @sagikazarmark)
+- transport/amqp: Add amqp.Delivery to the request func (#802) (thanks @ValeryPiashchynski)
+- transport/http: adding request and response encoders for Protobuf (#809) (thanks @jprobinson)
+- tracing/zipkin: add request sampler (#813) (thanks @jcchavezs)
+- tracing/opentracing: Change span injection/extraction from HTTP request (#821) (thanks @nboukeffa)
+- tracing/opentracing: Use opencensus' DefaultSampler instead of AlwaysSample as default (#830) (thanks @rueian)
+- metrics: Make Send/Write Loop context aware (#837) (thanks @jlordiales)
+- transport/awslambda: add support (#815) (thanks @suekto-andreas)
+- transport/amqp: add NopResponse option (#850) (thanks @mattfung)
+- log: add a log adapter for zap.Logger (#855) (thanks @MaruHyl)
+- transport: Implement transport level error handlers (#863) (thanks @sagikazarmark)
+- transport/nats: Use given context in NATS endpoint (#876) (thanks @nsmith5)
+- metrics/cloudwatch2: Update cloudwatch2 to latest upstream API (#878) (thanks @nsmith5)
+
+# Documentation, examples, tests
+
+- misc: fix a few misspellings (#797) (thanks @dvrkps)
+- examples: Replace "x/net/context" import with "context" (#810) (thanks @marselester)
+- metrics/prometheus: Fix test to accommodate new Prometheus metric output (#820)
+- kitgen: fix kitgen test in the windows (#840) (thanks @runner)
+- misc: add integration with builds.sr.ht (#842)
+- log/level: improve examples (#845)
+- misc: code improvements (#868) (thanks @sosiska)
+- sd/{etcd,etcdv3}: disable flaky integration tests (#883)
+- README: Update Gin framework homepage url (#888) (thanks @yellowmint)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.8.0 (2018-11-10)</h2>
+      <pre>A major release! Featuring NATS and AMPQ transports, many other smaller enhancements, and many bug fixes. Thanks to the 25 contributors who made big contributions to this release! 🏌️ 
+
+# Bug fixes
+
+- Fix Client.Endpoint to not cancel when bufferedStream (#776) (thanks @xescugc)
+- Fix Consul SD loop exiting on EOF (#788) (thanks @kcajmagic)
+- Add backoff package and fix Consul CPU usage (#635) (thanks @nicot)
+- Fix race condition in NATS transport tests (#705) (thanks @nussjustin)
+- Fix pact test due to breaking api change (#720) (thanks @basvanbeek)
+- Add FinalizerFunc to NATS transport (#790) (thanks @kirooha)
+- Fix etcdv3 registrar tests (#724) (thanks @basvanbeek)
+- JSONRPC: add id from request to response (#742) (thanks @wangzuo)
+- Fix etcd import path (#756) (thanks @h8liu)
+- Rename 'package log' to 'log package' to fix godoc link handling. (#765) (thanks @bx2)
+
+# Enhancements 
+
+- NATS transport (#680) (thanks @kirooha)
+- AMQP Transport  (#746) (thanks @mattfung)
+- Metrics - Influx StatsD (#664) (#688) (thanks @james-r-smith)
+- HTTPClient interface (#754) (thanks @drscre)
+- Add casbin for authorization (#787) (thanks @suekto-andreas)
+- Add logrus adapter for Logger interface (#752) (#759) (thanks @aswinmprabhu)
+- Refactor (lint/unconvert): remove base64 call returns a string (#717) (thanks @mishudark)
+- Fix function names in JWT examples (#723) (thanks @zachwalton)
+- metrics/internal/convert: use method value insetad of lambda (#767) (thanks @Quasilyte)
+- metrics/teststat: replace `x = x <op> y` with `x <op>= y` (#769) (thanks @Quasilyte)
+- Fix Prometheus tests (#789)
+- Circle 2.0 support (#749, #771)
+
+# Documentation, examples, and testing
+
+- Fix minor comment typos (#687) (thanks @joe94)
+- Update README.md with English version of website (#708) (thanks @Olliepop)
+- Profilesvc docs update (#709) (thanks @wadearnold)
+- Remove redundant statements in profilesvc example (#721) (thanks @sudo-suhas)
+- Adds documentation for OpenCensus (#730) (thanks @basvanbeek)
+- Add kitgen README  (#743) (thanks @ermik)
+- Adds GoBuffalo (#748) (thanks @1995parham)
+- Use newest Go releases for testing (#757) (thanks @ChrisHines)
+- Remove context in stringsvc examples 1 & 2 (#764) (thanks @bx2)
+- metrics: remove commented-out debug code (#770) (thanks @Quasilyte)
+- Delete debug.test (#777) (thanks @danp)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.7.0 (2018-03-19)</h2>
+      <pre>An early 2018 release, containing several exciting new enhancements. First, we
+now have the `kitgen` code generation tool, for bootstrapping new services,
+thanks to the tireless efforts of @nyarly. Second, we have the long-awaited
+JSONRPC transport, due to the tireless efforts of @rossmcf, @blainsmith, and
+several others. Thanks also to @senseyeio. Also, we have support for etcdv3 in
+package sd, and a new prototype cloudwatch package for metrics.
+
+Thanks to the 16 individual contributors who have contributed to this release! 🏌️‍♀️ 
+
+## Bug fixes
+
+- transport/http: Allow multiple HTTP-Headers Server (#644) -- thanks, @klaus
+- transport/jsonrpc: Fix various errors (#673, #679) -- thanks, @rossmcf and @basvanbeek
+- tracing/zipkin: Set error tag on Zipkin HTTP error status codes (#683) -- thanks, @basvanbeek
+
+## Enhancements
+
+- cmd/kitgen: Add kitgen code generator tool (#589) -- thanks, @nyarly
+- transport/jsonrpc: New package (#576) -- thanks, @rossmcf @blainsmith and @senseyeio
+- sd/etcdv3: Add support for etcdv3 (#663) -- thanks, @cabrel
+- metrics/cloudwatchv2: Add alternative cloudwatch package (#668) -- thanks, @nelz9999
+- tracing/zipkin: Add native Zipkin tracing support (#671) -- thanks, @basvanbeek
+- log: Add syslog support (#574) -- thanks, @mingan
+- transport/http: Add Server NoOpRequestDecoder (#659) -- thanks, @jdolce
+- ratelimit: Remove dependency on juju (#622) -- thanks, @nelz9999
+
+## Documentation, examples, and testing
+
+- examples: Update example stringsvc (#638) -- thanks, @wadearnold
+- log: Rename sirupsen import (#682) -- thanks, @arbourd
+- misc: Updates to latest Thrift (#630, #678) -- thanks @basvanbeek
+- misc: Doc updates (#662) -- thanks, @bflanigan
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.6.0 (2017-10-09)</h2>
+      <pre>A late-2017 release, containing mostly small enhancements and bugfixes. The biggest change not totally reflected in the changelog below is that this release includes changes to support gRPC 1.6. There are several breaking or potentially-breaking changes, including the fact that we now support only Go 1.9 and above.
+
+Thanks to the 18 individual contributors who have contributed to this release! :golfing_woman:
+
+## Bug fixes
+- auth/jwt: MapClaims: improve API ([#568](https://github.com/go-kit/kit/pull/568)) -- **breaking change** -- thanks, @litriv
+- transport/grpc: rm deprecated funcs ([#598](https://github.com/go-kit/kit/pull/598)) -- **potentially breaking change** -- thanks, @travissalascox
+- auth/jwt: prevent concurrent reads and writes on MapClaims ([#564](https://github.com/go-kit/kit/pull/564)) 
+- transport/grpc: fix a swallowed error ([#572](https://github.com/go-kit/kit/pull/572)) -- thanks, @alrs
+- metrics/cloudwatch: only send new counter values ([#591](https://github.com/go-kit/kit/pull/591)) -- thanks, @feliksik
+- metrics/dogstatsd: fix for when to omit tag values ([#602](https://github.com/go-kit/kit/pull/602)) -- thanks, @jfhamlin
+
+## Enhancements
+- Standardize names for functions moving information to and from the context ([#579](https://github.com/go-kit/kit/pull/579)) -- **breaking change**
+- metrics/cloudwatch: partition API requests into separate concurrent batches ([#540](https://github.com/go-kit/kit/pull/540)) -- thanks, @alpeb
+- ratelimit: new adapters for x/time/rate ([#582](https://github.com/go-kit/kit/pull/582)) -- thanks, @nelz9999
+- sd: add Stop method to Instancer interface ([#583](https://github.com/go-kit/kit/pull/583)) 
+- metrics/dogstatsd: track Gauge values, and support default values ([#588](https://github.com/go-kit/kit/pull/588)) -- thanks, @jfhamlin
+- metrics/cloudwatch: improve API for specifying percentiles ([#599](https://github.com/go-kit/kit/pull/599)) -- thanks, @feliksik
+- auth/basic: add BasicAuth middleware ([#605](https://github.com/go-kit/kit/pull/605)) -- thanks, @DimaSalakhov
+- metrics: set unit time on Timer type ([#610](https://github.com/go-kit/kit/pull/610)) -- thanks, @esenac
+
+## Documentation, examples, and testing
+- Go kit now only supports go1.9 and above ([#613](https://github.com/go-kit/kit/pull/613)) -- **potentially breaking change**
+- Run Coveralls on Travis ([#519](https://github.com/go-kit/kit/pull/519)) 
+- Update gRPC README information about protoc and streams ([#557](https://github.com/go-kit/kit/pull/557)) -- thanks, @Fanatics
+- Minor documentation fixes ([#561](https://github.com/go-kit/kit/pull/561)) 
+- Remove some byte order marks ([#571](https://github.com/go-kit/kit/pull/571)) -- thanks, @lwalen
+- metrics/cloudwatch: Small fixes to CloudWatch tests ([#573](https://github.com/go-kit/kit/pull/573)) -- thanks, @alrs
+- examples/addsvc: improved package layout ([#577](https://github.com/go-kit/kit/pull/577)) 
+- log: improve tests ([#581](https://github.com/go-kit/kit/pull/581)) -- thanks, @cam-stitt
+- examples: updated Thrift to latest Go library ([#585](https://github.com/go-kit/kit/pull/585)) -- thanks, @basvanbeek
+- sd: fix TestDefaultEndpointer flake ([#596](https://github.com/go-kit/kit/pull/596)) 
+- sd: fix spelling in doc comment ([#603](https://github.com/go-kit/kit/pull/603)) -- thanks, @elliotwms
+- examples/addsvc: fix typo in doc comments ([#606](https://github.com/go-kit/kit/pull/606)) -- thanks, @gosharplite
+- metrics: fix missing comma in example code ([#611](https://github.com/go-kit/kit/pull/611)) -- thanks, @daniel-garcia
+- auth/jwt: minor doc update ([#617](https://github.com/go-kit/kit/pull/617)) -- thanks, @bcho
+- examples/addsvc: fix typo ([#619](https://github.com/go-kit/kit/pull/619)) -- thanks, @karthikmuralidharan
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.5.0 (2017-06-20)</h2>
+      <pre>A pre-GopherCon release, the biggest change being **breaking changes to package sd**. We now expose the raw instance strings from each underlying service discovery system, so that consumers can do things with them other than construct endpoints. For background, see issues #475, #403, and #209, and for the (extensive) discussion, see PR #492.
+
+Besides that, we just have a solid set of improvements and enhancements. See below for the full changelog. Huge thanks to Yuri Shkuro @yurishkuro for his tireless work on package sd, including dealing with my mercurial demands and frustratingly irregular schedule. And huge thanks to the 17 individual contributors who've contributed to this release! 🏌️‍♀️
+
+## Bug fixes
+
+- log: Update NewSyncWriter to work with term.IsTerminal (#501) — thanks, @ChrisHines
+- metrics/prometheus: move handlers to promhttp (#497) — thanks, @kavirajk
+
+## Enhancements
+
+- sd: Support push model for service discovery (#492) — thanks, @yurishkuro
+- sd: add Eureka SD implementation (#504) — thanks, @martinbaillie
+- transport/http: upgrade go1.7 ctxhttp to req.WithContext (#535) — thanks, @stanxii
+- transport/http: add client finalizer (#533) — thanks, @travissalascox
+- transport/http: make request Accept header available in context (#516)
+- transport/grpc: remove autoprefixing logic (#524) — thanks, @terinjokes
+- auth/jwt: Add *WithClaims methods to jwt middleware (#488) — thanks, @cam-stitt
+- auth/jwt: Improved error handling on jwt.NewParser (#521) — thanks, @basvanbeek
+- metrics: Cloudwatch metrics (#495) — thanks, @cam-stitt
+- log: Add TimestampFormat and TimeFormat (#514) — thanks, @ChrisHines
+- log: Add msys2/cygwin terminal detection support (#485) — thanks, @ereOn
+
+## Documentation, examples, and testing
+
+- sd: test fixes (#544, #547, #548, #550) — thanks, @yurishkuro
+- log/level: Remove log.NewContext mention from log/level docs (#493) — thanks, @narqo
+- log/level: fix typo in level test cases (#520) — thanks, @SimonRichardson
+- examples/shipping: header should set before WriteHeader (#538) — thanks, @bcho
+- examples/shipping: use log.NewSyncWriter in example (#522) — thanks, @terinjokes
+- examples/addsvc: Fix typo in addsvc's doc block (#518) — thanks, @annismckenzie
+- README: Remove h2 framework from Service frameworks (#532) — thanks, @NoahZhang
+- misc: Install latest by default on Travis and update go for CircleCI (#536) — thanks, @suyash
+- misc: Use more consistent CircleCI badge (#517) — thanks, @kevgo
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.4.0 (2017-03-08)</h2>
+      <pre>Another substantial Go kit release, with a handful of bugfixes and some major enhancements.
+
+We now use stdlib package context wherever possible — basically, everywhere except package transport/grpc, as gRPC still imports golang.org/x/net/context and we don't have a choice but to comply. Still, there are ways to bridge the gap: see examples/addsvc for details. This means **Go kit now requires Go 1.7 or above**.
+
+The other major changes in this release involve package log. We've **removed NewContext and the Context type**, preferring [With](https://godoc.org/github.com/go-kit/kit/log#With) and [WithPrefix](https://godoc.org/github.com/go-kit/kit/log#WithPrefix) helper functions. Also, we've promoted the experiemental level package to **[package level](https://godoc.org/github.com/go-kit/kit/log/level)**, and deprecated the old levels package to deprecated_levels. I'm really happy with this: it's a slightly esoteric, but really clean and literate way to compose levels with Go kit's package log. Give it a shot!
+
+For the full changelog, see below. My enormous gratitude goes to Chris Hines @ChrisHines for his expert work on package log, and to Bas van Beek @basvanbeek for his expert work on packages tracing and transport/grpc. And huge thanks to the 22 individual contributors who've contributed to this release! 🏌️‍♀️
+
+# Bug fixes
+
+- log/term/colorlogger: Reset bold attribute (#399) - thanks, @serge-v
+- metrics/influx: Fix global tags (#404) — thanks, @kihamo
+- metrics/generic: make goroutine-safe (#424) — thanks, @gaplyk
+- metrics/generic: actually track metric name thru With invocations (#455) — thanks, @yurishkuro
+
+# Enhancements
+
+- Use stdlib context where possible (#421, #480)
+- log: remove Context type, prefer With/WithPrefix helpers (#481)
+- log: DefaultTimestamp becomes nano-precision (#430) — thanks, @willfaught
+- log: DefaultCaller key becomes "caller" (#439) — thanks, @willfaught
+- log/level: brand new leveled logging package (#401, #454, #470, #476) — thanks, @groob
+- metrics: Gauge gets an Add method (#393) — thanks, @hardcoar, @dlmiddlecote
+- metrics/circonus: rm :( it was racy, difficult to test, and broke often (#442)
+- sd/etcd: add TTL (#413) — thanks, @buptmiao
+- transport: ServerBefore/ServerAfter can be repeated (#467, #479) — thanks, @djgilcrease
+- transport/grpc: improve error handling (#389) — thanks, @kushtrimjunuzi
+- transport/grpc: support Server Response Headers and Trailers (#479)
+- transport/http: add ServerFinalizer (#394, #405, #408, #461) — thanks, @konradreiche, @xla, @drscre
+- transport/http: enhance ErrorEncoder: support StatusCoder, Headerer, json.Marshaler interfaces (#414)
+- transport/http: don't encode JSON response with StatusNoContent (#436) — thanks, @groob
+- transport/http: add EncodeJSONRequest helper (#440) — thanks, @willfaught
+- transport/http: add EncodeXMLRequest (#456) — thanks, and condolences, to @gaplyk
+
+# Documentation, examples, and testing
+
+- examples/addsvc: correct typo (#396) — thanks, @patterns
+- examples/shipping: fix reciever name (#473) — thanks, @kisPocok
+- log: improve documentation (#429)
+- metrics: fix documentation (#406, #417) — thanks, @Artmann
+- metrics/graphite: fix typo in docs (#450) — thanks, @jkakar
+- tracing/zipkin: document new, easier Zipkin HTTP tracing collector (#466)
+- tracing/zipkin: fix typo in Zipkin docs (#469) — thanks, @frozzare
+- Testing: fixes for Go report card (#395)
+- Testing: run integration tests on Circle (#372, #416) — thanks, @rodrigosaito
+- Testing: use docker-compose 1.10 in integration environment (#448)
+- Testing: improve coverprofile wildcard in gitignore (#458) — thanks, @travissalascox
+- Testing: Drone.io is no more :( (#468) — thanks, @17twenty
+- Testing: Upgrade CI to use go1.7.5 and go1.8 (#471)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.3.0 (2016-11-15)</h2>
+      <pre>An incremental, if large, release of Go kit. With contributions from @basvanbeek, @bbrazil, @briankassouf, @cam-stitt, @dvrkps, @everesio, @Fenthick, @groob, @jstordeur, @kpacha, @marcusolsson, @mishudark, @peterbourgon, @rossmcf, @suyash, and @xla. Thanks, contributors!
+
+# Bug fixes
+- Fix synchronization bug in metrics/generic.Histogram ([#392](https://github.com/go-kit/kit/pull/392))
+- Fixes tracking changes to OpenTracing ([#387](https://github.com/go-kit/kit/pull/387), [#374](https://github.com/go-kit/kit/pull/374), [#339](https://github.com/go-kit/kit/pull/339))
+- Fixes and improvements to package metrics/influx ([#369](https://github.com/go-kit/kit/pull/369))
+- Correct HTTP tags in distributed tracing spans ([#375](https://github.com/go-kit/kit/pull/375))
+- Fix some dead and breaking code in package sd/consul ([#371](https://github.com/go-kit/kit/pull/371))
+- Fix panic on inconsistent label cardinality ([#365](https://github.com/go-kit/kit/pull/365))
+- Fix To/From mixup in package tracing ([#348](https://github.com/go-kit/kit/pull/348))
+
+# Enhancements
+- Completely refactor package metrics ([#313](https://github.com/go-kit/kit/pull/313)) ★
+- Add package auth/jwt ([#335](https://github.com/go-kit/kit/pull/335))
+- Add package metrics/pcp for Intel Performance CoPilot ([#363](https://github.com/go-kit/kit/pull/363))
+- Add package log/experimental_level ([#357](https://github.com/go-kit/kit/pull/357))
+- [Custom error behavior](https://github.com/go-kit/kit/issues/341) for lb.Retry ([#370](https://github.com/go-kit/kit/pull/370)) 
+- Update examples/shipping ([#388](https://github.com/go-kit/kit/pull/388))
+- Go Report Card fixes ([#379](https://github.com/go-kit/kit/pull/379))
+- Remove unused errors from package endpoint ([#361](https://github.com/go-kit/kit/pull/361))
+- Add metrics.Timer ([#358](https://github.com/go-kit/kit/pull/358))
+- Add better unit tests for package sd/etcd.Client ([#344](https://github.com/go-kit/kit/pull/344)) 
+
+# Documentation
+- Clarify comments in package metrics ([#342](https://github.com/go-kit/kit/pull/342)) 
+- Fix typo in package auth/jwt docs ([#385](https://github.com/go-kit/kit/pull/385))
+- Fix typo in package log docs ([#380](https://github.com/go-kit/kit/pull/380), [#351](https://github.com/go-kit/kit/pull/351/files))
+- Fix typo in package metrics/expvar docs [#356](https://github.com/go-kit/kit/pull/356/files)
+- Provide better initial guidance in package circuitbreaker docs ([#345](https://github.com/go-kit/kit/pull/345)) 
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.2.0 (2016-08-02)</h2>
+      <pre>An incremental release of Go kit. With contributions from @Ayiga, @basvanbeek, @ChrisHines, @eblanchette, @ifraixedes, @jygastaud, @LennartOlsen, @peterbourgon, and @xmattstrongx. Thanks, contributors!
+
+## Bug fixes
+- util/conn: fix Manager behavior when initial Dial fails (#293)
+- Fixes tracking changes to OpenTracing (#330, #315, #314, #311, #306)
+- Fixes and improvements to package etcd tests (#329)
+
+## Enhancements
+- Simple sync log (#327)
+- Do not log "SpanContext not found in Extract carrier" (#316)
+- Improvements to transports and contexts, especially gRPC (#303)
+- sd etcd register/deregister implementation (#299)
+
+## Documentation
+- Some small fixes on Profilesvc example (#318)
+- Adding testable example documention (#317)
+- Removed url.QueryEscape from the make*Endpoint functions (#309)
+- Fix typos (#307)
+- Update documentation throughout the project (#301)
+- Update client.go concatEndpoint (#297)
+- examples/addsvc: recompile protobufs (#296)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.1.0 (2016-06-07)</h2>
+      <pre>The initial semver-compatible tagged release of Go kit. See #279.
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

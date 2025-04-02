@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for ensdomains/ens-app"/>
+  <title>ensdomains/ens-app Release Notes</title>
+</head>
+<body>
+  <h1>🚀 ensdomains/ens-app - Release Notes</h1>
+  
+    <section>
+      <h2>Sia support (2021-02-18)</h2>
+      <pre>- Sort options selectors to improve usability and accessibility (#1062) …
+- update cn.json on 20210131 (#1066)
+- Change total price (#1072) …
+- Display deprecated content (#1073) …
+- Sia3 (#1074) …
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre-release version before major release (2021-02-17)</h2>
+      <pre>
+- Generate subdomain SSL certificate on new contenthash https://github.com/ensdomains/ens-app/pull/1030
+- Show reverse record https://github.com/ensdomains/ens-app/pull/1035
+- Select reverse record https://github.com/ensdomains/ens-app/pull/1051
+- Add Insufficient gas message on registration  https://github.com/ensdomains/ens-app/pull/1040
+- Add total price https://github.com/ensdomains/ens-app/pull/1072
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Wallet Modal support (2020-12-08)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2.4 (pre Multiple wallet support version) (2020-11-30)</h2>
+      <pre>the next one will be the big change so will be releasing pre major version</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Mobile style fix, add link to url, change onion to use http (2020-03-23)</h2>
+      <pre>
+- #633 from ensdomains/add-link …
+- #624 from wschwab/patch-1 …
+- #635 from ensdomains/fix-mobile-styling …
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Various fixes. (2020-03-10)</h2>
+      <pre>
+
+
+set client on error 
+#613 by makoto was merged 21 hours ago
+
+Fix delete contenthash 
+#612 by jefflau was merged 4 days ago • Review required
+
+Deploy fix to master 
+#611 by jefflau was merged 5 days ago • Review required
+
+Add manual resolver migration 
+#608 by jefflau was merged 6 days ago
+
+Update to new ENS class (#606) 
+#607 by jefflau was merged 6 days ago • Review required
+
+Update to new ENS class 
+#606 by jefflau was merged 6 days ago
+
+Fix for resolver migration. Add default array 
+#600 by jefflau was merged 15 days ago • Review required
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>.ART support, test fix, update post migration article (2020-02-18)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Post ENS registry migratoin releaese (2020-02-11)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>During migration release (2020-02-03)</h2>
+      <pre>This releasee includes everything needed for migration but set `duringMigration=true` so that it disables registration while migration script runs</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Pre ENS Registry migration release (2020-02-03)</h2>
+      <pre>This is the last PR merge prior to the ENS Registry upgrade</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fixes for Short name (2019-11-19)</h2>
+      <pre>This release fixes some short name issues not being shown properly. Also fixes an issue with the manager blanking out whilst waiting for metamask to login</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Delete multicoin record (2019-10-29)</h2>
+      <pre>- Sets empty string to delete a record
+- Bypass encode/decode if empty string
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Multicoin support (2019-10-24)</h2>
+      <pre>- Supports multiple coins
+- Uses https://github.com/ensdomains/address-encoder
+- Validates coin format
+- Fix bug of old `setContent` not working</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Text Record (2019-09-30)</h2>
+      <pre>Adds support for a limited number of text records that can be viewed/added to each name</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Various bug fixes, ipfs additional format support and change opensea link (2019-09-03)</h2>
+      <pre>- Update open sea link (#470)
+- Ipfs format (#467) 
+- Change manifest name to ENS App (#468)
+- Upgrade ui and react-ens-address (#469)
+- Remove duplicate button (#471)
+- Remove old ui and fix opensea link text (#472)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Short Name Auction Links (2019-09-01)</h2>
+      <pre>* Added link to OpenSea for the short name auctions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Address component  (2019-08-28)</h2>
+      <pre>* Adds EtherScanLink for Address page
+* Adds updated stylieng for Address pag
+* Fixes DNSSEC bug showing renew
+* Fixes onion3 record placeholder</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Name Query speed improvements (2019-08-26)</h2>
+      <pre>* `/name` route refactoring to improve load times</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Speed up loading favourites (2019-08-15)</h2>
+      <pre>Changes the favourites query so it does not need to get all the name details to load</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>MyEthVault support and display grace period properly (2019-08-14)</h2>
+      <pre>- Add myethvault support (#421) addressing https://github.com/ensdomains/ens-app/issues/383
+- Display grace period (#382) fixing https://github.com/ensdomains/ens-app/issues/363</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Allow transfer for owner or parent domain owner #420 (2019-08-12)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add DNSSec support (2019-08-05)</h2>
+      <pre>This release enables you to register DNS based ENS name (eg: `matoken.xyz`) given you add ETH address to the DNS subdomain you want to register. Please read the [guide](https://docs.ens.domains/dns-registrar-guide) for the actual usage.
+
+This change includes
+
+- DNSSec wizard page if the name has ever registered
+- Sync ENS record with DNS record
+- Add `preTest:dnssec` script
+
+The out of scope for
+
+- "Delete" button (requires change on the smart contract)
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Address to domains feature (2019-07-30)</h2>
+      <pre>This release adds the graph to get data we couldn't previously get processing events from the front-end. The biggest features is being able to search addresses and get all domains related to that particular address. 
+
+A second more subtle feature is getting subdomains via the graph, so it is much quicker to load subdomains versus processing events. 
+
+The last feature this release adds is storing labels and their hashes into local storage so they can be displayed for unknown hashes. </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Update styles for reserve link (2019-07-24)</h2>
+      <pre>* Update styles for reserve link</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add links to reserve.ens.domains (2019-07-22)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add Address component (2019-07-10)</h2>
+      <pre>Add [Address component](https://github.com/ensdomains/react-ens-address) to all address inputs
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Refactor to ethers (2019-06-25)</h2>
+      <pre>Refactored the UI library to use ethers. It required some subtle changes to the API as ethers had a `.wait()` method on the transaction object. The `sendHelper` was updated to reflect this. Some clean up was done to the utils section so we export the new functions from the `ui` library, and eventually we will remove these when we have time.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add greyed out action buttons (2019-06-10)</h2>
+      <pre>* Added greyed out action buttons to improve discoverability for non-owners</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Refactor to new labelhash standard (2019-06-05)</h2>
+      <pre>Labelhashes are now distinquished with a `[]` around them and added these to the `ui` library that has functions to encode and decode them as well as see if a name contains them. This also means that names that contain them can also be resolved by the manager so names like `jefflau.eth` and `[757d08e156869d4588a90f7a5de7a3e838f63eae3d2e9aa210c92ddd8c937fe5].eth` are equivalent</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fix unknown label hashes (2019-06-03)</h2>
+      <pre>* Fix unknown labels not showing details and action buttons</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

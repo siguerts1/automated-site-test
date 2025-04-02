@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for urfave/cli"/>
+  <title>urfave/cli Release Notes</title>
+</head>
+<body>
+  <h1>🚀 urfave/cli - Release Notes</h1>
+  
+    <section>
+      <h2>v3.1.0 (2025-03-31)</h2>
+      <pre>## What's Changed
+* go.mod: Require go1.22 by @mrueg in https://github.com/urfave/cli/pull/2026
+* Fix:(issue_2030) Add support for trailing hypen for short options by @dearchap in https://github.com/urfave/cli/pull/2031
+* Run Before actions after setting up subcommand by @fjl in https://github.com/urfave/cli/pull/2028
+* The example have some problem in api by @jokemanfire in https://github.com/urfave/cli/pull/2039
+* Rename "Bash Completions" to "Shell Completions" by @abitrolly in https://github.com/urfave/cli/pull/2044
+* Support root level map keys in map sources by @lukasbindreiter in https://github.com/urfave/cli/pull/2047
+* while print flag , the placeholder if need but not set. by @jokemanfire in https://github.com/urfave/cli/pull/2043
+* Add dependabot by @mrueg in https://github.com/urfave/cli/pull/2025
+* Bump github.com/stretchr/testify from 1.9.0 to 1.10.0 by @dependabot in https://github.com/urfave/cli/pull/2054
+* Bump golangci/golangci-lint-action from 5 to 6 by @dependabot in https://github.com/urfave/cli/pull/2053
+* Bump codecov/codecov-action from 4 to 5 by @dependabot in https://github.com/urfave/cli/pull/2052
+* Fix:(issue_2032) Support for post parse config loading by @dearchap in https://github.com/urfave/cli/pull/2033
+* Fix:(issue_2066) Remove dependency on golang flag library by @dearchap in https://github.com/urfave/cli/pull/2074
+* Fix:(issue_1891) Roll out v3 docs by @dearchap in https://github.com/urfave/cli/pull/2080
+* Fix:(issue_2077) Make sure onUsageError is invoked for command when a… by @dearchap in https://github.com/urfave/cli/pull/2081
+
+## New Contributors
+* @mrueg made their first contribution in https://github.com/urfave/cli/pull/2026
+* @jokemanfire made their first contribution in https://github.com/urfave/cli/pull/2039
+* @lukasbindreiter made their first contribution in https://github.com/urfave/cli/pull/2047
+* @dependabot made their first contribution in https://github.com/urfave/cli/pull/2054
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-beta1.01...v3.1.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.27.6 (2025-03-05)</h2>
+      <pre>## What's Changed
+* Use usage template in subcommand help by @meatballhat in https://github.com/urfave/cli/pull/1986
+* Docs: Update cli.yml by @dearchap in https://github.com/urfave/cli/pull/2015
+* Fix:(issue_2069) Add sep for string slice by @dearchap in https://github.com/urfave/cli/pull/2070
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.27.5...v2.27.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha9.7 (2024-11-28)</h2>
+      <pre>## What's Changed
+* Docs: Update test.yml by @dearchap in https://github.com/urfave/cli/pull/2014
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha9.6...v3.0.0-alpha9.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha9.5 (2024-11-24)</h2>
+      <pre>## What's Changed
+* Improve the command for printing completion scripts by @bartekpacia in https://github.com/urfave/cli/pull/1998
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha9.4...v3.0.0-alpha9.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha9.6 (2024-11-25)</h2>
+      <pre>## What's Changed
+* Use `cmd.Name` when generating completion script by @bartekpacia in https://github.com/urfave/cli/pull/2012
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha9.5...v3.0.0-alpha9.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha9.4 (2024-11-22)</h2>
+      <pre>## What's Changed
+* Add map value source by @dearchap in https://github.com/urfave/cli/pull/2009
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha9.3...v3.0.0-alpha9.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha9.3 (2024-11-09)</h2>
+      <pre>## What's Changed
+* Feature:(issue_1927) Add ability for before handler to return new context by @dearchap in https://github.com/urfave/cli/pull/1994
+* Fix:(issue_1921) Dont display [command] in help by @dearchap in https://github.com/urfave/cli/pull/2000
+* Fix:(issue_1069) Dont show [arguments] in usage when there are no arguments defined by @dearchap in https://github.com/urfave/cli/pull/2001
+* improve output of build.go#downloadFile when download fails by @bartekpacia in https://github.com/urfave/cli/pull/2003
+* Revert GetValue() removal by @dearchap in https://github.com/urfave/cli/pull/2004
+* Re-add generic flag back by @dearchap in https://github.com/urfave/cli/pull/2005
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha9.2...v3.0.0-alpha9.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha9.2 (2024-10-30)</h2>
+      <pre>## What's Changed
+* Fix:(issue_976) All positional args and flags to be mixed in any order by @dearchap in https://github.com/urfave/cli/pull/1987
+* Fix: Increase test coverage by @dearchap in https://github.com/urfave/cli/pull/1988
+* Add more tests for map by @dearchap in https://github.com/urfave/cli/pull/1990
+* Ignore internal build dir by @dearchap in https://github.com/urfave/cli/pull/1991
+* Split internal/ into examples/ and scripts/ by @abitrolly in https://github.com/urfave/cli/pull/1992
+* style: fix typos by @suzuki-shunsuke in https://github.com/urfave/cli/pull/1996
+* Revert "fix: /bin/zsh env variable to retrieve current active shell" by @bartekpacia in https://github.com/urfave/cli/pull/1997
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha9.1...v3.0.0-alpha9.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha9.1 (2024-10-13)</h2>
+      <pre>## What's Changed
+* Fix variadic args by @joshfrench in https://github.com/urfave/cli/pull/1865
+* Update: Remove jfrog scan by @dearchap in https://github.com/urfave/cli/pull/1870
+* Fix:(issue_1860) Remove hidden flags from flag categories by @dearchap in https://github.com/urfave/cli/pull/1869
+* chore: fix struct name by @kaifulee in https://github.com/urfave/cli/pull/1877
+* include a newline between different categories by @abennett in https://github.com/urfave/cli/pull/1861
+* Stop command aliases and flag aliases from being suggested in shell completion by @bartekpacia in https://github.com/urfave/cli/pull/1882
+* Update to latest codecov action by @meatballhat in https://github.com/urfave/cli/pull/1898
+* Replace Jaro-Winkler algorithm usage with an internal function by @yigithankarabulut in https://github.com/urfave/cli/pull/1893
+* Make it possible to `source` the Zsh autocomplete script by @bartekpacia in https://github.com/urfave/cli/pull/1896
+* Update GitHub Actions (bump versions, improve naming a bit) by @bartekpacia in https://github.com/urfave/cli/pull/1895
+* Add gofumpt to CI by @bartekpacia in https://github.com/urfave/cli/pull/1899
+* Update and cleanup readme by @bartekpacia in https://github.com/urfave/cli/pull/1901
+* Include flag descriptions when using zsh completion by @Toalaah in https://github.com/urfave/cli/pull/1903
+* improve readme a bit more by @bartekpacia in https://github.com/urfave/cli/pull/1906
+* Run go mod tidy by @meatballhat in https://github.com/urfave/cli/pull/1907
+* Target `stable` and `oldstable` Go version in CI by @Juneezee in https://github.com/urfave/cli/pull/1912
+* Fix:(issue_1916) Fix subcommand flag completion by @dearchap in https://github.com/urfave/cli/pull/1918
+* Fix typos by @deining in https://github.com/urfave/cli/pull/1923
+* Fix:(issue_1925) Dont print default text for required flags by @dearchap in https://github.com/urfave/cli/pull/1935
+* adjust tests for HideDefault by @Skeeve in https://github.com/urfave/cli/pull/1937
+* fix: disable shell completion if double dash is included in arguments (v3) by @suzuki-shunsuke in https://github.com/urfave/cli/pull/1933
+* docs: fix broken links by @suzuki-shunsuke in https://github.com/urfave/cli/pull/1940
+* Fix:(issue_1930) Fix for invalid bool counts by @dearchap in https://github.com/urfave/cli/pull/1941
+* chore(README): correct cli-altsrc link in README by @vimiix in https://github.com/urfave/cli/pull/1943
+* Add File() by @6543 in https://github.com/urfave/cli/pull/1945
+* feat(command): show global options in command help by @BlackHole1 in https://github.com/urfave/cli/pull/1949
+* docs(flag): add `UseShortOptionHandling` description by @BlackHole1 in https://github.com/urfave/cli/pull/1953
+* Feat:(issue_1958) Add support for multiple layouts to TimestampFlag by @horockey in https://github.com/urfave/cli/pull/1959
+* fix(bool-with-inverse-flag): fix string printing of bool with inverse flag to properly show inverse prefix by @mahadzaryab1 in https://github.com/urfave/cli/pull/1966
+* Fix:  Shell completions are broken when login shell is different than currently active shell #1884 by @imransolanki in https://github.com/urfave/cli/pull/1969
+* Feat:(issue_1960) make defaults validation optional by @dearchap in https://github.com/urfave/cli/pull/1961
+* feat: added HideHelpCommands to docs by @midirhee12 in https://github.com/urfave/cli/pull/1968
+* Fix:(issue_1775) Add test for zero value structs by @dearchap in https://github.com/urfave/cli/pull/1972
+* Fix:(issue_1951) Propagate hide help to subcommands by @dearchap in https://github.com/urfave/cli/pull/1952
+* Dont check required flags until command action is executed by @dearchap in https://github.com/urfave/cli/pull/1975
+* Fix: Make flags persistent by default by @dearchap in https://github.com/urfave/cli/pull/1977
+* Update mkdocs and dependencies by @meatballhat in https://github.com/urfave/cli/pull/1978
+* Update dependencies by @meatballhat in https://github.com/urfave/cli/pull/1983
+
+## New Contributors
+* @kaifulee made their first contribution in https://github.com/urfave/cli/pull/1877
+* @abennett made their first contribution in https://github.com/urfave/cli/pull/1861
+* @bartekpacia made their first contribution in https://github.com/urfave/cli/pull/1882
+* @yigithankarabulut made their first contribution in https://github.com/urfave/cli/pull/1893
+* @Toalaah made their first contribution in https://github.com/urfave/cli/pull/1903
+* @deining made their first contribution in https://github.com/urfave/cli/pull/1923
+* @Skeeve made their first contribution in https://github.com/urfave/cli/pull/1937
+* @vimiix made their first contribution in https://github.com/urfave/cli/pull/1943
+* @6543 made their first contribution in https://github.com/urfave/cli/pull/1945
+* @horockey made their first contribution in https://github.com/urfave/cli/pull/1959
+* @mahadzaryab1 made their first contribution in https://github.com/urfave/cli/pull/1966
+* @imransolanki made their first contribution in https://github.com/urfave/cli/pull/1969
+* @midirhee12 made their first contribution in https://github.com/urfave/cli/pull/1968
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha9...v3.0.0-alpha9.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.27.5 (2024-10-13)</h2>
+      <pre>## What's Changed
+* docs(flag): add `UseShortOptionHandling` description by @BlackHole1 in https://github.com/urfave/cli/pull/1956
+* [Backport] Fix: Use $0 env var to correctly retrieve the current active shell by @asahasrabuddhe in https://github.com/urfave/cli/pull/1970
+* Update dependencies in v2-maint by @meatballhat in https://github.com/urfave/cli/pull/1980
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.27.4...v2.27.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.16 (2024-10-13)</h2>
+      <pre>## What's Changed
+* Bump Go versions and reorder steps as with v2-maint by @meatballhat in https://github.com/urfave/cli/pull/1887
+* Update dependencies in v1-maint by @meatballhat in https://github.com/urfave/cli/pull/1979
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v1.22.15...v1.22.16</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.27.4 (2024-08-11)</h2>
+      <pre>## What's Changed
+* Fix:(issue_1962) Fix tests failing on 32 bit architectures by @dearchap in https://github.com/urfave/cli/pull/1963
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.27.3...v2.27.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.27.3 (2024-07-24)</h2>
+      <pre>## What's Changed
+* v2 Docs: Mention value from env as default value by @sj14 in https://github.com/urfave/cli/pull/1910
+* Bump github.com/xrash/smetrics dependency by @elezar in https://github.com/urfave/cli/pull/1911
+* fix: disable bash completion if double dash is included in arguments (v2) by @suzuki-shunsuke in https://github.com/urfave/cli/pull/1938
+* Fix improper whitespace formatting in usageTemplate, AppHelpTemplate … by @caeret in https://github.com/urfave/cli/pull/1947
+
+## New Contributors
+* @sj14 made their first contribution in https://github.com/urfave/cli/pull/1910
+* @elezar made their first contribution in https://github.com/urfave/cli/pull/1911
+* @caeret made their first contribution in https://github.com/urfave/cli/pull/1947
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.27.2...v2.27.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.27.2 (2024-04-27)</h2>
+      <pre>## What's Changed
+* Cleanup: Remove unnecessary intermediate variables by @1ambd4 in https://github.com/urfave/cli/pull/1857
+* Docs:(issue_1866) Fix documentation on filepath vs env preference by @dearchap in https://github.com/urfave/cli/pull/1867
+* Fix:(issue_1860) Remove hidden flags from flag categories by @dearchap in https://github.com/urfave/cli/pull/1868
+* Fix repeated [arguments...] in usage template in v2 by @edeustua in https://github.com/urfave/cli/pull/1872
+* Update dependencies, actions steps, and usage for v2-maint by @meatballhat in https://github.com/urfave/cli/pull/1888
+
+## New Contributors
+* @1ambd4 made their first contribution in https://github.com/urfave/cli/pull/1857
+* @edeustua made their first contribution in https://github.com/urfave/cli/pull/1872
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.27.1...v2.27.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.15 (2024-04-27)</h2>
+      <pre>## What's Changed
+* Bump dependencies, tested go versions, and actions steps for v1 by @meatballhat in https://github.com/urfave/cli/pull/1886
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v1.22.14...v1.22.15</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha9 (2024-02-12)</h2>
+      <pre>## What's Changed
+* Fix:(issue_1607) Allow exporting command and arguments/options to json by @dearchap in https://github.com/urfave/cli/pull/1855
+* Adjust code style by @yassinebenaid in https://github.com/urfave/cli/pull/1862
+* Missing arg can cause a panic by @joshfrench in https://github.com/urfave/cli/pull/1864
+* Include mutually exclusive flags in help text by @joshfrench in https://github.com/urfave/cli/pull/1863
+
+## New Contributors
+* @yassinebenaid made their first contribution in https://github.com/urfave/cli/pull/1862
+* @joshfrench made their first contribution in https://github.com/urfave/cli/pull/1864
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha8...v3.0.0-alpha9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.27.1 (2023-12-30)</h2>
+      <pre>## What's Changed
+* v2: Add build tag urfave_cli_no_suggest by @dolmen in https://github.com/urfave/cli/pull/1847
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.27.0...v2.27.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha8 (2023-12-27)</h2>
+      <pre>## What's Changed
+* Fix:(issue_1838) Use primary name for required flag error by @dearchap in https://github.com/urfave/cli/pull/1839
+* Fix:(issue_1842) Make value source chain more user friendly by @dearchap in https://github.com/urfave/cli/pull/1849
+* Fix:(issue_1695) Change tests to use assert and require by @dearchap in https://github.com/urfave/cli/pull/1853
+* Backport Show non categorized flags with categorized on help by @jetexe in https://github.com/urfave/cli/pull/1854
+
+## New Contributors
+* @jetexe made their first contribution in https://github.com/urfave/cli/pull/1854
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha7...v3.0.0-alpha8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.27.0 (2023-12-26)</h2>
+      <pre>## What's Changed
+* v2 Add integration with golangci-lint by @skelouse in https://github.com/urfave/cli/pull/1830
+* v2: GitHub Actions: upgrade Go, upgrade actions by @dolmen in https://github.com/urfave/cli/pull/1848
+* Feat:(issue_1797) Add Args for app/cmd/subcmd to avoid argument... be… by @dearchap in https://github.com/urfave/cli/pull/1829
+* Fix:(issue_1850) Add RunAction for uint/uint64 slice flags by @dearchap in https://github.com/urfave/cli/pull/1851
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.26.0...v2.27.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha7 (2023-12-11)</h2>
+      <pre>## What's Changed
+* Fix:(issue_1826) Make IsSet work with persistent flags by @dearchap in https://github.com/urfave/cli/pull/1827
+* Chore:(v3_docs) Initial rev for v3 docs by @dearchap in https://github.com/urfave/cli/pull/1828
+* Docs: Add link to v3 by @dearchap in https://github.com/urfave/cli/pull/1832
+* Feat:(issue_1074) Add basic support for cmd args by @dearchap in https://github.com/urfave/cli/pull/1833
+* Fix:(issue_1720) Add support for reading args from stdin by @dearchap in https://github.com/urfave/cli/pull/1836
+* Fix:(issue_1834) Add check for persistent required flags by @dearchap in https://github.com/urfave/cli/pull/1835
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha6...v3.0.0-alpha7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha6 (2023-12-04)</h2>
+      <pre>## What's Changed
+* Fix timestamp get from cmd by @dearchap in https://github.com/urfave/cli/pull/1831
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha5...v3.0.0-alpha6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha5 (2023-12-02)</h2>
+      <pre>## What's Changed
+* Collapse `uint` and `uint64` flag types by @meatballhat in https://github.com/urfave/cli/pull/1768
+* Rename `float64` types from `Float64` to `Float` by @meatballhat in https://github.com/urfave/cli/pull/1773
+* Chore: Rename mkdocs requirements file name by @dearchap in https://github.com/urfave/cli/pull/1777
+* Feature: Add frogbot workflow by @dearchap in https://github.com/urfave/cli/pull/1778
+* Update frogbot-scan-and-fix.yml by @dearchap in https://github.com/urfave/cli/pull/1782
+* Remove markdown/man docs support by @meatballhat in https://github.com/urfave/cli/pull/1779
+* Refactor numberOfMissingFlags remove by @seipan in https://github.com/urfave/cli/pull/1783
+* Replace fmt.Sprintf's with strconv.Format's by @austinvazquez in https://github.com/urfave/cli/pull/1786
+* Feature: Add support for validation functions by @dearchap in https://github.com/urfave/cli/pull/1785
+* Collapse `Context` into `Command` by @meatballhat in https://github.com/urfave/cli/pull/1784
+* Remove duplicate mkdocs requirements file by @meatballhat in https://github.com/urfave/cli/pull/1790
+* Fix nil HelpFlag panic (v3) by @wxiaoguang in https://github.com/urfave/cli/pull/1796
+* Make v3 examples runnable on pkg.go.dev by @matthewdale in https://github.com/urfave/cli/pull/1812
+* Remove redundant nil check in `LocalFlagNames` by @Juneezee in https://github.com/urfave/cli/pull/1815
+* Fix:(issue_1814) Fix completions for subcommands by @dearchap in https://github.com/urfave/cli/pull/1824
+
+## New Contributors
+* @seipan made their first contribution in https://github.com/urfave/cli/pull/1783
+* @austinvazquez made their first contribution in https://github.com/urfave/cli/pull/1786
+* @matthewdale made their first contribution in https://github.com/urfave/cli/pull/1812
+* @Juneezee made their first contribution in https://github.com/urfave/cli/pull/1815
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha4...v3.0.0-alpha5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.26.0 (2023-12-02)</h2>
+      <pre>## What's Changed
+* Bash completion nits by @meatballhat in https://github.com/urfave/cli/pull/1762
+* Chore: Rename mkdocs requirements file name by @dearchap in https://github.com/urfave/cli/pull/1776
+* Fix:(issue_1787) Add fix for commands not listed when hide help comma… by @dearchap in https://github.com/urfave/cli/pull/1788
+* Fix nil HelpFlag panic (v2) by @wxiaoguang in https://github.com/urfave/cli/pull/1795
+* Always get 0 for a nested int64 value in v2.25.7 by @stephenfire in https://github.com/urfave/cli/pull/1799
+* Helper messages for documenting build process by @abitrolly in https://github.com/urfave/cli/pull/1800
+* fix: check duplicated sub command name and alias by @linrl3 in https://github.com/urfave/cli/pull/1805
+* Fix:(issue_1689) Have consistent behavior for default text in man and… by @dearchap in https://github.com/urfave/cli/pull/1825
+* Fix linting issues by @skelouse in https://github.com/urfave/cli/pull/1696
+
+## New Contributors
+* @stephenfire made their first contribution in https://github.com/urfave/cli/pull/1799
+* @linrl3 made their first contribution in https://github.com/urfave/cli/pull/1805
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.25.7...v2.26.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-alpha4 (2023-06-22)</h2>
+      <pre>## What's Changed
+* Add some clarity around available versions and level of support by @meatballhat in https://github.com/urfave/cli/pull/1744
+* Feat: Add value source by @dearchap in https://github.com/urfave/cli/pull/1745
+* Fix:(issue_1644) Run persistent flag action by @dearchap in https://github.com/urfave/cli/pull/1742
+* Document slice flags as part of examples (v3) by @carhartl in https://github.com/urfave/cli/pull/1750
+* Consolidate all `App` code into `Command` by @meatballhat in https://github.com/urfave/cli/pull/1746
+* Output usage errors to ErrWriter by @kke in https://github.com/urfave/cli/pull/1758
+* Some docs housekeeping and minor cleanups by @meatballhat in https://github.com/urfave/cli/pull/1752
+* Reworking value source API by @meatballhat in https://github.com/urfave/cli/pull/1760
+* Collapse `int64` and `int` flag types by @meatballhat in https://github.com/urfave/cli/pull/1765
+
+## New Contributors
+* @kke made their first contribution in https://github.com/urfave/cli/pull/1758
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha3...v3.0.0-alpha4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.25.7 (2023-06-19)</h2>
+      <pre>## What's Changed
+* Fix: fix v2 broken tests by @dearchap in https://github.com/urfave/cli/pull/1757
+* Fix:(issue_1755) Ensure that timestamp flag destination is set correctly by @dearchap in https://github.com/urfave/cli/pull/1756
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.25.6...v2.25.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.25.6 (2023-06-12)</h2>
+      <pre>## What's Changed
+* Fix:(issue_1668) Add test case for sub command of sub command completion by @dearchap in https://github.com/urfave/cli/pull/1747
+* Update dependencies for v2 by @meatballhat in https://github.com/urfave/cli/pull/1749
+* Document slice flags as part of examples (v2) by @carhartl in https://github.com/urfave/cli/pull/1751
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.25.5...v2.25.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.14 (2023-06-12)</h2>
+      <pre>## What's Changed
+* Update dependencies for v1 by @meatballhat in https://github.com/urfave/cli/pull/1748
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v1.22.13...v1.22.14</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.25.5 (2023-05-29)</h2>
+      <pre>## What's Changed
+* Fix:(issue_1737) Set bool count by taking care of num of aliases by @dearchap in https://github.com/urfave/cli/pull/1740
+
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.25.4...v2.25.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.25.4 (2023-05-28)</h2>
+      <pre>## What's Changed
+* Bug/fix issue 1703 by @jojje in https://github.com/urfave/cli/pull/1728
+* Fix:(issue_1734) Show categories for subcommands by @dearchap in https://github.com/urfave/cli/pull/1735
+* Fix:(issue_1610). Keep RunAsSubcommand behaviour as before by @dearchap in https://github.com/urfave/cli/pull/1736
+* Fix:(issue_1731) Add fix for checking if aliases are set by @dearchap in https://github.com/urfave/cli/pull/1732
+* Fix func name referenced in doc comment by @meatballhat in https://github.com/urfave/cli/pull/1738
+
+## New Contributors
+* @jojje made their first contribution in https://github.com/urfave/cli/pull/1728
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v2.25.3...v2.25.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 3.0.0-alpha3 (2023-05-27)</h2>
+      <pre>## What's Changed
+* Fix some issues in bash autocompletion by @MrNaif2018 in https://github.com/urfave/cli/pull/1674
+* Adjust sub-command template to properly output sub-sub-command placeholder. by @aryounce in https://github.com/urfave/cli/pull/1683
+* Clean up some documentation by @docwhat in https://github.com/urfave/cli/pull/1688
+* Shift tested Go versions by @meatballhat in https://github.com/urfave/cli/pull/1691
+* Updated badges for v3 by @meatballhat in https://github.com/urfave/cli/pull/1665
+* Fix linting issues by @skelouse in https://github.com/urfave/cli/pull/1694
+* v3 Add integration with golangci-lint by @skelouse in https://github.com/urfave/cli/pull/1697
+* Add makezero linter by @avorima in https://github.com/urfave/cli/pull/1705
+* fix some broken links in docs by @doooks in https://github.com/urfave/cli/pull/1698
+* Feat: Added tabular markdown writer by @tarampampam in https://github.com/urfave/cli/pull/1722
+
+## New Contributors
+* @aryounce made their first contribution in https://github.com/urfave/cli/pull/1683
+* @docwhat made their first contribution in https://github.com/urfave/cli/pull/1688
+* @doooks made their first contribution in https://github.com/urfave/cli/pull/1698
+* @tarampampam made their first contribution in https://github.com/urfave/cli/pull/1722
+
+**Full Changelog**: https://github.com/urfave/cli/compare/v3.0.0-alpha2...v3.0.0-alpha3</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

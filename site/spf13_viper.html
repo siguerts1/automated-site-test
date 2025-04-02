@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for spf13/viper"/>
+  <title>spf13/viper Release Notes</title>
+</head>
+<body>
+  <h1>🚀 spf13/viper - Release Notes</h1>
+  
+    <section>
+      <h2>v1.20.1 (2025-03-26)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.20.1 -->
+
+## What's Changed
+### Bug Fixes 🐛
+* Backport config type fixes to 1.20.x by @sagikazarmark in https://github.com/spf13/viper/pull/2005
+
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.20.0...v1.20.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.20.0 (2025-03-15)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.20.0 -->
+
+
+> [!WARNING]
+> This release includes a few minor breaking changes. Read the [upgrade guide](https://github.com/spf13/viper/blob/master/UPGRADE.md#v120x) for details.
+
+## What's Changed
+### Exciting New Features 🎉
+* New encoding layer by @sagikazarmark in https://github.com/spf13/viper/pull/1869
+### Enhancements 🚀
+* Drop Go 1.20 support by @sagikazarmark in https://github.com/spf13/viper/pull/1846
+* Drop slog shim by @sagikazarmark in https://github.com/spf13/viper/pull/1848
+* Replace file searching API with a finder by @sagikazarmark in https://github.com/spf13/viper/pull/1849
+* Finder feature flag by @sagikazarmark in https://github.com/spf13/viper/pull/1852
+* Allow setting options on the global Viper instance by @sagikazarmark in https://github.com/spf13/viper/pull/1856
+* Add experimental flag for bind struct by @sagikazarmark in https://github.com/spf13/viper/pull/1854
+* Make the remote package a separate module by @sagikazarmark in https://github.com/spf13/viper/pull/1860
+* Add decoder hook option by @sagikazarmark in https://github.com/spf13/viper/pull/1872
+* Encoder improvements by @sagikazarmark in https://github.com/spf13/viper/pull/1885
+* Get uint8 by @martinconic in https://github.com/spf13/viper/pull/1894
+### Bug Fixes 🐛
+* Fix missing config type when reading from a buffer by @sagikazarmark in https://github.com/spf13/viper/pull/1857
+* fix: do not allow setting dependencies to nil values by @sagikazarmark in https://github.com/spf13/viper/pull/1871
+* feat: copy keydelim from parent chart in viper.Sub() by @obs-gh-alexlew in https://github.com/spf13/viper/pull/1887
+### Breaking Changes 🛠
+* Drop encoding formats: HCL, Java properties, INI by @sagikazarmark in https://github.com/spf13/viper/pull/1870
+### Dependency Updates ⬆️
+* chore: update mapstructure by @sagikazarmark in https://github.com/spf13/viper/pull/1723
+* chore: update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1834
+* build(deps): bump github/codeql-action from 3.25.7 to 3.25.8 by @dependabot in https://github.com/spf13/viper/pull/1853
+* Revert to go-difflib and go-spew releases by @skitt in https://github.com/spf13/viper/pull/1861
+* build(deps): bump actions/dependency-review-action from 4.3.2 to 4.3.3 by @dependabot in https://github.com/spf13/viper/pull/1862
+* build(deps): bump github/codeql-action from 3.25.8 to 3.25.10 by @dependabot in https://github.com/spf13/viper/pull/1865
+* build(deps): bump actions/checkout from 4.1.6 to 4.1.7 by @dependabot in https://github.com/spf13/viper/pull/1864
+* chore: update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1866
+* build(deps): bump github/codeql-action from 3.25.10 to 3.25.11 by @dependabot in https://github.com/spf13/viper/pull/1876
+* build(deps): bump google.golang.org/grpc from 1.64.0 to 1.64.1 in /remote by @dependabot in https://github.com/spf13/viper/pull/1878
+* build(deps): bump actions/setup-go from 5.0.1 to 5.0.2 by @dependabot in https://github.com/spf13/viper/pull/1879
+* build(deps): bump actions/dependency-review-action from 4.3.3 to 4.3.4 by @dependabot in https://github.com/spf13/viper/pull/1881
+* build(deps): bump github/codeql-action from 3.25.11 to 3.25.12 by @dependabot in https://github.com/spf13/viper/pull/1880
+* build(deps): bump github/codeql-action from 3.25.12 to 3.25.13 by @dependabot in https://github.com/spf13/viper/pull/1883
+* chore(deps): update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1884
+* chore: update dependencies by @sagikazarmark in https://github.com/spf13/viper/pull/1888
+* build(deps): bump github.com/go-viper/mapstructure/v2 from 2.0.0 to 2.1.0 by @dependabot in https://github.com/spf13/viper/pull/1901
+* build(deps): bump github.com/spf13/cast from 1.6.0 to 1.7.0 by @dependabot in https://github.com/spf13/viper/pull/1899
+* build(deps): bump github/codeql-action from 3.25.13 to 3.26.0 by @dependabot in https://github.com/spf13/viper/pull/1897
+* build(deps): bump golangci/golangci-lint-action from 6.0.1 to 6.1.0 by @dependabot in https://github.com/spf13/viper/pull/1893
+* build(deps): bump github/codeql-action from 3.26.0 to 3.26.2 by @dependabot in https://github.com/spf13/viper/pull/1903
+* build(deps): bump github/codeql-action from 3.26.2 to 3.26.3 by @dependabot in https://github.com/spf13/viper/pull/1905
+* build(deps): bump github/codeql-action from 3.26.3 to 3.26.5 by @dependabot in https://github.com/spf13/viper/pull/1909
+* Update Go by @sagikazarmark in https://github.com/spf13/viper/pull/1913
+* chore: update crypt package by @sagikazarmark in https://github.com/spf13/viper/pull/1914
+* build(deps): bump github/codeql-action from 3.26.5 to 3.26.6 by @dependabot in https://github.com/spf13/viper/pull/1915
+* build(deps): bump mheap/github-action-required-labels from 5.4.1 to 5.4.2 by @dependabot in https://github.com/spf13/viper/pull/1916
+* build(deps): bump cachix/install-nix-action from 27 to 28 by @dependabot in https://github.com/spf13/viper/pull/1919
+* build(deps): bump github/codeql-action from 3.26.6 to 3.26.7 by @dependabot in https://github.com/spf13/viper/pull/1920
+* chore: update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1921
+* build(deps): bump github/codeql-action from 3.26.7 to 3.26.8 by @dependabot in https://github.com/spf13/viper/pull/1923
+* build(deps): bump github.com/go-viper/mapstructure/v2 from 2.1.0 to 2.2.1 by @dependabot in https://github.com/spf13/viper/pull/1925
+* build(deps): bump github/codeql-action from 3.26.8 to 3.26.11 by @dependabot in https://github.com/spf13/viper/pull/1932
+* build(deps): bump golangci/golangci-lint-action from 6.1.0 to 6.1.1 by @dependabot in https://github.com/spf13/viper/pull/1930
+* build(deps): bump actions/checkout from 4.1.7 to 4.2.0 by @dependabot in https://github.com/spf13/viper/pull/1928
+* build(deps): bump actions/checkout from 4.2.0 to 4.2.1 by @dependabot in https://github.com/spf13/viper/pull/1936
+* build(deps): bump github/codeql-action from 3.26.11 to 3.27.2 by @dependabot in https://github.com/spf13/viper/pull/1948
+* build(deps): bump github.com/fsnotify/fsnotify from 1.7.0 to 1.8.0 by @dependabot in https://github.com/spf13/viper/pull/1944
+* build(deps): bump actions/setup-go from 5.0.2 to 5.1.0 by @dependabot in https://github.com/spf13/viper/pull/1942
+* build(deps): bump actions/dependency-review-action from 4.3.4 to 4.4.0 by @dependabot in https://github.com/spf13/viper/pull/1943
+* build(deps): bump actions/checkout from 4.2.1 to 4.2.2 by @dependabot in https://github.com/spf13/viper/pull/1941
+* build(deps): bump github/codeql-action from 3.27.2 to 3.27.3 by @dependabot in https://github.com/spf13/viper/pull/1949
+* build(deps): bump github/codeql-action from 3.27.3 to 3.27.7 by @dependabot in https://github.com/spf13/viper/pull/1958
+* build(deps): bump mheap/github-action-required-labels from 5.4.2 to 5.5.0 by @dependabot in https://github.com/spf13/viper/pull/1957
+* build(deps): bump actions/dependency-review-action from 4.4.0 to 4.5.0 by @dependabot in https://github.com/spf13/viper/pull/1953
+* build(deps): bump actions/setup-go from 5.1.0 to 5.2.0 by @dependabot in https://github.com/spf13/viper/pull/1959
+* build(deps): bump github.com/stretchr/testify from 1.9.0 to 1.10.0 by @dependabot in https://github.com/spf13/viper/pull/1954
+* build(deps): bump golang.org/x/crypto from 0.27.0 to 0.31.0 in /remote by @dependabot in https://github.com/spf13/viper/pull/1960
+* build(deps): bump github/codeql-action from 3.27.7 to 3.27.9 by @dependabot in https://github.com/spf13/viper/pull/1964
+* chore: update afero by @sagikazarmark in https://github.com/spf13/viper/pull/1973
+* build(deps): bump github.com/spf13/cast from 1.7.0 to 1.7.1 by @dependabot in https://github.com/spf13/viper/pull/1968
+* build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6 by @dependabot in https://github.com/spf13/viper/pull/1979
+* ci: add Go 1.24 to the test matrix by @sagikazarmark in https://github.com/spf13/viper/pull/1983
+### Other Changes
+* refactor: move remote code to separate file by @sagikazarmark in https://github.com/spf13/viper/pull/1847
+* refactor: cleanup unused encoding code by @sagikazarmark in https://github.com/spf13/viper/pull/1889
+* Fix issues reported by testifylint by @deining in https://github.com/spf13/viper/pull/1965
+* docs: add update instructions for 1.20 by @sagikazarmark in https://github.com/spf13/viper/pull/1992
+
+## New Contributors
+* @obs-gh-alexlew made their first contribution in https://github.com/spf13/viper/pull/1887
+* @martinconic made their first contribution in https://github.com/spf13/viper/pull/1894
+* @deining made their first contribution in https://github.com/spf13/viper/pull/1965
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.19.0...v1.20.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.20.0-alpha.6 (2024-07-23)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.20.0-alpha.6 -->
+
+## What's Changed
+### Enhancements 🚀
+* Encoder improvements by @sagikazarmark in https://github.com/spf13/viper/pull/1885
+### Bug Fixes 🐛
+* feat: copy keydelim from parent chart in viper.Sub() by @obs-gh-alexlew in https://github.com/spf13/viper/pull/1887
+### Dependency Updates ⬆️
+* build(deps): bump google.golang.org/grpc from 1.64.0 to 1.64.1 in /remote by @dependabot in https://github.com/spf13/viper/pull/1878
+* build(deps): bump actions/setup-go from 5.0.1 to 5.0.2 by @dependabot in https://github.com/spf13/viper/pull/1879
+* build(deps): bump actions/dependency-review-action from 4.3.3 to 4.3.4 by @dependabot in https://github.com/spf13/viper/pull/1881
+* build(deps): bump github/codeql-action from 3.25.11 to 3.25.12 by @dependabot in https://github.com/spf13/viper/pull/1880
+* build(deps): bump github/codeql-action from 3.25.12 to 3.25.13 by @dependabot in https://github.com/spf13/viper/pull/1883
+* chore(deps): update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1884
+* chore: update dependencies by @sagikazarmark in https://github.com/spf13/viper/pull/1888
+### Other Changes
+* refactor: cleanup unused encoding code by @sagikazarmark in https://github.com/spf13/viper/pull/1889
+
+## New Contributors
+* @obs-gh-alexlew made their first contribution in https://github.com/spf13/viper/pull/1887
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.20.0-alpha.5...v1.20.0-alpha.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.20.0-alpha.3 (2024-06-24)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.20.0-alpha.3 -->
+
+## What's Changed
+### Exciting New Features 🎉
+* New encoding layer by @sagikazarmark in https://github.com/spf13/viper/pull/1869
+### Breaking Changes 🛠
+* Drop encoding formats: HCL, Java properties, INI by @sagikazarmark in https://github.com/spf13/viper/pull/1870
+
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.20.0-alpha.2...v1.20.0-alpha.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.20.0-alpha.2 (2024-06-20)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.20.0-alpha.2 -->
+
+## What's Changed
+### Dependency Updates ⬆️
+* Revert to go-difflib and go-spew releases by @skitt in https://github.com/spf13/viper/pull/1861
+* build(deps): bump actions/dependency-review-action from 4.3.2 to 4.3.3 by @dependabot in https://github.com/spf13/viper/pull/1862
+* build(deps): bump github/codeql-action from 3.25.8 to 3.25.10 by @dependabot in https://github.com/spf13/viper/pull/1865
+* build(deps): bump actions/checkout from 4.1.6 to 4.1.7 by @dependabot in https://github.com/spf13/viper/pull/1864
+* chore: update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1866
+
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.20.0-alpha.1...v1.20.0-alpha.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.20.0-alpha.1 (2024-06-06)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.20.0-alpha.1 -->
+
+The upcoming 1.20.0 release contains quite a few, large changes, so I decided to tag a few alpha/beta releases first.
+
+Please give it a try and report back any issues. Thanks! ❤️
+
+## What's Changed
+### Enhancements 🚀
+* Drop Go 1.20 support by @sagikazarmark in https://github.com/spf13/viper/pull/1846
+* Drop slog shim by @sagikazarmark in https://github.com/spf13/viper/pull/1848
+* Replace file searching API with a finder by @sagikazarmark in https://github.com/spf13/viper/pull/1849
+* Finder feature flag by @sagikazarmark in https://github.com/spf13/viper/pull/1852
+* Allow setting options on the global Viper instance by @sagikazarmark in https://github.com/spf13/viper/pull/1856
+* Add experimental flag for bind struct by @sagikazarmark in https://github.com/spf13/viper/pull/1854
+* Make the remote package a separate module by @sagikazarmark in https://github.com/spf13/viper/pull/1860
+### Bug Fixes 🐛
+* Fix missing config type when reading from a buffer by @sagikazarmark in https://github.com/spf13/viper/pull/1857
+### Dependency Updates ⬆️
+* chore: update mapstructure by @sagikazarmark in https://github.com/spf13/viper/pull/1723
+* chore: update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1834
+* build(deps): bump github/codeql-action from 3.25.7 to 3.25.8 by @dependabot in https://github.com/spf13/viper/pull/1853
+### Other Changes
+* refactor: move remote code to separate file by @sagikazarmark in https://github.com/spf13/viper/pull/1847
+
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.19.0...v1.20.0-alpha.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.19.0 (2024-06-02)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.19.0 -->
+
+## What's Changed
+### Bug Fixes 🐛
+* fix!: hide struct binding behind a feature flag by @sagikazarmark in https://github.com/spf13/viper/pull/1720
+### Dependency Updates ⬆️
+* build(deps): bump github/codeql-action from 2.22.8 to 2.22.9 by @dependabot in https://github.com/spf13/viper/pull/1705
+* build(deps): bump actions/setup-go from 4.1.0 to 5.0.0 by @dependabot in https://github.com/spf13/viper/pull/1703
+* build(deps): bump github/codeql-action from 2.22.9 to 3.22.11 by @dependabot in https://github.com/spf13/viper/pull/1713
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.1.0 to 2.1.1 by @dependabot in https://github.com/spf13/viper/pull/1711
+* build(deps): bump golang.org/x/crypto from 0.16.0 to 0.17.0 by @dependabot in https://github.com/spf13/viper/pull/1722
+* build(deps): bump github/codeql-action from 3.22.11 to 3.23.0 by @dependabot in https://github.com/spf13/viper/pull/1734
+* build(deps): bump actions/dependency-review-action from 3.1.4 to 3.1.5 by @dependabot in https://github.com/spf13/viper/pull/1731
+* build(deps): bump mheap/github-action-required-labels from 5.1.0 to 5.2.0 by @dependabot in https://github.com/spf13/viper/pull/1743
+* build(deps): bump github/codeql-action from 3.23.0 to 3.23.2 by @dependabot in https://github.com/spf13/viper/pull/1742
+* build(deps): bump actions/dependency-review-action from 3.1.5 to 4.0.0 by @dependabot in https://github.com/spf13/viper/pull/1739
+* build(deps): bump cachix/install-nix-action from 24 to 25 by @dependabot in https://github.com/spf13/viper/pull/1737
+* build(deps): bump github/codeql-action from 3.23.2 to 3.24.0 by @dependabot in https://github.com/spf13/viper/pull/1751
+* build(deps): bump github/codeql-action from 3.24.0 to 3.24.1 by @dependabot in https://github.com/spf13/viper/pull/1760
+* build(deps): bump actions/dependency-review-action from 4.0.0 to 4.1.0 by @dependabot in https://github.com/spf13/viper/pull/1761
+* build(deps): bump golangci/golangci-lint-action from 3.7.0 to 4.0.0 by @dependabot in https://github.com/spf13/viper/pull/1757
+* build(deps): bump mheap/github-action-required-labels from 5.2.0 to 5.3.0 by @dependabot in https://github.com/spf13/viper/pull/1759
+* build(deps): bump github/codeql-action from 3.24.1 to 3.24.3 by @dependabot in https://github.com/spf13/viper/pull/1763
+* build(deps): bump github.com/sagikazarmark/crypt from 0.17.0 to 0.18.0 by @dependabot in https://github.com/spf13/viper/pull/1774
+* build(deps): bump github/codeql-action from 3.24.3 to 3.24.5 by @dependabot in https://github.com/spf13/viper/pull/1770
+* build(deps): bump github.com/stretchr/testify from 1.8.4 to 1.9.0 by @dependabot in https://github.com/spf13/viper/pull/1776
+* build(deps): bump github/codeql-action from 3.24.5 to 3.24.6 by @dependabot in https://github.com/spf13/viper/pull/1775
+* build(deps): bump cachix/install-nix-action from 25 to 26 by @dependabot in https://github.com/spf13/viper/pull/1778
+* build(deps): bump actions/dependency-review-action from 4.1.0 to 4.1.3 by @dependabot in https://github.com/spf13/viper/pull/1767
+* build(deps): bump github/codeql-action from 3.24.6 to 3.24.9 by @dependabot in https://github.com/spf13/viper/pull/1790
+* build(deps): bump mheap/github-action-required-labels from 5.3.0 to 5.4.0 by @dependabot in https://github.com/spf13/viper/pull/1789
+* build(deps): bump actions/checkout from 4.1.1 to 4.1.2 by @dependabot in https://github.com/spf13/viper/pull/1780
+* build(deps): bump actions/dependency-review-action from 4.1.3 to 4.2.4 by @dependabot in https://github.com/spf13/viper/pull/1793
+* chore: upgrade crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1794
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.1.1 to 2.2.0 by @dependabot in https://github.com/spf13/viper/pull/1788
+* build(deps): bump actions/dependency-review-action from 4.2.4 to 4.2.5 by @dependabot in https://github.com/spf13/viper/pull/1796
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.0 to 2.2.1 by @dependabot in https://github.com/spf13/viper/pull/1804
+* build(deps): bump github/codeql-action from 3.24.9 to 3.25.1 by @dependabot in https://github.com/spf13/viper/pull/1806
+* build(deps): bump golang.org/x/net from 0.22.0 to 0.23.0 by @dependabot in https://github.com/spf13/viper/pull/1807
+* build(deps): bump actions/checkout from 4.1.2 to 4.1.3 by @dependabot in https://github.com/spf13/viper/pull/1808
+* build(deps): bump actions/checkout from 4.1.3 to 4.1.4 by @dependabot in https://github.com/spf13/viper/pull/1813
+* build(deps): bump github/codeql-action from 3.25.1 to 3.25.2 by @dependabot in https://github.com/spf13/viper/pull/1811
+* build(deps): bump mheap/github-action-required-labels from 5.4.0 to 5.4.1 by @dependabot in https://github.com/spf13/viper/pull/1817
+* build(deps): bump actions/dependency-review-action from 4.2.5 to 4.3.2 by @dependabot in https://github.com/spf13/viper/pull/1821
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.1 to 2.2.2 by @dependabot in https://github.com/spf13/viper/pull/1822
+* build(deps): bump actions/setup-go from 5.0.0 to 5.0.1 by @dependabot in https://github.com/spf13/viper/pull/1824
+* build(deps): bump github/codeql-action from 3.25.2 to 3.25.4 by @dependabot in https://github.com/spf13/viper/pull/1828
+* build(deps): bump golangci/golangci-lint-action from 4.0.0 to 6.0.1 by @dependabot in https://github.com/spf13/viper/pull/1829
+* build(deps): bump github/codeql-action from 3.25.4 to 3.25.7 by @dependabot in https://github.com/spf13/viper/pull/1844
+* build(deps): bump cachix/install-nix-action from 26 to 27 by @dependabot in https://github.com/spf13/viper/pull/1833
+* build(deps): bump actions/checkout from 4.1.4 to 4.1.6 by @dependabot in https://github.com/spf13/viper/pull/1835
+### Other Changes
+* Update links to Golang Modules documentation by @tobb10001 in https://github.com/spf13/viper/pull/1758
+* chore: add Go 1.22 support by @sagikazarmark in https://github.com/spf13/viper/pull/1762
+* fix #1700: update tests to use local viper instance by @smukk9 in https://github.com/spf13/viper/pull/1791
+* Update references to bketelsen/crypt by @skitt in https://github.com/spf13/viper/pull/1842
+
+## New Contributors
+* @tobb10001 made their first contribution in https://github.com/spf13/viper/pull/1758
+* @smukk9 made their first contribution in https://github.com/spf13/viper/pull/1791
+* @skitt made their first contribution in https://github.com/spf13/viper/pull/1842
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.18.1...v1.19.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.18.2 (2023-12-18)</h2>
+      <pre>**tl;dr Skip 1.18.0 and 1.18.1 and upgrade to this version instead.**
+
+This release fixes a regression that appears in rare circumstances when using `Unmarshal` or `UnmarshalExact` to decode values onto pointers with multiple indirection (eg. pointer to a pointer, etc). The change was introduced in 1.18.0 as a means to resolve a long-standing bug when decoding environment variables to structs.
+
+The feature is now disabled by default and can be enabled using the `viper_bind_struct` build tag. It's also considered experimental at this point, so breaking changes may be introduced in the future.
+
+## What's Changed
+### Bug Fixes 🐛
+* feat!: hide struct binding behind a feature flag by @sagikazarmark in https://github.com/spf13/viper/pull/1715
+
+
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.18.1...v1.18.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.18.1 (2023-12-08)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.18.1 -->
+
+## What's Changed
+### Bug Fixes 🐛
+* Merge missing struct keys inside UnmarshalExact by @krakowski in https://github.com/spf13/viper/pull/1704
+
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.18.0...v1.18.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.18.0 (2023-12-06)</h2>
+      <pre>## Major changes
+
+Highlighting some of the changes for better visibility.
+
+Please share your feedback in the Discussion forum. Thanks! ❤️
+
+### `AutomaticEnv` works with `Unmarshal`
+
+Previously,  environment variables that weren't bound manually or had no defaults could not be mapped by `Unmarshal`. (The problem is explained in details in this issue: #761)
+
+#1429 introduced a solution that solves that issue.
+
+## What's Changed
+### Enhancements 🚀
+* chore: rename files according to enabled build tags by @alexandear in https://github.com/spf13/viper/pull/1642
+* test: replace ifs with asserts to simplify tests by @alexandear in https://github.com/spf13/viper/pull/1656
+* ci: enable test shuffle and fix tests by @alexandear in https://github.com/spf13/viper/pull/1643
+* fix: gocritic lint issues by @alexandear in https://github.com/spf13/viper/pull/1696
+### Bug Fixes 🐛
+* Implement viper.BindStruct for automatic unmarshalling from environment variables by @krakowski in https://github.com/spf13/viper/pull/1429
+* fix isPathShadowedInFlatMap type cast bug by @linuxsong in https://github.com/spf13/viper/pull/1585
+### Dependency Updates ⬆️
+* build(deps): bump github/codeql-action from 2.21.9 to 2.22.3 by @dependabot in https://github.com/spf13/viper/pull/1661
+* build(deps): bump golang.org/x/net from 0.15.0 to 0.17.0 by @dependabot in https://github.com/spf13/viper/pull/1659
+* build(deps): bump actions/checkout from 4.1.0 to 4.1.1 by @dependabot in https://github.com/spf13/viper/pull/1663
+* build(deps): bump actions/github-script from 6.4.1 to 7.0.1 by @dependabot in https://github.com/spf13/viper/pull/1686
+* build(deps): bump github/codeql-action from 2.22.3 to 2.22.8 by @dependabot in https://github.com/spf13/viper/pull/1688
+* build(deps): bump github.com/spf13/afero from 1.10.0 to 1.11.0 by @dependabot in https://github.com/spf13/viper/pull/1692
+* build(deps): bump actions/dependency-review-action from 3.1.0 to 3.1.4 by @dependabot in https://github.com/spf13/viper/pull/1690
+* build(deps): bump cachix/install-nix-action from 23 to 24 by @dependabot in https://github.com/spf13/viper/pull/1689
+* build(deps): bump github.com/nats-io/nkeys from 0.4.5 to 0.4.6 by @dependabot in https://github.com/spf13/viper/pull/1672
+* build(deps): bump github.com/spf13/cast from 1.5.1 to 1.6.0 by @dependabot in https://github.com/spf13/viper/pull/1691
+* build(deps): bump github.com/fsnotify/fsnotify from 1.6.0 to 1.7.0 by @dependabot in https://github.com/spf13/viper/pull/1668
+* chore: update dependencies by @sagikazarmark in https://github.com/spf13/viper/pull/1694
+* chore: update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1701
+### Other Changes
+* Add info about multiple hosts for remote config by @KaymeKaydex in https://github.com/spf13/viper/pull/1684
+* refactor: drop fsonitfy wrapper by @sagikazarmark in https://github.com/spf13/viper/pull/1693
+* Note Get* behavior on parse failure by @scop in https://github.com/spf13/viper/pull/1687
+* fix: godot lint issues by @alexandear in https://github.com/spf13/viper/pull/1657
+
+## New Contributors
+* @KaymeKaydex made their first contribution in https://github.com/spf13/viper/pull/1684
+* @krakowski made their first contribution in https://github.com/spf13/viper/pull/1429
+* @linuxsong made their first contribution in https://github.com/spf13/viper/pull/1585
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.17.0...v1.18.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.17.0 (2023-10-06)</h2>
+      <pre>## Major changes
+
+Highlighting some of the changes for better visibility.
+
+Please share your feedback in the Discussion forum. Thanks! ❤️
+
+### Minimum Go version: 1.19
+
+Viper now requires Go 1.19
+
+This change ensures we can stay up to date with modern practices and dependencies.
+
+### `log/slog` support **[BREAKING]**
+
+Viper [v1.11.0](https://github.com/spf13/viper/releases/tag/v1.11.0) added an experimental `Logger` interface to allow custom implementations (besides [jwalterweatherman](https://github.com/spf13/jwalterweatherman)).
+
+In addition, it also exposed an experimental `WithLogger` function allowing to set a custom logger.
+
+This release deprecates that interface in favor of [log/slog](https://pkg.go.dev/log/slog) released in Go 1.21.
+
+> [!WARNING]
+> `WithLogger` accepts an [*slog.Logger](https://pkg.go.dev/log/slog#Logger) from now on.
+
+To preserve backwards compatibility with older Go versions, prior to Go 1.21 Viper accepts a [*golang.org/x/exp/slog.Logger](https://pkg.go.dev/golang.org/x/exp/slog#Logger).
+
+The experimental flag is removed.
+
+### New finder implementation **[BREAKING]**
+
+As of this release, Viper uses a new library to look for files, called [locafero](https://github.com/sagikazarmark/locafero).
+
+The new library is better covered by tests and has been built from scratch as a general purpose file finder library.
+
+The implementation is experimental and is hidden behind a `finder` build tag.
+
+> [!WARNING]
+> The `io/fs` based implementation (that used to be hidden behind a `finder` build tag) has been removed.
+
+## What's Changed
+### Exciting New Features 🎉
+* Add NATS support by @hooksie1 in https://github.com/spf13/viper/pull/1590
+* Add slog support by @sagikazarmark in https://github.com/spf13/viper/pull/1627
+### Enhancements 🚀
+* chore: add local development environment using nix by @sagikazarmark in https://github.com/spf13/viper/pull/1572
+* feat: add func GetEnvPrefix by @baruchiro in https://github.com/spf13/viper/pull/1565
+* Improve dev env by @sagikazarmark in https://github.com/spf13/viper/pull/1575
+* fix: code optimization by @testwill in https://github.com/spf13/viper/pull/1557
+* test: remove not needed testutil.Setenv by @alexandear in https://github.com/spf13/viper/pull/1610
+* new finder library based on afero by @sagikazarmark in https://github.com/spf13/viper/pull/1625
+* refactor: make use of `strings.Cut` by @scop in https://github.com/spf13/viper/pull/1650
+### Breaking Changes 🛠
+* feat: drop support for Go 1.17 by @sagikazarmark in https://github.com/spf13/viper/pull/1574
+### Dependency Updates ⬆️
+* build(deps): bump mheap/github-action-required-labels from 4 to 5 by @dependabot in https://github.com/spf13/viper/pull/1563
+* build(deps): bump github.com/stretchr/testify from 1.8.3 to 1.8.4 by @dependabot in https://github.com/spf13/viper/pull/1558
+* build(deps): bump cachix/install-nix-action from 21 to 22 by @dependabot in https://github.com/spf13/viper/pull/1573
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.8 to 2.0.9 by @dependabot in https://github.com/spf13/viper/pull/1586
+* chore: upgrade crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1589
+* build(deps): bump actions/checkout from 3.5.3 to 4.0.0 by @dependabot in https://github.com/spf13/viper/pull/1616
+* build(deps): bump github/codeql-action from 2.21.2 to 2.21.5 by @dependabot in https://github.com/spf13/viper/pull/1615
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.9 to 2.1.0 by @dependabot in https://github.com/spf13/viper/pull/1614
+* build(deps): bump actions/dependency-review-action from 3.0.6 to 3.0.8 by @dependabot in https://github.com/spf13/viper/pull/1605
+* build(deps): bump golangci/golangci-lint-action from 3.6.0 to 3.7.0 by @dependabot in https://github.com/spf13/viper/pull/1604
+* build(deps): bump actions/setup-go from 4.0.1 to 4.1.0 by @dependabot in https://github.com/spf13/viper/pull/1593
+* build(deps): bump github.com/subosito/gotenv from 1.4.2 to 1.6.0 by @dependabot in https://github.com/spf13/viper/pull/1603
+* build(deps): bump cachix/install-nix-action from 22 to 23 by @dependabot in https://github.com/spf13/viper/pull/1620
+* chore(deps): update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1621
+* build(deps): bump actions/dependency-review-action from 3.0.8 to 3.1.0 by @dependabot in https://github.com/spf13/viper/pull/1623
+* Bump minimum Go version to 1.19 by @sagikazarmark in https://github.com/spf13/viper/pull/1626
+* build(deps): bump github/codeql-action from 2.21.5 to 2.21.6 by @dependabot in https://github.com/spf13/viper/pull/1632
+* build(deps): bump github/codeql-action from 2.21.6 to 2.21.7 by @dependabot in https://github.com/spf13/viper/pull/1634
+* build(deps): bump actions/checkout from 4.0.0 to 4.1.0 by @dependabot in https://github.com/spf13/viper/pull/1641
+* build(deps): bump github.com/spf13/afero from 1.9.5 to 1.10.0 by @dependabot in https://github.com/spf13/viper/pull/1640
+* build(deps): bump github/codeql-action from 2.21.7 to 2.21.8 by @dependabot in https://github.com/spf13/viper/pull/1638
+* build(deps): bump github/codeql-action from 2.21.8 to 2.21.9 by @dependabot in https://github.com/spf13/viper/pull/1648
+* chore(deps): update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1652
+### Other Changes
+* [StepSecurity] ci: Harden GitHub Actions by @step-security-bot in https://github.com/spf13/viper/pull/1592
+* Add Vitess to list of projects using Viper by @systay in https://github.com/spf13/viper/pull/1619
+* docs: fix typos in comments by @alexandear in https://github.com/spf13/viper/pull/1609
+* ci: add Go 1.21 to the test matrix by @sagikazarmark in https://github.com/spf13/viper/pull/1622
+* Remove usages of deprecated io/ioutil; simplify viper tests by @alexandear in https://github.com/spf13/viper/pull/1631
+* chore: remove deprecated build tags by @alexandear in https://github.com/spf13/viper/pull/1630
+* refactor: replace 'interface{}' with 'any' by @alexandear in https://github.com/spf13/viper/pull/1646
+* test: refactor asserts by @alexandear in https://github.com/spf13/viper/pull/1644
+* docs: add set subset KV example by @yhliyr in https://github.com/spf13/viper/pull/1647
+* Make deps fixes by @bersace in https://github.com/spf13/viper/pull/1628
+
+## New Contributors
+* @goldeneggg made their first contribution in https://github.com/spf13/viper/pull/1561
+* @baruchiro made their first contribution in https://github.com/spf13/viper/pull/1565
+* @testwill made their first contribution in https://github.com/spf13/viper/pull/1557
+* @step-security-bot made their first contribution in https://github.com/spf13/viper/pull/1592
+* @systay made their first contribution in https://github.com/spf13/viper/pull/1619
+* @alexandear made their first contribution in https://github.com/spf13/viper/pull/1609
+* @hooksie1 made their first contribution in https://github.com/spf13/viper/pull/1590
+* @yhliyr made their first contribution in https://github.com/spf13/viper/pull/1647
+* @bersace made their first contribution in https://github.com/spf13/viper/pull/1628
+* @scop made their first contribution in https://github.com/spf13/viper/pull/1650
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.16.0...v1.17.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.16.0 (2023-05-30)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.16.0 -->
+
+## What's Changed
+### Enhancements 🚀
+* Sub parent inheritance by @TaylorOno in https://github.com/spf13/viper/pull/1056
+* fix: fix typo by @yquansah in https://github.com/spf13/viper/pull/1523
+* ci: add Go 1.20 to build matrix by @sagikazarmark in https://github.com/spf13/viper/pull/1506
+* extend v.find() to handle stringToInt value types with stringToInt pflag #1435  by @vorishirne in https://github.com/spf13/viper/pull/1462
+* add:viper: allow to disable internal log messages by @burgesQ in https://github.com/spf13/viper/pull/1483
+* Allow ConfigParseError to unwrap by @andig in https://github.com/spf13/viper/pull/1433
+### Bug Fixes 🐛
+* fix: time.Duration slice type conversion by @UrbanskiDawid in https://github.com/spf13/viper/pull/1498
+### Dependency Updates ⬆️
+* build(deps): bump mheap/github-action-required-labels from 3 to 4 by @dependabot in https://github.com/spf13/viper/pull/1533
+* build(deps): bump actions/setup-go from 3 to 4 by @dependabot in https://github.com/spf13/viper/pull/1526
+* build(deps): bump golang.org/x/net from 0.4.0 to 0.7.0 by @dependabot in https://github.com/spf13/viper/pull/1519
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.6 to 2.0.7 by @dependabot in https://github.com/spf13/viper/pull/1516
+* build(deps): bump github.com/stretchr/testify from 1.8.1 to 1.8.2 by @dependabot in https://github.com/spf13/viper/pull/1515
+* build(deps): bump github.com/spf13/afero from 1.9.3 to 1.9.5 by @dependabot in https://github.com/spf13/viper/pull/1518
+* build(deps): bump github.com/sagikazarmark/crypt from 0.9.0 to 0.10.0 by @dependabot in https://github.com/spf13/viper/pull/1550
+* build(deps): bump github.com/spf13/cast from 1.5.0 to 1.5.1 by @dependabot in https://github.com/spf13/viper/pull/1551
+* build(deps): bump github.com/stretchr/testify from 1.8.2 to 1.8.3 by @dependabot in https://github.com/spf13/viper/pull/1553
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.7 to 2.0.8 by @dependabot in https://github.com/spf13/viper/pull/1555
+### Other Changes
+* Update main image to better handle dark background by @Deleplace in https://github.com/spf13/viper/pull/1532
+
+## New Contributors
+* @UrbanskiDawid made their first contribution in https://github.com/spf13/viper/pull/1498
+* @TaylorOno made their first contribution in https://github.com/spf13/viper/pull/1056
+* @yquansah made their first contribution in https://github.com/spf13/viper/pull/1523
+* @Azanul made their first contribution in https://github.com/spf13/viper/pull/1544
+* @Deleplace made their first contribution in https://github.com/spf13/viper/pull/1532
+* @cfabianski made their first contribution in https://github.com/spf13/viper/pull/1552
+* @vorishirne made their first contribution in https://github.com/spf13/viper/pull/1462
+* @burgesQ made their first contribution in https://github.com/spf13/viper/pull/1483
+* @andig made their first contribution in https://github.com/spf13/viper/pull/1433
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.15.0...v1.16.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.15.0 (2023-01-19)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.15.0 -->
+
+## What's Changed
+### Exciting New Features 🎉
+* feat: add multiple endpoints support for remote by @mozartz in https://github.com/spf13/viper/pull/1464
+### Enhancements 🚀
+* Add DocBlock to WatchConfig by @glebik000 in https://github.com/spf13/viper/pull/1467
+### Breaking Changes 🛠
+* Drop YAML v2 and TOML v1 by @sagikazarmark in https://github.com/spf13/viper/pull/1493
+* Drop support for Go 1.16 by @sagikazarmark in https://github.com/spf13/viper/pull/1494
+### Dependency Updates ⬆️
+* build(deps): bump github.com/spf13/afero from 1.9.2 to 1.9.3 by @dependabot in https://github.com/spf13/viper/pull/1465
+* build(deps): bump github.com/magiconair/properties from 1.8.6 to 1.8.7 by @dependabot in https://github.com/spf13/viper/pull/1475
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.5 to 2.0.6 by @dependabot in https://github.com/spf13/viper/pull/1466
+* build(deps): bump mheap/github-action-required-labels from 2 to 3 by @dependabot in https://github.com/spf13/viper/pull/1482
+* build(deps): bump github.com/subosito/gotenv from 1.4.1 to 1.4.2 by @dependabot in https://github.com/spf13/viper/pull/1488
+* build(deps): bump github.com/sagikazarmark/crypt from 0.8.0 to 0.9.0 by @dependabot in https://github.com/spf13/viper/pull/1490
+
+## New Contributors
+* @choar816 made their first contribution in https://github.com/spf13/viper/pull/1481
+* @lol768 made their first contribution in https://github.com/spf13/viper/pull/1485
+* @mozartz made their first contribution in https://github.com/spf13/viper/pull/1464
+* @glebik000 made their first contribution in https://github.com/spf13/viper/pull/1467
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.14.0...v1.15.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.14.0 (2022-11-06)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.14.0 -->
+
+## What's Changed
+### Enhancements 🚀
+* feat: make Viper compile on platforms unsupported by fsnotify by @sagikazarmark in https://github.com/spf13/viper/pull/1457
+* Fsnotify improvements by @sagikazarmark in https://github.com/spf13/viper/pull/1458
+* Disable watch on appengine by @sagikazarmark in https://github.com/spf13/viper/pull/1460
+### Breaking Changes 🛠
+* Drop support for Go 1.15 by @sagikazarmark in https://github.com/spf13/viper/pull/1428
+### Dependency Updates ⬆️
+* build(deps): bump github.com/spf13/afero from 1.8.2 to 1.9.2 by @dependabot in https://github.com/spf13/viper/pull/1406
+* build(deps): bump github.com/sagikazarmark/crypt from 0.6.0 to 0.7.0 by @dependabot in https://github.com/spf13/viper/pull/1437
+* build(deps): bump github.com/stretchr/testify from 1.8.0 to 1.8.1 by @dependabot in https://github.com/spf13/viper/pull/1453
+* build(deps): bump github.com/fsnotify/fsnotify from 1.5.4 to 1.6.0 by @dependabot in https://github.com/spf13/viper/pull/1449
+* chore: update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1461
+
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.13.0...v1.14.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.0 (2022-09-06)</h2>
+      <pre>**Important:** This is the last release supporting Go 1.15. 
+
+## What's Changed
+### Exciting New Features 🎉
+* Add etcd3 to supported remote providers by @franklinkim in https://github.com/spf13/viper/pull/1371
+### Enhancements 🚀
+* Fix go-staticcheck failures (ST1005) by @mjmaisey in https://github.com/spf13/viper/pull/1373
+* Use jsonc in markdown codeblocks for better readability by @HurSungYun in https://github.com/spf13/viper/pull/1393
+* Add Go 1.19 support by @sagikazarmark in https://github.com/spf13/viper/pull/1424
+* Adds support for uint16 with `GetUint16` by @oxisto in https://github.com/spf13/viper/pull/1405
+* Add a DebugTo convenience funtion by @bcrochet in https://github.com/spf13/viper/pull/1414
+### Bug Fixes 🐛
+* Recurse into arrays when converting keys to lowercase by @awrichar in https://github.com/spf13/viper/pull/1387
+### Dependency Updates ⬆️
+* build(deps): bump github.com/stretchr/testify from 1.7.1 to 1.7.2 by @dependabot in https://github.com/spf13/viper/pull/1374
+* build(deps): bump github.com/subosito/gotenv from 1.3.0 to 1.4.0 by @dependabot in https://github.com/spf13/viper/pull/1375
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.1 to 2.0.2 by @dependabot in https://github.com/spf13/viper/pull/1378
+* build(deps): bump gopkg.in/yaml.v3 from 3.0.0 to 3.0.1 by @dependabot in https://github.com/spf13/viper/pull/1360
+* build(deps): bump github.com/stretchr/testify from 1.7.2 to 1.7.3 by @dependabot in https://github.com/spf13/viper/pull/1381
+* build(deps): bump github.com/stretchr/testify from 1.7.3 to 1.7.4 by @dependabot in https://github.com/spf13/viper/pull/1384
+* build(deps): bump mheap/github-action-required-labels from 1 to 2 by @dependabot in https://github.com/spf13/viper/pull/1383
+* build(deps): bump github.com/stretchr/testify from 1.7.4 to 1.8.0 by @dependabot in https://github.com/spf13/viper/pull/1395
+* build(deps): bump github.com/subosito/gotenv from 1.4.0 to 1.4.1 by @dependabot in https://github.com/spf13/viper/pull/1420
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.2 to 2.0.5 by @dependabot in https://github.com/spf13/viper/pull/1422
+* build(deps): bump gopkg.in/ini.v1 from 1.66.4 to 1.67.0 by @dependabot in https://github.com/spf13/viper/pull/1412
+
+## New Contributors
+* @mjmaisey made their first contribution in https://github.com/spf13/viper/pull/1373
+* @HurSungYun made their first contribution in https://github.com/spf13/viper/pull/1393
+* @franklinkim made their first contribution in https://github.com/spf13/viper/pull/1371
+* @awrichar made their first contribution in https://github.com/spf13/viper/pull/1387
+* @oxisto made their first contribution in https://github.com/spf13/viper/pull/1405
+* @bcrochet made their first contribution in https://github.com/spf13/viper/pull/1414
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.12.0...v1.13.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0 (2022-05-26)</h2>
+      <pre>This release makes YAML v3 and TOML v2 the default versions used for encoding.
+
+You can switch back to the old versions by adding `viper_yaml2` and `viper_toml1` to the build tags.
+
+Please note that YAML v2 and TOML v1 are considered deprecated from this release and may be removed in a future release.
+
+Please provide feedback in discussions and report bugs on the issue tracker. Thanks!
+
+<!-- Release notes generated using configuration in .github/release.yml at v1.12.0 -->
+
+## What's Changed
+### Exciting New Features 🎉
+* Add etcd3 support to remote by @sagikazarmark in https://github.com/spf13/viper/pull/1356
+* Make YAML 3 the default by @sagikazarmark in https://github.com/spf13/viper/pull/1357
+* Make TOML 2 the default by @sagikazarmark in https://github.com/spf13/viper/pull/1358
+### Enhancements 🚀
+* chore: fix Error log calls in mergeMaps by @wwade in https://github.com/spf13/viper/pull/1341
+* Add MustBindEnv by @meowfaceman in https://github.com/spf13/viper/pull/1301
+### Dependency Updates ⬆️
+* build(deps): bump github/codeql-action from 1 to 2 by @dependabot in https://github.com/spf13/viper/pull/1336
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.0-beta.8 to 2.0.0 by @dependabot in https://github.com/spf13/viper/pull/1339
+* build(deps): bump github.com/mitchellh/mapstructure from 1.4.3 to 1.5.0 by @dependabot in https://github.com/spf13/viper/pull/1332
+* build(deps): bump github.com/pelletier/go-toml from 1.9.4 to 1.9.5 by @dependabot in https://github.com/spf13/viper/pull/1335
+* build(deps): bump github.com/fsnotify/fsnotify from 1.5.1 to 1.5.4 by @dependabot in https://github.com/spf13/viper/pull/1338
+* build(deps): bump github.com/spf13/cast from 1.4.1 to 1.5.0 by @dependabot in https://github.com/spf13/viper/pull/1344
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.0 to 2.0.1 by @dependabot in https://github.com/spf13/viper/pull/1343
+* build(deps): bump github.com/subosito/gotenv from 1.2.0 to 1.3.0 by @dependabot in https://github.com/spf13/viper/pull/1349
+
+
+## New Contributors
+* @meowfaceman made their first contribution in https://github.com/spf13/viper/pull/1301
+* @wwade made their first contribution in https://github.com/spf13/viper/pull/1341
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.11.0...v1.12.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.11.0 (2022-04-13)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v1.11.0 -->
+
+## What's Changed
+### Exciting New Features 🎉
+* Experimental yaml v3 library support by @sagikazarmark in https://github.com/spf13/viper/pull/1273
+* Experimental toml v2 support by @sagikazarmark in https://github.com/spf13/viper/pull/1274
+* Experimental logger by @sagikazarmark in https://github.com/spf13/viper/pull/1275
+### Enhancements 🚀
+* Remove unnecessary operand by @steviebps in https://github.com/spf13/viper/pull/1213
+* Improve encoding layer by @sagikazarmark in https://github.com/spf13/viper/pull/1167
+* Allow merging configs with different types of leaf values by @illarion in https://github.com/spf13/viper/pull/1181
+### Bug Fixes 🐛
+* Disable race detector on windows by @sagikazarmark in https://github.com/spf13/viper/pull/1269
+### Breaking Changes 🛠
+* Drop Go 1.14 support by @sagikazarmark in https://github.com/spf13/viper/pull/1327
+### Dependency Updates ⬆️
+* build(deps): bump github.com/spf13/afero from 1.6.0 to 1.7.0 by @dependabot in https://github.com/spf13/viper/pull/1265
+* build(deps): bump github.com/spf13/afero from 1.7.0 to 1.7.1 by @dependabot in https://github.com/spf13/viper/pull/1271
+* build(deps): bump github.com/spf13/afero from 1.7.1 to 1.8.0 by @dependabot in https://github.com/spf13/viper/pull/1281
+* build(deps): bump gopkg.in/ini.v1 from 1.66.2 to 1.66.3 by @dependabot in https://github.com/spf13/viper/pull/1287
+* build(deps): bump github.com/spf13/afero from 1.8.0 to 1.8.1 by @dependabot in https://github.com/spf13/viper/pull/1291
+* build(deps): bump actions/github-script from 5 to 6 by @dependabot in https://github.com/spf13/viper/pull/1295
+* build(deps): bump actions/checkout from 2 to 3 by @dependabot in https://github.com/spf13/viper/pull/1304
+* build(deps): bump github.com/magiconair/properties from 1.8.5 to 1.8.6 by @dependabot in https://github.com/spf13/viper/pull/1299
+* build(deps): bump gopkg.in/ini.v1 from 1.66.3 to 1.66.4 by @dependabot in https://github.com/spf13/viper/pull/1293
+* build(deps): bump github.com/spf13/afero from 1.8.1 to 1.8.2 by @dependabot in https://github.com/spf13/viper/pull/1311
+* build(deps): bump actions/setup-go from 2 to 3 by @dependabot in https://github.com/spf13/viper/pull/1319
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.0-beta.6 to 2.0.0-beta.7 by @dependabot in https://github.com/spf13/viper/pull/1320
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.0-beta.7 to 2.0.0-beta.8 by @dependabot in https://github.com/spf13/viper/pull/1322
+* Update crypt by @sagikazarmark in https://github.com/spf13/viper/pull/1325
+
+## New Contributors
+* @steviebps made their first contribution in https://github.com/spf13/viper/pull/1213
+* @illarion made their first contribution in https://github.com/spf13/viper/pull/1181
+
+**Full Changelog**: https://github.com/spf13/viper/compare/v1.10.1...v1.11.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.10.1 (2021-12-15)</h2>
+      <pre>This is a maintenance release upgrading the Consul dependency fixing CVEs.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.10.0 (2021-12-12)</h2>
+      <pre>This is a maintenance release primarily containing minor fixes and improvements.
+
+## Changes
+
+### Added
+
+- Experimental finder based on io/fs
+- Tests are executed on Windows
+- Tests are executed on Go 1.17
+- Logger interface to decouple Viper from JWW
+
+---
+
+In addition to the above changes, this release comes with minor improvements, documentation changes an dependency updates. 
+
+**Many thanks to everyone who contributed to this release!**
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.9.0 (2021-09-19)</h2>
+      <pre>This is a maintenance release primarily containing minor fixes and improvements.
+
+## Changes
+
+### Added
+
+- Experimental new encoding layer
+- Add support for `tfvars` files
+
+### Fixed
+
+- Writing hidden files with no extension
+- `InConfig` processing paths
+
+---
+
+In addition to the above changes, this release comes with tons of minor improvements, documentation changes an dependency updates. 
+
+**Many thanks to everyone who contributed to this release!**</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.8.1 (2021-06-25)</h2>
+      <pre>This patch releases fixes two minor issues:
+
+- Replace `%s` with `%w` when wrapping errors
+- Fix `pflag.StringArray` processing</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.8.0 (2021-06-16)</h2>
+      <pre>This is a maintenance release primarily containing fixes and improvements. The most prominent change is the etcd update to [3.5.0](https://github.com/etcd-io/etcd/releases/tag/v3.5.0). Thanks to proper Go modules support, the dependency graph became much smaller.
+
+## Changes
+
+### Added
+
+- Allow BindEnv to register multiple environment variables
+- Support for accessing slices
+- Experimental WASM support: Viper compiles on WASM
+- INI load options
+
+### Changed
+
+- Ensure `BindPFlag` detects a nil flag parameter
+
+### Fixed
+
+- Merging a key into a nil target
+- Panics during saving INI files
+
+### Security
+
+- Updated etcd to 3.5 which should make a lot of false positive vulnerability reports disappear
+
+---
+
+In addition to the above changes, this release comes with tons of minor improvements, documentation changes an dependency updates. Find more details in the [1.8.0](https://github.com/spf13/viper/milestone/4?closed=1) milestone.
+
+**Many thanks to everyone who contributed to this release!**
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.7.1 (2020-07-31)</h2>
+      <pre>This release contains a bugfix for environment variable expansion. See #495 and #940 for details.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.7.0 (2020-05-09)</h2>
+      <pre>This release mostly contains bug and security fixes, but there are a few new features as well:
+
+- The unmaintained [github.com/xordataexchange/crypt](github.com/xordataexchange/crypt) has been replaced with [github.com/bketelsen/crypt](github.com/bketelsen/crypt)
+- Added firestore support as a remote config source (thanks @alxmsl)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.6.3 (2020-04-09)</h2>
+      <pre>Fixes uninstallable library on clean GOPATH</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fix extensionless config lookup (2020-01-16)</h2>
+      <pre>This is a patch release fixing a(n edge case) bug introduced in v1.6.0
+
+See #818 and #827 for details</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fix config path lookup (2019-12-06)</h2>
+      <pre>This is a patch release fixing a bug introduced in v1.6.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.6.0 (2019-12-06)</h2>
+      <pre>## Changes
+
+### Added
+
+- Global `UnmarshalExact` method
+- `StringReplacer` interface for custom environment key replacing logic
+- GolangCI Lint
+- INI support
+- Key delimiter made configurable
+- Support for config files without extensions
+
+### Changed
+
+- Moved to GitHub actions build from Travis
+
+### Fixed
+
+- `IsSet` no longer returns true when an unset key has a flags bound
+- `SafeWriteConfigAs` works as expected
+
+
+**Happy Holidays!**</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.0 (2019-11-01)</h2>
+      <pre>Documentation and other fixes</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.0: Add API for setting file permissions; Uint support; ... (2019-05-24)</h2>
+      <pre>b5bf975e5823809fb22c7644d008757f78a4259e Clean up dependencies
+fccfc2c Add API for setting file permissions
+7a605a5 Uint Support (#681)
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

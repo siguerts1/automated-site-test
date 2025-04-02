@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for open-telemetry/opentelemetry-collector"/>
+  <title>open-telemetry/opentelemetry-collector Release Notes</title>
+</head>
+<body>
+  <h1>🚀 open-telemetry/opentelemetry-collector - Release Notes</h1>
+  
+    <section>
+      <h2>v1.29.0/v0.123.0 (2025-03-31)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.123.0
+
+## End User Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `service/telemetry`: Mark `telemetry.disableAddressFieldForInternalTelemetry` as beta, usage of deprecated service::telemetry::address are ignored (#12756)
+  To restore the previous behavior disable `telemetry.disableAddressFieldForInternalTelemetry` feature gate.
+- `exporterbatch`: Remove deprecated fields `min_size_items` and `max_size_items` from batch config. (#12684)
+
+### 🚩 Deprecations 🚩
+
+- `otlpexporter`: Mark BatcherConfig as deprecated, use `sending_queue::batch` instead (#12726)
+- `exporterhelper`: Deprecate `blocking` in favor of `block_on_overflow`. (#12710)
+- `exporterhelper`: Deprecate configuring exporter batching separately. Use `sending_queue::batch` instead. (#12772)
+  Moving the batching configuration to `sending_queue::batch` requires setting `sending_queue::sizer` to `items`
+  which means that `sending_queue::queue_size` needs to be also increased by the average batch size number (roughly 
+  x5000 for the default batching configuration).
+  See https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration
+  
+
+### 💡 Enhancements 💡
+
+- `exporterhelper`: Add support to configure batching in the sending queue. (#12746)
+- `exporterhelper`: Add support for wait_for_result, remove disabled_queue (#12742)
+  This has a side effect for users of the experimental BatchConfig with the queue disabled, since not this is | uses only NumCPU() consumers.
+- `exporterhelper`: Allow exporter memory queue to use different type of sizers. (#12708)
+- `service`: Add "telemetry.newPipelineTelemetry" feature gate to inject component-identifying attributes in internal telemetry (#12217)
+  With the feature gate enabled, all internal telemetry (metrics/traces/logs) will include some of
+  the following instrumentation scope attributes:
+  - `otelcol.component.kind`
+  - `otelcol.component.id`
+  - `otelcol.pipeline.id`
+  - `otelcol.signal`
+  - `otelcol.signal.output`
+  
+  These attributes are defined in the [Pipeline Component Telemetry RFC](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/rfcs/component-universal-telemetry.md#attributes),
+  and identify the component instance from which the telemetry originates.
+  They are added automatically without changes to component code.
+  
+  These attributes were already included in internal logs as regular log attributes, starting from
+  v0.120.0. For consistency with other signals, they have been switched to scope attributes (with
+  the exception of logs emitted to standard output), and are now enabled by the feature gate.
+  
+  Please make sure that the exporter / backend endpoint you use has support for instrumentation
+  scope attributes before using this feature. If the internal telemetry is exported to another
+  Collector, a transform processor could be used to turn them into other kinds of attributes if
+  necessary.
+  
+- `exporterhelper`: Enable support to do batching using `bytes` sizer (#12751)
+- `service`: Add config key to set metric views used for internal telemetry (#10769)
+  The `service::telemetry::metrics::views` config key can now be used to explicitly set the list of
+  metric views used for internal telemetry, mirroring `meter_provider::views` in the SDK config.
+  This can be used to disable specific internal metrics, among other uses.
+  
+  This key will cause an error if used alongside other features which would normally implicitly create views, such as:
+  - not setting `service::telemetry::metrics::level` to `detailed`;
+  - enabling the `telemetry.disableHighCardinalityMetrics` feature flag.
+  
+
+### 🧰 Bug fixes 🧰
+
+- `exporterhelper`: Fix order of starting between queue and batch. (#12705)
+
+<!-- previous-version -->
+
+## API Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `otlpreceiver/otlpexporter/otlphttpexporter`: Avoid using go embedded messages in Config (#12718)
+- `exporterqueue`: Move Queue interface to internal, disallow alternative implementations (#12680)
+- `extensionauth, configauth`: Remove deprecated types and functions from `extensionauth` and `configauth` packages. (#12672)
+  This includes:
+  - `extensionauth.NewClient`,
+  - `extensionauth.ClientOption` and all its implementations,
+  - `extensionauth.NewServer`,
+  - `extensionauth.ServerOption` and all its implementations and
+  - `configauth.Authenticator.GetClientAuthenticator`.
+  
+- `exporterhelper`: Remove deprecated converter types from exporterhelper (#12686)
+- `exporterbatch`: Remove deprecated fields `min_size_items` and `max_size_items` from batch config. (#12684)
+
+### 🚩 Deprecations 🚩
+
+- `exporterhelper`: Deprecate BatcherConfig, SizeConfig and WithBatcher in favor of the new QueueBatchConfig. (#12748)
+- `exporterbatcher`: Deprecated Config, SizeConfig, SizerType, SizerType[Requests|Items|Bytes], NewDefaultConfig. Use alias from exporterhelper. (#12707)
+- `exporterqueue`: Deprecated Config, NewDefaultConfig, Encoding, ErrQueueFull. Use alias from exporterhelper. (#12706)
+- `exporterhelper`: Deprecate exporterhelper WithRequestQueue in favor of WithQueueBatch (#12679)
+- `exporterhelper`: Deprecate `QueueConfig` in favor of `QueueBatchConfig`. (#12746)
+
+### 💡 Enhancements 💡
+
+- `extensionauth`: Mark module as stable (#11006)
+- `processor`: Mark module as stable. (#12677)
+- `processorhelper`: Split processorhelper into a separate module. (#12678)
+
+<!-- previous-version -->
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.122.1 (2025-03-18)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.122.1
+
+## End User Changelog
+
+### 🧰 Bug fixes 🧰
+
+- `confmap`: Ensure slices with defaults containing struct values are correctly set. (#12661)
+  This reverts the changes made in https://github.com/open-telemetry/opentelemetry-collector/pull/11882.
+
+<!-- previous-version -->
+
+## API Changelog
+
+<!-- previous-version -->
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.28.0/v0.122.0 (2025-03-17)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.122.0
+
+## End User Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `service`: Batch processor telemetry is no longer emitted at "basic" verbosity level (#7890)
+  According to the guidelines, basic-level telemetry should be reserved for core Collector APIs.
+  Components such as the batch processor should emit telemetry starting from the "normal" level
+  (which is also the default level).
+  
+  Migration: If your Collector telemetry was set to `level: basic` and you want to keep seeing
+  batch processor-related metrics, consider switching to `level: normal` instead.
+  
+
+### 💡 Enhancements 💡
+
+- `service`: Add `service.AllowNoPipelines` feature gate to allow starting the Collector without pipelines. (#12613)
+  This can be used to start with only extensions.
+- `mdatagen`: Delete generated_status.go if the component type doesn't require it. (#12346)
+- `componenttest`: Improve config struct mapstructure field tag checks (#12590)
+  `remain` tags and `omitempty` tags without a custom field name will now pass validation.
+- `service`: include component id/type in start error (#10426)
+- `mdatagen`: Add deprecation date and migration guide fields as part of component metadata (#12359)
+- `confmap`: Introduce a new feature flag to allow for merging lists instead of discarding the existing ones. (#8394, #8754, #10370)
+  You can enable this option via the command line by running following command:
+  otelcol --config=main.yaml --config=extra_config.yaml --feature-gates=-confmap.enableMergeAppendOption
+  
+- `zpagesextension`: Add expvar handler to zpages extension. (#11081)
+
+### 🧰 Bug fixes 🧰
+
+- `confmap`: Maintain nil values when marshaling or unmarshaling nil slices (#11882)
+  Previously, nil slices were converted to empty lists, which are semantically different
+  than a nil slice. This change makes this conversion more consistent when encoding
+  or decoding config, and these values are now maintained.
+  
+- `service`: do not attempt to register process metrics if they are disabled (#12098)
+
+<!-- previous-version -->
+
+## API Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `auth, authtest`: Remove deprecated modules extension/auth and extension/auth/authtest (#12543)
+  Use extension/extensionauth and extension/extensionauth/extensionauthtest instead.
+  
+- `extensionauth`: Remove deprecated methods from the `Func` types. (#12547)
+- `extensiontest, connectortest, processortest, receivertest, scrapertest, exportertest`: Remove deprecated `NewNopSettingsWithType` functions, use `NewNopSettings` instead. (#12221)
+- `extensionauthtest`: Remove the `extensionauthtest.MockClient` struct. (#12567)
+  - Use `extensionauthtest.NewNopClient` to create a client with a noop implementation. 
+  - Use `extensionauthtest.NewErrorClient` to create a client that always returns an error.
+  - Implement the `extensionauth` interfaces for custom mock client implementations.
+  
+- `component/componenttest`: Remove the deprecated componenttest.TestTelemetry in favor of componenttest.Telemetry (#12419)
+- `exporterhelper`: Remove the Request.Export function in favor of an equivalent request consume func in the New[Traces|Metrics|Logs|Profiles]Request (#12637)
+
+### 🚩 Deprecations 🚩
+
+- `exporterhelper`: Deprecate per signal converter in favor of generic version (#12631)
+- `extensionauth`: Deprecate `extensionauth.NewClient` and `extensionauth.NewServer`. (#12574)
+  - Manually implement the interfaces instead.
+  
+- `configauth`: Deprecate `configauth.Authenticator.GetClientAuthenticator`. (#12574)
+  - Use the per-protocol methods instead.
+  
+
+### 🚀 New components 🚀
+
+- `receiverhelper`: Split `receiverhelper` into a separate module (#28328)
+
+### 💡 Enhancements 💡
+
+- `cmd/mdatagen`: Add `supportsSignal` func for `Metadata` type in `mdatagen`. (#12640)
+- `receiver`: Mark module as stable (#12513)
+- `pdata/pcommon`: Introduce `Equal()` method for comparison equality to `Value`, `ByteSlice`, `Float64Slice`, `Int32Slice`, `Int64Slice`, `StringSlice`, `Uint64Slice`, `Map` and `Slice` (#12594)
+- `pdata`: Add iterator All method to pdata slices and map types. (#11982)
+- `pdata/pprofile`: Introduce AddAttribute helper method to modify the content of attributable records (#12206)
+
+<!-- previous-version -->
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.27.0/v0.121.0 (2025-03-04)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.121.0
+
+## End User Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `confighttp`: Make the client config options `max_idle_conns`, `max_idle_conns_per_host`, `max_conns_per_host`, and `idle_conn_timeout` integers (#9478)
+  All four options can be set to `0` where they were previously set to `null`
+
+### 🚩 Deprecations 🚩
+
+- `exporterhelper`: Deprecate `min_size_items` and `max_size_items` in favor of `min_size` and `max_size`. (#12486)
+
+### 💡 Enhancements 💡
+
+- `mdatagen`: Add `converter` and `provider` module classes (#12467)
+- `pipeline`: output pipeline name with signal as signal[/name] format in logs. (#12410)
+- `memorylimiter`: Add support to configure min GC intervals for soft and hard limits. (#12450)
+- `otlpexporter`: Update the stability level for logs, it has been as stable as traces and metrics for some time. (#12423)
+- `service`: Create a new subcommand to dump the initial configuration after resolving/merging. (#11479)
+  To use the `print-initial-config` subcommand, invoke the Collector with the subcommand and corresponding feature gate: `otelcol print-initial-config --feature-gates=otelcol.printInitialConfig --config=config.yaml`.
+  Note that the feature gate enabling this flag is currently in alpha stability, and the subcommand may
+  be changed in the future.
+  
+- `memorylimiterprocessor`: Add support for profiles. (#12453)
+- `otelcol`: Converters are now available in the `components` command. (#11900, #12385)
+- `component`: Mark module as stable (#9376)
+- `confmap`: Surface YAML parsing errors when they happen at the top-level. (#12180)
+  This adds context to some instances of the error "retrieved value (type=string) cannot be used as a Conf", which typically happens because of invalid YAML documents
+  
+- `pprofile`: Add LinkIndex attribute to the generated Sample type (#12485)
+- `exporterhelper`: Stabilize exporter.UsePullingBasedExporterQueueBatcher and remove old batch sender (#12425)
+- `mdatagen`: Update metadata schema with new fields without enforcing them (#12359)
+
+### 🧰 Bug fixes 🧰
+
+- `service`: Fix crash at startup when converting from v0.2.0 to v0.3.0 (#12438)
+- `service`: fix bug in parsing service::telemetry configuration (#12437)
+- `exporterhelper`: Fix bug where the error logged when conversion of data fails is always nil (#12510)
+- `mdatagen`: Adds back missing import for filter when emitting resource attributes (#12455)
+
+## API Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `exporterqueue`: Remove exporterqueue.Factory in favor of the NewQueue function, and merge configs for memory and persistent. (#12509)
+  As a side effect of this change, no alternative implementation of the queue are supported and the Queue interface will be hidden.
+- `exporterhelper`: Update MergeSplit function signature to use the new SizeConfig (#12486)
+- `extension, connector, processor, receiver, exporter, scraper`: Remove deprecated `Create*` methods from `Create*Func` types. (#12305)
+  The `xconnector.CreateMetricsToProfilesFunc.CreateMetricsToProfiles` method has been removed without a deprecation.
+  
+- `component`: Remove deprecated function and interface `ConfigValidator` and `ValidateConfig`. (#11524)
+  - Use `xconfmap.Validator` and `xconfmap.Validate` instead.
+  
+- `receiver, scraper, processor, exporter, extension`: Remove deprecated MakeFactoryMap functions in favor of generic implementation (#12222)
+- `exporterhelper`: Change the signature of the exporterhelper.WithQueueRequest to accept Encoding instead of the Factory. (#12509)
+- `component/componenttest`: Removing the deprecated `CheckReceiverMetrics` and `CheckReceiverTraces` functions. (#12185)
+
+### 🚩 Deprecations 🚩
+
+- `componenttest`: Deprecated componenttest.TestTelemetry in favor of componenttest.Telemetry (#12419)
+- `connector, exporter, extension, processor, receiver, scraper`: Add type parameter to `NewNopSettings` and deprecate `NewNopSettingsWithType` (#12305)
+- `exporterhelper`: Deprecate MinSizeConfig and MaxSizeItems. (#12486)
+- `extension/extensionauth`: Deprecate methods on `*Func` types. (#12480)
+- `extension/auth, extension/auth/authtest`: Deprecate extension/auth and the related test module in favor of extension/extensionauth (#12478)
+
+### 🚀 New components 🚀
+
+- `service/hostcapabilities`: create `service/hostcapabilities` module (#12296, #12375)
+  Removes getExporters interface in service/internal/graph.
+  Removes getModuleInfos interface in service/internal/graph.
+  Creates interface ExposeExporters in service/hostcapabilities to expose GetExporters function.
+  Creates interface ModuleInfo in service/hostcapabilities to expose GetModuleInfos function.
+  
+
+### 💡 Enhancements 💡
+
+- `exporterhelper`: Adds the config API to support serialized bytes based batching (#3262)
+- `configauth`: Add the `omitempty` mapstructure tag to struct fields (#12191)
+  This results in unset fields not being rendered when marshaling.
+- `confighttp`: Add the `omitempty` mapstructure tag to struct fields (#12191)
+  This results in unset fields not being rendered when marshaling.
+- `otelcol`: Converters are now available in the `components` command. (#11900, #12385)
+- `extension`: Mark module as stable (#11005)
+- `pcommon.Map`: preallocate go map in Map.AsRaw() (#12406)
+- `exporterhelper`: Stabilize exporter.UsePullingBasedExporterQueueBatcher and remove old batch sender (#12425)
+- `service`: Add the `omitempty` mapstructure tag to struct fields (#12191)
+  This results in unset fields not being rendered when marshaling.
+
+### 🧰 Bug fixes 🧰
+
+- `mdatagen`: Fix broken imports in the generated files. (#12298)
+- `processor, connector, exporter, receiver`: Explicitly error out at component creation time if there is a type mismatch. (#12305)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.26.0/v0.120.0 (2025-02-18)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.120.0
+
+## End User Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `all`: Added support for go1.24, bumped minimum version to 1.23 (#12370)
+- `mdatagen`: Removing deprecated generated funcs and a few test funcs as well. (#12304)
+- `service`: Align component logger attributes with those defined in RFC (#12217)
+  See [Pipeline Component Telemetry RFC](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/rfcs/component-universal-telemetry.md#attributes)
+  
+
+### 💡 Enhancements 💡
+
+- `otlpreceiver`: Update stability for logs (#12335)
+- `exporterhelper`: Implement sync disabled queue used when batching is enabled. (#12245)
+- `exporterhelper`: Enable the new pull-based batcher in exporterhelper (#12291)
+- `exporterhelper`: Update queue size after the element is done exported (#12399)
+  After this change the active queue size will include elements in the process of being exported.
+- `otelcol`: Add featuregate command to display information about available features (#11998)
+  The featuregate command allows users to view detailed information about feature gates
+  including their status, stage, and description.
+  
+
+### 🧰 Bug fixes 🧰
+
+- `memorylimiter`: Logger no longer attributes to single signal, pipeline, or component. (#12217)
+- `otlpreceiver`: Logger no longer attributes to random signal when receiving multiple signals. (#12217)
+- `exporterhelper`: Fix undefined behavior access to request after send to next component. This causes random memory access. (#12281)
+- `exporterhelper`: Fix default batcher to correctly call all done callbacks exactly once (#12247)
+- `otlpreceiver`: Fix OTLP http receiver to correctly set Retry-After (#12367)
+- `otlphttpexporter`: Fix parsing logic for Retry-After in OTLP http protocol. (#12366)
+  The value of Retry-After field can be either an HTTP-date or delay-seconds and the current logic only parsed delay-seconds.
+- `cmd/builder`: Ensure unique aliases for modules with same suffix (#12201)
+
+## API Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `configauth`: Remove NewDefaultAuthentication (#12223)
+  The value returned by this function will always cause an error on startup.
+  In `configgrpc.Client/ServerConfig.Auth`, `nil` should be used instead to disable authentication.
+  
+- `otelcol`: Make the `ConfigProvider` interface a struct (#12297)
+  Calls to `NewConfigProvider` will now return `*ConfigProvider`,
+  but will otherwise work the same as before.
+  
+- `extension`: Remove `extension.Settings.ModuleInfo` (#12296)
+  - The functionality is now available as an optional, hidden interface on `service`'s implementation of the `Host`
+  
+- `component`: Remove deprecated field `component.TelemetrySettings.MetricsLevel`. (#11061)
+- `confighttp`: Add `ToClientOption` type and add it to signature of `ToClient` method. (#12353)
+  - This has no use for now, it may be used in the future.
+  
+- `mdatagen`: Remove unused not_component config for mdatagen (#12237)
+
+### 🚩 Deprecations 🚩
+
+- `component/componenttest`: Deprecate CheckReceiverMetrics in componenenttest (#12185)
+  Use the `metadatatest.AssertEqualMetric` series of functions instead of `obsreporttest.CheckReceiverMetrics`
+- `component/componenttest`: Deprecate CheckReceiverTraces in componenenttest (#12185)
+  Use the `metadatatest.AssertEqualMetric` series of functions instead of `obsreporttest.CheckReceiverTraces`
+- `component`: Deprecate `ConfigValidator` and `ValidateConfig` (#11524)
+  Please use `Validator` and `Validate` respectively from `xconfmap`.
+- `receiver, scraper, processor, exporter, extension`: Deprecate existing MakeFactoryMap functions in favor of generic implementation (#12222)
+- `extension, connector, processor, receiver, exporter, scraper`: Deprecate `Create*` methods from `Create*Func` types. (#12305)
+- `extensiontest, connectortest, processortest, receivertest, exportertest, scrapertest`: Deprecate `*test.NewNopSettings` in favor of `*test.NewNopSettingsWithType` (#12305)
+
+### 🚀 New components 🚀
+
+- `xconfmap`: Create the xconfmap module and add the `Validator` interface and `Validate` function to facilitate config validation (#11524)
+
+### 💡 Enhancements 💡
+
+- `configgrpc`: Add the `omitempty` mapstructure tag to struct fields (#12191)
+  This results in unset fields not being rendered when marshaling.
+- `confignet`: Add the `omitempty` mapstructure tag to struct fields (#12191)
+  This results in unset fields not being rendered when marshaling.
+- `configtls`: Add the `omitempty` mapstructure tag to struct fields (#12191)
+  This results in unset fields not being rendered when marshaling.
+- `consumer`: Clarify that data cannot be accessed after Consume* func is called. (#12284)
+- `pdata/pprofile`: Introduce aggregation temporality constants (#12253)
+
+### 🧰 Bug fixes 🧰
+
+- `configgrpc`: Apply configured Headers automatically (#12307)
+  configgrpc now calls metadata.AppendToOutgoingContext automatically in an interceptor.
+  Components that were manually using metadata.NewOutgoingContext as a workaround no longer need to
+  do so, unless they are overwriting or adding header keys.
+  
+- `configgrpc`: Set Auth to nil in NewDefaultClientConfig/NewDefaultServerConfig (#12223)
+  The value that was used previously would always cause an error on startup.
+  
+- `exporterqueue`: Fix async queue to propagate cancellation all they way to the queue (#12282)
+- `otlpreceiver`: Fix OTLP http receiver to correctly set Retry-After (#12367)
+- `extension`: Explicitly error out at extension creation time if there is a type mismatch. (#12305)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.25.0/v0.119.0 (2025-02-04)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.119.0
+
+## End User Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `exporterhelper`: Rename exporter span signal specific attributes (e.g. "sent_spans" / "send_failed_span") to "items.sent" / "items.failed". (#12165)
+- `cmd/mdatagen`: Remove dead field `telemetry::level` (#12144)
+- `exporterhelper`: Change exporter ID to be a Span level attribute instead on each event. (#12164)
+  This does not have an impact on the level of information emitted, but on the structure of the Span.
+- `cmd/mdatagen`: Remove `level` field from metrics definition (#12145)
+  This mechanism will be added back once a new views mechanism is implemented.
+
+### 💡 Enhancements 💡
+
+- `configtls`: Allow users to mention their preferred curve types for ECDHE handshake (#12174)
+- `service`: remove custom code and instead use config package to instantiate meter provider. (#11611)
+- `otelcol`: Adds support for listing config providers in components command's output (#11570)
+- `general`: Reduce memory allocations when loading configuration and parsing component names (#11964)
+
+### 🧰 Bug fixes 🧰
+
+- `exporterhelper`: Fix bug that the exporter with new batcher may have been marked as non mutation. (#12239)
+  Only affects users that manually turned on `exporter.UsePullingBasedExporterQueueBatcher` featuregate.
+- `service`: Preserve URL normalization logic that was present before. (#12254)
+- `confighttp`: confighttp.ToServer now sets ErrorLog with a default logger backed by Zap (#11820)
+  
+  This change ensures that the http.Server's ErrorLog is correctly set using Zap's logger at the error level, addressing the issue of error logs being printed using a different logger.
+  
+- `exporterhelper`: Fix context propagation for DisabledBatcher (#12231)
+- `mdatagen`: apply fieldalignment to generated code (#12125)
+- `mdatagen`: Fix bug where Histograms were marked as not supporting temporaly aggregation (#12168)
+- `exporterhelper`: Fix MergeSplit issue that ignores the initial message size. (#12257)
+- `service`: Include validation errors from telemetry.Config when validating the service config (#12100)
+  Previously validation errors were only printed to the console
+- `service-telemetry`: pass the missing async error channel into service telemetry settings (#11417)
+
+## API Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `exporterhelper`: Change queue to embed the async consumers. (#12242)
+- `exporterqueue`: Change Queue interface to return a callback instead of an index (#8122)
+- `cmd/mdatagen`: Allow passing OTel Metric SDK options to the generated `SetupTelemetry` function. (#12166)
+- `exporterhelper`: Rename exporter span signal specific attributes (e.g. "sent_spans" / "send_failed_span") to "items.sent" / "items.failed". (#12165)
+- `component`: Change underlying type for `component.Kind` to be a struct. (#12214)
+- `extension`: Change `extension.Extension` to be an interface that embeds `component.Component` instead of an alias (#11443)
+- `component/componenttest`: Remove deprecated `CheckScraperMetrics` functions (#12183)
+- `scraperhelper`: Remove deprecated ScrapperControllerOption and NewScraperControllerMetrics from scraperhelper. (#12147)
+
+### 🚩 Deprecations 🚩
+
+- `metadatatest`: Deprecate metadatatest.Telemetry in favor of componenttest.Telemetry (#12218)
+  metadatatest.Telemetry -> componenttest.Telemetry |
+  metadatatest.SetupTelemetry -> componenttest.NewTelemetry |
+  metadatatest.Telemetry.NewSettings -> metadatatest.NewSettings |
+  metadatatest.Telemetry.AssertMetrics -> metadatatest.AssertEqual* |
+  
+- `component/componenttest`: Deprecate `CheckExporterEnqueue*` functions in componenenttest (#12185)
+  Use the `metadatatest.AssertEqualMetric` series of functions instead of `obsreporttest.CheckExporterEnqueue*` functions.
+- `component/componenttest`: Deprecate CheckExporterLogs in componenenttest (#12185)
+  Use the `metadatatest.AssertEqualMetric` series of functions instead of `obsreporttest.CheckExporterLogs`
+- `component/componenttest`: Deprecate CheckExporterMetricGauge in componenenttest (#12185)
+  Use the `metadatatest.AssertEqualMetric` series of functions instead of `obsreporttest.CheckReceiverMetricGauge`
+- `component/componenttest`: Deprecate CheckExporterMetrics in componenenttest (#12185)
+  Use the `metadatatest.AssertEqualMetric` series of functions instead of `obsreporttest.CheckExporterMetrics`
+- `component/componenttest`: Deprecate CheckExporterTraces in componenenttest (#12185)
+  Use the `metadatatest.AssertEqualMetric` series of functions instead of `obsreporttest.CheckExporterTraces`
+- `component/componenttest`: Deprecate CheckReceiverLogs in componenenttest (#12185)
+  Use the `metadatatest.AssertEqualMetric` series of functions instead of `obsreporttest.CheckReceiverLogs`
+- `mdatagen`: Make registration of callback for async metric always optional. (#12204)
+  Deprecate `metadata.TelemetryBuilder.Init*` and `metadata.With*Callback` in favor of `metadata.TelemetryBuilder.Register*Callback`
+- `component`: Deprecate `component.TelemetrySettings.MetricsLevel` in favor of using views and 'Enabled' method. (#12159)
+  - Components will temporarily need the service to support using views.
+  
+
+### 💡 Enhancements 💡
+
+- `componenttest`: Add helper to get a metric for componentest.Telemetry (#12215)
+- `componenttest`: Extract componenttest.Telemetry as generic struct for telemetry testing (#12151)
+- `mdatagen`: Generate assert function for each metric in mdatagen (#12179)
+- `metadatatest`: Generate NewSettings that accepts componenttest.Telemetry (#12216)
+- `pdata/pprofile`: Add new helper method `FromAttributeIndices` to build a `pcommon.Map` out of `AttributeIndices`. (#12176)
+- `scraper`: Support logs scraper (#12116)
+- `component`: Allow `component.ValidateConfig` to recurse through all fields in a config object (#11524)
+- `component`: Show path to invalid config in errors returned from `component.ValidateConfig` (#12108)
+
+### 🧰 Bug fixes 🧰
+
+- `mdatagen`: All register callbacks to async instruments can now be unregistered by calling `metadata.TelemetryBuilder.Shutdown()` (#12204)
+- `mdatagen`: Fix bug where Histograms were marked as not supporting temporaly aggregation (#12168)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.24.0/v0.118.0 (2025-01-20)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.118.0
+
+## End User Changelog
+
+### 💡 Enhancements 💡
+
+- `exporterhelper`: Add blocking option to control queue behavior when full (#12090)
+- `debugexporter`: Add EventName to debug exporter for Logs. EventName was added as top-level field in the LogRecord from 1.5.0 of proto definition. (#11966)
+- `confighttp`: Added support for configuring compression levels. (#10467)
+  A new configuration option called CompressionParams has been added to confighttp. | This allows users to configure the compression levels for the confighttp client.
+- `exporterhelper`: Change the memory queue implementation to not pre-allocate capacity objects. (#12070)
+  This change improves memory usage of the collector under low utilization and is a prerequisite for supporting different other size limitations (number of items, bytes).
+
+### 🧰 Bug fixes 🧰
+
+- `mdatagen`: apply fieldalignment to generated code (#12121)
+- `otelcoltest`: Set `DefaultScheme` to `env` in the test `ConfigProvider` to replicate the default provider used by the Collector. (#12066)
+
+## API Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `exporterqueue`: Change Queue Size and Capacity to return explicit int64. (#12076)
+- `receiver/scraperhelper`: Removing the deprecated receiver/scraperhelper package (#12054)
+- `processorteset`: Revert the nop_processor.NewNopSettings change, as it is no longer needed (#11433)
+- `experimental/storage`: Remove deprecated package/module experimental/storage (#12109)
+- `mdatagen`: Remove deprecated generated_component_telemetry_test file from being generated and delete it. (#12068)
+- `receivertest`: Remove deprecated receivertest.NewNopFactoryForType (#12110)
+
+### 🚩 Deprecations 🚩
+
+- `componenttest`: Deprecate CheckScraperMetrics in componenenttest (#12105)
+  Use `metadatatest.AssertMetrics` instead of `obsreporttest.CheckScraperMetrics`
+- `scraperhelper`: Deprecate `scraperhelper.NewScraperControllerReceiver` and `scraperhelper.ScraperControllerOption`. (#12103)
+  Use `scraperhelper.NewMetricsController` instead of `scraperhelper.NewScraperControllerReceiver` | Use `scraperhelper.ScraperControllerOption` instead of `scraperhelper.ControllerOption`
+
+### 💡 Enhancements 💡
+
+- `exporterhelper`: Add capability for memory and persistent queue to block when add items (#12074)
+- `scraper/scraperhelper`: Add obs_logs for scraper/scraperhelper (#12036)
+  This change adds obs for logs in scraper/scraperhelper, also introduced new metrics for scraping logs.
+- `mdatagen`: Add scraper component type support to mdatagen (#12092)
+- `mdatagen`: Add tracing support in metadatatest (#12106)
+- `exporterhelper`: Change persistent queue to not use sized channel, improve memory usage and simplify sized_channel. (#12060)
+- `confighttp`: Added support for configuring compression levels. (#10467)
+  A new configuration option called CompressionParams has been added to confighttp. | This allows users to configure the compression levels for the confighttp client.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.117.0 (2025-01-07)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.117.0
+
+## End User Changelog
+
+## v1.23.0/v0.117.0
+
+### 🛑 Breaking changes 🛑
+
+- `otelcol`: Remove warnings when 0.0.0.0 is used (#11713, #8510)
+
+### 🧰 Bug fixes 🧰
+
+- `internal/sharedcomponent`: Fixed bug where sharedcomponent would use too much memory remembering all the previously reported statuses (#11826)
+
+## API Changelog
+
+## v1.23.0/v0.117.0
+
+### 🛑 Breaking changes 🛑
+
+- `pdata/pprofile`: Remove duplicate Attributes field from profile (#11932)
+- `connector`: Remove deprecated connectorprofiles module, use xconnector instead. (#11778)
+- `consumererror`: Remove deprecated consumererrorprofiles module, use xconsumererror instead. (#11778)
+- `consumer`: Remove deprecated consumerprofiles module, use xconsumer instead. (#11778)
+- `exporterhelper`: Remove deprecated exporterhelperprofiles module, use xexporterhelper instead. (#11778)
+- `exporter`: Remove deprecated exporterprofiles module, use xexporter instead. (#11778)
+- `pipeline`: Remove deprecated pipelineprofiles module, use xpipeline instead. (#11778)
+- `processorhelper`: Remove deprecated processorhelperprofiles module, use xprocessorhelper instead. (#11778)
+- `processor`: Remove deprecated processorprofiles module, use xprocessor instead. (#11778)
+- `receiver`: Remove deprecated receiverprofiles module, use xreceiver instead. (#11778)
+- `exporterhelper`: Remove Merge function from experimental Request interface (#12012)
+
+### 🚩 Deprecations 🚩
+
+- `mdatagen`: Deprecate component_test in favor of metadatatest (#11812)
+- `receivertest`: Deprecate receivertest.NewNopFactoryForType (#11993)
+- `extension/experimental`: Deprecate extension/experimental in favor of extension/xextension (#12010)
+- `scraperhelper`: Move scraperhelper under scraper and in a separate module. (#11003)
+
+### 💡 Enhancements 💡
+
+- `scrapertest`: Add scrapertest package in a separate module (#11988)
+- `pdata`: Upgrade pdata to opentelemetry-proto v1.5.0 (#11932)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.116.0 (2024-12-16)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.116.0
+
+## End User Changelog
+
+## v1.22.0/v0.116.0
+
+### 🛑 Breaking changes 🛑
+
+- `pdata/pprofile`: Remove deprecated `Profile.EndTime` and `Profile.SetEndTime` methods. (#11796)
+
+### 💡 Enhancements 💡
+
+- `xconfighttp`: Add WithOtelHTTPOptions to experimental module xconfighttp (#11770)
+
+### 🧰 Bug fixes 🧰
+
+- `exporterhelper`: Fix memory leak at exporter shutdown (#11401)
+- `sharedcomponent`: Remove race-condition and cleanup locking (#11819)
+
+## API Changelog
+
+## v1.22.0/v0.116.0
+
+### 🛑 Breaking changes 🛑
+
+- `component`: Remove deprecated TelemetrySettings.LeveledMeterProvider (#11811)
+- `scraperhelper`: Remove deprecated scraperhelper.Scraper and helpers (#11803)
+
+### 🚩 Deprecations 🚩
+
+- `connector`: Deprecate connectorprofiles module in favor of xconnector to allow adding more experimental data types. (#11778)
+- `consumererror`: Deprecate consumererrorprofiles module in favor of xconsumererror to allow adding more experimental data types. (#11778)
+- `consumer`: Deprecate consumerprofiles module in favor of xconsumer to allow adding more experimental data types. (#11778)
+- `exporterhelper`: Deprecate exporterhelperprofiles module in favor of xexporterhelper to allow adding more experimental data types. (#11778)
+- `exporter`: Deprecate exporterprofiles module in favor of xexporter to allow adding more experimental data types. (#11778)
+- `pipeline`: Deprecate pipelineprofiles module in favor of xpipeline to allow adding more experimental data types. (#11778)
+- `processorhelper`: Deprecate processorhelperprofiles module in favor of xprocessorhelper to allow adding more experimental data types. (#11778)
+- `processor`: Deprecate processorprofiles module in favor of xprocessor to allow adding more experimental data types. (#11778)
+- `receiver`: Deprecate receiverprofiles module in favor of xreceiver to allow adding more experimental data types. (#11778)
+- `receiver/scrapererror`: Remove the receiver/scrapererror alias. (#11003)
+
+### 💡 Enhancements 💡
+
+- `receiver/scraperhelper`: Add scraper for logs (#11238)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.115.0 (2024-12-04)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.115.0
+
+## End User Changelog
+
+## v1.21.0/v0.115.0
+
+### 🛑 Breaking changes 🛑
+
+- `otelcol`: Change all logged timestamps to ISO8601. (#10543)
+  This makes log timestamps human-readable (as opposed to epoch seconds in
+  scientific notation), but may break users trying to parse logged lines in the
+  old format.
+- `pdata/pprofile`: Upgrade pdata to opentelemetry-proto v1.4.0 (#11722)
+
+### 🚩 Deprecations 🚩
+
+- `scraperhelper`: Deprecate all Scraper helpers in scraperhelper (#11732)
+  Deprecate ScrapeFunc, ScraperOption, WithStart, WithShutdown in favor of equivalent funcs in scraper package.
+
+### 💡 Enhancements 💡
+
+- `exporterqueue`: Introduce a feature gate exporter.UsePullingBasedExporterQueueBatcher to use the new pulling model in exporter queue batching. (#8122, #10368)
+  If both queuing and batching is enabled for exporter, we now use a pulling model instead of a
+  pushing model. num_consumer in queue configuration is now used to specify the maximum number of
+  concurrent workers that are sending out the request. 
+  
+- `service`: label metrics as alpha to communicate their stability (#11729)
+- `consumer`: Mark consumer as stable. (#9046)
+- `service`: Add support for ca certificates in telemetry metrics otlp grpc exporter (#11633)
+  Before this change the Certificate value in config was silently ignored.
+
+### 🧰 Bug fixes 🧰
+
+- `service`: ensure OTLP emitted logs respect severity (#11718)
+- `featuregate`: Fix an unfriendly display message `runtime error` when featuregate is used to display command line usage. (#11651)
+- `profiles`: Fix iteration over scope profiles while counting the samples. (#11688)
+
+## API Changelog
+
+## v1.21.0/v0.115.0
+
+### 🛑 Breaking changes 🛑
+
+- `extension/auth/authtest`: `authtest` is now its own module (#11465, #11705)
+- `pdata/pprofile`: AttributeTable is now a slice rather than a map (#11706)
+- `scraperhelper`: Remove deprecated scraperhelper funcs Scraper.ID, NewScraper, AddScraper. (#11710)
+- `mdatagen`: Remove deprecated LeveledMeter from the generated code (#11696)
+
+### 🚩 Deprecations 🚩
+
+- `component`: Mark `TelemetrySettings.LeveledMeterProvider` as deprecated (#11697)
+- `receiver/scraper`: Move receiver/scrapererror package to scraper/scrapererror and deprecate original receiver/scrapererror package. (#11003)
+- `scraperhelper`: Make Scraper compatible with the new scraper.Metrics (#11682)
+  Deprecate scraperhelper.Scraper in favor of scraper.Metrics</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.114.0 (2024-11-18)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.114.0
+
+## End User Changelog
+
+## v1.20.0/v0.114.0
+
+### 💡 Enhancements 💡
+
+- `cmd/builder`: Allow for replacing of local Providers and Converters when building custom collector with ocb. (#11649)
+  Use the property `path` under `gomod` to replace an go module with a local folder in
+  builder-config.yaml. Ex:
+  ```
+  providers:
+    - gomod: module.url/my/custom/provider v1.2.3
+      path: /path/to/local/provider
+  ```
+  
+- `cmd/builder`: Allow configuring `confmap.Converter` components in ocb. (#11582)
+  If no converters are specified, there will be no converters added.
+  Currently, the only published converter is `expandconverter` which is 
+  deprecated as of v0.107.0, but can still be added for testing purposes.
+  
+  To configure a custom converter, make sure your converter implements the converter
+  interface and is published as a go module (or replaced locally if not published).
+  You may then use the `converters` key in your OCB build manifest with a list of
+  Go modules (and replaces as necessary) to include your converter.
+  
+  Please note that converters are order-dependent. The confmap will apply converters
+  in order of which they are listed in your manifest if there is more than one.
+  
+- `all`: shorten time period before removing an unmaintained component from 6 months to 3 months (#11664)
+
+### 🧰 Bug fixes 🧰
+
+- `all`: Updates dialer timeout section documentation in confignet README (#11685)
+- `scraperhelper`: If the scraper shuts down, do not scrape first. (#11632)
+  When the scraper is shutting down, it currently will scrape at least once.
+  With this change, upon receiving a shutdown order, the receiver's scraperhelper will exit immediately.
+
+## API Changes
+
+## v1.20.0/v0.114.0
+
+### 🛑 Breaking changes 🛑
+
+- `extensiontest`: Make extensiontest into its own module (#11463)
+- `component`: Make componenttest into its own module (#11464)
+- `expandconverter`: Remove deprecated expandvar converter (#11672)
+- `exporter`: Remove deprecated funcs Create[*]Exporter and [*]ExporterStability (#11662)
+- `exporterhelper`: Remove derprecated NewLogs[Request]Exporter funcs (#11661)
+- `extension`: Remove deprecated funcs CreateExtension and ExtensionStability (#11663)
+- `processortest`: Remove deprecated func NewUnhealthyProcessorCreateSettings (#11665)
+
+### 🚩 Deprecations 🚩
+
+- `component`: Deprecate `TelemetrySettings.LeveledMeterProvider` and undo deprecation of `TelemetrySettings.MeterProvider` (#11061)
+- `scraperhelper`: Deprecate Scraper.ID func, pass type when register Scraper (#11238)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.113.0 (2024-11-05)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.113.0
+
+## End User Changelog
+
+## v1.19.0/v0.113.0
+
+### 🛑 Breaking changes 🛑
+
+- `internal/fanoutconsumer`: Extract internal/fanoutconsumer as a separate go module (#11441)
+- `builder`: Remove builder support to build old version, and the otelcol_version config (#11405)
+  User should remove this property from their config, to build older versions use older builders.
+- `receiver`: Make receivertest into its own module (#11462)
+- `builder`: Remove deprecated flags from Builder (#11576)
+  Here is the list of flags | --name, --description, --version, --otelcol-version, --go, --module
+- `internal/sharedcomponent`: Extract internal/sharedcomponent as a separate go module (#11442)
+
+### 💡 Enhancements 💡
+
+- `mdatagen`: Add otlp as supported distribution (#11527)
+- `batchprocessor`: Move single shard batcher creation to the constructor (#11594)
+- `service`: add support for using the otelzap bridge and emit logs using the OTel Go SDK (#10544)
+
+### 🧰 Bug fixes 🧰
+
+- `service`: ensure traces and logs emitted by the otel go SDK use the same resource information (#11578)
+- `config/configgrpc`: Patch for bug in the grpc-go NewClient that makes the way the hostname is resolved incompatible with the way proxy setting are applied. (#11537)
+- `builder`: Update builder default providers to lastest stable releases (#11566)
+
+## API Changes
+
+## v1.19.0/v0.113.0
+
+### 🛑 Breaking changes 🛑
+
+- `builder`: Remove deprecated flags from Builder (#11576)
+  Here is the list of flags | --name, --description, --version, --otelcol-version, --go, --module
+
+### 🚀 New components 🚀
+
+- `processorhelperprofiles`: Add processorhelperprofiles to support profiles signal (#11556)
+
+### 💡 Enhancements 💡
+
+- `mdatagen`: Add newTelemetrySettings to be generated all the time even for pkg class (#11535)
+- `debugexporter`: Add profiles support to debug exporter (#11155)
+- `component`: Add UnmarshalText for StabilityLevel (#11520)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.112.0 (2024-10-22)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.112.0
+
+## End User Changelog
+
+## v1.18.0/v0.112.0
+
+### 🛑 Breaking changes 🛑
+
+- `consumer/consumererror`: Extract consumer/consumererror as a separate go module (#11440)
+- `exporter/expotertest`: Put expotertest into its own module (#11461)
+- `service`: Remove stable gate component.UseLocalHostAsDefaultHost (#11412)
+
+### 🚩 Deprecations 🚩
+
+- `processortest`: Deprecated 'NewUnhealthyProcessorCreateSettings'. Use NewNopSettings instead. (#11307)
+
+### 💡 Enhancements 💡
+
+- `mdatagen`: Added generated_package_name config field to support custom generated package name. (#11231)
+- `mdatagen`: Generate documentation for components with resource attributes only (#10705)
+- `confighttp`: Adding support for lz4 compression into the project (#9128)
+- `service`: Hide profiles support behind a feature gate while it remains alpha. (#11477)
+- `exporterhelper`: Retry sender will fail fast when the context timeout is shorter than the next retry interval. (#11183)
+
+### 🧰 Bug fixes 🧰
+
+- `cmd/builder`: Fix default configuration for builder for httpprovider, httpsprovider, and yamlprovider. (#11357)
+- `processorhelper`: Fix issue where in/out parameters were not recorded when error was returned from consumer. (#11351)
+
+## API Changes
+
+## v1.18.0/v0.112.0
+
+### 🛑 Breaking changes 🛑
+
+- `service`: Change Host to not implement GetExportersWithSignal (#11444)
+  Use Host.GetExporters if still needed.
+- `componentstatus`: Remove deprecated `NewInstanceIDWithPipelineIDs`, `AllPipelineIDsWithPipelineIDs`, and `WithPipelineIDs`. Use `NewInstanceID`, `AllPipelineIDs` and `WithPipelines` instead. (#11363)
+- `configgrpc`: Removed deprecated `ClientConfig.ToClientConnWithOptions`/`ServerConfig.ToServerWithOptions`. (#11359, #9480)
+  These methods were renamed to `ClientConfig.ToClientConn`/`ServerConfig.ToServer` in v0.111.0.
+- `connector`: Put connectortest in its own module (#11216)
+- `exporter`: Disables setting batch option to batch sender directly. (#10368)
+  Removed WithRequestBatchFuncs(BatcherOption) in favor of WithBatchFuncs(Option), where | BatcherOption is a function that operates on batch sender and Option is one that operates | on BaseExporter
+- `exporter`: Made mergeFunc and mergeSplitFunc required method of exporter.Request (#10368)
+  mergeFunc and mergeSplitFunc used to be part of the configuration pass to the exporter. Now it is changed | to be a method function of request.
+- `componentprofiles`: Move componentprofiles to pipelineprofiles (#11421)
+- `processor`: Put processortest in its own module (#11218)
+- `receivertest`: Removed deprecated `NewNopFactoryForTypeWithSignal`. Use `NewNopFactoryForType` instead. (#11362)
+- `processor`: Remove deprecated funcs from processor package (#11368)
+- `receiver`: Remove deprecated funcs from receiver package (#11367)
+- `processorhelper`: Remove deprecated funcs/types from processorhelper & componenttest (#11302)
+- `service`: Remove deprecated `pipelines.ConfigWithPipelineID` and `Config.PipelinesWithPipelineID`. Use `pipelines.Config` and `Config.Pipelines` instead. (#11361)
+
+### 🚩 Deprecations 🚩
+
+- `extension`: Deprecate funcs that repeat extension in name (#11413)
+  Factory.CreateExtension -> Factory.Create |
+  Factory.ExtensionStability -> Factory.Stability
+  
+- `exporter`: Deprecate funcs that repeate exporter in name (#11370)
+  Factory.Create[Traces|Metrics|Logs|Profiles]Exporter -> Factory.Create[Traces|Metrics|Logs|Profiles] |
+  Factory.[Traces|Metrics|Logs|Profiles]ExporterStability -> Factory.[Traces|Metrics|Logs|Profiles]Stability
+  
+
+### 🚀 New components 🚀
+
+- `consumererrorprofiles`: Add new module consumereerrorprofiles for consumer error profiles. (#11131)
+
+### 💡 Enhancements 💡
+
+- `configcompression`: Add support for lz4 compression (#9128)
+- `otlpexporter`: Add profiles support to OTLP exporter (#11435)
+- `otlphttpexporter`: Add profiles support to OTLP HTTP exporter (#11450)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.17.0/v0.111.0 (2024-10-04)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.111.0
+
+:new: The binary release adds a new [OTLP-only distro](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-otlp#opentelemetry-collector-otlp-distro). Feel free to leave us feedback on this new distro on the [opentelemetry-collector-releases issue tracker](https://github.com/open-telemetry/opentelemetry-collector-releases/issues/new).
+
+## End User Changelog
+
+### 🐛 Known bugs 🐛
+
+- The `ocb` binary has an identified bug caused by the fact that some of the providers have been marked stable and the default providers in the `ocb` binary still use the unstable version. In order to fix this explicitly add the default providers in your otel builder config, if not already configured:
+
+```
+providers:
+  - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.17.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/fileprovider v1.17.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider v1.17.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.17.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.17.0
+``` 
+
+**This release removes the `logging` exporter. See #11337 to migrate to the `debug` exporter.**
+
+### 🛑 Breaking changes 🛑
+
+- `service/telemetry`: Change default metrics address to "localhost:8888" instead of ":8888" (#11251)
+  This behavior can be disabled by disabling the feature gate `telemetry.UseLocalHostAsDefaultMetricsAddress`.
+- `loggingexporter`: Removed the deprecated `logging` exporter.  Use the `debug` exporter instead. (#11037).
+   You can read issue #11337 for migration instructions.
+
+### 🚩 Deprecations 🚩
+
+- `service/telemetry`: Deprecate service::telemetry::metrics::address in favor of service::telemetry::metrics::readers. (#11205)
+- `processorhelper`: Deprecate BuildProcessorMetricName as it's no longer needed since introduction of mdatagen (#11302)
+
+### 💡 Enhancements 💡
+
+- `ocb`: create docker images for OCB, per https://github.com/open-telemetry/opentelemetry-collector-releases/pull/671 (#5712)
+  Adds standard Docker images for OCB to Dockerhub and GitHub, see hub.docker.com/r/otel/opentelemetry-collector-builder
+- `confighttp`: Snappy compression to lazy read for memory efficiency (#11177)
+- `httpsprovider`: Mark the httpsprovider as stable. (#11191)
+- `httpprovider`: Mark the httpprovider as stable. (#11191)
+- `yamlprovider`: Mark the yamlprovider as stable. (#11192)
+- `confmap`: Allow using any YAML structure as a string when loading configuration including time.Time formats (#10659)
+  Previously, fields with time.Time formats could not be used as strings in configurations
+  
+### 🧰 Bug fixes 🧰
+
+- `processorhelper`: Fix data race condition, concurrent writes to the err variable, causes UB (Undefined Behavior) (#11350)
+- `cmd/builder`: re-adds function to properly set and view version number of OpenTelemetry Collector Builder (ocb) binaries (#11208)
+- `pdata`: Unmarshal Span and SpanLink flags from JSON (#11267)
+
+## API Changes
+
+
+### 🛑 Breaking changes 🛑
+
+- `service/telemetry`: Change default metrics address to "localhost:8888" instead of ":8888" (#11251)
+  This behavior can be disabled by disabling the feature gate 'telemetry.UseLocalHostAsDefaultMetricsAddress'.
+- `componentprofiles`: Removed deprecated `DataTypeProfiles`.  Use `SignalProfiles` instead. (#11312)
+- `configgrpc`: Replace ToClientConn and ToServer with ToClientConnWithOptions and ToServerWithOptions. (#11271, #9480)
+  `ClientConfig.ToClientConn` and `ServerConfig.ToServer` were deprecated in v0.110.0 in favor of
+  `ClientConfig.ToClientConnWithOptions` and `ServerConfig.ToServerWithOptions` which use a more
+  flexible option type. The original functions are now removed, and the new ones are renamed to the
+  old names. The `WithOptions` names are kept as deprecated aliases for now.
+  
+- `exporterhelper`: Removed deprecated `QueueTimeout`/`TimeoutSettings` aliases in favor of `QueueConfig`/`TimeoutConfig`. (#11264, #6767)
+  `NewDefaultQueueSettings` and `NewDefaultTimeoutSettings` have been similarly renamed.
+- `exporterqueue`: Remove deprecated `Settings.DataType`. Use `Settings.Signal` instead. (#11305)
+- `exportertest`: Remove deprecated `CheckConsumeContractParams.DataType`. Use `CheckConsumeContractParams.Signal` instead. (#11305)
+- `component`: Removed deprecated `ErrDataTypeIsNotSupported`, `DataType`, `DataTypeTraces`, `DataTypeMetrics`, and `DataTypeLogs`.  Use `pipeline.ErrSignalNotSupported`, `pipeline.Signal`, `pipeline.SignalTraces`, `pipeline.SignalMetrics`, and `pipeline.SignalLogs` instead. (#11253)
+- `pdata/pprofile`: Replace slices of values to slices of pointers for the `Mapping`, `Location`, `Line`, `Function`, `AttributeUnit`, `Link`, `Value`, `Sample` and `Labels` attributes. (#11339)
+- `receivertest`: Remove deprecated `CheckConsumeContractParams.DataType`. Use `CheckConsumeContractParams.Signal` instead. (#11304)
+- `scraperhelper`: Remove deprecated function `NewScraperWithComponentType`. (#11294)
+- `processorhelper`: Remove deprecated funcs form processorhelper.ObsReport (#11289)
+  The "otelcol_processor_dropped_log_records", "otelcol_processor_dropped_log_records" | and "otelcol_processor_dropped_spans" metrics are complete removed, before they were always record with 0 values.
+
+### 🚩 Deprecations 🚩
+
+- `componentstatus`: Deprecated `NewInstanceIDWithPipelineIDs`, `AllPipelineIDsWithPipelineIDs`, and `WithPipelineIDs`. Use `NewInstanceID`, `AllPipelineIDs`, and `WithPipelines` instead. (#11313)
+- `processorhelper`: Deprecate unused and empty struct processorhelper.ObsReport (#11293)
+- `processor`: Deprecate funcs that repeat "processor" in name (#11310)
+  Factory.Create[Traces|Metrics|Logs|Profiles]Processor -> Factory.Create[Traces|Metrics|Logs|Profiles]
+  Factory.[Traces|Metrics|Logs|Profiles]ProcessorStability -> Factory.[Traces|Metrics|Logs|Profiles]Stability
+  
+- `receiver`: Deprecate funcs that repeat "receiver" in name (#11287)
+  Factory.Create[Traces|Metrics|Logs|Profiles]Receiver -> Factory.Create[Traces|Metrics|Logs|Profiles]
+  Factory.[Traces|Metrics|Logs|Profiles]ReceiverStability -> Factory.[Traces|Metrics|Logs|Profiles]Stability
+  
+- `receivertest`: Deprecated `NewNopFactoryForTypeWithSignal`. Use `NewNopFactoryForType` instead. (#11304)
+- `service`: Deprecates `Config.PipelinesWithPipelineID`, `pipelines.ConfigWithPipelineID` and `GetExportersWithSignal` interface implementation. Use `Config.Pipelines`, `pipelines.Config`, and `GetExporters` interface implementation instead. (#11303)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.16.0/v0.110.0 (2024-09-23)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.110.0
+
+## End User Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `processorhelper`: Update incoming/outgoing metrics to a single metric with a `otel.signal` attributes. (#11144)
+  The following metrics were added in the previous version
+  - otelcol_processor_incoming_spans
+  - otelcol_processor_outgoing_spans
+  - otelcol_processor_incoming_metric_points
+  - otelcol_processor_outgoing_metric_points
+  - otelcol_processor_incoming_log_records
+  - otelcol_processor_outgoing_log_records
+  
+  They are being replaced with the following to more closely align with OTEP 259:
+  - otelcol_processor_incoming_items
+  - otelcol_processor_outgoing_items
+  
+- `processorhelper`: Remove deprecated `[Traces|Metrics|Logs]`Inserted funcs (#11151)
+- `config`: Mark UseLocalHostAsDefaultHostfeatureGate as stable (#11235)
+
+### 🚩 Deprecations 🚩
+
+- `processorhelper`: deprecate accepted/refused/dropped metrics (#11201)
+  The following metrics are being deprecated as they were only used in a single
+  processor:
+    - `otelcol_processor_accepted_log_records`
+    - `otelcol_processor_accepted_metric_points`
+    - `otelcol_processor_accepted_spans`
+    - `otelcol_processor_dropped_log_records`
+    - `otelcol_processor_dropped_metric_points`
+    - `otelcol_processor_dropped_spans`
+    - `otelcol_processor_refused_log_records`
+    - `otelcol_processor_refused_metric_points`
+    - `otelcol_processor_refused_spans`
+  
+
+### 💡 Enhancements 💡
+
+- `pdata`: Add support to MoveTo for Map, allow avoiding copies (#11175)
+- `mdatagen`: Add stability field to telemetry metrics, allowing the generated description to include a stability string. (#11160)
+- `confignet`: Mark module as Stable. (#9801)
+- `confmap/provider/envprovider`: Support default values when env var is empty (#5228)
+- `mdatagen`: mdatagen `validateMetrics()` support validate metrics in `telemetry.metric` (#10925)
+- `service/telemetry`: Mark useOtelWithSDKConfigurationForInternalTelemetry as stable (#7532)
+- `mdatagen`: Use cobra for the command, add version flag (#11196)
+
+### 🧰 Bug fixes 🧰
+
+- `service`: Ensure process telemetry is registered when internal telemetry is configured with readers instead of an address. (#11093)
+- `mdatagen`: Fix incorrect generation of metric tests with boolean attributes. (#11169)
+- `otelcol`: Fix the Windows Event Log configuration when running the Collector as a Windows service. (#5297, #11051)
+- `builder`: Honor build_tags in config (#11156)
+- `builder`: Fix version for providers in the default config (#11123)
+- `cmd/builder`: Temporarily disable strict versioning checks (#11129, #11152)
+  The strict versioning check may be enabled by default in a future version once all configuration providers are stabilized.
+  
+- `confmap`: Fix loading config of a component from a different source. (#11154)
+  This issue only affected loading the whole component config, loading parts of a component config from a different source was working correctly.
+  
+
+## API Changes
+
+### 🛑 Breaking changes 🛑
+
+- `otlpexporter`: The `TimeoutSettings` field in `otlpexporter.Config` was renamed to `TimeoutConfig`. (#11132)
+- `connector`: Change `TracesRouterAndConsumer`, `NewTracesRouter`, `MetricsRouterAndConsumer`, `NewMetricsRouter`, `LogsRouterAndConsumer`, and `NewLogsRouter` to use `pipeline.ID` instead of `component.ID`. (#11204)
+- `extension`: Remove deprecated extension interfaces. (#11043)
+  They are now available in the `extensioncapabilities` module.
+  
+
+### 🚩 Deprecations 🚩
+
+- `exporterhelper`: Deprecate TimeoutSettings/QueueSettings in favor of TimeoutConfig/QueueConfig. (#6767)
+- `configgrpc`: Deprecate `ClientConfig.ToClientConn`/`ServerConfig.ToServer` in favor of `ToClientConnWithOptions`/`ToServerWithOptions` (#9480)
+  Users providing a grpc.DialOption/grpc.ServerOption should now wrap them into
+  a generic option with `WithGrpcDialOption`/`WithGrpcServerOption`.
+  
+- `componentprofiles`: Deprecates `DataTypeProfiles`. Use `SignalProfiles` instead. (#11204)
+- `componentstatus`: Deprecates `NewInstanceID`, `AllPipelineIDs`, and `WithPipelines`. Use `NewInstanceIDWithPipelineIDs`, `AllPipelineIDsWithPipelineIDs`, and `WithPipelineIDs` instead. (#11204)
+- `exporterqueue`: Deprecates `Settings.DataType`. Use `Settings.Signal` instead. (#11204)
+- `service`: Deprecates `pipelines.Config`. Use `pipelines.ConfigWithPipelineID` instead. (#11204)
+- `component`: Deprecates `DataType`, `DataTypeTraces`, `DataTypeMetrics`, and `DataTypeLogs`. Use `pipeline.Signal`, `SignalTraces`, `SignalMetrics`, and `SignalLogs` instead. (#11204)
+- `service`: Deprecates service's implementation of `GetExporters` interface.  Use `GetExportersWithSignal` instead. (#11249)
+- `scraperhelper`: Deprecate NewScraperWithComponentType, should use NewScraper (#11159)
+
+### 🚀 New components 🚀
+
+- `pipeline`: Adds new `pipeline` module to house the concept of pipeline ID and Signal. (#11209)
+
+### 💡 Enhancements 💡
+
+- `pdata`: Add support to MoveTo for Map, allow avoiding copies (#11175)
+- `options`: Avoid using private types in public APIs and also protect options to be implemented outside this module. (#11054)
+- `mdatagen`: Avoid using private types in public APIs and also protect options to be implemented outside this module. (#11040)
+- `consumertest`: Introduce SampleCount method in ProfilesSink struct. (#11225)
+- `otlpreceiver`: Support profiles in the OTLP receiver (#11071)
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.15.0/v0.109.0 (2024-09-10)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.109.0
+
+## End User Changelog
+
+### 🐛 Known bugs 🐛
+
+- The `ocb` binary has an identified bug caused by the fact that some of the providers have been marked stable and the default providers in the `ocb` binary still use the unstable version. In order to fix this explicitly add the default providers in your otel builder config, if not already configured:
+
+```
+providers:
+  - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.15.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/fileprovider v1.15.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider v0.109.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v0.109.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v0.109.0
+``` 
+
+Alternatively you can pass the `--skip-strict-version-check` flag.
+
+### 🛑 Breaking changes 🛑
+
+- `scraperhelper`: Remove deprecated `ObsReport`, `ObsReportSettings`, `NewObsReport` types/funcs (#11086)
+- `confmap`: Remove stable `confmap.strictlyTypedInput` gate (#11008)
+- `confmap`: Removes stable `confmap.unifyEnvVarExpansion` feature gate. (#11007)
+- `ballastextension`: Removes the deprecated ballastextension (#10671)
+- `service`: Removes stable `service.disableOpenCensusBridge` feature gate (#11009)
+
+### 🚩 Deprecations 🚩
+
+- `processorhelper`: These funcs are not used anywhere, marking them deprecated. (#11083)
+
+### 🚀 New components 🚀
+
+- `extension/experimental/storage`: Move `extension/experimental/storage` into a separate module (#11022)
+
+### 💡 Enhancements 💡
+
+- `configtelemetry`: Add guidelines for each level of component telemetry (#10286)
+- `service`: move `useOtelWithSDKConfigurationForInternalTelemetry` gate to beta (#11091)
+- `service`: implement a no-op tracer provider that doesn't propagate the context (#11026)
+  The no-op tracer provider supported by the SDK incurs a memory cost of propagating the context no matter
+  what. This is not needed if tracing is not enabled in the Collector. This implementation of the no-op tracer
+  provider removes the need to allocate memory when tracing is disabled.
+  
+- `envprovider`: Mark module as stable (#10982)
+- `fileprovider`: Mark module as stable (#10983)
+- `processor`: Add incoming and outgoing counts for processors using processorhelper. (#10910)
+  Any processor using the processorhelper package (this is most processors) will automatically report
+  incoming and outgoing item counts. The new metrics are:
+  - otelcol_processor_incoming_spans
+  - otelcol_processor_outgoing_spans
+  - otelcol_processor_incoming_metric_points
+  - otelcol_processor_outgoing_metric_points
+  - otelcol_processor_incoming_log_records
+  - otelcol_processor_outgoing_log_records
+  
+
+### 🧰 Bug fixes 🧰
+
+- `configgrpc`: Change the value of max_recv_msg_size_mib from uint64 to int to avoid a case where misconfiguration caused an integer overflow. (#10948)
+- `exporterqueue`: Fix a bug in persistent queue that Offer can becomes deadlocked when queue is almost full (#11015)
+
+
+## API Changes
+
+
+### 🛑 Breaking changes 🛑
+
+- `Remove `extensiontest` StatusWatcher helpers`: They were unused. They may be added back on a different module or after `componentstatus` is marked 1.0
+ (#11044)
+- `pprofile`: Change Profile ID field from a byte array to a custom data type (#11048)
+- `connector`: Remove deprecated connector builder (#11019)
+- `exporter`: Remove deprecated exporter builder (#11019)
+- `extension`: Remove deprecated extension builder (#11019)
+- `processor`: Remove deprecated processor builder (#11019)
+- `receiver`: Remove deprecated receiver builder (#11019)
+
+### 🚩 Deprecations 🚩
+
+- `configtelemetry`: Deprecating `TelemetrySettings.MeterProvider` in favour of `TelemetrySettings.LeveledMeterProvider` (#10912)
+- `extension`: Deprecate `extension.ConfigWatcher`, `extension.PipelineWatcher` and `extension.Dependent` in favor of equivalents in the `extensioncapabilities` module. (#11000)
+- `scraperhelper`: deprecate NewScraper, should use NewScraperWithComponentType (#11082)
+
+### 🚀 New components 🚀
+
+- `extensioncapabilities`: Create a new module for optional extension capabilities. (#11000)
+
+### 💡 Enhancements 💡
+
+- `connectorprofiles`: Add ProfilesRouterAndConsumer interface, and NewProfilesRouter method. (#11023)
+- `pprofileotlp`: Introduce grpc service implementation of pprofileotlp (#11048)
+- `pprofile`: Introduce marshalling and unmarshalling of pprofile data (#11048)
+- `service`: Support profiles in the service package (#11024)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.14.1/v0.108.1 (2024-08-27)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.108.0
+
+## End User Changelog
+
+### 🧰 Bug fixes 🧰
+
+- `mdatagen`: Fix a missing import in the generated test file (#10969)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.14.0/v0.108.0 (2024-08-27)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.108.0
+
+## End User Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `all`: Added support for go1.23, bumped the minimum version to 1.22 (#10869)
+- `otelcol`: Remove deprecated `ConfmapProvider` interface. (#10934)
+- `confmap`: Mark `confmap.strictlyTypedInput` as stable (#10552)
+
+### 💡 Enhancements 💡
+
+- `exporter/otlp`: Add batching option to otlp exporter (#8122)
+- `builder`: Add a --skip-new-go-module flag to skip creating a module in the output directory. (#9252)
+- `component`: Add `TelemetrySettings.LeveledMeterProvider` func to replace MetricsLevel in the near future (#10931)
+- `mdatagen`: Add `LeveledMeter` method to mdatagen (#10933)
+- `service`: Adds `level` configuration option to `service::telemetry::trace` to allow users to disable the default TracerProvider (#10892)
+  This replaces the feature gate `service.noopTracerProvider` introduced in v0.107.0
+- `componentstatus`: Add new Reporter interface to define how to report a status via a `component.Host` implementation (#10852)
+- `mdatagen`: support using a different github project in mdatagen README issues list (#10484)
+- `mdatagen`: Updates mdatagen's usage to output a complete command line example, including the metadata.yaml file. (#10886)
+- `extension`: Add ModuleInfo to extension.Settings to allow extensions to access component go module information. (#10876)
+- `confmap`: Mark module as stable (#9379)
+
+### 🧰 Bug fixes 🧰
+
+- `batchprocessor`: Update units for internal telemetry (#10652)
+- `confmap`: Fix bug where an unset env var used with a non-string field resulted in a panic (#10950)
+- `service`: Fix memory leaks during service package shutdown (#9165)
+- `mdatagen`: Update generated telemetry template to only include context import when there are async metrics. (#10883)
+- `mdatagen`: Fixed bug in which setting `SkipLifecycle` & `SkipShutdown` to true would result in a generated file with an unused import `confmaptest` (#10866)
+- `confmap`: Use string representation for field types where all primitive types are strings. (#10937)
+- `otelcol`: Preserve internal representation when unmarshaling component configs (#10552)
+
+## API Changes
+
+### 🛑 Breaking changes 🛑
+
+- `extensions`: Remove `StatusWatcher` interface.  Use `componentstatus.Watcher` instead. (#10777)
+- `component`: Removed Status related types and functions.  Use `componentstatus` instead. (#10777)
+- `component`: Remove `ReportStatus` from `TelemetrySettings`. Use `componentstatus.ReportStatus` instead. (#10777)
+- `componentstatus`: Make componentstatus.InstanceID immutable. (#10494)
+
+### 🚩 Deprecations 🚩
+
+- `scraperhelper`: deprecate NewObsReport, ObsReport, ObsReportSettings, scrapers should use NewScraperControllerReceiver (#10959)
+- `mdatagen`: Deprecating generated `Meter` func in favour of `LeveledMeter` (#10939)
+- `connector`: Deprecate connector.Builder, and move it into an internal package of the service module (#10784)
+- `exporter`: Deprecate exporter.Builder, and move it into an internal package of the service module (#10783)
+- `extension`: Deprecate extension.Builder, and move it into an internal package of the service module (#10785)
+- `processor`: Deprecate processor.Builder, and move it into an internal package of the service module (#10782)
+- `receiver`: Deprecate receiver.Builder, and move it into an internal package of the service module (#10781)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.0/v0.107.0 (2024-08-13)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.107.0
+
+## End User Changelog
+
+## v1.13.0/v0.107.0
+
+### 🛑 Breaking changes 🛑
+
+- `service`: Remove OpenCensus bridge completely, mark feature gate as stable. (#10414)
+- `confmap`: Set the `confmap.unifyEnvVarExpansion` feature gate to Stable. Expansion of `$FOO` env vars is no longer supported.  Use `${FOO}` or `${env:FOO}` instead. (#10508)
+- `service`: Remove `otelcol` from Prometheus configuration. This means that any metric that isn't explicitly prefixed with `otelcol_` no longer have that prefix. (#9759)
+
+### 💡 Enhancements 💡
+
+- `mdatagen`: export ScopeName in internal/metadata package (#10845)
+  This can be used by components that need to set their scope name manually. Will save component owners from having to store a variable, which may diverge from the scope name used by the component for emitting its own telemetry.
+- `semconv`: Add v1.26.0 semantic conventions package (#10249, #10829)
+- `mdatagen`: Expose a setting on tests::host to set up your own host initialization code (#10765)
+  Some receivers require a host that has additional capabilities such as exposing exporters.
+  For those, we can expose a setting that allows them to place a different host in the generated code.
+  
+- `confmap`: Allow using any YAML structure as a string when loading configuration. (#10800)
+  Previous to this change, slices could not be used as strings in configuration.
+  
+- `ocb`: migrate build and release of ocb binaries to opentelemetry-collector-releases repository (#10710)
+  ocb binaries will now be released under open-telemetry/opentelemetry-collector-releases tagged as "cmd/builder/vX.XXX.X"
+- `semconv`: Add semantic conventions version v1.27.0 (#10837)
+- `client`: Mark module as stable. (#10775)
+
+### 🧰 Bug fixes 🧰
+
+- `configtelemetry`: Add 10s read header timeout on the configtelemetry Prometheus HTTP server. (#5699)
+- `service`: Allow users to disable the tracer provider via the feature gate `service.noopTracerProvider` (#10858)
+  The service is returning an instance of a SDK tracer provider regardless of whether there were any processors configured causing resources to be consumed unnecessarily.
+- `processorhelper`: Fix processor metrics not being reported initially with 0 values. (#10855)
+- `service`: Implement the `temporality_preference` setting for internal telemetry exported via OTLP (#10745)
+- `configauth`: Fix unmarshaling of authentication in HTTP servers. (#10750)
+- `confmap`: If loading an invalid YAML string through a provider, use it verbatim instead of erroring out. (#10759)
+  This makes the ${env:ENV} syntax closer to how ${ENV} worked before unifying syntaxes.
+  
+- `component`: Allow component names of up to 1024 characters in length. (#10816)
+- `confmap`: Remove original string representation if invalid. (#10787)
+
+
+## Go API Changelog
+
+## v1.13.0/v0.107.0
+
+### 🛑 Breaking changes 🛑
+
+- `otelcol`: Delete deprecated NewCommandMustSetProvider (#10778)
+- `component`: Removes the deprecated `Host.GetFactory` method. (#10771)
+- `otelcoltest`: The `otelcol.LoadConfig` method no longer sets the `expandconverter`. (#10510)
+- `ocb`: Collectors built with OCB will no longer include the `expandconverter` (#10510)
+- `exporterhelper`: Delete deprecated `exporterhelper.ObsReport` and `exporterhelper.NewObsReport` (#10779, #10592)
+
+### 🚩 Deprecations 🚩
+
+- `expandconverter`: Deprecate `expandconverter`. (#10510)
+
+### 🚀 New components 🚀
+
+- `componentstatus`: Adds new componentstatus module that will soon replace status content in component. (#10730)
+- `connector/connectorprofiles`: Allow handling profiles in connector. (#10703)
+- `exporter/exporterprofiles`: Allow handling profiles in exporter. (#10702)
+- `processor/processorprofiles`: Allow handling profiles in processor. (#10691)
+- `receiver/receiverprofiles`: Allow handling profiles in receiver. (#10690)
+
+### 💡 Enhancements 💡
+
+- `confmap`: Check that providers have a correct scheme when building a confmap.Resolver. (#10786)
+- `confighttp`: Add `NewDefaultCORSConfig` function to initialize the default `confighttp.CORSConfig` (#9655)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.106.1 (2024-07-30)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.106.1
+
+## End User Changelog
+
+## v0.106.1
+
+### 🧰 Bug fixes 🧰
+
+- `configauth`: Fix unmarshaling of authentication in HTTP servers. (#10750)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>cmd/builder/v0.106.1 (2024-07-30)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.106.1
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.106.0 (2024-07-29)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.106.0
+
+## End User Changelog
+
+## v0.106.0
+
+### 🛑 Breaking changes 🛑
+
+- `service`: Update all metrics to include `otelcol_` prefix to ensure consistency across OTLP and Prometheus metrics (#9759)
+  This change is marked as a breaking change as anyone that was using OTLP for metrics will
+  see the new prefix which was not present before. Prometheus generated metrics remain
+  unchanged.
+  
+- `confighttp`: Delete `ClientConfig.CustomRoundTripper` (#8627)
+  Set (*http.Client).Transport on the *http.Client returned from ToClient to configure this.
+- `confmap`: When passing configuration for a string field using any provider, use the verbatim string representation as the value. (#10605, #10405)
+  This matches the behavior of `${ENV}` syntax prior to the promotion of the `confmap.unifyEnvVarExpansion` feature gate
+  to beta. It changes the behavior of the `${env:ENV}` syntax with escaped strings.
+  
+- `component`: Adds restrictions on the character set for component.ID name. (#10673)
+- `processor/memorylimiter`: The memory limiter processor will no longer account for ballast size. (#10696)
+  If you are already using GOMEMLIMIT instead of the ballast extension this does not affect you.
+- `extension/memorylimiter`: The memory limiter extension will no longer account for ballast size. (#10696)
+  If you are already using GOMEMLIMIT instead of the ballast extension this does not affect you.
+- `service`: The service will no longer be able to get a ballast size from the deprecated ballast extension. (#10696)
+  If you are already using GOMEMLIMIT instead of the ballast extension this does not affect you.
+
+### 🚀 New components 🚀
+
+- `client`: Create a new go module `go.opentelemetry.io/collector/client` (#9804)
+  This module contains generic representations of clients connecting to different receivers.
+
+### 💡 Enhancements 💡
+
+- `exporterhelper`: Add data_type attribute to `otelcol_exporter_queue_size` metric to report the type of data being processed. (#9943)
+- `confighttp`: Add option to include query params in auth context (#4806)
+- `configgrpc`: gRPC auth errors now return gRPC status code UNAUTHENTICATED (16) (#7646)
+- `httpprovider, httpsprovider`: Validate URIs in HTTP and HTTPS providers before fetching. (#10468)
+
+### 🧰 Bug fixes 🧰
+
+- `processorhelper`: update units for internal telemetry (#10647)
+- `confmap`: Increase the amount of recursion and URI expansions allowed in a single line (#10712)
+- `exporterhelper`: There is no guarantee that after the exporterhelper sends the plog/pmetric/ptrace data downstream that the data won't be mutated in some way. (e.g by the batch_sender) This mutation could result in the proceeding call to req.ItemsCount() to provide inaccurate information to be logged. (#10033)
+- `exporterhelper`: Update units for internal telemetry (#10648)
+- `receiverhelper`: Update units for internal telemetry (#10650)
+- `scraperhelper`: Update units for internal telemetry (#10649)
+- `service`: Use Command/Version to populate service name/version attributes (#10644)
+
+## Go API Changelog
+
+
+## v0.106.0
+
+### 🛑 Breaking changes 🛑
+
+- `configauth`: removing deprecated methods GetServerAuthenticatorContext and GetClientAuthenticatorContext (#9808)
+- `connector,exporter,receiver,extension,processor`: Remove deprecated funcs/structs (#10423)
+  Remove the following funcs & structs:
+  - connector.CreateSettings -> connector.Settings
+  - connectortest.NewNopCreateSettings -> connectortest.NewNopSettings
+  - exporter.CreateSettings -> exporter.Settings
+  - exportertest.NewNopCreateSettings -> exportertest.NewNopSettings
+  - extension.CreateSettings -> extension.Settings
+  - extensiontest.NewNopCreateSettings -> extensiontest.NewNopSettings
+  - processor.CreateSettings -> processor.Settings
+  - processortest.NewNopCreateSettings -> processortest.NewNopSettings
+  - receiver.CreateSettings -> receiver.Settings
+  - receivertest.NewNopCreateSettings -> receivertest.NewNopSettings
+  
+- `component/componenttest`: Add optional ...attribute.KeyValue argument to TestTelemetry.CheckExporterMetricGauge. (#10593)
+- `confighttp`: Auth data type signature has changed (#4806)
+  As part of the linked PR, the `auth` attribute was moved from `configauth.Authentication` 
+  to a new `AuthConfig`, which contains a `configauth.Authentication`. For end-users, this
+  is a non-breaking change. For users of the API, create a new AuthConfig using the
+  `configauth.Authentication` instance that was being used before.
+  
+- `mdatagen`: Remove WithAttributes option from the telemetry builder constructor. (#10608)
+  Attribute sets for async instruments now can be set as options to callback setters and async instruments initializers.
+  This allows each async instrument to have its own attribute set.
+  
+- `service/extensions`: Adds `Options` to `extensions.New`. (#10728)
+  This is only a breaking change if you are depending on `extensions.New`'s signature. Calls to `extensions.New` are not broken.
+
+### 🚩 Deprecations 🚩
+
+- `component`: Deprecates Host.GetFactory. (#10709)
+
+### 🚀 New components 🚀
+
+- `component/componentprofiles`: Add componentprofiles module. (#10525)
+
+### 💡 Enhancements 💡
+
+- `exporter, processor, receiver`: Document factory functions. (#9323)
+- `component`: Document status enums and New constructors (#9822)
+- `confighttp, configgrpc`: Remove the experimental comment on `IncludeMetadata` in confighttp and configgrpc (#9381)
+- `confighttp`: Add `confighttp.NewDefaultServerConfig()` to instantiate the default HTTP server configuration (#9655)
+- `consumer/consumertest`: Allow testing profiles with consumertest. (#10692)
+
+### 🧰 Bug fixes 🧰
+
+- `confmap`: Fix wrong expansion of environment variables escaped with `$$`, e.g. `$${ENV_VAR}` and `$$ENV_VAR`. (#10713)
+  This change fixes the issue where environment variables escaped with $$ were expanded. 
+  The collector now converts `$${ENV_VAR}` to `${ENV_VAR}` and `$$ENV_VAR` to `$ENV_VAR` without further expansion.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>cmd/builder/v0.106.0 (2024-07-29)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.106.0
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0/v0.105.0 (2024-07-16)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.105.0
+
+## End User Changelog
+
+## v1.12.0/v0.105.0
+
+### 🛑 Breaking changes 🛑
+
+- `service`: add `service.disableOpenCensusBridge` feature gate which is enabled by default to remove the dependency on OpenCensus (#10414)
+- `confmap`: Promote `confmap.strictlyTypedInput` feature gate to beta. (#10552)
+  This feature gate changes the following:
+  - Configurations relying on the implicit type casting behaviors listed on [#9532](https://github.com/open-telemetry/opentelemetry-collector/issues/9532) will start to fail.
+  - Configurations using URI expansion (i.e. `field: ${env:ENV}`) for string-typed fields will use the value passed in `ENV` verbatim without intermediate type casting.
+  
+
+### 💡 Enhancements 💡
+
+- `configtls`: Mark module as stable. (#9377)
+- `confmap`: Remove extra closing parenthesis in sub-config error (#10480)
+- `configgrpc`: Update the default load balancer strategy to round_robin (#10319)
+  To restore the behavior that was previously the default, set `balancer_name` to `pick_first`.
+- `cmd/builder`: Add go module info the builder generated code. (#10570)
+- `otelcol`: Add go module to components subcommand. (#10570)
+- `confmap`: Add explanation to errors related to `confmap.strictlyTypedInput` feature gate. (#9532)
+- `confmap`: Allow using `map[string]any` values in string interpolation (#10605)
+
+### 🧰 Bug fixes 🧰
+
+- `builder`: provide context when a module in the config is missing its gomod value (#10474)
+- `confmap`: Fixes issue where confmap could not escape `$$` when `confmap.unifyEnvVarExpansion` is enabled. (#10560)
+- `mdatagen`: fix generated comp test for extensions and unused imports in templates (#10477)
+- `otlpreceiver`: Fixes a bug where the otlp receiver's http response was not properly translating grpc error codes to http status codes. (#10574)
+- `exporterhelper`: Fix incorrect deduplication of otelcol_exporter_queue_size and otelcol_exporter_queue_capacity metrics if multiple exporters are used. (#10444)
+- `service/telemetry`: Add ability to set service.name for spans emitted by the Collector (#10489)
+- `internal/localhostgate`: Correctly log info message when `component.UseLocalHostAsDefaultHost` is enabled (#8510)
+
+## Go API Changelog
+
+## v1.12.0/v0.105.0
+
+### 🛑 Breaking changes 🛑
+
+- `otelcol`: Obtain the Collector's effective config from otelcol.Config (#10139)
+  `otelcol.Collector` will now marshal `confmap.Conf` objects from `otelcol.Config` itself.
+- `otelcoltest`: Remove deprecated methods `LoadConfigWithSettings` and `LoadConfigAndValidateWithSettings` (#10512)
+
+### 🚩 Deprecations 🚩
+
+- `configauth`: Deprecated `Authentication.GetClientAuthenticatorContext` and `Authentication.GetServerAuthenticatorContext` (#10578)
+- `otelcol`: Deprecate `otelcol.ConfmapProvider` (#10139)
+  `otelcol.Collector` will now marshal `confmap.Conf` objects from `otelcol.Config` itself.
+- `otelcol`: Deprecate `(*otelcol.ConfigProvider).GetConfmap` (#10139)
+  Call `(*confmap.Conf).Marshal(*otelcol.Config)` to get the Collector's configuration.
+- `exporterhelper`: Deprecate the obsreport API in the exporterhelper package. (#10592)
+
+### 🚀 New components 🚀
+
+- `consumer/consumerprofiles`: Allow handling profiles in consumer. (#10464)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>cmd/builder/v0.105.0 (2024-07-16)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.105.0
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.11.0/v0.104.0 (2024-07-01)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.104.0
+
+
+:warning: **This release includes 2 very important breaking changes.**
+1. The `otlpreceiver` now uses `localhost` by default instead of `0.0.0.0`. This may break the receiver in containerized environments like Kubernetes. If you depend on `0.0.0.0` disable the `component.UseLocalHostAsDefaultHost` feature gate or explicitly set the endpoint to `0.0.0.0`.
+2. Expansion of BASH-style environment variables, such as `$FOO` is no longer supported by default. If you depend on this syntax, disable the `confmap.unifyEnvVarExpansion` feature gate, but know that the feature will be removed in the future in favor of `${env:FOO}`.
+
+
+## End User Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `filter`: Remove deprecated `filter.CombinedFilter` (#10348)
+- `otelcol`: By default, `otelcol.NewCommand` and `otelcol.NewCommandMustSetProvider` will set the `DefaultScheme` to `env`. (#10435)
+- `expandconverter`: By default expandconverter will now error if it is about to expand `$FOO` syntax. Update configuration to use `${env:FOO}` instead or disable the `confmap.unifyEnvVarExpansion` feature gate. (#10435)
+- `otlpreceiver`: Switch to `localhost` as the default for all endpoints. (#8510)
+  Disable the `component.UseLocalHostAsDefaultHost` feature gate to temporarily get the previous default.
+  
+
+### 💡 Enhancements 💡
+
+- `confighttp`: Add support for cookies in HTTP clients with `cookies::enabled`. (#10175)
+  The method `confighttp.ToClient` will return a client with a `cookiejar.Jar` which will reuse cookies from server responses in subsequent requests.
+- `exporter/debug`: In `normal` verbosity, display one line of text for each telemetry record (log, data point, span) (#7806)
+- `exporter/debug`: Add option `use_internal_logger` (#10226)
+- `configretry`: Mark module as stable. (#10279)
+- `debugexporter`: Print Span.TraceState() when present. (#10421)
+  Enables viewing sampling threshold information (as by OTEP 235 samplers).
+- `processorhelper`: Add "inserted" metrics for processors. (#10353)
+  This includes the following metrics for processors:
+  - `processor_inserted_spans`
+  - `processor_inserted_metric_points`
+  - `processor_inserted_log_records`
+  
+
+### 🧰 Bug fixes 🧰
+
+- `otlpexporter`: Update validation to support both dns:// and dns:/// (#10449)
+- `service`: Fixed a bug that caused otel-collector to fail to start with ipv6 metrics endpoint service telemetry. (#10011)
+
+## Go API Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `otelcol`: The `otelcol.NewCommand` now requires at least one provider be set. (#10436)
+- `component/componenttest`: Added additional "inserted" count to `TestTelemetry.CheckProcessor*` methods. (#10353)
+
+### 🚩 Deprecations 🚩
+
+- `otelcoltest`: Deprecates `LoadConfigWithSettings` and `LoadConfigAndValidateWithSettings`.  Use `LoadConfig` and `LoadConfigAndValidate` instead. (#10417)
+- `otelcol`: The `otelcol.NewCommandMustSetProvider` is deprecated. Use `otelcol.NewCommand` instead. (#10436)
+
+### 🚀 New components 🚀
+
+- `otelcoltest`: Split off go.opentelemetry.io/collector/otelcol/otelcoltest into its own module (#10417)
+
+### 💡 Enhancements 💡
+
+- `pdata/pprofile`: Add pprofile wrapper to convert proto into pprofile. (#10401)
+- `pdata/testdata`: Add pdata testdata for profiles. (#10401)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>cmd/builder/v0.104.0 (2024-07-01)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.104.0
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.10.0/v0.103.0 (2024-06-18)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.103.0
+
+## End User Changelog
+
+
+### 🛑 Breaking changes 🛑
+
+- `exporter/debug`: Disable sampling by default (#9921)
+  To restore the behavior that was previously the default, set `sampling_thereafter` to `500`.
+
+### 💡 Enhancements 💡
+
+- `cmd/builder`: Allow setting `otelcol.CollectorSettings.ResolverSettings.DefaultScheme` via the builder's `conf_resolver.default_uri_scheme` configuration option (#10296)
+- `mdatagen`: add support for optional internal metrics (#10316)
+- `otelcol/expandconverter`: Add `confmap.unifyEnvVarExpansion` feature gate to allow enabling Collector/Configuration SIG environment variable expansion rules. (#10391)
+  When enabled, this feature gate will:
+  - Disable expansion of BASH-style env vars (`$FOO`)
+  - `${FOO}` will be expanded as if it was `${env:FOO}
+  See https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/rfcs/env-vars.md for more details.
+  
+- `confmap`: Add `confmap.unifyEnvVarExpansion` feature gate to allow enabling Collector/Configuration SIG environment variable expansion rules. (#10259)
+  When enabled, this feature gate will:
+    - Disable expansion of BASH-style env vars (`$FOO`)
+    - `${FOO}` will be expanded as if it was `${env:FOO}
+  See https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/rfcs/env-vars.md for more details.
+  
+- `confighttp`: Allow the compression list to be overridden (#10295)
+  Allows Collector administrators to control which compression algorithms to enable for HTTP-based receivers.
+- `configgrpc`: Revert the zstd compression for gRPC to the third-party library we were using previously. (#10394)
+  We switched back to our compression logic for zstd when a CVE was found on the third-party library we were using. Now that the third-party library has been fixed, we can revert to that one. For end-users, this has no practical effect. The reproducers for the CVE were tested against this patch, confirming we are not reintroducing the bugs.
+- `confmap`: Adds alpha `confmap.strictlyTypedInput` feature gate that enables strict type checks during configuration resolution (#9532)
+  When enabled, the configuration resolution system will:
+  - Stop doing most kinds of implicit type casting when resolving configuration values
+  - Use the original string representation of configuration values if the ${} syntax is used in inline position
+  
+- `confighttp`: Use `confighttp.ServerConfig` as part of zpagesextension. See [https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md#server-configuration](server configuration) options. (#9368)
+
+### 🧰 Bug fixes 🧰
+
+- `exporterhelper`: Fix potential deadlock in the batch sender (#10315)
+- `expandconverter`: Fix bug where an warning was logged incorrectly. (#10392)
+- `exporterhelper`: Fix a bug when the retry and timeout logic was not applied with enabled batching. (#10166)
+- `exporterhelper`: Fix a bug where an unstarted batch_sender exporter hangs on shutdown (#10306)
+- `exporterhelper`: Fix small batch due to unfavorable goroutine scheduling in batch sender (#9952)
+- `confmap`: Fix issue where structs with only yaml tags were not marshaled correctly. (#10282)
+
+## Go API Changelog
+
+### 🛑 Breaking changes 🛑
+
+- `component`: Remove deprecated `component.UnmarshalConfig` (#7102)
+- `confighttp`: Use `confighttp.ServerConfig` as part of zpagesextension.Config. Previously the extension used `confignet.TCPAddrConfig` (#9368)
+
+### 🚩 Deprecations 🚩
+
+- `connector`: Deprecate CreateSettings and NewNopCreateSettings (#9428)
+  The following methods are being renamed:
+  - connector.CreateSettings -> connector.Settings
+  - connector.NewNopCreateSettings -> connector.NewNopSettings
+  
+- `exporter`: Deprecate CreateSettings and NewNopCreateSettings (#9428)
+  The following methods are being renamed:
+  - exporter.CreateSettings -> exporter.Settings
+  - exporter.NewNopCreateSettings -> exporter.NewNopSettings
+  
+- `extension`: Deprecate CreateSettings and NewNopCreateSettings (#9428)
+  The following methods are being renamed:
+  - extension.CreateSettings -> extension.Settings
+  - extension.NewNopCreateSettings -> extension.NewNopSettings
+  
+- `processor`: Deprecate CreateSettings and NewNopCreateSettings (#9428)
+  The following methods are being renamed:
+  - processor.CreateSettings -> processor.Settings
+  - processor.NewNopCreateSettings -> processor.NewNopSettings
+  
+- `receiver`: Deprecate CreateSettings and NewNopCreateSettings (#9428)
+  The following methods are being renamed:
+  - receiver.CreateSettings -> receiver.Settings
+  - receiver.NewNopCreateSettings -> receiver.NewNopSettings
+  
+- `configauth`: Deprecate `GetClientAuthenticator` and `GetServerAuthenticator`, use `GetClientAuthenticatorContext` and `GetServerAuthenticatorContext` instead. (#9808)
+- `confighttp`: Deprecate `ClientConfig.CustomRoundTripper` (#8627)
+  Set the `Transport` field on the `*http.Client` object returned from `(ClientConfig).ToClient` instead.
+- `filter`: Deprecate the `filter.CombinedFilter` struct (#10348)
+- `otelcol`: Deprecate `otelcol.NewCommand`. Use `otelcol.NewCommandMustProviderSettings` instead. (#10359)
+- `otelcoltest`: Deprecate `LoadConfig` and `LoadConfigAndValidate`. Use `LoadConfigWithSettings` and `LoadConfigAndValidateWithSettings` instead (#10359)
+
+### 💡 Enhancements 💡
+
+- `confmap`: Adds `confmap.Retrieved.AsString` method that returns the configuration value as a string (#9532)
+- `confmap`: Adds `confmap.NewRetrievedFromYAML` helper to create `confmap.Retrieved` values from YAML bytes (#9532)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>cmd/builder/v0.103.1 (2024-06-18)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.103.1
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.102.1 (2024-06-05)</h2>
+      <pre>### Images and binaries here: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.102.1
+
+### This release addresses CVE-2024-36129 ([GHSA-c74f-6mfw-mm4v](https://github.com/open-telemetry/opentelemetry-collector/security/advisories/GHSA-c74f-6mfw-mm4v)) fully.
+
+## End User Changelog
+
+### 🧰 Bug fixes 🧰
+
+- `configrpc`: Use own compressors for zstd (#10323)
+   Before this change, the zstd compressor we used didn't respect the max message size. This addresses CVE-2024-36129 (GHSA-c74f-6mfw-mm4v) on `configgrpc`.</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

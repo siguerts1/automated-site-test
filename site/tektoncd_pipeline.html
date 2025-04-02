@@ -1,0 +1,3712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for tektoncd/pipeline"/>
+  <title>tektoncd/pipeline Release Notes</title>
+</head>
+<body>
+  <h1>🚀 tektoncd/pipeline - Release Notes</h1>
+  
+    <section>
+      <h2>Tekton Pipeline release v0.70.0 "Norwegian Forest Cat Number Five (Aaron Doral)" (2025-03-28)</h2>
+      <pre># 🎉 OpenAPI schema to Tekton CRDs 🎉
+
+-[Docs @ v0.70.0](https://github.com/tektoncd/pipeline/tree/v0.70.0/docs)
+-[Examples @ v0.70.0](https://github.com/tektoncd/pipeline/tree/v0.70.0/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.70.0/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a9b98c9f620b1202d23cdf7b6bc38da3acecc1a9cb6f206d98fefed3ce02b0e09`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a9b98c9f620b1202d23cdf7b6bc38da3acecc1a9cb6f206d98fefed3ce02b0e09
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.70.0/release.yaml
+REKOR_UUID=108e9186e8c5677a9b98c9f620b1202d23cdf7b6bc38da3acecc1a9cb6f206d98fefed3ce02b0e09
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.70.0@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+* Add structural OpenAPI schema to Tekton CRDs (#8490)
+
+action required: The structural OpenAPI schema to Tekton CRDs are added enabling API server schema validation and supporting `kubectl explain` to describe fields and structure of Tekton CRDs. Due to the API server schema validation, users should make sure Tekton CRs have a valid schema when creating or updating CRs.
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: fix: Fix remote task params default-value substitution (#8641)
+
+Task Param defaults will now be correctly substituted in Steps when the Task is referenced by a TaskRun
+
+* :bug: fix: configure StepAction to use conversion webhook (#8644)
+
+
+### Misc
+
+* :hammer: cleanup: breakup the pkg/credentials into writer and matcher + ensure non corev1 usage in entrypoint for FIPs compliance (#8542)
+
+import only the writer part of the credentials package in the entrypoint so that we do not pull core v1 API indirectly into the package
+
+* :hammer: FIPS Compliance: Refactor Entrypoint, Remove zap Dependency & Update Build Checks (#8544)
+* :hammer: build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.1 to 4.5.2 (#8670)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8668)
+* :hammer: build(deps): bump actions/setup-go from 5.3.0 to 5.4.0 (#8667)
+* :hammer: build(deps): bump actions/cache from 4.2.2 to 4.2.3 (#8666)
+* :hammer: build(deps): bump github/codeql-action from 3.28.11 to 3.28.13 (#8665)
+* :hammer: build(deps): bump tj-actions/changed-files from dcc7a0cba800f454d79fff4b993e8c3555bcc0a8 to 27ae6b33eaed7bf87272fdeb9f1c54f9facc9d99 (#8664)
+* :hammer: build(deps): bump golangci/golangci-lint-action from 6.5.0 to 6.5.1 (#8654)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8653)
+* :hammer: build(deps): bump github/codeql-action from 3.28.10 to 3.28.11 (#8633)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8632)
+* :hammer: build(deps): bump github.com/google/cel-go from 0.23.2 to 0.24.1 (#8614)
+* :hammer: build(deps): bump ossf/scorecard-action from 2.4.0 to 2.4.1 (#8608)
+* :hammer: Refactor pipelinerun metrics tests (#8340)
+
+### Docs
+
+* :book: Document `ko` settings for kind clusters with and without a local registry. (#8662)
+* :book: Fix wrong entry in development documentation and other minor documentation corrections. (#8661)
+* :book: Add release 0.69 to releases.md (#8630)
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.70.0!
+* :heart: @PuneetPunamiya
+* :heart: @aThorp96
+* :heart: @afrittoli
+* :heart: @burigolucas
+* :heart: @dependabot[bot]
+* :heart: @devholic
+* :heart: @twoGiants
+* :heart: @waveywaves
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @aThorp96
+* :heart_eyes: @burigolucas
+* :heart_eyes: @waveywaves
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.69.1 "Oriental Longhair Omnibot" (2025-03-20)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.69.1](https://github.com/tektoncd/pipeline/tree/v0.69.1/docs)
+-[Examples @ v0.69.1](https://github.com/tektoncd/pipeline/tree/v0.69.1/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.69.1/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a76ee1ec9649527ab153790fc1b5385843dcb8c6522c3d9b0db77451a35b2068f`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a76ee1ec9649527ab153790fc1b5385843dcb8c6522c3d9b0db77451a35b2068f
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.69.1/release.yaml
+REKOR_UUID=108e9186e8c5677a76ee1ec9649527ab153790fc1b5385843dcb8c6522c3d9b0db77451a35b2068f
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.69.1@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.69.x] fix: Fix remote task params default-value substitution (#8651)
+
+ask Param defaults will now be correctly substituted in Steps when the Task is referenced by a TaskRun
+
+
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.69.1!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.68.1 "LaPerm Giskard Reventlov" LTS (2025-03-20)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.68.1](https://github.com/tektoncd/pipeline/tree/v0.68.1/docs)
+-[Examples @ v0.68.1](https://github.com/tektoncd/pipeline/tree/v0.68.1/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.68.1/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677aff6b780d606f71d6cc2d430e71ac429ad21e107c13490490d164ab33f980851b`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677aff6b780d606f71d6cc2d430e71ac429ad21e107c13490490d164ab33f980851b
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.68.1/release.yaml
+REKOR_UUID=108e9186e8c5677aff6b780d606f71d6cc2d430e71ac429ad21e107c13490490d164ab33f980851b
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.68.1@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.68.x] fix: Fix remote task params default-value substitution (#8646)
+
+ask Param defaults will now be correctly substituted in Steps when the Task is referenced by a TaskRun
+
+
+
+
+### Misc
+
+
+
+
+* :hammer: [release-v0.68.x] .github/workflows: add a build and test workflows (#8583)
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.68.1!
+* :heart: @tekton-robot
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.69.0 "Oriental Longhair Omnibot" (2025-03-07)</h2>
+      <pre>-[Docs @ v0.69.0](https://github.com/tektoncd/pipeline/tree/v0.69.0/docs)
+-[Examples @ v0.69.0](https://github.com/tektoncd/pipeline/tree/v0.69.0/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.69.0/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a83b80360985c8a19920792656acc1566def6a298da6b73bd47b42307bceab304`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a83b80360985c8a19920792656acc1566def6a298da6b73bd47b42307bceab304
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.69.0/release.yaml
+REKOR_UUID=108e9186e8c5677a83b80360985c8a19920792656acc1566def6a298da6b73bd47b42307bceab304
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.69.0@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+## Changes
+
+# Features
+
+* :sparkles: Add feature flag  to set readOnlyRootFilesystem for containers (#8186)
+
+New feature flag `set-security-context-read-only-root-filesystem` in ConfigMap `feature-flags`. The new feature sets readOnlyRootFilesystem in securityContext for taskrun and affinity assistant containers.
+
+
+### Fixes
+
+* :bug: fix: Move when condition to higher priority (#8569)
+
+fix: Move when condition to higher priority
+
+* :bug: fix: resolve panic issue in pipeline controller caused by CustomRun (#8562)
+
+fix: resolve panic issue in pipeline controller caused by CustomRun
+
+
+### Misc
+
+
+* :hammer: Bump knative.dev/pkg to release-1.17 (#8538)
+
+Bump knative.dev/pkg to release-1.17 while keeping `KUBERNETES_MIN_VERSION` to 1.28.
+
+* :hammer: cleanup: use pkg/platforms instead of containerd/platforms to … (#8579)
+* :hammer: cleanup: add disable_spire build tag for entrypoint command (#8548)
+* :hammer: build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0 (#8619)
+* :hammer: build(deps): bump k8s.io/client-go from 0.31.4 to 0.31.6 (#8618)
+* :hammer: build(deps): bump k8s.io/code-generator from 0.31.4 to 0.31.6 (#8615)
+* :hammer: build(deps): bump github.com/sigstore/sigstore/pkg/signature/kms/azure from 1.8.12 to 1.8.15 (#8613)
+* :hammer: build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.3 to 3.0.4 (#8612)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8611)
+* :hammer: build(deps): bump actions/cache from 4.2.1 to 4.2.2 (#8610)
+* :hammer: build(deps): bump tj-actions/changed-files from 45.0.6 to 45.0.7 (#8609)
+* :hammer: chore: add yaml linting to pre-commit (#8606)
+* :hammer: .github/workflow: add only-new-issues on lint (#8604)
+* :hammer: build(deps): bump github.com/sigstore/sigstore/pkg/signature/kms/gcp from 1.8.12 to 1.8.15 (#8598)
+* :hammer: build(deps): bump github.com/spiffe/spire-api-sdk from 1.11.1 to 1.11.2 (#8597)
+* :hammer: build(deps): bump github.com/sigstore/sigstore/pkg/signature/kms/hashivault from 1.8.12 to 1.8.15 (#8596)
+* :hammer: build(deps): bump github.com/sigstore/sigstore from 1.8.12 to 1.8.15 (#8595)
+* :hammer: build(deps): bump golangci/golangci-lint-action from 6.2.0 to 6.5.0 (#8594)
+* :hammer: build(deps): bump step-security/harden-runner from 2.10.4 to 2.11.0 (#8593)
+* :hammer: build(deps): bump github/codeql-action from 3.28.8 to 3.28.10 (#8592)
+* :hammer: build(deps): bump actions/setup-go from 5.1.0 to 5.3.0 (#8591)
+* :hammer: build(deps): bump actions/cache from 4.2.0 to 4.2.1 (#8590)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8589)
+* :hammer: build(deps): bump github.com/sigstore/sigstore/pkg/signature/kms/aws from 1.8.12 to 1.8.15 (#8585)
+* :hammer: build(deps): bump k8s.io/api from 0.31.4 to 0.31.6 (#8584)
+* :hammer: .github/workflows: add a build and test workflows (#8577)
+* :hammer: build(deps): bump github.com/jenkins-x/go-scm from 1.14.37 to 1.14.56 (#8576)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8573)
+* :hammer: .github/workflows: force go to 1.23 for the lint job (#8570)
+* :hammer: build(deps): bump github.com/golangci/golangci-lint from 1.63.4 to 1.64.5 in /tools (#8568)
+* :hammer: build(deps): bump k8s.io/client-go from 0.29.13 to 0.29.14 (#8567)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8560)
+* :hammer: build(deps): bump google.golang.org/protobuf from 1.36.4 to 1.36.5 (#8557)
+* :hammer: build(deps): bump golang.org/x/sync from 0.10.0 to 0.11.0 (#8554)
+* :hammer: build(deps): bump github/codeql-action from 3.28.5 to 3.28.8 (#8552)
+* :hammer: build(deps): bump github.com/spiffe/go-spiffe/v2 from 2.4.0 to 2.5.0 (#8551)
+* :hammer: build(deps): bump github.com/google/cel-go from 0.23.1 to 0.23.2 (#8550)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8549)
+* :hammer: tekton: fix micro typo on release-cheat-sheet (#8545)
+
+### Docs
+
+
+* :book: releases.md: add 0.68.0 LTS and update other releases (#8559)
+* :book: chore: fix some comments (#8524)
+* :book: fix broken link to tutorials.md page (#8444)
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.69.0!
+* :heart: @Allda
+* :heart: @clintonsteiner
+* :heart: @damuzhi0810
+* :heart: @dependabot[bot]
+* :heart: @jkhelil
+* :heart: @kristofferchr
+* :heart: @l-qing
+* :heart: @vdemeester
+* :heart: @waveywaves
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @Allda
+* :heart_eyes: @kristofferchr
+* :heart_eyes: @l-qing
+* :heart_eyes: @vdemeester
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.68.0 "LaPerm Giskard Reventlov" LTS (2025-01-31)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.68.0](https://github.com/tektoncd/pipeline/tree/v0.68.0/docs)
+-[Examples @ v0.68.0](https://github.com/tektoncd/pipeline/tree/v0.68.0/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.68.0/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a666d35f8508100e4c8e112033d805978d152a05eef3872377816f3756a588089`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a666d35f8508100e4c8e112033d805978d152a05eef3872377816f3756a588089
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.68.0/release.yaml
+REKOR_UUID=108e9186e8c5677a666d35f8508100e4c8e112033d805978d152a05eef3872377816f3756a588089
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.68.0@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+* :sparkles: feat: improve step.Script variables references validation message (#8312)
+
+improve step.Script variables references validation message
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: fix: reference params in default values, allow chained references in stepactions (#8536)
+
+fixes https://github.com/tektoncd/pipeline/issues/7935 allowing users to reference other parameters in default values
+
+* :bug: fix: avoid panic when validate enum param with special matrix task (#8465)
+
+fix: avoid panic when validate enum param with special matrix task
+
+* :bug: Bump go-billy to latest main to fix a git resolver issue (#8306)
+
+Binary file (standard input) matches
+
+* :bug: fix: improve parsing logic to handle empty results (#8484)
+* :bug: fix: minor version check for sidecar logic (#8447)
+* :bug: fix(computeresource/tasklevel): Fixed a bug where abnormal calculatio… (#8399)
+
+
+### Misc
+
+
+
+* :hammer: better step result referencing and docs for step param substitution order and  (#8528)
+* :hammer: build(deps): bump github.com/google/cel-go from 0.22.1 to 0.23.1 (#8541)
+* :hammer: Fix deprecated golangci-lint configuration (#8540)
+* :hammer: build(deps): bump github/codeql-action from 3.28.1 to 3.28.5 (#8534)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8533)
+* :hammer: build(deps): bump google.golang.org/protobuf from 1.36.3 to 1.36.4 (#8530)
+* :hammer: build(deps): bump github.com/go-git/go-git/v5 from 5.13.1 to 5.13.2 (#8527)
+* :hammer: build(deps): bump google.golang.org/grpc from 1.69.4 to 1.70.0 (#8525)
+* :hammer: build(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp from 1.27.0 to 1.34.0 (#8520)
+* :hammer: build(deps): bump github.com/spiffe/spire-api-sdk from 1.10.0 to 1.11.1 (#8519)
+* :hammer: build(deps): bump github.com/google/cel-go from 0.20.1 to 0.22.1 (#8518)
+* :hammer: build(deps): bump github/codeql-action from 3.28.0 to 3.28.1 (#8509)
+* :hammer: build(deps): bump golangci/golangci-lint-action from 6.1.1 to 6.2.0 (#8508)
+* :hammer: build(deps): bump step-security/harden-runner from 2.10.2 to 2.10.4 (#8507)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8506)
+* :hammer: build(deps): bump go.opentelemetry.io/otel/trace from 1.33.0 to 1.34.0 (#8505)
+* :hammer: build(deps): bump k8s.io/client-go from 0.29.6 to 0.29.13 (#8504)
+* :hammer: build(deps): bump github.com/containerd/containerd from 1.7.20 to 1.7.25 (#8503)
+* :hammer: build(deps): bump github.com/sigstore/sigstore/pkg/signature/kms/hashivault from 1.8.4 to 1.8.12 (#8502)
+* :hammer: build(deps): bump google.golang.org/grpc from 1.67.3 to 1.69.4 (#8500)
+* :hammer: build(deps): bump k8s.io/code-generator from 0.29.7 to 0.29.13 (#8499)
+* :hammer: build(deps): bump go.opentelemetry.io/otel/sdk from 1.29.0 to 1.33.0 (#8498)
+* :hammer: build(deps): bump google.golang.org/protobuf from 1.36.1 to 1.36.3 (#8497)
+* :hammer: build(deps): bump k8s.io/api from 0.29.6 to 0.29.13 (#8496)
+* :hammer: build(deps): bump github.com/go-git/go-billy/v5 from 5.6.1 to 5.6.2 (#8494)
+* :hammer: build(deps): bump github.com/spiffe/go-spiffe/v2 from 2.3.0 to 2.4.0 (#8493)
+* :hammer: build(deps): bump code.gitea.io/sdk/gitea from 0.18.0 to 0.20.0 (#8491)
+* :hammer: build(deps): bump go.opentelemetry.io/otel/trace from 1.28.0 to 1.33.0 (#8488)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8481)
+* :hammer: Migrate golangci-lint to a github workflow (#8480)
+* :hammer: build(deps): bump github.com/sigstore/sigstore/pkg/signature/kms/aws from 1.8.4 to 1.8.12 (#8478)
+* :hammer: build(deps): bump github.com/sigstore/sigstore/pkg/signature/kms/azure from 1.8.4 to 1.8.12 (#8477)
+* :hammer: build(deps): bump github.com/sigstore/sigstore/pkg/signature/kms/gcp from 1.8.4 to 1.8.12 (#8476)
+* :hammer: build(deps): bump github.com/sigstore/sigstore from 1.8.4 to 1.8.12 (#8475)
+* :hammer: build(deps): bump github.com/golangci/golangci-lint from 1.62.2 to 1.63.4 in /tools (#8472)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8471)
+* :hammer: build(deps): bump tj-actions/changed-files from 45.0.5 to 45.0.6 (#8470)
+* :hammer: Fixed `make goimports`  (#8461)
+* :hammer: build(deps): bump github/codeql-action from 3.27.9 to 3.28.0 (#8459)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8458)
+* :hammer: .github/workflows: run e2e-matrix on all pull-request (#8454)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8440)
+* :hammer: build(deps): bump github/codeql-action from 3.27.6 to 3.27.9 (#8439)
+* :hammer: build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 (#8431)
+* :hammer: build(deps): bump golang.org/x/crypto from 0.26.0 to 0.31.0 (#8430)
+* :hammer: build(deps): bump chainguard/go from `551fd4c` to `2cc6974` in /tekton in the all group (#8428)
+* :hammer: build(deps): bump tj-actions/changed-files from 45.0.4 to 45.0.5 (#8426)
+* :hammer: build(deps): bump actions/cache from 4.1.1 to 4.2.0 (#8425)
+* :hammer: build(deps): bump github/codeql-action from 3.27.5 to 3.27.6 (#8424)
+* :hammer: Improve gha k8s e2e tests names (#8423)
+* :hammer: Ignore failures when rerunning jobs (#8421)
+* :hammer: Remove extra pip symbol (#8420)
+* :hammer: Fix getting the commit sha from comment event (#8419)
+* :hammer: Add /retest chatops command (#8417)
+* :hammer: chore: fix some function name in comment (#8415)
+* :hammer: Run e2e tests in GHA (#8411)
+* :hammer: tekton: fix bugfix-release.sh script (#8375)
+* :hammer: Make resolvers' maximum resolution timeout configurable (#8366)
+
+### Docs
+
+
+* :book: Add PipelineRun pipeline-timeout note to pipeline docs (#8510)
+* :book: Fix dead admission-webhook blog link in developer docs (#8489)
+* :book: typo fix (#8437)
+* :book: docs: replace link to link to page with link to page (#8429)
+* :book: Updated releases.md for v0.66.0 (#8414)
+* :book: Remove bad links from StepActions TOC (#8412)
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.68.0!
+* :heart: @AlanGreene
+* :heart: @Ccheers
+* :heart: @RenuBhati
+* :heart: @SaschaSchwarze0
+* :heart: @aThorp96
+* :heart: @afrittoli
+* :heart: @chengjoey
+* :heart: @chmouel
+* :heart: @clintonsteiner
+* :heart: @dependabot[bot]
+* :heart: @jkhelil
+* :heart: @justinabrahms
+* :heart: @l-qing
+* :heart: @lvyaoting
+* :heart: @say5
+* :heart: @vdemeester
+* :heart: @waveywaves
+* :heart: @zou2699
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @chengjoey
+* :heart_eyes: @l-qing
+* :heart_eyes: @vdemeester
+* :heart_eyes: @waveywaves
+
+<!--
+## Unsorted PR List
+- Update github.com/go-git/go-git/v5 from v5.12.0 to v5.13.1 (#8474)
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.65.6 "Sokoke Herbie" (2025-01-28)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.65.6](https://github.com/tektoncd/pipeline/tree/v0.65.6/docs)
+-[Examples @ v0.65.6](https://github.com/tektoncd/pipeline/tree/v0.65.6/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.6/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677accfc27cf999e8bd5070325041d2c2c9f8c2f3c11f9d61d945fa7cf83cea13e44`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677accfc27cf999e8bd5070325041d2c2c9f8c2f3c11f9d61d945fa7cf83cea13e44
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.6/release.yaml
+REKOR_UUID=108e9186e8c5677accfc27cf999e8bd5070325041d2c2c9f8c2f3c11f9d61d945fa7cf83cea13e44
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.65.6@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.65.x] fix: avoid panic when validate enum param with special matrix task (#8516)
+
+ix: avoid panic when validate enum param with special matrix task
+
+
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.65.6!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.62.8 "Ragamuffin Reventlov" (2025-01-28)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.62.8](https://github.com/tektoncd/pipeline/tree/v0.62.8/docs)
+-[Examples @ v0.62.8](https://github.com/tektoncd/pipeline/tree/v0.62.8/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.8/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677af80e15c4afc2c700ad2963e813e55428057daddfc165886cbdcbc9291b3b105a`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677af80e15c4afc2c700ad2963e813e55428057daddfc165886cbdcbc9291b3b105a
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.8/release.yaml
+REKOR_UUID=108e9186e8c5677af80e15c4afc2c700ad2963e813e55428057daddfc165886cbdcbc9291b3b105a
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.62.8@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.62.x] fix: avoid panic when validate enum param with special matrix task (#8515)
+
+ix: avoid panic when validate enum param with special matrix task
+
+
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.62.8!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.62.7 "Ragamuffin Reventlov" (2025-01-14)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.62.7](https://github.com/tektoncd/pipeline/tree/v0.62.7/docs)
+-[Examples @ v0.62.7](https://github.com/tektoncd/pipeline/tree/v0.62.7/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.7/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a958a910da07ae5a872e93ace3ed5fb4f1b7a8e907754801c0b6a2231876f6df4`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a958a910da07ae5a872e93ace3ed5fb4f1b7a8e907754801c0b6a2231876f6df4
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.7/release.yaml
+REKOR_UUID=108e9186e8c5677a958a910da07ae5a872e93ace3ed5fb4f1b7a8e907754801c0b6a2231876f6df4
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.62.7@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+
+- 🐛 [release-v0.62.x] Upgrade golang.org/x/crypto to 0.31.0 (#8441)
+
+
+
+### Misc
+
+
+
+
+* :hammer: [release-v0.62.x] .github/workflows: backport e2e workflows (#8452)
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.62.7!
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @vdemeester
+
+<!--
+## Unsorted PR List
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.65.5 "Sokoke Herbie" (2025-01-14)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.65.5](https://github.com/tektoncd/pipeline/tree/v0.65.5/docs)
+-[Examples @ v0.65.5](https://github.com/tektoncd/pipeline/tree/v0.65.5/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.5/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677afaf4dd67a6bf554edae83a8bead2e6eb86b6e069671346005aaa220900d35ae6`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677afaf4dd67a6bf554edae83a8bead2e6eb86b6e069671346005aaa220900d35ae6
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.5/release.yaml
+REKOR_UUID=108e9186e8c5677afaf4dd67a6bf554edae83a8bead2e6eb86b6e069671346005aaa220900d35ae6
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.65.5@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+
+- 🐛  [release-v0.65.x] build(deps): bump golang.org/x/crypto from 0.26.0 to 0.31.0 (#8438)·
+
+
+### Misc
+
+
+
+
+* :hammer: [release-v0.65.x] .github/workflows: backport e2e workflows (#8453)
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.65.5!
+* :heart: @tekton-robot
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.66.0 "American Curl AL-76" (2024-12-04)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.66.0](https://github.com/tektoncd/pipeline/tree/v0.66.0/docs)
+-[Examples @ v0.66.0](https://github.com/tektoncd/pipeline/tree/v0.66.0/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.66.0/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677aaef800dc5c82c7e8a7dc72d7ed947dc0e166c29c7bfd9f2b6edca989022cb90c`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677aaef800dc5c82c7e8a7dc72d7ed947dc0e166c29c7bfd9f2b6edca989022cb90c
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.66.0/release.yaml
+REKOR_UUID=108e9186e8c5677aaef800dc5c82c7e8a7dc72d7ed947dc0e166c29c7bfd9f2b6edca989022cb90c
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.66.0@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+* :sparkles: Fix StepAction support in Cluster resolver (#8382)
+
+Fix StepAction support in Cluster resolver
+
+* :sparkles: Expose Resolvers Controller performance tuning configurations (#8344)
+
+We can specify custom performance tuning values in the watcher's deployment - controller container via threads-per-controller, kube-api-qps and kube-api-burst flags.
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: fix: add missing stepaction RBAC permission for resolver (#8397)
+
+fix: include missing RBAC permission to allow cluster resolver to get and list StepActions
+
+* :bug: Use io.ReadFull to read the bundle content (#8389)
+
+ix an issue on `bundle list` command with relatively big bundles that couldn't be parsed (truncated data)
+
+* :bug: Fix StepAction support in Cluster resolver (#8382)
+
+Fix StepAction support in Cluster resolver
+
+* :bug: Fixes git-resolver configuration for serverUrl and scmType (#8401)
+* :bug: Add `Failed Validation` group in message for the status message in PipelineRun (#8356)
+* :bug: Run finally pipeline even if task is failed at the validation (#8314)
+
+
+### Misc
+
+
+
+
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8408)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8406)
+* :hammer: build(deps): bump github.com/golangci/golangci-lint from 1.62.0 to 1.62.2 in /tools (#8405)
+* :hammer: build(deps): bump actions/dependency-review-action from 4.4.0 to 4.5.0 (#8404)
+* :hammer: build(deps): bump github/codeql-action from 3.27.4 to 3.27.5 (#8403)
+* :hammer: build(deps): bump step-security/harden-runner from 2.10.1 to 2.10.2 (#8402)
+* :hammer: build(deps): bump the all group in /tekton with 2 updates (#8395)
+* :hammer: build(deps): bump github/codeql-action from 3.27.1 to 3.27.4 (#8394)
+* :hammer: build(deps): bump github.com/golangci/golangci-lint from 1.61.0 to 1.62.0 in /tools (#8386)
+* :hammer: build(deps): bump github/codeql-action from 3.27.0 to 3.27.1 (#8385)
+* :hammer: build(deps): bump the all group in /tekton with 3 updates (#8384)
+* :hammer: build(deps): bump tj-actions/changed-files from 45.0.3 to 45.0.4 (#8383)
+* :hammer: build(deps): bump the all group in /tekton with 4 updates (#8363)
+* :hammer: build(deps): bump the all group in /tekton with 4 updates (#8354)
+* :hammer: build(deps): bump actions/dependency-review-action from 4.3.4 to 4.4.0 (#8353)
+* :hammer: build(deps): bump actions/setup-go from 5.0.2 to 5.1.0 (#8351)
+* :hammer: build(deps): bump actions/checkout from 4.2.1 to 4.2.2 (#8350)
+* :hammer: build(deps): bump github/codeql-action from 3.26.13 to 3.27.0 (#8349)
+
+### Docs
+
+
+* :book: Update release.md with v0.65.0 (#8355)
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.66.0!
+* :heart: @AverageMarcus
+* :heart: @PuneetPunamiya
+* :heart: @dependabot[bot]
+* :heart: @divyansh42
+* :heart: @khrm
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @AverageMarcus
+* :heart_eyes: @khrm
+* :heart_eyes: @vdemeester
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.65.4 "Sokoke Herbie" (2024-12-05)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.65.4](https://github.com/tektoncd/pipeline/tree/v0.65.4/docs)
+-[Examples @ v0.65.4](https://github.com/tektoncd/pipeline/tree/v0.65.4/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.4/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677ac23b9e3d80fbd75881d628aa04d6e3ed7f6d21ea46c94c4856d01cdba23ae798`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677ac23b9e3d80fbd75881d628aa04d6e3ed7f6d21ea46c94c4856d01cdba23ae798
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.4/release.yaml
+REKOR_UUID=108e9186e8c5677ac23b9e3d80fbd75881d628aa04d6e3ed7f6d21ea46c94c4856d01cdba23ae798
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.65.4@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+
+
+* :bug: [release-v0.65.x] Fixes git-resolver configuration for serverUrl and scmType (#8409)
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.65.4!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.65.3 "Sokoke Herbie" (2024-12-03)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.65.3](https://github.com/tektoncd/pipeline/tree/v0.65.3/docs)
+-[Examples @ v0.65.3](https://github.com/tektoncd/pipeline/tree/v0.65.3/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.3/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a0f1febc6adf68f4220edd3a81c9a0da1f7185512b481667c6a0f076eaed75b4d`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a0f1febc6adf68f4220edd3a81c9a0da1f7185512b481667c6a0f076eaed75b4d
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.3/release.yaml
+REKOR_UUID=108e9186e8c5677a0f1febc6adf68f4220edd3a81c9a0da1f7185512b481667c6a0f076eaed75b4d
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.65.3@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.65.x] fix: add missing stepaction RBAC permission for resolver (#8400)
+
+ix: include missing RBAC permission to allow cluster resolver to get and list StepActions
+
+
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.65.3!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.65.2 "Sokoke Herbie" (2024-11-19)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.65.2](https://github.com/tektoncd/pipeline/tree/v0.65.2/docs)
+-[Examples @ v0.65.2](https://github.com/tektoncd/pipeline/tree/v0.65.2/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.2/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a153542f1de8a93c4ac314c1ca01c0ed45edf9ffac3faa701ddcd02600c3f452f`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a153542f1de8a93c4ac314c1ca01c0ed45edf9ffac3faa701ddcd02600c3f452f
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.2/release.yaml
+REKOR_UUID=108e9186e8c5677a153542f1de8a93c4ac314c1ca01c0ed45edf9ffac3faa701ddcd02600c3f452f
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.65.2@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.65.x] Use io.ReadFull to read the bundle content (#8390)
+
+ix an issue on `bundle list` command with relatively big bundles that couldn't be parsed (truncated data)
+
+* :bug: [release-v0.65.x] Fix StepAction support in Cluster resolver (#8387)
+
+ix StepAction support in Cluster resolver
+
+
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.65.2!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.62.6 "Ragamuffin Reventlov" (2024-11-20)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.62.6](https://github.com/tektoncd/pipeline/tree/v0.62.6/docs)
+-[Examples @ v0.62.6](https://github.com/tektoncd/pipeline/tree/v0.62.6/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.6/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677af1a0ed2d80855987d4306c847fcf23a27a17cf11a60feff4f8bfb6a0918063a7`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677af1a0ed2d80855987d4306c847fcf23a27a17cf11a60feff4f8bfb6a0918063a7
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.6/release.yaml
+REKOR_UUID=108e9186e8c5677af1a0ed2d80855987d4306c847fcf23a27a17cf11a60feff4f8bfb6a0918063a7
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.62.6@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.62.x] Use io.ReadFull to read the bundle content (#8391)
+
+ix an issue on `bundle list` command with relatively big bundles that couldn't be parsed (truncated data)
+
+* :bug: fix(pipelinerun): resolve issue with PipelineRun not timing out successfully (#8376)
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.62.6!
+* :heart: @l-qing
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.59.5 "Scottish Fold Sox" (2024-11-20)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.59.5](https://github.com/tektoncd/pipeline/tree/v0.59.5/docs)
+-[Examples @ v0.59.5](https://github.com/tektoncd/pipeline/tree/v0.59.5/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.59.5/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a1f8744f6588cc007827d8dd1258b1a40f4fa900cb5013240e9eb375d4be4f7e9`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a1f8744f6588cc007827d8dd1258b1a40f4fa900cb5013240e9eb375d4be4f7e9
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.59.5/release.yaml
+REKOR_UUID=108e9186e8c5677a1f8744f6588cc007827d8dd1258b1a40f4fa900cb5013240e9eb375d4be4f7e9
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.59.5@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.59.x] Use io.ReadFull to read the bundle content (#8392)
+
+ix an issue on `bundle list` command with relatively big bundles that couldn't be parsed (truncated data)
+
+* :bug: [release-v0.59.x] Add `Failed Validation` group in message for the status message in PipelineRun (#8374)
+* :bug: [release-v0.59.x] Run finally pipeline even if task is failed at the validation (#8369)
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.59.5!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.65.1 "Sokoke Herbie LTS" (2024-11-06)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.65.1](https://github.com/tektoncd/pipeline/tree/v0.65.1/docs)
+-[Examples @ v0.65.1](https://github.com/tektoncd/pipeline/tree/v0.65.1/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.1/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677abd62783f1c644771b33f78da6ddf96863355b36a2807c1f93a433eb1e2babdeb`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677abd62783f1c644771b33f78da6ddf96863355b36a2807c1f93a433eb1e2babdeb
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.1/release.yaml
+REKOR_UUID=108e9186e8c5677abd62783f1c644771b33f78da6ddf96863355b36a2807c1f93a433eb1e2babdeb
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.65.1@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+* :sparkles: [release-v0.65.x] Expose Resolvers Controller performance tuning configurations (#8364)
+
+e can specify custom performance tuning values in the watcher's deployment - controller container via threads-per-controller, kube-api-qps and kube-api-burst flags.
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+
+
+* :bug: [release-v0.65.x] Add `Failed Validation` group in message for the status message in PipelineRun (#8372)
+* :bug: [release-v0.65.x] Run finally pipeline even if task is failed at the validation (#8367)
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.65.1!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.62.5 "Ragamuffin Reventlov" (2024-11-06)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.62.5](https://github.com/tektoncd/pipeline/tree/v0.62.5/docs)
+-[Examples @ v0.62.5](https://github.com/tektoncd/pipeline/tree/v0.62.5/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.5/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a02a8666fc6bbbd2549e455aac7f2fb8f4cf66f07b8e0c6dd992c7e05ec7ba52a`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a02a8666fc6bbbd2549e455aac7f2fb8f4cf66f07b8e0c6dd992c7e05ec7ba52a
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.5/release.yaml
+REKOR_UUID=108e9186e8c5677a02a8666fc6bbbd2549e455aac7f2fb8f4cf66f07b8e0c6dd992c7e05ec7ba52a
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.62.5@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+* :sparkles: [release-v0.62.x] Expose Resolvers Controller performance tuning configurations (#8365)
+
+e can specify custom performance tuning values in the watcher's deployment - controller container via threads-per-controller, kube-api-qps and kube-api-burst flags.
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+
+
+* :bug: [release-v0.62.x] Add `Failed Validation` group in message for the status message in PipelineRun (#8373)
+* :bug: [release-v0.62.x] Run finally pipeline even if task is failed at the validation (#8368)
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.62.5!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.56.9 "Persian Terminator" (2024-12-03)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.56.9](https://github.com/tektoncd/pipeline/tree/v0.56.9/docs)
+-[Examples @ v0.56.9](https://github.com/tektoncd/pipeline/tree/v0.56.9/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.56.9/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677ab4262cd1303dc779dd2b6103fa7a05fb29fc2d5304a747c0ed41061c23d8302b`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677ab4262cd1303dc779dd2b6103fa7a05fb29fc2d5304a747c0ed41061c23d8302b
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.56.9/release.yaml
+REKOR_UUID=108e9186e8c5677ab4262cd1303dc779dd2b6103fa7a05fb29fc2d5304a747c0ed41061c23d8302b
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.56.9@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+
+
+* :bug: [release-v0.56.x] Add `Failed Validation` group in message for the status message in PipelineRun (#8371)
+* :bug: [release-v0.56.x] Run finally pipeline even if task is failed at the validation (#8370)
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.56.9!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.65.0 "Sokoke Herbie LTS" (2024-10-28)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.65.0](https://github.com/tektoncd/pipeline/tree/v0.65.0/docs)
+-[Examples @ v0.65.0](https://github.com/tektoncd/pipeline/tree/v0.65.0/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.0/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677aad7a1878b454249eae3ea9a5ff3b0eef665d0995b57a367880b4b34fbd42a3b4`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677aad7a1878b454249eae3ea9a5ff3b0eef665d0995b57a367880b4b34fbd42a3b4
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.65.0/release.yaml
+REKOR_UUID=108e9186e8c5677aad7a1878b454249eae3ea9a5ff3b0eef665d0995b57a367880b4b34fbd42a3b4
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.65.0@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+* :sparkles: Add support for priorityClassName in affinityAssistantPodTemplate (#8286)
+
+Add support for priorityClassName in affinityAssistantPodTemplate
+
+This will help to specify default priorityClassName in affinity assistant podTemplate for affinity assistant pods. 
+Also value specified in pipelinerun/taskrun will be used for both affinity assistant pods and taskrun pods.
+
+* :sparkles: Add support for multiple git resolver configurations (#8263)
+
+Add support for multiple git resolver configurations
+* :sparkles: Add Metrics for Running PipelinesRuns at Pipeline and Namespace level (#8280)
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+
+
+
+
+
+### Misc
+
+
+
+
+* :hammer: build(deps): bump the all group in /tekton with 4 updates (#8342)
+* :hammer: build(deps): bump the all group in /tekton with 4 updates (#8331)
+* :hammer: build(deps): bump github/codeql-action from 3.26.12 to 3.26.13 (#8330)
+* :hammer: build(deps): bump actions/upload-artifact from 4.4.1 to 4.4.3 (#8329)
+* :hammer: build(deps): bump actions/cache from 4.1.0 to 4.1.1 (#8328)
+* :hammer: tekton: update bugfix-release.sh script for ghcr.io (#8323)
+* :hammer: build(deps): bump actions/cache from 4.0.2 to 4.1.0 (#8321)
+* :hammer: build(deps): bump actions/upload-artifact from 4.4.0 to 4.4.1 (#8320)
+* :hammer: build(deps): bump tj-actions/changed-files from 45.0.2 to 45.0.3 (#8319)
+* :hammer: build(deps): bump github/codeql-action from 3.26.10 to 3.26.12 (#8318)
+* :hammer: build(deps): bump actions/checkout from 4.2.0 to 4.2.1 (#8317)
+* :hammer: build(deps): bump the all group across 1 directory with 4 updates (#8316)
+* :hammer: build(deps): bump actions/setup-go from 5.0.0 to 5.0.2 (#8309)
+* :hammer: build(deps): bump github/codeql-action from 3.26.8 to 3.26.10 (#8308)
+* :hammer: build(deps): bump actions/checkout from 4.1.7 to 4.2.0 (#8307)
+* :hammer: build(deps): bump github.com/golangci/golangci-lint from 1.60.3 to 1.61.0 in /tools (#8254)
+* :hammer: Improve how gosec G115 findings are addressed (#8250)
+* :hammer: build(deps): bump actions/upload-artifact from 4.3.6 to 4.4.0 (#8231)
+
+### Docs
+
+* :book: Update the release cheat-sheet (#8302)
+
+Container images in the release are stored in ghcr.io,
+* :book: docs: fix formatting in artifacts.md (#8326)
+* :book: Improve git resolver docs (#8311)
+* :book: Update releases.md with v0.64.0 (#8304)
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.65.0!
+* :heart: @SaschaSchwarze0
+* :heart: @afrittoli
+* :heart: @dependabot[bot]
+* :heart: @piyush-garg
+* :heart: @pramodbindal
+* :heart: @tarilabs
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @afrittoli
+* :heart_eyes: @piyush-garg
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.62.4 "Ragamuffin Reventlov" (2024-10-17)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.62.4](https://github.com/tektoncd/pipeline/tree/v0.62.4/docs)
+-[Examples @ v0.62.4](https://github.com/tektoncd/pipeline/tree/v0.62.4/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.4/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a294d223044005f4caffd3b6b20afcfcc96849fd9b2cdbcb170ca741ab440fb83`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a294d223044005f4caffd3b6b20afcfcc96849fd9b2cdbcb170ca741ab440fb83
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.4/release.yaml
+REKOR_UUID=108e9186e8c5677a294d223044005f4caffd3b6b20afcfcc96849fd9b2cdbcb170ca741ab440fb83
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.62.4@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.62.x] Fix isolated workspaces ignored when using StepTemplate (#8273)
+
+solated workspaces are now correctly set when using in conjuction with StepTemplate
+
+
+* :bug: [release-v0.62.x] Mark steps as deleted when TaskRun fails (#8295)
+
+### Misc
+
+
+
+
+* :hammer: [release-v0.62.x] Backport release "scripts" changes from main… (#8332)
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.62.4!
+* :heart: @tekton-robot
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.59.4 "Scottish Fold Sox" (2024-10-17)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.59.4](https://github.com/tektoncd/pipeline/tree/v0.59.4/docs)
+-[Examples @ v0.59.4](https://github.com/tektoncd/pipeline/tree/v0.59.4/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.59.4/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677ac434e5a611e150eb519bc1caa8020f7c0cbc114f780104b2ea371633e61c4fed`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677ac434e5a611e150eb519bc1caa8020f7c0cbc114f780104b2ea371633e61c4fed
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.59.4/release.yaml
+REKOR_UUID=108e9186e8c5677ac434e5a611e150eb519bc1caa8020f7c0cbc114f780104b2ea371633e61c4fed
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.59.4@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.59.x] Fix isolated workspaces ignored when using StepTemplate (#8275)
+
+Isolated workspaces are now correctly set when using in conjuction with StepTemplate
+
+* :bug: [release-v0.59.x] pkg/taskrunmetrics/fake shouldn't be imported… (#8189)
+* :bug: [release-v0.59.x] Mark steps as deleted when TaskRun fails (#8296)
+
+### Misc
+
+
+
+
+* :hammer: [release-v0.59.x] Backport release "scripts" changes from main… (#8333)
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.59.4!
+* :heart: @tekton-robot
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @vdemeester
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.56.8 "Persian Terminator" (2024-10-17)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.56.8](https://github.com/tektoncd/pipeline/tree/v0.56.8/docs)
+-[Examples @ v0.56.8](https://github.com/tektoncd/pipeline/tree/v0.56.8/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.56.8/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a5b4581e15383f9656d8670176e2efc73ddba6d9d589cbbc9cf01b11134735ff9`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a5b4581e15383f9656d8670176e2efc73ddba6d9d589cbbc9cf01b11134735ff9
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.56.8/release.yaml
+REKOR_UUID=108e9186e8c5677a5b4581e15383f9656d8670176e2efc73ddba6d9d589cbbc9cf01b11134735ff9
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.56.8@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.56.x] Fix isolated workspaces ignored when using StepTemplate (#8276)
+
+Isolated workspaces are now correctly set when using in conjuction with StepTemplate
+
+* :bug: [release-v0.56.x] pkg/taskrunmetrics/fake shouldn't be imported… (#8190)
+* :bug: [release-v0.56.x] Mark steps as deleted when TaskRun fails (#8297)
+
+### Misc
+
+
+
+
+* :hammer: [release-v0.56.x] Backport release "scripts" changes from main… (#8334)
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.56.8!
+* :heart: @tekton-robot
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @vdemeester
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.53.9 "Chartreux Rachael" (2024-10-17)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.53.9](https://github.com/tektoncd/pipeline/tree/v0.53.9/docs)
+-[Examples @ v0.53.9](https://github.com/tektoncd/pipeline/tree/v0.53.9/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.53.9/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677af0438dbd9a6a78cfff85c4f50e776ded7dc354778dc0fecd5adb124d07763c11`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677af0438dbd9a6a78cfff85c4f50e776ded7dc354778dc0fecd5adb124d07763c11
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.53.9/release.yaml
+REKOR_UUID=108e9186e8c5677af0438dbd9a6a78cfff85c4f50e776ded7dc354778dc0fecd5adb124d07763c11
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.53.9@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.53.x] Fix isolated workspaces ignored when using StepTemplate (#8277)
+
+Isolated workspaces are now correctly set when using in conjuction with StepTemplate
+
+* :bug: [release-v0.53.x] pkg/taskrunmetrics/fake shouldn't be imported… (#8191)
+* :bug: [release-v0.53.x] Mark steps as deleted when TaskRun fails (#8299)
+
+### Misc
+
+
+
+
+* :hammer: [release-v0.53.x] Backport release "scripts" changes from main… (#8335)
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.53.9!
+* :heart: @afrittoli
+* :heart: @tekton-robot
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @vdemeester
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.64.0 "Ragamuffin Reventlov" (2024-09-27)</h2>
+      <pre># 🎉 Released Container Images stored on ghcr.io  🎉
+
+-[Docs @ v0.64.0](https://github.com/tektoncd/pipeline/tree/v0.64.0/docs)
+-[Examples @ v0.64.0](https://github.com/tektoncd/pipeline/tree/v0.64.0/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.64.0/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677ab54c658d37a263dfad3c8244bbef3e63cced8ae2d37c05701abf89bc6fa1fdf8`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677ab54c658d37a263dfad3c8244bbef3e63cced8ae2d37c05701abf89bc6fa1fdf8
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.64.0/release.yaml
+REKOR_UUID=108e9186e8c5677ab54c658d37a263dfad3c8244bbef3e63cced8ae2d37c05701abf89bc6fa1fdf8
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.64.0@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+## Changes
+
+# Features
+
+* :sparkles: Implement set-security-context feature for affinity assistant containers (#8182)
+
+Affinity Assistant containers will now have a securityContext when feature flag `set-security-context` is enabled in ConfigMap `feature-flags`.
+
+### Fixes
+
+* :bug: Fix isolated workspaces ignored when using StepTemplate (#8272)
+
+Isolated workspaces are now correctly set when using in conjuction with StepTemplate
+
+* :bug: fix(TaskRun): fixed the issue where some step statuses might not be correctly updated in failed TaskRun (#8270)
+
+fix: fixed the issue where some step statuses might not be correctly updated in failed TaskRun
+
+* :bug: fix(pipelinerun): resolve issue with PipelineRun not timing out successfully (#8236)
+
+fix(pipelinerun): resolve issue with PipelineRun not timing out successfully
+
+* :bug: fix(e2e): stabilize TestTaskRunFailure test (#8174)
+* :bug: Mark steps as deleted when TaskRun fails (#8294)
+
+### Misc
+
+
+
+
+* :hammer: Bump the all group across 1 directory with 4 updates (#8300)
+* :hammer: Pin setup-go action (#8291)
+* :hammer: Simply the path for the base image (#8290)
+* :hammer: Bump github/codeql-action from 3.26.7 to 3.26.8 (#8289)
+* :hammer: Pin alpine image used in release pipeline (#8287)
+* :hammer: Update to the latest version of koparse for the release pipeline (#8285)
+* :hammer: Bump google.golang.org/grpc from 1.64.1 to 1.67.0 (#8281)
+* :hammer: Use the new version of koparse in the build (#8278)
+* :hammer: Bump step-security/harden-runner from 2.9.1 to 2.10.1 (#8269)
+* :hammer: Bump tj-actions/changed-files from 45.0.1 to 45.0.2 (#8268)
+* :hammer: Bump github/codeql-action from 3.26.6 to 3.26.7 (#8267)
+* :hammer: Bump the all group in /tekton with 4 updates (#8266)
+* :hammer: Adapt koparse step to handle no import path (#8261)
+* :hammer: Add KO_EXTRA_ARGS (#8260)
+* :hammer: Propagate image registry regions to publish (#8259)
+* :hammer: Fix the imageRegistryUser param usage in the release pipeline (#8256)
+* :hammer: build(deps): bump the all group in /tekton with 4 updates (#8253)
+* :hammer: Run build and tests conditionally (#8252)
+* :hammer: Support separate bucket and image reg creds (#8251)
+* :hammer: Add OCI source label to images (#8247)
+* :hammer: Make image registry regions configurable (#8246)
+* :hammer: build(deps): bump google.golang.org/grpc from 1.64.0 to 1.64.1 (#8245)
+* :hammer: build(deps): bump github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.5.2 to 1.6.0 (#8244)
+* :hammer: build(deps): bump github.com/hashicorp/go-retryablehttp from 0.7.6 to 0.7.7 (#8243)
+* :hammer: build(deps): bump the all group across 1 directory with 4 updates (#8235)
+* :hammer: build(deps): bump tj-actions/changed-files from 45.0.0 to 45.0.1 (#8233)
+* :hammer: build(deps): bump github/codeql-action from 3.26.3 to 3.26.6 (#8232)
+
+### Docs
+
+
+* :book: Update releases for new Tekton Pipeline Releases 0.63 (#8229)
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.64.0!
+* :heart: @AlanGreene
+* :heart: @afrittoli
+* :heart: @chitrangpatel
+* :heart: @dependabot[bot]
+* :heart: @kristofferchr
+* :heart: @l-qing
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @kristofferchr
+* :heart_eyes: @l-qing
+* :heart_eyes: @vdemeester</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.62.3 "Birman HAL LTS" (2024-09-03)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.62.3](https://github.com/tektoncd/pipeline/tree/v0.62.3/docs)
+-[Examples @ v0.62.3](https://github.com/tektoncd/pipeline/tree/v0.62.3/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.3/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677aa407357ea4e4be089c72e70eb6e12acb4d1bc92eec85f0c0fba54abc89790342`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677aa407357ea4e4be089c72e70eb6e12acb4d1bc92eec85f0c0fba54abc89790342
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.3/release.yaml
+REKOR_UUID=108e9186e8c5677aa407357ea4e4be089c72e70eb6e12acb4d1bc92eec85f0c0fba54abc89790342
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.62.3@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.62.x] Fix Artifact type to a pointer (#8228)
+
+Fix Artifact type to a pointer.
+
+* :bug: [release-v0.62.x] apply default-container-resource-requirements before LimitRange transformer (#8227)
+
+[Bug fix]: `default-container-resource-requirements` will be applied to the container before `LimtRange`
+
+
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.62.3!
+* :heart: @tekton-robot
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+* :heart_eyes: @vdemeester
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.63.0 "Abyssinian K-9" (2024-08-30)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.63.0](https://github.com/tektoncd/pipeline/tree/v0.63.0/docs)
+-[Examples @ v0.63.0](https://github.com/tektoncd/pipeline/tree/v0.63.0/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.63.0/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a41806e924e8c5d6a3c1e083f8c35950f0d1af7e0e6a4c0712a2eb4bf92e9538e`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a41806e924e8c5d6a3c1e083f8c35950f0d1af7e0e6a4c0712a2eb4bf92e9538e
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.63.0/release.yaml
+REKOR_UUID=108e9186e8c5677a41806e924e8c5d6a3c1e083f8c35950f0d1af7e0e6a4c0712a2eb4bf92e9538e
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.63.0@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+* :sparkles: cluster-reslover: add support for StepAction (#8199)
+
+tepAction are now supported to a refered via the cluster resolver.
+
+* :sparkles: Allow securityContext field for affinity assistant podtemplate (#8176)
+
+Added the ability to set the pod-level `securityContext` for the AffinityAssistant StatefulSet. 
+This can be configured by providing a `default-affinity-assistant-pod-template` in the `config-defaults` ConfigMap or by specifying a pod template in `TaskRun` or `PipelineRun`.
+
+* :sparkles: Add UID label to PipelineRun and TaskRun (#8166)
+
+TaskRun pods have tekton.dev/taskRunUID and tekton.dev/pipelineRunUID labels
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: Fix Artifact type to a pointer (#8226)
+
+Fix Artifact type to a pointer.
+
+* :bug: fix task name show  in metric (#8216)
+
+fix clusterTask name show `anonymous` in metric
+
+* :bug: apply default-container-resource-requirements before LimitRange transformer (#8197)
+
+[Bug fix]: `default-container-resource-requirements` will be applied to the container before `LimtRange`
+
+* :bug: fix(pipelinerun): resolve issue where canceling active pipelinerun fails (#8173)
+
+fix(pipelinerun): resolve issue where canceling active pipelinerun fails
+
+* :bug: fix(taskrun): resolve issue with TaskRun not failing promptly after Pod OOM (#8171)
+
+fix(taskrun): resolve issue with TaskRun not failing promptly after Pod OOM
+
+* :bug: fix: If the finally timeout is set to 0s, the  calculates the next queue entry time according to the pipeline timeout. (#8056)
+
+If the finally timeout is set to 0s, the `reconciler` calculates the next queue entry time according to the pipeline timeout.
+
+* :bug: feat(matrix): Fix matrix param type mismatch problem for ref array result from customrun scenario (#8024)
+
+
+### Misc
+
+
+
+
+* :hammer: build(deps): bump tj-actions/changed-files from 44.5.7 to 45.0.0 (#8223)
+* :hammer: build(deps): bump github.com/golangci/golangci-lint from 1.59.1 to 1.60.3 in /tools (#8219)
+* :hammer: build(deps): bump github.com/docker/docker from 26.1.3+incompatible to 26.1.5+incompatible (#8218)
+* :hammer: Bump the all group in /tekton with 4 updates (#8212)
+* :hammer: Bump github/codeql-action from 3.26.0 to 3.26.3 (#8211)
+* :hammer: Bump the all group in /tekton with 4 updates (#8204)
+* :hammer: Bump actions/upload-artifact from 4.3.5 to 4.3.6 (#8203)
+* :hammer: Bump step-security/harden-runner from 2.9.0 to 2.9.1 (#8202)
+* :hammer: Bump github/codeql-action from 3.25.15 to 3.26.0 (#8201)
+* :hammer: {taskrun,pipelinerun}metrics: make sure config is up-to-date (#8187)
+* :hammer: Bump the all group in /tekton with 2 updates (#8180)
+* :hammer: Bump actions/upload-artifact from 4.3.4 to 4.3.5 (#8179)
+* :hammer: Bump tj-actions/changed-files from 44.5.5 to 44.5.7 (#8178)
+* :hammer: Bump github/codeql-action from 3.25.13 to 3.25.15 (#8162)
+* :hammer: Bump ossf/scorecard-action from 2.3.3 to 2.4.0 (#8161)
+* :hammer: Bump the all group in /tekton with 4 updates (#8160)
+* :hammer: Bump go.opentelemetry.io/otel/sdk from 1.27.0 to 1.28.0 (#8154)
+
+### Docs
+
+
+* :book: docs: fix links to Matrix examples (#7953)
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.63.0!
+* :heart: @AverageMarcus
+* :heart: @chengjoey
+* :heart: @chitrangpatel
+* :heart: @cugykw
+* :heart: @dependabot[bot]
+* :heart: @hittyt
+* :heart: @jkandasa
+* :heart: @khrm
+* :heart: @kristofferchr
+* :heart: @l-qing
+* :heart: @vdemeester
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @chengjoey
+* :heart_eyes: @chitrangpatel
+* :heart_eyes: @cugykw
+* :heart_eyes: @jkandasa
+* :heart_eyes: @khrm
+* :heart_eyes: @kristofferchr
+* :heart_eyes: @l-qing
+* :heart_eyes: @vdemeester
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.62.2 "Birman HAL LTS" (2024-08-23)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.62.2](https://github.com/tektoncd/pipeline/tree/v0.62.2/docs)
+-[Examples @ v0.62.2](https://github.com/tektoncd/pipeline/tree/v0.62.2/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.2/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `108e9186e8c5677a6e62d0e6c909ccb98a5768c17110fecb8c493b0a3c670644a0e1d3cdf4a584b5`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=108e9186e8c5677a6e62d0e6c909ccb98a5768c17110fecb8c493b0a3c670644a0e1d3cdf4a584b5
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.2/release.yaml
+REKOR_UUID=108e9186e8c5677a6e62d0e6c909ccb98a5768c17110fecb8c493b0a3c670644a0e1d3cdf4a584b5
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.62.2@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.62.x] check namespace config for node throttle metric (#8213)
+
+ith this fix the 'config-observabilitiy' configmap setting 'metrics.taskrun.throttle.enable-namespace' is now checked before incrementing the 'tekton_pipelines_controller_running_taskruns_throttled_by_node', where previously that config value was not being checked for the metric.
+
+* :bug: [release-v0.62.x] {taskrun,pipelinerun}metrics: make sure config is up-to-date (#8198)
+* :bug: [release-v0.62.x] pkg/taskrunmetrics/fake shouldn't be imported… (#8188)
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.62.2!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.56.7 "Persian Terminator" (2024-08-06)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.56.7](https://github.com/tektoncd/pipeline/tree/v0.56.7/docs)
+-[Examples @ v0.56.7](https://github.com/tektoncd/pipeline/tree/v0.56.7/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.56.7/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `24296fb24b8ad77a4ec4894662098e70458099040db8cd51697bfec03fd2650c7285ce3a94c50119`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=24296fb24b8ad77a4ec4894662098e70458099040db8cd51697bfec03fd2650c7285ce3a94c50119
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.56.7/release.yaml
+REKOR_UUID=24296fb24b8ad77a4ec4894662098e70458099040db8cd51697bfec03fd2650c7285ce3a94c50119
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.56.7@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.56.x] Refine check if the result is from a matrix task (#8169)
+
+ixed variable substitution of results from matrix TaskRuns with cardinality of 1.
+
+* :bug: [release-v0.56.x] Perform matrix results validation on only result ref params (#8120)
+
+Perform matrix results validation on only result ref params
+
+
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.56.7!
+* :heart: @piyush-garg
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @piyush-garg
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.62.1 "Birman HAL LTS" (2024-08-06)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.62.1](https://github.com/tektoncd/pipeline/tree/v0.62.1/docs)
+-[Examples @ v0.62.1](https://github.com/tektoncd/pipeline/tree/v0.62.1/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.1/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `24296fb24b8ad77a888f88120c037b3b7b9b3be97d8dd4ea1950235f44033f29dce4a1123992a3d9`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=24296fb24b8ad77a888f88120c037b3b7b9b3be97d8dd4ea1950235f44033f29dce4a1123992a3d9
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.62.1/release.yaml
+REKOR_UUID=24296fb24b8ad77a888f88120c037b3b7b9b3be97d8dd4ea1950235f44033f29dce4a1123992a3d9
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.62.1@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.62.x] Refine check if the result is from a matrix task (#8167)
+
+ixed variable substitution of results from matrix TaskRuns with cardinality of 1.
+
+
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.62.1!
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Tekton Pipeline release v0.59.3 "Scottish Fold Sox" (2024-08-06)</h2>
+      <pre><!-- For major releases, add a tag line
+# 🎉 [Tag Line - to be done] 🎉
+-->
+
+-[Docs @ v0.59.3](https://github.com/tektoncd/pipeline/tree/v0.59.3/docs)
+-[Examples @ v0.59.3](https://github.com/tektoncd/pipeline/tree/v0.59.3/examples)
+
+## Installation one-liner
+
+```shell
+kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.59.3/release.yaml
+```
+
+## Attestation
+
+The Rekor UUID for this release is `24296fb24b8ad77a1e39558b26eb0148a2dd3ee8bb9a2f4627eba53d2766e7088a8009b173f94e28`
+
+Obtain the attestation:
+```shell
+REKOR_UUID=24296fb24b8ad77a1e39558b26eb0148a2dd3ee8bb9a2f4627eba53d2766e7088a8009b173f94e28
+rekor-cli get --uuid $REKOR_UUID --format json | jq -r .Attestation | jq .
+```
+
+Verify that all container images in the attestation are in the release file:
+```shell
+RELEASE_FILE=https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.59.3/release.yaml
+REKOR_UUID=24296fb24b8ad77a1e39558b26eb0148a2dd3ee8bb9a2f4627eba53d2766e7088a8009b173f94e28
+
+# Obtains the list of images with sha from the attestation
+REKOR_ATTESTATION_IMAGES=$(rekor-cli get --uuid "$REKOR_UUID" --format json | jq -r .Attestation | jq -r '.subject[]|.name + ":v0.59.3@sha256:" + .digest.sha256')
+
+# Download the release file
+curl "$RELEASE_FILE" > release.yaml
+
+# For each image in the attestation, match it to the release file
+for image in $REKOR_ATTESTATION_IMAGES; do
+  printf $image; grep -q $image release.yaml && echo " ===> ok" || echo " ===> no match";
+done
+```
+
+<!-- Any special upgrade notice
+## Upgrade Notices
+-->
+
+## Changes
+
+# Features
+
+
+
+
+<!-- Fill in deprecation notices when applicable
+# Deprecation Notices
+
+* :rotating_light: [Deprecation Notice Title]
+
+[Detailed deprecation notice description] (#Number).
+
+[Fill list here]
+-->
+
+<!-- Fill in backward incompatible changes when applicable
+# Backwards incompatible changes
+
+In current release:
+
+* :rotating_light: [Change Title]
+
+[Detailed change description] (#Number).
+
+[Fill list here]
+-->
+
+### Fixes
+
+* :bug: [release-v0.59.x] Refine check if the result is from a matrix task (#8168)
+
+ixed variable substitution of results from matrix TaskRuns with cardinality of 1.
+
+* :bug: [release-v0.59.x] Perform matrix results validation on only result ref params (#8119)
+
+Perform matrix results validation on only result ref params
+
+
+
+
+### Misc
+
+
+
+
+
+
+### Docs
+
+
+
+
+## Thanks
+
+Thanks to these contributors who contributed to v0.59.3!
+* :heart: @piyush-garg
+* :heart: @tekton-robot
+
+Extra shout-out for awesome release notes:
+* :heart_eyes: @piyush-garg
+* :heart_eyes: @tekton-robot
+
+<!--
+## Unsorted PR List
+
+
+To Be Done: Deprecation Notices, Backward Incompatible Changes
+--></pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

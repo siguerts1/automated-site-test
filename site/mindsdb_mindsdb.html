@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for mindsdb/mindsdb"/>
+  <title>mindsdb/mindsdb Release Notes</title>
+</head>
+<body>
+  <h1>🚀 mindsdb/mindsdb - Release Notes</h1>
+  
+    <section>
+      <h2>v25.4.1.0 (2025-04-01)</h2>
+      <pre>## TL;DR
+
+**MindsDB has deprecated the support for Python 3.9 version. From now on, MindsDB supports Python version >= 3.10.**
+
+### Fixes and Improvements
+- **Reranker issue fixed in controller**: A fix has been applied to the reranker functionality within the controller. This improvement ensures that the reranker now works correctly, leading to more accurate decision-making and better performance.
+  
+- **Concurrency settings for deploys fixed**: Concurrency settings related to deploys have been adjusted for improved efficiency. This change reduces potential issues with resource management, allowing for more stable and reliable deployments.
+
+### Documentation and Configuration Updates
+- **Web crawler documentation updated**: The documentation for the web crawler has been improved. These updates provide clearer and more detailed instructions, helping users understand how to properly configure and use the web crawler.
+
+- **Release notes configuration fix**: A fix has been added to the `release_notes.yml` configuration file. This change ensures that the release notes are properly structured and displayed, offering a better experience when reviewing changes.
+
+### Feature Enhancements
+- **Renamed Knowledge Base (KB) columns**: The columns in the Knowledge Base (KB) have been renamed for clarity. This improves the overall usability of the KB, making it easier for users to navigate and understand the data.
+
+- **KB added to the projects tree list**: The Knowledge Base (KB) is now included in the projects tree list. This makes it more accessible, allowing users to quickly find and interact with the KB alongside their other projects.
+
+- **MCP API added**: The addition of the MCP API enables new possibilities for interacting with the MindsDB system. This feature enhances integration capabilities and provides users with more flexibility in their workflows.
+
+- **Version bumped**: The version has been bumped to a new release, ensuring that users are working with the most up-to-date features and fixes.
+
+---
+
+## What's Changed
+* Fixed the reranker issue in controller by @ala12326571 in https://github.com/mindsdb/mindsdb/pull/10607
+* updated web crawler docs by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10619
+* added a fix to release_notes.yml by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10624
+* Rename KB columns by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10630
+* fix concurrency settings for deploys by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10631
+* Add KB to the projects tree list by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10628
+* MCP API by @torrmal in https://github.com/mindsdb/mindsdb/pull/10629
+* Bump version by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10636
+
+## New Contributors
+* @ala12326571 made their first contribution in https://github.com/mindsdb/mindsdb/pull/10607
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.3.4.2...v25.4.1.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.3.4.2 (2025-03-27)</h2>
+      <pre>## TL;DR
+
+### Bug Fixes and Performance Improvements
+- **Fix Cursor Pagination in Confluence**: Resolved pagination issues in Confluence integrations, ensuring smoother navigation and data retrieval.
+- **Update default_handlers.txt**: Enhancements to default handlers improve system stability and processing efficiency.
+
+### Integrations and Compatibility Updates
+- **Enabled Microsoft Teams Integration with Application Permissions**: Users can now utilize Microsoft Teams integration with application-level permissions, expanding authentication and security options.
+- **Updated Documentation for MS Teams Integration**: Added clarity on supported permission types, ensuring easier setup and troubleshooting.
+
+### Database Enhancements
+- **Output MySQL Types from `get_columns`**: Improved MySQL compatibility by ensuring column type information is correctly retrieved, benefiting developers who require precise schema details.
+- **TPC Oracle Updates**: Enhancements related to TPC benchmarking and Oracle compatibility, optimizing performance and accuracy.
+
+### Documentation and Configuration Updates
+- **Added Milvus to Documentation**: Updated the documentation to include Milvus, ensuring users have proper guidance on its integration.
+
+### Versioning
+- **Bump Version**: Incremented version number to reflect recent updates and improvements.
+
+---
+
+## What's Changed
+* Fix cursor pagination in Confluence by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10610
+* Update cla.yml by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10611
+* Enabled the Use of Microsoft Teams Integration with Application Permissions by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10616
+* Output MySQL types from `get_columns` by @StpMax in https://github.com/mindsdb/mindsdb/pull/10617
+* added milvus to docs by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10622
+* Update default_handlers.txt by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10620
+* TPC oracle updates by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10621
+* Updated the Documentation for MS Teams Integration with Supported Permission Types by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10618
+* Bump version by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10623
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.3.4.1...v25.3.4.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.3.4.1 (2025-03-26)</h2>
+      <pre>## TL;DR
+
+There has been an **update to the Snowflake integration that is not backward-compatible**. See the [documentation](https://docs.mindsdb.com/integrations/data-integrations/snowflake) for details.
+
+### Testing and Stability Improvements
+- **Salesforce Integration Unit Tests**: Added unit tests for Salesforce integration, ensuring better stability and reliability.
+- **MySQL, MSSQL, and Redshift Tests**: Additional tests for MySQL, MSSQL, and Redshift improve database handler robustness.
+- **Parquet Error Handling**: JSON errors are now received when Parquet operations fail, improving debugging and error handling.
+
+### Database Enhancements
+- **MySQL Handler Update**: The `use_pure=True` setting is now the default for the MySQL handler, improving connection stability and performance.
+- **Snowflake Output Formatting**: Snowflake output is now converted to lowercase for consistency.
+
+### Dependency Upgrades
+- **LiteLLM Version Bump**: Upgraded LiteLLM for improved performance and feature support.
+- **Llama-Index Version Upgrade**: Updated Llama-index to the latest version, ensuring compatibility and enhancements.
+- **Lightwood Version Bump**: Updated Lightwood to version 25.3.3.3 for improved machine learning capabilities.
+- **General Version Bump**: Additional version bumps for maintaining up-to-date dependencies.
+
+### Documentation and User Experience Enhancements
+- **YouTube Integration Guide Update**: Steps for generating credentials for YouTube integration have been updated for better clarity.
+- **Confluence Integration Enhancements**: Improvements to the Confluence integration and its documentation make it more user-friendly.
+- **Sitemaps Added to Documentation**: Enhances search engine optimization (SEO) and discoverability of MindsDB documentation.
+
+---
+
+## What's Changed
+* Added Unit Tests for the Salesforce Integration by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10593
+* Set `use_pure=True` by default for the MySQL handler by @StpMax in https://github.com/mindsdb/mindsdb/pull/10565
+* Bump LiteLLM version by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10595
+* Upgrade Llama-index version by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10596
+* Updated the Steps for Generating Credentials for YouTube Integration by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10515
+* Receive json errors when parquet fails by @dj013 in https://github.com/mindsdb/mindsdb/pull/10553
+* Bump `lightwood` version to 25.3.3.3 by @StpMax in https://github.com/mindsdb/mindsdb/pull/10600
+* Mysql tests by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10597
+* Mssql unit tests by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10602
+* added sitemaps to mindsdb docs by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10604
+* Redshift tests by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10605
+* Confluence Integration Improvements by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10598
+* Updated the Documentation for the Confluence Integration by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10603
+* Convert snowflake output to lowercase by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10563
+* Version Bump by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10609
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.3.4.0...v25.3.4.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.3.4.0 (2025-03-24)</h2>
+      <pre>## TL;DR
+
+### New Integrations & Features
+- **Microsoft Teams as a Data Source**: MS Teams can now be used as a data source, broadening MindsDB's data connectivity.
+- **KB Metadata Enhancements**: Select and delete operations by metadata are now supported, improving knowledge base management.
+- **KB Metadata Expansion**: More data is now added to metadata, enhancing query capabilities.
+
+### Documentation Updates
+- **Microsoft Teams Integration Guide**: Added documentation for configuring MS Teams as a data source, helping users set it up efficiently.
+- **Salesforce Connected App Configuration**: Updated documentation to provide better guidance on configuring a connected app for Salesforce integration.
+
+### Performance & Stability Improvements
+- **CPU Docker Images**: Added CPU-specific Docker images, optimizing deployment for different environments.
+- **Fixed Docker Build Issues**: Addressed a broken Docker build to ensure smooth development and deployment.
+
+### Testing & Reliability Improvements
+- **MS Teams Integration Unit Tests**: Added unit tests for the MS Teams integration as a data source, ensuring reliability.
+- **Expanded GitHub Actions Testing**: Enhanced existing tests and introduced HTTP API tests in GitHub Actions, improving CI/CD reliability.
+- **Fixed Incorrect `channel_id` Usage**: Resolved an issue with the `channel_id` in the Conversations table, ensuring accurate data handling.
+
+### Release Update
+- **Version 25.3.4.0**: This release includes the above improvements, making MindsDB more stable and feature-rich.
+
+---
+
+## What's Changed
+* Added the Documentation for Microsoft Teams as a Data Source by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10579
+* KB select/delete by metadata by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10567
+* Updated the Documentation for Configuring a Connected App for the Salesforce Integration by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10580
+* MS Teams Integration as a Data Source by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10566
+* add cpu docker images by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10572
+* Enhancing existing tests and adding HTTP API tests to the github actions workflow by @StpMax in https://github.com/mindsdb/mindsdb/pull/10569
+* Fixed the Incorrect Use of channel_id with the Conversations Table by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10586
+* Unit Tests for the MS Teams Integration (as a Data Source) by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10584
+* KB add more data to metadata by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10574
+* Fixed Broken Docker Build by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10590
+* Release 25.3.4.0 by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10591
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.3.3.0...v25.3.4.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.3.3.0 (2025-03-18)</h2>
+      <pre>## TL;DR
+
+### Performance Improvements
+- **Faster Docker Builds**: Optimizations have been made to speed up the Docker build process, improving development efficiency.
+- **Build AMD Images Only in Dev**: The development environment now builds only AMD images, reducing build complexity and improving resource usage.
+
+### Integrations & Features
+- **Salesforce Integration**: All Salesforce resources have been mapped to the integration, enabling broader functionality and improved connectivity.
+- **Jira Integration Documentation**: Added documentation for the Jira integration, helping users understand and utilize this feature effectively.
+- **Improved SQL Support**: `LATERAL JOIN` and `DISTINCT ON` are now supported in the render function, enhancing query capabilities.
+- **GitHub Handler Update**: The GitHub handler is now generated from the SDK, streamlining its development and maintenance.
+
+### Documentation Updates
+- **Timescale Documentation Update**: The documentation and README for Timescale have been updated, improving clarity and usability.
+- **MindsDB Project Configuration**: Added documentation on how to change the default MindsDB project, helping users customize their setup more easily.
+
+### Code & Testing Improvements
+- **Case Handling in Input Dataframe**: If the case of a target column mismatches in an input dataframe, it will now be automatically adjusted, reducing errors and improving user experience.
+- **Timescale & PostgreSQL Unit Tests**: New unit tests have been added for Timescale and PostgreSQL, enhancing test coverage and reliability.
+- **Removed Changed-Files Action**: The `changed-files` GitHub action has been removed, simplifying the CI/CD pipeline.
+
+### Release Update
+- **Version 25.3.3.0**: This release includes the above improvements, ensuring a better and more efficient MindsDB experience.
+
+---
+
+## What's Changed
+* build only amd images in dev by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10560
+* Mapped All Salesforce Resources to Integration by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10561
+* Speed up docker builds by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10547
+* Added the Documentation for Changing the Default MindsDB Project by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10517
+* Remove changed-files action by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10568
+* Update docs and readme for Timescale by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10570
+* Added the Documentation for the Jira Integration by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10573
+* Change case of target in input dataframe if it mismatches by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10562
+* Support `lateral join` and `distinct on` in render by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10575
+* Github handler generated from sdk by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10503
+* Release 25.3.3.0 by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10577
+* Timescale and PostgreSQL Unit tests by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10576
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.3.2.0...v25.3.3.0
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.3.2.0 (2025-03-11)</h2>
+      <pre>## TL;DR
+
+### UI and Branding Enhancements
+- **Updated Logo**: The application now features a refreshed logo, improving branding consistency and modernizing the interface.
+
+### Build and Deployment Improvements
+- **Optimized Cloud Image Builds**: Cloud images are now only built for development builds, reducing unnecessary build times and improving CI/CD efficiency.
+
+### Documentation Updates
+- **Terminology Update**: References to "AGI" have been updated to "AI" to maintain clarity and consistency.
+- **Improved Contributor Installation Guide**: Missing steps for activating the virtual environment during installation have been added, making it easier for new contributors to set up their environment.
+
+### Codebase Cleanup and Performance Enhancements
+- **Removal of `distutils`**: Deprecated `distutils` package usage has been eliminated, improving compatibility with modern Python versions.
+- **Optimized Query Execution**: The UNION step in DuckDB is now performed more efficiently, leading to faster query processing.
+- **Enhanced PGvector Handler**: The PGvector handler now fully supports SQL, allowing for improved integration and usability.
+- **Jira Handler API Updates**: The Jira handler API is now generated from OpenAPI, ensuring better maintainability and extensibility.
+
+### User Experience and Stability Fixes
+- **GUI Auto Update Fix**: Issues with automatic updates in the GUI have been resolved, ensuring a smoother user experience.
+- **Slack Chatbot Default Table**: A default table has been set for the Slack chatbot, enhancing its out-of-the-box usability.
+
+### Miscellaneous
+- **Version Bump**: The application version has been incremented to reflect the latest changes and improvements.
+---
+## What's Changed
+* change logo by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10539
+* only build cloud image for dev builds by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10546
+* docs (agi to ai) by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10551
+* Docs: Add missing steps for activating the virtual environment in the installation guide for contributors. by @kevinrawal in https://github.com/mindsdb/mindsdb/pull/10550
+* Delete usage of `distutils` by @StpMax in https://github.com/mindsdb/mindsdb/pull/10497
+* Perform UNION step in duckdb by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10540
+* PGvector handler supports sql by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10548
+* Jira handler api generated from openapi by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10532
+* Fix GUI auto update by @StpMax in https://github.com/mindsdb/mindsdb/pull/10556
+* Set default table for slack chatbot by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10557
+* Version bump by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10558
+
+## New Contributors
+* @kevinrawal made their first contribution in https://github.com/mindsdb/mindsdb/pull/10550
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.3.1.0...v25.3.2.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.3.1.0 (2025-03-04)</h2>
+      <pre>## TL;DR
+
+### Security and Data Storage Enhancements
+- **Encrypted JSON Storage for Credentials**: Credentials are now stored securely using encrypted JSON storage, enhancing security and preventing unauthorized access.
+- **Encrypted Storage for Gmail and Google Calendar Integrations**: Gmail and Google Calendar integrations now utilize encrypted storage, providing stronger data protection for user credentials.
+
+### Configuration and Customization Improvements
+- **Configurable Default Project Name**: Users can now modify the default project name via a configuration option, improving flexibility for different environments.
+- **Metadata v3 Update**: The metadata structure has been improved, enhancing data management and system performance.
+- **BigInt Conversion for `resource_id` Column**: The `resource_id` column in `json_storage` has been converted to BigInt, optimizing data storage and processing for large-scale operations.
+
+### Development and Performance Enhancements
+- **Mintlify Version Bump**: The Mintlify documentation version has been updated to include the latest features and improvements.
+- **Version Bump and Migration Fixes**: The version has been updated with fixes to migration order, ensuring smoother database migrations.
+- **Removal of Unused Test for `/config/vars`**: A redundant test for `/config/vars` has been removed, improving code cleanliness.
+
+### Feature Additions and UX Improvements
+- **Document Name Lookup Retrieval Tool**: A new document retrieval tool has been added to the agent, improving search capabilities and document handling.
+- **"Try Demo" Button**: A "Try Demo" button has been introduced, making it easier for users to explore features without full setup.
+
+### Bug Fixes and Maintenance
+- **Fixed LLM Release Notes**: Issues with LLM-related release notes have been resolved for better clarity and accuracy.
+
+### Release Update
+- **Release 25.3.1.0**: The latest version includes all these updates, bringing enhanced security, performance improvements, and new features.
+---
+## What's Changed
+* Added Encrypted JSON Storage for Credentials by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10470
+* Mintlify version bump by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10508
+* Bump version and fix migrations order by @StpMax in https://github.com/mindsdb/mindsdb/pull/10509
+* Added Config Option to Change Name of Default Project by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10333
+* Metadata v3 by @QuantumPlumber in https://github.com/mindsdb/mindsdb/pull/10463
+* Converted the resource_id Column in json_storage to BigInt by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10514
+* Fix LLM release notes. by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10520
+* Del test of `/config/vars` by @StpMax in https://github.com/mindsdb/mindsdb/pull/10521
+* Add Document Name Lookup Retrieval Tool to Agent by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10512
+* added try demo button by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10523
+* Updated Gmail and Google Calendar Integrations to Use Encrypted Storage by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10516
+* Release 25.3.1.0 by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10535
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.2.4.0...v25.3.1.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.2.4.0 (2025-02-25)</h2>
+      <pre>## TL;DR
+
+### Enhancements & New Features
+- **Ray Serve Improvements**: Parameters can now be passed when creating a Ray Serve instance, enhancing flexibility in deployment.
+- **Datasource Management**: Users can now edit the list of datasources in the demo agent, improving configurability.
+- **Agent Support for New Models**: Added support for `o1-mini` and `o3-mini` models, expanding the range of available AI models.
+- **YouTube Integration Enhancement**: Added connection arguments for YouTube integration, making it easier to configure.
+
+### Performance & Optimization
+- **Process Optimization**: The `ProcessCache.clean` thread will no longer start if it is not needed, reducing unnecessary resource usage.
+- **Removal of Unused Endpoints**: Unnecessary API endpoints have been deleted, leading to a leaner and more efficient system.
+- **Parquet Improvements**: Enhancements made for better handling of Parquet data files.
+
+### Logging & Debugging
+- **Structured Logging**: Logs are now outputted in JSON format, making them easier to parse and analyze.
+- **Fixes for Web Handler**: Various web handling issues have been addressed, ensuring smoother operation.
+
+### Fixes & Bug Squashes
+- **Quick Response Removal**: The quick response feature has been removed to prevent unexpected issues.
+- **Case Sensitivity Fix**: The `DELETE` operation for skills and databases now properly handles case-sensitive entries.
+- **Rendering Fixes**: Corrected an issue with rendering quoted aliases.
+- **Local Context Summarizer**: Introduced an enhancement for local context summarization.
+- **CI Pipeline Stability**: Fixed errors occurring in the CI process to improve build reliability.
+
+### Documentation Updates
+- **Terminology Update**: Updated documentation to use “model” instead of “predictor” for consistency.
+- **Link Fixes**: Corrected links in model-type documentation for better navigation.
+
+---
+
+## What's Changed
+* Pass params in ray serve create by @dj013 in https://github.com/mindsdb/mindsdb/pull/10462
+* updates to the release_notes workflow by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10483
+* fix: remove quick response by @lucas-koontz in https://github.com/mindsdb/mindsdb/pull/10489
+* Output logs as JSON by @StpMax in https://github.com/mindsdb/mindsdb/pull/10480
+* Del unused endpoints by @StpMax in https://github.com/mindsdb/mindsdb/pull/10447
+* Allow to edit datasources list of demo agent by @StpMax in https://github.com/mindsdb/mindsdb/pull/10430
+* Add support for o1-mini and o3-mini to agents by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10490
+* docs: changed predictor to model by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10493
+* Parquet by @dj013 in https://github.com/mindsdb/mindsdb/pull/10449
+* docs(model-types): current path CardGroup links by @guspan-tanadi in https://github.com/mindsdb/mindsdb/pull/10465
+* Added the Connection Arguments for the YouTube Integration by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10501
+* Fix case sensitive `DELETE` of skill and database by @StpMax in https://github.com/mindsdb/mindsdb/pull/10492
+* Fix web handler by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10452
+* adding local context summarizer  by @fshabashev in https://github.com/mindsdb/mindsdb/pull/10498
+* Fix rendering of quoted alias by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10502
+* Fix ci error by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10506
+* Do not start `ProcessCache.clean` thread if it is not used by @StpMax in https://github.com/mindsdb/mindsdb/pull/10496
+* Version bump by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10507
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.2.3.0...v25.2.4.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.2.3.0 (2025-02-18)</h2>
+      <pre>## TL;DR
+
+### New Features
+- **API Endpoint for Validating Connection Parameters**: A new API endpoint has been added to validate connection parameters, improving user experience by ensuring connections are correctly configured before use. This helps prevent misconfigurations and debugging issues upfront.
+
+### Performance Improvements
+- **File Usage Speed-Up**: Enhancements have been made to optimize file usage, leading to better performance. Users should experience faster operations, particularly in scenarios where large files are handled.
+
+### Bug Fixes
+- **Fix Render for MSSQL**: An issue affecting MSSQL rendering has been resolved, ensuring smoother execution and fewer errors when using this database.
+- **Fix TimeGPT Invalid Key**: A fix has been implemented to address invalid key errors in TimeGPT, improving reliability and preventing authentication issues.
+
+### Codebase and Documentation Enhancements
+- **Custom Preparer in Render: Remove Empty Init**: The empty initializer has been removed from the custom preparer in render, leading to cleaner and more maintainable code.
+- **Updated Documentation for Using Environment Variables with Docker**: The documentation has been updated to provide clearer guidance on how to use environment variables with Docker, making it easier for users to configure their environments correctly.
+
+---
+
+## What's Changed
+- Added API Endpoint for Validating Connection Parameters in #10474  
+- File usage speed up in #10448  
+- Custom Preparer in Render: remove empty init in #10477  
+- Fix render for mssql in #10472  
+- Fix TimeGPT Invalid KEy in #10478  
+- Updated the Documentation for Using Environment Variables with Docker in #10456</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.2.2.2 (2025-02-14)</h2>
+      <pre>## TL;DR
+This release involves a version bump from v25.2.2.1 to v25.2.2.2. 
+
+## What's Changed
+* bump version 25.2.2.2 by @lucas-koontz in https://github.com/mindsdb/mindsdb/pull/10476
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.2.2.1...v25.2.2.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.2.2.1 (2025-02-14)</h2>
+      <pre>## TL;DR
+
+### Dependency Updates
+- **Bump nltk Version**: Upgraded nltk to a newer version for improved stability and compatibility.
+- **Bumped PyArrow Version**: Updated PyArrow to enhance performance and ensure compatibility with the latest features.
+- **Bump DuckDB Version**: Upgraded DuckDB version to improve query execution and overall efficiency.
+- **Fix an Issue with PyMuPDF**: Set PyMuPDF to version 1.25.2 to resolve compatibility issues and prevent potential errors.
+
+### Code and Functionality Improvements
+- **Update mindsdb_sql_toolkit.py**: Adjustments made to enhance functionality and optimize performance.
+- **Fix Getting Column List**: Resolved an issue where column lists were not retrieved correctly, ensuring better database interaction.
+- **Bump Version**: General version bump to maintain consistency and track improvements.
+
+### Documentation Enhancements
+- **Added Link to Minds**: Included a link to Minds for better navigation and accessibility.
+- **Docs for Partition Size Support**: Updated documentation to clarify partition size support, making it easier for users to configure their settings.
+- **Removed Redundant Main Function from BYOM**: Cleaned up the documentation by removing unnecessary functions, improving readability and maintainability.
+
+---
+
+## What's Changed
+
+* Bump nltk version by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10459
+* Update mindsdb_sql_toolkit.py by @torrmal in https://github.com/mindsdb/mindsdb/pull/10466
+* added link to minds by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10467
+* Bumped PyArrow Version by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10461
+* Bump duckdb version by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10458
+* docs for partition_size support by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10453
+* docs: removed the (redundant) main function from byom by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10469
+* Fix getting column list by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10468
+* Bump version by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10471
+* Fix an issue with pymupdf. Set it to 1.25.2 by @lucas-koontz in https://github.com/mindsdb/mindsdb/pull/10475
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.2.2.0...v25.2.2.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.2.2.0 (2025-02-11)</h2>
+      <pre>## TL;DR
+
+This update comes with a number of enhancements and fixes:
+
+**MySQL API Changes:**
+- The default user has been set in the MySQL API, enhancing the user experience.
+
+**Render Updates:**
+- Quoting in render has been adjusted, with implementation of consistent rules for tables, aliases, and identifiers. 
+- Single line selects with subqueries issue have been fixed as well.
+
+**MS OneDrive Updates:**
+- The retrieval of child items in MS OneDrive has been fixed, resulting in better system functionality.
+
+**File Handling:**
+- Improvements have been made in file handling in utilities for better operations.
+
+**Langfuse Handler:**
+- Metrics tracking has been added for tools and chains in Langfuse handler, allowing for better performance evaluation.
+
+**Sandbox Connection:**
+- A flag has been added to manage sandbox connections for the project, improving its control capabilities.
+
+## What's Changed
+
+* Set default user in MySQL API by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10439
+* Fix quoting in render: use same rules for tables/aliases/identifiers by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10438
+* Fix single line select with subqueries by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10440
+* Fixed Retrieval of Child Items in MS OneDrive by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10442
+* File handling in utilities by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10414
+* Add metrics tracking for tools and chains in Langfuse handler by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10437
+* Adding flag to manage sandbox connection (#10443) by @rdonato in https://github.com/mindsdb/mindsdb/pull/10444
+
+## New Contributors
+* @rdonato made their first contribution in https://github.com/mindsdb/mindsdb/pull/10444
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.2.1.2...v25.2.2.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.2.1.2 (2025-02-04)</h2>
+      <pre>## TL;DR
+This release includes an update aimed at enhancing the software efficiency. Specifically, this update focuses on providing a fix to the query parsing tool that improves its performance.
+
+## What's Changed
+* fix query parsing tool @StpMax in https://github.com/mindsdb/mindsdb/pull/10435
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.2.1.0...v25.2.1.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.2.1.0 (2025-02-04)</h2>
+      <pre>## TL;DR
+
+### Updates and Bug Fixes
+* Introduced updates in the Stream Retrieval Summarization and Reranking.
+* Test for sqlalchemy render has been skipped.
+* Fixed issues with agent streaming.
+* Errors in the rayserve handler are now efficiently handled.
+
+### Documentation
+* We've added new documents for Mindsdb's custom configuration and environment variables. 
+* There are also updates made to the agents.mdx documentation.
+
+### Other Changes
+* There's a change in the rendering part of the identifier where it is quoted if it was quoted when parsed.
+
+## What's Changed
+
+* Stream Retrieval Summarization and Reranking Updates by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10413
+* Skip test for sqlalchemy render by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10429
+* Fix agent streaming by @StpMax in https://github.com/mindsdb/mindsdb/pull/10428
+* Handling error in rayserve handler by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10427
+* docs for mindsdb custom config and env var by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10406
+* Update agents.mdx by @chandrevdw31 in https://github.com/mindsdb/mindsdb/pull/10433
+* Render part of identifier quoted if it was quoted when parsed by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10425
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.1.5.3...v25.2.1.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.1.5.3 (2025-01-30)</h2>
+      <pre>## TL;DR
+
+### Bug Fixes
+
+- Correction in the process of checking table permissions in the agent.
+
+**Please refer to the full change log for a more detailed overview of the changes introduced in this version.**
+
+## What's Changed
+
+* Fix checking table permissions in agent by @StpMax in https://github.com/mindsdb/mindsdb/pull/10422
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.1.5.2...v25.1.5.3
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.1.5.2 (2025-01-30)</h2>
+      <pre>## TL;DR
+
+In this release, the primary change revolves around improvements, particularly in the form of a fix implemented for the 'get_sample' template. 
+
+## What's Changed
+
+* Fix template for 'get_sample' by @StpMax in https://github.com/mindsdb/mindsdb/pull/10420
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.1.5.1...v25.1.5.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.1.5.1 (2025-01-30)</h2>
+      <pre>## TL;DR
+This release encapsulates several significant improvements and fixes in various aspects of the project, including enhancements to the embedding model, agent snowflake SQL skill, web handler documentation, and a new Knowledge Base filter. Further, it takes care of some issues associated with agents and upgrades the Snowflake connector.
+
+### Embedding Model 
+The embedding model has been enhanced. It now ensures it has a valid alias during its creation.
+
+### Agent Snowflake SQL Skill 
+Corrections have been implemented in the agent snowflake SQL skill. Table names are now processed in upper case.
+
+### Web Handler Documentation
+There has been an update in the web handler documentation.
+
+### Knowledge Base (KB)
+A new feature for the Knowledge Base has been introduced: filter by distance.
+
+### Agent Issues
+This release resolves some issues that were found with agents.
+
+### Snowflake Connector
+The Snowflake connector has been upgraded.
+
+## What's Changed
+
+* Ensure embedding model has a valid alias during creation by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10411
+* Fix agent snowflake sql skill: table names in upper case by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10415
+* docs - web handler by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10416
+* KB: filter by distance by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10386
+* Fix issues with agents by @StpMax in https://github.com/mindsdb/mindsdb/pull/10412
+* Upgrade Snowflake connector by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10419
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.1.5.0...v25.1.5.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.1.5.0 (2025-01-28)</h2>
+      <pre>## TL;DR
+
+**Efficiency Improvements & Bug Fixes**
+
+The previous method has been reverted to ReduceDocumentsChain in order to improve efficiency. Several bugs have been fixed, such as for the agent based on views and the handling of tables with dotted names. The issue with inserting KB from DB table has also been addressed, as well as the problem with the pgvector handler working with KB.
+
+**Updates & Enhancements**
+
+RayServeHandler now propagates predict parameters. The Hybrid Search has been updated to generate metadata filters. Metadata filters generated by LLM have been made more consistent. Additionally, mintlify has been upgraded to its latest version.
+
+**Additional Features**
+
+Prohibition on delete and edit have been added for specific objects. Support has been extended in One Drive Handler to include more file types, allowing it to handle PDF and TXT files.
+
+## What's Changed
+
+* Revert to ReduceDocumentsChain for efficiency by @QuantumPlumber in https://github.com/mindsdb/mindsdb/pull/10392
+* RayServeHandler propagates predict params by @dj013 in https://github.com/mindsdb/mindsdb/pull/10371
+* Update Hybrid Search to Generate Metadata Filters by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10391
+* fix: add trace_id by @lucas-koontz in https://github.com/mindsdb/mindsdb/pull/10388
+* Fix: agent with skill based on view by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10393
+* Upgrade mintlify to latest by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10399
+* Make LLM Generated Metadata Filters More Consistent by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10397
+* Handle tables with dots in names in agents. by @StpMax in https://github.com/mindsdb/mindsdb/pull/10394
+* Fix insert kb from db table by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10400
+* Prohibition on delete and edit for object with by @StpMax in https://github.com/mindsdb/mindsdb/pull/10408
+* Add types of files to one drive handler: pdf, txt by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10409
+* Fix pgvector handler, work with KB by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10401
+
+## New Contributors
+* @dj013 made their first contribution in https://github.com/mindsdb/mindsdb/pull/10371
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.1.4.0...v25.1.5.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.1.4.0 (2025-01-21)</h2>
+      <pre>## TL;DR
+
+This update includes important enhancements, bug fixes, and documentation updates. 
+
+### Enhancements
+
+* Sparse Retrieval support has now been introduced with Hybrid Search.
+* Added Reserved Keywords feature to SqlalchemyRender.
+* Schemas can now be used in agent's tales limitations.
+* Pinecone Integration has been refactored based on SDK updates.
+* The RAG reranker has been enhanced with async support and error handling.
+
+### Fixes
+
+* A bug affecting the asof join render has now been fixed.
+* The sort direction issue has been resolved.
+* Use of Triggers through Slack Integration has been fixed.
+* Several integration tests that were previously broken have been fixed.
+* An issue causing an error when creating a CHATBOT has been resolved.
+* An issue relating to the formation of SQL formulation was addressed.
+* Updates have been made for the new chromadb version and model with partition_size setting.
+* An issue with outlook.com usage in Portkey documentation was fixed.
+
+### Documentation
+
+* MongoDB connection parameters in the documentation have been updated.
+* Updates have been made to the others parts of documentation as well, including join-on updates and data overview logo.
+* Real-time Chat-bots (Slack) with Handler Memory has been enabled.
+* Documentation has been updated for working configurations with JIRA Cloud.
+
+### Others
+
+* New dispatch-and-wait workflow is now in use.
+* Auto-reload is now default for devel container.
+* Duplicated project name creation is now prevented.
+* Langfuse Client has been refactored and caught HTTP API errors are now logged.
+
+## What's Changed
+
+* Support Sparse Retrieval With Hybrid Search by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10365
+* Render asof join render by standard render by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10366
+* Added Reserved Keywords to SqlalchemyRender by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10361
+* HOTFIX: fixing sort direction by @fshabashev in https://github.com/mindsdb/mindsdb/pull/10369
+* Allow to use schemas in agent's tales limitations by @StpMax in https://github.com/mindsdb/mindsdb/pull/10194
+* Fixed Use of Triggers via the Slack Integration by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10353
+* Refactored Pinecone Integration Based on Updates Made to the SDK by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10338
+* docs - mongodb connection params updated by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10377
+* docs: join-on updates by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10375
+* Fixed Several Broken Integration Tests by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10372
+* Enhance RAG reranker with async support and error handling by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10376
+* docs - data overview logo by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10380
+* Use new dispatch-and-wait workflow by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10374
+* fix "Nonetype has no attribute model_name" error when CREATE CHATBOT by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10382
+* Run auto-reload on devel container by default. by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10384
+* Enabled Real-time Chat-bots (Slack) with Handler Memory by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10286
+* Prevent creating duplicated project names by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10332
+* added gaurdrail SQL checking to sql re-formulation. by @QuantumPlumber in https://github.com/mindsdb/mindsdb/pull/10387
+* Refactor Langfuse Client by @lucas-koontz in https://github.com/mindsdb/mindsdb/pull/10262
+* Add error logs for caught http api errors by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10383
+* Fixes for updated chromadb version by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10367
+* KB, allow to use model with partition_size setting by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10326
+* Fixed outlook.com and added Usage section to Portkey documentation by @abhirajadhikary06 in https://github.com/mindsdb/mindsdb/pull/10331
+* Got it working with JIRA Cloud and added a sample config with the README by @jbrass in https://github.com/mindsdb/mindsdb/pull/10355
+
+## New Contributors
+* @abhirajadhikary06 made their first contribution in https://github.com/mindsdb/mindsdb/pull/10331
+* @jbrass made their first contribution in https://github.com/mindsdb/mindsdb/pull/10355
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.1.3.0...v25.1.4.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.1.3.0 (2025-01-14)</h2>
+      <pre>## TL;DR
+This release contains several updates, fixes, and new features.
+
+**Improved Documentation and Configurations**
+- The extended config documents have been updated.
+- The Otel configurations have been updated and Otel logs and metrics have been disabled by default.
+
+**Updates in Retrieval and Run Manager**
+- SQL Retriever has been updated to use fallback retriever if it fails to retrieve documents.
+- Run manager has been propagated in SQL Retriever.
+
+**Sparse Vectors Support and Refactoring**
+- Sparse vector support has been introduced.
+- Additional sparse plumbing for mind has been added.
+- Sparse vector handling in knowledge base and pgvector handler has been refactored.
+- Pgvector utilities have been refactored and query result formatting has been fixed.
+- Operation order in PGVector has been standardized.
+
+**Embeddings and APIs**
+- PGVectorMDB Vector Store is now being used for Sparse Embeddings.
+- Support has been added for defining APIs to start via Environment Variable MINDSDB_APIS.
+
+**Other Updates**
+- General optimizations have been applied.
+- Documentation for Docker has been updated by omitting the exposure of the MySQL API's port.
+- Release 25.1.3.0 has been pushed.
+
+## What's Changed
+* updates to extended config docs by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10340
+* Use Fallback Retriever if SQL Retriever Doesn't Retrieve Documents by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10349
+* Propagate Run Manager in SQL Retriever by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10350
+* Sparse vector supp by @QuantumPlumber in https://github.com/mindsdb/mindsdb/pull/10352
+* Additional sparse plumbing for mind by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10356
+* Add sample rate to Otel by @lucas-koontz in https://github.com/mindsdb/mindsdb/pull/10351
+* Refactor sparse vector handling in knowledge base and pgvector handler by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10357
+* Use PGVectorMDB Vector Store for Sparse Embeddings by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10358
+* Feat/update otel configs by @lucas-koontz in https://github.com/mindsdb/mindsdb/pull/10318
+* fix: disable otel logs and metrics by default by @lucas-koontz in https://github.com/mindsdb/mindsdb/pull/10359
+* Refactor pgvector utilities and fix query result formatting by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10362
+*  optimizations by @StpMax in https://github.com/mindsdb/mindsdb/pull/10322
+* Added Support for Defining APIs to Start via the Environment Variable MINDSDB_APIS by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10354
+* Updated the Documentation for Docker by Omitting the Exposure of the MySQL API's Port by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10360
+* standardise op order in pgvector by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10364
+* Release 25.1.3.0 by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10363
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.1.2.1...v25.1.3.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.1.2.1 (2025-01-10)</h2>
+      <pre>## TL;DR
+This release consists of several major updates:
+
+1. Documentation Corrections: The documentation now recommends using `couchbasevector`.
+
+2. Additional Features: Support for sparse vectors has been added.
+
+3. Reliability Improvements: The SQL Retriever now has retries and fallback mechanisms to improve its reliability.
+
+4. RAG Pipeline Enhancements: Support for the MultiHopRetriever has been added to the RAG pipeline.
+
+5. Bug Fixes: A bug affecting the functioning of MultiHopRetriever has been fixed.
+
+6. Patch Release: A new patch (25.1.2.1) has been released.
+
+## What's Changed
+* Fix docs to use couchbasevector by @prajwal-pai77 in https://github.com/mindsdb/mindsdb/pull/10336
+* Sparse vector supp by @QuantumPlumber in https://github.com/mindsdb/mindsdb/pull/10342
+* Add Retries & Fallback to SQL Retriever by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10341
+* Add MultiHopRetriever support to RAG pipeline by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10344
+* Fix multihop retriever by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10346
+* Patch Release 25.1.2.1 by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10347
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v25.1.2.0...v25.1.2.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v25.1.2.0 (2025-01-07)</h2>
+      <pre>## TL;DR
+
+### Enhancements
+- Introduced Fallback Sort Logic for API Resources, improving the system's functionality.
+- Implemented measures to reduce system startup time and execute memory optimizations, ultimately aiming for better performance.
+
+### Updates
+- The project LICENSE has been updated, reflecting the most recent conditions.
+- Documentation has been revised and updated, ensuring it provides the latest, most accurate information.
+
+### Releases
+- The Release 25.1.2.0 has been executed, ushering in several updates and changes.
+
+## What's Changed
+* Added Fallback Sort Logic for API Resources by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10315
+* Reduce startup time and memory optimizations by @StpMax in https://github.com/mindsdb/mindsdb/pull/10327
+* Update LICENSE by @torrmal in https://github.com/mindsdb/mindsdb/pull/10334
+* updates to docs by @torrmal in https://github.com/mindsdb/mindsdb/pull/10335
+* Release 25.1.2.0 by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10339
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v24.12.4.0...v25.1.2.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v24.12.4.0 (2024-12-24)</h2>
+      <pre>## TL;DR
+
+### Updates
+* The sdist has been improved to perform better builds.
+* Updating the lightwood version has been accomplished to cater to enhanced features and improved performance.
+* Git+http dependencies have been revised to include most recent and advantageous changes.
+
+### New Features
+* Added SQLRetriever, which can now generate pgvector queries with specific metadata filters.
+* Introduction of Async embeddings and asyncio support for embeddings for robust and efficient modeling purposes.
+
+### Fixes and Optimizations
+* The 'extract' function in joins has been corrected for improved result accuracy.
+* The async usage in contextual chunking has been fixed for better async performance.
+* The issue of deploys being cancelled when one in the list fails is now resolved.
+* DataFrame types are now converted to Ints correctly when inserting into a table.
+* Inserting DataFrames with explicit NULL values into tables is now possible.
+* Several memory optimizations have been implemented for enhanced system efficiency.
+* The issue with the metrics decorator not being disabled when not initialized has been fixed.
+* HTTP server type and options have been revised for better server management.
+
+## What's Changed
+
+* Update sdist to build by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10298
+* Add SQLRetriever to Generate pgvector Queries With Metadata Filters by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10299
+* Allow Inserting DataFrames With Explicit NULL Values Into Tables by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10302
+* stop deploys being cancelled when one in the list fails by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10308
+* Convert DataFrame Types to Ints Correctly When Inserting Into Table by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10309
+* added asyncio support for embeddings by @QuantumPlumber in https://github.com/mindsdb/mindsdb/pull/10316
+* Async embeddings by @QuantumPlumber in https://github.com/mindsdb/mindsdb/pull/10317
+* Render frame of window function by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10310
+* Update lightwood version by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10307
+* fix async usage in contextual chunking by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10320
+* Memory optimizations by @StpMax in https://github.com/mindsdb/mindsdb/pull/10303
+* Disable metrics decorator if  not initialized by @StpMax in https://github.com/mindsdb/mindsdb/pull/10321
+* Set HTTP server type and options via  by @StpMax in https://github.com/mindsdb/mindsdb/pull/10313
+* Fix 'extract' function in joins by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10312
+* Update git+http dependencies by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10325
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v24.12.3.0...v24.12.4.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v24.12.2.2 (2024-12-19)</h2>
+      <pre>lightwood version updated: https://github.com/mindsdb/lightwood/pull/1244
+
+Changes: https://github.com/mindsdb/mindsdb/compare/v24.12.2.1...v24.12.2.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v24.12.3.0 (2024-12-17)</h2>
+      <pre>## TL;DR
+
+This release contains significant changes in a number of sectors:
+
+**Documentation:** 
+Documentation has received several updates detailing the lack of file size limit, information about thread safety in data integrations, custom configuration with HTTP authentication, and updates to the REST API for chatbot.
+
+**Features and Enhancements:** 
+A custom vllm embedding class has been added for langchain_embedding_handler. Support has been provided for Nomic embedding text formatting. In addition, chatbot creation and updates can now utilize database names via API. A feature for smart release notes has been implemented.
+
+**Bug Fixes and Improvements:** 
+Installation error related to httpfs in Amazon S3 integration has been fixed. The redshift handler issue has been resolved. Typos in the README file have been amended. A situation where Vector Database Tables were being dropped while deleting the Knowledge Base has been addressed.
+
+**Other Notable Changes:** 
+The Redirect URI has been improved for executing the MS Authentication flow. The class has been improved and now permits logging to files. It is now possible to see types in the information schema. There is now feature to enable copy storage while creating databases via the API.
+
+## What's Changed
+
+* docs - update no file size limit by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10275
+* add custom vllm embedding class for langchain_embedding_handler by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10271
+* docs: added thread_safe info to data integrations by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10267
+* Fixed httpfs Installation Error in Amazon S3 Integration by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10278
+* Enabled the Use of Database Name in Creating and Updating Chat-bots via API by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10277
+* docs for custom config - http auth by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10272
+* docs - rest api for chatbots update by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10282
+* Fix redshift handler by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10283
+* Add support for Nomic embedding text formatting by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10284
+* Add smart release notes by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10280
+* Added the Redirect URI in Executing the MS Authentication Flow by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10281
+* fix typos in README by @cliffordp in https://github.com/mindsdb/mindsdb/pull/10285
+* Don't Drop Vector Database Table When Deleting Knowledge Base by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10292
+* Improve  class and allow logging to file by @StpMax in https://github.com/mindsdb/mindsdb/pull/10287
+* Added a More Reliable Means of Generating Redirect URI for MS Authentication Flow by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10296
+* Show types in information schema by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10288
+* Enabled Copy Storage for Creating Database via API by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10294
+
+## New Contributors
+
+* @cliffordp made their first contribution in https://github.com/mindsdb/mindsdb/pull/10285
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v24.12.2.1...v24.12.3.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v24.12.2.1 (2024-12-11)</h2>
+      <pre>## What's Changed
+
+* Add User Input to Map Reduce Summarizer Chain by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10269
+* Don't Register Vectors for PGVector on Every Query by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10270
+* Hide sensitive info from logging by @StpMax in https://github.com/mindsdb/mindsdb/pull/10265
+* docs: http auth lifetime param by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10266
+* Sample db docs by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10273
+* Fix: 'files' database is not created automatically  by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10274
+
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v24.12.2.0...v24.12.2.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v24.12.2.0 (2024-12-10)</h2>
+      <pre>## What's Changed
+
+* Summary preprocessor by @QuantumPlumber in https://github.com/mindsdb/mindsdb/pull/10232
+* fix:  Broken Link(for slack) syntax by @AkashJana18 in https://github.com/mindsdb/mindsdb/pull/10238
+* docs: langchain provider setup by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10240
+* Set model status to 'error' if training process is missed by @StpMax in https://github.com/mindsdb/mindsdb/pull/10217
+* Refactor document preprocessor and enhance logging for debug by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10239
+* Upgrade multipart by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10245
+* Text chunk model by @QuantumPlumber in https://github.com/mindsdb/mindsdb/pull/10247
+* Speed up of first query time by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10230
+* Add VLLM embedding tests and improve configuration logic by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10249
+* Bumped `scikit-learn` to 1.5.0 by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10234
+* Add `max_restart_interval_seconds` config option by @StpMax in https://github.com/mindsdb/mindsdb/pull/10241
+* LLM function: get api key from LLM_FUNCTION_API_KEY by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10252
+* docs: llm() function updates by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10203
+* Fixed the Errors Associated with Importing Handler Modules by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10233
+* added list sheets and select sheets for Excel files by @parthiv11 in https://github.com/mindsdb/mindsdb/pull/10246
+* Slack Integration Improvements by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10227
+* docs: custom config - restart by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10257
+* Ensure Embeddings model is used from knowledge Base by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10258
+* Added Unit Tests for Slack Tables and Fixed a Few Bugs by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10261
+* Make HTTP session lifetime configurable via env vars by @StpMax in https://github.com/mindsdb/mindsdb/pull/10259
+* Snowflake fixes for TPC benchmarks by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10251
+* Slack Documentation Improvements by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10250
+* Test render using parser by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10263
+* Added MindsDB Java SDK as community SDK by @md-abid-hussain in https://github.com/mindsdb/mindsdb/pull/10100
+* Fix: Table not found for column (don't check alias of a query)  by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10254
+* docs: files into integrations by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10256
+* Fix TS with CTE by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10235
+
+
+## New Contributors
+
+* @md-abid-hussain made their first contribution in https://github.com/mindsdb/mindsdb/pull/10100
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v24.12.1.0...v24.12.2.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v24.12.1.0 (2024-12-03)</h2>
+      <pre>## What's Changed
+
+* Add auto-heal to auto-restart unhealthy containers in docker-compose by @hamishfagg in https://github.com/mindsdb/mindsdb/pull/10200
+* Change type of columns `llm_log.input` and `llm_log.output` to JSON by @StpMax in https://github.com/mindsdb/mindsdb/pull/10224
+* docs: knowledge base sql docs updates by @martyna-mindsdb in https://github.com/mindsdb/mindsdb/pull/10204
+
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v24.11.4.2...v24.12.1.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v24.11.4.2 (2024-11-29)</h2>
+      <pre>## What's Changed
+
+* Improve MapReduceSummarizerChain Performance by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10225
+* Pin OpenAI to 1.55.3 in Langchain Handlers by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10226
+* Box integration by @Better-Boy in https://github.com/mindsdb/mindsdb/pull/10124
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v24.11.4.1...v24.11.4.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v24.11.4.1 (2024-11-28)</h2>
+      <pre>## What's Changed
+
+* MySQL API memory optimisation by @StpMax in https://github.com/mindsdb/mindsdb/pull/10205
+* Add Chain to Summarize Source Documents from Chunks to RAG Pipeline by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10214
+* Use Document Summaries as Additional RAG Context by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10218
+* Refactor Reranker configuration and initialization by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10219
+* Add Option to Prune Reranked Documents in RAG Pipeline by @tmichaeldb in https://github.com/mindsdb/mindsdb/pull/10220
+* Added the `threads` Table to the Slack Documentation by @MinuraPunchihewa in https://github.com/mindsdb/mindsdb/pull/10221
+* LLM function: arbitrary settings for provider by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10163
+* TPC-DS fixes by @ea-rus in https://github.com/mindsdb/mindsdb/pull/10216
+* Upgrade to latest Lightwood by @ZoranPandovski in https://github.com/mindsdb/mindsdb/pull/10222
+* fix bug with kb by @dusvyat in https://github.com/mindsdb/mindsdb/pull/10210
+
+
+
+**Full Changelog**: https://github.com/mindsdb/mindsdb/compare/v24.11.4.0...v24.11.4.1</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

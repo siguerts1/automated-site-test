@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for langchain-ai/langchain"/>
+  <title>langchain-ai/langchain Release Notes</title>
+</head>
+<body>
+  <h1>🚀 langchain-ai/langchain - Release Notes</h1>
+  
+    <section>
+      <h2>langchain-groq==0.3.2 (2025-03-31)</h2>
+      <pre>Changes since langchain-groq==0.3.1
+
+groq: release 0.3.2 (#30570)
+langchain-groq: Add response metadata when streaming (#30379)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain==0.3.22 (2025-03-31)</h2>
+      <pre>Changes since langchain==0.3.21
+
+langchain: release 0.3.22 (#30557)
+Fix incorrect import path for AzureAIChatCompletionsModel (#30417)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-mistralai==0.2.10 (2025-03-27)</h2>
+      <pre>Changes since langchain-mistralai==0.2.9
+
+mistralai: release 0.2.10 (#30526)
+Fix: Enable max_retries Parameter in ChatMistralAI Class (#30448)
+mistral[patch]: check types in adding model_name to response_metadata (#30499)
+standard-tests[patch]: require model_name in response_metadata if returns_usage_metadata (#30497)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-fireworks==0.2.9 (2025-03-27)</h2>
+      <pre>Changes since langchain-fireworks==0.2.8
+
+fireworks: release 0.2.9 (#30527)
+standard-tests[patch]: require model_name in response_metadata if returns_usage_metadata (#30497)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-tests==0.3.17 (2025-03-26)</h2>
+      <pre>Changes since langchain-tests==0.3.16
+
+tests: release 0.3.17 (#30502)
+standard-tests[patch]: require model_name in response_metadata if returns_usage_metadata (#30497)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-openai==0.3.11 (2025-03-26)</h2>
+      <pre>Changes since langchain-openai==0.3.10
+
+openai: release 0.3.11 (#30503)
+openai[patch]: support streaming token counts in AzureChatOpenAI (#30494)
+infra: handle flaky tests (#30501)
+openai[patch]: attempt to make test less flaky (#30463)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-core==0.3.49 (2025-03-26)</h2>
+      <pre>Changes since langchain-core==0.3.48
+
+core[patch]: release 0.3.49 (#30500)
+core[patch]: store model names on usage callback handler (#30487)
+core[patch]: mark usage callback handler as beta (#30486)
+core[patch]: Remove old accidental commit (#30483)
+core[patch]: add token counting callback handler (#30481)
+core[patch]: Fix handling of `title` when tool schema is specified manually via JSONSchema (#30479)
+docs[patch]: update trim_messages doc (#30462)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-tests==0.3.16 (2025-03-24)</h2>
+      <pre>Changes since langchain-tests==0.3.15
+
+standard-tests: release 0.3.16 (#30464)
+langchain-tests: allow test_serdes for packages outside the default valid namespaces (#30343)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-openai==0.3.10 (2025-03-24)</h2>
+      <pre>Changes since langchain-openai==0.3.9
+
+openai[patch]: bump openai sdk (#30461)
+openai: release 0.3.10 (#30460)
+openai[patch]: support multi-turn computer use (#30410)
+openai[patch]: trace strict in structured_output_kwargs (#30425)
+Fix typo: change 'ben' to 'be' in comment (#30358)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-core==0.3.48 (2025-03-24)</h2>
+      <pre>Changes since langchain-core==0.3.47
+
+core[patch]: release 0.3.48 (#30458)
+core: add tool_call exclusion in filter_message (#30289)
+docs[patch]: add warning to token counter docstring (#30426)
+core(mermaid): allow greater customization (#29939)
+core[patch]: optimize trim_messages (#30327)
+core[patch]: more tests for trim_messages (#30421)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-ollama==0.3.0 (2025-03-21)</h2>
+      <pre>Changes since langchain-ollama==0.2.3
+
+`langchain-ollama` 0.3.0 updates the default method for `with_structured_output` to Ollama's dedicated [structured output feature](https://ollama.com/blog/structured-outputs). This corresponds to `method="json_schema"`. Previously, `with_structured_output` used Ollama's tool-calling features for this method.
+
+**To restore old behavior**: explicitly specify `method="function_calling"` when calling `with_structured_output`:
+```python
+llm = ChatOllama(model="...").with_structured_output(
+    schema, method="function_calling"
+)
+```
+
+## Other features
+
+Added support for parsing reasoning content in Deepseek models:
+```python
+llm = ChatOllama(model="deepseek-r1:1.5b", extract_reasoning=True)
+
+result = llm.invoke("What is 3^3?")
+result.content  # "3^3 is..."
+result.additional_kwargs["reasoning_content"]  # "<think> To calculate 3^3, I start by... </think>"
+```
+
+## Detailed changelog
+
+ollama: release 0.3.0 (#30420)
+ollama: add reasoning model support (e.g. deepseek) (#29689)
+(Ollama) Fix String Value parsing in  _parse_arguments_from_tool_call (#30154)
+ollama[minor]: update default method for structured output (#30273)
+langchain_ollama: Support keep_alive in embeddings (#30251)
+core[patch]: update structured output tracing (#30123)
+core: basemessage.text() (#29078)
+multiple: fix uv path deps (#29790)
+infra: add UV_FROZEN to makefiles (#29642)
+infra: migrate to uv (#29566)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-deepseek==0.1.3 (2025-03-21)</h2>
+      <pre>Changes since langchain-deepseek==0.1.2
+
+deepseek: temporarily bypass tests (#30423)
+deepseek: release 0.1.3 (#30422)
+partner: ChatDeepSeek on openrouter not returning reasoning (#30240)
+multiple: support `strict` and `method` in with_structured_output (#30385)
+deepseek: install local langchain-tests in test deps (#30198)
+[Exception Handling] DeepSeek JSONDecodeError (#29758)
+core: basemessage.text() (#29078)
+multiple: fix uv path deps (#29790)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-xai==0.2.2 (2025-03-20)</h2>
+      <pre>Changes since langchain-xai==0.2.1
+
+xai: release 0.2.2 (#30403)
+multiple: enforce standards on tool_choice (#30372)
+multiple: support `strict` and `method` in with_structured_output (#30385)
+core: basemessage.text() (#29078)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-tests==0.3.15 (2025-03-20)</h2>
+      <pre>Changes since langchain-tests==0.3.14
+
+tests: release 0.3.15 (#30397)
+multiple: enforce standards on tool_choice (#30372)
+multiple: support `strict` and `method` in with_structured_output (#30385)
+langchain-tests: skip instead of passing image message tests (#30375)
+langchain-tests: allow subclasses to add addition, non-standard tests (#30204)
+openai[patch]: support structured output via Responses API (#30265)
+standard tests: test simple agent loop (#30268)
+standard-tests, openai: bump core (#30202)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-mistralai==0.2.9 (2025-03-20)</h2>
+      <pre>Changes since langchain-mistralai==0.2.8
+
+mistral: release 0.2.9 (#30402)
+multiple: enforce standards on tool_choice (#30372)
+multiple: support `strict` and `method` in with_structured_output (#30385)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-groq==0.3.1 (2025-03-20)</h2>
+      <pre>Changes since langchain-groq==0.3.0
+
+groq: release 0.3.1 (#30401)
+multiple: enforce standards on tool_choice (#30372)
+multiple: support `strict` and `method` in with_structured_output (#30385)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-fireworks==0.2.8 (2025-03-20)</h2>
+      <pre>Changes since langchain-fireworks==0.2.7
+
+fireworks: release 0.2.8 (#30400)
+multiple: support `strict` and `method` in with_structured_output (#30385)
+core[patch]: update structured output tracing (#30123)
+multiple: fix uv path deps (#29790)
+infra: add UV_FROZEN to makefiles (#29642)
+infra: migrate to uv (#29566)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-core==0.3.47 (2025-03-20)</h2>
+      <pre>Changes since langchain-core==0.3.46
+
+core: release 0.3.47 (#30396)
+multiple: enforce standards on tool_choice (#30372)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-groq==0.3.0 (2025-03-19)</h2>
+      <pre>Changes since langchain-groq==0.2.5
+
+groq: release 0.3.0 (#30374)
+groq[minor]: remove default model (#30341)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-core==0.3.46 (2025-03-19)</h2>
+      <pre>Changes since langchain-core==0.3.45
+
+core[patch]: release 0.3.46 (#30383)
+Dereference run tree (#30377)
+Unset context to None in var (#30380)
+Unset context after step (#30378)
+core[patch]: add util for approximate token counting (#30373)
+Rm test for parent_run presence (#30356)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain==0.3.21 (2025-03-18)</h2>
+      <pre>Changes since langchain==0.3.20
+
+langchain[patch]: update text-splitters min bound (#30352)
+langchain[patch]: lock with latest text-splitters (#30350)
+langchain: release 0.3.21 (#30348)
+Core: Adding Azure AI to Supported Chat Models (#30342)
+fix(core): Ignore missing secrets on deserialization (#30252)
+openai[patch]: support Responses API (#30231)
+Fixed an issue with the OpenAI Assistant's 'retrieval' tool and adding support for the 'attachments' parameter (#30006)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-text-splitters==0.3.7 (2025-03-18)</h2>
+      <pre>Changes since langchain-text-splitters==0.3.6
+
+text-splitters: release 0.3.7 (#30347)
+text-splitters: Add JSFrameworkTextSplitter for Handling JavaScript Framework Code (#28972)
+multiple: fix uv path deps (#29790)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-community==0.3.20 (2025-03-18)</h2>
+      <pre>Changes since langchain-community==0.3.19
+
+community: release 0.3.20 (#30354)
+support return reasoning content for models like qwq in dashscope (#30317)
+community: fix import exception too constrictive (#30218)
+community: support in-memory data (Blob.from_data) in all audio parsers (#30262)
+community: add 'extract' mode to FireCrawlLoader for structured data extraction (#30242)
+community: fix CPU support for FasterWhisperParser (implicit compute type for WhisperModel) (#30263)
+community: cube document loader - do not load non-public dimensions and measures (#30286)
+community[patch]: fix bilibili loader handling of multi-page content (#30283)
+community: cube document loader - fix logging (#30285)
+community[fix] : Pass API_KEY as argument (#30272)
+community: Remove the system message count limit for ChatTongyi. (#30192)
+fixes#30182: update tool names to match OpenAI function name pattern (#30183)
+community[patch]: ChatPerplexity: track usage metadata (#30175)
+add JiebaLinkExtractor for chinese doc extracting (#30150)
+community: fix AttributeError when creating LanceDB vectorstore (#30127)
+community: make DashScope models support Partial Mode for text continuation. (#30108)
+Add request_id field to improve request tracking and debugging (for Tongyi model) (#30110)
+community: fix Jira API wrapper failing initialization with cloud param (#30117)
+community[minor]: Fix regular expression in visualize and outlines modules. (#30002)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-openai==0.3.9 (2025-03-17)</h2>
+      <pre>Changes since langchain-openai==0.3.8
+
+Support for OpenAI [Responses API](https://platform.openai.com/docs/api-reference/responses).
+
+Specify use of Responses API as an init param:
+```python
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(
+    model="gpt-4o-mini",
+    use_responses_api=True,
+)
+```
+
+`ChatOpenAI` will also automatically route through the Responses API if a feature specific to that API is used:
+```python
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(model="gpt-4o-mini")
+
+llm.invoke(
+    "What was a positive news story from today?",
+    tools=[{"type": "web_search_preview"}],
+)
+```
+
+Details:
+
+openai[patch]: release 0.3.9 (#30325)
+openai[patch]: support additional Responses API features (#30322)
+openai[patch]: support structured output via Responses API (#30265)
+openai[patch]: support Responses API (#30231)
+standard-tests, openai: bump core (#30202)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-anthropic==0.3.10 (2025-03-14)</h2>
+      <pre>Changes since langchain-anthropic==0.3.9
+
+anthropic: release 0.3.10 (#30287)
+anthropic: support built-in tools, improve docs (#30274)
+core[patch]: update structured output tracing (#30123)
+anthropic[patch]: add PDF input example to API reference (#30156)
+core, openai, standard-tests: improve OpenAI compatibility with Anthropic content blocks (#30128)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-mistralai==0.2.8 (2025-03-13)</h2>
+      <pre>Changes since langchain-mistralai==0.2.7
+
+mistralai[patch]: bump core (#30278)
+mistral: release 0.2.8 (#30275)
+mistral[patch]: set global ssl context (#30189)
+core[patch]: update structured output tracing (#30123)
+anthropic, mistral: return `model_name` in response metadata (#30048)
+mistral[patch]: support model_kwargs (#29838)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-core==0.3.45 (2025-03-13)</h2>
+      <pre>Changes since langchain-core==0.3.44
+
+core: release 0.3.45 (#30277)
+fix(core): Ignore missing secrets on deserialization (#30252)
+openai[patch]: support Responses API (#30231)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-core==0.3.45-rc.1 (2025-03-12)</h2>
+      <pre>Changes since langchain-core==0.3.44
+
+core rc 0.3.45-rc.1
+Merge branch 'master' into cc/oai_responses
+streaming
+fmt
+fmt</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-core==0.3.44 (2025-03-11)</h2>
+      <pre>Changes since langchain-core==0.3.43
+
+core[patch]: release 0.3.44 (#30236)
+core[patch]: support single-node subgraphs and put subgraph nodes under the respective subgraphs (#30234)
+Flush (#30157)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-openai==0.3.8 (2025-03-07)</h2>
+      <pre>Changes since langchain-openai==0.3.7
+
+openai[patch]: release 0.3.8 (#30164)
+core[patch]: update structured output tracing (#30123)
+core, openai, standard-tests: improve OpenAI compatibility with Anthropic content blocks (#30128)
+docs: Fix typo in code samples for max_tokens_for_prompt (#30088)
+openai[patch]: add unit test (#30022)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

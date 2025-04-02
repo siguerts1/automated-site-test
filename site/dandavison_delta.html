@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for dandavison/delta"/>
+  <title>dandavison/delta Release Notes</title>
+</head>
+<body>
+  <h1>🚀 dandavison/delta - Release Notes</h1>
+  
+    <section>
+      <h2>0.18.2 (2024-09-11)</h2>
+      <pre>This patch release fixes various panics reported by users that were due to v0.1.13 of the `unicode-width` crate. See https://github.com/dandavison/delta/pull/1858 and https://github.com/unicode-rs/unicode-width/issues/66.
+
+## What's Changed
+* Move AmbiguousDiffMinusCounter to hunk_header by @dandavison in https://github.com/dandavison/delta/pull/1825
+* Fix `Catppuccin Latte` name in `LIGHT_SYNTAX_THEMES` list by @injust in https://github.com/dandavison/delta/pull/1823
+* Handle quoted file paths in hunk headers by @th1000s in https://github.com/dandavison/delta/pull/1840
+* Fix clippy warnings by @bash in https://github.com/dandavison/delta/pull/1851
+* Allow `--dark` to override dark/light detected from syntax theme by @bash in https://github.com/dandavison/delta/pull/1843
+* Upgrade and pin unicode-width to v0.1.12 by @th1000s in https://github.com/dandavison/delta/pull/1858
+
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.18.1...0.18.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.18.1 (2024-08-24)</h2>
+      <pre>This patch release fixes an issue with `delta --version` that was causing problems downstream (https://github.com/dandavison/delta/issues/1818).
+
+## What's Changed
+* Add hyperlinks section to manual by @dandavison in https://github.com/dandavison/delta/pull/1816
+* Added `platypus` theme by @sarpuser in https://github.com/dandavison/delta/pull/1819
+* Don't use pager for --version by @dandavison in https://github.com/dandavison/delta/pull/1824
+
+## New Contributors
+* @sarpuser made their first contribution in https://github.com/dandavison/delta/pull/1819
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.18.0...0.18.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.18.0 (2024-08-16)</h2>
+      <pre>As usual, tons of excellent contributions, and one contribution by me! @th1000s has made a huge number of important and difficult improvements to delta and helped with many issues over the few years since the project started, and so I'm happy to say that he's co-maintaining the project with me nowadays. Thanks to all contributors for the improvements below!
+
+## What's Changed
+* Link to Repository from Manual by @bash in https://github.com/dandavison/delta/pull/1657
+* Stop highlighting unchanged whitespace by @phillipwood in https://github.com/dandavison/delta/pull/1659
+* Add .gitattributes rules for rust files by @phillipwood in https://github.com/dandavison/delta/pull/1245
+* Repair --default-language, and highlight using full filename by @th1000s in https://github.com/dandavison/delta/pull/1549
+* tests: prevent parallel env var access by @th1000s in https://github.com/dandavison/delta/pull/1681
+* CI: fix macOS build by @th1000s in https://github.com/dandavison/delta/pull/1696
+* Only use `nosort` in bash <4.4 by @martinml in https://github.com/dandavison/delta/pull/1683
+* Don't read git files when --no-gitconfig is given + unused variables by @th1000s in https://github.com/dandavison/delta/pull/1728
+* tests: add insta for snapshot testing by @th1000s in https://github.com/dandavison/delta/pull/1739
+* tests: set terminal width to 43 by @th1000s in https://github.com/dandavison/delta/pull/1741
+* Fix panic when blame-palette is empty by @thorio in https://github.com/dandavison/delta/pull/1737
+* Make relative-paths work with binary files by @th1000s in https://github.com/dandavison/delta/pull/1740
+* Fix github links from master to main by @madeddie in https://github.com/dandavison/delta/pull/1709
+* Update `terminal-colorsaurus` by @bash in https://github.com/dandavison/delta/pull/1699
+* Make less version >= 633 behave like previous versions wrt. Nerd Fonts by @th1000s in https://github.com/dandavison/delta/pull/1762
+* Update `catppuccin-latte` casing in `LIGHT_SYNTAX_THEMES` list by @injust in https://github.com/dandavison/delta/pull/1745
+* deps: bump libc from 0.2.153 to 0.2.155 by @wxpppp in https://github.com/dandavison/delta/pull/1715
+* Add missing `--file-*-label` option to `--navigate` docs by @injust in https://github.com/dandavison/delta/pull/1744
+* Fix copy-paste typo by @injust in https://github.com/dandavison/delta/pull/1767
+* Update syntect to 5.2.0 by @timhillgit in https://github.com/dandavison/delta/pull/1672
+* Disable light mode detection in tests by @bash in https://github.com/dandavison/delta/pull/1765
+* Add --max-syntax-highlighting-length, set to 400 by @th1000s in https://github.com/dandavison/delta/pull/1746
+* chore: cleanup brew formula file in favor of core tap by @chenrui333 in https://github.com/dandavison/delta/pull/1773
+* wrap --help output, fix rust 1.80 build by @th1000s in https://github.com/dandavison/delta/pull/1440
+* Fix delta-toggle shell script by @dandavison in https://github.com/dandavison/delta/pull/1794
+* Do not wrap short help (-h) output by @th1000s in https://github.com/dandavison/delta/pull/1800
+* Implement --diff-args by @dandavison in https://github.com/dandavison/delta/pull/1697
+* Handle ambiguous diff header, '--- ' can also be present in a minus hunk by @th1000s in https://github.com/dandavison/delta/pull/1787
+* cd: build binaries targeting GNU libc on ubuntu-20.04, not latest by @th1000s in https://github.com/dandavison/delta/pull/1805
+
+## New Contributors
+* @martinml made their first contribution in https://github.com/dandavison/delta/pull/1683
+* @thorio made their first contribution in https://github.com/dandavison/delta/pull/1737
+* @madeddie made their first contribution in https://github.com/dandavison/delta/pull/1709
+* @injust made their first contribution in https://github.com/dandavison/delta/pull/1745
+* @wxpppp made their first contribution in https://github.com/dandavison/delta/pull/1715
+* @timhillgit made their first contribution in https://github.com/dandavison/delta/pull/1672
+* @chenrui333 made their first contribution in https://github.com/dandavison/delta/pull/1773
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.17.0...0.18.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.17.0 (2024-03-16)</h2>
+      <pre>Thanks to the many contributors! Particular highlights are
+
+Thanks to @bash's work, delta now automatically detects whether your terminal has a light/dark background (unless you specify with `--light` or `--dark`):
+
+* Detect Dark/Light Mode from Terminal by @bash in https://github.com/dandavison/delta/pull/1615
+
+@joshtriplett solved the long-standing problem of correctly parsing traditional grep output, e.g. `git grep`, `grep`, etc. Until now there had been annoying parse ambiguities related to separator characters in file paths. This is particularly valuable for `git grep` since it has interesting features such as `git grep -W` (see https://github.com/dandavison/delta/issues/769)
+
+* Parse filename unambiguously using color escape sequences by @joshtriplett in https://github.com/dandavison/delta/pull/1634
+
+@imbrish fixed two important bugs and added the ability to set a default language (e.g. for executable shell scripts with no file name suffix)
+* Honor default-language option by @imbrish in https://github.com/dandavison/delta/pull/1655
+* Preserve "Binary files" line in color_only mode by @imbrish in https://github.com/dandavison/delta/pull/1649
+* Fix headers of modified binary files by @imbrish in https://github.com/dandavison/delta/pull/1629
+
+
+## What's Changed
+* Add mellow-barbet theme by @kvrohit in https://github.com/dandavison/delta/pull/1452
+* Fix alignment in blame mode when author name contains unicode accent modifiers by @hpwxf in https://github.com/dandavison/delta/pull/1456
+* Replace usage of the `atty` crate with `std::io::IsTerminal` trait by @nickelc in https://github.com/dandavison/delta/pull/1465
+* Refactor subcommand handling by @dandavison in https://github.com/dandavison/delta/pull/1467
+* Bump clap to v4.3.14 and regenerate Cargo.lock by @th1000s in https://github.com/dandavison/delta/pull/1472
+* Fix issue where pager would be set to `more` or `most` by @ippsav in https://github.com/dandavison/delta/pull/1494
+* Improve binary file added output  by @Sondeyy in https://github.com/dandavison/delta/pull/1502
+* Remove the navigation setting from themes. by @Qwerty-133 in https://github.com/dandavison/delta/pull/1503
+* Add assertion failure message by @dandavison in https://github.com/dandavison/delta/pull/1508
+* Fix handling of tabs in grep output by @dandavison in https://github.com/dandavison/delta/pull/1507
+* Support users other than git in github SSH URLs by @dandavison in https://github.com/dandavison/delta/pull/1509
+* Update installation instructions for openSUSE by @sorairolake in https://github.com/dandavison/delta/pull/1550
+* feat: generate completion subcommand by @plustik in https://github.com/dandavison/delta/pull/1561
+* Make hunk header code fragment display optional by @zmc in https://github.com/dandavison/delta/pull/1568
+* Adding new theme in themes.gitconfig by @pablospe in https://github.com/dandavison/delta/pull/1544
+* feat(theme): add arctic-fox custom theme by @anthony-halim in https://github.com/dandavison/delta/pull/1539
+* --show-themes exit with error when no themes by @dandavison in https://github.com/dandavison/delta/pull/1611
+* Bug fix:  reset syntax highlighter across grep sections by @dandavison in https://github.com/dandavison/delta/pull/1613
+* Switch from vte to anstyle-parse (already used in dependencies) by @joshtriplett in https://github.com/dandavison/delta/pull/1638
+* Parse filename unambiguously using color escape sequences by @joshtriplett in https://github.com/dandavison/delta/pull/1634
+* Fix headers of modified binary files by @imbrish in https://github.com/dandavison/delta/pull/1629
+* Upgrade bytelines to latest, without default features by @whitfin in https://github.com/dandavison/delta/pull/1597
+* Add Catppuccin latte to light syntax themes by @dvic in https://github.com/dandavison/delta/pull/1573
+* Update Arch Linux package URL in installation.md by @felixonmars in https://github.com/dandavison/delta/pull/1569
+* Change Winget Releaser job to `ubuntu-latest` by @sitiom in https://github.com/dandavison/delta/pull/1512
+* use wildcard in suggested true color fix for tmux by @jcaplan in https://github.com/dandavison/delta/pull/1560
+* Update git2 by @dandavison in https://github.com/dandavison/delta/pull/1647
+* Add `corvus` theme by @evilwaveforms in https://github.com/dandavison/delta/pull/1652
+* Preserve "Binary files" line in color_only mode by @imbrish in https://github.com/dandavison/delta/pull/1649
+* Detect Dark/Light Mode from Terminal by @bash in https://github.com/dandavison/delta/pull/1615
+* Honor default-language option by @imbrish in https://github.com/dandavison/delta/pull/1655
+
+## New Contributors
+* @kvrohit made their first contribution in https://github.com/dandavison/delta/pull/1452
+* @hpwxf made their first contribution in https://github.com/dandavison/delta/pull/1456
+* @ippsav made their first contribution in https://github.com/dandavison/delta/pull/1494
+* @Sondeyy made their first contribution in https://github.com/dandavison/delta/pull/1502
+* @Qwerty-133 made their first contribution in https://github.com/dandavison/delta/pull/1503
+* @fritzrehde made their first contribution in https://github.com/dandavison/delta/pull/1553
+* @sorairolake made their first contribution in https://github.com/dandavison/delta/pull/1550
+* @plustik made their first contribution in https://github.com/dandavison/delta/pull/1561
+* @zmc made their first contribution in https://github.com/dandavison/delta/pull/1568
+* @pablospe made their first contribution in https://github.com/dandavison/delta/pull/1544
+* @anthony-halim made their first contribution in https://github.com/dandavison/delta/pull/1539
+* @joshtriplett made their first contribution in https://github.com/dandavison/delta/pull/1638
+* @imbrish made their first contribution in https://github.com/dandavison/delta/pull/1629
+* @whitfin made their first contribution in https://github.com/dandavison/delta/pull/1597
+* @dvic made their first contribution in https://github.com/dandavison/delta/pull/1573
+* @felixonmars made their first contribution in https://github.com/dandavison/delta/pull/1569
+* @jcaplan made their first contribution in https://github.com/dandavison/delta/pull/1560
+* @evilwaveforms made their first contribution in https://github.com/dandavison/delta/pull/1652
+* @bash made their first contribution in https://github.com/dandavison/delta/pull/1615
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.16.5...0.17.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.16.5 (2023-06-03)</h2>
+      <pre>This is a follow-up release providing the various binaries that were not released with 0.16.4. It also makes some adjustments to delta's (rip)grep support.
+
+## What's Changed
+* Increase number of characters shown in submodule hashes by @dandavison in https://github.com/dandavison/delta/pull/1421
+* Fix typo in publishing build job & restore cross-compilation by @nickelc in https://github.com/dandavison/delta/pull/1430
+* 3819e94 Drop grep-header-style option by @dandavison 
+* a28231a Honor grep-header-decoration-style for ripgrep output by @dandavison 
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.16.4...0.16.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.16.4 (2023-06-02)</h2>
+      <pre>It's 6 months since the last release so this one brings quite a few changes. Thanks very much to all contributors, especially @nickelc for a huge number of contributions, and @wescande for his work on improving whitespace highlighting. With this release delta can now display grep output in (hopefully) exactly the same layout that ripgrep does, but adding syntax highlighting, hyperlinks, and navigation. Use `ripgrep --json ... | delta` for that, or set `grep-output-type = ripgrep` to get that output style from `git grep` etc.
+
+This release does not contain binaries for `x86_64-unknown-linux-musl`, `i686-unknown-linux-gnu`, `arm-unknown-linux-gnueabihf`, or `aarch64-unknown-linux-gnu` because the cross-compilation GitHub Actions jobs were broken at the time of release. I'll issue a follow-up release including them when that's fixed.
+
+## What's Changed
+* Address deprecated clap features by @tjquillan in https://github.com/dandavison/delta/pull/1251
+* Fix clippy warnings by @nickelc in https://github.com/dandavison/delta/pull/1298
+* Replace unmaintained/outdated GitHub Actions by @nickelc in https://github.com/dandavison/delta/pull/1317
+* Reduce allocations during `--show-colors` by @nickelc in https://github.com/dandavison/delta/pull/1315
+* Fix the`--show-themes` command by @nickelc in https://github.com/dandavison/delta/pull/1320
+* Fixed broken link to README by @zonuexe in https://github.com/dandavison/delta/pull/1185
+* Update `git2` to 0.16.1 by @nickelc in https://github.com/dandavison/delta/pull/1323
+* Fix warning from bat for an unknown syntax theme by @nickelc in https://github.com/dandavison/delta/pull/1319
+* Add `gruvmax-fang` theme by @MaxFangX in https://github.com/dandavison/delta/pull/1291
+* Spelling by @jsoref in https://github.com/dandavison/delta/pull/1257
+* Update `clap` to 4.1 by @nickelc in https://github.com/dandavison/delta/pull/1322
+* Encapsulate `git2` types by @nickelc in https://github.com/dandavison/delta/pull/1326
+* Update dependencies & switch back to the `dirs` crate by @nickelc in https://github.com/dandavison/delta/pull/1325
+* Return the `GitRemoteRepo` type directly by @nickelc in https://github.com/dandavison/delta/pull/1328
+* Added config option. by @ShogunPanda in https://github.com/dandavison/delta/pull/1324
+* Add Winget Releaser workflow by @sitiom in https://github.com/dandavison/delta/pull/1331
+* Get git's minus/plus style from config instead of copying it around by @nickelc in https://github.com/dandavison/delta/pull/1329
+* Add methods for getting `GitConfig` as reference by @nickelc in https://github.com/dandavison/delta/pull/1336
+* Rename `git_config_entry` module to `remote` by @nickelc in https://github.com/dandavison/delta/pull/1337
+* Tips and tricks manual section by @dandavison in https://github.com/dandavison/delta/pull/1339
+* Set language specifiers for code blocks and fix links in manual by @nickelc in https://github.com/dandavison/delta/pull/1340
+* Derive the default for enums with `#[derive(Default)]`/`#[default]` by @nickelc in https://github.com/dandavison/delta/pull/1341
+* Add discord-dark theme by @ILikePlayingGames in https://github.com/dandavison/delta/pull/1334
+* Merge the different `GitConfig` constructors for a config file by @nickelc in https://github.com/dandavison/delta/pull/1342
+* Remove manual line-wrapping by @dandavison in https://github.com/dandavison/delta/pull/1350
+* Add link to similar project walles/riff by @walles in https://github.com/dandavison/delta/pull/1362
+* add: installation instructions for conda/mamba by @YYYasin19 in https://github.com/dandavison/delta/pull/1371
+* Clarify how to use delta with `tmux` by @isak102 in https://github.com/dandavison/delta/pull/1402
+* Update `bitflags` to 2.2 by @nickelc in https://github.com/dandavison/delta/pull/1361
+* Fix some typos by @goggle in https://github.com/dandavison/delta/pull/1379
+* Remove unneeded `extern crate` statements by @nickelc in https://github.com/dandavison/delta/pull/1345
+* Downgrade and pin the `bytelines` crate by @nickelc in https://github.com/dandavison/delta/pull/1378
+* Improve manual build job by @nickelc in https://github.com/dandavison/delta/pull/1404
+* Replace deprecated `error_chain` crate with `anyhow` by @nickelc in https://github.com/dandavison/delta/pull/1405
+* Fix submodule diff parsing by @th1000s in https://github.com/dandavison/delta/pull/1413
+* Fix warning highlight for trailing whitespace by @wescande in https://github.com/dandavison/delta/pull/1037
+* Misc tab refactoring by @th1000s in https://github.com/dandavison/delta/pull/1424
+* manual: fix link to using `delta` on Windows by @mataha in https://github.com/dandavison/delta/pull/1428
+* Introduce `grep-output-type` option: ripgrep or classic by @dandavison in https://github.com/dandavison/delta/pull/1410
+
+## New Contributors
+* @tjquillan made their first contribution in https://github.com/dandavison/delta/pull/1251
+* @nickelc made their first contribution in https://github.com/dandavison/delta/pull/1298
+* @zonuexe made their first contribution in https://github.com/dandavison/delta/pull/1185
+* @MaxFangX made their first contribution in https://github.com/dandavison/delta/pull/1291
+* @jsoref made their first contribution in https://github.com/dandavison/delta/pull/1257
+* @ShogunPanda made their first contribution in https://github.com/dandavison/delta/pull/1324
+* @sitiom made their first contribution in https://github.com/dandavison/delta/pull/1331
+* @ILikePlayingGames made their first contribution in https://github.com/dandavison/delta/pull/1334
+* @walles made their first contribution in https://github.com/dandavison/delta/pull/1362
+* @YYYasin19 made their first contribution in https://github.com/dandavison/delta/pull/1371
+* @isak102 made their first contribution in https://github.com/dandavison/delta/pull/1402
+* @goggle made their first contribution in https://github.com/dandavison/delta/pull/1379
+* @mataha made their first contribution in https://github.com/dandavison/delta/pull/1428
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.15.1...0.16.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.15.1 (2022-12-03)</h2>
+      <pre>## What's Changed
+* Explicitly request xz compression by @dandavison in https://github.com/dandavison/delta/pull/1249
+
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.15.0...0.15.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.15.0 (2022-12-03)</h2>
+      <pre>## What's Changed
+
+Thanks to all contributors for the changes in this release! One particularly exciting contribution is the tweaks to the highlighting algorithm made by @phillipwood in #1244. This is something that has remained more or less the same since delta was first created, but #1244 brings several improvements in the details of exactly which characters are highlighted. 
+
+* Change Rust toolchain in 'Deploy Manual' CI task by @dandavison in https://github.com/dandavison/delta/pull/1183
+* Switch bat to library mode by @tranzystorek-io in https://github.com/dandavison/delta/pull/1187
+* Add sourcehut link parsing by @p00f in https://github.com/dandavison/delta/pull/1190
+* Refactoring ansi/iterator by @zhiburt in https://github.com/dandavison/delta/pull/1191
+* Add codeberg link parsing by @p00f in https://github.com/dandavison/delta/pull/1194
+* Add terminal width fallback via stty if on windows/MSYS2 by @th1000s in https://github.com/dandavison/delta/pull/1030
+* measure_text_width() without constructing a temporary string by @th1000s in https://github.com/dandavison/delta/pull/1216
+* Remove Git 2.37 workaround from install docs by @adamchainz in https://github.com/dandavison/delta/pull/1228
+* Fix clippy warnings by @clnoll in https://github.com/dandavison/delta/pull/1236
+* Remove Provides in Debian package by @baryluk in https://github.com/dandavison/delta/pull/1217
+* Handle quoted filenames in diff header by @th1000s in https://github.com/dandavison/delta/pull/1222
+* ci: improve formatting by @MarcoIeni in https://github.com/dandavison/delta/pull/1238
+* Highlighting improvements by @phillipwood in https://github.com/dandavison/delta/pull/1244
+* ci: release apple arm binary by @MarcoIeni in https://github.com/dandavison/delta/pull/1239
+* try fix bad alignment in unicode (#1144) by @SheldonNico in https://github.com/dandavison/delta/pull/1145
+
+## New Contributors
+* @tranzystorek-io made their first contribution in https://github.com/dandavison/delta/pull/1187
+* @p00f made their first contribution in https://github.com/dandavison/delta/pull/1190
+* @zhiburt made their first contribution in https://github.com/dandavison/delta/pull/1191
+* @adamchainz made their first contribution in https://github.com/dandavison/delta/pull/1228
+* @baryluk made their first contribution in https://github.com/dandavison/delta/pull/1217
+* @phillipwood made their first contribution in https://github.com/dandavison/delta/pull/1244
+* @SheldonNico made their first contribution in https://github.com/dandavison/delta/pull/1145
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.14.0...0.15.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.14.0 (2022-08-31)</h2>
+      <pre>## What's Changed
+* Update color-moved-support.md by @hangtwenty in https://github.com/dandavison/delta/pull/1082
+* Tweak some words improved representation by @ydah in https://github.com/dandavison/delta/pull/1078
+* Only trigger `git show` handler if a file extension was parsed by @dandavison in https://github.com/dandavison/delta/pull/1106
+* Fix commit hyperlink formatting by @dandavison in https://github.com/dandavison/delta/pull/1110
+* Avoid lockup when running without arguments and stdin is connected to a tty by @dotdash in https://github.com/dandavison/delta/pull/1112
+* Fix whole-file changes being attributed to the wrong commit in "git log" output by @dotdash in https://github.com/dandavison/delta/pull/1111
+* Update README.md to include git 2.37.0 workaround by @cwlbraa in https://github.com/dandavison/delta/pull/1116
+* Don't attempt to process ANSI sequences in non-UTF8 input by @dandavison in https://github.com/dandavison/delta/pull/1117
+* Update clap by @dandavison in https://github.com/dandavison/delta/pull/1119
+* Recreate highlighter on each line of `git show $commit:$path` output by @dandavison in https://github.com/dandavison/delta/pull/1127
+* Fix git-grep match-highlighting at line-start by @jdpopkin in https://github.com/dandavison/delta/pull/1057
+* Update to chameleon theme by @AirOnSkin in https://github.com/dandavison/delta/pull/1138
+* Fix typos by @kianmeng in https://github.com/dandavison/delta/pull/1151
+* Support configurable timestamps in git blame output (#1157)  by @mliszcz in https://github.com/dandavison/delta/pull/1158
+* Added auto completions for fish shell by @exploide in https://github.com/dandavison/delta/pull/1165
+
+## New Contributors
+* @hangtwenty made their first contribution in https://github.com/dandavison/delta/pull/1082
+* @ydah made their first contribution in https://github.com/dandavison/delta/pull/1078
+* @dotdash made their first contribution in https://github.com/dandavison/delta/pull/1112
+* @cwlbraa made their first contribution in https://github.com/dandavison/delta/pull/1116
+* @kianmeng made their first contribution in https://github.com/dandavison/delta/pull/1151
+* @mliszcz made their first contribution in https://github.com/dandavison/delta/pull/1158
+* @exploide made their first contribution in https://github.com/dandavison/delta/pull/1165
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.13.0...0.14.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.13.0 (2022-05-13)</h2>
+      <pre>## What's Changed
+* Update bat dependency so that delta is compatible with latest bat release (#1075)
+* Flush line buffers in additional locations by @dandavison in https://github.com/dandavison/delta/pull/1003
+* Reorganize wrapping utilities by @dandavison in https://github.com/dandavison/delta/pull/1008
+* Bump regex to fix CVE-2022-24713 by @msirringhaus in https://github.com/dandavison/delta/pull/1015
+* Apply file-transformation to diff header in addition to hunk header by @dandavison in https://github.com/dandavison/delta/pull/1012
+* Add support for irreversible-delete by @wescande in https://github.com/dandavison/delta/pull/945
+* Add custom env struct to store env at init by @wescande in https://github.com/dandavison/delta/pull/1025
+* Apply hyperlinks to diff stat file paths by @dandavison in https://github.com/dandavison/delta/pull/1035
+* Add link to `bat` on README by @eloyesp in https://github.com/dandavison/delta/pull/1052
+* Add chameleon theme to themes.gitconfig by @AirOnSkin in https://github.com/dandavison/delta/pull/1062
+* Add 'light = false' w/ comment in gitconfig by @toolness in https://github.com/dandavison/delta/pull/1073
+
+## New Contributors
+* @wescande made their first contribution in https://github.com/dandavison/delta/pull/945
+* @eloyesp made their first contribution in https://github.com/dandavison/delta/pull/1052
+* @AirOnSkin made their first contribution in https://github.com/dandavison/delta/pull/1062
+* @toolness made their first contribution in https://github.com/dandavison/delta/pull/1073
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.12.1...0.13.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.12.1 (2022-03-06)</h2>
+      <pre>## What's Changed
+* Make git include colors in output going to delta by @dandavison in https://github.com/dandavison/delta/pull/966
+* Clarify language: "in front of" → "before" by @waldyrious in https://github.com/dandavison/delta/pull/967
+* Fix parsing for .properties files with `-` in path by @jdpopkin in https://github.com/dandavison/delta/pull/975
+* Support CSI sequences other than SGR by @yoichi in https://github.com/dandavison/delta/pull/976
+* Enable commit links for GitLab by @jwarlander in https://github.com/dandavison/delta/pull/972
+* Fall back to plain diff when process substitution is used by @th1000s in https://github.com/dandavison/delta/pull/978
+* Include information about GIT_PAGER in manual by @katylava in https://github.com/dandavison/delta/pull/991
+* Use assets API from bat library instead of vendored code by @dandavison in https://github.com/dandavison/delta/pull/903
+* Calling process: Query more parents, disable full scan by @th1000s in https://github.com/dandavison/delta/pull/984
+* Run in diff mode iff two positional arguments are supplied by @dandavison in https://github.com/dandavison/delta/pull/995
+
+## New Contributors
+* @jdpopkin made their first contribution in https://github.com/dandavison/delta/pull/975
+* @jwarlander made their first contribution in https://github.com/dandavison/delta/pull/972
+* @katylava made their first contribution in https://github.com/dandavison/delta/pull/991
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.12.0...0.12.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.12.0 (2022-02-14)</h2>
+      <pre>There's quite a lot in this release, with contributions from 8 different people.
+
+Firstly a **breaking change**: some deprecated options are no longer supported: in particular `plus-color` and `minus-color`. See https://github.com/dandavison/delta/pull/914. A description of this change and what you need to do if you're affected by it is below.
+
+Secondly, **improvements**, including:
+
+- A (much-needed) short help text is now available: use `delta -h`. Delta is the proud possessor of 100 command-line options, so I think this is going to be helpful.
+- git blame output now displays line numbers (thanks to @th1000s)
+- Improvements to file and mode labels by @WayneD 
+- delta now has a user manual: https://dandavison.github.io/delta/. You can even create a PDF copy (print button in upper-right hand corner), and the README is correspondingly now a much easier read with the minimal required setup instructions and an overview of functionality with screenshots.
+
+Finally some **bug fixes**, including
+- File path hyperlinks (e.g. in diff and grep output) were previously sometimes incorrect, especially when delta was invoked from a directory other than the repo root.
+- Some fixes to grep output parsing edge cases 
+
+## Deprecated options no longer supported:
+
+The options affected here have been deprecated for a couple of years; I hope this doesn't cause you any trouble. Here are the details:
+
+The most common case is that you have something like this in your `~/.gitconfig`:
+```
+[delta]
+    plus-color = my_plus_color
+    minus-color = my_minus_color
+```
+
+Please change that to
+```
+[delta]
+    plus-style = syntax my_plus_color
+    minus-style = normal my_minus_color
+```
+
+Here's the list of deprecated options with a summary of how to update them:
+
+```
+minus-color             Deprecated: use `minus-style = normal my_background_color`
+plus-color              Deprecated: Use `plus-style = syntax my_background_color`
+minus-emph-color        Deprecated: use `minus-emph-style = normal my_background_color`
+plus-emph-color         Deprecated: Use `plus-emph-style = syntax my_background_color`
+highlight-removed       Deprecated: use `minus-style = syntax my_background_color`
+commit-color            Deprecated: use `commit-style = my_foreground_color
+                                         commit-decoration-style = my_foreground_color`
+file-color              Deprecated: use `file-style = my_foreground_color
+                                         file-decoration-style = my_foreground_color`
+hunk-style              Deprecated: synonym of `hunk-header-decoration-style`
+hunk-color              Deprecated: use `hunk-header-style = my_foreground_color
+                                         hunk-header-decoration-style = my_foreground_color`
+theme                   Deprecated: use `syntax-theme`
+```
+
+For full documentation, please see `delta --help` and https://dandavison.github.io/delta/configuration.html.
+
+
+## PRs
+* Remove redundent spaces in README example by @TennyZhuang in https://github.com/dandavison/delta/pull/861
+* Bump sysinfo from 0.22.2 to 0.22.3 by @dependabot in https://github.com/dandavison/delta/pull/862
+* New option blame-code-style by @dandavison in https://github.com/dandavison/delta/pull/870
+* Make formatted blame metadata determine color instead of commit by @dandavison in https://github.com/dandavison/delta/pull/871
+* Put file-modified label in front of mode changes. by @WayneD in https://github.com/dandavison/delta/pull/874
+* Speed up the calling process query by @th1000s in https://github.com/dandavison/delta/pull/869
+* DeltaTest improvements by @WayneD in https://github.com/dandavison/delta/pull/876
+* Make Config cloneable for DeltaTest, store as Cow<Config> there by @th1000s in https://github.com/dandavison/delta/pull/884
+* Fix grep parse bugs by @dandavison in https://github.com/dandavison/delta/pull/865
+* Handle a mode change on a renamed file. by @WayneD in https://github.com/dandavison/delta/pull/875
+* New option file-transformation to transform file paths by @dandavison in https://github.com/dandavison/delta/pull/887
+* Handle blame author names containing parentheses by @th1000s in https://github.com/dandavison/delta/pull/901
+* Add OpenBSD installation note by @sizeofvoid in https://github.com/dandavison/delta/pull/894
+* Create user manual by @dandavison in https://github.com/dandavison/delta/pull/882
+* structopt to clap by @dandavison in https://github.com/dandavison/delta/pull/889
+* Drop deprecated options by @dandavison in https://github.com/dandavison/delta/pull/914
+* Add clap cosmetic argument names by @dandavison in https://github.com/dandavison/delta/pull/915
+* Construct hyperlink file path relative to cwd by @dandavison in https://github.com/dandavison/delta/pull/898
+* Bump clap from 3.0.5 to 3.0.7 by @dependabot in https://github.com/dandavison/delta/pull/917
+* Cwd fixups by @dandavison in https://github.com/dandavison/delta/pull/918
+* Center Align numbers right-ish by @th1000s in https://github.com/dandavison/delta/pull/883
+* Blame line numbers by @th1000s in https://github.com/dandavison/delta/pull/885
+* Update original mantis-shrimp, add lite version by @2KAbhishek in https://github.com/dandavison/delta/pull/934
+* Update sysinfo version by @GuillaumeGomez in https://github.com/dandavison/delta/pull/921
+* Update color-moved-support.md by @chtenb in https://github.com/dandavison/delta/pull/935
+* Fix unused imports and functions warnings on windows by @th1000s in https://github.com/dandavison/delta/pull/950
+* Fix hyperlink absolute paths by @dandavison in https://github.com/dandavison/delta/pull/939
+
+## New Contributors
+* @TennyZhuang made their first contribution in https://github.com/dandavison/delta/pull/861
+* @sizeofvoid made their first contribution in https://github.com/dandavison/delta/pull/894
+* @GuillaumeGomez made their first contribution in https://github.com/dandavison/delta/pull/921
+* @chtenb made their first contribution in https://github.com/dandavison/delta/pull/935
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.11.3...0.12.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.11.3 (2021-12-15)</h2>
+      <pre>- Fix handling of `--word-diff` and `--color-words` (#829). Note that `line-numbers` and `side-by-side` will be ignored if delta detects that the input was generated by `git --word-diff / --color-words`.
+- `DELTA_FEATURES` can now be used to *add* to features specified in ~/.gitconfig. Use a `+` prefix to do this: an example is  `DELTA_FEATURES=+side-by-side` which will activate `side-by-side`, in addition to your usual features.
+- Store `less` history file in a better location on Windows. Thanks @rashil2000 for this work!
+- Fix performance issue affecting some linux users (#839)
+
+## What's Changed
+* Bump sysinfo from 0.19.2 to 0.20.5 by @dependabot in https://github.com/dandavison/delta/pull/811
+* #833 refactoring by @dandavison in https://github.com/dandavison/delta/pull/834
+* Store history file in data_local_dir for Windows by @rashil2000 in https://github.com/dandavison/delta/pull/847
+* Query fewer processes when searching for the parent by @th1000s in https://github.com/dandavison/delta/pull/841
+* Do not query CPU data when querying process data by @dandavison in https://github.com/dandavison/delta/pull/845
+* Fix --word-diff / --color-words handling by @dandavison in https://github.com/dandavison/delta/pull/833
+* Add features from DELTA_FEATURES env var instead of replacing with them by @dandavison in https://github.com/dandavison/delta/pull/849
+* Fix raw line styles by @dandavison in https://github.com/dandavison/delta/pull/850
+* Fix side-by-side syntax ANSI test failure by @dandavison in https://github.com/dandavison/delta/pull/852
+* DeltaTest inspect() additions by @dandavison in https://github.com/dandavison/delta/pull/853
+* Line state refactor by @dandavison in https://github.com/dandavison/delta/pull/851
+
+## New Contributors
+* @rashil2000 made their first contribution in https://github.com/dandavison/delta/pull/847
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.11.2...0.11.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.11.2 (2021-12-08)</h2>
+      <pre>This release fixes a performance problem that was affecting some users. See https://github.com/dandavison/delta/issues/824 </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.11.1 (2021-12-06)</h2>
+      <pre>Fixes a crash that can occur, see for example https://github.com/dandavison/delta/issues/826. Thanks @mrjoel.
+
+## What's Changed
+* Be permissive about unexpected state machine state by @dandavison in https://github.com/dandavison/delta/pull/827
+
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.11.0...0.11.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.11.0 (2021-12-06)</h2>
+      <pre>This release adds handling of merge conflicts and the "combined" diff format which git uses for merge commits; see the [Merge conflicts](https://github.com/dandavison/delta/#merge-conflicts) README section and https://github.com/dandavison/delta/issues/189. Please consider setting
+
+```gitconfig
+[merge]
+    conflictstyle = diff3
+```
+
+With that setting, when a merge conflict is encountered, delta will display diffs between the ancestral commit and each of the two merge parents:
+
+<table><tr><td><img width=500px src="https://user-images.githubusercontent.com/52205/144783121-bb549100-69d8-41b8-ac62-1704f1f7b43e.png" alt="image" /></td></tr></table>
+
+## PRs
+* Handle combined diff format and merge conflicts by @dandavison in https://github.com/dandavison/delta/pull/812
+* Handle failure to parse non hunk header by @dandavison in https://github.com/dandavison/delta/pull/823
+
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.10.3...0.11.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.10.3 (2021-12-03)</h2>
+      <pre>- Delta was previously handling `--word-diff` and `--color-words` output in a nonsensical way. With this release, delta does not attempt to handle these output types, allowing git's raw output through unchanged. Appropriate handling may be added later. See https://github.com/dandavison/delta/issues/152
+- When a line is unchanged but paired with a line that has additions/deletions, delta now assigns the unchanged line `{plus,minus}-non-emph-style`; previously it assigned `{plus,minus}-style`. This change does not alter visual output by default because by default those two style styles are set to the same value. See https://github.com/dandavison/delta/pull/785
+- Fixes a bug affecting line numbers in `side-by-side` mode, see #819
+
+## PRs
+* Refactor: further isolate side-by-side implementation by @dandavison in https://github.com/dandavison/delta/pull/801
+* Refactor: rewrite superimpose_styles function by @dandavison in https://github.com/dandavison/delta/pull/804
+* New assignment of emph and non-emph styles by @dandavison in https://github.com/dandavison/delta/pull/785
+* 808 honor raw blame styles by @dandavison in https://github.com/dandavison/delta/pull/809
+* Process cleanup by @th1000s in https://github.com/dandavison/delta/pull/805
+* Do not handle --word-diff or --color-words output by @dandavison in https://github.com/dandavison/delta/pull/807
+* Initial version of ARCHITECTURE.md by @dandavison in https://github.com/dandavison/delta/pull/806
+* Fix navigate option in git config example by @maximd in https://github.com/dandavison/delta/pull/815
+* Fix colorMoved in git config example by @maximd in https://github.com/dandavison/delta/pull/814
+* [themes.gitconfig] add woolly-mammoth blame config by @Kr1ss-XD in https://github.com/dandavison/delta/pull/706
+* Fix side-by-side line number miscount by @th1000s in https://github.com/dandavison/delta/pull/819
+
+## New Contributors
+* @maximd made their first contribution in https://github.com/dandavison/delta/pull/815
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.10.2...0.10.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.10.2 (2021-11-27)</h2>
+      <pre>This releases fixes a bug when using side-by-side with git `diff.colorMoved`. See https://github.com/dandavison/delta/issues/802
+
+## What's Changed
+* 802 fix color moved side by side panic by @dandavison in https://github.com/dandavison/delta/pull/803
+
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.10.1...0.10.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.10.1 (2021-11-25)</h2>
+      <pre>This release fixes a bug in color-moved handling when files have DOS line endings. See #800
+
+## What's Changed
+* Remove trailing \r from raw line, in presence of ANSI escape sequences by @dandavison in https://github.com/dandavison/delta/pull/800
+
+## New Contributors
+* @SuperSandro2000 made their first contribution in https://github.com/dandavison/delta/pull/796
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.10.0...0.10.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.10.0 (2021-11-24)</h2>
+      <pre>New features in this release:
+
+- delta displays output from `git grep` and `rg --json ... | delta` with code syntax highlighting and navigate functionality. See [README#grep](https://github.com/dandavison/delta#grep) and https://github.com/dandavison/delta/pull/774.
+- delta displays output from `git blame` with code syntax highlighting, hyperlinks to commits, and control over formatting. See [README#git-blame](https://github.com/dandavison/delta#git-blame) and https://github.com/dandavison/delta/pull/761.
+- delta syntax highlights file contents produced by `git show $revision:/path/to/file`
+- delta can apply syntax highlighting and arbitrary styling to the raw colors emitted by `git --color-moved`. This is done by specifying rules for remapping styles using `map-styles`. See below, and [README#--color-moved-support](https://github.com/dandavison/delta#--color-moved-support) and https://github.com/dandavison/delta/issues/72
+- More powerful configuration options: styles can reference other styles, custom styles and custom colors can be defined in gitconfig and reused, and 140 colors can be specified using their standard CSS names. See below.
+- New subcommand `--show-colors` outputs a demo of 140 background colors with syntax highlighting, to help choose background colors.
+- New subcommand `--parse-ansi` takes color input and prints out the corresponding style strings (useful for `map-styles`)
+- Utilities for interrogating the command line of the process that is sending output to delta, added by @th1000s.
+
+Here's an example of using `map-styles` to assign delta styles (one with syntax highlighting) to the raw color-moved styles output by git. This should allow all git's color-moved options to be rendered using delta styles:
+
+```
+[delta]
+    features = my-color-moved-theme
+
+[delta "my-color-moved-theme"]
+    git-moved-from-style = bold purple     # An ad-hoc named style (must end in "-style")
+    
+    map-styles = "my-color-moved-theme.git-moved-from-style => red #cccccc, \
+                  bold cyan => syntax #cccccc"
+                  
+    # we could also have defined git-moved-to-style = bold cyan
+```
+
+To make use of that, you need to know that git is emitting "bold cyan" and "bold purple". But that's not always obvious. To help with that, delta now has a `--parse-ansi` mode. E.g. `git show --color=always | delta --parse-ansi` outputs something like this:
+
+<table><tr><td><img width=300px src="https://user-images.githubusercontent.com/52205/143238872-58a40754-ae50-4a9e-ba72-07e330e520e6.png" alt="image" /></td></tr></table>
+
+As you see above, we can now define named styles in gitconfig and refer to them in places where a style string is expected. We can also define custom named colors in git config, and styles can reference other styles; see the [hoopoe theme](https://github.com/dandavison/delta/blob/master/themes.gitconfig#L76-L91) for an example:
+
+```gitconfig
+[delta "hoopoe"]
+    green = "#d0ffd0"  # ad-hoc named color
+    plus-style = syntax hoopoe.green  # refer to named color
+    plus-non-emph-style = plus-style  # styles can reference other styles
+```
+
+Additionally, we can now use the 140 color names that are standard in CSS. Use `delta --show-colors` to get a demo of the available colors, as background colors to see how they look with syntax highlighting:
+
+<table><tr><td><img width=300px src="https://user-images.githubusercontent.com/52205/143237384-246db199-ef65-4ad2-ad4e-03d07d1ea41d.png" alt="image" /></td></tr></table>
+
+
+
+## PRs
+* Util: check parent process for filename by @th1000s in https://github.com/dandavison/delta/pull/770
+* Handle git blame by @dandavison in https://github.com/dandavison/delta/pull/761
+* Use modify label on diffs & add right-arrow option by @WayneD in https://github.com/dandavison/delta/pull/780
+* Allow styles to be specified as references to other styles by @dandavison in https://github.com/dandavison/delta/pull/784
+* Support named colors by @dandavison in https://github.com/dandavison/delta/pull/786
+* Handle grep output by @dandavison in https://github.com/dandavison/delta/pull/774
+* Allow custom colors to be defined in gitconfig by @dandavison in https://github.com/dandavison/delta/pull/788
+* --show-colors subcommand by @dandavison in https://github.com/dandavison/delta/pull/789
+* Navigate regexp by @WayneD in https://github.com/dandavison/delta/pull/782
+* Map styles for arbitrary color-moved styling, --parse-ansi subcommand by @dandavison in https://github.com/dandavison/delta/pull/793
+
+## New Contributors
+* @rhysd made their first contribution in https://github.com/dandavison/delta/pull/767
+* @WayneD made their first contribution in https://github.com/dandavison/delta/pull/780
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.9.2...0.10.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.9.2 (2021-10-29)</h2>
+      <pre>This release fixes a regression introduced in 0.9.0 affecting the use of `git add -p` when submodules are present. See https://github.com/dandavison/delta/issues/755
+
+## What's Changed
+* Do not reformat submodule diffs under `git add -p` by @dandavison in https://github.com/dandavison/delta/pull/756
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.9.1...0.9.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.9.1 (2021-10-27)</h2>
+      <pre>This is a followup to release 0.9.0 fixing a bug in the `--help` text emitted by the 0.9.0 binary (see 3aab5d19569fa52ace2d7e6d196a1256990c4e20).
+
+0.9.0 was a major release adding line-wrapping to side-by-side mode: [0.9.0 release notes](https://github.com/dandavison/delta/releases/tag/0.9.0).</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.9.0 (2021-10-27)</h2>
+      <pre>With this release, long lines are wrapped in side-by-side mode, thanks to a far-reaching series of contributions by @th1000s (see https://github.com/dandavison/delta/pull/515). No special customization is needed, but sophisticated control over the details is available: see `--wrap-max-lines`, `--wrap-left-symbol`, `--wrap-right-symbol`, `--wrap-right-percent`, `--wrap-right-prefix-symbol`, `--inline-hint-style`.
+
+In the image below, the long deleted line in the left panel overflows by a small amount, and the wrapped content is right-aligned in the next line. In contrast, the long replacement line in the right panel overflows by almost an entire line, and so the wrapped content is left aligned in the next line.  The arrow markers and ellipsis explain when and how text has been wrapped. 
+
+<table><tr><td><img width=300px src="https://user-images.githubusercontent.com/52205/139064537-f8479504-16d3-429a-b4f6-d0122438adaa.png" alt="image" /></td></tr></table>
+
+## What's Changed
+* Fix the empty result issue in add -p by @norisio in https://github.com/dandavison/delta/pull/664
+* Recognize GitHub SSH remote URLs that don't start with `git@` for hyperlinks by @spaarmann in https://github.com/dandavison/delta/pull/668
+* Terminate process gracefully on error in diff() by @dandavison in https://github.com/dandavison/delta/pull/685
+* Ignore ctrl-c (SIGINT) to avoid leaving an orphaned pager process. by @dandavison in https://github.com/dandavison/delta/pull/686
+* Remove unnecessary borrows by @benarmstead in https://github.com/dandavison/delta/pull/692
+* Fix computed values to be computed after all set_options by @ulwlu in https://github.com/dandavison/delta/pull/690
+* Make it possible to jump between files when navigate is active by @dandavison in https://github.com/dandavison/delta/pull/684
+* Fix empty line highlighting by @th1000s in https://github.com/dandavison/delta/pull/642
+* Fix deadlock in `git diff` mode by @dandavison in https://github.com/dandavison/delta/pull/695
+* Support `insteadOf` replacements in git remote URLs by @dandavison in https://github.com/dandavison/delta/pull/694
+* Do not suppress submodule diffs by @dandavison in https://github.com/dandavison/delta/pull/699
+* More minimalistic display of submodule (short) diffs by @dandavison in https://github.com/dandavison/delta/pull/700
+* Fix hunk header when line number is not requested and navigate is enabled by @dandavison in https://github.com/dandavison/delta/pull/710
+* Display removed file name in file deletion case by @dandavison in https://github.com/dandavison/delta/pull/717
+* Remove superfluous lowercasing of feature names by @Tak in https://github.com/dandavison/delta/pull/718
+* Option to set the background extension mode to ANSI or spaces by @th1000s in https://github.com/dandavison/delta/pull/512
+* Add side-by-side line wrapping mode by @th1000s in https://github.com/dandavison/delta/pull/515
+* Width can be an offset from the terminal width by @th1000s in https://github.com/dandavison/delta/pull/727
+* Linenumber refactoring by @th1000s in https://github.com/dandavison/delta/pull/740
+* Use fatal() to exit with errorcode 2 by @th1000s in https://github.com/dandavison/delta/pull/739
+* Re-enable ANSI fill by equalizing panel sizes by @th1000s in https://github.com/dandavison/delta/pull/742
+* Update syntaxes and themes from bat v0.18.3 by @FnControlOption in https://github.com/dandavison/delta/pull/702
+* Line numbers and side-by-side mode by @th1000s in https://github.com/dandavison/delta/pull/748
+
+## New Contributors
+* @norisio made their first contribution in https://github.com/dandavison/delta/pull/664
+* @spaarmann made their first contribution in https://github.com/dandavison/delta/pull/668
+* @benarmstead made their first contribution in https://github.com/dandavison/delta/pull/692
+* @Tak made their first contribution in https://github.com/dandavison/delta/pull/718
+* @FnControlOption made their first contribution in https://github.com/dandavison/delta/pull/702
+
+**Full Changelog**: https://github.com/dandavison/delta/compare/0.8.3...0.9.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.8.3 (2021-07-13)</h2>
+      <pre>This release fixes a security vulnerability ([CVE-2021-36376](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-36376)) on Windows. Please update if you are using Windows.
+
+
+
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.8.2 (2021-06-29)</h2>
+      <pre>This is a bug fix release: the bug occurs when using delta to diff files whose names contain spaces. It does not affect use of delta as git's pager.
+
+- [**closed**] 🐛 argument parsing error with `delta fileA fileB` when filenames contain spaces [#644](https://github.com/dandavison/delta/issues/644)
+
+
+
+
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.8.1 (2021-06-25)</h2>
+      <pre>This is mainly a bug fix release: filenames containing spaces were causing crashes due to a regression in 0.8.0. It also includes a fix for the `delta file_a file_b` "diff mode" usage style, and an improvement for the diff-highlight / diff-so-fancy emulation modes.
+
+- [**closed**] 🐛 Panic with filename "01g - Text" [#639](https://github.com/dandavison/delta/issues/639)
+- [**closed**] 🐛 side-by-side option only works in diff mode when piping  [#631](https://github.com/dandavison/delta/issues/631)
+- [**closed**] commit-style raw for diff-so-fancy / diff-highlight [#623](https://github.com/dandavison/delta/pull/623)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.8.0 (2021-05-28)</h2>
+      <pre>- 🚀 New option `relative-paths` causes all file paths to be printed relative to the current directory so that they can be easily opened in a text editor or used in a shell command. Using `hunk-header-style = file line-number syntax` will emit the line number with the file path and thus should allow your editor to open at the correct line. For example, in the VS Code integrated terminal this means that with no further configuration every file path in git output can be opened with ctrl-click/cmd-click, and opening at a specific line works. Use `diff-stat-align-width` to control horizontal alignment of diff stat sections, although this may be replaced by a better solution in the future. https://github.com/dandavison/delta/issues/552
+- 🚀 New option `commit-regex` allows delta to work nicely with custom `git log` formats (https://github.com/dandavison/delta/issues/174)
+- 🚀 Support `git -c delta.foo=bar ...` in latest git version https://github.com/dandavison/delta/pull/573
+- 🚀  Support custom hyperlink hash formats [#613](https://github.com/dandavison/delta/issues/613)
+- 🚀 Allow custom themes to be defined as light themes [#598](https://github.com/dandavison/delta/issues/598)
+- 🚀 Transform file paths to be relative to current directory [#552](https://github.com/dandavison/delta/issues/552)
+- 🚀 `delta file_A file_B` now invokes `git diff`, instead of `diff -u`
+- [**Fixed**] 🐛 the --24-bit-color option is unusable from .gitconfig: `24-bit-color` is deprecated; use `true-color` instead. [#567](https://github.com/dandavison/delta/issues/567)
+- [**Fixed**] 🐛 Fix less version parsing (https://github.com/dandavison/delta/pull/606, thanks @tpoliaw) 
+- [**Fixed**] 🐛 No output for chmod file mode change [#583](https://github.com/dandavison/delta/issues/583)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.7.1 (2021-03-29)</h2>
+      <pre>This release brings two improvements due to delta contributors:
+
+- @cben proposed a new way for delta to seed `less` with the regexp that is used to implement navigation, which is implemented in this release. This makes it possible to keep `navigate=true` in delta config all the time, without the ill effects that it had before ([#237](https://github.com/dandavison/delta/issues/237))
+- @clnoll contributed a new option `delta --show-themes`, which demos the delta [color themes](https://github.com/dandavison/delta#custom-color-themes) that are available locally. `n` and `N` step forwards and backwards through the themes. (https://github.com/dandavison/delta/pull/550)
+- @clnoll has also contributed new themes to the [growing collection](https://github.com/dandavison/delta/blob/master/themes.gitconfig) (please consider submitting your own color config as a theme!)
+
+- [**closed**] 🐛 Setting $PAGER to use delta results in an infinite loop [#529](https://github.com/dandavison/delta/issues/529)
+- [**closed**] 🐛 `--navigate` breaks `git log --oneline` and empty `git diff` [#237](https://github.com/dandavison/delta/issues/237)
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.6.1 (2021-03-29)</h2>
+      <pre>To be superseded by 0.7.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.6.0 (2021-02-05)</h2>
+      <pre>This release brings a new and more convenient way to change delta options in a one-off git command: using `git -c`. Here's an example:
+
+```
+git -c delta.line-numbers=false -c delta.max-line-distance=0.8 show
+```
+
+Thanks to @wyuenho for pointing out that this should be supported. See https://github.com/dandavison/delta/issues/493 and https://github.com/dandavison/delta/pull/495.
+
+One note: while quotes around color hex codes are required in gitconfig, they can be omitted in the `git -c` context
+```
+git -c delta.plus-style='syntax "#aa0000"' show
+git -c delta.plus-style='syntax #aa0000' show
+```
+
+- [**closed**] 🐛 Hunk header misaligned in some cases [#510](https://github.com/dandavison/delta/issues/510)
+- [**closed**] 🐛 Delta does not respect git -c [#493](https://github.com/dandavison/delta/issues/493)
+- [**closed**] 🚀 Support for Apple Silicon/ARM64 [#484](https://github.com/dandavison/delta/issues/484)
+- [**closed**] 🐛 Can't disable line numbering from command line [#307](https://github.com/dandavison/delta/issues/307)
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for redis/redis"/>
+  <title>redis/redis Release Notes</title>
+</head>
+<body>
+  <h1>🚀 redis/redis - Release Notes</h1>
+  
+    <section>
+      <h2>8.0-M04 (2025-03-20)</h2>
+      <pre>This is the fourth Milestone of Redis Community Edition 8.0.
+
+Milestones are non-feature-complete pre-releases. Pre-releases are not suitable for production use.
+Once we reach feature completeness, we will release RC1.
+
+### Headlines
+
+8.0-M04 includes 3 new hash commands, performance improvements, and memory defragmentation improvements.
+
+### Distributions
+
+- Alpine and Debian Docker images - https://hub.docker.com/_/redis
+- Install using snap - see https://github.com/redis/redis-snap
+- Install using brew - see https://github.com/redis/homebrew-redis
+- Install using RPM and Debian APT - will be added on the GA release
+
+### New Features
+
+- #13798 Hash - new commands:
+  - `HGETDEL` Get and delete the value of one or more fields of a given hash key
+  - `HGETEX` Get the value of one or more fields of a given hash key, and optionally set their expiration
+  - `HSETEX` Set the value of one or more fields of a given hash key, and optionally set their expiration
+- #13773 Add replication offset to AOF, allowing more robust way to determine which AOF has a more up-to-date data during recovery
+- #13740, #13763 shared secret - new mechanism to allow sending internal commands between nodes
+
+### Bug fixes
+
+- #13804 Overflow on 32-bit systems when calculating idle time for eviction
+- #13793 `WAITAOF` returns prematurely
+- #13800 Remove `DENYOOM` from `HEXPIRE`, `HEXPIREAT`, `HPEXPIRE`, and `HPEXPIREAT`
+- #13632 Streams - wrong behavior of `XREAD +` after last entry
+
+### Modules API
+
+- #13788 `RedisModule_LoadDefaultConfigs` - load module configuration values from redis.conf
+- #13815 `RM_RegisterDefragFunc2` - support for incremental defragmentation of global module data
+- #13816 `RM_DefragRedisModuleDict` - allow modules to defrag `RedisModuleDict`
+- #13774 `RM_GetContextFlags` - add a `REDISMODULE_CTX_FLAGS_DEBUG_ENABLED` flag to execute debug commands
+
+### Performance and resource utilization improvements
+
+- #13752 Reduce defrag CPU usage when defragmentation is ineffective
+- #13764 Reduce latency when a command is called consecutively
+- #13787 Optimize parsing data from clients, specifically multi-bulk (array) data
+- #13792 Optimize dictionary lookup by avoiding duplicate key length calculation during comparisons
+- #13796 Optimize expiration checks
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>8.0-M03 (2025-01-23)</h2>
+      <pre>This is the third Milestone of Redis Community Edition 8.0.
+
+Milestones are non-feature-complete pre-releases. Pre-releases are not suitable for production use.
+Once we reach feature-completeness we will release RC1.
+
+### Headlines:
+
+8.0-M03 introduces an improved replication mechanism which is more performant and robust, a new I/O threading implementation which enables throughput increase on multi-core environments, and many additional performance improvements. Both Alpine and Debian Docker images are now available on [Docker Hub](https://hub.docker.com/_/redis). Snap and Homebrew distributions are available as well (see https://github.com/redis/homebrew-redis)
+
+### Security fixes
+
+- (CVE-2024-46981) Lua script may lead to remote code execution
+- (CVE-2024-51741) Denial-of-service due to malformed ACL selectors
+
+### New Features
+
+- #13695 New I/O threading implementation 
+- #13732 New replication mechanism
+
+### Bug fixes
+
+- #13653 `MODULE LOADEX` - crash on nonexistent parameter name
+- #13661 `FUNCTION FLUSH` - memory leak when using jemalloc
+- #13626 Memory leak on failed RDB loading
+
+### Other general improvements
+
+- #13639 When `hide-user-data-from-log` is enabled - also print command tokens on crash
+- #13660 Add the Lua VM memory to memory overhead
+
+### New metrics
+
+- #13592 `INFO` - new `KEYSIZES` section includes key size distributions for basic data types
+- #13695 `INFO` - new `Threads` section includes I/O threading metrics
+
+### Modules API
+
+- #13666 `RedisModule_ACLCheckKeyPrefixPermissions` - check access permissions to any key matching a given prefix
+- #13676 `RedisModule_HashFieldMinExpire` - query the minimum expiration time over all the hash’s fields
+- #13676 `RedisModule_HashGet` - new `REDISMODULE_HASH_EXPIRE_TIME` flag - query the field expiration time
+- #13656 `RedisModule_RegisterXXXConfig` - allow registering unprefixed configuration parameters
+
+### Configuration parameters
+
+- `replica-full-sync-buffer-limit` - maximum size of accumulated replication stream data on the replica side
+- `io-threads-do-reads` is no longer effective. The new I/O threading implementation always use threads for both reads and writes
+
+### Performance and resource utilization improvements
+
+- #13638 Optimize CRC64 performance
+- #13521 Optimize commands with large argument count - reuse c->argv after command execution
+- #13558 Optimize `PFCOUNT` and `PFMERGE` - SIMD acceleration
+- #13644 Optimize `GET` on high pipeline use-cases
+- #13646 Optimize `EXISTS` - prefetching and branch prediction hints
+- #13652 Optimize `LRANGE` - improve listpack handling and decoding efficiency
+- #13655 Optimize `HSET` - avoid unnecessary hash field creation or deletion
+- #13721 Optimize `LRANGE` and `HGETALL` - refactor client write preparation and handling
+
+### Known bugs and limitations
+
+- Query Engine - config params access via CONFIG SET/GET are disabled
+- Missing support for `FILTER` and `GEOFILTER` in `FT.SEARCH`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.4.2 (2025-01-06)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+### Security fixes
+
+- (CVE-2024-46981) Lua script commands may lead to remote code execution
+- (CVE-2024-51741) Denial-of-service due to malformed ACL selectors
+
+### Bug fixes
+
+- #13627 Crash on module memory defragmentation
+- #13338 Streams: `XINFO` lag field is wrong when tombstone is after the `last_id` of the consume group
+- #13473 Streams: `XTRIM` does not update the maximal tombstone, leading to an incorrect lag
+- #13470 `INFO` after `HDEL` show wrong number of hash keys with expiration
+- #13476 Fix a race condition in the `cache_memory` of `functionsLibCtx`
+- #13626 Memory leak on failed RDB loading
+- #13539 Hash: fix key ref for a hash that no longer has fields with expiration on `RENAME`/`MOVE`/`SWAPDB`/`RESTORE`
+- #13443 Cluster: crash when loading cluster config
+- #13422 Cluster: `CLUSTER SHARDS` returns empty array
+- #13465 Cluster: incompatibility with older node versions
+- #13608 Cluster: `SORT ... GET #`: incorrect error message</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2.7 (2025-01-06)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+### Security fixes
+
+* (CVE-2024-46981) Lua script commands may lead to remote code execution
+* (CVE-2024-51741) Denial-of-service due to malformed ACL selectors
+
+### Bug fixes
+
+* #13380 Possible crash due to OOM panic on invalid command
+* #13338 Streams: `XINFO` lag field is wrong when tombstone is after the `last_id` of the consume group
+* #13473 Streams: `XTRIM` does not update the maximal tombstone, leading to an incorrect lag
+* #13311 Cluster: crash due to unblocking client during slot migration
+* #13443 Cluster: crash when loading cluster config
+* #13422 Cluster: `CLUSTER SHARDS` returns empty array
+* #13465 Cluster: incompatibility with older node versions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.2.17 (2025-01-06)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+### Security fixes
+
+* (CVE-2024-46981) Lua script commands may lead to remote code execution</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>8.0-M02 (2024-11-04)</h2>
+      <pre>This is the second Milestone of Redis Community Edition 8.0.
+
+Milestones are non-feature-complete pre-releases. Pre-releases are not suitable for production use.
+Once we reach feature-completeness we will release RC1.
+
+### Headlines:
+
+8.0-M02 introduces significant performance improvements. Both Alpine and Debian Docker images are now available on [Docker Hub](https://hub.docker.com/_/redis). Additional distributions will be introduced in upcoming pre-releases. In addition, Redis Query Engine now supports both horizontal and vertical scaling for search, query and vector workloads.
+
+### Supported upgrade paths (by replication or persistence) to 8.0-M02
+
+- From previous Redis versions, without modules
+
+The following upgrade paths (by replication or persistence) to 8.0-M02 are not yet tested and will be introduced in upcoming pre-releases:
+- From previous Redis versions with modules (RediSearch, RedisJSON, RedisTimeSeries, RedisBloom)
+- From Redis Stack 7.2 or 7.4
+
+### Security fixes
+
+- (CVE-2024-31449) Lua library commands may lead to stack overflow and potential RCE.
+- (CVE-2024-31227) Potential Denial-of-service due to malformed ACL selectors.
+- (CVE-2024-31228) Potential Denial-of-service due to unbounded pattern matching.
+
+### Bug fixes
+
+- #13539 Hash: Fix key ref for a hash that no longer has fields with expiration on `RENAME`/`MOVE`/`SWAPDB`/`RESTORE`
+- #13512 Fix `TOUCH` command from a script in no-touch mode
+- #13468 Cluster: Fix cluster node config corruption caused by mixing shard-id and non-shard-id versions
+- #13608 Cluster: Fix `GET #` option in `SORT` command
+
+### Modules API
+
+- #13526 Extend `RedisModule_OpenKey` to read also expired keys and subkeys
+
+### Performance and resource utilization improvements
+
+- #11884 Optimize `ZADD` and `ZRANGE*` commands
+- #13530 Optimize `SSCAN` command in case of listpack or intset encoding
+- #13531 Optimize `HSCAN`/`ZSCAN` command in case of listpack encoding
+- #13520 Optimize commands that heavily rely on bulk/mbulk replies (example of `LRANGE`)
+- #13566 Optimize `ZUNION[STORE]` by avoiding redundant temporary dict usage
+- #13567 Optimize `SUNION`/`SDIFF` commands by avoiding redundant temporary dict usage
+- #11533 Avoid redundant `lpGet` to boost `quicklistCompare`
+- #13412 Reduce redundant call of `prepareClientToWrite` when call `addReply*` continuously
+
+### Notes
+
+- Additional distributions, upgrade paths, features, and improvements will be introduced in upcoming pre-releases.
+- With the GA release of 8.0 we will deprecate Redis Stack.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.4.1 (2024-10-02)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+### Security fixes
+
+* (CVE-2024-31449) Lua library commands may lead to stack overflow and potential RCE
+* (CVE-2024-31227) Potential Denial-of-service due to malformed ACL selectors
+* (CVE-2024-31228) Potential Denial-of-service due to unbounded pattern matching
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2.6 (2024-10-02)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+### Security fixes
+
+* (CVE-2024-31449) Lua library commands may lead to stack overflow and potential RCE
+* (CVE-2024-31227) Potential Denial-of-service due to malformed ACL selectors
+* (CVE-2024-31228) Potential Denial-of-service due to unbounded pattern matching
+
+### Bug fixes
+
+* #13315 Fixed crashes in cluster mode
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.2.16 (2024-10-02)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security fixes
+==============
+
+* (CVE-2024-31449) Lua library commands may lead to stack overflow and potential RCE.
+* (CVE-2024-31228) Potential Denial-of-service due to unbounded pattern matching.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>8.0-M01 (2024-09-12)</h2>
+      <pre>This is the first Milestone of Redis Community Edition 8.0.
+
+Milestones are non-feature-complete pre-releases. Pre-releases are not suitable for production use.
+Once we reach feature-completeness we will release RC1.
+
+### Headlines:
+
+Redis 8.0 introduces new data structures: JSON, time series, and 5 probabilistic data structures (previously available as separate Redis modules) and incorporates Redis scalable query engine (including vector search).
+
+8.0-M01 is available as a Docker image and can be downloaded from [Docker Hub](https://hub.docker.com/_/redis). Additional distributions will be introduced in upcoming pre-releases.
+
+### Supported upgrade paths (by replication or persistence) to 8.0-M01
+
+- From previous Redis versions, without modules
+
+The following upgrade paths (by replication or persistence) to 8.0-M01 are not yet tested and will be introduced in upcoming pre-releases:
+- From previous Redis versions with modules (RediSearch, RedisJSON, RedisTimeSeries, RedisBloom)
+- From Redis Stack 7.2 or 7.4
+
+### New Features in binary distributions
+
+- 7 new data structures: JSON, Time series, Bloom filter, Cuckoo filter, Count-min sketch, Top-k, t-digest
+- Redis scalable query engine (including vector search)
+
+### Potentially breaking changes
+
+- #12272 `GETRANGE` returns an empty bulk when the negative end index is out of range
+- #12395 Optimize `SCAN` command when matching data type
+
+### Bug fixes
+
+- #13510 Fix `RM_RdbLoad` to enable AOF after RDB loading is completed
+- #13489 `ACL CAT` - return module commands
+- #13476 Fix a race condition in the `cache_memory` of `functionsLibCtx`
+- #13473 Fix incorrect lag due to trimming stream via `XTRIM` command
+- #13338 Fix incorrect lag field in `XINFO` when tombstone is after the `last_id` of the consume group
+- #13470 On `HDEL` of last field - update the global hash field expiration data structure
+- #13465 Cluster: Pass extensions to node if extension processing is handled by it
+- #13443 Cluster: Ensure validity of myself when loading cluster config
+- #13422 Cluster: Fix `CLUSTER SHARDS` command returns empty array
+
+### Modules API
+
+- #13509 New API calls: `RM_DefragAllocRaw`, `RM_DefragFreeRaw`, and `RM_RegisterDefragCallbacks` - defrag API to allocate and free raw memory
+
+### Performance and resource utilization improvements
+
+- #13503 Avoid overhead of comparison function pointer calls in listpack `lpFind`
+- #13505 Optimize `STRING` datatype write commands
+- #13499 Optimize `SMEMBERS` command
+- #13494 Optimize `GEO*` commands reply
+- #13490 Optimize `HELLO` command
+- #13488 Optimize client query buffer
+- #12395 Optimize `SCAN` command when matching data type
+- #13529 Optimize `LREM`, `LPOS`, `LINSERT`, and `LINDEX` commands
+- #13516 Optimize `LRANGE` and other commands that perform several writes to client buffers per call
+- #13431 Avoid `used_memory` contention when updating from multiple threads
+
+### Other general improvements
+
+- #13495 Reply `-LOADING` on replica while flushing the db
+
+### CLI tools
+
+- #13411 redis-cli: Fix wrong `dbnum` showed after the client reconnected
+
+### Notes
+
+- No backward compatibility for replication or persistence.
+- Additional distributions, upgrade paths, features, and improvements will be introduced in upcoming pre-releases.
+- With the GA release of 8.0 we will deprecate Redis Stack.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.4.0 (2024-07-29)</h2>
+      <pre>This is the General Availability release of Redis Community Edition 7.4.
+
+### Changes to new 7.4 features (compared to 7.4 RC2)
+
+* #13391, #13438 Hash - expiration of individual fields: RDB file format changes
+* #13372 Hash - expiration of individual fields: rename and fix counting of `expired_subkeys` metric
+* #13372 Hash - expiration of individual fields: rename `INFO` keyspace field to `subexpiry`
+
+### Configuration parameters
+
+* #13400 Add hide-user-data-from-log - allows hiding user data from the log file
+
+### Bug fixes
+
+* #13407 Trigger Lua GC after `SCRIPT LOAD`
+* #13380 Fix possible crash due to OOM panic on invalid command
+* #13383 `FUNCTION FLUSH` - improve Lua GC behavior and fix thread race in ASYNC mode
+* #13408 `HEXPIRE`-like commands should emit `HDEL` keyspace notification if expire time is in the past
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.4-rc2 (2024-06-27)</h2>
+      <pre>This is the second Release Candidate for Redis Community Edition 7.4.
+
+Performance and resource utilization improvements
+=================================================
+* #13296 Optimize CPU cache efficiency
+
+Changes to new 7.4 new features (compared to 7.4 RC1)
+=====================================================
+* #13343 Hash - expiration of individual fields: when key does not exist - reply with an array (nonexisting code for each field)
+* #13329 Hash - expiration of individual fields: new keyspace event: `hexpired`
+
+Modules API - Potentially breaking changes to new 7.4 features (compared to 7.4 RC1)
+====================================================================================
+* #13326 Hash - expiration of individual fields: avoid lazy expire when called from a Modules API function
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.4-rc1 (2024-06-06)</h2>
+      <pre>Note: License changed - see LICENSE.txt
+
+Upgrade urgency LOW: This is the first Release Candidate for Redis Community Edition 7.4.
+
+Here is a comprehensive list of changes in this release compared to 7.2.5.
+
+New Features
+============
+* #13303 Hash - expiration of individual fields. 9 commands were introduced:
+  - `HEXPIRE` and `HPEXPIRE` set the remaining time to live for specific fields
+  - `HEXPIREAT` and `HPEXPIREAT` set the expiration time to a UNIX timestamp for specific fields
+  - `HPERSIST` removes the expiration for specific fields
+  - `HEXPIRETIME` and `HPEXPIRETIME` get the expiration time for specific fields
+  - `HTTL` and `HPTTL` get the remaining time to live for specific fields
+* #13117 `XREAD`: new id value `+` to start reading from the last message
+* #12765 `HSCAN`: new `NOVALUES` flag to report only field names
+* #12728 `SORT`, `SORT_RO`: allow `BY` and `GET` options in cluster mode when the pattern maps to the same slot as the key
+* #12299 `CLIENT KILL`: new optional filter: `MAXAGE maxage` - kill connections older than `maxage` seconds
+* #12971 Lua: expose `os.clock()` API for getting the elapsed time of Lua code execution
+* #13276 Allow `SPUBLISH` command within `MULTI ... EXEC` transactions on replica
+
+Bug fixes
+=========
+* #12898 `XREADGROUP`: fix entries-read inconsistency between master and replicas
+* #13042 `SORT ... STORE`: fix created lists to respect list compression and packing configs
+* #12817, #12905 Fix race condition issues between the main thread and module threads
+* #12577 Unsubscribe all clients from replica for shard channel if the master ownership changes
+* #12622 `WAITAOF` could timeout or hang if used after a module command that propagated effects only to replicas and not to AOF
+* #11734 `BITCOUNT` and `BITPOS` with nonexistent key and illegal arguments return an error, not 0
+* #12394 `BITCOUNT`: check for wrong argument before checking if key exists
+* #12961 Allow execution of read-only transactions when out of memory
+* #13274 Fix crash when a client performs ACL change that disconnects itself
+* #13311 Cluster: Fix crash due to unblocking client during slot migration
+
+Security improvements
+=====================
+* #13108 Lua: LRU eviction for scripts generated with `EVAL` *** BEHAVIOR CHANGE ***
+* #12961 Restrict the total request size of `MULTI ... EXEC` transactions
+* #12860 Redact ACL username information and mark `*-key-file-pass configs` as sensitive
+
+
+Performance and resource utilization improvements
+=================================================
+* #12838 Improve performance when many clients call `PUNSUBSCRIBE` / `SUNSUBSCRIBE` simultaneously
+* #12627 Reduce lag when waking `WAITAOF` clients and there is not much traffic
+* #12754 Optimize `KEYS` when pattern includes hashtag and implies a single slot
+* #11695 Reduce memory and improve performance by replacing cluster metadata with slot specific dictionaries
+* #13087 `SCRIPT FLUSH ASYNC` now does not block the main thread
+* #12996 Active memory defragmentation efficiency improvements
+* #12899 Improve performance of read/update operation during rehashing
+* #12536 `SCAN ... MATCH`: Improve performance when the pattern implies cluster slot
+* #12450 `ZRANGE ... LIMIT`: improved performance
+
+
+Other general improvements
+==========================
+* #13133 Lua: allocate VM code with jemalloc instead of libc and count it as used memory *** BEHAVIOR CHANGE ***
+* #12171 `ACL LOAD`: do not disconnect all clients *** BEHAVIOR CHANGE ***
+* #13020 Allow adjusting defrag configurations while active defragmentation is running
+* #12949 Increase the accuracy of avg_ttl (the average keyspace keys TTL)
+* #12977 Allow running `WAITAOF` in scripts
+* #12782 Implement TCP Keep-Alives across most Unix-like systems
+* #12707 Improved error codes when rejecting scripts in cluster mode
+* #12596 Support `XREAD ... BLOCK` in scripts; rejected only if it ends up blocking
+
+New metrics
+===========
+* #12849 `INFO`: `pubsub_clients` - number of clients in Pub/Sub mode
+* #12966 `INFO`: `watching_clients` - number of clients that are watching keys
+* #12966 `INFO`: `total_watched_keys` - number of watched keys
+* #12476 `INFO`: `client_query_buffer_limit_disconnections` - count client input buffer OOM events
+* #12476 `INFO`: `client_output_buffer_limit_disconnections` - count client output buffer OOM events
+* #12996 `INFO`: `allocator_muzzy` - memory returned to the OS but still shows as RSS until the OS reclaims it
+* #13108 `INFO`: `evicted_scripts` - number of evicted eval scripts. Users can check it to see if they are abusing EVAL
+* #12996 `MEMORY STATS`: `allocator.muzzy` - memory returned to the OS but still shows as RSS until the OS reclaims it
+* #12913 `INFO MEMORY` `mem_overhead_db_hashtable_rehashing` - memory resharding overhead (only the memory that will be released soon)
+* #12913 `MEMORY STATS`: `overhead.db.hashtable.lut` - total overhead of dictionary buckets in databases
+* #12913 `MEMORY STATS`: `overhead.db.hashtable.rehashing` - temporary memory overhead of database dictionaries currently being rehashed 
+* #12913 `MEMORY STATS`: `db.dict.rehashing.count` - number of top level dictionaries currently being rehashed
+* #12966 `CLIENT LIST`: `watch` - number of keys each client is currently watching
+
+Modules API
+===========
+* #12985 New API calls: `RM_TryCalloc` and `RM_TryRealloc` - allow modules to handle memory allocation failures gracefully
+* #13069 New API call: `RM_ClusterKeySlot` - which slot a key will hash to
+* #13069 New API call: `RM_ClusterCanonicalKeyNameInSlot` - get a consistent key that will map to a slot 
+* #12486 New API call: `RM_AddACLCategory` - allow modules to declare new ACL categories
+
+
+Configuration parameters
+========================
+
+
+* #12178 New configuration parameters: `max-new-connections-per-cycle` and `max-new-tls-connections-per-cycle` to limit the number of new client connections per event-loop cycle
+* #7351 Rename some CPU configuration parameters for style alignment. Added alias to the old names to avoid breaking change
+
+CLI tools
+=========
+* #10609 redis-cli: new `-t <timeout>` argument: specify server connection timeout in seconds
+* #11315 redis-cli: new `-4` and `-6` flags to prefer IPV4 or IPV6 on DNS lookup
+* #12862 redis-cli: allows pressing up arrow to return any command (including sensitive commands which are still not persisted)
+* #12543 redis-cli: add reverse history search (like Ctrl+R in terminals)
+* #12826 redis-cli: add `--keystats` and `--keystats-samples` to combines `--memkeys` and `--bigkeys` with additional distribution data
+* #12735 redis-cli: fix: `--bigkeys` and `--memkeys` now work on cluster replicas
+* #9411 redis-benchmark: add support for binary strings
+* #12986 redis-benchmark: fix: pick random slot for a node to distribute operation across slots
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2.5 (2024-05-19)</h2>
+      <pre>Upgrade urgency MODERATE: Program an upgrade of the server, but it's not urgent.
+
+Bug fixes
+=========
+
+* A single shard cluster leaves failed replicas in CLUSTER SLOTS instead of removing them (#12824)
+* Crash in LSET command when replacing small items and exceeding 4GB (#12955)
+* Blocking commands timeout is reset due to re-processing command (#13004)
+* Conversion of numbers in Lua args to redis args can fail. Bug introduced in 7.2.0 (#13115)
+
+Bug fixes in CLI tools
+======================
+
+* redis-cli: --count (for --scan, --bigkeys, etc) was ignored unless --pattern was also used (#13092)
+* redis-check-aof: incorrectly considering data in manifest format as MP-AOF (#12958)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2.4 (2024-01-09)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security fixes
+==============
+* (CVE-2023-41056) In some cases, Redis may incorrectly handle resizing of memory
+  buffers which can result in incorrect accounting of buffer sizes and lead to
+  heap overflow and potential remote code execution.
+
+Bug fixes
+=========
+
+* Fix crashes of cluster commands clusters with mixed versions of 7.0 and 7.2 (#12805, #12832)
+* Fix slot ownership not being properly handled when deleting a slot from a node (#12564)
+* Fix atomicity issues with the RedisModuleEvent_Key module API event (#12733)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.0.15 (2024-01-09)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security fixes
+==============
+* (CVE-2023-41056) In some cases, Redis may incorrectly handle resizing of memory
+  buffers which can result in incorrect accounting of buffer sizes and lead to
+  heap overflow and potential remote code execution.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2.3 (2023-11-01)</h2>
+      <pre>Upgrade urgency: HIGH, Fixes critical bugs affecting most users.
+
+Bug fixes
+=========
+
+* Fix file descriptor leak preventing deleted files from freeing disk space on
+  replicas (#12693)
+* Fix a possible crash after cluster node removal (#12702)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2.2 (2023-10-18)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security fixes
+==============
+
+* (CVE-2023-45145) The wrong order of listen(2) and chmod(2) calls creates a
+  race condition that can be used by another process to bypass desired Unix
+  socket permissions on startup.
+
+
+Platform / toolchain support related changes
+=================================================
+
+* Fix compilation error on MacOS 13 (#12611)
+
+Bug fixes
+=========
+
+* WAITAOF could timeout in the absence of write traffic in case a new AOF is
+  created and an AOF rewrite can't immediately start (#12620)
+
+Redis cluster
+=============
+
+* Fix crash when running rebalance command in a mixed cluster of 7.0 and 7.2
+  nodes (#12604)
+* Fix the return type of the slot number in cluster shards to integer, which
+  makes it consistent with past behavior (#12561)
+* Fix CLUSTER commands are called from modules or scripts to return TLS info
+  appropriately (#12569)
+
+Changes in CLI tools
+====================
+
+* redis-cli, fix crash on reconnect when in SUBSCRIBE mode (#12571)
+
+Module API changes
+==================
+
+* Fix overflow calculation for next timer event (#12474)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.0.14 (2023-10-18)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security fixes
+==============
+
+* (CVE-2023-45145) The wrong order of listen(2) and chmod(2) calls creates a
+  race condition that can be used by another process to bypass desired Unix
+  socket permissions on startup.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.2.14 (2023-10-18)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security fixes
+==============
+
+* (CVE-2023-45145) The wrong order of listen(2) and chmod(2) calls creates a
+  race condition that can be used by another process to bypass desired Unix
+  socket permissions on startup.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2.1 (2023-09-06)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security Fixes
+==============
+
+* (CVE-2023-41053) Redis does not correctly identify keys accessed by SORT_RO and,
+  as a result, may grant users executing this command access to keys that are not
+  explicitly authorized by the ACL configuration.
+
+
+Bug Fixes
+=========
+
+* Fix crashes when joining a node to an existing 7.0 Redis Cluster (#12538)
+* Correct request_policy and response_policy command tips on for some admin /
+  configuration commands (#12545, #12530)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.0.13 (2023-09-06)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security Fixes
+==============
+
+* (CVE-2023-41053) Redis does not correctly identify keys accessed by SORT_RO and
+  as a result may grant users executing this command access to keys that are not
+  explicitly authorized by the ACL configuration.
+
+Bug Fixes
+=========
+
+* Cluster: fix a race condition where a slot migration may revert on a
+  subsequent failover or node joining (#12344)
+* Ensure that the function load timeout is disabled during loading from RDB/AOF
+  and on replicas. (#12451)
+* Fix the assertion when script timeout occurs after it signaled a blocked client (#12459)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2.0 (2023-08-15)</h2>
+      <pre>Upgrade urgency LOW: This is the first stable Release for Redis 7.2.
+
+Bug Fixes
+=========
+
+* redis-cli in cluster mode handles `unknown-endpoint` (#12273)
+* Update request / response policy hints for a few commands (#12417)
+* Ensure that the function load timeout is disabled during loading from RDB/AOF and on replicas. (#12451)
+* Fix false success and a memory leak for ACL selector with bad parenthesis combination (#12452)
+* Fix the assertion when script timeout occurs after it signaled a blocked client (#12459)
+
+Fixes for issues in previous releases of Redis 7.2
+--------------------------------------------------
+
+* Update MONITOR client's memory correctly for INFO and client-eviction (#12420)
+* The response of cluster nodes was unnecessarily adding an extra comma when no
+  hostname was present. (#12411)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.0.12 (2023-07-10)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security Fixes:
+* ([CVE-2022-24834](https://github.com/redis/redis/security/advisories/GHSA-p8x2-9v9q-c838)) A specially crafted Lua script executing in Redis can trigger
+  a heap overflow in the cjson and cmsgpack libraries, and result in heap
+  corruption and potentially remote code execution. The problem exists in all
+  versions of Redis with Lua scripting support, starting from 2.6, and affects
+  only authenticated and authorized users.
+* ([CVE-2023-36824](https://github.com/redis/redis/security/advisories/GHSA-4cfx-h9gq-xpx3)) Extracting key names from a command and a list of arguments
+  may, in some cases, trigger a heap overflow and result in reading random heap
+  memory, heap corruption and potentially remote code execution. Specifically:
+  using COMMAND GETKEYS* and validation of key names in ACL rules.
+
+
+Bug Fixes
+=========
+
+* Re-enable downscale rehashing while there is a fork child (#12276)
+* Fix possible hang in HRANDFIELD, SRANDMEMBER, ZRANDMEMBER when used with `<count>` (#12276)
+* Improve fairness issue in RANDOMKEY, HRANDFIELD, SRANDMEMBER, ZRANDMEMBER, SPOP, and eviction (#12276)
+* Fix WAIT to be effective after a blocked module command being unblocked (#12220)
+* Avoid unnecessary full sync after master restart in a rare case (#12088)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2-rc3 (2023-07-10)</h2>
+      <pre>Upgrade urgency LOW: This is the third Release Candidate for Redis 7.2.
+Upgrade urgency SECURITY: If you're using a previous release candidate of 7.2.
+
+Security Fixes:
+* ([CVE-2022-24834](https://github.com/redis/redis/security/advisories/GHSA-p8x2-9v9q-c838)) A specially crafted Lua script executing in Redis can trigger
+  a heap overflow in the cjson and cmsgpack libraries, and result in heap
+  corruption and potentially remote code execution. The problem exists in all
+  versions of Redis with Lua scripting support, starting from 2.6, and affects
+  only authenticated and authorized users.
+* ([CVE-2023-36824](https://github.com/redis/redis/security/advisories/GHSA-4cfx-h9gq-xpx3)) Extracting key names from a command and a list of arguments
+  may, in some cases, trigger a heap overflow and result in reading random heap
+  memory, heap corruption and potentially remote code execution. Specifically:
+  using COMMAND GETKEYS* and validation of key names in ACL rules.
+
+New Features
+============
+
+New administrative and introspection commands and command arguments
+-------------------------------------------------------------------
+
+* Make SENTINEL CONFIG [SET|GET] variadic. (#10362)
+
+Potentially Breaking / Behavior Changes
+=======================================
+
+* Cluster SHARD IDs are no longer visible in the cluster nodes output,
+  introduced in 7.2-RC1. (#10536, #12166)
+* When calling PUBLISH with a RESP3 client that's also subscribed to the same channel,
+  the order is changed and the reply is sent before the published message (#12326)
+
+New configuration options
+=========================
+
+* Add a new loglevel "nothing" to disable logging (#12133)
+* Add cluster-announce-human-nodename - a unique identifier for a node that is
+  be used in logs for debugging (#9564)
+
+Other General Improvements
+==========================
+
+* Allow CLUSTER SLOTS / SHARDS commands during loading (#12269)
+* Support TLS service when "tls-cluster" is not enabled and persist both plain
+  and TLS port in nodes.conf (#12233)
+* Update SPOP and RESTORE commands to replicate unlink commands to replicas
+  when the server is configured to use async server deletes (#12320)
+* Try lazyfree the temporary zset in ZUNION / ZINTER / ZDIFF (#12229)
+
+Performance and resource utilization improvements
+=================================================
+
+* Optimize PSUBSCRIBE and PUNSUBSCRIBE from O(N*M) to O(N) (#12298)
+* Optimize SCAN, SSCAN, HSCAN, ZSCAN commands (#12209)
+* Set Jemalloc --disable-cache-oblivious to reduce memory overhead (#12315)
+* Optimize ZINTERCARD to avoid create a temporary zset (#12229)
+* Optimize HRANDFIELD and ZRANDMEMBER listpack encoded (#12205)
+* Numerous other optimizations (#12155, #12082, #11626, #11944, #12316, #12250,
+  #12177, #12185)
+
+
+Changes in CLI tools
+====================
+
+* redis-cli: Handle RESP3 double responses that contain a NaN (#12254)
+* redis-cli: Support URIs with IPv6 (#11834)
+
+Module API changes
+==================
+
+* Align semantics of the new (v7.2 RC2) RM_ReplyWithErrorFormat with RM_ReplyWithError.
+  This is a breaking change that affects the generated error code. (#12321)
+* Forbid RM_AddPostNotificationJob on loading and on read-only replicas (#12304)
+* Add ability for module command filter to know which client is being handled (#12219)
+
+Bug Fixes
+=========
+
+* Fix broken protocol when PUBLISH is used inside MULTI when the RESP3
+  publishing client is also subscribed for the channel (#12326)
+* Fix WAIT to be effective after a blocked module command being unblocked (#12220)
+* Re-enable downscale rehashing while there is a fork child (#12276)
+* Fix possible hang in HRANDFIELD, SRANDMEMBER, ZRANDMEMBER when used with `<count>` (#12276)
+* Improve fairness issue in RANDOMKEY, HRANDFIELD, SRANDMEMBER, ZRANDMEMBER, SPOP, and eviction (#12276)
+* Cluster: fix a race condition where a slot migration may revert on a subsequent failover or node joining (#12344)
+
+Fixes for issues in previous releases of Redis 7.2
+--------------------------------------------------
+
+* Fix XREADGROUP BLOCK with ">" from hanging (#12301)
+* Fix assertion when a blocked command is rejected when re-processed. (#12247)
+* Fix use after free on a blocking RM_Call. (#12342)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.2.13 (2023-07-10)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security Fixes:
+* ([CVE-2022-24834](https://github.com/redis/redis/security/advisories/GHSA-p8x2-9v9q-c838)) A specially crafted Lua script executing in Redis can trigger
+  a heap overflow in the cjson and cmsgpack libraries, and result in heap
+  corruption and potentially remote code execution. The problem exists in all
+  versions of Redis with Lua scripting support, starting from 2.6, and affects
+  only authenticated and authorized users.
+
+Bug Fixes
+=========
+
+* Re-enable downscale rehashing while there is a fork child (#12276)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.0.20 (2023-07-10)</h2>
+      <pre>Upgrade urgency SECURITY: See security fixes below.
+
+Security Fixes:
+* ([CVE-2022-24834](https://github.com/redis/redis/security/advisories/GHSA-p8x2-9v9q-c838)) A specially crafted Lua script executing in Redis can trigger
+  a heap overflow in the cjson and cmsgpack libraries, and result in heap
+  corruption and potentially remote code execution. The problem exists in all
+  versions of Redis with Lua scripting support, starting from 2.6, and affects
+  only authenticated and authorized users.
+
+Bug Fixes
+=========
+
+* Re-enable downscale rehashing while there is a fork child (#12276)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.2-rc2 (2023-05-15)</h2>
+      <pre>Upgrade urgency LOW: This is the second Release Candidate for Redis 7.2.
+
+INFO fields and introspection changes
+=====================================
+
+* Add a few low level event loop metrics to help diagnose latency (#11963)
+
+Performance and resource utilization improvements
+=================================================
+
+* Minor performance improvement to SADD and HSET (#12019)
+
+Platform / toolchain support related changes
+=================================================
+
+* Upgrade to Jemalloc 5.3.0, resolves a rare fork child hang (#12115)
+* Fix a compiler fortification induced crash when used with link time optimizations (#11982)
+* Fix local clients detection, 127.*.*.* instead of 127.0.0.1 (#11664)
+* Report AOF failure status to systemd in shutdown (#12065)
+
+Changes in CLI tools
+====================
+
+* redis-cli: Reimplement and improve help hints based on actual command arg docs (#10515)
+* redis-cli: Add option --count for tuning SCAN based features (#12042)
+* redis-benchmark: Add --seed option to seed the random number generator (#11945)
+
+Module API changes
+==================
+
+* Add RM_RdbLoad and RM_RdbSave APIs (#11852)
+* Add RM_ReplyWithErrorFormat that can support format string (#11923)
+* Fix: Delete empty key when RM_ZsetAdd, RM_ZsetIncrby, RM_StreamAdd fail (#12129)
+
+Bug Fixes
+=========
+
+* LPOS with RANK set to LONG_MIN returning wrong result (#12167)
+* Avoid unnecessary full sync after master restart in a rare case (#12088)
+* Iterate clients fairly when processing background chores (#12025)
+* Avoid incorrect shrinking of query buffer when reading large data from clients (#12000)
+* Sentinel: Fix config rewrite error when old known-slave is used (#11775)
+* ACL: Disconnect pub-sub subscribers when revoking allchannels permission (#11992)
+* Add a missing fsync of AOF file in rare cases (#11973)
+
+Fixes for issues in previous releases of Redis 7.2
+--------------------------------------------------
+
+* Fix tracking of command duration metrics for MULTI, EVAL, WAIT and modules (#11970)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>7.0.11 (2023-04-17)</h2>
+      <pre>Upgrade urgency: SECURITY, contains fixes to security issues.
+
+Security Fixes:
+* (CVE-2023-28856) Authenticated users can use the HINCRBYFLOAT command to create
+  an invalid hash field that will crash Redis on access
+
+Bug Fixes
+=========
+
+* Add a missing fsync of AOF file in rare cases (#11973)
+* Disconnect pub-sub subscribers when revoking allchannels permission (#11992)
+
+Platform / toolchain support related improvements
+=================================================
+
+* Fix a compiler fortification induced crash when used with link time optimizations (#11982)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.2.12 (2023-04-17)</h2>
+      <pre>Upgrade urgency: SECURITY, contains fixes to security issues.
+
+Security Fixes:
+* (CVE-2023-28856) Authenticated users can use the HINCRBYFLOAT command to create
+  an invalid hash field that will crash Redis on access
+
+
+Bug Fixes
+=========
+
+* Fix CLIENT REPLY OFF|SKIP to not silence push notifications (#11875)
+* Disconnect pub-sub subscribers when revoking allchannels permission (#11992)
+* Trim excessive memory usage in stream nodes when exceeding `stream-node-max-bytes` (#11885)
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

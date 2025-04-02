@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for portainer/portainer"/>
+  <title>portainer/portainer Release Notes</title>
+</head>
+<body>
+  <h1>🚀 portainer/portainer - Release Notes</h1>
+  
+    <section>
+      <h2>Release 2.27.3 (2025-03-25)</h2>
+      <pre>### Known issues
+
+#### Known issues with Podman support
+
+* Podman environments aren't supported by auto-onboarding script
+* It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+* Support for only CentOS 9, Podman 5 rootful
+
+### Changes
+
+* Fixed missing cluster CPU reservation readings for Kubernetes clusters
+* Fixed data loss resulting from redeploying stacks with relative path volumes
+
+## Deprecated and removed features:
+
+**Deprecated features**
+
+None
+
+**Removed features**
+
+None</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.28.1 (2025-03-20)</h2>
+      <pre>## Known issues
+
+### Known issues with Podman support
+
+- Podman environments aren't supported by auto-onboarding script
+- It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+- Support for only CentOS 9, Podman 5 rootful
+
+## Changes
+
+- Fixed "unable to retrieve namespace" errors visible in Kubernetes environments using CA-signed TLS certificates
+
+## Deprecated and removed features:
+
+**Deprecated features**
+
+None
+
+**Removed features**
+
+None</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.27.2 (2025-03-19)</h2>
+      <pre>## Known issues
+
+- When viewing or editing your user profile (via My Account) an error is being thrown. A fix for this will be provided in the next patch release.
+
+### Known issues with Podman support
+
+- Podman environments aren't supported by auto-onboarding script
+- It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+- Support for only CentOS 9, Podman 5 rootful
+
+## Changes
+
+- Fixed an issue on Kubernetes environments where invalid deployments could fail silently
+- Fixed an issue on Kubernetes environments where namespaces that the user did not have access to could be shown
+- Fixed an issue where the select all checkbox didn't reflect the selected state
+- Resolved CVE-2025-22869
+
+## Deprecated and removed features:
+
+**Deprecated features**
+
+None
+
+**Removed features**
+
+None</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.28.0 (2025-03-18)</h2>
+      <pre>## Known issues
+
+- **We are aware of an issue in 2.28.0 for Kubernetes environments with CA-signed TLS certificates configured. A patch release is coming for this issue but we do not recommend users with this configuration update to 2.28.0 at this time.**
+
+### Known issues with Podman support
+
+- Podman environments aren't supported by auto-onboarding script
+- It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+- Support for only CentOS 9, Podman 5 rootful
+
+## Changes
+
+- Fixed an issue where users were unable to view details of the Portainer Server image
+- Fixed an issue where Swarm stacks that had recently been stopped were unable to be restarted
+- Optimized the update of endpoint relations
+- Added the display of external Load Balancer information in the UI
+- Switched to using the official Helm SDK rather than Helm Binary
+- Converted the Cluster Details view to React
+- Fixed an issue where the select all checkbox didn't reflect the selected state
+- Fixed an issue with Kubeconfig generation when using real SSL certs
+- Converted the Helm details view to React
+- Fixed an issue where the Edge stack count could be doubled
+- Optimized Edge Stack performance
+- Added the ability to dynamically choose env files to include in Docker Compose
+- Ensured all list API calls; namespaces, applications, configMaps… etc filter out system resources for all non-admin users
+- Fixed an issue where invalid deployments could fail silently
+- Migrated the Helm templates list to React
+- Fixed an issue where the namespaces dropdown could list namespaces the user did not have access to
+- Optimized automatic team memberships
+- Fixed an issue where the GitOps updates option was missing when deploying stacks in CE
+- Fixed an issue where Helm instructions appeared twice
+
+## Deprecated and removed features:
+
+**Deprecated features**
+
+None
+
+**Removed features**
+
+None</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.27.1 (2025-02-26)</h2>
+      <pre>## Known issues
+
+### Known issues with Docker support
+
+- GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed)
+
+### Known issues with Podman support
+
+- Podman environments aren't supported by auto-onboarding script
+- It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+- Support for only CentOS 9, Podman 5 rootful
+
+## Changes
+
+- Security: Resolved CVE-2024-50338
+- Fixed an issue where Compose files were not interpolated with .env</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.27.0 (2025-02-19)</h2>
+      <pre>Portainer version 2.27.0 is the second Long-Term Support (LTS) release, primarily focused on bug fixes, optimizations, enhancements, and security improvements.
+
+## Known issues
+
+### Known issues with Docker support
+
+- GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed)
+
+### Known issues with Podman support
+
+- Podman environments aren't supported by auto-onboarding script
+- It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+- Support for only CentOS 9, Podman 5 rootful
+
+## New in this release
+
+- Security: CVE-2025-21614, CVE-2025-21613, CVE-2024-45337, and CVE-2024-11053
+- Fix: Early exit optimization does not return the correct error
+- Fix: 2.19.5 - 2.21 Migration fails with "`StorageError: invalid object`"
+- Optimization: Investigate the web editor slowdown while typing
+- Improvement: Edge stack missing value warning improvement
+- Fix: Removing an edge stack makes the backend panic
+- Fix: Object not found inside the database (bucket=endpoint_relations, key=8)
+- Improvement: use an Edge Stack Status Update coordinator
+- Fix: High memory usage when counting nodes and CPUs
+- Fix: Unable to add environment to static Edge group
+- Fix: Removing an edge stack makes the backend panic
+- Fix: Error "failed to find local environment" occurs if there is at least one environment configured but no local environment
+- Fix: Bitnami Helm Charts location has moved
+- Fix: Edge stack "deployment received" counting is not correct with large scale deployments
+- Fix: Unable to deploy a git edge stack
+- Fix: RegistryList API operation returns password in clear text
+- Fix: Agent Edge stack status watcher errors on Swarm
+- Fix: edge_stack folder in volume is not deleted after Edge stack is removed
+- Fix: Swarm: Empty/incorrect value in Host column of Images list
+- Fix: Unpopulated Volumes Dropdown in App Templates in Portainer 2.21.4
+- Fix: "Select all" should select only elements of the current page
+- Fix: podman doesnt appear in the option to filter by platform in the homepage
+- Fix: Edge stack webhooks cannot be disabled once created
+- Fix: Unable to expand application list rows to view published URLs
+- Improvement: Change docs URL schema to LTS / STS
+- Fix: Group membership synchronization between Portainer and Azure OAuth appears to be broken
+- Fix: Adding environment variables to an application with a configmap moves the configmap to the secrets section and brings down the app
+- Improvement: Kubernetes - Rename `Create from file` to `Create from code`
+- Fix: Incorrect Replicated count while performing rolling restart on deployment
+- Fix: Kubernetes - Broken Cluster View
+- Fix: Podman - Unable to create an image from a container
+- Fix: Unable to deploy a git edge stack for CE
+- Fix: Edge Agent Logs are inaccessible in Portainer UI
+
+## Deprecated and removed features:
+
+**Deprecated features**
+
+- Reminder: `<platform>-<arch>` image tags were deprecated in 2.21
+
+**Removed features**
+
+The following API endpoints have been removed:
+
+- POST /endpoints/{id}/edge/trust
+- GET /edge_templates
+- POST /templates/file
+- POST /endpoints/{id}/kubernetes/helm/repositories
+- GET /endpoints/{id}/kubernetes/helm/repositories
+- GET /kubernetes/{id}/namespaces/{namespace}/configuration
+- POST /cloud/{provider}/cluster
+- GET /cloudcredentials
+- POST /cloudcredentials
+- GET /cloudcredentials/{id}
+- DELETE /cloudcredentials/{id}
+- PUT /cloudcredentials/{id}
+- POST /custom_templates
+- POST /edge_jobs
+- GET /cloud/microk8s/addons
+- POST /stacks
+- DELETE /edge_stacks/{id}/status/{environmentId}
+- POST /edge_stacks
+- GET /status/version
+- GET /status/nodes</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.27.0-rc3 (2025-02-13)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.27.0-rc2 (2025-02-07)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.27.0-rc1 (2025-02-02)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.26.1 (2025-01-21)</h2>
+      <pre>## Known issues
+
+### Known issues with Docker support
+
+- Service pruning does not work with stacks using relative paths
+- GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed) 
+
+### Known issues with Podman support
+
+- Podman environments aren't supported by auto-onboarding script
+- It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+- Support for only CentOS 9, Podman 5 rootful
+
+### Known issues with Kubernetes
+
+- Displaying job executions of cron jobs are limited to 3.
+
+## Changes
+
+- This release contains no changes and has been tagged in order to ensure that version numbering aligns with our latest Business Edition release. </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.26.0 (2025-01-14)</h2>
+      <pre>This is a STS (Short Term Support) release that includes all the changes added up to and including the 2.25.1 patch release as well as various fixes aimed at enhancing the stability and scalability of Portainer. For more details on what is included from the 2.25 release, refer to the 2.25 release notes.
+
+## Known issues
+
+### Known issues with Docker support
+
+* Service pruning does not work with stacks using relative paths
+* GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed)
+
+### Known issues with Podman support
+
+* Podman environments aren't supported by auto-onboarding script
+* It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+* Support for only CentOS 9, Podman 5 rootful
+
+## New in this release
+
+* Added the ability to remove associated volumes when deleting a stack
+* Improved the performance for edge:
+    * Optimized AddEnvironmentToEdgeGroups()
+    * Optimized the concurrent Edge Stack retrieval by the agent
+    * Optimized the Edge Stack status update by the agent
+* Fixed a goroutine leak in the Agent that would exhaust the resources over time
+* Fixed Edge Stack status updates so that it doesn't cause wrong counts
+* Updated compose-unpacker so it doesn't rely on the docker-compose binary
+* Fixed data races:
+    * GetPlatform()
+    * Docker transport
+    * Agent stack manager
+    * Edge auto-onboarding
+* Fixed the volume list retrieval and app template deployment when the environment snapshot doesn't exist
+* Standardized the lower case string comparison method
+* Fixed a problem that prevented the update of edge stacks when using webhooks with async environments
+* Added a 30 minutes time interval to the OAuth session timeout options
+* Added a new Kubernetes view for Jobs and Cron Jobs
+* Fixed update create from file option order
+
+## Deprecated and removed features
+
+### Deprecated features
+
+None
+
+### Removed features
+
+None</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.25.1 (2024-12-19)</h2>
+      <pre>## Known issues
+
+### Known issues with Docker support
+
+- Service pruning does not work with stacks using relative paths
+- GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed)
+
+### Known issues with Podman support
+
+- Podman environments aren't supported by auto-onboarding script
+- It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+- Support for only CentOS 9, Podman 5 rootful
+
+## Resolved CVEs
+
+- CVE-2024-45337
+
+## Changes
+
+- Fixed an issue where excessive warnings were logged if agents weren't updated to match server version</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.21.5 (2024-12-19)</h2>
+      <pre>## Resolved CVEs
+
+* CVE-2024-45337
+
+## Changes
+
+* Fixed an issue that omitted copying the IP address in container port mapping when provided during the Edit/Duplicate operation for an existing container.
+* Fixed an issue with images that included files failing to build.
+* Fixed a resource leak that prevented the backup process from finishing under some specific circumstances.
+* Optimized the space used by Git repositories.
+* Fixed aggressive image pulling retry.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.25.0 (2024-12-15)</h2>
+      <pre>This is a STS (**S**hort **T**erm **S**upport) release that includes all the changes added up to and including the 2.24.1 patch release as well as various fixes aimed at enhancing the stability and scalability of Portainer. For more details on what is included from the 2.24 release, refer to the 2.24 release notes.
+
+## Known issues
+
+### Known issues with Docker support
+
+- Service pruning does not work with stacks using relative paths
+- GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed)
+
+### Known issues with Podman support:
+
+- Podman environments aren't supported by auto-onboarding script
+- It's not possible to add Podman environments via socket when running a Portainer server on Docker (and vice versa)
+- Support for only CentOS 9, Podman 5 rootful
+
+## New in this Release:
+
+- Updated Compose to v2.31
+- Optimized the HTTP request/response compressor to reduce allocations and improve performance
+- Reduced the total locking time for the backup process and improved the error messages
+- Stopped preventing the server startup when docker_config/config.json file is corrupted
+- Added the ability for users to specify Portainer agent and updater images from their private registry when creating a remote update or rollback schedule for agents
+- Fixed a problem that prevented interaction with Swarm volumes
+- Fixed a problem that prevented the GitOps edge configurations from working properly
+- Fixed the missing IP binding of published ports when editing a container
+- Enforced timeouts for offline environments when doing parallel edge deployments
+- Fixed a resource leak that prevented the backup process from finishing under some specific circumstances
+- Removed incorrect persistence of filters when interacting with Services and Stack pages
+- Restored the remember functionality in the filtered stacks search results
+- Enforced Edge Stack naming rules
+- Fixed an issue with images that included files failing to build
+- Ensured proper Edge Stack removal after a power interruption in the Agent
+- Fixed an issue where Git stacks using sub-directories and environment files could not be edited
+- Fixed an issue where an extra network is created when deploying a stack with only external networks defined
+- Fixed an issue where the env_file field in Compose files were being ignored
+- Fixed an issue where a stack that built an image that it then referenced would fail to deploy with a "no such image" error
+- Fixed an issue where Helm status was not correctly shown for deployments
+- Fixed an issue where the date picker was unusable for activity logs in the dark mode
+- Fixed an issue where the namespace level access not being applied to teams
+- Fixed an issue where edge stack fails to be deleted when K8s job is set with TTL
+- Fixed an issue where LDAP users get duplicated in a Team for each login
+- Migrated a handful of legacy Angular based Kubernetes pages to React
+
+## Deprecated and removed features
+
+**Deprecated features**
+
+* `PUT /kubernetes/{id}/namespaces API` endpoint
+
+**Removed features**
+
+None</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.24.1 (2024-12-03)</h2>
+      <pre>## Known issues
+
+- Known issues with Docker support:
+    - Service pruning does not work with stacks using relative paths
+    - GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed)
+- Known issues with Podman support:
+    - Podman environments aren't supported by auto-onboarding script
+    - It's not possible to add Podman environments via socket when running a Portainer server on Docker (and vice versa)
+    - Support for only CentOS 9, Podman 5 rootful
+
+### Changes:
+
+- Fixed an issue where Git stacks using subdirectories and environment files could not be edited.
+- Fixed an issue where an extra network was being created when deploying a stack with only external networks defined.
+- Fixed an issue where the `env_file` field in Compose files was being ignored. 
+- Fixed an issue where a stack that built an image that it then referenced would fail to deploy with a "no such image" error.
+- Fixed an infinite recursion issue in an RBAC route when switching users and connecting to an agent endpoint.
+- Fixed an issue that omitted copying the IP address in container port mapping when provided during the Edit/Duplicate operation for an existing container.
+- Fixed an issue with images that included files failing to build.
+- Fixed an issue where activity logs shown in the Portainer UI were encoded with base64.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.24.0 (2024-11-19)</h2>
+      <pre>This is a STS (**S**hort **T**erm **S**upport) release that includes all the changes added up to the 2.23 release and 2.21.4 LTS patch release, as well as various fixes aimed at enhancing the stability and scalability of Portainer.
+
+## Known issues
+
+- Known issues with Docker support:
+    - Service pruning does not work with stacks using relative paths
+    - GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed)
+- Known issues with Podman support:
+    - Podman environments aren't supported by auto-onboarding script
+    - It's not possible to add Podman environments via socket when running a Portainer server on Docker (and vice versa)
+    - Support for only CentOS 9, Podman 5 rootful
+
+### New in this Release:
+
+- Bumped Go version to 1.23
+- Rewrote the stack deployment code to remove the need for the docker-compose binary
+- Added the ability to prune services while deploying Compose stacks
+- Defaulted to descending timestamp order in the user activity log
+- Fixed user activity log sorting
+- Relocated the GitOps TLS toggle so it’s harder to overlook
+- Added timeouts to OAuth requests
+- Fixed problem that prevented environment association in the waiting room
+- Fixed a problem that prevented the Docker image exporting
+- Improved the Kubernetes Cluster node view to display conditions
+- Migrated more Angular based pages to React
+- Fixed the following Kubernetes regressions:
+    - Standard user can't get cluster scoped ingress controllers
+    - CPU/Memory Limit & Reservation values not multiplied by replica count on "Applications running on this node" table
+
+### Deprecated and Removed Features:
+
+**Deprecated features**
+None
+
+**Removed features**
+None</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.21.4 (2024-10-24)</h2>
+      <pre>### What’s Included:
+
+- **Changes from 2.21.3**:
+    - Ported client API negotiation changes to ensure LTS can be compatible with future Docker versions.
+    - Improved the Edge-related API error response by including environment ID and name.
+    - Added the display of the missing Edge stack deployment errors on the Edge stack environment status page.
+    - Fixed an issue that prevented consecutive updates of Swarm services from reloading the page.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.23.0 (2024-10-14)</h2>
+      <pre>This is a STS (Short Term Support) release that includes all the changes added up to and including the 2.22.0 release, as well as various fixes aimed at enhancing the stability and scalability of Portainer. For more details on what is included from the 2.22 release, refer to the [2.22 release notes](https://docs.portainer.io/2.23/release-notes#release-2.22.0).
+
+### Known issues
+**Known issues with Docker support**
+- Image export is not functioning
+- GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed)
+
+**Known issues with Podman support**
+- Podman environments aren't supported by auto-onboarding script
+- It's not possible to add Podman environments via socket, when running a Portainer server on Docker (and vice versa)
+- Support for only CentOS 9, Podman 5 rootful
+- Unable to create an image from a container
+
+**Known issues with Kubernetes support**
+- Service accounts, Cluster Roles/Bindings, Roles/Role Bindings) show system resources when toggle is off
+- Standard user can't get cluster scoped ingress controllers
+- CPU/Memory Limit & Reservation values not multiplied by replica count on "Applications running on this node" table
+- Application rollout restart is not functioning
+
+### New in this release
+
+- Improved the Home page search speed
+- Improved OAuth logging to help diagnose errors
+- Increased the CRL request timeout in the Agent to 30s
+- Moved the webhook deploying logic to the background to avoid timeouts
+- Optimized the space used by Git repositories
+- Improved the Edge-related API error response by including environment ID and name
+- Added the display of the missing Edge stack deployment errors on the Edge stack environment status page
+- Fixed issues with Kubernetes resources not showing information correctly
+- Improved the overall experience for Kubernetes
+
+### Deprecated and removed features
+**Deprecated features**
+- None
+
+**Removed features**
+- Platform and Architecture-Specific Images: We have removed image tags named for various architectures using the convention `<platform>-<arch>`. These images tags were deprecated in a previous release. This change ensures further standardization and consistency across our software distribution.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.21.3 (2024-10-07)</h2>
+      <pre>### What’s Included:
+
+- **Changes from 2.21.2**:
+    - Improved home page search performance, addressing slow response times in certain environments.
+    - Fixed an issue where the CRL (Certificate Revocation List) request timeout may be too short, causing potential connection issues.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.22.0 (2024-10-02)</h2>
+      <pre>## CE Release Notes
+
+This is a STS (**S**hort **T**erm **S**upport) release that includes all the changes added up to and including the 2.21.2 release, as well as various fixes aimed at enhancing the stability and scalability of Portainer.
+
+### Known Issues
+- GitOps updates option is not visible when first deploying stacks from Git on Docker (but can be configured after the stack is deployed)
+
+### What’s Included:
+
+- **Changes from 2.21.x**:
+    - This STS release incorporates all the features, improvements, and bug fixes from the 2.21.x series.
+    - For more details, refer to the [2.21.x release notes](https://docs.portainer.io/v/2.21/release-notes).
+
+### New in this Release:
+
+- **Podman Support**:
+    - Portainer now supports Podman. It can be installed on Podman and manage Podman environments. Initial support includes Podman 5.x running on CentOS environments.
+- **Better Kubernetes Management Experience**:
+    - The Kubernetes management experience has been overhauled by relocating most of the logic from the client to the server, improving client speed and responsiveness. This update also introduces the ability to manage all Kubernetes resources via a simplified, abstracted API.
+- **Edge Capabilities Improvements**:
+    - Enhancements to the Edge features have resulted in a more stable, performant, and reliable experience when using Edge capabilities.
+- **Stability Improvements**:
+    - Various fixes have been applied to increase the overall stability of Portainer.
+- **Scalability Enhancements**:
+    - Adjustments have been made to improve Portainer's performance and reliability at scale, especially in larger environments.
+- **Security**:
+    - Critical and high-security vulnerabilities (CVEs) in dependencies shipped within the Portainer images have been addressed. Key components, such as the Docker client and kubectl, have been updated to ensure a secure environment.
+
+### Deprecated and Removed Features:
+
+**Deprecated features**
+
+- We are deprecating image tags named for various architectures using the convention `<platform>-<arch>`. This change ensures further standardization and consistency across our software distribution.
+
+**Removed features**
+
+- **Platform and Architecture-Specific Images**:
+    - We are removing images named using the convention `<platform>-<arch>-<version>`. These images were deprecated in a previous release in favor of the newer convention `<version>-<platform>-<arch>`. This change ensures standardization and consistency across our software distribution.
+- **Kompose Logic**:
+    - All logic related to **Kompose** has been removed, following its deprecation in a previous version.
+- **Nomad Support**:
+    - All logic related to **Nomad** support has been removed after it was deprecated and subsequently removed from the client in version 2.20.
+
+## Breaking changes
+
+- As part of the changes in the Kubernetes experiences, some API operations for Kubernetes management may have changed slightly.
+
+## Known issues
+
+- **Known issues with Podman support:**
+    - Podman environments aren't supported by auto-onboarding script
+    - It's not possible to add Podman environments via socket when running a Portainer server on Docker (and vice versa)
+    - Support for only CentOS 9, Podman 5 rootful
+    - Unable to create an image from a container
+    - In-app CE to BE upgrade link doesn't appear on Podman
+- **Known issues with Kubernetes management:**
+    - Applications deployed via helm chart are no longer grouped on the App list screen
+    - Service accounts, Cluster Roles/Bindings, Roles/Role Bindings) show system resources when the toggle is off
+    - Standard users can't get cluster scoped ingress controllers
+    - Unused label incorrectly showing on used volumes, and Used by column is blank
+    - NaN value on Memory & CPU used bars on Node Details screen
+    - CPU/Memory Limit/Reservation values on **Applications running on this node** table rounding down
+    - Volumes created within Portainer are incorrectly labelled as External
+    - Standard users on CE can no longer select and remove volumes</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.22.0-rc1 (2024-10-01)</h2>
+      <pre>This is a STS (**S**hort **T**erm **S**upport) release that includes all the changes added up to the 2.21.2 release, as well as various fixes aimed at enhancing the stability and scalability of Portainer.
+
+### What’s Included:
+
+- **Changes from 2.21.x**:
+    - This STS release incorporates all the features, improvements, and bug fixes from the 2.21.x series.
+    - For more details, refer to the [2.21.x release notes](https://docs.portainer.io/v/2.21/release-notes)
+
+### New in this Release:
+
+- **Podman Support**:
+    - Portainer now supports Podman. It can be installed on Podman and manage Podman environments. Initial support includes Podman 5.x running on CentOS environments.
+- **Better Kubernetes Management Experience**:
+    - The Kubernetes management experience has been overhauled by relocating most of the logic from the client to the server, improving client speed and responsiveness. This update also introduces the ability to manage all Kubernetes resources via a simplified, abstracted API.
+- **Edge Capabilities Improvements**:
+    - Enhancements to the Edge features have resulted in a more stable, performant, and reliable experience when using Edge capabilities.
+- **Stability Improvements**:
+    - Various fixes have been applied to increase the overall stability of Portainer.
+- **Scalability Enhancements**:
+    - Adjustments have been made to improve Portainer's performance and reliability at scale, especially in larger environments.
+- **Security**:
+    - Critical and high-security vulnerabilities (CVEs) in dependencies shipped within the Portainer images have been addressed. Key components, such as the Docker client and kubectl, have been updated to ensure a secure environment.
+
+Please review the sections below for more details on deprecated and removed features included in this release.
+
+### Deprecated and Removed Features:
+
+**Deprecated features**
+
+- We are deprecating image tags named for various architectures using the convention `<platform>-<arch>`. This change ensures further standardization and consistency across our software distribution.
+
+**Removed features**
+
+- **Platform and Architecture-Specific Images**:
+    - We are removing images named using the convention `<platform>-<arch>-<version>`. These images were deprecated in a previous release in favor of the newer convention `<version>-<platform>-<arch>`. This change ensures standardization and consistency across our software distribution.
+- **Kompose Logic**:
+    - All logic related to **Kompose** has been removed, following its deprecation in a previous version.
+- **Nomad Support**:
+    - All logic related to **Nomad** support has been removed after it was deprecated and subsequently removed from the client in version 2.20.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.21.2 (2024-09-23)</h2>
+      <pre>### What’s Included:
+
+- **Changes from 2.21.1**:
+    - Updated Linode branding to align with the new “Akamai Connected Cloud”.
+    - Fixed an issue with stack deployment on Docker when using a .env file from a Git Repository and referencing it in the Compose file.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.21.1 (2024-09-09)</h2>
+      <pre>### What’s Included:
+
+- **Changes from 2.21.0**:
+    - Fixed an issue where Portainer would crash when cloning a large Git repository
+    - Introduced a JWT revocation mechanism to revoke JWTs after logout
+    - Fixed an issue when re-creating a container on Docker 24</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.21.0 (2024-08-26)</h2>
+      <pre>This is our first Long-Term Support (LTS) release, which includes all the changes that have been added up to the 2.20.3 release, as well as various fixes aimed at enhancing the stability and scalability of Portainer.
+
+### What’s Included:
+
+- **Changes from 2.20.x**:
+    - This LTS release incorporates all the features, improvements, and bug fixes from the 2.20.x series of releases.
+    - For detailed information about the changes included in the 2.20.x releases, please refer to the [[2.20.x release notes](https://docs.portainer.io/v/2.20/release-notes)](https://docs.portainer.io/v/2.20/release-notes).
+
+### New in this Release:
+
+- **Stability Improvements**: Various fixes have been applied to increase the overall stability of Portainer.
+- **Scalability Enhancements**: Specific adjustments have been made to improve the usage of Portainer at scale, ensuring better performance and reliability in larger environments.
+- **Security**: Critical and high security vulnerabilities (CVEs) associated with dependencies shipped within the Portainer images have been addressed. This includes updates to key components like the Docker client and kubectl to ensure a secure environment.
+
+Please review the sections below for more details on deprecated features included in this LTS release.
+
+### Deprecated Capabilities and Features:
+
+- We’re deprecating the platform and architecture-specific images named using the convention `<platform>-<arch>-<version>` in favor of the newer convention `<version>-<platform>-<arch>`. This change ensures standardization and consistency across our software distribution. In the future, we’ll only build and publish images using the new tag convention.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.21.0-rc2 (2024-08-21)</h2>
+      <pre>This new release candidate build fixes a bunch of critical and high security vulnerabilities (CVE), mostly associated with the dependencies that are shipped within the Portainer images.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.21.0-rc1 (2024-08-14)</h2>
+      <pre>This is our first Long-Term Support (LTS) release, which includes all the changes that have been added up to the 2.20.3 release, as well as various fixes aimed at enhancing the stability and scalability of Portainer.
+
+### What’s Included:
+
+- **Changes from 2.20.x**:
+    - This LTS release incorporates all the features, improvements, and bug fixes from the 2.20.x series of releases.
+    - For detailed information about the changes included in the 2.20.x releases, please refer to the [[2.20.x release notes](https://docs.portainer.io/v/2.20/release-notes)](https://docs.portainer.io/v/2.20/release-notes).
+
+### New in this Release:
+
+- **Stability Improvements**: Various fixes have been applied to increase the overall stability of Portainer.
+- **Scalability Enhancements**: Specific adjustments have been made to improve the usage of Portainer at scale, ensuring better performance and reliability in larger environments.
+
+Please review the sections below for more details on deprecated features included in this LTS release.
+
+### Deprecated Capabilities and Features:
+
+- We’re deprecating the platform and architecture-specific images named using the convention `<platform>-<arch>-<version>` in favor of the newer convention `<version>-<platform>-<arch>`. This change ensures standardization and consistency across our software distribution. In the future, we’ll only build and publish images using the new tag convention.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.20.3 (2024-05-20)</h2>
+      <pre># 2.20.3
+
+See [Upgrading Portainer instructions](https://docs.portainer.io/start/upgrade).
+
+# Overview of changes
+
+Introducing the new Portainer CE 2.20.3 release. This is an STS (Short-Term Support) release.
+
+As you gear up for the transition to Portainer CE 2.20.3, our latest STS (Short-Term Support) installment, ensuring a smooth upgrade is key. We urge you to back up your configurations via the Portainer UI beforehand. This backup acts as your safety net, ensuring you can gracefully revert to the prior version or state if the new frontier proves too wild. Additionally, pore over the release notes for catching any compatibility issues, understanding deprecated functionalities, and identifying essential tweaks to your current setup. Your diligence will pave the way for a seamless update.
+
+A Short-Term Support release can be considered as "bleeding-edge" as it will contain the latest features and functionality we've developed. The STS releases (including this one) will go through a significant amount of pre-release testing, but there may be changes that could cause regressions and features that might see further iterations. As such, if stability is a crucial concern for your setup we wouldn't recommend deploying STS releases on production environments.
+
+Read more in our ["Portainer 2.20 STS" blog post](https://www.portainer.io/blog/2024-release-principle)
+
+# Important Notice:
+
+On update to this Portainer version, stacks and edge stacks will have their containers restarted after updating them. This is caused by the use of Docker Compose 2.26.1, which requires this restart.
+Note: If you already updated to 2.20.0, 2.20.1 or 2.20.2 previously, stacks and edge stacks that DO NOT use relative paths may already have had their containers restarted on update of them, and you would not then see a restart again.
+
+# Docker
+
+- Resolved an issue introduced in 2.20.0 where stopped Docker containers were incorrectly shown with an Unused badge. [portainer/portainer#11797](https://github.com/portainer/portainer/issues/11797)
+
+# Swarm
+
+- Resolved an issue where the Edit Container page on Swarm environments was not loading properly. [portainer/portainer#11830](https://github.com/portainer/portainer/issues/11830)
+
+# Kubernetes
+
+- Resolved an issue introduced in 2.20.0 where, when a placement rule was created for a Kubernetes application, if it was not met for a node, then it would not show up in the expand rows of the Application Details Placement constraints/preferences table. [portainer/portainer#11826](https://github.com/portainer/portainer/issues/11826)
+- Resolved an issue in the Kubernetes Applications List page where the namespace filter selection of a system namespace did not persist on refresh or revisit. [portainer/portainer#11798](https://github.com/portainer/portainer/issues/11798)
+- Introduced a tooltip to the 'Rollback to previous configuration' button in the Kubernetes Application Details screen to explain how rollback works. [portainer/portainer#11804](https://github.com/portainer/portainer/issues/11804)
+- Prevented a panic from occurring when mistakenly attempting to deploy a Kubernetes application and supplying a docker-compose.yaml instead of a Kubernetes manifest. [portainer/portainer#11796](https://github.com/portainer/portainer/issues/11796)
+
+# Portainer
+
+- Resolved an issue where pending actions to be run on environments could end up in a panic state. [portainer/portainer#11818](https://github.com/portainer/portainer/issues/11818)
+- Resolved an issue where the subpath of an image tag was incorrectly truncated. [portainer/portainer#11831](https://github.com/portainer/portainer/issues/11831)
+- Resolved an issue around excessive GitHub API Portainer version checking on page loads. [portainer/portainer#11795](https://github.com/portainer/portainer/issues/11795)
+- Resolved an issue where loading a large number of volumes took an unreasonable amount of time [portainer/portainer#11829](https://github.com/portainer/portainer/issues/11829)
+- Resolved an issue in the agent where removing an undeployed stack resulted in errors. [portainer/portainer#11828](https://github.com/portainer/portainer/issues/11828)
+- Corrected the title wording and some UI styling in the Authentication Logs and Activity Logs screens. [portainer/portainer#11807](https://github.com/portainer/portainer/issues/11807)
+- Resolved an issue with deploying of containers via Portainer running on Windows Server 2022, where an error regarding CAP_AUDIT_WRITE was occurring. [portainer/portainer#11805](https://github.com/portainer/portainer/issues/11805)
+
+# API Changes
+
+- No API changes in Portainer CE for 2.20.2 to 2.20.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.20.2 (2024-04-30)</h2>
+      <pre># 2.20.2
+
+See [Upgrading Portainer instructions](https://docs.portainer.io/start/upgrade).
+
+# Overview of Changes
+
+Introducing the new Portainer CE 2.20.2 release. This is an STS (Short-Term Support) release.
+
+As you gear up for the transition to Portainer CE 2.20.2, our latest STS (Short-Term Support) installment, ensuring a smooth upgrade is key. We urge you to back up your configurations via the Portainer UI beforehand. This backup acts as your safety net, ensuring you can gracefully revert to the prior version or state if the new frontier proves too wild. Additionally, pore over the release notes for catching any compatibility issues, understanding deprecated functionalities, and identifying essential tweaks to your current setup. Your diligence will pave the way for a seamless update.
+
+A Short-Term Support release can be considered as "bleeding-edge" as it will contain the latest features and functionality we've developed. The STS releases (including this one) will go through a significant amount of pre-release testing, but there may be changes that could cause regressions and features that might see further iterations. As such, if stability is a crucial concern for your setup we wouldn't recommend deploying STS releases on production environments.
+
+Read more in our "Portainer 2.20 STS" [blog](https://www.portainer.io/blog/2024-release-principle)
+
+# Resolved CVEs
+
+- Resolved CVE vulnerabilities for Windows images [portainer/portainer#11716](https://github.com/portainer/portainer/issues/11716)
+- Updated kubectl to resolve CVEs. [portainer/portainer#11741](https://github.com/portainer/portainer/issues/11741)
+- Resolved CVE vulnerabilities for docker binary [portainer/portainer#11717](https://github.com/portainer/portainer/issues/11717)
+- Resolved CVE vulnerabilities for protobuf [portainer/portainer#11718](https://github.com/portainer/portainer/issues/11718)
+- Resolved CVE vulnerabilities for crypto [portainer/portainer#11719](https://github.com/portainer/portainer/issues/11719)
+- Updated [k8s.io/apiserver](http://k8s.io/apiserver) and Helm to resolve CVEs. [portainer/portainer#11740](https://github.com/portainer/portainer/issues/11740)
+- Resolved CVE vulnerabilities for containerd
+- Updated Docker client library to resolve CVEs. [portainer/portainer#11738](https://github.com/portainer/portainer/issues/11738)
+- Resolved CVE vulnerabilities for otelgrpc
+- Resolved CVE vulnerabilities for stdlib [portainer/portainer#11720](https://github.com/portainer/portainer/issues/11720)
+- Resolved CVE-2024-29296 by creating uniform response time for login attempts. [portainer/portainer#11736](https://github.com/portainer/portainer/issues/11736)
+- Resolved a CVE regarding data encryption. [portainer/portainer#11737](https://github.com/portainer/portainer/issues/11737)
+- Updated Docker Compose to resolve CVEs. [portainer/portainer#11739](https://github.com/portainer/portainer/issues/11739)
+
+# Edge
+
+- Resolved an issue with the edge post initiation migration runner to ensure it runs migrations at the appropriate time, when connection between an edge environment and Portainer server has been established. [portainer/portainer#11733](https://github.com/portainer/portainer/issues/11733)
+
+# Docker
+
+- Resolved an issue that caused errors when users attempted to connect to their Docker environment via API using HTTPS [portainer/portainer#11721](https://github.com/portainer/portainer/issues/11721)
+- Provided info text in the UI to clearly explain environment variables stack.env file usage when deploying Docker stacks via Git vs. other methods. [portainer/portainer#11732](https://github.com/portainer/portainer/issues/11732)
+
+# Kubernetes
+
+- Ensured confirmed support of vanilla Kubernetes 1.30 clusters. [portainer/portainer#11730](https://github.com/portainer/portainer/issues/11730)
+- Resolved an issue with Kubernetes environments that have a significant number of services where the Dashboard services panel never completed loading and the loading spinner was indefinitely displayed. [portainer/portainer#11734](https://github.com/portainer/portainer/issues/11734)
+
+# Portainer
+
+- Fixed an issue introduced in 2.20.0 where a user logged in using external SSO could no longer create a Portainer API access token. [portainer/portainer#11731](https://github.com/portainer/portainer/issues/11731)
+- Fixed an issue where redeploying a git-based deployment failed due to the target path already existing [portainer/portainer#11722](https://github.com/portainer/portainer/issues/11722)
+- Resolved an issue where pending actions to be run on environments would still be considered for deleted environments (although not actually run). [portainer/portainer#11735](https://github.com/portainer/portainer/issues/11735)
+- Resolved issue where containers that exited with code 0 were incorrectly marked as failed deployments [portainer/portainer#11724](https://github.com/portainer/portainer/issues/11724)
+- Introduced an additional option to automatically detect the authentication style for OAuth [portainer/portainer#11725](https://github.com/portainer/portainer/issues/11725)
+
+# API Changes
+
+- Fixed the content type for responses from the API endpoint used for token generation [portainer/portainer#11723](https://github.com/portainer/portainer/issues/11723)
+
+### Modified endpoints
+
+- `PUT` /settings Update Portainer settings
+    
+    Parameters
+    
+    ```
+      Added: body.OAuthSettings.AuthStyle
+    
+    ```
+    
+    Return Type
+    
+    ```
+      Added: OAuthSettings.AuthStyle
+    
+    ```
+    
+- `GET` /settings Retrieve Portainer settings
+    
+    Return Type
+    
+    ```
+      Added: OAuthSettings.AuthStyle
+    
+    ```
+    
+- `PUT` /settings/default_registry Update Portainer default registry settings
+    
+    Return Type
+    
+    ```
+      Added: OAuthSettings.AuthStyle
+    
+    ```
+    
+- `POST` /users/{id}/tokens Generate an API key for a user
+    
+    Return Type
+    
+    ```
+      Added: apiKey
+      Added: rawAPIKey
+    
+    ```</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.19.5 (2024-04-21)</h2>
+      <pre># 2.19.5
+
+See [Upgrading Portainer instructions](https://docs.portainer.io/start/upgrade).
+
+# Overview of changes
+
+New Portainer CE  2.19.5 release
+
+# Portainer
+
+- Resolved CVE-2024-29296 by creating uniform response time for login attempts</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.20.1 (2024-04-04)</h2>
+      <pre># 2.20.1
+
+See [Upgrading Portainer instructions](https://docs.portainer.io/start/upgrade).
+
+# Overview of changes
+
+Introducing the new Portainer CE 2.20.1 release. This is an STS (Short-Term Support) release.
+
+As you gear up for the transition to Portainer CE 2.20.1, our latest STS (Short-Term Support) installment, ensuring a smooth upgrade is key. We urge you to back up your configurations via the Portainer UI beforehand. This backup acts as your safety net, ensuring you can gracefully revert to the prior version or state if the new frontier proves too wild. Additionally, pore over the release notes for catching any compatibility issues, understanding deprecated functionalities, and identifying essential tweaks to your current setup. Your diligence will pave the way for a seamless update.
+
+A Short-Term Support release can be considered as "bleeding-edge" as it will contain the latest features and functionality we've developed. The STS releases (including this one) will go through a significant amount of pre-release testing, but there may be changes that could cause regressions and features that might see further iterations. As such, if stability is a crucial concern for your setup we wouldn't recommend deploying STS releases on production environments.
+
+Read more in our "Portainer 2.20 STS" [blog](https://www.portainer.io/blog/2024-release-principle)
+
+# Important Note Regarding Docker 26 Support
+
+Please be aware that support for Docker 26 is provided on an "as-is" basis and is primarily driven by best-effort principles. Minimal regression testing has been conducted to ensure basic functionality. Users should proceed with caution and report any issues they encounter.
+
+# Docker
+
+- Resolved an issue where Docker 25/26 API changes affected container-related pages and image size display [portainer/portainer#11504](https://github.com/portainer/portainer/issues/11504)
+
+# Kubernetes
+
+- Resolved an issue where deploying GitOps edge stacks on a Kubernetes edge device resulted in error [portainer/portainer#11503](https://github.com/portainer/portainer/issues/11503)
+- Resolved an issue where the secret owner migration process could lead to a deadlock, preventing the HTTP(S) server from starting. [portainer/portainer#11501](https://github.com/portainer/portainer/issues/11501)
+
+# Portainer
+
+- Fixed an issue where local stacks were being overwritten by orphaned stacks with the same name in the regular stack listing page [portainer/portainer#11502](https://github.com/portainer/portainer/issues/11502)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

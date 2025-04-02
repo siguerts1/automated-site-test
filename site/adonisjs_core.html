@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for adonisjs/core"/>
+  <title>adonisjs/core Release Notes</title>
+</head>
+<body>
+  <h1>🚀 adonisjs/core - Release Notes</h1>
+  
+    <section>
+      <h2>Update dependencies (2025-02-13)</h2>
+      <pre>## <small>6.17.2 (2025-02-13)</small>
+
+* fix: pin swc as it is broken ([84c7d75](https://github.com/adonisjs/core/commit/84c7d75))
+* chore: update dependencies ([9f055da](https://github.com/adonisjs/core/commit/9f055da))
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.17.1...v6.17.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Update dependencies (2025-01-12)</h2>
+      <pre>## <small>6.17.1 (2025-01-12)</small>
+
+* ci: add stale workflow ([71db68d](https://github.com/adonisjs/core/commit/71db68d))
+* chore: update dependencies ([df6e922](https://github.com/adonisjs/core/commit/df6e922))
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.17.0...v6.17.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Improvements to the list routes command (2024-12-15)</h2>
+      <pre>## 6.17.0 (2024-12-15)
+
+* test: add brisk route in list routes test ([85e49e7](https://github.com/adonisjs/core/commit/85e49e7))
+* test: fix breaking tests ([cf622f0](https://github.com/adonisjs/core/commit/cf622f0))
+* refactor: display of route handler ([fbebf24](https://github.com/adonisjs/core/commit/fbebf24))
+* feat: display route closure listArgs when listing routes ([880b5b7](https://github.com/adonisjs/core/commit/880b5b7))
+* chore: update dependencies ([ddf0c5c](https://github.com/adonisjs/core/commit/ddf0c5c))
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.16.0...v6.17.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fix NODE_ENV issue with test command and Verification token abstract class (2024-12-05)</h2>
+      <pre>## 6.16.0 (2024-12-05)
+
+* fix: force NODE_ENV=test when running the test command ([25a8d8a](https://github.com/adonisjs/core/commit/25a8d8a)), closes [#4794](https://github.com/adonisjs/core/issues/4794)
+* feat: add VerificationToken abstract class ([ec313c2](https://github.com/adonisjs/core/commit/ec313c2))
+* chore: update dependencies ([befb276](https://github.com/adonisjs/core/commit/befb276))
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.15.2...v6.16.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Support VineJS 3.0 (2024-12-01)</h2>
+      <pre>## <small>6.15.2 (2024-12-01)</small>
+
+* chore: update dependencies ([74287db](https://github.com/adonisjs/core/commit/74287db))
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.15.1...v6.15.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Update dependencies (2024-11-28)</h2>
+      <pre>* chore: update dependencies ([4e9464c](https://github.com/adonisjs/core/commit/4e9464c))
+* chore: upgrade install-pkg to 0.5 ([21d29b3](https://github.com/adonisjs/core/commit/21d29b3))
+* refactor(stubs): use generators to make service class name ([e7d0974](https://github.com/adonisjs/core/commit/e7d0974))
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.15.0...v6.15.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Small improvements to commands (2024-11-25)</h2>
+      <pre>* fix(commands): use Array#some instead of Array#includes for type-safety ([c598b55](https://github.com/adonisjs/core/commit/c598b55))
+* ci: update node version ([8696178](https://github.com/adonisjs/core/commit/8696178))
+* chore: update dependencies ([3104d11](https://github.com/adonisjs/core/commit/3104d11))
+* feat(stubs): generate an empty class when creating a service ([bf9b2bd](https://github.com/adonisjs/core/commit/bf9b2bd))
+* doc: update installPackages jsdoc to match current implementation (#4766) ([41f5d66](https://github.com/adonisjs/core/commit/41f5d66)), closes [#4766](https://github.com/adonisjs/core/issues/4766)
+
+## What's Changed
+* doc: update installPackages jsdoc to match current implementation by @brunoziie in https://github.com/adonisjs/core/pull/4766
+
+## New Contributors
+* @brunoziie made their first contribution in https://github.com/adonisjs/core/pull/4766
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.14.1...v6.15.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Update dependencies (2024-10-09)</h2>
+      <pre>## [6.14.1](https://github.com/adonisjs/core/compare/v6.14.0...v6.14.1) (2024-10-09)
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.14.0...v6.14.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add support for dd and dump helpers (2024-09-21)</h2>
+      <pre>The `dd` helper can be used like `console.log` but it provides a better visual experience and also comes with a HTML printer.  The helper throws an exception and self handles itself to render the dumped value inside the browser (during an HTTP request) or in the console (default output).
+
+You can use the `dd` helper as follows.
+
+```ts
+import { dd } from '@adonisjs/core/services/dd'
+dd(someValue)
+```
+
+The same helper is available in Edge template as `@dd` tag. Also, within Edge templates you may use the `@dump` to inspect a value without throwing an exception.
+
+```edge
+{{-- Dump and halt rendering --}}
+@dd(someValue)
+
+{{-- Dump and continue rendering --}}
+@dump(someValue)
+```
+
+## Bug Fixes
+
+* handle case where stdout.columns can be undefined ([437cb2d](https://github.com/adonisjs/core/commit/437cb2d0ecdb8742e90b19ea3d334c2b1a16be7c))
+* handle case where whitespace is a negative value ([638c457](https://github.com/adonisjs/core/commit/638c4571142250d4626bada9d97e3003f43dce48))
+* handle NaN value case ([619a3a8](https://github.com/adonisjs/core/commit/619a3a81c40032218b7f757e991cb299f94649a5))
+* use poppinss/colors as styleText is not widely supported ([2a491ec](https://github.com/adonisjs/core/commit/2a491ecd57bdad58c8b0dda2548de0a6597181f2))
+
+
+## Features
+
+* add dumper and upgrade edge.js with new stacks functionality ([f6e05ba](https://github.com/adonisjs/core/commit/f6e05ba1669d5351fc7aa7a72a98e7f56f0dac72))
+* improve dd output and add edge plugin ([9b18e6a](https://github.com/adonisjs/core/commit/9b18e6aed2f5e22e8d41a6f220dc81781778d970))
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.13.1...v6.14.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Keep APP_KEY as an empty value within the .env.example file (2024-09-11)</h2>
+      <pre>## What's Changed
+* fix(commands) : make the APP_KEY an empty value for the .env.example file by @AbdelMN in https://github.com/adonisjs/core/pull/4722
+
+## New Contributors
+* @AbdelMN made their first contribution in https://github.com/adonisjs/core/pull/4722
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.13.0...v6.13.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Use Ace Kernel errorHandler when running commands (2024-09-05)</h2>
+      <pre>### Features
+
+* use kernel errorHandler to handle errors ([daa475e](https://github.com/adonisjs/core/commit/daa475e76e9793e7f50b0328d9b3683a82addd8f))
+
+## What's Changed
+* chore: upgrade install-pkg by @benmccann in https://github.com/adonisjs/core/pull/4709
+
+## New Contributors
+* @benmccann made their first contribution in https://github.com/adonisjs/core/pull/4709
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.12.1...v6.13.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Allow bun and pnpm@6 when using "ace add" command (2024-06-22)</h2>
+      <pre>* chore: run tests before publishing package (5bf81d0)
+* fix: add command to allow bun and pnpm@6 (2e74375)
+* chore: update dependencies (8cc09c2)
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.12.0...v6.12.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Update health checks setup and add support for bun to install dependencies (2024-06-19)</h2>
+      <pre>* chore: upgrade to latest version of health checks (00bbbd6)
+* chore: add bun support for ace add (#4607) (57a81f7)
+* feat: create health checks controller when configuring health checks (f494c52)
+
+## What's Changed
+* Add bun support for ace add by @ShahriarKh in https://github.com/adonisjs/core/pull/4607
+
+## New Contributors
+* @ShahriarKh made their first contribution in https://github.com/adonisjs/core/pull/4607
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.11.0...v6.12.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add support for configuring health checks via configure command (2024-06-16)</h2>
+      <pre>Run the following command with the latest release to configure health checks
+
+```sh
+node ace configure health_checks
+```
+
+## Commits
+
+* feat: add support to configure health checks via configure command (6fc19a3)
+* chore: update dependencies (dede44f)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fix publish path of health checks module (2024-06-09)</h2>
+      <pre>* fix: path of health module (d0ad21d)
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.10.0...v6.10.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add and export health module (2024-06-09)</h2>
+      <pre>This release introduces the new health module. The docs will follow soon.
+
+## Commits
+
+* feat: add and export health module (bce2b76)
+* chore: update dependencies (0cc018e)
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.9.1...v6.10.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Stable assembler hooks (2024-06-02)</h2>
+      <pre>## Changes
+
+- Assembler hooks are now stabilized. See the [upgrade guide](https://github.com/adonisjs/application/releases/tag/v8.3.0) here. The `unstable_assembler` property is retained for backwards compatibility, but will be removed in a future minor release. 
+- `node ace add` now support Yarn Berry
+
+## Commits
+
+* chore: update dependencies (430482fb)
+* refactor: move to stable assembler hooks (bb24b7f3)
+* chore: update dependencies (f00fd9aa)
+* chore(commands): continue by default installation of packages (c48e72b1)
+* fix: yarn berry support (#4586) (bdda97a4)
+
+## What's Changed
+* feat: yarn berry support by @rault-a in https://github.com/adonisjs/core/pull/4586
+
+## New Contributors
+* @rault-a made their first contribution in https://github.com/adonisjs/core/pull/4586
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.9.0...v6.9.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add env:add command to define environment variable and its validation rules (2024-04-30)</h2>
+      <pre>* Merge pull request #4533 from adonisjs/feat/set-env (c8251b5)
+* fix: fix breaking test (d80d7bf)
+* refactor: defineEnvVariables with omitFromExample (9cd7183)
+* feat: insert empty example in the .env.example (5a1a4e9)
+* feat: add env:add command (4508128)
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.9.0...v6.9.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Moving HMR out of experimental phase (2024-04-22)</h2>
+      <pre>The support for HMR is now stable and you can start using it. For existing projects, you must upgrade the `@adonisjs/core` and the `@adonisjs/assembler` packages to their latest releases before you can start using the HMR mode.
+
+This is what you need to do.
+
+```sh
+npm i -D hot-hook @adonisjs/assembler@latest
+npm i @adonisjs/core@latest
+```
+
+Next update the `package.json` file with the following configuration
+
+```json
+"hotHook": {
+    "boundaries": [
+      "./app/controllers/**/*.ts",
+      "./app/middlewares/*.ts"
+    ]
+  }
+```
+
+And start the HTTP server as follows.
+
+```sh
+node ace serve --hmr
+```
+
+If you use npm scripts, then make sure to update the `dev` script as well in the `package.json` file.
+
+```json
+{
+  "scripts": {
+    "dev": "node ace serve --hmr"
+  }
+}
+```
+
+## Commits
+
+* chore: update dependencies (c370640)
+* refactor: move from `--unstable-hmr` to `--hmr` (40a85f9)
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.7.1...v6.8.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add a specific citgm script (2024-04-16)</h2>
+      <pre>## Commits
+
+* chore: update dependencies (ab980960)
+* chore: add a citgm script (51d5c274)
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.7.0...v6.7.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Experimental support for HMR  (2024-04-15)</h2>
+      <pre>Alright, so we have finally landed support for HMR in experimental mode. Once you upgrade the `@adonisjs/core` and the `@adonisjs/assembler` packages to their latest releases, you can start using the HMR mode.
+
+This is what you need to do.
+
+```sh
+npm i -D hot-hook @adonisjs/assembler@latest
+npm i @adonisjs/core@latest
+```
+
+Next update the `package.json` file with the following configuration
+
+```json
+"hotHook": {
+    "boundaries": [
+      "./app/controllers/**/*.ts",
+      "./app/middlewares/*.ts"
+    ]
+  }
+```
+
+And start the HTTP server as follows.
+
+```sh
+node ace serve --unstable-hmr
+```
+
+If you use npm scripts, then make sure to update the `dev` script as well in the `package.json` file.
+
+```json
+{
+  "scripts": {
+    "dev": "node ace serve --unstable-hmr"
+  }
+}
+```
+
+## Commits
+
+* Merge pull request #4504 from adonisjs/feat/hmr (e472091)
+* refactor: remove unused symbols (fbdae40)
+* chore: update dependencies (4a9d201)
+* Merge branch 'develop' into feat/hmr (9b2aadc)
+* refactor: move to `--unstable-hmr` flag (cdc266a)
+* test: add test (6c2bff9)
+* feat: add serve `--hmr` flag (3e11c21)
+
+## What's Changed
+* feat: add `--hmr` flag for the `serve` command by @Julien-R44 in https://github.com/adonisjs/core/pull/4504
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.6.0...v6.7.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Upgrade to VineJS 2.0 (2024-04-15)</h2>
+      <pre>After this release, you will be forced to upgrade to VineJS@2.0 in your apps. Even though VineJS had a major release, the breaking changes are related to types only and should not impact your application code at all. So we recommend you to [follow VineJS release notes](https://github.com/vinejs/vine/releases/tag/v2.0.0) and upgrade it.
+
+## Commits
+
+* chore: downgrade eslint (323152d0)
+* refactor: upgrade @vinejs/vine@2 (a986b0c6)
+* fix(docs): update broken link (#4479) (94f894c9)
+
+## What's Changed
+* fix(docs): update broken link  by @aarhusgregersen in https://github.com/adonisjs/core/pull/4479
+
+## New Contributors
+* @aarhusgregersen made their first contribution in https://github.com/adonisjs/core/pull/4479
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.5.0...v6.6.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>OnHttpServerMessage hook (2024-03-31)</h2>
+      <pre>## Changes 
+
+Added a new `onHttpServerMessage` hook that can be used to intercept the message sent by your HTTP Server. This hook must be defined in the `adonisrc.ts` file, like other hooks.
+
+```ts
+import { defineConfig } from '@adonisjs/core/app';
+
+export default defineConfig({
+  unstable_assembler: { 
+  	onHttpServerMessage: [() => import('./my_http_server_message_hook.js')] 
+  },
+})
+```
+
+## Commits
+
+* feat: pass onHttpServerMessage hook from rcFile to assembler DevServer (82ecae3b)
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.4.0...v6.5.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Update Env module allowing us to use Identifier (2024-03-30)</h2>
+      <pre>* chore: remove support for VineJS 2.0 (b49f28f3)
+* chore: switch to release-it (0c9216dd)
+* chore: update dependencies (2d2bac79)
+* chore: allow to use new VineJS major release (e1d0325a)
+* chore: allow to use new VineJS major release (071254f2)
+* refactor: pass flags and arguments as array in `ace` command (df6466d3)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fix `add` command (2024-02-26)</h2>
+      <pre>## Changes
+
+- The `ace add` command was incorrectly available under the name `ace install`. `ace add` command is now available
+
+## Commits
+
+- fix: rename `node ace install` to `node ace add`  9e5c21e2
+- chore: update assembler  b3775534
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.3.0...v6.3.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>New codemods APIs, ace add command, and experimental assembler hooks (2024-02-24)</h2>
+      <pre>## Changes 
+
+- We now have a `node ace add` command which allows you to install and configure a package. In a single command, where before you would have had to do `npm install ...` then `node ace configure ...`. This will be documented in more detail in the coming days. See https://github.com/adonisjs/v6-docs/pull/44
+
+- The Codemods API now exposes the `getTsMorphProject` method, which retrieves an instance of tsmorph. This allows package authors to have direct access to ts-morph when they need to perform more specific modifications in the end-user code. Documentation https://docs.adonisjs.com/guides/scaffolding#gettsmorphproject
+
+- The Codemods API also introduces two new methods: `registerVitePlugin` and `registerJapaPlugin`. See documentation here: https://docs.adonisjs.com/guides/scaffolding#registerviteplugin 
+- Added **experimental** assembler hooks. These hooks must be defined in the `adonisrc.ts` file and enable certain pieces of code to be executed at specific times during the build or dev server lifecycle. This feature will be useful for the new Vite integration we are experimenting :
+	```ts
+	 // adonisrc.ts
+  export default defineConfig({
+    unstable_assembler: {
+      onBuildStart: [
+        () => import('@my-package/hooks/build_start')
+      ],
+      onBuildEnd: [
+        () => import('@my-package/hooks/build_end')
+      ],
+      onSourceFileChanged: [
+        () => import('@my-package/hooks/source_file_changed')
+      ],
+      onDevServerStart: [
+        () => import('@my-package/hooks/dev_server_start')
+      ],
+    }
+  })
+	```  
+
+## Commits
+
+- ci: use `main` as reference for test job  ee4babaf
+- test: fix test that fails when runned locally  cf796885
+- ci: remove test job `next` reference  295061fc
+- chore: migrate to husky 9  1ca3b459
+- chore: update dependencies  fdd332ea
+- chore: update minimum node version  e33b342a
+- feat: add getTsMorphProject method (#4414)  ee96efec
+- feat: add registerVitePlugin and registerJapaPlugin (#4412)  db03e4ce
+- feat: do not run assets bundler when disabled in rc file (#4429)  be6ca038
+- chore: add extraneous package  c0a86f35
+- feat: add hooks for build and dev server (#4428)  ca600cea
+- style: lint file  f01d683f
+- feat: add `node ace add` command (#4296)  e7c668c4
+- fix: description of --api and --resource flags  d83e9709
+- fix(commands): swapped description in make:controller  8848191f
+
+## What's Changed
+* fix(commands): swapped description -a & -r for make:controller by @Blackwidow-sudo in https://github.com/adonisjs/core/pull/4420
+* Add an `node ace add` command by @Julien-R44 in https://github.com/adonisjs/core/pull/4296
+* feat: add hooks for build and dev server by @Julien-R44 in https://github.com/adonisjs/core/pull/4428
+* feat: do not run assets bundler when explicitely disabled in rc file by @Julien-R44 in https://github.com/adonisjs/core/pull/4429
+* feat: add registerVitePlugin and registerJapaPlugin by @Julien-R44 in https://github.com/adonisjs/core/pull/4412
+* feat: add getTsMorphProject method by @Julien-R44 in https://github.com/adonisjs/core/pull/4414
+
+## New Contributors
+* @Blackwidow-sudo made their first contribution in https://github.com/adonisjs/core/pull/4420
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.2.3...v6.3.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Respect singular CLI flag when creating a new controller (2024-02-05)</h2>
+      <pre>- fix: respect singular command flag to create singular controller  05d23e8
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.2.2...v6.2.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add test_utils submodule (2024-01-26)</h2>
+      <pre>- feat: add @adonisjs/core/test_utils submodule  9fa0de39
+- chore: update dependencies  cdef23a6
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.2.1...v6.2.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Add all helpers to REPL context via loadHelpers method (2024-01-22)</h2>
+      <pre>- refactor: update &#39;http:server_ready&#39; event payload to include duration  f5afe9c
+- feat: add all helpers to repl context via loadHelpers command  1e3d6e4
+- chore: update dependencies  6f60fee
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v6.2.0...v6.2.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v6.2.0 (2024-01-08)</h2>
+      <pre>> [!WARNING]
+> During the public release on 24th of January, we will also create a proper changelog with a migration guide from AdonisJS v5 to AdonisJS v6. Even though the new version is public on npm, please do not install it until the migration guide is out.
+
+Please consult the following releases to view the list of breaking changes and new additions.
+
+- Breaking changes - https://github.com/adonisjs/core/releases/tag/v6.0.0-0
+- New additions - https://github.com/adonisjs/core/releases/tag/v6.1.3-0
+- New additions - https://github.com/adonisjs/core/releases/tag/v6.1.4-0
+- Breaking changes - https://github.com/adonisjs/core/releases/tag/v6.1.5-5
+- New additions - https://github.com/adonisjs/core/releases/tag/v6.1.5-9
+- New additions - https://github.com/adonisjs/core/releases/tag/v6.1.5-16
+- New additions - https://github.com/adonisjs/core/releases/tag/v6.1.5-18
+
+## Commits
+
+- chore: publish under the latest tag  31668b7
+- Merge pull request #4335 from adonisjs/next  b7f8547
+- ci: update workflow file name  22f8e40
+- docs: update badges urls  66e96c7
+- Merge branch &#39;develop&#39; into next  4d2026f
+- test: remove optional importer param  2f53731
+- test: do not use withCoreProviders method internally  05d56dd
+- chore: cleanup dependencies  9613852
+- refactor: remove ace shell child process runner  0a45d5b
+- feat: export types for helpers exported from poppinns/utils  eeb31cf
+- refactor: remove deprecated type helpers usage  7b43060
+- chore: update dependencies  72fe65c
+- chore: update dependencies  87c2554
+- change: add PATCH as a default method for CORS headers (#4244)  b5f0606
+- Update app.txt (#4169)  617200b
+- docs(contributing): fix content table link (#4085)  a83daa3
+- Update README.md (#4069)  0ae2620
+- fix: default hasher mismatch fix (#4005)  cbd734e
+
+## What's Changed
+* fix: default hasher mismatch fix by @arabbani in https://github.com/adonisjs/core/pull/4005
+* [ci skip] Fix badge for CI test in Readme by @Doc94 in https://github.com/adonisjs/core/pull/4069
+* docs(contributing): fix content table link by @geetsww in https://github.com/adonisjs/core/pull/4085
+* refactor: use `node:fs` instead of `fs-extra` by @targos in https://github.com/adonisjs/core/pull/4104
+* feat: allow multiple ext for bundlers config file by @Julien-R44 in https://github.com/adonisjs/core/pull/4130
+* feat: add `makeUsingStub` to BaseCommand by @Julien-R44 in https://github.com/adonisjs/core/pull/4147
+* Update app.txt by @bartduisters in https://github.com/adonisjs/core/pull/4169
+* feat: add `Configure.installPackages` method by @Julien-R44 in https://github.com/adonisjs/core/pull/4188
+* feat: prompt environment in make:preload file by @Julien-R44 in https://github.com/adonisjs/core/pull/4187
+* change: add PATCH as a default method for CORS headers by @mr-feek in https://github.com/adonisjs/core/pull/4244
+* fix(stubs): use "import type" when possible by @RomainLanz in https://github.com/adonisjs/core/pull/4259
+* Re-export some helpers from poppinss/utils by @Julien-R44 in https://github.com/adonisjs/core/pull/4294
+* Time for final release by @thetutlage in https://github.com/adonisjs/core/pull/4335
+
+## New Contributors
+* @arabbani made their first contribution in https://github.com/adonisjs/core/pull/4005
+* @Doc94 made their first contribution in https://github.com/adonisjs/core/pull/4069
+* @geetsww made their first contribution in https://github.com/adonisjs/core/pull/4085
+* @bartduisters made their first contribution in https://github.com/adonisjs/core/pull/4169
+* @mr-feek made their first contribution in https://github.com/adonisjs/core/pull/4244
+
+**Full Changelog**: https://github.com/adonisjs/core/compare/v5.9.0...v6.2.0</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

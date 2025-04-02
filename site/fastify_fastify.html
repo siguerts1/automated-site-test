@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for fastify/fastify"/>
+  <title>fastify/fastify Release Notes</title>
+</head>
+<body>
+  <h1>🚀 fastify/fastify - Release Notes</h1>
+  
+    <section>
+      <h2>v5.2.2 (2025-03-25)</h2>
+      <pre>## What's Changed
+* build: use static path instead of __filename by @climba03003 in https://github.com/fastify/fastify/pull/5922
+* fix(linting): fix linting error in error-handler.js by @Uzlopak in https://github.com/fastify/fastify/pull/5926
+* chore: Bump the dev-dependencies group across 1 directory with 6 updates by @dependabot in https://github.com/fastify/fastify/pull/5930
+* fix: don't check for payload type in default json parser by @gurgunday in https://github.com/fastify/fastify/pull/5933
+* docs: Include req.hostname change in upgrade guide by @tmcw in https://github.com/fastify/fastify/pull/5935
+* build(dependabot): regroup dev dependencies by @Fdawgs in https://github.com/fastify/fastify/pull/5931
+* chore: Bump borp from 0.18.0 to 0.19.0 by @dependabot in https://github.com/fastify/fastify/pull/5936
+* chore: don't return the `done` function by @gurgunday in https://github.com/fastify/fastify/pull/5937
+* ci(workflows): unpin node 22 version by @Fdawgs in https://github.com/fastify/fastify/pull/5941
+* perf: don't use optional chaining for typeof .then checks by @gurgunday in https://github.com/fastify/fastify/pull/5942
+* docs: the no floating promise guide is not needed anymore by @mcollina in https://github.com/fastify/fastify/pull/5946
+* docs: grammar and spelling fixes by @Fdawgs in https://github.com/fastify/fastify/pull/5944
+* perf(lib/pluginutils): cache rc version regex by @Fdawgs in https://github.com/fastify/fastify/pull/5940
+* build(dependabot): reduce npm updates to monthly by @Fdawgs in https://github.com/fastify/fastify/pull/5939
+* docs(guides): grammar and spelling fixes by @Fdawgs in https://github.com/fastify/fastify/pull/5947
+* test: migrated genReqId.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5943
+* chore: Bump lycheeverse/lychee-action from 2.1.0 to 2.2.0 by @dependabot in https://github.com/fastify/fastify/pull/5948
+* docs(reference/contenttypeparser): make more concise by @Fdawgs in https://github.com/fastify/fastify/pull/5950
+* docs(getting-started): clarify fastify-cli is separate by @Fdawgs in https://github.com/fastify/fastify/pull/5949
+* docs(validation-and-serialization): fix typo by @matthyk in https://github.com/fastify/fastify/pull/5952
+* test: migrated route-shorthand.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5923
+* test: migrated register.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5918
+* Update broken link to N|Solid by @xuhdev in https://github.com/fastify/fastify/pull/5954
+* docs(reference): even more conciseness by @Fdawgs in https://github.com/fastify/fastify/pull/5951
+* test: migrate from tap to node test for close & custom-parser-async by @coluzziandrea in https://github.com/fastify/fastify/pull/5915
+* docs(reference/type-providers): conciseness improvements by @Fdawgs in https://github.com/fastify/fastify/pull/5962
+* docs(reference/errors): conciseness improvements by @Fdawgs in https://github.com/fastify/fastify/pull/5963
+* docs(reference/logging): conciseness improvements by @Fdawgs in https://github.com/fastify/fastify/pull/5958
+* docs(reference/request): conciseness improvements by @Fdawgs in https://github.com/fastify/fastify/pull/5965
+* docs(ecosystem): add `@fastify/otel` to core list by @Fdawgs in https://github.com/fastify/fastify/pull/5967
+* docs(reference/validation): conciseness improvements by @Fdawgs in https://github.com/fastify/fastify/pull/5964
+* docs(reference/plugins): conciseness improvements by @Fdawgs in https://github.com/fastify/fastify/pull/5956
+* docs(reference/decorators): conciseness improvements by @Fdawgs in https://github.com/fastify/fastify/pull/5966
+* chore(sponsor): Add Lokalise sponsorship reference by @kibertoad in https://github.com/fastify/fastify/pull/5968
+* test: migrated listen.2.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5960
+* docs(ecosystem): add fastify-enforce-routes-pattern by @Jerome1337 in https://github.com/fastify/fastify/pull/5961
+* chore(sponsor): add Jspreadsheet by @Eomm in https://github.com/fastify/fastify/pull/5971
+* docs(reference/routes): conciseness improvements by @Fdawgs in https://github.com/fastify/fastify/pull/5969
+* fix(types): missing supportedMethods by @johaven in https://github.com/fastify/fastify/pull/5970
+* chore: Bump the dev-dependencies-eslint group with 2 updates by @dependabot in https://github.com/fastify/fastify/pull/5975
+* ci: remove master branch support by @Fdawgs in https://github.com/fastify/fastify/pull/5974
+* docs(reference): mimic github notes and warning style by @Fdawgs in https://github.com/fastify/fastify/pull/5973
+* docs: Drop platformatic cloud reference in serverless.md by @mcollina in https://github.com/fastify/fastify/pull/5982
+* docs: add a Genezio step by step guide by @cristim67 in https://github.com/fastify/fastify/pull/5980
+* docs(lts): fix anchor tag format by @kadoshita in https://github.com/fastify/fastify/pull/5986
+* docs: Update documentation for listening to `0.0.0.0` by @jonasongg in https://github.com/fastify/fastify/pull/5988
+* docs(serverless): cut down genezio example by @Fdawgs in https://github.com/fastify/fastify/pull/5990
+* docs: add link to official demo by @jean-michelet in https://github.com/fastify/fastify/pull/5994
+* chore(license): update licensing year by @Tony133 in https://github.com/fastify/fastify/pull/5992
+* docs: wrong query string parser information by @smith558 in https://github.com/fastify/fastify/pull/5993
+* docs: typo in v5 migration docs by @salmanm in https://github.com/fastify/fastify/pull/5995
+* docs: update example to use correct parser by @smith558 in https://github.com/fastify/fastify/pull/5996
+* test: migrated request-error.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5987
+* chore: Bump the dev-dependencies-eslint group with 2 updates by @dependabot in https://github.com/fastify/fastify/pull/5999
+* chore: Bump lycheeverse/lychee-action from 2.2.0 to 2.3.0 by @dependabot in https://github.com/fastify/fastify/pull/6001
+* docs: fix docorators example by @logan272 in https://github.com/fastify/fastify/pull/5997
+* chore: fix docs by @Eomm in https://github.com/fastify/fastify/pull/6007
+* test: migrated stream.5.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5955
+* build(test/bundler/esbuild): bump esbuild by @Fdawgs in https://github.com/fastify/fastify/pull/6010
+* test: migrated throw.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/6002
+* docs(guides/ecosystem): update broken link to scalar by @inyourtime in https://github.com/fastify/fastify/pull/6015
+* feat: add listen async callback warning by @Eomm in https://github.com/fastify/fastify/pull/6011
+* docs(readme): fix broken ci badges by @Fdawgs in https://github.com/fastify/fastify/pull/6016
+* docs: remove --node-arg prefix by @piotr-cz in https://github.com/fastify/fastify/pull/6018
+* test: migrated listen.1.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/6014
+* chore: Bump typescript from 5.7.3 to 5.8.2 in the dev-dependencies-typescript group by @dependabot in https://github.com/fastify/fastify/pull/6000
+* test:  migrated upgrade.test.js from tap to node:test and update inde… by @Tony133 in https://github.com/fastify/fastify/pull/5917
+* test: fix flaky by @Eomm in https://github.com/fastify/fastify/pull/6021
+* test: migrated listen.3.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/6022
+* test: migrated listen.4.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/6024
+* fix: double hook execution by @Eomm in https://github.com/fastify/fastify/pull/6013
+* test(content-type-parser): replace tiny-lru proxy with toad-cache by @Fdawgs in https://github.com/fastify/fastify/pull/6025
+
+## New Contributors
+* @xuhdev made their first contribution in https://github.com/fastify/fastify/pull/5954
+* @coluzziandrea made their first contribution in https://github.com/fastify/fastify/pull/5915
+* @Jerome1337 made their first contribution in https://github.com/fastify/fastify/pull/5961
+* @cristim67 made their first contribution in https://github.com/fastify/fastify/pull/5980
+* @jonasongg made their first contribution in https://github.com/fastify/fastify/pull/5988
+* @smith558 made their first contribution in https://github.com/fastify/fastify/pull/5993
+* @logan272 made their first contribution in https://github.com/fastify/fastify/pull/5997
+* @piotr-cz made their first contribution in https://github.com/fastify/fastify/pull/6018
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v5.2.1...v5.2.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.2.1 (2025-01-06)</h2>
+      <pre>## What's Changed
+* chore: org members reorder by @Eomm in https://github.com/fastify/fastify/pull/5898
+* docs(request): clarify request host functionality by @Fdawgs in https://github.com/fastify/fastify/pull/5904
+* chore(package): add fdawgs to contributors array by @Fdawgs in https://github.com/fastify/fastify/pull/5905
+* chore: updated test reporter by @jsumners in https://github.com/fastify/fastify/pull/5907
+* test: migrated custom-parser.2.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5902
+* test: migrated nullable-validation.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5880
+* test: migrated custom-parser.3.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5903
+* test: migrate delete test from tap to node test runner by @Kalpana98 in https://github.com/fastify/fastify/pull/5906
+* docs: add climba03003 to team by @climba03003 in https://github.com/fastify/fastify/pull/5910
+* build(deps): replace `proxy-addr` with `@fastify/proxy-addr` by @Fdawgs in https://github.com/fastify/fastify/pull/5913
+* fix: ReadableStream.locked crashes application by @climba03003 in https://github.com/fastify/fastify/pull/5920
+* docs: fix typo by @FKPSC in https://github.com/fastify/fastify/pull/5921
+
+## New Contributors
+* @Kalpana98 made their first contribution in https://github.com/fastify/fastify/pull/5906
+* @FKPSC made their first contribution in https://github.com/fastify/fastify/pull/5921
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v5.2.0...v5.2.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.2.0 (2024-12-14)</h2>
+      <pre>## What's Changed
+* docs: add HeroDevs mentions to README and LTS docs by @AndreAngelantoni in https://github.com/fastify/fastify/pull/5730
+* test: migrated reply-early-hints.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5803
+* chore: Bump lycheeverse/lychee-action from 1.10.0 to 2.0.2 by @dependabot in https://github.com/fastify/fastify/pull/5807
+* chore: Bump thollander/actions-comment-pull-request from 2 to 3 by @dependabot in https://github.com/fastify/fastify/pull/5806
+* test: migrated request-timeout.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5805
+* fix: streamline migrated tests, make migrated the filenames of migrated tests kebab-case by @Uzlopak in https://github.com/fastify/fastify/pull/5800
+* ci(benchmark): fix github token input by @Fdawgs in https://github.com/fastify/fastify/pull/5809
+* test: migrated reply-code.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5808
+* test: migrated middleware.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5795
+* fix: test asserts to strict asserts by @dancastillo in https://github.com/fastify/fastify/pull/5815
+* chore: renamed test files in kebab-case by @Tony133 in https://github.com/fastify/fastify/pull/5814
+* style(.gitattributes): standardize style across fastify repos by @Fdawgs in https://github.com/fastify/fastify/pull/5816
+* style: remove trailing whitespace by @Fdawgs in https://github.com/fastify/fastify/pull/5817
+* test: migrated encapsulated-error-handler.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5824
+* docs: Add `fastify-mongo-sanitize` and ` remix-fastify` to comm. by @ExorTek in https://github.com/fastify/fastify/pull/5822
+* test: migrated encapsulated-child-logger-factory.test.js from tap to … by @Tony133 in https://github.com/fastify/fastify/pull/5823
+* docs: add loggerInstance to Server doc by @llimllib in https://github.com/fastify/fastify/pull/5786
+* test: migrated post-empty-body.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5813
+* docs(CONTRIBUTING.md): read the announcements by @Eomm in https://github.com/fastify/fastify/pull/5825
+* test: migrated listen.5.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5827
+* test: migrated use-semicolon-delimiter.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5812
+* docs: smaller documentation fixes by @metcoder95 in https://github.com/fastify/fastify/pull/5834
+* fix(types): addHttpMethod type signature on fastify instance (#5810) by @kalvenschraut in https://github.com/fastify/fastify/pull/5811
+* test: migrated schema-examples.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5833
+* test: Migrate tests to Node test container by @KristianLentino99 in https://github.com/fastify/fastify/pull/5777
+* test: migrated max-requests-per-socket.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5828
+* test: migrated proto-poisoning.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5836
+* test: migrated content-type and context-config tests from tap to node:test by @stojkov-z in https://github.com/fastify/fastify/pull/5778
+* docs: Added fastify-passkit-webservice to community plugins by @alexandercerutti in https://github.com/fastify/fastify/pull/5819
+* test: migrate trust-proxy, type-provider, url-rewriting to node:test by @dancastillo in https://github.com/fastify/fastify/pull/5829
+* test: migrated fluent-schema.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5832
+* test: migrated set-error-handler.test.js and header-overflow.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5835
+* chore: Bump secure-json-parse from 2.7.0 to 3.0.1 in the dependencies-major group by @dependabot in https://github.com/fastify/fastify/pull/5845
+* test: migrated pretty-print.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5844
+* test: migrated custom-parser.4.test.js and custom-parser.5.test.js fr… by @Tony133 in https://github.com/fastify/fastify/pull/5837
+* docs: fix example for supplying own logger instance by @keithito in https://github.com/fastify/fastify/pull/5857
+* feat: Add hook name within timeout error message by @kibertoad in https://github.com/fastify/fastify/pull/5851
+* docs: make whitespace consistent by @joeytwiddle in https://github.com/fastify/fastify/pull/5863
+* test: migrated fastify-instance.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5859
+* test: migrated request-id.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5858
+* test: migrated tests from tap to node test by @Tony133 in https://github.com/fastify/fastify/pull/5839
+* test: migrated router-options.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5840
+* test: migrated route.8.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5864
+* chore: Bump lycheeverse/lychee-action from 2.0.2 to 2.1.0 by @dependabot in https://github.com/fastify/fastify/pull/5869
+* test: migrated validation-error-handling from tap to node:test by @reidn3r in https://github.com/fastify/fastify/pull/5856
+* test: migrated handler-context.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5868
+* test: migrated find-route.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5867
+* chore: sponsor link by @Eomm in https://github.com/fastify/fastify/pull/5871
+* docs(readme): point ci badge at main branch by @Fdawgs in https://github.com/fastify/fastify/pull/5873
+* test: migrate content-parser test to use node:test by @Rantoledo in https://github.com/fastify/fastify/pull/5847
+* docs(readme): revert to standard workflow badge syntax by @Fdawgs in https://github.com/fastify/fastify/pull/5877
+* chore: readme lighter install script by @giulianok in https://github.com/fastify/fastify/pull/5872
+* docs(CONTRIBUTING.md): added v4 to version branches by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5886
+* fix(errorHandler.js): linting problems in pipeline by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5885
+* ci: pin node version 22.11 by @climba03003 in https://github.com/fastify/fastify/pull/5889
+* docs(ecosystem): update apitally description by @itssimon in https://github.com/fastify/fastify/pull/5891
+* types: remove connection property in FastifyRequest by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5884
+* fix: crash when host header is missing by various of reason by @climba03003 in https://github.com/fastify/fastify/pull/5892
+* chore: fix flaky test by @Eomm in https://github.com/fastify/fastify/pull/5881
+* perf: use `node:` prefix to bypass require.cache call for builtins by @Fdawgs in https://github.com/fastify/fastify/pull/5894
+* chore: bump dev fastify-plugin by @Eomm in https://github.com/fastify/fastify/pull/5879
+* types: use `node:` prefix for builtins by @Fdawgs in https://github.com/fastify/fastify/pull/5896
+* test: migrated content-length.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5878
+
+## New Contributors
+* @AndreAngelantoni made their first contribution in https://github.com/fastify/fastify/pull/5730
+* @ExorTek made their first contribution in https://github.com/fastify/fastify/pull/5822
+* @llimllib made their first contribution in https://github.com/fastify/fastify/pull/5786
+* @KristianLentino99 made their first contribution in https://github.com/fastify/fastify/pull/5777
+* @stojkov-z made their first contribution in https://github.com/fastify/fastify/pull/5778
+* @alexandercerutti made their first contribution in https://github.com/fastify/fastify/pull/5819
+* @keithito made their first contribution in https://github.com/fastify/fastify/pull/5857
+* @joeytwiddle made their first contribution in https://github.com/fastify/fastify/pull/5863
+* @reidn3r made their first contribution in https://github.com/fastify/fastify/pull/5856
+* @giulianok made their first contribution in https://github.com/fastify/fastify/pull/5872
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v5.1.0...v5.2.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.29.0 (2024-12-04)</h2>
+      <pre>## What's Changed
+* fix(backport v4.x): `config` type in RouteShorthandOptions by @bastienmenis in https://github.com/fastify/fastify/pull/5527
+* feat(backport 4.x): add body parsing on copy move mkcol methods by @johaven in https://github.com/fastify/fastify/pull/5549
+* [Backport 4.x] fix: res serializer not given reply (#5556) by @github-actions in https://github.com/fastify/fastify/pull/5563
+* chore(backport 4.x): allow ! in PR title by @github-actions in https://github.com/fastify/fastify/pull/5572
+* [Backport 4.x] feat: support different body schema per content type by @github-actions in https://github.com/fastify/fastify/pull/5559
+* [Backport 4.x] chore(sponsor): add valtown by @github-actions in https://github.com/fastify/fastify/pull/5593
+* [Backport 4.x] fix: nullish host by @github-actions in https://github.com/fastify/fastify/pull/5594
+* refactor(4.x): add deprecate warning of json shorthand by @climba03003 in https://github.com/fastify/fastify/pull/5587
+* [Backport 4.x] chore(sponsor): add handsontable by @github-actions in https://github.com/fastify/fastify/pull/5595
+* [Backport 4.x] fix: throwing "FST_ERR_DUPLICATED_ROUTE" error instead of raw error by @github-actions in https://github.com/fastify/fastify/pull/5624
+* fix(backport 4.x): reorder handling of `Response` replies by @github-actions in https://github.com/fastify/fastify/pull/5629
+* [Backport 4.x] docs: add default value for maxParamLength by @github-actions in https://github.com/fastify/fastify/pull/5631
+* [Backport 4.x] chore: fix sponsor link by @github-actions in https://github.com/fastify/fastify/pull/5641
+* [Backport 4.x] feat: add fastify v4 codemods by @github-actions in https://github.com/fastify/fastify/pull/5654
+* [Backport 4.x] feat: bind `this` to instance in onclose by @github-actions in https://github.com/fastify/fastify/pull/5679
+* [Backport 4.x] docs: update v4 codemods by @github-actions in https://github.com/fastify/fastify/pull/5686
+
+## New Contributors
+* @bastienmenis made their first contribution in https://github.com/fastify/fastify/pull/5527
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.28.1...v4.29.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.1.0 (2024-10-31)</h2>
+      <pre>## What's Changed
+* chore: Update Migration-Guide-V5.md by @jsumners in https://github.com/fastify/fastify/pull/5688
+* fix(guide-v5): wrong link for diagnostics channel by @corradopetrelli in https://github.com/fastify/fastify/pull/5693
+* chore: fix typo in reply-serialize.test.js by @janmooij in https://github.com/fastify/fastify/pull/5692
+* chore: remove unused dev dependencies by @climba03003 in https://github.com/fastify/fastify/pull/5696
+* docs: fix schema by @climba03003 in https://github.com/fastify/fastify/pull/5695
+* fix(docs): migration guide by @Eomm in https://github.com/fastify/fastify/pull/5701
+* fix: add childLoggerFactory option to FastifyHttpOptions type by @mauroaccornero in https://github.com/fastify/fastify/pull/5665
+* docs: correct errors fragment by @inyourtime in https://github.com/fastify/fastify/pull/5705
+* docs(guides/ecosystem): remove archived core plugins by @Fdawgs in https://github.com/fastify/fastify/pull/5712
+* fix: make shallow copy of fastify options before mutations by @dorgelesnzi in https://github.com/fastify/fastify/pull/5706
+* docs(reply): cleanup and update to clarify elapsedTime behaviour by @erkaperka in https://github.com/fastify/fastify/pull/5728
+* chore(tests): uncomment server.decorate test case by @bnzone in https://github.com/fastify/fastify/pull/5736
+* chore: setup borp reporter for switch to node test by @dancastillo in https://github.com/fastify/fastify/pull/5720
+* chore: update Testing guide to use node:test by @dancastillo in https://github.com/fastify/fastify/pull/5738
+* fix: point this to parent at onRegister by @gurgunday in https://github.com/fastify/fastify/pull/5675
+* fix: make content-type case-insensitive by @gurgunday in https://github.com/fastify/fastify/pull/5742
+* docs: Changed var for let and const by @BrunoMollo in https://github.com/fastify/fastify/pull/5745
+* chore: Migrate to node:test  by @Rantoledo in https://github.com/fastify/fastify/pull/5714
+* types: make plugin options required if they have any defined props by @paulius-valiunas in https://github.com/fastify/fastify/pull/5637
+* build(deps-dev): lock typescript minor version by @Fdawgs in https://github.com/fastify/fastify/pull/5748
+* perf(lib/pluginUtils): convert unused capture group to non-capture group by @Fdawgs in https://github.com/fastify/fastify/pull/5749
+* refactor(lib/validation): replace regexp `.exec()` with `.test()` by @Fdawgs in https://github.com/fastify/fastify/pull/5750
+* refactor(lib/validation): remove redundant regex quantifier by @Fdawgs in https://github.com/fastify/fastify/pull/5751
+* chore: getFuncPreview limit split size by @gurgunday in https://github.com/fastify/fastify/pull/5754
+* refactor: change var instances to const or let by @ChinoUkaegbu in https://github.com/fastify/fastify/pull/5759
+* test: migrate tests from tap to node:test and c8 by @dancastillo in https://github.com/fastify/fastify/pull/5760
+* test: removed second argument from assert fail method in tests by @Rantoledo in https://github.com/fastify/fastify/pull/5761
+* test: Migrate http2 test to node:test by @Rantoledo in https://github.com/fastify/fastify/pull/5757
+* types: add string[] to routeOptions.method by @smartinio in https://github.com/fastify/fastify/pull/5762
+* test: Fix flaky tests in versioned-routes.test.js by @smartinio in https://github.com/fastify/fastify/pull/5765
+* fix: correctly handle empty host by @gurgunday in https://github.com/fastify/fastify/pull/5764
+* perf: pause split early on hostname by @gurgunday in https://github.com/fastify/fastify/pull/5767
+* test: Migrate 404 test to node:test by @Rantoledo in https://github.com/fastify/fastify/pull/5769
+* fix: exposeHeadRoute should pass "onSend" hook handlers provided to GET handler if method is not uppercased by @Uzlopak in https://github.com/fastify/fastify/pull/5766
+* test: move allowUnsafeRegex to node test runner by @karankraina in https://github.com/fastify/fastify/pull/5770
+* chore: Conditionally require pino if logger is enabled by @karankraina in https://github.com/fastify/fastify/pull/5763
+* feat(test runner node): route 4 by @kriskw1999 in https://github.com/fastify/fastify/pull/5774
+* test: migrated custom-http-server from tap to node:test by @iamgiolaga in https://github.com/fastify/fastify/pull/5773
+* test: migrate route.1.test to node test runner by @kriskw1999 in https://github.com/fastify/fastify/pull/5784
+* test: port bodyLimit.test.js by @rstagi in https://github.com/fastify/fastify/pull/5781
+* test: port server.test.js to node:test by @pmarchini in https://github.com/fastify/fastify/pull/5783
+* test: migrated imports.test.js  from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5788
+* chore: Migrate async-local-storage and async-await test to node:test by @Rantoledo in https://github.com/fastify/fastify/pull/5791
+* test: ported route 3 test by @kriskw1999 in https://github.com/fastify/fastify/pull/5780
+* test: migrated async-dispose.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5793
+* test: migrate constrained routes test file to use node:test by @Rantoledo in https://github.com/fastify/fastify/pull/5798
+* test: migrated keep-alive-timeout.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5796
+* test: migrated noop-set.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5794
+* test: migrated close-pipelining.test.js from tap to node:test by @Tony133 in https://github.com/fastify/fastify/pull/5797
+* feat(test runner node): test porting  by @kriskw1999 in https://github.com/fastify/fastify/pull/5772
+* test: migrate serialize-response to node test runner by @federicogualdi in https://github.com/fastify/fastify/pull/5775
+* ci: fix typescript tests on alternative runtimes by @Uzlopak in https://github.com/fastify/fastify/pull/5799
+
+## New Contributors
+* @corradopetrelli made their first contribution in https://github.com/fastify/fastify/pull/5693
+* @janmooij made their first contribution in https://github.com/fastify/fastify/pull/5692
+* @mauroaccornero made their first contribution in https://github.com/fastify/fastify/pull/5665
+* @inyourtime made their first contribution in https://github.com/fastify/fastify/pull/5705
+* @dorgelesnzi made their first contribution in https://github.com/fastify/fastify/pull/5706
+* @erkaperka made their first contribution in https://github.com/fastify/fastify/pull/5728
+* @bnzone made their first contribution in https://github.com/fastify/fastify/pull/5736
+* @BrunoMollo made their first contribution in https://github.com/fastify/fastify/pull/5745
+* @paulius-valiunas made their first contribution in https://github.com/fastify/fastify/pull/5637
+* @ChinoUkaegbu made their first contribution in https://github.com/fastify/fastify/pull/5759
+* @smartinio made their first contribution in https://github.com/fastify/fastify/pull/5762
+* @karankraina made their first contribution in https://github.com/fastify/fastify/pull/5770
+* @kriskw1999 made their first contribution in https://github.com/fastify/fastify/pull/5774
+* @iamgiolaga made their first contribution in https://github.com/fastify/fastify/pull/5773
+* @rstagi made their first contribution in https://github.com/fastify/fastify/pull/5781
+* @pmarchini made their first contribution in https://github.com/fastify/fastify/pull/5783
+* @federicogualdi made their first contribution in https://github.com/fastify/fastify/pull/5775
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v5.0.0...v5.1.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0 (2024-09-17)</h2>
+      <pre>## What's Changed
+* add missing route shorthands by @Uzlopak in https://github.com/fastify/fastify/pull/4409
+* lib: drop setDefaultRoute and getDefaultRoute methods by @RafaelGSS in https://github.com/fastify/fastify/pull/4485
+* Sync next-branch by @github-actions in https://github.com/fastify/fastify/pull/4815
+* Next: Disallow `decorate('name', null)` in the types by @voxpelli in https://github.com/fastify/fastify/pull/4878
+* feat!: Add req.hostname and req.port by @aarontravass in https://github.com/fastify/fastify/pull/4766
+* Change request id header default value to false by @philippviereck in https://github.com/fastify/fastify/pull/4194
+* Remove deprecated variadic listen by @jsumners in https://github.com/fastify/fastify/pull/4900
+* Sync next-branch by @github-actions in https://github.com/fastify/fastify/pull/4894
+* fix: requestIdHeader docs by @philippviereck in https://github.com/fastify/fastify/pull/4916
+* Sync next-branch by @github-actions in https://github.com/fastify/fastify/pull/4930
+* Sync next-branch by @github-actions in https://github.com/fastify/fastify/pull/4941
+* types: Remove variadic listen types by @Uzlopak in https://github.com/fastify/fastify/pull/4966
+* fix: remove http version check by @beyazit in https://github.com/fastify/fastify/pull/4962
+* feat: new logger api by @aarontravass in https://github.com/fastify/fastify/pull/5020
+* fix(plugins): mixing async and callback style now returns an error by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5141
+* feat: align fastify.hasRoute to fmw.hasRoute by @dancastillo in https://github.com/fastify/fastify/pull/5102
+* feat: set useSemicolonDefault default option to false by @dancastillo in https://github.com/fastify/fastify/pull/5320
+* feat: make contentTypeParser's existingParser check more strict by @gurgunday in https://github.com/fastify/fastify/pull/5329
+* feat: loosen content-type checking by @climba03003 in https://github.com/fastify/fastify/pull/4450
+* feat: rework contentTypeParser methods by @gurgunday in https://github.com/fastify/fastify/pull/5372
+* perf: limit search space for contentType by @gurgunday in https://github.com/fastify/fastify/pull/5400
+* perf: update method matching by @gurgunday in https://github.com/fastify/fastify/pull/5419
+* chore: updated dependencies to latest versions by @puskin94 in https://github.com/fastify/fastify/pull/5422
+* chore: merge next into main for v5 release by @jsumners in https://github.com/fastify/fastify/pull/5446
+* docs(ref/typescript): support Docusaurus v3 by @james-kaguru in https://github.com/fastify/fastify/pull/5450
+* chore: remove unused dependency and fix ci by @gurgunday in https://github.com/fastify/fastify/pull/5454
+* feat: (types) add shorthand types for MKCALENDAR and REPORT by @gurgunday in https://github.com/fastify/fastify/pull/5455
+* fix: ci labeler by @Eomm in https://github.com/fastify/fastify/pull/5463
+* docs(guides/database): correct typo by @monish001 in https://github.com/fastify/fastify/pull/5461
+* test: add tests for error handling by @domdomegg in https://github.com/fastify/fastify/pull/5451
+* docs(reference/routes): fix example on constraints by @Cadienvan in https://github.com/fastify/fastify/pull/5468
+* perf: Optimize resolving X-Forwarded-For addresses by @dmkng in https://github.com/fastify/fastify/pull/5458
+* fix: `config` type in RouteShorthandOptions by @BrianValente in https://github.com/fastify/fastify/pull/5355
+* feat: request and reply decorators can not be a reference type by @Eomm in https://github.com/fastify/fastify/pull/5462
+* docs: update indentation on type providers section by @Tony133 in https://github.com/fastify/fastify/pull/5474
+* feat: log all available addresses if listening host is 0.0.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5476
+* chore: remove node 18 from CI by @gurgunday in https://github.com/fastify/fastify/pull/5481
+* feat: writeEarlyHints by @gurgunday in https://github.com/fastify/fastify/pull/5480
+* docs: update indentation and code snippet in the routes section by @Tony133 in https://github.com/fastify/fastify/pull/5482
+* refactor: change `reply.redirect()` signature by @gurgunday in https://github.com/fastify/fastify/pull/5483
+* docs: update indentation and code snippet in the type providers section by @Tony133 in https://github.com/fastify/fastify/pull/5485
+* feat: emit diagnostics_channel events upon routing request by @tlhunter in https://github.com/fastify/fastify/pull/5252
+* chore: Bump pnpm/action-setup from 3 to 4 by @dependabot in https://github.com/fastify/fastify/pull/5492
+* chore: remove unnecessary eslint override by @Cangit in https://github.com/fastify/fastify/pull/5493
+* docs(ecosystem): Add fastify-kysely plugin by @alenap93 in https://github.com/fastify/fastify/pull/5475
+* chore: update tap@19 by @climba03003 in https://github.com/fastify/fastify/pull/5471
+* chore: Remove `reply.getReponseTime()`  in https://github.com/fastify/fastify/pull/5490
+* chore: remove unused test by @Cangit in https://github.com/fastify/fastify/pull/5496
+* chore: readyListener can be async on server.ready() by @remidewitte in https://github.com/fastify/fastify/pull/5501
+* chore: test deprecation cleanup by @Cangit in https://github.com/fastify/fastify/pull/5510
+* chore: Migrate to neostandard by @mcollina in https://github.com/fastify/fastify/pull/5509
+* fix: hasRoute method comparison with case insensitive by @SMNBLMRR in https://github.com/fastify/fastify/pull/5508
+* feat(types): Introduce SafePromiseLike by @rozzilla in https://github.com/fastify/fastify/pull/5506
+* fix: Type inferrence with auxilliary hook handlers by @aadito123 in https://github.com/fastify/fastify/pull/5517
+* docs: addContentTypeParser with fastify.register by @moradebianchetti81 in https://github.com/fastify/fastify/pull/5499
+* docs: remove navigation for empty content by @liuhanqu in https://github.com/fastify/fastify/pull/5521
+* fix: server.listen listener is not cleanup properly by @climba03003 in https://github.com/fastify/fastify/pull/5522
+* feat: type definitions and documentation for separated type provider. by @Bram-dc in https://github.com/fastify/fastify/pull/5427
+* chore: support pre and alpha tags by @jsumners in https://github.com/fastify/fastify/pull/5528
+* chore: Bump the dependencies-major group with 2 updates by @dependabot in https://github.com/fastify/fastify/pull/5530
+* chore: Bump neostandard from 0.7.2 to 0.8.0 in the dev-dependencies group by @dependabot in https://github.com/fastify/fastify/pull/5531
+* fix(v5): update .npmignore by @Eomm in https://github.com/fastify/fastify/pull/5537
+* test: fix test finished earlier than expected by @climba03003 in https://github.com/fastify/fastify/pull/5540
+* chore: rm < node19 support from secondaryServer.close() by @Cangit in https://github.com/fastify/fastify/pull/5542
+* chore(sponsor): add valtown by @Eomm in https://github.com/fastify/fastify/pull/5543
+* chore: Bump the dev-dependencies group with 2 updates by @dependabot in https://github.com/fastify/fastify/pull/5546
+* docs: use `http2` directive in nginx config by @LiviaMedeiros in https://github.com/fastify/fastify/pull/5548
+* chore: Bump neostandard from 0.10.0 to 0.11.0 in the dev-dependencies group by @dependabot in https://github.com/fastify/fastify/pull/5554
+* chore: fix lint by @climba03003 in https://github.com/fastify/fastify/pull/5558
+* ci: remove automerge from ci alternative runtimes by @climba03003 in https://github.com/fastify/fastify/pull/5557
+* feat: support different body schema per content type by @nflaig in https://github.com/fastify/fastify/pull/5545
+* chore: remove dc-polyfill by @Cangit in https://github.com/fastify/fastify/pull/5560
+* fix: res serializer not given reply (#5556) by @mch-dsk in https://github.com/fastify/fastify/pull/5561
+* chore: Bump process-warning from 3.0.0 to 4.0.0 in the dependencies-major group by @dependabot in https://github.com/fastify/fastify/pull/5568
+* chore: Bump the dev-dependencies group with 2 updates by @dependabot in https://github.com/fastify/fastify/pull/5569
+* chore: allow ! in PR title by @climba03003 in https://github.com/fastify/fastify/pull/5571
+* docs: add @pybot/fastify-autoload to comm plugins by @kunal097 in https://github.com/fastify/fastify/pull/5579
+* feat: customize http methods by @Eomm in https://github.com/fastify/fastify/pull/5567
+* refactor(typescript): re-order FastifyReply generic parameters by @climba03003 in https://github.com/fastify/fastify/pull/5570
+* docs: Adding `crudify-mongo` plugin to community list by @aaroncadillac in https://github.com/fastify/fastify/pull/5581
+* docs(reference/typescript): remove type provider from typebox example by @jscheffner in https://github.com/fastify/fastify/pull/5576
+* refactor!: remove json shorthand by @climba03003 in https://github.com/fastify/fastify/pull/5586
+* chore: remove deprecation 005 by @jsumners in https://github.com/fastify/fastify/pull/5589
+* fix: nullish host by @sourcecodeit in https://github.com/fastify/fastify/pull/5590
+* chore(sponsor): add handsontable by @Eomm in https://github.com/fastify/fastify/pull/5592
+* fix: removed warning listener from tests by @sourcecodeit in https://github.com/fastify/fastify/pull/5598
+* fix: test suite import.js emitting errors by @dancastillo in https://github.com/fastify/fastify/pull/5599
+* chore: Bump @types/node from 20.14.13 to 22.0.0 in the dev-dependencies group by @dependabot in https://github.com/fastify/fastify/pull/5600
+* docs(reply): standardize import style in examples by @Tony133 in https://github.com/fastify/fastify/pull/5580
+* docs(typescript): update example fastify version by @Fdawgs in https://github.com/fastify/fastify/pull/5602
+* refactor: remove FSTDEP007 by @climba03003 in https://github.com/fastify/fastify/pull/5604
+* refactor: remove `FSTDEP008` and `FSTDEP009` by @climba03003 in https://github.com/fastify/fastify/pull/5609
+* refactor: remove `FSTDEP010` by @climba03003 in https://github.com/fastify/fastify/pull/5611
+* refactor: remove `FSTDEP021` by @gurgunday in https://github.com/fastify/fastify/pull/5613
+* refactor: use `Object.hasOwn` by @gurgunday in https://github.com/fastify/fastify/pull/5614
+* refactor: remove `FSTDEP012`, `FSTDEP015`, `FSTDEP016`, `FSTDEP017`, `FSTDEP018`, `FSTDEP019` by @climba03003 in https://github.com/fastify/fastify/pull/5616
+* refactor: remove `FSTDEP013` by @climba03003 in https://github.com/fastify/fastify/pull/5618
+* fix: throwing "FST_ERR_DUPLICATED_ROUTE" error instead of raw error by @Rantoledo in https://github.com/fastify/fastify/pull/5621
+* chore: Bump @sinclair/typebox from 0.32.35 to 0.33.4 in the dev-dependencies group by @dependabot in https://github.com/fastify/fastify/pull/5625
+* fix: reorder handling of `Response` replies by @barbieri in https://github.com/fastify/fastify/pull/5612
+* ci(.github): use latest node lts version by @Fdawgs in https://github.com/fastify/fastify/pull/5577
+* docs: add default value for maxParamLength by @busybox11 in https://github.com/fastify/fastify/pull/5630
+* chore: simplify `neostandard` setup by @voxpelli in https://github.com/fastify/fastify/pull/5635
+* chore: fix sponsor link by @Eomm in https://github.com/fastify/fastify/pull/5640
+* docs: move RafaelGSS to past collaborators by @RafaelGSS in https://github.com/fastify/fastify/pull/5645
+* docs(type-providers): fix typos by @mikesamm in https://github.com/fastify/fastify/pull/5651
+* feat: add fastify v4 codemods by @arshcodemod in https://github.com/fastify/fastify/pull/5642
+* chore: bump find-my-way to v9 by @mcollina in https://github.com/fastify/fastify/pull/5652
+* chore: bump ajv-compiler to v4.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5653
+* chore: Bumped light-my-request to v6.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5655
+* chore: Bumped avvio to v9.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5656
+* chore: bump fast-json-stringify-compiler to v5.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5660
+* docs: add dancastillo to Fastify Plugins team by @dancastillo in https://github.com/fastify/fastify/pull/5668
+* docs: join plugin team by @jean-michelet in https://github.com/fastify/fastify/pull/5677
+* chore: list the next deprecation code by @mcollina in https://github.com/fastify/fastify/pull/5673
+* types: remove nonexistant done parameter from onRegister by @gurgunday in https://github.com/fastify/fastify/pull/5678
+* docs: add v5 guide by @mcollina in https://github.com/fastify/fastify/pull/5674
+* feat: bind `this` to instance in onclose by @gurgunday in https://github.com/fastify/fastify/pull/5670
+* docs: update v4 codemods by @mohab-sameh in https://github.com/fastify/fastify/pull/5666
+* docs: Add required .js extension to relative ESM imports by @masto in https://github.com/fastify/fastify/pull/5685
+
+## New Contributors
+* @beyazit made their first contribution in https://github.com/fastify/fastify/pull/4962
+* @puskin94 made their first contribution in https://github.com/fastify/fastify/pull/5422
+* @james-kaguru made their first contribution in https://github.com/fastify/fastify/pull/5450
+* @monish001 made their first contribution in https://github.com/fastify/fastify/pull/5461
+* @dmkng made their first contribution in https://github.com/fastify/fastify/pull/5458
+* @BrianValente made their first contribution in https://github.com/fastify/fastify/pull/5355
+* @Cangit made their first contribution in https://github.com/fastify/fastify/pull/5493
+* @alenap93 made their first contribution in https://github.com/fastify/fastify/pull/5475
+* @moradebianchetti81 made their first contribution in https://github.com/fastify/fastify/pull/5499
+* @Bram-dc made their first contribution in https://github.com/fastify/fastify/pull/5427
+* @LiviaMedeiros made their first contribution in https://github.com/fastify/fastify/pull/5548
+* @mch-dsk made their first contribution in https://github.com/fastify/fastify/pull/5561
+* @kunal097 made their first contribution in https://github.com/fastify/fastify/pull/5579
+* @aaroncadillac made their first contribution in https://github.com/fastify/fastify/pull/5581
+* @jscheffner made their first contribution in https://github.com/fastify/fastify/pull/5576
+* @sourcecodeit made their first contribution in https://github.com/fastify/fastify/pull/5590
+* @Rantoledo made their first contribution in https://github.com/fastify/fastify/pull/5621
+* @barbieri made their first contribution in https://github.com/fastify/fastify/pull/5612
+* @busybox11 made their first contribution in https://github.com/fastify/fastify/pull/5630
+* @mikesamm made their first contribution in https://github.com/fastify/fastify/pull/5651
+* @arshcodemod made their first contribution in https://github.com/fastify/fastify/pull/5642
+* @jean-michelet made their first contribution in https://github.com/fastify/fastify/pull/5677
+* @mohab-sameh made their first contribution in https://github.com/fastify/fastify/pull/5666
+* @masto made their first contribution in https://github.com/fastify/fastify/pull/5685
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.27.0...v5.0.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0-alpha.4 (2024-09-03)</h2>
+      <pre>## What's Changed
+* chore: Bump the dependencies-major group with 2 updates by @dependabot in https://github.com/fastify/fastify/pull/5530
+* chore: Bump neostandard from 0.7.2 to 0.8.0 in the dev-dependencies group by @dependabot in https://github.com/fastify/fastify/pull/5531
+* fix(v5): update .npmignore by @Eomm in https://github.com/fastify/fastify/pull/5537
+* test: fix test finished earlier than expected by @climba03003 in https://github.com/fastify/fastify/pull/5540
+* chore: rm < node19 support from secondaryServer.close() by @Cangit in https://github.com/fastify/fastify/pull/5542
+* chore(sponsor): add valtown by @Eomm in https://github.com/fastify/fastify/pull/5543
+* chore: Bump the dev-dependencies group with 2 updates by @dependabot in https://github.com/fastify/fastify/pull/5546
+* docs: use `http2` directive in nginx config by @LiviaMedeiros in https://github.com/fastify/fastify/pull/5548
+* chore: Bump neostandard from 0.10.0 to 0.11.0 in the dev-dependencies group by @dependabot in https://github.com/fastify/fastify/pull/5554
+* chore: fix lint by @climba03003 in https://github.com/fastify/fastify/pull/5558
+* ci: remove automerge from ci alternative runtimes by @climba03003 in https://github.com/fastify/fastify/pull/5557
+* feat: support different body schema per content type by @nflaig in https://github.com/fastify/fastify/pull/5545
+* chore: remove dc-polyfill by @Cangit in https://github.com/fastify/fastify/pull/5560
+* fix: res serializer not given reply (#5556) by @mch-dsk in https://github.com/fastify/fastify/pull/5561
+* chore: Bump process-warning from 3.0.0 to 4.0.0 in the dependencies-major group by @dependabot in https://github.com/fastify/fastify/pull/5568
+* chore: Bump the dev-dependencies group with 2 updates by @dependabot in https://github.com/fastify/fastify/pull/5569
+* chore: allow ! in PR title by @climba03003 in https://github.com/fastify/fastify/pull/5571
+* docs: add @pybot/fastify-autoload to comm plugins by @kunal097 in https://github.com/fastify/fastify/pull/5579
+* feat: customize http methods by @Eomm in https://github.com/fastify/fastify/pull/5567
+* refactor(typescript): re-order FastifyReply generic parameters by @climba03003 in https://github.com/fastify/fastify/pull/5570
+* docs: Adding `crudify-mongo` plugin to community list by @aaroncadillac in https://github.com/fastify/fastify/pull/5581
+* docs(reference/typescript): remove type provider from typebox example by @jscheffner in https://github.com/fastify/fastify/pull/5576
+* refactor!: remove json shorthand by @climba03003 in https://github.com/fastify/fastify/pull/5586
+* chore: remove deprecation 005 by @jsumners in https://github.com/fastify/fastify/pull/5589
+* fix: nullish host by @sourcecodeit in https://github.com/fastify/fastify/pull/5590
+* chore(sponsor): add handsontable by @Eomm in https://github.com/fastify/fastify/pull/5592
+* fix: removed warning listener from tests by @sourcecodeit in https://github.com/fastify/fastify/pull/5598
+* fix: test suite import.js emitting errors by @dancastillo in https://github.com/fastify/fastify/pull/5599
+* chore: Bump @types/node from 20.14.13 to 22.0.0 in the dev-dependencies group by @dependabot in https://github.com/fastify/fastify/pull/5600
+* docs(reply): standardize import style in examples by @Tony133 in https://github.com/fastify/fastify/pull/5580
+* docs(typescript): update example fastify version by @Fdawgs in https://github.com/fastify/fastify/pull/5602
+* refactor: remove FSTDEP007 by @climba03003 in https://github.com/fastify/fastify/pull/5604
+* refactor: remove `FSTDEP008` and `FSTDEP009` by @climba03003 in https://github.com/fastify/fastify/pull/5609
+* refactor: remove `FSTDEP010` by @climba03003 in https://github.com/fastify/fastify/pull/5611
+* refactor: remove `FSTDEP021` by @gurgunday in https://github.com/fastify/fastify/pull/5613
+* refactor: use `Object.hasOwn` by @gurgunday in https://github.com/fastify/fastify/pull/5614
+* refactor: remove `FSTDEP012`, `FSTDEP015`, `FSTDEP016`, `FSTDEP017`, `FSTDEP018`, `FSTDEP019` by @climba03003 in https://github.com/fastify/fastify/pull/5616
+* refactor: remove `FSTDEP013` by @climba03003 in https://github.com/fastify/fastify/pull/5618
+* fix: throwing "FST_ERR_DUPLICATED_ROUTE" error instead of raw error by @Rantoledo in https://github.com/fastify/fastify/pull/5621
+* chore: Bump @sinclair/typebox from 0.32.35 to 0.33.4 in the dev-dependencies group by @dependabot in https://github.com/fastify/fastify/pull/5625
+* fix: reorder handling of `Response` replies by @barbieri in https://github.com/fastify/fastify/pull/5612
+* ci(.github): use latest node lts version by @Fdawgs in https://github.com/fastify/fastify/pull/5577
+* docs: add default value for maxParamLength by @busybox11 in https://github.com/fastify/fastify/pull/5630
+* chore: simplify `neostandard` setup by @voxpelli in https://github.com/fastify/fastify/pull/5635
+* chore: fix sponsor link by @Eomm in https://github.com/fastify/fastify/pull/5640
+* docs: move RafaelGSS to past collaborators by @RafaelGSS in https://github.com/fastify/fastify/pull/5645
+* docs(type-providers): fix typos by @mikesamm in https://github.com/fastify/fastify/pull/5651
+* feat: add fastify v4 codemods by @arshcodemod in https://github.com/fastify/fastify/pull/5642
+* chore: bump find-my-way to v9 by @mcollina in https://github.com/fastify/fastify/pull/5652
+* chore: bump ajv-compiler to v4.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5653
+* chore: Bumped light-my-request to v6.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5655
+* chore: Bumped avvio to v9.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5656
+
+## New Contributors
+* @LiviaMedeiros made their first contribution in https://github.com/fastify/fastify/pull/5548
+* @mch-dsk made their first contribution in https://github.com/fastify/fastify/pull/5561
+* @kunal097 made their first contribution in https://github.com/fastify/fastify/pull/5579
+* @aaroncadillac made their first contribution in https://github.com/fastify/fastify/pull/5581
+* @jscheffner made their first contribution in https://github.com/fastify/fastify/pull/5576
+* @sourcecodeit made their first contribution in https://github.com/fastify/fastify/pull/5590
+* @Rantoledo made their first contribution in https://github.com/fastify/fastify/pull/5621
+* @barbieri made their first contribution in https://github.com/fastify/fastify/pull/5612
+* @busybox11 made their first contribution in https://github.com/fastify/fastify/pull/5630
+* @mikesamm made their first contribution in https://github.com/fastify/fastify/pull/5651
+* @arshcodemod made their first contribution in https://github.com/fastify/fastify/pull/5642
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v5.0.0-alpha.2...v5.0.0-alpha.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.28.1 (2024-06-29)</h2>
+      <pre>## What's Changed
+* [Backport 4.x] fix: server.listen listener is not cleanup properly by @github-actions in https://github.com/fastify/fastify/pull/5523
+* [Backport 4.x] test: fix test finished earlier than expected by @github-actions in https://github.com/fastify/fastify/pull/5541
+* fix(v4): update .npmignore by @Eomm in https://github.com/fastify/fastify/pull/5538
+
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.28.0...v4.28.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0-alpha.2 (2024-06-21)</h2>
+      <pre>## What's Changed
+* docs(ref/typescript): support Docusaurus v3 by @james-kaguru in https://github.com/fastify/fastify/pull/5450
+* chore: remove unused dependency and fix ci by @gurgunday in https://github.com/fastify/fastify/pull/5454
+* feat: (types) add shorthand types for MKCALENDAR and REPORT by @gurgunday in https://github.com/fastify/fastify/pull/5455
+* fix: ci labeler by @Eomm in https://github.com/fastify/fastify/pull/5463
+* docs(guides/database): correct typo by @monish001 in https://github.com/fastify/fastify/pull/5461
+* test: add tests for error handling by @domdomegg in https://github.com/fastify/fastify/pull/5451
+* docs(reference/routes): fix example on constraints by @Cadienvan in https://github.com/fastify/fastify/pull/5468
+* perf: Optimize resolving X-Forwarded-For addresses by @dmkng in https://github.com/fastify/fastify/pull/5458
+* fix: `config` type in RouteShorthandOptions by @BrianValente in https://github.com/fastify/fastify/pull/5355
+* feat: request and reply decorators can not be a reference type by @Eomm in https://github.com/fastify/fastify/pull/5462
+* docs: update indentation on type providers section by @Tony133 in https://github.com/fastify/fastify/pull/5474
+* feat: log all available addresses if listening host is 0.0.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5476
+* chore: remove node 18 from CI by @gurgunday in https://github.com/fastify/fastify/pull/5481
+* feat: writeEarlyHints by @gurgunday in https://github.com/fastify/fastify/pull/5480
+* docs: update indentation and code snippet in the routes section by @Tony133 in https://github.com/fastify/fastify/pull/5482
+* refactor: change `reply.redirect()` signature by @gurgunday in https://github.com/fastify/fastify/pull/5483
+* docs: update indentation and code snippet in the type providers section by @Tony133 in https://github.com/fastify/fastify/pull/5485
+* feat: emit diagnostics_channel events upon routing request by @tlhunter in https://github.com/fastify/fastify/pull/5252
+* chore: Bump pnpm/action-setup from 3 to 4 by @dependabot in https://github.com/fastify/fastify/pull/5492
+* chore: remove unnecessary eslint override by @Cangit in https://github.com/fastify/fastify/pull/5493
+* docs(ecosystem): Add fastify-kysely plugin by @alenap93 in https://github.com/fastify/fastify/pull/5475
+* chore: update tap@19 by @climba03003 in https://github.com/fastify/fastify/pull/5471
+* chore: Remove `reply.getReponseTime()`  in https://github.com/fastify/fastify/pull/5490
+* chore: remove unused test by @Cangit in https://github.com/fastify/fastify/pull/5496
+* chore: readyListener can be async on server.ready() by @remidewitte in https://github.com/fastify/fastify/pull/5501
+* chore: test deprecation cleanup by @Cangit in https://github.com/fastify/fastify/pull/5510
+* chore: Migrate to neostandard by @mcollina in https://github.com/fastify/fastify/pull/5509
+* fix: hasRoute method comparison with case insensitive by @SMNBLMRR in https://github.com/fastify/fastify/pull/5508
+* feat(types): Introduce SafePromiseLike by @rozzilla in https://github.com/fastify/fastify/pull/5506
+* fix: Type inferrence with auxilliary hook handlers by @aadito123 in https://github.com/fastify/fastify/pull/5517
+* docs: addContentTypeParser with fastify.register by @moradebianchetti81 in https://github.com/fastify/fastify/pull/5499
+* docs: remove navigation for empty content by @liuhanqu in https://github.com/fastify/fastify/pull/5521
+* fix: server.listen listener is not cleanup properly by @climba03003 in https://github.com/fastify/fastify/pull/5522
+* feat: type definitions and documentation for separated type provider. by @Bram-dc in https://github.com/fastify/fastify/pull/5427
+* chore: support pre and alpha tags by @jsumners in https://github.com/fastify/fastify/pull/5528
+
+## New Contributors
+* @james-kaguru made their first contribution in https://github.com/fastify/fastify/pull/5450
+* @monish001 made their first contribution in https://github.com/fastify/fastify/pull/5461
+* @dmkng made their first contribution in https://github.com/fastify/fastify/pull/5458
+* @BrianValente made their first contribution in https://github.com/fastify/fastify/pull/5355
+* @Cangit made their first contribution in https://github.com/fastify/fastify/pull/5493
+* @alenap93 made their first contribution in https://github.com/fastify/fastify/pull/5475
+* @moradebianchetti81 made their first contribution in https://github.com/fastify/fastify/pull/5499
+* @Bram-dc made their first contribution in https://github.com/fastify/fastify/pull/5427
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v5.0.0-alpha.1...v5.0.0-alpha.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.28.0 (2024-06-14)</h2>
+      <pre>## What's Changed
+* test: fix closing - pipelining by @climba03003 in https://github.com/fastify/fastify/pull/5486
+* refactor(backport v4.x): change `reply.redirect()` signature (#5483) by @gurgunday in https://github.com/fastify/fastify/pull/5484
+* refactor(backport v4.x): hasRoute method comparison with case insensitive by @SMNBLMRR in https://github.com/fastify/fastify/pull/5513
+* fix: (backport) Type inferrence with auxilliary hook handlers by @aadito123 in https://github.com/fastify/fastify/pull/5518
+
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.27.0...v4.28.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0-alpha.1 (2024-05-07)</h2>
+      <pre>## What's Changed
+* add missing route shorthands by @Uzlopak in https://github.com/fastify/fastify/pull/4409
+* lib: drop setDefaultRoute and getDefaultRoute methods by @RafaelGSS in https://github.com/fastify/fastify/pull/4485
+* Sync next-branch by @github-actions in https://github.com/fastify/fastify/pull/4815
+* Next: Disallow `decorate('name', null)` in the types by @voxpelli in https://github.com/fastify/fastify/pull/4878
+* feat!: Add req.hostname and req.port by @aarontravass in https://github.com/fastify/fastify/pull/4766
+* Change request id header default value to false by @philippviereck in https://github.com/fastify/fastify/pull/4194
+* Remove deprecated variadic listen by @jsumners in https://github.com/fastify/fastify/pull/4900
+* Sync next-branch by @github-actions in https://github.com/fastify/fastify/pull/4894
+* fix: requestIdHeader docs by @philippviereck in https://github.com/fastify/fastify/pull/4916
+* Sync next-branch by @github-actions in https://github.com/fastify/fastify/pull/4930
+* Sync next-branch by @github-actions in https://github.com/fastify/fastify/pull/4941
+* types: Remove variadic listen types by @Uzlopak in https://github.com/fastify/fastify/pull/4966
+* fix: remove http version check by @beyazit in https://github.com/fastify/fastify/pull/4962
+* feat: new logger api by @aarontravass in https://github.com/fastify/fastify/pull/5020
+* fix(plugins): mixing async and callback style now returns an error by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5141
+* feat: align fastify.hasRoute to fmw.hasRoute by @dancastillo in https://github.com/fastify/fastify/pull/5102
+* feat: set useSemicolonDefault default option to false by @dancastillo in https://github.com/fastify/fastify/pull/5320
+* feat: make contentTypeParser's existingParser check more strict by @gurgunday in https://github.com/fastify/fastify/pull/5329
+* feat: loosen content-type checking by @climba03003 in https://github.com/fastify/fastify/pull/4450
+* feat: rework contentTypeParser methods by @gurgunday in https://github.com/fastify/fastify/pull/5372
+* perf: limit search space for contentType by @gurgunday in https://github.com/fastify/fastify/pull/5400
+* perf: update method matching by @gurgunday in https://github.com/fastify/fastify/pull/5419
+* chore: updated dependencies to latest versions by @puskin94 in https://github.com/fastify/fastify/pull/5422
+* chore: merge next into main for v5 release by @jsumners in https://github.com/fastify/fastify/pull/5446
+
+## New Contributors
+* @beyazit made their first contribution in https://github.com/fastify/fastify/pull/4962
+* @puskin94 made their first contribution in https://github.com/fastify/fastify/pull/5422
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.27.0...v5.0.0-alpha.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.27.0 (2024-05-07)</h2>
+      <pre>## What's Changed
+* docs(request): update request page by @Tony133 in https://github.com/fastify/fastify/pull/5343
+* ci: Add Nsolid runtime to CI and Integration tests by @riosje in https://github.com/fastify/fastify/pull/5332
+* docs(Ecosystem): add fastify-i18n, vite-plugin-fastify, and vite-plug… by @Shyam-Chen in https://github.com/fastify/fastify/pull/5346
+* docs(ecosystem): update x-ray community plugin link by @jorgevrgs in https://github.com/fastify/fastify/pull/5350
+* docs: spelling corrections by @10xLaCroixDrinker in https://github.com/fastify/fastify/pull/5349
+* docs: Remove ES module with NodeNext note by @melroy89 in https://github.com/fastify/fastify/pull/5361
+* docs(ecosystem): add fastify-msgraph-change-notifications-webhook to community plugins by @flower-of-the-bridges in https://github.com/fastify/fastify/pull/5360
+* docs: Add GitHub links to Type Providers + mention Zod by @melroy89 in https://github.com/fastify/fastify/pull/5365
+* docs: fix errors table layout by @aivopaas in https://github.com/fastify/fastify/pull/5374
+* chore: Bump pnpm/action-setup from 2 to 3 by @dependabot in https://github.com/fastify/fastify/pull/5381
+* docs(typescript): update generic constraints link by @Tony133 in https://github.com/fastify/fastify/pull/5379
+* types: narrow code reply type based on schema by @hpx7 in https://github.com/fastify/fastify/pull/5380
+* fix: errorCodes import using ESM by @melroy89 in https://github.com/fastify/fastify/pull/5390
+* fix: Extend tap with .test.mjs tests & Rename existing ESM test by @melroy89 in https://github.com/fastify/fastify/pull/5391
+* docs(typescript): update example https server by @Tony133 in https://github.com/fastify/fastify/pull/5389
+* docs(typescript): update snippet code by @Tony133 in https://github.com/fastify/fastify/pull/5406
+* fix: benchmark CI by @gurgunday in https://github.com/fastify/fastify/pull/5414
+* fix: `remove-label` job uses the wrong repo by @gurgunday in https://github.com/fastify/fastify/pull/5415
+* fix: only run citgm if citgm-core-plugins label is set by @gurgunday in https://github.com/fastify/fastify/pull/5416
+* feat: adds webdav methods that require body & content type parsing by @johaven in https://github.com/fastify/fastify/pull/5411
+* docs: improve onError docs by specifying what the error handler is by @tmcw in https://github.com/fastify/fastify/pull/5358
+* chore: add mercedes-benz as new sponsor by @Eomm in https://github.com/fastify/fastify/pull/5424
+* chore(ecosystem): Add Fastify asyncforge plugin by @rozzilla in https://github.com/fastify/fastify/pull/5429
+* types: `reply.getSerializationFunction` can return `undefined` by @remidewitte in https://github.com/fastify/fastify/pull/5384
+* chore: Bump pino from 8.21.0 to 9.0.0 in the dependencies-major group by @dependabot in https://github.com/fastify/fastify/pull/5431
+* chore: exclude node 14 and 16 on macOS by @gurgunday in https://github.com/fastify/fastify/pull/5433
+* chore: Bump lycheeverse/lychee-action from 1.9.3 to 1.10.0 by @dependabot in https://github.com/fastify/fastify/pull/5436
+* docs: update indentation on snippet code by @Tony133 in https://github.com/fastify/fastify/pull/5418
+* docs(guides/abort):  suggest explicit use of the `aborted` property by @Fdawgs in https://github.com/fastify/fastify/pull/5438
+* feat: disable request logging by @SamSalvatico in https://github.com/fastify/fastify/pull/5435
+* chore: add @gurgunday to the Core Team by @gurgunday in https://github.com/fastify/fastify/pull/5442
+* feat: add mkcalendar and report methods by @keyservlad in https://github.com/fastify/fastify/pull/5439
+* feat: handle synchronous errors in errorHandler by @mcollina in https://github.com/fastify/fastify/pull/5445
+* types: request route schema might be undefined by @nflaig in https://github.com/fastify/fastify/pull/5394
+
+## New Contributors
+* @Tony133 made their first contribution in https://github.com/fastify/fastify/pull/5343
+* @riosje made their first contribution in https://github.com/fastify/fastify/pull/5332
+* @jorgevrgs made their first contribution in https://github.com/fastify/fastify/pull/5350
+* @10xLaCroixDrinker made their first contribution in https://github.com/fastify/fastify/pull/5349
+* @melroy89 made their first contribution in https://github.com/fastify/fastify/pull/5361
+* @flower-of-the-bridges made their first contribution in https://github.com/fastify/fastify/pull/5360
+* @aivopaas made their first contribution in https://github.com/fastify/fastify/pull/5374
+* @hpx7 made their first contribution in https://github.com/fastify/fastify/pull/5380
+* @johaven made their first contribution in https://github.com/fastify/fastify/pull/5411
+* @tmcw made their first contribution in https://github.com/fastify/fastify/pull/5358
+* @remidewitte made their first contribution in https://github.com/fastify/fastify/pull/5384
+* @SamSalvatico made their first contribution in https://github.com/fastify/fastify/pull/5435
+* @keyservlad made their first contribution in https://github.com/fastify/fastify/pull/5439
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.26.2...v4.27.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.26.2 (2024-03-03)</h2>
+      <pre>## What's Changed
+* fix: typo in module exports by @lirantal in https://github.com/fastify/fastify/pull/5316
+* docs(ts): Fix links by @rozzilla in https://github.com/fastify/fastify/pull/5308
+* fix: cb is not a function at fallbackErrorHandler by @Uzlopak in https://github.com/fastify/fastify/pull/5317
+* feat: add a Firebase Functions step by step guide by @lirantal in https://github.com/fastify/fastify/pull/5318
+* types: fix test failure by @gurgunday in https://github.com/fastify/fastify/pull/5330
+* perf: use FifoMap to check contentType by @gurgunday in https://github.com/fastify/fastify/pull/5331
+* docs(ecosystem): adds fastify-override to plugins list by @matthyk in https://github.com/fastify/fastify/pull/5336
+* types: Export preClose hook types by @matthyk in https://github.com/fastify/fastify/pull/5335
+* fix: database migration doc missing db connection code by @nuhman in https://github.com/fastify/fastify/pull/5339
+* chore: Bump pnpm/action-setup from 2 to 3 by @dependabot in https://github.com/fastify/fastify/pull/5341
+* chore: Bump xt0rted/markdownlint-problem-matcher from 2.0.0 to 3.0.0 by @dependabot in https://github.com/fastify/fastify/pull/5342
+
+## New Contributors
+* @nuhman made their first contribution in https://github.com/fastify/fastify/pull/5339
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.26.1...v4.26.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.26.1 (2024-02-12)</h2>
+      <pre>## What's Changed
+* docs(ecosystem): adds fastify-hana to the community plugins list by @yoav0gal in https://github.com/fastify/fastify/pull/5289
+* docs: fix misattributed property parent in deprecation warning: request.elapsedTime by @mscottnelson in https://github.com/fastify/fastify/pull/5299
+* chore: Bump lycheeverse/lychee-action from 1.8.0 to 1.9.3 by @dependabot in https://github.com/fastify/fastify/pull/5300
+* chore: Bump actions/dependency-review-action from 3 to 4 by @dependabot in https://github.com/fastify/fastify/pull/5301
+* chore(.gitignore): add .tap/ dir by @Fdawgs in https://github.com/fastify/fastify/pull/5303
+* fix: amend error codes for latest avvio v8.3.0 by @mcollina in https://github.com/fastify/fastify/pull/5309
+* fix(types): Request route options url add undefined by @rozzilla in https://github.com/fastify/fastify/pull/5307
+* chore: add docs for tracing warnings by @jsumners in https://github.com/fastify/fastify/pull/5310
+
+## New Contributors
+* @mscottnelson made their first contribution in https://github.com/fastify/fastify/pull/5299
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.26.0...v4.26.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.26.0 (2024-01-29)</h2>
+      <pre>## What's Changed
+* docs(ecosystem): add missing plugins to core list by @Fdawgs in https://github.com/fastify/fastify/pull/5234
+* ci: CITGM github workflow by @Uzlopak in https://github.com/fastify/fastify/pull/5233
+* chore: bump find-may-way to v8.0.0 by @mcollina in https://github.com/fastify/fastify/pull/5236
+* fix: setValidatorCompiler with addSchema by @derammo in https://github.com/fastify/fastify/pull/5188
+* feat(routes): expose findRoute and param validator by @sf3ris in https://github.com/fastify/fastify/pull/5230
+* feat: add use semicolon delimter config, default = true by @dancastillo in https://github.com/fastify/fastify/pull/5239
+* chore: add autocannon and concurrently as dev dependencies by @Uzlopak in https://github.com/fastify/fastify/pull/5240
+* fix: return the correct serializer function when no content-type is defined by @DouglasdeMoura in https://github.com/fastify/fastify/pull/5229
+* Sync next by @Uzlopak in https://github.com/fastify/fastify/pull/5238
+* docs: add open-collective by @Eomm in https://github.com/fastify/fastify/pull/5216
+* chore: Bump actions/upload-artifact from 3 to 4 by @dependabot in https://github.com/fastify/fastify/pull/5249
+* chore: Bump actions/labeler from 4 to 5 by @dependabot in https://github.com/fastify/fastify/pull/5248
+* docs(ecosystem): update fastify-rabbitmq // add fastify-hl7 to ecosystem.md by @Bugs5382 in https://github.com/fastify/fastify/pull/5245
+* chore: update actions/labeler@5 by @climba03003 in https://github.com/fastify/fastify/pull/5254
+* fix: restrict findRoute exposed property by @climba03003 in https://github.com/fastify/fastify/pull/5253
+* fix(test): flaky on-listen hook test by @Uzlopak in https://github.com/fastify/fastify/pull/5256
+* fix: remove unused promise warning in setNotFoundHandler with preHandler by @mcollina in https://github.com/fastify/fastify/pull/5258
+* fix: Always call resource.emitDestroy() by @mcollina in https://github.com/fastify/fastify/pull/5228
+* docs: Add missing punctuation in Ecosystem by @matthyk in https://github.com/fastify/fastify/pull/5261
+* docs: remove word repetition on Decorators docs by @rlawisch in https://github.com/fastify/fastify/pull/5260
+* chore(types): Remove unused type imports by @codershiba in https://github.com/fastify/fastify/pull/5264
+* chore(license): Update licensing year by @codershiba in https://github.com/fastify/fastify/pull/5266
+* chore(docs): Add clarification about `fastify.setErrorHandler()` by @codershiba in https://github.com/fastify/fastify/pull/5265
+* refactor: deprecate `Reply#getResponseTime()` in favour of `Reply#elapsedTime` by @codershiba in https://github.com/fastify/fastify/pull/5263
+* chore: remove `www.` from `fastify.dev` urls by @Fdawgs in https://github.com/fastify/fastify/pull/5270
+* feat: expose method for setGenReqId on FastifyInstance by @dancastillo in https://github.com/fastify/fastify/pull/5259
+* fix: ensure `onListen` hooks are called when they should be by @bienzaaron in https://github.com/fastify/fastify/pull/5273
+* docs: re-word clarification about `setErrorHandler()` by @codershiba in https://github.com/fastify/fastify/pull/5269
+* docs(ecosystem): remove unsupported package by @Fdawgs in https://github.com/fastify/fastify/pull/5278
+* docs: Fix Pino docs link by @BoscoDomingo in https://github.com/fastify/fastify/pull/5284
+* chore: add github sponsor by @Eomm in https://github.com/fastify/fastify/pull/5293
+* docs(ecosystem): adds fastify-sqlite-typed to the community plugins list by @yoav0gal in https://github.com/fastify/fastify/pull/5288
+* docs: add ESM usage example in Getting Started by @atilagulers in https://github.com/fastify/fastify/pull/5294
+* docs: repoint readers to shared `.github` files by @Fdawgs in https://github.com/fastify/fastify/pull/5268
+* feat: Web Stream API by @climba03003 in https://github.com/fastify/fastify/pull/5286
+* chore: sync generated code by @Eomm in https://github.com/fastify/fastify/pull/5295
+
+## New Contributors
+* @derammo made their first contribution in https://github.com/fastify/fastify/pull/5188
+* @DouglasdeMoura made their first contribution in https://github.com/fastify/fastify/pull/5229
+* @rlawisch made their first contribution in https://github.com/fastify/fastify/pull/5260
+* @codershiba made their first contribution in https://github.com/fastify/fastify/pull/5264
+* @BoscoDomingo made their first contribution in https://github.com/fastify/fastify/pull/5284
+* @yoav0gal made their first contribution in https://github.com/fastify/fastify/pull/5288
+* @atilagulers made their first contribution in https://github.com/fastify/fastify/pull/5294
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.25.2...v4.26.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.25.2 (2023-12-24)</h2>
+      <pre>## What's Changed
+* fix: `npm run test:watch` by @domdomegg in https://github.com/fastify/fastify/pull/5221
+* fix: always consume stream payloads when responding to 204 with no body by @mcollina in https://github.com/fastify/fastify/pull/5231
+* docs: update setErrorHandler to explain not found behaviour by @domdomegg in https://github.com/fastify/fastify/pull/5218
+
+## New Contributors
+* @domdomegg made their first contribution in https://github.com/fastify/fastify/pull/5221
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.25.1...v4.25.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.25.1 (2023-12-15)</h2>
+      <pre>## What's Changed
+* fix: route constraints by @climba03003 in https://github.com/fastify/fastify/pull/5207
+* fix: Better plugin name detection for FSTWRN002 by @mcollina in https://github.com/fastify/fastify/pull/5209
+* chore: at-large project by @Eomm in https://github.com/fastify/fastify/pull/5211
+
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.25.0...v4.25.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.25.0 (2023-12-13)</h2>
+      <pre>## What's Changed
+* feat: Improve RouteShorthandOptions['constraints'] type by @Fcmam5 in https://github.com/fastify/fastify/pull/5097
+* fix: add @eomm and @jsumners as lead maintainers by @mcollina in https://github.com/fastify/fastify/pull/5115
+* fix: reply.send supports Uint8Array payload by @SgtPooki in https://github.com/fastify/fastify/pull/5124
+* refactor: migrate deprecation warnings to actual deprecation warnings by @jsumners in https://github.com/fastify/fastify/pull/5126
+* docs: added documentation about warnings by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5108
+* test(logger): restrict temp file permissions by @Fdawgs in https://github.com/fastify/fastify/pull/5128
+* refactor(lib/hooks): replace `typeof` undefined check by @Fdawgs in https://github.com/fastify/fastify/pull/5127
+* chore: replace mention of fastify `.io` domain with `.dev` by @Fdawgs in https://github.com/fastify/fastify/pull/5129
+* docs(security): add prose explaining OpenSSF CII Best Practices badge results by @ljharb in https://github.com/fastify/fastify/pull/5111
+* chore: Bump actions/setup-node from 3 to 4 by @dependabot in https://github.com/fastify/fastify/pull/5134
+* fix(types): add handler property to routeOptions by @MikeJeffers in https://github.com/fastify/fastify/pull/5136
+* docs(readme): fix ci badge path by @Fdawgs in https://github.com/fastify/fastify/pull/5138
+* docs: Fix small typo in Typescript docs by @john-ko in https://github.com/fastify/fastify/pull/5145
+* feat(plugins): mixing async and callback style now returns a warning by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5139
+* docs: mention about multipart support by @fawazahmed0 in https://github.com/fastify/fastify/pull/5144
+* docs: add @fastify/vite to core plugins list by @galvez in https://github.com/fastify/fastify/pull/5153
+* docs: add @scalar/fastify-api-reference to community plugins list by @hanspagel in https://github.com/fastify/fastify/pull/5154
+* docs: Remove routeOptions reference in Reply.md by @shadahmad7 in https://github.com/fastify/fastify/pull/5156
+* docs(ecosystem): add fastify-uws by @tinchoz49 in https://github.com/fastify/fastify/pull/5160
+* docs: removed unmaintained fastify-nodemailer from ecosystem by @giovanni-bertoncelli in https://github.com/fastify/fastify/pull/5161
+* docs: clarify handling of streams and buffers by @brettwillis in https://github.com/fastify/fastify/pull/5166
+* docs(#5142): aligned errors and warnings documentation by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5162
+* docs(reference/hooks): add information about prehandler by @RjManhas in https://github.com/fastify/fastify/pull/5163
+* fix: type FastifyInstance['route'] and RouteShorthandMethod by @MunifTanjim in https://github.com/fastify/fastify/pull/5155
+* docs (reference): Fix small typo in Request by @bngarren in https://github.com/fastify/fastify/pull/5186
+* chore: gitpodify by @ghostdevv in https://github.com/fastify/fastify/pull/5168
+* docs(ecosystem): Add Apitally by @itssimon in https://github.com/fastify/fastify/pull/5175
+* fix: Update reply.context deprecation warning by @avaly in https://github.com/fastify/fastify/pull/5179
+* docs(ecosystem): adds @blastorg/fastify/aws-dynamodb-cache to community plugins list by @fredrikj31 in https://github.com/fastify/fastify/pull/5158
+* docs: update preHandler hook example by @tarunrajput in https://github.com/fastify/fastify/pull/5189
+* types: added http header types to reply by @skwee357 in https://github.com/fastify/fastify/pull/5046
+* test: add tests for TOC of errors.md by @Uzlopak in https://github.com/fastify/fastify/pull/5194
+* ci: pin node 18 to 18.18.2 by @Uzlopak in https://github.com/fastify/fastify/pull/5197
+* docs(ecosystem): add http-wizard by @flodlc in https://github.com/fastify/fastify/pull/5132
+* chore: Bump actions/github-script from 6 to 7 by @dependabot in https://github.com/fastify/fastify/pull/5183
+* ci: fix broken ci by skipping tests if node v > 18.19.0 by @Uzlopak in https://github.com/fastify/fastify/pull/5195
+* fix: allow async hooks in `RouteShorthandOptions` without breaking `request` and `reply` types by @bienzaaron in https://github.com/fastify/fastify/pull/5147
+* fix(#5180): close secondary bindings after primary is closed by @metcoder95 in https://github.com/fastify/fastify/pull/5201
+* chore: update process-warning by @Eomm in https://github.com/fastify/fastify/pull/5206
+* types: nullish error types in callback function's parameter for `after` and `ready` method by @nokazn in https://github.com/fastify/fastify/pull/5191
+* fix(#5049): Remove duplicated calls to onReady by @metcoder95 in https://github.com/fastify/fastify/pull/5051
+* chore: remove unused type assertion by @UndefinedBehaviour in https://github.com/fastify/fastify/pull/5184
+
+## New Contributors
+* @Fcmam5 made their first contribution in https://github.com/fastify/fastify/pull/5097
+* @SgtPooki made their first contribution in https://github.com/fastify/fastify/pull/5124
+* @MikeJeffers made their first contribution in https://github.com/fastify/fastify/pull/5136
+* @john-ko made their first contribution in https://github.com/fastify/fastify/pull/5145
+* @fawazahmed0 made their first contribution in https://github.com/fastify/fastify/pull/5144
+* @hanspagel made their first contribution in https://github.com/fastify/fastify/pull/5154
+* @shadahmad7 made their first contribution in https://github.com/fastify/fastify/pull/5156
+* @giovanni-bertoncelli made their first contribution in https://github.com/fastify/fastify/pull/5161
+* @RjManhas made their first contribution in https://github.com/fastify/fastify/pull/5163
+* @MunifTanjim made their first contribution in https://github.com/fastify/fastify/pull/5155
+* @bngarren made their first contribution in https://github.com/fastify/fastify/pull/5186
+* @ghostdevv made their first contribution in https://github.com/fastify/fastify/pull/5168
+* @itssimon made their first contribution in https://github.com/fastify/fastify/pull/5175
+* @avaly made their first contribution in https://github.com/fastify/fastify/pull/5179
+* @fredrikj31 made their first contribution in https://github.com/fastify/fastify/pull/5158
+* @tarunrajput made their first contribution in https://github.com/fastify/fastify/pull/5189
+* @skwee357 made their first contribution in https://github.com/fastify/fastify/pull/5046
+* @flodlc made their first contribution in https://github.com/fastify/fastify/pull/5132
+* @nokazn made their first contribution in https://github.com/fastify/fastify/pull/5191
+* @UndefinedBehaviour made their first contribution in https://github.com/fastify/fastify/pull/5184
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.24.3...v4.25.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.24.3 (2023-10-19)</h2>
+      <pre>## What's Changed
+* fix: timeout on citgm tests by @simone-sanfratello in https://github.com/fastify/fastify/pull/5101
+* chore: add missing `use strict` directives by @Fdawgs in https://github.com/fastify/fastify/pull/5106
+
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.24.2...v4.24.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.24.2 (2023-10-15)</h2>
+      <pre>## What's Changed
+* fix: build problems when `Symbol.asyncDispose` type is not available. by @arthurfiorette in https://github.com/fastify/fastify/pull/5096
+
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.24.1...v4.24.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.24.1 (2023-10-13)</h2>
+      <pre>## What's Changed
+* fix: citgm by @simone-sanfratello in https://github.com/fastify/fastify/pull/5075
+* fix: HEAD route reseting by @ivan-tymoshenko in https://github.com/fastify/fastify/pull/5090
+
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.24.0...v4.24.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.24.0 (2023-10-11)</h2>
+      <pre>## What's Changed
+* docs: Add blank line before onclose hook heading by @kadoshita in https://github.com/fastify/fastify/pull/5042
+* build(dependabot): ignore tap major updates by @Fdawgs in https://github.com/fastify/fastify/pull/5047
+* chore: Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/fastify/fastify/pull/5048
+* chore: more perf by @Eomm in https://github.com/fastify/fastify/pull/5016
+* docs(ecosystem): add fastify-prisma by @zrosenbauer in https://github.com/fastify/fastify/pull/5041
+* test: fix ci due yup breaking by @Eomm in https://github.com/fastify/fastify/pull/5058
+* perf: optimize split params by @Connormiha in https://github.com/fastify/fastify/pull/5057
+* chore: implicitly infer SchemaCompiler as readonly by @DemonHa in https://github.com/fastify/fastify/pull/5060
+* test(logger): splitting existing tests to avoid pipeline failing for timeout by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5064
+* fix(async-hooks): mixing async and callback style in preHandler option now returns an error by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5069
+* fix: enhance 100 and 200 or 204 handling by @Iamshankhadeep in https://github.com/fastify/fastify/pull/5056
+* docs: add fastify-cloudflare-turnstile to ecosystem by @112RG in https://github.com/fastify/fastify/pull/5067
+* docs: Fixing a couple typos by @Cadienvan in https://github.com/fastify/fastify/pull/5079
+* feat: Add `Symbol.asyncDispose` to improve DX in short lived servers. by @arthurfiorette in https://github.com/fastify/fastify/pull/5082
+* docs: Documentation changes requested at #5082 by @arthurfiorette in https://github.com/fastify/fastify/pull/5083
+* docs: remove thenable promisesaplus spec references by @dancastillo in https://github.com/fastify/fastify/pull/5081
+* docs(ecosystem): add fastify-event-bus by @Shiva127 in https://github.com/fastify/fastify/pull/5085
+* docs: update docs for FastifyPlugin by @dancastillo in https://github.com/fastify/fastify/pull/5070
+* docs: Update for .hijack heading by @jackbatzner in https://github.com/fastify/fastify/pull/5088
+* fix(warnings): fixed warning when accessing context property from Request and Reply objects by @giuliowaitforitdavide in https://github.com/fastify/fastify/pull/5084
+* fix: HEAD route search by @ivan-tymoshenko in https://github.com/fastify/fastify/pull/5078
+
+## New Contributors
+* @kadoshita made their first contribution in https://github.com/fastify/fastify/pull/5042
+* @Connormiha made their first contribution in https://github.com/fastify/fastify/pull/5057
+* @DemonHa made their first contribution in https://github.com/fastify/fastify/pull/5060
+* @Iamshankhadeep made their first contribution in https://github.com/fastify/fastify/pull/5056
+* @Cadienvan made their first contribution in https://github.com/fastify/fastify/pull/5079
+* @arthurfiorette made their first contribution in https://github.com/fastify/fastify/pull/5082
+* @jackbatzner made their first contribution in https://github.com/fastify/fastify/pull/5088
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.23.2...v4.24.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.23.2 (2023-09-14)</h2>
+      <pre>## What's Changed
+* fix: add routeOptions.schema to types by @Uzlopak in https://github.com/fastify/fastify/pull/5035
+
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.23.1...v4.23.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.23.1 (2023-09-13)</h2>
+      <pre>## What's Changed
+* fix: correct warnings for request.routerPath and request.routerMethod by @Uzlopak in https://github.com/fastify/fastify/pull/5032
+* fix: add routeOptions.config to types by @mcollina in https://github.com/fastify/fastify/pull/5034
+
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.23.0...v4.23.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.23.0 (2023-09-11)</h2>
+      <pre>## What's Changed
+* test: reduce output of reqIdGenFactory.test.js by @Uzlopak in https://github.com/fastify/fastify/pull/5012
+* feat: Add onListen Hook by @BrendenInhelder in https://github.com/fastify/fastify/pull/4899
+* docs(readme): avoid line breaks in documentation links by @antoineneff in https://github.com/fastify/fastify/pull/5014
+* chore(examples): added curly braces to conditions for consistency by @turnerran in https://github.com/fastify/fastify/pull/5015
+* feat: access handler name add properties to req route options by @cesarvspr in https://github.com/fastify/fastify/pull/4470
+* chore: Bump the dev-dependencies group with 1 update by @dependabot in https://github.com/fastify/fastify/pull/5018
+* docs: minor improvements by @Uzlopak in https://github.com/fastify/fastify/pull/5019
+* chore(deps): replace tiny-lru with toad-cache by @kibertoad in https://github.com/fastify/fastify/pull/4668
+* docs(ecosystem.md): Fix wrong entry for ecosystem.md by @Uzlopak in https://github.com/fastify/fastify/pull/5021
+* perf: use `node:` prefix to bypass require.cache call for builtins by @Fdawgs in https://github.com/fastify/fastify/pull/5026
+* docs(typo): mistype of monkeypatch by @Menkveld-24 in https://github.com/fastify/fastify/pull/5027
+* chore: change website to .dev instead of .io by @Eomm in https://github.com/fastify/fastify/pull/5028
+* chore: add gurgunday and uzlopak as contributors by @Uzlopak in https://github.com/fastify/fastify/pull/5029
+* chore: add a citgm command to customize what we run in CITGM by @mcollina in https://github.com/fastify/fastify/pull/5030
+
+## New Contributors
+* @BrendenInhelder made their first contribution in https://github.com/fastify/fastify/pull/4899
+* @antoineneff made their first contribution in https://github.com/fastify/fastify/pull/5014
+* @turnerran made their first contribution in https://github.com/fastify/fastify/pull/5015
+* @Menkveld-24 made their first contribution in https://github.com/fastify/fastify/pull/5027
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.22.2...v4.23.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.22.2 (2023-09-01)</h2>
+      <pre>A spurious file (a test run result) was added to the package, which was now removed.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.22.1 (2023-08-31)</h2>
+      <pre>## What's Changed
+* chore: Bump the dev-dependencies group with 1 update by @dependabot in https://github.com/fastify/fastify/pull/5002
+* docs(ecosystem): add fastify-rabbitmq to ecosystem.md by @Bugs5382 in https://github.com/fastify/fastify/pull/5000
+* docs(ecosystem): add `@fastify/throttle` to core list by @Fdawgs in https://github.com/fastify/fastify/pull/5004
+* fix: typos by @Uzlopak in https://github.com/fastify/fastify/pull/5006
+* docs: typo on catch statement inside Postgrator migration example by @alessandrob88 in https://github.com/fastify/fastify/pull/5007
+* fix: post async regression with empty body by @mcollina in https://github.com/fastify/fastify/pull/5008
+
+## New Contributors
+* @Bugs5382 made their first contribution in https://github.com/fastify/fastify/pull/5000
+* @alessandrob88 made their first contribution in https://github.com/fastify/fastify/pull/5007
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.22.0...v4.22.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.22.0 (2023-08-27)</h2>
+      <pre>## What's Changed
+* make FastifySchemaValidationError.params wider by @cm-ayf in https://github.com/fastify/fastify/pull/4476
+* docs(ecosystem): add fastify-hashids by @andersonjoseph in https://github.com/fastify/fastify/pull/4934
+* fix: hasPlugin does not track parent plugins by @Eomm in https://github.com/fastify/fastify/pull/4929
+* docs: early hints plugin is fastify plugin by @Uzlopak in https://github.com/fastify/fastify/pull/4947
+* chore: add pull request title check by @Uzlopak in https://github.com/fastify/fastify/pull/4951
+* chore: Bump @sinclair/typebox from 0.29.6 to 0.30.2 by @dependabot in https://github.com/fastify/fastify/pull/4952
+* ci: improve pr title check by @Uzlopak in https://github.com/fastify/fastify/pull/4953
+* ci: fix warnings in benchmark workflows by @Uzlopak in https://github.com/fastify/fastify/pull/4954
+* docs: fix removeAdditional comment by @G0maa in https://github.com/fastify/fastify/pull/4948
+* fix: Try to fix parser benchmark workflow by @kibertoad in https://github.com/fastify/fastify/pull/4956
+* fix: infer correct hook handler by @Uzlopak in https://github.com/fastify/fastify/pull/4945
+* fix: do not double send the response if the request is destroyed but not aborted by @mcollina in https://github.com/fastify/fastify/pull/4963
+* chore: Bump @sinclair/typebox from 0.30.4 to 0.31.1 by @dependabot in https://github.com/fastify/fastify/pull/4973
+* fix: bodyLimit must be applied on fully decoded body by @sergburn in https://github.com/fastify/fastify/pull/4969
+* chore: updates @typescript-eslint/eslint-plugin and @typescript-eslint/parser by @climba03003 in https://github.com/fastify/fastify/pull/4977
+* chore: use group dependencies in dependabot by @climba03003 in https://github.com/fastify/fastify/pull/4979
+* chore: fix ci bench by @Eomm in https://github.com/fastify/fastify/pull/4983
+* fix: require.cache is undefined breaks SEA by @climba03003 in https://github.com/fastify/fastify/pull/4982
+* ci: remove sync next wf by @Uzlopak in https://github.com/fastify/fastify/pull/4985
+* docs: remove mixing ES6 and commomjs in the example by @thenicolau in https://github.com/fastify/fastify/pull/4990
+* fix: errorHandler callback should utilize TypeProvider by @muan in https://github.com/fastify/fastify/pull/4989
+* types: add onRoute to ApplicationHookLookup by @Uzlopak in https://github.com/fastify/fastify/pull/4968
+* chore: make tests pass on ipv4 only machine by @mcollina in https://github.com/fastify/fastify/pull/4997
+* fix: Set `FastifyRequest.id` type as a string by @samchungy in https://github.com/fastify/fastify/pull/4992
+
+## New Contributors
+* @G0maa made their first contribution in https://github.com/fastify/fastify/pull/4948
+* @thenicolau made their first contribution in https://github.com/fastify/fastify/pull/4990
+* @muan made their first contribution in https://github.com/fastify/fastify/pull/4989
+* @samchungy made their first contribution in https://github.com/fastify/fastify/pull/4992
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.21.0...v4.22.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.21.0 (2023-07-26)</h2>
+      <pre>## What's Changed
+* chore: remove license-checker package by @Uzlopak in https://github.com/fastify/fastify/pull/4914
+* chore: remove pump devDependency by @Uzlopak in https://github.com/fastify/fastify/pull/4913
+* ci: create artifacts in coverage workflows by @Uzlopak in https://github.com/fastify/fastify/pull/4909
+* docs(server): grammar and structure fixes by @Fdawgs in https://github.com/fastify/fastify/pull/4904
+* docs: Fix typo in TypeScript docs ("@types/node", not "@node/types") by @jasongwartz in https://github.com/fastify/fastify/pull/4922
+* [readme] add CII Best Practices Badge by @ljharb in https://github.com/fastify/fastify/pull/4926
+* fix: lowercase type-providers headers types by @toomuchdesign in https://github.com/fastify/fastify/pull/4928
+* ERR_REP_ALREADY_SENT hint that a route may be missing "return reply" by @mcollina in https://github.com/fastify/fastify/pull/4921
+* fix: ReplyTypeConstrainer array type inference by @pedroescumalha in https://github.com/fastify/fastify/pull/4885
+
+## New Contributors
+* @jasongwartz made their first contribution in https://github.com/fastify/fastify/pull/4922
+* @ljharb made their first contribution in https://github.com/fastify/fastify/pull/4926
+* @toomuchdesign made their first contribution in https://github.com/fastify/fastify/pull/4928
+* @pedroescumalha made their first contribution in https://github.com/fastify/fastify/pull/4885
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.20.0...v4.21.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.20.0 (2023-07-17)</h2>
+      <pre>## What's Changed
+* build(deps-dev): Bump @sinclair/typebox from 0.28.20 to 0.29.1 by @dependabot in https://github.com/fastify/fastify/pull/4877
+* Update Prototype-Poisoning.md by @ed-henrique in https://github.com/fastify/fastify/pull/4879
+* docs: adjust line for linter by @metcoder95 in https://github.com/fastify/fastify/pull/4882
+* Fixed type inference on .code().send() by @aadito123 in https://github.com/fastify/fastify/pull/4880
+* chore: refactor Error-typings and tests by @svrnwnsch in https://github.com/fastify/fastify/pull/4824
+* test: add missing assertion for a test by @kibertoad in https://github.com/fastify/fastify/pull/4701
+* chore: tests for genReqIdFactory and minor changes by @Uzlopak in https://github.com/fastify/fastify/pull/4783
+* Added type definition for allowUnsafeRegex by @xijdk in https://github.com/fastify/fastify/pull/4792
+* docs(security): update policy on ci/cd reports by @jsumners in https://github.com/fastify/fastify/pull/4890
+* improve hooks.validate by @Uzlopak in https://github.com/fastify/fastify/pull/4804
+* ci: enable caching; split jobs by @Uzlopak in https://github.com/fastify/fastify/pull/4889
+* docs(plugins): note side-effect when using `await` in `fastify.register()` by @hateablestream in https://github.com/fastify/fastify/pull/4846
+* [hooks] Refine hook runners by @Uzlopak in https://github.com/fastify/fastify/pull/4805
+* docs: fix wrong header size for FST_ERR_ASYNC_CONSTRAINT in Errors.md by @graphiteisaac in https://github.com/fastify/fastify/pull/4893
+* fix: rework FastifyErrors, ensure documentation completeness by @Uzlopak in https://github.com/fastify/fastify/pull/4892
+* feat: add childLoggerFactory config by @brettwillis in https://github.com/fastify/fastify/pull/4760
+* Fix setNotFoundHandler handler type by @Ethan-Arrowood in https://github.com/fastify/fastify/pull/4897
+* restore code coverage by @mcollina in https://github.com/fastify/fastify/pull/4841
+* fix: handle abort signal before server is ready by @shayff in https://github.com/fastify/fastify/pull/4886
+* docs(client-aborted): remove deprecated function by @JekRock in https://github.com/fastify/fastify/pull/4898
+* Revert "docs(client-aborted): remove deprecated function (#4898)" by @climba03003 in https://github.com/fastify/fastify/pull/4901
+* docs(logging): fix typo by @yamanidev in https://github.com/fastify/fastify/pull/4905
+* Support IPv6 ::1 in listeningOrigin by @mcollina in https://github.com/fastify/fastify/pull/4902
+* fix: extend isCustomValidatorCompiler from parent controller by @tinchoz49 in https://github.com/fastify/fastify/pull/4903
+* fix: allow uppercase requestdHeader by @Uzlopak in https://github.com/fastify/fastify/pull/4906
+
+## New Contributors
+* @ed-henrique made their first contribution in https://github.com/fastify/fastify/pull/4879
+* @svrnwnsch made their first contribution in https://github.com/fastify/fastify/pull/4824
+* @xijdk made their first contribution in https://github.com/fastify/fastify/pull/4792
+* @hateablestream made their first contribution in https://github.com/fastify/fastify/pull/4846
+* @graphiteisaac made their first contribution in https://github.com/fastify/fastify/pull/4893
+* @shayff made their first contribution in https://github.com/fastify/fastify/pull/4886
+* @JekRock made their first contribution in https://github.com/fastify/fastify/pull/4898
+* @yamanidev made their first contribution in https://github.com/fastify/fastify/pull/4905
+* @tinchoz49 made their first contribution in https://github.com/fastify/fastify/pull/4903
+
+**Full Changelog**: https://github.com/fastify/fastify/compare/v4.19.2...v4.20.0</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

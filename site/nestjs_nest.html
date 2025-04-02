@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for nestjs/nest"/>
+  <title>nestjs/nest Release Notes</title>
+</head>
+<body>
+  <h1>🚀 nestjs/nest - Release Notes</h1>
+  
+    <section>
+      <h2>v11.0.12 (2025-03-19)</h2>
+      <pre>## v11.0.12 (2025-03-19)
+
+#### Bug fixes
+* `core`
+  * [#14803](https://github.com/nestjs/nest/pull/14803) fix(core): infinite loop on broken circular reference (@kamilmysliwiec)
+  *  https://github.com/nestjs/nest/pull/14792 dependencies not resolving for request-scoped lazy providers (@anizozina)
+  
+#### Enhancements
+* `core`
+  * [#14802](https://github.com/nestjs/nest/pull/14802) feat(core): add options to the legacy route converter (@kamilmysliwiec)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.11 (2025-02-28)</h2>
+      <pre>## v11.0.11 (2025-02-28)
+
+#### Enhancements
+* `platform-fastify`
+  * [#14677](https://github.com/nestjs/nest/pull/14677) perf: Switch deprecated parser querystring for fast-querystring ([@smith558](https://github.com/smith558))
+
+#### Dependencies
+* `platform-fastify`
+  * [#14711](https://github.com/nestjs/nest/pull/14711) fix(deps): update dependency @fastify/cors to v11 ([@renovate[bot]](https://github.com/apps/renovate))
+* `platform-ws`
+  * [#14689](https://github.com/nestjs/nest/pull/14689) chore(deps): bump ws from 8.18.0 to 8.18.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 1
+- Stanislav (Stanley) Modrak ([@smith558](https://github.com/smith558))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.10 (2025-02-17)</h2>
+      <pre>## v11.0.10 (2025-02-17)
+
+#### Bug fixes
+* `microservices`
+  * [#14605](https://github.com/nestjs/nest/pull/14605) fix(microservices): server send drops emitted value ([@shprota](https://github.com/shprota))
+* `platform-express`
+  * https://github.com/nestjs/nest/pull/14640 fix(platform-express) respect custom parser middlewares in Express 5 (@luddwichr)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.9 (2025-02-10)</h2>
+      <pre>## v11.0.9 (2025-02-10)
+
+#### Bug fixes
+* `core`
+  * [#14597](https://github.com/nestjs/nest/pull/14597) perf(core): use topology tree for calculating distance (depth) ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `common`
+  * [#14579](https://github.com/nestjs/nest/pull/14579) fix(common): revert to original value (swc builders regression) ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+
+#### Committers: 2
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.8 (2025-02-06)</h2>
+      <pre>## v11.0.8 (2025-02-06)
+
+#### Bug fixes
+* `common`
+  * [#14546](https://github.com/nestjs/nest/pull/14546) fix(common): addLeadingSlash optional group support ([@dcharbonnier](https://github.com/dcharbonnier))
+* `platform-express`
+  * [#14574](https://github.com/nestjs/nest/pull/14574) fix(platform-express) make check for existing middlewares work with Express 5 ([@luddwichr](https://github.com/luddwichr))
+
+#### Committers: 4
+- Ghassen Rjab ([@GhassenRjab](https://github.com/GhassenRjab))
+- Shay Molcho ([@shaymolcho](https://github.com/shaymolcho))
+- [@dcharbonnier](https://github.com/dcharbonnier)
+- [@luddwichr](https://github.com/luddwichr)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.7 (2025-01-31)</h2>
+      <pre># v11.0.7 (2025-01-31)
+
+#### Bug fixes
+* `core`
+  * [#14523](https://github.com/nestjs/nest/pull/14523) fix: middleware sort issues ([@rbnayax](https://github.com/rbnayax))
+
+#### Committers: 1
+- [@rbnayax](https://github.com/rbnayax)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.6 (2025-01-27)</h2>
+      <pre>## v11.0.6 (2025-01-27)
+
+#### Bug fixes
+* `core`
+  * [#14522](https://github.com/nestjs/nest/pull/14522) fix(core): allow optional named wildcard groups  ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+
+#### Committers: 1
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.5 (2025-01-23)</h2>
+      <pre>## v11.0.5 (2025-01-23)
+
+#### Bug fixes
+* `core`
+  * [#14495](https://github.com/nestjs/nest/pull/14495) fix(core): global module middleware should be executed first ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+
+#### Committers: 1
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v11.0.0 (2025-01-20)</h2>
+      <pre>## v11.0.0 (2025-01-16)
+
+__Article__: https://trilon.io/blog/announcing-nestjs-11-whats-new
+__Migration guide__: https://docs.nestjs.com/migration-guide 👈 👈 👈 
+
+⚠️  Node v16 and v18 are no longer supported (>= v20 is required).
+
+#### Features
+* `common`, `core`, `microservices`
+  * [#14142](https://github.com/nestjs/nest/pull/14142) feat(microservices): add status, unwrap, on methods to microservice transporters (clients/servers) ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+*   * [#14121](https://github.com/nestjs/nest/pull/14121) feat(common): add json logger, built-in logger improvements ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `common`, `core`
+  * [#13336](https://github.com/nestjs/nest/pull/13336) feat(core): introduce different module opaque key factories (improve bootstrap performance) ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `common`, `core`, `microservices`, `platform-express`, `platform-fastify`, `platform-socket.io`, `platform-ws`, `testing`, `websockets`
+  * [#14238](https://github.com/nestjs/nest/pull/14238) chore(deps): upgrade to express v5, fastify v5, add legacy route path converter to minimize breaking changes ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+
+#### Enhancements
+* `common`
+  * [#14213](https://github.com/nestjs/nest/pull/14213) feat(common): add error messages for file validators ([@mag123c](https://github.com/mag123c))
+  * [#14131](https://github.com/nestjs/nest/pull/14131) feat(common): allow passing number to http error createBody ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#14122](https://github.com/nestjs/nest/pull/14122) feat(common): add ParseDatePipe, add tsdoc to other pipes ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#12735](https://github.com/nestjs/nest/pull/12735) feat(common)!: type narrowing allowed injection tokens for `@Inject()` ([@micalevisk](https://github.com/micalevisk))
+  * [#12764](https://github.com/nestjs/nest/pull/12764) fix(common): apply options to plaintoclass in classserializerinterceptor ([@kmw14641](https://github.com/kmw14641))
+  * [#14126](https://github.com/nestjs/nest/pull/14126) fix(common): type narrowing context parameter on createParamDecorator's callback ([@EeeasyCode](https://github.com/EeeasyCode))
+  * [#13628](https://github.com/nestjs/nest/pull/13628) chore(class-transformer): plainToClass is deprectated and replaced with plainToInstance ([@tomflorentin](https://github.com/tomflorentin))
+* `microservices`
+  * [#14200](https://github.com/nestjs/nest/pull/14200) feat(microservices): support nats queue per handler ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#13924](https://github.com/nestjs/nest/pull/13924) feat(microservices): add gracefull shutdown option for nats server ([@alinowrouzii](https://github.com/alinowrouzii))
+  * [#12622](https://github.com/nestjs/nest/pull/12622) feat: allow for microservice options to come from the di container ([@jmcdo29](https://github.com/jmcdo29))
+  * [#14134](https://github.com/nestjs/nest/pull/14134) feat(microservices): add max tcp packet buffer length ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#12761](https://github.com/nestjs/nest/pull/12761) feat(microservices): ability to use a random port for the TCP server ([@PieterScheffers](https://github.com/PieterScheffers))
+* `websockets`
+  * [#14184](https://github.com/nestjs/nest/pull/14184) feat(websockets): include exception cause to associate error with req ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `common`, `core`, `microservices`, `websockets`
+  * [#14182](https://github.com/nestjs/nest/pull/14182) feat(common): introduce intrinsic exception ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `common`, `core`, `platform-fastify`
+  * [#13278](https://github.com/nestjs/nest/pull/13278) feat(core,common,platform-fastify): add webdav http methods support ([@johaven](https://github.com/johaven))
+* `platform-express`
+  * [#13407](https://github.com/nestjs/nest/pull/13407) feat: add multer error fieldname to the exception message ([@mmgroner](https://github.com/mmgroner))
+* `platform-ws`
+  * [#14127](https://github.com/nestjs/nest/pull/14127) feat(ws): introduce message parser for ws adapter ([@CodyTseng](https://github.com/CodyTseng))
+* `platform-fastify`
+  * [#14115](https://github.com/nestjs/nest/pull/14115) chore(fastify): update fastify view options interface ([@Tony133](https://github.com/Tony133))
+  * [#14116](https://github.com/nestjs/nest/pull/14116) refactor(fastify): update fastify static options interface ([@Tony133](https://github.com/Tony133))
+* `common`, `core`
+  * [#14113](https://github.com/nestjs/nest/pull/14113) feat(core): allow overriding abortOnError for the select method ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+
+#### Bug fixes
+* `core`
+  * [#14267](https://github.com/nestjs/nest/pull/14267) fix shutdown hooks order ([@flovouin](https://github.com/flovouin))
+  * [#13388](https://github.com/nestjs/nest/pull/13388) correction of `Reflector` types ([@AlexRMU](https://github.com/AlexRMU))
+  * [#14110](https://github.com/nestjs/nest/pull/14110) fix(core): Calculate module distance after bindGlobalScope ([@wenlong-chen](https://github.com/wenlong-chen))
+  * [#14111](https://github.com/nestjs/nest/pull/14111) fix(core): Order of module destroy should be the reverse of module init ([@wenlong-chen](https://github.com/wenlong-chen))
+  * [#14097](https://github.com/nestjs/nest/pull/14097) fix(core): revisit dependencies w/ possibly higher distance ([@clkamp](https://github.com/clkamp))
+* `platform-fastify`
+  * [#13797](https://github.com/nestjs/nest/pull/13797) fix(fastify-adapter): middleware not executed when root path is excluded ([@patrickacioli](https://github.com/patrickacioli))
+* `microservices`
+  * [#14129](https://github.com/nestjs/nest/pull/14129) fix: rabbitmq bindings and auto-generated queues ([@EeeasyCode](https://github.com/EeeasyCode))
+  * [#14112](https://github.com/nestjs/nest/pull/14112) fix(microservices): use instance refs for target handler callbacks ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#13468](https://github.com/nestjs/nest/pull/13468) fix(microservices): delete unnecessary call of grpcClient.start ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `common`
+  * [#14114](https://github.com/nestjs/nest/pull/14114) fix(common)!: drop broken support for promises on `exports` of modules ([@micalevisk](https://github.com/micalevisk))
+
+#### Other packages in the ecosystem
+* `config`  (breaking changes)
+  * https://github.com/nestjs/config/releases/tag/4.0.0
+* `cli`
+  * https://github.com/nestjs/nest-cli/releases/tag/11.0.0
+* `cache-manager` (breaking changes)
+  * https://github.com/nestjs/cache-manager/releases/tag/3.0.0
+* `cqrs`
+  * https://github.com/nestjs/cqrs/releases/tag/11.0.0
+
+#### Dependencies
+* Other
+  * [#14205](https://github.com/nestjs/nest/pull/14205) chore(dev-deps): upgrade to eslint v9 ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#14428](https://github.com/nestjs/nest/pull/14428) fix(deps): update dependency mercurius to v16.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14424](https://github.com/nestjs/nest/pull/14424) fix(deps): update dependency mongoose to v8.9.5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14410](https://github.com/nestjs/nest/pull/14410) fix(deps): update dependency @fastify/static to v8.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14411](https://github.com/nestjs/nest/pull/14411) fix(deps): update dependency @fastify/view to v10.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14403](https://github.com/nestjs/nest/pull/14403) chore(deps): update dependency nats to v2.29.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14400](https://github.com/nestjs/nest/pull/14400) fix(deps): update dependency ansis to v3.8.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14337](https://github.com/nestjs/nest/pull/14337) chore(deps): update dependency @fastify/multipart to v9.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14415](https://github.com/nestjs/nest/pull/14415) fix(deps): update dependency mercurius to v16 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14397](https://github.com/nestjs/nest/pull/14397) chore(deps): update dependency webpack-cli to v6 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14384](https://github.com/nestjs/nest/pull/14384) fix(deps): update dependency typescript to v5.7.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14378](https://github.com/nestjs/nest/pull/14378) chore(deps): update dependency core-js to v3.40.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14377](https://github.com/nestjs/nest/pull/14377) chore(deps): update dependency @eslint/js to v9.17.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14375](https://github.com/nestjs/nest/pull/14375) chore(deps): update dependency @grpc/grpc-js to v1.12.5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14370](https://github.com/nestjs/nest/pull/14370) chore(deps): update dependency ioredis to v5.4.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14197](https://github.com/nestjs/nest/pull/14197) chore(deps-dev): bump @fastify/static from 7.0.4 to 8.0.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14345](https://github.com/nestjs/nest/pull/14345) chore(deps): update dependency eslint to v9 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14324](https://github.com/nestjs/nest/pull/14324) fix(deps): update dependency @socket.io/redis-adapter to v8.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14363](https://github.com/nestjs/nest/pull/14363) chore(deps): bump @fastify/cors from 9.0.1 to 10.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14354](https://github.com/nestjs/nest/pull/14354) chore(deps-dev): bump cache-manager from 5.7.6 to 6.3.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14021](https://github.com/nestjs/nest/pull/14021) chore(deps-dev): bump @fastify/view from 9.1.0 to 10.0.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14326](https://github.com/nestjs/nest/pull/14326) fix(deps): update dependency mongodb to v6.12.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14307](https://github.com/nestjs/nest/pull/14307) fix(deps): update dependency @grpc/grpc-js to v1.12.4 ([@renovate[bot]](https://github.com/apps/renovate))
+* `platform-fastify`
+  * [#14402](https://github.com/nestjs/nest/pull/14402) fix(deps): update dependency @fastify/middie to v9.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14401](https://github.com/nestjs/nest/pull/14401) fix(deps): update dependency @fastify/formbody to v8.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14387](https://github.com/nestjs/nest/pull/14387) fix(deps): update dependency light-my-request to v6.5.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13990](https://github.com/nestjs/nest/pull/13990) feat(platform-fastify): added support for Fastify v5 ([@Tony133](https://github.com/Tony133))
+
+#### Committers: 22
+- Alex ([@AlexRMU](https://github.com/AlexRMU))
+- Ali Nowrouzi ([@alinowrouzii](https://github.com/alinowrouzii))
+- Antonio Tripodi ([@Tony133](https://github.com/Tony133))
+- Christian Lütke-Stetzkamp ([@clkamp](https://github.com/clkamp))
+- Cody Tseng ([@CodyTseng](https://github.com/CodyTseng))
+- Flo ([@flovouin](https://github.com/flovouin))
+- Harel Danieli ([@Hareloo](https://github.com/Hareloo))
+- Jackie McDoniel ([@jmcdo29](https://github.com/jmcdo29))
+- JaeHo Jang ([@mag123c](https://github.com/mag123c))
+- Johaven ([@johaven](https://github.com/johaven))
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Khan / 이창민 ([@EeeasyCode](https://github.com/EeeasyCode))
+- Max Katz ([@maxktz](https://github.com/maxktz))
+- Mendel Groner ([@mmgroner](https://github.com/mmgroner))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- Mitchell ([@Mittcio](https://github.com/Mittcio))
+- Patrick Acioli ([@patrickacioli](https://github.com/patrickacioli))
+- Pieter Scheffers ([@PieterScheffers](https://github.com/PieterScheffers))
+- [@bestlyg](https://github.com/bestlyg)
+- [@kmw14641](https://github.com/kmw14641)
+- [@tomflorentin](https://github.com/tomflorentin)
+- [@wenlong-chen](https://github.com/wenlong-chen)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.4.15 (2024-12-09)</h2>
+      <pre>## v10.4.15 (2024-12-09)
+
+#### Dependencies
+* `platform-express`
+  * [#14282](https://github.com/nestjs/nest/pull/14282) fix(deps): update dependency express to v4.21.2 ([@renovate[bot]](https://github.com/apps/renovate))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.4.13 (2024-12-03)</h2>
+      <pre>## v10.4.13 (2024-12-03)
+
+#### Bug fixes
+* `common`
+  * [#14256](https://github.com/nestjs/nest/pull/14256) chore(common): Add type declaration for RawBody decorator with pipes ([@sapenlei](https://github.com/sapenlei))
+
+#### Dependencies
+* [#14257](https://github.com/nestjs/nest/pull/14257) fix(deps): update dependency @fastify/static to v7.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14258](https://github.com/nestjs/nest/pull/14258) fix(deps): update dependency @nestjs/sequelize to v10.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14249](https://github.com/nestjs/nest/pull/14249) chore(deps): bump @apollo/gateway from 2.4.8 to 2.8.5 in /sample/32-graphql-federation-schema-first/users-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#14250](https://github.com/nestjs/nest/pull/14250) chore(deps): update jest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14245](https://github.com/nestjs/nest/pull/14245) chore(deps): update dependency mqtt to v5.10.3 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14247](https://github.com/nestjs/nest/pull/14247) fix(deps): update nest monorepo to v10.4.12 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14251](https://github.com/nestjs/nest/pull/14251) chore(deps-dev): bump graphql-tools from 9.0.3 to 9.0.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#14246](https://github.com/nestjs/nest/pull/14246) chore(deps): update nest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+
+#### Committers: 3
+- Kamil Mysliwiec (@kamilmysliwiec)
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- sapenlei ([@sapenlei](https://github.com/sapenlei))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.4.12 (2024-11-29)</h2>
+      <pre>## v10.4.12 (2024-11-29)
+
+#### Bug fixes
+* `common`
+  * [#14241](https://github.com/nestjs/nest/pull/14241) fix(common): enforce string type in validationpipe ([@LhonRafaat](https://github.com/LhonRafaat))
+
+#### Dependencies
+* Other
+  * [#14243](https://github.com/nestjs/nest/pull/14243) chore(deps): update dependency @types/node to v20.17.9 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14240](https://github.com/nestjs/nest/pull/14240) chore(deps): update dependency @types/multer to v1.4.12 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14239](https://github.com/nestjs/nest/pull/14239) chore(deps): update dependency @types/chai to v4.3.20 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14237](https://github.com/nestjs/nest/pull/14237) chore(deps): update confluentinc/cp-zookeeper docker tag to v7.7.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14236](https://github.com/nestjs/nest/pull/14236) chore(deps): update confluentinc/cp-kafka docker tag to v7.7.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12253](https://github.com/nestjs/nest/pull/12253) fix(deps): update apollo graphql packages ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14235](https://github.com/nestjs/nest/pull/14235) chore(deps-dev): bump @commitlint/config-angular from 19.5.0 to 19.6.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14233](https://github.com/nestjs/nest/pull/14233) chore(deps): update nest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14232](https://github.com/nestjs/nest/pull/14232) fix(deps): update dependency path-to-regexp to v3.3.0 [security] ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14229](https://github.com/nestjs/nest/pull/14229) chore(deps): update mongo docker tag to v8 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14228](https://github.com/nestjs/nest/pull/14228) chore(deps): update dependency @types/node to v22.10.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14227](https://github.com/nestjs/nest/pull/14227) fix(deps): update nest-graphql monorepo to v12.2.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14224](https://github.com/nestjs/nest/pull/14224) fix(deps): update dependency sequelize to v6.37.5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14230](https://github.com/nestjs/nest/pull/14230) chore(deps): update mysql docker tag to v9 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14231](https://github.com/nestjs/nest/pull/14231) fix(deps): update dependency @nestjs/swagger to v8 ([@renovate[bot]](https://github.com/apps/renovate))
+* `common`, `core`, `microservices`, `platform-express`, `platform-fastify`, `platform-socket.io`, `platform-ws`, `testing`, `websockets`
+  * [#14226](https://github.com/nestjs/nest/pull/14226) fix(deps): update dependency tslib to v2.8.1 ([@renovate[bot]](https://github.com/apps/renovate))
+* `platform-socket.io`
+  * [#14225](https://github.com/nestjs/nest/pull/14225) fix(deps): update dependency socket.io to v4.8.1 ([@renovate[bot]](https://github.com/apps/renovate))
+
+#### Committers: 1
+- Lhon ([@LhonRafaat](https://github.com/LhonRafaat))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.4.10 (2024-11-27)</h2>
+      <pre>## v10.4.10 (2024-11-27)
+
+#### Bug fixes
+* `platform-socket.io`, `websockets`
+  * [#14204](https://github.com/nestjs/nest/pull/14204) fix(websockets): ensure non-shared servers call close method ([@sapenlei](https://github.com/sapenlei))
+
+#### Dependencies
+* [#14221](https://github.com/nestjs/nest/pull/14221) chore(deps): update mysql docker tag to v8.4.3 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14220](https://github.com/nestjs/nest/pull/14220) chore(deps): update dependency webpack to v5.96.1 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14219](https://github.com/nestjs/nest/pull/14219) chore(deps): update dependency nodemon to v3.1.7 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14218](https://github.com/nestjs/nest/pull/14218) chore(deps): update confluentinc/cp-zookeeper docker tag to v7.7.1 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14217](https://github.com/nestjs/nest/pull/14217) chore(deps): update confluentinc/cp-kafka docker tag to v7.7.1 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14216](https://github.com/nestjs/nest/pull/14216) fix(deps): update dependency rimraf to v5.0.10 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14215](https://github.com/nestjs/nest/pull/14215) fix(deps): update dependency dotenv to v16.4.5 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14214](https://github.com/nestjs/nest/pull/14214) fix(deps): update dependency @grpc/reflection to v1.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#12940](https://github.com/nestjs/nest/pull/12940) fix(deps): update dependency mongoose to v8.8.3 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14207](https://github.com/nestjs/nest/pull/14207) chore(deps): update dependency @types/dotenv to v8.2.3 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14208](https://github.com/nestjs/nest/pull/14208) chore(deps): update dependency @types/node to v20.17.8 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14209](https://github.com/nestjs/nest/pull/14209) chore(deps): update dependency amqplib to v0.10.5 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14212](https://github.com/nestjs/nest/pull/14212) chore(deps): update dependency webpack to v5.94.0 [security] ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14210](https://github.com/nestjs/nest/pull/14210) chore(deps): update dependency husky to v9.1.7 ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14211](https://github.com/nestjs/nest/pull/14211) chore(deps): update nest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+* [#14206](https://github.com/nestjs/nest/pull/14206) chore(deps-dev): bump mongoose from 8.8.1 to 8.8.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 1
+- sapenlei ([@sapenlei](https://github.com/sapenlei))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.4.9 (2024-11-25)</h2>
+      <pre>## v10.4.9 (2024-11-25)
+
+#### Bug fixes
+* `core`, `microservices`
+  * [#13923](https://github.com/nestjs/nest/pull/13923) fix(core): merge req context with tenant payload in the request instance ([@DylanVeldra](https://github.com/DylanVeldra))
+* `websockets`
+  * [#14185](https://github.com/nestjs/nest/pull/14185) fix(websockets): Prevent HTTP server early close in Socket.IO shutdown ([@sapenlei](https://github.com/sapenlei))
+* `common`
+  * [#14181](https://github.com/nestjs/nest/pull/14181) fix(common): fallback to empty string for enums when validating (swc builder) ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `core`
+  * [#13804](https://github.com/nestjs/nest/pull/13804) fix(core): dependencies not resolving for transient lazy providers ([@patrickacioli](https://github.com/patrickacioli))
+* `microservices`
+  * [#14163](https://github.com/nestjs/nest/pull/14163) fix(microservices): grpc client streaming bugs ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+
+#### Enhancements
+* `common`, `core`
+  * [#14175](https://github.com/nestjs/nest/pull/14175) fix(common,core): align the logic of optional provider ([@micalevisk](https://github.com/micalevisk))
+* `microservices`
+  * [#12954](https://github.com/nestjs/nest/pull/12954) feat: emit batch ([@gunb0s](https://github.com/gunb0s))
+
+#### Dependencies
+* Other
+  * [#14192](https://github.com/nestjs/nest/pull/14192) chore(deps): update dependency webpack to v5.94.0 [security] ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14188](https://github.com/nestjs/nest/pull/14188) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/30-event-emitter ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14187](https://github.com/nestjs/nest/pull/14187) chore(deps): bump cookie and @nestjs/platform-express in /sample/34-using-esm-packages ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14189](https://github.com/nestjs/nest/pull/14189) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/19-auth-jwt ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14186](https://github.com/nestjs/nest/pull/14186) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/31-graphql-federation-code-first/posts-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14183](https://github.com/nestjs/nest/pull/14183) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/32-graphql-federation-schema-first/posts-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14176](https://github.com/nestjs/nest/pull/14176) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/32-graphql-federation-schema-first/users-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14179](https://github.com/nestjs/nest/pull/14179) chore(deps-dev): bump @types/mocha from 10.0.9 to 10.0.10 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14174](https://github.com/nestjs/nest/pull/14174) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/22-graphql-prisma ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14173](https://github.com/nestjs/nest/pull/14173) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/28-sse ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14165](https://github.com/nestjs/nest/pull/14165) chore(deps-dev): bump @typescript-eslint/parser from 8.14.0 to 8.15.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14171](https://github.com/nestjs/nest/pull/14171) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/11-swagger ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14172](https://github.com/nestjs/nest/pull/14172) chore(deps): bump cookie and @nestjs/platform-express in /sample/35-use-esm-package-after-node22 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14170](https://github.com/nestjs/nest/pull/14170) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/24-serve-static ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14169](https://github.com/nestjs/nest/pull/14169) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/15-mvc ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14164](https://github.com/nestjs/nest/pull/14164) chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 in /sample/01-cats-app ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14167](https://github.com/nestjs/nest/pull/14167) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 8.14.0 to 8.15.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14161](https://github.com/nestjs/nest/pull/14161) chore(deps): bump cross-spawn from 7.0.3 to 7.0.5 in /sample/25-dynamic-modules ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14159](https://github.com/nestjs/nest/pull/14159) chore(deps): bump cross-spawn from 7.0.3 to 7.0.5 in /sample/33-graphql-mercurius ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13632](https://github.com/nestjs/nest/pull/13632) fix(deps): update dependency mysql2 to v3.9.8 [security] ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14151](https://github.com/nestjs/nest/pull/14151) chore(deps): bump cross-spawn from 7.0.3 to 7.0.5 in /sample/27-scheduling ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14155](https://github.com/nestjs/nest/pull/14155) build(sample): replace cli-color with smaller and faster ansis ([@webdiscus](https://github.com/webdiscus))
+  * [#14146](https://github.com/nestjs/nest/pull/14146) chore(deps): bump cookie and @nestjs/platform-express in /sample/28-sse ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14149](https://github.com/nestjs/nest/pull/14149) chore(deps): bump cross-spawn from 7.0.3 to 7.0.5 in /sample/32-graphql-federation-schema-first/gateway ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12995](https://github.com/nestjs/nest/pull/12995) chore(deps): update dependency supertest to v6.3.4 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12815](https://github.com/nestjs/nest/pull/12815) chore(deps): update dependency @types/node to v20.17.6 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#14147](https://github.com/nestjs/nest/pull/14147) chore: upgrade deps ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#14144](https://github.com/nestjs/nest/pull/14144) chore(deps): bump cookie, light-my-request and @nestjs/platform-fastify in /sample/33-graphql-mercurius ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#14191](https://github.com/nestjs/nest/pull/14191) chore(deps): bump light-my-request from 6.1.0 to 6.3.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 7
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- Patrick Acioli ([@patrickacioli](https://github.com/patrickacioli))
+- [@DylanVeldra](https://github.com/DylanVeldra)
+- [@webdiscus](https://github.com/webdiscus)
+- cain ([@gunb0s](https://github.com/gunb0s))
+- sapenlei ([@sapenlei](https://github.com/sapenlei))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.4.8 (2024-11-15)</h2>
+      <pre>## v10.4.8 (2024-11-15)
+
+#### Bug fixes
+* `microservices`
+  * [#14059](https://github.com/nestjs/nest/pull/14059) fix(microservices): include discarded rmq client options ([@v-sum](https://github.com/v-sum))
+  * [#14132](https://github.com/nestjs/nest/pull/14132) fix(microservices): no messages emitted with mqtt when qos set ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `core`
+  * [#14133](https://github.com/nestjs/nest/pull/14133) fix(core): flaky durable provider, remove instance on error  ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+
+#### Enhancements
+* `core`
+  * [#14143](https://github.com/nestjs/nest/pull/14143) feat(core): expose listening stream from http adapter host ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#14139](https://github.com/nestjs/nest/pull/14139) chore(core): defer application shutdown until init finishes ([@mksony](https://github.com/mksony))
+
+#### Committers: 3
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Max ([@mksony](https://github.com/mksony))
+- Vasile Sumanschi ([@v-sum](https://github.com/v-sum))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.4.5 (2024-10-16)</h2>
+      <pre>## v10.4.5 (2024-10-16)
+
+#### Dependencies
+* `platform-express`
+  * [#14060](https://github.com/nestjs/nest/pull/14060) build(express): upgrade to express 4.2.1 ([@ezintz](https://github.com/ezintz))
+* Other
+  * [#13903](https://github.com/nestjs/nest/pull/13903) chore(deps): bump ws and @nestjs/graphql in /sample/31-graphql-federation-code-first/posts-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13917](https://github.com/nestjs/nest/pull/13917) chore(deps): bump micromatch from 4.0.4 to 4.0.8 in /sample/32-graphql-federation-schema-first/posts-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14015](https://github.com/nestjs/nest/pull/14015) chore(deps): bump find-my-way from 8.1.0 to 8.2.2 in /sample/10-fastify ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14039](https://github.com/nestjs/nest/pull/14039) chore(deps): bump serve-static, express and @nestjs/platform-express in /sample/23-graphql-code-first ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14040](https://github.com/nestjs/nest/pull/14040) chore(deps): bump send, @nestjs/platform-express and express in /sample/24-serve-static ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14034](https://github.com/nestjs/nest/pull/14034) chore(deps): bump serve-static and @nestjs/platform-express in /sample/28-sse ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14035](https://github.com/nestjs/nest/pull/14035) chore(deps): bump send and @nestjs/platform-express in /sample/28-sse ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14030](https://github.com/nestjs/nest/pull/14030) chore(deps): bump send and @nestjs/platform-express in /sample/25-dynamic-modules ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14031](https://github.com/nestjs/nest/pull/14031) chore(deps): bump serve-static and @nestjs/platform-express in /sample/25-dynamic-modules ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14026](https://github.com/nestjs/nest/pull/14026) chore(deps): bump serve-static and @nestjs/platform-express in /sample/26-queues ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#14025](https://github.com/nestjs/nest/pull/14025) chore(deps): bump send and @nestjs/platform-express in /sample/26-queues ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#14064](https://github.com/nestjs/nest/pull/14064) build(fastify): upgrade light-my-request to 6.1.0 ([@PattyTrish](https://github.com/PattyTrish))
+
+#### Committers: 5
+- Eduard Zintz ([@ezintz](https://github.com/ezintz))
+- Fernando Vargas ([@frndvrgs](https://github.com/frndvrgs))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- Patricia Ahern ([@PattyTrish](https://github.com/PattyTrish))
+- Rick Dutour Geerling ([@tuxmachine](https://github.com/tuxmachine))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.4.2 (2024-09-16)</h2>
+      <pre>## v10.4.2 (2024-09-16)
+
+#### Dependencies
+* `common`, `core`, `microservices`, `platform-express`, `platform-fastify`, `platform-socket.io`, `platform-ws`, `testing`, `websockets`
+  * [#13911](https://github.com/nestjs/nest/pull/13911) chore(deps): bump tslib from 2.6.3 to 2.7.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#13938](https://github.com/nestjs/nest/pull/13938) chore(deps): bump light-my-request from 5.13.0 to 6.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* Other
+  * [#13936](https://github.com/nestjs/nest/pull/13936) chore(deps-dev): bump lint-staged from 15.2.9 to 15.2.10 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13946](https://github.com/nestjs/nest/pull/13946) chore(deps): bump webpack and @nestjs/cli in /sample/02-gateways ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13947](https://github.com/nestjs/nest/pull/13947) chore(deps-dev): bump webpack from 5.91.0 to 5.94.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13966](https://github.com/nestjs/nest/pull/13966) chore(deps): bump dset from 3.1.2 to 3.1.4 in /sample/32-graphql-federation-schema-first/gateway ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13967](https://github.com/nestjs/nest/pull/13967) chore(deps): bump dset from 3.1.3 to 3.1.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13968](https://github.com/nestjs/nest/pull/13968) chore(deps-dev): bump @commitlint/cli from 19.4.0 to 19.5.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13969](https://github.com/nestjs/nest/pull/13969) chore(deps-dev): bump mongoose from 8.6.0 to 8.6.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13973](https://github.com/nestjs/nest/pull/13973) chore(deps-dev): bump @types/node from 22.5.1 to 22.5.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13922](https://github.com/nestjs/nest/pull/13922) chore(deps): bump @apollo/gateway from 2.2.3 to 2.9.0 in /sample/31-graphql-federation-code-first/users-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13921](https://github.com/nestjs/nest/pull/13921) chore(deps): bump @apollo/query-planner from 2.4.8 to 2.9.0 in /sample/31-graphql-federation-code-first/posts-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13926](https://github.com/nestjs/nest/pull/13926) chore(deps-dev): bump mongoose from 8.5.3 to 8.6.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13928](https://github.com/nestjs/nest/pull/13928) chore(deps-dev): bump @types/node from 22.5.0 to 22.5.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13929](https://github.com/nestjs/nest/pull/13929) chore(deps-dev): bump @commitlint/config-angular from 19.3.0 to 19.4.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13893](https://github.com/nestjs/nest/pull/13893) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.18.0 to 8.2.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13896](https://github.com/nestjs/nest/pull/13896) chore(deps-dev): bump husky from 9.1.4 to 9.1.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13897](https://github.com/nestjs/nest/pull/13897) chore(deps-dev): bump core-js from 3.38.0 to 3.38.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13901](https://github.com/nestjs/nest/pull/13901) chore(deps-dev): bump @types/node from 22.3.0 to 22.5.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13902](https://github.com/nestjs/nest/pull/13902) chore(deps-dev): bump artillery from 2.0.19 to 2.0.20 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13884](https://github.com/nestjs/nest/pull/13884) chore(deps-dev): bump mongoose from 8.5.2 to 8.5.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13885](https://github.com/nestjs/nest/pull/13885) chore(deps-dev): bump lint-staged from 15.2.8 to 15.2.9 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13890](https://github.com/nestjs/nest/pull/13890) chore(deps-dev): bump @types/node from 22.2.0 to 22.3.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 3
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- [@haouvw](https://github.com/haouvw)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.3.10 (2024-07-02)</h2>
+      <pre>## v10.3.10 (2024-07-01)
+
+#### Bug fixes
+* `core`
+  * [#13712](https://github.com/nestjs/nest/pull/13712) fix(core): when using forward references on `exports` array ([@micalevisk](https://github.com/micalevisk))
+
+#### Enhancements
+* `platform-fastify`
+  * [#13734](https://github.com/nestjs/nest/pull/13734) feat(fastify-adapter): support for skipping middie registration ([@ancyrweb](https://github.com/ancyrweb))
+
+#### Dependencies
+* Other
+  * [#13706](https://github.com/nestjs/nest/pull/13706) chore(deps-dev): bump nodemon from 3.1.3 to 3.1.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13716](https://github.com/nestjs/nest/pull/13716) chore(deps-dev): bump ts-morph from 22.0.0 to 23.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13697](https://github.com/nestjs/nest/pull/13697) chore(deps): bump ws from 8.13.0 to 8.17.1 in /sample/16-gateways-ws ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13708](https://github.com/nestjs/nest/pull/13708) chore(deps-dev): bump nats from 2.26.0 to 2.27.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13709](https://github.com/nestjs/nest/pull/13709) chore(deps-dev): bump typescript from 5.4.5 to 5.5.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13715](https://github.com/nestjs/nest/pull/13715) chore(deps-dev): bump graphql from 16.8.2 to 16.9.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13718](https://github.com/nestjs/nest/pull/13718) chore(deps-dev): bump engine.io-client from 6.5.4 to 6.6.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13724](https://github.com/nestjs/nest/pull/13724) chore(deps-dev): bump @types/node from 20.14.6 to 20.14.9 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13672](https://github.com/nestjs/nest/pull/13672) chore(deps-dev): bump braces from 3.0.2 to 3.0.3 in /sample/26-queues ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13693](https://github.com/nestjs/nest/pull/13693) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.13.0 to 7.13.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13699](https://github.com/nestjs/nest/pull/13699) chore(deps-dev): bump engine.io-client from 6.5.3 to 6.5.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13702](https://github.com/nestjs/nest/pull/13702) chore(deps-dev): bump @types/node from 20.14.4 to 20.14.6 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13703](https://github.com/nestjs/nest/pull/13703) chore(deps): bump fast-json-stringify from 5.16.0 to 5.16.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13694](https://github.com/nestjs/nest/pull/13694) chore(deps-dev): bump mongoose from 8.4.1 to 8.4.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13695](https://github.com/nestjs/nest/pull/13695) chore(deps-dev): bump @typescript-eslint/parser from 7.13.0 to 7.13.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13696](https://github.com/nestjs/nest/pull/13696) chore(deps-dev): bump @types/node from 20.14.2 to 20.14.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13678](https://github.com/nestjs/nest/pull/13678) chore(deps-dev): bump graphql from 16.8.1 to 16.8.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13682](https://github.com/nestjs/nest/pull/13682) chore(deps-dev): bump mysql2 from 3.10.0 to 3.10.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13674](https://github.com/nestjs/nest/pull/13674) chore(deps-dev): bump prettier from 3.3.1 to 3.3.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13677](https://github.com/nestjs/nest/pull/13677) chore(deps-dev): bump lint-staged from 15.2.5 to 15.2.7 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13671](https://github.com/nestjs/nest/pull/13671) chore(deps-dev): bump braces from 3.0.2 to 3.0.3 in /sample/27-scheduling ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13670](https://github.com/nestjs/nest/pull/13670) chore(deps-dev): bump braces from 3.0.2 to 3.0.3 in /sample/30-event-emitter ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13667](https://github.com/nestjs/nest/pull/13667) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.12.0 to 7.13.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13665](https://github.com/nestjs/nest/pull/13665) chore(deps-dev): bump artillery from 2.0.14 to 2.0.15 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13660](https://github.com/nestjs/nest/pull/13660) chore(deps): bump @grpc/grpc-js from 1.10.0 to 1.10.9 in /sample/04-grpc ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13662](https://github.com/nestjs/nest/pull/13662) chore(deps-dev): bump @grpc/grpc-js from 1.10.8 to 1.10.9 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13663](https://github.com/nestjs/nest/pull/13663) chore(deps-dev): bump @fastify/multipart from 8.2.0 to 8.3.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13666](https://github.com/nestjs/nest/pull/13666) chore(deps-dev): bump @typescript-eslint/parser from 7.11.0 to 7.13.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13669](https://github.com/nestjs/nest/pull/13669) chore(deps): bump uuid from 9.0.1 to 10.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13640](https://github.com/nestjs/nest/pull/13640) chore(deps-dev): bump nodemon from 3.1.2 to 3.1.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13641](https://github.com/nestjs/nest/pull/13641) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.11.0 to 7.12.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13642](https://github.com/nestjs/nest/pull/13642) chore(deps-dev): bump mongoose from 8.4.0 to 8.4.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13651](https://github.com/nestjs/nest/pull/13651) chore(deps-dev): bump prettier from 3.2.5 to 3.3.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13652](https://github.com/nestjs/nest/pull/13652) chore(deps-dev): bump @types/node from 20.12.12 to 20.14.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13653](https://github.com/nestjs/nest/pull/13653) chore(deps-dev): bump cache-manager from 5.5.3 to 5.6.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-ws`
+  * [#13690](https://github.com/nestjs/nest/pull/13690) chore(deps): bump ws from 8.17.0 to 8.17.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#13691](https://github.com/nestjs/nest/pull/13691) chore(deps): bump fastify from 4.27.0 to 4.28.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `common`, `core`, `microservices`, `platform-express`, `platform-fastify`, `platform-socket.io`, `platform-ws`, `testing`, `websockets`
+  * [#13649](https://github.com/nestjs/nest/pull/13649) chore(deps): bump tslib from 2.6.2 to 2.6.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 4
+- () => { } ([@ragavendra](https://github.com/ragavendra))
+- Anthony Cyrille ([@ancyrweb](https://github.com/ancyrweb))
+- Lincoln ([@L-Qun](https://github.com/L-Qun))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.3.9 (2024-06-03)</h2>
+      <pre>## v10.3.9 (2024-06-03)
+
+#### Bug fixes
+* `core`
+  * [#13453](https://github.com/nestjs/nest/pull/13453) fix(core): possible memory leak when using server side events ([@zhengjitf](https://github.com/zhengjitf))
+  * [#13405](https://github.com/nestjs/nest/pull/13405) fix(core): auto flush logs on synchronous internal errors ([@micalevisk](https://github.com/micalevisk))
+* `platform-fastify`
+  * [#13536](https://github.com/nestjs/nest/pull/13536) feat(fastify): Do not crash if enableVersioning is not used ([@Fcmam5](https://github.com/Fcmam5))
+
+#### Enhancements
+* `platform-ws`
+  * [#13531](https://github.com/nestjs/nest/pull/13531) fix(ws): close existing connections ([@bettercalljason](https://github.com/bettercalljason))
+* `common`, `core`
+  * [#13428](https://github.com/nestjs/nest/pull/13428) feat(common): support empty `@Inject()` on constructor-based injection ([@micalevisk](https://github.com/micalevisk))
+* `core`
+  * [#13614](https://github.com/nestjs/nest/pull/13614) fix(core): prevent exclude method from overwriting previous calls ([@dragontaek-lee](https://github.com/dragontaek-lee))
+
+#### Docs
+* `common`
+  * [#13471](https://github.com/nestjs/nest/pull/13471) doc: fix typos & clarify comments ([@le-harivansh](https://github.com/le-harivansh))
+
+#### Dependencies
+* Other
+  * [#13619](https://github.com/nestjs/nest/pull/13619) chore(deps-dev): bump @typescript-eslint/parser from 7.9.0 to 7.11.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13631](https://github.com/nestjs/nest/pull/13631) chore(deps): bump mysql2 from 3.9.7 to 3.9.8 in /sample/05-sql-typeorm ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13624](https://github.com/nestjs/nest/pull/13624) chore(deps-dev): bump mqtt from 5.6.0 to 5.7.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13617](https://github.com/nestjs/nest/pull/13617) chore(deps-dev): bump lint-staged from 15.2.2 to 15.2.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13611](https://github.com/nestjs/nest/pull/13611) chore(deps-dev): bump cache-manager from 5.5.2 to 5.5.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13610](https://github.com/nestjs/nest/pull/13610) chore(deps): bump fast-json-stringify from 5.15.1 to 5.16.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13620](https://github.com/nestjs/nest/pull/13620) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.10.0 to 7.11.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13625](https://github.com/nestjs/nest/pull/13625) chore(deps-dev): bump artillery from 2.0.12 to 2.0.14 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13629](https://github.com/nestjs/nest/pull/13629) chore(deps-dev): bump nodemon from 3.1.0 to 3.1.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13633](https://github.com/nestjs/nest/pull/13633) chore(deps-dev): bump mysql2 from 3.9.7 to 3.10.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13588](https://github.com/nestjs/nest/pull/13588) chore(deps): bump express and @nestjs/platform-express in /sample/04-grpc ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13591](https://github.com/nestjs/nest/pull/13591) chore(deps): bump express and @nestjs/platform-express in /sample/02-gateways ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13592](https://github.com/nestjs/nest/pull/13592) chore(deps): bump express and @nestjs/platform-express in /sample/01-cats-app ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13594](https://github.com/nestjs/nest/pull/13594) chore(deps-dev): bump core-js from 3.37.0 to 3.37.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13595](https://github.com/nestjs/nest/pull/13595) chore(deps-dev): bump redis from 4.6.13 to 4.6.14 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13596](https://github.com/nestjs/nest/pull/13596) chore(deps-dev): bump sinon from 17.0.1 to 18.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13597](https://github.com/nestjs/nest/pull/13597) chore(deps-dev): bump @grpc/grpc-js from 1.10.7 to 1.10.8 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13602](https://github.com/nestjs/nest/pull/13602) chore(deps-dev): bump mongoose from 8.3.4 to 8.4.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13605](https://github.com/nestjs/nest/pull/13605) chore(deps-dev): bump nats from 2.25.0 to 2.26.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13606](https://github.com/nestjs/nest/pull/13606) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.9.0 to 7.10.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13590](https://github.com/nestjs/nest/pull/13590) chore(deps): bump express and @nestjs/platform-express in /sample/05-sql-typeorm ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13589](https://github.com/nestjs/nest/pull/13589) chore(deps): bump express and @nestjs/platform-express in /sample/03-microservices ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13587](https://github.com/nestjs/nest/pull/13587) chore(deps): bump express and @nestjs/platform-express in /sample/08-webpack ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13586](https://github.com/nestjs/nest/pull/13586) chore(deps): bump express and @nestjs/platform-express in /sample/06-mongoose ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13585](https://github.com/nestjs/nest/pull/13585) chore(deps): bump express and @nestjs/platform-express in /sample/09-babel-example ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13584](https://github.com/nestjs/nest/pull/13584) chore(deps): bump express and @nestjs/platform-express in /sample/07-sequelize ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13583](https://github.com/nestjs/nest/pull/13583) chore(deps): bump express and @nestjs/platform-express in /sample/11-swagger ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13576](https://github.com/nestjs/nest/pull/13576) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.8.0 to 7.9.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13567](https://github.com/nestjs/nest/pull/13567) chore(deps): bump express and @nestjs/platform-express in /sample/15-mvc ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13570](https://github.com/nestjs/nest/pull/13570) chore(deps): bump express and @nestjs/platform-express in /sample/19-auth-jwt ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13563](https://github.com/nestjs/nest/pull/13563) chore(deps): bump express and @nestjs/platform-express in /sample/20-cache ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13564](https://github.com/nestjs/nest/pull/13564) chore(deps): bump express and @nestjs/platform-express in /sample/21-serializer ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13565](https://github.com/nestjs/nest/pull/13565) chore(deps): bump express and @nestjs/platform-express in /sample/22-graphql-prisma ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13568](https://github.com/nestjs/nest/pull/13568) chore(deps): bump express and @nestjs/platform-express in /sample/13-mongo-typeorm ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13569](https://github.com/nestjs/nest/pull/13569) chore(deps): bump express and @nestjs/platform-express in /sample/12-graphql-schema-first ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13571](https://github.com/nestjs/nest/pull/13571) chore(deps): bump express and @nestjs/platform-express in /sample/14-mongoose-base ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13572](https://github.com/nestjs/nest/pull/13572) chore(deps): bump express and @nestjs/platform-express in /sample/16-gateways-ws ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13573](https://github.com/nestjs/nest/pull/13573) chore(deps-dev): bump artillery from 2.0.11 to 2.0.12 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13575](https://github.com/nestjs/nest/pull/13575) chore(deps-dev): bump chai-as-promised from 7.1.1 to 7.1.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13577](https://github.com/nestjs/nest/pull/13577) chore(deps-dev): bump nats from 2.24.0 to 2.25.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13578](https://github.com/nestjs/nest/pull/13578) chore(deps-dev): bump @types/node from 20.12.11 to 20.12.12 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13579](https://github.com/nestjs/nest/pull/13579) chore(deps-dev): bump mqtt from 5.5.5 to 5.6.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13580](https://github.com/nestjs/nest/pull/13580) chore(deps-dev): bump @typescript-eslint/parser from 7.8.0 to 7.9.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13518](https://github.com/nestjs/nest/pull/13518) chore(deps): bump express and @nestjs/platform-express in /sample/29-file-upload ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13519](https://github.com/nestjs/nest/pull/13519) chore(deps): bump express and @nestjs/platform-express in /sample/28-sse ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13520](https://github.com/nestjs/nest/pull/13520) chore(deps): bump express and @nestjs/platform-express in /sample/26-queues ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13521](https://github.com/nestjs/nest/pull/13521) chore(deps): bump express and @nestjs/platform-express in /sample/25-dynamic-modules ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13522](https://github.com/nestjs/nest/pull/13522) chore(deps): bump express and @nestjs/platform-express in /sample/30-event-emitter ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13523](https://github.com/nestjs/nest/pull/13523) chore(deps): bump express and @nestjs/platform-express in /sample/24-serve-static ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13524](https://github.com/nestjs/nest/pull/13524) chore(deps): bump express and @nestjs/platform-express in /sample/27-scheduling ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13528](https://github.com/nestjs/nest/pull/13528) chore(deps-dev): bump cache-manager from 5.5.1 to 5.5.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13529](https://github.com/nestjs/nest/pull/13529) chore(deps-dev): bump @grpc/grpc-js from 1.10.6 to 1.10.7 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13546](https://github.com/nestjs/nest/pull/13546) chore(deps-dev): bump mongoose from 8.3.3 to 8.3.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13549](https://github.com/nestjs/nest/pull/13549) chore(deps): bump undici and mercurius in /sample/33-graphql-mercurius ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13552](https://github.com/nestjs/nest/pull/13552) chore(deps-dev): bump @types/node from 20.12.10 to 20.12.11 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13554](https://github.com/nestjs/nest/pull/13554) chore(deps-dev): bump @fastify/static from 7.0.3 to 7.0.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13517](https://github.com/nestjs/nest/pull/13517) chore(deps-dev): bump ejs from 3.1.9 to 3.1.10 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13545](https://github.com/nestjs/nest/pull/13545) chore(deps): bump fast-json-stringify from 5.14.1 to 5.15.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13544](https://github.com/nestjs/nest/pull/13544) chore(deps-dev): bump @types/node from 20.12.7 to 20.12.10 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13540](https://github.com/nestjs/nest/pull/13540) chore(deps-dev): bump conventional-changelog from 5.1.0 to 6.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13539](https://github.com/nestjs/nest/pull/13539) chore(deps-dev): bump nats from 2.23.0 to 2.24.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13512](https://github.com/nestjs/nest/pull/13512) chore(deps-dev): bump mongoose from 8.3.2 to 8.3.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13474](https://github.com/nestjs/nest/pull/13474) chore(deps-dev): bump mysql2 from 3.9.6 to 3.9.7 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13490](https://github.com/nestjs/nest/pull/13490) chore(deps-dev): bump @commitlint/config-angular from 19.2.2 to 19.3.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13499](https://github.com/nestjs/nest/pull/13499) chore(deps-dev): bump @typescript-eslint/parser from 7.7.0 to 7.8.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13502](https://github.com/nestjs/nest/pull/13502) chore(deps): bump express and @nestjs/platform-express in /sample/32-graphql-federation-schema-first/posts-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13503](https://github.com/nestjs/nest/pull/13503) chore(deps): bump express and @nestjs/platform-express in /sample/32-graphql-federation-schema-first/gateway ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13504](https://github.com/nestjs/nest/pull/13504) chore(deps): bump express and @nestjs/platform-express in /sample/31-graphql-federation-code-first/users-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13505](https://github.com/nestjs/nest/pull/13505) chore(deps): bump express and @nestjs/platform-express in /sample/31-graphql-federation-code-first/posts-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13506](https://github.com/nestjs/nest/pull/13506) chore(deps): bump express and @nestjs/platform-express in /sample/32-graphql-federation-schema-first/users-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13507](https://github.com/nestjs/nest/pull/13507) chore(deps): bump express and @nestjs/platform-express in /sample/31-graphql-federation-code-first/gateway ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13510](https://github.com/nestjs/nest/pull/13510) chore(deps-dev): bump artillery from 2.0.10 to 2.0.11 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13511](https://github.com/nestjs/nest/pull/13511) chore(deps-dev): bump @fastify/view from 9.0.0 to 9.1.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13513](https://github.com/nestjs/nest/pull/13513) chore(deps-dev): bump mqtt from 5.5.4 to 5.5.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13515](https://github.com/nestjs/nest/pull/13515) chore(deps-dev): bump @grpc/proto-loader from 0.7.11 to 0.7.13 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13479](https://github.com/nestjs/nest/pull/13479) chore(deps-dev): bump nats from 2.22.0 to 2.23.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13487](https://github.com/nestjs/nest/pull/13487) chore(deps): bump mysql2 from 3.9.4 to 3.9.7 in /sample/07-sequelize ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13488](https://github.com/nestjs/nest/pull/13488) chore(deps): bump mysql2 from 3.9.4 to 3.9.7 in /sample/05-sql-typeorm ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13491](https://github.com/nestjs/nest/pull/13491) chore(deps-dev): bump @commitlint/cli from 19.2.2 to 19.3.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13495](https://github.com/nestjs/nest/pull/13495) chore(deps-dev): bump supertest from 6.3.3 to 7.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13498](https://github.com/nestjs/nest/pull/13498) chore(deps-dev): bump mqtt from 5.5.2 to 5.5.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13500](https://github.com/nestjs/nest/pull/13500) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.7.0 to 7.8.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#13525](https://github.com/nestjs/nest/pull/13525) chore(deps): bump @fastify/middie from 8.3.0 to 8.3.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13553](https://github.com/nestjs/nest/pull/13553) chore(deps): bump fastify from 4.26.2 to 4.27.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-ws`
+  * [#13509](https://github.com/nestjs/nest/pull/13509) chore(deps): bump ws from 8.16.0 to 8.17.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 14
+- Anaël Bonnafous ([@AnaelBonnafous](https://github.com/AnaelBonnafous))
+- Antonio Tripodi ([@Tony133](https://github.com/Tony133))
+- Fortas Abdeldjalil ([@Fcmam5](https://github.com/Fcmam5))
+- Jason ([@bettercalljason](https://github.com/bettercalljason))
+- Johaven ([@johaven](https://github.com/johaven))
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- Shalva Kakauridze ([@techsolvers-skakauridze](https://github.com/techsolvers-skakauridze))
+- Steve ([@ssilve1989](https://github.com/ssilve1989))
+- YongtaekLee ([@dragontaek-lee](https://github.com/dragontaek-lee))
+- YoungJae Kwon ([@yjiq150](https://github.com/yjiq150))
+- [@le-harivansh](https://github.com/le-harivansh)
+- [@welfuture](https://github.com/welfuture)
+- zhengjitf ([@zhengjitf](https://github.com/zhengjitf))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.3.6 (2024-03-27)</h2>
+      <pre>## v10.3.6 (2024-03-27)
+
+#### Bug fixes
+* `microservices`
+  * [#13367](https://github.com/nestjs/nest/pull/13367) Revert "fix(microservices): fix redundant code to emit error" ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `core`
+  * [#13366](https://github.com/nestjs/nest/pull/13366) fix(core): break reference chain to instance object ([@breeeew](https://github.com/breeeew))
+
+#### Dependencies
+* Other
+  * [#13362](https://github.com/nestjs/nest/pull/13362) chore(deps-dev): bump @grpc/proto-loader from 0.7.10 to 0.7.11 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13358](https://github.com/nestjs/nest/pull/13358) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.3.1 to 7.4.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13361](https://github.com/nestjs/nest/pull/13361) chore(deps-dev): bump mocha from 10.3.0 to 10.4.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13363](https://github.com/nestjs/nest/pull/13363) chore(deps-dev): bump @grpc/grpc-js from 1.10.3 to 1.10.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13364](https://github.com/nestjs/nest/pull/13364) chore(deps-dev): bump mysql2 from 3.9.2 to 3.9.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13355](https://github.com/nestjs/nest/pull/13355) chore(deps-dev): bump @apollo/server from 4.10.1 to 4.10.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13359](https://github.com/nestjs/nest/pull/13359) chore(deps-dev): bump @typescript-eslint/parser from 7.3.1 to 7.4.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13343](https://github.com/nestjs/nest/pull/13343) chore(deps-dev): bump core-js from 3.36.0 to 3.36.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13344](https://github.com/nestjs/nest/pull/13344) chore(deps-dev): bump @commitlint/cli from 19.2.0 to 19.2.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13347](https://github.com/nestjs/nest/pull/13347) chore(deps-dev): bump typescript from 5.4.2 to 5.4.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13345](https://github.com/nestjs/nest/pull/13345) chore(deps-dev): bump @types/node from 20.11.29 to 20.11.30 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13348](https://github.com/nestjs/nest/pull/13348) chore(deps-dev): bump @fastify/multipart from 8.1.0 to 8.2.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13352](https://github.com/nestjs/nest/pull/13352) chore(deps-dev): bump mongoose from 8.2.2 to 8.2.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-express`
+  * [#13357](https://github.com/nestjs/nest/pull/13357) chore(deps): bump express from 4.19.1 to 4.19.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13349](https://github.com/nestjs/nest/pull/13349) chore(deps): bump express from 4.18.3 to 4.19.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 2
+- Abdulla Bayramov ([@breeeew](https://github.com/breeeew))
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.3.4 (2024-03-18)</h2>
+      <pre>## v10.3.4 (2024-03-18)
+
+#### Bug fixes
+* `core`, `platform-fastify`
+  * [#13337](https://github.com/nestjs/nest/pull/13337) fix(core): middleware is not executed for root route when global prefix is set ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `microservices`
+  * [#13285](https://github.com/nestjs/nest/pull/13285) fix(microservices): fix rabbitmq no-assert not being applied correctly ([@sorooshme](https://github.com/sorooshme))
+* `common`
+  * [#13317](https://github.com/nestjs/nest/pull/13317) fix(common): fix stacktrace regex ([@hokaccha](https://github.com/hokaccha))
+
+#### Enhancements
+* `common`, `core`
+  * [#13225](https://github.com/nestjs/nest/pull/13225) feat(core,common): Add `@RawBody()` decorator ([@tolgap](https://github.com/tolgap))
+
+#### Docs
+* `common`
+  * [#13221](https://github.com/nestjs/nest/pull/13221) docs(common): remove incorrect constructor signature of HttpException ([@kalmanbendeguz](https://github.com/kalmanbendeguz))
+
+#### Dependencies
+* Other
+  * [#13133](https://github.com/nestjs/nest/pull/13133) chore(deps): update dependency webpack to v5.90.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13335](https://github.com/nestjs/nest/pull/13335) chore(deps): bump undici and mercurius in /sample/33-graphql-mercurius ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13331](https://github.com/nestjs/nest/pull/13331) chore(deps-dev): bump @grpc/grpc-js from 1.10.2 to 1.10.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13332](https://github.com/nestjs/nest/pull/13332) chore(deps-dev): bump @types/node from 20.11.27 to 20.11.28 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13333](https://github.com/nestjs/nest/pull/13333) chore(deps-dev): bump mongoose from 8.2.1 to 8.2.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13334](https://github.com/nestjs/nest/pull/13334) chore(deps-dev): bump @commitlint/cli from 19.1.0 to 19.2.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13314](https://github.com/nestjs/nest/pull/13314) chore(deps-dev): bump @commitlint/config-angular from 19.0.3 to 19.1.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13320](https://github.com/nestjs/nest/pull/13320) chore(deps-dev): bump mqtt from 5.3.6 to 5.4.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13321](https://github.com/nestjs/nest/pull/13321) chore(deps-dev): bump @types/node from 20.11.26 to 20.11.27 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13323](https://github.com/nestjs/nest/pull/13323) chore(deps-dev): bump socket.io-client from 4.7.4 to 4.7.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13329](https://github.com/nestjs/nest/pull/13329) chore(deps-dev): bump follow-redirects from 1.15.4 to 1.15.6 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13315](https://github.com/nestjs/nest/pull/13315) chore(deps): bump fast-json-stringify from 5.12.0 to 5.13.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13307](https://github.com/nestjs/nest/pull/13307) chore(deps-dev): bump @typescript-eslint/parser from 7.1.1 to 7.2.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13316](https://github.com/nestjs/nest/pull/13316) chore(deps-dev): bump @commitlint/cli from 19.0.3 to 19.1.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13305](https://github.com/nestjs/nest/pull/13305) chore(deps-dev): bump ts-morph from 21.0.1 to 22.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13306](https://github.com/nestjs/nest/pull/13306) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.1.1 to 7.2.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13308](https://github.com/nestjs/nest/pull/13308) chore(deps-dev): bump @types/node from 20.11.25 to 20.11.26 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13309](https://github.com/nestjs/nest/pull/13309) chore(deps-dev): bump @grpc/grpc-js from 1.10.1 to 1.10.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13291](https://github.com/nestjs/nest/pull/13291) chore(deps-dev): bump @typescript-eslint/parser from 7.1.0 to 7.1.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13299](https://github.com/nestjs/nest/pull/13299) chore(deps-dev): bump @types/node from 20.11.24 to 20.11.25 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13300](https://github.com/nestjs/nest/pull/13300) chore(deps-dev): bump typescript from 5.3.3 to 5.4.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13280](https://github.com/nestjs/nest/pull/13280) chore(deps-dev): bump @types/node from 20.11.22 to 20.11.24 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13281](https://github.com/nestjs/nest/pull/13281) chore(deps): bump cli-color from 2.0.3 to 2.0.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13289](https://github.com/nestjs/nest/pull/13289) chore(deps-dev): bump artillery from 2.0.6 to 2.0.7 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13290](https://github.com/nestjs/nest/pull/13290) chore(deps-dev): bump mongoose from 8.2.0 to 8.2.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13292](https://github.com/nestjs/nest/pull/13292) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.1.0 to 7.1.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13296](https://github.com/nestjs/nest/pull/13296) chore(deps-dev): bump @apollo/server from 4.10.0 to 4.10.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13263](https://github.com/nestjs/nest/pull/13263) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 7.0.2 to 7.1.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13274](https://github.com/nestjs/nest/pull/13274) chore(deps-dev): bump @commitlint/cli from 18.6.1 to 19.0.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13269](https://github.com/nestjs/nest/pull/13269) chore(deps-dev): bump @types/amqplib from 0.10.4 to 0.10.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13273](https://github.com/nestjs/nest/pull/13273) chore(deps-dev): bump @types/node from 20.11.20 to 20.11.22 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13275](https://github.com/nestjs/nest/pull/13275) chore(deps-dev): bump @commitlint/config-angular from 18.6.1 to 19.0.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13258](https://github.com/nestjs/nest/pull/13258) chore(deps-dev): bump eslint from 8.56.0 to 8.57.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13259](https://github.com/nestjs/nest/pull/13259) chore(deps-dev): bump graphql-tools from 9.0.0 to 9.0.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13262](https://github.com/nestjs/nest/pull/13262) chore(deps-dev): bump mysql2 from 3.9.1 to 3.9.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13264](https://github.com/nestjs/nest/pull/13264) chore(deps-dev): bump mqtt from 5.3.5 to 5.3.6 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13265](https://github.com/nestjs/nest/pull/13265) chore(deps-dev): bump @typescript-eslint/parser from 7.0.2 to 7.1.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13266](https://github.com/nestjs/nest/pull/13266) chore(deps): bump es5-ext from 0.10.49 to 0.10.63 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13217](https://github.com/nestjs/nest/pull/13217) chore(deps-dev): bump @grpc/grpc-js from 1.10.0 to 1.10.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13230](https://github.com/nestjs/nest/pull/13230) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.21.0 to 7.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13232](https://github.com/nestjs/nest/pull/13232) chore(deps-dev): bump artillery from 2.0.5 to 2.0.6 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13240](https://github.com/nestjs/nest/pull/13240) chore(deps): bump ip from 2.0.0 to 2.0.1 in /sample/32-graphql-federation-schema-first/posts-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13231](https://github.com/nestjs/nest/pull/13231) chore(deps-dev): bump @typescript-eslint/parser from 7.0.1 to 7.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13209](https://github.com/nestjs/nest/pull/13209) chore(deps-dev): bump @commitlint/config-angular from 18.6.0 to 18.6.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13229](https://github.com/nestjs/nest/pull/13229) chore(deps-dev): bump @fastify/view from 8.2.0 to 9.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13235](https://github.com/nestjs/nest/pull/13235) chore(deps-dev): bump ip from 1.1.8 to 1.1.9 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13236](https://github.com/nestjs/nest/pull/13236) chore(deps): bump ip from 2.0.0 to 2.0.1 in /sample/31-graphql-federation-code-first/gateway ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13237](https://github.com/nestjs/nest/pull/13237) chore(deps): bump ip from 2.0.0 to 2.0.1 in /sample/32-graphql-federation-schema-first/users-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13238](https://github.com/nestjs/nest/pull/13238) chore(deps): bump ip from 2.0.0 to 2.0.1 in /sample/31-graphql-federation-code-first/posts-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13239](https://github.com/nestjs/nest/pull/13239) chore(deps): bump ip from 2.0.0 to 2.0.1 in /sample/31-graphql-federation-code-first/users-application ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13241](https://github.com/nestjs/nest/pull/13241) chore(deps): bump ip from 2.0.0 to 2.0.1 in /sample/32-graphql-federation-schema-first/gateway ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13242](https://github.com/nestjs/nest/pull/13242) chore(deps): bump ip from 2.0.0 to 2.0.1 in /sample/14-mongoose-base ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13243](https://github.com/nestjs/nest/pull/13243) chore(deps): bump ip from 2.0.0 to 2.0.1 in /sample/06-mongoose ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13244](https://github.com/nestjs/nest/pull/13244) chore(deps): bump ip from 2.0.0 to 2.0.1 in /sample/13-mongo-typeorm ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13248](https://github.com/nestjs/nest/pull/13248) chore(deps-dev): bump @types/node from 20.11.17 to 20.11.20 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13249](https://github.com/nestjs/nest/pull/13249) chore(deps-dev): bump nodemon from 3.0.3 to 3.1.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13250](https://github.com/nestjs/nest/pull/13250) chore(deps-dev): bump mongoose from 8.1.2 to 8.2.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12831](https://github.com/nestjs/nest/pull/12831) chore(deps): update dependency prettier to v3.2.5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13207](https://github.com/nestjs/nest/pull/13207) chore(deps-dev): bump husky from 9.0.10 to 9.0.11 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13175](https://github.com/nestjs/nest/pull/13175) chore(deps): update dependency @types/jest to v29.5.12 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13122](https://github.com/nestjs/nest/pull/13122) fix(deps): update dependency typeorm to v0.3.20 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13174](https://github.com/nestjs/nest/pull/13174) chore(deps): update dependency @nestjs/cli to v10.3.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13213](https://github.com/nestjs/nest/pull/13213) chore(deps-dev): bump core-js from 3.35.1 to 3.36.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13208](https://github.com/nestjs/nest/pull/13208) chore(deps-dev): bump @commitlint/cli from 18.6.0 to 18.6.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13202](https://github.com/nestjs/nest/pull/13202) chore(deps-dev): bump @typescript-eslint/parser from 6.21.0 to 7.0.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13181](https://github.com/nestjs/nest/pull/13181) fix(deps): update dependency @fastify/static to v7 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13179](https://github.com/nestjs/nest/pull/13179) fix(deps): update dependency @nestjs/bull to v10.1.0 ([@renovate[bot]](https://github.com/apps/renovate))
+* `platform-socket.io`
+  * [#13324](https://github.com/nestjs/nest/pull/13324) chore(deps): bump socket.io from 4.7.4 to 4.7.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#13303](https://github.com/nestjs/nest/pull/13303) chore(deps): bump light-my-request from 5.11.1 to 5.12.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13287](https://github.com/nestjs/nest/pull/13287) chore(deps): bump fastify from 4.26.1 to 4.26.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13257](https://github.com/nestjs/nest/pull/13257) chore(deps): bump light-my-request from 5.11.0 to 5.11.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13203](https://github.com/nestjs/nest/pull/13203) chore(deps): bump fastify from 4.26.0 to 4.26.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-express`
+  * [#13279](https://github.com/nestjs/nest/pull/13279) chore(deps): bump express from 4.18.2 to 4.18.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 14
+- Bendegúz Kálmán ([@kalmanbendeguz](https://github.com/kalmanbendeguz))
+- Justin Timmons ([@jtimmons](https://github.com/jtimmons))
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Kazuhito Hokamura ([@hokaccha](https://github.com/hokaccha))
+- Maximiliano Kazanski ([@wokcito](https://github.com/wokcito))
+- Soroosh Merajiyan ([@sorooshme](https://github.com/sorooshme))
+- Tolga Paksoy ([@tolgap](https://github.com/tolgap))
+- Version 13 ([@version13](https://github.com/version13))
+- YoungKi Lyu ([@youngkiu](https://github.com/youngkiu))
+- [@719media](https://github.com/719media)
+- [@le-harivansh](https://github.com/le-harivansh)
+- apeltop ([@apeltop](https://github.com/apeltop))
+- blackgerman ([@blackgerman](https://github.com/blackgerman))
+- dudu_1 ([@dygma0](https://github.com/dygma0))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.3.2 (2024-02-07)</h2>
+      <pre>## v10.3.2 (2024-02-07)
+
+#### Bug fixes
+* `microservices`
+  * [#12974](https://github.com/nestjs/nest/pull/12974) fix(microservices): send rmq nack without matching message handler ([@toxol](https://github.com/toxol))
+  * [#13084](https://github.com/nestjs/nest/pull/13084) fix: #13077 KafkaJs typing consistency ([@edeesis](https://github.com/edeesis))
+  * [#13151](https://github.com/nestjs/nest/pull/13151) fix(packages/microservices): pass inboxPrefix as argument to createInbox ([@leandrogenas](https://github.com/leandrogenas))
+* `common`, `core`
+  * [#13000](https://github.com/nestjs/nest/pull/13000) fix(core,common): 🐛 missing registration handling of `SEARCH` http verb ([@doronguttman](https://github.com/doronguttman))
+
+#### Enhancements
+* `core`, `platform-express`, `platform-fastify`
+  * [#12955](https://github.com/nestjs/nest/pull/12955) feat: Implement getHeader and appendHeader methods in adapters ([@josesilveiraa07](https://github.com/josesilveiraa07))
+* `microservices`
+  * [#13105](https://github.com/nestjs/nest/pull/13105) feat(microservices): add type for rmq connection options ([@Deniks](https://github.com/Deniks))
+* `platform-fastify`
+  * [#13152](https://github.com/nestjs/nest/pull/13152) fix: allow @fastify/static v7 ([@alexfriesen](https://github.com/alexfriesen))
+
+#### Dependencies
+* `common`, `core`, `microservices`, `websockets`
+  * [#12943](https://github.com/nestjs/nest/pull/12943) fix(deps): update dependency reflect-metadata to v0.2.1 ([@renovate[bot]](https://github.com/apps/renovate))
+* Other
+  * [#13101](https://github.com/nestjs/nest/pull/13101) chore(deps-dev): bump @commitlint/config-angular from 18.5.0 to 18.6.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13173](https://github.com/nestjs/nest/pull/13173) chore(deps-dev): bump @grpc/grpc-js from 1.9.14 to 1.10.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13162](https://github.com/nestjs/nest/pull/13162) chore(deps-dev): bump prettier from 3.2.4 to 3.2.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13166](https://github.com/nestjs/nest/pull/13166) chore(deps): bump fast-json-stringify from 5.11.1 to 5.12.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13170](https://github.com/nestjs/nest/pull/13170) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.20.0 to 6.21.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13167](https://github.com/nestjs/nest/pull/13167) chore(deps-dev): bump redis from 4.6.12 to 4.6.13 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13168](https://github.com/nestjs/nest/pull/13168) chore(deps-dev): bump artillery from 2.0.4 to 2.0.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13171](https://github.com/nestjs/nest/pull/13171) chore(deps-dev): bump lint-staged from 15.2.1 to 15.2.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13172](https://github.com/nestjs/nest/pull/13172) chore(deps-dev): bump @typescript-eslint/parser from 6.20.0 to 6.21.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13129](https://github.com/nestjs/nest/pull/13129) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.19.1 to 6.20.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13134](https://github.com/nestjs/nest/pull/13134) chore(deps): update mysql docker tag to v8.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13142](https://github.com/nestjs/nest/pull/13142) fix(deps): update dependency mysql2 to v3.9.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13149](https://github.com/nestjs/nest/pull/13149) chore(deps-dev): bump lint-staged from 15.2.0 to 15.2.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13154](https://github.com/nestjs/nest/pull/13154) chore(deps-dev): bump @fastify/static from 6.12.0 to 7.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13155](https://github.com/nestjs/nest/pull/13155) chore(deps-dev): bump husky from 9.0.7 to 9.0.10 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13156](https://github.com/nestjs/nest/pull/13156) chore(deps-dev): bump @types/node from 20.11.13 to 20.11.16 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13157](https://github.com/nestjs/nest/pull/13157) chore(deps): bump fast-json-stringify from 5.10.0 to 5.11.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13114](https://github.com/nestjs/nest/pull/13114) chore(deps): update dependency eslint-plugin-prettier to v5.1.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13117](https://github.com/nestjs/nest/pull/13117) chore(deps): update dependency ts-jest to v29.1.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13118](https://github.com/nestjs/nest/pull/13118) fix(deps): update dependency @graphql-tools/utils to v10.0.13 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13120](https://github.com/nestjs/nest/pull/13120) fix(deps): update dependency class-validator to v0.14.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13127](https://github.com/nestjs/nest/pull/13127) chore(deps-dev): bump mysql2 from 3.9.0 to 3.9.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13130](https://github.com/nestjs/nest/pull/13130) chore(deps-dev): bump @typescript-eslint/parser from 6.19.1 to 6.20.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13131](https://github.com/nestjs/nest/pull/13131) chore(deps-dev): bump husky from 9.0.6 to 9.0.7 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13137](https://github.com/nestjs/nest/pull/13137) chore(deps-dev): bump @types/node from 20.11.10 to 20.11.13 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13138](https://github.com/nestjs/nest/pull/13138) fix(deps): update dependency @nestjs/cache-manager to v2.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13139](https://github.com/nestjs/nest/pull/13139) fix(deps): update dependency @nestjs/swagger to v7.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13140](https://github.com/nestjs/nest/pull/13140) fix(deps): update dependency cache-manager to v5.4.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13141](https://github.com/nestjs/nest/pull/13141) fix(deps): update dependency dotenv to v16.4.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13124](https://github.com/nestjs/nest/pull/13124) chore(deps): update dependency @nestjs/cli to v10.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13085](https://github.com/nestjs/nest/pull/13085) chore(deps-dev): bump mqtt from 5.3.4 to 5.3.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13111](https://github.com/nestjs/nest/pull/13111) chore(deps-dev): bump mysql2 from 3.8.0 to 3.9.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13113](https://github.com/nestjs/nest/pull/13113) chore(deps): update babel monorepo to v7.23.9 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13116](https://github.com/nestjs/nest/pull/13116) chore(deps): update dependency nodemon to v3.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13119](https://github.com/nestjs/nest/pull/13119) fix(deps): update dependency @grpc/grpc-js to v1.9.14 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13121](https://github.com/nestjs/nest/pull/13121) fix(deps): update dependency socket.io to v4.7.4 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#13086](https://github.com/nestjs/nest/pull/13086) chore(deps-dev): bump cache-manager from 5.3.2 to 5.4.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13097](https://github.com/nestjs/nest/pull/13097) chore(deps-dev): bump mongoose from 8.1.0 to 8.1.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13102](https://github.com/nestjs/nest/pull/13102) chore(deps-dev): bump husky from 8.0.3 to 9.0.6 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13103](https://github.com/nestjs/nest/pull/13103) chore(deps-dev): bump @commitlint/cli from 18.4.4 to 18.6.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13112](https://github.com/nestjs/nest/pull/13112) chore(deps-dev): bump @types/node from 20.11.5 to 20.11.10 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13087](https://github.com/nestjs/nest/pull/13087) chore(deps-dev): bump mongoose from 8.0.4 to 8.1.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13088](https://github.com/nestjs/nest/pull/13088) chore(deps-dev): bump mysql2 from 3.7.1 to 3.8.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13090](https://github.com/nestjs/nest/pull/13090) chore(deps-dev): bump core-js from 3.35.0 to 3.35.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13091](https://github.com/nestjs/nest/pull/13091) chore(deps-dev): bump @commitlint/config-angular from 18.4.4 to 18.5.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13092](https://github.com/nestjs/nest/pull/13092) chore(deps-dev): bump @types/node from 20.11.4 to 20.11.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#13148](https://github.com/nestjs/nest/pull/13148) chore(deps): bump @fastify/cors from 9.0.0 to 9.0.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13128](https://github.com/nestjs/nest/pull/13128) chore(deps): bump fastify from 4.25.2 to 4.26.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13109](https://github.com/nestjs/nest/pull/13109) chore(deps): bump @fastify/cors from 8.5.0 to 9.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 7
+- Alex ([@alexfriesen](https://github.com/alexfriesen))
+- Deniss Rezanovičs ([@Deniks](https://github.com/Deniks))
+- Doron Guttman ([@doronguttman](https://github.com/doronguttman))
+- Ed Mitchell ([@edeesis](https://github.com/edeesis))
+- Leandro Fabri Pereira ([@leandrogenas](https://github.com/leandrogenas))
+- Toxol ([@toxol](https://github.com/toxol))
+- [@josesilveiraa07](https://github.com/josesilveiraa07)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.3.1 (2024-01-23)</h2>
+      <pre>## v10.3.1 (2024-01-23)
+
+#### Bug fixes
+* `common`, `microservices`
+  * [#13083](https://github.com/nestjs/nest/pull/13083) fix: generate unique hashes for dynamic modules, and clients ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `microservices`
+  * [#12959](https://github.com/nestjs/nest/pull/12959) fix(microservices): grpc client closing ([@yurks](https://github.com/yurks))
+
+#### Enhancements
+* `common`, `core`
+  * [#13027](https://github.com/nestjs/nest/pull/13027) chore(core): allow dynamic value for header value ([@dammy001](https://github.com/dammy001))
+* `common`
+  * [#13056](https://github.com/nestjs/nest/pull/13056) perf(common): Improve error handling for undefined tokens ([@mostafa8026](https://github.com/mostafa8026))
+  * [#13075](https://github.com/nestjs/nest/pull/13075) feat(common): support `secureOptions` on https options ([@micalevisk](https://github.com/micalevisk))
+
+#### Dependencies
+* Other
+  * [#13080](https://github.com/nestjs/nest/pull/13080) chore(deps-dev): bump @typescript-eslint/parser from 6.18.0 to 6.19.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13034](https://github.com/nestjs/nest/pull/13034) chore(deps-dev): bump @types/sinon from 17.0.2 to 17.0.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13066](https://github.com/nestjs/nest/pull/13066) chore(deps-dev): bump nats from 2.18.0 to 2.19.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13063](https://github.com/nestjs/nest/pull/13063) chore(deps-dev): bump imports-loader from 4.0.1 to 5.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13048](https://github.com/nestjs/nest/pull/13048) chore(deps-dev): bump socket.io-client from 4.7.3 to 4.7.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13064](https://github.com/nestjs/nest/pull/13064) chore(deps-dev): bump mysql2 from 3.7.0 to 3.7.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13065](https://github.com/nestjs/nest/pull/13065) chore(deps-dev): bump prettier from 3.1.1 to 3.2.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13067](https://github.com/nestjs/nest/pull/13067) chore(deps-dev): bump nodemon from 3.0.2 to 3.0.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13069](https://github.com/nestjs/nest/pull/13069) chore(deps-dev): bump @grpc/grpc-js from 1.9.13 to 1.9.14 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13079](https://github.com/nestjs/nest/pull/13079) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.18.1 to 6.19.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13046](https://github.com/nestjs/nest/pull/13046) chore(deps-dev): bump chai from 4.4.0 to 4.4.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13047](https://github.com/nestjs/nest/pull/13047) chore(deps): bump class-validator from 0.14.0 to 0.14.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13049](https://github.com/nestjs/nest/pull/13049) chore(deps-dev): bump artillery from 2.0.3 to 2.0.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13061](https://github.com/nestjs/nest/pull/13061) chore(deps-dev): bump @types/node from 20.11.0 to 20.11.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13029](https://github.com/nestjs/nest/pull/13029) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.18.0 to 6.18.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13031](https://github.com/nestjs/nest/pull/13031) chore(deps-dev): bump mongoose from 8.0.3 to 8.0.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13035](https://github.com/nestjs/nest/pull/13035) chore(deps-dev): bump follow-redirects from 1.15.3 to 1.15.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13038](https://github.com/nestjs/nest/pull/13038) chore(deps-dev): bump @types/node from 20.10.7 to 20.11.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13022](https://github.com/nestjs/nest/pull/13022) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.17.0 to 6.18.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13023](https://github.com/nestjs/nest/pull/13023) chore(deps-dev): bump mysql2 from 3.6.5 to 3.7.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13024](https://github.com/nestjs/nest/pull/13024) chore(deps-dev): bump chai from 4.3.10 to 4.4.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13025](https://github.com/nestjs/nest/pull/13025) chore(deps): bump fast-json-stringify from 5.9.2 to 5.10.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13021](https://github.com/nestjs/nest/pull/13021) chore(deps-dev): bump @fastify/multipart from 8.0.0 to 8.1.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13019](https://github.com/nestjs/nest/pull/13019) chore(deps-dev): bump @typescript-eslint/parser from 6.17.0 to 6.18.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13018](https://github.com/nestjs/nest/pull/13018) chore(deps-dev): bump @types/node from 20.10.6 to 20.10.7 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13008](https://github.com/nestjs/nest/pull/13008) chore(deps-dev): bump @commitlint/config-angular from 18.4.3 to 18.4.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13004](https://github.com/nestjs/nest/pull/13004) chore(deps-dev): bump typeorm from 0.3.17 to 0.3.19 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13005](https://github.com/nestjs/nest/pull/13005) chore(deps-dev): bump socket.io-client from 4.7.2 to 4.7.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13009](https://github.com/nestjs/nest/pull/13009) chore(deps-dev): bump @commitlint/cli from 18.4.3 to 18.4.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12934](https://github.com/nestjs/nest/pull/12934) chore(deps): update dependency eslint-plugin-import to v2.29.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12999](https://github.com/nestjs/nest/pull/12999) chore(deps-dev): bump @apollo/server from 4.9.5 to 4.10.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12953](https://github.com/nestjs/nest/pull/12953) chore(deps-dev): bump cache-manager from 5.3.1 to 5.3.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12984](https://github.com/nestjs/nest/pull/12984) chore(deps-dev): bump @typescript-eslint/parser from 6.14.0 to 6.17.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12985](https://github.com/nestjs/nest/pull/12985) chore(deps): update babel monorepo to v7.23.7 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12986](https://github.com/nestjs/nest/pull/12986) chore(deps): update confluentinc/cp-kafka docker tag to v7.5.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12987](https://github.com/nestjs/nest/pull/12987) chore(deps): update confluentinc/cp-zookeeper docker tag to v7.5.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12989](https://github.com/nestjs/nest/pull/12989) chore(deps): update dependency redis to v4.6.12 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12990](https://github.com/nestjs/nest/pull/12990) fix(deps): update dependency @graphql-tools/utils to v10.0.12 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12991](https://github.com/nestjs/nest/pull/12991) fix(deps): update dependency cache-manager to v5.3.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12992](https://github.com/nestjs/nest/pull/12992) fix(deps): update dependency mercurius to v13.3.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12993](https://github.com/nestjs/nest/pull/12993) chore(deps): update dependency eslint-plugin-prettier to v5.1.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12983](https://github.com/nestjs/nest/pull/12983) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.15.0 to 6.17.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12981](https://github.com/nestjs/nest/pull/12981) chore(deps-dev): bump @types/node from 20.10.5 to 20.10.6 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12973](https://github.com/nestjs/nest/pull/12973) chore(deps-dev): bump core-js from 3.34.0 to 3.35.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12972](https://github.com/nestjs/nest/pull/12972) chore(deps): bump msgpackr from 1.6.1 to 1.10.1 in /sample/26-queues ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12969](https://github.com/nestjs/nest/pull/12969) chore(deps): bump fast-json-stringify from 5.9.1 to 5.9.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12964](https://github.com/nestjs/nest/pull/12964) chore(deps-dev): bump mqtt from 5.3.3 to 5.3.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12948](https://github.com/nestjs/nest/pull/12948) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.14.0 to 6.15.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12942](https://github.com/nestjs/nest/pull/12942) chore(deps): update dependency eslint-config-prettier to v9.1.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12945](https://github.com/nestjs/nest/pull/12945) fix(deps): update dependency ts-morph to v21 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12938](https://github.com/nestjs/nest/pull/12938) fix(deps): update dependency @nestjs/swagger to v7.1.17 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12937](https://github.com/nestjs/nest/pull/12937) fix(deps): update dependency @grpc/grpc-js to v1.9.13 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12933](https://github.com/nestjs/nest/pull/12933) chore(deps): update babel monorepo to v7.23.6 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12949](https://github.com/nestjs/nest/pull/12949) chore(deps-dev): bump redis from 4.6.11 to 4.6.12 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-socket.io`
+  * [#13045](https://github.com/nestjs/nest/pull/13045) chore(deps): bump socket.io from 4.7.3 to 4.7.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#13003](https://github.com/nestjs/nest/pull/13003) chore(deps): bump socket.io from 4.7.2 to 4.7.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-ws`
+  * [#12968](https://github.com/nestjs/nest/pull/12968) chore(deps): bump ws from 8.15.1 to 8.16.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#12962](https://github.com/nestjs/nest/pull/12962) chore(deps): bump fastify from 4.25.1 to 4.25.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12950](https://github.com/nestjs/nest/pull/12950) chore(deps): bump @fastify/cors from 8.4.2 to 8.5.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 6
+- Anjorin Damilare ([@dammy001](https://github.com/dammy001))
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- Mostafa ([@mostafa8026](https://github.com/mostafa8026))
+- Yurk Sha ([@yurks](https://github.com/yurks))
+- fr0staman ([@fr0staman](https://github.com/fr0staman))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.3.0 (2023-12-18)</h2>
+      <pre>## v10.3.0 (2023-12-18)
+
+#### Enhancements
+* `platform-fastify`
+  * [#12567](https://github.com/nestjs/nest/pull/12567) feat(fastify): add fastify route constraints ([@Fcmam5](https://github.com/Fcmam5))
+* `microservices`
+  * [#12175](https://github.com/nestjs/nest/pull/12175) feat(microservices): Added invalid-grpc-message-decorator.exception.ts ([@PhilipMantrov](https://github.com/PhilipMantrov))
+* `common`, `core`, `microservices`, `platform-express`
+  * [#12753](https://github.com/nestjs/nest/pull/12753) perf: prefer use factory instead of use value when possible ([@H4ad](https://github.com/H4ad))
+* `core`
+  * [#12924](https://github.com/nestjs/nest/pull/12924) feat(core): add options parameter to repl ([@othierry](https://github.com/othierry))
+* `common`, `core`, `microservices`, `platform-socket.io`
+  * [#12905](https://github.com/nestjs/nest/pull/12905) feat(core): display module's name on `.select(module)` errors ([@micalevisk](https://github.com/micalevisk))
+* `common`
+  * [#12817](https://github.com/nestjs/nest/pull/12817) fix(common): type def for cors delegated callback function option ([@micalevisk](https://github.com/micalevisk))
+
+#### Dependencies
+* Other
+  * [#12891](https://github.com/nestjs/nest/pull/12891) chore(deps): update dependency @types/jest to v29.5.11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12935](https://github.com/nestjs/nest/pull/12935) chore(deps): update dependency nodemon to v3.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12833](https://github.com/nestjs/nest/pull/12833) chore(deps): update dependency typescript to v5.3.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12832](https://github.com/nestjs/nest/pull/12832) chore(deps): update dependency ts-loader to v9.5.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12939](https://github.com/nestjs/nest/pull/12939) fix(deps): update dependency mercurius to v13.3.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12941](https://github.com/nestjs/nest/pull/12941) fix(deps): update dependency sequelize to v6.35.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12810](https://github.com/nestjs/nest/pull/12810) fix(deps): update nest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11952](https://github.com/nestjs/nest/pull/11952) fix(deps): update dependency @nestjs/apollo to v12.0.11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12930](https://github.com/nestjs/nest/pull/12930) chore(deps-dev): bump @types/node from 20.10.4 to 20.10.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12932](https://github.com/nestjs/nest/pull/12932) chore(deps-dev): bump eslint from 8.55.0 to 8.56.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12911](https://github.com/nestjs/nest/pull/12911) chore(deps-dev): bump @typescript-eslint/parser from 6.13.2 to 6.14.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12908](https://github.com/nestjs/nest/pull/12908) chore(deps-dev): bump prettier from 3.1.0 to 3.1.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12909](https://github.com/nestjs/nest/pull/12909) chore(deps-dev): bump ts-node from 10.9.1 to 10.9.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12912](https://github.com/nestjs/nest/pull/12912) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.13.2 to 6.14.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12917](https://github.com/nestjs/nest/pull/12917) chore(deps-dev): bump @grpc/grpc-js from 1.9.12 to 1.9.13 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12920](https://github.com/nestjs/nest/pull/12920) chore(deps): bump github/codeql-action from 2 to 3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12923](https://github.com/nestjs/nest/pull/12923) chore(deps-dev): bump eslint-plugin-import from 2.29.0 to 2.29.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12888](https://github.com/nestjs/nest/pull/12888) chore(deps-dev): bump @typescript-eslint/parser from 6.13.1 to 6.13.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12900](https://github.com/nestjs/nest/pull/12900) chore(deps-dev): bump mongoose from 8.0.2 to 8.0.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12901](https://github.com/nestjs/nest/pull/12901) chore(deps): bump reflect-metadata from 0.1.13 to 0.1.14 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12902](https://github.com/nestjs/nest/pull/12902) chore(deps-dev): bump @types/node from 20.10.3 to 20.10.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12887](https://github.com/nestjs/nest/pull/12887) chore(deps-dev): bump mqtt from 5.3.2 to 5.3.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12896](https://github.com/nestjs/nest/pull/12896) chore(deps-dev): bump artillery from 2.0.2 to 2.0.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12897](https://github.com/nestjs/nest/pull/12897) chore(deps-dev): bump typescript from 5.3.2 to 5.3.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12889](https://github.com/nestjs/nest/pull/12889) chore(deps-dev): bump core-js from 3.33.3 to 3.34.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12873](https://github.com/nestjs/nest/pull/12873) chore(deps-dev): bump eslint from 8.54.0 to 8.55.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12876](https://github.com/nestjs/nest/pull/12876) chore(deps-dev): bump nodemon from 3.0.1 to 3.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12863](https://github.com/nestjs/nest/pull/12863) chore(deps-dev): bump mongoose from 8.0.1 to 8.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12868](https://github.com/nestjs/nest/pull/12868) chore(deps): bump sequelize-typescript from 2.1.5 to 2.1.6 in /sample/07-sequelize ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12872](https://github.com/nestjs/nest/pull/12872) chore(deps-dev): bump artillery from 2.0.1 to 2.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12874](https://github.com/nestjs/nest/pull/12874) chore(deps-dev): bump eslint-config-prettier from 9.0.0 to 9.1.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12875](https://github.com/nestjs/nest/pull/12875) chore(deps-dev): bump @types/node from 20.10.0 to 20.10.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12877](https://github.com/nestjs/nest/pull/12877) chore(deps-dev): bump lint-staged from 15.1.0 to 15.2.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12878](https://github.com/nestjs/nest/pull/12878) chore(deps-dev): bump ts-morph from 20.0.0 to 21.0.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12882](https://github.com/nestjs/nest/pull/12882) chore(deps-dev): bump mqtt from 5.3.1 to 5.3.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12883](https://github.com/nestjs/nest/pull/12883) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.13.1 to 6.13.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12869](https://github.com/nestjs/nest/pull/12869) fix(deps): update dependency sequelize-typescript to v2.1.6 [security] ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12861](https://github.com/nestjs/nest/pull/12861) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.13.0 to 6.13.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12862](https://github.com/nestjs/nest/pull/12862) chore(deps-dev): bump mqtt from 5.3.0 to 5.3.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12859](https://github.com/nestjs/nest/pull/12859) chore(deps-dev): bump @typescript-eslint/parser from 6.12.0 to 6.13.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12807](https://github.com/nestjs/nest/pull/12807) fix(deps): update dependency @nestjs/typeorm to v10.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12852](https://github.com/nestjs/nest/pull/12852) chore(deps-dev): bump @types/node from 20.9.5 to 20.10.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12794](https://github.com/nestjs/nest/pull/12794) chore(deps): update dependency @types/jest to v29.5.10 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12798](https://github.com/nestjs/nest/pull/12798) chore(deps): update dependency @types/supertest to v2.0.16 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12840](https://github.com/nestjs/nest/pull/12840) fix(deps): update dependency mongodb to v6.3.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12853](https://github.com/nestjs/nest/pull/12853) chore(deps-dev): bump artillery from 1.7.9 to 2.0.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12855](https://github.com/nestjs/nest/pull/12855) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.12.0 to 6.13.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12856](https://github.com/nestjs/nest/pull/12856) chore(deps-dev): bump @grpc/grpc-js from 1.9.11 to 1.9.12 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12809](https://github.com/nestjs/nest/pull/12809) fix(deps): update dependency mysql2 to v3.6.5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12824](https://github.com/nestjs/nest/pull/12824) chore(deps-dev): bump typescript from 5.2.2 to 5.3.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12828](https://github.com/nestjs/nest/pull/12828) chore(deps-dev): bump @types/node from 20.9.4 to 20.9.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12820](https://github.com/nestjs/nest/pull/12820) chore(deps-dev): bump @types/chai from 4.3.10 to 4.3.11 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12821](https://github.com/nestjs/nest/pull/12821) chore(deps-dev): bump @types/sinon from 17.0.1 to 17.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12822](https://github.com/nestjs/nest/pull/12822) chore(deps-dev): bump mysql2 from 3.6.3 to 3.6.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12823](https://github.com/nestjs/nest/pull/12823) fix(deps): update dependency @graphql-tools/utils to v10.0.11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12825](https://github.com/nestjs/nest/pull/12825) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.11.0 to 6.12.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12826](https://github.com/nestjs/nest/pull/12826) chore(deps-dev): bump @commitlint/config-angular from 18.4.2 to 18.4.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12799](https://github.com/nestjs/nest/pull/12799) chore(deps): update dependency redis to v4.6.11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12806](https://github.com/nestjs/nest/pull/12806) fix(deps): update dependency @nestjs/swagger to v7.1.16 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12835](https://github.com/nestjs/nest/pull/12835) chore(deps): update mysql docker tag to v8.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12827](https://github.com/nestjs/nest/pull/12827) chore(deps-dev): bump @types/ws from 8.5.9 to 8.5.10 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12829](https://github.com/nestjs/nest/pull/12829) chore(deps-dev): bump @types/mocha from 10.0.4 to 10.0.6 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12834](https://github.com/nestjs/nest/pull/12834) chore(deps): update dependency webpack to v5.89.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12836](https://github.com/nestjs/nest/pull/12836) fix(deps): update dependency @fastify/static to v6.12.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12837](https://github.com/nestjs/nest/pull/12837) fix(deps): update dependency @nestjs/jwt to v10.2.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12838](https://github.com/nestjs/nest/pull/12838) fix(deps): update dependency cache-manager to v5.3.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12839](https://github.com/nestjs/nest/pull/12839) fix(deps): update dependency mercurius to v13.3.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12841](https://github.com/nestjs/nest/pull/12841) fix(deps): update dependency sequelize to v6.35.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12843](https://github.com/nestjs/nest/pull/12843) fix(deps): update dependency @nestjs/schedule to v4 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12844](https://github.com/nestjs/nest/pull/12844) fix(deps): update dependency mongoose to v8 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12845](https://github.com/nestjs/nest/pull/12845) fix(deps): update dependency ts-morph to v20 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12814](https://github.com/nestjs/nest/pull/12814) chore(deps): update dependency @nestjs/cli to v10.2.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12812](https://github.com/nestjs/nest/pull/12812) chore(deps): update confluentinc/cp-kafka docker tag to v7.5.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12811](https://github.com/nestjs/nest/pull/12811) chore(deps): update babel monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12813](https://github.com/nestjs/nest/pull/12813) chore(deps): update confluentinc/cp-zookeeper docker tag to v7.5.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12782](https://github.com/nestjs/nest/pull/12782) chore(deps-dev): bump @types/cors from 2.8.16 to 2.8.17 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12784](https://github.com/nestjs/nest/pull/12784) chore(deps-dev): bump redis from 4.6.10 to 4.6.11 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12800](https://github.com/nestjs/nest/pull/12800) fix(deps): update dependency @graphql-tools/utils to v10.0.10 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12792](https://github.com/nestjs/nest/pull/12792) chore(deps): update dependency @types/cache-manager to v4.0.6 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12808](https://github.com/nestjs/nest/pull/12808) fix(deps): update dependency mongoose to v7.6.5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12805](https://github.com/nestjs/nest/pull/12805) fix(deps): update dependency @nestjs/mongoose to v10.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12796](https://github.com/nestjs/nest/pull/12796) chore(deps): update dependency @types/multer to v1.4.11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12801](https://github.com/nestjs/nest/pull/12801) fix(deps): update dependency @grpc/grpc-js to v1.9.11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12802](https://github.com/nestjs/nest/pull/12802) fix(deps): update dependency @nestjs/cache-manager to v2.1.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12803](https://github.com/nestjs/nest/pull/12803) fix(deps): update dependency @nestjs/event-emitter to v2.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12804](https://github.com/nestjs/nest/pull/12804) fix(deps): update dependency @nestjs/mercurius to v12.0.11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12778](https://github.com/nestjs/nest/pull/12778) chore(deps-dev): bump eslint from 8.53.0 to 8.54.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12780](https://github.com/nestjs/nest/pull/12780) chore(deps-dev): bump cache-manager from 5.2.4 to 5.3.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12779](https://github.com/nestjs/nest/pull/12779) chore(deps-dev): bump core-js from 3.33.2 to 3.33.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12788](https://github.com/nestjs/nest/pull/12788) chore(deps-dev): bump @commitlint/cli from 18.4.1 to 18.4.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12791](https://github.com/nestjs/nest/pull/12791) chore(deps-dev): bump @types/node from 20.9.0 to 20.9.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12777](https://github.com/nestjs/nest/pull/12777) chore(deps-dev): bump @grpc/grpc-js from 1.9.10 to 1.9.11 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12775](https://github.com/nestjs/nest/pull/12775) chore(deps-dev): bump mqtt from 5.2.1 to 5.3.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12705](https://github.com/nestjs/nest/pull/12705) fix(deps): update dependency @nestjs/graphql to v12.0.11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12681](https://github.com/nestjs/nest/pull/12681) chore(deps): update dependency @types/express to v4.17.21 ([@renovate[bot]](https://github.com/apps/renovate))
+* `platform-fastify`
+  * [#12931](https://github.com/nestjs/nest/pull/12931) chore(deps): bump fastify from 4.25.0 to 4.25.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12921](https://github.com/nestjs/nest/pull/12921) chore(deps): bump fastify from 4.24.3 to 4.25.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12890](https://github.com/nestjs/nest/pull/12890) chore(deps): bump @fastify/cors from 8.4.1 to 8.4.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-ws`
+  * [#12918](https://github.com/nestjs/nest/pull/12918) chore(deps): bump ws from 8.14.2 to 8.15.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 6
+- Fortas Abdeldjalil ([@Fcmam5](https://github.com/Fcmam5))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- Niv Shtibel ([@NivSv](https://github.com/NivSv))
+- Olivier Thierry ([@othierry](https://github.com/othierry))
+- Philip Mantrov ([@PhilipMantrov](https://github.com/PhilipMantrov))
+- Vinicius Lourenço ([@H4ad](https://github.com/H4ad))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.2.7 (2023-10-05)</h2>
+      <pre>## v10.2.7 (2023-10-05)
+
+#### Bug fixes
+* `platform-ws`
+  * [#12385](https://github.com/nestjs/nest/pull/12385) fix(platform-ws): URL parsing error handled ([@dbulic-margins](https://github.com/dbulic-margins))
+
+#### Enhancements
+* `microservices`
+  * [#12472](https://github.com/nestjs/nest/pull/12472) feat(microservices): Added properties for MQTT protocol version 5.0 ([@Gvishiani-Giorgi](https://github.com/Gvishiani-Giorgi))
+
+#### Dependencies
+* Other
+  * [#12500](https://github.com/nestjs/nest/pull/12500) fix(deps): update nest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12473](https://github.com/nestjs/nest/pull/12473) chore(deps-dev): bump @fastify/static from 6.11.0 to 6.11.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12486](https://github.com/nestjs/nest/pull/12486) chore(deps-dev): bump core-js from 3.32.2 to 3.33.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12483](https://github.com/nestjs/nest/pull/12483) chore(deps): update dependency @types/multer to v1.4.8 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12487](https://github.com/nestjs/nest/pull/12487) chore(deps-dev): bump @types/supertest from 2.0.13 to 2.0.14 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12490](https://github.com/nestjs/nest/pull/12490) chore(deps-dev): bump @types/node from 20.7.1 to 20.8.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12492](https://github.com/nestjs/nest/pull/12492) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 6.7.2 to 6.7.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12493](https://github.com/nestjs/nest/pull/12493) chore(deps-dev): bump @grpc/grpc-js from 1.9.4 to 1.9.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12499](https://github.com/nestjs/nest/pull/12499) chore(deps-dev): bump mongoose from 7.5.2 to 7.5.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12462](https://github.com/nestjs/nest/pull/12462) chore(deps-dev): bump @types/supertest from 2.0.12 to 2.0.13 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12460](https://github.com/nestjs/nest/pull/12460) chore(deps-dev): bump @fastify/view from 8.0.0 to 8.2.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12443](https://github.com/nestjs/nest/pull/12443) chore(deps): update dependency @types/amqplib to v0.10.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12474](https://github.com/nestjs/nest/pull/12474) chore(deps-dev): bump @typescript-eslint/parser from 6.7.2 to 6.7.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12475](https://github.com/nestjs/nest/pull/12475) chore(deps-dev): bump @types/mocha from 10.0.1 to 10.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12476](https://github.com/nestjs/nest/pull/12476) chore(deps-dev): bump chai from 4.3.8 to 4.3.10 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12477](https://github.com/nestjs/nest/pull/12477) chore(deps-dev): bump @fastify/multipart from 7.7.3 to 8.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12478](https://github.com/nestjs/nest/pull/12478) chore(deps-dev): bump @commitlint/cli from 17.7.1 to 17.7.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12461](https://github.com/nestjs/nest/pull/12461) chore(deps-dev): bump @types/sinon from 10.0.16 to 10.0.17 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12456](https://github.com/nestjs/nest/pull/12456) chore(deps): update dependency @types/express to v4.17.18 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12465](https://github.com/nestjs/nest/pull/12465) chore(deps-dev): bump @grpc/grpc-js from 1.9.2 to 1.9.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12466](https://github.com/nestjs/nest/pull/12466) chore(deps-dev): bump @types/ws from 8.5.5 to 8.5.6 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12467](https://github.com/nestjs/nest/pull/12467) chore(deps-dev): bump @types/amqplib from 0.10.1 to 0.10.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12471](https://github.com/nestjs/nest/pull/12471) chore(deps-dev): bump @types/node from 20.6.0 to 20.7.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12451](https://github.com/nestjs/nest/pull/12451) chore(deps-dev): bump @types/bytes from 3.1.1 to 3.1.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12449](https://github.com/nestjs/nest/pull/12449) chore(deps-dev): bump @types/express from 4.17.17 to 4.17.18 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12453](https://github.com/nestjs/nest/pull/12453) chore(deps-dev): bump sinon from 15.2.0 to 16.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12452](https://github.com/nestjs/nest/pull/12452) chore(deps-dev): bump eslint from 8.49.0 to 8.50.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12446](https://github.com/nestjs/nest/pull/12446) chore(deps-dev): bump redis from 4.6.9 to 4.6.10 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12454](https://github.com/nestjs/nest/pull/12454) chore(deps-dev): bump ts-morph from 19.0.0 to 20.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12442](https://github.com/nestjs/nest/pull/12442) chore(deps): update dependency @types/cache-manager to v4.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12436](https://github.com/nestjs/nest/pull/12436) chore(deps-dev): bump @types/http-errors from 2.0.1 to 2.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#12468](https://github.com/nestjs/nest/pull/12468) chore(deps): bump @fastify/cors from 8.3.0 to 8.4.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12447](https://github.com/nestjs/nest/pull/12447) chore(deps): bump light-my-request from 5.10.0 to 5.11.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-ws`
+  * [#12448](https://github.com/nestjs/nest/pull/12448) chore(deps): bump ws from 8.13.0 to 8.14.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 2
+- [@Gvishiani-Giorgi](https://github.com/Gvishiani-Giorgi)
+- [@dbulic-margins](https://github.com/dbulic-margins)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.2.2 (2023-08-28)</h2>
+      <pre>## v10.2.2 (2023-08-28)
+
+#### Enhancements
+* `core`
+  * [#12276](https://github.com/nestjs/nest/pull/12276) feat(core): add generic type for transformed value in decorators factory ([@quangtran88](https://github.com/quangtran88))
+
+#### Dependencies
+* Other
+  * [#12269](https://github.com/nestjs/nest/pull/12269) chore(deps-dev): bump concurrently from 8.2.0 to 8.2.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12268](https://github.com/nestjs/nest/pull/12268) chore(deps-dev): bump @grpc/grpc-js from 1.9.0 to 1.9.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12263](https://github.com/nestjs/nest/pull/12263) fix(deps): update dependency @nestjs/event-emitter to v2.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12271](https://github.com/nestjs/nest/pull/12271) chore(deps-dev): bump redis from 4.6.7 to 4.6.8 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12272](https://github.com/nestjs/nest/pull/12272) chore(deps-dev): bump @grpc/proto-loader from 0.7.8 to 0.7.9 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12279](https://github.com/nestjs/nest/pull/12279) chore(deps-dev): bump typescript from 5.1.6 to 5.2.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12285](https://github.com/nestjs/nest/pull/12285) chore(deps-dev): bump @types/node from 20.5.1 to 20.5.7 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12286](https://github.com/nestjs/nest/pull/12286) chore(deps-dev): bump mongoose from 7.4.3 to 7.4.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12247](https://github.com/nestjs/nest/pull/12247) chore(deps-dev): bump @types/node from 20.5.0 to 20.5.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12249](https://github.com/nestjs/nest/pull/12249) chore(deps-dev): bump eslint-plugin-import from 2.28.0 to 2.28.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12262](https://github.com/nestjs/nest/pull/12262) fix(deps): update dependency @nestjs/bull to v10.0.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12258](https://github.com/nestjs/nest/pull/12258) chore(deps): update dependency jest to v29.6.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12259](https://github.com/nestjs/nest/pull/12259) fix(deps): update dependency @graphql-tools/utils to v10.0.5 - autoclosed ([@renovate[bot]](https://github.com/apps/renovate))
+* `common`, `core`, `microservices`, `platform-express`, `platform-fastify`, `platform-socket.io`, `platform-ws`, `testing`, `websockets`
+  * [#12248](https://github.com/nestjs/nest/pull/12248) chore(deps): bump tslib from 2.6.1 to 2.6.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 1
+- Tran Quang ([@quangtran88](https://github.com/quangtran88))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.2.0 (2023-08-21)</h2>
+      <pre>## v10.2.0 (2023-08-21)
+
+#### Features
+* `core`
+  * [#12237](https://github.com/nestjs/nest/pull/12237) feat(core): add strongly-typed decorators factory (reflector) ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#12107](https://github.com/nestjs/nest/pull/12107) feat(core): discover by decorator, explorer pattern ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `core`, `platform-fastify`
+  * [#11992](https://github.com/nestjs/nest/pull/11992) feat(fastify): supporting fastify route config ([@rich-w-lee](https://github.com/rich-w-lee))
+
+#### Enhancements
+* `common`, `core`
+  * [#12161](https://github.com/nestjs/nest/pull/12161) feat(common): added "fatal" as a log level (issue #11945) ([@TheCodby](https://github.com/TheCodby))
+* `common`
+  * [#12096](https://github.com/nestjs/nest/pull/12096) fix(common): fix custom multi file validator ([@mohamadrezamomeni](https://github.com/mohamadrezamomeni))
+
+#### Dependencies
+* Other
+  * [#12228](https://github.com/nestjs/nest/pull/12228) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 5.61.0 to 6.4.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12242](https://github.com/nestjs/nest/pull/12242) chore(deps): update dependency jest to v29.6.2 - autoclosed ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12168](https://github.com/nestjs/nest/pull/12168) chore(deps): update confluentinc/cp-zookeeper docker tag to v7.4.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12156](https://github.com/nestjs/nest/pull/12156) chore(deps-dev): bump amqp-connection-manager from 4.1.13 to 4.1.14 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12225](https://github.com/nestjs/nest/pull/12225) chore(deps-dev): bump graphql from 16.7.1 to 16.8.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11965](https://github.com/nestjs/nest/pull/11965) fix(deps): update dependency @nestjs/mercurius to v12.0.4 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12239](https://github.com/nestjs/nest/pull/12239) chore(deps-dev): bump nats from 2.15.1 to 2.16.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12238](https://github.com/nestjs/nest/pull/12238) chore(deps-dev): bump mqtt from 5.0.2 to 5.0.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12227](https://github.com/nestjs/nest/pull/12227) chore(deps-dev): bump eslint from 8.46.0 to 8.47.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12226](https://github.com/nestjs/nest/pull/12226) chore(deps-dev): bump mongoose from 7.4.2 to 7.4.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12229](https://github.com/nestjs/nest/pull/12229) chore(deps-dev): bump lint-staged from 13.2.3 to 14.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12234](https://github.com/nestjs/nest/pull/12234) chore(deps-dev): bump prettier from 3.0.1 to 3.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12212](https://github.com/nestjs/nest/pull/12212) chore(deps-dev): bump @commitlint/config-angular from 17.6.7 to 17.7.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12186](https://github.com/nestjs/nest/pull/12186) chore(deps): bump fast-json-stringify from 5.7.0 to 5.8.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12216](https://github.com/nestjs/nest/pull/12216) chore(deps-dev): bump @commitlint/cli from 17.6.7 to 17.7.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12223](https://github.com/nestjs/nest/pull/12223) chore(deps-dev): bump @types/node from 20.4.8 to 20.5.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12190](https://github.com/nestjs/nest/pull/12190) chore(deps-dev): bump mqtt from 5.0.1 to 5.0.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12202](https://github.com/nestjs/nest/pull/12202) chore(deps-dev): bump eslint-config-prettier from 8.9.0 to 9.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12203](https://github.com/nestjs/nest/pull/12203) chore(deps-dev): bump mysql2 from 3.5.2 to 3.6.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12205](https://github.com/nestjs/nest/pull/12205) chore(deps-dev): bump prettier from 3.0.0 to 3.0.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12189](https://github.com/nestjs/nest/pull/12189) chore(deps-dev): bump socket.io-client from 4.7.1 to 4.7.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12191](https://github.com/nestjs/nest/pull/12191) chore(deps-dev): bump mongoose from 7.4.1 to 7.4.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12198](https://github.com/nestjs/nest/pull/12198) chore(deps-dev): bump @types/node from 20.4.5 to 20.4.8 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12180](https://github.com/nestjs/nest/pull/12180) chore(deps-dev): bump @grpc/grpc-js from 1.8.21 to 1.9.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12181](https://github.com/nestjs/nest/pull/12181) chore(deps-dev): bump engine.io-client from 6.5.1 to 6.5.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12182](https://github.com/nestjs/nest/pull/12182) chore(deps-dev): bump @types/sinon from 10.0.15 to 10.0.16 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12171](https://github.com/nestjs/nest/pull/12171) chore(deps-dev): bump eslint-config-prettier from 8.8.0 to 8.9.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12172](https://github.com/nestjs/nest/pull/12172) chore(deps-dev): bump mqtt from 5.0.0 to 5.0.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12173](https://github.com/nestjs/nest/pull/12173) chore(deps-dev): bump eslint from 8.45.0 to 8.46.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12148](https://github.com/nestjs/nest/pull/12148) chore(deps-dev): bump @types/node from 20.4.4 to 20.4.5 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12169](https://github.com/nestjs/nest/pull/12169) chore(deps-dev): bump eslint-plugin-import from 2.27.5 to 2.28.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-socket.io`
+  * [#12185](https://github.com/nestjs/nest/pull/12185) chore(deps): bump socket.io from 4.7.1 to 4.7.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 6
+- Ahmed Kotby ([@TheCodby](https://github.com/TheCodby))
+- Aleksandar Mijic ([@HGtronic](https://github.com/HGtronic))
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Richard Lee ([@rich-w-lee](https://github.com/rich-w-lee))
+- [@mohamadrezamomeni](https://github.com/mohamadrezamomeni)
+- [@rbnayax](https://github.com/rbnayax)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.1.3 (2023-07-31)</h2>
+      <pre>## v10.1.3 (2023-07-31)
+
+#### Bug fixes
+* `core`
+  * [#12163](https://github.com/nestjs/nest/pull/12163) fix(core): create completed field on settlement for better tracking ([@jmcdo29](https://github.com/jmcdo29))
+
+#### Enhancements
+* `core`
+  * [#12166](https://github.com/nestjs/nest/pull/12166) fix(core): pass application config to nest container when using application context ([@SocketSomeone](https://github.com/SocketSomeone))
+
+#### Dependencies
+* `platform-fastify`
+  * [#12155](https://github.com/nestjs/nest/pull/12155) chore(deps): bump fastify from 4.20.0 to 4.21.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* Other
+  * [#12146](https://github.com/nestjs/nest/pull/12146) chore(deps): update confluentinc/cp-kafka docker tag to v7.4.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#12149](https://github.com/nestjs/nest/pull/12149) chore(deps-dev): bump mqtt from 4.3.7 to 5.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12157](https://github.com/nestjs/nest/pull/12157) chore(deps-dev): bump core-js from 3.31.1 to 3.32.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12167](https://github.com/nestjs/nest/pull/12167) chore(deps-dev): bump @grpc/grpc-js from 1.8.18 to 1.8.21 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 4
+- Alexey Filippov ([@SocketSomeone](https://github.com/SocketSomeone))
+- Antonio Tripodi ([@Tony133](https://github.com/Tony133))
+- Jay McDoniel ([@jmcdo29](https://github.com/jmcdo29))
+- X1a0t ([@thorseraq](https://github.com/thorseraq))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.1.0 (2023-07-17)</h2>
+      <pre>## v10.1.0 (2023-07-17)
+
+#### Bug fixes
+* `core`
+  * [#12035](https://github.com/nestjs/nest/pull/12035) fix(core): allow importing providers from global modules in lazy modules ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#12020](https://github.com/nestjs/nest/pull/12020) fix(core): throw on circular factories and custom providers ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `microservices`
+  * [#12026](https://github.com/nestjs/nest/pull/12026) fix(microservices): support client cancel grpc request in unary stream ([@tanhv90](https://github.com/tanhv90))
+* `common`
+  * [#12031](https://github.com/nestjs/nest/pull/12031) fix(common): right generic type arg constraint for `FileValidator#isValid` method ([@micalevisk](https://github.com/micalevisk))
+
+#### Enhancements
+* `microservices`
+  * [#12014](https://github.com/nestjs/nest/pull/12014) feat(microservices): allow grpc-server graceful shutdown ([@mathieubergeron](https://github.com/mathieubergeron))
+* `platform-fastify`
+  * [#11995](https://github.com/nestjs/nest/pull/11995) refactor(fastify): updated static options ([@Mojtaba-NA](https://github.com/Mojtaba-NA))
+* `core`
+  * [#12009](https://github.com/nestjs/nest/pull/12009) fix(core): Initialize application only once ([@KKSzymanowski](https://github.com/KKSzymanowski))
+
+#### Dependencies
+* Other
+  * [#12025](https://github.com/nestjs/nest/pull/12025) chore(deps-dev): bump @grpc/grpc-js from 1.8.17 to 1.8.18 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12034](https://github.com/nestjs/nest/pull/12034) chore(deps-dev): bump eslint from 8.44.0 to 8.45.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12001](https://github.com/nestjs/nest/pull/12001) chore(deps-dev): bump @typescript-eslint/parser from 5.60.1 to 5.62.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12015](https://github.com/nestjs/nest/pull/12015) chore(deps-dev): bump mongoose from 7.3.2 to 7.3.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12016](https://github.com/nestjs/nest/pull/12016) chore(deps-dev): bump @types/node from 20.4.1 to 20.4.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12004](https://github.com/nestjs/nest/pull/12004) chore(deps): update jest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11973](https://github.com/nestjs/nest/pull/11973) chore(deps): update babel monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11972](https://github.com/nestjs/nest/pull/11972) fix(deps): update dependency @graphql-tools/utils to v10.0.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11980](https://github.com/nestjs/nest/pull/11980) chore(deps-dev): bump core-js from 3.31.0 to 3.31.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11981](https://github.com/nestjs/nest/pull/11981) chore(deps-dev): bump prettier from 2.8.8 to 3.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11989](https://github.com/nestjs/nest/pull/11989) chore(deps-dev): bump mongoose from 7.3.1 to 7.3.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11993](https://github.com/nestjs/nest/pull/11993) chore(deps): bump protobufjs from 7.2.2 to 7.2.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11994](https://github.com/nestjs/nest/pull/11994) chore(deps): bump protobufjs from 7.2.3 to 7.2.4 in /sample/04-grpc ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11997](https://github.com/nestjs/nest/pull/11997) chore(deps-dev): bump @types/node from 20.3.3 to 20.4.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11998](https://github.com/nestjs/nest/pull/11998) chore(deps-dev): bump nodemon from 2.0.22 to 3.0.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#12003](https://github.com/nestjs/nest/pull/12003) chore(deps-dev): bump mysql2 from 3.4.3 to 3.5.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11969](https://github.com/nestjs/nest/pull/11969) chore(deps-dev): bump @typescript-eslint/eslint-plugin from 5.60.1 to 5.61.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11963](https://github.com/nestjs/nest/pull/11963) chore(deps): update dependency @types/node to v20.3.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11895](https://github.com/nestjs/nest/pull/11895) fix(deps): update dependency mysql2 to v3.4.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11941](https://github.com/nestjs/nest/pull/11941) chore(deps): update typescript-eslint monorepo to v5.60.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11951](https://github.com/nestjs/nest/pull/11951) chore(deps): update dependency ts-jest to v29.1.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11959](https://github.com/nestjs/nest/pull/11959) chore(deps-dev): bump eslint from 8.43.0 to 8.44.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#11968](https://github.com/nestjs/nest/pull/11968) chore(deps): bump fastify from 4.19.1 to 4.19.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 8
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Kuba Szymanowski ([@KKSzymanowski](https://github.com/KKSzymanowski))
+- Mathieu Bergeron ([@mathieubergeron](https://github.com/mathieubergeron))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- Mick Lawitzke ([@MickL](https://github.com/MickL))
+- Mojtaba ([@Mojtaba-NA](https://github.com/Mojtaba-NA))
+- Subin Lee ([@kingsubin](https://github.com/kingsubin))
+- Tan Ho ([@tanhv90](https://github.com/tanhv90))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.0.0 (2023-06-15)</h2>
+      <pre>## v10.0.0 (2023-06-15)
+
+#### Article: https://trilon.io/blog/nestjs-10-is-now-available
+#### Migration guide: https://docs.nestjs.com/migration-guide
+
+⚠️  Node v12 is no longer supported (>= v16 is required).
+
+#### Bug fixes
+* `core`
+  * [#11785](https://github.com/nestjs/nest/pull/11785) fix(core): apply middleware to versioned controllers (ctrl-level) ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+  * [#11650](https://github.com/nestjs/nest/pull/11650) fix(core): global prefix exclude when versioning is turned on ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `platform-fastify`
+  * [#11718](https://github.com/nestjs/nest/pull/11718) fix(fastify): validate middleware paths ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+* `microservices`
+  * [#10549](https://github.com/nestjs/nest/pull/10549) fix(microservices): allow falsy values in options ([@Papooch](https://github.com/Papooch))
+
+#### Enhancements
+* `platform-express`
+  * [#11667](https://github.com/nestjs/nest/pull/11667) feat(express): add support for multer.none ([@mathewtrivett](https://github.com/mathewtrivett))
+* `common`, `core`, `websockets`
+  * [#10545](https://github.com/nestjs/nest/pull/10545) feat: create method on client to get websocket pattern ([@jmcdo29](https://github.com/jmcdo29))
+* `common`
+  * [#11673](https://github.com/nestjs/nest/pull/11673) fix(common): loosen http exception cause type ([@namoscato](https://github.com/namoscato))
+  * [#10953](https://github.com/nestjs/nest/pull/10953) fix(common)!: when transforming optional boolean parameters on `ValidationPipe` ([@micalevisk](https://github.com/micalevisk))
+* `core`
+  * [#9809](https://github.com/nestjs/nest/pull/9809) feat(core): middleware runs once for matching route ([@rychardvale](https://github.com/rychardvale))
+  * [#11118](https://github.com/nestjs/nest/pull/11118) feat(core): add support to named groups ([@elplancton](https://github.com/elplancton))
+  * [#11142](https://github.com/nestjs/nest/pull/11142) feat: Support async local storage in interceptors ([@nordfjord](https://github.com/nordfjord))
+* `common`, `core`
+  * [#10533](https://github.com/nestjs/nest/pull/10533) feat(core/common): Add @Search decorator to the available HTTP route handlers ([@Gustrb](https://github.com/Gustrb))
+* `microservices`
+  * [#10359](https://github.com/nestjs/nest/pull/10359) feat(microservices): enable wildcards in redis microservice patterns ([@tijsmoree](https://github.com/tijsmoree))
+* `common`, `platform-express`, `platform-fastify`
+  * [#10630](https://github.com/nestjs/nest/pull/10630) feat(common)!: narrow `getInstance` return type for http adapters ([@micalevisk](https://github.com/micalevisk))
+
+#### Dependencies
+* Other
+  * [#11793](https://github.com/nestjs/nest/pull/11793) chore(deps-dev): bump mongoose from 7.2.4 to 7.3.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11792](https://github.com/nestjs/nest/pull/11792) chore(deps-dev): bump cache-manager from 5.2.2 to 5.2.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11794](https://github.com/nestjs/nest/pull/11794) chore(deps-dev): bump ts-morph from 18.0.0 to 19.0.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11790](https://github.com/nestjs/nest/pull/11790) chore(deps): update node.js to v19.9 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11787](https://github.com/nestjs/nest/pull/11787) chore(deps): update node.js to v18.16 - autoclosed ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11788](https://github.com/nestjs/nest/pull/11788) chore(deps): update jest monorepo to v29 (major) ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11786](https://github.com/nestjs/nest/pull/11786) chore(deps): update node.js to v16.20 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11784](https://github.com/nestjs/nest/pull/11784) chore(deps): update dependency jest to v28.1.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11783](https://github.com/nestjs/nest/pull/11783) fix(deps): update graphql-tools monorepo (major) ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11782](https://github.com/nestjs/nest/pull/11782) fix(deps): update dependency ts-morph to v18 - autoclosed ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11757](https://github.com/nestjs/nest/pull/11757) chore(deps): update dependency @types/node to v18.16.18 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11780](https://github.com/nestjs/nest/pull/11780) fix(deps): update dependency mongoose to v7 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11775](https://github.com/nestjs/nest/pull/11775) fix(deps): update dependency @nestjs/mercurius to v11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11761](https://github.com/nestjs/nest/pull/11761) fix(deps): update dependency rxjs to v7.8.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11779](https://github.com/nestjs/nest/pull/11779) fix(deps): update dependency mongodb to v5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11777](https://github.com/nestjs/nest/pull/11777) fix(deps): update dependency cache-manager to v5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11776](https://github.com/nestjs/nest/pull/11776) fix(deps): update dependency @socket.io/redis-adapter to v8 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11772](https://github.com/nestjs/nest/pull/11772) chore(deps): update dependency webpack-cli to v5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11768](https://github.com/nestjs/nest/pull/11768) chore(deps-dev): bump @fastify/multipart from 7.6.0 to 7.6.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11764](https://github.com/nestjs/nest/pull/11764) fix(deps): update prisma monorepo to v4.15.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11778](https://github.com/nestjs/nest/pull/11778) fix(deps): update dependency mercurius to v13 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11774](https://github.com/nestjs/nest/pull/11774) fix(deps): update dependency @nestjs/graphql to v11.0.6 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11773](https://github.com/nestjs/nest/pull/11773) chore(deps): update jest monorepo to v29 (major) ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11771](https://github.com/nestjs/nest/pull/11771) chore(deps): update dependency typescript to v5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11740](https://github.com/nestjs/nest/pull/11740) chore(deps): update dependency ts-loader to v9.4.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11762](https://github.com/nestjs/nest/pull/11762) fix(deps): update dependency sequelize to v6.32.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11763](https://github.com/nestjs/nest/pull/11763) fix(deps): update nest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11746](https://github.com/nestjs/nest/pull/11746) chore(deps-dev): bump eslint from 7.32.0 to 8.42.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11747](https://github.com/nestjs/nest/pull/11747) chore(deps-dev): bump mongoose from 7.2.2 to 7.2.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11758](https://github.com/nestjs/nest/pull/11758) fix(deps): update dependency mysql2 to v3.3.5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11759](https://github.com/nestjs/nest/pull/11759) chore(deps): update jest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11519](https://github.com/nestjs/nest/pull/11519) chore(deps): update jest monorepo ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11742](https://github.com/nestjs/nest/pull/11742) chore(deps): bump dottie from 2.0.2 to 2.0.4 in /sample/07-sequelize ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11743](https://github.com/nestjs/nest/pull/11743) chore(deps-dev): bump sinon from 15.1.0 to 15.1.2 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11745](https://github.com/nestjs/nest/pull/11745) chore(deps-dev): bump @apollo/server from 4.7.1 to 4.7.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11756](https://github.com/nestjs/nest/pull/11756) chore(deps-dev): bump @types/node from 20.2.5 to 20.3.1 ([@dependabot[bot]](https://github.com/apps/dependabot))
+  * [#11755](https://github.com/nestjs/nest/pull/11755) fix(deps): update dependency mongoose to v6.11.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11754](https://github.com/nestjs/nest/pull/11754) fix(deps): update dependency mongodb to v3.7.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11753](https://github.com/nestjs/nest/pull/11753) fix(deps): update dependency dotenv to v16.1.4 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11752](https://github.com/nestjs/nest/pull/11752) fix(deps): update dependency @nestjs/event-emitter to v1.4.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11748](https://github.com/nestjs/nest/pull/11748) fix(deps): update apollo graphql packages ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11750](https://github.com/nestjs/nest/pull/11750) chore(deps): update dependency ts-node to v10.9.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11749](https://github.com/nestjs/nest/pull/11749) chore(deps): update dependency supertest to v6.3.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11751](https://github.com/nestjs/nest/pull/11751) chore(deps): update typescript-eslint monorepo to v5.59.11 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11741](https://github.com/nestjs/nest/pull/11741) chore(deps): update dependency webpack to v5.86.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11516](https://github.com/nestjs/nest/pull/11516) chore(deps): update dependency @types/node to v18.16.17 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11738](https://github.com/nestjs/nest/pull/11738) chore(deps): update dependency prettier to v2.8.8 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11739](https://github.com/nestjs/nest/pull/11739) chore(deps): update dependency ts-jest to v29.1.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11524](https://github.com/nestjs/nest/pull/11524) fix(deps): update dependency @nestjs/mercurius to v10.2.1 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11736](https://github.com/nestjs/nest/pull/11736) chore(deps): update dependency eslint-config-prettier to v8.8.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11723](https://github.com/nestjs/nest/pull/11723) fix(deps): update apollo graphql packages ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11734](https://github.com/nestjs/nest/pull/11734) chore(deps): update confluentinc/cp-zookeeper docker tag to v7.4.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11737](https://github.com/nestjs/nest/pull/11737) chore(deps): update dependency eslint-plugin-import to v2.27.5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11732](https://github.com/nestjs/nest/pull/11732) chore(deps): update babel monorepo to v7.22.5 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11731](https://github.com/nestjs/nest/pull/11731) fix(deps): update dependency typeorm to v0.3.16 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11735](https://github.com/nestjs/nest/pull/11735) chore(deps): update dependency @nestjs/cli to v9.5.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11730](https://github.com/nestjs/nest/pull/11730) fix(deps): update dependency socket.io to v4.6.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11733](https://github.com/nestjs/nest/pull/11733) chore(deps): update confluentinc/cp-kafka docker tag to v7.4.0 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11724](https://github.com/nestjs/nest/pull/11724) fix(deps): update dependency @fastify/static to v6.10.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11727](https://github.com/nestjs/nest/pull/11727) fix(deps): update dependency @nestjs/schedule to v2.2.3 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11729](https://github.com/nestjs/nest/pull/11729) fix(deps): update dependency graphql-tools to v8.3.20 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11728](https://github.com/nestjs/nest/pull/11728) fix(deps): update dependency @nestjs/sequelize to v9.0.2 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11726](https://github.com/nestjs/nest/pull/11726) fix(deps): update dependency @nestjs/apollo to v11.0.6 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11725](https://github.com/nestjs/nest/pull/11725) fix(deps): update dependency @grpc/grpc-js to v1.8.15 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11722](https://github.com/nestjs/nest/pull/11722) chore(deps): update mysql docker tag to v8.0.33 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11721](https://github.com/nestjs/nest/pull/11721) chore(deps): update dependency redis to v4.6.7 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11720](https://github.com/nestjs/nest/pull/11720) chore(deps): update dependency @types/express to v4.17.17 ([@renovate[bot]](https://github.com/apps/renovate))
+  * [#11695](https://github.com/nestjs/nest/pull/11695) chore(deps-dev): bump typescript from 5.0.4 to 5.1.3 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* `platform-fastify`
+  * [#11716](https://github.com/nestjs/nest/pull/11716) chore(deps): bump light-my-request from 5.9.1 to 5.10.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 17
+- Antonio Tripodi ([@Tony133](https://github.com/Tony133))
+- Autofix ([@autofix-bot](https://github.com/autofix-bot))
+- Denis Frenademetz ([@skrtheboss](https://github.com/skrtheboss))
+- Einar Norðfjörð ([@nordfjord](https://github.com/nordfjord))
+- Jay McDoniel ([@jmcdo29](https://github.com/jmcdo29))
+- Kamil Mysliwiec ([@kamilmysliwiec](https://github.com/kamilmysliwiec))
+- Mathew Trivett ([@mathewtrivett](https://github.com/mathewtrivett))
+- Maurer Krisztian ([@MaurerKrisztian](https://github.com/MaurerKrisztian))
+- Micael Levi L. Cavalcante ([@micalevisk](https://github.com/micalevisk))
+- Nick Amoscato ([@namoscato](https://github.com/namoscato))
+- Ondřej Švanda ([@Papooch](https://github.com/Papooch))
+- Pooyan Khanjankhani ([@TheKhanj](https://github.com/TheKhanj))
+- Rychard Valle ([@rychardvale](https://github.com/rychardvale))
+- Tijs Moree ([@tijsmoree](https://github.com/tijsmoree))
+- [@Gustrb](https://github.com/Gustrb)
+- [@elplancton](https://github.com/elplancton)
+- [@mohamadrezamomeni](https://github.com/mohamadrezamomeni)
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

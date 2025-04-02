@@ -1,0 +1,2363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for plausible/analytics"/>
+  <title>plausible/analytics Release Notes</title>
+</head>
+<body>
+  <h1>🚀 plausible/analytics - Release Notes</h1>
+  
+    <section>
+      <h2>v2.1.5 (2025-02-03)</h2>
+      <pre>This release focuses on enhancing email functionality, including improved error logging, the addition of plain text emails, and the removal of trial and billing-related messaging in the Community Edition.
+
+## Upgrade
+
+Update the image used for `plausible`
+
+<sub><kbd>compose.yml</kbd></sub>
+```diff
+plausible:
+- image: ghcr.io/plausible/community-edition:v2.1.4
++ image: ghcr.io/plausible/community-edition:v2.1.5
+```
+
+and restart the containers
+
+<sub><kbd>console</kbd></sub>
+```console
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.1.4...v2.1.5) have been made since v2.1.4:
+
+### Added
+
+- Add text version to emails https://github.com/plausible/analytics/pull/4674
+- Add error logging when email delivery fails https://github.com/plausible/analytics/pull/4885
+
+### Removed
+
+- Remove Plausible Cloud contacts https://github.com/plausible/analytics/pull/4766
+- Remove trial mentions https://github.com/plausible/analytics/pull/4668
+- Remove billings and upgrade tabs from settings https://github.com/plausible/analytics/pull/4897</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.5-rc.4 (2025-01-20)</h2>
+      <pre>This release focuses on enhancing email functionality, including improved error logging, the addition of plain text emails, and the removal of trial and billing-related messaging in the Community Edition.
+
+## Upgrade
+
+Update the image used for `plausible`
+
+<sub><kbd>compose.yml</kbd></sub>
+```diff
+plausible:
+- image: ghcr.io/plausible/community-edition:v2.1.4
++ image: ghcr.io/plausible/community-edition:v2.1.5-rc.4
+```
+
+and restart the containers
+
+<sub><kbd>console</kbd></sub>
+```console
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.1.4...v2.1.5-rc.4) have been made since v2.1.4:
+
+### Added
+
+- Add text version to emails https://github.com/plausible/analytics/pull/4674
+- Add error logging when email delivery fails https://github.com/plausible/analytics/pull/4885
+
+### Removed
+
+- Remove Plausible Cloud contacts https://github.com/plausible/analytics/pull/4766
+- Remove trial mentions https://github.com/plausible/analytics/pull/4668
+- Remove billings and upgrade tabs from settings https://github.com/plausible/analytics/pull/4897</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.5-rc.1 (2025-01-17)</h2>
+      <pre>This release focuses on enhancing email functionality, including improved error logging, the addition of plain text emails, and the removal of trial and billing-related messaging in the Community Edition.
+
+## Upgrade
+
+Update the image used for `plausible`
+
+<sub><kbd>compose.yml</kbd></sub>
+```diff
+plausible:
+- image: ghcr.io/plausible/community-edition:v2.1.4
++ image: ghcr.io/plausible/community-edition:v2.1.5-rc.1
+```
+
+and restart the containers
+
+<sub><kbd>console</kbd></sub>
+```console
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.1.4...v2.1.5-rc.1) have been made since v2.1.4:
+
+### Added
+
+- Add text version to emails https://github.com/plausible/analytics/pull/4674
+- Add error logging when email delivery fails https://github.com/plausible/analytics/pull/4885
+
+### Removed
+
+- Remove Plausible Cloud contacts https://github.com/plausible/analytics/pull/4766
+- Remove trial mentions https://github.com/plausible/analytics/pull/4668
+- Remove billings and upgrade tabs from settings https://github.com/plausible/analytics/pull/4897</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.4 (2024-10-09)</h2>
+      <pre>This is a patch release focused on resolving file moving [issue](https://github.com/plausible/analytics/issues/4638) with CSV export/import, alongside several other improvements to enhance the user experience.
+
+#### Upgrade
+
+Update the image used for `plausible`
+
+<sub><kbd>docker-compose.yml</kbd></sub>
+```diff
+plausible:
+- image: ghcr.io/plausible/community-edition:v2.1.3
++ image: ghcr.io/plausible/community-edition:v2.1.4
+```
+
+and restart the containers
+
+<sub><kbd>console</kbd></sub>
+```console
+$ cd hosting
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.1.3...v2.1.4) have been made since v2.1.3:
+
+### Added
+
+- Add ability to review and revoke particular logged in user sessions
+- Add ability to change password from user settings screen
+- Add error logs for background jobs plausible/analytics#4657
+
+### Changed
+
+- Revised User Settings UI
+- Default to `invite_only` for registration plausible/analytics#4616
+
+### Fixed
+
+- Fix cross-device file move in CSV exports/imports plausible/analytics#4640</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.3 (2024-09-26)</h2>
+      <pre>This release is the same as [v2.1.2](https://github.com/plausible/analytics/discussions/4618) but with cookie and filters issues resolved.
+
+#### Upgrade
+
+Update the image used for `plausible`
+
+<sub><kbd>docker-compose.yml</kbd></sub>
+```diff
+plausible:
+- image: ghcr.io/plausible/community-edition:v2.1.2
++ image: ghcr.io/plausible/community-edition:v2.1.3
+```
+
+and restart the containers
+
+<sub><kbd>console</kbd></sub>
+```console
+$ cd hosting
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.1.2...v2.1.3) have been made since v2.1.2:
+
+### Fixed
+
+- Change cookie key to resolve login issue https://github.com/plausible/analytics/pull/4621
+- Set secure attribute on cookies when BASE_URL has HTTPS scheme https://github.com/plausible/analytics/pull/4623
+- Don't track custom events in CE (fixes filters) https://github.com/plausible/analytics/pull/4627</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.2 (2024-09-25)</h2>
+      <pre>The highlights of this release are:
+
+- Automatic IPv6 support for all outgoing connections
+- Opt-in HTTPS support and Let's Encrypt integration
+- Simplified Docker Compose [configuration](https://github.com/plausible/community-edition/tree/v2.1.2)
+- Various product improvements: https://plausible.io/changelog — up until today's date :)
+
+#### Upgrade
+
+Update the image used for `plausible`
+
+<sub><kbd>docker-compose.yml</kbd></sub>
+```diff
+plausible:
+- image: ghcr.io/plausible/community-edition:v2.1.1
++ image: ghcr.io/plausible/community-edition:v2.1.2
+```
+
+and restart the containers
+
+<sub><kbd>console</kbd></sub>
+```console
+$ cd hosting
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.1.1...v2.1.2) have been made since v2.1.1:
+
+### Added
+- UI to edit goals along with display names
+- Support contains filter for goals
+- UI to edit funnels
+- Add Details views for browsers, browser versions, os-s, os versions, and screen sizes reports
+- Add a search functionality in all Details views
+- Icons for browsers plausible/analytics#4239
+- Automatic custom property selection in the dashboard Properties report
+- Add `contains_not` filter support to dashboard
+- Traffic drop notifications plausible/analytics#4300
+- Add search and pagination functionality into Google Keywords > Details modal
+- ClickHouse system.query_log table log_comment column now contains information about source of queries. Useful for debugging
+- New /debug/clickhouse route for super admins which shows information on clickhouse queries executed by user
+- Typescript support for `/assets`
+- Testing framework for `/assets`
+- Automatic HTTPS plausible/analytics#4491
+- Make details views on dashboard sortable
+
+### Removed
+- Deprecate `ECTO_IPV6` and `ECTO_CH_IPV6` env vars in CE plausible/analytics#4245
+- Remove support for importing data from no longer available Universal Analytics
+- Soft-deprecate `DATABASE_SOCKET_DIR` plausible/analytics#4202
+
+### Changed
+- Support Unix sockets in `DATABASE_URL` plausible/analytics#4202
+- Realtime and hourly graphs now show visits lasting their whole duration instead when specific events occur
+- Increase hourly request limit for API keys in CE from 600 to 1000000 (practically removing the limit) plausible/analytics#4200
+- Make TCP connections try IPv6 first with IPv4 fallback in CE plausible/analytics#4245
+- `is` and `is not` filters in dashboard no longer support wildcards. Use contains/does not contain filter instead.
+- `bounce_rate` metric now returns 0 instead of null for event:page breakdown when page has never been entry page.
+- Make `TOTP_VAULT_KEY` optional plausible/analytics#4317
+- Sources like 'google' and 'facebook' are now stored in capitalized forms ('Google', 'Facebook') plausible/analytics#4417
+- `DATABASE_CACERTFILE` now forces TLS for PostgreSQL connections, so you don't need to add `?ssl=true` in `DATABASE_URL`
+- Change auth session cookies to token-based ones with server-side expiration management.
+- Improve Google error messages in CE plausible/analytics#4485
+- Better compress static assets in CE plausible/analytics#4476
+- Return domain-less cookies in CE plausible/analytics#4482
+- Internal stats API routes now return a JSON error over HTML in case of invalid access.
+
+### Fixed
+
+- Fix access to Stats API feature in CE plausible/analytics#4244
+- Fix filter suggestions when same filter previously applied
+- Fix MX lookup when using relays with Bamboo.Mua plausible/analytics#4350
+- Don't include imports when showing time series hourly interval. Previously imported data was shown each midnight
+- Fix property filter suggestions 500 error when property hasn't been selected
+- Bamboo.Mua: add Date and Message-ID headers if missing plausible/analytics#4474
+- Fix migration order across `plausible_db` and `plausible_events_db` databases plausible/analytics#4466</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.1 (2024-06-06)</h2>
+      <pre>This is a patch release with fixes to some of the problems reported in [v2.1.0](https://github.com/plausible/analytics/discussions/4125)
+
+### Upgrading to v2.1.1
+
+> [!IMPORTANT]
+> This guide assumes you are already using [v2.1.0](https://github.com/plausible/analytics/discussions/4125)
+
+#### Update images
+
+Update the image used for `plausible`
+
+<sub><kbd>docker-compose.yml</kbd></sub>
+```diff
+plausible:
+- image: ghcr.io/plausible/community-edition:v2.1.0
++ image: ghcr.io/plausible/community-edition:v2.1.1
+```
+
+and restart the container
+
+<sub><kbd>console</kbd></sub>
+```console
+$ cd hosting
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.1.0...v2.1.1) have been made since v2.1.0:
+
+### Added
+- Snippet integration verification
+- Limited filtering support for imported data in the dashboard and via Stats API
+- Automatic sites.imported_data -> site_imports data migration in CE https://github.com/plausible/analytics/pull/4155
+
+### Fixed
+- Fix CSV import by adding a newline to the INSERT statement https://github.com/plausible/analytics/pull/4172
+- Fix url parameters escaping of = sign https://github.com/plausible/analytics/pull/4185
+- Fix redirect after registration in CE https://github.com/plausible/analytics/pull/4165
+- Fix VersionedSessions migration in ClickHouse v24 https://github.com/plausible/analytics/pull/4162
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.0 (2024-05-23)</h2>
+      <pre>The highlights of this release are:
+
+- 🎉 Introduction of Community Edition [see below]
+- ⬇️ GA4 import
+- 🔁 CSV data [export](https://plausible.io/docs/export-stats#export-all-stats-to-date) and [import](https://plausible.io/docs/csv-import) between self-hosted and cloud
+- 🔐 TOTP for 2FA [[docs]](https://plausible.io/docs/2fa)
+- ✉️ New SMTP client [see below]
+- 🔌 The new [WordPress integration](https://github.com/plausible/wordpress/releases/tag/2.0.0) now works better thanks to the Plugin API
+- 📚 Hosting documentation (now at [plausible/community-edition](https://github.com/plausible/community-edition/tree/v2.1.0)) got an update and now includes a more thorough Google integration guide
+- 📈 Sites page got a new look with spark charts 
+![Spark charts](https://github.com/plausible/analytics/assets/67764432/7d6830d2-4a5a-49e0-8ce5-05fcfa9b95a7)
+
+### Introduction of Community Edition
+
+As of version 2.1.0 this project will split into Plausible Community Edition and Plausible Enterprise Edition. The Community Edition (CE) will remain completely open source under the AGPLv3 license. The Enterprise Edition (EE) will contain extra features that will be published as source-available on Github, but we do not grant rights for anyone else to use, distribute or otherwise exploit these features. Read more [here.](https://plausible.io/blog/community-edition)
+
+As part of this change, we are also rebranding the project. The new logos for CE and EE will be different so as to clarify which version is being referred to or used at any given time.
+
+And finally as a contributor, you will have to sign a Contributor License Agreement (CLA) in order for your PRs to be considered for merging.
+
+### Upgrading to v2.1.0
+
+> [!IMPORTANT]
+> This guide assumes you are using [v2.0.0](https://github.com/plausible/analytics/discussions/3132) and have already run the data migration.
+
+#### Update config
+
+Add a secret key for the new required `TOTP_VAULT_KEY` environment variable
+
+<sub><kbd>console</kbd></sub>
+```console
+$ openssl rand -base64 32
+aihU7k+GSBKbcVFuX9VEPyUhuwlKEomqA94/SQQ0NR4=
+```
+
+<sub><kbd>plausible-conf.env</kbd></sub>
+```diff
+  BASE_URL=https://plausible.example.com
+  SECRET_KEY_BASE=PkVcxRgQDfQyhPETlog3vvCrj5LdYFSv4ejPEJHJO+i/37w6RZfRjeVCpJayjUjJMfXsNurcv5upPhTRoD3KgQ==
++ TOTP_VAULT_KEY=aihU7k+GSBKbcVFuX9VEPyUhuwlKEomqA94/SQQ0NR4=
+```
+
+This new key is used to encrypt TOTP secrets at rest.
+
+#### Update images
+
+Update the images used for `plausible` and `plausible_events_db` and remove `/entrypoint.sh db init-admin` from your [`plausible.command`](https://github.com/plausible/community-edition/blob/v2.1.0/docker-compose.yml#L28)
+
+<sub><kbd>docker-compose.yml</kbd></sub>
+```diff
+plausible:
+- image: plausible/analytics:v2.0.0
+- command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
++ image: ghcr.io/plausible/community-edition:v2.1.0
++ command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh run"
+```
+```diff
+plausible_events_db:
+- image: clickhouse/clickhouse-server:22.6-alpine
++ image: clickhouse/clickhouse-server:24.3.3.102-alpine
+```
+
+and restart the containers
+
+<sub><kbd>console</kbd></sub>
+```console
+$ cd hosting
+$ docker compose stop plausible plausible_events_db
+$ docker compose rm plausible plausible_events_db
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+### New SMTP client
+
+If you were having problems with email delivery in the previous versions you can try switching to the new SMTP client by setting `MAILER_ADAPTER` to `Bamboo.Mua`. All the `SMTP_*` environment variables can stay the same.
+
+<sub><kbd>plausible-conf.env</kbd></sub>
+```diff
+  BASE_URL=https://plausible.example.com
+  SECRET_KEY_BASE=PkVcxRgQDfQyhPETlog3vvCrj5LdYFSv4ejPEJHJO+i/37w6RZfRjeVCpJayjUjJMfXsNurcv5upPhTRoD3KgQ==
+  TOTP_VAULT_KEY=aihU7k+GSBKbcVFuX9VEPyUhuwlKEomqA94/SQQ0NR4=
+  SMTP_HOST_ADDR=smtp.gmail.com
+  SMTP_HOST_PORT=587
+  SMTP_USER_NAME=somebody@gmail.com
+  SMTP_USER_PWD="wnqj fkbn jcwc byxk"
++ MAILER_ADAPTER=Bamboo.Mua
+```
+
+In addition, [here's](https://gist.github.com/ruslandoga/c94ce526231fb77930132aaeda3fc3c9) a short guide on using your Gmail account for email delivery.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.0.0...v2.1.0) have been made since v2.0.0:
+
+### Added
+- Hostname Allow List in Site Settings
+- Pages Block List in Site Settings
+- Add `conversion_rate` to Stats API Timeseries and on the main graph
+- Add `total_conversions` and `conversion_rate` to `visitors.csv` in a goal-filtered CSV export
+- Ability to display total conversions (with a goal filter) on the main graph
+- Add `conversion_rate` to Stats API Timeseries and on the main graph
+- Add `time_on_page` metric into the Stats API
+- County Block List in Site Settings
+- Query the `views_per_visit` metric based on imported data as well if possible
+- Group `operating_system_versions` by `operating_system` in Stats API breakdown
+- Add `operating_system_versions.csv` into the CSV export
+- Display `Total visitors`, `Conversions`, and `CR` in the "Details" views of Countries, Regions and Cities (when filtering by a goal)
+- Add `conversion_rate` to Regions and Cities reports (when filtering by a goal)
+- Add the `conversion_rate` metric to Stats API Breakdown and Aggregate endpoints
+- IP Block List in Site Settings
+- Allow filtering with `contains`/`matches` operator for Sources, Browsers and Operating Systems.
+- Allow filtering by multiple custom properties
+- Wildcard and member filtering on the Stats API `event:goal` property
+- Allow filtering with `contains`/`matches` operator for custom properties
+- Add `referrers.csv` to CSV export
+- Add a new Properties section in the dashboard to break down by custom properties
+- Add `custom_props.csv` to CSV export (almost the same as the old `prop_breakdown.csv`, but has different column headers, and includes props for pageviews too, not only custom events)
+- Add `referrers.csv` to CSV export
+- Improve password validation in registration and password reset forms
+- Adds Gravatar profile image to navbar
+- Enforce email reverification on update
+- Add Plugins API Tokens provisioning UI
+- Add searching sites by domain in /sites view
+- Add last 24h plots to /sites view
+- Add site pinning to /sites view
+- Add support for JSON logger, via LOG_FORMAT=json environment variable
+- Add support for 2FA authentication
+- Add 'browser_versions.csv' to CSV export
+- Add `CLICKHOUSE_MAX_BUFFER_SIZE_BYTES` env var which defaults to `100000` (100KB)
+- Add alternative SMTP adapter plausible/analytics#3654
+- Add `EXTRA_CONFIG_PATH` env var to specify extra Elixir config plausible/analytics#3906
+- Add restrictive `robots.txt` for self-hosted plausible/analytics#3905
+- Add Yesterday as an time range option in the dashboard
+- Add dmg extension to the list of default tracked file downloads
+- Add support for importing Google Analytics 4 data
+- Import custom events from Google Analytics 4
+- Ability to filter Search Console keywords by page, country and device plausible/analytics#4077
+- Add `DATA_DIR` env var for exports/imports plausible/analytics#4100
+- Add custom events support to CSV export and import
+
+### Removed
+- Removed the nested custom event property breakdown UI when filtering by a goal in Goal Conversions
+- Removed the `prop_names` returned in the Stats API `event:goal` breakdown response
+- Removed the `prop-breakdown.csv` file from CSV export
+- Deprecated `CLICKHOUSE_MAX_BUFFER_SIZE`
+- Removed `/app/init-admin.sh` that was deprecated in v2.0.0 plausible/analytics#3903
+- Remove `DISABLE_AUTH` deprecation warning plausible/analytics#3904
+
+### Changed
+- A visits `entry_page` and `exit_page` is only set and updated for pageviews, not custom events
+- Limit the number of Goal Conversions shown on the dashboard and render a "Details" link when there are more entries to show
+- Show Outbound Links / File Downloads / 404 Pages / Cloaked Links instead of Goal Conversions when filtering by the corresponding goal
+- Require custom properties to be explicitly added from Site Settings > Custom Properties in order for them to show up on the dashboard
+- GA/SC sections moved to new settings: Integrations
+- Replace `CLICKHOUSE_MAX_BUFFER_SIZE` with `CLICKHOUSE_MAX_BUFFER_SIZE_BYTES`
+- Validate metric isn't queried multiple times
+- Filters in dashboard are represented by jsonurl
+
+### Fixed
+- Creating many sites no longer leads to cookie overflow
+- Ignore sessions without pageviews for `entry_page` and `exit_page` breakdowns
+- Using `VersionedCollapsingMergeTree` to store visit data to avoid rare race conditions that led to wrong visit data being shown
+- Fix `conversion_rate` metric in a `browser_versions` breakdown
+- Calculate `conversion_rate` percentage change in the same way like `bounce_rate` (subtraction instead of division)
+- Calculate `bounce_rate` percentage change in the Stats API in the same way as it's done in the dashboard
+- Stop returning custom events in goal breakdown with a pageview goal filter and vice versa
+- Only return `(none)` values in custom property breakdown for the first page (pagination) of results
+- Fixed weekly/monthly e-mail report [rendering issues](https://github.com/plausible/analytics/issues/284)
+- Fix [broken interval selection](https://github.com/plausible/analytics/issues/2982) in the all time view plausible/analytics#3110
+- Fixed [IPv6 problems](https://github.com/plausible/analytics/issues/3173) in data migration plausible/analytics#3179
+- Fixed [long URLs display](https://github.com/plausible/analytics/issues/3158) in Outbound Link breakdown view
+- Fixed [Sentry reports](https://github.com/plausible/analytics/discussions/3166) for ingestion requests plausible/analytics#3182
+- Fix breakdown pagination bug in the dashboard details view when filtering by goals
+- Update bot detection (matomo 6.1.4, ua_inspector 3.4.0)
+- Improved the Goal Settings page (search, autcompletion etc.)
+- Log mailer errors plausible/analytics#3336
+- Allow custom event timeseries in stats API plausible/analytics#3505
+- Fixes for sites with UTF characters in domain plausible/analytics#3560
+- Fix crash when using special characters in filter plausible/analytics#3634
+- Fix automatic scrolling to the bottom on the dashboard if previously selected properties tab plausible/analytics#3872
+- Allow running the container with arbitrary UID plausible/analytics#2986
+- Fix `width=manual` in embedded dashboards plausible/analytics#3910
+- Fix URL escaping when pipes are used in UTM tags plausible/analytics#3930</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.0-rc.1 (2024-05-08)</h2>
+      <pre>> [!WARNING]
+> The previous v2.1.0-rc.1 image had incorrect settings that disabled GA4 imports and CSV exports/imports.
+> Please re-pull the image if you don't see "Imports & Exports" section in site settings.
+
+The highlights of this release candidate are:
+
+- 🎉 Introduction of Community Edition [see below]
+- ⬇️ GA4 import
+- 🔁 CSV data [export](https://plausible.io/docs/export-stats#export-all-stats-to-date) and [import](https://plausible.io/docs/csv-import) between self-hosted and cloud
+- 🔐 TOTP for 2FA [[docs]](https://plausible.io/docs/2fa)
+- ✉️ New SMTP client [see below]
+- 🔌 The new [WordPress integration](https://github.com/plausible/wordpress/releases/tag/2.0.0) now works better thanks to the Plugin API
+- 📚 Hosting documentation (now at [plausible/community-edition](https://github.com/plausible/community-edition/tree/v2.1.0)) got an update and now includes a more thorough Google integration guide
+- 📈 Sites page got a new look with spark charts 
+![Spark charts](https://github.com/plausible/analytics/assets/67764432/7d6830d2-4a5a-49e0-8ce5-05fcfa9b95a7)
+
+### Introduction of Community Edition
+
+As of version 2.1.0 this project will split into Plausible Community Edition and Plausible Enterprise Edition. The Community Edition (CE) will remain completely open source under the AGPLv3 license. The Enterprise Edition (EE) will contain extra features that will be published as source-available on Github, but we do not grant rights for anyone else to use, distribute or otherwise exploit these features. Read more [here.](https://plausible.io/blog/community-edition)
+
+As part of this change, we are also rebranding the project. The new logos for CE and EE will be different so as to clarify which version is being referred to or used at any given time.
+
+And finally as a contributor, you will have to sign a Contributor License Agreement (CLA) in order for your PRs to be considered for merging.
+
+### Upgrading to v2.1.0-rc.1
+
+> [!IMPORTANT]
+> This guide assumes you are using [v2.0.0](https://github.com/plausible/analytics/discussions/3132)
+
+#### Update config
+
+Add a secret key for the new required `TOTP_VAULT_KEY` environment variable
+
+<sub><kbd>console</kbd></sub>
+```console
+$ openssl rand -base64 32
+aihU7k+GSBKbcVFuX9VEPyUhuwlKEomqA94/SQQ0NR4=
+```
+
+<sub><kbd>plausible-conf.env</kbd></sub>
+```diff
+  BASE_URL=https://plausible.example.com
+  SECRET_KEY_BASE=PkVcxRgQDfQyhPETlog3vvCrj5LdYFSv4ejPEJHJO+i/37w6RZfRjeVCpJayjUjJMfXsNurcv5upPhTRoD3KgQ==
++ TOTP_VAULT_KEY=aihU7k+GSBKbcVFuX9VEPyUhuwlKEomqA94/SQQ0NR4=
+```
+
+This new key is used to encrypt TOTP secrets at rest.
+
+#### Update images
+
+Update the images used for `plausible` and `plausible_events_db`
+
+<sub><kbd>docker-compose.yml</kbd></sub>
+```diff
+plausible:
+- image: plausible/analytics:v2.0.0
++ image: ghcr.io/plausible/community-edition:v2.1.0-rc.1
+```
+```diff
+plausible_events_db:
+- image: clickhouse/clickhouse-server:22.6-alpine
++ image: clickhouse/clickhouse-server:23.3.7.5-alpine
+```
+
+and restart the containers
+
+<sub><kbd>console</kbd></sub>
+```console
+$ cd hosting
+$ docker compose stop plausible plausible_events_db
+$ docker compose rm plausible plausible_events_db
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+### New SMTP client
+
+If you were having problems with email delivery in [v2.1.0-rc.0,](https://github.com/plausible/analytics/discussions/3817) you can switch to the new SMTP client by setting `MAILER_ADAPTER` to `Bamboo.Mua`. All the `SMTP_*` environment variables can stay the same.
+
+<sub><kbd>plausible-conf.env</kbd></sub>
+```diff
+  BASE_URL=https://plausible.example.com
+  SECRET_KEY_BASE=PkVcxRgQDfQyhPETlog3vvCrj5LdYFSv4ejPEJHJO+i/37w6RZfRjeVCpJayjUjJMfXsNurcv5upPhTRoD3KgQ==
+  TOTP_VAULT_KEY=aihU7k+GSBKbcVFuX9VEPyUhuwlKEomqA94/SQQ0NR4=
+  SMTP_HOST_ADDR=smtp.gmail.com
+  SMTP_HOST_PORT=587
+  SMTP_USER_NAME=somebody@gmail.com
+  SMTP_USER_PWD="wnqj fkbn jcwc byxk"
++ MAILER_ADAPTER=Bamboo.Mua
+```
+
+In addition, [here's](https://gist.github.com/ruslandoga/c94ce526231fb77930132aaeda3fc3c9) a short guide on using your Gmail account for email delivery.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.0.0...v2.1.0-rc.1) have been made since v2.0.0:
+
+### Added
+- Hostname Allow List in Site Settings
+- Pages Block List in Site Settings
+- Add `conversion_rate` to Stats API Timeseries and on the main graph
+- Add `total_conversions` and `conversion_rate` to `visitors.csv` in a goal-filtered CSV export
+- Ability to display total conversions (with a goal filter) on the main graph
+- Add `conversion_rate` to Stats API Timeseries and on the main graph
+- Add `time_on_page` metric into the Stats API
+- County Block List in Site Settings
+- Query the `views_per_visit` metric based on imported data as well if possible
+- Group `operating_system_versions` by `operating_system` in Stats API breakdown
+- Add `operating_system_versions.csv` into the CSV export
+- Display `Total visitors`, `Conversions`, and `CR` in the "Details" views of Countries, Regions and Cities (when filtering by a goal)
+- Add `conversion_rate` to Regions and Cities reports (when filtering by a goal)
+- Add the `conversion_rate` metric to Stats API Breakdown and Aggregate endpoints
+- IP Block List in Site Settings
+- Allow filtering with `contains`/`matches` operator for Sources, Browsers and Operating Systems.
+- Allow filtering by multiple custom properties
+- Wildcard and member filtering on the Stats API `event:goal` property
+- Allow filtering with `contains`/`matches` operator for custom properties
+- Add `referrers.csv` to CSV export
+- Add a new Properties section in the dashboard to break down by custom properties
+- Add `custom_props.csv` to CSV export (almost the same as the old `prop_breakdown.csv`, but has different column headers, and includes props for pageviews too, not only custom events)
+- Add `referrers.csv` to CSV export
+- Improve password validation in registration and password reset forms
+- Adds Gravatar profile image to navbar
+- Enforce email reverification on update
+- Add Plugins API Tokens provisioning UI
+- Add searching sites by domain in /sites view
+- Add last 24h plots to /sites view
+- Add site pinning to /sites view
+- Add support for JSON logger, via LOG_FORMAT=json environment variable
+- Add support for 2FA authentication
+- Add 'browser_versions.csv' to CSV export
+- Add `CLICKHOUSE_MAX_BUFFER_SIZE_BYTES` env var which defaults to `100000` (100KB)
+- Add alternative SMTP adapter plausible/analytics#3654
+- Add `EXTRA_CONFIG_PATH` env var to specify extra Elixir config plausible/analytics#3906
+- Add restrictive `robots.txt` for self-hosted plausible/analytics#3905
+- Add Yesterday as an time range option in the dashboard
+
+### Removed
+- Removed the nested custom event property breakdown UI when filtering by a goal in Goal Conversions
+- Removed the `prop_names` returned in the Stats API `event:goal` breakdown response
+- Removed the `prop-breakdown.csv` file from CSV export
+- Deprecated `CLICKHOUSE_MAX_BUFFER_SIZE`
+- Removed `/app/init-admin.sh` that was deprecated in v2.0.0 plausible/analytics#3903
+- Remove `DISABLE_AUTH` deprecation warning plausible/analytics#3904
+
+### Changed
+- A visits `entry_page` and `exit_page` is only set and updated for pageviews, not custom events
+- Limit the number of Goal Conversions shown on the dashboard and render a "Details" link when there are more entries to show
+- Show Outbound Links / File Downloads / 404 Pages / Cloaked Links instead of Goal Conversions when filtering by the corresponding goal
+- Require custom properties to be explicitly added from Site Settings > Custom Properties in order for them to show up on the dashboard
+- GA/SC sections moved to new settings: Integrations
+- Replace `CLICKHOUSE_MAX_BUFFER_SIZE` with `CLICKHOUSE_MAX_BUFFER_SIZE_BYTES`
+- Validate metric isn't queried multiple times
+
+### Fixed
+- Creating many sites no longer leads to cookie overflow
+- Ignore sessions without pageviews for `entry_page` and `exit_page` breakdowns
+- Using `VersionedCollapsingMergeTree` to store visit data to avoid rare race conditions that led to wrong visit data being shown
+- Fix `conversion_rate` metric in a `browser_versions` breakdown
+- Calculate `conversion_rate` percentage change in the same way like `bounce_rate` (subtraction instead of division)
+- Calculate `bounce_rate` percentage change in the Stats API in the same way as it's done in the dashboard
+- Stop returning custom events in goal breakdown with a pageview goal filter and vice versa
+- Only return `(none)` values in custom property breakdown for the first page (pagination) of results
+- Fixed weekly/monthly e-mail report [rendering issues](https://github.com/plausible/analytics/issues/284)
+- Fix [broken interval selection](https://github.com/plausible/analytics/issues/2982) in the all time view plausible/analytics#3110
+- Fixed [IPv6 problems](https://github.com/plausible/analytics/issues/3173) in data migration plausible/analytics#3179
+- Fixed [long URLs display](https://github.com/plausible/analytics/issues/3158) in Outbound Link breakdown view
+- Fixed [Sentry reports](https://github.com/plausible/analytics/discussions/3166) for ingestion requests plausible/analytics#3182
+- Fix breakdown pagination bug in the dashboard details view when filtering by goals
+- Update bot detection (matomo 6.1.4, ua_inspector 3.4.0)
+- Improved the Goal Settings page (search, autcompletion etc.)
+- Log mailer errors plausible/analytics#3336
+- Allow custom event timeseries in stats API plausible/analytics#3505
+- Fixes for sites with UTF characters in domain plausible/analytics#3560
+- Fix crash when using special characters in filter plausible/analytics#3634
+- Fix automatic scrolling to the bottom on the dashboard if previously selected properties tab plausible/analytics#3872
+- Allow running the container with arbitrary UID plausible/analytics#2986
+- Fix `width=manual` in embedded dashboards plausible/analytics#3910
+- Fix URL escaping when pipes are used in UTM tags plausible/analytics#3930</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.0-rc.0 (2024-02-23)</h2>
+      <pre>The highlights of this release candidate are:
+
+- Introduction of Community Edition [[see below]](#introduction-of-community-edition)
+- TOTP for 2FA [[docs]](https://plausible.io/docs/2fa)
+- Sites page got a new look with spark charts
+![Screenshot 2024-02-23 at 21 03 24](https://github.com/plausible/analytics/assets/67764432/56ab2e57-a501-469b-b5f6-2a3b4ba906e8)
+- The new [WordPress integration](https://github.com/plausible/wordpress/releases/tag/2.0.0) now works better thanks to the Plugin API
+- Hosting documentation (now at [plausible/community-edition](https://github.com/plausible/community-edition/tree/v2.1.0)) also got an update and now includes a more thorough Google integration guide
+- Even though not present in this release candidate, importing the data between self-hosted and cloud will be available in v2.1.0
+
+### Introduction of Community Edition
+
+As of version 2.1.0 this project will split into Plausible Community Edition and Plausible Enterprise Edition. The Community Edition (CE) will remain completely open source under the AGPLv3 license. The Enterprise Edition (EE) will contain extra features that will be published as source-available on Github, but we do not grant rights for anyone else to use, distribute or otherwise exploit these features. Read more [here.](https://plausible.io/blog/community-edition)
+
+As part of this change, we are also rebranding the project. The new logos for CE and EE will be different so as to clarify which version is being referred to or used at any given time.
+
+And finally as a contributor, you will have to sign a Contributor License Agreement (CLA) in order for you PRs to be considered for merging.
+
+### Upgrading to v2.1.0-rc.0
+
+⚠️ ***This guide assumes you are using [v2.0.0](https://github.com/plausible/analytics/discussions/3132)*** ⚠️
+
+#### Update config
+
+Add a secret key for the new required `TOTP_VAULT_KEY` environment variable
+
+<sub><kbd>console</kbd></sub>
+```console
+$ openssl rand -base64 32
+aihU7k+GSBKbcVFuX9VEPyUhuwlKEomqA94/SQQ0NR4=
+```
+
+<sub><kbd>plausible-conf.env</kbd></sub>
+```diff
+  BASE_URL=https://plausible.example.com
+  SECRET_KEY_BASE=PkVcxRgQDfQyhPETlog3vvCrj5LdYFSv4ejPEJHJO+i/37w6RZfRjeVCpJayjUjJMfXsNurcv5upPhTRoD3KgQ==
++ TOTP_VAULT_KEY=aihU7k+GSBKbcVFuX9VEPyUhuwlKEomqA94/SQQ0NR4=
+```
+
+This new key is used to encrypt TOTP secrets at rest.
+
+#### Update images
+
+Update the images used for `plausible` and `plausible_events_db` (thank you @lordcris https://github.com/plausible/analytics/discussions/3817#discussioncomment-8569053)
+
+<sub><kbd>docker-compose.yml</kbd></sub>
+```diff
+plausible:
+- image: plausible/analytics:v2.0.0
++ image: ghcr.io/plausible/community-edition:v2.1.0-rc.0
+```
+```diff
+plausible_events_db:
+- image: clickhouse/clickhouse-server:22.6-alpine
++ image: clickhouse/clickhouse-server:23.3.7.5-alpine
+```
+
+and restart the containers
+
+<sub><kbd>console</kbd></sub>
+```console
+$ cd hosting
+$ docker compose stop plausible plausible_events_db
+$ docker compose rm plausible plausible_events_db
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v2.0.0...v2.1.0-rc.0) have been made since v2.0.0:
+
+### Added
+- IP Block List in Site Settings
+- Allow filtering with `contains`/`matches` operator for Sources, Browsers and Operating Systems.
+- Allow filtering by multiple custom properties
+- Wildcard and member filtering on the Stats API `event:goal` property
+- Allow filtering with `contains`/`matches` operator for custom properties
+- Add `referrers.csv` to CSV export
+- Add a new Properties section in the dashboard to break down by custom properties
+- Add `custom_props.csv` to CSV export (almost the same as the old `prop_breakdown.csv`, but has different column headers, and includes props for pageviews too, not only custom events)
+- Add `referrers.csv` to CSV export
+- Improve password validation in registration and password reset forms
+- Adds Gravatar profile image to navbar
+- Enforce email reverification on update
+- Add Plugins API Tokens provisioning UI
+- Add searching sites by domain in /sites view
+- Add last 24h plots to /sites view
+- Add site pinning to /sites view
+- Add support for JSON logger, via LOG_FORMAT=json environment variable
+- Add support for 2FA authentication
+- Add 'browser_versions.csv' to CSV export
+- Add `CLICKHOUSE_MAX_BUFFER_SIZE_BYTES` env var which defaults to `100000` (100KB)
+
+### Removed
+- Removed the nested custom event property breakdown UI when filtering by a goal in Goal Conversions
+- Removed the `prop_names` returned in the Stats API `event:goal` breakdown response
+- Removed the `prop-breakdown.csv` file from CSV export
+- Deprecated `CLICKHOUSE_MAX_BUFFER_SIZE`
+
+### Changed
+- Limit the number of Goal Conversions shown on the dashboard and render a "Details" link when there are more entries to show
+- Show Outbound Links / File Downloads / 404 Pages / Cloaked Links instead of Goal Conversions when filtering by the corresponding goal
+- Require custom properties to be explicitly added from Site Settings > Custom Properties in order for them to show up on the dashboard
+- GA/SC sections moved to new settings: Integrations
+- Replace `CLICKHOUSE_MAX_BUFFER_SIZE` with `CLICKHOUSE_MAX_BUFFER_SIZE_BYTES`
+
+### Fixed
+- Stop returning custom events in goal breakdown with a pageview goal filter and vice versa
+- Only return `(none)` values in custom property breakdown for the first page (pagination) of results
+- Fixed weekly/monthly e-mail report [rendering issues](https://github.com/plausible/analytics/issues/284)
+- Fix [broken interval selection](https://github.com/plausible/analytics/issues/2982) in the all time view plausible/analytics#3110
+- Fixed [IPv6 problems](https://github.com/plausible/analytics/issues/3173) in data migration plausible/analytics#3179
+- Fixed [long URLs display](https://github.com/plausible/analytics/issues/3158) in Outbound Link breakdown view
+- Fixed [Sentry reports](https://github.com/plausible/analytics/discussions/3166) for ingestion requests plausible/analytics#3182
+- Fix breakdown pagination bug in the dashboard details view when filtering by goals
+- Update bot detection (matomo 6.1.4, ua_inspector 3.4.0)
+- Improved the Goal Settings page (search, autcompletion etc.)
+- Log mailer errors plausible/analytics#3336
+- Allow custom event timeseries in stats API plausible/analytics#3505
+- Fixes for sites with UTF characters in domain plausible/analytics#3560
+- Fix crash when using special characters in filter plausible/analytics#3634</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.0 (2023-07-12)</h2>
+      <pre>The highlights of this release are:
+
+- more visitor metrics like total visits and views per visit
+- period comparisons [[docs]](https://plausible.io/docs/guided-tour#compare-your-stats-over-time) [[example]](https://plausible.io/plausible.io?comparison=previous_period)
+- ability to change domains names https://github.com/plausible/analytics/pull/2803
+- automatic geolocation database downloads  plausible/analytics#2362
+- more email adapters support (Mailgun, Mandrill, SendGrid) plausible/analytics#2649
+
+### Upgrading Plausible Analytics to v2.0
+
+>  [!WARNING]
+> 
+> This guide assumes you are running v1.5.1.
+> If you are upgrading from an earlier version, you might encounter the error reported (and resolved) in https://github.com/plausible/analytics/issues/4779
+
+>  [!WARNING]
+> 
+> Upgrading to `v2.0` requires performing a data migration.
+> Please read these notes until the end before deploying `v2.0.0`
+
+#### Ensure you are using a new ClickHouse version
+
+The steps below have been tested with [`clickhouse/clickhouse-server:22.6-alpine`](https://github.com/plausible/hosting/blob/3e1462eabd510cc9320a6cfed0ae45355d86bb05/docker-compose.yml#L16-L26) please make sure to upgrade ClickHouse to at least this version.
+
+<details>
+<summary>Here's the excerpt from <a href="https://github.com/plausible/analytics/discussions/2507"><code>v1.5 release discussion</code></a> regarding the ClickHouse upgrade</summary>
+
+---
+
+In your docker-compose.yml update the image used for plausible_events_db to a newer ClickHouse version:
+
+### Upgrading ClickHouse to 22.6
+
+```diff
+plausible_events_db:
+- image: yandex/clickhouse-server:21.3.2.5
++ image: clickhouse/clickhouse-server:22.6-alpine
+```
+
+#### Restart the container
+
+```console
+$ docker compose stop plausible plausible_events_db
+$ docker compose rm plausible_events_db
+$ docker compose up -d
+```
+
+This will boot up the new version of ClickHouse.
+
+Related PR: https://github.com/plausible/hosting/pull/45
+
+---
+
+</details>
+
+#### Update image tag
+
+In your `docker-compose.yml` update the image used for `plausible` to `v2.0.0`
+
+```diff
+plausible:
+- image: plausible/analytics:v1.5.1
++ image: plausible/analytics:v2.0.0
+```
+
+and restart the container
+
+```console
+$ cd hosting
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+If you open the dashboards now, you wouldn't see any past metrics. This is expected as `v2.0` uses the new `events_v2` and `sessions_v2` tables to store analytics data. We need to perform data migration to copy the data into the new tables.
+
+#### Run data migration
+
+> ⚠️ ⚠️ ⚠️
+> 
+> You need enough free disk space available for x2 of the current `plausible_events_db`'s `event-data` volume size. You can use something like `docker system df -v | grep hosting_event-data` to check how much space the current volume is occupying.
+
+Connect to the running `plausible` container and start the migration flow
+
+```console
+$ cd hosting
+$ docker compose exec plausible bin/plausible rpc Plausible.DataMigration.NumericIDs.run
+```
+
+You can attempt this migration multiple times unless you drop `v1` tables.
+
+#### Drop v1 tables (optional)
+
+Once you **verify** the migration went **well,** the old tables can be dropped. It's easiest to use `clickhouse-client` for this
+
+```console
+$ ch hosting
+$ docker compose exec plausible_events_db clickhouse-client
+```
+```sql
+:) \c plausible_events_db
+:) show tables;
+:) drop table events;
+:) drop table sessions;
+```
+
+See https://clickhouse.com/docs/en/operations/server-configuration-parameters/settings#max-table-size-to-drop for how to drop tables with more than 50GB of data.
+
+#### Enable automatic MaxMind GeoLite2 updates (optional)
+
+In your `plausible-config.env` set [`MAXMIND_LICENSE_KEY`](https://www.maxmind.com/en/accounts/current/license-key) environment variable and get an automatically updated [GeoLite2 City](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) geolocation database. The database edition is configurable with `MAXMIND_EDITION` environment variable and defaults to `GeoLite2-City`.
+
+```diff
+- IP_GEOLOCATION_DB=...
++ MAXMIND_LICENSE_KEY=LNpsJCCKPis6XvBP
++ MAXMIND_EDITION=GeoLite2-City
+```
+
+Note that for the changes in `plausible-config.env` to propagate to the `plausible`, the container needs to be recreated:
+
+```console
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+Also note that using `GeoLite2-City` edition requires more RAM than using `GeoLite2-Country`.
+
+Now you can remove any other volumes and services used to download, store, and update geolocation databases.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v1.5.1...v2.0.0) have been made since v1.5:
+
+### Added
+- Add support for `with_imported=true` in Stats API aggregate endpoint
+- Ability to use '--' instead of '=' sign in the `tagged-events` classnames
+- 'Last updated X seconds ago' info to 'current visitors' tooltips
+- Add support for more Bamboo adapters, i.e. `Bamboo.MailgunAdapter`, `Bamboo.MandrillAdapter`, `Bamboo.SendGridAdapter` plausible/analytics#2649
+- Ability to change domain for existing site (requires numeric IDs data migration, instructions will be provided separately) UI + API (`PUT /api/v1/sites`)
+- Add `LOG_FAILED_LOGIN_ATTEMPTS` environment variable to enable failed login attempts logs plausible/analytics#2936
+- Add `MAILER_NAME` environment variable support plausible/analytics#2937
+- Add `MAILGUN_BASE_URI` support for `Bamboo.MailgunAdapter` plausible/analytics#2935
+- Add a landing page for self-hosters plausible/analytics#2989
+- Allow optional IPv6 for clickhouse repo plausible/analytics#2970
+
+### Fixed
+- Fix tracker bug - call callback function even when event is ignored
+- Make goal-filtered CSV export return only unique_conversions timeseries in the 'visitors.csv' file
+- Stop treating page filter as an entry page filter
+- City report showing N/A instead of city names with imported data plausible/analytics#2675
+- Empty values for Screen Size, OS and Browser are uniformly replaced with "(not set)"
+- Fix [more pageviews with session prop filter than with no filters](https://github.com/plausible/analytics/issues/1666)
+- Cascade delete sent_renewal_notifications table when user is deleted plausible/analytics#2549
+- Show appropriate top-stat metric labels on the realtime dashboard when filtering by a goal
+- Fix breakdown API pagination when using event metrics plausible/analytics#2562
+- Automatically update all visible dashboard reports in the realtime view
+- Connect via TLS when using HTTPS scheme in ClickHouse URL plausible/analytics#2570
+- Add error message in case a transfer to an invited (but not joined) user is requested plausible/analytics#2651
+- Fix bug with [showing property breakdown with a prop filter](https://github.com/plausible/analytics/issues/1789)
+- Fix bug when combining goal and prop filters plausible/analytics#2654
+- Fix broken favicons when domain includes a slash
+- Fix bug when using multiple [wildcard goal filters](https://github.com/plausible/analytics/pull/3015)
+- Fix a bug where realtime would fail with imported data
+- Fix a bug where the country name was not shown when [filtering through the map](https://github.com/plausible/analytics/issues/3086)
+
+### Changed
+- Treat page filter as entry page filter for `bounce_rate`
+- Reject events with long URIs and data URIs plausible/analytics#2536
+- Always show direct traffic in sources reports plausible/analytics#2531
+- Stop recording XX and T1 country codes plausible/analytics#2556
+- Device type is now determined from the User-Agent instead of window.innerWidth plausible/analytics#2711
+- Add padding by default to embedded dashboards so that shadows are not cut off plausible/analytics#2744
+- Update the User Agents database (https://github.com/matomo-org/device-detector/releases/tag/6.1.1)
+- Disable registration in self-hosted setups by default plausible/analytics#3014
+
+### Removed
+- Remove Firewall plug and `IP_BLOCKLIST` environment variable
+- Remove the ability to collapse the main graph plausible/analytics#2627
+- Remove `custom_dimension_filter` feature flag plausible/analytics#2996</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.0-rc.2 (2023-06-08)</h2>
+      <pre>The highlights of this release are:
+
+- more visitor metrics like total visits and views per visit
+- period comparisons [[docs]](https://plausible.io/docs/guided-tour#compare-your-stats-over-time) [[example]](https://plausible.io/plausible.io?comparison=previous_period)
+- ability to change domains names https://github.com/plausible/analytics/pull/2803
+- automatic geolocation database downloads  plausible/analytics#2362
+- more email adapters support (Mailgun, Mandrill, SendGrid) plausible/analytics#2649
+
+### Upgrading Plausible Analytics to v2.0
+
+>  ⚠️ ⚠️ ⚠️
+> 
+> Upgrading to `v2.0` requires performing a data migration.
+> Please read these notes until the end before deploying `v2.0.0-rc.2`
+
+#### Ensure you are using a new ClickHouse version
+
+The steps below have been tested with [`clickhouse/clickhouse-server:22.6-alpine`](https://github.com/plausible/hosting/blob/3e1462eabd510cc9320a6cfed0ae45355d86bb05/docker-compose.yml#L16-L26) please make sure to upgrade ClickHouse to at least this version.
+
+<details>
+<summary>Here's the excerpt from <a href="https://github.com/plausible/analytics/discussions/2507"><code>v1.5 release discussion</code></a> regarding the ClickHouse upgrade</summary>
+
+---
+
+In your docker-compose.yml update the image used for plausible_events_db to a newer ClickHouse version:
+
+### Upgrading ClickHouse to 22.6
+
+```diff
+plausible_events_db:
+- image: yandex/clickhouse-server:21.3.2.5
++ image: clickhouse/clickhouse-server:22.6-alpine
+```
+
+#### Restart the container
+
+```console
+$ docker compose stop plausible plausible_events_db
+$ docker compose rm plausible_events_db
+$ docker compose up -d
+```
+
+This will boot up the new version of ClickHouse.
+
+Related PR: https://github.com/plausible/hosting/pull/45
+
+---
+
+</details>
+
+#### Update image tag
+
+In your `docker-compose.yml` update the image used for `plausible` to `v2.0.0-rc.2`
+
+```diff
+plausible:
+- image: plausible/analytics:v1.5.1
++ image: plausible/analytics:v2.0.0-rc.2
+```
+
+and restart the container
+
+```console
+$ cd hosting
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+If you open the dashboards now, you wouldn't see any past metrics. This is expected as `v2.0` uses the new `events_v2` and `sessions_v2` tables to store analytics data. We need to perform data migration to copy the data into the new tables.
+
+#### Run data migration
+
+> ⚠️ ⚠️ ⚠️
+> 
+> You need enough free disk space available for x2 of the current `plausible_events_db`'s `event-data` volume size. You can use something like `docker system df -v | grep hosting_event-data` to check how much space the current volume is occupying.
+
+Connect to the running `plausible` container and start the migration flow
+
+```console
+$ cd hosting
+$ docker compose exec plausible bin/plausible rpc Plausible.DataMigration.NumericIDs.run
+```
+
+You can attempt this migration multiple times unless you drop `v1` tables.
+
+#### Drop v1 tables (optional)
+
+Once you **verify** the migration went **well,** the old tables can be dropped. It's easiest to use `clickhouse-client` for this
+
+```console
+$ ch hosting
+$ docker compose exec plausible_events_db clickhouse-client
+```
+```sql
+:) \c plausible_events_db
+:) show tables;
+:) drop table events;
+:) drop table sessions;
+```
+
+See https://clickhouse.com/docs/en/operations/server-configuration-parameters/settings#max-table-size-to-drop for how to drop tables with more than 50GB of data.
+
+#### Enable automatic MaxMind GeoLite2 updates (optional)
+
+In your `plausible-config.env` set [`MAXMIND_LICENSE_KEY`](https://www.maxmind.com/en/accounts/current/license-key) environment variable and get an automatically updated [GeoLite2 City](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) geolocation database. The database edition is configurable with `MAXMIND_EDITION` environment variable and defaults to `GeoLite2-City`.
+
+```diff
+- IP_GEOLOCATION_DB=...
++ MAXMIND_LICENSE_KEY=LNpsJCCKPis6XvBP
++ MAXMIND_EDITION=GeoLite2-City
+```
+
+Note that for the changes in `plausible-config.env` to propagate to the `plausible`, the container needs to be recreated:
+
+```console
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+Also note that using `GeoLite2-City` edition requires more RAM than using `GeoLite2-Country`.
+
+Now you can remove any other volumes and services used to download, store, and update geolocation databases.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v1.5.1...v2.0.0-rc.2) have been made since v1.5:
+
+### Added
+- Add support for `with_imported=true` in Stats API aggregate endpoint
+- Ability to use '--' instead of '=' sign in the `tagged-events` classnames
+- 'Last updated X seconds ago' info to 'current visitors' tooltips
+- Add support for more Bamboo adapters, i.e. `Bamboo.MailgunAdapter`, `Bamboo.MandrillAdapter`, `Bamboo.SendGridAdapter` plausible/analytics#2649
+- Ability to change domain for existing site (requires numeric IDs data migration, instructions will be provided separately) UI + API (`PUT /api/v1/sites`)
+- Add `LOG_FAILED_LOGIN_ATTEMPTS` environment variable to enable failed login attempts logs plausible/analytics#2936
+- Add `MAILER_NAME` environment variable support plausible/analytics#2937
+- Add `MAILGUN_BASE_URI` support for `Bamboo.MailgunAdapter` plausible/analytics#2935
+- Add a landing page for self-hosters plausible/analytics#2989
+
+### Fixed
+- Fix tracker bug - call callback function even when event is ignored
+- Make goal-filtered CSV export return only unique_conversions timeseries in the 'visitors.csv' file
+- Stop treating page filter as an entry page filter
+- City report showing N/A instead of city names with imported data plausible/analytics#2675
+- Empty values for Screen Size, OS and Browser are uniformly replaced with "(not set)"
+- Fix [more pageviews with session prop filter than with no filters](https://github.com/plausible/analytics/issues/1666)
+- Cascade delete sent_renewal_notifications table when user is deleted plausible/analytics#2549
+- Show appropriate top-stat metric labels on the realtime dashboard when filtering by a goal
+- Fix breakdown API pagination when using event metrics plausible/analytics#2562
+- Automatically update all visible dashboard reports in the realtime view
+- Connect via TLS when using HTTPS scheme in ClickHouse URL plausible/analytics#2570
+- Add error message in case a transfer to an invited (but not joined) user is requested plausible/analytics#2651
+- Fix bug with [showing property breakdown with a prop filter](https://github.com/plausible/analytics/issues/1789)
+- Fix bug when combining goal and prop filters plausible/analytics#2654
+- Fix broken favicons when domain includes a slash
+
+### Changed
+- Treat page filter as entry page filter for `bounce_rate`
+- Reject events with long URIs and data URIs plausible/analytics#2536
+- Always show direct traffic in sources reports plausible/analytics#2531
+- Stop recording XX and T1 country codes plausible/analytics#2556
+- Device type is now determined from the User-Agent instead of window.innerWidth plausible/analytics#2711
+- Add padding by default to embedded dashboards so that shadows are not cut off plausible/analytics#2744
+- Update the User Agents database (https://github.com/matomo-org/device-detector/releases/tag/6.1.1)
+
+### Removed
+- Remove Firewall plug and `IP_BLOCKLIST` environment variable
+- Remove the ability to collapse the main graph plausible/analytics#2627
+- Remove `custom_dimension_filter` feature flag plausible/analytics#2996</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.0-rc.1 (2023-05-26)</h2>
+      <pre>The highlights of this release are:
+
+- more visitor metrics like total visits and views per visit
+- period comparisons [[docs]](https://plausible.io/docs/guided-tour#compare-your-stats-over-time) [[example]](https://plausible.io/plausible.io?comparison=previous_period)
+- ability to change domains names https://github.com/plausible/analytics/pull/2803
+- automatic geolocation database downloads  plausible/analytics#2362
+- more email adapters support (Mailgun, Mandrill, SendGrid) plausible/analytics#2649
+
+### Upgrading Plausible Analytics to v2.0
+
+>  ⚠️ ⚠️ ⚠️
+> 
+> Upgrading to `v2.0` requires performing a data migration.
+> Please read these notes until the end before deploying `v2.0.0-rc.1`
+
+#### Ensure you are using a new ClickHouse version
+
+The steps below have been tested with [`clickhouse/clickhouse-server:22.6-alpine`](https://github.com/plausible/hosting/blob/3e1462eabd510cc9320a6cfed0ae45355d86bb05/docker-compose.yml#L16-L26) please make sure to upgrade ClickHouse to at least this version.
+
+<details>
+<summary>Here's the excerpt from <a href="https://github.com/plausible/analytics/discussions/2507"><code>v1.5 release discussion</code></a> regarding the ClickHouse upgrade</summary>
+
+---
+
+In your docker-compose.yml update the image used for plausible_events_db to a newer ClickHouse version:
+
+### Upgrading ClickHouse to 22.6
+
+```diff
+plausible_events_db:
+- image: yandex/clickhouse-server:21.3.2.5
++ image: clickhouse/clickhouse-server:22.6-alpine
+```
+
+#### Restart the container
+
+```console
+$ docker compose stop plausible plausible_events_db
+$ docker compose rm plausible_events_db
+$ docker compose up -d
+```
+
+This will boot up the new version of ClickHouse.
+
+Related PR: https://github.com/plausible/hosting/pull/45
+
+---
+
+</details>
+
+#### Update image tag
+
+In your `docker-compose.yml` update the image used for `plausible` to `v2.0.0-rc.1`
+
+```diff
+plausible:
+- image: plausible/analytics:v1.5.1
++ image: plausible/analytics:v2.0.0-rc.1
+```
+
+and restart the container
+
+```console
+$ cd hosting
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+If you open the dashboards now, you wouldn't see any past metrics. This is expected as `v2.0` uses the new `events_v2` and `sessions_v2` tables to store analytics data. We need to perform data migration to copy the data into the new tables.
+
+#### Run data migration
+
+> ⚠️ ⚠️ ⚠️
+> 
+> You need enough free disk space available for x2 of the current `plausible_events_db`'s `event-data` volume size. You can use something like `docker system df -v | grep hosting_event-data` to check how much space the current volume is occupying.
+
+Connect to the running `plausible` container and start the migration flow
+
+```console
+$ cd hosting
+$ docker compose exec plausible bin/plausible rpc Plausible.DataMigration.NumericIDs.run
+```
+
+You can attempt this migration multiple times unless you drop `v1` tables.
+
+#### Drop v1 tables (optional)
+
+Once you **verify** the migration went **well,** the old tables can be dropped. It's easiest to use `clickhouse-client` for this
+
+```console
+$ ch hosting
+$ docker compose exec plausible_events_db clickhouse-client
+```
+```sql
+:) \c plausible_events_db
+:) show tables;
+:) drop table events;
+:) drop table sessions;
+```
+
+See https://clickhouse.com/docs/en/operations/server-configuration-parameters/settings#max-table-size-to-drop for how to drop tables with more than 50GB of data.
+
+#### Enable automatic MaxMind GeoLite2 updates (optional)
+
+In your `plausible-config.env` set [`MAXMIND_LICENSE_KEY`](https://www.maxmind.com/en/accounts/current/license-key) environment variable and get an automatically updated [GeoLite2 City](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) geolocation database. The database edition is configurable with `MAXMIND_EDITION` environment variable and defaults to `GeoLite2-City`.
+
+```diff
+- IP_GEOLOCATION_DB=...
++ MAXMIND_LICENSE_KEY=LNpsJCCKPis6XvBP
++ MAXMIND_EDITION=GeoLite2-City
+```
+
+Note that for the changes in `plausible-config.env` to propagate to the `plausible`, the container needs to be recreated:
+
+```console
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+Also note that using `GeoLite2-City` edition requires more RAM than using `GeoLite2-Country`.
+
+Now you can remove any other volumes and services used to download, store, and update geolocation databases.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v1.5.1...v2.0.0-rc.1) have been made since v1.5:
+
+### Added
+- Add support for `with_imported=true` in Stats API aggregate endpoint
+- Ability to use '--' instead of '=' sign in the `tagged-events` classnames
+- 'Last updated X seconds ago' info to 'current visitors' tooltips
+- Add support for more Bamboo adapters, i.e. `Bamboo.MailgunAdapter`, `Bamboo.MandrillAdapter`, `Bamboo.SendGridAdapter` plausible/analytics#2649
+- Ability to change domain for existing site (requires numeric IDs data migration, instructions will be provided separately) UI + API (`PUT /api/v1/sites`)
+- Add `LOG_FAILED_LOGIN_ATTEMPTS` environment variable to enable failed login attempts logs plausible/analytics#2936
+- Add `MAILER_NAME` environment variable support plausible/analytics#2937
+- Add `MAILGUN_BASE_URI` support for `Bamboo.MailgunAdapter` plausible/analytics#2935 
+
+### Fixed
+- Fix tracker bug - call callback function even when event is ignored
+- Make goal-filtered CSV export return only unique_conversions timeseries in the 'visitors.csv' file
+- Stop treating page filter as an entry page filter
+- City report showing N/A instead of city names with imported data plausible/analytics#2675
+- Empty values for Screen Size, OS and Browser are uniformly replaced with "(not set)"
+- Fix [more pageviews with session prop filter than with no filters](https://github.com/plausible/analytics/issues/1666)
+- Cascade delete sent_renewal_notifications table when user is deleted plausible/analytics#2549
+- Show appropriate top-stat metric labels on the realtime dashboard when filtering by a goal
+- Fix breakdown API pagination when using event metrics plausible/analytics#2562
+- Automatically update all visible dashboard reports in the realtime view
+- Connect via TLS when using HTTPS scheme in ClickHouse URL plausible/analytics#2570
+- Add error message in case a transfer to an invited (but not joined) user is requested plausible/analytics#2651
+- Fix bug with [showing property breakdown with a prop filter](https://github.com/plausible/analytics/issues/1789)
+- Fix bug when combining goal and prop filters plausible/analytics#2654
+- Fix broken favicons when domain includes a slash
+
+### Changed
+- Treat page filter as entry page filter for `bounce_rate`
+- Reject events with long URIs and data URIs plausible/analytics#2536
+- Always show direct traffic in sources reports plausible/analytics#2531
+- Stop recording XX and T1 country codes plausible/analytics#2556
+- Device type is now determined from the User-Agent instead of window.innerWidth plausible/analytics#2711
+- Add padding by default to embedded dashboards so that shadows are not cut off plausible/analytics#2744
+- Update the User Agents database (https://github.com/matomo-org/device-detector/releases/tag/6.1.1)
+
+### Removed
+- Remove Firewall plug and `IP_BLOCKLIST` environment variable
+- Remove the ability to collapse the main graph plausible/analytics#2627</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.0-rc.0 (2023-05-04)</h2>
+      <pre>The highlights of this release are:
+
+- period comparisons [[docs]](https://plausible.io/docs/guided-tour#compare-your-stats-over-time) [[example]](https://plausible.io/plausible.io?comparison=previous_period)
+- ability to change domains names https://github.com/plausible/analytics/pull/2803
+- automatic geolocation database downloads  plausible/analytics#2362
+- more email adapters support (Mailgun, Mandrill, SendGrid) plausible/analytics#2649
+
+### Upgrading Plausible Analytics to v2.0
+
+>  ⚠️ ⚠️ ⚠️
+> 
+> Upgrading to `v2.0` requires performing a data migration.
+> Please read these notes until the end before deploying `v2.0.0-rc.0`
+
+#### Ensure you are using a new ClickHouse version
+
+The steps below have been tested with [`clickhouse/clickhouse-server:22.6-alpine`](https://github.com/plausible/hosting/blob/3e1462eabd510cc9320a6cfed0ae45355d86bb05/docker-compose.yml#L16-L26) please make sure to upgrade ClickHouse to at least this version.
+
+<details>
+<summary>Here's the excerpt from <a href="https://github.com/plausible/analytics/discussions/2507"><code>v1.5 release discussion</code></a> regarding the ClickHouse upgrade</summary>
+
+---
+
+In your docker-compose.yml update the image used for plausible_events_db to a newer ClickHouse version:
+
+### Upgrading ClickHouse to 22.6
+
+```diff
+plausible_events_db:
+- image: yandex/clickhouse-server:21.3.2.5
++ image: clickhouse/clickhouse-server:22.6-alpine
+```
+
+#### Restart the container
+
+```console
+$ docker compose stop plausible plausible_events_db
+$ docker compose rm plausible_events_db
+$ docker compose up -d
+```
+
+This will boot up the new version of ClickHouse.
+
+Related PR: https://github.com/plausible/hosting/pull/45
+
+---
+
+</details>
+
+#### Update image tag
+
+In your `docker-compose.yml` update the image used for `plausible` to `v2.0.0-rc.0`
+
+```diff
+plausible:
+- image: plausible/analytics:v1.5.1
++ image: plausible/analytics:v2.0.0-rc.0
+```
+
+and restart the container
+
+```console
+$ cd hosting
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+If you open the dashboards now, you wouldn't see any past metrics. This is expected as `v2.0` uses the new `events_v2` and `sessions_v2` tables to store analytics data. We need to perform data migration to copy the data into the new tables.
+
+#### Run data migration
+
+> ⚠️ ⚠️ ⚠️
+> 
+> You need enough free disk space available for x2 of the current `plausible_events_db`'s `event-data` volume size. You can use something like `docker system df -v | grep hosting_event-data` to check how much space the current volume is occupying.
+
+Connect to the running `plausible` container and start the migration flow
+
+```console
+$ cd hosting
+$ docker compose exec plausible bin/plausible rpc Plausible.DataMigration.NumericIDs.run
+```
+
+You can attempt this migration multiple times unless you drop `v1` tables.
+
+#### Drop v1 tables (optional)
+
+Once you **verify** the migration went **well,** the old tables can be dropped. It's easiest to use `clickhouse-client` for this
+
+```console
+$ ch hosting
+$ docker compose exec plausible_events_db clickhouse-client
+```
+```sql
+:) \c plausible_events_db
+:) show tables;
+:) drop table events;
+:) drop table sessions;
+```
+
+See https://clickhouse.com/docs/en/operations/server-configuration-parameters/settings#max-table-size-to-drop for how to drop tables with more than 50GB of data.
+
+#### Enable automatic MaxMind GeoLite2 updates (optional)
+
+In your `plausible-config.env` set [`MAXMIND_LICENSE_KEY`](https://www.maxmind.com/en/accounts/current/license-key) environment variable and get an automatically updated [GeoLite2 City](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data) geolocation database. The database edition is configurable with `MAXMIND_EDITION` environment variable and defaults to `GeoLite2-City`.
+
+```diff
+- IP_GEOLOCATION_DB=...
++ MAXMIND_LICENSE_KEY=LNpsJCCKPis6XvBP
++ MAXMIND_EDITION=GeoLite2-City
+```
+
+Note that for the changes in `plausible-config.env` to propagate to the `plausible`, the container needs to be recreated:
+
+```console
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+Also note that using `GeoLite2-City` edition requires more RAM than using `GeoLite2-Country`.
+
+Now you can remove any other volumes and services used to download, store, and update geolocation databases.
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v1.5.1...v2.0.0-rc.0) have been made since v1.5:
+
+### Added
+- Ability to use '--' instead of '=' sign in the `tagged-events` classnames
+- 'Last updated X seconds ago' info to 'current visitors' tooltips
+- Add support for more Bamboo adapters, i.e. `Bamboo.MailgunAdapter`, `Bamboo.MandrillAdapter`, `Bamboo.SendGridAdapter` plausible/analytics#2649
+- Ability to change domain for existing site (requires numeric IDs data migration, instructions will be provided separately) UI + API (`PUT /api/v1/sites`)
+
+### Fixed
+- Make goal-filtered CSV export return only unique_conversions timeseries in the 'visitors.csv' file
+- Stop treating page filter as an entry page filter
+- City report showing N/A instead of city names with imported data plausible/analytics#2675
+- Empty values for Screen Size, OS and Browser are uniformly replaced with "(not set)"
+- Fix [more pageviews with session prop filter than with no filters](https://github.com/plausible/analytics/issues/1666)
+- Cascade delete sent_renewal_notifications table when user is deleted plausible/analytics#2549
+- Show appropriate top-stat metric labels on the realtime dashboard when filtering by a goal
+- Fix breakdown API pagination when using event metrics plausible/analytics#2562
+- Automatically update all visible dashboard reports in the realtime view
+- Connect via TLS when using HTTPS scheme in ClickHouse URL plausible/analytics#2570
+- Add error message in case a transfer to an invited (but not joined) user is requested plausible/analytics#2651
+- Fix bug with [showing property breakdown with a prop filter](https://github.com/plausible/analytics/issues/1789)
+- Fix bug when combining goal and prop filters plausible/analytics#2654
+
+### Changed
+- Treat page filter as entry page filter for `bounce_rate`
+- Reject events with long URIs and data URIs plausible/analytics#2536
+- Always show direct traffic in sources reports plausible/analytics#2531
+- Stop recording XX and T1 country codes plausible/analytics#2556
+- Device type is now determined from the User-Agent instead of window.innerWidth plausible/analytics#2711
+- Add padding by default to embedded dashboards so that shadows are not cut off plausible/analytics#2744
+- Update the User Agents database (https://github.com/matomo-org/device-detector/releases/tag/6.1.1)
+
+### Removed
+- Remove Firewall plug and `IP_BLOCKLIST` environment variable
+- Remove the ability to collapse the main graph plausible/analytics#2627
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.1 (2023-06-18)</h2>
+      <pre>The highlights of this release are:
+
+- City and region level geolocation (disabled by default, please see below for the guide)
+- Google Analytics integration: https://plausible.io/docs/google-analytics-import (WIP setup guide: https://github.com/plausible/docs/pull/278)
+- CSV data export: https://plausible.io/docs/export-stats
+- ARM64 support
+- Improved first launch experience
+
+#### New first launch
+
+Admin user registration is now done through the UI instead of configuration variables. At first launch, users are presented with a registration page which will create the admin account. Admin account related configuration variables are ignored going forward. See below for details.
+
+Admin user registration is required from 1.5 onwards. We are deprecating the `DISABLE_AUTH` option which allowed Plausible to be used without any user account at all.
+
+Users with existing admin accounts are not affected, but we recommend removing the unused configuration variables. A benefit of moving admin account management to the UI is that you can now change the admin email account through the UI. Previously, this was done by manual database changes and configuration change which required restarting the service.
+
+### Upgrading Plausible Analytics to v1.5
+
+In your `docker-compose.yml` update the image used for `plausible` to `v1.5.1`
+
+```diff
+plausible:
+- image: plausible/analytics:v1.4
++ image: plausible/analytics:v1.5.1
+````
+
+<sub>Please make sure to **not** use `v1.5.0` release which had startup problems: https://github.com/plausible/analytics/issues/2491</sub>
+
+#### Restart the container
+
+```
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+### City-level geolocation setup (Optional, requires more memory)
+
+⚠️ Note that this city level geolocation feature requires extra **~1GB of RAM** to work. If you don't have enough RAM available, you might experience slow container startups and restarts.
+
+City level geolocation can be enabled by mounting a volume with the downloaded [`geonames.csv`](https://github.com/plausible/location#cities) and [`geolite2-city.mmdb`](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data?lang=en) and setting `GEONAMES_SOURCE_FILE` and `IP_GEOLOCATION_DB` to point to them:
+
+```console
+$ # custom (smaller) csv can be used, see https://github.com/plausible/location#cities for more info
+$ curl -O https://s3.eu-central-1.wasabisys.com/plausible-application/geonames.csv
+```
+
+```console
+$ export MAXMIND_LICENSE_KEY=LNpsJCCKPis6XvBP # this key is not valid anymore
+$ curl -L "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${MAXMIND_LICENSE_KEY}&suffix=tar.gz" -o geolite2-city.mmdb.gz
+$ gunzip geolite2-city.mmdb.gz
+```
+
+`docker-compose.yml`
+```diff
+  plausible:
+    image: plausible/analytics:v1.5.1
++   volumes:
++     - ./geonames.csv:/etc/app/geonames.csv:ro
++     - ./geolite2-city.mmdb:/etc/app/geolite2-city.mmdb:ro
+```
+
+`plausible-conf.env`
+```diff
+BASE_URL=replace-me
+SECRET_KEY_BASE=replace-me
++ GEONAMES_SOURCE_FILE=/etc/app/geonames.csv
++ IP_GEOLOCATION_DB=/etc/app/geolite2-city.mmdb
+```
+
+### Upgrading ClickHouse to 22.6 (Optional, but recommended)
+
+In your `docker-compose.yml` update the image used for `plausible_events_db` to a newer ClickHouse version:
+
+```diff
+plausible_events_db:
+- image: yandex/clickhouse-server:21.3.2.5
++ image: clickhouse/clickhouse-server:22.6-alpine
+```
+
+#### Restart the container
+
+```
+$ docker compose stop plausible plausible_events_db
+$ docker compose rm plausible_events_db
+$ docker compose up -d
+```
+
+This will boot up the new version of ClickHouse.
+
+Related PR: https://github.com/plausible/hosting/pull/45
+
+### Upgrading PostgreSQL to 14 (Optional, but recommended)
+
+Upgrading PostgreSQL is a bit trickier, [here's the upgrade guide.](https://github.com/plausible/hosting/blob/master/upgrade/postgres.md)
+
+### Removing deprecated commands and environment variables (Optional, but recommended)
+
+`ADMIN_USER_EMAIL`, `ADMIN_USER_NAME`, `ADMIN_USER_PWD`, `DISABLE_AUTH` environment variables are no longer supported and are ignored if set.
+
+Please remove them from `plausible-conf.env`:
+
+```diff
+- ADMIN_USER_EMAIL=replace-me
+- ADMIN_USER_NAME=replace-me
+- ADMIN_USER_PWD=replace-me
+- DISABLE_AUTH=true
+  BASE_URL=replace-me
+  SECRET_KEY_BASE=replace-me
+```
+
+[`/entrypoint.sh db init-admin`](https://github.com/plausible/hosting/blob/a6fe8d13df3566f7bb3625a1a524f5498d56693d/docker-compose.yml#L31) command that was responsible for creating the admin user [is also deprecated.](https://github.com/plausible/analytics/blob/e522a2d7c182f5a0c7b2d95bf3ea248567a529e0/rel/overlays/init-admin.sh#L4-L5)
+
+Please remove it from `docker-compose.yml`:
+
+```diff
+plausible:
+  image: plausible/analytics:v1.5.1
+- command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
++ command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh run"
+```
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v1.4.4...v1.5.1) have been made since `v1.4`:
+
+### Added
+- Set a different interval on the top graph plausible/analytics#1574 (thanks to @Vigasaurus for this feature)
+- A `tagged-events` script extension for out-of-the-box custom event tracking
+- The ability to escape `|` characters with `\` in Stats API filter values
+- An upper bound of 1000 to the `limit` parameter in Stats API
+- The `exclusions` script extension now also takes a `data-include` attribute tag
+- A `file-downloads` script extension for automatically tracking file downloads as custom events
+- Integration with [Matomo's referrer spam list](https://github.com/matomo-org/referrer-spam-list/blob/master/spammers.txt) to block known spammers
+- API route `PUT /api/v1/sites/goals` with form params `site_id`, `event_name` and/or `page_path`, and `goal_type` with supported types `event` and `page`
+- API route `DELETE /api/v1/sites/goals/:goal_id` with form params `site_id`
+- The public breakdown endpoint can be queried with the "events" metric
+- Data exported via the download button will contain CSV data for all visible graps in a zip file.
+- Region and city-level geolocation plausible/analytics#1449
+- The `u` option can now be used in the `manual` extension to specify a URL when triggering events.
+- Delete a site and all related data through the Sites API
+- Subscribed users can see their Paddle invoices from the last 12 months under the user settings
+- Allow custom styles to be passed to embedded iframe plausible/analytics#1522
+- New UTM Tags `utm_content` and `utm_term` plausible/analytics#515
+- If a session was started without a screen_size it is updated if an event with screen_size occurs
+- Added `LISTEN_IP` configuration parameter plausible/analytics#1189
+- The breakdown endpoint with the property query `property=event:goal` returns custom goal properties (within `props`)
+- Added IPv6 Ecto support (via the environment-variable `ECTO_IPV6`)
+- New filter type: `contains`, available for `page`, `entry_page`, `exit_page`
+- Add filter for custom property
+- Add ability to import historical data from GA: plausible/analytics#1753
+- API route `GET /api/v1/sites/:site_id`
+- Hovering on top of list items will now show a [tooltip with the exact number instead of a shortened version](https://github.com/plausible/analytics/discussions/1968)
+- Filter goals in realtime filter by clicking goal name
+- The time format (12 hour or 24 hour) for graph timelines is now presented based on the browser's defined language
+- Choice of metric for main-graph both in UI and API (visitors, pageviews, bounce_rate, visit_duration) plausible/analytics#1364
+- New width=manual mode for embedded dashboards plausible/analytics#2148
+- Add more timezone options
+- Add new strategy to recommend timezone when creating a new site
+- Alert outgrown enterprise users of their usage plausible/analytics#2197
+- Manually lock and unlock enterprise users plausible/analytics#2197
+- ARM64 support for docker images plausible/analytics#2103
+- Add support for international domain names (IDNs) plausible/analytics#2034
+- Allow self-hosters to register an account on first launch
+- Fix ownership transfer invitation link in self-hosted deployments
+
+### Fixed
+- Plausible script does not prevent default if it's been prevented by an external script [plausible/analytics#1941](https://github.com/plausible/analytics/issues/1941)
+- Hash part of the URL can now be used when excluding pages with `script.exclusions.hash.js`.
+- UI fix where multi-line text in pills would not be underlined properly on small screens.
+- UI fix to align footer columns
+- Guests can now use the favicon to toggle additional info about the site bing viewed (such as in public embeds).
+- Fix SecurityError in tracking script when user has blocked all local storage
+- Prevent dashboard graph from being selected when long pressing on the graph in a mobile browser
+- The exported `pages.csv` file now includes pageviews again [plausible/analytics#1878](https://github.com/plausible/analytics/issues/1878)
+- Fix a bug where city, region and country filters were filtering stats but not the location list
+- Fix a bug where regions were not being saved
+- Timezone offset labels now update with time changes
+- Render 404 if shared link auth cannot be verified [plausible/analytics#2225](https://github.com/plausible/analytics/pull/2225)
+- Restore compatibility with older format of shared links [plausible/analytics#2225](https://github.com/plausible/analytics/pull/2225)
+- Fix 'All time' period for sites with no recorded stats [plausible/analytics#2277](https://github.com/plausible/analytics/pull/2277)
+- Ensure settings page can be rendered after a form error [plausible/analytics#2278](https://github.com/plausible/analytics/pull/2278)
+- Ensure newlines from settings files are trimmed [plausible/analytics#2480](https://github.com/plausible/analytics/pull/2480)
+
+### Changed
+- `script.file-downloads.outbound-links.js` only sends an outbound link event when an outbound download link is clicked
+- Plausible script now uses callback navigation (instead of waiting for 150ms every time) when sending custom events
+- Cache the tracking script for 24 hours
+- Move `entry_page` and `exit_page` to be part of the `Page` filter group
+- Paginate /api/sites results and add a `View all` link to the site-switcher dropdown in the dashboard.
+- Remove the `+ Add Site` link to the site-switcher dropdown in the dashboard.
+- `DISABLE_REGISTRATIONS` configuration parameter can now accept `invite_only` to allow invited users to register an account while keeping regular registrations disabled plausible/analytics#1841
+- New and improved Session tracking module for higher throughput and lower latency. [PR#1934](https://github.com/plausible/analytics#1934)
+- Do not display ZZ country code in countries report [PR#1934](https://github.com/plausible/analytics#2223)
+- Add fallback icon for when DDG favicon cannot be fetched [PR#2279](https://github.com/plausible/analytics#2279)
+
+### Security
+- Add Content-Security-Policy header to favicon path
+
+### Deprecated
+- `DISABLE_AUTH` is no longer supported
+
+### Release candidates
+
+- [`v1.5.0-rc.0`](https://github.com/plausible/analytics/discussions/2324)
+- [`v1.5.0-rc.1`](https://github.com/plausible/analytics/discussions/2460)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.0-rc.1 (2022-11-22)</h2>
+      <pre>Admin user registration is now done through the UI instead of configuration variables. At first launch, users are presented with a registration page which will create the admin account. Admin account related configuration variables are ignored going forward. See below for details.
+
+Admin user registration is required from 1.5.0 onwards. We are deprecating the `DISABLE_AUTH` option which allowed Plausible to be used without any user account at all.
+
+Users with existing admin accounts are not affected, but we recommend removing the unused configuration variables. A benefit of moving admin account management to the UI is that you can now change the admin email account through the UI. Previously, this was done by manual database changes and configuration change which required restarting the service.
+
+For `v1.5.0-rc.0` changes and upgrade steps please see [the previous release candidate discussion.](https://github.com/plausible/analytics/discussions/2324)
+
+## Upgrading Plausible Analytics to v1.5.0-rc.1
+
+In your `docker-compose.yml` update the image used for `plausible` to tag `v1.5.0-rc.1`:
+
+```diff
+plausible:
+- image: plausible/analytics:1.5.0-rc.0
++ image: plausible/analytics:v1.5.0-rc.1
+````
+
+#### Restart the container
+
+```
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+### Removing deprecated commands and environment variables (Optional, but recommended)
+
+`ADMIN_USER_EMAIL`, `ADMIN_USER_NAME`, `ADMIN_USER_PWD`, `DISABLE_AUTH` environment variables are no longer supported and are ignored if set.
+
+Please remove them from `plausible-conf.env`:
+
+```diff
+- ADMIN_USER_EMAIL=replace-me
+- ADMIN_USER_NAME=replace-me
+- ADMIN_USER_PWD=replace-me
+- DISABLE_AUTH=true
+  BASE_URL=replace-me
+  SECRET_KEY_BASE=replace-me
+```
+
+[`/entrypoint.sh db init-admin`](https://github.com/plausible/hosting/blob/a6fe8d13df3566f7bb3625a1a524f5498d56693d/docker-compose.yml#L31) command that was responsible for creating the admin user [is also deprecated.](https://github.com/plausible/analytics/blob/e522a2d7c182f5a0c7b2d95bf3ea248567a529e0/rel/overlays/init-admin.sh#L4-L5)
+
+Please remove it from `docker-compose.yml`:
+
+```diff
+plausible:
+  image: plausible/analytics:v1.5.0-rc.1
+- command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh db init-admin && /entrypoint.sh run"
++ command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && /entrypoint.sh run"
+```
+
+## Changelog
+
+Following [changes](https://github.com/plausible/analytics/compare/v1.5.0-rc.0...v1.5.0-rc.1) have been made since `v1.5.0-rc.0`:
+
+### Added
+
+- Allow self-hosters to register an account on first launch
+
+### Deprecated
+
+- `DISABLE_AUTH` is no longer supported</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.5.0-rc.0 (2022-10-12)</h2>
+      <pre>The highlights of this release are:
+
+- City and region level geolocation (disabled by default, please see [this discussion](https://github.com/plausible/analytics/discussions/2324#discussioncomment-3857114) for setup info)
+- Google Analytics integration: https://plausible.io/docs/google-analytics-import (WIP setup guide: https://github.com/plausible/docs/pull/278)
+- CSV data export: https://plausible.io/docs/export-stats
+- ARM64 support
+
+### Upgrading Plausible Analytics to v1.5
+
+In your `docker-compose.yml` update the image used for `plausible` to tag `1.5.0-rc.0`:
+
+```diff
+plausible:
+- image: plausible/analytics:v1.4
++ image: plausible/analytics:1.5.0-rc.0
+````
+
+#### Restart the container
+
+```
+$ docker compose stop plausible
+$ docker compose rm plausible
+$ docker compose up -d
+```
+
+This will boot up the new version of the app.
+
+### Upgrading ClickHouse to 22.6 (Optional, but recommended)
+
+In your `docker-compose.yml`, update the image used for `plausible_events_db` to the newest stable ClickHouse version:
+
+```diff
+plausible_events_db:
+- image: yandex/clickhouse-server:21.3.2.5
++ image: clickhouse/clickhouse-server:22.6-alpine
+```
+
+#### Restart the container
+
+```
+$ docker compose stop plausible plausible_events_db
+$ docker compose rm plausible_events_db
+$ docker compose up -d
+```
+
+This will boot up the new version of ClickHouse.
+
+Related PR: https://github.com/plausible/hosting/pull/45
+
+### Upgrading PostgreSQL to 14 (Optional, but recommended)
+
+Upgrading PostgreSQL is a bit trickier, [here's the upgrade guide.](https://github.com/plausible/hosting/blob/master/upgrade/postgres.md)
+
+## Changelog
+
+Following changes have been made since v1.4:
+
+### Added
+- The ability to escape `|` characters with `\` in Stats API filter values
+- An upper bound of 1000 to the `limit` parameter in Stats API
+- The `exclusions` script extension now also takes a `data-include` attribute tag
+- A `file-downloads` script extension for automatically tracking file downloads as custom events
+- Integration with [Matomo's referrer spam list](https://github.com/matomo-org/referrer-spam-list/blob/master/spammers.txt) to block known spammers
+- API route `PUT /api/v1/sites/goals` with form params `site_id`, `event_name` and/or `page_path`, and `goal_type` with supported types `event` and `page`
+- API route `DELETE /api/v1/sites/goals/:goal_id` with form params `site_id`
+- The public breakdown endpoint can be queried with the "events" metric
+- Data exported via the download button will contain CSV data for all visible graps in a zip file.
+- Region and city-level geolocation plausible/analytics#1449
+- The `u` option can now be used in the `manual` extension to specify a URL when triggering events.
+- Delete a site and all related data through the Sites API
+- Subscribed users can see their Paddle invoices from the last 12 months under the user settings
+- Allow custom styles to be passed to embedded iframe plausible/analytics#1522
+- New UTM Tags `utm_content` and `utm_term` plausible/analytics#515
+- If a session was started without a screen_size it is updated if an event with screen_size occurs
+- Added `LISTEN_IP` configuration parameter plausible/analytics#1189
+- The breakdown endpoint with the property query `property=event:goal` returns custom goal properties (within `props`)
+- Added IPv6 Ecto support (via the environment-variable `ECTO_IPV6`)
+- New filter type: `contains`, available for `page`, `entry_page`, `exit_page`
+- Add filter for custom property
+- Add ability to import historical data from GA: plausible/analytics#1753
+- API route `GET /api/v1/sites/:site_id`
+- Hovering on top of list items will now show a [tooltip with the exact number instead of a shortened version](https://github.com/plausible/analytics/discussions/1968)
+- Filter goals in realtime filter by clicking goal name
+- The time format (12 hour or 24 hour) for graph timelines is now presented based on the browser's defined language
+- Choice of metric for main-graph both in UI and API (visitors, pageviews, bounce_rate, visit_duration) plausible/analytics#1364
+- New width=manual mode for embedded dashboards plausible/analytics#2148
+- Add more timezone options
+- Add new strategy to recommend timezone when creating a new site
+- Alert outgrown enterprise users of their usage plausible/analytics#2197
+- Manually lock and unlock enterprise users plausible/analytics#2197
+- ARM64 support for docker images plausible/analytics#2103
+- Add support for international domain names (IDNs) plausible/analytics#2034
+
+### Fixed
+- Plausible script does not prevent default if it's been prevented by an external script [plausible/analytics#1941](https://github.com/plausible/analytics/issues/1941)
+- Hash part of the URL can now be used when excluding pages with `script.exclusions.hash.js`.
+- UI fix where multi-line text in pills would not be underlined properly on small screens.
+- UI fix to align footer columns
+- Guests can now use the favicon to toggle additional info about the site bing viewed (such as in public embeds).
+- Fix SecurityError in tracking script when user has blocked all local storage
+- Prevent dashboard graph from being selected when long pressing on the graph in a mobile browser
+- The exported `pages.csv` file now includes pageviews again [plausible/analytics#1878](https://github.com/plausible/analytics/issues/1878)
+- Fix a bug where city, region and country filters were filtering stats but not the location list
+- Fix a bug where regions were not being saved
+- Timezone offset labels now update with time changes
+- Render 404 if shared link auth cannot be verified [plausible/analytics#2225](https://github.com/plausible/analytics/pull/2225)
+- Restore compatibility with older format of shared links [plausible/analytics#2225](https://github.com/plausible/analytics/pull/2225)
+- Fix 'All time' period for sites with no recorded stats [plausible/analytics#2277](https://github.com/plausible/analytics/pull/2277)
+- Ensure settings page can be rendered after a form error [plausible/analytics#2278](https://github.com/plausible/analytics/pull/2278)
+
+### Changed
+- `script.file-downloads.outbound-links.js` only sends an outbound link event when an outbound download link is clicked
+- Plausible script now uses callback navigation (instead of waiting for 150ms every time) when sending custom events
+- Cache the tracking script for 24 hours
+- Move `entry_page` and `exit_page` to be part of the `Page` filter group
+- Paginate /api/sites results and add a `View all` link to the site-switcher dropdown in the dashboard.
+- Remove the `+ Add Site` link to the site-switcher dropdown in the dashboard.
+- `DISABLE_REGISTRATIONS` configuration parameter can now accept `invite_only` to allow invited users to register an account while keeping regular registrations disabled plausible/analytics#1841
+- New and improved Session tracking module for higher throughput and lower latency. [PR#1934](https://github.com/plausible/analytics#1934)
+- Do not display ZZ country code in countries report [PR#1934](https://github.com/plausible/analytics#2223)
+- Add fallback icon for when DDG favicon cannot be fetched [PR#2279](https://github.com/plausible/analytics#2279)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.4 (2022-01-26)</h2>
+      <pre>Security patch for password reset emails. Analysis of the issue and its impact: https://my-devbox.de/en/blog/accidental-pen-tester-evening/
+
+### Fixed
+- Fix vulnerability with password reset emails
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.3 (2021-12-17)</h2>
+      <pre>Fixed
+*  Make sure that ownership transfer can be made in self-hosted without creating a trial
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.2 (2021-11-29)</h2>
+      <pre>## v1.4.2
+
+### Fixed
+- Fixes database error when filtered for goal with empty data</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.1 (2021-11-29)</h2>
+      <pre>## v1.4.1
+
+### Fixed
+- Fixes database error when pathname contains a question mark</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.0 (2021-10-27)</h2>
+      <pre>The highlights of this release are:
+* Invite team members to your site dashboard
+* More powerful filtering options
+* Email verification requirement for users is now disabled by default. It can be enabled with the `ENABLE_EMAIL_VERIFICATION=true` option.
+
+To update your installation, make sure your _docker-compose.yml_l file is referencing `plausible/analytics` with the following tag: `v1.4.0`. Then run the following commands:
+
+```bash
+$ docker-compose down
+$ docker-compose pull plausible
+$ docker-compose up -d
+```
+
+This will run your database migrations and boot up the new version of the app. Following changes have been made since v1.3:
+
+### Added
+- New parameter `metrics` for the `/api/v1/stats/timeseries` endpoint plausible/analytics#952
+- CSV export now includes pageviews, bounce rate and visit duration in addition to visitors plausible/analytics#952
+- Send stats to multiple dashboards by configuring a comma-separated list of domains plausible/analytics#968
+- To authenticate against a local postgresql via socket authentication, the environment-variables
+  `DATABASE_SOCKET_DIR` & `DATABASE_NAME` were added.
+- Time on Page metric available in detailed Top Pages report plausible/analytics#1007
+- Wildcard based page, entry page and exit page filters plausible/analytics#1067
+- Exclusion filters for page, entry page and exit page filters plausible/analytics#1067
+- Menu (with auto-complete) to add new and edit existing filters directly plausible/analytics#1089
+- Added `CLICKHOUSE_FLUSH_INTERVAL_MS` and `CLICKHOUSE_MAX_BUFFER_SIZE` configuration parameters plausible/analytics#1073
+- Ability to invite users to sites with different roles plausible/analytics#1122
+- Option to configure a custom name for the script file
+- Add Conversion Rate to Top Sources, Top Pages Devices, Countries when filtered by a goal plausible/analytics#1299
+- Add list view for countries report in dashboard plausible/analytics#1381
+- Add ability to view more than 100 custom goal properties plausible/analytics#1353
+
+### Fixed
+- Fix weekly report time range plausible/analytics#951
+- Make sure embedded dashboards can run when user has blocked third-party cookies plausible/analytics#971
+- Sites listing page will paginate if the user has a lot of sites plausible/analytics#994
+- Crash when changing theme on a loaded dashboard plausible/analytics#1123
+- UI fix for details button overlapping content on mobile plausible/analytics#1114
+- UI fix for the main graph on mobile overlapping its tick items on both axis
+- UI fixes for text not showing properly in bars across multiple lines. This hides the totals on <768px and only shows the uniques and % to accommodate the goals text too. Larger screens still truncate as usual.
+- Turn off autocomplete for name and password inputs in the _New shared link_ form.
+- Details modals are now responsive and take up less horizontal space on smaller screens to make it easier to scroll.
+- Fix reading config from file
+- Fix some links not opening correctly in new tab
+- UI fix for more than one row of custom event properties plausible/analytics#1383
+- UI fix for user menu and time picker overlapping plausible/analytics#1352
+- Respect the `path` component of BASE_URL to allow subfolder installatons
+
+### Removed
+- Removes AppSignal monitoring package
+
+### Changes
+- Disable email verification by default. Added a configuration option `ENABLE_EMAIL_VERIFICATION=true` if you want to keep the old behaviour</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.4.0-rc.0 (2021-10-25)</h2>
+      <pre>The highlights of this release are:
+* Invite team members to your site dashboard
+* More powerful filtering options
+* Email verification requirement for users is now disabled by default. It can be enabled with the `ENABLE_EMAIL_VERIFICATION=true` option.
+
+This is a release candidate for testing. To update your installation, make sure your _docker-compose.yml_ file is referencing `plausible/analytics` with the following tag: `v1.4.0-rc.0`. Then run the following commands:
+
+```bash
+$ docker-compose down
+$ docker-compose pull plausible
+$ docker-compose up -d
+```
+
+This will run your database migrations and boot up the new version of the app. Following changes have been made since v1.3:
+
+### Added
+- New parameter `metrics` for the `/api/v1/stats/timeseries` endpoint plausible/analytics#952
+- CSV export now includes pageviews, bounce rate and visit duration in addition to visitors plausible/analytics#952
+- Send stats to multiple dashboards by configuring a comma-separated list of domains plausible/analytics#968
+- To authenticate against a local postgresql via socket authentication, the environment-variables
+  `DATABASE_SOCKET_DIR` & `DATABASE_NAME` were added.
+- Time on Page metric available in detailed Top Pages report plausible/analytics#1007
+- Wildcard based page, entry page and exit page filters plausible/analytics#1067
+- Exclusion filters for page, entry page and exit page filters plausible/analytics#1067
+- Menu (with auto-complete) to add new and edit existing filters directly plausible/analytics#1089
+- Added `CLICKHOUSE_FLUSH_INTERVAL_MS` and `CLICKHOUSE_MAX_BUFFER_SIZE` configuration parameters plausible/analytics#1073
+- Ability to invite users to sites with different roles plausible/analytics#1122
+- Option to configure a custom name for the script file
+- Add Conversion Rate to Top Sources, Top Pages Devices, Countries when filtered by a goal plausible/analytics#1299
+- Add list view for countries report in dashboard plausible/analytics#1381
+- Add ability to view more than 100 custom goal properties plausible/analytics#1353
+
+### Fixed
+- Fix weekly report time range plausible/analytics#951
+- Make sure embedded dashboards can run when user has blocked third-party cookies plausible/analytics#971
+- Sites listing page will paginate if the user has a lot of sites plausible/analytics#994
+- Crash when changing theme on a loaded dashboard plausible/analytics#1123
+- UI fix for details button overlapping content on mobile plausible/analytics#1114
+- UI fix for the main graph on mobile overlapping its tick items on both axis
+- UI fixes for text not showing properly in bars across multiple lines. This hides the totals on <768px and only shows the uniques and % to accommodate the goals text too. Larger screens still truncate as usual.
+- Turn off autocomplete for name and password inputs in the _New shared link_ form.
+- Details modals are now responsive and take up less horizontal space on smaller screens to make it easier to scroll.
+- Fix reading config from file
+- Fix some links not opening correctly in new tab
+- UI fix for more than one row of custom event properties plausible/analytics#1383
+- UI fix for user menu and time picker overlapping plausible/analytics#1352
+- Respect the `path` component of BASE_URL to allow subfolder installatons
+
+### Removed
+- Removes AppSignal monitoring package
+
+### Changes
+- Disable email verification by default. Added a configuration option `ENABLE_EMAIL_VERIFICATION=true` if you want to keep the old behaviour</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.3.0 (2021-04-14)</h2>
+      <pre>The highlights of this release are:
+* Stats API: https://plausible.io/docs/stats-api
+* Embedded stats: https://plausible.io/docs/embed-dashboard
+* Fix for sending weekly and monthly reports over SMPT: https://github.com/plausible/analytics/issues/827
+* Country database is packaged with the app by default. The `maxmindinc/geoipupdate` container is no longer necessary for geolocation
+
+This release bumps the minimum Clickhouse version is `20.8.7.15` so make sure you upgrade your Clickhouse installation if needed.
+
+To update your Plausible installation, make sure your docker-compose.yml file is referencing `plausible/analytics` with one of the following tags: `latest`, `v1`, `v1.3`, `v1.3.0`. Then run the following commands:
+
+```sh
+$ docker-compose down
+$ docker-compose pull plausible
+$ docker-compose up -d
+```
+
+This will run your database migrations and boot up the new version of the app. Following changes have been made since v1.2:
+
+### Added
+- Stats API [currently in beta] plausible/analytics#679
+- Ability to view and filter by entry and exit pages, in addition to regular page hits plausible/analytics#712
+- 30 day and 6 month keybindings (`T` and `S`, respectively) plausible/analytics#709
+- Site switching keybinds (1-9 for respective sites) plausible/analytics#735
+- Glob (wildcard) based pageview goals plausible/analytics#750
+- Support for embedding shared links in an iframe plausible/analytics#812
+- Include a basic IP-To-Country database by default plausible/analytics#906
+- Add name/label to shared links plausible/analytics#910
+
+### Fixed
+- Capitalized date/time selection keybinds not working plausible/analytics#709
+- Invisible text on Google Search Console settings page in dark mode plausible/analytics#759
+- Disable analytics tracking when running Cypress tests
+- CSV reports can be downloaded via shared links plausible/analytics#884
+- Fixes weekly/monthly email report delivery over SMTP plausible/analytics#889
+- Disable self-tracking with self hosting plausible/analytics#907
+- Fix current visitors request when using shared links</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.3.0-rc.0 (2021-03-30)</h2>
+      <pre>The highlights of this release are:
+* Stats API: https://plausible.io/docs/stats-api
+* Embedded stats: https://plausible.io/docs/embed-dashboard
+* Fix for sending weekly and monthly reports over SMPT: https://github.com/plausible/analytics/issues/827
+
+This is a release candidate for testing. To update your installation, make sure your docker-compose.yml file is referencing `plausible/analytics` with the following tag: `v1.3.0-rc.0`. Then run the following commands:
+
+```sh
+$ docker-compose down
+$ docker-compose pull plausible
+$ docker-compose up -d
+```
+
+This will run your database migrations and boot up the new version of the app. Following changes have been made since v1.2:
+
+### Added
+- Stats API plausible/analytics#679
+- Ability to view and filter by entry and exit pages, in addition to regular page hits plausible/analytics#712
+- 30 day and 6 month keybindings (`T` and `S`, respectively) plausible/analytics#709
+- Site switching keybinds (1-9 for respective sites) plausible/analytics#735
+- Glob (wildcard) based pageview goals plausible/analytics#750
+- Support for embedding shared links in an iframe plausible/analytics#812
+
+### Fixed
+- Invisible text on Google Search Console settings page in dark mode plausible/analytics#759
+- Disable analytics tracking when running Cypress tests
+- CSV reports can be downloaded via shared links plausible/analytics#884
+- Fixes weekly/monthly email report delivery over SMTP plausible/analytics#889
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2.0 (2021-01-26)</h2>
+      <pre>To update your installation, make sure your docker-compose.yml file is referencing `plausible/analytics` with one of the following tags: `latest`, `v1`, `v1.2`, `v1.2.0`. Then run the following commands:
+
+```sh
+$ docker-compose down
+$ docker-compose pull plausible
+$ docker-compose up -d
+```
+
+This will run your database migrations and boot up the new version of the app. Following changes have been made since v1.1:
+
+### Added
+- Ability to add event metadata plausible/analytics#381
+- Add tracker module to automatically track outbound links  plausible/analytics#389
+- Display weekday on the visitor graph plausible/analytics#175
+- Collect and display browser & OS versions plausible/analytics#397
+- Simple notifications around traffic spikes plausible/analytics#453
+- Dark theme option/system setting follow plausible/analytics#467
+- "Load More" capability to pages modal plausible/analytics#480
+- Unique Visitors (last 30 min) as a top stat in realtime view plausible/analytics#500
+- Pinned filter and date selector rows while scrolling plausible/analytics#472
+- Escape keyboard shortcut to clear all filters plausible/analytics#625
+- Tracking exclusions, see our documentation [here](https://docs.plausible.io/excluding) and [here](https://docs.plausible.io/excluding-pages) for details plausible/analytics#489
+- Keybindings for selecting dates/ranges plausible/analytics#630
+
+### Changed
+- Use alpine as base image to decrease Docker image size plausible/analytics#353
+- Ignore automated browsers (Phantom, Selenium, Headless Chrome, etc)
+- Display domain's favicon on the home page
+- Ignore consecutive pageviews on same pathname plausible/analytics#417
+- Validate domain format on site creation plausible/analytics#427
+- Improve settings UX and design plausible/analytics#412
+- Improve site listing UX and design plausible/analytics#438
+- Improve onboarding UX and design plausible/analytics#441
+- Allows outbound link tracking script to use new tab redirection plausible/analytics#494
+- "This Month" view is now Month-to-date for the current month plausible/analytics#491
+- My sites now show settings cog at all times on smaller screens plausible/analytics#497
+- Background jobs are enabled by default for self-hosted installations plausible/analytics#603
+- All new users on self-hosted installations have a never-ending trial plausible/analytics#603
+- Changed caret/chevron color in datepicker and filters dropdown
+
+### Fixed
+- Do not error when activating an already activated account plausible/analytics#370
+- Ignore arrow keys when modifier keys are pressed plausible/analytics#363
+- Show correct stats when goal filter is combined with source plausible/analytics#374
+- Going back in history now correctly resets the period filter plausible/analytics#408
+- Fix URL decoding in query parameters plausible/analytics#416
+- Fix overly-sticky date in query parameters plausible/analytics/#439
+- Prevent picking dates before site insertion plausible/analtics#446
+- Fix overly-sticky from and to in query parameters plausible/analytics#495
+- Adds support for single-day date selection plausible/analytics#495
+- Goal conversion rate in realtime view is now accurate plausible/analytics#500
+- Various UI/UX issues plausible/analytics#503
+
+### Security
+- Do not run the plausible Docker container as root plausible/analytics#362</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2-rc.1 (2021-01-19)</h2>
+      <pre>A quick patch release to fix deleting sites that have a spike notification configured. To update your installation, change your `docker-compose.yml` file to reference `plausible/analytics:v1.2-rc.1`. Then run the following commands:
+
+```sh
+$ docker-compose down
+$ docker-compose pull plausible
+$ docker-compose up -d
+```
+
+
+Previous release candidate: https://github.com/plausible/analytics/releases/tag/v1.2-rc.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.2-rc.0 (2021-01-15)</h2>
+      <pre>🚧 This is a release candidate for testing purposes. If you decide to give it a try, please leave a message of how it went [on the forum](https://github.com/plausible/analytics/discussions/605)
+
+To update your installation, change your `docker-compose.yml` file to reference `plausible/analytics:v1.2`. Then run the following commands:
+
+```sh
+$ docker-compose down
+$ docker-compose pull plausible
+$ docker-compose up -d
+```
+
+This should run your database migrations and boot up the new version of the app. Following changes have been made since `v1.1.1`:
+
+
+### Added
+- Ability to add event metadata plausible/analytics#381
+- Add tracker module to automatically track outbound links  plausible/analytics#389
+- Display weekday on the visitor graph plausible/analytics#175
+- Collect and display browser & OS versions plausible/analytics#397
+- Simple notifications around traffic spikes plausible/analytics#453
+- Dark theme option/system setting follow plausible/analytics#467
+- "Load More" capability to pages modal plausible/analytics#480
+- Unique Visitors (last 30 min) as a top stat in realtime view plausible/analytics#500
+- Pinned filter and date selector rows while scrolling plausible/analytics#472
+
+### Changed
+- Use alpine as base image to decrease Docker image size plausible/analytics#353
+- Ignore automated browsers (Phantom, Selenium, Headless Chrome, etc)
+- Display domain's favicon on the home page
+- Ignore consecutive pageviews on same pathname plausible/analytics#417
+- Validate domain format on site creation plausible/analytics#427
+- Improve settings UX and design plausible/analytics#412
+- Improve site listing UX and design plausible/analytics#438
+- Improve onboarding UX and design plausible/analytics#441
+- Allows outbound link tracking script to use new tab redirection plausible/analytics#494
+- "This Month" view is now Month-to-date for the current month plausible/analytics#491
+- Background jobs are enabled by default for self-hosted installations plausible/analytics#603
+- All new users on self-hosted installations have a never-ending trial plausible/analytics#603
+
+### Fixed
+- Do not error when activating an already activated account plausible/analytics#370
+- Ignore arrow keys when modifier keys are pressed plausible/analytics#363
+- Show correct stats when goal filter is combined with source plausible/analytics#374
+- Going back in history now correctly resets the period filter plausible/analytics#408
+- Fix URL decoding in query parameters plausible/analytics#416
+- Fix overly-sticky date in query parameters plausible/analytics/#439
+- Prevent picking dates before site insertion plausible/analtics#446
+- Fix overly-sticky from and to in query parameters plausible/analytics#495
+- Adds support for single-day date selection plausible/analytics#495
+- Goal conversion rate in realtime view is now accurate plausible/analytics#500
+- Various UI/UX issues plausible/analytics#503
+
+### Security
+- Do not run the plausible Docker container as root plausible/analytics#362</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.1 (2020-10-19)</h2>
+      <pre>## [1.1.1] - 2020-10-14
+
+### Fixed
+- Revert Dockerfile change that introduced a regression</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.1.0 (2020-10-14)</h2>
+      <pre>This is our first release under the AGPLv3 license. More information can be found in our [announcement blog post](https://plausible.io/blog/open-source-licenses) by @metmarkosaric.
+
+If you are self-hosting Plausible, please also take a look at plausible/hosting#4. The official docker-compose.yml file had a security flaw because it exposes the Postgres port to the public while using the default credentials. Please make sure to either remove the port exposure or change your Postgres password.
+
+### Added
+- Linkify top pages #91
+- Filter by country, screen size, browser and operating system #303
+
+### Fixed
+- Fix issue with creating a PostgreSQL database when `?ssl=true` #347
+- Do no disclose current URL to DuckDuckGo's favicon service #343
+- Updated UAInspector database to detect newer devices #309
+
+### Changed
+- Update container image to run as non root #352</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for chatwoot/chatwoot"/>
+  <title>chatwoot/chatwoot Release Notes</title>
+</head>
+<body>
+  <h1>🚀 chatwoot/chatwoot - Release Notes</h1>
+  
+    <section>
+      <h2>v4.0.4 (2025-03-22)</h2>
+      <pre>## Changelog
+
+- Added Shopify integration to streamline e-commerce workflows.
+- Multiple enhancements to Captain including bulk actions, citations, and multi-language support.
+- RTL support for Chat widget
+- Enhanced reporting with new team-level filters for live reports.
+- Implemented Linear OAuth 2.0 integration for improved project management.
+- Usability improvements across dashboards and inbox workflows.
+- Numerous bug fixes and enhancements
+
+Thanks to  @2bpo  for the contribution</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.3 - Bugfixes (2025-02-28)</h2>
+      <pre>- Fixed issues with new conversation form for whatsapp templates
+- Fixed slack file upload related issues and support for latest file API changes
+- Numerous other fixes and improvements</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.2 : Beta (2025-02-22)</h2>
+      <pre>We’re thrilled to introduce the first beta release candidate for Chatwoot v4 , packed with innovative features and enhancements. 
+
+## ChangeLog
+
+### 🤖 Introducing Captain: Your AI-Powered Assistant
+
+We’re proud to present **Captain**, our AI-powered assistant seamlessly integrated into Chatwoot. Captain is designed to enhance customer support efficiency with four key features:
+
+- **Captain Assistant**: A customer-facing AI that provides real-time, context-aware responses.
+- **Captain Co-pilot**: Helps agents with response preparation, translations, data retrieval, and more.
+- **Captain FAQs**: Detects common unanswered questions to grow your knowledge base.
+- **Captain Memories**: Logs key memories from conversations into the CRM for personalized, proactive support.
+
+
+### A Fresh, Revamped UI
+
+We’ve also made significant updates to the Chatwoot interface, including:
+
+- **Inbox View**: A whole new way to keep up with notifications and conversations relevant to you in Chatwoot without distractions.
+- **Better Email Previews**: Improved formatting for faster response times.
+- **Redesigned Contacts Section**: Cleaner layout and intuitive filtering for managing customer details.
+- **Streamlined Conversation Flow**: Faster, more intuitive workflows for managing conversations.
+- **Reimagined Help Center Portal**: Modern design and improved admin tools.
+- **New Sidebar Navigation**: Easier access to key sections.
+- Numerous other bug fixes and improvements. 
+
+<p></p>
+
+
+## ⚠️ Important Note for Upgrading:
+
+This release is a beta release. It is intended for testing and evaluation purposes only. Please wait for the stable releases if you intend to update production directly.
+
+The v4 releases requires the pgvector extension to be installed in the database. Please refer to the Chatwoot[ v4 migration guide](https://www.chatwoot.com/docs/self-hosted/runbooks/upgrade-to-chatwoot-v4) for more details on how to prepare your database for this release.
+
+
+
+## 🖍 **What’s Next?**
+Stay tuned for updates, patches, and a closer look at what's in store for 4.0 updates. We value your feedback and contributions, so please feel free to engage with our team and community.
+
+Thank you for being an integral part of the Chatwoot journey. Happy coding!
+
+
+---
+Thanks to @sudoevans, @mscrivo, @KubesDavid, @bfontaine, @tarushnagpal for the contributions
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.1 - Bugfixes (2025-01-16)</h2>
+      <pre>- Fixed issues with smtp , imap email channels sync 
+- Fixed issues with modals on canned responses and label pages 
+- Additional improvements for colors in email channel and other fixes</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.0 : Pre-release (2025-01-16)</h2>
+      <pre>We’re thrilled to introduce the first pre-release candidate for Chatwoot v4.0.0, packed with innovative features and enhancements. 
+
+## ChangeLog
+
+### 🤖 Introducing Captain: Your AI-Powered Assistant
+
+We’re proud to present **Captain**, our AI-powered assistant seamlessly integrated into Chatwoot. Captain is designed to enhance customer support efficiency with four key features:
+
+- **Captain Assistant**: A customer-facing AI that provides real-time, context-aware responses.
+- **Captain Co-pilot**: Helps agents with response preparation, translations, data retrieval, and more.
+- **Captain FAQs**: Detects common unanswered questions to grow your knowledge base.
+- **Captain Memories**: Logs key memories from conversations into the CRM for personalized, proactive support.
+
+
+### A Fresh, Revamped UI
+
+We’ve also made significant updates to the Chatwoot interface, including:
+
+- **Inbox View**: A whole new way to keep up with notifications and conversations relevant to you in Chatwoot without distractions.
+- **Better Email Previews**: Improved formatting for faster response times.
+- **Redesigned Contacts Section**: Cleaner layout and intuitive filtering for managing customer details.
+- **Streamlined Conversation Flow**: Faster, more intuitive workflows for managing conversations.
+- **Reimagined Help Center Portal**: Modern design and improved admin tools.
+- **New Sidebar Navigation**: Easier access to key sections.
+- Numerous other bug fixes and improvements. 
+
+<p></p>
+
+
+## ⚠️ Important Note for Upgrading:
+
+This release is a pre-release and is not recommended for production use. It is intended for testing and evaluation purposes only. Please wait for the stable releases if you intend to update production.
+
+The v4.0.0 release requires the pgvector extension to be installed in the database. Please refer to the Chatwoot[ v4 migration guide](https://www.chatwoot.com/docs/self-hosted/runbooks/upgrade-to-chatwoot-v4) for more details on how to prepare your database for this release.
+
+
+
+## 🖍 **What’s Next?**
+Stay tuned for updates, patches, and a closer look at what's in store for 4.0 updates. We value your feedback and contributions, so please feel free to engage with our team and community.
+
+Thank you for being an integral part of the Chatwoot journey. Happy coding!
+
+
+---
+Thanks to @danieljimeneznz for the contributions
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.16.0 (2024-12-17)</h2>
+      <pre>## Changelog
+
+- Design update for report pages
+- Design update for contact pages
+- Updated audio notification settings with new sounds
+- Ability to lock conversations to single thread in API channels
+- Captain copilot integration to sidebar (alpha)
+- Ability to create conversation directly from email / phone number 
+- Add support for Arcade videos on articles
+- Other Components and Design changes in preparation for v4
+- Numerous bug fixes and enhancements
+
+
+Thanks to @honzasterba, @giquieu, @nguyentranchung for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.15.0 (2024-11-19)</h2>
+      <pre>## Changelog
+
+- ip-lookup database lazy loading for all installation environments
+- New sidebar for Chatwoot ( v4 )
+- New design for HelpCenter portals ( v4 )
+- New design for campaigns page ( v4 )
+- Numerous bug fixes and enhancements in preparation for the v4 release
+
+
+Thanks to @mazenkhalil, @KokeroO, @MingShyanWei for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.14.1 (2024-10-22)</h2>
+      <pre>## Changelog
+
+- Fixes blank screen-related issues after logout
+
+### Notes: 
+
+If you are running `v3.14.0`, please upgrade to `v3.14.1` as soon as possible.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.14.0 (2024-10-17)</h2>
+      <pre>## Changelog
+
+- Vite + vue 3  : Upgrades to our frontend stack and build pipelines
+- Auto populate country code in phone number field based on browser timezone
+- Numerous bug fixes and improvements
+
+### Notes: 
+
+This update brings a significant upgrade to the Chatwoot frontend stack, paving the way for faster asset builds and smoother development of upcoming features. If you’ve made customizations to the Chatwoot code, please take note, as there are several core changes throughout. We recommend reviewing the updates to ensure everything works seamlessly with your setup.
+
+> If you are upgrading a heroku installation, please make sure to add the nodejs buildpack before upgrade - ref: https://github.com/chatwoot/chatwoot/blob/c796832a58cc9bd045893af2756dd7bc71e91195/app.json#L61
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.13.0 (2024-09-18)</h2>
+      <pre>## Changelog
+
+- Custom Roles (alpha) [EE]
+- Admin page redesigns for macros, automation, inbox management, etc
+- Support for copy-pasting images in help center articles 
+- Update GPT model for open AI integration to 4o-mini
+- Numerous bug fixes and enhancements
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.12.0 (2024-08-19)</h2>
+      <pre>## Changelog
+
+- Design updates for various setting pages like integrations, canned responses, teams, etc
+- Captain integration (alpha)
+- Support for shared instagram reels in the messenger channel
+- Changes for vue3 upgrade
+- Numerous bug fixes and enhancements
+
+###
+Thanks to @nestordavalos for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.11.1 (2024-08-12)</h2>
+      <pre>This hotfix release fixes the conversation order when real-time events are delayed or missed.
+
+**Fixes the problem:** If there's a delay in the message event, the conversation was added to the end of the list. Agents often miss this conversation.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.11.0 (2024-07-17)</h2>
+      <pre>## Changelog
+
+- Ability to unassign teams using automation
+- Add video message viewing in Chatwidget
+- Improved reconnect logic for automated reconnections
+- API frameworks for upcoming roles & permissions feature
+- Upgraded ruby to 3.3.3 for performance improvements
+- Numerous bug fixes and enhancements
+
+###
+Thanks to @clairton, @IRediTOTO, @WuChenDi, @oneheed for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.10.2 (2024-06-27)</h2>
+      <pre>## Changelog
+
+- Improved video rendering in the widget
+- Additional fixes for notification payload</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.10.1 (2024-06-21)</h2>
+      <pre>## Changelog
+
+- Improves rendering of plain text emails
+- Handle push notification errors</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.10.0 (2024-06-18)</h2>
+      <pre>## Changelog
+
+- Linear Integration (alpha)
+- Gmail channel ([docs](https://www.chatwoot.com/docs/self-hosted/configuration/features/email-channel/google-workspace-setup))
+- Improved reconnection logic
+- Performance Improvements to reporting APIs
+- FCM API changes
+- Help centre improvements ( support for linebreaks, tables etc, in the API )
+- Ability to configure email channel settings in super admin
+- Numerous bug fixes and enhancements
+
+###
+Thanks to  @fv3rdugo, @s00d , @ajnadox, @eltociear, @abehnamfard for the contributions
+
+
+-----
+
+Notes:
+
+We were using FCM legacy APIs to send push notifications to Android and iOS devices. As these APIs were deprecated on June 20, 2023, and will be removed in June 2024, we have added support for HTTP v1 API notifications in the latest version.  Users of Chatwoot cloud and self-hosted instances using the Chatwoot relay server don't need to make any changes. If you are using the mobile app, ensure that you have installed the latest Chatwoot mobile app (1.10.41).
+
+However, for users with a self-hosted server who are not using a relay server, some changes are necessary. You can learn more about these changes here: https://firebase.google.com/docs/cloud-messaging/migrate-v1 
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.9.0 (2024-05-16)</h2>
+      <pre>## Changelog
+
+- Performance improvements for reports (7x better load times on larger accounts)
+- Improved performance for conversation filters
+- Ability to export contacts with filters applied
+- Ability to snooze conversations in bulk actions
+- Support file uploads in the telegram channel
+- Support for loom videos in help centre articles
+- Numerous bug fixes and enhancements
+
+###
+Thanks to @JeffOtano, @MJRT, @clairton, @Maklu, @legioner0, @jderecho, @imtoanle  for the contributions
+
+------
+
+Notes: 
+
+- This release involves critical db migration and adding indexes; please ensure migrations are run correctly
+- Going forward, we will be deprecating `360Dialog` as a WhatsApp provider. Hence, new inboxes cannot be created with this provider starting from this release. Existing inboxes will continue to work, and a migration path will be provided
+- This release contains billing-related changes that might reset unauthorised customisations of Chatwoot Enterprise editions.  </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.0 (2024-04-17)</h2>
+      <pre>## Changelog
+
+- SLAs for conversations ( enterprise )
+- Embedding based search for Helpcenter ( enterprise - alpha )
+- Lock to Single Thread config for meta inbox
+- Improved email fetching for IMAP inboxes
+- API to configure Chat widget into a help center
+-  Numerous bug fixes and enhancements
+
+
+Thanks to @ryankon, @shivamkb17, @JaideepGuntupalli, @Nuzair46 for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.7.0 (2024-03-18)</h2>
+      <pre>## Changelog
+
+- SLA for conversations (enterprise) - (alpha)
+- Inbox view for notifications - (alpha)
+- Reports for conversations handled by bots
+- Ability to block contacts
+- Conversation image improvements for agents ( zoom, preview inline images, etc )
+- Export contact improvements
+- Numerous bug fixes and enhancements
+
+Thanks to @LiamAshdown, @CristianDuta, @danilofuchs, @matheus-rodrigues00  for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.0 (2024-02-19)</h2>
+      <pre>## Changelog
+
+- Support for regex-validated fields in pre-chat form
+- Improved email loading for email channel when using IMAP
+- Markdown support for the telegram channel
+- Ability to update multiple files in Facebook & Instagram channels
+- Custom branding support for the help centre
+- Numerous performance improvements and bug fixes
+
+Thanks to @LiamAshdown, @mongkondev, @s00d,  @Arooba-git, @surabhisuman, @gsemyong, @prepstarr, @abehnamfard, @Jatin-MYST,  @giquieu, @cyprusad  for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.2 - Hotfix (2024-01-19)</h2>
+      <pre>- Fixes issue with super admin token when making API calls - https://github.com/chatwoot/chatwoot/issues/8719
+- Fixes issues with Email Channel bandwidth exceeded issues - https://github.com/chatwoot/chatwoot/issues/6082
+- Switch to HTML parse mode in telegram channel to address the message sending issues
+- Numerous other fixes and improvements</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.1 -Hotfix (2024-01-17)</h2>
+      <pre>- Fixes the issue with the telegram channel, where messages containing special characters were not getting delivered.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.0 (2024-01-16)</h2>
+      <pre>## Changelog
+
+- Improved configuration screen for Whitelabel settings
+- UI for unsupported message types in Instagram/Facebook Channel
+- Custom attributes in the suggestion for variables
+- Bugfixes and improvements
+
+Thanks to @kevinslin for the contributions
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.4.0 (2023-12-19)</h2>
+      <pre>## Changelog
+
+- Ability to manage premium self-hosted plans from super admin pannel
+- Ability to manage white label settings from super admin pannel ( enterprise )
+- Support for stickers and outgoing attachments in line channel
+- Support for more sort options in conversation dashboard
+- Support for custom attributes in message variables
+- Delivery reports for Facebook channel
+- Support for Authentication in case of Twilio media messages
+- Multiple performance improvements and bug fixes
+
+
+Thanks to @clairton, @soymgomez, @Toinne, @hugodeco, @LiamAshdown, @mazenkhalil,   for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.1 - Hotfix (2023-11-18)</h2>
+      <pre>- Fixes the issue with the message pane disappearing when OpenAI integration isn't enabled
+
+Thanks a lot to @clairton  for the fix.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.0 (2023-11-18)</h2>
+      <pre>## Changelog
+
+- Delivery reports for messages across all channels 
+- Reply to option for supported channels
+- Helpcenter enhancements and redesign
+- Ability to insert helpcenter articles as messages
+- Ability to disable label suggestions with openAi integration
+- Numerous performance improvements and bug fixes
+
+###
+Thanks to @intelekshual, @willkramer , @LiamAshdown , @Cauen, @shivamkb17 , @gabriel-quina   the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.0 (2023-10-18)</h2>
+      <pre>## Changelog
+
+- Ability to reply to a specific message in the agent dashboard
+- Ability to send attachments while creating outbound conversations
+- Delivery status updates for Twilio and live chat channels
+- Support for link unfurling in Slack integration
+- Dark theme support for knowledge base portals
+- Ability to search contacts by company name
+- Knowledge management in super admin for robin AI
+- Support for multiple values in automation message content rule
+- Support for assigning to self in macros
+- Improved search across super admin for users and accounts
+- Ability to view migration status in super admin
+- Numerous performance improvements and bug fixes
+
+###
+Thanks to @smtbos, @LiamAshdown, @jordan-brough, @jsobralgitpush, @gitstart, @AqidaHaidari, @mazenkhalil, @BikashSah999,    for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.1- Bugfix (2023-09-23)</h2>
+      <pre>## Changelog
+
+- Fixes issues with filters involving labels
+- Fixes filtering of articles in Chatwidget
+- Fixes duplicate signature issue</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.0 (2023-09-16)</h2>
+      <pre>## Changelog
+
+- Enhanced Knowledge Portal Integration with Chatwidget
+- Advanced Email Message Signatures Supporting Image Attachments
+- Optimized Contact Import Functionality
+- Upgraded Slack Integration to Support Attachments
+- Comprehensive Bug Resolutions and Performance Enhancements
+
+Thanks to @jordan-brough, @LiamAshdown , @paulocr,  @thorakna, @gitstart, @BikashSah999   for the contributions</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0 (2023-08-16)</h2>
+      <pre>We're thrilled to announce the first stable candidate for `v3.0`, paving the way for exciting new features. With this update, you'll gain immediate access to enhancements such as `Dark Mode`, setting the stage for more to come.
+
+Thanks to @jordan-brough, @civilcoder55, @ljcp, @memorycancel, @clairton @karthi07, @LiamAshdown, @merlijndetovenaar84, @nhippenmeyer, @Jatin-MYST, @CristianDuta
+
+[Join the V3 Discussion](https://github.com/orgs/chatwoot/discussions/7570)
+
+### ⚠️ Important Note for Integration Testing:
+If you have built integrations over the 2.x versions of Chatwoot, please ensure to test them thoroughly before updating to 3.x versions. We are committed to providing seamless transitions, and we'll be updating our developer documentation in the coming days to guide you through the process.
+
+### 📝 What's Next?
+Stay tuned for updates, patches, and a closer look at what's in store for future versions. We value your feedback and contributions, so please feel free to engage with our team and community.
+
+Thank you for being a part of the Chatwoot journey, and happy coding!</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for gohugoio/hugo"/>
+  <title>gohugoio/hugo Release Notes</title>
+</head>
+<body>
+  <h1>🚀 gohugoio/hugo - Release Notes</h1>
+  
+    <section>
+      <h2>v0.145.0 (2025-02-26)</h2>
+      <pre>The notable new feature is the new [transform.PortableText](https://gohugo.io/functions/transform/portabletext/) function that makes it possible to use the Sanity CMS with Hugo.
+
+## Bug fixes
+
+* all: Typo fixes 4094a1e12 @coliff 
+* all: Run modernize -fix ./... 521911a57 @bep 
+* readme: Fix relative links in Editions section ab9e54576 @martey 
+* Fix some related content issues with content adapters 381c0da85 @bep #13443 
+* Fix potential nilpointer in httpcache config 227e42926 @bep 
+* Fix --printPathWarnings when site calls templates.Defer c3d435acf @bep #13420 
+
+## Improvements
+
+* Use the page path and not the backing filename as the last resort in the default sort c498d0fe1 @bep 
+* tpl: HTTPS the instagram Shortcode JS 2f4e666d7 @coliff 
+* Add transform.PortableText 04f21b4d8 @bep 
+* hugolib: Deprecate _build front matter key in favor of build d0ce94219 @jmooring 
+
+## Dependency Updates
+
+* deps: Upgrade github.com/rogpeppe/go-internal v1.13.1 => v1.14.1 6927e6f04 @bep #13449 
+* build(deps): bump github.com/yuin/goldmark-emoji from 1.0.4 to 1.0.5 b7ae24b9c @dependabot[bot] 
+* build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0 1a4851f13 @dependabot[bot] 
+* build(deps): bump github.com/tetratelabs/wazero from 1.8.2 to 1.9.0 d1f23309b @dependabot[bot] 
+
+## Documentation
+
+* github: Build docker image with both extended and withdeploy tags e5eecbd9b @margau 
+
+## Build Setup
+
+* snap: Update Node.js to 22.x 4fd7f3233 @jmooring 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.144.2 (2025-02-19)</h2>
+      <pre>## What's Changed
+
+* Fix --printPathWarnings when site calls templates.Defer c3d435acf @bep #13420 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.144.1 (2025-02-18)</h2>
+      <pre>## What's Changed
+
+* markup/goldmark: Fix panic on empty Markdown header 494e88abf @bep #13416 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.144.0 (2025-02-17)</h2>
+      <pre>Go 1.24 upgrade, several performance improvements, new [:contentbasename](https://gohugo.io/content-management/urls/#contentbasename) and [:slugorcontentbasename](https://gohugo.io/content-management/urls/#slugorcontentbasename) permalink tokens, enable KaTeX `mhchem` extension for [transform.ToMath](https://gohugo.io/functions/transform/tomath/), full dependency refresh, new `drop` option for [js.Build](https://gohugo.io/functions/js/build/#drop), new [auth](https://gohugo.io/hugo-modules/configuration/#auth) module option useful for private module repositories, [autoID](https://gohugo.io/getting-started/configuration-markup/#parserautodefinitiontermid) support for [definition terms](https://michelf.ca/projects/php-markdown/extra/#def-list), new `configurationTypes` configuration option, and more. For more details, see [this topic](https://discourse.gohugo.io/t/more-about-the-v0-144-0-release/53584).
+
+## Note
+
+* Fix auto generated header ids so they don't contain e.g. hyperlink destinations (note) 24cc25552 @bep #13405 #13410 
+
+## Bug fixes
+
+* markup/goldmark: Fix panic on stray attribute nodes 85c172774 @bep 
+* Fix Position for passthrough hooks 641403f7d @bep #13406 
+* config: Fix server.redirects.fromRe being ignored unless server.redirects.from is also set c1f4228d6 @p-weston 
+* Fix shortcode name in error message on self-closing shortcodes with no .Inner e865d5984 @bep #13344 
+
+## Improvements
+
+* config/allconfig: Deprecate :filename and :slugorfilename tokens 5de3913ed @jmooring 
+* resources/page: Revise the new contentbasename permalinks tokens 7b7a0f362 @bep #11722 
+* resources/page: Add :contentbasename and :contentbasenameorslug permalink tokens cb7a4339b @hacdias #11722 
+* Add autoID for definition terms 157d3703c @bep #13403 #11566 
+* internal/warpc: Enable KaTeX mhchem extension 503dcf625 @jmooring 
+* modules: Add GOAUTH to module config 2c77719cd @bep #13385 
+* Support menus as maps in content adapters fd38aee69 @bep #13384 
+* js/esbuild: Add drop option d25f7ec17 @bep #13362 
+* config: Remove unused code 34dcac53b @jmooring 
+* commands: Use punctuation consistently in short description ee438606d @jmooring 
+* Upgrade to Go 1.24 fd8b0fbf8 @bep #13381 
+* Deprecate kind, lang, and path from front matter 9b5f786df @bep #12484 
+* commands: Move the CHMOD event filter up e6feb9e0b @bep #13373 
+* parser: Handle org-mode filetags as slice f02da7fbc @theSuess 
+* Add ContentTypes to config c2fb22120 @bep #12274 
+* commands: Validate style argument passed to gen chromastyles a352e69b0 @jmooring #13357 
+* Update CONTRIBUTING.md 1dd27be81 @bep 
+* Move "print unused templates" after renderDeferred eb7a5aaba @bep #13355 
+* Add some more server options/improvements 029d1e0ce @bep 
+
+## Dependency Updates
+
+* build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1 a2ca95629 @dependabot[bot] 
+* build(deps): bump github.com/sanity-io/litter from 1.5.7 to 1.5.8 367fe526e @dependabot[bot] 
+* build(deps): bump github.com/sanity-io/litter from 1.5.5 to 1.5.7 9c2f8ec61 @dependabot[bot] 
+* build(deps): bump github.com/gohugoio/hugo-goldmark-extensions/extras bd77944ba @dependabot[bot] 
+* build(deps): bump golang.org/x/tools from 0.29.0 to 0.30.0 2e835d084 @dependabot[bot] 
+* build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront d89b9d891 @dependabot[bot] 
+* build(deps): bump google.golang.org/api from 0.206.0 to 0.221.0 8721a3520 @dependabot[bot] 
+* build(deps): bump github.com/bep/imagemeta from 0.8.3 to 0.8.4 c054e1882 @dependabot[bot] 
+* build(deps): bump golang.org/x/image from 0.22.0 to 0.24.0 5e4ffa0e8 @dependabot[bot] 
+* build(deps): bump golang.org/x/mod from 0.22.0 to 0.23.0 0cdcc2b58 @dependabot[bot] 
+* build(deps): bump github.com/gohugoio/hashstructure from 0.3.0 to 0.5.0 a591c4406 @dependabot[bot] 
+* build(deps): bump github.com/bep/simplecobra from 0.4.0 to 0.5.0 2d86a0512 @dependabot[bot] 
+* build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront 22ee0918f @dependabot[bot] 
+* build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.32.4 to 1.36.1 b50ab0403 @dependabot[bot] 
+* build(deps): bump github.com/getkin/kin-openapi from 0.123.0 to 0.129.0 b772f0e3d @dependabot[bot] 
+* build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6 d58c0198d @dependabot[bot] 
+
+## Documentation
+
+* Update README.md 5dd0ba00f @jmooring 
+* helpers: Add Chroma styles to docs.yaml f0c185297 @jmooring #13360 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.143.1 (2025-02-04)</h2>
+      <pre>## What's Changed
+
+* Fix RSS with baseURL with sub dir when render hooks is enabled 760c13a7a @bep #13332 
+* mage: Simplify magefile 3bd73d262 @alexandear 
+* common/hugo: Adjust deprecation timing and message 7104de83c @jmooring #13333 
+* Re-introduce the LRU-evicted identities in change set calculation 835579b33 @bep 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.143.0 (2025-02-01)</h2>
+      <pre>This is mostly a bug fix release, ironing out some quirks with the partial server rebuilds etc., but notable is also the new [responseHeaders ](https://gohugo.io/functions/resources/getremote/#responseheaders) option on `resources.GetRemote` that allows you to extract headers from the server’s response.
+
+## Bug fixes
+
+* Fix some server/watch rebuild issues db28695ff @bep #13316 
+* Fix "concurrent map iteration and map write" in pages from data 329b2342f @bep #13254 
+* Fix TailwindCSS related server rebuild issue 6c68142cc @bep #13316 
+* Fix some server rebuild issues for non-HTML custom output formats cd7dc7a37 @bep #13014 
+* Fix cascade with overlapping sections bb7b3d3cd @bep #12465 
+* markup/goldmark: Fix typo in func comment f704d7569 @chalin 
+
+## Improvements
+
+* Don't re-render aliases on server rebuilds 778f0d900 @bep 
+* tpl/tplimpl: Remove leading whitespaces produced by Youtube shortcode 13b208e2f @alex-shpak 
+* resources: Remove debug statement 33b46d8a4 @jmooring #13320 
+* markup/goldmark: Trim space from blockquote render hook text e08d9af21 @jmooring #13302 
+* parser/pageparser: Don't allow parameters after closing tag in shortcodes c939c33fd @guilhas07 
+* tpl/tplimpl: Improve shortcode test coverage 873a5cda1 @jmooring 
+* tpl/tplimpl: Deprecate gist shortcode f42a4b6af @jmooring #13211 
+* resources: Remove conditional used for debugging a5637831c @bep 
+* resources: Add responseHeaders option to resources.GetRemote 68586c891 @bep #12521 
+* tpl/tplimpl: Skip TestTemplateFuncsExamples on s390x 51bb2feda @bep #13204 
+* Make cascade front matter order deterministic 7f0f50b13 @bep #12594 
+* tpl/tplimpl: Deprecate comment shortcode 77a8e347b @jmooring 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.142.0 (2025-01-22)</h2>
+      <pre>This is is mostly a bug fix release. It's a minor and not a patch release because of the image file cache issue fixes (see #13273 #13272). Fixing this required us to break the hashes for many of the generated images so we used this opportunity to simplify how we generate these hashes/image filenames. 
+
+## Bug fixes
+
+* Fix render hook's PlainText with typographer extension enabled 6aa72acaf @bep #13286 #13292 
+* Fix build with Go 1.24 4b0c194fb @flyn-org 
+* tpl/tplimpl: Fix context in shortcode error messages 8de4ffb29 @jmooring #13279 
+* resources: Fix 2 image file cache key issues 1f5a15aba @bep #13273 #13272 
+
+## Improvements
+* Also handle inline HTML comments 637995ba8 @bep 
+* Do not warn on potentially unsafe HTML comments when unsafe=false f1de5d2a0 @bep #13278 
+* tpl: Add loading attribute to qr shortcode 889711366 @nfriedli 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.141.0 (2025-01-16)</h2>
+      <pre>This release adds [try](https://gohugo.io/functions/go-template/try/), a new general mechanism for handling errors within templates, a new [images.Mask](https://gohugo.io/functions/images/mask/) image filter, a new [images.QR](https://gohugo.io/functions/images/qr/)  function, a new `alignx` option to control horizontal alignment in [images.Text](https://gohugo.io/functions/images/text/), and more.
+
+
+## Note
+
+* Adjust error handling in ToMath vs try  (note) dde9d9d54 @bep #13239 
+* resources: Replace error handling in GetRemote with try (note) 0918e087e @bep #13216 
+* For render hooks, only fallback to HTML (or the defaultOutputFormat) template 76993369a @bep #13242 
+
+## Bug fixes
+
+* common/paths: Fix docstring 8b5262691 @jdbaldry 
+* commands: Fix spelling in comment 60c24fc5e @bep 
+* Fix branch resource overlapping bundle path c5a63a3b4 @bep #13228 
+* templates: Fix handling of multiple defers in the same template 61d3d2012 @bep #13236 
+* Fix NPX issue with TailwindCSS v4 cfa080181 @bep #13221 
+* Fix server refresh on 404 template changes d913f46a8 @bep #13209 
+
+## Improvements
+
+* tpl/tplimpl: Simplify some test assertions 1fad3832a @bep 
+* tpl/tplimpl: Deprecate twitter shortcode in favor of x shortcode 1191467c0 @jmooring #13214 
+* commands: Set up the glboal logger early 41137077b @bep #13265 
+* commands: Add --printZero to the config command 5bb156457 @bep 
+* tpl/collections: Use MapRange/SetIterKey/SetIterValue for Where, Sort and Merge de7137cc3 @bep 
+* tpl/collections: Add BenchmarkWhereMap 956f915f7 @bep 
+* tpl/collections: Add BenchmarkSortMap a2a4166f6 @bep 
+* tpl/collections: Add Merge benchmark 39f582f9f @bep 
+* resources/images: Refactor golden image tests to locate them closer to the implementation 2501de7aa @bep 
+* resources/images: Add some mask tests 06cc8673f @bep #13244 
+* resources/images: Add images.Mask 71fae9918 @trickkiste #13244 
+* tpl/tplimpl: Use plain text for image render hook alt attribute 8af04745f @jmooring 
+* resources/images: Add some golden tests for images.QR 892b49110 @bep 
+* tpl/images: Change signature of images.QR to images.QR TEXT OPTIONS b13d0a68e @jmooring #13230 
+* resources/images: Add some golden tests for images.Text d9594a96f @bep 
+* images.Text: Add "alignx" option for horizontal alignment 4a5cc2dd2 @jlskuz #10849 
+* images: Rework the golden tests 9cad8d38c @bep 
+* create: Respect --noBuildLock in hugo new 2a7bb1c7c @bep 
+*  tpl/images: Format the QR hashes as hex 5f2adad2c @bep 
+* tpl/images: Add images.QR function 4ea94c451 @jmooring #13205 
+* Add try 5d2cbee98 @bep #9737 
+* resources: Add FromOpts for more effective resource creation 723e3f434 @bep 
+* markup/highlight: Remove noHl option 2db43f841 @jmooring #9885 
+
+## Dependency Updates
+
+* deps: Upgrade github.com/gohugoio/hashstructure from 0.1.0 to 0.3.0 a2edf04c2 @bep 
+* build(deps): bump golang.org/x/tools from 0.28.0 to 0.29.0 f024a5050 @dependabot[bot] 
+* build(deps): bump golang.org/x/net from 0.33.0 to 0.34.0 80704bc9a @dependabot[bot] 
+* build(deps): bump github.com/evanw/esbuild from 0.24.0 to 0.24.2 b7b49fb0f @dependabot[bot] 
+* build(deps): bump github.com/alecthomas/chroma/v2 from 2.14.0 to 2.15.0 a83797673 @dependabot[bot] 
+
+## Documentation
+
+* docs: Regen CLI docs 88ecc3b75 @bep 
+* docs: Regen CLI docs 44628616a @bep 
+
+## Build Setup
+
+* snap: Always package latest stable version of Go 3682027a5 @jmooring 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.140.2 (2024-12-30)</h2>
+      <pre>The timing of this release comes from the security fix in `golang.org/x/net`'s `html.Parse` function. This is used in two places in Hugo:
+
+1. Extracting table of contents from Asciidoctor rendered output.
+2. Collecting HTML classes etc. when build stats is [enabled](https://gohugo.io/getting-started/configuration-build/#configure-build-stats)
+
+It's a little bit of a stretch to see how this could be exploited in Hugo, but we understand that many want a clean security report. See [this issue](https://github.com/golang/go/issues/70179) for details.
+
+
+## What's Changed
+
+* Print cli usage of `hugo gen chromastyles` alongside css 83cec785c @diwasrimal 
+* build(deps): bump golang.org/x/net from 0.32.0 to 0.33.0 4e52be8b9 @dependabot[bot] 
+* config/allconfig: Fix slice of language configs 7888ac585 @jmooring #13201 
+* config/allconfig: Throw error when output format is not defined eb1dbe070 @jmooring #13199 
+* Fix same resource file published more than once 77824d704 @bep #13164 
+* markup/highlight: Add wrapperClass option ec0caaec7 @bep 
+* Update README.md 845b8885d @bep 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.140.1 (2024-12-23)</h2>
+      <pre>Some bug fixes in the (most likely) last Hugo release of the year. Of some technical interest to some, I can mention that I, @bep, have reworked [hugoreleaser](https://github.com/gohugoio/hugoreleaser) to use YAML (with anchors/aliases) instead of TOML for the release configuration. Have a look at the [end result](https://github.com/gohugoio/hugo/blob/master/hugoreleaser.yaml). 
+
+## What's Changed
+
+* Update gocloud and docs for S3-Compatible Endpoints e229f4b38 @tebriel 
+* js/esbuild: Don't try to resolve packages in /assets marked as external 020253904 @bep #13183 
+* Fix union, complement, symdiff, and intersect for transient resources 4a5e94087 @bep #13181 
+* release: Add withdeploy deb extended archives 48a7aee96 @bep #13166 
+* common/loggers: Write PrintTimerIfDelayed output to stdErr 6c583e322 @jmooring #13171 
+* build(deps): bump github.com/spf13/cast from 1.7.0 to 1.7.1 5d64b492f @dependabot[bot] 
+* hugolib: Fix fallbacks for menu entry Name and Title b3f32949c @jmooring #13161 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.140.0 (2024-12-17)</h2>
+      <pre>The big new feature in this release is [js.Batch](https://gohugo.io/functions/js/batch/) – this enables JavaScript bundle groups (e.g. scripts per section) with global code splitting and flexible hooks/runners setup.
+
+## Bug fixes
+
+* Fix panic on server rebuilds when using both base templates and template.Defer a5e5be234 @bep #12963 
+* js: Fix js.Batch for multihost setups 565c30eac @bep #13151 
+* parser/pageparser: Fix Org Mode summary delimiter assignment 48dd6a918 @jmooring #13152 
+* Fix a rebuild on resource rename case 744b8566e @bep 
+* tpl/tplimpl: Fix title attribute in details shortcode a32c889a7 @jmooring 
+* Fix Sass imports on the form index.{scss,sass} 5ab38de36 @bep #13123 
+* markup/goldmark: Fix blockquote render hook text parsing 34373407b @jmooring #12913 #13119 
+
+## Improvements
+
+* js/esbuild: Add missing es2024 target 5c80cb0d2 @bep 
+* js/esbuild: Add runners after scripts 7de5317ae @bep 
+* js/esbuild: Batch: Avoid nil Instances slice 4cbd4ef99 @bep 
+* tpl/tplimpl: Update youtube shortcode 852d86854 @jmooring 
+* tpl/tplimpl: Update details shortcode 1e34e5b26 @jmooring 
+* tpl/collections: Allow querify to accept a map argument 641d2616c @jmooring #13131 
+* js/esbuild: Build groups in order of their ID a834bb9f7 @bep 
+* tpl/tplimpl: Add details shortcode 4f130f6e4 @racehd 
+* Write all logging (INFO, WARN, ERROR) to stderr 9dfa11261 @bep #13074 
+* js/esbuild: Add platform option ec1933f79 @bep #13136 
+* Add config option disableDefaultLanguageRedirect 75ad9cdaa @bep #13133 
+* Add js.Batch e293e7ca6 @bep #12626 #7499 #9978 #12879 #13113 #13116 
+* Upgrade to Go 1.23.4 6be253000 @bep #13130 
+* Remove some old and unused shell scripts 989b299b5 @bep 
+
+## Dependency Updates
+
+* build(deps): bump golang.org/x/crypto from 0.30.0 to 0.31.0 157d86414 @dependabot[bot] 
+* build(deps): bump golang.org/x/tools from 0.27.0 to 0.28.0 947e4e66b @dependabot[bot] 
+* build(deps): bump github.com/hairyhenderson/go-codeowners 5f897868c @dependabot[bot] 
+* build(deps): bump golang.org/x/net from 0.31.0 to 0.32.0 7b6921848 @dependabot[bot] 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.139.5 (2024-12-14)</h2>
+      <pre>This is a release created for technical reasons, see https://github.com/gohugoio/hugo/issues/13147
+
+It's the same as https://github.com/gohugoio/hugo/releases/tag/v0.139.4 -- go there for release archives.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.139.4 (2024-12-09)</h2>
+      <pre>This release contains a security fix. See this [Security Advisory](https://github.com/gohugoio/hugo/security/advisories/GHSA-c2xf-9v2r-r2rx) for details. Note that this is only relevant if you don't trust your content (e.g. Markdown) files.
+
+## What's Changed
+
+* tpl/tplimpl: Escape Markdown attributes in render hooks and shortcodes 54398f8d5 @jmooring 
+* deps: Upgrade github.com/bep/godartsass/v2 v2.3.1 => v2.3.2 b8c15f245 @bep 
+* common/maps: Simplify TestScratchSetInMap/DeleteInMap d0dc51884 @alexandear 
+* markup/tableofcontents: Cast Fragments.ToHTML args to int b52985900 @jmooring #13107 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.139.3 (2024-11-29)</h2>
+      <pre>## What's Changed
+
+* Fix server edits of resources included in shortcode/hooks c1dc35dd7 @bep #13093 
+* commands: Fix flaw in the livereload logic dea158c88 @bep 
+* build(deps): bump github.com/bep/godartsass/v2 from 2.3.0 to 2.3.1 7e130e34f @dependabot[bot] 
+* build(deps): bump github.com/tetratelabs/wazero from 1.8.1 to 1.8.2 88b7868fb @dependabot[bot] 
+* Fix some typos fc3d1cbad @thirdkeyword 
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.139.2 (2024-11-23)</h2>
+      <pre>**Note** that this is the second patch release today. See [v0.139.1](https://github.com/gohugoio/hugo/releases/tag/v0.139.1). We had to do this release to get the Hugo Docs build running.
+
+## What's Changed
+
+* modules: Skip empty lines in modules.txt 0ab81896d @bep #13084 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.139.1 (2024-11-23)</h2>
+      <pre>## What's Changed
+
+* Revert "build(deps): bump github.com/tdewolff/minify/v2 from 2.20.37 to 2.21.1" aa3dd197f @bep #13082 
+* minifiers: Add failing test for upstream bug 5a50eee9d @bep #13082 
+* dartsass: Fix nilpointer on Close when Dart Sass isn't installed 8d017a60f @bep #13076 
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.139.0 (2024-11-18)</h2>
+      <pre>This release is mostly about removing code that has been deprecated for a long time. This has been shown as an `ERROR` in the build log and failed the build for at least the last 6 minor Hugo versions, in most cases much longer.
+
+But this is also a full dependency refresh, and there are also some new stuff. For one, we added a `-O` flag to `hugo server` to open up the site in your browser after start. This is now my (@bep) shortcut to start the server:
+
+```zsh
+function h() {
+  hugo server  -F -O -N -D
+}
+```
+
+## Note
+
+* dartsass: Remove support for v1 of the protocol/binary (note) 1fd845eee @bep 
+* Remove deprecations <= v0.122.0 (note) ad43d137d @bep 
+
+## Bug fixes
+
+* dartsass: Fix error message 8d92042ab @bep #13065 
+* Fix extra newline/paragraphs issue with .RenderShortcodes d4de780ed @bep #13051 
+* markup/goldmark: Fix typo in error message e79ee0d51 @deining 
+
+## Improvements
+
+* Make sure term is always set e917401c7 @bep #13063 
+* dartsass: Add silenceDeprecations option 3b6eaf9b1 @bep #13045 
+* Run go mod tidy 5e3133a7d @bep 
+* commands: Add -O flag to server to open browser ac6962d28 @bep #13040 
+* Preserve input type. 23d21b0d1 @KN4CK3R 
+* server: Strip ANSI escape codes from browser error log ce9cf882a @bep #13037 
+* parser/metadecoders: Add benchmark 8aba6dc66 @bep 
+* Add site.Store and hugo.Store and Shortcode.Store a7df536a5 @bep #13021 
+* markup/goldmark: Improve the raw HTML omitted warning 2b97a2a8b @jmooring #13023 
+
+## Dependency Updates
+
+* build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront eb298144b @dependabot[bot] 
+* build(deps): bump google.golang.org/api from 0.191.0 to 0.206.0 61e2ce2a4 @dependabot[bot] 
+* build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.30.3 to 1.32.4 2d503f82a @dependabot[bot] 
+* build(deps): bump github.com/fsnotify/fsnotify from 1.7.0 to 1.8.0 3a6b2e6b1 @dependabot[bot] 
+* deps: Upgrade github.com/bep/imagemeta v0.8.1 => v0.8.3 6bde8abaa @bep 
+* build(deps): bump golang.org/x/tools from 0.26.0 to 0.27.0 2c54c3298 @dependabot[bot] 
+* build(deps): bump github.com/tdewolff/minify/v2 from 2.20.37 to 2.21.1 7a2f04ee8 @dependabot[bot] 
+* build(deps): bump github.com/fatih/color from 1.17.0 to 1.18.0 7921777da @dependabot[bot] 
+* build(deps): bump golang.org/x/image from 0.21.0 to 0.22.0 33e964d40 @dependabot[bot] 
+* deps: Upgrade github.com/yuin/goldmark v1.7.4 => v1.7.8 588c9019c @bep #12958 
+* build(deps): bump golang.org/x/sync from 0.8.0 to 0.9.0 46e17053c @dependabot[bot] 
+* build(deps): bump github.com/hairyhenderson/go-codeowners cb6580d00 @dependabot[bot] 
+
+## Documentation
+
+* docs: Regen CLI docs 66dd6ecab @bep 
+* docs: Regenerate CLI docs 58a3c91a7 @bep 
+
+## Build Setup
+
+* release: Add missing withdeploy archive for arm64 Linux f7fc6ccd5 @bep #13029 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.138.0 (2024-11-18)</h2>
+      <pre>## What's Changed
+
+* Fix concurrent map read and map write in short page lookups 95e2d5beb @bep #13019 
+* Alias Page.Scratch to Page.Store (note) 2c3efc810 @bep #13016 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.137.1 (2024-11-05)</h2>
+      <pre>## What's Changed
+
+* common/hugo: Add withdeploy to the version string printed in hugo version ca4fc587c @bep 
+* markup: Goldmark log "Raw HTML omitted" warning also for inline HTML 4faaaf9c2 @bep #13013 
+* build: Add missing withdeploy archive for Windows 94b46c36b @bep #13009 
+* commands: Print the "deploy not available" error message even if flags provided 2b0b3b858 @bep #13012 
+* tpl/tplimpl: Create an embedded comment shortcode 801035bb7 @jmooring #13010 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.137.0 (2024-11-04)</h2>
+      <pre>Note that we have no longer build the [deploy feature](https://gohugo.io/hosting-and-deployment/hugo-deploy/) in the standard and extended archives. If you need that, download archives with `withdeploy` in the filename. See [instalation](https://gohugo.io/installation/) for details. You can read #12994 for more on the motivation behind this, but for one, it shaves off about 40% of the binary size.
+
+## Bug fixes
+
+* Fix stale pages on rebuilds in GetPage with short refs 30d9aea86 @bep #13004 
+* Fix some  RenderShortcodes error cases 1f23b4949 @bep #12854 #12998 
+* dynacache: Fix potential deadlocks on panics in GetOrCreate e10915f80 @bep 
+
+## Improvements
+
+* Do not watch directories with no mounted files in it fcdc454cc @bep #12912 #13007 
+* markup/goldmark: Only log Raw HTML omitted WARN on block entering 6cf23bf88 @bep #12997 
+* markup/goldmark: Add warning (using Warnidf) on Goldmark <!-- raw HTML omitted --> 62a96cef7 @bep #12997 
+* resources: Address Dart Sass deprecation of global built-in functions 889308dd8 @jmooring #12961 
+* github: Adjust test workflow to install Dart Sass v1.80.3 72352f205 @jmooring 
+* Build without the deploy feature by default 89bd025eb @bep #12994 #12994 
+
+## Dependency Updates
+
+* deps: Upgrade github.com/bep/godartsass/v2 v2.1.0 => v2.2.0 e3304db61 @bep 
+* deps: Upgrade github.com/bep/lazycache v0.6.0 => v0.7.0 62567d382 @bep 
+
+## Documentation
+
+* Update README.md 5fc163903 @jmooring 
+* Update README.md 1ec6fa36c @bep 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.136.5 (2024-10-24)</h2>
+      <pre>Fix stuck server error issues cb6e27b32 @bep #11378 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.136.4 (2024-10-22)</h2>
+      <pre>## What's Changed
+
+* tpl/transform: Revert unmarshal whitespace removal 5bbe95f9c @jmooring #12977 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.136.3 (2024-10-21)</h2>
+      <pre>## What's Changed
+
+* docker: Fix permission issues in Dockerfile 88d598a04 @dvdksn #12971 #12970 
+* Make sure that HugoSites is always closed when done 352be5ba8 @bep 
+* tpl/strings: Add TrimSpace function d37606d2c @jmooring #12962 
+* common/herrors: Fix the deferred error message cleaner regexp f5e54d9c7 @bep 
+* tpl/transform: Don't fail on "no data to transform" 42f37b4e9 @bep #12964 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.136.2 (2024-10-17)</h2>
+      <pre>## What's Changed
+
+* docker: Fix Dart Sass ARM64 arch mismatch, /cache permissions b5852d0e6 @dvdksn #12956 #12957 #12960 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.136.1 (2024-10-16)</h2>
+      <pre>## What's Changed
+
+* Never sanitize when url set in front matter e4ad0c527 @bep #12954 
+* Remove erroneously permalink validation a2f666b58 @bep #12948 
+* create/skeletons: Add delimiters to archetype front matter b1b3bbcdb @jmooring #12945 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.136.0 (2024-10-15)</h2>
+      <pre>**Note** that we have much improved the [Dockerfile](https://github.com/gohugoio/hugo/blob/master/Dockerfile) and [image](https://github.com/gohugoio/hugo/pkgs/container/hugo) this release. But this also means a slightly different way of setting it up. Improved [documentation](https://github.com/gohugoio/hugoDocs/issues/2727#issuecomment-2416161247) will come soon, but see 41f69a725 #12920 #12885 #12921.
+
+## Bug fixes
+
+* config: Fix uglyurls map parse ea633dd80 @akkuman #12926 
+
+## Improvements
+
+* resources/page: Adjust the permalinks colon implementation a little 6e1c5b61b @bep #12918 
+* resources/page: Allow colons in permalinks to be escaped e7d0757f9 @n1xx1 #12918 
+* commands: Use consistent style when describing subcommands 6b5e117a1 @Hasaber8 #12897 
+* config: Imrove uglyurls section test 21366e041 @bep #12926 
+* create/skeletons: Honor --format flag when creating default archetype 57151a5e9 @jmooring #12666 
+* hugolib: Make .Site.Author deprecation warning clearer 5bb22b6b4 @jvns #12269 
+* ci: Build multi-platform image with cross-compilation 4a7995627 @dvdksn 
+* tpl/tplimpl: Trim descriptions rather than just chomp 039845804 @chalin 
+* tailwind: Pin Tailwind 4 test to alpha 26 or later 5b0b663ec @jmooring 
+* resources/page: Treat null dates as zero dates 3f6830914 @jmooring #12906 
+* resources/page: Improve front matter date validation ab03588db @jmooring #12898 
+* commands: Add "hugo build" as an alias for "hugo" 0450d69fc @bep #11391 
+* markup/goldmark: Change default cell alignment in table render hook 1158e6307 @jmooring #12886 
+* tests: Address deprecation warnings and errors d1ba52f3c @jmooring 
+
+## Dependency Updates
+
+* build(deps): bump github.com/tetratelabs/wazero from 1.8.0 to 1.8.1 4985be1a4 @dependabot[bot] 
+* build(deps): bump golang.org/x/image from 0.20.0 to 0.21.0 db653a848 @dependabot[bot] 
+* build(deps): bump github.com/yuin/goldmark-emoji from 1.0.3 to 1.0.4 05bbd2c51 @dependabot[bot] 
+* build(deps): bump golang.org/x/tools from 0.23.0 to 0.26.0 9b635522e @dependabot[bot] 
+* build(deps): bump github.com/rogpeppe/go-internal from 1.12.0 to 1.13.1 3223a65c9 @dependabot[bot] 
+* build(deps): bump github.com/evanw/esbuild from 0.23.1 to 0.24.0 bc6fc4772 @dependabot[bot] 
+* build(deps): bump github.com/hairyhenderson/go-codeowners ffb41d111 @dependabot[bot] 
+
+## Documentation
+
+* circleci: Use default docker image 5db27b19c @bep 
+* docs: Regen CLI docs b7d62d76c @bep 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.135.0 (2024-09-27)</h2>
+      <pre>This is a small release, the main motivation was to finally ... drum roll ... get a tagged [Hugo Docker image](https://github.com/gohugoio/hugo/pkgs/container/hugo/280590856?tag=v0.135.0) published. Big thanks to @bmanth60 for the tip that solved this issue.
+
+## Improvements
+
+* resources/page: Validate predefined front matter dates 4c02a52f7 @jmooring #10717 
+* tailwind: Pin Tailwind 4 test to alpha 24 da72ac2db @bep #12880 
+* tpl/compare: Use any data type for compare.Conditional condition 0ea796dad @jmooring 
+
+## Dependency Updates
+
+* build(deps): bump golang.org/x/mod from 0.19.0 to 0.21.0 12c9ce34b @dependabot[bot] 
+* build(deps): bump github.com/bep/helpers from 0.4.0 to 0.5.0 47b055589 @dependabot[bot] 
+* build(deps): bump golang.org/x/net from 0.28.0 to 0.29.0 e56ea4066 @dependabot[bot] 
+* build(deps): bump golang.org/x/image from 0.19.0 to 0.20.0 578442f89 @dependabot[bot] 
+* deps: Upgrade github.com/gobuffalo/flect v1.0.2 => v1.0.3 1e690c0f2 @khayyamsaleem #12827 
+
+## Build Setup
+
+* github: Trigger image workflow on release.published 0d390d7eb @bep #12753 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.134.3 (2024-09-19)</h2>
+      <pre>* tpl: Remove RSS deprecation site.Author check e07028cb9 @bep 
+* modules: Improve console output on hugo mod init 22a9f3fc9 @bep #11458 
+* commands: Ignore "module does not exist" errors in hugo mod init e363964f2 @bep #11458 
+* Add exclusion for helix .bck files c260cb28a @David-Else #12677 
+* hugolib: Move hugolib/site_new.go into hugolib/site.go e07914537 @bep 
+* libsass: Resolve directory paths to directory index files 5b442b3cc @jmooring #12851 
+* dartsass: Resolve directory paths to directory index files 2bc27657d @jmooring #12849 
+* internal/warpc: Improve the JS plugin API 28f621d4a @bep 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.134.2 (2024-09-10)</h2>
+      <pre>## What's Changed
+
+* Don't count HTML markup in auto summaries 3d6baedae @bep #12837 
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.134.1 (2024-09-05)</h2>
+      <pre>## What's Changed
+
+* Fix stray end p tag in Obsidian callout titles 66a3a1100 @bep #12828 
+* Make ContentWithoutSummary return Content when summary is fetched from front matter 8f2eac019 @bep #12822 
+
+
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>
