@@ -3,8 +3,10 @@ import json
 import os
 import yaml
 from datetime import datetime
+from dotenv import load_dotenv
 
-GITHUB_TOKEN = "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"
+load_dotenv()
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 if not GITHUB_TOKEN:
     raise Exception("Missing GITHUB_TOKEN. Set it in .env or export it.")
 
