@@ -1,21 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>ReleaseRadar</title>
-  <meta name="description" content="Search and view latest open source releases.">
+  <meta name="description" content="Search and view the latest open source software releases.">
+
+  <!-- ✅ Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2578814462042083"
+     crossorigin="anonymous"></script>
+
   <style>
-    body { font-family: sans-serif; padding: 2em; max-width: 800px; margin: auto; }
-    input { width: 100%; padding: 10px; margin-bottom: 20px; font-size: 16px; }
-    ul { list-style: none; padding: 0; }
-    li { margin: 0.5em 0; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <h1>🔍 ReleaseRadar</h1>
-  <p>Search through {{ repos | length }} tracked open-source projects.</p>
+  <p>Explore {{ repos | length }} open-source projects with recent release notes.</p>
 
-  <input type="text" id="search" placeholder="Search for a project...">
+  <input type="text" id="search" placeholder="Search for a project..." />
+
+  <!-- ✅ Inline Ad Block -->
+  <ins class="adsbygoogle"
+       style="display:block; text-align:center;"
+       data-ad-client="ca-pub-2578814462042083"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
   <ul id="repo-list">
     {% for repo in repos %}
@@ -26,13 +66,14 @@
   </ul>
 
   <script>
-    const input = document.getElementById("search");
-    const list = document.getElementById("repo-list").children;
+    const input = document.getElementById('search');
+    const listItems = document.querySelectorAll('#repo-list li');
 
-    input.addEventListener("input", () => {
-      const value = input.value.toLowerCase();
-      Array.from(list).forEach(li => {
-        li.style.display = li.dataset.name.includes(value) ? "list-item" : "none";
+    input.addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      listItems.forEach((item) => {
+        const name = item.dataset.name;
+        item.style.display = name.includes(query) ? 'list-item' : 'none';
       });
     });
   </script>
