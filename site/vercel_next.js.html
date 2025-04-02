@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for vercel/next.js"/>
+  <title>vercel/next.js Release Notes</title>
+</head>
+<body>
+  <h1>🚀 vercel/next.js - Release Notes</h1>
+  
+    <section>
+      <h2>v15.3.0-canary.29 (2025-04-01)</h2>
+      <pre>### Core Changes
+
+- legacyBehavior deprecation error should only trigger once: #77687
+- Pass only required props to NonIndex: #77685
+- Revert "fix: make sure body can be read using `nodejs` runtime in middleware": #77690
+
+### Misc Changes
+
+- pack-next: use default `--js-build` as option instead of `--no-js-build`: #77686
+- Turbopack: Allow overriding tsconfig path via next-config: #77563
+- Scripts: migrate unpack-next to TypeScript: #77538
+
+### Credits 
+
+Huge thanks to @ztanner, @iamkd, @huozhi, and @wbinnssmith for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.28 (2025-04-01)</h2>
+      <pre>### Core Changes
+
+- Revert "Remove useSyncExternalStore from useIsDevRendering (#77651)": #77672
+- Upgrade React from `313332d1-20250326` to `63779030-20250328`: #77643
+- Turbopack build: Add marker for when a build used Turbopack: #77674
+- feat(images): use experimental `isrFlushToDisk` option to prevent writing optimized images to cache: #70645
+- doc: instrumentation-client: #77649
+- Alternate bundler: use equivalent native plugins for built-in plugins: #77355
+- Resolve Viewport separately from Metadata: #77427
+- fix(turbopack): Suppress logging for short no-op turbopack HMRs: #76924
+- Turbopack build: Fix node-file-trace test: #77641
+- Turbopack build: Implement error when using next start without --turbopack: #77678
+
+### Misc Changes
+
+- Turbopack: add tracing for fetch calls: #77673
+- [test] Update stale snapshots: #77680
+- Turbopack: fix bug in handling of module batches: #77638
+
+### Credits 
+
+Huge thanks to @acdlite, @sokra, @eps1lon, @timneutkens, @isBatak, @gaojude, @wbinnssmith, @gnoff, and @bgw for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.27 (2025-04-01)</h2>
+      <pre>### Core Changes
+
+- Turbopack build: Fix urlencoding test: #77622
+- [og] fix vercel og build issue on windows: #77650
+- [Segment Cache] Add "client-only" option: #77655
+- Remove useSyncExternalStore from useIsDevRendering: #77651
+- Track navigation timestamp on CacheNode: #77251
+- Upgrade @playwright/test and cleanup internal APIs: #77659
+- Refactor: move `"use cache"` revalidation logic out of incremental cache: #77577
+- Remove obsolete update of implicit tags expiration after server action: #77595
+
+### Misc Changes
+
+- Update pnpm swc-build-native's file path: #77623
+- fix: Use standard PostCSS configuration in create-next-app format for ecosystem compatibility: #77376
+- Turbopack build: Fix basepath test: #77630
+- Turbopack: disable pages dir css test cases: #77380
+- Update bundler development test manifest: #77627
+- Update Turbopack development test manifest: #77628
+- Update bundler production test manifest: #77626
+- refactor(turbo-tasks): Make TraceRawVcs a supertrait of TaskInput: #77397
+- refactor(turbo-tasks): Make TraceRawVcs a supertrait of MagicAny: #77596
+- fix(turbopack): Recognize urls starting with // as external: #77526
+- Update CI build caching docs to include `bun` and other package manager: #77633
+- fix(turbopack): Fix panic while tree shaking optimization: #77492
+- fix(turbopack): Prevent duplicate in tree shaking: #77491
+- Turbopack: Skip ssr processing when next/dynamic ssr: false: #77636
+- Turbopack Build: CSR bailout test skip check for file path: #77639
+- Turbopack: fix side effects optimization bug: #77640
+
+### Credits 
+
+Huge thanks to @wbinnssmith, @timneutkens, @kasperpeulen, @sokra, @bgw, @Cy-Tek, @huozhi, @acdlite, @dvoytenko, @husseinraoouf, @kdy1, and @unstubbable for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.26 (2025-03-30)</h2>
+      <pre>### Core Changes
+
+- Turbopack build: fix deterministic build test: #77618
+
+### Misc Changes
+
+- Turbopack build: Fix symbolic-file-links test: #77615
+
+### Credits 
+
+Huge thanks to @timneutkens for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.25 (2025-03-29)</h2>
+      <pre>### Core Changes
+
+- Do not call `expireTags`/`getExpiration` unnecessarily: #77570
+- fix(jest): stricter regex for 'server-only' in default config: #77588
+- Fix: RESTORE_ACTION should not be thenable: #77582
+- Use `NEXT_PRIVATE_DEBUG_CACHE` env variable for cache handler debug logs: #77585
+- fix: make sure body can be read using `nodejs` runtime in middleware: #77553
+- Update alternate bundler and pass more tests : #77579
+- Refactor build scripts and rewrite pack-next in TypeScript: #77536
+- fix isCsrfOriginAllowed handling for localhost: #77594
+
+### Misc Changes
+
+- Update mappings in `launch.json` to improve debugging in VSCode: #76559
+- chore(ci): Configure codspeed: #76884
+- Update bundler production test manifest: #77602
+- Update bundler development test manifest: #77603
+- Update Turbopack development test manifest: #77605
+- Update Turbopack production test manifest: #77604
+
+### Credits 
+
+Huge thanks to @unstubbable, @sbougerel, @gaojude, @kevva, @ahabhgk, @wbinnssmith, @kdy1, and @ztanner for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v12.3.7 (2025-03-28)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+
+### Core Changes
+
+- Lock swc binaries version</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v13.5.11 (2025-03-27)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+
+### Core Changes
+
+- Lock swc binaries version</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.24 (2025-03-26)</h2>
+      <pre>### Core Changes
+
+- Upgrade React from `740a4f7a-20250325` to `313332d1-20250326`: #77527
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.23 (2025-03-26)</h2>
+      <pre>### Misc Changes
+
+- fix(turbopack): Use strongly consistent reads for sourcemaps in napi FFI boundary: #77511
+
+### Credits 
+
+Huge thanks to @bgw for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.22 (2025-03-25)</h2>
+      <pre>### Core Changes
+
+- [dynamicIO] Avoid memory leak warning for hanging promises: #77480
+- [dev-overlay] Remove "Unhandled Runtime Error" label: #77484
+- Upgrade React from `db7dfe05-20250319` to `740a4f7a-20250325`: #77507
+
+### Misc Changes
+
+- docs: fix typo: #77483
+- Update `swc_core` to `v16.10.0`: #77489
+
+### Credits 
+
+Huge thanks to @leerob, @gnoff, @kdy1, and @eps1lon for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.21 (2025-03-24)</h2>
+      <pre>### Core Changes
+
+- Turbopack: Add --turbopack for next start: #77442
+- Update README: #77464
+- Remove unnecessary indirections around dispatch-related methods: #77423
+- Lift public router instance to module level : #77426
+- directly import param resolver in metadata: #77401
+- [metadata] always serve streaming metadata in build: #77437
+- directly import search param resolver in metadata: #77402
+- Remove forwardRef from Link in App Router: #77471
+- Match subrequest handling for edge and node: #77474
+- Add deprecation warning for legacyBehavior prop: #77473
+- feat: useLinkStatus: #77300
+
+### Misc Changes
+
+- fix(turbopack-bench): Limit `copy_dir` concurrency to avoid running out of file descriptors: #77468
+
+### Credits 
+
+Huge thanks to @timneutkens, @jackwilson323, @acdlite, @gnoff, @huozhi, @ijjk, @bgw, and @gaojude for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.2.4 (2025-03-24)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+
+### Core Changes
+
+- Match subrequest handling for edge and node (#77474)
+- exclude images and static media from dev origin check (#77417)
+- ensure /__next middleware URLs are included in the origin check (#77416)
+- remove direct ip/port bypass in dev origin check (#77414)
+- switch development origin verification to be opt-in rather than opt-out (#77395)
+
+### Credits
+
+Huge thanks to @ijjk and @ztanner for helping!
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.2.26 (2025-03-24)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+
+### Core Changes
+
+- Match subrequest handling for edge and node (#77476)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v13.5.10 (2025-03-24)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+
+### Core Changes
+
+- Match subrequest handling for edge and node </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v12.3.6 (2025-03-24)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+
+### Core Changes
+
+- Match subrequest handling for edge and node
+- Update publish-native</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.20 (2025-03-23)</h2>
+      <pre>### Core Changes
+
+- remove direct ip/port bypass in dev origin check: #77414
+- ensure /__next middleware URLs are included in the origin check: #77416
+- exclude images and static media from dev origin check: #77417
+- Refactor metadata and viewport preloading: #77400
+- [dev-overlay] Remove unused fields from unhandled error action event: #77333
+
+### Misc Changes
+
+- docs: clarify middleware use cases: #77438
+
+### Credits 
+
+Huge thanks to @ztanner, @leerob, @gnoff, and @eps1lon for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v12.3.5 (2025-03-23)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+> This release contains a security patch for [CVE-2025-29927](https://github.com/vercel/next.js/security/advisories/GHSA-f82v-jwr5-mffw).
+
+### Core Changes
+
+- [backport] middleware subrequest patch (#77424)
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.19 (2025-03-22)</h2>
+      <pre>### Core Changes
+
+- switch development origin verification to be opt-in rather than opt-out: #77395
+
+### Credits 
+
+Huge thanks to @ztanner for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v13.5.9 (2025-03-22)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+> This release contains a security patch for [CVE-2025-29927](https://github.com/vercel/next.js/security/advisories/GHSA-f82v-jwr5-mffw).
+
+### Core Changes
+
+- [backport] middleware subrequest patch (#77418)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.18 (2025-03-21)</h2>
+      <pre>### Core Changes
+
+- Turbopack: implement optimized css production chunking: #77284
+- only log when instrumentation client takes too long: #77378
+
+### Misc Changes
+
+- Update Turbopack production test manifest: #77366
+- Update Turbopack development test manifest: #77365
+- Turbopack: ignore static asset imports for Edge: #77382
+- Update bundler development test manifest: #77364
+
+### Credits 
+
+Huge thanks to @sokra, @mischnic, and @gaojude for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.17 (2025-03-21)</h2>
+      <pre>### Core Changes
+
+- clean up useReducer code re dev indicator: #77354
+- test: ensure that router identity stays stable when navigating: #77356
+- [dev-overlay] Remove unused fields from hydration error state: #77332
+
+### Credits 
+
+Huge thanks to @gaojude, @lubieowoce, and @eps1lon for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.16 (2025-03-20)</h2>
+      <pre>### Core Changes
+
+- [dev-overlay] Make footer sticky without side effects: #77327
+- Alternate bundler: show state in app info message: #77259
+- Revert "Turbopack: layout segment optimization for Pages": #77339
+- [metadata] add Yeti to html limited bots: #77335
+- [dev-overlay] Remove unused code from pages: #77325
+- [metadata] remove dead code of metadata routes handling: #77336
+- Alternate bundler: pass more tests and update to 1.3.0-beta: #77269
+- [metadata] fix the metadata route like pages and refactor utils: #77264
+- fix: absolute assetPrefix url with path: #77256
+
+### Misc Changes
+
+- fix(CI build_and_deploy): Use a larger fetch-depth for build-native job: #77307
+- chore(turbopack): Fix a few syntactic nits: #77310
+- Update bundler development test manifest: #77315
+- Turbopack: refactor CssEmbed to avoid creating a chunk item: #77303
+- fix: Update `swc_core` and use `rayon` instead of `chili`: #77338
+- Fix chakra link: #77280
+
+### Credits 
+
+Huge thanks to @raunofreiberg, @bgw, @wbinnssmith, @huozhi, @sokra, @eps1lon, @kdy1, @ahabhgk, @Amirroid, and @Netail for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.15 (2025-03-20)</h2>
+      <pre>### Core Changes
+
+- Upgrade React from `c69a5fc5-20250318` to `db7dfe05-20250319`: #77295
+- Turbopack: layout segment optimization for Pages: #74815
+
+### Misc Changes
+
+- Update Turbopack production test manifest: #77316
+- Update Turbopack development test manifest: #77317
+- Update bundler production test manifest: #77314
+- fix(turbopack): Call `.minify()` of lightningcss `StyleSheet`: #77313
+
+### Credits 
+
+Huge thanks to @kdy1 and @mischnic for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.14 (2025-03-19)</h2>
+      <pre>### Core Changes
+
+- Upgrade React from `5398b711-20250314` to `c69a5fc5-20250318`: #77249
+- [ppr] Handle failed resume data cache entries: #77258
+- Bypass `"use cache"` caches when Draft Mode is enabled: #77141
+- chore(HMR clients): Clean up tryApplyUpdates, reduce differences between app/pages versions: #77219
+
+### Misc Changes
+
+- devlow-bench: wait for complete ready for server startup event: #77217
+- fix(CI): Re-enable retries for bundler integration tests: #77265
+- Turbopack: handle non chunkable modules in module batches: #77282
+- Update Turbopack development test manifest: #77276
+- Update Turbopack production test manifest: #77275
+- Turbopack: avoid single css chunks when there is only a single chunk item: #77283
+- Update bundler development test manifest: #77272
+- Update bundler production test manifest: #77273
+- Turbopack: compute ordered entries in module batches: #77294
+
+### Credits 
+
+Huge thanks to @wbinnssmith, @bgw, @sokra, @wyattjoh, and @unstubbable for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.13 (2025-03-18)</h2>
+      <pre>### Core Changes
+
+- chore(HMR clients): Fix a bunch of typescript errors by including the appropriate webpack type declarations: #77207
+- Update cache handler interface: #76687
+- Turbopack: don't include AMP optimizer in NFT: #77242
+- Server actions should not read stale data after calling `revalidate*`: #76885
+- [dev-overlay] Blur fader for scrollable container: #77196
+- Make `revalidate*` work when followed by a redirect in a route handler: #77090
+- feat: onNavigate for link: #77209
+- fix: pass telemetry plugin rspack tests: #77257
+- feat(eslint-plugin): add minimal built-in flat presets: #73873
+- [perf] skip loading client manifest for static metadata routes: #77260
+
+### Misc Changes
+
+- fix(test/e2e/prerender): Remove race condition in test: #77222
+- Update Turbopack production test manifest: #77228
+- Update Turbopack development test manifest: #77227
+- [Turbopack] basic production chunking for CSS: #75049
+- docs: optimizing local dev: #77140
+- Update bundler production test manifest: #77225
+
+### Credits 
+
+Huge thanks to @bgw, @sokra, @unstubbable, @leerob, @mischnic, @raunofreiberg, @gaojude, @ScriptedAlchemy, @SukkaW, and @huozhi for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.12 (2025-03-17)</h2>
+      <pre>### Core Changes
+
+- chore(react-dev-overlay): Remove confusingly underscored variables in `useErrorOverlayReducer`: #77205
+- Update middleware request header: #77201
+- Update default allowed origins list: #77212
+- Ensure deploymentId is used for CSS preloads: #77210
+
+### Example Changes
+
+- with-polyfills example: only link to specific browsers: #77211
+- Add example for alternate bundler: #77057
+
+### Misc Changes
+
+- Turbopack: more tracing: #75351
+- Update bundler development test manifest: #77180
+- Better failure tracking for middleware-custom-matchers-i18n: #76974
+- Update bundler production test manifest: #77179
+
+### Credits 
+
+Huge thanks to @mischnic, @bgw, @ijjk, and @wbinnssmith for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.11 (2025-03-17)</h2>
+      <pre>### Core Changes
+
+- [dev-overlay] Fix stacking order of highlighted line: #77189
+- Upgrade React from `6aa8254b-20250312` to `5398b711-20250314`: #77129
+- fix(styled-jsx): Pass `useLightningcss` option to `styled-jsx` correctly: #77008
+- log the instrumentation-client execution time: #77121
+- Turbopack: canary-gate production builds: #77146
+- [dev-overlay] remove special handling for missing tag error : #77147
+
+### Misc Changes
+
+- build: Update `swc_core` to `v16.6.0`: #77155
+- Allow building node-pty in tests: #77187
+- Don't mark ppr-errors Turbopack dev tests as failed: #76951
+- Bump lightningcss: #77132
+- Update Turbopack production test manifest: #77183
+- Turbopack: fix graph layout segment optimization: #77094
+- Turbopack: split up server actions modules for better treeshaking: #76877
+- Turbopack: conditional parse in apply_module_type: #77191
+- build: Update `swc_core` to `v16.6.2`: #77194
+
+### Credits 
+
+Huge thanks to @kdy1, @raunofreiberg, @mischnic, @gaojude, @wbinnssmith, and @huozhi for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.2.3 (2025-03-18)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+> This release contains a security patch for [CVE-2025-29927](https://github.com/vercel/next.js/security/advisories/GHSA-f82v-jwr5-mffw).
+
+### Core Changes
+
+- Update default allowed origins list (#77212)
+- unify allowed origin detection handling (#77053)
+- Add dev warning for cross-origin and stabilize allowedDevOrigins (#77044)
+- Ensure deploymentId is used for CSS preloads (#77210)
+- Update middleware request header (#77201)
+- [metadata] remove the default segement check for metadata rendering (#77119)
+- [ts-hint] fix vscode type hint plugin enabling (#77099)
+- [metadata] re-insert icons to head for streamed metadata (#76915)
+
+### Credits
+
+Huge thanks to @ijjk, @ztanner, and @huozhi for helping!
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.2.25 (2025-03-17)</h2>
+      <pre>> [!NOTE]  
+> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
+> This release contains a security patch for [CVE-2025-29927](https://github.com/vercel/next.js/security/advisories/GHSA-f82v-jwr5-mffw).
+
+### Core Changes
+
+- Update middleware request header (#77202)
+
+### Credits
+
+Huge thanks to @ijjk for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.10 (2025-03-15)</h2>
+      <pre>### Core Changes
+
+- [metadata] remove the default segement check for metadata rendering: #77119
+
+### Credits 
+
+Huge thanks to @huozhi for helping!
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

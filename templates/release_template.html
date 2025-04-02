@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for {{ repo_name }}"/>
+  <title>{{ repo_name }} Release Notes</title>
+</head>
+<body>
+  <h1>🚀 {{ repo_name }} - Release Notes</h1>
+  {% for release in releases %}
+    <section>
+      <h2>{{ release.name or release.tag_name }} ({{ release.published_at[:10] }})</h2>
+      <pre>{{ release.body or "No notes available" }}</pre>
+    </section>
+    <hr />
+  {% endfor %}
+</body>
+</html>

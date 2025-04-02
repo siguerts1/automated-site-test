@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for facebook/react"/>
+  <title>facebook/react Release Notes</title>
+</head>
+<body>
+  <h1>🚀 facebook/react - Release Notes</h1>
+  
+    <section>
+      <h2>19.1.0 (March 28, 2025) (2025-03-28)</h2>
+      <pre>### Owner Stack
+
+An Owner Stack is a string representing the components that are directly responsible for rendering a particular component. You can log Owner Stacks when debugging or use Owner Stacks to enhance error overlays or other development tools. Owner Stacks are only available in development builds. Component Stacks in production are unchanged.
+
+* An Owner Stack is a development-only stack trace that helps identify which components are responsible for rendering a particular component. An Owner Stack is distinct from a Component Stacks, which shows the hierarchy of components leading to an error.
+* The [captureOwnerStack API](https://react.dev/reference/react/captureOwnerStack) is only available in development mode and returns a Owner Stack, if available. The API can be used to enhance error overlays or log component relationships when debugging. [#29923](https://github.com/facebook/react/pull/29923), [#32353](https://github.com/facebook/react/pull/32353), [#30306](https://github.com/facebook/react/pull/30306),
+[#32538](https://github.com/facebook/react/pull/32538), [#32529](https://github.com/facebook/react/pull/32529), [#32538](https://github.com/facebook/react/pull/32538)
+
+### React
+* Enhanced support for Suspense boundaries to be used anywhere, including the client, server, and during hydration. [#32069](https://github.com/facebook/react/pull/32069), [#32163](https://github.com/facebook/react/pull/32163), [#32224](https://github.com/facebook/react/pull/32224), [#32252](https://github.com/facebook/react/pull/32252)
+* Reduced unnecessary client rendering through improved hydration scheduling [#31751](https://github.com/facebook/react/pull/31751)
+* Increased priority of client rendered Suspense boundaries [#31776](https://github.com/facebook/react/pull/31776)
+* Fixed frozen fallback states by rendering unfinished Suspense boundaries on the client. [#31620](https://github.com/facebook/react/pull/31620)
+* Reduced garbage collection pressure by improving Suspense boundary retries. [#31667](https://github.com/facebook/react/pull/31667)
+* Fixed erroneous “Waiting for Paint” log when the passive effect phase was not delayed [#31526](https://github.com/facebook/react/pull/31526)
+* Fixed a regression causing key warnings for flattened positional children in development mode. [#32117](https://github.com/facebook/react/pull/32117)
+* Updated `useId` to use valid CSS selectors, changing format from `:r123:` to `«r123»`. [#32001](https://github.com/facebook/react/pull/32001)
+* Added a dev-only warning for null/undefined created in useEffect, useInsertionEffect, and useLayoutEffect. [#32355](https://github.com/facebook/react/pull/32355)
+* Fixed a bug where dev-only methods were exported in production builds. React.act is no longer available in production builds. [#32200](https://github.com/facebook/react/pull/32200)
+* Improved consistency across prod and dev to improve compatibility with Google Closure Complier and bindings [#31808](https://github.com/facebook/react/pull/31808)
+* Improve passive effect scheduling for consistent task yielding. [#31785](https://github.com/facebook/react/pull/31785)
+* Fixed asserts in React Native when passChildrenWhenCloningPersistedNodes is enabled for OffscreenComponent rendering. [#32528](https://github.com/facebook/react/pull/32528)
+* Fixed component name resolution for Portal [#32640](https://github.com/facebook/react/pull/32640)
+* Added support for beforetoggle and toggle events on the dialog element. #32479 [#32479](https://github.com/facebook/react/pull/32479)
+
+### React DOM
+* Fixed double warning when the `href` attribute is an empty string [#31783](https://github.com/facebook/react/pull/31783)
+ * Fixed an edge case where `getHoistableRoot()` didn’t work properly when the container was a Document [#32321](https://github.com/facebook/react/pull/32321)
+* Removed support for using HTML comments (e.g. `<!-- -->`) as a DOM container. [#32250](https://github.com/facebook/react/pull/32250)
+* Added support for `<script>` and `<template>` tags to be nested within `<select>` tags. [#31837](https://github.com/facebook/react/pull/31837)
+* Fixed responsive images to be preloaded as HTML instead of headers [#32445](https://github.com/facebook/react/pull/32445)
+
+### use-sync-external-store
+* Added `exports` field to `package.json` for `use-sync-external-store` to support various entrypoints. [#25231](https://github.com/facebook/react/pull/25231)
+
+### React Server Components
+* Added `unstable_prerender`, a new experimental API for prerendering React Server Components on the server [#31724](https://github.com/facebook/react/pull/31724)
+* Fixed an issue where streams would hang when receiving new chunks after a global error [#31840](https://github.com/facebook/react/pull/31840), [#31851](https://github.com/facebook/react/pull/31851)
+* Fixed an issue where pending chunks were counted twice. [#31833](https://github.com/facebook/react/pull/31833)
+* Added support for streaming in edge environments [#31852](https://github.com/facebook/react/pull/31852)
+* Added support for sending custom error names from a server so that they are available in the client for console replaying. [#32116](https://github.com/facebook/react/pull/32116)
+* Updated the server component wire format to remove IDs for hints and console.log because they have no return value [#31671](https://github.com/facebook/react/pull/31671)
+* Exposed `registerServerReference` in client builds to handle server references in different environments. [#32534](https://github.com/facebook/react/pull/32534)
+* Added react-server-dom-parcel package which integrates Server Components with the [Parcel bundler](https://parceljs.org/) [#31725](https://github.com/facebook/react/pull/31725), [#32132](https://github.com/facebook/react/pull/32132), [#31799](https://github.com/facebook/react/pull/31799), [#32294](https://github.com/facebook/react/pull/32294), [#31741](https://github.com/facebook/react/pull/31741)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>19.0.0 (December 5, 2024) (2024-12-05)</h2>
+      <pre>Below is a list of all new features, APIs, deprecations, and breaking changes. Read [React 19 release post](https://react.dev/blog/2024/04/25/react-19) and [React 19 upgrade guide](https://react.dev/blog/2024/04/25/react-19-upgrade-guide) for more information.
+
+> Note: To help make the upgrade to React 19 easier, we’ve published a react@18.3 release that is identical to 18.2 but adds warnings for deprecated APIs and other changes that are needed for React 19. We recommend upgrading to React 18.3.1 first to help identify any issues before upgrading to React 19.
+
+## New Features
+
+### React
+
+* Actions: `startTransition` can now accept async functions. Functions passed to `startTransition` are called “Actions”. A given Transition can include one or more Actions which update state in the background and update the UI with one commit. In addition to updating state, Actions can now perform side effects including async requests, and the Action will wait for the work to finish before finishing the Transition. This feature allows Transitions to include side effects like `fetch()` in the pending state, and provides support for error handling, and optimistic updates.  
+* `useActionState`: is a new hook to order Actions inside of a Transition with access to the state of the action, and the pending state. It accepts a reducer that can call Actions, and the initial state used for first render. It also accepts an optional string that is used if the action is passed to a form `action` prop to support progressive enhancement in forms.  
+* `useOptimistic`: is a new hook to update state while a Transition is in progress. It returns the state, and a set function that can be called inside a transition to “optimistically” update the state to expected final value immediately while the Transition completes in the background. When the transition finishes, the state is updated to the new value.  
+* `use`: is a new API that allows reading resources in render. In React 19, `use` accepts a promise or Context. If provided a promise, `use` will suspend until a value is resolved. `use` can only be used in render but can be called conditionally.  
+* `ref` as a prop: Refs can now be used as props, removing the need for `forwardRef`.  
+* **Suspense sibling pre-warming**: When a component suspends, React will immediately commit the fallback of the nearest Suspense boundary, without waiting for the entire sibling tree to render. After the fallback commits, React will schedule another render for the suspended siblings to “pre-warm” lazy requests.
+
+### React DOM Client
+
+* `<form> action` prop: Form Actions allow you to manage forms automatically and integrate with `useFormStatus`. When a `<form> action` succeeds, React will automatically reset the form for uncontrolled components. The form can be reset manually with the new `requestFormReset` API.  
+* `<button> and <input> formAction` prop: Actions can be passed to the `formAction` prop to configure form submission behavior. This allows using different Actions depending on the input.  
+* `useFormStatus`: is a new hook that provides the status of the parent `<form> action`, as if the form was a Context provider. The hook returns the values: `pending`, `data`, `method`, and `action`.  
+* Support for Document Metadata: We’ve added support for rendering document metadata tags in components natively. React will automatically hoist them into the `<head>` section of the document.  
+* Support for Stylesheets: React 19 will ensure stylesheets are inserted into the `<head>` on the client before revealing the content of a Suspense boundary that depends on that stylesheet.  
+* Support for async scripts: Async scripts can be rendered anywhere in the component tree and React will handle ordering and deduplication.  
+* Support for preloading resources: React 19 ships with `preinit`, `preload`, `prefetchDNS`, and `preconnect` APIs to optimize initial page loads by moving discovery of additional resources like fonts out of stylesheet loading. They can also be used to prefetch resources used by an anticipated navigation.
+
+### React DOM Server
+
+* Added `prerender` and `prerenderToNodeStream` APIs for static site generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. Unlike `renderToString`, they wait for data to load for HTML generation.
+
+### React Server Components
+
+* RSC features such as directives, server components, and server functions are now stable. This means libraries that ship with Server Components can now target React 19 as a peer dependency with a react-server export condition for use in frameworks that support the Full-stack React Architecture. The underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. See [docs](https://19.react.dev/reference/rsc/server-components) for how to support React Server Components.
+
+## Deprecations
+
+* Deprecated: `element.ref` access: React 19 supports ref as a prop, so we’re deprecating `element.ref` in favor of `element.props.ref`. Accessing will result in a warning.  
+* `react-test-renderer`: In React 19, react-test-renderer logs a deprecation warning and has switched to concurrent rendering for web usage. We recommend migrating your tests to  @testinglibrary.com/docs/react-testing-library/intro/) or @testingesting-library.com/docs/react-native-testing-library/intro)
+
+## Breaking Changes
+
+React 19 brings in a number of breaking changes, including the removals of long-deprecated APIs. We recommend first upgrading to `18.3.1`, where we've added additional deprecation warnings. Check out the [upgrade guide](https://19.react.dev/blog/2024/04/25/react-19-upgrade-guide) for more details and guidance on codemodding.
+
+### React
+
+* New JSX Transform is now required: We introduced [a new JSX transform](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) in 2020 to improve bundle size and use JSX without importing React. In React 19, we’re adding additional improvements like using ref as a prop and JSX speed improvements that require the new transform.  
+* Errors in render are not re-thrown: Errors that are not caught by an Error Boundary are now reported to window.reportError. Errors that are caught by an Error Boundary are reported to console.error. We’ve introduced `onUncaughtError` and `onCaughtError` methods to `createRoot` and `hydrateRoot` to customize this error handling.  
+* Removed: `propTypes`: Using `propTypes` will now be silently ignored. If required, we recommend migrating to TypeScript or another type-checking solution.  
+* Removed: `defaultProps` for functions: ES6 default parameters can be used in place. Class components continue to support `defaultProps` since there is no ES6 alternative.  
+* Removed: `contextTypes` and `getChildContext`: Legacy Context for class components has been removed in favor of the `contextType` API.  
+* Removed: string refs: Any usage of string refs need to be migrated to ref callbacks.   
+* Removed: Module pattern factories: A rarely used pattern that can be migrated to regular functions.  
+* Removed: `React.createFactory`: Now that JSX is broadly supported, all `createFactory` usage can be migrated to JSX components.  
+* Removed: `react-test-renderer/shallow`: This has been a re-export of [react-shallow-renderer](https://github.com/enzymejs/react-shallow-renderer) since React 18\. If needed, you can continue to use the third-party package directly. We recommend using @testinglibrary.com/docs/react-testing-library/intro/) or @testingesting-library.com/docs/react-native-testing-library/intro) instead.
+
+### React DOM
+
+* Removed: `react-dom/test-utils`: We’ve moved `act` from `react-dom/test-utils` to react. All other utilities have been removed.   
+* Removed: `ReactDOM`.`render`, `ReactDOM`.`hydrate`: These have been removed in favor of the concurrent equivalents: `ReactDOM`.`createRoot` and `ReactDOM.hydrateRoot`.  
+* Removed: `unmountComponentAtNode`: Removed in favor of `root.unmount()`.  
+* Removed: `ReactDOM`.`findDOMNode`: You can replace `ReactDOM`.`findDOMNode` with DOM Refs.
+
+## Notable Changes
+
+### React
+
+* `<Context>` as a provider: You can now render `<Context>` as a provider instead of `<Context.Provider>`.  
+* Cleanup functions for refs: When the component unmounts, React will call the cleanup function returned from the ref callback.  
+* `useDeferredValue` initial value argument: When provided, `useDeferredValue` will return the initial value for the initial render of a component, then schedule a re-render in the background with the `deferredValue` returned.  
+* Support for Custom Elements: React 19 now passes all tests on [Custom Elements Everywhere](https://custom-elements-everywhere.com/).  
+* StrictMode changes: `useMemo` and `useCallback` will now reuse the memoized results from the first render, during the second render. Additionally, StrictMode will now double-invoke ref callback functions on initial mount.  
+* UMD builds removed: To load React 19 with a script tag, we recommend using an ESM-based CDN such as [esm.sh](http://esm.sh).
+
+### React DOM
+
+* Diffs for hydration errors: In the case of a mismatch, React 19 logs a single error with a diff of the mismatched content.  
+* Compatibility with third-party scripts and extensions: React will now force a client re-render to fix up any mismatched content caused by elements inserted by third-party JS. 
+
+## TypeScript Changes
+
+The most common changes can be codemodded with `npx types-react-codemod@latest preset-19 ./path-to-your-react-ts-files`.
+
+* Removed deprecated TypeScript types:   
+  * `ReactChild` (replacement: `React.ReactElement | number | string)`  
+  * `ReactFragment` (replacement: `Iterable<React.ReactNode>`)  
+  * `ReactNodeArray` (replacement: `ReadonlyArray<React.ReactNode>`)  
+  * `ReactText` (replacement: `number | string`)  
+  * `VoidFunctionComponent` (replacement: `FunctionComponent`)  
+  * `VFC` (replacement: `FC`)  
+  * Moved to `prop-types`: `Requireable`, `ValidationMap`, `Validator`, `WeakValidationMap`  
+  * Moved to `create-react-class`: `ClassicComponentClass`, `ClassicComponent`, `ClassicElement`, `ComponentSpec`, `Mixin`, `ReactChildren`, `ReactHTML`, `ReactSVG`, `SFCFactory`  
+* Disallow implicit return in refs: refs can now accept cleanup functions. When you return something else, we can’t tell if you intentionally returned something not meant to clean up or returned the wrong value. Implicit returns of anything but functions will now error.   
+* Require initial argument to `useRef`: The initial argument is now required to match `useState`, `createContext` etc  
+* Refs are mutable by default: Ref objects returned from `useRef()` are now always mutable instead of sometimes being immutable. This feature was too confusing for users and conflicted with legit cases where refs were managed by React and manually written to.  
+* Strict `ReactElement` typing: The props of React elements now default to `unknown` instead of `any` if the element is typed as `ReactElement`  
+* JSX namespace in TypeScript: The global `JSX` namespace is removed to improve interoperability with other libraries using JSX. Instead, the JSX namespace is available from the React package: `import { JSX } from 'react'`  
+* Better `useReducer` typings: Most `useReducer` usage should not require explicit type arguments.  
+  For example,
+  ```diff  
+  -useReducer<React.Reducer<State, Action>>(reducer)  
+  +useReducer(reducer)  
+  ```
+  or  
+  ```diff
+  -useReducer<React.Reducer<State, Action>>(reducer)  
+  +useReducer<State, [Action]>(reducer)
+  ```
+
+
+## All Changes
+
+### React
+
+* Add support for async Actions ([\#26621](https://github.com/facebook/react/pull/26621), [\#26726](https://github.com/facebook/react/pull/26726), [\#28078](https://github.com/facebook/react/pull/28078), [\#28097](https://github.com/facebook/react/pull/28097), [\#29226](https://github.com/facebook/react/pull/29226), [\#29618](https://github.com/facebook/react/pull/29618), [\#29670](https://github.com/facebook/react/pull/29670), [\#26716](https://github.com/facebook/react/pull/26716) by @acdlite and @sebmarkbage)  
+* Add `useActionState()` hook to update state based on the result of a Form Action ([\#27270](https://github.com/facebook/react/pull/27270), [\#27278](https://github.com/facebook/react/pull/27278), [\#27309](https://github.com/facebook/react/pull/27309), [\#27302](https://github.com/facebook/react/pull/27302), [\#27307](https://github.com/facebook/react/pull/27307), [\#27366](https://github.com/facebook/react/pull/27366), [\#27370](https://github.com/facebook/react/pull/27370), [\#27321](https://github.com/facebook/react/pull/27321), [\#27374](https://github.com/facebook/react/pull/27374), [\#27372](https://github.com/facebook/react/pull/27372), [\#27397](https://github.com/facebook/react/pull/27397), [\#27399](https://github.com/facebook/react/pull/27399), [\#27460](https://github.com/facebook/react/pull/27460), [\#28557](https://github.com/facebook/react/pull/28557), [\#27570](https://github.com/facebook/react/pull/27570), [\#27571](https://github.com/facebook/react/pull/27571), [\#28631](https://github.com/facebook/react/pull/28631), [\#28788](https://github.com/facebook/react/pull/28788), [\#29694](https://github.com/facebook/react/pull/29694), [\#29695](https://github.com/facebook/react/pull/29695), [\#29694](https://github.com/facebook/react/pull/29694), [\#29665](https://github.com/facebook/react/pull/29665), [\#28232](https://github.com/facebook/react/pull/28232), [\#28319](https://github.com/facebook/react/pull/28319) by @acdlite, @eps1lon, and @rickhanlonii)  
+* Add `use()` API to read resources in render ([\#25084](https://github.com/facebook/react/pull/25084), [\#25202](https://github.com/facebook/react/pull/25202), [\#25207](https://github.com/facebook/react/pull/25207), [\#25214](https://github.com/facebook/react/pull/25214), [\#25226](https://github.com/facebook/react/pull/25226), [\#25247](https://github.com/facebook/react/pull/25247), [\#25539](https://github.com/facebook/react/pull/25539), [\#25538](https://github.com/facebook/react/pull/25538), [\#25537](https://github.com/facebook/react/pull/25537), [\#25543](https://github.com/facebook/react/pull/25543), [\#25561](https://github.com/facebook/react/pull/25561), [\#25620](https://github.com/facebook/react/pull/25620), [\#25615](https://github.com/facebook/react/pull/25615), [\#25922](https://github.com/facebook/react/pull/25922), [\#25641](https://github.com/facebook/react/pull/25641), [\#25634](https://github.com/facebook/react/pull/25634), [\#26232](https://github.com/facebook/react/pull/26232), [\#26536](https://github.com/facebook/react/pull/26535), [\#26739](https://github.com/facebook/react/pull/26739), [\#28233](https://github.com/facebook/react/pull/28233) by @acdlite, @MofeiZ, @sebmarkbage, @sophiebits, @eps1lon, and @hansottowirtz)  
+* Add `useOptimistic()` hook to display mutated state optimistically during an async mutation ([\#26740](https://github.com/facebook/react/pull/26740), [\#26772](https://github.com/facebook/react/pull/26772), [\#27277](https://github.com/facebook/react/pull/27277), [\#27453](https://github.com/facebook/react/pull/27453), [\#27454](https://github.com/facebook/react/pull/27454), [\#27936](https://github.com/facebook/react/pull/27936) by @acdlite)  
+* Added an `initialValue` argument to `useDeferredValue()` hook ([\#27500](https://github.com/facebook/react/pull/27500), [\#27509](https://github.com/facebook/react/pull/27509), [\#27512](https://github.com/facebook/react/pull/27512), [\#27888](https://github.com/facebook/react/pull/27888), [\#27550](https://github.com/facebook/react/pull/27550) by @acdlite)  
+* Support refs as props, warn on `element.ref` access ([\#28348](https://github.com/facebook/react/pull/28348), [\#28464](https://github.com/facebook/react/pull/28464), [\#28731](https://github.com/facebook/react/pull/28731) by @acdlite)  
+* Support Custom Elements ([\#22184](https://github.com/facebook/react/pull/22184), [\#26524](https://github.com/facebook/react/pull/26524), [\#26523](https://github.com/facebook/react/pull/26523), [\#27511](https://github.com/facebook/react/pull/27511), [\#24541](https://github.com/facebook/react/pull/24541) by @josepharhar, @sebmarkbage, @gnoff and @eps1lon)  
+* Add ref cleanup function ([\#25686](https://github.com/facebook/react/pull/25686), [\#28883](https://github.com/facebook/react/pull/28883), [\#28910](https://github.com/facebook/react/pull/28910)  by @sammy-SC), @jackpope, and @kassens)  
+* Sibling pre-rendering replaced by sibling pre-warming ([\#26380](https://github.com/facebook/react/pull/26380), [\#26549](https://github.com/facebook/react/pull/26549), [\#30761](https://github.com/facebook/react/pull/30761), [\#30800](https://github.com/facebook/react/pull/30800), [\#30762](https://github.com/facebook/react/pull/30762), [\#30879](https://github.com/facebook/react/pull/30879), [\#30934](https://github.com/facebook/react/pull/30934), [\#30952](https://github.com/facebook/react/pull/30952), [\#31056](https://github.com/facebook/react/pull/31056), [\#31452](https://github.com/facebook/react/pull/31452) by @sammy-SC), @acdlite, @gnoff, @jackpope, @rickhanlonii)  
+* Don’t rethrow errors at the root ([\#28627](https://github.com/facebook/react/pull/28627), [\#28641](https://github.com/facebook/react/pull/28641) by @sebmarkbage)  
+* Batch sync discrete, continuous, and default lanes ([\#25700](https://github.com/facebook/react/pull/25700) by @tyao1)  
+* Switch `<Context>` to mean `<Context.Provider>` ([\#28226](https://github.com/facebook/react/pull/28226) by @gaearon)  
+* Changes to *StrictMode*  
+  * Handle `info`, `group`, and `groupCollapsed` in *StrictMode* logging ([\#25172](https://github.com/facebook/react/pull/25172) by @timneutkens)  
+  * Refs are now attached/detached/attached in *StrictMode* ([\#25049](https://github.com/facebook/react/pull/25049) by @sammy-SC)
+  * Fix `useSyncExternalStore()` hydration in *StrictMode* ([\#26791](https://github.com/facebook/react/pull/26791) by @sophiebits)  
+  * Always trigger `componentWillUnmount()` in *StrictMode* ([\#26842](https://github.com/facebook/react/pull/26842) by @tyao1)  
+  * Restore double invoking `useState()` and `useReducer()` initializer functions in *StrictMode* ([\#28248](https://github.com/facebook/react/pull/28248) by @eps1lon)  
+  * Reuse memoized result from first pass ([\#25583](https://github.com/facebook/react/pull/25583) by @acdlite)  
+  * Fix `useId()` in *StrictMode* ([\#25713](https://github.com/facebook/react/pull/25713) by @gnoff)  
+  * Add component name to *StrictMode* error messages ([\#25718](https://github.com/facebook/react/pull/25718) by @sammy-SC)
+* Add support for rendering BigInt ([\#24580](https://github.com/facebook/react/pull/24580) by @eps1lon)  
+* `act()` no longer checks `shouldYield` which can be inaccurate in test environments ([\#26317](https://github.com/facebook/react/pull/26317) by @acdlite)  
+* Warn when keys are spread with props ([\#25697](https://github.com/facebook/react/pull/25697), [\#26080](https://github.com/facebook/react/pull/26080) by @sebmarkbage and @kassens)  
+* Generate sourcemaps for production build artifacts ([\#26446](https://github.com/facebook/react/pull/26446) by @markerikson)  
+* Improve stack diffing algorithm ([\#27132](https://github.com/facebook/react/pull/27132) by @KarimP)  
+* Suspense throttling lowered from 500ms to 300ms ([\#26803](https://github.com/facebook/react/pull/26803) by @acdlite)  
+* Lazily propagate context changes ([\#20890](https://github.com/facebook/react/pull/20890) by @acdlite and @gnoff)  
+* Immediately rerender pinged fiber ([\#25074](https://github.com/facebook/react/pull/25074) by @acdlite)  
+* Move update scheduling to microtask ([\#26512](https://github.com/facebook/react/pull/26512) by @acdlite)  
+* Consistently apply throttled retries ([\#26611](https://github.com/facebook/react/pull/26611), [\#26802](https://github.com/facebook/react/pull/26802) by @acdlite)  
+* Suspend Thenable/Lazy if it's used in React.Children ([\#28284](https://github.com/facebook/react/pull/28284) by @sebmarkbage)  
+* Detect infinite update loops caused by render phase updates ([\#26625](https://github.com/facebook/react/pull/26625) by @acdlite)  
+* Update conditional hooks warning ([\#29626](https://github.com/facebook/react/pull/29626) by @sophiebits)  
+* Update error URLs to go to new docs ([\#27240](https://github.com/facebook/react/pull/27240) by @rickhanlonii)  
+* Rename the `react.element` symbol to `react.transitional.element` ([\#28813](https://github.com/facebook/react/pull/28813) by @sebmarkbage)  
+* Fix crash when suspending in shell during `useSyncExternalStore()` re-render ([\#27199](https://github.com/facebook/react/pull/27199) by @acdlite)  
+* Fix incorrect “detected multiple renderers" error in tests ([\#22797](https://github.com/facebook/react/pull/22797) by @eps1lon)  
+* Fix bug where effect cleanup may be called twice after bailout ([\#26561](https://github.com/facebook/react/pull/26561) by @acdlite)  
+* Fix suspending in shell during discrete update ([\#25495](https://github.com/facebook/react/pull/25495) by @acdlite)  
+* Fix memory leak after repeated setState bailouts ([\#25309](https://github.com/facebook/react/pull/25309) by @acdlite)  
+* Fix `useSyncExternalStore()` dropped update when state is dispatched in render phase ([\#25578](https://github.com/facebook/react/pull/25578) by @pandaiolo)  
+* Fix logging when rendering a lazy fragment ([\#30372](https://github.com/facebook/react/pull/30372) by @tomtom-sherman))  
+* Remove string refs ([\#25383](https://github.com/facebook/react/pull/25383), [\#28322](https://github.com/facebook/react/pull/28322) by @eps1lon and @acdlite)  
+* Remove Legacy Context (\#30319 by @kassens)  
+* Remove `RefreshRuntime.findAffectedHostInstances` ([\#30538](https://github.com/facebook/react/pull/30538) by @gaearon)  
+* Remove client caching from `cache()` API ([\#27977](https://github.com/facebook/react/pull/27977), [\#28250](https://github.com/facebook/react/pull/28250) by @acdlite and @gnoff)  
+* Remove `propTypes` ([\#28324](https://github.com/facebook/react/pull/28324), [\#28326](https://github.com/facebook/react/pull/28326) by @gaearon)  
+* Remove `defaultProps` support, except for classes ([\#28733](https://github.com/facebook/react/pull/28733) by @acdlite)  
+* Remove UMD builds ([\#28735](https://github.com/facebook/react/pull/28735) by @gnoff)  
+* Remove delay for non-transition updates ([\#26597](https://github.com/facebook/react/pull/26597) by @acdlite)  
+* Remove `createFactory` ([\#27798](https://github.com/facebook/react/pull/27798) by @kassens)
+
+### React DOM
+
+* Adds Form Actions to handle form submission ([\#26379](https://github.com/facebook/react/pull/26379), [\#26674](https://github.com/facebook/react/pull/26674), [\#26689](https://github.com/facebook/react/pull/26689), [\#26708](https://github.com/facebook/react/pull/26708), [\#26714](https://github.com/facebook/react/pull/26714),  [\#26735](https://github.com/facebook/react/pull/26735), [\#26846](https://github.com/facebook/react/pull/26846), [\#27358](https://github.com/facebook/react/pull/27358),  [\#28056](https://github.com/facebook/react/pull/28056) by @sebmarkbage, @acdlite, and @jupapios)  
+* Add `useFormStatus()` hook to provide status information of the last form submission ([\#26719](https://github.com/facebook/react/pull/26719), [\#26722](https://github.com/facebook/react/pull/26722), [\#26788](https://github.com/facebook/react/pull/26788),  [\#29019](https://github.com/facebook/react/pull/29019), [\#28728](https://github.com/facebook/react/pull/28728), [\#28413](https://github.com/facebook/react/pull/28413) by @acdlite and @eps1lon)  
+* Support for Document Metadata. Adds `preinit`, `preinitModule`, `preconnect`, `prefetchDNS`, `preload`, and `preloadModule` APIs.  
+  * [\#25060](https://github.com/facebook/react/pull/25060), [\#25243](https://github.com/facebook/react/pull/25243), [\#25388](https://github.com/facebook/react/pull/25388), [\#25432](https://github.com/facebook/react/pull/25432), [\#25436](https://github.com/facebook/react/pull/25436), [\#25426](https://github.com/facebook/react/pull/25426), [\#25500](https://github.com/facebook/react/pull/25500), [\#25480](https://github.com/facebook/react/pull/25480), [\#25508](https://github.com/facebook/react/pull/25508), [\#25515](https://github.com/facebook/react/pull/25515), [\#25514](https://github.com/facebook/react/pull/25514), [\#25532](https://github.com/facebook/react/pull/25532), [\#25536](https://github.com/facebook/react/pull/25536), [\#25534](https://github.com/facebook/react/pull/25534), [\#25546](https://github.com/facebook/react/pull/25546), [\#25559](https://github.com/facebook/react/pull/25559), [\#25569](https://github.com/facebook/react/pull/25569), [\#25599](https://github.com/facebook/react/pull/25599), [\#25689](https://github.com/facebook/react/pull/25689), [\#26106](https://github.com/facebook/react/pull/26106), [\#26152](https://github.com/facebook/react/pull/26152), [\#26239](https://github.com/facebook/react/pull/26239), [\#26237](https://github.com/facebook/react/pull/26237), [\#26280](https://github.com/facebook/react/pull/26280), [\#26154](https://github.com/facebook/react/pull/26154), [\#26256](https://github.com/facebook/react/pull/26256), [\#26353](https://github.com/facebook/react/pull/26353), [\#26427](https://github.com/facebook/react/pull/26427), [\#26450](https://github.com/facebook/react/pull/26450), [\#26502](https://github.com/facebook/react/pull/26502),  [\#26514](https://github.com/facebook/react/pull/26514), [\#26531](https://github.com/facebook/react/pull/26531), [\#26532](https://github.com/facebook/react/pull/26532), [\#26557](https://github.com/facebook/react/pull/26557), [\#26871](https://github.com/facebook/react/pull/26871), [\#26881](https://github.com/facebook/react/pull/26881), [\#26877](https://github.com/facebook/react/pull/26877), [\#26873](https://github.com/facebook/react/pull/26873), [\#26880](https://github.com/facebook/react/pull/26880), [\#26942](https://github.com/facebook/react/pull/26942), [\#26938](https://github.com/facebook/react/pull/26938), [\#26940](https://github.com/facebook/react/pull/26940), [\#26939](https://github.com/facebook/react/pull/26939), [\#27030](https://github.com/facebook/react/pull/27030), [\#27201](https://github.com/facebook/react/pull/27201), [\#27212](https://github.com/facebook/react/pull/27212), [\#27217](https://github.com/facebook/react/pull/27217), [\#27218](https://github.com/facebook/react/pull/27218), [\#27220](https://github.com/facebook/react/pull/27220), [\#27224](https://github.com/facebook/react/pull/27224), [\#27223](https://github.com/facebook/react/pull/27223), [\#27269](https://github.com/facebook/react/pull/27269), [\#27260](https://github.com/facebook/react/pull/27260), [\#27347](https://github.com/facebook/react/pull/27347), [\#27346](https://github.com/facebook/react/pull/27346), [\#27361](https://github.com/facebook/react/pull/27361), [\#27400](https://github.com/facebook/react/pull/27400), [\#27541](https://github.com/facebook/react/pull/27541), [\#27610](https://github.com/facebook/react/pull/27610), [\#28110](https://github.com/facebook/react/pull/28110), [\#29693](https://github.com/facebook/react/pull/29693), [\#29732](https://github.com/facebook/react/pull/29732), [\#29811](https://github.com/facebook/react/pull/29811), [\#27586](https://github.com/facebook/react/pull/27586), [\#28069](https://github.com/facebook/react/pull/28069) by @gnoff, @sebmarkbage, @acdlite, @kassens, @sokra, @sweetliquid  
+* Add `fetchPriority` to `<img>` and `<link>` ([\#25927](https://github.com/facebook/react/pull/25927) by @styfle)  
+* Add support for SVG `transformOrigin` prop ([\#26130](https://github.com/facebook/react/pull/26130) by @aravarav-ind))  
+* Add support for `onScrollEnd` event ([\#26789](https://github.com/facebook/react/pull/26789) by @devongovett)  
+* Allow `<hr>` as child of `<select>` ([\#27632](https://github.com/facebook/react/pull/27632) by @SouSingh)  
+* Add support for Popover API ([\#27981](https://github.com/facebook/react/pull/27981) by @eps1lon)  
+* Add support for `inert` ([\#24730](https://github.com/facebook/react/pull/24730) by @eps1lon)  
+* Add support for `imageSizes` and `imageSrcSet` ([\#22550](https://github.com/facebook/react/pull/22550) by @eps1lon)  
+* Synchronously flush transitions in popstate events ([\#26025](https://github.com/facebook/react/pull/26025), [\#27559](https://github.com/facebook/react/pull/27559), [\#27505](https://github.com/facebook/react/pull/27505), [\#30759](https://github.com/facebook/react/pull/30759) by @tyao1 and @acdlite)  
+* `flushSync` exhausts queue even if something throws ([\#26366](https://github.com/facebook/react/pull/26366) by @acdlite)  
+* Throw error if `react` and `react-dom` versions don’t match ([\#29236](https://github.com/facebook/react/pull/29236) by @acdlite)  
+* Ensure `srcset` and `src` are assigned last on `<img>` instances ([\#30340](https://github.com/facebook/react/pull/30340) by @gnoff)  
+* Javascript URLs are replaced with functions that throw errors ([\#26507](https://github.com/facebook/react/pull/26507), [\#29808](https://github.com/facebook/react/pull/29808) by @sebmarkbage and @kassens)  
+* Treat toggle and beforetoggle as discrete events ([\#29176](https://github.com/facebook/react/pull/29176) by @eps1lon)  
+* Filter out empty `src` and `href` attributes (unless for `<a href=”” />`) ([\#18513](https://github.com/facebook/react/pull/18513), [\#28124](https://github.com/facebook/react/pull/28124) by @bvaughn and @eps1lon)  
+* Fix unitless `scale` style property ([\#25601](https://github.com/facebook/react/pull/25601) by @JonnyBurger)  
+* Fix `onChange` error message for controlled `<select>` ([\#27740](https://github.com/facebook/react/pull/27740) by @BikiBiki-das))  
+* Fix focus restore in child windows after element reorder ([\#30951](https://github.com/facebook/react/pull/30951) by @ling1726)  
+* Remove `render`, `hydrate`, `findDOMNode`, `unmountComponentAtNode`, `unstable_createEventHandle`, `unstable_renderSubtreeIntoContainer`, and `unstable_runWithPriority`. Move `createRoot` and `hydrateRoot` to `react-dom/client`. ([\#28271](https://github.com/facebook/react/pull/28271) by @gnoff)  
+* Remove `test-utils` ([\#28541](https://github.com/facebook/react/pull/28541) by @eps1lon)  
+* Remove `unstable_flushControlled` ([\#26397](https://github.com/facebook/react/pull/26397) by @kassens)  
+* Remove legacy mode ([\#28468](https://github.com/facebook/react/pull/28468) by @gnoff)  
+* Remove `renderToStaticNodeStream()` ([\#28873](https://github.com/facebook/react/pull/28873) by @gnoff)  
+* Remove `unstable_renderSubtreeIntoContainer` ([\#29771](https://github.com/facebook/react/pull/29771) by @kassens)
+
+### React DOM Server
+
+* Stable release of React Server Components ([Many, many PRs](https://github.com/facebook/react/pulls?q=is%3Apr+is%3Aclosed+%5BFlight%5D+in%3Atitle+created%3A%3C2024-12-01+) by @sebmarkbage, @acdlite, @gnoff, @sammy-SC, @gaearon, @sophiebits, @unstubbable, @lubieowoce)
+* Support Server Actions ([\#26124](https://github.com/facebook/react/pull/26124), [\#26632](https://github.com/facebook/react/pull/26632), [\#27459](https://github.com/facebook/react/pull/27459) by @sebmarkbage and @acdlite)  
+* Changes to SSR  
+  * Add external runtime which bootstraps hydration on the client for binary transparency ([\#25437](https://github.com/facebook/react/pull/25437), [\#26169](https://github.com/facebook/react/pull/26169), [\#25499](https://github.com/facebook/react/pull/25499) by @MofeiZ and @acdlite)  
+  * Support subresource integrity for `bootstrapScripts` and `bootstrapModules` ([\#25104](https://github.com/facebook/react/pull/25104) by @gnoff)  
+  * Fix null bytes written at text chunk boundaries ([\#26228](https://github.com/facebook/react/pull/26228) by @sophiebits)  
+  * Fix logic around attribute serialization ([\#26526](https://github.com/facebook/react/pull/26526) by @gnoff)  
+  * Fix precomputed chunk cleared on Node 18 ([\#25645](https://github.com/facebook/react/pull/25645) by @feedthejim)  
+  * Optimize end tag chunks ([\#27522](https://github.com/facebook/react/pull/27522) by @yujunjung)  
+  * Gracefully handle suspending in DOM configs ([\#26768](https://github.com/facebook/react/pull/26768) by @sebmarkbage)  
+  * Check for nullish values on ReactCustomFormAction ([\#26770](https://github.com/facebook/react/pull/26770) by @sebmarkbage)  
+  * Preload `bootstrapModules`, `bootstrapScripts`, and update priority queue ([\#26754](https://github.com/facebook/react/pull/26754), [\#26753](https://github.com/facebook/react/pull/26753), [\#27190](https://github.com/facebook/react/pull/27190), [\#27189](https://github.com/facebook/react/pull/27189) by @gnoff)  
+  * Client render the nearest child or parent suspense boundary if replay errors or is aborted ([\#27386](https://github.com/facebook/react/pull/27386) by @sebmarkbage)  
+  * Don't bail out of flushing if we still have pending root tasks ([\#27385](https://github.com/facebook/react/pull/27385) by @sebmarkbage)  
+  * Ensure Resumable State is Serializable ([\#27388](https://github.com/facebook/react/pull/27388) by @sebmarkbage)  
+  * Remove extra render pass when reverting to client render ([\#26445](https://github.com/facebook/react/pull/26445) by @acdlite)  
+  * Fix unwinding context during selective hydration ([\#25876](https://github.com/facebook/react/pull/25876) by @tyao1)  
+  * Stop flowing and then abort if a stream is cancelled ([\#27405](https://github.com/facebook/react/pull/27405) by @sebmarkbage)  
+  * Pass cancellation reason to abort ([\#27536](https://github.com/facebook/react/pull/27536) by @sebmarkbage)  
+  * Add `onHeaders` entrypoint option ([\#27641](https://github.com/facebook/react/pull/27641), [\#27712](https://github.com/facebook/react/pull/27712) by @gnoff)  
+  * Escape `<style>` and `<script>` textContent to enable rendering inner content without dangerouslySetInnerHTML ([\#28870](https://github.com/facebook/react/pull/28870), [\#28871](https://github.com/facebook/react/pull/28871) by @gnoff)  
+  * Fallback to client replaying actions for Blob serialization ([\#28987](https://github.com/facebook/react/pull/28987) by @sebmarkbage)  
+  * Render Suspense fallback if boundary contains new stylesheet during sync update ([\#28965](https://github.com/facebook/react/pull/28965) by @gnoff)  
+  * Fix header length tracking (\#30327 by @gnoff)  
+  * Use `srcset` to trigger load event on mount (\#30351 by @gnoff)  
+  * Don't perform work when closing stream (\#30497 by @gnoff)  
+  * Allow aborting during render (\#30488, [\#30730](https://github.com/facebook/react/pull/30730) by @gnoff)  
+  * Start initial work immediately (\#31079 by @gnoff)  
+  * A transition flowing into a dehydrated boundary no longer suspends when showing fallback ([\#27230](https://github.com/facebook/react/pull/27230) by @acdlite)  
+  * Fix selective hydration triggers false update loop error ([\#27439](https://github.com/facebook/react/pull/27439) by @acdlite)  
+  * Warn for Child Iterator of all types but allow Generator Components ([\#28853](https://github.com/facebook/react/pull/28853) by @sebmarkbage)  
+  * Include regular stack trace in serialized errors ([\#28684](https://github.com/facebook/react/pull/28684), [\#28738](https://github.com/facebook/react/pull/28738) by @sebmarkbage)  
+  * Aborting early no longer infinitely suspends ([\#24751](https://github.com/facebook/react/pull/24751) by @sebmarkbage)  
+  * Fix hydration warning suppression in text comparisons ([\#24784](https://github.com/facebook/react/pull/24784) by @gnoff)  
+  * Changes to error handling in SSR
+    * Add diffs to hydration warnings ([\#28502](https://github.com/facebook/react/pull/28502), [\#28512](https://github.com/facebook/react/pull/28512) by @sebmarkbage)  
+    * Make Error creation lazy ([\#24728](https://github.com/facebook/react/pull/24728) by @sebmarkbage)  
+    * Remove recoverable error when a sync update flows into a dehydrated boundary ([\#25692](https://github.com/facebook/react/pull/25692) by @sebmarkbage)  
+    * Don't "fix up" mismatched text content with suppressedHydrationWarning ([\#26391](https://github.com/facebook/react/pull/26391) by @sebmarkbage)  
+    * Fix component stacks in errors ([\#27456](https://github.com/facebook/react/pull/27456) by @sebmarkbage)  
+    * Add component stacks to `onError` ([\#27761](https://github.com/facebook/react/pull/27761), [\#27850](https://github.com/facebook/react/pull/27850) by @gnoff and @sebmarkbage)  
+    * Throw hydration mismatch errors once ([\#28502](https://github.com/facebook/react/pull/28502) by @sebmarkbage)  
+* Add Bun streaming server renderer ([\#25597](https://github.com/facebook/react/pull/25597) by @colinhacks)  
+* Add nonce support to bootstrap scripts ([\#26738](https://github.com/facebook/react/pull/26738) by @danieltott)  
+* Add `crossorigin` support to bootstrap scripts ([\#26844](https://github.com/facebook/react/pull/26844) by @HenriqueLimas)  
+* Support `nonce` and `fetchpriority` in preload links ([\#26826](https://github.com/facebook/react/pull/26826) by @liuyenwei)  
+* Add `referrerPolicy` to `ReactDOM.preload()` ([\#27096](https://github.com/facebook/react/pull/27096) by @styfle)  
+* Add server condition for `react/jsx-dev-runtime` ([\#28921](https://github.com/facebook/react/pull/28921) by @himself65)   
+* Export version ([\#29596](https://github.com/facebook/react/pull/29596) by @unstubbable)  
+* Rename the secret export of Client and Server internals ([\#28786](https://github.com/facebook/react/pull/28786), [\#28789](https://github.com/facebook/react/pull/28789) by @sebmarkbage)  
+* Remove layout effect warning on server ([\#26395](https://github.com/facebook/react/pull/26395) by @rickhanlonii)  
+* Remove `errorInfo.digest` from `onRecoverableError` ([\#28222](https://github.com/facebook/react/pull/28222) by @gnoff)
+
+### ReactTestRenderer
+
+* Add deprecation error to `react-test-renderer` on web ([\#27903](https://github.com/facebook/react/pull/27903), [\#28904](https://github.com/facebook/react/pull/28904) by @jackpope and @acdlite)  
+* Render with ConcurrentRoot on web ([\#28498](https://github.com/facebook/react/pull/28498) by @jackpope)  
+* Remove `react-test-renderer/shallow` export ([\#25475](https://github.com/facebook/react/pull/25475), [\#28497](https://github.com/facebook/react/pull/28497) by @sebmarkbage and @jackpope)
+
+### React Reconciler
+
+* Enable suspending commits without blocking render ([\#26398](https://github.com/facebook/react/pull/26398), [\#26427](https://github.com/facebook/react/pull/26427) by @acdlite)  
+* Remove `prepareUpdate` ([\#26583](https://github.com/facebook/react/pull/26583), [\#27409](http://github.com/facebook/react/pull/27409) by @sebmarkbage and @sophiebits)
+
+### React-Is
+
+* Enable tree shaking ([\#27701](https://github.com/facebook/react/pull/27701) by @markerikson)  
+* Remove `isConcurrentMode` and `isAsyncMode` methods ([\#28224](https://github.com/facebook/react/pull/28224) by @gaearon)
+
+### useSyncExternalStore
+
+* Remove React internals access ([\#29868](https://github.com/facebook/react/pull/29868) by @phryneas)  
+* Fix stale selectors keeping previous store references ([\#25969](https://github.com/facebook/react/pull/25968) by @jellevoost)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>eslint-plugin-react-hooks@5.0.0 (Oct 11, 2024) (2024-10-11)</h2>
+      <pre>This release only contains `eslint-plugin-react-hooks`. Notably, new violations and support for ESLint v9 were added.
+
+## `eslint-plugin-react-hooks`
+
+* **New Violations:** Component names now need to start with an uppercase letter instead of a non-lowercase letter. This means `_Button` or `_component` are no longer valid. ([@kassens](https://github.com/kassens)) in [#25162](https://github.com/facebook/react/pull/25162)
+    For example, in
+    ```tsx
+    function _Component() {
+      useState()
+      ^^^^^^^^ A React Hook "useState" is called in function "_Component" which is neither a Component nor a custom React Hook function.
+    }
+    ```
+    `_Component` should be renamed to `Component`.
+    
+
+- Add support for ESLint v9. ([@eps1lon](https://github.com/eps1lon) in [#28773](https://github.com/facebook/react/pull/28773))
+- Consider dispatch from `useActionState` stable. ([@eps1lon](https://github.com/eps1lon) in [#29665](https://github.com/facebook/react/pull/29665))
+- Accept `as` expression in callback. ([@StyleShit](https://github.com/StyleShit) in [#28202](https://github.com/facebook/react/pull/28202))
+- Accept `as` expressions in deps array. ([@StyleShit](https://github.com/StyleShit) in [#28189](https://github.com/facebook/react/pull/28189))
+- Treat `React.use()` the same as `use()`. ([@kassens](https://github.com/kassens) in [#27769](https://github.com/facebook/react/pull/27769))
+- Move `use()` lint to non-experimental. ([@kassens](https://github.com/kassens) in [#27768](https://github.com/facebook/react/pull/27768))
+- Support Flow `as` expressions. ([@cpojer](https://github.com/cpojer) in [#27590](https://github.com/facebook/react/pull/27590))
+- Allow `useEffect(fn, undefined)`. ([@kassens](https://github.com/kassens) in [#27525](https://github.com/facebook/react/pull/27525))
+- Disallow hooks in async functions. ([@acdlite](https://github.com/acdlite) in [#27045](https://github.com/facebook/react/pull/27045))
+- Rename experimental `useEvent` to `useEffectEvent`. ([@sebmarkbage](https://github.com/sebmarkbage) in [#25881](https://github.com/facebook/react/pull/25881))
+- Lint for presence of `useEvent` functions in dependency lists. ([@poteto](https://github.com/poteto) in [#25512](https://github.com/facebook/react/pull/25512))
+- Check `useEvent` references instead. ([@poteto](https://github.com/poteto) in [#25319](https://github.com/facebook/react/pull/25319))
+- Update `RulesOfHooks` with `useEvent` rules. ([@poteto](https://github.com/poteto) in [#25285](https://github.com/facebook/react/pull/25285))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>18.3.1 (April 26, 2024) (2024-04-26)</h2>
+      <pre>- Export `act` from `react` [f1338f](https://github.com/facebook/react/commit/f1338f8080abd1386454a10bbf93d67bfe37ce85)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>18.3.0 (April 25, 2024) (2024-04-26)</h2>
+      <pre>This release is identical to 18.2 but adds warnings for deprecated APIs and other changes that are needed for React 19.
+
+Read the [React 19 Upgrade Guide](https://react.dev/blog/2024/04/25/react-19-upgrade-guide) for more info.
+
+### React
+
+- Allow writing to `this.refs` to support string ref codemod [909071](https://github.com/facebook/react/commit/9090712fd3ca4e1099e1f92e67933c2cb4f32552)
+- Warn for deprecated `findDOMNode` outside StrictMode [c3b283](https://github.com/facebook/react/commit/c3b283964108b0e8dbcf1f9eb2e7e67815e39dfb)
+- Warn for deprecated `test-utils` methods [d4ea75](https://github.com/facebook/react/commit/d4ea75dc4258095593b6ac764289f42bddeb835c)
+- Warn for deprecated Legacy Context outside StrictMode [415ee0](https://github.com/facebook/react/commit/415ee0e6ea0fe3e288e65868df2e3241143d5f7f)
+- Warn for deprecated string refs outside StrictMode [#25383](https://github.com/facebook/react/pull/25383)
+- Warn for deprecated `defaultProps` for function components [#25699](https://github.com/facebook/react/pull/25699)
+- Warn when spreading `key` [#25697](https://github.com/facebook/react/pull/25697)
+- Warn when using `act` from `test-utils` [d4ea75](https://github.com/facebook/react/commit/d4ea75dc4258095593b6ac764289f42bddeb835c)
+
+### React DOM
+- Warn for deprecated `unmountComponentAtNode` [8a015b](https://github.com/facebook/react/commit/8a015b68cc060079878e426610e64e86fb328f8d)
+- Warn for deprecated `renderToStaticNodeStream` [#28874](https://github.com/facebook/react/pull/28874)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>18.2.0 (June 14, 2022) (2022-06-14)</h2>
+      <pre>### React DOM
+
+* Provide a component stack as a second argument to `onRecoverableError`. ([@gnoff](https://github.com/gnoff) in [#24591](https://github.com/facebook/react/pull/24591))
+* Fix hydrating into `document` causing a blank page on mismatch. ([@gnoff](https://github.com/gnoff) in [#24523](https://github.com/facebook/react/pull/24523))
+* Fix false positive hydration errors with Suspense. ([@gnoff](https://github.com/gnoff) in [#24480](https://github.com/facebook/react/pull/24480) and  [@acdlite](https://github.com/acdlite) in [#24532](https://github.com/facebook/react/pull/24532))
+* Fix ignored `setState` in Safari when adding an iframe. ([@gaearon](https://github.com/gaearon) in [#24459](https://github.com/facebook/react/pull/24459))
+
+### React DOM Server
+
+* Pass information about server errors to the client. ([@salazarm](https://github.com/salazarm) and [@gnoff](https://github.com/gnoff) in [#24551](https://github.com/facebook/react/pull/24551) and [#24591](https://github.com/facebook/react/pull/24591))
+* Allow to provide a reason when aborting the HTML stream. ([@gnoff](https://github.com/gnoff) in [#24680](https://github.com/facebook/react/pull/24680))
+* Eliminate extraneous text separators in the HTML where possible. ([@gnoff](https://github.com/gnoff) in [#24630](https://github.com/facebook/react/pull/24630))
+* Disallow complex children inside `<title>` elements to match the browser constraints. ([@gnoff](https://github.com/gnoff) in [#24679](https://github.com/facebook/react/pull/24679))
+* Fix buffering in some worker environments by explicitly setting `highWaterMark` to `0`. ([@jplhomer](https://github.com/jplhomer) in [#24641](https://github.com/facebook/react/pull/24641))
+
+### Server Components (Experimental)
+
+* Add support for `useId()` inside Server Components. ([@gnoff](https://github.com/gnoff)) in [#24172](https://github.com/facebook/react/pull/24172)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>18.1.0 (April 26, 2022) (2022-04-26)</h2>
+      <pre>### React DOM
+
+* Fix the false positive warning about `react-dom/client` when using UMD bundle. ([@alireza-molaee](https://github.com/alireza-molaee) in [#24274](https://github.com/facebook/react/pull/24274))
+* Fix `suppressHydrationWarning` to work in production too. ([@gaearon](https://github.com/gaearon) in [#24271](https://github.com/facebook/react/pull/24271))
+* Fix `componentWillUnmount` firing twice inside of Suspense. ([@acdlite](https://github.com/acdlite) in [#24308](https://github.com/facebook/react/pull/24308))
+* Fix some transition updates being ignored. ([@acdlite](https://github.com/acdlite) in [#24353](https://github.com/facebook/react/pull/24353))
+* Fix `useDeferredValue` causing an infinite loop when passed an unmemoized value. ([@acdlite](https://github.com/acdlite) in [#24247](https://github.com/facebook/react/pull/24247))
+* Fix throttling of revealing Suspense fallbacks. ([@sunderls](https://github.com/sunderls) in [#24253](https://github.com/facebook/react/pull/24253))
+* Fix an inconsistency in whether the props object is the same between renders. ([@Andarist](https://github.com/Andarist) and [@acdlite](https://github.com/acdlite) in [#24421](https://github.com/facebook/react/pull/24421))
+* Fix a missing warning about a `setState` loop in `useEffect`. ([@gaearon](https://github.com/gaearon) in [#24298](https://github.com/facebook/react/pull/24298))
+* Fix a spurious hydration error. ([@gnoff](https://github.com/gnoff) in [#24404](https://github.com/facebook/react/pull/24404))
+* Warn when calling `setState` in `useInsertionEffect`. ([@gaearon](https://github.com/gaearon) in [#24295](https://github.com/facebook/react/pull/24295))
+* Ensure the reason for hydration errors is always displayed. ([@gaearon](https://github.com/gaearon) in [#24276](https://github.com/facebook/react/pull/24276))
+
+### React DOM Server
+
+* Fix escaping for the `bootstrapScriptContent` contents. ([@gnoff](https://github.com/gnoff) in [#24385](https://github.com/facebook/react/pull/24385))
+* Significantly improve performance of `renderToPipeableStream`. ([@gnoff](https://github.com/gnoff) in [#24291](https://github.com/facebook/react/pull/24291))
+
+### ESLint Plugin: React Hooks
+
+* Fix false positive errors with a large number of branches. ([@scyron6](https://github.com/scyron6) in [#24287](https://github.com/facebook/react/pull/24287))
+* Don't consider a known dependency stable when the variable is reassigned. ([@afzalsayed96](https://github.com/afzalsayed96) in [#24343](https://github.com/facebook/react/pull/24343))
+
+### Use Subscription
+
+* Replace the implementation with the `use-sync-external-store` shim. ([@gaearon](https://github.com/gaearon) in [#24289](https://github.com/facebook/react/pull/24289))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>18.0.0 (March 29, 2022) (2022-03-29)</h2>
+      <pre>Below is a list of all new features, APIs, deprecations, and breaking changes.
+Read [React 18 release post](https://reactjs.org/blog/2022/03/29/react-v18.html) and [React 18 upgrade guide](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html) for more information.
+
+### New Features
+
+### React
+
+* `useId` is a new hook for generating unique IDs on both the client and server, while avoiding hydration mismatches. It is primarily useful for component libraries integrating with accessibility APIs that require unique IDs. This solves an issue that already exists in React 17 and below, but it’s even more important in React 18 because of how the new streaming server renderer delivers HTML out-of-order.
+* `startTransition` and `useTransition` let you mark some state updates as not urgent. Other state updates are considered urgent by default. React will allow urgent state updates (for example, updating a text input) to interrupt non-urgent state updates (for example, rendering a list of search results).
+* `useDeferredValue` lets you defer re-rendering a non-urgent part of the tree. It is similar to debouncing, but has a few advantages compared to it. There is no fixed time delay, so React will attempt the deferred render right after the first render is reflected on the screen. The deferred render is interruptible and doesn't block user input.
+* `useSyncExternalStore` is a new hook that allows external stores to support concurrent reads by forcing updates to the store to be synchronous. It removes the need for `useEffect` when implementing subscriptions to external data sources, and is recommended for any library that integrates with state external to React.
+* `useInsertionEffect` is a new hook that allows CSS-in-JS libraries to address performance issues of injecting styles in render. Unless you’ve already built a CSS-in-JS library we don’t expect you to ever use this. This hook will run after the DOM is mutated, but before layout effects read the new layout. This solves an issue that already exists in React 17 and below, but is even more important in React 18 because React yields to the browser during concurrent rendering, giving it a chance to recalculate layout.
+
+### React DOM Client
+
+These new APIs are now exported from `react-dom/client`:
+
+* `createRoot`: New method to create a root to `render` or `unmount`. Use it instead of `ReactDOM.render`. New features in React 18 don't work without it.
+* `hydrateRoot`: New method to hydrate a server rendered application. Use it instead of `ReactDOM.hydrate` in conjunction with the new React DOM Server APIs. New features in React 18 don't work without it.
+
+Both `createRoot` and `hydrateRoot` accept a new option called `onRecoverableError` in case you want to be notified when React recovers from errors during rendering or hydration for logging. By default, React will use [`reportError`](https://developer.mozilla.org/en-US/docs/Web/API/reportError), or `console.error` in the older browsers.
+
+### React DOM Server
+
+These new APIs are now exported from `react-dom/server` and have full support for streaming Suspense on the server:
+
+* `renderToPipeableStream`: for streaming in Node environments.
+* `renderToReadableStream`: for modern edge runtime environments, such as Deno and Cloudflare workers.
+
+The existing `renderToString` method keeps working but is discouraged.
+
+## Deprecations
+
+* `react-dom`: `ReactDOM.render` has been deprecated. Using it will warn and run your app in React 17 mode.
+* `react-dom`: `ReactDOM.hydrate` has been deprecated. Using it will warn and run your app in React 17 mode.
+* `react-dom`: `ReactDOM.unmountComponentAtNode` has been deprecated.
+* `react-dom`: `ReactDOM.renderSubtreeIntoContainer` has been deprecated.
+* `react-dom/server`: `ReactDOMServer.renderToNodeStream` has been deprecated.
+
+## Breaking Changes
+
+### React
+
+* **Automatic batching:** This release introduces a performance improvement that changes to the way React batches updates to do more batching automatically. See [Automatic batching for fewer renders in React 18](https://github.com/reactwg/react-18/discussions/21) for more info. In the rare case that you need to opt out, wrap the state update in `flushSync`.
+* **Stricter Strict Mode**: In the future, React will provide a feature that lets components preserve state between unmounts. To prepare for it, React 18 introduces a new development-only check to Strict Mode. React will automatically unmount and remount every component, whenever a component mounts for the first time, restoring the previous state on the second mount. If this breaks your app, consider removing Strict Mode until you can fix the components to be resilient to remounting with existing state.
+* **Consistent useEffect timing**: React now always synchronously flushes effect functions if the update was triggered during a discrete user input event such as a click or a keydown event. Previously, the behavior wasn't always predictable or consistent.
+* **Stricter hydration errors**: Hydration mismatches due to missing or extra text content are now treated like errors instead of warnings. React will no longer attempt to "patch up" individual nodes by inserting or deleting a node on the client in an attempt to match the server markup, and will revert to client rendering up to the closest `<Suspense>` boundary in the tree. This ensures the hydrated tree is consistent and avoids potential privacy and security holes that can be caused by hydration mismatches.
+* **Suspense trees are always consistent:** If a component suspends before it's fully added to the tree, React will not add it to the tree in an incomplete state or fire its effects. Instead, React will throw away the new tree completely, wait for the asynchronous operation to finish, and then retry rendering again from scratch. React will render the retry attempt concurrently, and without blocking the browser.
+* **Layout Effects with Suspense**: When a tree re-suspends and reverts to a fallback, React will now clean up layout effects, and then re-create them when the content inside the boundary is shown again. This fixes an issue which prevented component libraries from correctly measuring layout when used with Suspense.
+* **New JS Environment Requirements**: React now depends on modern browsers features including `Promise`, `Symbol`, and `Object.assign`. If you support older browsers and devices such as Internet Explorer which do not provide modern browser features natively or have non-compliant implementations, consider including a global polyfill in your bundled application.
+
+### Scheduler (Experimental)
+
+* Remove unstable `scheduler/tracing` API
+
+## Notable Changes
+
+### React
+
+* **Components can now render `undefined`:** React no longer throws if you return `undefined` from a component. This makes the allowed component return values consistent with values that are allowed in the middle of a component tree. We suggest to use a linter to prevent mistakes like forgetting a `return` statement before JSX.
+* **In tests, `act` warnings are now opt-in:** If you're running end-to-end tests, the `act` warnings are unnecessary. We've introduced an [opt-in](https://github.com/reactwg/react-18/discussions/102) mechanism so you can enable them only for unit tests where they are useful and beneficial.
+* **No warning about `setState` on unmounted components:** Previously, React warned about memory leaks when you call `setState` on an unmounted component. This warning was added for subscriptions, but people primarily run into it in scenarios where setting state is fine, and workarounds make the code worse. We've [removed](https://github.com/facebook/react/pull/22114) this warning.
+* **No suppression of console logs:** When you use Strict Mode, React renders each component twice to help you find unexpected side effects. In React 17, we've suppressed console logs for one of the two renders to make the logs easier to read. In response to [community feedback](https://github.com/facebook/react/issues/21783) about this being confusing, we've removed the suppression. Instead, if you have React DevTools installed, the second log's renders will be displayed in grey, and there will be an option (off by default) to suppress them completely.
+* **Improved memory usage:** React now cleans up more internal fields on unmount, making the impact from unfixed memory leaks that may exist in your application code less severe.
+
+### React DOM Server
+
+* **`renderToString`:** Will no longer error when suspending on the server. Instead, it will emit the fallback HTML for the closest `<Suspense>` boundary and then retry rendering the same content on the client. It is still recommended that you switch to a streaming API like `renderToPipeableStream` or `renderToReadableStream` instead.
+* **`renderToStaticMarkup`:** Will no longer error when suspending on the server. Instead, it will emit the fallback HTML for the closest `<Suspense>` boundary and retry rendering on the client.
+
+## All Changes
+
+## React
+
+* Add `useTransition` and `useDeferredValue` to separate urgent updates from transitions. ([#10426](https://github.com/facebook/react/pull/10426), [#10715](https://github.com/facebook/react/pull/10715), [#15593](https://github.com/facebook/react/pull/15593), [#15272](https://github.com/facebook/react/pull/15272), [#15578](https://github.com/facebook/react/pull/15578), [#15769](https://github.com/facebook/react/pull/15769), [#17058](https://github.com/facebook/react/pull/17058), [#18796](https://github.com/facebook/react/pull/18796), [#19121](https://github.com/facebook/react/pull/19121), [#19703](https://github.com/facebook/react/pull/19703), [#19719](https://github.com/facebook/react/pull/19719), [#19724](https://github.com/facebook/react/pull/19724), [#20672](https://github.com/facebook/react/pull/20672), [#20976](https://github.com/facebook/react/pull/20976) by [@acdlite](https://github.com/acdlite), [@lunaruan](https://github.com/lunaruan), [@rickhanlonii](https://github.com/rickhanlonii), and [@sebmarkbage](https://github.com/sebmarkbage))
+* Add `useId` for generating unique IDs. ([#17322](https://github.com/facebook/react/pull/17322), [#18576](https://github.com/facebook/react/pull/18576), [#22644](https://github.com/facebook/react/pull/22644), [#22672](https://github.com/facebook/react/pull/22672), [#21260](https://github.com/facebook/react/pull/21260) by [@acdlite](https://github.com/acdlite), [@lunaruan](https://github.com/lunaruan), and [@sebmarkbage](https://github.com/sebmarkbage))
+* Add `useSyncExternalStore` to help external store libraries integrate with React. ([#15022](https://github.com/facebook/react/pull/15022), [#18000](https://github.com/facebook/react/pull/18000), [#18771](https://github.com/facebook/react/pull/18771), [#22211](https://github.com/facebook/react/pull/22211), [#22292](https://github.com/facebook/react/pull/22292), [#22239](https://github.com/facebook/react/pull/22239), [#22347](https://github.com/facebook/react/pull/22347), [#23150](https://github.com/facebook/react/pull/23150) by [@acdlite](https://github.com/acdlite), [@bvaughn](https://github.com/bvaughn), and [@drarmstr](https://github.com/drarmstr))
+* Add `startTransition` as a version of `useTransition` without pending feedback. ([#19696](https://github.com/facebook/react/pull/19696) by [@rickhanlonii](https://github.com/rickhanlonii))
+* Add `useInsertionEffect` for CSS-in-JS libraries. ([#21913](https://github.com/facebook/react/pull/21913) by [@rickhanlonii](https://github.com/rickhanlonii))
+* Make Suspense remount layout effects when content reappears. ([#19322](https://github.com/facebook/react/pull/19322), [#19374](https://github.com/facebook/react/pull/19374), [#19523](https://github.com/facebook/react/pull/19523), [#20625](https://github.com/facebook/react/pull/20625), [#21079](https://github.com/facebook/react/pull/21079) by [@acdlite](https://github.com/acdlite), [@bvaughn](https://github.com/bvaughn), and [@lunaruan](https://github.com/lunaruan))
+* Make `<StrictMode>` re-run effects to check for restorable state. ([#19523](https://github.com/facebook/react/pull/19523) , [#21418](https://github.com/facebook/react/pull/21418) by [@bvaughn](https://github.com/bvaughn) and [@lunaruan](https://github.com/lunaruan))
+* Assume Symbols are always available. ([#23348](https://github.com/facebook/react/pull/23348) by [@sebmarkbage](https://github.com/sebmarkbage))
+* Remove `object-assign` polyfill. ([#23351](https://github.com/facebook/react/pull/23351) by [@sebmarkbage](https://github.com/sebmarkbage))
+* Remove unsupported `unstable_changedBits` API. ([#20953](https://github.com/facebook/react/pull/20953) by [@acdlite](https://github.com/acdlite))
+* Allow components to render undefined. ([#21869](https://github.com/facebook/react/pull/21869) by [@rickhanlonii](https://github.com/rickhanlonii))
+* Flush `useEffect` resulting from discrete events like clicks synchronously. ([#21150](https://github.com/facebook/react/pull/21150) by [@acdlite](https://github.com/acdlite))
+* Suspense `fallback={undefined}` now behaves the same as `null` and isn't ignored. ([#21854](https://github.com/facebook/react/pull/21854) by [@rickhanlonii](https://github.com/rickhanlonii))
+* Consider all `lazy()` resolving to the same component equivalent. ([#20357](https://github.com/facebook/react/pull/20357) by [@sebmarkbage](https://github.com/sebmarkbage))
+* Don't patch console during first render. ([#22308](https://github.com/facebook/react/pull/22308) by [@lunaruan](https://github.com/lunaruan))
+* Improve memory usage. ([#21039](https://github.com/facebook/react/pull/21039) by [@bgirard](https://github.com/bgirard))
+* Improve messages if string coercion throws (Temporal.*, Symbol, etc.) ([#22064](https://github.com/facebook/react/pull/22064) by [@justingrant](https://github.com/justingrant))
+* Use `setImmediate` when available over `MessageChannel`. ([#20834](https://github.com/facebook/react/pull/20834) by [@gaearon](https://github.com/gaearon))
+* Fix context failing to propagate inside suspended trees. ([#23095](https://github.com/facebook/react/pull/23095) by [@gaearon](https://github.com/gaearon))
+* Fix `useReducer` observing incorrect props by removing the eager bailout mechanism. ([#22445](https://github.com/facebook/react/pull/22445) by [@josephsavona](https://github.com/josephsavona))
+* Fix `setState` being ignored in Safari when appending iframes. ([#23111](https://github.com/facebook/react/pull/23111) by [@gaearon](https://github.com/gaearon))
+* Fix a crash when rendering `ZonedDateTime` in the tree. ([#20617](https://github.com/facebook/react/pull/20617) by [@dimaqq](https://github.com/dimaqq))
+* Fix a crash when document is set to `null` in tests. ([#22695](https://github.com/facebook/react/pull/22695) by [@SimenB](https://github.com/SimenB))
+* Fix `onLoad` not triggering when concurrent features are on. ([#23316](https://github.com/facebook/react/pull/23316) by [@gnoff](https://github.com/gnoff))
+* Fix a warning when a selector returns `NaN`.  ([#23333](https://github.com/facebook/react/pull/23333) by [@hachibeeDI](https://github.com/hachibeeDI))
+* Fix the generated license header. ([#23004](https://github.com/facebook/react/pull/23004) by [@vitaliemiron](https://github.com/vitaliemiron))
+* Add `package.json` as one of the entry points. ([#22954](https://github.com/facebook/react/pull/22954) by [@Jack](https://github.com/Jack-Works))
+* Allow suspending outside a Suspense boundary. ([#23267](https://github.com/facebook/react/pull/23267) by [@acdlite](https://github.com/acdlite))
+* Log a recoverable error whenever hydration fails. ([#23319](https://github.com/facebook/react/pull/23319) by [@acdlite](https://github.com/acdlite))
+
+### React DOM
+
+* Add `createRoot` and `hydrateRoot`. ([#10239](https://github.com/facebook/react/pull/10239), [#11225](https://github.com/facebook/react/pull/11225), [#12117](https://github.com/facebook/react/pull/12117), [#13732](https://github.com/facebook/react/pull/13732), [#15502](https://github.com/facebook/react/pull/15502), [#15532](https://github.com/facebook/react/pull/15532), [#17035](https://github.com/facebook/react/pull/17035), [#17165](https://github.com/facebook/react/pull/17165), [#20669](https://github.com/facebook/react/pull/20669), [#20748](https://github.com/facebook/react/pull/20748), [#20888](https://github.com/facebook/react/pull/20888), [#21072](https://github.com/facebook/react/pull/21072), [#21417](https://github.com/facebook/react/pull/21417), [#21652](https://github.com/facebook/react/pull/21652), [#21687](https://github.com/facebook/react/pull/21687), [#23207](https://github.com/facebook/react/pull/23207), [#23385](https://github.com/facebook/react/pull/23385) by [@acdlite](https://github.com/acdlite), [@bvaughn](https://github.com/bvaughn), [@gaearon](https://github.com/gaearon), [@lunaruan](https://github.com/lunaruan), [@rickhanlonii](https://github.com/rickhanlonii), [@trueadm](https://github.com/trueadm), and [@sebmarkbage](https://github.com/sebmarkbage))
+* Add selective hydration. ([#14717](https://github.com/facebook/react/pull/14717), [#14884](https://github.com/facebook/react/pull/14884), [#16725](https://github.com/facebook/react/pull/16725), [#16880](https://github.com/facebook/react/pull/16880), [#17004](https://github.com/facebook/react/pull/17004), [#22416](https://github.com/facebook/react/pull/22416), [#22629](https://github.com/facebook/react/pull/22629), [#22448](https://github.com/facebook/react/pull/22448), [#22856](https://github.com/facebook/react/pull/22856), [#23176](https://github.com/facebook/react/pull/23176) by [@acdlite](https://github.com/acdlite), [@gaearon](https://github.com/gaearon), [@salazarm](https://github.com/salazarm), and [@sebmarkbage](https://github.com/sebmarkbage))
+* Add `aria-description` to the list of known ARIA attributes. ([#22142](https://github.com/facebook/react/pull/22142) by [@mahyareb](https://github.com/mahyareb))
+* Add `onResize` event to video elements. ([#21973](https://github.com/facebook/react/pull/21973) by [@rileyjshaw](https://github.com/rileyjshaw))
+* Add `imageSizes` and `imageSrcSet` to known props. ([#22550](https://github.com/facebook/react/pull/22550) by [@eps1lon](https://github.com/eps1lon))
+* Allow non-string `<option>` children if `value` is provided.  ([#21431](https://github.com/facebook/react/pull/21431) by [@sebmarkbage](https://github.com/sebmarkbage))
+* Fix `aspectRatio` style not being applied. ([#21100](https://github.com/facebook/react/pull/21100) by [@gaearon](https://github.com/gaearon))
+* Warn if `renderSubtreeIntoContainer` is called. ([#23355](https://github.com/facebook/react/pull/23355) by [@acdlite](https://github.com/acdlite))
+
+### React DOM Server
+
+* Add the new streaming renderer. ([#14144](https://github.com/facebook/react/pull/14144), [#20970](https://github.com/facebook/react/pull/20970), [#21056](https://github.com/facebook/react/pull/21056), [#21255](https://github.com/facebook/react/pull/21255), [#21200](https://github.com/facebook/react/pull/21200), [#21257](https://github.com/facebook/react/pull/21257), [#21276](https://github.com/facebook/react/pull/21276), [#22443](https://github.com/facebook/react/pull/22443), [#22450](https://github.com/facebook/react/pull/22450), [#23247](https://github.com/facebook/react/pull/23247), [#24025](https://github.com/facebook/react/pull/24025), [#24030](https://github.com/facebook/react/pull/24030) by [@sebmarkbage](https://github.com/sebmarkbage))
+* Fix context providers in SSR when handling multiple requests. ([#23171](https://github.com/facebook/react/pull/23171) by [@frandiox](https://github.com/frandiox))
+* Revert to client render on text mismatch. ([#23354](https://github.com/facebook/react/pull/23354) by [@acdlite](https://github.com/acdlite))
+* Deprecate `renderToNodeStream`. ([#23359](https://github.com/facebook/react/pull/23359) by [@sebmarkbage](https://github.com/sebmarkbage))
+* Fix a spurious error log in the new server renderer. ([#24043](https://github.com/facebook/react/pull/24043) by [@eps1lon](https://github.com/eps1lon))
+* Fix a bug in the new server renderer. ([#22617](https://github.com/facebook/react/pull/22617) by [@shuding](https://github.com/shuding))
+* Ignore function and symbol values inside custom elements on the server. ([#21157](https://github.com/facebook/react/pull/21157) by [@sebmarkbage](https://github.com/sebmarkbage))
+
+### React DOM Test Utils
+
+* Throw when `act` is used in production. ([#21686](https://github.com/facebook/react/pull/21686) by [@acdlite](https://github.com/acdlite))
+* Support disabling spurious act warnings with `global.IS_REACT_ACT_ENVIRONMENT`. ([#22561](https://github.com/facebook/react/pull/22561) by [@acdlite](https://github.com/acdlite))
+* Expand act warning to cover all APIs that might schedule React work. ([#22607](https://github.com/facebook/react/pull/22607) by [@acdlite](https://github.com/acdlite))
+* Make `act` batch updates. ([#21797](https://github.com/facebook/react/pull/21797) by [@acdlite](https://github.com/acdlite))
+* Remove warning for dangling passive effects. ([#22609](https://github.com/facebook/react/pull/22609) by [@acdlite](https://github.com/acdlite))
+
+### React Refresh
+
+* Track late-mounted roots in Fast Refresh. ([#22740](https://github.com/facebook/react/pull/22740) by [@anc95](https://github.com/anc95))
+* Add `exports` field to `package.json`. ([#23087](https://github.com/facebook/react/pull/23087) by [@otakustay](https://github.com/otakustay))
+
+### Server Components (Experimental)
+
+* Add Server Context support. ([#23244](https://github.com/facebook/react/pull/23244) by [@salazarm](https://github.com/salazarm))
+* Add `lazy` support. ([#24068](https://github.com/facebook/react/pull/24068) by [@gnoff](https://github.com/gnoff))
+* Update webpack plugin for webpack 5 ([#22739](https://github.com/facebook/react/pull/22739) by [@michenly](https://github.com/michenly))
+* Fix a mistake in the Node loader. ([#22537](https://github.com/facebook/react/pull/22537) by [@btea](https://github.com/btea))
+* Use `globalThis` instead of `window` for edge environments. ([#22777](https://github.com/facebook/react/pull/22777) by [@huozhi](https://github.com/huozhi))
+
+### Scheduler (Experimental)
+
+* Remove unstable `scheduler/tracing` API ([#20037](https://github.com/facebook/react/pull/20037) by [@bvaughn](https://github.com/bvaughn))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>17.0.2 (March 22, 2021) (2021-03-22)</h2>
+      <pre>### React DOM
+
+* Remove an unused dependency to address the [`SharedArrayBuffer` cross-origin isolation warning](https://developer.chrome.com/blog/enabling-shared-array-buffer/). ([@koba04](https://github.com/koba04) and [@bvaughn](https://github.com/bvaughn) in [#20831](https://github.com/facebook/react/pull/20831), [#20832](https://github.com/facebook/react/pull/20832), and [#20840](https://github.com/facebook/react/pull/20840))
+
+## Artifacts
+
+- react: https://unpkg.com/react@17.0.2/umd/
+- react-art: https://unpkg.com/react-art@17.0.2/umd/
+- react-dom: https://unpkg.com/react-dom@17.0.2/umd/
+- react-is: https://unpkg.com/react-is@17.0.2/umd/
+- react-test-renderer: https://unpkg.com/react-test-renderer@17.0.2/umd/
+- scheduler: https://unpkg.com/scheduler@0.20.2/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>17.0.1 (October 22, 2020) (2021-03-22)</h2>
+      <pre>### React DOM
+
+* Fix a crash in IE11. ([@gaearon](https://github.com/gaearon) in [#20071](https://github.com/facebook/react/pull/20071))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>17.0.0 (October 20, 2020) (2020-10-20)</h2>
+      <pre>Today, we are releasing React 17!
+
+**[Learn more about React 17 and how to update to it on the official React blog.](https://reactjs.org/blog/2020/10/20/react-v17.html)**
+
+### React
+
+* Add `react/jsx-runtime` and `react/jsx-dev-runtime` for the [new JSX transform](https://babeljs.io/blog/2020/03/16/7.9.0#a-new-jsx-transform-11154-https-githubcom-babel-babel-pull-11154). ([@lunaruan](https://github.com/lunaruan) in [#18299](https://github.com/facebook/react/pull/18299))
+* Build component stacks from native error frames. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18561](https://github.com/facebook/react/pull/18561))
+* Allow to specify `displayName` on context for improved stacks. ([@eps1lon](https://github.com/eps1lon) in [#18224](https://github.com/facebook/react/pull/18224))
+* Prevent `'use strict'` from leaking in the UMD bundles. ([@koba04](https://github.com/koba04) in [#19614](https://github.com/facebook/react/pull/19614))
+* Stop using `fb.me` for redirects. ([@cylim](https://github.com/cylim) in [#19598](https://github.com/facebook/react/pull/19598))
+
+### React DOM
+
+* Delegate events to roots instead of `document`. ([@trueadm](https://github.com/trueadm) in [#18195](https://github.com/facebook/react/pull/18195) and [others](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Atrueadm+modern+event+is%3Amerged))
+* Clean up all effects before running any next effects. ([@bvaughn](https://github.com/bvaughn) in [#17947](https://github.com/facebook/react/pull/17947))
+* Run `useEffect` cleanup functions asynchronously. ([@bvaughn](https://github.com/bvaughn) in [#17925](https://github.com/facebook/react/pull/17925))
+* Use browser `focusin` and `focusout` for `onFocus` and `onBlur`. ([@trueadm](https://github.com/trueadm) in [#19186](https://github.com/facebook/react/pull/19186))
+* Make all `Capture` events use the browser capture phase. ([@trueadm](https://github.com/trueadm) in [#19221](https://github.com/facebook/react/pull/19221))
+* Don't emulate bubbling of the `onScroll` event. ([@gaearon](https://github.com/gaearon) in [#19464](https://github.com/facebook/react/pull/19464))
+* Throw if `forwardRef` or `memo` component returns `undefined`. ([@gaearon](https://github.com/gaearon) in [#19550](https://github.com/facebook/react/pull/19550))
+* Remove event pooling. ([@trueadm](https://github.com/trueadm) in [#18969](https://github.com/facebook/react/pull/18969))
+* Stop exposing internals that won’t be needed by React Native Web. ([@necolas](https://github.com/necolas) in [#18483](https://github.com/facebook/react/pull/18483))
+* Attach all known event listeners when the root mounts. ([@gaearon](https://github.com/gaearon) in [#19659](https://github.com/facebook/react/pull/19659))
+* Disable `console` in the second render pass of DEV mode double render. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18547](https://github.com/facebook/react/pull/18547))
+* Deprecate the undocumented and misleading `ReactTestUtils.SimulateNative` API. ([@gaearon](https://github.com/gaearon) in [#13407](https://github.com/facebook/react/pull/13407))
+* Rename private field names used in the internals. ([@gaearon](https://github.com/gaearon) in [#18377](https://github.com/facebook/react/pull/18377))
+* Don't call User Timing API in development. ([@gaearon](https://github.com/gaearon) in [#18417](https://github.com/facebook/react/pull/18417))
+* Disable console during the repeated render in Strict Mode. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18547](https://github.com/facebook/react/pull/18547))
+* In Strict Mode, double-render components without Hooks too. ([@eps1lon](https://github.com/eps1lon) in [#18430](https://github.com/facebook/react/pull/18430))
+* Allow calling `ReactDOM.flushSync` during lifecycle methods (but warn). ([@sebmarkbage](https://github.com/sebmarkbage) in [#18759](https://github.com/facebook/react/pull/18759))
+* Add the `code` property to the keyboard event objects. ([@bl00mber](https://github.com/bl00mber) in [#18287](https://github.com/facebook/react/pull/18287))
+* Add the `disableRemotePlayback` property for `video` elements. ([@tombrowndev](https://github.com/tombrowndev) in [#18619](https://github.com/facebook/react/pull/18619))
+* Add the `enterKeyHint` property for `input` elements. ([@eps1lon](https://github.com/eps1lon) in [#18634](https://github.com/facebook/react/pull/18634))
+* Warn when no `value` is provided to `<Context.Provider>`. ([@charlie1404](https://github.com/charlie1404) in [#19054](https://github.com/facebook/react/pull/19054))
+* Warn when `memo` or `forwardRef` components return `undefined`. ([@bvaughn](https://github.com/bvaughn) in [#19550](https://github.com/facebook/react/pull/19550))
+* Improve the error message for invalid updates. ([@JoviDeCroock](https://github.com/JoviDeCroock) in [#18316](https://github.com/facebook/react/pull/18316))
+* Exclude forwardRef and memo from stack frames. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18559](https://github.com/facebook/react/pull/18559))
+* Improve the error message when switching between controlled and uncontrolled inputs. ([@vcarl](https://github.com/vcarl) in [#17070](https://github.com/facebook/react/pull/17070))
+* Keep `onTouchStart`, `onTouchMove`, and `onWheel` passive. ([@gaearon](https://github.com/gaearon) in [#19654](https://github.com/facebook/react/pull/19654))
+* Fix `setState` hanging in development inside a closed iframe. ([@gaearon](https://github.com/gaearon) in [#19220](https://github.com/facebook/react/pull/19220))
+* Fix rendering bailout for lazy components with `defaultProps`. ([@jddxf](https://github.com/jddxf) in [#18539](https://github.com/facebook/react/pull/18539))
+* Fix a false positive warning when `dangerouslySetInnerHTML` is `undefined`. ([@eps1lon](https://github.com/eps1lon) in [#18676](https://github.com/facebook/react/pull/18676))
+* Fix Test Utils with non-standard `require` implementation. ([@just-boris](https://github.com/just-boris) in [#18632](https://github.com/facebook/react/pull/18632))
+* Fix `onBeforeInput` reporting an incorrect `event.type`. ([@eps1lon](https://github.com/eps1lon) in [#19561](https://github.com/facebook/react/pull/19561))
+* Fix `event.relatedTarget` reported as `undefined` in Firefox. ([@claytercek](https://github.com/claytercek) in [#19607](https://github.com/facebook/react/pull/19607))
+* Fix "unspecified error" in IE11. ([@hemakshis](https://github.com/hemakshis) in [#19664](https://github.com/facebook/react/pull/19664))
+* Fix rendering into a shadow root. ([@Jack-Works](https://github.com/Jack-Works) in [#15894](https://github.com/facebook/react/pull/15894))
+* Fix `movementX/Y` polyfill with capture events. ([@gaearon](https://github.com/gaearon) in [#19672](https://github.com/facebook/react/pull/19672))
+* Use delegation for `onSubmit` and `onReset` events. ([@gaearon](https://github.com/gaearon) in [#19333](https://github.com/facebook/react/pull/19333))
+* Improve memory usage. ([@trueadm](https://github.com/trueadm) in [#18970](https://github.com/facebook/react/pull/18970))
+
+### React DOM Server
+
+* Make `useCallback` behavior consistent with `useMemo` for the server renderer. ([@alexmckenley](https://github.com/alexmckenley) in [#18783](https://github.com/facebook/react/pull/18783))
+* Fix state leaking when a function component throws. ([@pmaccart](https://github.com/pmaccart) in [#19212](https://github.com/facebook/react/pull/19212))
+
+### React Test Renderer
+
+* Improve `findByType` error message. ([@henryqdineen](https://github.com/henryqdineen) in [#17439](https://github.com/facebook/react/pull/17439))
+
+### Concurrent Mode (Experimental)
+
+* Revamp the priority batching heuristics. ([@acdlite](https://github.com/acdlite) in [#18796](https://github.com/facebook/react/pull/18796))
+* Add the `unstable_` prefix before the experimental APIs. ([@acdlite](https://github.com/acdlite) in [#18825](https://github.com/facebook/react/pull/18825))
+* Remove `unstable_discreteUpdates` and `unstable_flushDiscreteUpdates`. ([@trueadm](https://github.com/trueadm) in [#18825](https://github.com/facebook/react/pull/18825))
+* Remove the `timeoutMs` argument. ([@acdlite](https://github.com/acdlite) in [#19703](https://github.com/facebook/react/pull/19703))
+* Disable `<div hidden />` prerendering in favor of a different future API. ([@acdlite](https://github.com/acdlite) in [#18917](https://github.com/facebook/react/pull/18917))
+* Add `unstable_expectedLoadTime` to Suspense for CPU-bound trees. ([@acdlite](https://github.com/acdlite) in [#19936](https://github.com/facebook/react/pull/19936))
+* Add an experimental `unstable_useOpaqueIdentifier` Hook. ([@lunaruan](https://github.com/lunaruan) in [#17322](https://github.com/facebook/react/pull/17322))
+* Add an experimental `unstable_startTransition` API. ([@rickhanlonii](https://github.com/rickhanlonii) in [#19696](https://github.com/facebook/react/pull/19696))
+* Using `act` in the test renderer no longer flushes Suspense fallbacks. ([@acdlite](https://github.com/acdlite) in [#18596](https://github.com/facebook/react/pull/18596))
+* Use global render timeout for CPU Suspense. ([@sebmarkbage](https://github.com/sebmarkbage) in [#19643](https://github.com/facebook/react/pull/19643))
+* Clear the existing root content before mounting. ([@bvaughn](https://github.com/bvaughn) in [#18730](https://github.com/facebook/react/pull/18730))
+* Fix a bug with error boundaries. ([@acdlite](https://github.com/acdlite) in [#18265](https://github.com/facebook/react/pull/18265))
+* Fix a bug causing dropped updates in a suspended tree. ([@acdlite](https://github.com/acdlite) in [#18384](https://github.com/facebook/react/pull/18384) and [#18457](https://github.com/facebook/react/pull/18457))
+* Fix a bug causing dropped render phase updates. ([@acdlite](https://github.com/acdlite) in [#18537](https://github.com/facebook/react/pull/18537))
+* Fix a bug in SuspenseList. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18412](https://github.com/facebook/react/pull/18412))
+* Fix a bug causing Suspense fallback to show too early. ([@acdlite](https://github.com/acdlite) in [#18411](https://github.com/facebook/react/pull/18411))
+* Fix a bug with class components inside SuspenseList. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18448](https://github.com/facebook/react/pull/18448))
+* Fix a bug with inputs that may cause updates to be dropped. ([@jddxf](https://github.com/jddxf) in [#18515](https://github.com/facebook/react/pull/18515) and [@acdlite](https://github.com/acdlite) in [#18535](https://github.com/facebook/react/pull/18535))
+* Fix a bug causing Suspense fallback to get stuck.  ([@acdlite](https://github.com/acdlite) in [#18663](https://github.com/facebook/react/pull/18663))
+* Don't cut off the tail of a SuspenseList if hydrating. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18854](https://github.com/facebook/react/pull/18854))
+* Fix a bug in `useMutableSource` that may happen when `getSnapshot` changes. ([@bvaughn](https://github.com/bvaughn) in [#18297](https://github.com/facebook/react/pull/18297))
+* Fix a tearing bug in `useMutableSource`. ([@bvaughn](https://github.com/bvaughn) in [#18912](https://github.com/facebook/react/pull/18912))
+* Warn if calling setState outside of render but before commit. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18838](https://github.com/facebook/react/pull/18838))
+
+## Artifacts
+
+- react: https://unpkg.com/react@17.0.1/umd/
+- react-art: https://unpkg.com/react-art@17.0.1/umd/
+- react-dom: https://unpkg.com/react-dom@17.0.1/umd/
+- react-is: https://unpkg.com/react-is@17.0.1/umd/
+- react-test-renderer: https://unpkg.com/react-test-renderer@17.0.1/umd/
+- scheduler: https://unpkg.com/scheduler@0.20.1/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>16.14.0 (October 14, 2020) (2020-10-14)</h2>
+      <pre>### React
+
+* Add support for the [new JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html). ([@lunaruan](https://github.com/lunaruan) in [#18299](https://github.com/facebook/react/pull/18299))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>15.7.0 (October 14, 2020) (2020-10-14)</h2>
+      <pre>### React
+
+* Backport support for the [new JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) to 15.x. ([@lunaruan](https://github.com/lunaruan) in [#18299](https://github.com/facebook/react/pull/18299) and [@gaearon](https://github.com/gaearon) in [#20024](https://github.com/facebook/react/pull/20024))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>0.14.10 (October 14, 2020) (2020-10-14)</h2>
+      <pre>### React
+
+* Backport support for the [new JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) to 0.14.x. ([@lunaruan](https://github.com/lunaruan) in [#18299](https://github.com/facebook/react/pull/18299) and [@gaearon](https://github.com/gaearon) in [#20024](https://github.com/facebook/react/pull/20024))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>16.13.1 (March 19, 2020) (2020-03-19)</h2>
+      <pre>### React DOM
+
+* Fix bug in legacy mode Suspense where effect clean-up functions are not fired. This only affects users who use Suspense for data fetching in legacy mode, which is not technically supported. ([@acdlite](https://github.com/acdlite) in [#18238](https://github.com/facebook/react/pull/18238))
+* Revert warning for cross-component updates that happen inside class render lifecycles (`componentWillReceiveProps`, `shouldComponentUpdate`, and so on). ([@gaearon](https://github.com/gaearon) in [#18330](https://github.com/facebook/react/pull/18330))
+
+## Artifacts
+
+- react: https://unpkg.com/react@16.13.1/umd/
+- react-art: https://unpkg.com/react-art@16.13.1/umd/
+- react-dom: https://unpkg.com/react-dom@16.13.1/umd/
+- react-is: https://unpkg.com/react-is@16.13.1/umd/
+- react-test-renderer: https://unpkg.com/react-test-renderer@16.13.1/umd/
+- scheduler: https://unpkg.com/scheduler@0.19.1/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>16.13.0 (February 26, 2020) (2020-02-26)</h2>
+      <pre>### React 
+
+* Warn when a string ref is used in a manner that's not amenable to a future codemod ([@lunaruan](https://github.com/lunaruan) in [#17864](https://github.com/facebook/react/pull/17864))
+* Deprecate `React.createFactory()` ([@trueadm](https://github.com/trueadm) in [#17878](https://github.com/facebook/react/pull/17878))
+
+### React DOM
+
+* Warn when changes in `style` may cause an unexpected collision ([@sophiebits](https://github.com/sophiebits) in [#14181](https://github.com/facebook/react/pull/14181), [#18002](https://github.com/facebook/react/pull/18002))
+* Warn when a function component is updated during another component's render phase ([@acdlite]((https://github.com/acdlite)) in [#17099](https://github.com/facebook/react/pull/17099))
+* Deprecate `unstable_createPortal` ([@trueadm](https://github.com/trueadm) in [#17880](https://github.com/facebook/react/pull/17880))
+* Fix `onMouseEnter` being fired on disabled buttons ([@AlfredoGJ](https://github.com/AlfredoGJ) in [#17675](https://github.com/facebook/react/pull/17675))
+* Call `shouldComponentUpdate` twice when developing in `StrictMode` ([@bvaughn](https://github.com/bvaughn) in [#17942](https://github.com/facebook/react/pull/17942))
+* Add `version` property to ReactDOM ([@ealush](https://github.com/ealush) in [#15780](https://github.com/facebook/react/pull/15780))
+* Don't call `toString()` of `dangerouslySetInnerHTML` ([@sebmarkbage](https://github.com/sebmarkbage) in [#17773](https://github.com/facebook/react/pull/17773))
+* Show component stacks in more warnings ([@gaearon](https://github.com/gaearon) in [#17922](https://github.com/facebook/react/pull/17922), [#17586](https://github.com/facebook/react/pull/17586))
+
+### Concurrent Mode (Experimental)
+
+* Warn for problematic usages of `ReactDOM.createRoot()` ([@trueadm](https://github.com/trueadm) in [#17937](https://github.com/facebook/react/pull/17937))
+* Remove `ReactDOM.createRoot()` callback params and added warnings on usage ([@bvaughn](https://github.com/bvaughn) in [#17916](https://github.com/facebook/react/pull/17916))
+* Don't group Idle/Offscreen work with other work ([@sebmarkbage](https://github.com/sebmarkbage) in [#17456](https://github.com/facebook/react/pull/17456))
+* Adjust `SuspenseList` CPU bound heuristic ([@sebmarkbage](https://github.com/sebmarkbage) in [#17455](https://github.com/facebook/react/pull/17455))
+* Add missing event plugin priorities ([@trueadm](https://github.com/trueadm) in [#17914](https://github.com/facebook/react/pull/17914))
+* Fix `isPending` only being true when transitioning from inside an input event ([@acdlite](https://github.com/acdlite) in [#17382](https://github.com/facebook/react/pull/17382))
+* Fix `React.memo` components dropping updates when interrupted by a higher priority update ([@acdlite]((https://github.com/acdlite)) in [#18091](https://github.com/facebook/react/pull/18091)) 
+* Don't warn when suspending at the wrong priority ([@gaearon](https://github.com/gaearon) in [#17971](https://github.com/facebook/react/pull/17971))
+* Fix a bug with rebasing updates ([@acdlite](https://github.com/acdlite) and [@sebmarkbage](https://github.com/sebmarkbage) in [#17560](https://github.com/facebook/react/pull/17560), [#17510](https://github.com/facebook/react/pull/17510), [#17483](https://github.com/facebook/react/pull/17483), [#17480](https://github.com/facebook/react/pull/17480))
+
+## Artifacts
+
+- react: https://unpkg.com/react@16.13.0/umd/
+- react-art: https://unpkg.com/react-art@16.13.0/umd/
+- react-dom: https://unpkg.com/react-dom@16.13.0/umd/
+- react-is: https://unpkg.com/react-is@16.13.0/umd/
+- react-test-renderer: https://unpkg.com/react-test-renderer@16.13.0/umd/
+- scheduler: https://unpkg.com/scheduler@0.19.0/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>16.12.0 (November 14, 2019) (2019-11-15)</h2>
+      <pre>### React DOM
+
+* Fix passive effects (`useEffect`) not being fired in a multi-root app. ([@acdlite](https://github.com/acdlite) in [#17347](https://github.com/facebook/react/pull/17347))
+
+### React Is
+
+* Fix `lazy` and `memo` types considered elements instead of components ([@bvaughn](https://github.com/bvaughn) in [#17278](https://github.com/facebook/react/pull/17278))
+
+## Artifacts
+
+• react: https://unpkg.com/react@16.12.0/umd/
+• react-art: https://unpkg.com/react-art@16.12.0/umd/
+• react-dom: https://unpkg.com/react-dom@16.12.0/umd/
+• react-is: https://unpkg.com/react-is@16.12.0/umd/
+• react-test-renderer: https://unpkg.com/react-test-renderer@16.12.0/umd/
+• scheduler: https://unpkg.com/scheduler@0.18.0/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>16.11.0 (October 22, 2019) (2019-10-22)</h2>
+      <pre>### React DOM
+
+* Fix `mouseenter` handlers from firing twice inside nested React containers. [@yuanoook](https://github.com/yuanoook) in [#16928](https://github.com/facebook/react/pull/16928)
+* Remove `unstable_createRoot` and `unstable_createSyncRoot` experimental APIs. (These are available in the Experimental channel as `createRoot` and `createSyncRoot`.) ([@acdlite](http://github.com/acdlite) in [#17088](https://github.com/facebook/react/pull/17088))
+
+## Artifacts
+
+• react: https://unpkg.com/react@16.11.0/umd/
+• react-art: https://unpkg.com/react-art@16.11.0/umd/
+• react-dom: https://unpkg.com/react-dom@16.11.0/umd/
+• react-is: https://unpkg.com/react-is@16.11.0/umd/
+• react-test-renderer: https://unpkg.com/react-test-renderer@16.11.0/umd/
+• scheduler: https://unpkg.com/scheduler@0.17.0/umd/
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>16.10.2 (October 3, 2019) (2019-10-03)</h2>
+      <pre>### React DOM
+
+* Fix regression in react-native-web by restoring order of arguments in event plugin extractors ([@necolas](https://github.com/necolas) in [#16978](https://github.com/facebook/react/pull/16978))
+
+## Artifacts
+
+• react: https://unpkg.com/react@16.10.2/umd/
+• react-art: https://unpkg.com/react-art@16.10.2/umd/
+• react-dom: https://unpkg.com/react-dom@16.10.2/umd/
+• react-is: https://unpkg.com/react-is@16.10.2/umd/
+• react-test-renderer: https://unpkg.com/react-test-renderer@16.10.2/umd/
+• scheduler: https://unpkg.com/scheduler@0.16.2/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>16.10.1 (September 28, 2019) (2019-09-28)</h2>
+      <pre>### React DOM
+
+* Fix regression in Next.js apps by allowing Suspense mismatch during hydration to silently proceed ([@sebmarkbage](https://github.com/sebmarkbage) in [#16943](https://github.com/facebook/react/pull/16943))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>16.10.0 (September 27, 2019) (2019-09-27)</h2>
+      <pre>### React DOM
+
+* Fix edge case where a hook update wasn't being memoized. ([@sebmarkbage](http://github.com/sebmarkbage) in [#16359](https://github.com/facebook/react/pull/16359))
+* Fix heuristic for determining when to hydrate, so we don't incorrectly hydrate during an update. ([@sebmarkbage](http://github.com/sebmarkbage) in [#16739](https://github.com/facebook/react/pull/16739))
+* Clear additional fiber fields during unmount to save memory. ([@trueadm](http://github.com/trueadm) in [#16807](https://github.com/facebook/react/pull/16807))
+* Fix bug with required text fields in Firefox. ([@halvves](http://github.com/halvves) in [#16578](https://github.com/facebook/react/pull/16578))
+* Prefer `Object.is` instead of inline polyfill, when available. ([@ku8ar](http://github.com/ku8ar) in [#16212](https://github.com/facebook/react/pull/16212))
+* Fix bug when mixing Suspense and error handling. ([@acdlite](http://github.com/acdlite) in [#16801](https://github.com/facebook/react/pull/16801))
+
+
+### Scheduler (Experimental)
+
+* Improve queue performance by switching its internal data structure to a min binary heap. ([@acdlite](http://github.com/acdlite) in [#16245](https://github.com/facebook/react/pull/16245))
+* Use `postMessage` loop with short intervals instead of attempting to align to frame boundaries with `requestAnimationFrame`. ([@acdlite](http://github.com/acdlite) in [#16214](https://github.com/facebook/react/pull/16214))
+
+### useSubscription
+
+* Avoid tearing issue when a mutation happens and the previous update is still in progress. ([@bvaughn](http://github.com/bvaughn) in [#16623](https://github.com/facebook/react/pull/16623))
+
+## Artifacts
+
+• react: https://unpkg.com/react@16.10.0/umd/
+• react-art: https://unpkg.com/react-art@16.10.0/umd/
+• react-dom: https://unpkg.com/react-dom@16.10.0/umd/
+• react-is: https://unpkg.com/react-is@16.10.0/umd/
+• react-test-renderer: https://unpkg.com/react-test-renderer@16.10.0/umd/
+• scheduler: https://unpkg.com/scheduler@0.16.0/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>16.9.0 (August 8, 2019) (2019-08-08)</h2>
+      <pre>### React
+
+* Add `<React.Profiler>` API for gathering performance measurements programmatically. ([@bvaughn](https://github.com/bvaughn) in [#15172](https://github.com/facebook/react/pull/15172))
+* Remove `unstable_ConcurrentMode` in favor of `unstable_createRoot`. ([@acdlite](https://github.com/acdlite) in [#15532](https://github.com/facebook/react/pull/15532))
+
+### React DOM
+
+* Deprecate old names for the `UNSAFE_*` lifecycle methods. ([@bvaughn](https://github.com/bvaughn) in [#15186](https://github.com/facebook/react/pull/15186) and [@threepointone](https://github.com/threepointone) in [#16103](https://github.com/facebook/react/pull/16103))
+* Deprecate `javascript:` URLs as a common attack surface. ([@sebmarkbage](https://github.com/sebmarkbage) in [#15047](https://github.com/facebook/react/pull/15047))
+* Deprecate uncommon "module pattern" (factory) components. ([@sebmarkbage](https://github.com/sebmarkbage) in [#15145](https://github.com/facebook/react/pull/15145))
+* Add support for the `disablePictureInPicture` attribute on `<video>`. ([@eek](https://github.com/eek) in [#15334](https://github.com/facebook/react/pull/15334))
+* Add support for `onLoad` event for `<embed>`. ([@cherniavskii](https://github.com/cherniavskii) in [#15614](https://github.com/facebook/react/pull/15614))
+* Add support for editing `useState` state from DevTools. ([@bvaughn](https://github.com/bvaughn) in [#14906](https://github.com/facebook/react/pull/14906))
+* Add support for toggling Suspense from DevTools. ([@gaearon](https://github.com/gaearon) in [#15232](https://github.com/facebook/react/pull/15232))
+* Warn when `setState` is called from `useEffect`, creating a loop. ([@gaearon](https://github.com/gaearon) in [#15180](https://github.com/facebook/react/pull/15180))
+* Fix a memory leak. ([@paulshen](https://github.com/paulshen) in [#16115](https://github.com/facebook/react/pull/16115))
+* Fix a crash inside `findDOMNode` for components wrapped in `<Suspense>`. ([@acdlite](https://github.com/acdlite) in [#15312](https://github.com/facebook/react/pull/15312))
+* Fix pending effects from being flushed too late. ([@acdlite](https://github.com/acdlite) in [#15650](https://github.com/facebook/react/pull/15650))
+* Fix incorrect argument order in a warning message. ([@brickspert](https://github.com/brickspert) in [#15345](https://github.com/facebook/react/pull/15345))
+* Fix hiding Suspense fallback nodes when there is an `!important` style. ([@acdlite](https://github.com/acdlite) in [#15861](https://github.com/facebook/react/pull/15861) and [#15882](https://github.com/facebook/react/pull/15882))
+* Slightly improve hydration performance. ([@bmeurer](https://github.com/bmeurer) in [#15998](https://github.com/facebook/react/pull/15998))
+
+### React DOM Server
+
+* Fix incorrect output for camelCase custom CSS property names. ([@bedakb](https://github.com/bedakb) in [#16167](https://github.com/facebook/react/pull/16167))
+
+### React Test Utilities and Test Renderer
+
+* Add `act(async () => ...)` for testing asynchronous state updates. ([@threepointone](https://github.com/threepointone) in [#14853](https://github.com/facebook/react/pull/14853))
+* Add support for nesting `act` from different renderers. ([@threepointone](https://github.com/threepointone) in [#16039](https://github.com/facebook/react/pull/16039) and [#16042](https://github.com/facebook/react/pull/16042))
+* Warn in Strict Mode if effects are scheduled outside an `act()` call. ([@threepointone](https://github.com/threepointone) in [#15763](https://github.com/facebook/react/pull/15763) and [#16041](https://github.com/facebook/react/pull/16041))
+* Warn when using `act` from the wrong renderer. ([@threepointone](https://github.com/threepointone) in [#15756](https://github.com/facebook/react/pull/15756))
+
+## Artifacts
+
+• react: https://unpkg.com/react@16.9.0/umd/
+• react-art: https://unpkg.com/react-art@16.9.0/umd/
+• react-dom: https://unpkg.com/react-dom@16.9.0/umd/
+• react-is: https://unpkg.com/react-is@16.9.0/umd/
+• react-test-renderer: https://unpkg.com/react-test-renderer@16.9.0/umd/
+• scheduler: https://unpkg.com/scheduler@0.15.0/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.9.0-rc.0 (2019-08-05)</h2>
+      <pre>This is a release candidate for React v16.9.0.
+
+Changelog is available in https://github.com/facebook/react/pull/16254.
+
+## UMD builds
+• react: https://unpkg.com/react@16.9.0-rc.0/umd/
+• react-art: https://unpkg.com/react-art@16.9.0-rc.0/umd/
+• react-dom: https://unpkg.com/react-dom@16.9.0-rc.0/umd/
+• react-is: https://unpkg.com/react-is@16.9.0-rc.0/umd/
+• react-test-renderer: https://unpkg.com/react-test-renderer@16.9.0-rc.0/umd/
+• scheduler: https://unpkg.com/scheduler@0.15.0-rc.0/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.9.0-alpha.0 (2019-04-03)</h2>
+      <pre>## v16.9.0-alpha.0 (April 3, 2019)
+
+* (`await act(async () => ...)` ([@threepointone](https://github.com/threepointone) in #14853)
+
+## Artifacts
+
+* react: https://unpkg.com/react@16.9.0-alpha.0/umd/
+* react-art: https://unpkg.com/react-art@16.9.0-alpha.0/umd/
+* react-dom: https://unpkg.com/react-dom@16.9.0-alpha.0/umd/
+* react-is: https://unpkg.com/react-is@16.9.0-alpha.0/umd/
+* react-test-renderer: https://unpkg.com/react-test-renderer@16.9.0-alpha.0/umd/
+* scheduler: https://unpkg.com/scheduler@0.14.0-alpha.0/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.8.6 (2019-03-28)</h2>
+      <pre>## 16.8.6 (March 27, 2019)
+
+### React DOM
+
+* Fix an incorrect bailout in `useReducer()`. ([@acdlite](https://github.com/acdlite) in [#15124](https://github.com/facebook/react/pull/15124))
+* Fix iframe warnings in Safari DevTools. ([@renanvalentin](https://github.com/renanvalentin) in [#15099](https://github.com/facebook/react/pull/15099))
+* Warn if `contextType` is set to `Context.Consumer` instead of `Context`. ([@aweary](https://github.com/aweary) in [#14831](https://github.com/facebook/react/pull/14831))
+* Warn if `contextType` is set to invalid values. ([@gaearon](https://github.com/gaearon) in [#15142](https://github.com/facebook/react/pull/15142))
+
+## Artifacts
+* **react**: https://unpkg.com/react@16.8.6/umd/
+* **react-art**: https://unpkg.com/react-art@16.8.6/umd/
+* **react-dom**: https://unpkg.com/react-dom@16.8.6/umd/
+* **react-is**: https://unpkg.com/react-is@16.8.6/umd/
+* **react-test-renderer**: https://unpkg.com/react-test-renderer@16.8.6/umd/
+* **scheduler**: https://unpkg.com/scheduler@0.13.6/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.8.5 (2019-03-22)</h2>
+      <pre>## 16.8.5 (March 22, 2019)
+
+### React DOM
+
+* Don't set the first option as selected in select tag with `size` attribute. ([@kulek1](https://github.com/kulek1) in [#14242](https://github.com/facebook/react/pull/14242))
+* Improve the `useEffect(async () => ...)` warning message. ([@gaearon](https://github.com/gaearon) in [#15118](https://github.com/facebook/react/pull/15118))
+* Improve the error message sometimes caused by duplicate React. ([@jaredpalmer](https://github.com/jaredpalmer) in [#15139](https://github.com/facebook/react/pull/15139))
+
+### React DOM Server
+
+* Improve the `useLayoutEffect` warning message when server rendering. ([@gaearon](https://github.com/gaearon) in [#15158](https://github.com/facebook/react/pull/15158))
+
+### React Shallow Renderer
+
+* Fix `setState` in shallow renderer to work with Hooks. ([@gaearon](https://github.com/gaearon) in [#15120](https://github.com/facebook/react/pull/15120))
+* Fix shallow renderer to support `React.memo`. ([@aweary](https://github.com/aweary) in [#14816](https://github.com/facebook/react/pull/14816))
+* Fix shallow renderer to support Hooks inside `forwardRef`. ([@eps1lon](https://github.com/eps1lon) in [#15100](https://github.com/facebook/react/pull/15100))
+
+## Artifacts
+* **react**: https://unpkg.com/react@16.8.5/umd/
+* **react-art**: https://unpkg.com/react-art@16.8.5/umd/
+* **react-dom**: https://unpkg.com/react-dom@16.8.5/umd/
+* **react-is**: https://unpkg.com/react-is@16.8.5/umd/
+* **react-test-renderer**: https://unpkg.com/react-test-renderer@16.8.5/umd/
+* **scheduler**: https://unpkg.com/scheduler@0.13.5/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.8.4 (2019-03-05)</h2>
+      <pre>## 16.8.4 (March 5, 2019)
+
+### React DOM and other renderers
+
+- Fix a bug where DevTools caused a runtime error when inspecting a component that used a `useContext` hook. ([@bvaughn](https://github.com/bvaughn) in [#14940](https://github.com/facebook/react/pull/14940))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.8.3 (2019-02-21)</h2>
+      <pre>## 16.8.3 (February 21, 2019)
+
+### React DOM
+
+* Fix a bug that caused inputs to behave incorrectly in UMD builds. ([@gaearon](https://github.com/gaearon) in [#14914](https://github.com/facebook/react/pull/14914))
+* Fix a bug that caused render phase updates to be discarded. ([@gaearon](https://github.com/gaearon) in [#14852](https://github.com/facebook/react/pull/14852))
+
+### React DOM Server
+* Unwind the context stack when a stream is destroyed without completing, to prevent incorrect values during a subsequent render. ([@overlookmotel](https://github.com/overlookmotel) in [#14706](https://github.com/facebook/react/pull/14706/))
+
+### ESLint Plugin for React Hooks
+
+* Add a new recommended `exhaustive-deps` rule. ([@gaearon](https://github.com/gaearon) in [#14636](https://github.com/facebook/react/pull/14636))
+
+## Artifacts
+* **react**: https://unpkg.com/react@16.8.3/umd/
+* **react-art**: https://unpkg.com/react-art@16.8.3/umd/
+* **react-dom**: https://unpkg.com/react-dom@16.8.3/umd/
+* **react-is**: https://unpkg.com/react-is@16.8.3/umd/
+* **react-test-renderer**: https://unpkg.com/react-test-renderer@16.8.3/umd/
+* **scheduler**: https://unpkg.com/scheduler@0.13.3/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.8.2 (2019-02-14)</h2>
+      <pre>
+## 16.8.2 (February 14, 2019)
+
+### React DOM
+
+* Fix `ReactDOM.render` being ignored inside `useEffect`. ([@gaearon](https://github.com/gaearon) in [#14799](https://github.com/facebook/react/pull/14799))
+* Fix a crash when unmounting empty portals. ([@gaearon](https://github.com/gaearon) in [#14820](https://github.com/facebook/react/pull/14820))
+* Fix `useImperativeHandle` to work correctly when no deps are specified. ([@gaearon](https://github.com/gaearon) in [#14801](https://github.com/facebook/react/pull/14801))
+* Fix `crossOrigin` attribute to work in SVG `image` elements. ([@aweary](https://github.com/aweary) in [#14832](https://github.com/facebook/react/pull/14832))
+* Fix a false positive warning when using Suspense with Hooks. ([@gaearon](https://github.com/gaearon) in [#14821](https://github.com/facebook/react/pull/14821))
+
+### React Test Utils and React Test Renderer
+
+* Include component stack into the `act()` warning. ([@threepointone](https://github.com/threepointone) in [#14855](https://github.com/facebook/react/pull/14855))
+
+## Artifacts
+* **react**: https://unpkg.com/react@16.8.2/umd/
+* **react-art**: https://unpkg.com/react-art@16.8.2/umd/
+* **react-dom**: https://unpkg.com/react-dom@16.8.2/umd/
+* **react-is**: https://unpkg.com/react-is@16.8.2/umd/
+* **react-test-renderer**: https://unpkg.com/react-test-renderer@16.8.2/umd/
+* **scheduler**: https://unpkg.com/scheduler@0.13.2/umd/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.8.1 (2019-02-08)</h2>
+      <pre>## 16.8.1 (February 6, 2019)
+
+### React DOM and React Test Renderer
+
+* Fix a crash when used together with an older version of React. ([@bvaughn](https://github.com/bvaughn) in [#14770](https://github.com/facebook/react/pull/14770))
+
+### React Test Utils
+
+* Fix a crash in Node environment. ([@threepointone](https://github.com/threepointone) in [#14768](https://github.com/facebook/react/pull/14768))
+
+## Artifacts
+* **react**: https://unpkg.com/react@16.8.1/umd/
+* **react-art**: https://unpkg.com/react-art@16.8.1/umd/
+* **react-dom**: https://unpkg.com/react-dom@16.8.1/umd/
+* **react-is**: https://unpkg.com/react-is@16.8.1/umd/
+* **react-test-renderer**: https://unpkg.com/react-test-renderer@16.8.1/umd/
+* **scheduler**: https://unpkg.com/scheduler@0.13.1/umd/</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>
