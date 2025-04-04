@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for argoproj/argo-workflows"/>
+  <title>argoproj/argo-workflows Release Notes</title>
+</head>
+<body>
+  <h1>🚀 argoproj/argo-workflows - Release Notes</h1>
+  
+    <section>
+      <h2>v3.6.5 (2025-03-11)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/latest/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.6.5/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.5/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.4 (2025-02-10)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/latest/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.6.4/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.4/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.3 (2025-02-07)</h2>
+      <pre>[Do not](https://github.com/argoproj/argo-workflows/issues/14165) use this version, use v3.6.4 instead.
+
+# Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/latest/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.6.3/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.3/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.14 (2025-01-31)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.5.14/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.14/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.2 (2024-12-02)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/latest/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.6.2/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.2/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.13 (2024-12-02)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.5.13/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.13/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.0 (2024-11-14)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/latest/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.6.0/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.0/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.0-rc4 (2024-10-31)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/latest/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.6.0-rc4/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.0-rc4/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.12 (2024-10-30)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.5.12/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.12/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.0-rc3 (2024-10-24)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/latest/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.6.0-rc3/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.0-rc3/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.4.18 (2024-12-16)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/master/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.4/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.18/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.18/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.4.18/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.0-rc2 (2024-10-03)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/latest/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.6.0-rc2/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.0-rc2/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.11 (2024-09-20)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.11/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.11/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.11/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.6.0-rc1 (2024-09-18)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/latest/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac / Linux
+
+Available via `curl`
+
+```bash
+# Detect OS
+ARGO_OS="darwin"
+if [[ uname -s != "Darwin" ]]; then
+  ARGO_OS="linux"
+fi
+
+# Download the binary
+curl -sLO "https://github.com/argoproj/argo-workflows/releases/download/v3.6.0-rc1/argo-$ARGO_OS-amd64.gz"
+
+# Unzip
+gunzip "argo-$ARGO_OS-amd64.gz"
+
+# Make binary executable
+chmod +x "argo-$ARGO_OS-amd64"
+
+# Move binary to path
+mv "./argo-$ARGO_OS-amd64" /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.6.0-rc1/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.10 (2024-08-01)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.10/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.10/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.10/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.9 (2024-07-30)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.9/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.9/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.9/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.8 (2024-06-18)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.8/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.8/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.8/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.7 (2024-05-27)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.7/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.7/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.7/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.4.17 (2024-05-13)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/master/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.4/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.17/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.17/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.4.17/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.6 (2024-04-19)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.6/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.6/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.6/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.5 (2024-02-29)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.5/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.5/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.5/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.4 (2024-01-14)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.4/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.4/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.4/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.4.16 (2024-01-14)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/master/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.4/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.16/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.16/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.4.16/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.4.15 (2024-01-13)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/master/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.4/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.15/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.15/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.4.15/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.3 (2024-01-11)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/main/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argo-workflows.readthedocs.io/en/release-3.5/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.3/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.3/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.3/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.2 (2023-11-27)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/master/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argoproj.github.io/argo-workflows/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.2/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.2/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.2/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.4.14 (2023-11-27)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/master/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argoproj.github.io/argo-workflows/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.14/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.14/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.4.14/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.5.1 (2023-11-03)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/master/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argoproj.github.io/argo-workflows/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.1/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.5.1/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.1/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.4.13 (2023-11-03)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/master/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argoproj.github.io/argo-workflows/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.13/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.13/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.4.13/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.4.12 (2023-10-20)</h2>
+      <pre># Quick Start
+
+## What's New?
+
+Find out on [our blog](https://blog.argoproj.io) and [changelog](https://github.com/argoproj/argo-workflows/blob/master/CHANGELOG.md).
+
+## Breaking Changes and Known Issues
+
+Check the [upgrading guide](https://argoproj.github.io/argo-workflows/upgrading/) and search for [existing issues on GitHub](https://github.com/argoproj/argo-workflows/issues).
+
+## Installation
+
+### CLI
+
+#### Mac
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.12/argo-darwin-amd64.gz
+
+# Unzip
+gunzip argo-darwin-amd64.gz
+
+# Make binary executable
+chmod +x argo-darwin-amd64
+
+# Move binary to path
+mv ./argo-darwin-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+#### Linux
+
+Available via `curl`
+
+```bash
+# Download the binary
+curl -sLO https://github.com/argoproj/argo-workflows/releases/download/v3.4.12/argo-linux-amd64.gz
+
+# Unzip
+gunzip argo-linux-amd64.gz
+
+# Make binary executable
+chmod +x argo-linux-amd64
+
+# Move binary to path
+mv ./argo-linux-amd64 /usr/local/bin/argo
+
+# Test installation
+argo version
+```
+
+### Controller and Server
+
+```bash
+kubectl create namespace argo
+kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.4.12/install.yaml
+```
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

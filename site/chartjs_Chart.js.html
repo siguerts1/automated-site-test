@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for chartjs/Chart.js"/>
+  <title>chartjs/Chart.js Release Notes</title>
+</head>
+<body>
+  <h1>🚀 chartjs/Chart.js - Release Notes</h1>
+  
+    <section>
+      <h2>v4.4.8 (2025-02-19)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.4.8/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.4.8/)
+* [API](https://www.chartjs.org/docs/4.4.8/api/)
+* [Samples](https://www.chartjs.org/docs/4.4.8/samples/information.html)
+
+- #12034 [fix] Handle non-primitives in isNumber
+
+## Bugs Fixed
+
+- #12035 Export ...ParsedData interfaces
+- #12012 Fix helpers \`Chart\` type
+- #11991 Bugfix: TypeError in Interaction due to out-of-bounds index
+- #11986 Bugfix: return nearest non-null point on interaction when spanGaps=true
+- #11984 Bugfix: span gaps over null values beyond scale limits
+
+## Types
+
+- #12035 Export ...ParsedData interfaces
+- #12012 Fix helpers \`Chart\` type
+- #12010 Type fixes for time adapters
+
+## Documentation
+
+- #12005 Correct broken link in animations.md
+- #11997 Update linear-step-size.md
+
+## Development
+
+- #12036 chore: bump to v4.4.8
+
+Thanks to @etimberg, @joshkel, @marisst, @pensono and @prems51
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.7 (2024-12-01)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.4.7/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.4.7/)
+* [API](https://www.chartjs.org/docs/4.4.7/api/)
+* [Samples](https://www.chartjs.org/docs/4.4.7/samples/information.html)
+
+## Types
+
+- #11521 fix: correct typing for doughnut, pie, and polarArea charts
+- #11948 Export TRBL from geometric
+
+## Documentation
+
+- #11968 Add documentation about setting default tooltip fonts
+- #11962 Show correct title in multi series pie chart example
+
+## Development
+
+- #11969 Chore: bump version to 4.4.7
+- #11959 Bump cross-spawn from 6.0.5 to 6.0.6
+- #11501 Simplify check undefinded
+
+Thanks to @Connormiha, @DustinEwan, @LeeLenaleee, @dependabot and @dependabot[bot]
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.6 (2024-10-28)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.4.6/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.4.6/)
+* [API](https://www.chartjs.org/docs/4.4.6/api/)
+* [Samples](https://www.chartjs.org/docs/4.4.6/samples/information.html)
+
+## Bugs Fixed
+
+- #11938 Fix: applyStack() returned the sum of all values for hidden dataset indices, which causes incorrect animations when showing/hiding stacked datasets.
+
+## Development
+
+- #11943 chore: version bump for 4.4.6 release
+- #11933 Fix 404 to samples in release drafter
+
+Thanks to @DeyLak, @LeeLenaleee and @etimberg
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.5 (2024-10-15)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.4.5/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.4.5/)
+* [API](https://www.chartjs.org/docs/4.4.5/api/)
+* [Samples](https://www.chartjs.org/docs/4.4.5/samples/)
+
+## Bugs Fixed
+
+- #11927 Don't apply default colors in the colors plugin when defaults are used
+- #11907 Avoid error if borderOpts.dash is undefined
+- #11882 Fix initial dataset stacks
+
+## Types
+
+- #11931 Allow array's in backgroundColor defaults and add hover background and border color to defaults 
+
+## Documentation
+
+- #11930 Fix typo in time.md
+
+## Development
+
+- #11932 Bump package version to 4.4.5
+- #11875 Bump socket.io from 4.6.1 to 4.7.5
+
+Thanks to @HieroglypH, @LeeLenaleee, @dependabot, @dependabot[bot] and @dregad
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.4 (2024-08-20)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.4.4/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.4.4/)
+* [API](https://www.chartjs.org/docs/4.4.4/api/)
+* [Samples](https://www.chartjs.org/docs/4.4.4/samples/)
+
+## Bugs Fixed
+
+- #11873 Check if range method exists on element before executing it
+- #11863 Return false from the average tooltip positioner on no valid data
+- #11858 Bugfix/issue 11804 tooltip show for all invisible
+- #11851 fix: Unset \_resizeBeforeDraw before \_resize() call to avoid possible recursion
+- #11844 fix issue #<!---->11717
+- #11788 Fix drawing angle lines on reversed radial scale
+
+## Types
+
+- #11867 fix(types): exclude DeepPartial\<unknown[]> from ChartOptions interface
+- #11862 fix(types): add xCenter and yCenter properties to RadialLinearScale interface
+- #11817 Remove box padding from legend types
+- #11796 Add fit method to LegendElement interface
+- #11780 types: Allow passing undefined for chart options
+
+## Documentation
+
+- #11871 Add radial linear scale to docs section of samples
+- #11823 Update OffscreenCanvas documentation, as it is widely available now
+- #11781 Fix some typos
+
+## Development
+
+- #11874 Bump package version to 4.4.4
+
+Thanks to @CatchABus, @LeeLenaleee, @MichelHMachado, @artus9033, @huqingkun, @jdufresne and @joliss
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.3 (2024-05-17)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.4.3/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.4.3/)
+* [API](https://www.chartjs.org/docs/4.4.3/api/)
+* [Samples](https://www.chartjs.org/docs/4.4.3/samples/)
+
+- #11754 Fix error when object prototype is frozen
+
+## Bugs Fixed
+
+- #11764 do not attempt to clear canvas if one does not exist
+- #11755 #<!---->11450 hide bar by dataindex
+- #11690 Create parsed object with correct keys
+- #11707 platform.isAttached should return false if canvas is false-y
+
+## Documentation
+
+- #11762 Update license year
+
+## Development
+
+- #11776 Bump to 4.4.3
+- #11773 Bump pnpm/action-setup from 3.0.0 to 4.0.0
+- #11720 Bump follow-redirects from 1.15.4 to 1.15.6
+
+Thanks to @DAcodedBEAT, @EricWittrock, @LeeLenaleee, @LiamSwayne, @dependabot and @dependabot[bot]
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.2 (2024-02-28)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.4.2/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.4.2/)
+* [API](https://www.chartjs.org/docs/4.4.2/api/)
+* [Samples](https://www.chartjs.org/docs/4.4.2/samples/)
+
+## Bugs Fixed
+
+- #11685 addListener and removeListener should be only invoked on truthy values
+- #11682 fix #<!---->11503, autoskipping 0 tick when min is below 0
+- #11616 fix(#<!---->11615): fix calculating caretX position on stacked bar with index interaction.
+
+## Types
+
+- #11662 bugfix #<!---->10896 - Changed 'r' to optional for BubbleChart
+
+## Documentation
+
+- #11674 docs(types): fix description in index.d.ts
+- #11614 Add extra calrification for html legend
+
+## Development
+
+- #11689 Bump to 4.4.2
+- #11664 Bump pnpm/action-setup from 2.4.0 to 3.0.0
+- #11657 Bump release-drafter/release-drafter from 5 to 6
+- #11650 Bump dorny/paths-filter from 2 to 3
+- #11636 Bump socket.io-parser from 4.2.2 to 4.2.4
+- #11635 Bump follow-redirects from 1.15.2 to 1.15.4
+- #11633 Update pnpm lockfile
+
+Thanks to @DAcodedBEAT, @LeeLenaleee, @Megaemce, @dependabot, @dependabot[bot], @mirumirumi, @smoonsf and @waszkiewiczja
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.1 (2023-12-04)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.4.1/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.4.1/)
+* [API](https://www.chartjs.org/docs/4.4.1/api/)
+* [Samples](https://www.chartjs.org/docs/4.4.1/samples/)
+
+## Bugs Fixed
+
+- #11605 Update font spec type
+- #11596 Tooltip fixes (getLabelAndValue on null controller, null getParsed)
+- #11588 fix: Guard access to window in helpers.dom.ts for browserless rendering
+- #11577 Fix backdrop padding
+- #11488 Change type of mode in chart.update(mode)
+
+## Types
+
+- #11605 Update font spec type
+- #11572 fix: Property platform missing from chart configuration typings
+- #11569 fix: pass Plugin TType down to hooks chart arg
+- #11488 Change type of mode in chart.update(mode)
+
+## Documentation
+
+- #11562 Fix migration docs links
+- #11483 docs: Fix typo for documentation of plugins.tooltip.textDirection
+
+## Development
+
+- #11606 Bump 4.4.1
+- #11599 Remove size limit from CI
+- #11570 Replace deprecated command with environment file
+- #11560 Bump actions/setup-node from 3 to 4
+- #11490 fix: simplify check hasFunction
+
+Thanks to @CatchABus, @Cazka, @Connormiha, @LeeLenaleee, @Sengulair, @bboy-chocomint, @dependabot, @dependabot[bot], @jongwooo, @joshkel and @unverbraucht
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.4.0 (2023-08-24)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.4.0/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.4.0/)
+* [API](https://www.chartjs.org/docs/4.4.0/api/)
+* [Samples](https://www.chartjs.org/docs/4.4.0/samples/)
+
+## Enhancements
+
+- #11404 Add clip option to scale configuration to allow unclipped scales
+
+## Bugs Fixed
+
+- #11435 BorderRadius of Bar Chart issue on Firefox 116
+
+## Types
+
+- #11348 fix: Add backgroundColor type on CoreScaleOptions
+
+## Documentation
+
+- #11439 Replace html extension with md extension for docs
+
+## Development
+
+- #11461 Bump 4.4.0
+
+Thanks to @LeeLenaleee, @Mer-cat, @bogdankorshunov and @stockiNail
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.3.3 (2023-08-02)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.3.3/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.3.3/)
+* [API](https://www.chartjs.org/docs/4.3.3/api/)
+* [Samples](https://www.chartjs.org/docs/4.3.3/samples/)
+
+- #11432 Revert fix for monotone cubic interpolation
+
+## Development
+
+- #11427 Bump pnpm/action-setup from 2.2.4 to 2.4.0
+
+Thanks to @dependabot, @dependabot[bot] and @stockiNail
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.3.2 (2023-07-26)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.3.2/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.3.2/)
+* [API](https://www.chartjs.org/docs/4.3.2/api/)
+* [Samples](https://www.chartjs.org/docs/4.3.2/samples/)
+
+## Types
+
+- #11422 Revert feature to disable plugins by TS
+- #11419 Updates to scale type definitions
+
+## Development
+
+- #11423 Bump 4.3.2
+
+Thanks to @LeeLenaleee, @joshkel and @stockiNail
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.3.1 (2023-07-24)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.3.1/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.3.1/)
+* [API](https://www.chartjs.org/docs/4.3.1/api/)
+* [Samples](https://www.chartjs.org/docs/4.3.1/samples/)
+
+- #11417 Bump 4.3.1
+- #11330 [docs] HTML Legend sample: add flex-shrink: 0 to color box
+
+## Bugs Fixed
+
+- #11377 Fix curve path if scale limits are set for line chart
+- #11388 Fix time series scale to have each data point is spread equidistant
+- #11352 Fix mismatch between hit boxes and drawn items in legend plugin
+- #11346 Add text stoke radial linear scale
+- #11334 Fix toggling showLine option on scatter controller
+
+## Types
+
+- #11403 Add  missing feature for disabling plugins in TyeScript
+- #11396 Fix type of tickBorderDash in GridLineOptions
+- #11187 Split the TimeScaleOptions type into composable sub types
+- #11383 fix: add pointStyleWidth to type definitions
+- #11358 Add \`beforeDraw\` to drawtime type
+- #11350 Add events property to Plugin defined type
+- #11309 Export explicitly the plugin options definition which is augmented by plugins implementation
+
+## Documentation
+
+- #11345 Clarify update docs
+- #11324 Refined grammar and updated overall .md documentation files
+- #11322 minor correction of documentation for 'Grace'
+- #11284 Correct tooltip dates displaying incorrectly reported in #<!---->11229
+- #11300 Expend note that chart must be in its own dedicated container
+
+## Development
+
+- #11318 Switch from Slack to Discord
+- #11301  Update slack link
+- #11302 Update size limits
+
+Thanks to @Frenzie, @LeeLenaleee, @etimberg, @matthewhegarty, @mukham12, @skopz356 and @stockiNail
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.3.0 (2023-04-28)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/4.3.0/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/4.3.0/)
+* [API](https://www.chartjs.org/docs/4.3.0/api/)
+* [Samples](https://www.chartjs.org/docs/4.3.0/samples/)
+
+- #11257 Bump to 4.3.0
+- #11217 Enable applying of gradients and pattern on line segments
+- #11134 Use custom scale defaults and dataset axis ID options to determine the axis
+- #11061 fix RTL tooltip colorBox placement
+
+## Enhancements
+
+- #11055 Enable point labels hiding when overlapped
+- #11180 Border is counted as part of ArcElement
+- #11121 refactor: rewrite config helpers to ts
+- #11100 refactor: rewrite canvas helpers to ts
+- #11127 Add borderDash options to arc element
+
+## Bugs Fixed
+
+- #11238 Check for isNaN before building number formatter options
+- #11116 Fix: don't generate ticks > max if max is specified
+
+## Types
+
+- #11121 refactor: rewrite config helpers to ts
+- #11100 refactor: rewrite canvas helpers to ts
+- #11143 Docs: fix tooltip model doc.
+
+## Documentation
+
+- #11241 Add redirect for old V3 migration guides in release notes
+- #11244 Fix documentation about how to manage own custom plugin for types
+- #11220 docs: Fix a few typos
+- #11154 Update tooltip.md
+
+## Development
+
+- #11240 Add version specific urls to release template
+- #11212 Update size limits
+- #11209 chore: change pnpm version in engines field to be able to use 8.x.x
+- #11174 Add colors plugin to size limit
+- #11165 Disable canvas acceleration in Firefox 110 in test cases
+- #11145 Simplify \_arrayUnique
+- #11135 Change labelColors to labelColor in tooltip drawColorBox method.
+
+Thanks to @CodingMarco, @Connormiha, @Demir-Utku, @LeeLenaleee, @dangreen, @defunctzombie, @etimberg, @leo2436, @olenderhub, @shahabhm, @stockiNail and @timgates42
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.2.1 (2023-02-10)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+- #11045 fix: decimation plugin data not writeable after clean
+
+## Bugs Fixed
+
+- #11069 Use maxTicksLimit option to calculate the labels size on ticks
+
+## Types
+
+- #11102 chore: #<!---->10963 revert
+- #11115 Add colors plugin TS options to be configured
+- #11081 fix: add bgColor type in RadialLinearScaleOptions
+- #11095 🐛 fixes compilation error when option --isolatedModules is set
+
+## Documentation
+
+- #11110 Remove override warning tooltips
+- #11093 Remove meetup banner
+- #11077 Fix documentation typo
+
+## Development
+
+- #11130 Bump to 4.2.1
+- #11124 Remove circumference property retrieving from arc element for center calculation because not used
+- #11113 Update link to new template
+
+Thanks to @LeeLenaleee, @choichoijin, @dangreen, @etimberg, @jljouannic, @johakr, @n1313 and @stockiNail
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.2.0 (2023-01-18)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+- #11054 Add pointLabel context type documentation
+- #11043 chore: Add Chart.js meetup announcement to README
+
+## Enhancements
+
+- #11063 Add format method to time scale to format timestamp using scale options
+
+## Bugs Fixed
+
+- #11003 Check colors definition in the chart options
+
+## Types
+
+- #11017 Change 'normal' update mode to 'default' as documented
+- #11051 fix: updated type for doughnut offset
+
+## Documentation
+
+- #11058 Add banner to docs
+- #11057 Update banner
+
+## Development
+
+- #11070 Bump to 4.2.0
+- #11056 Remove console.warn from a test case where not needed
+
+Thanks to @ankane, @igorlukanin, @mlankamp and @stockiNail
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.1.2 (2023-01-05)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Types
+
+- #11016 fix: fix Plugin interface
+- #11008 Add Z index to border options
+
+## Documentation
+
+- #11006 Fixes missing markdown links in docs
+
+## Development
+
+- #11034 chore: version bump
+- #11004 Update link to UMD bundle for master
+- #11000 chore: replace cp with js code
+
+Thanks to @LeeLenaleee, @dangreen and @matveycodes
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.1.1 (2022-12-17)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+- #10988 chore: Revert "Add Product Hunt button (temporarily)"
+
+## Bugs Fixed
+
+- #10971 fix: avoid resize loop when browser zoom is set to 90%
+- #10993 fix: move types to src dir to escape src / dist dirs in paths
+- #10992 fix: hotfix chart.js/auto for commonjs
+
+## Types
+
+- #10993 fix: move types to src dir to escape src / dist dirs in paths
+
+## Development
+
+- #10997 Bump to 4.1.1
+
+Thanks to @dangreen, @etimberg, @gbaron and @igorlukanin
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.1.0 (2022-12-16)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+- #10980 chore: Add Product Hunt button (temporarily)
+- #10917 fix: move @<!---->kurkle/color to dependencies
+
+## Enhancements
+
+- #10966 add getLabelItems public method
+- #10984 feat: restore commonjs bundle
+- #10964 Allow dynamic datasets to be colored
+- #10904 Allow color plugin to work with custom dataset controllers
+- #10870 feat: colors for mixed charts
+- #10886 Pointstyle false
+
+## Bugs Fixed
+
+- #10942 Ensure that args are saved inside of the throttled helper
+- #10766 fix: stacked bar chart minBarLength causes overlapping
+- #10898 Set the transition mode to the context for scriptable options
+
+## Types
+
+- #10963 fix: unbind instance config from chart type
+- #10910 Add stepSize option to time scale options types
+
+## Documentation
+
+- #10976 docs: Update Slack link
+- #10965 Broken link is fixed.
+- #10955 Update auto import in usage docs
+- #10903 docs: add info about ESM into migration guide.
+- #10885 update migration guide
+- #10884 Move border opts to correct location for samples
+- #10872 Remove V3 support, update readme
+
+## Development
+
+- #10962 test: turn on types linting
+- #10983 bunp version to 4.1.0
+- #10974 chore: add lint cache
+- #10930 Update react template to V4 vite
+- #10919 Use UDM build for reproducible sample
+
+Thanks to @Kit-p, @LeeLenaleee, @Simon-He95, @benmccann, @dangreen, @etimberg, @igorlukanin, @letheri and @stockiNail
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.1 (2022-11-14)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Bugs Fixed
+
+- #10871 Fix release
+
+
+
+Thanks to @LeeLenaleee
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.0 (2022-11-14)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/migration/v4-migration.html)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Bugs Fixed
+
+- #10869 Remove type attribute from dataset specific type specification
+- #10867 check the data set type in DoughnutController
+- #10806 fix: Always draw full arcs and borders for doughnut slices
+- #10855 Fix the missing apply for the color on the legend labels
+- #10851 Enable colors plugin for pie charts
+
+## Types
+
+- #10869 Remove type attribute from dataset specific type specification
+- #10753 refactor: migrate helpers.options to typescript
+
+## Documentation
+
+- #10816 Updated docs (why Chart.js + getting started + step-by-step guide)
+- #10857 docs: notes about html legend, tooltip and title
+- #10826 Fix month
+- #10827 Grammar error fixes
+- #10831 Update example chart config type, remove whitespace
+
+## Development
+
+- #10868 v4.0.0 bump
+
+Thanks to @BrilliantDeviation7, @LeeLenaleee, @dangreen, @etimberg, @gibson042, @igorlukanin, @luckened, @puneetkathar1, @stockiNail and @t-mangoe
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>V4.0.0-alpha.3 (2022-10-24)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.0-alpha.2 (2022-10-12)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Development
+
+- #10790 Bump alpha 2
+
+Thanks to @LeeLenaleee
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.0-alpha.1 (2022-10-12)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+- #10759 Fix #<!---->10749 - backdrops with rotated labels
+- #10667 fix: calc visible points on update
+- #10655 Provide an empty object when the target of the resolver is undefined
+- #10661 TypeScript: NodeNext support
+- #10639 enable pointStyleWidth for all legend styles
+
+## Breaking Changes
+
+- #10733 Convert the curve helpers to TS
+- #10728 Convert helpers.extra to TS
+- #10663 Fix autoskip logic
+- #10653 Use ticks.steSize instead of time.stepSize on time and timeseries scales
+- #10646 fix: respect aspect ratio with container height
+- #10643 feat: remove default axis override when custom id is given
+- #10612 Remove tooltip constructor fallbacks, \`this.chart\` and \`this.\_chart\`
+- #9166 Refine logarithmic scaling / tick generation
+- #10571 Put the border opts in own object
+- #10548 fix: same-looking tooltips on charts
+- #10551 Use borderRadius for legend and remove fallbacks
+- #10591 Change way that linear scales calculate min and max
+- #10526 feat: sideEffects false
+- #10549 Remove destroy hook
+- #10540 fix: pass timestamp to ticks callback
+- #10525 feat: add ESM support
+- #10504 fix: treeshaking
+- #10550 Move parameter of TType in ChartMeta to first option
+- #10469 Fix offset on doughnut charts
+
+## Enhancements
+
+- #10683 Use guard clause typings
+- #10702 Add warning if filler plugin is used but not registered
+- #10653 Use ticks.steSize instead of time.stepSize on time and timeseries scales
+- #10643 feat: remove default axis override when custom id is given
+- #10608 Use the element's window in getComputedStyle
+- #10571 Put the border opts in own object
+- #10605 Change react integration test to TS
+- #10548 fix: same-looking tooltips on charts
+- #10551 Use borderRadius for legend and remove fallbacks
+- #10567 feat: tooltip callbacks fallback
+- #10568 build: emit sourcemaps
+- #10526 feat: sideEffects false
+- #10525 feat: add ESM support
+- #10504 fix: treeshaking
+
+## Bugs Fixed
+
+- #10691 Use the correct area to clip  for dataset drawing when stacked scales are used
+- #10693 fix: aspect ratio calc
+- #10641 FIX: render multiline legend items without overlapping (#<!---->10532)
+- #10663 Fix autoskip logic
+- #9166 Refine logarithmic scaling / tick generation
+- #10598 fix: allow beforeTooltipDraw to be cancelable
+- #10540 fix: pass timestamp to ticks callback
+- #10469 Fix offset on doughnut charts
+
+## Types
+
+- #10772 Convert the Arc element to TS
+- #10734 refactor: migrate helpers.dom to typescript
+- #10733 Convert the curve helpers to TS
+- #10730 Convert the PointElement to TS
+- #10760 Types: Change grid option of CartesianScaleOptions and RadialLinearScaleOptions to Partial of GridLineOptions
+- #10739 Allow to configure X and Y axis ID in TS for bubble charts
+- #10728 Convert helpers.extra to TS
+- #10729 Export declare const enums
+- #10726 Types: Export UpdateModeEnum as const
+- #10722 refactor: move batch of helpers to ts
+- #10712 Add defaults to plugin interface
+- #10683 Use guard clause typings
+- #10660 fix: types and tests
+- #10652 Update bar data type to comply with floating bar charts data
+- #10627 Convert the easing helpers to typescript
+- #10582 Allow animations to be set to false for the tooltip typings 
+- #10590 Add \`grouped\` option to the typings for barchart
+- #10585 add correct padding object to type
+- #10579 fix: allow nulls in barchart data type
+- #10550 Move parameter of TType in ChartMeta to first option
+
+## Documentation
+
+- #10763 docs: fix typos
+- #10748 Updated dead sample link
+- #10719 Update namespace of logarithmic ticks section
+- #10708 Unify data structure snipets and add ts explanation
+- #10702 Add warning if filler plugin is used but not registered
+- #10666 Fixed broken link in docs
+- #10645 Update link to master umd build
+- #10640 Fix broken link
+- #10621 docs: fix images loading
+- #10569 Document components for bundle optimization
+- #10613 move option to correct namespace
+- #10611 fix lint in docs
+- #10607 Documentation: how to add static typing to plugins
+
+## Development
+
+- #10787 Bump alpha v4
+- #10632 Bump \`markdown-it\` in docs
+- #10591 Change way that linear scales calculate min and max
+- #10573 chore: upgrade dependencies
+- #10589 Downgrade karma preprocessor
+
+Thanks to @Brainshaker95, @GrantHynd, @LeeLenaleee, @Lonylis, @New-dev0, @Zivangu9, @amincheloh, @benmccann, @cmcnulty, @dangreen, @etimberg, @jdufresne, @jwilliams-met, @kartik-madhak, @kurkle, @lucianosantana, @luckened, @rupert-br, @sashashura, @stockiNail, @touletan and @wenzdey
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.9.1 (2022-08-03)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Bugs Fixed
+
+- #10552 fix import helpers
+
+Thanks to @LeeLenaleee
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.9.0 (2022-08-02)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Enhancements
+
+- #10439 feat: remove line element from scatter controller
+- #10528 feat: pass some chart options to DateAdapter
+- #10405 Add circular prop to arc element
+- #10530 Skip all borders if borderSkipped === true
+- #10517 parsing: support dot(s) in object keys
+- #10519 Enable borderDash option in the grid as scriptable
+
+## Performance
+
+- #10517 parsing: support dot(s) in object keys
+
+## Bugs Fixed
+
+- #10524 pass boxWidth only if pointStyleWidth presents
+- #10523 fix: calc visible points on update #<!---->10467
+
+## Documentation
+
+- #10527 Add docs for changing from time scale to logarithmic/linear scale
+- #10518 Improve docs radial linear grid
+- #10522 Fix Stack Overflow tag: chart.js
+- #10520 Fix Stack Overflow tag: chart.js
+- #10515 Fix dead link on reload or open in new tab
+- #10516 Clarifying threshold requirement in the docs for decimation
+
+## Development
+
+- #10541 Bump to 3.9.0
+
+Thanks to @LeeLenaleee, @M4sterShake, @benmccann, @dangreen, @kurkle, @peterhauke, @stockiNail, @thabarbados and @touletan
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.2 (2022-07-24)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Bugs Fixed
+
+- #10513 Explicitly include package.json files for subpackages
+
+## Development
+
+- #10513 Explicitly include package.json files for subpackages
+
+Thanks to @etimberg
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.1 (2022-07-24)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Enhancements
+
+- #10495 Improve error message with id of the canvas
+- #10412 Add pointStyleWidth option for legend
+
+## Bugs Fixed
+
+- #10484 Resolve plugin defaults for local plugins
+- #10489 draw tooltip with object borderwidth
+- #10451 Fix options update when changing to shared opts
+- #10454 Fix crash with skipNull and uneven datasets
+- #10414 Respect \`fill: false\` with custom draw times
+
+## Types
+
+- #10494 Allow clip to be configurable in options object typescript
+- #10436 Add index to legendItem interface
+- #10404 Add padding to pointLabels type, add type to scriptable context
+- #10387 Allow for each dataset to be individually typed without a main type
+
+## Documentation
+
+- #10490 document defaults for plugins
+- #10497 Update link to be able to use within github
+- #10446 Add a stale version warning + a link to the latest version of docs
+- #10470 Update integration.md
+- #10447 Enforce maximum width on chart editor blocks in the docs
+- #10456 Update aspectRatio documentation
+- #10415 Update responsive.md
+- #10434 Clarify helpers need to be imported when using bundlers
+- #10410 Fix typo in link to documentation from sample
+- #10400 Fix default value of 'includeInvisible' option in the documentation
+- #10392 Clarify api docs
+
+## Development
+
+- #10509 Bump to 3.8.1
+- #10493 Bump terser from 4.8.0 to 4.8.1
+- #10471 Bump moment from 2.29.2 to 2.29.4
+- #10431 Bump actions/setup-node from 2 to 3
+- #10430 Bump actions/checkout from 2 to 3
+- #10393 Bump eventsource from 1.1.0 to 1.1.1
+
+Thanks to @LeeLenaleee, @Pourbahrami, @andrewl64, @dependabot, @dependabot[bot], @etimberg, @ideabrian, @igorlukanin, @kurkle, @naveensrinivasan, @stockiNail and @touletan
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.8.0 (2022-05-25)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+- #10341 Correct auto.esm.js import to allow module to work in browser
+- #10316 Use abs() when comparing for spanGaps
+- #10320 Bump async from 2.6.3 to 2.6.4
+- #10290 Bump moment from 2.29.1 to 2.29.2
+- #10260 Bump minimist from 1.2.5 to 1.2.6
+- #10204 Bump karma from 6.3.14 to 6.3.16
+- #10200 Bump url-parse from 1.5.7 to 1.5.10
+- #10198 Bump prismjs from 1.25.0 to 1.27.0
+- #10181 Bump url-parse from 1.5.3 to 1.5.7
+- #10146 Bump karma from 6.3.9 to 6.3.14
+- #10150 Bump log4js from 6.3.0 to 6.4.1
+- #10152 Bump engine.io from 6.1.0 to 6.1.2
+- #10151 Bump node-fetch from 2.6.6 to 2.6.7
+- #10149 Bump follow-redirects from 1.14.6 to 1.14.8
+
+## Enhancements
+
+- #10362 Add option to include invisible points
+- #10328 Resolve canvasGradient is undefined in node
+- #10293 Enable configuration of radial scale point label border radius
+- #10278 Allow time scale to offset using skipped ticks
+- #10046 Interaction functions
+- #10182 Allow individual chart controllers to opt-in to the decimation plugin
+- #10088 Make object notation usable for polarArea and radar
+- #10106 Add new align 'inner' for X axis
+
+## Bugs Fixed
+
+- #10371 Update to v0.2.1 color dependency to fix bug with invalid colours
+- #10340 Update scale polarArea correctly on data hide
+- #10289 display tooltips only at points in chart area
+- #10328 Resolve canvasGradient is undefined in node
+- #10301 Trigger legend onLeave when the mouse leaves the canvas
+- #10276 Document tooltip draw hooks and only call hooks when the tooltip draws
+- #10157 minimum bar length setting keeps bar base in view
+
+## Types
+
+- #10364 Types: Allow font to be partial scriptable and individually scriptable
+- #10283 Types: add 'middle' to borderSkipped
+- #10275 Export types for cartesian and radial tick options
+- #10269 add startAngle to radial scale options typings
+- #10254 Add missing fields to the ScriptableContext type
+- #10179 Allow array for line opts in dataset
+
+## Documentation
+
+- #10308 Add links to docs in all the samples
+- #10259 Fix a typo in data-structures.md
+- #10266 Correct chart initialization flow
+- #10250 Update link to filler plugin
+- #10184 Fix broken link in Animations docs page.
+- #10158 remove hardcoded licenseYear in docs
+- #10156 update link to license and bump license year
+- #10154 Document scale update plugin hooks
+
+## Development
+
+- #10377 Bump to 3.8.0
+- #10247 Resolve circulair import filler plugin
+- #10243 Replace deprecated String.prototype.substr()
+- #10040 Refactor filler plugin for easier maintenance
+
+Thanks to @CommanderRoot, @LeeLenaleee, @Talla2XLC, @akiraaso, @dependabot, @dependabot[bot], @etimberg, @joshkel, @kurkle, @kylejonesdev, @linkviii, @luke-heberling, @msteiger, @pzelnip, @t-mangoe and @yhvicey
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.7.1 (2022-02-12)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Bugs Fixed
+
+- #10024 Fix using above/below filling option with discontinuous lines
+
+## Types
+
+- #10124 Add missing mouse events to CoreChartOptions.events type
+- #10133 Allow spanGaps to be specified on LineOptions
+- #10137 Ensure that min/max of TimeScaleOptions can be a string
+- #10075 fix: allow colors as array
+- #10131 Correct type for updateHoverStyle
+- #10130 Type Chart.legend property
+- #10111 Change repeating alingment string to single type
+- #10078 Move scriptable and array to helper function in types
+- #10057 add typing and docs for maxTicksLimit all scales
+
+## Documentation
+
+- #10138 Sort docs sub menus alphabetically, add line and plugin sample
+- #10100 Sort line and bubble dataset options alphabetically
+- #10103 Fix typos found by codespell
+- #10057 add typing and docs for maxTicksLimit all scales
+- #10045 typo Cofiguration
+
+## Development
+
+- #10148 Bump to 3.7.1
+- #10117 add SubTitle to TS register test 
+- #10078 Move scriptable and array to helper function in types
+- #10038 Improve issue templates
+
+Thanks to @DimitriPapadopoulos, @LeeLenaleee, @LovelyAndy, @caub, @charlesmass2, @etimberg, @jmorel and @stockiNail
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.7.0 (2021-12-23)</h2>
+      <pre># Essential Links
+
+* [npm](https://www.npmjs.com/package/chart.js)
+* [Migration guide](https://www.chartjs.org/docs/latest/getting-started/v3-migration)
+* [Docs](https://www.chartjs.org/docs/latest/)
+* [API](https://www.chartjs.org/docs/latest/api/)
+* [Samples](https://www.chartjs.org/docs/latest/samples/)
+
+## Enhancements
+
+- #9949 Add centerPointLabels option for linear radial scale
+- #9970 Limit active element changes to chartArea
+- #9944 Improvements to tooltip positioners
+- #9933 add beforeDestroy hook
+- #9919 Support "r" axis for non-intersecting interaction
+- #9920 Feature/active elements on top
+- #9877 Add borderJoinStyle option for arc elements
+
+## Bugs Fixed
+
+- #10021 radialLinear: fix positioning \& scaling
+- #10020 radialLinear: fix getIndexAngle when there are no labels (left)
+- #10018 radialLinear: Hide pointLabels of hidden data
+- #9992 Fix setActiveElements behavior after a mouse event
+- #9970 Limit active element changes to chartArea
+- #9969 Pass object from array as value to \_fallback
+
+## Types
+
+- #9986 Types/ type suggestedMin and suggestedMax for time scale
+- #9985 Types/Allow min-max as string timescale
+- #9937 Types/allow for multiline labels in tick callback
+
+## Documentation
+
+- #10013 Docs/Add sample for centered point labels
+- #9994 Docs/clarify usage of ticks callback (#<!---->9991)
+- #9960 Docs/clarify samples 
+- #9952 Try to improve documentation for new users
+
+## Development
+
+- #10011 Bump version to 3.7.0, update deps
+
+Thanks to @LeeLenaleee, @doug-a-brunner, @joshkel, @kurkle, @luukdv and @t-mangoe
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

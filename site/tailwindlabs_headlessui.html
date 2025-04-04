@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for tailwindlabs/headlessui"/>
+  <title>tailwindlabs/headlessui Release Notes</title>
+</head>
+<body>
+  <h1>🚀 tailwindlabs/headlessui - Release Notes</h1>
+  
+    <section>
+      <h2>@headlessui/tailwindcss@v0.2.2 (2025-02-06)</h2>
+      <pre>- Support installing with Tailwind CSS v4 ([#3634](https://github.com/tailwindlabs/headlessui/pull/3634))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.2.0 (2024-10-25)</h2>
+      <pre>### Added
+
+- Add React 19 support ([#3543](https://github.com/tailwindlabs/headlessui/pull/3543))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.10 (2024-10-10)</h2>
+      <pre>### Fixed
+
+- Use `React.JSX` instead of deprecated global `JSX` ([#3511](https://github.com/tailwindlabs/headlessui/pull/3511))
+- Fix crash in `ListboxOptions` when using `as={Fragment}` ([#3513](https://github.com/tailwindlabs/headlessui/pull/3513))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.9 (2024-10-03)</h2>
+      <pre>### Fixed
+
+- Ensure `Element` is available before polyfilling to prevent crashes in non-browser environments ([#3493](https://github.com/tailwindlabs/headlessui/pull/3493))
+- Fix crash when using `instanceof HTMLElement` in some environments ([#3494](https://github.com/tailwindlabs/headlessui/pull/3494))
+- Cleanup `process` in Combobox component when using virtualization ([#3495](https://github.com/tailwindlabs/headlessui/pull/3495))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.8 (2024-09-12)</h2>
+      <pre>### Fixed
+
+- Fix crash when using `as={Fragment}` on `MenuButton`, `ListboxButton`, `DisclosureButton` or `Button` components ([#3478](https://github.com/tailwindlabs/headlessui/pull/3478))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.7 (2024-09-11)</h2>
+      <pre>### Fixed
+
+- Prevent crash in environments where `Element.prototype.getAnimations` is not available ([#3473](https://github.com/tailwindlabs/headlessui/pull/3473))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/vue@v1.7.23 (2024-09-09)</h2>
+      <pre>### Fixed
+
+- use native `useId` from Vue.js 3.5 when available ([#3458](https://github.com/tailwindlabs/headlessui/pull/3458))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.6 (2024-09-09)</h2>
+      <pre>### Fixed
+
+- Fix `ListboxOptions` being incorrectly marked as `inert` ([#3466](https://github.com/tailwindlabs/headlessui/pull/3466))
+- Fix crash when using `DisclosureButton` inside of a `DisclosurePanel` when the `Disclosure` is open by default ([#3465](https://github.com/tailwindlabs/headlessui/pull/3465))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.5 (2024-09-04)</h2>
+      <pre>### Fixed
+
+- Fix transition bug on Firefox, triggered by clicking the `PopoverButton` in rapid succession ([#3452](https://github.com/tailwindlabs/headlessui/pull/3452))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.4 (2024-09-03)</h2>
+      <pre>### Fixed
+
+- Fix components not closing properly when using the `transition` prop ([#3448](https://github.com/tailwindlabs/headlessui/pull/3448))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.3 (2024-08-23)</h2>
+      <pre>### Fixed
+
+- Ensure `Transition` component state doesn't change when it becomes hidden ([#3372](https://github.com/tailwindlabs/headlessui/pull/3372))
+- Fix closing components using the `transition` prop, and after scrolling the page ([#3407](https://github.com/tailwindlabs/headlessui/pull/3407))
+- Ensure all client components are marked correctly to avoid a crash with React 19 and Turbopack ([#3429](https://github.com/tailwindlabs/headlessui/pull/3429))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.2 (2024-07-05)</h2>
+      <pre>### Fixed
+
+- Fix prematurely added anchoring styles on `ListboxOptions` ([#3337](https://github.com/tailwindlabs/headlessui/pull/3337))
+- Ensure `unmount` on `Dialog` works in combination with the `transition` prop on `DialogBackdrop` and `DialogPanel` components ([#3352](https://github.com/tailwindlabs/headlessui/pull/3352))
+- Fix crash in `Combobox` component when in `virtual` mode when options are empty ([#3356](https://github.com/tailwindlabs/headlessui/pull/3356))
+- Fix hanging tests when using `anchor` prop ([#3357](https://github.com/tailwindlabs/headlessui/pull/3357))
+- Fix `transition` and `focus` prop combination for `PopoverPanel` component ([#3361](https://github.com/tailwindlabs/headlessui/pull/3361))
+- Fix outside click in nested portalled `Popover` components ([#3362](https://github.com/tailwindlabs/headlessui/pull/3362))
+- Fix restoring focus to correct element when closing `Dialog` component ([#3365](https://github.com/tailwindlabs/headlessui/pull/3365))
+- Fix `flushSync` warning for `Combobox` component with `immediate` prop enabled ([#3366](https://github.com/tailwindlabs/headlessui/pull/3366))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.1 (2024-06-26)</h2>
+      <pre>### Fixed
+
+- Fix issues spreading omitted props onto components ([#3313](https://github.com/tailwindlabs/headlessui/pull/3313))
+- Fix initial `anchor="selection"` positioning ([#3324](https://github.com/tailwindlabs/headlessui/pull/3324))
+- Fix render prop in `ComboboxOptions` to use `any` instead of `unknown` ([#3327](https://github.com/tailwindlabs/headlessui/pull/3327))
+- Fix incorrect `Transition` boundary for `Dialog` component ([#3331](https://github.com/tailwindlabs/headlessui/pull/3331))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.1.0 (2024-06-21)</h2>
+      <pre>![Headless UI v2.1](https://github.com/tailwindlabs/headlessui/assets/882133/52ce0b01-d612-499f-9575-297e449344ae)
+
+We just released Headless UI v2.1 for React, which dramatically simplifies our transition APIs and adds support for rendering multiple dialogs as siblings. See our [announcement blog](https://tailwindcss.com/blog/2024-06-21-headless-ui-v2-1) to learn more.
+
+## Changelog
+
+### Added
+
+- Add ability to render multiple `Dialog` components at once (without nesting them) ([#3242](https://github.com/tailwindlabs/headlessui/pull/3242))
+- Add new data-attribute-based transition API ([#3273](https://github.com/tailwindlabs/headlessui/pull/3273), [#3285](https://github.com/tailwindlabs/headlessui/pull/3285), [#3307](https://github.com/tailwindlabs/headlessui/pull/3307), [#3309](https://github.com/tailwindlabs/headlessui/pull/3309), [#3312](https://github.com/tailwindlabs/headlessui/pull/3312))
+- Add `DialogBackdrop` component ([#3307](https://github.com/tailwindlabs/headlessui/pull/3307), [#3310](https://github.com/tailwindlabs/headlessui/pull/3310))
+- Add `PopoverBackdrop` component to replace `PopoverOverlay` ([#3308](https://github.com/tailwindlabs/headlessui/pull/3308))
+
+### Fixed
+
+- Keep `Combobox` open when clicking scrollbar in `ComboboxOptions` ([#3249](https://github.com/tailwindlabs/headlessui/pull/3249))
+- Ensure `ComboboxInput` does not sync with current value while typing ([#3259](https://github.com/tailwindlabs/headlessui/pull/3259))
+- Fix visual jitter in `Combobox` component when using native scrollbar ([#3190](https://github.com/tailwindlabs/headlessui/pull/3190))
+- Improve UX by freezing `ComboboxOptions` while closing ([#3304](https://github.com/tailwindlabs/headlessui/pull/3304))
+- Merge incoming `style` prop on `ComboboxOptions`, `ListboxOptions`, `MenuItems`, and `PopoverPanel` components ([#3250](https://github.com/tailwindlabs/headlessui/pull/3250))
+- Prevent focus on `Checkbox` when it is `disabled` ([#3251](https://github.com/tailwindlabs/headlessui/pull/3251))
+- Use `useId` instead of React internals (for React 19 compatibility) ([#3254](https://github.com/tailwindlabs/headlessui/pull/3254))
+- Cancel outside click behavior on touch devices when scrolling ([#3266](https://github.com/tailwindlabs/headlessui/pull/3266))
+- Correctly apply conditional classes when using `Transition` and `TransitionChild` components ([#3303](https://github.com/tailwindlabs/headlessui/pull/3303))
+
+### Changed
+
+- Allow using the `Tab` and `Shift+Tab` keys when the `Listbox` component is open ([#3284](https://github.com/tailwindlabs/headlessui/pull/3284))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/tailwindcss@v0.2.1 (2024-05-29)</h2>
+      <pre>### Fixed
+
+- Improve CJS types ([#2880](https://github.com/tailwindlabs/headlessui/pull/2880))
+- Improve ESM types ([#3051](https://github.com/tailwindlabs/headlessui/pull/3051))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.0.4 (2024-05-24)</h2>
+      <pre>### Fixed
+
+- [internal] Don’t set a focus fallback for Dialog’s in demo mode ([#3194](https://github.com/tailwindlabs/headlessui/pull/3194))
+- Ensure page doesn't scroll down when pressing `Escape` to close the `Dialog` component ([#3218](https://github.com/tailwindlabs/headlessui/pull/3218))
+- Fix crash when toggling between `virtual` and non-virtual mode in `Combobox` component ([#3236](https://github.com/tailwindlabs/headlessui/pull/3236))
+- Ensure tabbing to a portalled `PopoverPanel` component moves focus inside (without using `PortalGroup`) ([#3239](https://github.com/tailwindlabs/headlessui/pull/3239))
+- Only handle form reset when `defaultValue` is used ([#3240](https://github.com/tailwindlabs/headlessui/pull/3240))
+
+### Deprecated
+
+- Mark `SwitchGroup` as deprecated, prefer `Field` instead ([#3232](https://github.com/tailwindlabs/headlessui/pull/3232))
+
+### Changed
+
+- Use native `fieldset` instead of `div` by default for `Fieldset` component ([#3237](https://github.com/tailwindlabs/headlessui/pull/3237))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/vue@v1.7.22 (2024-05-08)</h2>
+      <pre>### Fixed
+
+- Don’t cancel `touchmove` on `input` elements inside a dialog ([#3166](https://github.com/tailwindlabs/headlessui/pull/3166))
+- Ensure clicking a `ComboboxOption` after filtering the options, correctly triggers a change ([#3180](https://github.com/tailwindlabs/headlessui/pull/3180))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.0.3 (2024-05-07)</h2>
+      <pre>### Fixed
+
+- Make sure disabling demo mode on `Combobox` works ([#3182](hhttps://github.com/tailwindlabs/headlessui/pull/3182))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.0.2 (2024-05-07)</h2>
+      <pre>### Fixed
+
+- Improve performance of internal `useInertOthers` hook ([#3181](https://github.com/tailwindlabs/headlessui/pull/3181))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.0.1 (2024-05-06)</h2>
+      <pre>### Fixed
+
+- Remove accidental deprecation comments on `DialogPanel` and `DialogTitle` ([#3176](https://github.com/tailwindlabs/headlessui/pull/3176))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.0.0 (2024-05-06)</h2>
+      <pre>[![Headless UI v2.0](https://github.com/tailwindlabs/headlessui/assets/882133/86225241-6e5e-4c64-97a9-b10b61af9f4e)](https://headlessui.com/)
+
+We just released Headless UI v2.0 for React which includes a ton of new stuff:
+
+- **Built-in anchor positioning** — using [Floating UI](https://floating-ui.com/), components like `Menu`, `Listbox`, and more can now automatically position their popovers to be anchored to their trigger, adapting as needed to changes in the viewport.
+- **Headless checkbox component** — we've added a headless `Checkbox` component to complement our existing `RadioGroup` component, making it easy to build totally custom checkbox controls.
+- **HTML form components** — we've added `Input`, `Select`, `Textarea`, `Label`, `Description`, `Fieldset`, and `Legend` components that handle all of the ID generation and `aria-*` attribute mapping you need to do to connect form fields together.
+- **Improved hover and focus-visible detection** — using hooks from the awesome [React Aria](https://react-spectrum.adobe.com/react-aria/hooks.html) library under the hood, Headless UI now adds smarter `data-hover` and `data-focus` attributes to your controls that behave more consistently across different devices than the native pseudo-classes.
+- **Combobox list virtualization** — the `Combobox` component can now handle giant lists of options with no performance issues.
+
+## Changelog
+
+### Added
+
+- Add new `Checkbox` component ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887), [#2962](https://github.com/tailwindlabs/headlessui/pull/2962))
+- Add new `Button` component ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887))
+- Add new `Input` component ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887), [#2902](https://github.com/tailwindlabs/headlessui/pull/2902), [#2940](https://github.com/tailwindlabs/headlessui/pull/2940))
+- Add new `Textarea` component ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887), [#2902](https://github.com/tailwindlabs/headlessui/pull/2902), [#2940](https://github.com/tailwindlabs/headlessui/pull/2940))
+- Add new `Select` component ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887), [#2902](https://github.com/tailwindlabs/headlessui/pull/2902))
+- Add new `Fieldset` and `Legend` components ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887))
+- Add new `Field`, `Label`, `Description` components ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887), [#2941](https://github.com/tailwindlabs/headlessui/pull/2941))
+- Add new `MenuSection`, `MenuHeading`, and `MenuSeparator` components ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887))
+- Add new `ListboxSelectedOption` component ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887))
+- Add new `DataInteractive` component ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887))
+- Add new `CloseButton` component and `useClose` hook ([#3096](https://github.com/tailwindlabs/headlessui/pull/3096))
+- Add new `anchor`, `modal`, and `portal` props to `Combobox`, `Listbox`, `Menu` and `Popover` components ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887), [#3075](https://github.com/tailwindlabs/headlessui/pull/3075), [#3097](https://github.com/tailwindlabs/headlessui/pull/3097), [#3111](https://github.com/tailwindlabs/headlessui/pull/3111), [#3115](https://github.com/tailwindlabs/headlessui/pull/3115), [#3121](https://github.com/tailwindlabs/headlessui/pull/3121), [#3124](https://github.com/tailwindlabs/headlessui/pull/3124), [#3133](https://github.com/tailwindlabs/headlessui/pull/3133), [#3138](https://github.com/tailwindlabs/headlessui/pull/3138), [#3148](https://github.com/tailwindlabs/headlessui/pull/3148), [#3152](https://github.com/tailwindlabs/headlessui/pull/3152), [#3154](https://github.com/tailwindlabs/headlessui/pull/3154), [#3157](https://github.com/tailwindlabs/headlessui/pull/3157))
+- Add new `autoFocus` prop to focusable components ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887))
+- Add new `virtual` prop to `Combobox` component ([#2779](https://github.com/tailwindlabs/headlessui/pull/2779), [#3128](https://github.com/tailwindlabs/headlessui/pull/3128), [#3160](https://github.com/tailwindlabs/headlessui/pull/3160), [#3161](https://github.com/tailwindlabs/headlessui/pull/3161), [#3163](https://github.com/tailwindlabs/headlessui/pull/3163))
+- Add new `onClose` prop to `Combobox` component ([#3122](https://github.com/tailwindlabs/headlessui/pull/3122))
+- Add new `immediate` prop to `Combobox` for immediately opening the Combobox when the `input` receives focus ([#2686](https://github.com/tailwindlabs/headlessui/pull/2686))
+- Add new `--button-width` CSS variable on the `ListboxOptions`, `MenuItems`, and `PopoverPanel` components ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887), [#3058](https://github.com/tailwindlabs/headlessui/pull/3058))
+- Add new `--input-width` and `--button-width` CSS variables on the `ComboboxOptions` component ([#3057](https://github.com/tailwindlabs/headlessui/pull/3057))
+- Add new `data-*` attributes as an alternative to the existing `data-headlessui-state` attribute ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887), [#3035](https://github.com/tailwindlabs/headlessui/pull/3035), [#3061](https://github.com/tailwindlabs/headlessui/pull/3061))
+
+### Fixed
+
+- Fix scroll-locking on iOS ([#2891](https://github.com/tailwindlabs/headlessui/pull/2891))
+- Fix cancellation of events when using `disabled` or `aria-disabled` attributes ([#2890](https://github.com/tailwindlabs/headlessui/pull/2890))
+- Fix unnecessary execution of the `displayValue` callback in `ComboboxInput` component ([#3048](https://github.com/tailwindlabs/headlessui/pull/3048))
+- Fix types for `multiple` prop in `Combobox` component ([#3099](https://github.com/tailwindlabs/headlessui/pull/3099))
+- Fix focus handling in `ComboboxInput` component ([#3065](https://github.com/tailwindlabs/headlessui/pull/3065), [#3073](https://github.com/tailwindlabs/headlessui/pull/3073))
+- Fix enter transitions in `Transition` component ([#3074](https://github.com/tailwindlabs/headlessui/pull/3074))
+- Fix focus handling in `ListboxOptions` and `MenuItems` components ([#3112](https://github.com/tailwindlabs/headlessui/pull/3112))
+- Fix horizontal scrolling inside the `Dialog` component ([#2889](https://github.com/tailwindlabs/headlessui/pull/2889))
+
+### Changed
+
+- Require React 18 ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887), [#3092](https://github.com/tailwindlabs/headlessui/pull/3092), [#3131](https://github.com/tailwindlabs/headlessui/pull/3131))
+- Always render hidden form input fields for `Checkbox`, `Switch` and `RadioGroup` components ([#3095](https://github.com/tailwindlabs/headlessui/pull/3095))
+- Deprecate the `RadioGroup.Option` component in favor of new `Radio` component ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887))
+- Deprecate the `active` prop in favor of new `focus` prop ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887))
+- Dialog is now focused by default instead of the first focusable element ([#2887](https://github.com/tailwindlabs/headlessui/pull/2887))
+- Change default tags for `ListboxOptions`, `ListboxOption`, `ComboboxOptions`, `ComboboxOption`, and `TabGroup` components ([#3109](https://github.com/tailwindlabs/headlessui/pull/3109))
+- Change default tag from `div` to `Fragment` on `Transition` components ([#3110](https://github.com/tailwindlabs/headlessui/pull/3110), [#3147](https://github.com/tailwindlabs/headlessui/pull/3147))
+- Allow `Combobox` component to have `null` value ([#3064](https://github.com/tailwindlabs/headlessui/pull/3064), [#3100](https://github.com/tailwindlabs/headlessui/pull/3100))
+- Attempt form submission when pressing enter on the `ListboxButton` component ([#2972](https://github.com/tailwindlabs/headlessui/pull/2972))
+- Deprecate the `entered` prop on the `Transition` component ([#3089](https://github.com/tailwindlabs/headlessui/pull/3089))
+- Add frozen value to `ComboboxOptions` component ([#3126](https://github.com/tailwindlabs/headlessui/pull/3126))
+
+<h2 id="upgrading-from-v1">Upgrading from v1</h2>
+
+### Update dependencies
+
+Install the latest version of the package via npm:
+
+```sh
+npm install @headlessui/react@latest
+```
+
+### Default element changes
+
+The default rendered element has changed for a number of components in v2.0:
+
+| Component         | v1.x element | v2.0 element |
+| ----------------- | ------------ | ------------ |
+| `Transition`      | `div`        | `Fragment`   |
+| `TransitionRoot`  | `div`        | `Fragment`   |
+| `TransitionChild` | `div`        | `Fragment`   |
+| `ListboxOptions`  | `ul`         | `div`        |
+| `ListboxOption`   | `li`         | `div`        |
+| `ComboboxOptions` | `ul`         | `div`        |
+| `ComboboxOption`  | `li`         | `div`        |
+| `TabGroup`        | `Fragment`   | `div`        |
+
+If you are using any of these components without the `as` prop, you'll need to add the `as` prop and render the component with the element you need:
+
+```diff
+- <Transition ...>
++ <Transition as="div" ...>
+```
+
+### Comboboxes now always support empty values
+
+Previously the `Combobox` component required an option to always be set, and you could opt out of this behavior using the `nullable` prop. In v2.0 comboboxes support empty values by default so you can remove this prop:
+
+```diff
+- <Combobox value={selected} onChange={setSelected} nullable>
++ <Combobox value={selected} onChange={setSelected}>
+```
+
+If you'd like to keep the previous behavior, update your `onChange` callback to only set the selected value if an option has actually been selected:
+
+```diff
+ <Combobox
+   value={selected}
+-  onChange={setSelected}
++  onChange={(newValue) => setSelected((oldValue) => newValue ?? oldValue)}
+   onClose={() => setQuery('')}
+ >
+```
+
+### Dialogs no longer require a focusable child
+
+Previously the `Dialog` component would automatically focus the first focusable child on open. This meant that you had to have at least one focusable element within your dialog, otherwise you would see a warning in your console.
+
+In v2.0 that is no longer the case and the dialog's root element is focused instead on open.
+
+If you'd like a child element to receive focus when your dialog is opened, you can add the `autoFocus` prop to any Headless UI form control:
+
+```diff
+ <Dialog>
+   <DialogPanel>
+-    <Listbox ... />
++    <Listbox autoFocus ... />
+   </DialogPanel>
+ </Dialog>
+```
+
+For non-Headless UI components, you can add the `data-autofocus` attribute to any focusable element:
+
+```diff
+ <Dialog>
+   <DialogPanel>
+-    <button>...</button>
++    <button data-autofocus>...</button>
+   </DialogPanel>
+ </Dialog>
+```
+
+### Dropdown components are now modal by default
+
+The `Menu`, `Combobox`, and `Listbox` dropdowns are now rendered modal by default. When the dropdown is open the page is scroll-locked and all other page content is made `inert`.
+
+While this is generally recommended behavior for these components, you can disable this using the `modal` prop:
+
+```diff
+- <ComboboxOptions ...>
++ <ComboboxOptions modal={false} ...>
+```
+
+### `Dialog.Overlay` and `Dialog.Backdrop` components removed
+
+In Headless UI v1.6 we deprecated the `Dialog.Overlay` and `Dialog.Backdrop` components. These have now been removed in v2.0.
+
+If you're using either of these components, you can update your app to use the new `DialogPanel` approach:
+
+```diff
+  <Dialog>
+-    <Dialog.Overlay className="..." />
++    <div className="..." />
++    <DialogPanel>
+       {/* ... */}
++    </DialogPanel>
+   </Dialog>
+```
+
+### Deprecated component dot-notation
+
+The previous component dot-notation has been deprecated in favor of using explicit imports for each individual component. This is to improve compatibility with RSC (React Server Components) and tree-shaking.
+
+We recommend updating to this new API:
+
+```diff
+- import { Menu } from '@headlessui/react'
++ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/react'
+
+  function Example() {
+    return (
+      <Menu>
+-       <Menu.Button>My account</Menu.Button>
+-       <Menu.Items>
+-         <Menu.Item><a href="/settings">Settings</a></Menu.Item>
+-         <Menu.Item><a href="/support">Support</a></Menu.Item>
+-         <Menu.Item><a href="/license">License</a></Menu.Item>
+-       </Menu.Items>
++       <MenuButton>My account</MenuButton>
++       <MenuItems>
++         <MenuItem><a href="/settings">Settings</a></MenuItem>
++         <MenuItem><a href="/support">Support</a></MenuItem>
++         <MenuItem><a href="/license">License</a></MenuItem>
++       </MenuItems>
+      </Menu>
+    )
+  }
+```
+
+### Deprecated component-specific label and description components
+
+With the addition of the multi-purpose `Field`, `Label` and `Description` components in v2, we've deprecated the component-specific versions.
+
+| v1.x component           | v2.0 replacement |
+| ------------------------ | ---------------- |
+| `Combobox.Label`         | `Label`          |
+| `Dialog.Description`     | `Description`    |
+| `Listbox.Label`          | `Label`          |
+| `RadioGroup.Description` | `Description`    |
+| `RadioGroup.Label`       | `Label`          |
+| `Switch.Description`     | `Description`    |
+| `Switch.Group`           | `Field`          |
+| `Switch.Label`           | `Label`          |
+
+We recommend updating to these new components:
+
+```diff
+- import { Combobox } from '@headlessui/react'
++ import { Combobox, ComboboxInput, ComboboxOptions, Field, Label } from '@headlessui/react'
+
+  function Example() {
+    return (
+-     <Combobox>
+-       <Combobox.Label>Assignee:</Combobox.Label>
+-       <Combobox.Input />
+-       <Combobox.Options>{/* ... */}</Combobox.Options>
+-     </Combobox>
++     <Field>
++       <Label>Assignee:</Label>
++       <Combobox>
++         <ComboboxInput />
++         <ComboboxOptions>{/* ... */}</ComboboxOptions>
++       </Combobox>
++     <Field>
+    )
+  }
+```
+
+### Deprecated `RadioGroup.Option` component
+
+We've deprecated the `RadioGroup.Option` in favor of the more terse `Radio` component.
+
+We recommend updating to this new component:
+
+```diff
+  <RadioGroup>
+-   <RadioGroup.Option>{*/ ...*/}</RadioGroup.Option>
++   <Radio>{*/ ...*/}</Radio>
+  </RadioGroup>
+```
+
+### Deprecated `active` prop in favor of `focus`
+
+We've deprecated the `active` prop in favor of the new `focus` prop on the `ComboboxOption`, `ListboxOption`, `ListboxOption`, `MenuItem`, `MenuItem`, `RadioOption`, and `RadioOption` components.
+
+We recommend updating to this new prop:
+
+```diff
+  <MenuItem >
+-   {({ active }) => (
++   {({ focus }) => (
+      {/* ... */}    
+    )}
+  </MenuItem>
+```
+
+### Deprecated `@headlessui/tailwindcss` package
+
+With the availability of the new `data-*` attributes in v2.0, we've deprecated the `@headlessui/tailwindcss` package.
+
+We recommend updating to use the new `data-*` attributes instead. Start by removing this package:
+
+```sh
+npm remove @headlessui/tailwindcss
+```
+
+Next, replace the `ui-*` class modifiers with `data-[*]` modifiers:
+
+```diff
+  <MenuItem
+    as="a"
+    href="#"
+-   className="ui-active:bg-blue-500 ui-active:text-white"
++   className="data-[active]:bg-blue-500 data-[active]:text-white"
+  >
+    {*/ ...*/}
+  </MenuItem>
+```</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/vue@v1.7.21 (2024-04-26)</h2>
+      <pre>### Fixed
+
+- Prevent closing the `Combobox` component when clicking inside the scrollbar area ([#3104](https://github.com/tailwindlabs/headlessui/pull/3104))
+- Don’t unmount portal targets used by other portals ([#3144](https://github.com/tailwindlabs/headlessui/pull/3144))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/vue@v1.7.20 (2024-04-15)</h2>
+      <pre>### Fixed
+
+- Expose `disabled` state on `Tab` component ([#2918](https://github.com/tailwindlabs/headlessui/pull/2918))
+- Prevent default behaviour when clicking outside of a `DialogPanel` ([#2919](https://github.com/tailwindlabs/headlessui/pull/2919))
+- Don’t override explicit `disabled` prop for components inside `MenuItem` ([#2929](https://github.com/tailwindlabs/headlessui/pull/2929))
+- Add `hidden` attribute to internal `Hidden` component when the `Features.Hidden` feature is used ([#2955](https://github.com/tailwindlabs/headlessui/pull/2955))
+- Allow setting custom `tabIndex` on the `Switch` component ([#2966](https://github.com/tailwindlabs/headlessui/pull/2966))
+- Forward `disabled` state to hidden inputs in form-like components ([#3004](https://github.com/tailwindlabs/headlessui/pull/3004))
+- Respect `selectedIndex` for controlled `Tab` components ([#3037](https://github.com/tailwindlabs/headlessui/pull/3037))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v1.7.19 (2024-04-15)</h2>
+      <pre>### Fixed
+
+- Make sure panels re-register when IDs are calculated in React < 18 ([#2883](https://github.com/tailwindlabs/headlessui/pull/2883))
+- Expose `disabled` state on `Tab` component ([#2918](https://github.com/tailwindlabs/headlessui/pull/2918))
+- Prevent default behaviour when clicking outside of a `Dialog.Panel` ([#2919](https://github.com/tailwindlabs/headlessui/pull/2919))
+- Add `hidden` attribute to internal `Hidden` component when the `Features.Hidden` feature is used ([#2955](https://github.com/tailwindlabs/headlessui/pull/2955))
+- Allow setting custom `tabIndex` on the `Switch` component ([#2966](https://github.com/tailwindlabs/headlessui/pull/2966))
+- Forward `disabled` state to hidden inputs in form-like components ([#3004](https://github.com/tailwindlabs/headlessui/pull/3004))
+- Respect `selectedIndex` for controlled `Tab` components ([#3037](https://github.com/tailwindlabs/headlessui/pull/3037))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/vue@v1.7.19 (2024-02-07)</h2>
+      <pre>- Fix Combobox `activeOption` render prop ([#2973](https://github.com/tailwindlabs/headlessui/pull/2973))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/vue@v1.7.18 (2024-02-02)</h2>
+      <pre>### Added
+
+- Allow users customize ID generation ([#2959](https://github.com/tailwindlabs/headlessui/pull/2959))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/vue@v1.7.17 (2024-01-08)</h2>
+      <pre>### Fixed
+
+- Don't call `<Dialog>`'s `onClose` twice on mobile devices ([#2690](https://github.com/tailwindlabs/headlessui/pull/2690))
+- Fix Portal SSR hydration mismatches ([#2700](https://github.com/tailwindlabs/headlessui/pull/2700))
+- Ensure hidden `TabPanel` components are hidden from the accessibility tree ([#2708](https://github.com/tailwindlabs/headlessui/pull/2708))
+- Add support for `role="alertdialog"` to `<Dialog>` component ([#2709](https://github.com/tailwindlabs/headlessui/pull/2709))
+- Ensure blurring the `ComboboxInput` component closes the `Combobox` ([#2712](https://github.com/tailwindlabs/headlessui/pull/2712))
+- Allow `<button>` to be in nested components in `<PopoverButton>` ([#2715](https://github.com/tailwindlabs/headlessui/pull/2715))
+- Don't overwrite user-defined template refs when rendering ([#2720](https://github.com/tailwindlabs/headlessui/pull/2720))
+- Fix missing `data-headlessui-state` attribute when `as="template"` ([#2787](https://github.com/tailwindlabs/headlessui/pull/2787))
+- Fix VoiceOver bug for `Listbox` component in Chrome ([#2824](https://github.com/tailwindlabs/headlessui/pull/2824))
+- Fix outside click detection when component is mounted in the Shadow DOM ([6846231](https://github.com/tailwindlabs/headlessui/commit/684623131b99d9e75dfc1c1f6d27244c334a95d9))
+- Fix CJS types ([#2880](https://github.com/tailwindlabs/headlessui/pull/2880))
+- Fix error when transition classes contain new lines ([#2871](https://github.com/tailwindlabs/headlessui/pull/2871))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v1.7.18 (2024-01-08)</h2>
+      <pre>### Fixed
+
+- Don't call `<Dialog>`'s `onClose` twice on mobile devices ([#2690](https://github.com/tailwindlabs/headlessui/pull/2690))
+- Lazily resolve default containers in `<Dialog>` ([#2697](https://github.com/tailwindlabs/headlessui/pull/2697))
+- Ensure hidden `Tab.Panel` components are hidden from the accessibility tree ([#2708](https://github.com/tailwindlabs/headlessui/pull/2708))
+- Add support for `role="alertdialog"` to `<Dialog>` component ([#2709](https://github.com/tailwindlabs/headlessui/pull/2709))
+- Ensure blurring the `Combobox.Input` component closes the `Combobox` ([#2712](https://github.com/tailwindlabs/headlessui/pull/2712))
+- Allow changes to the `className` prop when the `<Transition />` component is currently not transitioning ([#2722](https://github.com/tailwindlabs/headlessui/pull/2722))
+- Export (internal-only) component interfaces for TypeScript compiler ([#2313](https://github.com/tailwindlabs/headlessui/pull/2313))
+- Fix infinite render-loop for `<Disclosure.Panel>` and `<Popover.Panel>` when `as={Fragment}` ([#2760](https://github.com/tailwindlabs/headlessui/pull/2760))
+- Fix VoiceOver bug for `Listbox` component in Chrome ([#2824](https://github.com/tailwindlabs/headlessui/pull/2824))
+- Fix outside click detection when component is mounted in the Shadow DOM ([#2866](https://github.com/tailwindlabs/headlessui/pull/2866))
+- Fix CJS types ([#2880](https://github.com/tailwindlabs/headlessui/pull/2880))
+- Fix error when transition classes contain new lines ([#2871](https://github.com/tailwindlabs/headlessui/pull/2871))
+- Improve iOS locking ([7721aca](https://github.com/tailwindlabs/headlessui/commit/7721acaecea2008c2d7e8ab29cc8d45b70bb021e))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.0.0-alpha.4 (2024-01-03)</h2>
+      <pre>### Fixed
+
+- Ensure `Input`, `Select` and `Textarea` expose `Ref` related types ([#2902](https://github.com/tailwindlabs/headlessui/pull/2902))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>@headlessui/react@v2.0.0-alpha.3 (2023-12-21)</h2>
+      <pre>### Fixed
+
+- Further fine tune scroll locking on iOS ([#2891](https://github.com/tailwindlabs/headlessui/pull/2891))
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

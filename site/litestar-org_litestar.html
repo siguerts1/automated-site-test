@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for litestar-org/litestar"/>
+  <title>litestar-org/litestar Release Notes</title>
+</head>
+<body>
+  <h1>🚀 litestar-org/litestar - Release Notes</h1>
+  
+    <section>
+      <h2>v2.15.1 (2025-02-27)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry)
+
+Thanks to these incredible personal sponsors:
+- [Polar.sh](https://polar.sh/litestar-org/subscriptions): @Nozavi, @cemrehancavdar, @thomastu
+- [GitHub Sponsors](https://github.com/sponsors/litestar-org/): @roboflow, @benjamin-kirkbride, @ddahan, @cbscsm
+- [OpenCollective](https://opencollective.com/litestar): Christian Y
+
+- A huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+
+## New contributors 🎉
+* @eandersons made their first contribution in https://github.com/litestar-org/litestar/pull/4032
+
+### Bugfixes 🐛
+* fix: Warn about using streaming responses with a `body` by @provinzkraut in https://github.com/litestar-org/litestar/pull/4033
+* fix: Fix #4035 - incorrect deprecation warning issued when subclassing middlewares by @provinzkraut in https://github.com/litestar-org/litestar/pull/4036
+
+<!-- Review these: Not all of them should go into the release notes -->
+### Other changes
+* docs: Use "click to toggle" instead of "click to expand" by @eandersons in https://github.com/litestar-org/litestar/pull/4032
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.15.0...v2.15.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.15.0 (2025-02-26)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry)
+
+Thanks to these incredible personal sponsors:
+- [Polar.sh](https://polar.sh/litestar-org/subscriptions): @Nozavi, @cemrehancavdar, @thomastu
+- [GitHub Sponsors](https://github.com/sponsors/litestar-org/): @roboflow, @benjamin-kirkbride, @ddahan, @cbscsm
+- [OpenCollective](https://opencollective.com/litestar): Christian Y
+
+- A huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+
+## What's changed
+
+## New contributors 🎉
+* @iyad-f made their first contribution in https://github.com/litestar-org/litestar/pull/3935
+* @pech2 made their first contribution in https://github.com/litestar-org/litestar/pull/3994
+* @Ada-lave made their first contribution in https://github.com/litestar-org/litestar/pull/3988
+* @YorkSu made their first contribution in https://github.com/litestar-org/litestar/pull/3970
+* @sloria made their first contribution in https://github.com/litestar-org/litestar/pull/3953
+* @tofran made their first contribution in https://github.com/litestar-org/litestar/pull/4017
+* @oek1ng made their first contribution in https://github.com/litestar-org/litestar/pull/3960
+
+### Bugfixes 🐛
+
+* fix(ASGI mounts): Prevent accidental scope overrides by mounted ASGI apps by @provinzkraut in https://github.com/litestar-org/litestar/pull/3945
+* fix: corrected import of attrs by @euri10 in https://github.com/litestar-org/litestar/pull/3947
+
+
+### New features 🚀
+* feat(jwt): Added revoked token handler support by @oek1ng in https://github.com/litestar-org/litestar/pull/3960
+* feat: allow `route_reverse` params of type `uuid` to be passed as `str` by @aedify-swi in https://github.com/litestar-org/litestar/pull/3972
+* feat(CLI): Make better error message for invalid `--app` string by @RenameMe1 in https://github.com/litestar-org/litestar/pull/3977
+* feat(DTOs): Support `@property` fields for msgspec and dataclass by @provinzkraut in https://github.com/litestar-org/litestar/pull/3981
+* feat(core): new base middleware by @provinzkraut in https://github.com/litestar-org/litestar/pull/3996
+* feat: Add `SerializationPlugin` and `InitPlugin` to replace their respective protocols  by @provinzkraut in https://github.com/litestar-org/litestar/pull/4025
+* feat(debugger): passing debugger to app by @oek1ng in https://github.com/litestar-org/litestar/pull/3967
+
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.14.0...v2.15.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.14.0 (2025-01-08)</h2>
+      <pre>## Summary
+
+We are pleased to publish our first release of 2025!
+
+Since our last release in November, everyone's been busy.  In that short time, we've managed to squeeze in a huge amount of fixes, features, and (most, importantly) Python 3.13 support.  Thank you to everyone in the community who contributed to this.
+
+As we move towards 3.0, you'll see a few deprecations being added to packages.  Please don't hesitate to join our discord to discuss any deprecation specifics or any other change you'd like to see in 3.0
+
+## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry)
+
+Thanks to these incredible personal sponsors:
+- [Polar.sh](https://polar.sh/litestar-org/subscriptions): @Nozavi, @cemrehancavdar, @thomastu
+- [GitHub Sponsors](https://github.com/sponsors/litestar-org/): @roboflow, @benjamin-kirkbride, @ddahan, @cbscsm
+- [OpenCollective](https://opencollective.com/litestar): Christian Y
+
+- A huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+#### New contributors 🎉
+* @ftsartek made their first contribution in https://github.com/litestar-org/litestar/pull/3892
+* @adhtruong made their first contribution in https://github.com/litestar-org/litestar/pull/3880
+* @wallseat made their first contribution in https://github.com/litestar-org/litestar/pull/3525
+* @250MHz made their first contribution in https://github.com/litestar-org/litestar/pull/3920
+* @vikigenius made their first contribution in https://github.com/litestar-org/litestar/pull/3876
+
+#### Bugfixes 🐛
+* fix: remove optional group for `litestar-htmx` by @cofin in https://github.com/litestar-org/litestar/pull/3870
+* fix(pydantic): Add moved URL types to type map  by @provinzkraut in https://github.com/litestar-org/litestar/pull/3874
+* fix: patching of otel middleware to work with subclasses by @vikigenius in https://github.com/litestar-org/litestar/pull/3876
+* fix(ci): Pin PDM version for 3.8 by @Alc-Alc in https://github.com/litestar-org/litestar/pull/3878
+* fix: update Makefile by @adhtruong in https://github.com/litestar-org/litestar/pull/3880
+* fix(devcontainers): Replace PDM with UV by @Alc-Alc in https://github.com/litestar-org/litestar/pull/3879
+* fix: resource warnings by @gsakkis in https://github.com/litestar-org/litestar/pull/3838
+* fix: Enum OAS generation (#3518) by @wallseat in https://github.com/litestar-org/litestar/pull/3525
+* fix: typo in exception message for ImproperlyConfiguredException by @Zimzozaur in https://github.com/litestar-org/litestar/pull/3885
+* fix(file response): Support varying `mtime` semantics across different fsspec implementations by @provinzkraut in https://github.com/litestar-org/litestar/pull/3902
+* fix(OpenAPI): Query-only properties included in path, cookie and header parameter schema and response headers (#3908) by @provinzkraut in https://github.com/litestar-org/litestar/pull/3909
+* fix(sqlalchemy): updates to documentation based on upstream changes by @cofin in https://github.com/litestar-org/litestar/pull/3917
+* fix(picologging): better handle unsupported environments by @cofin in https://github.com/litestar-org/litestar/pull/3918
+* fix(channels): use `SQL` function for `psycopg` by @cofin in https://github.com/litestar-org/litestar/pull/3916
+* fix(compression middleware): Fix resource handling by @provinzkraut in https://github.com/litestar-org/litestar/pull/3927
+* fix(ci): only install dev tools in ubuntu by @cofin in https://github.com/litestar-org/litestar/pull/3931
+
+#### New features 🚀
+* feat: move `litestar.contrib.prometheus` to `litestar.plugins.prometheus` by @cofin in https://github.com/litestar-org/litestar/pull/3863
+* feat: move `litestar.contrib.attrs` to `litestar.plugins.attrs` by @cofin in https://github.com/litestar-org/litestar/pull/3862
+* feat: add `future` flag to `experimental_features` by @cofin in https://github.com/litestar-org/litestar/pull/3864
+* feat(core): Streaming multipart parser by @provinzkraut in https://github.com/litestar-org/litestar/pull/3872
+* feat: upgrade minimum `litestar-htmx` version by @cofin in https://github.com/litestar-org/litestar/pull/3884
+* feat: WebSocket send stream by @provinzkraut in https://github.com/litestar-org/litestar/pull/3894
+* feat: add query params to redirect response by @marcuslimdw in https://github.com/litestar-org/litestar/pull/3901
+* feat: add Valkey as a native store by @ftsartek in https://github.com/litestar-org/litestar/pull/3892
+* feat: use "path" as an error message source by @250MHz in https://github.com/litestar-org/litestar/pull/3920
+* feat: added subprocess test client by @aranvir in https://github.com/litestar-org/litestar/pull/3655
+* feat: add support for Python 3.13 by @cofin in https://github.com/litestar-org/litestar/pull/3850
+* feat(ci): implement `psycopg` client installation for macos and windows by @cofin in https://github.com/litestar-org/litestar/pull/3932
+
+<!-- Review these: Not all of them should go into the release notes -->
+#### Other changes
+* docs: fix advanced alchemy references by @cofin in https://github.com/litestar-org/litestar/pull/3881
+* docs: remove deprecated sponsor STOK by @cbscsm in https://github.com/litestar-org/litestar/pull/3915
+* docs: mention `id` field in `1-abstract-dto.rst` by @sobolevn in https://github.com/litestar-org/litestar/pull/3803
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.13.0...v2.14.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.13.0 (2024-11-20)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Avra](https://avra.com.br/en/)
+
+Thanks to these incredible personal sponsors:
+- [Polar.sh](https://polar.sh/litestar-org/subscriptions): @Nozavi, @cemrehancavdar, @thomastu
+- [GitHub Sponsors](https://github.com/sponsors/litestar-org/): @roboflow, @benjamin-kirkbride, @ddahan, @cbscsm
+- [OpenCollective](https://opencollective.com/litestar): Christian Y
+
+And a huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+## What's changed
+
+## New contributors 🎉
+* @vvanglro made their first contribution in https://github.com/litestar-org/litestar/pull/3849
+* @wallseat made their first contribution in https://github.com/litestar-org/litestar/pull/3807
+* @mohammedbabelly20 made their first contribution in https://github.com/litestar-org/litestar/pull/3784
+* @cemrehancavdar made their first contribution in https://github.com/litestar-org/litestar/pull/3845
+* @eliasfandi made their first contribution in https://github.com/litestar-org/litestar/pull/3768
+* @RenameMe1 made their first contribution in https://github.com/litestar-org/litestar/pull/3857
+* @olzhasar made their first contribution in https://github.com/litestar-org/litestar/pull/3765
+* @findstar made their first contribution in https://github.com/litestar-org/litestar/pull/3751
+* @pogopaule made their first contribution in https://github.com/litestar-org/litestar/pull/3776
+* @charles-dyfis-net made their first contribution in https://github.com/litestar-org/litestar/pull/3767
+
+### Bugfixes 🐛
+* fix: sign bug in rate limit middelware by @pogopaule in https://github.com/litestar-org/litestar/pull/3776
+* fix: map JSONSchema spec naming convention to snake_case when names from schema_extra are not found (#3766) by @charles-dyfis-net in https://github.com/litestar-org/litestar/pull/3767
+* fix: typo in a deprecation warning in `contrib/sqlalchemy/plugins/serialization.py` by @sobolevn in https://github.com/litestar-org/litestar/pull/3809
+* fix(prometheus): fix path template for routes without path parameters by @mohammedbabelly20 in https://github.com/litestar-org/litestar/pull/3784
+* fix: LifespanHandler memory stream cleanup by @provinzkraut in https://github.com/litestar-org/litestar/pull/3836
+* fix: set correct path_template value for trie node (#3806) by @wallseat in https://github.com/litestar-org/litestar/pull/3807
+* fix: Safe Handling of "more_body" in ASGI Responses by @cemrehancavdar in https://github.com/litestar-org/litestar/pull/3845
+* fix: Duplicate `RateLimit-*` headers with caching by @mohammedbabelly20 in https://github.com/litestar-org/litestar/pull/3855
+
+### New features 🚀
+* feat: OpenAPI plugins send CSRF request header by @floxay in https://github.com/litestar-org/litestar/pull/3754
+* feat: deprecate `litestar.contrib.sqlalchemy` by @cofin in https://github.com/litestar-org/litestar/pull/3755
+* feat: implement `HTMX` plugin using `litestar-htmx` by @cofin in https://github.com/litestar-org/litestar/pull/3837
+* feat(Pydantic): honor hide_input_in_errors in throwing validation exceptions by @charles-dyfis-net in https://github.com/litestar-org/litestar/pull/3843
+* feat: deprecate `litestar.contrib.pydantic` by @cofin in https://github.com/litestar-org/litestar/pull/3852
+
+
+### Documentation
+* docs: update copyright notice year to 2024 by @findstar in https://github.com/litestar-org/litestar/pull/3751
+* docs(readme): Remove reference to `litestar-pg-redis-docker` by @Alc-Alc in https://github.com/litestar-org/litestar/pull/3779
+* docs: Fix python code highlight in many examples by @sobolevn in https://github.com/litestar-org/litestar/pull/3788
+* docs: fix a typo in `requests` usage docs by @sobolevn in https://github.com/litestar-org/litestar/pull/3794
+* docs: fix typos in `sqlalchemy` examples by @sobolevn in https://github.com/litestar-org/litestar/pull/3798
+* docs: fix typos in `sqlalchemy/models_and_repository.rst` by @sobolevn in https://github.com/litestar-org/litestar/pull/3797
+* docs: fix missing import in `cache` usage by @sobolevn in https://github.com/litestar-org/litestar/pull/3795
+* docs: make sure that `channels` use `finally` in all examples by @sobolevn in https://github.com/litestar-org/litestar/pull/3796
+* docs: change the `ExperimentalFeatures.DTO_CODEGEN` description by @sobolevn in https://github.com/litestar-org/litestar/pull/3802
+* docs: change `sync-to-thread-info.rst` wording about `sync_to_thread` by @sobolevn in https://github.com/litestar-org/litestar/pull/3799
+* docs: add missing rename strategy to `dto` docs by @sobolevn in https://github.com/litestar-org/litestar/pull/3805
+* docs: fix highlighted lines in DTO usage by @sobolevn in https://github.com/litestar-org/litestar/pull/3808
+* docs: fix "DTO Factory and PATCH requests" section by @sobolevn in https://github.com/litestar-org/litestar/pull/3819
+* docs: fix `DTO Data` section with a new example by @sobolevn in https://github.com/litestar-org/litestar/pull/3813
+* docs: fix highlight of code example in "Providing values for nested data" by @sobolevn in https://github.com/litestar-org/litestar/pull/3815
+* docs: rewrite htmx guide by @sobolevn in https://github.com/litestar-org/litestar/pull/3825
+* docs: refactor "Hooks" usage documentation by @sobolevn in https://github.com/litestar-org/litestar/pull/3826
+* docs: fix API reference for `asgi_types` scopes by @sobolevn in https://github.com/litestar-org/litestar/pull/3831
+* docs: rewrite "Builtin middleware" usage by @sobolevn in https://github.com/litestar-org/litestar/pull/3830
+* docs: refactor "Custom Middleware" guide by @sobolevn in https://github.com/litestar-org/litestar/pull/3833
+* docs: refactor exception usage by @sobolevn in https://github.com/litestar-org/litestar/pull/3823
+* docs: remove references to `python-jose` by @cofin in https://github.com/litestar-org/litestar/pull/3847
+* docs:  Changing incorrect indentation in the code example "creating-middleware#inheriting-abstractmiddleware" by @RenameMe1 in https://github.com/litestar-org/litestar/pull/3857
+* docs: improve `openapi/index.rst` page by @sobolevn in https://github.com/litestar-org/litestar/pull/3856
+* docs: fix the description of when to use the synchronous function by @vvanglro in https://github.com/litestar-org/litestar/pull/3849
+* docs: Added debug=True in Testing to display exception stack trace by @RenameMe1 in https://github.com/litestar-org/litestar/pull/3860
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.12.1...v2.13.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.12.1 (2024-09-21)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), [Avra](https://avra.com.br/en/)
+
+A huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+### Bugfixes 🐛
+* fix(typing): Don't require annotated_types by @provinzkraut in https://github.com/litestar-org/litestar/pull/3750
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.12.0...v2.12.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.12.0 (2024-09-21)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), [Avra](https://avra.com.br/en/)
+
+Thanks to these incredible personal sponsors:
+- [Polar.sh](https://polar.sh/litestar-org/subscriptions): @Nozavi, @cemrehancavdar, @thomastu, @skewty, @iRod3s
+- [GitHub Sponsors](https://github.com/sponsors/litestar-org/): @roboflow, @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev
+- [OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+A huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+### Bugfixes 🐛
+* Fix overzealous warning for greedy middleware `exclude` pattern by @euri10 in https://github.com/litestar-org/litestar/pull/3712
+* Fix dangling coroutines in request extraction handling cleanup by @provinzkraut in https://github.com/litestar-org/litestar/pull/3735
+* Fix OpenAPI handling of `type` keyword by @provinzkraut in https://github.com/litestar-org/litestar/pull/3715
+* Fix OpenAPI handling of invalid schema keys by @thiagozf in https://github.com/litestar-org/litestar/pull/3635
+* Fix OpenAPI handling of `msgspec.Struct` tagged unions by @provinzkraut in https://github.com/litestar-org/litestar/pull/3742
+
+New features 🚀
+* Support strings in `media_type` for `ResponseSpec` by @provinzkraut in https://github.com/litestar-org/litestar/pull/3729
+* Allow customizing schema component keys by @provinzkraut in https://github.com/litestar-org/litestar/pull/3738
+* Raise exception when body parameter is annotated with non-bytes type by @provinzkraut in https://github.com/litestar-org/litestar/pull/3740
+* Bump `scalar` OpenAPI Plugin to `latest` release by @cofin in https://github.com/litestar-org/litestar/pull/3747
+
+
+### Other changes
+* Overhauled metadata handling by @provinzkraut in https://github.com/litestar-org/litestar/pull/3721
+
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.11.0...v2.12.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.11.0 (2024-08-27)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), [Avra](https://avra.com.br/en/)
+
+Thanks to these incredible personal sponsors:
+- [Polar.sh](https://polar.sh/litestar-org/subscriptions): @Nozavi, @cemrehancavdar, @thomastu, @skewty, @iRod3s
+- [GitHub Sponsors](https://github.com/sponsors/litestar-org/): @roboflow, @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev
+- [OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+A huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+## What's changed
+
+## New contributors 🎉
+* @supercoder-dev made their first contribution in https://github.com/litestar-org/litestar/pull/3565
+* @jlr295 made their first contribution in https://github.com/litestar-org/litestar/pull/3660
+* @aarcex3 made their first contribution in https://github.com/litestar-org/litestar/pull/3703
+* @Zimzozaur made their first contribution in https://github.com/litestar-org/litestar/pull/3661
+* @stewit made their first contribution in https://github.com/litestar-org/litestar/pull/3603
+* @trim21 made their first contribution in https://github.com/litestar-org/litestar/pull/3698
+* @FarhanAliRaza made their first contribution in https://github.com/litestar-org/litestar/pull/3702
+
+### Bugfixes 🐛
+* fix(connection): Fix creation of FormMultiDict in Request.form to properly handle multi-keys by @provinzkraut in https://github.com/litestar-org/litestar/pull/3639
+* fix: Small docs update. by @Zimzozaur in https://github.com/litestar-org/litestar/pull/3661
+* fix(DTO): Inconsistent use of strict mode  by @provinzkraut in https://github.com/litestar-org/litestar/pull/3685
+* fix(prometheus): use path template for prometheus metrics by @evstratbg in https://github.com/litestar-org/litestar/pull/3687
+* fix: OpenTelemetry doesn't capture exceptions in the outermost application layer by @provinzkraut in https://github.com/litestar-org/litestar/pull/3689
+* fix: updated sqlalchemy samples & unpin `advanced-alchemy` by @cofin in https://github.com/litestar-org/litestar/pull/3693
+* fix(#3554): correct ``module_to_os_path`` to return directory paths by @supercoder-dev in https://github.com/litestar-org/litestar/pull/3565
+* fix: csrf middleware excluding router by @trim21 in https://github.com/litestar-org/litestar/pull/3698
+* fix: inconsistent behavior between `signature_namespace` and `signature_types` by @cofin in https://github.com/litestar-org/litestar/pull/3696
+* fix(JWT): Response with 401 on token payload validation by @provinzkraut in https://github.com/litestar-org/litestar/pull/3705
+
+### New features 🚀
+* feat: switched abandonded python-jose to pyjwt by @nielsvanhooy in https://github.com/litestar-org/litestar/pull/3684
+* feat(DTO): introduce `forbid_unknown_fields` config by @provinzkraut in https://github.com/litestar-org/litestar/pull/3690
+* feat(JWT): Custom JWT payload classes by @provinzkraut in https://github.com/litestar-org/litestar/pull/3692
+* feat(DTO): Support `extra="forbid"` model config for `PydanticDTO` by @provinzkraut in https://github.com/litestar-org/litestar/pull/3691
+* feat(middleware): Warn about greedy exclude patterns by @provinzkraut in https://github.com/litestar-org/litestar/pull/3700
+* feat: problem details plugin by @peterschutt in https://github.com/litestar-org/litestar/pull/3323
+* feat(JWT): Customised token verification by @provinzkraut in https://github.com/litestar-org/litestar/pull/3695
+
+<!-- Review these: Not all of them should go into the release notes -->
+### Other changes
+* docs: fixed bad links in `flask` migration guide by @jlr295 in https://github.com/litestar-org/litestar/pull/3660
+* docs: Fix misplaced comment in dependency-injection.rst for better clarity by @Zimzozaur in https://github.com/litestar-org/litestar/pull/3671
+* docs: Added Posting tool as an alternative to Postman in 06-receiving-data.rst  by @Zimzozaur in https://github.com/litestar-org/litestar/pull/3670
+* docs: Document custom types by @stewit in https://github.com/litestar-org/litestar/pull/3603
+* docs: stale reference to pydantic signature models by @cofin in https://github.com/litestar-org/litestar/pull/3697
+* docs: Fixing spelling in request.rst by @aarcex3 in https://github.com/litestar-org/litestar/pull/3703
+* docs: fixed incorrect docs for default status code for http handler  by @FarhanAliRaza in https://github.com/litestar-org/litestar/pull/3702
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.10.0...v2.11.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.10.0 (2024-07-26)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), [Avra](https://avra.com.br/en/)
+
+Thanks to these incredible personal sponsors:
+- [Polar.sh](https://polar.sh/litestar-org/subscriptions): @Nozavi, @cemrehancavdar, @thomastu, @skewty, @iRod3s
+- [GitHub Sponsors](https://github.com/sponsors/litestar-org/): @roboflow, @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev
+- [OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+A huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+## New contributors 🎉
+* @taihim made their first contribution in https://github.com/litestar-org/litestar/pull/3610
+* @l-armstrong made their first contribution in https://github.com/litestar-org/litestar/pull/3618
+* @Anu-cool-007 made their first contribution in https://github.com/litestar-org/litestar/pull/3608
+* @Murtagy made their first contribution in https://github.com/litestar-org/litestar/pull/3526
+* @tcbegley made their first contribution in https://github.com/litestar-org/litestar/pull/3629
+* @rafalkrupinski made their first contribution in https://github.com/litestar-org/litestar/pull/3575
+
+### Bugfixes 🐛
+* fix(signature): Fix #3593: Ensure signature model internal function signatures don't clash with model signature by @provinzkraut in https://github.com/litestar-org/litestar/pull/3605
+* fix(OpenAPI): Correctly handle Annotated NewType by @sherbang in https://github.com/litestar-org/litestar/pull/3615
+* fix: use `ASGIConnection` instead of `Request` for `flash` by @cofin in https://github.com/litestar-org/litestar/pull/3626
+* fix(handlers): Allow returning `Response[None]` from head route handlers by @provinzkraut in https://github.com/litestar-org/litestar/pull/3641
+
+### New features 🚀
+* feat: allow creating parent directories for a file store by @Murtagy in https://github.com/litestar-org/litestar/pull/3526
+* feat(logging): add param `logging_module` to `LoggingConfig` by @jderrien in https://github.com/litestar-org/litestar/pull/3578
+* feat: add handler name to exceptions in handler validation. by @rafalkrupinski in https://github.com/litestar-org/litestar/pull/3575
+* feat(Pydantic): added parameters in pydantic plugin to support strict validation and all the `model_dump` args by @Anu-cool-007 in https://github.com/litestar-org/litestar/pull/3608
+
+<!-- Review these: Not all of them should go into the release notes -->
+### Other changes
+* docs: fix typos in examples.contrib.prometheus by @taihim in https://github.com/litestar-org/litestar/pull/3610
+* docs: fixed create_ws_route_handlers typo. by @l-armstrong in https://github.com/litestar-org/litestar/pull/3618
+* docs: fix link to available issues by @tcbegley in https://github.com/litestar-org/litestar/pull/3629
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.9.1...v2.10.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.9.1 (2024-06-21)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), [Avra](https://avra.com.br/en/)
+
+A huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+## New contributors 🎉
+* @PossiblePanda made their first contribution in https://github.com/litestar-org/litestar/pull/3555
+* @eltociear made their first contribution in https://github.com/litestar-org/litestar/pull/3563
+* @evstratbg made their first contribution in https://github.com/litestar-org/litestar/pull/3533
+
+### Bugfixes 🐛
+* fix: add OPTIONS to the default safe methods for CSRFConfig by @wer153 in https://github.com/litestar-org/litestar/pull/3538
+* fix(docs): fixed typo in routing overview by @PossiblePanda in https://github.com/litestar-org/litestar/pull/3555
+* fix(prometheus): capture templated route name for metrics by @evstratbg in https://github.com/litestar-org/litestar/pull/3533
+* fix(testing): `.websocket_connect` does not respect `base_url` by @provinzkraut in https://github.com/litestar-org/litestar/pull/3567
+* fix(warnings): Do not warn for default handlers by @Alc-Alc in https://github.com/litestar-org/litestar/pull/3569
+* fix(CLI): Don't call `rich_click.patch` if `rich_click` is installed by @provinzkraut in https://github.com/litestar-org/litestar/pull/3570
+* fix(OpenAPI): Correctly handle `typing.NewType`  by @provinzkraut in https://github.com/litestar-org/litestar/pull/3580
+* fix: encode response content object returned from an exception handler. by @rafalkrupinski in https://github.com/litestar-org/litestar/pull/3585
+
+
+### Other changes
+* docs(logging): use `queue_listener` as mentioned in the warning by @jderrien in https://github.com/litestar-org/litestar/pull/3540
+* docs: Changed cli to concurrency in concurrency.rst by @PossiblePanda in https://github.com/litestar-org/litestar/pull/3557
+* docs: update ui_plugins.rst by @eltociear in https://github.com/litestar-org/litestar/pull/3563
+* docs(logging): advise to use `log_exceptions="always"` by @jderrien in https://github.com/litestar-org/litestar/pull/3577
+* refactor(logging): improve `LoggingConfig` & deprecate `LoggingConfig.propagate` by @jderrien in https://github.com/litestar-org/litestar/pull/3543
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.9.0...v2.9.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.9.0 (2024-06-02)</h2>
+      <pre>## Sponsors 🌟
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), Bruno
+
+Thanks to these incredible personal sponsors:
+- [Polar.sh](https://polar.sh/litestar-org/subscriptions): @Nozavi, @cemrehancavdar, @thomastu, @skewty, @iRod3s
+- [GitHub Sponsors](https://github.com/sponsors/litestar-org/): @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev
+- [OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+- A huge 'Thank you!' to all sponsors, subscribers, and contributors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+## New contributors 🎉
+* @JorenSix made their first contribution in https://github.com/litestar-org/litestar/pull/3475
+* @tibor-reiss made their first contribution in https://github.com/litestar-org/litestar/pull/3497
+* @ch-iv made their first contribution in https://github.com/litestar-org/litestar/pull/3434
+* @0xE111 made their first contribution in https://github.com/litestar-org/litestar/pull/3511
+* @maintain0404 made their first contribution in https://github.com/litestar-org/litestar/pull/3405
+
+### Bugfixes 🐛
+
+* fix: asgi lifespan msg after lifespan context exception by @peterschutt in https://github.com/litestar-org/litestar/pull/3315
+* fix: bug when pydantic==1.10 is installed by @peterschutt in https://github.com/litestar-org/litestar/pull/3335
+* fix: OpenAPI router and controller on same app. by @peterschutt in https://github.com/litestar-org/litestar/pull/3338
+* fix: pydantic v2 import tests for pydantic v1.10.15 by @peterschutt in https://github.com/litestar-org/litestar/pull/3347
+* fix: Remove use of asserts for control flow. by @peterschutt in https://github.com/litestar-org/litestar/pull/3359
+* fix: schema for generic wrapped return types with DTO by @peterschutt in https://github.com/litestar-org/litestar/pull/3371
+* fix: Ambiguous default warning for no signature default by @peterschutt in https://github.com/litestar-org/litestar/pull/3378
+* fix: Path param consumed by dependency treated as unconsumed by @peterschutt in https://github.com/litestar-org/litestar/pull/3380
+* fix: "name" and "in" should not be included in openapi headers by @peterschutt in https://github.com/litestar-org/litestar/pull/3417
+* fix: top-level import of optional package by @peterschutt in https://github.com/litestar-org/litestar/pull/3418
+* fix: regular handler under mounted app by @peterschutt in https://github.com/litestar-org/litestar/pull/3430
+* fix: logging to file with structlog by @peterschutt in https://github.com/litestar-org/litestar/pull/3425
+* fix: clear session cookie if new session gt CHUNK_SIZE by @peterschutt in https://github.com/litestar-org/litestar/pull/3446
+* fix: flash messages were not displayed on Redirect by @euri10 in https://github.com/litestar-org/litestar/pull/3420
+* fix: Validation of optional sequence in multipart data with one value  by @provinzkraut in https://github.com/litestar-org/litestar/pull/3408
+* fix(ci): adjust issue template to not allow blank issues by @JacobCoffee in https://github.com/litestar-org/litestar/pull/3452
+* fix(pydantic v1): field not optional if default value by @peterschutt in https://github.com/litestar-org/litestar/pull/3476
+* fix: prevent starting multiple responses by @peterschutt in https://github.com/litestar-org/litestar/pull/3479
+* fix: logging middleware with multi-body response by @peterschutt in https://github.com/litestar-org/litestar/pull/3478
+* fix(dto): handle dto type nested in mapping by @peterschutt in https://github.com/litestar-org/litestar/pull/3486
+* fix: examples omitted in schema produced by dto by @peterschutt in https://github.com/litestar-org/litestar/pull/3510
+* fix(validation): fix: handling validation of subscribed generics by @provinzkraut in https://github.com/litestar-org/litestar/pull/3519
+* fix: exclude static file from schema by @tibor-reiss in https://github.com/litestar-org/litestar/pull/3509
+* fix: use re.match instead of re.search for mounted app path (#3501) by @0xE111 in https://github.com/litestar-org/litestar/pull/3511
+* fix(logging): do not log exceptions twice, deprecate `traceback_line_limit` and fix: `pretty_print_tty` by @jderrien in https://github.com/litestar-org/litestar/pull/3507
+* fix(OpenAPI): YAML schema dump by @floxay in https://github.com/litestar-org/litestar/pull/3537
+
+New features 🚀
+
+* Add async `websocket_connect` to `AsyncTestClient` by @kedod in https://github.com/litestar-org/litestar/pull/3328
+* Add `SecretString` and `SecretBytes` datastructures by @peterschutt in https://github.com/litestar-org/litestar/pull/3322
+
+
+### Other changes
+
+* Deprecate subclassing route handler decorators by @provinzkraut in https://github.com/litestar-org/litestar/pull/3439
+* Deprecate CORSMiddleware from public interface. by @peterschutt in https://github.com/litestar-org/litestar/pull/3404
+
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.8.3...v2.9.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.8.3 (2024-05-06)</h2>
+      <pre>:warning: **Important** :warning: 
+
+This release contains a patch for a [vulnerability](https://github.com/litestar-org/litestar/security/advisories/GHSA-83pv-qr33-2vcf) that would allow path traversal in the static file serving functionality of Litestar. It is highly recommended to update your minor version to this patch release. 
+
+You can find more background information in the related discussion #3473 .
+
+## Sponsors 🌟
+Thanks to these incredible business sponsors: 
+
+[Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team)
+
+A huge 'Thank you!' to all other sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+## New contributors 🎉
+* @maintain0404 made their first contribution in https://github.com/litestar-org/litestar/pull/3405
+
+### Bugfixes 🐛
+* Fix improper Limitation of a Pathname to a Restricted Directory by @peterschutt in https://github.com/litestar-org/litestar/security/advisories/GHSA-83pv-qr33-2vcf
+* Remove use of asserts for control flow in Pydantic Plugin by @peterschutt in https://github.com/litestar-org/litestar/pull/3359
+* Fix OpenAPI schema for generic wrapped return types with DTO by @peterschutt in https://github.com/litestar-org/litestar/pull/3371
+* Fix ambiguous default warning for no signature default by @peterschutt in https://github.com/litestar-org/litestar/pull/3378
+* Fix path param consumed by dependency treated as unconsumed by @peterschutt in https://github.com/litestar-org/litestar/pull/3380
+* Fix remove `name` and `in` properties included in OpenAPI headers by @peterschutt in https://github.com/litestar-org/litestar/pull/3417
+* Fix unconditional minijinja import in flash-messages plugin by @peterschutt in https://github.com/litestar-org/litestar/pull/3418
+* Fix routing issues with regular handler under mounted app by @peterschutt in https://github.com/litestar-org/litestar/pull/3430
+* Fix file logging with structlog by @peterschutt in https://github.com/litestar-org/litestar/pull/3425
+* Fix clearing large session cookies by @peterschutt in https://github.com/litestar-org/litestar/pull/3446
+* Fix flash messages were not displayed on redirects by @euri10 in https://github.com/litestar-org/litestar/pull/3420
+* Fix alidation of optional sequence in multipart data with one value by @provinzkraut in https://github.com/litestar-org/litestar/pull/3408
+
+### Documentation
+* Update ``usage/static_files`` by @JacobCoffee in https://github.com/litestar-org/litestar/pull/3358
+* Fix broken url; swagger ui by @wer153 in https://github.com/litestar-org/litestar/pull/3368
+* Correct a word by @wer153 in https://github.com/litestar-org/litestar/pull/3412
+* Fix WebSockets documentation grammar by @marcuslimdw in https://github.com/litestar-org/litestar/pull/3413
+* Fix intersphinx mapping for advanced-alchemy by @provinzkraut in https://github.com/litestar-org/litestar/pull/3438
+* Update ``usage/caching`` by @JacobCoffee in https://github.com/litestar-org/litestar/pull/3345
+* Update ``docs/usage/security/*`` by @JacobCoffee in https://github.com/litestar-org/litestar/pull/3344
+* Improve sse by @euri10 in https://github.com/litestar-org/litestar/pull/3454
+
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.8.2...v2.8.3
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.7.2 (2024-05-06)</h2>
+      <pre>:warning: **Important** :warning: 
+
+This release contains a patch for a [vulnerability](https://github.com/litestar-org/litestar/security/advisories/GHSA-83pv-qr33-2vcf) that would allow path traversal in the static file serving functionality of Litestar. It is highly recommended to update your minor version to this patch release. 
+
+You can find more background information in the related discussion #3473 .
+
+## Sponsors 🌟
+Thanks to these incredible business sponsors: 
+
+[Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team)
+
+A huge 'Thank you!' to all other sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+* Fix improper Limitation of a Pathname to a Restricted Directory by @peterschutt in https://github.com/litestar-org/litestar/security/advisories/GHSA-83pv-qr33-2vcf</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.4 (2024-05-06)</h2>
+      <pre>:warning: **Important** :warning: 
+
+This release contains a patch for a [vulnerability](https://github.com/litestar-org/litestar/security/advisories/GHSA-83pv-qr33-2vcf) that would allow path traversal in the static file serving functionality of Litestar. It is highly recommended to update your minor version to this patch release. 
+
+You can find more background information in the related discussion #3473 .
+
+## Sponsors 🌟
+Thanks to these incredible business sponsors: 
+
+[Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team)
+
+A huge 'Thank you!' to all other sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+* Fix improper Limitation of a Pathname to a Restricted Directory by @peterschutt in https://github.com/litestar-org/litestar/security/advisories/GHSA-83pv-qr33-2vcf</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.51.16 (2024-05-06)</h2>
+      <pre>:warning: **Important** :warning: 
+
+This release contains a patch for a [vulnerability](https://github.com/litestar-org/litestar/security/advisories/GHSA-83pv-qr33-2vcf) that would allow path traversal in the static file serving functionality of Litestar. It is highly recommended to update your minor version to this patch release. 
+
+You can find more background information in the related discussion #3473 .
+
+## Sponsors 🌟
+Thanks to these incredible business sponsors: 
+
+[Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team)
+
+A huge 'Thank you!' to all other sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+* Fix improper Limitation of a Pathname to a Restricted Directory by @peterschutt in https://github.com/litestar-org/litestar/security/advisories/GHSA-83pv-qr33-2vcf</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.51.15 (2024-05-05)</h2>
+      <pre>**Maintenance release**
+
+* Update dependencies and release pipeline by @provinzkraut in https://github.com/litestar-org/litestar/pull/3469
+
+
+**Full Changelog**: https://github.com/litestar-org/litestar/compare/v1.51.14...v1.51.15</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.8.2 (2024-04-09)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team)
+
+- A huge 'Thank you!' to all sponsors, subscribers, and contributors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+### Bugfixes 🐛
+* fix: pydantic import differentiation for pydantic v1.10.15 by @peterschutt in https://github.com/litestar-org/litestar/pull/3347
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.8.1...v2.8.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.8.1 (2024-04-08)</h2>
+      <pre>## Sponsors 🌟
+
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team)
+
+- A huge 'Thank you!' to all sponsors, subscribers, and contributors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## What's changed
+
+### Bugfixes 🐛
+* fix: asgi lifespan msg after lifespan context exception by @peterschutt in https://github.com/litestar-org/litestar/pull/3315
+* fix: bug when pydantic==1.10 is installed by @peterschutt in https://github.com/litestar-org/litestar/pull/3335
+* fix: OpenAPI router and controller on same app. by @peterschutt in https://github.com/litestar-org/litestar/pull/3338
+
+<!-- Review these: Not all of them should go into the release notes -->
+### Other changes
+* docs: add citation by @JacobCoffee in https://github.com/litestar-org/litestar/pull/3329
+* refactor(routing): Move kwargs model creation to handler by @provinzkraut in https://github.com/litestar-org/litestar/pull/3331
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.8.0...v2.8.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.8.0 (2024-04-05)</h2>
+      <pre>## Sponsors 🌟
+Thanks to these incredible business sponsors: 
+- [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team)
+
+Thanks to these incredible personal sponsors:
+- [Polar.sh](https://polar.sh/litestar-org/subscriptions): @thomastu, @skewty, @iRod3s
+- [GitHub Sponsors](https://github.com/sponsors/litestar-org/): (@stok-team), @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev, 
+- [OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+- A huge 'Thank you!' to all sponsors, subscribers, and contributors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+## What's changed
+
+### New contributors 🎉
+* @carlsmedstad made their first contribution in https://github.com/litestar-org/litestar/pull/3291
+* @haryle made their first contribution in https://github.com/litestar-org/litestar/pull/3242
+* @winbornejw made their first contribution in https://github.com/litestar-org/litestar/pull/3136
+
+### Bugfixes 🐛
+* fix(cli): remove duplicate rich-click config options by @JacobCoffee in https://github.com/litestar-org/litestar/pull/3274
+* fix: pydantic `json_schema_extra` examples. by @peterschutt in https://github.com/litestar-org/litestar/pull/3281
+* fix(openapi): set default on schema from `FieldDefinition` by @guacs in https://github.com/litestar-org/litestar/pull/3280
+* fix: Custom types cause serialisation error in exception response with non-JSON media-type by @provinzkraut in https://github.com/litestar-org/litestar/pull/3284
+* fix(OpenAPI): Ensure default values are always represented in schema for dataclasses and `msgspec.Struct`s by @provinzkraut in https://github.com/litestar-org/litestar/pull/3285
+* fix(DTO): Pydantic v2 error handling/serialization when for non-pydantic exceptions by @provinzkraut in https://github.com/litestar-org/litestar/pull/3286
+* fix(OpenAPI): Fix OpenAPI schema generation for paths with path parameters of different types on the same path by @provinzkraut in https://github.com/litestar-org/litestar/pull/3293
+* fix(OpenAPI): Document unconsumed path parameters by @provinzkraut in https://github.com/litestar-org/litestar/pull/3295
+* fix: Unique schema names for nested models (#3134) by @winbornejw in https://github.com/litestar-org/litestar/pull/3136
+
+### New features 🚀
+* feat: add [Scalar.com](https://scalar.com/) as an OpenAPI docs generator option
+* feat: allow for console output to be silenced by @cofin in https://github.com/litestar-org/litestar/pull/3180
+* feat: add flash plugin by @euri10 in https://github.com/litestar-org/litestar/pull/3145
+* feat: Use memoized `request_class` and `response_class` values by @kedod in https://github.com/litestar-org/litestar/pull/3205
+* feat(DTO): Enable codegen backend by default by @provinzkraut in https://github.com/litestar-org/litestar/pull/3215
+* feat: Added precedence of CLI parameters over envs by @kedod in https://github.com/litestar-org/litestar/pull/3190
+* feat: only print when terminal is `TTY` enabled by @cofin in https://github.com/litestar-org/litestar/pull/3219
+* feat: Support `schema_extra` in `Parameter` and `Body` by @tuukkamustonen in https://github.com/litestar-org/litestar/pull/3204
+* feat: add typevar expansion by @haryle in https://github.com/litestar-org/litestar/pull/3242
+* feat: Add LITESTAR_ prefix before WEB_CONCURRENCY env option by @kedod in https://github.com/litestar-org/litestar/pull/3227
+* feat: Warn about ambiguous default values in parameter specifications by @provinzkraut in https://github.com/litestar-org/litestar/pull/3283
+* feat: support declaring `DTOField` via `Annotated` by @peterschutt in https://github.com/litestar-org/litestar/pull/3289
+* feat: Add `TRACE` to HttpMethod enum by @provinzkraut in https://github.com/litestar-org/litestar/pull/3294
+* feat: Pydantic dto non instantiable types by @peterschutt in https://github.com/litestar-org/litestar/pull/3296
+* feat: Add `path` parameter to Litestar application class by @kedod in https://github.com/litestar-org/litestar/pull/3314
+
+### Other changes
+* docs(channels): Fix subscriber examples by @provinzkraut in https://github.com/litestar-org/litestar/pull/3287
+* docs: Expand the acronym for Data Transfer Object in `What's New in v2` by @cclauss in https://github.com/litestar-org/litestar/pull/3288
+* docs: Add examples for auth `exclude` configuration by @aranvir in https://github.com/litestar-org/litestar/pull/3246
+* refactor: Reduce module import time by @provinzkraut in https://github.com/litestar-org/litestar/pull/3282
+* refactor: remove CacheControlHeader dependency on AbstractDTO by @peterschutt in https://github.com/litestar-org/litestar/pull/3307
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.7.1...v2.8.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.7.1 (2024-03-27)</h2>
+      <pre>## Sponsors 🌟
+- Thanks to these incredible business sponsors: [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team)
+- A huge 'Thank you!' to all sponsors across [Polar.sh](https://polar.sh/litestar-org), [OpenCollective](https://opencollective.com/litestar) and [GitHub Sponsors](https://github.com/sponsors/litestar-org/)!
+
+## New contributors 🎉
+* @jderrien made their first contribution in https://github.com/litestar-org/litestar/pull/3185
+* @sherbang made their first contribution in https://github.com/litestar-org/litestar/pull/3258
+
+## What's changed
+
+### Bugfixes 🐛
+* fix: replace TestClient.__enter__ return type with Self by @cbscsm in https://github.com/litestar-org/litestar/pull/3194
+* fix: use the full path for fetching openapi.json by @guacs in https://github.com/litestar-org/litestar/pull/3196
+* fix: JSON schema `examples` were OpenAPI formatted by @tuukkamustonen in https://github.com/litestar-org/litestar/pull/3224
+* fix(logging): queue_listener handler for Python >= 3.12 by @jderrien in https://github.com/litestar-org/litestar/pull/3185
+* fix: extend openapi meta collected from domain models by @peterschutt in https://github.com/litestar-org/litestar/pull/3237
+* fix: kwarg ambiguity exc msg for path params by @peterschutt in https://github.com/litestar-org/litestar/pull/3261
+
+### Other changes
+* docs: fix included line range from example by @hugovk in https://github.com/litestar-org/litestar/pull/3208
+* docs: fix included line range from example by @hugovk in https://github.com/litestar-org/litestar/pull/3209
+* docs: add missing api docs for plugins by @JacobCoffee in https://github.com/litestar-org/litestar/pull/3169
+* docs: add missing `alembic` class references by @cofin in https://github.com/litestar-org/litestar/pull/3220
+* docs: Removed double `parsing` from the codegen backend docs by @kedod in https://github.com/litestar-org/litestar/pull/3216
+* docs: document guards behavior when placed at controller and app level by @guacs in https://github.com/litestar-org/litestar/pull/3230
+* docs: Add missing layered parameters by @kedod in https://github.com/litestar-org/litestar/pull/3245
+* docs: Update test_client fixture documentation by @sherbang in https://github.com/litestar-org/litestar/pull/3258
+* docs(csrf): Add usage example by @Alc-Alc in https://github.com/litestar-org/litestar/pull/3256
+* docs: build develop and v3 branch docs by @JacobCoffee in https://github.com/litestar-org/litestar/pull/3264
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.7.0...v2.7.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.7.0 (2024-03-10)</h2>
+      <pre>## Sponsors ❤️ 
+[GitHub Sponsors](https://github.com/sponsors/litestar-org/): [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev, @iRod3s
+[OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+## What's changed
+
+### Bugfixes
+* Fix missing cors headers in response by @crisog in https://github.com/litestar-org/litestar/pull/3179
+* Fix sending empty data in sse in js client  by @euri10 in https://github.com/litestar-org/litestar/pull/3176
+
+### New features
+* Support `ResponseSpec(..., examples=[...])` by @tuukkamustonen in https://github.com/litestar-org/litestar/pull/3100
+* Support "+json"-suffixed response media types by @bunny-therapist in https://github.com/litestar-org/litestar/pull/3096
+* Allow re-usable `Router` instances by @tuukkamustonen in https://github.com/litestar-org/litestar/pull/3103
+* Only display path in `ValidationException`s by @floxay in https://github.com/litestar-org/litestar/pull/3064
+* Expose request_class to other layers by @kedod in https://github.com/litestar-org/litestar/pull/3125
+* Expose websocket_class by @kedod in https://github.com/litestar-org/litestar/pull/3152
+* Add `type_decoders` Router and route handlers by @kedod in https://github.com/litestar-org/litestar/pull/3153
+* Pass `type_decoders` in WebsocketListenerRouteHandler by @kedod in https://github.com/litestar-org/litestar/pull/3162
+* 3116 enhancement session middleware by @aranvir in https://github.com/litestar-org/litestar/pull/3127
+* Make random seed for openapi example generation configurable by @guacs in https://github.com/litestar-org/litestar/pull/3166
+* Generate openapi components schemas in a deterministic order by @guacs in https://github.com/litestar-org/litestar/pull/3172
+
+
+## New contributors
+* @crisog made their first contribution in https://github.com/litestar-org/litestar/pull/3179
+* @error418 made their first contribution in https://github.com/litestar-org/litestar/pull/3167
+* @bunny-therapist made their first contribution in https://github.com/litestar-org/litestar/pull/3096
+* @tuukkamustonen made their first contribution in https://github.com/litestar-org/litestar/pull/3100
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.6.3...v2.7.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.3 (2024-03-04)</h2>
+      <pre>## What's changed
+
+### Bugfixes
+* fix(pydantic): Pydantic V1 schema generation for `PrivateAttr` in `GenericModel` by @provinzkraut in https://github.com/litestar-org/litestar/pull/3161
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.6.2...v2.6.3
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.2 (2024-03-02)</h2>
+      <pre>## Sponsors ❤️ 
+[GitHub Sponsors](https://github.com/sponsors/litestar-org/): [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev, @iRod3s
+[OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+## New contributors 🎉 
+* @aranvir made their first contribution in https://github.com/litestar-org/litestar/pull/3114
+* @benluo made their first contribution in https://github.com/litestar-org/litestar/pull/3138
+* @hugovk made their first contribution in https://github.com/litestar-org/litestar/pull/3141
+
+## What's changed
+
+### Bugfixes
+
+* Fix msgspec meta constraints not being included in DTO transfer model by @provinzkraut in https://github.com/litestar-org/litestar/pull/3113
+* Fix missing cache control header for static files by @guacs in https://github.com/litestar-org/litestar/pull/3131
+* Fix OpenAPI schema generation for Pydantic v2 constrained secrets by @provinzkraut in https://github.com/litestar-org/litestar/pull/3149
+* Fix OpenAPI schema generation for Pydantic private attributes by @provinzkraut in https://github.com/litestar-org/litestar/pull/3151
+* Fix missing OpenAPI description for UUID path parameters by @Alc-Alc in https://github.com/litestar-org/litestar/pull/3118
+* Fix `RedisStore` client created with `with_client` unclosed by @euri10 in https://github.com/litestar-org/litestar/pull/3111
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.6.1...v2.6.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.1 (2024-02-14)</h2>
+      <pre>## Sponsors ❤️ 
+[GitHub Sponsors](https://github.com/sponsors/litestar-org/): [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev, @iRod3s
+[OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+## New contributors 🎉 
+* @tuukkamustonen made their first contribution in https://github.com/litestar-org/litestar/pull/3098
+* @betaprior made their first contribution in https://github.com/litestar-org/litestar/pull/3095
+
+## What's changed
+
+### Bugfixes
+
+* SQLAlchemy: Use `IntegrityError` instead of deprecated `ConflictError` by @cofin in https://github.com/litestar-org/litestar/pull/3094
+* Sessions: Fix cookie naming for short cookies by @betaprior in https://github.com/litestar-org/litestar/pull/3095
+* Static files: Fix Path resolution for windows by @provinzkraut in https://github.com/litestar-org/litestar/pull/3102
+* Logging: Fix middleware with structlog causes application to return HTTP 500 when request body is malformed by @provinzkraut in https://github.com/litestar-org/litestar/pull/3109
+* OpenAPI: Generate correct response schema for `ResponseSpec(None)` (#3069) by @tuukkamustonen in https://github.com/litestar-org/litestar/pull/3098
+* CLI: `rich_click.cli.patch` before importing `click` by @guacs in https://github.com/litestar-org/litestar/pull/3089
+* Fix exception handlers extracting details from non-litestar exceptions by @provinzkraut in https://github.com/litestar-org/litestar/pull/3106
+* Replace usage of deprecated `static_files` property by @cbscsm in https://github.com/litestar-org/litestar/pull/3087
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.6.0...v2.6.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.6.0 (2024-02-06)</h2>
+      <pre># ❤️ Sponsors ❤️
+[GitHub Sponsors](https://github.com/sponsors/litestar-org/): [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev, @iRod3s
+[OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+## What's changed
+
+### New features 🚀 
+* Allow root logger configuration to be disabled by @cofin in https://github.com/litestar-org/litestar/pull/2969
+* Implement static file serving with regular route handlers by @provinzkraut in https://github.com/litestar-org/litestar/pull/2960
+* Exclude Piccolo ORM columns with `secret=True` from PydanticDTO output  by @patrickneise in https://github.com/litestar-org/litestar/pull/3030
+* Allow plugins to be found by dotted path string by @cofin in https://github.com/litestar-org/litestar/pull/3027
+* Support externally typed classes as dependency providers by @provinzkraut in https://github.com/litestar-org/litestar/pull/3066
+* Add structlog plugin by @cofin in https://github.com/litestar-org/litestar/pull/2943
+* Add `reload-include` and `reload-exclude` to CLI `run` command by @FergusMok in https://github.com/litestar-org/litestar/pull/2973
+* Align layered type annotations by @gsakkis in https://github.com/litestar-org/litestar/pull/2913
+
+
+**Full Changelog**
+
+https://github.com/litestar-org/litestar/compare/v2.5.5...v2.6.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.5.5 (2024-02-04)</h2>
+      <pre>## What's changed
+
+### Bugfixes
+* fix: scope `state` key handling by @provinzkraut in https://github.com/litestar-org/litestar/pull/3070
+
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.5.4...v2.5.5
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.5.4 (2024-01-31)</h2>
+      <pre># ❤️ Sponsors ❤️
+[GitHub Sponsors](https://github.com/sponsors/litestar-org/): [Scalar](https://scalar.com/) (@scalar), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), @benjamin-kirkbride, @crisog, @geeshta, @cbscsm, @ruslan-korneev
+[OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+## What's changed
+
+### Bugfixes
+* fix: Handle ``KeyError`` when ``root_path`` is not present in ASGI scope by @Alc-Alc in https://github.com/litestar-org/litestar/pull/3051
+* fix: ServerSentEvent typing error by @euri10 in https://github.com/litestar-org/litestar/pull/3048
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.5.3...v2.5.4
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.5.3 (2024-01-29)</h2>
+      <pre># ❤️ Sponsors ❤️
+[GitHub Sponsors](https://github.com/sponsors/litestar-org/): [Scalar](https://scalar.com/), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), @benjamin-kirkbride, @crisog, @geeshta, @cbscsm
+[OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+## What's changed
+
+### Bugfixes
+* Handle diverging ASGI `root_path` behaviour by @provinzkraut in https://github.com/litestar-org/litestar/pull/3039
+
+
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.5.2...v2.5.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.5.2 (2024-01-27)</h2>
+      <pre># ❤️ Sponsors ❤️
+[GitHub Sponsors](https://github.com/sponsors/litestar-org/): [Scalar](https://scalar.com/), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), @benjamin-kirkbride, @crisog, @geeshta, @cbscsm
+[OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+## What's changed
+
+### Bugfixes
+
+* Fix #2549: Ensure `MultiDict` and `ImmutableMultiDict` copy methods return the instance's type by @provinzkraut in https://github.com/litestar-org/litestar/pull/3009
+* Fix #3029: Add `exceptiongroup`  as a dependency for Python < 3.11 by @JeanArhancet in https://github.com/litestar-org/litestar/pull/3035
+
+### Other changes
+
+* Remove duplicated type hints by @rosstitmarsh in https://github.com/litestar-org/litestar/pull/3002
+* Don't define multipart extractor inline by @provinzkraut in https://github.com/litestar-org/litestar/pull/3005
+* Remove redundant `None` check by @provinzkraut in https://github.com/litestar-org/litestar/pull/3006
+* Fix `create_async_test_client` docstring by @cbscsm in https://github.com/litestar-org/litestar/pull/3015
+
+### Documentation
+* Fix incorrect argument name in OpenApi ResponseSpec example by @korneevm in https://github.com/litestar-org/litestar/pull/3017
+* Fix reference and indentation for `AbstractAuthenticationMiddleware` usage docs by @mj0nez in https://github.com/litestar-org/litestar/pull/2986
+
+## New contributors
+* @korneevm made their first contribution in https://github.com/litestar-org/litestar/pull/3017
+* @rosstitmarsh made their first contribution in https://github.com/litestar-org/litestar/pull/3002
+* @JeanArhancet made their first contribution in https://github.com/litestar-org/litestar/pull/3035
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.5.1...v2.5.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.5.1 (2024-01-18)</h2>
+      <pre># ❤️ Sponsors ❤️
+[GitHub Sponsors](https://github.com/sponsors/litestar-org/): [Scalar](https://scalar.com/), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry), [Stok](https://www.stok.kr/) (@stok-team), @benjamin-kirkbride, @crisog, @geeshta, @cbscsm
+[OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+## What's changed
+
+## 🎉 New contributors 🎉 
+* @horo-fox made their first contribution in https://github.com/litestar-org/litestar/pull/2921
+* @jrycw made their first contribution in https://github.com/litestar-org/litestar/pull/2959
+
+### Bugfixes 🐛 
+
+* Fix OpenAPI schema generation for Union of multiple `msgspec.Structs` and `None` by @provinzkraut in https://github.com/litestar-org/litestar/pull/2982
+* Fix misleading error message for missing dependencies provide by a package extra @horo-fox in https://github.com/litestar-org/litestar/pull/2921
+* Fix OpenAPI file upload schema by @guacs in https://github.com/litestar-org/litestar/pull/2745
+
+
+## Docs 📚 
+* docs: fix code block in docstring by @wer153 in https://github.com/litestar-org/litestar/pull/2965
+* docs: fix typo for dto-tutorial/01-simple-dto-exclude by @jrycw in https://github.com/litestar-org/litestar/pull/2959
+
+**Full Changelog**
+https://github.com/litestar-org/litestar/compare/v2.5.0...v2.5.1
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.5.0 (2024-01-06)</h2>
+      <pre># ❤️ Sponsors ❤️
+[GitHub Sponsors](https://github.com/sponsors/litestar-org/): [Scalar](https://scalar.com/), [Telemetry Sports](https://telemetrysports.com/) (via @chris-telemetry) @benjamin-kirkbride @crisog @geeshta
+[OpenCollective](https://opencollective.com/litestar): Christian Y, Anonymous
+
+## What's Changed
+
+### Bugfixes
+
+* Fix #2867: Fix serialization of custom types in exception responses by @provinzkraut in https://github.com/litestar-org/litestar/pull/2941
+* Fix #2877: SSE reverts to default `event_type` after 1st message sentby @euri10 in https://github.com/litestar-org/litestar/pull/2888
+* Fix #2939: Correctly handle single file upload validation when multiple files are specified by @guacs in https://github.com/litestar-org/litestar/pull/2950
+* Fix trailing messages after unsubscribes in channels by @provinzkraut in https://github.com/litestar-org/litestar/pull/2894
+
+### New features
+
+* Channels: Add Postgres backends by @provinzkraut in https://github.com/litestar-org/litestar/pull/2803
+* CLI: Add `--schema` and `--exclude` option to `litestar route` command by @andrewdoh in https://github.com/litestar-org/litestar/pull/2886
+
+### Other changes
+
+* Improve performance of threaded synchronous calls by @provinzkraut in https://github.com/litestar-org/litestar/pull/2937
+
+
+## New Contributors
+* @jseop-lim made their first contribution in https://github.com/litestar-org/litestar/pull/2935
+* @FergusMok made their first contribution in https://github.com/litestar-org/litestar/pull/2945
+* @manusinghal19 made their first contribution in https://github.com/litestar-org/litestar/pull/2948
+
+**Full Changelog**: https://github.com/litestar-org/litestar/compare/v2.4.5...v2.5.0</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

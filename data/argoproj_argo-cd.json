@@ -135,7 +135,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 187233728,
-        "download_count": 13045,
+        "download_count": 13132,
         "created_at": "2025-04-02T20:12:18Z",
         "updated_at": "2025-04-02T20:12:24Z",
         "browser_download_url": "https://github.com/argoproj/argo-cd/releases/download/v2.14.9/argocd-linux-amd64"
@@ -205,7 +205,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 189198848,
-        "download_count": 228,
+        "download_count": 229,
         "created_at": "2025-04-02T20:12:24Z",
         "updated_at": "2025-04-02T20:12:30Z",
         "browser_download_url": "https://github.com/argoproj/argo-cd/releases/download/v2.14.9/argocd-windows-amd64.exe"
@@ -931,7 +931,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 187233385,
-        "download_count": 85839,
+        "download_count": 85844,
         "created_at": "2025-03-24T21:35:51Z",
         "updated_at": "2025-03-24T21:35:55Z",
         "browser_download_url": "https://github.com/argoproj/argo-cd/releases/download/v2.14.8/argocd-linux-amd64"
@@ -1211,7 +1211,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 16414,
-        "download_count": 660,
+        "download_count": 662,
         "created_at": "2025-03-24T21:36:32Z",
         "updated_at": "2025-03-24T21:36:32Z",
         "browser_download_url": "https://github.com/argoproj/argo-cd/releases/download/v2.14.8/argocd-cli.intoto.jsonl"
@@ -3287,7 +3287,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 187173780,
-        "download_count": 23971,
+        "download_count": 23980,
         "created_at": "2025-03-18T14:17:08Z",
         "updated_at": "2025-03-18T14:17:13Z",
         "browser_download_url": "https://github.com/argoproj/argo-cd/releases/download/v2.14.6/argocd-linux-amd64"
@@ -5470,7 +5470,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 187112571,
-        "download_count": 214774,
+        "download_count": 214775,
         "created_at": "2025-02-06T00:23:23Z",
         "updated_at": "2025-02-06T00:23:26Z",
         "browser_download_url": "https://github.com/argoproj/argo-cd/releases/download/v2.14.2/argocd-linux-amd64"
@@ -7972,7 +7972,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 169736677,
-        "download_count": 1503,
+        "download_count": 1504,
         "created_at": "2025-01-29T21:29:11Z",
         "updated_at": "2025-01-29T21:29:15Z",
         "browser_download_url": "https://github.com/argoproj/argo-cd/releases/download/v2.12.10/argocd-linux-amd64"
@@ -12539,7 +12539,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 187100598,
-        "download_count": 278431,
+        "download_count": 278434,
         "created_at": "2024-11-20T17:11:14Z",
         "updated_at": "2024-11-20T17:11:18Z",
         "browser_download_url": "https://github.com/argoproj/argo-cd/releases/download/v2.13.1/argocd-linux-amd64"

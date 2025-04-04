@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for netlify/netlify-cms"/>
+  <title>netlify/netlify-cms Release Notes</title>
+</head>
+<body>
+  <h1>🚀 netlify/netlify-cms - Release Notes</h1>
+  
+    <section>
+      <h2>decap-cms@3.6.2 (2025-02-13)</h2>
+      <pre>:scroll: [Changelog](https://github.com/decaporg/decap-cms/blob/decap-cms@3.6.2/CHANGELOG.md)
+
+## What's Changed
+* chore: update to upload-artifact@v4 by @demshy in https://github.com/decaporg/decap-cms/pull/7388
+* feat(nested collections) legacy mode by @demshy in https://github.com/decaporg/decap-cms/pull/7387
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.6.1...decap-cms@3.6.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.6.1 (2025-01-30)</h2>
+      <pre>:scroll: [Changelog](https://github.com/decaporg/decap-cms/blob/decap-cms@3.6.1/CHANGELOG.md)
+
+## What's Changed
+* fix(ObjectControl): hotfix nested object validation by @demshy in https://github.com/decaporg/decap-cms/pull/7385
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.6.0...decap-cms@3.6.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.6.0 (2025-01-29)</h2>
+      <pre>## What's Changed
+* feat(nested collections): allow non-index files by @fgnass in https://github.com/decaporg/decap-cms/pull/7359
+* fix(markdown): convert inline CSS from Google Docs to Markdown by @domcleal in https://github.com/decaporg/decap-cms/pull/7351
+* feat: visual editing (click-to-edit) by @fgnass in https://github.com/decaporg/decap-cms/pull/7374
+* fix(widgetsFor): return widgets for variable type lists by @domcleal in https://github.com/decaporg/decap-cms/pull/7296
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.5.0...decap-cms@3.6.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.5.0 (2025-01-15)</h2>
+      <pre>## What's Changed
+* fix(object-widget): highlight nested validation errors by @domcleal in https://github.com/decaporg/decap-cms/pull/7330
+* feat(locale/cs): improve the Czech translations, add new strings from `en` by @cshaa in https://github.com/decaporg/decap-cms/pull/7326
+* feat: add mk (Macedonian) locale by @shizik in https://github.com/decaporg/decap-cms/pull/7346
+* fix(build): Fix ESM output (#7357) by @fgnass in https://github.com/decaporg/decap-cms/pull/7358
+
+## New Contributors
+* @cshaa made their first contribution in https://github.com/decaporg/decap-cms/pull/7326
+* @shizik made their first contribution in https://github.com/decaporg/decap-cms/pull/7346
+* @fgnass made their first contribution in https://github.com/decaporg/decap-cms/pull/7358
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.4.0...decap-cms@3.5.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.4.0 (2024-11-12)</h2>
+      <pre>## What's Changed
+* missing npm script test:all by @hip3r in https://github.com/decaporg/decap-cms/pull/7317
+* fix: summary string transformations format (#7221) by @hip3r in https://github.com/decaporg/decap-cms/pull/7313
+* fix: clear field error in Editor after the field value is changed by @olegfedak in https://github.com/decaporg/decap-cms/pull/7216
+* fix(markdown): copying html into markdown by @hip3r in https://github.com/decaporg/decap-cms/pull/7290
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.3.3...decap-cms@3.4.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.3.3 (2024-08-30)</h2>
+      <pre>:scroll: [Changelog](https://github.com/decaporg/decap-cms/blob/decap-cms@3.3.3/CHANGELOG.md)
+
+## What's Changed
+* fix: trigger change if default is {{now}} by @martinjagodic in https://github.com/decaporg/decap-cms/pull/7272
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.3.2...decap-cms@3.3.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.3.0 (2024-08-12)</h2>
+      <pre>:scroll: [Changelog](https://github.com/decaporg/decap-cms/blob/decap-cms@3.3.0/CHANGELOG.md)
+
+## What's Changed
+* Datetime widget fixes and improvements by @martinjagodic in https://github.com/decaporg/decap-cms/pull/7261
+* don't display the current date by default or when the field is empty
+* add `default: '{{now}}'` option to enable the current behavior of displaying the current time (using the specified format)
+* add UTC indicator when `picker_utc: true`
+* improve how `Z` in format and `picker_utc: true` work together
+* reorder format importance: if `format` is set, `date_format` and `time_format` (if strings) are ignored 
+
+**BREAKING CHANGE**: The datetime field is empty by default, from now on, but it was prefilled with the current date until now. Use `default: '{{now}}'` to prefill the field with the current date.
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.2.1...decap-cms@3.3.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.2.1 (2024-08-07)</h2>
+      <pre>:scroll: [Changelog](https://github.com/decaporg/decap-cms/blob/decap-cms@3.2.1/CHANGELOG.md)
+
+## What's Changed
+* Markdown stability patch by @demshy in https://github.com/decaporg/decap-cms/pull/7238
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.2.0...decap-cms@3.2.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.2.0 (2024-08-07)</h2>
+      <pre>## What's Changed
+* Pass avatar_url un git-gateway backend by @loteoo in https://github.com/decaporg/decap-cms/pull/7247
+* fix: update ukrainian lang by @olegfedak in https://github.com/decaporg/decap-cms/pull/7252
+* fix(select-widget): select widget not able to select number value `0` by @imangd in https://github.com/decaporg/decap-cms/pull/7254
+* fix: fetch GitHub PR author name, fixes #7232 by @domcleal in https://github.com/decaporg/decap-cms/pull/7253
+* fix: Remove typo from error message by @ryangittings in https://github.com/decaporg/decap-cms/pull/7249
+* Fix login with Gitlab (change API `Authorization` header "token" → "Bearer") by @floscher in https://github.com/decaporg/decap-cms/pull/7242
+* fix(backend): allow a custom API root for backend by @JbIPS in https://github.com/decaporg/decap-cms/pull/7214
+* fix(i18n): allow to store the new entry in the draft after a pre save by @jmfiaschi in https://github.com/decaporg/decap-cms/pull/7227
+* fix: improve field error position by @martinjagodic in https://github.com/decaporg/decap-cms/pull/7260
+* fix(i18n): improve Thai locale by @weeix in https://github.com/decaporg/decap-cms/pull/7248
+
+## New Contributors
+* @loteoo made their first contribution in https://github.com/decaporg/decap-cms/pull/7247
+* @imangd made their first contribution in https://github.com/decaporg/decap-cms/pull/7254
+* @domcleal made their first contribution in https://github.com/decaporg/decap-cms/pull/7253
+* @ryangittings made their first contribution in https://github.com/decaporg/decap-cms/pull/7249
+* @floscher made their first contribution in https://github.com/decaporg/decap-cms/pull/7242
+* @JbIPS made their first contribution in https://github.com/decaporg/decap-cms/pull/7214
+* @jmfiaschi made their first contribution in https://github.com/decaporg/decap-cms/pull/7227
+* @weeix made their first contribution in https://github.com/decaporg/decap-cms/pull/7248
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.11...decap-cms@3.2.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.11 (2024-06-27)</h2>
+      <pre>## What's Changed
+* chore(deps): bump ejs from 3.1.9 to 3.1.10 by @dependabot in https://github.com/decaporg/decap-cms/pull/7196
+* chore(deps-dev): bump postcss from 8.4.31 to 8.4.32 by @dependabot in https://github.com/decaporg/decap-cms/pull/7182
+* chore: update readme by @woldtwerk in https://github.com/decaporg/decap-cms/pull/7187
+* chore(deps-dev): bump ws from 7.5.9 to 7.5.10 by @dependabot in https://github.com/decaporg/decap-cms/pull/7236
+* fix: display custom logo when using a proxy server by @MichalRsa in https://github.com/decaporg/decap-cms/pull/7235
+* fix: change AppHeaderButton style fixing #7208 by @camdenvaughan in https://github.com/decaporg/decap-cms/pull/7209
+* fix(map-widget): ensure map renders correctly when expanding initially collapsed sections (#6541) by @afieif in https://github.com/decaporg/decap-cms/pull/7229
+* fix: change EditorToolbar position style by @camdenvaughan in https://github.com/decaporg/decap-cms/pull/7198
+
+## New Contributors
+* @woldtwerk made their first contribution in https://github.com/decaporg/decap-cms/pull/7187
+* @MichalRsa made their first contribution in https://github.com/decaporg/decap-cms/pull/7235
+* @camdenvaughan made their first contribution in https://github.com/decaporg/decap-cms/pull/7209
+* @afieif made their first contribution in https://github.com/decaporg/decap-cms/pull/7229
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.10...decap-cms@3.1.11</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.10 (2024-04-16)</h2>
+      <pre>## What's Changed
+* feat: nested fields and integer values for filter relation widget by @JimmyOei in https://github.com/decaporg/decap-cms/pull/7177
+* fix: datetime parsing display value when format not provided by @demshy in https://github.com/decaporg/decap-cms/pull/7181
+* chore(deps-dev): bump axios from 0.27.2 to 1.6.8 by @dependabot in https://github.com/decaporg/decap-cms/pull/7174
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.9...decap-cms@3.1.10</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.9 (2024-04-11)</h2>
+      <pre>## What's Changed
+* fix: fix formatInputValue ignoring format by @demshy in https://github.com/decaporg/decap-cms/pull/7170
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.8...decap-cms@3.1.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.8 (2024-04-03)</h2>
+      <pre>## What's Changed
+* Fix: Set correct branch when it's not specified in the config by @bytrangle in https://github.com/decaporg/decap-cms/pull/5844
+* fix(datetime-widget): revert default date format to include timezone by @demshy in https://github.com/decaporg/decap-cms/pull/7165
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.7...decap-cms@3.1.8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.7 (2024-04-02)</h2>
+      <pre>## What's Changed
+* fix: handle single values in multi select relation widget by @demshy in https://github.com/decaporg/decap-cms/pull/7164
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.6...decap-cms@3.1.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.6 (2024-03-29)</h2>
+      <pre>## What's Changed
+* chore(deps): bump express from 4.18.2 to 4.19.2 by @dependabot in https://github.com/decaporg/decap-cms/pull/7163
+* refactor: datetime to support custom date and time formats by @martinjagodic in https://github.com/decaporg/decap-cms/pull/7091
+* Add <span> tag to (optional) suffix for customization by @leomp12 in https://github.com/decaporg/decap-cms/pull/7103
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.5...decap-cms@3.1.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.5 (2024-03-28)</h2>
+      <pre>## What's Changed
+* chore(deps-dev): bump webpack-dev-middleware from 5.3.3 to 5.3.4 by @dependabot in https://github.com/decaporg/decap-cms/pull/7159
+* feat: filtering for relation widget (#2405) by @JimmyOei in https://github.com/decaporg/decap-cms/pull/7161
+* Fix typings for EditorComponentField by @mathiasandresen in https://github.com/decaporg/decap-cms/pull/7160
+* Potential Fix for #7152 (Slate crashing) by @DavidWells in https://github.com/decaporg/decap-cms/pull/7153
+
+## New Contributors
+* @JimmyOei made their first contribution in https://github.com/decaporg/decap-cms/pull/7161
+* @mathiasandresen made their first contribution in https://github.com/decaporg/decap-cms/pull/7160
+* @DavidWells made their first contribution in https://github.com/decaporg/decap-cms/pull/7153
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.4...decap-cms@3.1.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.4 (2024-03-21)</h2>
+      <pre>## What's Changed
+* Specify Lock file version in `.npmrc` config by @coliff in https://github.com/decaporg/decap-cms/pull/7141
+* chore(deps): bump follow-redirects from 1.15.5 to 1.15.6 by @dependabot in https://github.com/decaporg/decap-cms/pull/7149
+* 1896 fetching other collections from preview by @cdennington in https://github.com/decaporg/decap-cms/pull/6523
+* Change branch from master to main by @demshy in https://github.com/decaporg/decap-cms/pull/7154
+
+## New Contributors
+* @cdennington made their first contribution in https://github.com/decaporg/decap-cms/pull/6523
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.3...decap-cms@3.1.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.3 (2024-03-08)</h2>
+      <pre>## What's Changed
+* publish mode allow empty string by @hip3r in https://github.com/decaporg/decap-cms/pull/7116
+* fix windows markdown issue by @hip3r in https://github.com/decaporg/decap-cms/pull/7126
+* chore(deps): bump ip from 2.0.0 to 2.0.1 by @dependabot in https://github.com/decaporg/decap-cms/pull/7114
+* Move if-s to job-level in CI by @szepeviktor in https://github.com/decaporg/decap-cms/pull/7033
+* fix: images not loading in editor (#7099) by @sproott in https://github.com/decaporg/decap-cms/pull/7111
+* show code widget content if initially hidden by @hip3r in https://github.com/decaporg/decap-cms/pull/7131
+* chore: fix types of component interface by @sscaff1 in https://github.com/decaporg/decap-cms/pull/7097
+* typo fix by @hip3r in https://github.com/decaporg/decap-cms/pull/7134
+* gitea-backend: fix config casing by @oliverpool in https://github.com/decaporg/decap-cms/pull/7112
+
+## New Contributors
+* @hip3r made their first contribution in https://github.com/decaporg/decap-cms/pull/7116
+* @sproott made their first contribution in https://github.com/decaporg/decap-cms/pull/7111
+* @sscaff1 made their first contribution in https://github.com/decaporg/decap-cms/pull/7097
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.2...decap-cms@3.1.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.2 (2024-03-08)</h2>
+      <pre>## What's Changed
+* Docs: make Add To Your Site into pages by @privatemaker in https://github.com/decaporg/decap-cms/pull/7064
+* refactor: remove website (move to seperate repository) by @martinjagodic in https://github.com/decaporg/decap-cms/pull/7087
+* style: add resizer vertial hover by @olegfedak in https://github.com/decaporg/decap-cms/pull/7081
+* chore(deps-dev): bump @adobe/css-tools from 4.3.1 to 4.3.3 by @dependabot in https://github.com/decaporg/decap-cms/pull/7073
+* chore(deps): bump browserify-sign from 4.2.1 to 4.2.2 by @dependabot in https://github.com/decaporg/decap-cms/pull/7074
+* fix: gitlab pkce auth error by @blackb1rd in https://github.com/decaporg/decap-cms/pull/7110
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.1...decap-cms@3.1.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.1 (2024-02-01)</h2>
+      <pre>:scroll: [Changelog](https://github.com/decaporg/decap-cms/blob/decap-cms@3.1.1/CHANGELOG.md)
+
+## What's Changed
+* Create Post “decap-3-1-0-beta-0” by @martinjagodic in https://github.com/decaporg/decap-cms/pull/6953
+* Update Docs: Intro “releases” by @afonsojramos in https://github.com/decaporg/decap-cms/pull/6955
+* chore(deps): bump browserify-sign from 4.2.1 to 4.2.2 by @dependabot in https://github.com/decaporg/decap-cms/pull/6957
+* Update Docs: Account “external-oauth-clients” by @njfamirm in https://github.com/decaporg/decap-cms/pull/6944
+* feat: add GTM by @martinjagodic in https://github.com/decaporg/decap-cms/pull/6966
+* chore(deps-dev): bump axios from 0.26.1 to 1.6.0 by @dependabot in https://github.com/decaporg/decap-cms/pull/6971
+* fix: used merge-upstream to sync fork & upstream by @asheerrizvi in https://github.com/decaporg/decap-cms/pull/6504
+* Create Post “git-based-cms-definition-features-best-practices” by @martinjagodic in https://github.com/decaporg/decap-cms/pull/6969
+* feat(website): replace twiter image with image by @martinjagodic in https://github.com/decaporg/decap-cms/pull/6977
+* fix(website): og image tag, add author by @martinjagodic in https://github.com/decaporg/decap-cms/pull/6979
+* Fix navigation blocker in editorial workflow by @demshy in https://github.com/decaporg/decap-cms/pull/6981
+* Fix immer produce import in registry.js (core) by @ebouther in https://github.com/decaporg/decap-cms/pull/6973
+* perf: replace moment with dayjs by @martinjagodic in https://github.com/decaporg/decap-cms/pull/6980
+* docs: change master to main by @martinjagodic in https://github.com/decaporg/decap-cms/pull/6995
+* Update Docs: Account “external-oauth-clients” by @augustogunsch in https://github.com/decaporg/decap-cms/pull/6996
+* fix(#7007) Replace validate color with tiny color 2 by @prasanthlouis in https://github.com/decaporg/decap-cms/pull/7009
+* chore(deps): bump @adobe/css-tools from 4.3.1 to 4.3.2 by @dependabot in https://github.com/decaporg/decap-cms/pull/7002
+* Update Docs: Widgets “image” by @rreo in https://github.com/decaporg/decap-cms/pull/7005
+* style: add system-ui to default font stack by @stefanprobst in https://github.com/decaporg/decap-cms/pull/7012
+* chore: remove fossa by @martinjagodic in https://github.com/decaporg/decap-cms/pull/7013
+* fix: change dayjs to per-package dependency by @martinjagodic in https://github.com/decaporg/decap-cms/pull/6992
+* fix(#6963): canceling 'from insert URL' is causing a bug by @piotrbekas in https://github.com/decaporg/decap-cms/pull/7010
+* fix: avoid unnecessary rerenders by @spereirag in https://github.com/decaporg/decap-cms/pull/7004
+* Docs: add pro help page and update dependencies by @martinjagodic in https://github.com/decaporg/decap-cms/pull/7019
+* chore(deps): bump msgpackr from 1.10.0 to 1.10.1 in /website by @dependabot in https://github.com/decaporg/decap-cms/pull/7022
+* chore(deps): bump follow-redirects from 1.15.3 to 1.15.4 in /website by @dependabot in https://github.com/decaporg/decap-cms/pull/7028
+* chore(deps): bump follow-redirects from 1.15.3 to 1.15.4 by @dependabot in https://github.com/decaporg/decap-cms/pull/7029
+* Update Docs: Improve custom widgets documentation by @zoetrope69 in https://github.com/decaporg/decap-cms/pull/7032
+* fix(i18n): translate editor.editorWidgets.list.add in Simplified Chinese and Traditional Chinese by @razonyang in https://github.com/decaporg/decap-cms/pull/7038
+* Fix typos by @szepeviktor in https://github.com/decaporg/decap-cms/pull/7035
+* fix: add EOL for files by @razonyang in https://github.com/decaporg/decap-cms/pull/7039
+* Update Docs: migrate Beta Features - Local Git Repository by @privatemaker in https://github.com/decaporg/decap-cms/pull/7043
+* Update Docs: migrate Beta Features - i18n Support by @privatemaker in https://github.com/decaporg/decap-cms/pull/7045
+* Update Docs migrate Beta Features - remove duplicate Open Authoring by @privatemaker in https://github.com/decaporg/decap-cms/pull/7048
+* Update Docs: refactor Collections & migrate Beta Features by @privatemaker in https://github.com/decaporg/decap-cms/pull/7049
+* Update Docs: migrate Beta Features - GraphQL APIs by @privatemaker in https://github.com/decaporg/decap-cms/pull/7046
+* Update Docs migrate Beta Features - Raw CSS by @privatemaker in https://github.com/decaporg/decap-cms/pull/7054
+* Update Docs: migrate Beta Features - Commit Message Templates by @privatemaker in https://github.com/decaporg/decap-cms/pull/7055
+* Update Docs migrate Beta Features - Manual Initialization by @privatemaker in https://github.com/decaporg/decap-cms/pull/7057
+* Update Docs: migrate Beta Features - Editorial Workflow by @privatemaker in https://github.com/decaporg/decap-cms/pull/7044
+* Update Docs: migrate Beta Features - Custom Formatters by @privatemaker in https://github.com/decaporg/decap-cms/pull/7056
+* Update Docs: migrate Beta Features - Registering CMS Events by @privatemaker in https://github.com/decaporg/decap-cms/pull/7058
+* Update Docs: migrate Beta Features - Dynamic Default Values by @privatemaker in https://github.com/decaporg/decap-cms/pull/7060
+* Update Docs: migrate Beta Features - Image Size Limit by @privatemaker in https://github.com/decaporg/decap-cms/pull/7062
+* Update Docs: migrate Beta Features - Custom Mount Element by @privatemaker in https://github.com/decaporg/decap-cms/pull/7059
+* fix(i18n): translate copyFromLocale and copyFromLocaleConfirm in Chinese by @razonyang in https://github.com/decaporg/decap-cms/pull/7065
+* Update Docs: migrate Beta Features - List Widget: Variable Types by @privatemaker in https://github.com/decaporg/decap-cms/pull/7053
+* Update Docs: migrate Beta Features - Remark Plugins by @privatemaker in https://github.com/decaporg/decap-cms/pull/7063
+* Update Docs: migrate Beta Features - Summary String Transformations by @privatemaker in https://github.com/decaporg/decap-cms/pull/7061
+* cleanup links to /beta-features/ and add redirects #7040 by @privatemaker in https://github.com/decaporg/decap-cms/pull/7070
+* AWS Cognito Proxy for Github by @soceanainn in https://github.com/decaporg/decap-cms/pull/7014
+* fix: change datetime widget value format by @martinjagodic in https://github.com/decaporg/decap-cms/pull/7072
+* Fix link in PULL_REQUEST_TEMPLATE by @szepeviktor in https://github.com/decaporg/decap-cms/pull/7034
+* Lerna -> nx, yarn -> npm by @demshy in https://github.com/decaporg/decap-cms/pull/6959
+* style: align Heading and Items by @olegfedak in https://github.com/decaporg/decap-cms/pull/6988
+* Create Post “decap-3-1” by @martinjagodic in https://github.com/decaporg/decap-cms/pull/7078
+
+## New Contributors
+* @afonsojramos made their first contribution in https://github.com/decaporg/decap-cms/pull/6955
+* @asheerrizvi made their first contribution in https://github.com/decaporg/decap-cms/pull/6504
+* @ebouther made their first contribution in https://github.com/decaporg/decap-cms/pull/6973
+* @augustogunsch made their first contribution in https://github.com/decaporg/decap-cms/pull/6996
+* @prasanthlouis made their first contribution in https://github.com/decaporg/decap-cms/pull/7009
+* @rreo made their first contribution in https://github.com/decaporg/decap-cms/pull/7005
+* @piotrbekas made their first contribution in https://github.com/decaporg/decap-cms/pull/7010
+* @spereirag made their first contribution in https://github.com/decaporg/decap-cms/pull/7004
+* @zoetrope69 made their first contribution in https://github.com/decaporg/decap-cms/pull/7032
+* @soceanainn made their first contribution in https://github.com/decaporg/decap-cms/pull/7014
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.1.0...decap-cms@3.1.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.0-beta.5 (2024-03-08)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.0-beta.4 (2024-03-08)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.0-beta.3 (2024-03-08)</h2>
+      <pre>No notes available</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.0-beta.2 (2023-11-23)</h2>
+      <pre>:scroll: [Changelog](https://github.com/decaporg/decap-cms/blob/decap-cms@3.1.0-beta.2/CHANGELOG.md)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.1.0-beta.1 (2023-11-15)</h2>
+      <pre>:scroll: [Changelog](https://github.com/decaporg/decap-cms/blob/decap-cms@3.1.0-beta.1/CHANGELOG.md)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.0.12 (2024-03-08)</h2>
+      <pre>## What's Changed
+* docs(readme): add rename clarification by @Haroenv in https://github.com/decaporg/decap-cms/pull/6926
+* feat: on hover effect added on discord button by @Shreyashingale in https://github.com/decaporg/decap-cms/pull/6915
+* docs: add new external oauth client by @njfamirm in https://github.com/decaporg/decap-cms/pull/6906
+* chore(deps): bump @babel/traverse from 7.22.5 to 7.23.2 in /website by @dependabot in https://github.com/decaporg/decap-cms/pull/6945
+* feat: remove Vale docs linter by @martinjagodic in https://github.com/decaporg/decap-cms/pull/6947
+* feat(backend): add gitea backend by @denyskon in https://github.com/decaporg/decap-cms/pull/6808
+
+## New Contributors
+* @Haroenv made their first contribution in https://github.com/decaporg/decap-cms/pull/6926
+* @Shreyashingale made their first contribution in https://github.com/decaporg/decap-cms/pull/6915
+* @denyskon made their first contribution in https://github.com/decaporg/decap-cms/pull/6808
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.0.10...decap-cms@3.0.12</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.0.10 (2024-03-08)</h2>
+      <pre>## What's Changed
+* Update Docs: Contributing “examples” by @ositaka in https://github.com/decaporg/decap-cms/pull/6938
+* chore: update emotion to v11 by @demshy in https://github.com/decaporg/decap-cms/pull/6940
+* fix: handle single file i18n when filtering by @KaneFreeman in https://github.com/decaporg/decap-cms/pull/6942
+
+## New Contributors
+* @ositaka made their first contribution in https://github.com/decaporg/decap-cms/pull/6938
+* @KaneFreeman made their first contribution in https://github.com/decaporg/decap-cms/pull/6942
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.0.9...decap-cms@3.0.10</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.0.9 (2023-10-11)</h2>
+      <pre>:scroll: [Changelog](https://github.com/decaporg/decap-cms/blob/decap-cms@3.0.9/CHANGELOG.md)
+
+## What's Changed
+* fix: consider i18n structure when building path regex by @demshy in https://github.com/decaporg/decap-cms/pull/6937
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.0.8...decap-cms@3.0.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.0.8 (2024-03-08)</h2>
+      <pre>**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.0.9...decap-cms@3.0.8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>decap-cms@3.0.7 (2024-03-08)</h2>
+      <pre>## What's Changed
+* chore(deps): replace react-sortable-hoc with dnd-kit by @demshy in https://github.com/decaporg/decap-cms/pull/6860
+
+
+**Full Changelog**: https://github.com/decaporg/decap-cms/compare/decap-cms@3.0.6...decap-cms@3.0.7</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

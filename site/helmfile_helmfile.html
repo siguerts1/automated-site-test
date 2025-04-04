@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for helmfile/helmfile"/>
+  <title>helmfile/helmfile Release Notes</title>
+</head>
+<body>
+  <h1>🚀 helmfile/helmfile - Release Notes</h1>
+  
+    <section>
+      <h2>v1.0.0-rc.12 (2025-03-13)</h2>
+      <pre>##  Notes
+This is the last v1 RC version. v1 stable is coming!!! see: https://github.com/helmfile/helmfile/blob/main/docs/proposals/towards-1.0.md
+
+
+
+## What's Changed
+* build(deps): bump github.com/helmfile/vals from 0.39.0 to 0.39.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1926
+* Bump kubectl to current version (1.32.1) by @DerDaku in https://github.com/helmfile/helmfile/pull/1924
+* build(deps): bump github.com/goccy/go-yaml from 1.15.21 to 1.15.22 by @dependabot in https://github.com/helmfile/helmfile/pull/1925
+* build: update Helm to v3.17.1 and related dependencies by @yxxhero in https://github.com/helmfile/helmfile/pull/1928
+* build(deps): bump k8s.io/apimachinery from 0.32.1 to 0.32.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1931
+* feat: inject cli state values (--state-values-set) into environment templating context by @Vince-Chenal in https://github.com/helmfile/helmfile/pull/1917
+* docs: add skipSchemaValidation to index.md and update related structs by @yxxhero in https://github.com/helmfile/helmfile/pull/1935
+* refactor(state): optimize HelmState flags handling by @yxxhero in https://github.com/helmfile/helmfile/pull/1937
+* Update vals package to v0.39.2 by @aditmeno in https://github.com/helmfile/helmfile/pull/1938
+* build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1940
+* build(deps): bump github.com/goccy/go-yaml from 1.15.22 to 1.15.23 by @dependabot in https://github.com/helmfile/helmfile/pull/1941
+* build(deps): bump github.com/helmfile/chartify from 0.20.8 to 0.20.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1942
+* feat: colorized DELETED by @yurrriq in https://github.com/helmfile/helmfile/pull/1944
+* feat(docs): add proposal to remove charts and delete subcommands by @yxxhero in https://github.com/helmfile/helmfile/pull/1936
+* build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1945
+* build(deps): bump github.com/go-jose/go-jose/v4 from 4.0.4 to 4.0.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1946
+* build: update golang version to 1.24 and golangci-lint to v1.64.5 by @yxxhero in https://github.com/helmfile/helmfile/pull/1949
+* build(deps): bump github.com/helmfile/vals from 0.39.2 to 0.39.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1951
+* build(deps): bump github.com/helmfile/chartify from 0.20.9 to 0.21.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1950
+* build(deps): bump golang.org/x/sync from 0.11.0 to 0.12.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1955
+* build(deps): bump jinja2 from 3.1.5 to 3.1.6 in /docs by @dependabot in https://github.com/helmfile/helmfile/pull/1956
+* Don't warn if this and the needed release set installed: false by @jayme-github in https://github.com/helmfile/helmfile/pull/1958
+* build(deps): bump golang.org/x/term from 0.29.0 to 0.30.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1959
+* Remove all v0.x references by @yxxhero in https://github.com/helmfile/helmfile/pull/1919
+* build(deps): bump k8s.io/apimachinery from 0.32.2 to 0.32.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1960
+* build(deps): bump golang.org/x/net from 0.35.0 to 0.36.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1961
+* build(deps): bump github.com/helmfile/vals from 0.39.3 to 0.39.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1962
+
+## New Contributors
+* @DerDaku made their first contribution in https://github.com/helmfile/helmfile/pull/1924
+* @Vince-Chenal made their first contribution in https://github.com/helmfile/helmfile/pull/1917
+* @aditmeno made their first contribution in https://github.com/helmfile/helmfile/pull/1938
+* @yurrriq made their first contribution in https://github.com/helmfile/helmfile/pull/1944
+* @jayme-github made their first contribution in https://github.com/helmfile/helmfile/pull/1958
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.11...v1.0.0-rc.12</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.11 (2025-02-12)</h2>
+      <pre>## What's Changed
+* feat: execute templates against postRendererHooks by @allanger in https://github.com/helmfile/helmfile/pull/1839
+* build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1897
+* build(deps): bump github.com/goccy/go-yaml from 1.15.15 to 1.15.16 by @dependabot in https://github.com/helmfile/helmfile/pull/1901
+* build(deps): bump github.com/goccy/go-yaml from 1.15.16 to 1.15.17 by @dependabot in https://github.com/helmfile/helmfile/pull/1905
+* Use a regex to match --state-values-set-string arguments by @gllb in https://github.com/helmfile/helmfile/pull/1902
+* build(deps): bump golang.org/x/sync from 0.10.0 to 0.11.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1911
+* Chartify v0.20.8 update by @scodeman in https://github.com/helmfile/helmfile/pull/1908
+* cleanup: remove all about v0.x by @yxxhero in https://github.com/helmfile/helmfile/pull/1903
+* build(deps): bump golang.org/x/term from 0.28.0 to 0.29.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1913
+* chore: update babel to resolve CVEs by @zhaque44 in https://github.com/helmfile/helmfile/pull/1916
+* remove deprecated charts.yaml by @yxxhero in https://github.com/helmfile/helmfile/pull/1437
+* Revert "cleanup: remove all about v0.x" by @yxxhero in https://github.com/helmfile/helmfile/pull/1918
+* build(deps): bump github.com/goccy/go-yaml from 1.15.17 to 1.15.19 by @dependabot in https://github.com/helmfile/helmfile/pull/1920
+* build(deps): bump github.com/goccy/go-yaml from 1.15.19 to 1.15.20 by @dependabot in https://github.com/helmfile/helmfile/pull/1921
+* feat: Add support for --wait-retries flag. by @connyay in https://github.com/helmfile/helmfile/pull/1922
+* build: update go-yaml to v1.15.21 by @yxxhero in https://github.com/helmfile/helmfile/pull/1923
+
+## New Contributors
+* @allanger made their first contribution in https://github.com/helmfile/helmfile/pull/1839
+* @gllb made their first contribution in https://github.com/helmfile/helmfile/pull/1902
+* @scodeman made their first contribution in https://github.com/helmfile/helmfile/pull/1908
+* @connyay made their first contribution in https://github.com/helmfile/helmfile/pull/1922
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.10...v1.0.0-rc.11</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.171.0 (2025-02-12)</h2>
+      <pre>## What's Changed
+* feat: execute templates against postRendererHooks by @allanger in https://github.com/helmfile/helmfile/pull/1839
+* build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1897
+* build(deps): bump github.com/goccy/go-yaml from 1.15.15 to 1.15.16 by @dependabot in https://github.com/helmfile/helmfile/pull/1901
+* build(deps): bump github.com/goccy/go-yaml from 1.15.16 to 1.15.17 by @dependabot in https://github.com/helmfile/helmfile/pull/1905
+* Use a regex to match --state-values-set-string arguments by @gllb in https://github.com/helmfile/helmfile/pull/1902
+* build(deps): bump golang.org/x/sync from 0.10.0 to 0.11.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1911
+* Chartify v0.20.8 update by @scodeman in https://github.com/helmfile/helmfile/pull/1908
+* cleanup: remove all about v0.x by @yxxhero in https://github.com/helmfile/helmfile/pull/1903
+* build(deps): bump golang.org/x/term from 0.28.0 to 0.29.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1913
+* chore: update babel to resolve CVEs by @zhaque44 in https://github.com/helmfile/helmfile/pull/1916
+* remove deprecated charts.yaml by @yxxhero in https://github.com/helmfile/helmfile/pull/1437
+* Revert "cleanup: remove all about v0.x" by @yxxhero in https://github.com/helmfile/helmfile/pull/1918
+* build(deps): bump github.com/goccy/go-yaml from 1.15.17 to 1.15.19 by @dependabot in https://github.com/helmfile/helmfile/pull/1920
+* build(deps): bump github.com/goccy/go-yaml from 1.15.19 to 1.15.20 by @dependabot in https://github.com/helmfile/helmfile/pull/1921
+* feat: Add support for --wait-retries flag. by @connyay in https://github.com/helmfile/helmfile/pull/1922
+* build: update go-yaml to v1.15.21 by @yxxhero in https://github.com/helmfile/helmfile/pull/1923
+
+## New Contributors
+* @allanger made their first contribution in https://github.com/helmfile/helmfile/pull/1839
+* @gllb made their first contribution in https://github.com/helmfile/helmfile/pull/1902
+* @scodeman made their first contribution in https://github.com/helmfile/helmfile/pull/1908
+* @connyay made their first contribution in https://github.com/helmfile/helmfile/pull/1922
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.170.1...v0.171.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.10 (2025-01-23)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/goccy/go-yaml from 1.15.14 to 1.15.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1882
+* build(deps): bump github.com/hashicorp/go-slug from 0.15.0 to 0.16.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1886
+* Ensure 'helm repo add' is also not pollute on helmfile template by @baurmatt in https://github.com/helmfile/helmfile/pull/1887
+* build(deps): bump github.com/zclconf/go-cty from 1.16.1 to 1.16.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1888
+* fix: using correct option for takeOwnership flag by @blaskoa in https://github.com/helmfile/helmfile/pull/1892
+* fix typo in docs by @adamab48 in https://github.com/helmfile/helmfile/pull/1889
+
+## New Contributors
+* @blaskoa made their first contribution in https://github.com/helmfile/helmfile/pull/1892
+* @adamab48 made their first contribution in https://github.com/helmfile/helmfile/pull/1889
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.9...v1.0.0-rc.10</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.170.1 (2025-01-23)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/goccy/go-yaml from 1.15.14 to 1.15.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1882
+* build(deps): bump github.com/hashicorp/go-slug from 0.15.0 to 0.16.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1886
+* Ensure 'helm repo add' is also not pollute on helmfile template by @baurmatt in https://github.com/helmfile/helmfile/pull/1887
+* build(deps): bump github.com/zclconf/go-cty from 1.16.1 to 1.16.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1888
+* fix: using correct option for takeOwnership flag by @blaskoa in https://github.com/helmfile/helmfile/pull/1892
+* fix typo in docs by @adamab48 in https://github.com/helmfile/helmfile/pull/1889
+
+## New Contributors
+* @blaskoa made their first contribution in https://github.com/helmfile/helmfile/pull/1892
+* @adamab48 made their first contribution in https://github.com/helmfile/helmfile/pull/1889
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.170.0...v0.170.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.9 (2025-01-18)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/goccy/go-yaml from 1.15.6 to 1.15.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1818
+* build(deps): bump golang.org/x/term from 0.26.0 to 0.27.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1817
+* chore(doc): fix the indent of the selector usage sample yaml by @Ladicle in https://github.com/helmfile/helmfile/pull/1819
+* feat(state): add support for setString in ReleaseSpec and HelmState by @yxxhero in https://github.com/helmfile/helmfile/pull/1821
+* build(deps): bump github.com/goccy/go-yaml from 1.15.7 to 1.15.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1822
+* test(state): add TestHelmState_setStringFlags for setStringFlags method by @yxxhero in https://github.com/helmfile/helmfile/pull/1823
+* build(deps): bump k8s.io/apimachinery from 0.31.3 to 0.31.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1826
+* build(deps): bump golang.org/x/crypto from 0.29.0 to 0.31.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1828
+* build(deps): bump github.com/goccy/go-yaml from 1.15.8 to 1.15.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1831
+* build(deps): bump k8s.io/apimachinery from 0.31.4 to 0.32.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1830
+* feat: updating sops version to 3.9.2 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1834
+* build(deps): bump github.com/goccy/go-yaml from 1.15.9 to 1.15.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1835
+* build(deps): bump helm.sh/helm/v3 from 3.16.3 to 3.16.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1836
+* build: update Helm version to v3.16.4 in CI and Dockerfiles by @yxxhero in https://github.com/helmfile/helmfile/pull/1837
+* build(deps): bump github.com/goccy/go-yaml from 1.15.10 to 1.15.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1838
+* build(deps): bump filippo.io/age from 1.2.0 to 1.2.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1840
+* build(deps): bump github.com/goccy/go-yaml from 1.15.11 to 1.15.12 by @dependabot in https://github.com/helmfile/helmfile/pull/1843
+* build: update helm-diff to v3.9.13 in Dockerfiles and init.go by @yxxhero in https://github.com/helmfile/helmfile/pull/1841
+* build(deps): bump github.com/helmfile/chartify from 0.20.4 to 0.20.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1845
+* build(deps): bump github.com/goccy/go-yaml from 1.15.12 to 1.15.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1844
+* build(deps): bump jinja2 from 3.1.4 to 3.1.5 in /docs by @dependabot in https://github.com/helmfile/helmfile/pull/1846
+* CVE-2024-45338: updating golang.org/x/net: to version: v0.33.0 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1849
+* build(deps): bump github.com/zclconf/go-cty from 1.15.1 to 1.16.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1851
+* build(deps): bump golang.org/x/term from 0.27.0 to 0.28.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1852
+* update sops versions to 3.9.3 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1861
+* build(deps): bump github.com/hashicorp/go-getter from 1.7.6 to 1.7.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1862
+* feat: add --take-ownership flag to apply and sync commands by @yxxhero in https://github.com/helmfile/helmfile/pull/1863
+* fix: ensure plain http is supported across all helmfile commands by @purpleclay in https://github.com/helmfile/helmfile/pull/1858
+* fix: ensure development versions of charts can be used across helmfile commands by @purpleclay in https://github.com/helmfile/helmfile/pull/1865
+* build(deps): bump github.com/helmfile/chartify from 0.20.5 to 0.20.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1866
+* update kubectl version (1.30) to stay up to date with new releases by @zhaque44 in https://github.com/helmfile/helmfile/pull/1867
+* build(deps): bump github.com/zclconf/go-cty from 1.16.0 to 1.16.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1870
+* build(deps): bump github.com/hashicorp/go-getter from 1.7.7 to 1.7.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1869
+* feat: Add "--no-hooks" to helmfile template by @jwlai in https://github.com/helmfile/helmfile/pull/1813
+* update helm and k8s versions in ci, dockerfiles, and go.mod by @yxxhero in https://github.com/helmfile/helmfile/pull/1872
+* build(deps): bump github.com/helmfile/vals from 0.38.0 to 0.39.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1876
+* build(deps): bump k8s.io/apimachinery from 0.32.0 to 0.32.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1873
+* build(deps): bump github.com/goccy/go-yaml from 1.15.13 to 1.15.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1874
+* build: update helm-diff to v3.9.14 in Dockerfiles and init.go by @yxxhero in https://github.com/helmfile/helmfile/pull/1877
+
+## New Contributors
+* @Ladicle made their first contribution in https://github.com/helmfile/helmfile/pull/1819
+* @purpleclay made their first contribution in https://github.com/helmfile/helmfile/pull/1858
+* @jwlai made their first contribution in https://github.com/helmfile/helmfile/pull/1813
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.8...v1.0.0-rc.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.170.0 (2025-01-18)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/goccy/go-yaml from 1.15.6 to 1.15.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1818
+* build(deps): bump golang.org/x/term from 0.26.0 to 0.27.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1817
+* chore(doc): fix the indent of the selector usage sample yaml by @Ladicle in https://github.com/helmfile/helmfile/pull/1819
+* feat(state): add support for setString in ReleaseSpec and HelmState by @yxxhero in https://github.com/helmfile/helmfile/pull/1821
+* build(deps): bump github.com/goccy/go-yaml from 1.15.7 to 1.15.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1822
+* test(state): add TestHelmState_setStringFlags for setStringFlags method by @yxxhero in https://github.com/helmfile/helmfile/pull/1823
+* build(deps): bump k8s.io/apimachinery from 0.31.3 to 0.31.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1826
+* build(deps): bump golang.org/x/crypto from 0.29.0 to 0.31.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1828
+* build(deps): bump github.com/goccy/go-yaml from 1.15.8 to 1.15.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1831
+* build(deps): bump k8s.io/apimachinery from 0.31.4 to 0.32.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1830
+* feat: updating sops version to 3.9.2 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1834
+* build(deps): bump github.com/goccy/go-yaml from 1.15.9 to 1.15.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1835
+* build(deps): bump helm.sh/helm/v3 from 3.16.3 to 3.16.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1836
+* build: update Helm version to v3.16.4 in CI and Dockerfiles by @yxxhero in https://github.com/helmfile/helmfile/pull/1837
+* build(deps): bump github.com/goccy/go-yaml from 1.15.10 to 1.15.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1838
+* build(deps): bump filippo.io/age from 1.2.0 to 1.2.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1840
+* build(deps): bump github.com/goccy/go-yaml from 1.15.11 to 1.15.12 by @dependabot in https://github.com/helmfile/helmfile/pull/1843
+* build: update helm-diff to v3.9.13 in Dockerfiles and init.go by @yxxhero in https://github.com/helmfile/helmfile/pull/1841
+* build(deps): bump github.com/helmfile/chartify from 0.20.4 to 0.20.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1845
+* build(deps): bump github.com/goccy/go-yaml from 1.15.12 to 1.15.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1844
+* build(deps): bump jinja2 from 3.1.4 to 3.1.5 in /docs by @dependabot in https://github.com/helmfile/helmfile/pull/1846
+* CVE-2024-45338: updating golang.org/x/net: to version: v0.33.0 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1849
+* build(deps): bump github.com/zclconf/go-cty from 1.15.1 to 1.16.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1851
+* build(deps): bump golang.org/x/term from 0.27.0 to 0.28.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1852
+* update sops versions to 3.9.3 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1861
+* build(deps): bump github.com/hashicorp/go-getter from 1.7.6 to 1.7.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1862
+* feat: add --take-ownership flag to apply and sync commands by @yxxhero in https://github.com/helmfile/helmfile/pull/1863
+* fix: ensure plain http is supported across all helmfile commands by @purpleclay in https://github.com/helmfile/helmfile/pull/1858
+* fix: ensure development versions of charts can be used across helmfile commands by @purpleclay in https://github.com/helmfile/helmfile/pull/1865
+* build(deps): bump github.com/helmfile/chartify from 0.20.5 to 0.20.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1866
+* update kubectl version (1.30) to stay up to date with new releases by @zhaque44 in https://github.com/helmfile/helmfile/pull/1867
+* build(deps): bump github.com/zclconf/go-cty from 1.16.0 to 1.16.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1870
+* build(deps): bump github.com/hashicorp/go-getter from 1.7.7 to 1.7.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1869
+* feat: Add "--no-hooks" to helmfile template by @jwlai in https://github.com/helmfile/helmfile/pull/1813
+* update helm and k8s versions in ci, dockerfiles, and go.mod by @yxxhero in https://github.com/helmfile/helmfile/pull/1872
+* build(deps): bump github.com/helmfile/vals from 0.38.0 to 0.39.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1876
+* build(deps): bump k8s.io/apimachinery from 0.32.0 to 0.32.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1873
+* build(deps): bump github.com/goccy/go-yaml from 1.15.13 to 1.15.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1874
+* build: update helm-diff to v3.9.14 in Dockerfiles and init.go by @yxxhero in https://github.com/helmfile/helmfile/pull/1877
+
+## New Contributors
+* @Ladicle made their first contribution in https://github.com/helmfile/helmfile/pull/1819
+* @purpleclay made their first contribution in https://github.com/helmfile/helmfile/pull/1858
+* @jwlai made their first contribution in https://github.com/helmfile/helmfile/pull/1813
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.169.2...v0.170.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.8 (2024-12-05)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/helmfile/vals from 0.37.6 to 0.37.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1747
+* build(deps): bump k8s.io/apimachinery from 0.31.1 to 0.31.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1754
+* Reset extra args before running 'dependency build' by @baurmatt in https://github.com/helmfile/helmfile/pull/1751
+* Introducing Helmfile Guru on Gurubase.io by @kursataktas in https://github.com/helmfile/helmfile/pull/1748
+* feat: add skip json schema validation during the install /upgrade of a Chart by @zhaque44 in https://github.com/helmfile/helmfile/pull/1737
+* fix(maputil): prevent nil value overwrite by @ban11111 in https://github.com/helmfile/helmfile/pull/1755
+* build(deps): bump github.com/goccy/go-yaml from 1.12.0 to 1.13.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1759
+* fix: this url doesn't work anymore by @zekena2 in https://github.com/helmfile/helmfile/pull/1760
+* build(deps): bump github.com/goccy/go-yaml from 1.13.0 to 1.13.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1762
+* build(deps): bump github.com/goccy/go-yaml from 1.13.1 to 1.13.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1763
+* build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1767
+* build(deps): bump github.com/helmfile/vals from 0.37.7 to 0.37.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1764
+* build(deps): bump github.com/goccy/go-yaml from 1.13.2 to 1.13.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1765
+* fix(integration-tests): read correct minikube status (#1768) by @ceriath in https://github.com/helmfile/helmfile/pull/1769
+* build(deps): bump github.com/goccy/go-yaml from 1.13.4 to 1.13.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1770
+* Add integration tests for #1749 by @baurmatt in https://github.com/helmfile/helmfile/pull/1766
+* fix: update acme chart URL in input.yaml by @yxxhero in https://github.com/helmfile/helmfile/pull/1773
+* build(deps): bump github.com/goccy/go-yaml from 1.13.5 to 1.13.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1771
+* build(deps): bump golang.org/x/sync from 0.8.0 to 0.9.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1775
+* build(deps): bump golang.org/x/term from 0.25.0 to 0.26.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1774
+* Revive dead badge links by @eggplants in https://github.com/helmfile/helmfile/pull/1776
+* feat: refactor label creation in state.go by @yxxhero in https://github.com/helmfile/helmfile/pull/1758
+* docs: Add Gurubase badge to README-zh_CN by @yxxhero in https://github.com/helmfile/helmfile/pull/1777
+* build(deps): bump github.com/goccy/go-yaml from 1.13.6 to 1.13.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1781
+* build(deps): bump github.com/goccy/go-yaml from 1.13.9 to 1.14.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1782
+* build(deps): bump github.com/goccy/go-yaml from 1.14.0 to 1.14.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1788
+* build(deps): bump helm.sh/helm/v3 from 3.16.2 to 3.16.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1786
+* fix: update helm-diff to version 3.9.12 in CI and Dockerfiles by @yxxhero in https://github.com/helmfile/helmfile/pull/1792
+* build: update Helm version to v3.16.3 in CI and Dockerfiles by @yxxhero in https://github.com/helmfile/helmfile/pull/1791
+* feat: add HELMFILE_INTERACTIVE env var to enable interactive mode by @thevops in https://github.com/helmfile/helmfile/pull/1787
+* build(deps): bump github.com/hashicorp/hcl/v2 from 2.22.0 to 2.23.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1793
+* build(deps): bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1795
+* chore: update with testify/assert assertion and table driven tests for fs.go by @zhaque44 in https://github.com/helmfile/helmfile/pull/1794
+* build(deps): bump k8s.io/apimachinery from 0.31.2 to 0.31.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1798
+* build(deps): bump github.com/stretchr/testify from 1.9.0 to 1.10.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1800
+* build(deps): bump github.com/goccy/go-yaml from 1.14.3 to 1.15.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1804
+* build(deps): bump github.com/goccy/go-yaml from 1.15.0 to 1.15.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1807
+* build(deps): bump github.com/zclconf/go-cty from 1.15.0 to 1.15.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1806
+* update example chart URL in remote-secrets doc by @daveneeley in https://github.com/helmfile/helmfile/pull/1809
+* build(deps): bump github.com/goccy/go-yaml from 1.15.1 to 1.15.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1811
+* build(deps): bump github.com/goccy/go-yaml from 1.15.3 to 1.15.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1812
+* fix: inject global values in Chartify by @xabufr in https://github.com/helmfile/helmfile/pull/1805
+* build(deps): bump github.com/helmfile/vals from 0.37.8 to 0.38.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1814
+* build(deps): bump github.com/helmfile/chartify from 0.20.3 to 0.20.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1815
+* build(deps): bump golang.org/x/sync from 0.9.0 to 0.10.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1816
+
+## New Contributors
+* @baurmatt made their first contribution in https://github.com/helmfile/helmfile/pull/1751
+* @kursataktas made their first contribution in https://github.com/helmfile/helmfile/pull/1748
+* @ban11111 made their first contribution in https://github.com/helmfile/helmfile/pull/1755
+* @zekena2 made their first contribution in https://github.com/helmfile/helmfile/pull/1760
+* @ceriath made their first contribution in https://github.com/helmfile/helmfile/pull/1769
+* @eggplants made their first contribution in https://github.com/helmfile/helmfile/pull/1776
+* @thevops made their first contribution in https://github.com/helmfile/helmfile/pull/1787
+* @daveneeley made their first contribution in https://github.com/helmfile/helmfile/pull/1809
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.7...v1.0.0-rc.8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.169.2 (2024-12-05)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/helmfile/vals from 0.37.6 to 0.37.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1747
+* build(deps): bump k8s.io/apimachinery from 0.31.1 to 0.31.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1754
+* Reset extra args before running 'dependency build' by @baurmatt in https://github.com/helmfile/helmfile/pull/1751
+* Introducing Helmfile Guru on Gurubase.io by @kursataktas in https://github.com/helmfile/helmfile/pull/1748
+* feat: add skip json schema validation during the install /upgrade of a Chart by @zhaque44 in https://github.com/helmfile/helmfile/pull/1737
+* fix(maputil): prevent nil value overwrite by @ban11111 in https://github.com/helmfile/helmfile/pull/1755
+* build(deps): bump github.com/goccy/go-yaml from 1.12.0 to 1.13.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1759
+* fix: this url doesn't work anymore by @zekena2 in https://github.com/helmfile/helmfile/pull/1760
+* build(deps): bump github.com/goccy/go-yaml from 1.13.0 to 1.13.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1762
+* build(deps): bump github.com/goccy/go-yaml from 1.13.1 to 1.13.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1763
+* build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1767
+* build(deps): bump github.com/helmfile/vals from 0.37.7 to 0.37.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1764
+* build(deps): bump github.com/goccy/go-yaml from 1.13.2 to 1.13.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1765
+* fix(integration-tests): read correct minikube status (#1768) by @ceriath in https://github.com/helmfile/helmfile/pull/1769
+* build(deps): bump github.com/goccy/go-yaml from 1.13.4 to 1.13.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1770
+* Add integration tests for #1749 by @baurmatt in https://github.com/helmfile/helmfile/pull/1766
+* fix: update acme chart URL in input.yaml by @yxxhero in https://github.com/helmfile/helmfile/pull/1773
+* build(deps): bump github.com/goccy/go-yaml from 1.13.5 to 1.13.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1771
+* build(deps): bump golang.org/x/sync from 0.8.0 to 0.9.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1775
+* build(deps): bump golang.org/x/term from 0.25.0 to 0.26.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1774
+* Revive dead badge links by @eggplants in https://github.com/helmfile/helmfile/pull/1776
+* feat: refactor label creation in state.go by @yxxhero in https://github.com/helmfile/helmfile/pull/1758
+* docs: Add Gurubase badge to README-zh_CN by @yxxhero in https://github.com/helmfile/helmfile/pull/1777
+* build(deps): bump github.com/goccy/go-yaml from 1.13.6 to 1.13.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1781
+* build(deps): bump github.com/goccy/go-yaml from 1.13.9 to 1.14.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1782
+* build(deps): bump github.com/goccy/go-yaml from 1.14.0 to 1.14.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1788
+* build(deps): bump helm.sh/helm/v3 from 3.16.2 to 3.16.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1786
+* fix: update helm-diff to version 3.9.12 in CI and Dockerfiles by @yxxhero in https://github.com/helmfile/helmfile/pull/1792
+* build: update Helm version to v3.16.3 in CI and Dockerfiles by @yxxhero in https://github.com/helmfile/helmfile/pull/1791
+* feat: add HELMFILE_INTERACTIVE env var to enable interactive mode by @thevops in https://github.com/helmfile/helmfile/pull/1787
+* build(deps): bump github.com/hashicorp/hcl/v2 from 2.22.0 to 2.23.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1793
+* build(deps): bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1795
+* chore: update with testify/assert assertion and table driven tests for fs.go by @zhaque44 in https://github.com/helmfile/helmfile/pull/1794
+* build(deps): bump k8s.io/apimachinery from 0.31.2 to 0.31.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1798
+* build(deps): bump github.com/stretchr/testify from 1.9.0 to 1.10.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1800
+* build(deps): bump github.com/goccy/go-yaml from 1.14.3 to 1.15.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1804
+* build(deps): bump github.com/goccy/go-yaml from 1.15.0 to 1.15.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1807
+* build(deps): bump github.com/zclconf/go-cty from 1.15.0 to 1.15.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1806
+* update example chart URL in remote-secrets doc by @daveneeley in https://github.com/helmfile/helmfile/pull/1809
+* build(deps): bump github.com/goccy/go-yaml from 1.15.1 to 1.15.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1811
+* build(deps): bump github.com/goccy/go-yaml from 1.15.3 to 1.15.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1812
+* fix: inject global values in Chartify by @xabufr in https://github.com/helmfile/helmfile/pull/1805
+* build(deps): bump github.com/helmfile/vals from 0.37.8 to 0.38.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1814
+* build(deps): bump github.com/helmfile/chartify from 0.20.3 to 0.20.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1815
+* build(deps): bump golang.org/x/sync from 0.9.0 to 0.10.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1816
+
+## New Contributors
+* @baurmatt made their first contribution in https://github.com/helmfile/helmfile/pull/1751
+* @kursataktas made their first contribution in https://github.com/helmfile/helmfile/pull/1748
+* @ban11111 made their first contribution in https://github.com/helmfile/helmfile/pull/1755
+* @zekena2 made their first contribution in https://github.com/helmfile/helmfile/pull/1760
+* @ceriath made their first contribution in https://github.com/helmfile/helmfile/pull/1769
+* @eggplants made their first contribution in https://github.com/helmfile/helmfile/pull/1776
+* @thevops made their first contribution in https://github.com/helmfile/helmfile/pull/1787
+* @daveneeley made their first contribution in https://github.com/helmfile/helmfile/pull/1809
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.169.1...v0.169.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.7 (2024-10-21)</h2>
+      <pre>## What's Changed
+* feat: update sops version to 3.9.1 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1742
+* chore: improve test assertions and descriptions for file download test by @zhaque44 in https://github.com/helmfile/helmfile/pull/1745
+* feat: add 'hide-notes' flag to helm in sync and apply commands by @yxxhero in https://github.com/helmfile/helmfile/pull/1746
+
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.6...v1.0.0-rc.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.169.1 (2024-10-21)</h2>
+      <pre>## What's Changed
+* feat: update sops version to 3.9.1 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1742
+* chore: improve test assertions and descriptions for file download test by @zhaque44 in https://github.com/helmfile/helmfile/pull/1745
+* feat: add 'hide-notes' flag to helm in sync and apply commands by @yxxhero in https://github.com/helmfile/helmfile/pull/1746
+
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.169.0...v0.169.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.6 (2024-10-16)</h2>
+      <pre>## What's Changed
+* build(deps): bump k8s.io/apimachinery from 0.31.0 to 0.31.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1705
+* build(deps): bump helm.sh/helm/v3 from 3.15.4 to 3.16.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1707
+* bump all helm to 3.16.1 by @yxxhero in https://github.com/helmfile/helmfile/pull/1708
+* add zhaque44 in CODEOWNERS by @yxxhero in https://github.com/helmfile/helmfile/pull/1711
+* Add   hide notes support by @yxxhero in https://github.com/helmfile/helmfile/pull/1710
+* update python3 version for mkdoc.yaml by @zhaque44 in https://github.com/helmfile/helmfile/pull/1712
+* build(deps): bump dario.cat/mergo from 0.3.16 to 1.0.1 by @yxxhero in https://github.com/helmfile/helmfile/pull/1714
+* fix docs build errors by @zhaque44 in https://github.com/helmfile/helmfile/pull/1715
+* feat(pkg/app): Update Helm Diff version to v3.9.11 by @yxxhero in https://github.com/helmfile/helmfile/pull/1720
+* update test to table driven with assertions & test GetMergedValues by @zhaque44 in https://github.com/helmfile/helmfile/pull/1721
+* feat: update go version and adjust dependencies in Dockerfile and go.mod by @yxxhero in https://github.com/helmfile/helmfile/pull/1722
+* feat: Update Docker image to ubuntu:24.10 by @yxxhero in https://github.com/helmfile/helmfile/pull/1726
+* build(deps): bump github.com/zclconf/go-cty-yaml from 1.0.3 to 1.1.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1723
+* build(deps): bump golang.org/x/term from 0.24.0 to 0.25.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1724
+* feat(pkg/policy): improve TopKeys function handling by @yxxhero in https://github.com/helmfile/helmfile/pull/1730
+* build(deps): bump helm.sh/helm/v3 from 3.16.1 to 3.16.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1732
+* chore: Update AGE var version by @zhaque44 in https://github.com/helmfile/helmfile/pull/1731
+* feat(helm-version): Update helm version to v3.16.2 by @yxxhero in https://github.com/helmfile/helmfile/pull/1733
+* fix: duration of delete failures are always 0s by @felipecrs in https://github.com/helmfile/helmfile/pull/1734
+* [feature] add --skip-refresh to globals by @sstarcher in https://github.com/helmfile/helmfile/pull/1736
+* build(deps): bump github.com/helmfile/vals from 0.37.5 to 0.37.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1739
+* build(deps): bump github.com/helmfile/chartify from 0.20.2 to 0.20.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1738
+* feat: improve summary for releases failed to delete by @felipecrs in https://github.com/helmfile/helmfile/pull/1735
+* [feature] --skip-refresh to pass through to deps by @sstarcher in https://github.com/helmfile/helmfile/pull/1740
+
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.5...v1.0.0-rc.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.169.0 (2024-10-16)</h2>
+      <pre>## What's Changed
+* Add comment withPreparedCharts by @mumoshu in https://github.com/helmfile/helmfile/pull/1704
+* build(deps): bump k8s.io/apimachinery from 0.31.0 to 0.31.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1705
+* build(deps): bump helm.sh/helm/v3 from 3.15.4 to 3.16.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1707
+* bump all helm to 3.16.1 by @yxxhero in https://github.com/helmfile/helmfile/pull/1708
+* add zhaque44 in CODEOWNERS by @yxxhero in https://github.com/helmfile/helmfile/pull/1711
+* Add   hide notes support by @yxxhero in https://github.com/helmfile/helmfile/pull/1710
+* update python3 version for mkdoc.yaml by @zhaque44 in https://github.com/helmfile/helmfile/pull/1712
+* build(deps): bump dario.cat/mergo from 0.3.16 to 1.0.1 by @yxxhero in https://github.com/helmfile/helmfile/pull/1714
+* fix docs build errors by @zhaque44 in https://github.com/helmfile/helmfile/pull/1715
+* feat(pkg/app): Update Helm Diff version to v3.9.11 by @yxxhero in https://github.com/helmfile/helmfile/pull/1720
+* update test to table driven with assertions & test GetMergedValues by @zhaque44 in https://github.com/helmfile/helmfile/pull/1721
+* feat: update go version and adjust dependencies in Dockerfile and go.mod by @yxxhero in https://github.com/helmfile/helmfile/pull/1722
+* feat: Update Docker image to ubuntu:24.10 by @yxxhero in https://github.com/helmfile/helmfile/pull/1726
+* build(deps): bump github.com/zclconf/go-cty-yaml from 1.0.3 to 1.1.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1723
+* build(deps): bump golang.org/x/term from 0.24.0 to 0.25.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1724
+* feat(pkg/policy): improve TopKeys function handling by @yxxhero in https://github.com/helmfile/helmfile/pull/1730
+* build(deps): bump helm.sh/helm/v3 from 3.16.1 to 3.16.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1732
+* chore: Update AGE var version by @zhaque44 in https://github.com/helmfile/helmfile/pull/1731
+* feat(helm-version): Update helm version to v3.16.2 by @yxxhero in https://github.com/helmfile/helmfile/pull/1733
+* fix: duration of delete failures are always 0s by @felipecrs in https://github.com/helmfile/helmfile/pull/1734
+* [feature] add --skip-refresh to globals by @sstarcher in https://github.com/helmfile/helmfile/pull/1736
+* build(deps): bump github.com/helmfile/vals from 0.37.5 to 0.37.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1739
+* build(deps): bump github.com/helmfile/chartify from 0.20.2 to 0.20.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1738
+* feat: improve summary for releases failed to delete by @felipecrs in https://github.com/helmfile/helmfile/pull/1735
+* [feature] --skip-refresh to pass through to deps by @sstarcher in https://github.com/helmfile/helmfile/pull/1740
+
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.168.0...v0.169.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.5 (2024-09-12)</h2>
+      <pre>## What's Changed
+* chore: enhance TopKeys function & adding test cases for malformed lines scenario in TopKeys func  by @zhaque44 in https://github.com/helmfile/helmfile/pull/1654
+* build(deps): bump golang.org/x/sync from 0.7.0 to 0.8.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1655
+* feat: add isDir template function by @simonsystem in https://github.com/helmfile/helmfile/pull/1657
+* build(deps): bump golang.org/x/term from 0.22.0 to 0.23.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1658
+* build(deps): bump github.com/docker/docker from 27.1.0+incompatible to 27.1.1+incompatible by @dependabot in https://github.com/helmfile/helmfile/pull/1662
+* build(deps): update Helm version to v3.15.4 by @yxxhero in https://github.com/helmfile/helmfile/pull/1668
+* build(deps): bump github.com/hashicorp/go-getter from 1.7.5 to 1.7.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1666
+* build(deps): bump k8s.io/apimachinery from 0.30.3 to 0.31.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1665
+* fix: CI linting issues with dockerfiles by @zhaque44 in https://github.com/helmfile/helmfile/pull/1671
+* chore: update dockerfile based on CI warnings by @zhaque44 in https://github.com/helmfile/helmfile/pull/1675
+* fix: _*.tpl files add whitespace to empty Namespace by @chrisdoherty4 in https://github.com/helmfile/helmfile/pull/1674
+* Add RightCapital to USERS.md by @yinheli in https://github.com/helmfile/helmfile/pull/1676
+* feat: update kustomize version by @zhaque44 in https://github.com/helmfile/helmfile/pull/1677
+* build(deps): bump github.com/hashicorp/hcl/v2 from 2.21.0 to 2.22.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1679
+* feat: adding ability for for charts to be pulled with plain HTTP by @ennekein in https://github.com/helmfile/helmfile/pull/1672
+* feat: skip chart prep for local by @zhaque44 in https://github.com/helmfile/helmfile/pull/1681
+* build(deps): bump github.com/Masterminds/semver/v3 from 3.2.1 to 3.3.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1683
+* build(deps): bump github.com/Masterminds/sprig/v3 from 3.2.3 to 3.3.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1684
+* feat: upgrade to k8s version to a supported version for security compliance by @zhaque44 in https://github.com/helmfile/helmfile/pull/1686
+* feat: upgrade helm-diff plugin version to 3.9.10 by @yxxhero in https://github.com/helmfile/helmfile/pull/1688
+* feat: fix password registry leak of credentials by @zhaque44 in https://github.com/helmfile/helmfile/pull/1687
+* fix verify stage for helmfile when use oci as chart by @yxxhero in https://github.com/helmfile/helmfile/pull/1661
+* feat: update golang minor version based on security vulnerability by @zhaque44 in https://github.com/helmfile/helmfile/pull/1690
+* build(deps): bump golang.org/x/term from 0.23.0 to 0.24.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1689
+* feat: bump  chartify versions by @yxxhero in https://github.com/helmfile/helmfile/pull/1693
+* optimize code by @Peoplelike in https://github.com/helmfile/helmfile/pull/1694
+* chore: Update Ubuntu image to LTS version 24.04 by @pathob in https://github.com/helmfile/helmfile/pull/1696
+* Fixed typo in configuration section by @vedrankolka in https://github.com/helmfile/helmfile/pull/1698
+* build(deps): bump github.com/helmfile/vals from 0.37.3 to 0.37.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1700
+* chore: add table driven tests for clarity by @zhaque44 in https://github.com/helmfile/helmfile/pull/1702
+* fix: two releases using the same chart in different version fails by @yxxhero in https://github.com/helmfile/helmfile/pull/1685
+* Add comment withPreparedCharts by @mumoshu in https://github.com/helmfile/helmfile/pull/1704
+
+## New Contributors
+* @simonsystem made their first contribution in https://github.com/helmfile/helmfile/pull/1657
+* @chrisdoherty4 made their first contribution in https://github.com/helmfile/helmfile/pull/1674
+* @yinheli made their first contribution in https://github.com/helmfile/helmfile/pull/1676
+* @Peoplelike made their first contribution in https://github.com/helmfile/helmfile/pull/1694
+* @vedrankolka made their first contribution in https://github.com/helmfile/helmfile/pull/1698
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.4...v1.0.0-rc.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.168.0 (2024-09-12)</h2>
+      <pre>## What's Changed
+* chore: enhance TopKeys function & adding test cases for malformed lines scenario in TopKeys func  by @zhaque44 in https://github.com/helmfile/helmfile/pull/1654
+* build(deps): bump golang.org/x/sync from 0.7.0 to 0.8.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1655
+* feat: add isDir template function by @simonsystem in https://github.com/helmfile/helmfile/pull/1657
+* build(deps): bump golang.org/x/term from 0.22.0 to 0.23.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1658
+* build(deps): bump github.com/docker/docker from 27.1.0+incompatible to 27.1.1+incompatible by @dependabot in https://github.com/helmfile/helmfile/pull/1662
+* build(deps): update Helm version to v3.15.4 by @yxxhero in https://github.com/helmfile/helmfile/pull/1668
+* build(deps): bump github.com/hashicorp/go-getter from 1.7.5 to 1.7.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1666
+* build(deps): bump k8s.io/apimachinery from 0.30.3 to 0.31.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1665
+* fix: CI linting issues with dockerfiles by @zhaque44 in https://github.com/helmfile/helmfile/pull/1671
+* chore: update dockerfile based on CI warnings by @zhaque44 in https://github.com/helmfile/helmfile/pull/1675
+* fix: _*.tpl files add whitespace to empty Namespace by @chrisdoherty4 in https://github.com/helmfile/helmfile/pull/1674
+* Add RightCapital to USERS.md by @yinheli in https://github.com/helmfile/helmfile/pull/1676
+* feat: update kustomize version by @zhaque44 in https://github.com/helmfile/helmfile/pull/1677
+* build(deps): bump github.com/hashicorp/hcl/v2 from 2.21.0 to 2.22.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1679
+* feat: adding ability for for charts to be pulled with plain HTTP by @ennekein in https://github.com/helmfile/helmfile/pull/1672
+* feat: skip chart prep for local by @zhaque44 in https://github.com/helmfile/helmfile/pull/1681
+* build(deps): bump github.com/Masterminds/semver/v3 from 3.2.1 to 3.3.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1683
+* build(deps): bump github.com/Masterminds/sprig/v3 from 3.2.3 to 3.3.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1684
+* feat: upgrade to k8s version to a supported version for security compliance by @zhaque44 in https://github.com/helmfile/helmfile/pull/1686
+* feat: upgrade helm-diff plugin version to 3.9.10 by @yxxhero in https://github.com/helmfile/helmfile/pull/1688
+* feat: fix password registry leak of credentials by @zhaque44 in https://github.com/helmfile/helmfile/pull/1687
+* fix verify stage for helmfile when use oci as chart by @yxxhero in https://github.com/helmfile/helmfile/pull/1661
+* feat: update golang minor version based on security vulnerability by @zhaque44 in https://github.com/helmfile/helmfile/pull/1690
+* build(deps): bump golang.org/x/term from 0.23.0 to 0.24.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1689
+* feat: bump  chartify versions by @yxxhero in https://github.com/helmfile/helmfile/pull/1693
+* optimize code by @Peoplelike in https://github.com/helmfile/helmfile/pull/1694
+* chore: Update Ubuntu image to LTS version 24.04 by @pathob in https://github.com/helmfile/helmfile/pull/1696
+* Fixed typo in configuration section by @vedrankolka in https://github.com/helmfile/helmfile/pull/1698
+* build(deps): bump github.com/helmfile/vals from 0.37.3 to 0.37.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1700
+* chore: add table driven tests for clarity by @zhaque44 in https://github.com/helmfile/helmfile/pull/1702
+* fix: two releases using the same chart in different version fails by @yxxhero in https://github.com/helmfile/helmfile/pull/1685
+
+## New Contributors
+* @simonsystem made their first contribution in https://github.com/helmfile/helmfile/pull/1657
+* @chrisdoherty4 made their first contribution in https://github.com/helmfile/helmfile/pull/1674
+* @yinheli made their first contribution in https://github.com/helmfile/helmfile/pull/1676
+* @Peoplelike made their first contribution in https://github.com/helmfile/helmfile/pull/1694
+* @vedrankolka made their first contribution in https://github.com/helmfile/helmfile/pull/1698
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.167.1...v0.168.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.4 (2024-08-04)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/aws/aws-sdk-go from 1.55.3 to 1.55.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1649
+* fix(oci): use output-dir-template in path if specified by @henkka in https://github.com/helmfile/helmfile/pull/1648
+* build(deps): bump github.com/aws/aws-sdk-go from 1.55.4 to 1.55.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1651
+* build(deps): helm-s3: v0.16.0 -> v0.16.2 by @yxxhero in https://github.com/helmfile/helmfile/pull/1652
+
+## New Contributors
+* @henkka made their first contribution in https://github.com/helmfile/helmfile/pull/1648
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.3...v1.0.0-rc.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.167.1 (2024-08-04)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/aws/aws-sdk-go from 1.55.3 to 1.55.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1649
+* fix(oci): use output-dir-template in path if specified by @henkka in https://github.com/helmfile/helmfile/pull/1648
+* build(deps): bump github.com/aws/aws-sdk-go from 1.55.4 to 1.55.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1651
+* build(deps): helm-s3: v0.16.0 -> v0.16.2 by @yxxhero in https://github.com/helmfile/helmfile/pull/1652
+
+## New Contributors
+* @henkka made their first contribution in https://github.com/helmfile/helmfile/pull/1648
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.167.0...v0.167.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.3 (2024-07-30)</h2>
+      <pre>## What's Changed
+* Update GoReleaser configuration for version 2 by @yxxhero in https://github.com/helmfile/helmfile/pull/1600
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.7 to 1.54.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1602
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.8 to 1.54.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1607
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.10 to 1.54.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1608
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.11 to 1.54.12 by @dependabot in https://github.com/helmfile/helmfile/pull/1610
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.12 to 1.54.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1611
+* Use logger for helm output by @inteon in https://github.com/helmfile/helmfile/pull/1585
+* build(deps): bump golang.org/x/term from 0.21.0 to 0.22.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1616
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.13 to 1.54.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1612
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.14 to 1.54.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1617
+* Fix broken links in status section of README.md by @jonathanmanton in https://github.com/helmfile/helmfile/pull/1618
+* build(deps): bump zipp from 3.7.0 to 3.19.1 in /docs by @dependabot in https://github.com/helmfile/helmfile/pull/1620
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.15 to 1.54.17 by @dependabot in https://github.com/helmfile/helmfile/pull/1622
+* build(deps): bump google.golang.org/grpc from 1.64.0 to 1.64.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1621
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.17 to 1.54.18 by @dependabot in https://github.com/helmfile/helmfile/pull/1625
+* feat: bump helm to 3.15.3 by @yxxhero in https://github.com/helmfile/helmfile/pull/1627
+* fix: inject KubeVersion and ApiVersions in Chartify rendering by @xabufr in https://github.com/helmfile/helmfile/pull/1624
+* chore: add tests for release filters by @zhaque44 in https://github.com/helmfile/helmfile/pull/1629
+* feat: add namespace info in syncRelease and diffRelease by @yxxhero in https://github.com/helmfile/helmfile/pull/1609
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.18 to 1.54.19 by @dependabot in https://github.com/helmfile/helmfile/pull/1628
+* feat: add support for OCI auth through registry-config flag by @ThatsMrTalbot in https://github.com/helmfile/helmfile/pull/1630
+* build(deps): bump github.com/zclconf/go-cty from 1.14.4 to 1.15.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1632
+* feat: Update sops version 3.9.0 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1634
+* build(deps): bump k8s.io/apimachinery from 0.30.2 to 0.30.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1635
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.19 to 1.54.20 by @dependabot in https://github.com/helmfile/helmfile/pull/1638
+* build(deps): bump github.com/goccy/go-yaml from 1.11.3 to 1.12.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1631
+* chore: documentation updates: grammar & rm whitespace by @zhaque44 in https://github.com/helmfile/helmfile/pull/1639
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.20 to 1.55.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1644
+* build(deps): bump github.com/aws/aws-sdk-go from 1.55.2 to 1.55.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1645
+* chore: remove unecessary check in HandleExitCoder function and streamline logic by @zhaque44 in https://github.com/helmfile/helmfile/pull/1646
+* feat: use helm status to find helm release by @yxxhero in https://github.com/helmfile/helmfile/pull/1640
+* build(deps): bump github.com/docker/docker from 27.0.1+incompatible to 27.1.0+incompatible by @dependabot in https://github.com/helmfile/helmfile/pull/1647
+
+## New Contributors
+* @jonathanmanton made their first contribution in https://github.com/helmfile/helmfile/pull/1618
+* @xabufr made their first contribution in https://github.com/helmfile/helmfile/pull/1624
+* @zhaque44 made their first contribution in https://github.com/helmfile/helmfile/pull/1629
+* @ThatsMrTalbot made their first contribution in https://github.com/helmfile/helmfile/pull/1630
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.2...v1.0.0-rc.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.167.0 (2024-07-30)</h2>
+      <pre>## What's Changed
+* Update GoReleaser configuration for version 2 by @yxxhero in https://github.com/helmfile/helmfile/pull/1600
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.7 to 1.54.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1602
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.8 to 1.54.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1607
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.10 to 1.54.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1608
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.11 to 1.54.12 by @dependabot in https://github.com/helmfile/helmfile/pull/1610
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.12 to 1.54.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1611
+* Use logger for helm output by @inteon in https://github.com/helmfile/helmfile/pull/1585
+* build(deps): bump golang.org/x/term from 0.21.0 to 0.22.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1616
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.13 to 1.54.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1612
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.14 to 1.54.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1617
+* Fix broken links in status section of README.md by @jonathanmanton in https://github.com/helmfile/helmfile/pull/1618
+* build(deps): bump zipp from 3.7.0 to 3.19.1 in /docs by @dependabot in https://github.com/helmfile/helmfile/pull/1620
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.15 to 1.54.17 by @dependabot in https://github.com/helmfile/helmfile/pull/1622
+* build(deps): bump google.golang.org/grpc from 1.64.0 to 1.64.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1621
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.17 to 1.54.18 by @dependabot in https://github.com/helmfile/helmfile/pull/1625
+* feat: bump helm to 3.15.3 by @yxxhero in https://github.com/helmfile/helmfile/pull/1627
+* fix: inject KubeVersion and ApiVersions in Chartify rendering by @xabufr in https://github.com/helmfile/helmfile/pull/1624
+* chore: add tests for release filters by @zhaque44 in https://github.com/helmfile/helmfile/pull/1629
+* feat: add namespace info in syncRelease and diffRelease by @yxxhero in https://github.com/helmfile/helmfile/pull/1609
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.18 to 1.54.19 by @dependabot in https://github.com/helmfile/helmfile/pull/1628
+* feat: add support for OCI auth through registry-config flag by @ThatsMrTalbot in https://github.com/helmfile/helmfile/pull/1630
+* build(deps): bump github.com/zclconf/go-cty from 1.14.4 to 1.15.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1632
+* feat: Update sops version 3.9.0 by @zhaque44 in https://github.com/helmfile/helmfile/pull/1634
+* build(deps): bump k8s.io/apimachinery from 0.30.2 to 0.30.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1635
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.19 to 1.54.20 by @dependabot in https://github.com/helmfile/helmfile/pull/1638
+* build(deps): bump github.com/goccy/go-yaml from 1.11.3 to 1.12.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1631
+* chore: documentation updates: grammar & rm whitespace by @zhaque44 in https://github.com/helmfile/helmfile/pull/1639
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.20 to 1.55.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1644
+* build(deps): bump github.com/aws/aws-sdk-go from 1.55.2 to 1.55.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1645
+* chore: remove unecessary check in HandleExitCoder function and streamline logic by @zhaque44 in https://github.com/helmfile/helmfile/pull/1646
+* feat: use helm status to find helm release by @yxxhero in https://github.com/helmfile/helmfile/pull/1640
+* build(deps): bump github.com/docker/docker from 27.0.1+incompatible to 27.1.0+incompatible by @dependabot in https://github.com/helmfile/helmfile/pull/1647
+
+## New Contributors
+* @jonathanmanton made their first contribution in https://github.com/helmfile/helmfile/pull/1618
+* @xabufr made their first contribution in https://github.com/helmfile/helmfile/pull/1624
+* @zhaque44 made their first contribution in https://github.com/helmfile/helmfile/pull/1629
+* @ThatsMrTalbot made their first contribution in https://github.com/helmfile/helmfile/pull/1630
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.166.0...v0.167.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.2 (2024-06-26)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.9 to 1.53.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1540
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.10 to 1.53.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1542
+* chore: add Incentive.me to the list of helmfile users by @gabriel-suela in https://github.com/helmfile/helmfile/pull/1545
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.11 to 1.53.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1546
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.13 to 1.53.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1549
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.14 to 1.53.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1552
+* build(deps): bump github.com/helmfile/vals from 0.37.1 to 0.37.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1551
+* build(deps): bump golang.org/x/term from 0.20.0 to 0.21.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1553
+* build(deps): bump goreleaser/goreleaser-action from 5 to 6 by @dependabot in https://github.com/helmfile/helmfile/pull/1555
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.15 to 1.53.17 by @dependabot in https://github.com/helmfile/helmfile/pull/1557
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.17 to 1.53.18 by @dependabot in https://github.com/helmfile/helmfile/pull/1559
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.18 to 1.53.19 by @dependabot in https://github.com/helmfile/helmfile/pull/1561
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.19 to 1.53.20 by @dependabot in https://github.com/helmfile/helmfile/pull/1562
+* build(deps): bump github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.5.2 to 1.6.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1564
+* fix: Incentive.me url on list of helmfile users by @gabriel-suela in https://github.com/helmfile/helmfile/pull/1570
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.20 to 1.54.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1568
+* build(deps): bump helm.sh/helm/v3 from 3.15.1 to 3.15.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1565
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.0 to 1.54.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1571
+* build(deps): bump docker/build-push-action from 5 to 6 by @dependabot in https://github.com/helmfile/helmfile/pull/1575
+* build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1574
+* build(deps): bump k8s.io/apimachinery from 0.30.1 to 0.30.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1569
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.1 to 1.54.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1573
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.2 to 1.54.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1576
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.3 to 1.54.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1580
+* build(deps): bump github.com/hashicorp/hcl/v2 from 2.20.1 to 2.21.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1578
+* bump helm to 3.15.2 by @yxxhero in https://github.com/helmfile/helmfile/pull/1581
+* bump helm-diff to 3.9.8 by @yxxhero in https://github.com/helmfile/helmfile/pull/1582
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.5 to 1.54.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1583
+* build(deps): bump github.com/hashicorp/go-getter from 1.7.4 to 1.7.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1587
+* build(deps): bump github.com/helmfile/vals from 0.37.2 to 0.37.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1588
+* build(deps): bump github.com/hashicorp/go-retryablehttp from 0.7.6 to 0.7.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1590
+* build(deps): bump github.com/go-test/deep from 1.1.0 to 1.1.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1589
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.6 to 1.54.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1594
+* fix windows glob issue by @yxxhero in https://github.com/helmfile/helmfile/pull/1572
+* fix CVE-2024-24790 on helmfile (#1592) by @LionnelC in https://github.com/helmfile/helmfile/pull/1593
+
+## New Contributors
+* @gabriel-suela made their first contribution in https://github.com/helmfile/helmfile/pull/1545
+* @LionnelC made their first contribution in https://github.com/helmfile/helmfile/pull/1593
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.1...v1.0.0-rc.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.166.0 (2024-06-26)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.9 to 1.53.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1540
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.10 to 1.53.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1542
+* chore: add Incentive.me to the list of helmfile users by @gabriel-suela in https://github.com/helmfile/helmfile/pull/1545
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.11 to 1.53.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1546
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.13 to 1.53.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1549
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.14 to 1.53.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1552
+* build(deps): bump github.com/helmfile/vals from 0.37.1 to 0.37.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1551
+* build(deps): bump golang.org/x/term from 0.20.0 to 0.21.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1553
+* build(deps): bump goreleaser/goreleaser-action from 5 to 6 by @dependabot in https://github.com/helmfile/helmfile/pull/1555
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.15 to 1.53.17 by @dependabot in https://github.com/helmfile/helmfile/pull/1557
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.17 to 1.53.18 by @dependabot in https://github.com/helmfile/helmfile/pull/1559
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.18 to 1.53.19 by @dependabot in https://github.com/helmfile/helmfile/pull/1561
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.19 to 1.53.20 by @dependabot in https://github.com/helmfile/helmfile/pull/1562
+* build(deps): bump github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.5.2 to 1.6.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1564
+* fix: Incentive.me url on list of helmfile users by @gabriel-suela in https://github.com/helmfile/helmfile/pull/1570
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.20 to 1.54.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1568
+* build(deps): bump helm.sh/helm/v3 from 3.15.1 to 3.15.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1565
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.0 to 1.54.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1571
+* build(deps): bump docker/build-push-action from 5 to 6 by @dependabot in https://github.com/helmfile/helmfile/pull/1575
+* build(deps): bump github.com/spf13/cobra from 1.8.0 to 1.8.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1574
+* build(deps): bump k8s.io/apimachinery from 0.30.1 to 0.30.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1569
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.1 to 1.54.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1573
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.2 to 1.54.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1576
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.3 to 1.54.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1580
+* build(deps): bump github.com/hashicorp/hcl/v2 from 2.20.1 to 2.21.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1578
+* bump helm to 3.15.2 by @yxxhero in https://github.com/helmfile/helmfile/pull/1581
+* bump helm-diff to 3.9.8 by @yxxhero in https://github.com/helmfile/helmfile/pull/1582
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.5 to 1.54.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1583
+* build(deps): bump github.com/hashicorp/go-getter from 1.7.4 to 1.7.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1587
+* build(deps): bump github.com/helmfile/vals from 0.37.2 to 0.37.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1588
+* build(deps): bump github.com/hashicorp/go-retryablehttp from 0.7.6 to 0.7.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1590
+* build(deps): bump github.com/go-test/deep from 1.1.0 to 1.1.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1589
+* build(deps): bump github.com/aws/aws-sdk-go from 1.54.6 to 1.54.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1594
+* fix windows glob issue by @yxxhero in https://github.com/helmfile/helmfile/pull/1572
+* fix CVE-2024-24790 on helmfile (#1592) by @LionnelC in https://github.com/helmfile/helmfile/pull/1593
+
+## New Contributors
+* @gabriel-suela made their first contribution in https://github.com/helmfile/helmfile/pull/1545
+* @LionnelC made their first contribution in https://github.com/helmfile/helmfile/pull/1593
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.165.0...v0.166.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.1 (2024-05-27)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.32 to 1.52.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1496
+* build(deps): bump github.com/helmfile/vals from 0.37.0 to 0.37.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1500
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.0 to 1.52.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1499
+* build(deps): bump jinja2 from 3.1.3 to 3.1.4 in /docs by @dependabot in https://github.com/helmfile/helmfile/pull/1505
+* build(deps): bump golang.org/x/term from 0.19.0 to 0.20.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1502
+* build(deps): bump github.com/helmfile/chartify from 0.20.0 to 0.20.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1503
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.1 to 1.52.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1501
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.2 to 1.52.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1507
+* build(deps): bump golangci/golangci-lint-action from 5 to 6 by @dependabot in https://github.com/helmfile/helmfile/pull/1506
+* Remove config key order check by @drivelikebrazil in https://github.com/helmfile/helmfile/pull/1504
+* Relax the helmfile.lock helmfile binary version constraint by @mumoshu in https://github.com/helmfile/helmfile/pull/1511
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.3 to 1.52.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1509
+* v1: Document experimental features by @mumoshu in https://github.com/helmfile/helmfile/pull/1512
+* Update the project status with invitation to v1 rc testers by @mumoshu in https://github.com/helmfile/helmfile/pull/1513
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.4 to 1.52.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1514
+* chore: upgrade kubectl to v1.28.9 by @rtomadpg in https://github.com/helmfile/helmfile/pull/1516
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.5 to 1.52.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1518
+* bump helm-diff to v3.9.6 by @yxxhero in https://github.com/helmfile/helmfile/pull/1517
+* Add helmfile template --show-only by @jim-barber-he in https://github.com/helmfile/helmfile/pull/1494
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.6 to 1.53.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1519
+* build(deps): bump k8s.io/apimachinery from 0.30.0 to 0.30.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1521
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.0 to 1.53.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1520
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.2 to 1.53.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1525
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.3 to 1.53.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1526
+* Fix typo and link for supported backends by @koenpunt in https://github.com/helmfile/helmfile/pull/1529
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.4 to 1.53.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1528
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.5 to 1.53.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1531
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.6 to 1.53.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1532
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.7 to 1.53.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1534
+* feat: bump helm to v3.15.1 by @yxxhero in https://github.com/helmfile/helmfile/pull/1523
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.8 to 1.53.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1535
+* bump helm-diff to 3.9.7 by @yxxhero in https://github.com/helmfile/helmfile/pull/1536
+
+## New Contributors
+* @drivelikebrazil made their first contribution in https://github.com/helmfile/helmfile/pull/1504
+* @rtomadpg made their first contribution in https://github.com/helmfile/helmfile/pull/1516
+* @jim-barber-he made their first contribution in https://github.com/helmfile/helmfile/pull/1494
+* @koenpunt made their first contribution in https://github.com/helmfile/helmfile/pull/1529
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v1.0.0-rc.0...v1.0.0-rc.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.165.0 (2024-05-27)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.32 to 1.52.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1496
+* build(deps): bump github.com/helmfile/vals from 0.37.0 to 0.37.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1500
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.0 to 1.52.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1499
+* build(deps): bump jinja2 from 3.1.3 to 3.1.4 in /docs by @dependabot in https://github.com/helmfile/helmfile/pull/1505
+* build(deps): bump golang.org/x/term from 0.19.0 to 0.20.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1502
+* build(deps): bump github.com/helmfile/chartify from 0.20.0 to 0.20.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1503
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.1 to 1.52.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1501
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.2 to 1.52.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1507
+* build(deps): bump golangci/golangci-lint-action from 5 to 6 by @dependabot in https://github.com/helmfile/helmfile/pull/1506
+* Remove config key order check by @drivelikebrazil in https://github.com/helmfile/helmfile/pull/1504
+* Relax the helmfile.lock helmfile binary version constraint by @mumoshu in https://github.com/helmfile/helmfile/pull/1511
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.3 to 1.52.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1509
+* v1: Document experimental features by @mumoshu in https://github.com/helmfile/helmfile/pull/1512
+* Update the project status with invitation to v1 rc testers by @mumoshu in https://github.com/helmfile/helmfile/pull/1513
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.4 to 1.52.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1514
+* chore: upgrade kubectl to v1.28.9 by @rtomadpg in https://github.com/helmfile/helmfile/pull/1516
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.5 to 1.52.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1518
+* bump helm-diff to v3.9.6 by @yxxhero in https://github.com/helmfile/helmfile/pull/1517
+* Add helmfile template --show-only by @jim-barber-he in https://github.com/helmfile/helmfile/pull/1494
+* build(deps): bump github.com/aws/aws-sdk-go from 1.52.6 to 1.53.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1519
+* build(deps): bump k8s.io/apimachinery from 0.30.0 to 0.30.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1521
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.0 to 1.53.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1520
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.2 to 1.53.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1525
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.3 to 1.53.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1526
+* Fix typo and link for supported backends by @koenpunt in https://github.com/helmfile/helmfile/pull/1529
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.4 to 1.53.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1528
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.5 to 1.53.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1531
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.6 to 1.53.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1532
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.7 to 1.53.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1534
+* feat: bump helm to v3.15.1 by @yxxhero in https://github.com/helmfile/helmfile/pull/1523
+* build(deps): bump github.com/aws/aws-sdk-go from 1.53.8 to 1.53.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1535
+* bump helm-diff to 3.9.7 by @yxxhero in https://github.com/helmfile/helmfile/pull/1536
+
+## New Contributors
+* @drivelikebrazil made their first contribution in https://github.com/helmfile/helmfile/pull/1504
+* @rtomadpg made their first contribution in https://github.com/helmfile/helmfile/pull/1516
+* @jim-barber-he made their first contribution in https://github.com/helmfile/helmfile/pull/1494
+* @koenpunt made their first contribution in https://github.com/helmfile/helmfile/pull/1529
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.164.0...v0.165.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.0 (2024-05-01)</h2>
+      <pre>**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.164.0...v1.0.0-rc.0
+
+see: https://github.com/helmfile/helmfile/blob/main/docs/proposals/towards-1.0.md</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.164.0 (2024-05-01)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.6 to 1.51.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1429
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.7 to 1.51.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1430
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.8 to 1.51.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1432
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.9 to 1.51.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1433
+* remove HELMFILE_SKIP_INSECURE_TEMPLATE_FUNCTIONS for v1 by @yxxhero in https://github.com/helmfile/helmfile/pull/1434
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.10 to 1.51.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1435
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.11 to 1.51.12 by @dependabot in https://github.com/helmfile/helmfile/pull/1436
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.12 to 1.51.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1438
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.13 to 1.51.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1439
+* build(deps): bump golang.org/x/sync from 0.6.0 to 0.7.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1441
+* build(deps): bump github.com/helmfile/vals from 0.36.0 to 0.37.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1440
+* build(deps): bump golang.org/x/term from 0.18.0 to 0.19.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1444
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.14 to 1.51.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1443
+* Misc documentation fixes by @StarlessNights in https://github.com/helmfile/helmfile/pull/1442
+* update deps versions by @yxxhero in https://github.com/helmfile/helmfile/pull/1446
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.15 to 1.51.16 by @dependabot in https://github.com/helmfile/helmfile/pull/1447
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.16 to 1.51.17 by @dependabot in https://github.com/helmfile/helmfile/pull/1448
+* build(deps): bump helm.sh/helm/v3 from 3.14.3 to 3.14.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1451
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.17 to 1.51.19 by @dependabot in https://github.com/helmfile/helmfile/pull/1450
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.19 to 1.51.20 by @dependabot in https://github.com/helmfile/helmfile/pull/1452
+* bump helm to v3.14.4 by @yxxhero in https://github.com/helmfile/helmfile/pull/1453
+* build(deps): bump helm-git from v0.15.1 to v0.16.0 (minor) by @maxime1907 in https://github.com/helmfile/helmfile/pull/1455
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.20 to 1.51.21 by @dependabot in https://github.com/helmfile/helmfile/pull/1456
+* build(deps): bump github.com/hashicorp/go-getter from 1.7.3 to 1.7.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1457
+* build(deps): bump k8s.io/apimachinery from 0.29.3 to 0.29.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1463
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.21 to 1.51.22 by @dependabot in https://github.com/helmfile/helmfile/pull/1462
+* add NAMESPACE filed for diff by @yxxhero in https://github.com/helmfile/helmfile/pull/1460
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.22 to 1.51.23 by @dependabot in https://github.com/helmfile/helmfile/pull/1466
+* build(deps): bump k8s.io/apimachinery from 0.29.4 to 0.30.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1465
+* chore(docs): update heading by @josephgardner in https://github.com/helmfile/helmfile/pull/1470
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.23 to 1.51.24 by @dependabot in https://github.com/helmfile/helmfile/pull/1469
+* build(deps): bump github.com/helmfile/chartify from 0.18.1 to 0.19.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1468
+* Feature/support env hcl and interpolations by @XT-Phate in https://github.com/helmfile/helmfile/pull/1423
+* build(deps): bump github.com/hashicorp/hcl/v2 from 2.19.1 to 2.20.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1475
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.24 to 1.51.25 by @dependabot in https://github.com/helmfile/helmfile/pull/1476
+* build(deps): bump github.com/zclconf/go-cty from 1.14.3 to 1.14.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1474
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.25 to 1.51.26 by @dependabot in https://github.com/helmfile/helmfile/pull/1478
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.26 to 1.51.27 by @dependabot in https://github.com/helmfile/helmfile/pull/1480
+* build(deps): bump golangci/golangci-lint-action from 4 to 5 by @dependabot in https://github.com/helmfile/helmfile/pull/1482
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.27 to 1.51.28 by @dependabot in https://github.com/helmfile/helmfile/pull/1481
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.28 to 1.51.29 by @dependabot in https://github.com/helmfile/helmfile/pull/1485
+* Update DAG with dependencies by @vlpav030 in https://github.com/helmfile/helmfile/pull/1477
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.29 to 1.51.30 by @dependabot in https://github.com/helmfile/helmfile/pull/1486
+* build(deps): bump github.com/helmfile/chartify from 0.19.0 to 0.20.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1487
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.30 to 1.51.31 by @dependabot in https://github.com/helmfile/helmfile/pull/1488
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.31 to 1.51.32 by @dependabot in https://github.com/helmfile/helmfile/pull/1489
+
+## New Contributors
+* @StarlessNights made their first contribution in https://github.com/helmfile/helmfile/pull/1442
+* @maxime1907 made their first contribution in https://github.com/helmfile/helmfile/pull/1455
+* @XT-Phate made their first contribution in https://github.com/helmfile/helmfile/pull/1423
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.163.1...v0.164.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.163.1 (2024-03-25)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/helmfile/vals from 0.35.0 to 0.36.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1421
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.4 to 1.51.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1420
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.5 to 1.51.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1422
+* skip helm dep up for kustomizations by @jouve in https://github.com/helmfile/helmfile/pull/1424
+
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.163.0...v0.163.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.163.0 (2024-03-22)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.19 to 1.50.20 by @dependabot in https://github.com/helmfile/helmfile/pull/1359
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.20 to 1.50.21 by @dependabot in https://github.com/helmfile/helmfile/pull/1361
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.21 to 1.50.22 by @dependabot in https://github.com/helmfile/helmfile/pull/1363
+* build(deps): bump go.uber.org/zap from 1.26.0 to 1.27.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1362
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.22 to 1.50.23 by @dependabot in https://github.com/helmfile/helmfile/pull/1367
+* build(deps): bump helm.sh/helm/v3 from 3.14.1 to 3.14.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1366
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.23 to 1.50.24 by @dependabot in https://github.com/helmfile/helmfile/pull/1369
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.24 to 1.50.25 by @dependabot in https://github.com/helmfile/helmfile/pull/1371
+* feat: bump helm to v3.14.2 by @yxxhero in https://github.com/helmfile/helmfile/pull/1372
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.25 to 1.50.26 by @dependabot in https://github.com/helmfile/helmfile/pull/1373
+* build(deps): bump github.com/helmfile/vals from 0.34.1 to 0.35.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1377
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.26 to 1.50.28 by @dependabot in https://github.com/helmfile/helmfile/pull/1378
+* Add the SyncArgs option and --sync-args flag by @inteon in https://github.com/helmfile/helmfile/pull/1375
+* Add `--kubeconfig` flag by @inteon in https://github.com/helmfile/helmfile/pull/1381
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.28 to 1.50.29 by @dependabot in https://github.com/helmfile/helmfile/pull/1382
+* build(deps): bump github.com/stretchr/testify from 1.8.4 to 1.9.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1383
+* bump helm-diff to 3.9.5 by @yxxhero in https://github.com/helmfile/helmfile/pull/1384
+* fix needs issue when release installed is false by @yxxhero in https://github.com/helmfile/helmfile/pull/997
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.29 to 1.50.30 by @dependabot in https://github.com/helmfile/helmfile/pull/1387
+* build(deps): bump golang.org/x/term from 0.17.0 to 0.18.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1389
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.30 to 1.50.31 by @dependabot in https://github.com/helmfile/helmfile/pull/1388
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.31 to 1.50.32 by @dependabot in https://github.com/helmfile/helmfile/pull/1390
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.32 to 1.50.34 by @dependabot in https://github.com/helmfile/helmfile/pull/1395
+* build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.1 to 3.0.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1393
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.34 to 1.50.35 by @dependabot in https://github.com/helmfile/helmfile/pull/1396
+* Allow for conditions to have a deeper nested structure. by @vandycknick in https://github.com/helmfile/helmfile/pull/1360
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.35 to 1.50.36 by @dependabot in https://github.com/helmfile/helmfile/pull/1397
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.36 to 1.50.37 by @dependabot in https://github.com/helmfile/helmfile/pull/1400
+* Add Tudock GmbH to USERS.md by @jeliebig in https://github.com/helmfile/helmfile/pull/1399
+* build(deps): bump google.golang.org/protobuf from 1.32.0 to 1.33.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1403
+* build(deps): bump helm.sh/helm/v3 from 3.14.2 to 3.14.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1404
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.37 to 1.50.38 by @dependabot in https://github.com/helmfile/helmfile/pull/1405
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.38 to 1.51.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1406
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.0 to 1.51.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1410
+* build(deps): bump k8s.io/apimachinery from 0.29.2 to 0.29.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1409
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.1 to 1.51.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1413
+* build(deps): bump github.com/docker/docker from 24.0.7+incompatible to 24.0.9+incompatible by @dependabot in https://github.com/helmfile/helmfile/pull/1416
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.2 to 1.51.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1415
+* build(deps): bump github.com/aws/aws-sdk-go from 1.51.3 to 1.51.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1417
+* feat: bump helm to 3.14.3 by @yxxhero in https://github.com/helmfile/helmfile/pull/1418
+
+## New Contributors
+* @inteon made their first contribution in https://github.com/helmfile/helmfile/pull/1375
+* @vandycknick made their first contribution in https://github.com/helmfile/helmfile/pull/1360
+* @jeliebig made their first contribution in https://github.com/helmfile/helmfile/pull/1399
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.162.0...v0.163.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.162.0 (2024-02-18)</h2>
+      <pre>## New feature
+* add suppress output line regex support by @yxxhero in https://github.com/helmfile/helmfile/pull/1329
+   see more: https://github.com/helmfile/helmfile/blob/v0.162.0/test/integration/test-cases/suppress-output-line-regex/input/helmfile.yaml.gotmpl
+```
+helmDefaults:
+  suppressOutputLineRegex:
+    - "helm.sh/chart"
+    - "app.kubernetes.io/version"
+
+repositories:
+- name: ingress-nginx 
+  url: https://kubernetes.github.io/ingress-nginx
+
+releases:
+- name: ingress-nginx
+  namespace: ingress-nginx
+  chart: ingress-nginx/ingress-nginx
+  version: {{ env "SUPPRESS_OUTPUT_LINE_REGEX_INGRESS_NGINX_VERSION" | default "4.8.3" }} 
+```
+
+
+## What's Changed
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.1 to 1.50.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1309
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.2 to 1.50.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1312
+* feat: document that jsonPatches et al can be files by @rsrchboy in https://github.com/helmfile/helmfile/pull/1313
+* build(deps): bump github.com/goccy/go-yaml from 1.11.2 to 1.11.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1314
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.3 to 1.50.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1315
+* feat: Bump helm-diff to 3.9.4 by @yxxhero in https://github.com/helmfile/helmfile/pull/1316
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.4 to 1.50.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1318
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.5 to 1.50.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1319
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.6 to 1.50.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1321
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.7 to 1.50.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1322
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.8 to 1.50.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1323
+* disable version check for sops while building container image by @itscaro in https://github.com/helmfile/helmfile/pull/1320
+* build(deps): bump github.com/helmfile/vals from 0.33.0 to 0.33.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1325
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.9 to 1.50.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1324
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.10 to 1.50.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1328
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.11 to 1.50.12 by @dependabot in https://github.com/helmfile/helmfile/pull/1330
+* feat: update to use go 1.22 by @chenrui333 in https://github.com/helmfile/helmfile/pull/1332
+* build(deps): bump golang.org/x/term from 0.16.0 to 0.17.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1334
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.12 to 1.50.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1333
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.13 to 1.50.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1336
+* build(deps): bump golangci/golangci-lint-action from 3 to 4 by @dependabot in https://github.com/helmfile/helmfile/pull/1338
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.14 to 1.50.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1337
+* build(deps): bump github.com/helmfile/vals from 0.33.1 to 0.34.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1339
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.15 to 1.50.17 by @dependabot in https://github.com/helmfile/helmfile/pull/1342
+* build(deps): bump github.com/helmfile/chartify from 0.17.0 to 0.18.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1341
+* fix: use finer-grained locking when listing releases for diff by @steved in https://github.com/helmfile/helmfile/pull/1343
+* run deps without chart preparation by @jouve in https://github.com/helmfile/helmfile/pull/1011
+* build(deps): bump k8s.io/apimachinery from 0.29.1 to 0.29.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1348
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.17 to 1.50.18 by @dependabot in https://github.com/helmfile/helmfile/pull/1347
+* build(deps): bump helm.sh/helm/v3 from 3.14.0 to 3.14.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1346
+* fix: version path issue by @yxxhero in https://github.com/helmfile/helmfile/pull/1344
+* Make it clear that the plugin install prompt is a question by @wallrj in https://github.com/helmfile/helmfile/pull/1355
+* Update Helm version to v3.14.1 by @yxxhero in https://github.com/helmfile/helmfile/pull/1352
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.18 to 1.50.19 by @dependabot in https://github.com/helmfile/helmfile/pull/1357
+* feat: add suppress output line regex support by @yxxhero in https://github.com/helmfile/helmfile/pull/1329
+
+## New Contributors
+* @rsrchboy made their first contribution in https://github.com/helmfile/helmfile/pull/1313
+* @steved made their first contribution in https://github.com/helmfile/helmfile/pull/1343
+* @wallrj made their first contribution in https://github.com/helmfile/helmfile/pull/1355
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.161.0...v0.162.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.161.0 (2024-01-24)</h2>
+      <pre>## What's Changed
+* build(deps): bump github.com/helmfile/vals from 0.31.0 to 0.32.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1250
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.8 to 1.49.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1251
+* feat: respect helmfile.lock with ad-hoc kustimzation by @vlpav030 in https://github.com/helmfile/helmfile/pull/1244
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.9 to 1.49.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1257
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.10 to 1.49.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1259
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.11 to 1.49.12 by @dependabot in https://github.com/helmfile/helmfile/pull/1260
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.12 to 1.49.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1263
+* fix: prevent preparing chart for disabled releases by @mighty1231 in https://github.com/helmfile/helmfile/pull/1210
+* add support for HELMFILE_FILE_PATH envvar to set -f  by @sstarcher in https://github.com/helmfile/helmfile/pull/1255
+* fix checker error message by @petelock in https://github.com/helmfile/helmfile/pull/1266
+* build(deps): bump golang.org/x/term from 0.15.0 to 0.16.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1267
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.13 to 1.49.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1269
+* build(deps): bump golang.org/x/sync from 0.5.0 to 0.6.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1268
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.14 to 1.49.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1270
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.15 to 1.49.16 by @dependabot in https://github.com/helmfile/helmfile/pull/1272
+* build(deps): bump github.com/cloudflare/circl from 1.3.3 to 1.3.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1273
+* feat: include func support more template functions by @yxxhero in https://github.com/helmfile/helmfile/pull/1277
+* chore: add zhihu to list of helmfile users by @zhaogaolong in https://github.com/helmfile/helmfile/pull/1278
+* Bugfix: do not print registry password to stdout when running by @ennekein in https://github.com/helmfile/helmfile/pull/1275
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.16 to 1.49.17 by @dependabot in https://github.com/helmfile/helmfile/pull/1279
+* build(deps): bump gitpython from 3.1.37 to 3.1.41 in /docs by @dependabot in https://github.com/helmfile/helmfile/pull/1280
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.17 to 1.49.18 by @dependabot in https://github.com/helmfile/helmfile/pull/1283
+* build(deps): bump jinja2 from 3.1.1 to 3.1.3 in /docs by @dependabot in https://github.com/helmfile/helmfile/pull/1284
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.18 to 1.49.19 by @dependabot in https://github.com/helmfile/helmfile/pull/1285
+* feat: bump helm-diff to v3.9.1 by @yxxhero in https://github.com/helmfile/helmfile/pull/1286
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.19 to 1.49.21 by @dependabot in https://github.com/helmfile/helmfile/pull/1287
+* Bump helm diff to 3.9.2 by @kxkcx in https://github.com/helmfile/helmfile/pull/1291
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.21 to 1.49.22 by @dependabot in https://github.com/helmfile/helmfile/pull/1292
+* fix: issue with pre-release Helm version by @yxxhero in https://github.com/helmfile/helmfile/pull/1293
+* build(deps): bump k8s.io/apimachinery from 0.29.0 to 0.29.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1298
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.22 to 1.49.23 by @dependabot in https://github.com/helmfile/helmfile/pull/1296
+* Bump helm diff to 3.9.2 by @kxkcx in https://github.com/helmfile/helmfile/pull/1299
+* feat: bump helm to 3.14.0 by @yxxhero in https://github.com/helmfile/helmfile/pull/1295
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.23 to 1.49.24 by @dependabot in https://github.com/helmfile/helmfile/pull/1300
+* feat: bump vals to 0.33.0 by @yxxhero in https://github.com/helmfile/helmfile/pull/1302
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.24 to 1.50.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1303
+* build(deps): bump github.com/aws/aws-sdk-go from 1.50.0 to 1.50.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1305
+* Fix the password display problem when passing the chart link by @NavesEdu in https://github.com/helmfile/helmfile/pull/1281
+
+## New Contributors
+* @vlpav030 made their first contribution in https://github.com/helmfile/helmfile/pull/1244
+* @mighty1231 made their first contribution in https://github.com/helmfile/helmfile/pull/1210
+* @sstarcher made their first contribution in https://github.com/helmfile/helmfile/pull/1255
+* @petelock made their first contribution in https://github.com/helmfile/helmfile/pull/1266
+* @zhaogaolong made their first contribution in https://github.com/helmfile/helmfile/pull/1278
+* @ennekein made their first contribution in https://github.com/helmfile/helmfile/pull/1275
+* @kxkcx made their first contribution in https://github.com/helmfile/helmfile/pull/1291
+* @NavesEdu made their first contribution in https://github.com/helmfile/helmfile/pull/1281
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.160.0...v0.161.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.160.0 (2023-12-25)</h2>
+      <pre>## What's Changed
+* build(deps): bump golang.org/x/term from 0.14.0 to 0.15.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1170
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.3 to 1.48.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1171
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.4 to 1.48.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1173
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.6 to 1.48.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1176
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.7 to 1.48.9 by @dependabot in https://github.com/helmfile/helmfile/pull/1179
+* Fix failing docs build by @josephgardner in https://github.com/helmfile/helmfile/pull/1186
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.9 to 1.48.10 by @dependabot in https://github.com/helmfile/helmfile/pull/1181
+* [dockerfile] latest sops by @jouve in https://github.com/helmfile/helmfile/pull/1185
+* [dockerfile] update plugins by @jouve in https://github.com/helmfile/helmfile/pull/1182
+* [dockerfile] age 1.1.1 by @jouve in https://github.com/helmfile/helmfile/pull/1183
+* [dockerfile] latest kubectl 1.25 by @jouve in https://github.com/helmfile/helmfile/pull/1184
+* [dockerfile] update latest kustomize by @jouve in https://github.com/helmfile/helmfile/pull/1188
+* feat: include func support by @yxxhero in https://github.com/helmfile/helmfile/pull/1187
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.10 to 1.48.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1190
+* Create DeleteWait and DeleteTimeout parameters for Destroy by @virginiabrioso in https://github.com/helmfile/helmfile/pull/1177
+* Allow secrets to be excluded from release template inheritance by @voron in https://github.com/helmfile/helmfile/pull/1189
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.11 to 1.48.12 by @dependabot in https://github.com/helmfile/helmfile/pull/1191
+* fix(docs): specify python version by @josephgardner in https://github.com/helmfile/helmfile/pull/1193
+* fix(docs): typo in templating_funcs.md by @yxxhero in https://github.com/helmfile/helmfile/pull/1194
+* build(deps): bump github.com/helmfile/vals from 0.29.0 to 0.30.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1192
+* fix(docs): pin python to 3.11 by @josephgardner in https://github.com/helmfile/helmfile/pull/1197
+* chore(docs): update link by @josephgardner in https://github.com/helmfile/helmfile/pull/1198
+* build(deps): bump actions/setup-go from 4 to 5 by @dependabot in https://github.com/helmfile/helmfile/pull/1196
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.12 to 1.48.13 by @dependabot in https://github.com/helmfile/helmfile/pull/1195
+* chore(docs): Add missing template funcs  by @josephgardner in https://github.com/helmfile/helmfile/pull/1201
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.13 to 1.48.14 by @dependabot in https://github.com/helmfile/helmfile/pull/1200
+* fix: --state-values-set unable to set booleans by @tunahansezen in https://github.com/helmfile/helmfile/pull/1199
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.14 to 1.48.15 by @dependabot in https://github.com/helmfile/helmfile/pull/1202
+* chore: add bluelabs to list of helmfile users by @efcasado in https://github.com/helmfile/helmfile/pull/1206
+* consistently use Masterminds/semver by @jouve in https://github.com/helmfile/helmfile/pull/1209
+* simplify multierr usage with standard errors by @jouve in https://github.com/helmfile/helmfile/pull/1208
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.15 to 1.48.16 by @dependabot in https://github.com/helmfile/helmfile/pull/1211
+* build(deps): bump github.com/aws/aws-sdk-go from 1.48.16 to 1.49.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1214
+* replace custom diff in tests using testify by @jouve in https://github.com/helmfile/helmfile/pull/1215
+* fix: ConditionEnabled panic issue by @yxxhero in https://github.com/helmfile/helmfile/pull/1221
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.0 to 1.49.1 by @dependabot in https://github.com/helmfile/helmfile/pull/1223
+* bump helm version to 3.13.3 by @yxxhero in https://github.com/helmfile/helmfile/pull/1225
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.1 to 1.49.2 by @dependabot in https://github.com/helmfile/helmfile/pull/1227
+* build(deps): bump k8s.io/apimachinery from 0.28.4 to 0.29.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1226
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.2 to 1.49.3 by @dependabot in https://github.com/helmfile/helmfile/pull/1231
+* build(deps): bump github.com/helmfile/vals from 0.30.0 to 0.31.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1230
+* build(deps): bump actions/upload-artifact and actions/download-artifact from 3 to 4 by @yxxhero in https://github.com/helmfile/helmfile/pull/1234
+* build(deps): bump golang.org/x/crypto from 0.15.0 to 0.17.0 by @dependabot in https://github.com/helmfile/helmfile/pull/1238
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.3 to 1.49.4 by @dependabot in https://github.com/helmfile/helmfile/pull/1236
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.4 to 1.49.5 by @dependabot in https://github.com/helmfile/helmfile/pull/1240
+* build(deps): bump github.com/containerd/containerd from 1.7.6 to 1.7.11 by @dependabot in https://github.com/helmfile/helmfile/pull/1241
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.5 to 1.49.6 by @dependabot in https://github.com/helmfile/helmfile/pull/1242
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.6 to 1.49.7 by @dependabot in https://github.com/helmfile/helmfile/pull/1246
+* build(deps): bump github.com/aws/aws-sdk-go from 1.49.7 to 1.49.8 by @dependabot in https://github.com/helmfile/helmfile/pull/1247
+
+## New Contributors
+* @virginiabrioso made their first contribution in https://github.com/helmfile/helmfile/pull/1177
+* @tunahansezen made their first contribution in https://github.com/helmfile/helmfile/pull/1199
+* @efcasado made their first contribution in https://github.com/helmfile/helmfile/pull/1206
+
+**Full Changelog**: https://github.com/helmfile/helmfile/compare/v0.159.0...v0.160.0</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for streamlit/streamlit"/>
+  <title>streamlit/streamlit Release Notes</title>
+</head>
+<body>
+  <h1>🚀 streamlit/streamlit - Release Notes</h1>
+  
+    <section>
+      <h2>1.44.1 (2025-04-01)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.44.1 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.44.0...1.44.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.44.0 (2025-03-25)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.44.0 -->
+
+## What's Changed
+### Breaking Changes 🛠
+* Allow user to choose whether to print error finding secrets  by @sfc-gh-lwilby in https://github.com/streamlit/streamlit/pull/10508
+### New Features 🎉
+* Revamp the dataframe search bar to be more responsive by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10534
+* Update emoji support and dependencies by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10539
+* support file size limit error for chat input by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10530
+* add theming config `showSidebarSeparator` by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10566
+* Add support for Pandas styler tooltips to `st.table` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10561
+* Enable better exception logging if `rich` is installed by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10650
+* [feat] Utilize React 18 createRoot API by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/10453
+* Add links for Google and ChatGPT to exceptions by @jrieke in https://github.com/streamlit/streamlit/pull/10078
+* add custom theming `headingFont` option by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10626
+* Add `st.badge` and Markdown badges by @jrieke in https://github.com/streamlit/streamlit/pull/10090
+* Add `streamlit init` command by @jrieke in https://github.com/streamlit/streamlit/pull/10077
+* support `theme.sidebar` custom theme by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10772
+* unhide new custom theme options by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10830
+* Add `theme.codeBackgroundColor` theming config option by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10859
+### Bug Fixes 🐛
+* Default to MPAv2 with changes and adjust tests we accept as graceful degradation by @kmcgrady in https://github.com/streamlit/streamlit/pull/10276
+* [Fix] Disable scroll within `st.number_input` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/10642
+* [Fix]: Button commands breakage with `help` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/10658
+* Fix support for dask data objects by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10662
+* Fix `font` theme config not being passed to custom components by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10661
+* [fix] Fix custom component flickering by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10663
+* [fix] withCalculatedWidth fallback by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/10672
+* Use Immutable Types in st.navigation to prevent mypy errors by @sfc-gh-lwilby in https://github.com/streamlit/streamlit/pull/10670
+* Add more correct out of bounds checks for min_value and max_value for st.number_input and st.slider, related to st.session_state by @jiangpli in https://github.com/streamlit/streamlit/pull/9964
+* [Fix] Add default max/min for integer `st.number_input` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/10655
+* [fix] Fix width flickering in some components by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/10712
+* Popover with help and use_container_width is rendered correctly by @sfc-gh-lwilby in https://github.com/streamlit/streamlit/pull/10709
+* [Fix]: `st.page_link` - current vs. non-current page visuals & width  by @mayagbarnes in https://github.com/streamlit/streamlit/pull/10690
+* [Fix]: inconsistent error messages for st.secrets attribute assignment by @mdrazak2001 in https://github.com/streamlit/streamlit/pull/10698
+* Fix usage of "sans serife" as font by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10789
+* [fix] HTML in tabs content render fixes by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/10825
+* Fix boolean theme configs getting skipped by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10835
+* Fix `createTheme` overriding active theme's baseweb props by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10855
+### Other Changes
+* Simplify heading font sizes by @jrieke in https://github.com/streamlit/streamlit/pull/10599
+* Add locale to the st.context by @kajarenc in https://github.com/streamlit/streamlit/pull/10563
+* Release/1.43.0 by @sfc-gh-lwilby in https://github.com/streamlit/streamlit/pull/10639
+* Update material icons to latest version by @kajarenc in https://github.com/streamlit/streamlit/pull/10717
+* Release/1.43.1 by @sfc-gh-lwilby in https://github.com/streamlit/streamlit/pull/10687
+* Release/1.43.2 by @kajarenc in https://github.com/streamlit/streamlit/pull/10723
+* Update material symbols font to latest by @kajarenc in https://github.com/streamlit/streamlit/pull/10813
+* Log script compilation error via error log level by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10826
+* rename theming options `showWidgetBorder` and `showSidebarBorder` by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10858
+
+## New Contributors
+* @Sn1r made their first contribution in https://github.com/streamlit/streamlit/pull/10509
+* @jiangpli made their first contribution in https://github.com/streamlit/streamlit/pull/9964
+* @mdrazak2001 made their first contribution in https://github.com/streamlit/streamlit/pull/10698
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.43.2...1.44.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.43.2 (2025-03-11)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.43.2 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.43.1...1.43.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.43.1 (2025-03-07)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.43.1 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.43.0...1.43.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.43.0 (2025-03-04)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.43.0 -->
+
+## What's Changed
+### New Features 🎉
+* `st.chat_input` with file uploader by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/9491
+* Add `theme.roundness` theming option by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10246
+* Add `theme.borderColor` and `theme.showBorderAroundInputs` config options by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10259
+* Add `theme.linkColor` theming config option by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10271
+* Add theming options to configure custom fonts by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10345
+* Add `theme.baseFontSize` theming config option by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10375
+* Allow configuring the row height for `st.dataframe` and `st.data_editor` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9549
+* Always scroll to bottom when adding new rows in data editor by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10405
+* Add .xml to the list of allowed static file extensions by @kajarenc in https://github.com/streamlit/streamlit/pull/10337
+* Add pre-defined formats to `st.column_config` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10179
+* Allow static serving for common font files by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10335
+* add transparent file upload drop target to chat input by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10395
+* Update Bokeh error message to redirect to streamlit-bokeh custom component by @kmcgrady in https://github.com/streamlit/streamlit/pull/10374
+* Extend st.navigation functionality to support various page input types by @ashm-dev in https://github.com/streamlit/streamlit/pull/10358
+* Add json column for `st.dataframe` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10172
+* Add autosize option to dataframe column menu by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10476
+* Download button: Allow to not trigger rerun by @kajarenc in https://github.com/streamlit/streamlit/pull/10296
+* Change dataframe column format from UI by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10420
+* Allow small text in Markdown by @jrieke in https://github.com/streamlit/streamlit/pull/10487
+* Allow hiding dataframe columns from UI by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10264
+* Set `use_container_width=True` by default for `st.dataframe` and `st.data_editor` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10434
+* Support polars dataframe/series hashing by @kajarenc in https://github.com/streamlit/streamlit/pull/10408
+* Add timezone and timezone_offset to the st.context by @kajarenc in https://github.com/streamlit/streamlit/pull/10336
+### Bug Fixes 🐛
+* Use compact file uploader based on element width by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10272
+* Fix issue with active pills & segmented control label font-size by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10349
+* Fix the usage of dataframe column menu in dialog by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10359
+* Apply default rounding to graphviz charts by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10224
+* [fix] chat input multi-line shrinks after drag and drop by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10364
+* Fix: `st.logo` unmounts with use of `st.fragment` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/10377
+* Prevent showing tooltips on trailing dataframe row by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10398
+* Revamp disabled state for chat input by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10441
+* [Fix] Reuse event loop logic by @mayagbarnes in https://github.com/streamlit/streamlit/pull/10455
+* [Fix]: `st.altair_chart` selection interval showing `true` tooltip by @mayagbarnes in https://github.com/streamlit/streamlit/pull/10456
+* Time formatting logic update: seconds/minutes/hours display by @ashm-dev in https://github.com/streamlit/streamlit/pull/10410
+* Fix regression with column order not getting updated by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10445
+* [fix] Tabs content flickering by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/10533
+### Other Changes
+* Hide the top colored line for custom themes by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10323
+* Remove `rich` from required dependencies by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10320
+* Release/1.42.0 by @kajarenc in https://github.com/streamlit/streamlit/pull/10338
+* Raise an exception when provider name contains underscore by @kajarenc in https://github.com/streamlit/streamlit/pull/10360
+* Fix typo in set_page_config doc string by @RyPeck in https://github.com/streamlit/streamlit/pull/10372
+* Release/1.42.1 by @mayagbarnes in https://github.com/streamlit/streamlit/pull/10421
+* Release/1.42.2 by @mayagbarnes in https://github.com/streamlit/streamlit/pull/10472
+* Fix deprecation with `fillna` pandas method by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10484
+
+## New Contributors
+* @tutu-sol made their first contribution in https://github.com/streamlit/streamlit/pull/10354
+* @RyPeck made their first contribution in https://github.com/streamlit/streamlit/pull/10372
+* @ashm-dev made their first contribution in https://github.com/streamlit/streamlit/pull/10358
+* @Harikrishnan2004 made their first contribution in https://github.com/streamlit/streamlit/pull/10463
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.42.2...1.43.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.42.2 (2025-02-20)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.42.2 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.42.1...1.42.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.42.1 (2025-02-17)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.42.1 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.42.0...1.42.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.42.0 (2025-02-04)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.42.0 -->
+
+## What's Changed
+### New Features 🎉
+* Recognise spark connect datatype. by @OSalama in https://github.com/streamlit/streamlit/pull/9954
+* Improve dataframe cell error handling by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9899
+* Update chat input send button hover UI by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10048
+* Set `use_container_width=True` by default for charts by @jrieke in https://github.com/streamlit/streamlit/pull/10064
+* Update chat input widget border radius by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10047
+* Add row hover color to dataframe component by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10104
+* Add `height` parameter to `st.code` by @jrieke in https://github.com/streamlit/streamlit/pull/10080
+* Allow reordering dataframe columns from UI by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10099
+* Auth feature by @kajarenc in https://github.com/streamlit/streamlit/pull/8786
+* Allow markdown in `caption` of `st.image` by @jrieke in https://github.com/streamlit/streamlit/pull/10075
+* Show elapsed time on `st.spinner` by @jrieke in https://github.com/streamlit/streamlit/pull/10072
+* Allow reusing existing event loop for server by @DeltaGa in https://github.com/streamlit/streamlit/pull/10164
+* Add support for using categorical index with `st.data_editor` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10195
+* Allow markdown in `st.table` by @jrieke in https://github.com/streamlit/streamlit/pull/10088
+* Preserve scroll position for `st.selectbox` and `st.multiselect` by @jrieke in https://github.com/streamlit/streamlit/pull/10073
+* Add dataframe column menu with sorting actions by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10197
+* Allow pinning dataframe columns from UI by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10206
+### Bug Fixes 🐛
+* Preserve target='_blank' for html elements by @raethlein in https://github.com/streamlit/streamlit/pull/9994
+* Make st.write use st.html when _repr_html_ is present. by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/9910
+* Fix #10005 by @kajarenc in https://github.com/streamlit/streamlit/pull/10006
+* Do not include source map files in release builds by @kmcgrady in https://github.com/streamlit/streamlit/pull/10011
+* Initialize mimetypes on server initialization by @kmcgrady in https://github.com/streamlit/streamlit/pull/10010
+* Schedule trigger events at the end of the event loop by @raethlein in https://github.com/streamlit/streamlit/pull/10018
+* Fix visualization of disabled feedback by @raethlein in https://github.com/streamlit/streamlit/pull/10030
+* Prevent tooltips from overflowing on the left or right side by @raethlein in https://github.com/streamlit/streamlit/pull/9983
+* Use configured column order for pinned columns by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10034
+* Fix handling of empty hierarchical column headers by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10035
+* Fix issue with dataframe width getting ignored by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10036
+* preserve white space sequences and segment breaks in `st.text` by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10062
+* Make `st.table` rounded by @jrieke in https://github.com/streamlit/streamlit/pull/9823
+* Ensure that error is only logged once with rich installed by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10097
+* Prevent showing 0 for small numbers in dataframe by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10060
+* Refine `st.date_input` to ensure consistent and accurate return types by @pranaybattu in https://github.com/streamlit/streamlit/pull/9620
+* Make st.expander summary respect isStale. by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/10085
+* In st.multiselect, make mouse cursor only be a pointer when hovering the X by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/10087
+* Remove shortcut to data checking and substitute with a rough hash by @kmcgrady in https://github.com/streamlit/streamlit/pull/10125
+* Deactivate translation for material icons by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10174
+* Make widget dropdowns look more consistent + convert `BaseColorPicker` to functional component by @jrieke in https://github.com/streamlit/streamlit/pull/10083
+* Add retry to watcher.util.path_modification_time to try and fix race condition. by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/10148
+* Make MPAv2 work with pure Python and with ProcessPoolExecutor by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/10163
+* Fix the chat input border radius by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10225
+* Use `attribute` word instead of `key` in case of AttributeError in st.query_params by @kajarenc in https://github.com/streamlit/streamlit/pull/10237
+* Force react-syntax-highlighter to cjs build by @kmcgrady in https://github.com/streamlit/streamlit/pull/10244
+* Apply top margin in top-aligned columns to first element instead of last by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10268
+### Other Changes
+* Release/1.41.0 by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9996
+* Fix: Round corners of `st.image` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9999
+* Release/1.41.1 by @kmcgrady in https://github.com/streamlit/streamlit/pull/10021
+* Only show log but don't raise an error when fragment id is not found by @raethlein in https://github.com/streamlit/streamlit/pull/10130
+* Update emojis used for validation by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10149
+* Print st.logo only on first page on the top by @raethlein in https://github.com/streamlit/streamlit/pull/10171
+* Remove usage of private snowflake-connector APIs by @raethlein in https://github.com/streamlit/streamlit/pull/10122
+* Add support for handling raw arrow data by @lukasmasuch in https://github.com/streamlit/streamlit/pull/10191
+* Add type annotations so st.altair_chart supports all Altair chart types. by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/10202
+* Update material symbols font and test by @kajarenc in https://github.com/streamlit/streamlit/pull/10247
+* Remove reading user info from `X-Streamlit-User` header by @kajarenc in https://github.com/streamlit/streamlit/pull/10260
+* Update file uploader to uses new `accept` value by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/10288
+
+## New Contributors
+* @EclidFundgue made their first contribution in https://github.com/streamlit/streamlit/pull/9930
+* @OSalama made their first contribution in https://github.com/streamlit/streamlit/pull/9954
+* @SiddhantSadangi made their first contribution in https://github.com/streamlit/streamlit/pull/10051
+* @syasini made their first contribution in https://github.com/streamlit/streamlit/pull/10056
+* @pranaybattu made their first contribution in https://github.com/streamlit/streamlit/pull/9620
+* @DeltaGa made their first contribution in https://github.com/streamlit/streamlit/pull/10164
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.41.1...1.42.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.41.1 (2024-12-13)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.41.1 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.41.0...1.41.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.41.0 (2024-12-10)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.41.0 -->
+
+## What's Changed
+### New Features 🎉
+* Add pathlib support by @jrieke in https://github.com/streamlit/streamlit/pull/9711
+* Follow ups for pathlib support by @jrieke in https://github.com/streamlit/streamlit/pull/9783
+* Support primary color as text and background color in markdown by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9676
+* Improve hover tooltips for `st.line_chart` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9674
+* Add support for ISO time/date format in st.time_input / st.date_input by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/9753
+* Add async generator support to `st.write_stream` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/8724
+* Add _repr_html_ support to st.html, and avoid throwing for non-paths by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/9877
+* Remove temporary padding fix for fullscreen button by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9882
+* Allow pinning dataframe columns via column config by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9535
+* Remove internal Streamlit details from exception traces  by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/9913
+* Borderless `"tertiary"` buttons by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9923
+* Improvements to the showErrorDetails config by @sfc-gh-lwilby in https://github.com/streamlit/streamlit/pull/9909
+* Border for `st.metric` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9928
+* Border for `st.columns` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9927
+### Bug Fixes 🐛
+* Disallow double slash paths to redirect by @kmcgrady in https://github.com/streamlit/streamlit/pull/9754
+* Fix usage of hyphens in user key for CSS classes by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9793
+* Fix #9763. Don't show text keyboard for number input on IOS by @kajarenc in https://github.com/streamlit/streamlit/pull/9766
+* Fixes a bug where timezones with a non- x:00 utc offset would start at a non 00:00 timer for st.audio_input by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9791
+* Fix dataframe fullscreen for large dataframes by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9803
+* fix #9810 Update to latest Material symbols font by @kajarenc in https://github.com/streamlit/streamlit/pull/9813
+* Fix exception element styling by @jrieke in https://github.com/streamlit/streamlit/pull/9818
+* [Fix] Prevent rerun for text_input when value did not change by @raethlein in https://github.com/streamlit/streamlit/pull/9826
+* [Fix] Set text area value based on state by @raethlein in https://github.com/streamlit/streamlit/pull/9829
+* Correctly handle `DeltaGenerator` in `st.write` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9828
+* Add shared hooks for submitForm & inputChange by @raethlein in https://github.com/streamlit/streamlit/pull/9847
+* Set the default selection mode to 'single' in the overload methods of pills and segmented_control by @RubenVanEldik in https://github.com/streamlit/streamlit/pull/9801
+* [fix] st.graphviz_chart rendering bug with use_container_width=True by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9867
+* Support URLPattern-compatible patterns in allowed domain matching by @sfc-gh-mgolebiowskiowczarek in https://github.com/streamlit/streamlit/pull/9849
+* Fix wrong dataframe return typing by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9898
+* Fix URI decoding of link column display text by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9895
+* Disallow invalid scopes for st.rerun by @kmcgrady in https://github.com/streamlit/streamlit/pull/9911
+* Fix slow rendering performance caused by complex CSS selector by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9901
+* Update audio buffer to handle channels better by @kmcgrady in https://github.com/streamlit/streamlit/pull/9885
+* Only show st.cache decorator spinners for cache misses and outermost function by @raethlein in https://github.com/streamlit/streamlit/pull/9956
+* Have Images List not utilize the individual image width parameter by @kmcgrady in https://github.com/streamlit/streamlit/pull/9958
+### Other Changes
+* Clean up hello app by @jrieke in https://github.com/streamlit/streamlit/pull/9760
+* Adds a timestamp into the file name for st.audio_input by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9768
+* Update watchdog to include 6.x.x  by @RubenVanEldik in https://github.com/streamlit/streamlit/pull/9785
+* release/1.40.0 by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9790
+* Release/1.40.1 by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9831
+* Release/1.40.2 by @kmcgrady in https://github.com/streamlit/streamlit/pull/9925
+* Set Python 3.13 as max version for Streamlit by @raethlein in https://github.com/streamlit/streamlit/pull/9635
+
+## New Contributors
+* @sfc-gh-mgolebiowskiowczarek made their first contribution in https://github.com/streamlit/streamlit/pull/9849
+* @snyk-io made their first contribution in https://github.com/streamlit/streamlit/pull/9931
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.40.2...1.41.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.40.2 (2024-11-25)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.40.2 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.40.1...1.40.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.40.1 (2024-11-11)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.40.1 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.40.0...1.40.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.40.0 (2024-11-06)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.40.0 -->
+
+## What's Changed
+### New Features 🎉
+* Adding Safari Support for st.experimental_audio_input without need of ffmpeg library by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9571
+* allow static serving to follow symlink by @link89 in https://github.com/streamlit/streamlit/pull/9147
+* [feat] Add `use_container_width` to `st.image` by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9547
+* Change `st.text` font and overflow styles by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/9572
+* Expose the st.pills command again by @raethlein in https://github.com/streamlit/streamlit/pull/9612
+* adding download button to audio_input by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9637
+* deexperiment audio_input widget by @kajarenc in https://github.com/streamlit/streamlit/pull/9654
+* Feature/button group: st.segmented_control by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/9418
+* Allow adding the Streamlit logo in markdown by @jrieke in https://github.com/streamlit/streamlit/pull/9670
+* Replace typographical symbols in markdown by @jrieke in https://github.com/streamlit/streamlit/pull/9677
+* For button group commands, rename 'multiple' to 'multi' for selection_mode by @raethlein in https://github.com/streamlit/streamlit/pull/9701
+* Add a delay before displaying the running man icon.  by @sfc-gh-lwilby in https://github.com/streamlit/streamlit/pull/9732
+* [feat] Localize calendar week start date in st.date_input by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9706
+### Bug Fixes 🐛
+* [Fix] Tooltip code block styling by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9529
+* [fix] st.pydeck_chart selection fixes by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9552
+* [Fix] Message box title colors by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9555
+* [Fix] Tooltip visibility in `st.sidebar` & `st.dialog` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9554
+* [Fix] Error on invalid `st.text_area` height by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9561
+* Re-introduce "Allow array parameters in CLI" by @kmcgrady in https://github.com/streamlit/streamlit/pull/9577
+* [Fix] `st.navigation` reconciles `client.showSidebarNavigation` config by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9589
+* [Fix] Show input instructions in form when allowed and focused by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/9576
+* [Fix] MPA page layout by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/9479
+* Fix page link margin regression by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9625
+* [Fix] Clear fragment autoreruns when changing pages by @raethlein in https://github.com/streamlit/streamlit/pull/9617
+* Fix clear cached class method regression by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9642
+* Eliminate symlink requirement in component request handler by @kmcgrady in https://github.com/streamlit/streamlit/pull/9588
+* FIx button cursor regression by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9733
+* Fix issue with local storage in Android webview by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9744
+* [fix] Revamp `preferredLayouts` state for `set_page_config` and layout in User Settings by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/9723
+### Other Changes
+* Release/1.39.0 by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/9575
+* Upgrade deck.gl to the latest version by @kmcgrady in https://github.com/streamlit/streamlit/pull/9636
+* Deploy dialog redesign by @sfc-gh-dswiecki in https://github.com/streamlit/streamlit/pull/9681
+* Fix typo in docstring for `selection_mode` of `st.dataframe` by @jrieke in https://github.com/streamlit/streamlit/pull/9699
+* changing icon and label for st.audio_input by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9712
+* Deploy dialog feedback by @sfc-gh-dswiecki in https://github.com/streamlit/streamlit/pull/9718
+* Allow Pillow 11 by @hauntsaninja in https://github.com/streamlit/streamlit/pull/9742
+* Deploy dialog feedback cont’d by @sfc-gh-dswiecki in https://github.com/streamlit/streamlit/pull/9741
+* Use toolbar for fullscreen button by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9721
+
+## New Contributors
+* @link89 made their first contribution in https://github.com/streamlit/streamlit/pull/9147
+* @sfc-gh-dswiecki made their first contribution in https://github.com/streamlit/streamlit/pull/9681
+* @hauntsaninja made their first contribution in https://github.com/streamlit/streamlit/pull/9742
+* @emmagarr made their first contribution in https://github.com/streamlit/streamlit/pull/9698
+* @sfc-gh-lwilby made their first contribution in https://github.com/streamlit/streamlit/pull/9732
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.39.0...1.40.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.39.0 (2024-10-01)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.39.0 -->
+
+## What's Changed
+### New Features 🎉
+* Add icon to `st.button` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9301
+* Add icon to `st.download_button` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9322
+* Add icon to `st.form_submit_button` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9327
+* Add `st.logo` size options by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9177
+* [feat] Add `icon` to `st.link_button` by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9350
+* Add icon to `st.popover` by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/9367
+* Allow setting CSS class on elements via `key` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9295
+* Add config option to set TTL for disconnected sessions by @vdonato in https://github.com/streamlit/streamlit/pull/9179
+* Add .pdf to the list of safe static files by @kajarenc in https://github.com/streamlit/streamlit/pull/9439
+* Feature: Add `enter_to_submit` param to `st.form` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9480
+* Add expanded param to st.navigation by @kmcgrady in https://github.com/streamlit/streamlit/pull/9484
+* [feat] Add width and height to st.{map|pydeck_chart} by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9464
+* [feat] Utilize new fullscreen Toolbar for st.{map|pydeck_chart} by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9501
+* [feat] Selection on `st.pydeck_chart` by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9377
+* st.experimental_audio_input by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9404
+* Support hierarchical (multi-index) column headers in `st.dataframe` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9483
+* Prefer column config formatting over Pandas styler by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9538
+### Bug Fixes 🐛
+* [fix] Multiselect label truncation in narrow columns by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9334
+* [fix] `st.{balloons|snow}` fixes when rendered in `st.dialog` by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9335
+* Remove `st.logo` if stale by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9337
+* Fix issue with re-adding deleted row in data editor with same index by @lukasmasuch in https://github.com/streamlit/streamlit/pull/8864
+* Fix: Margin on button icons by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9378
+* Do not format title for MPAv2 in Sidebar nav by @kmcgrady in https://github.com/streamlit/streamlit/pull/9375
+* Fix dialogs not re-opening in some cases after dismiss by @raethlein in https://github.com/streamlit/streamlit/pull/9333
+* Fix edge case where title can be empty string by @kmcgrady in https://github.com/streamlit/streamlit/pull/9374
+* Update runtime.py: change test@test.com to test@example.com by @wyattscarpenter in https://github.com/streamlit/streamlit/pull/9371
+* Fix: Make `showSidebarNavigation` config work in MPAv2 by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9379
+* Determine common mime types by extension by @t0mdavid-m in https://github.com/streamlit/streamlit/pull/9390
+* Fix bold font in header showing less weight by @sfc-gh-pchiu in https://github.com/streamlit/streamlit/pull/9395
+* Update page script hash on script start if necessary by @kmcgrady in https://github.com/streamlit/streamlit/pull/9408
+* Update overflowing pages to be more deterministic by @kmcgrady in https://github.com/streamlit/streamlit/pull/9394
+* Fix accidentally watching parent folder for changes by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9453
+* Fix: Disable form submission & instructions by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9406
+* Do not clear nodes for fragment-finished-via-rerun messages by @raethlein in https://github.com/streamlit/streamlit/pull/9389
+* Clear queue also for fragment-runs to prevent vanishing elements by @raethlein in https://github.com/streamlit/streamlit/pull/9381
+* Migrate Active Script hash to ScriptRunContext by @kmcgrady in https://github.com/streamlit/streamlit/pull/9441
+* Fix dataframe maximum update depth error  by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9490
+* Add warning for nested paths in url path by @kmcgrady in https://github.com/streamlit/streamlit/pull/9499
+* [fix] Remove unneeded margin on map components by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9506
+* Redirect pages with removed trailing slashes by @kmcgrady in https://github.com/streamlit/streamlit/pull/9500
+* Fix `st.json` to keep container bounds by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9521
+* [Fix] `st.multiselect` placeholder by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9523
+* [Fix] Embedded app spacing by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9524
+* [fix] DeckGl zoom button borders and styling by @sfc-gh-bnisco in https://github.com/streamlit/streamlit/pull/9536
+### Other Changes
+* Allow tenacity version 9.x by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9348
+* [Fix] Logo maintains aspect ratio on width resize by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9368
+* [Fix] Logo blink on MPA v1 page change by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9361
+* Update watchdog so Streamlit can use version 5.X by @RubenVanEldik in https://github.com/streamlit/streamlit/pull/9354
+* Fix: Material icon color in buttons by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9393
+* Adding more specific exceptions by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9318
+* Add missing `in` operator to docstring example by @pratapvardhan in https://github.com/streamlit/streamlit/pull/9413
+* Update vega frontend dependencies to support new features by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9443
+* Remove fullscreen button for `st.bokeh_chart` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9528
+
+## New Contributors
+* @t0mdavid-m made their first contribution in https://github.com/streamlit/streamlit/pull/9390
+* @pratapvardhan made their first contribution in https://github.com/streamlit/streamlit/pull/9413
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.38.0...1.39.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.38.0 (2024-08-27)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.38.0 -->
+
+## What's Changed
+### Breaking Changes 🛠
+* Remove pydantic fix in bootstrap by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9257
+* Remove experimental cached widget replay logic by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9305
+### New Features 🎉
+* [RFC] Only rerun script on reconnect if a script run was interrupted by @vdonato in https://github.com/streamlit/streamlit/pull/9083
+* Add syntax highlighting for diff by @raethlein in https://github.com/streamlit/streamlit/pull/9172
+* Support `to_pandas` method to return a Pandas Series by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9175
+* Add support for Kubernetes / directory with mounted file style secrets by @sfc-gh-mochen in https://github.com/streamlit/streamlit/pull/9078
+* Extend dataframe-handling support for collection-like types by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9205
+* Add support for Snowpark Pandas Index by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9222
+* Add data handling support for Polars by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9230
+* Add data handling support for xarray by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9235
+* Add data handling support for Dask by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9240
+* Add data handling support for Ray by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9256
+* Type-hint improvements for #8717 and #7801 by @Asaurus1 in https://github.com/streamlit/streamlit/pull/9048
+* Allow configurable expansion depth for `st.json` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/8984
+* Add data handling support for DB API 2.0 by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9274
+* Add data handling support for Pydantic instances by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9290
+* Add support for dataframe interchange protocol by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9289
+* Add line wrapping to st code by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/8558
+### Bug Fixes 🐛
+* Make the magic support for-else, while-else, try-else, try-except*, and match by @whitphx in https://github.com/streamlit/streamlit/pull/9110
+* Fix copy-buttons in dialogs by @raethlein in https://github.com/streamlit/streamlit/pull/9130
+* Support theming in embed better by @kmcgrady in https://github.com/streamlit/streamlit/pull/9103
+* Fix #8638 by @kajarenc in https://github.com/streamlit/streamlit/pull/9101
+* Bugfix: Multiple Stale Maps by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9092
+* Bugfix: Upgrade plotly.js to resolve hover tooltip bug by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9144
+* Make ScriptControlException inherit from BaseException again by @raethlein in https://github.com/streamlit/streamlit/pull/9167
+* Print deprecation warnings when dialog/fragment functions are called by @vdonato in https://github.com/streamlit/streamlit/pull/9170
+* Revert "Remove fragment_ids_this_run from script run context (#8953)" and tweaks some types by @vdonato in https://github.com/streamlit/streamlit/pull/9178
+* Allow adding Plotly toolbar buttons by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9190
+* Ignore all headings in markdown labels by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9189
+* Don't raise FragmentStorageKeyError for auto_rerun fragments by @raethlein in https://github.com/streamlit/streamlit/pull/9183
+* Fix ghost tabs issue in fragments by @raethlein in https://github.com/streamlit/streamlit/pull/9186
+* Fix empty anchor scrolling by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9206
+* Only clear up fragment-related stale widgets by @raethlein in https://github.com/streamlit/streamlit/pull/9215
+* Fix issue with empty Azure OpenAI chunk by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9234
+* Fix grey-out for selectbox index columns by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9231
+* Fix options support for `dict.items()` by @lukasmasuch in https://github.com/streamlit/streamlit/pull/9241
+* When clearing forward queue add a stopped for rerun message by @dannyopts in https://github.com/streamlit/streamlit/pull/9187
+* Do not preserve children of a block if the block type changes by @kmcgrady in https://github.com/streamlit/streamlit/pull/9276
+* Unstale just updated fragments by @raethlein in https://github.com/streamlit/streamlit/pull/9285
+* Fix logo + sidebar sizing interaction by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9298
+### Other Changes
+* Print bottom container always at the end of the app content by @raethlein in https://github.com/streamlit/streamlit/pull/9129
+* Remove a type ignore by @wyattscarpenter in https://github.com/streamlit/streamlit/pull/9149
+* Use material icons in streamlit hello page nav and favicons by @snehankekre in https://github.com/streamlit/streamlit/pull/9225
+* Fix nested fragment stale elements by @raethlein in https://github.com/streamlit/streamlit/pull/9246
+* Use overloads to make the return types of st.feedback more precise. (with type tests) by @wyattscarpenter in https://github.com/streamlit/streamlit/pull/9216
+
+## New Contributors
+* @wyattscarpenter made their first contribution in https://github.com/streamlit/streamlit/pull/9149
+* @sfc-gh-mochen made their first contribution in https://github.com/streamlit/streamlit/pull/9078
+* @dannyopts made their first contribution in https://github.com/streamlit/streamlit/pull/9187
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.37.1...1.38.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.37.1 (2024-08-05)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.37.1 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.37.0...1.37.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.37.0 (2024-07-25)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.37.0 -->
+
+## What's Changed
+### New Features 🎉
+* Stacking options - `st.bar_chart` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8945
+* Support `graphviz.sources.Source` object for `st.graphviz_chart` by @sfc-gh-kbregula in https://github.com/streamlit/streamlit/pull/8993
+* Add support for material icons in markdown by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8889
+* Fix lag when closing dialog by @raethlein in https://github.com/streamlit/streamlit/pull/9023
+* Stacking options - `st.area_chart` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8992
+* Add feedback widget by @raethlein in https://github.com/streamlit/streamlit/pull/8915
+* READ only headers and cookies by @kajarenc in https://github.com/streamlit/streamlit/pull/8976
+* De-experimentalize st.fragment by @vdonato in https://github.com/streamlit/streamlit/pull/9019
+* De-experimentalize st.dialog by @raethlein in https://github.com/streamlit/streamlit/pull/9020
+### Bug Fixes 🐛
+* Show fragment errors in fragment-path for main app runs by @raethlein in https://github.com/streamlit/streamlit/pull/8868
+* Fix st.rerun fragment thread reuse issue by @raethlein in https://github.com/streamlit/streamlit/pull/8798
+* Support non-unix style paths for MPA loading by @kmcgrady in https://github.com/streamlit/streamlit/pull/8988
+* Set theme hash properly on load if a custom theme is active to start by @kmcgrady in https://github.com/streamlit/streamlit/pull/8989
+* Don't remove session refs on fragment runs by @vdonato in https://github.com/streamlit/streamlit/pull/9010
+* Improvements to NumberInput formatting by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9035
+* Hide all Particles upon printing by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9053
+* Fix: MPA support of custom themes by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8994
+* `st.switch_page` clears non-embed query params  by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9059
+* Fix secrets.toml Windows Path Bug by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9061
+* Bugfix: Fixes two st.map width bugs by @sfc-gh-nbellante in https://github.com/streamlit/streamlit/pull/9070
+* Validate the path using Tornado before performing checks by @kmcgrady in https://github.com/streamlit/streamlit/pull/8990
+* Reset ctx.current_fragment_id to last ID instead of None by @vdonato in https://github.com/streamlit/streamlit/pull/9114
+### Other Changes
+* Update emojis used for validation by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8923
+* Add support for numpy 2.x by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8940
+* Remove a bunch of deprecated experimental features by @vdonato in https://github.com/streamlit/streamlit/pull/8943
+* Migrate custom icons from material outlined to rounded by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8998
+* Remove old config options - part 1 by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9005
+* Remove old config options - part 2 by @mayagbarnes in https://github.com/streamlit/streamlit/pull/9013
+* Remove `deprecation.showPyplotGlobalUse` config option by @LukasMasuch in https://github.com/streamlit/streamlit/pull/9018
+* Fix broken `st.navigation` docstring by @mahotd in https://github.com/streamlit/streamlit/pull/9027
+* Update the feedback widget design by @raethlein in https://github.com/streamlit/streamlit/pull/9094
+
+## New Contributors
+* @Dev-iL made their first contribution in https://github.com/streamlit/streamlit/pull/8947
+* @quant12345 made their first contribution in https://github.com/streamlit/streamlit/pull/8968
+* @mahotd made their first contribution in https://github.com/streamlit/streamlit/pull/9027
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.36.0...1.37.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.36.0 (2024-06-20)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.36.0 -->
+
+## What's Changed
+### Breaking Changes 🛠
+* Remove legacy caching logic by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8737
+* Deprecate the `experimental_allow_widgets` caching parameter by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8817
+### New Features 🎉
+* Allow passing on_change_callback for CustomComponents by @raethlein in https://github.com/streamlit/streamlit/pull/8633
+* Use raw number for number column overlay and copy by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8708
+* Introduce st.navigation and st.Page by @kmcgrady in https://github.com/streamlit/streamlit/pull/8744
+* Make st.write call st.json to display Streamlit secrets object by @snehankekre in https://github.com/streamlit/streamlit/pull/8659
+* Streamlit Charts: Customizable Axis Labels by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8846
+* Add vertical alignment parameter to `st.columns` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8568
+* Add `icon` parameter to st.expander by @snehankekre in https://github.com/streamlit/streamlit/pull/8716
+* Use the default widget height for non-stacked checkbox & toggle widgets by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8835
+* Horizontal `st.bar_chart` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8877
+### Bug Fixes 🐛
+* Remove non-existent kwargs in ast.Call() call by @JelleZijlstra in https://github.com/streamlit/streamlit/pull/8711
+* Don't instantiate the LocalSourcesWatcher if file watching is disabled by @vdonato in https://github.com/streamlit/streamlit/pull/8741
+* Make the session state writes disallowed message more generic by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8720
+* Ensure SessionInfo is set before performing an action by @kmcgrady in https://github.com/streamlit/streamlit/pull/8779
+* Unify the minimum height of most element  by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8797
+* Don't allow writing widgets outside the fragment by @raethlein in https://github.com/streamlit/streamlit/pull/8756
+* Fix element replay regression for plotly charts by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8770
+* Improve exception text when selectbox index larger than options by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8775
+* Prevent images in markdown to go beyond the container width by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8794
+* Ensure current page script hash and active script hash is correct at script start by @kmcgrady in https://github.com/streamlit/streamlit/pull/8830
+* Revert "Handle Altair resolve_scale (#8497)" by @kmcgrady in https://github.com/streamlit/streamlit/pull/8845
+* Update custom-components import paths and tests by @raethlein in https://github.com/streamlit/streamlit/pull/8666
+* Raise exception if st.Page is given an invalid path by @vdonato in https://github.com/streamlit/streamlit/pull/8878
+### Other Changes
+* Explicitly export experimental_dialog by @raethlein in https://github.com/streamlit/streamlit/pull/8728
+* Remove default value for title of dialog_decorator by @raethlein in https://github.com/streamlit/streamlit/pull/8729
+* Docstrings for 1.35.0 (and type consistency for charts) by @sfc-gh-dmatthews in https://github.com/streamlit/streamlit/pull/8740
+* Migrate streamlit hello to MPAv2 by @kmcgrady in https://github.com/streamlit/streamlit/pull/8806
+* Fix `use_container_width` docstring when default is `True` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8809
+* Allow protobuf v5 as dependency by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8627
+* Fix: Remove title appending · Streamlit  by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8900
+
+## New Contributors
+* @JelleZijlstra made their first contribution in https://github.com/streamlit/streamlit/pull/8711
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.35.0...1.36.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.35.0 (2024-05-23)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.35.0 -->
+
+## What's Changed
+### New Features 🎉
+* Add support for selections to `st.plotly_chart` by @willhuang1997 in https://github.com/streamlit/streamlit/pull/8191
+* feat: support set mysql connection query from secrets.toml by @LucianLiu6 in https://github.com/streamlit/streamlit/pull/8581
+* Feature: `st.logo` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8554
+* Material icon for st.page_link by @kajarenc in https://github.com/streamlit/streamlit/pull/8593
+* Add dataframe row and column selections by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8411
+* Add support for selections to `st.altair_chart` & `st.vega_lite_chart` by @willhuang1997 in https://github.com/streamlit/streamlit/pull/8302
+### Bug Fixes 🐛
+* Fix standalone custom-component execution by @raethlein in https://github.com/streamlit/streamlit/pull/8620
+* Clear stale elements when st.rerun() is used by @vdonato in https://github.com/streamlit/streamlit/pull/8599
+* Focus chat input after the submit button is pressed by @kmcgrady in https://github.com/streamlit/streamlit/pull/8637
+* fix: #8500 bypass StrEnum 'index' to make position-indexable by @97k in https://github.com/streamlit/streamlit/pull/8622
+* Update scroll-margin-top by @raethlein in https://github.com/streamlit/streamlit/pull/8641
+* Fix cell error when data editor gets reconstructed by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8640
+* Ensure that column config is cloned by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8677
+* Add fallback method for CSV download by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8452
+### Other Changes
+* Bump mheap/github-action-required-labels from 5.4.0 to 5.4.1 by @dependabot in https://github.com/streamlit/streamlit/pull/8582
+* Remove fullscreen button for `st.table` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8621
+* Improve typing for query params `.update` and `.from_dict`  by @Asaurus1 in https://github.com/streamlit/streamlit/pull/8614
+* Improve anchor button visualization for titles and headings by @raethlein in https://github.com/streamlit/streamlit/pull/8587
+* Allow protobuf v5 by @mark-thm in https://github.com/streamlit/streamlit/pull/8624
+* Stabilize the vega-lite spec for altair-based charts by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8628
+* Update address output in headless mode by @raethlein in https://github.com/streamlit/streamlit/pull/8647
+* Revert "Allow protobuf v5" by @raethlein in https://github.com/streamlit/streamlit/pull/8701
+
+## New Contributors
+* @LucianLiu6 made their first contribution in https://github.com/streamlit/streamlit/pull/8581
+* @mark-thm made their first contribution in https://github.com/streamlit/streamlit/pull/8624
+* @97k made their first contribution in https://github.com/streamlit/streamlit/pull/8622
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.34.0...1.35.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.34.0 (2024-05-02)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.34.0 -->
+
+## What's Changed
+### New Features 🎉
+* Add st.experimental_dialog by @raethlein in https://github.com/streamlit/streamlit/pull/8040
+* from_dict for query params by @Asaurus1 in https://github.com/streamlit/streamlit/pull/8470
+* Improve period type support in `st.dataframe` and `st.data_editor` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7987
+* Add ability to clear cache for specific function arguments by passing args to `<cached_func>.clear()` by @OscarSaharoy in https://github.com/streamlit/streamlit/pull/8297
+* Add support for autoplaying `st.audio` and `st.video` media by @snehankekre in https://github.com/streamlit/streamlit/pull/8481
+* Support background colors for text by @snehankekre in https://github.com/streamlit/streamlit/pull/8435
+* Non-emoji icons by @kajarenc in https://github.com/streamlit/streamlit/pull/8307
+* Add support for Modin and Snowpark Pandas by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8506
+* Enable the usage of the pydeck-carto package with st.pydeck_chart by @vdonato in https://github.com/streamlit/streamlit/pull/8422
+### Bug Fixes 🐛
+* Offset dates in vega if no timezone information is attached. by @kmcgrady in https://github.com/streamlit/streamlit/pull/8278
+* Fix issues with fragments writing to containers and the sidebar by @vdonato in https://github.com/streamlit/streamlit/pull/8408
+* Produce python error for slider min=max by @AnOctopus in https://github.com/streamlit/streamlit/pull/8413
+* Make check for component ready dynamic by @kmcgrady in https://github.com/streamlit/streamlit/pull/8434
+* Update Auto Theme after print dialog if necessary by @kmcgrady in https://github.com/streamlit/streamlit/pull/8469
+* Reset widget state on page change by @AnOctopus in https://github.com/streamlit/streamlit/pull/8425
+* Switch back to using undeprecated pillow constant by @vdonato in https://github.com/streamlit/streamlit/pull/8492
+* Fix double script/callback run when replacing a file by @vdonato in https://github.com/streamlit/streamlit/pull/8493
+* Handle Altair vconcat with use_container_width by @kmcgrady in https://github.com/streamlit/streamlit/pull/8498
+* Fix empty state for `st.status` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8369
+* Fix `st.multiselect` usage with empty sets or tuples by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8471
+* Handle Altair resolve_scale by @kmcgrady in https://github.com/streamlit/streamlit/pull/8497
+* Adjust default date for st.date_input if today's date is out of bounds by @vdonato in https://github.com/streamlit/streamlit/pull/8519
+* Handle setting session state keys to None for supported widgets by @vdonato in https://github.com/streamlit/streamlit/pull/8529
+* Fix empty generator usage with `st.write_stream` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8560
+### Other Changes
+* Update modal styles by @raethlein in https://github.com/streamlit/streamlit/pull/8274
+* Move toasts to top right and make them prettier by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/8433
+* Fix escaping in docstrings by @vdonato in https://github.com/streamlit/streamlit/pull/8510
+* Fix blank space print by @raethlein in https://github.com/streamlit/streamlit/pull/8502
+* Remove snowflake extras python restriction by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8538
+
+## New Contributors
+* @Lundez made their first contribution in https://github.com/streamlit/streamlit/pull/8520
+* @OscarSaharoy made their first contribution in https://github.com/streamlit/streamlit/pull/8297
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.33.0...1.34.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.33.0 (2024-04-04)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.33.0 -->
+
+## What's Changed
+### Breaking Changes 🛠
+* Require explicit suggestion of unsafe_allow_html in st.write by @kmcgrady in https://github.com/streamlit/streamlit/pull/8238
+### New Features 🎉
+* explicit update() method for query_params by @Asaurus1 in https://github.com/streamlit/streamlit/pull/8205
+* Add `AreaChartColumn` to column config by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8237
+* Associate label with input to make label click focus input by @filiptammergard in https://github.com/streamlit/streamlit/pull/8155
+* Media elements improvements by @kajarenc in https://github.com/streamlit/streamlit/pull/8203
+* Page switching in AppTest by @AnOctopus in https://github.com/streamlit/streamlit/pull/8280
+* Add ability to use timedelta and stings to `start_time` and `end_time`. by @kajarenc in https://github.com/streamlit/streamlit/pull/8348
+* st.experimental_fragment decorator by @vdonato in https://github.com/streamlit/streamlit/pull/8343
+* Feature: `st.html` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8366
+### Bug Fixes 🐛
+* AppTest format_func by @AnOctopus in https://github.com/streamlit/streamlit/pull/8189
+* Url decode link column display values if regex is used by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8258
+* Fix infinite loop when `rerun` and triggered widgets are used together in AppTest by @AnOctopus in https://github.com/streamlit/streamlit/pull/8264
+* Use the button width as minimum for `st.popover` container by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8266
+* Revert "Expire session storage cache on an async timer (#8083)" by @kmcgrady in https://github.com/streamlit/streamlit/pull/8281
+* Allow custom themes to override embed options query parameter by @kmcgrady in https://github.com/streamlit/streamlit/pull/8021
+* Fix issue with not correctly waiting for connections by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8294
+* Fix initial iframe height for custom component by @kmcgrady in https://github.com/streamlit/streamlit/pull/8290
+* Fullscreen Button Overflow Horizontally by @kmcgrady in https://github.com/streamlit/streamlit/pull/8279
+* Fix white components backgrounds when OS is using dark theme by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8242
+* Add simple fix to update container status after llm complete by @KedoKudo in https://github.com/streamlit/streamlit/pull/8311
+* Simplify toast message truncation to use character limit directly by @snehankekre in https://github.com/streamlit/streamlit/pull/8337
+* resolve path when registering watcher for module paths by @zyxue in https://github.com/streamlit/streamlit/pull/8372
+* Readd mistakenly removed line and add explanatory comment by @vdonato in https://github.com/streamlit/streamlit/pull/8392
+### Other Changes
+* Allow packaging 24.x by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8338
+
+## New Contributors
+* @filiptammergard made their first contribution in https://github.com/streamlit/streamlit/pull/8155
+* @KedoKudo made their first contribution in https://github.com/streamlit/streamlit/pull/8311
+* @zyxue made their first contribution in https://github.com/streamlit/streamlit/pull/8372
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.32.2...1.33.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.32.2 (2024-03-14)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.32.2 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.32.1...1.32.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.32.1 (2024-03-12)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.32.1 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.32.0...1.32.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.32.0 (2024-03-07)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.32.0 -->
+
+## What's Changed
+### New Features 🎉
+* Support markdown links in`st.radio` options by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8028
+* Improve error handling in `st.write_stream` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8036
+* Add support for PIL images in `st.write` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8039
+* add: Supprt for HTTP <Head> method to /healthz endpoint by @rahulmistri1997 in https://github.com/streamlit/streamlit/pull/8145
+* Add support for AzureOpenAI chat stream by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8107
+* Add `st.popover` layout container by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7908
+* AppTest `from_function` args by @AnOctopus in https://github.com/streamlit/streamlit/pull/8183
+* Subtitles changes for `st.video` by @kajarenc in https://github.com/streamlit/streamlit/pull/8057
+* Expander and Status AppTest wrappers by @AnOctopus in https://github.com/streamlit/streamlit/pull/8187
+### Bug Fixes 🐛
+* Add support for converting `st.query_params` to string by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8030
+* Fix custom dataframe scrollbars in Chrome by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8034
+* Fix `time_input` menu colors in dark mode by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8056
+* Make shallow copies of options returned from ensure_indexable by @vdonato in https://github.com/streamlit/streamlit/pull/8064
+* Fix memory leak in runtime coroutine loop by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8068
+* Prevent pandas keyerror when checking color column format in st.map by @awhazell in https://github.com/streamlit/streamlit/pull/8079
+* Fix #7954 by @vdonato in https://github.com/streamlit/streamlit/pull/8054
+* Fix issue using a local path with `st.image` on windows. by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8092
+* Fix: `st.page_link` & `st.switch_page` handling / prefixed paths by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8085
+* Fix script runner stack overflow by @AnOctopus in https://github.com/streamlit/streamlit/pull/8100
+* Normalize main script path in `st.switch_page` and `st.page_link` by @kajarenc in https://github.com/streamlit/streamlit/pull/8103
+* Fix: `st.page_link` URL preview shows file path by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8086
+* Support multiple path characteristics for switch_page and page_link by @kmcgrady in https://github.com/streamlit/streamlit/pull/8127
+* Fix chart exception where color-handling code expected DF index to start at 0 by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/8158
+* Fix: Alert element overflow by @mayagbarnes in https://github.com/streamlit/streamlit/pull/8194
+* Fully clear App State on page change by @kmcgrady in https://github.com/streamlit/streamlit/pull/8208
+* Make st.help more resilient with conditional members by @kmcgrady in https://github.com/streamlit/streamlit/pull/8228
+### Other Changes
+* Expire session storage cache on an async timer by @AnOctopus in https://github.com/streamlit/streamlit/pull/8083
+* Lazy-load emoji module to improve performance by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8109
+* Lazy-load pandas and pyarrow to improve performance by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8125
+* Miscellaneous docstring edits and argument names by @sfc-gh-dmatthews in https://github.com/streamlit/streamlit/pull/8118
+* Deprecate the `deprecation.showPyplotGlobalUse` config option by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8133
+* Use env variable to configure matplotlib backend by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8113
+* Lazy-load numpy and pillow to improve performance by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8134
+* Show a warning when server port `3000` is used by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8152
+* Fixed typos in example documentation by @t1emp0 in https://github.com/streamlit/streamlit/pull/8162
+* Increase time until timeout warning is shown for a custom component by @raethlein in https://github.com/streamlit/streamlit/pull/8179
+* Update glide-data-grid to version 6.0.4 by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7779
+
+## New Contributors
+* @awhazell made their first contribution in https://github.com/streamlit/streamlit/pull/8079
+* @SidVer312 made their first contribution in https://github.com/streamlit/streamlit/pull/8017
+* @rahulmistri1997 made their first contribution in https://github.com/streamlit/streamlit/pull/8145
+* @t1emp0 made their first contribution in https://github.com/streamlit/streamlit/pull/8162
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.31.1...1.32.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.31.1 (2024-02-12)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.31.1 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.31.0...1.31.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.31.0 (2024-02-01)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.31.0 -->
+
+## What's Changed
+### New Features 🎉
+* Allow inline usage of `st.chat_input` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7896
+* Feature: `st.page_link` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/7965
+* Add `st.write_stream` command to handle generators or OpenAI output by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7906
+### Bug Fixes 🐛
+* Reuse style element for theme injection into custom components by @Tom-Julux in https://github.com/streamlit/streamlit/pull/7914
+* Handle out of order blocks when parsing element tree by @AnOctopus in https://github.com/streamlit/streamlit/pull/7923
+* Fix progress bar float input bug by @notiona in https://github.com/streamlit/streamlit/pull/7953
+* Don't pass query parameters from parent page into iframes by @eric-skydio in https://github.com/streamlit/streamlit/pull/7951
+* Fix period type support for Pandas 2.2.0 by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7988
+* Only ignore hiding required columns in dynamic mode by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7996
+* Disable watchdog suggestion for `none` or `poll` watcher type by @LukasMasuch in https://github.com/streamlit/streamlit/pull/8024
+### Other Changes
+* Support latest importlib-metadata v7 by @elgalu in https://github.com/streamlit/streamlit/pull/7925
+* Make Snowpark dependency truly optional for SnowflakeConnection by @vdonato in https://github.com/streamlit/streamlit/pull/7919
+
+## New Contributors
+* @Tom-Julux made their first contribution in https://github.com/streamlit/streamlit/pull/7914
+* @elgalu made their first contribution in https://github.com/streamlit/streamlit/pull/7925
+* @notiona made their first contribution in https://github.com/streamlit/streamlit/pull/7953
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.30.0...1.31.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.30.0 (2024-01-11)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.30.0 -->
+
+## What's Changed
+### New Features 🎉
+* Add support for scroll container via the `height` parameter by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7697
+* Add display_text to LinkColumn by @sfc-gh-bhay in https://github.com/streamlit/streamlit/pull/7741
+* st.query_params by @willhuang1997 in https://github.com/streamlit/streamlit/pull/7774
+* Add Pandas styler support to `LinkColumn` by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7784
+* Config - MPA Sidebar Page Navigation by @mayagbarnes in https://github.com/streamlit/streamlit/pull/7852
+* Feature - `st.switch_page` by @mayagbarnes in https://github.com/streamlit/streamlit/pull/7853
+### Bug Fixes 🐛
+* Fix handling of ordinal columns for builtin-charts by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7771
+* Fix `st.toggle` background color by @sfc-gh-jgarcia in https://github.com/streamlit/streamlit/pull/7788
+* Don't send command used to start streamlit to frontend by @vdonato in https://github.com/streamlit/streamlit/pull/7787
+* Fix iframe background for dark color scheme by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7821
+* Prevent incompatible column config serialization by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7887
+* Prevent hiding required editable columns  by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7888
+* Disable the ability to submit form if a submit button is disabled by @willhuang1997 in https://github.com/streamlit/streamlit/pull/7827
+* Fix flickering effect when changing tabs by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7904
+* Fix shrunk icon size in st.expander by @matiboux in https://github.com/streamlit/streamlit/pull/7596
+* Add check that individual elements are "python comparable" by @kajarenc in https://github.com/streamlit/streamlit/pull/7840
+* Use commonpath rather than common prefix for more secure access by @kmcgrady in https://github.com/streamlit/streamlit/pull/7901
+* Don't disable tab on stale flag by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7905
+* Fix embed params being dropped in page swaps by @sfc-gh-wihuang in https://github.com/streamlit/streamlit/pull/7918
+### Other Changes
+* Fix parenthesis error messaging by @willhuang1997 in https://github.com/streamlit/streamlit/pull/7770
+* Update SECURITY.md by @sfc-gh-hpathak in https://github.com/streamlit/streamlit/pull/7783
+* Speed up plotly figures by 8x for users with "orjson" by @eric-skydio in https://github.com/streamlit/streamlit/pull/7860
+
+## New Contributors
+* @sfc-gh-bhay made their first contribution in https://github.com/streamlit/streamlit/pull/7741
+* @sfc-gh-jkinkead made their first contribution in https://github.com/streamlit/streamlit/pull/7843
+* @sfc-gh-jdaly made their first contribution in https://github.com/streamlit/streamlit/pull/7842
+* @matiboux made their first contribution in https://github.com/streamlit/streamlit/pull/7596
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.29.0...1.30.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.29.0 (2023-11-30)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.29.0 -->
+
+## What's Changed
+### Breaking Changes 🛠
+* Remove old app test api by @AnOctopus in https://github.com/streamlit/streamlit/pull/7657
+### New Features 🎉
+* Add ability to add empty query params by @willhuang1997 in https://github.com/streamlit/streamlit/pull/7601
+* Add Enum coercion to options elements, if input Enum classes "identical" but redefined on script run by @Asaurus1 in https://github.com/streamlit/streamlit/pull/7408
+* Remove Recording Feature Menu Item when unsupported by @kmcgrady in https://github.com/streamlit/streamlit/pull/7604
+* Improved AppTest/ElementTree formatting by @AnOctopus in https://github.com/streamlit/streamlit/pull/7658
+* Add support for timedelta type to `st.dataframe`, `st.data_editor` and `st.table`. by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7689
+* Add border parameter to container and form by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7455
+* Use "loading skeletons" throughout Streamlit  by @sfc-gh-tteixeira in https://github.com/streamlit/streamlit/pull/7598
+### Bug Fixes 🐛
+* Make the outline for expanders appear on focus-visible and not focus by @kmcgrady in https://github.com/streamlit/streamlit/pull/7592
+* Use `NoReturn` annotation for stop and rerun by @kongzii in https://github.com/streamlit/streamlit/pull/7422
+* Fix SVG scaling on fullscreen mode for `st.graphviz_chart` by @snehankekre in https://github.com/streamlit/streamlit/pull/7398
+* Fix top padding when embedding an app with a sidebar by @sfc-gh-jgarcia in https://github.com/streamlit/streamlit/pull/7630
+* Fix app testing repr bug for `st.container` by @AnOctopus in https://github.com/streamlit/streamlit/pull/7644
+* Ensure file_uploader doesn't trigger needless reruns by @AnOctopus in https://github.com/streamlit/streamlit/pull/7641
+* Fix trigger value regression with `st.rerun` by @AnOctopus in https://github.com/streamlit/streamlit/pull/7643
+* Fix: MPA Nav expand arrow by @mayagbarnes in https://github.com/streamlit/streamlit/pull/7634
+* Greatly narrow errors that we retry in SnowflakeConnection by @vdonato in https://github.com/streamlit/streamlit/pull/7645
+* Fix how connection is declared for typing purposes by @thezanke in https://github.com/streamlit/streamlit/pull/7671
+* Enforce pyarrow version for arrow-based custom components  by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7695
+* Allow to access external server IP via https. by @LarsHill in https://github.com/streamlit/streamlit/pull/7712
+* Move dg_stack into a ContextVar to support with blocks in separate threads by @eric-skydio in https://github.com/streamlit/streamlit/pull/7715
+* Improve st.connection caching behavior by @kajarenc in https://github.com/streamlit/streamlit/pull/7730
+* Don't use hash on floats in hashing.py by @BlackHC in https://github.com/streamlit/streamlit/pull/7754
+### Other Changes
+* Deprecate unused config options by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7584
+* Remove "Made by Streamlit" footer by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7583
+* Tweak "forgot config" SnowflakeConnection error message by @vdonato in https://github.com/streamlit/streamlit/pull/7652
+* Release Streamlit version 1.28.1 by @vdonato in https://github.com/streamlit/streamlit/pull/7666
+* Poll for script completion much more often in AppTest by @AnOctopus in https://github.com/streamlit/streamlit/pull/7691
+* Add Python 3.12 support by @kajarenc in https://github.com/streamlit/streamlit/pull/7663
+* Release Streamlit version 1.28.2 by @LukasMasuch in https://github.com/streamlit/streamlit/pull/7716
+* fix: component dev url typo by @ObservedObserver in https://github.com/streamlit/streamlit/pull/7746
+* Fix another url typo by @vdonato in https://github.com/streamlit/streamlit/pull/7764
+
+## New Contributors
+* @kongzii made their first contribution in https://github.com/streamlit/streamlit/pull/7422
+* @Asaurus1 made their first contribution in https://github.com/streamlit/streamlit/pull/7408
+* @thezanke made their first contribution in https://github.com/streamlit/streamlit/pull/7671
+* @LarsHill made their first contribution in https://github.com/streamlit/streamlit/pull/7712
+* @eric-skydio made their first contribution in https://github.com/streamlit/streamlit/pull/7715
+* @sfc-gh-pfinnigan made their first contribution in https://github.com/streamlit/streamlit/pull/7682
+* @samueldg made their first contribution in https://github.com/streamlit/streamlit/pull/7762
+* @ObservedObserver made their first contribution in https://github.com/streamlit/streamlit/pull/7746
+* @BlackHC made their first contribution in https://github.com/streamlit/streamlit/pull/7754
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.28.2...1.29.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.28.2 (2023-11-13)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.28.2 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.28.1...1.28.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>1.28.1 (2023-11-03)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at 1.28.1 -->
+
+
+
+**Full Changelog**: https://github.com/streamlit/streamlit/compare/1.28.0...1.28.1</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for projectdiscovery/nuclei"/>
+  <title>projectdiscovery/nuclei Release Notes</title>
+</head>
+<body>
+  <h1>🚀 projectdiscovery/nuclei - Release Notes</h1>
+  
+    <section>
+      <h2>v3.4.1 (2025-03-28)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+### Other Changes
+* Updated Docker image templates to fix release issues by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/6119
+
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.4.0...v3.4.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.4.0 (2025-03-26)</h2>
+      <pre>## What's Changed
+
+
+## 🎉 New Features
+* Added support for AWS_PROFILE in S3 loadConfig using ~/.aws/credentials by @alban-stourbe-wmx in https://github.com/projectdiscovery/nuclei/pull/5680
+
+
+### Other Changes
+* Updated wrong command example in docs by @leofvo in https://github.com/projectdiscovery/nuclei/pull/6098
+* Improved Docker workflow and build process by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/6094
+* Improved by adding setDialer function to TCP protocol by @ShubhamRasal in https://github.com/projectdiscovery/nuclei/pull/6101
+* Improved docgen by enhancing error handling and file operations by @Mehran-Seifalinia in https://github.com/projectdiscovery/nuclei/pull/6103
+* Improved comments by fixing some function names by @threehonor in https://github.com/projectdiscovery/nuclei/pull/6112
+
+
+
+## New Contributors
+* @leofvo made their first contribution in https://github.com/projectdiscovery/nuclei/pull/6098
+* @Mehran-Seifalinia made their first contribution in https://github.com/projectdiscovery/nuclei/pull/6103
+* @threehonor made their first contribution in https://github.com/projectdiscovery/nuclei/pull/6112
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.10...v3.4.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.10 (2025-03-07)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### Other Changes
+* added support to generate CPU & PGO profiles by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/6058
+* added escape code blocks for markdown formatting by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/6089
+* fixed auth validation on windows ox by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/6053
+* fixed issue with secrets lookup logic by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/6059
+* fixed race condition of the lastmatcherevent by @knakul853 in https://github.com/projectdiscovery/nuclei/pull/6080
+* fixed incorrect nil return value by @huochexizhan in https://github.com/projectdiscovery/nuclei/pull/6079
+* fixed issue with reporting close functionality by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/6066
+* fixed nil pointer on context cancellation by @knakul853 in https://github.com/projectdiscovery/nuclei/pull/6085
+* fixed issue with setting headers in fuzzing template by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5988
+
+## New Contributors
+* @knakul853 made their first contribution in https://github.com/projectdiscovery/nuclei/pull/6080
+* @huochexizhan made their first contribution in https://github.com/projectdiscovery/nuclei/pull/6079
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.9...v3.3.10</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.9 (2025-02-13)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+## 🎉 New Features
+
+* Added `-ai` option to generate and run nuclei templates on the fly in natural langauge by @parthmalhotra in https://github.com/projectdiscovery/nuclei/pull/6041
+```sh
+$ nuclei -list h1.txt -ai "extract page titles"
+
+[extract-page-titles] [http] [info] https://api.hackerone.com ["HackerOne API"]
+```
+More in docs at https://docs.projectdiscovery.io/tools/nuclei/running#ai-powered-template-generation
+
+* Added initial Live DAST Server API implementation (**experimental**) by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5772
+```sh
+$ nuclei -dts
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.3.9
+
+		projectdiscovery.io
+
+[INF] DAST Server API: http://localhost:9055/fuzz
+[INF] DAST Server Stats URL: http://localhost:9055/stats
+⇨ http server started on 127.0.0.1:9055
+```
+
+* Added support for DSL expression evaluation in headless args by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/6017
+
+
+## 🐞 Bug Fixes
+
+* Fixed issue with hosterrorscache by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5984
+* Fixed issue in multiproto for missing previous event by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5967
+* Fixed issue with variable dump by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5921
+* Fixed missing event for multi protocol by @ShubhamRasal in https://github.com/projectdiscovery/nuclei/pull/5995
+* Fixed issue to handle removal of deleted templates during update by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5998
+* Fixed issue with filename length with `-sr` / `-srd` option by @Lercas in https://github.com/projectdiscovery/nuclei/pull/5931
+* Fixed issue with tcp dialer for MySQL by @doug-threatmate in https://github.com/projectdiscovery/nuclei/pull/5681
+* Fixed issue in headless protocol with flow variable access by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/6003
+
+### Other Changes
+* Replaced `encoding/json` with `sonic` or `go-json` (fallback) by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/6019
+* Removed the use of deprecated mholt/archiver by @AdallomRoy in https://github.com/projectdiscovery/nuclei/pull/5951
+* Added new `govulncheck` (CI) workflow by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5964
+* Add flamegraph job (CI) by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5966
+* Added `WithResponseReadSize` function for SDK usages by @meme-lord in https://github.com/projectdiscovery/nuclei/pull/5961
+* Added Portuguese translation of README by @Jarro01X in https://github.com/projectdiscovery/nuclei/pull/6033
+
+Issues closed in this release - https://github.com/projectdiscovery/nuclei/milestone/68?closed=1
+
+
+## New Contributors
+* @1hehaq made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5974
+* @piguagua made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5986
+* @kilavvy made their first contribution in https://github.com/projectdiscovery/nuclei/pull/6027
+* @Jarro01X made their first contribution in https://github.com/projectdiscovery/nuclei/pull/6033
+* @Lercas made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5931
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.8...v3.3.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.8 (2025-01-07)</h2>
+      <pre>## What's Changed
+
+### 🐞 Bug Fixes
+* Fixed missing browser initilization by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5896
+* Fixed proxy configuration for concurrent requests, enabling isolated and parallel handling by @ShubhamRasal in https://github.com/projectdiscovery/nuclei/pull/5903
+* Fixed recursive struct validation during JSON marshaling by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5883
+* Fixed unresolved `interactsh-url` with `self-contained` for raw http templates by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5938
+* Fixed a nil error associated with a previous internal event (#5949) by @iuliu8899 in https://github.com/projectdiscovery/nuclei/pull/5950
+
+### Other Changes
+* Updated function names in comments by @lvyaoting in https://github.com/projectdiscovery/nuclei/pull/5886
+* Made markdown filename shorter by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5899
+* Added support grouped dependency updates in dependabot by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5923
+* Added encoding support for malformed URLs by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5902
+* Made sure the input URL is trimmed when the `-scan-all-ips` option is enabled by @p-l- in https://github.com/projectdiscovery/nuclei/pull/5897
+* Made sure NoHostErrors is set by @iuliu8899 in https://github.com/projectdiscovery/nuclei/pull/5783
+
+
+## New Contributors
+* @p-l- made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5897
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.7...v3.3.8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.7 (2024-12-02)</h2>
+      <pre>## What's Changed
+
+## 🎉 New Features
+* Added `OS_MAX_THREADS_ENV` environment variable to control the maximum number of OS threads the Go program can utilize by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5622
+* Added `-enable-global-matchers`option to control the execution of global matchers by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5857
+
+## 🐞Bug Fixes
+* Fixed template signing signature issue caused by OS-specific line breaks (CRLF vs LF) by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5869
+* Fixed trailing comma issue in JSONL exporeter by @bf-rbrown in https://github.com/projectdiscovery/nuclei/pull/5861
+* Fixed template listing issue by ensuring default settings are respected by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5846
+
+
+## New Contributors
+* @bf-rbrown made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5861
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.6...v3.3.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.6 (2024-11-21)</h2>
+      <pre>## ⚠️ Breaking Changes:
+* The `-enable-self-contained` or `-esc` flag is now required to load self-contained templates.
+* The `-file` flag must be used to enable loading file templates.
+
+
+## What's Changed
+
+## 🎉 New Features
+* Added analyzer support and time based delay analyzer for DAST mode by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5781
+
+See Analyzer documentation here: https://docs.projectdiscovery.io/templates/protocols/http/fuzzing-overview#analyzer 
+
+* Added batch output support for JSONL output format by @kchason in https://github.com/projectdiscovery/nuclei/pull/5705
+
+Configuration options for JSONL exporter:
+```yaml
+jsonl:
+ # file is the file to export found JSONL result to
+ file: ""
+ # omit-raw whether to exclude the raw request and response from the output
+ omit-raw: false
+ # batch-size the number of records to keep in memory before writing them out to the JSONL file or 0 to disable batching (default)
+ batch-size: 0
+```
+
+* Added ENV variable handling in dynamic secret file by @alban-stourbe-wmx in https://github.com/projectdiscovery/nuclei/pull/5835
+
+Secrets can be set using ENV variables or defined with `-v` and `-env-vars` options:
+
+### Env based secret
+```yaml
+variables:
+   - key: password
+     value: $PASSWORD
+```
+
+### Config file / Flag based secrets ( using -env-vars or -vars )
+```yaml
+variables:
+     - key: password
+     - value: {{password}}
+```
+
+
+## 🐞Bug Fixes
+* Fixed code protocol template execution issues by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5767
+* Fixed panic error in `-stats` option by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5774
+* Fixed the issue with Jira tracker related to find request by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5798
+* Fixed workflow validation logic by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5805
+* Fixed data race in `protocolstate`, `contextargs` and outdated tests by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5820
+
+
+### Other Changes
+* Disabled self-contained and file protocol templates as default by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5825
+	- `-esc` flag (self-contained templates) is implicitly enabled when `-code` flag is used.
+* Added SDK functions to improve nuclei store and workflow access by @iuliu8899 in https://github.com/projectdiscovery/nuclei/pull/5766
+* Fixed typo in headless protocol error message by @dmaciejak in https://github.com/projectdiscovery/nuclei/pull/5768
+* Added missing backtick in DESIGN document by @chengehe in https://github.com/projectdiscovery/nuclei/pull/5789
+* Improved GitHub Auto-Merge workflow by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5784
+* Added SDK function to allow setting custom variables by @alban-stourbe-wmx in https://github.com/projectdiscovery/nuclei/pull/5678
+* Improved GitHub workflows to run concurrently by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5818
+
+
+## New Contributors
+* @dmaciejak made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5768
+* @chengehe made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5789
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.5...v3.3.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.5 (2024-10-19)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+## 🎉 New Features
+
+* **Added support for [global matchers / extractors](https://docs.projectdiscovery.io/templates/reference/matchers#global-matchers) in http templates** by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5701
+* Added support for MongoDB for results reporting by @kchason in https://github.com/projectdiscovery/nuclei/pull/5688
+* Added support for `stop-at-first-match` in network templates by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5554
+
+## 🐞Bug Fixes
+* Fixed an issue with `{{interactsh-url}}` replacement in network template by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5677
+* Fixed issue with multipart fuzzing and support for filename, content-type in multipart by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5702
+* Fixed issue to expose ssl part definitions by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5710
+* Fixed issue boolean value on successful ldap authentication by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5682
+* Fixed issue with LDAP metadata collection by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5683
+* Fixed an issue with memguard (SDK) by @dany74q in https://github.com/projectdiscovery/nuclei/pull/5714
+* Fixed issue with input helper (SDK) by @iuliu8899 in https://github.com/projectdiscovery/nuclei/pull/5712
+* Fixed an issue with template loading logic (SDK) by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5733
+
+### Other Changes
+
+* Added support to generate trace file when using `-profile-mem` option by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5690
+* Added support for `-var-dump-limit` to control response char limit with `-svd` option by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5676
+
+See https://github.com/projectdiscovery/nuclei/milestone/64?closed=1 for all the issues closed in release.
+
+
+## New Contributors
+* @vil02 made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5687
+* @dany74q made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5714
+* @iuliu8899 made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5712
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.4...v3.3.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.4 (2024-09-28)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+* Fixed (hopefully) skipping target list as found unresponsive erroneously by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5668
+
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.3...v3.3.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.3 (2024-09-26)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+## 🎉 New Features
+
+* Added linear issue tracker support by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5601
+
+```yaml
+linear:
+  # api-key is the API key for the linear account
+  api-key: ""
+  # allow-list sets a tracker level filter to only create issues for templates with
+  # these severity labels or tags (does not affect exporters. set those globally)
+  deny-list:
+    severity: critical
+  # deny-list sets a tracker level filter to never create issues for templates with
+  # these severity labels or tags (does not affect exporters. set those globally)
+  deny-list:
+    severity: low
+  # team-id is the ID of the team in Linear
+  team-id: ""
+  # project-id is the ID of the project in Linear
+  project-id: ""
+  # duplicate-issue-check flag to enable duplicate tracking issue check
+  duplicate-issue-check: false
+  # open-state-id is the ID of the open state in Linear
+  open-state-id: ""
+```
+See [docs](https://docs.projectdiscovery.io/cloud/scanning/integrations#linear) for more details.
+* Added support to upload nuclei existing scan results to dashboard by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5603
+```
+   -pdu, -dashboard-upload string  upload / view nuclei results file (jsonl) in projectdiscovery cloud (pdcp) UI dashboard
+```
+
+```console
+ $ ./nuclei -pdu nucle_results.jsonl 
+
+                     __     _
+   ____  __  _______/ /__  (_)
+  / __ \/ / / / ___/ / _ \/ /
+ / / / / /_/ / /__/ /  __/ /
+/_/ /_/\__,_/\___/_/\___/_/   v3.3.3
+
+		projectdiscovery.io
+
+[INF] Uploading scan results to cloud dashboard from test
+[INF] 7 Scan results uploaded to cloud, you can view scan results at https://cloud.projectdiscovery.io/scans/crqho0h1c9fs73f1rth0?team_id=none
+```
+* Added support for additional headless lifecycle events by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5632
+
+Newly supported events:
+
+- waitdom
+- waitfcp
+- waitfmp
+- waitidle
+- waitstable
+
+See [docs](https://docs.projectdiscovery.io/templates/protocols/headless) for more details.
+
+## 🐞Bug Fixes
+* Fixed issue with `max-host-error` with `concurrency` by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5633
+* Fixed issue with parsing OpenAPI http security schemes on empty values by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5606
+* Fixed loading dynamic auth templates with fuzzing by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5646
+* Fixed issue with MySQL connection with special characters in password by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5604
+* Fixed issue with `WithProxy` err by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5626
+* Fixed missing `template_url` for signed templates by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5644
+* Fixed nil pointer error with `addCNameIfAvailable` from using closed `Dialer` by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5665
+* Fixed issue in event generation using `-ms` option with clustering by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5653
+* Fixed issue with Input Clone when the workflow execution forks by @tovask in https://github.com/projectdiscovery/nuclei/pull/5621
+* Fixed failing integration tests by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5647
+
+## 🔨 Maintenance
+* Added support for `fs.FS` in template parsing by @doug-threatmate in https://github.com/projectdiscovery/nuclei/pull/5421
+
+Issues closed in this release - https://github.com/projectdiscovery/nuclei/milestone/63?closed=1
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.2...v3.3.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.2 (2024-09-04)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+### 🎉 New Features
+
+* Added `ActionWaitDialog` type in headless protocol to simplify XSS detection by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5545
+
+See [docs](https://docs.projectdiscovery.io/templates/protocols/headless#waitdialog) for more details.
+
+### 🔨 Maintenance
+* Migrated issue template to issue form by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5538
+* Upgraded gitlab api version by @AdallomRoy in https://github.com/projectdiscovery/nuclei/pull/5551
+
+### ⚠️ Security
+* Fixed security issue in template `signer` package by @GuyGoldenberg @dogancanbakir @Mzack9999 in https://github.com/projectdiscovery/nuclei/commit/0da993afe6d41b4b1b814e8fad23a2acba13c60a
+
+See [GitHub security advisories](https://github.com/projectdiscovery/nuclei/security/advisories/GHSA-7h5p-mmpp-hgmm) for detailed information.
+
+### Other Changes
+* Added jira config to accept issue-type id and project id as optional input by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5537
+* Fixed issue with `-ms` option to scan non accessible host by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5576
+* Fixed race condition issue by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5547
+* Fixed panic in list input with dast option by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5558
+
+## New Contributors
+* @AdallomRoy made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5551
+* @PeterDaveHello made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5578
+* @linchizhen made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5586
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.1...v3.3.2
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.1 (2024-08-16)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+### 🎉 New Features
+
+* Added `team-id` option to upload results to specific team workspace by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5523
+
+**Option**:
+```console
+   -tid, -team-id string  upload scan results to given team id (optional) (default "none")
+```
+
+**Example**:
+
+```
+nuclei -pt dns -u example.com -cloud-upload -team-id cqlmoalcm2sc73eut1b0
+```
+
+* Added redaction support in output file by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5463
+
+**Option**:
+
+```console
+   -rd, -redact string[]  redact given list of keys from query parameter, request header and body
+```
+**Example**:
+
+```
+nuclei -pt dns -u example.com -redact api_key,x-api-key,user-agent
+```
+
+* Added support for multiple auth strategies per target from secret file by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5500
+* Added support to generate matcher-status event for javascript protocol by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5450
+* Added workflows in SDK example by @alban-stourbe-wmx in https://github.com/projectdiscovery/nuclei/pull/5409
+* Added `skip-secret-file` template attribute to disable auth per template by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5522
+
+### 🐞 Bug Fixes
+* Fixed `FileAuthProvider` stores the same strategy for each entry by @mrschyte in https://github.com/projectdiscovery/nuclei/pull/5474
+* Fixed circular references in OpenAPI parsing(fuzzing) by @trypa11 in https://github.com/projectdiscovery/nuclei/pull/5491
+* Fixed file protocol missing vars in flow & multi-protocol by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5480
+* Fixed issue assign `customHeaders` to the map directly by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5445
+* Fixed issue with input transformation to multi-protocol templates by @mhmdiaa in https://github.com/projectdiscovery/nuclei/pull/5426
+* Fixed missing close statements `file.Close()` & `ticker.Stop()` by @ShuBo6 in https://github.com/projectdiscovery/nuclei/pull/5436
+* Fixed nil panic by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5473
+* Fixed server URL path for OpenAPI parsing by @trypa11 in https://github.com/projectdiscovery/nuclei/pull/5504
+* Fixed unresolved `interactsh-url` variable with fuzzing by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5289
+* Fixed unresolved variables error with dast templates by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5443
+
+### 🔨 Maintenance
+* ci: don't clean modules cache by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5519
+* ci: use composite actions by @dwisiswant0 in https://github.com/projectdiscovery/nuclei/pull/5483
+
+Issues closed in this release - https://github.com/projectdiscovery/nuclei/milestone/61?closed=1
+
+## New Contributors
+* @fudancoder made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5432
+* @ShuBo6 made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5436
+* @Jarnpher553 made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5419
+* @mhmdiaa made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5426
+* @alban-stourbe-wmx made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5409
+* @mrschyte made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5474
+* @trypa11 made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5504
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.3.0...v3.3.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.3.0 (2024-07-17)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### 🐞 Bug Fixes
+* **Fixed security issue with use of custom workflows** by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5318
+* **Fixed issue to reduce memory usage by javascript templates** by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5291
+* Fixed target loading issue with `-input-mode` option by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5369
+* Fixed issue with `stop-at-first-match` option in headless mode with fuzzing by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5330
+* Fixed issue with ldap search function by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5356
+* Fixed issue with `ExecuteWithResults` function not returning expected results (SDK) by @boy-hack in https://github.com/projectdiscovery/nuclei/pull/5376
+
+### Other Changes
+* Added `cname` information in http protocol when available by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5389
+* Added goja function (`isUDPPortOpen`) to check UDP port by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5397
+* Added sdk option to disable update check (SDK) by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5346
+* Added support to use `fs.FS` when explicitly given (SDK) by @doug-threatmate in https://github.com/projectdiscovery/nuclei/pull/5312
+* Added timeouts config in `types.Options` (SDK) by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5228
+* Improved ldap output with custom type to return additional information by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5387
+* Improved template clustering performance by @KristinnVikar in https://github.com/projectdiscovery/nuclei/pull/5319
+>[!CAUTION]
+> In this release, with the changes in https://github.com/projectdiscovery/nuclei/pull/5228, the following options have been removed from the CLI. They are now configured implicitly and can be customized via SDK usage.
+> ```console
+>  -dt, -dialer-timeout value  timeout for network requests.
+>  -rrt, -response-read-timeout value  response read timeout in seconds (default 5s)
+> ```
+
+
+## New Contributors
+* @KristinnVikar made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5319
+* @boy-hack made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5376
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.9...v3.3.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.9 (2024-06-16)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### 🎉 New Features
+* **Fuzzing feature enhancements** by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5139
+	- Added `part: request` to fuzz all the keys in request with fuzzing templates.
+	- Added `-fuzz-aggression` CLI option to control fuzz aggression via template.
+	- Added `-fuzz-param-frequency` option to control counter for skipping uninteresting parameter.
+	- Added `-display-fuzz-points` option to display fuzzing points (for debugging).
+* **PDCP Team ID input support** via environment variable to upload results into team account by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5295
+```console
+export PDCP_TEAM_ID=cphlrbmnr2khg33n6ik1
+```
+> [!NOTE]
+> Team ID is optional input and can be obtained from https://cloud.projectdiscovery.io/settings/team. If provided, results will be uploaded to the team account instead of your personal account.
+
+### 🐞 Bug Fixes
+* **Fixed slow scan for hosts blocked WAF or getting timed out** by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5275
+* **Fixed issues with multi-thread execution** by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5187
+* Fixed panic on failed raw request by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5230
+* Fixed `ExecuteCallbackWithCtx` to use the context that was provided by @doug-threatmate in https://github.com/projectdiscovery/nuclei/pull/5236
+* Fixed nil deref err in reporting by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5283
+* Fixed `types.RequestResponse` url field `UnmarshalJSON` by @LazyMaple in https://github.com/projectdiscovery/nuclei/pull/5267
+* Fixed tempalte validation by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5261
+* Fixed severity filter for per tracker reporting filters by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5297
+
+### Other Changes
+* Added Spanish translation of README by @MachadoOtto in https://github.com/projectdiscovery/nuclei/pull/5242
+* Added Japanese translation of README by @eltociear in https://github.com/projectdiscovery/nuclei/pull/5259
+* Added timestamp in error log (`-elog`) with `-ts` option by @oscarintherocks in https://github.com/projectdiscovery/nuclei/pull/5292
+
+## New Contributors
+* @doug-threatmate made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5236
+* @MachadoOtto made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5242
+* @eltociear made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5259
+* @oscarintherocks made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5292
+* @LazyMaple made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5267
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.8...v3.2.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.8 (2024-05-24)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### 🐞 Bug Fixes
+* **Fixed multiple bug fixes** + **performance improvements** by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5148
+* **Fixed more goroutine leaks** by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5188
+* Fixed issue network interface selection in case of multiple interface by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5186
+* Fixed issue with ssl protocol in case of multi request by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5203
+
+Issues closed in release - https://github.com/projectdiscovery/nuclei/milestone/58?closed=1
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.7...v3.2.8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.7 (2024-05-10)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+### 🎉 New Features
+
+* Added support for multiple search query in templates to run with `-uncover` option by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5132
+* Added `-scan-name` input support for [pdcp result upload](https://docs.projectdiscovery.io/cloud/scanning/nuclei-scan) by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5155
+```console
+   -sname, -scan-name string  scan name to set (optional)
+```
+
+### 🐞 Bug Fixes
+* Fixed race condition (panic) in host spray mode by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5168
+* Fixed a bug for multiple input with `-u` option by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5147
+* Fixed a bug in issue reporting with severity filter by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5166
+* Fixed a bug in [pdcp result upload](https://docs.projectdiscovery.io/cloud/scanning/nuclei-scan) for results with no severity by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5155
+
+### Other Changes
+* Added context support in sdk by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5154
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.6...v3.2.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.6 (2024-05-04)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+* **Fixed goroutine leaks causing spike in memory uses by @tarunKoyalwar** in https://github.com/projectdiscovery/nuclei/pull/5112
+* Added `-profile` and `-profile-list` option to run template using template profile by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5125
+
+```console
+$ ./nuclei -tpl
+
+profiles/aws-cloud-config.yml (aws-cloud-config)
+profiles/bugbounty.yml (bugbounty)
+profiles/cloud.yml (cloud)
+profiles/compliance.yml (compliance)
+profiles/osint.yml (osint)
+profiles/pentest.yml (pentest)
+profiles/privilege-escalation.yml (privilege-escalation)
+profiles/recommended.yml (recommended)
+```
+
+```console
+$ ./nuclei -profile aws-cloud-config
+```
+* Added template tags list (`-tgl`) option by @rsrdesarrollo in https://github.com/projectdiscovery/nuclei/pull/4798
+```console
+$ ./nuclei -silent -tgl | head -n 10
+
+cve (2416)
+panel (1122)
+wordpress (956)
+exposure (895)
+xss (890)
+wp-plugin (836)
+osint (804)
+tech (673)
+lfi (646)
+misconfig (598)
+```
+* Added fuzzing output enhancements by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5126
+
+## New Contributors
+* @socialsister made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5110
+* @rsrdesarrollo made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4798
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.5...v3.2.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.5 (2024-04-25)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### 🎉 New Features
+
+* Added query variable to read param values by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4894
+* Added SRV query in dns protocol by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5034
+* Added response read timeout flag for network request by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4944
+* Added networkpolicy to httpx probes by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5036
+* Added context vars in code and multi protocol by @tovask in https://github.com/projectdiscovery/nuclei/pull/5051
+* Added nuclei stats / chart utils by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5032
+* Added support for context cancellation to engine (SDK) by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5096
+* Added support for user provided catalog (SDK) by @scottdharvey in https://github.com/projectdiscovery/nuclei/pull/5060
+* Added embedded api for settings control in CLI modality (WIP) by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5030
+* Added initial refactor for speed control (WIP) by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/4986
+
+### 🐞 Bug Fixes
+
+* Fixed internal resolver override by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/5035
+* Fixed issue to run workflow subtemplates with new scancontext by @tovask in https://github.com/projectdiscovery/nuclei/pull/5031
+* Fixed issue with `max-size` input in template by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5100
+* Fixed issue with `skip-variables-check` with self-contained templates by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5053
+* Fixed issue with close res body in elastic export by @testwill in https://github.com/projectdiscovery/nuclei/pull/5025
+* Fixed issue with jsonl input format not working with fuzzing by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/5063
+* Fixed issue with mhe check in http payloads by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5099
+* Fixed openapi import nil panic by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/5080
+* Fixed panic in template validation by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5065
+* Fixed panic using flow / workflow templates by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5064
+* Fixed panic with fuzz template by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5068
+* Fixed issue with case-sensitive links in template reference by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/5098
+
+**Issues closed in this release** - https://github.com/projectdiscovery/nuclei/milestone/55?closed=1
+
+## New Contributors
+* @tovask made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5031
+* @testwill made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5025
+* @lvyaoting made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5008
+* @zrquan made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5038
+* @scottdharvey made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5060
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.4...v3.2.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.4 (2024-04-08)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+* **Fixed an issue for templates with dynamic extractor + payloads edgecase** by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5016
+* Fixed missing JSON schema definitions by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/4995
+* Fixed index out of range panic with fuzzing templates by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4998
+* Fixed missing interactsh expression evaluation in fuzzing template by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5019
+* Fixed missing IP in javascript templates by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5023
+* Fixed invalid port in jsonl output for ssl templates by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/5023
+* **Added ASREProastable method in LDAP module** by @daffainfo in https://github.com/projectdiscovery/nuclei/pull/4990
+
+## New Contributors
+* @hanghuge made their first contribution in https://github.com/projectdiscovery/nuclei/pull/5004
+* @daffainfo made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4990
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.3...v3.2.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.3 (2024-04-03)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+> [!Important]
+> Nuclei Templates for dynamic application security testing (DAST), which were maintained in a separate project at [fuzzing-templates](https://github.com/projectdiscovery/fuzzing-templates), are now [being moved to the nuclei-templates](https://github.com/projectdiscovery/nuclei-templates/pull/9363) project. This way, they can be made available for use with the default nuclei installation with the upcoming release of the template project. These templates will be disabled as default but can be used with the `-dast` option.
+> 
+> More information of fuzzing support: https://blog.projectdiscovery.io/nuclei-fuzzing-for-unknown-vulnerabilities/
+
+
+## What's Changed
+
+* Added `-dast` option to run all and only dast (fuzz) templates by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4941
+* Added `pre-condition` attribute in Code and DAST templates by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4966
+* Fixed multiple panic crash by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4978
+* Fixed multiple issues with query parameter fuzzing by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4925
+* Fixed issue with `{{interactsh-url}}` variable not working with nested variables by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4941
+* Fixed issue with `-ms` option for templates using flow by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4978
+* Fixed issue with `-ms` option generating blank target & template by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4969
+* Fixed issue with sarif version by @tibbon in https://github.com/projectdiscovery/nuclei/pull/4976
+* Fixed issue `-no-color` output by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4954
+* Updated outdated JSONSchema library by @kchason in https://github.com/projectdiscovery/nuclei/pull/4943
+
+
+## New Contributors
+* @llussy made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4958
+* @tibbon made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4976
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.2...v3.2.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.2 (2024-03-17)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+* Fixed `panic: assignment to entry in nil map` and create default map by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4896
+
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.1...v3.2.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.1 (2024-03-15)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+* Added memguardian + various optimizations by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/4833
+* Fixed overriding the predefined ratelimiter by `WithGlobalRateLimit` (sdk) by @kiokuless in https://github.com/projectdiscovery/nuclei/pull/4884
+* Fixed issue with javascript protocol by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4893
+* Updated templates loader/parser caches (refactor) by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/4867
+
+## New Contributors
+* @debasishbsws made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4885
+* @kiokuless made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4884
+* @alizademhdi made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4892
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.2.0...v3.2.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.2.0 (2024-03-13)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+### 🎉 New Features
+* Added fuzzing support in http protocol by @Ice3man543, @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4477
+* Added authenticated scaning support by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4477
+* Added `-fuzz` option for loading fuzzing templates @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4477
+* Added Gitea reporting by @leonjza in https://github.com/projectdiscovery/nuclei/pull/4522
+* Added transparent memoization via func annotation by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/4742
+* Added issue tracker JSONL output + CLI summary by @Ice3man543 in https://github.com/projectdiscovery/nuclei/pull/4855
+* Added `self-contained` request at http request level by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4812
+* Added `-payload-concurrency` option by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4868
+* Added `disable-unsigned-templates` option by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4820
+* Added ldap protocol enhancements by @5amu in https://github.com/projectdiscovery/nuclei/pull/4667
+
+### 🐞 Bug Fixes
+* Fixed issue to purge cache on global callback set by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/4840
+* Fixed network layer should not have forceful read by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/4737
+* Fixed workflow to publish docs by @RamanaReddy0M in https://github.com/projectdiscovery/nuclei/pull/4743
+* Fixed `stop-at-first-match` issue in http protocol by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4752
+* Fixed header nil check by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4766
+* Fixed issue to use maxsize in template by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4814
+* Fixed issue to validate code template in workflows by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4822
+* Fixed issue with temp file cleanup by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4835
+* Fixed issue with nuclei loading ignored templates by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4849
+* Fixed multiple bugs by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4868
+
+### Other Changes
+* Added more granular, issue tracker level filtering by @leonjza in https://github.com/projectdiscovery/nuclei/pull/4780
+* Added callback support to StandardWriter by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4839
+* switched dependency for kerberos js module (ropnop/gorkb5 -> jcmturner/gokrb5) by @5amu in https://github.com/projectdiscovery/nuclei/pull/4647
+* use system resolver first with system-resolvers by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/4740
+* javascript bindings + docs generation enhancements by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4487
+
+#### Issues closed in release - https://github.com/projectdiscovery/nuclei/milestone/43?closed=1
+
+## New Contributors
+* @leonjza made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4522
+* @AlexS778 made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4785
+* @fail-open made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4819
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.1.10...v3.2.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.10 (2024-02-02)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+* **Fixed concurrent map writes in tmplexec package** by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4718
+* Added more `NetworkConfig` options to the SDK by @denysvitali-niantic in https://github.com/projectdiscovery/nuclei/pull/4719
+
+## New Contributors
+* @denysvitali-niantic made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4719
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.1.9...v3.1.10</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.9 (2024-02-01)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+* **Added hybrid tech detection (wappalyzer + tech templates) with automatic scan (`-as`)** by @xxcdd @boy-hack in https://github.com/projectdiscovery/nuclei/pull/4656
+* Added projectdiscovery/useragent by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4708
+* Added passive option support in SDK by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4684
+* **Fixed issue with long running scans at the end of scan** by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4715
+* Fixed issue in javascript protocol with connection pooling by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4709
+
+## New Contributors
+* @xxcdd made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4656
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.1.8...v3.1.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.8 (2024-01-30)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+* Fixed multiple memory leaks and optimizations by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4680
+* Fixed issue with not resolving hosts from `/etc/hosts` file by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4686
+* Fixed issue of array iteration in flow by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4688
+* Fixed panic in smb javascript template by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4700
+* Fixed an issue with case sensitive dns interaction with interactsh by @monitor403 in https://github.com/projectdiscovery/nuclei/pull/4697
+* Fixed issue with reporting with optional support of `-or` option by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4612
+* Fixed issue with mysql module in JavaScript by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4702
+
+## New Contributors
+* @monitor403 made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4697
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.1.7...v3.1.8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.7 (2024-01-22)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+* **Added support to upload result to existing pdpc scan using `-scan-id` option** by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4662
+```bash
+  $ nuclei -u example.com -cloud-upload -scan-id XXXXXX
+```
+* Fixed issue with pdcp result upload with large output file by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4662
+* Fixed issue with pdcp result upload when using with env variable by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4675
+
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.1.6...v3.1.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.6 (2024-01-18)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+
+* **Added `GetServiceTicket` method to the kerberos module** by @5amu in https://github.com/projectdiscovery/nuclei/pull/4422
+* **Added `GetKerberoastableUsers` method in ldap module** by @5amu in https://github.com/projectdiscovery/nuclei/pull/4420
+* Added support to dump resume files when a runner hangs by @wk8 in https://github.com/projectdiscovery/nuclei/pull/4440
+* **Fixed multiple memory leaks + optimizations** by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4630
+* Fixed timeout issue + added custom timeout support in js protocol by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4643
+* Fixed variables merge order in code templates by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4623
+* Fixed issue with dynamic extractors in flow by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4625
+* Fixed panic in interactsh process interaction ( nil check on compiled operators) by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4511
+* Fixed panic error + support offlinehttp in flow templates by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4653
+
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.1.5...v3.1.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.5 (2024-01-10)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### Other Changes
+* Fixed a bug introduced in previous version by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4608
+
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.1.4...v3.1.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.4 (2024-01-08)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### 🎉 New Features
+* Added `self-contained` input support to fuzzing templates by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4531
+* Added support to include additional custom tags with `-as` option by @dogancanbakir in https://github.com/projectdiscovery/nuclei/pull/4543
+* Added internal matchers (to hide match results in flow) using `internal: true` by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4582
+* Added exclude list support to layer 4 via fastdialer by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/4575
+
+### 🐞 Bug Fixes
+* Fixed issue with dynamic extracted variable to make it reusable by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4574
+* Fixed early exit issue for non zero status code in code protocol by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4585
+* Fixed missing results issue in flow based template by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4582
+
+### Other Changes
+* **deprecate(remove): file write in extractor using `to` attribute for security reasons** by @tarunKoyalwar in https://github.com/projectdiscovery/nuclei/pull/4565
+* Using network policy everywhere by @Mzack9999 in https://github.com/projectdiscovery/nuclei/pull/4578
+
+
+## New Contributors
+* @Anemys made their first contribution in https://github.com/projectdiscovery/nuclei/pull/4566
+
+**Full Changelog**: https://github.com/projectdiscovery/nuclei/compare/v3.1.3...v3.1.4</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

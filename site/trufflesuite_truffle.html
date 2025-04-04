@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for trufflesuite/truffle"/>
+  <title>trufflesuite/truffle Release Notes</title>
+</head>
+<body>
+  <h1>🚀 trufflesuite/truffle - Release Notes</h1>
+  
+    <section>
+      <h2>v5.11.5 — Dessertressed (2023-09-13)</h2>
+      <pre>Hello all!  Tiny release this week, just internal improvements and dependency updates.  Thanks once again to @legobeat for getting all of these!  That's it for now!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Internal improvements
+
+* Enforce deduped lockfile when linting dependencies ([#6193](https://github.com/trufflesuite/truffle/pull/6193) by [@legobeat](https://github.com/legobeat))
+
+### Dependency updates
+
+* Deduplicate all dependencies and devDependencies ([#6194](https://github.com/trufflesuite/truffle/pull/6194) by [@legobeat](https://github.com/legobeat))
+* Dedupe and lockbump ethers, ethereumjs, web3 ([#6192](https://github.com/trufflesuite/truffle/pull/6192) by [@legobeat](https://github.com/legobeat))
+* Dedupe runtime libraries ([#6191](https://github.com/trufflesuite/truffle/pull/6191) by [@legobeat](https://github.com/legobeat))
+* Dedupe devDependencies and library packages ([#6188](https://github.com/trufflesuite/truffle/pull/6188) by [@legobeat](https://github.com/legobeat))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.11.4 — Malted milk powder (2023-09-07)</h2>
+      <pre>Hello all!  Not much this week, primarily just a bunch of internal improvements and dependency updates. 🏗️  Thanks to @legobeat for getting a bunch of these! 🧱🥁  We've also updated the list of Sourcify networks, even though the fetcher no longer actually checks it.
+
+That's it for now! 👋
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancements
+
+* Add new sourcify networks; fix problem with beam testnet ([#6182](https://github.com/trufflesuite/truffle/pull/6182) by [@haltman-at](https://github.com/haltman-at))
+
+### Internal improvements
+
+* Remove gitHead field that snuck its way in ([#6187](https://github.com/trufflesuite/truffle/pull/6187) by [@haltman-at](https://github.com/haltman-at))
+* Indicate Node.js supported versions ([#6180](https://github.com/trufflesuite/truffle/pull/6180) by [@legobeat](https://github.com/legobeat))
+* Pin nodejs 20 to 20.5 due to regression in 20.6 ([#6186](https://github.com/trufflesuite/truffle/pull/6186) by [@legobeat](https://github.com/legobeat))
+* Deprioritize Truffle relays ([#6183](https://github.com/trufflesuite/truffle/pull/6183) by [@haltman-at](https://github.com/haltman-at))
+* Enforce new minimum node version ([#6184](https://github.com/trufflesuite/truffle/pull/6184) by [@haltman-at](https://github.com/haltman-at))
+
+### Dependency updates
+
+* Deduplicate babel packages ([#6185](https://github.com/trufflesuite/truffle/pull/6185) by [@legobeat](https://github.com/legobeat))
+* Replace `node-ipc` 9.2.1 with `@achrinza/node-ipc` 9.2.7 ([#6178](https://github.com/trufflesuite/truffle/pull/6178) by [@legobeat](https://github.com/legobeat))
+* Update semver from 7.5.2 to 7.5.4 ([#6177](https://github.com/trufflesuite/truffle/pull/6177) by [@legobeat](https://github.com/legobeat))
+* Update axios from 1.2.4 to 1.5.0; update axios-retry from 3.1.9 to 3.7.0 ([#6175](https://github.com/trufflesuite/truffle/pull/6175) by [@legobeat](https://github.com/legobeat))
+* Update apollo-server-core from 3.11.0 to 3.12.1 ([#6173](https://github.com/trufflesuite/truffle/pull/6173) by [@dependabot[bot]](https://github.com/apps/dependabot))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.11.3 — Twenty chocolate nodules (2023-08-29)</h2>
+      <pre>Hello all, Truffle now supports Node 20! 🎉
+
+That being the case, we've also finally dropped support for Node 14.  Of course Node 14 went end-of-life quite a while back, 🗓️ but we'd kept support for it up until we had Node 20 working.  And now it is!  Together with that, we've updated Ganche to Ganache 7.9.1.
+
+There are some additional minor updates this week.  The list of Sourcify networks has been updated once again. 🌐  However, we've also disabled the check here, so the Sourcify fetcher can now be used with networks we haven't bothered to add to the list, should we be tardy with any updates.  Also, we fixed a small problem in the debugger that could crop up if you used modifier arguments together with user-defined value types. 👷
+
+That's it for now! 👋
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancements
+
+* Remove invalid networks check from Sourcify fetcher ([#6171](https://github.com/trufflesuite/truffle/pull/6171) by [@haltman-at](https://github.com/haltman-at))
+* Support Node 20 ([#6169](https://github.com/trufflesuite/truffle/pull/6169) by [@haltman-at](https://github.com/haltman-at))
+* Add sourcify chains for sourcify 2.6.0 ([#6162](https://github.com/trufflesuite/truffle/pull/6162) by [@haltman-at](https://github.com/haltman-at))
+
+### Bug fixes
+
+* Fix modifier argument detection by factoring out no-op handling ([#6168](https://github.com/trufflesuite/truffle/pull/6168) by [@haltman-at](https://github.com/haltman-at))
+
+### Dependency updates
+
+* Update Ganache to 7.9.1 ([#6169](https://github.com/trufflesuite/truffle/pull/6169) by [@haltman-at](https://github.com/haltman-at))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.11.2 — Chocolate-hazelnut frozen yogurt (2023-08-04)</h2>
+      <pre>Hi all! 👋
+
+We've got a small release this week.  We've updated Truffle for Solidity 0.8.21 in various ways, including allowing better debugging of Yul 🎄 contracts when compiled with it, though this is a little experimental. 🧪  We've also updated the list of networks that can be used with `truffle debug --fetch-external` 🕵️ and `truffle call --fetch-external` ☎️, including adding support for Consensys's own [Linea](https://linea.build/) ⛓️ network!
+
+That's all for this week, so bye for now! 👋
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancements
+* Allow decoding while debugging Yul sources in Solidity 0.8.21 (and related changes) ([#6154](https://github.com/trufflesuite/truffle/pull/6154) by [@haltman-at](https://github.com/haltman-at))
+* Update sourcify networks for sourcify 2.5.0 ([#6156](https://github.com/trufflesuite/truffle/pull/6156) by [@haltman-at](https://github.com/haltman-at))
+* Update Truffle Init to use solc 0.8.21 ([#6155](https://github.com/trufflesuite/truffle/pull/6155) by [@haltman-at](https://github.com/haltman-at))
+* Add more networks to etherscan fetcher (including linea) ([#6152](https://github.com/trufflesuite/truffle/pull/6152) by [@haltman-at](https://github.com/haltman-at))
+
+
+### Dependency update
+* Upgrade solc to v0.8.21 ([#6155](https://github.com/trufflesuite/truffle/pull/6155) by [@haltman-at](https://github.com/haltman-at))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.11.1 — Watermelon ice cream (2023-07-25)</h2>
+      <pre>Hello hello! 🫠 This week we have a minor release that includes some maintenance work 🔧 and updates to the new visual debugger in Truffle Dashboard (check out the [v5.11.0 release notes](https://github.com/trufflesuite/truffle/releases/tag/v5.11.0) for more info on getting started using it). Shout out to @dependabot for being cool and bumping stuff! Hee ho!
+
+We hope your week is going well and we'll see you next time!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancement
+- add a tooltip for the debug button in the tx signer for dashboard ([#6142](https://github.com/trufflesuite/truffle/pull/6142) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Bug fix
+- correct typo in etherscan message in Truffle Dashboard debugger ([#6147](https://github.com/trufflesuite/truffle/pull/6147) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Internal improvement
+- move source range data into Sources component ([#6146](https://github.com/trufflesuite/truffle/pull/6146) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Dependency update
+- bump word-wrap from 1.2.3 to 1.2.4 ([#6143](https://github.com/trufflesuite/truffle/pull/6143) by [@dependabot[bot]](https://github.com/apps/dependabot))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.11.0 — Apple pie, no bugs allowed (2023-07-14)</h2>
+      <pre>Hey again everyone, welcome back! 👯
+
+This week's release contains a special new feature; we have ported our CLI debugger 🙅🏽‍♀️🐛 over to work with Truffle Dashboard! So now you can step through your Solidity code in the browser! After installing the new version of Truffle, run `truffle dashboard` on the command line. After Truffle Dashboard starts up, just navigate to the URL specified and you can get started! There may be a few preparation steps for you to get up-and-running with your code, so expand the information below for more! We hope you enjoy it and, as always, let us know if you find some bugs so that we can improve it!
+
+<details>
+<summary>--more on getting started with the dashboard debugger--</summary>
+The first thing you will want to do is connect MetaMask to Dashboard using the button in the lower left. Then switch MetaMask to use the network you are interested in. 
+
+To use the debugger to step through code, Truffle Dashboard will first need to have the compilations for the contracts involved. If the sources are verified on Etherscan, then using the debugger is simple: enter your transaction hash in the input field and click Debug. Truffle will automatically fetch them for you and compile them! If you are debugging a transaction and you have the sources locally in a Truffle or HardHat project, you can send them to Truffle Dashboard using one of the following two methods...
+
+**For Truffle projects** 🍫
+If you have a Truffle project with the source files, you should first open Truffle Dashboard by running `truffle dashboard` in a terminal. Once Truffle Dashboard is running, navigate in a web browser to the URL specified. You should see a page with "Truffle Dashboard" in the top left. In another terminal, navigate to your Truffle project directory and run `truffle develop`. After the development 
+console opens up, run `migrate --compile-all`. After you migration is complete, Truffle Dashboard will have your compilations saved in the browser! You can then enter the transaction hash you are interested in in the Dashboard Debugger and click Debug! The debugger will load up your session and you can then step through your transaction. Neat!
+
+**For HardHat projects** 👷‍♀️
+If you have a HardHat project with the source files, you should open Truffle Dashboard by running `truffle dashboard` in a terminal. Once Truffle Dashboard is running, navigate in a web browser to the URL specified. You should see a page with "Truffle Dashboard" in the top-left. In another terminal window, navigate to your HardHat project's root directory and install the @truffle/dashboard-hardhat-plugin by running `npm install @truffle/dashboard-hardhat-plugin`. In your `hardhat-config.ts`, add `import "@truffle/dashboard-hardhat-plugin"` to the top of the file. Then run `npx hardhat compile` to send the compilations to Truffle Dashboard where
+they will be saved in the browser! You can then enter the transaction hash you are interested in in the Dashboard Debugger and click Debug! The debugger will load up your session and you can then step through your transaction. Voila!
+
+**Note 1**: You can verify that the compilation was received by opening the developer console in your browser. Set the logging levels to "all levels" and you should see a "received cli-event message" that looks something like the screenshot below.
+<img width="606" alt="Screenshot 2023-07-14 at 2 48 16 PM" src="https://github.com/trufflesuite/truffle/assets/14827965/f538ad87-a191-48a1-8d89-322b469f8faf">
+
+**Note 2**: The debugger is a bit resource-intensive and slow to initialize, and may even lock up your browser for a short time. But get yourself a coffee, and hopefully before you return it will be up and running! 💜
+</details>
+
+So the debugger for Truffle Dashboard is the meat 🍖 of this week's release. Besides that, we have a handful of maintenance-related PRs; some debugger/decoder-related bug fixes and a bump to the Ganache version utilized by Truffle. We also have to give a shoutout to @BreadQL for making a teeny tiny edit to a README in Truffle. Thanks!
+
+We hope you all enjoy the weekend and we'll see you soon!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### New feature
+- add debugger to Truffle Dashboard ([#6058](https://github.com/trufflesuite/truffle/pull/6058) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Enhancements
+- add support for multicall3 to decoder interpretations ([#6137](https://github.com/trufflesuite/truffle/pull/6137) by [@haltman-at](https://github.com/haltman-at))
+- update sourcify networks for sourcify 2.4.0 ([#6141](https://github.com/trufflesuite/truffle/pull/6141) by [@haltman-at](https://github.com/haltman-at))
+- update README.md ([#6133](https://github.com/trufflesuite/truffle/pull/6133) by [@BreadQL](https://github.com/BreadQL))
+
+### Bug fixes
+- have debugger skip anything called from a generated source while stepping ([#6138](https://github.com/trufflesuite/truffle/pull/6138) by [@haltman-at](https://github.com/haltman-at))
+- ensure `CalldataDecodingInspector` always passes through inspector options ([#6136](https://github.com/trufflesuite/truffle/pull/6136) by [@haltman-at](https://github.com/haltman-at))
+
+### Internal improvement
+- replace google analytics with mixpanel ([#6132](https://github.com/trufflesuite/truffle/pull/6132) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Dependency update
+- update Ganache to 7.9.0 ([#6134](https://github.com/trufflesuite/truffle/pull/6134) by [@haltman-at](https://github.com/haltman-at))
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.10.2 — Icebox cake (2023-06-30)</h2>
+      <pre>## How to upgrade
+
+Welcome to another Truffle release!
+
+This week we have a small set of updates, focused on improving the decoding and debugging experience. 🚈 Our Decoder's input interfaces are now more flexible; 🤸 it accepts both `string`'s and `bigint`'s in places where only `number`'s were accepted. Additionally, address value now has a `contractClass` interpretation field that may provide additional information like contract name and payability. 📚
+
+We also updated our source fetcher 🧲 to support the layer-2 Rollux blockchain mainnet and testnet.
+
+Stay tuned for more next week! Enjoy the rest of your week. 🦆
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### New feature
+* Add `contractClass` interpretation to address values ([#6130](https://github.com/trufflesuite/truffle/pull/6130) by [@haltman-at](https://github.com/haltman-at))
+
+### Enhancements
+* Allow strings and bigints instead of numbers in decoder input fields ([#6131](https://github.com/trufflesuite/truffle/pull/6131) by [@haltman-at](https://github.com/haltman-at))
+* Add Rollux & its testnet to Sourcify fetcher ([#6127](https://github.com/trufflesuite/truffle/pull/6127) by [@haltman-at](https://github.com/haltman-at))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.10.1 — Rum baba (2023-06-23)</h2>
+      <pre>Hey everybody! Here's a Truffle release that will end your Friday with joy. 👨‍🍳
+
+If you're using Truffle Test, Debugger, or Decoder, you'll be happy to know that our event decoding is improved to support contracts that use Solidity >= 0.8.20. 🕺 And if you're a fan of Yul, our Decoder can now properly decode internal function pointers from contracts compiled with `viaIR` enabled. 👟 With these cases covered, it means decoding everywhere inside Truffle is hardened to give you a more stable experience.
+
+Thanks to @calebyouki for bringing our attention to an issue related to the programmatic usage of `@truffle/test`. 🪂 We've gone ahead and fixed that. Additionally, thank you to @73alexstep, @vlasov-hub, @BIOtrice, @elenaqi, and @HelenCodePro for looking after our readme's, cheers and welcome! 🐣
+
+As per usual, our fetchers are kept up to date to reflect what Etherscan and Sourcify currently support. 🏌️ We also made an improvement to a codec component.
+
+Try a rum baba if you can find one. 🥃 If not, well, still have a good weekend! We'll be back next week with more.
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancements
+
+* Allow decoding of internal function pointers in `viaIR` compilations (in Solidity 0.8.20) ([#6050](https://github.com/trufflesuite/truffle/pull/6050) by [@haltman-at](https://github.com/haltman-at))
+* Properly handle event decoding in Solidity 0.8.20 ([#6049](https://github.com/trufflesuite/truffle/pull/6049) by [@haltman-at](https://github.com/haltman-at))
+* Specify "magic" variables' type only in component tooltip, not via prefix ([#6116](https://github.com/trufflesuite/truffle/pull/6116) by [@gnidan](https://github.com/gnidan))
+* Add zora network to Sourcify fetcher ([#6117](https://github.com/trufflesuite/truffle/pull/6117) by [@haltman-at](https://github.com/haltman-at))
+
+### Bug fixes
+
+* Handle using @truffle/test without @truffle/core ([#6118](https://github.com/trufflesuite/truffle/pull/6118) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Internal improvements
+
+* Remove cronos testnet from Etherscan fetcher ([#6120](https://github.com/trufflesuite/truffle/pull/6120) by [@haltman-at](https://github.com/haltman-at))
+* Remove slow Hardhat test ([#6114](https://github.com/trufflesuite/truffle/pull/6114) by [@haltman-at](https://github.com/haltman-at))
+* Remove flaky hardhat test ([#6099](https://github.com/trufflesuite/truffle/pull/6099) by [@haltman-at](https://github.com/haltman-at))
+* Update README.md ([#6110](https://github.com/trufflesuite/truffle/pull/6110) by [@73alexstep](https://github.com/73alexstep))
+* Update README.md ([#6109](https://github.com/trufflesuite/truffle/pull/6109) by [@vlasov-hub](https://github.com/vlasov-hub))
+* Update README.md ([#6104](https://github.com/trufflesuite/truffle/pull/6104) by [@BIOtrice](https://github.com/BIOtrice))
+* Update README.md ([#6103](https://github.com/trufflesuite/truffle/pull/6103) by [@elenaqi](https://github.com/elenaqi))
+* Update CONTRIBUTING.md ([#6100](https://github.com/trufflesuite/truffle/pull/6100) by [@HelenCodePro](https://github.com/HelenCodePro))
+
+### Dependency updates
+
+* Upgrade semver to 7.5.2 ([#6121](https://github.com/trufflesuite/truffle/pull/6121) by [@dependabot[bot]](https://github.com/apps/dependabot))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.10.0 — Chocolate fountain (2023-06-16)</h2>
+      <pre>Hello everyone, we've got a new Truffle for you!
+
+The biggest addition this week is the new package `@truffle/codec-components`!  If you're making use of the `@truffle/decoder` or `@truffle/debugger` 🕵 libraries, you may have found yourself saying, this output format is quite nice, but how do I display it on a webpage? 🕸️  Well, `@truffle/codec-components` gives you a convenient way of doing so!  Behold!
+
+![image](https://github.com/trufflesuite/truffle/assets/35589221/108d2d64-b980-4243-8e7c-ed6acc7b3234)
+
+Look at that those collapsible arrays!  This library is still pretty internal for now, but you can look forward to its use in Truffle features to come.  And we are working on documentation and interfaces to make it more generally available in the future!
+
+Speaking of `@truffle/decoder`, we've upgraded it so that it can make use of [4byte.directory](https://www.4byte.directory/) 📖 to decode transactions it otherwise can't make sense of.  In order to use this, you'll need to pass `{ projectInfo: <...>, selectorDirectory: { enabled: true } }` when starting it up.  (You can also set it to use a website other than [4byte.directory](https://www.4byte.directory/), so long as you have one that follows the same protocol. 🕴️)
+
+If you do this, then when you get back a message decoding or unknown decoding, it may have attached a `selectorBasedDecodings` interpretation; this will be an array of decodings based on what can be found on [4byte.directory](https://www.4byte.directory/).  Note such decodings will be pretty bare-bones 🩻, but they'll be there!
+
+But we've got other enhancements this week as well!  Thanks to @farcaller, you can now override the copy of chai ☕ used for `assert` and `expect` in `truffle test` 🧪 by putting a different package in your config.  Just write
+```javascript
+module.exports = {
+  //rest of truffle-config.js
+  chai: {
+    package: require("my-preferred-chai")
+  }
+}
+```
+and you should be good to go!
+
+Also this week, the `truffle dashboard` command now allows a `--no-auto-open` option to prevent it from automatically opening a browser window 🪟; we've fixed some bugs 🐛 that prevented some people from compiling, decoding, or debugging their contracts; and we've updated what chains you can use `truffle debug -x` or `truffle call -x` with. ⛓️
+
+We hope that's enough for you for one release!  But if it isn't, well, come back next week!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### New feature
+
+* Introduce new @truffle/codec-components react component library ([#6076](https://github.com/trufflesuite/truffle/pull/6076) by [@cliffoo](https://github.com/cliffoo))
+
+### Enhancements
+
+* Allow Truffle Dashboard to run without launching a browser window automatically ([#6096](https://github.com/trufflesuite/truffle/pull/6096) by [@cliffoo](https://github.com/cliffoo))
+* Allow decoder to use 4byte.directory to decode ([#6057](https://github.com/trufflesuite/truffle/pull/6057) by [@haltman-at](https://github.com/haltman-at))
+* Allow to override chai from the config ([#5974](https://github.com/trufflesuite/truffle/pull/5974) by [@farcaller](https://github.com/farcaller))
+* Add chains for Sourcify 2.2.3 ([#6089](https://github.com/trufflesuite/truffle/pull/6089) by [@haltman-at](https://github.com/haltman-at))
+* Add means for Dashboard to fetch and compile external contracts ([#6075](https://github.com/trufflesuite/truffle/pull/6075) by [@eggplantzzz](https://github.com/eggplantzzz))
+* Add ResultInspector option to use objects for mappings ([#6074](https://github.com/trufflesuite/truffle/pull/6074) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Bug fixes
+
+* Add missing codec component for new error type ([#6097](https://github.com/trufflesuite/truffle/pull/6097) by [@haltman-at](https://github.com/haltman-at))
+* Put try/catch guard around ENS forward resolution in decoder/debugger ([#6083](https://github.com/trufflesuite/truffle/pull/6083) by [@haltman-at](https://github.com/haltman-at))
+* Correct resolver import in legacy workflow compile ([#6078](https://github.com/trufflesuite/truffle/pull/6078) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Internal improvements
+
+* Increase timeout on some more tests, remove needless imports ([#6092](https://github.com/trufflesuite/truffle/pull/6092) by [@haltman-at](https://github.com/haltman-at))
+* Further increase timeouts on hardhat related tests ([#6091](https://github.com/trufflesuite/truffle/pull/6091) by [@haltman-at](https://github.com/haltman-at))
+* Replace bootstrap with install in scripts/workflows ([#6090](https://github.com/trufflesuite/truffle/pull/6090) by [@haltman-at](https://github.com/haltman-at))
+* Reject SolidityAST contracts verified on Etherscan ([#6082](https://github.com/trufflesuite/truffle/pull/6082) by [@haltman-at](https://github.com/haltman-at))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.9.4 — Bowlful of berries (2023-06-06)</h2>
+      <pre>Hello again everyone! 👋
+
+This week we have a few improvements for you. 🛠️ One impacts `truffle call` and makes Truffle more accurately resolve function overloads. More accuracy is always better! 📐 Additionally there is an update that improves the way Truffle Dashboard operates when using the Frame wallet. It used to hang when no account was connected but Truffle now produces some helpful output in that case. Nice!
+
+We hope your week goes well and we'll see you next time!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancement
+
+- Swap priority order of booleans/strings if `strictBooleans` is on ([#6044](https://github.com/trufflesuite/truffle/pull/6044) by [@haltman-at](https://github.com/haltman-at))
+- In Dashboard, notify user if no Frame account is/can be connected ([#6071](https://github.com/trufflesuite/truffle/pull/6071) by [@cliffoo](https://github.com/cliffoo))
+
+### Dependency updates
+
+- bump prettier to `^2.8.8` and clean up some dependencies for @truffle/dashboard-hardhat-plugin ([#6072](https://github.com/trufflesuite/truffle/pull/6072) by [@cliffoo](https://github.com/cliffoo))
+- bump typescript to `^4.9.5`, bump ttypescript to `1.5.15`, bump typedoc to `0.24.8` ([#6070](https://github.com/trufflesuite/truffle/pull/6070) by [@cliffoo](https://github.com/cliffoo))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.9.3 — Carob dog treats (2023-06-02)</h2>
+      <pre>Hello all!
+
+Another small release this week!  We've added support for the Symplexia and Dogechain 🐶 networks to `truffle debug -x` and `truffle call -x`, and we've made some changes to speed up compilation times. 🏎️  We also fixed a buggy printout.
+
+More is coming next week as always, so stay tuned! 📺
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancement
+
+* Add two more sourcify networks ([#6060](https://github.com/trufflesuite/truffle/pull/6060) by [@haltman-at](https://github.com/haltman-at))
+
+### Bug fix
+
+* Re-add event that seems like it was accidentally removed ([#6064](https://github.com/trufflesuite/truffle/pull/6064) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Internal improvements
+
+* Pass solc when available to profiler to avoid fetching the solc list again ([#6063](https://github.com/trufflesuite/truffle/pull/6063) by [@eggplantzzz](https://github.com/eggplantzzz))
+* Increase timeout on failing hardhat test ([#6061](https://github.com/trufflesuite/truffle/pull/6061) by [@haltman-at](https://github.com/haltman-at))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.9.2 (2023-05-25)</h2>
+      <pre>Hello all!
+
+Tiny release this week, focused on dependencies.  But don't go away, we'll have bigger improvements for you soon! 👷
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Internal improvements
+
+* Add missing sinon dev dependency ([#6056](https://github.com/trufflesuite/truffle/pull/6056) by [@haltman-at](https://github.com/haltman-at))
+* Increase time on various tests that were timing out ([#6055](https://github.com/trufflesuite/truffle/pull/6055) by [@haltman-at](https://github.com/haltman-at))
+
+### Dependency update
+
+* Update abi-to-sol to ^0.7.0 ([#6054](https://github.com/trufflesuite/truffle/pull/6054) by [@haltman-at](https://github.com/haltman-at))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.9.1 — Chocolate Bricks (2023-05-19)</h2>
+      <pre>Hello all! 👋
+
+[Solidity 0.8.20 is out](https://github.com/ethereum/solidity/releases/tag/v0.8.20), and we've started updating Truffle for it! 🧑‍💻  Thanks to @sukanyaparashar for some updates, so new projects created with `truffle init` will use Solidity 0.8.20!  We'll have more updates related to Solidity 0.8.20 soon!
+
+In addition, we've added functions for parsing signatures to our `abi-utils` library.  If you have some function or event or error signatures and you want to parse them to get usable ABI objects, these added functions let you do that! ✂🪡
+
+That's it for this week, see you all again soon with more!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancements
+
+* Upgrade solc version to latest 0.8.20 in truffle init ([#6036](https://github.com/trufflesuite/truffle/pull/6036) by [@sukanyaparashar](https://github.com/sukanyaparashar))
+* Add `parseSignature` functions to ABI utils ([#6052](https://github.com/trufflesuite/truffle/pull/6052) by [@haltman-at](https://github.com/haltman-at))
+
+### Internal improvements
+
+* Remove ropsten, kovan, rinkeby support from Etherscan fetcher ([#6053](https://github.com/trufflesuite/truffle/pull/6053) by [@haltman-at](https://github.com/haltman-at))
+* Use StringValueInfoToStringLossy function in debugger ([#6043](https://github.com/trufflesuite/truffle/pull/6043) by [@haltman-at](https://github.com/haltman-at))
+
+### Dependency update
+
+* Upgrade solc dependencies to v0.8.20 ([#6037](https://github.com/trufflesuite/truffle/pull/6037) by [@sukanyaparashar](https://github.com/sukanyaparashar))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.9.0 — Chocolate Telephone (2023-05-11)</h2>
+      <pre>Ring ring ring, it's Truffle 5.9.0!
+
+### `truffle call`
+
+This week's Truffle release introduces the new `truffle call` command!  You can use it to make read-only calls ☎ to your contracts (or external ones, see below) and display the results.  Just type `truffle call ContractName functionName`, followed by the list of arguments.  You can also use the function's full ABI-style signature in place of the function name, which can be useful for resolving overloads.
+
+You can also use an address in place of a contract name... and if you pass the `--fetch-external` option (or `-x` for short), you can use it with external contracts verified on [Etherscan](https://etherscan.io/) or [Sourcify](https://sourcify.dev/), and Truffle will automatically download and compile the source to allow to you interact with it. 🌐
+
+The `truffle call` command is powered by Truffle Encoder and Truffle Decoder, so it not only displays detailed decoding information, but also has a ***powerful overload resolution system*** that can resolve which overload you wanted not only based on how many arguments you supplied, but on their types. 🧠  Write yourself some overloaded functions and try it out!  I think you'll be pleasantly surprised.  (Note that correct overload resolution by name and arguments is never a guarantee and you may need to specify the full signature in cases where you need that guarantee. 🧑‍⚖️ )
+
+### What do we mean by "powerful overload resolution"? 🤔 
+
+You might have in the past had to write things like `myFunction(address,address,string,uint160)` , where you needed to tediously specify the full signature. This is because Solidity allows you to write functions with the same name that take different arguments:
+
+```solidity
+contract Example {
+  function register(string memory name) public {
+    /* ... */
+  }
+
+  function register(bytes memory id) public {
+    /* ... */
+  }
+}
+```
+
+Many tools refuse to make a guess at which `register()` you want when you do `register("0xabcdef")`, instead forcing you to do the work of specifying `register(string)` or `register(bytes)`, and in this case could tell that you obviously meant `register(bytes)`. This gets annoying if you have a lot of arguments, especially if you have to change them later!
+
+In contrast, `truffle call` uses @truffle/encoder's sophisticated heuristics to make the most educated guess possible about which overload you intend.  This means less boilerplate between you and getting the data you want!
+
+Thanks so much to @sukanyaparashar for getting this started for us!
+
+### Other improvements (including ENS primary names inside `truffle debug`!)
+
+But that's not the only substantial improvement going out this week... Truffle Debugger now supports ENS reverse resolution when decoding!  Now, when decoding, addresses (including contracts) with reverse ENS records will have their ENS primary name displayed alongside their ethereum address. 🕵  You can use the default ENS registry for the network you're on if there is one, or you can [specify a registry in your config](https://trufflesuite.com/docs/truffle/concepts/ethereum-name-service/), or you can use the `--registry` option to specify one at the command line.  There's also `--no-ens` option to turn this feature off.
+
+<details><summary><strong>See it in action!</strong></summary>
+
+![image](https://github.com/trufflesuite/truffle/assets/35589221/25f29664-dac3-4625-8ae1-b55cfb9bdf01)
+</details>
+
+We've also got a few small bug fixes, and we've updated the list of Sourcify networks allowed in `trufle debug --fetch-external`.
+
+And we'll be back soon with yet more improvements to Truffle!  See you all!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### New feature
+
+* Implement new `truffle call` command using @truffle/encoder and @truffle/decoder ([#5647](https://github.com/trufflesuite/truffle/pull/5647) by [@sukanyaparashar](https://github.com/sukanyaparashar) and [@haltman-at](https://github.com/haltman-at))
+
+### Enhancements
+
+* Reverse ENS resolution support in debugger and decoder ([#5895](https://github.com/trufflesuite/truffle/pull/5895) by [@haltman-at](https://github.com/haltman-at))
+* Add new chains for Sourcify for May 2023 ([#6027](https://github.com/trufflesuite/truffle/pull/6027) by [@haltman-at](https://github.com/haltman-at))
+
+### Bug fixes
+
+* Fix incorrect check for panic ([#6021](https://github.com/trufflesuite/truffle/pull/6021) by [@haltman-at](https://github.com/haltman-at))
+* Consistify location of user ENS registry address setting ([#6005](https://github.com/trufflesuite/truffle/pull/6005) by [@haltman-at](https://github.com/haltman-at))
+* Add even more ways to specify ens registry address so as to be consistent with docs ([#6019](https://github.com/trufflesuite/truffle/pull/6019) by [@haltman-at](https://github.com/haltman-at))
+* Change default registry in config from null to undefined ([#6034](https://github.com/trufflesuite/truffle/pull/6034) by [@haltman-at](https://github.com/haltman-at))
+
+### Dependency update
+
+* Update web3 to 1.10.0 ([#6035](https://github.com/trufflesuite/truffle/pull/6035) by [@haltman-at](https://github.com/haltman-at))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.8.4 (2023-04-28)</h2>
+      <pre>Hello all!  We've just got one small fix 🔧 this week, courtesy of @d10r.  The buffer size has been increased when compiling using a native-binary copy of `solc`, allowing for compilation of larger projects in such cases.  We intend to revisit this in the future with a more comprehensive solution that won't require you to make a PR if the buffer size still isn't high enough for you! 🦾
+
+...and, well, that's it for this week.  But we've got big things coming down the pipeline... 🧪
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Bug fix
+
+- Increase maxBuffer to 50MB when compiling using native compiler ([#6008](https://github.com/trufflesuite/truffle/pull/6008) by [@d10r](https://github.com/d10r))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.8.3 — Ice cream on a waffle (2023-04-20)</h2>
+      <pre>Hello everyone! 🫶 We have another release for you this week. This one updates Ganache to the most recent version; a version which supports Shanghai! We also have to give a shoutout to @lwedge99 🍋 for correcting a source mapping problem that affected the debugger. Much obliged!
+
+We hope you have a wonderful rest of your week and we'll see you next time!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Bug fix
+
+- fix source map with multibyte characters ([#5988](https://github.com/trufflesuite/truffle/pull/5988) by [@lwedge99](https://github.com/lwedge99))
+
+### Internal improvements
+
+- increase timeout on decoder test ([#5993](https://github.com/trufflesuite/truffle/pull/5993) by [@haltman-at](https://github.com/haltman-at))
+- remove clover support from etherscan fetcher ([#5990](https://github.com/trufflesuite/truffle/pull/5990) by [@haltman-at](https://github.com/haltman-at))
+
+### Dependency update
+
+- upgrade Ganache to v7.8.0 ([#5992](https://github.com/trufflesuite/truffle/pull/5992) by [@haltman-at](https://github.com/haltman-at))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.8.2 — Chocolatier (2023-04-10)</h2>
+      <pre>Hello all! 👋
+
+This release beings a few enhancements and a bug fix 🐛. Firstly, the recently released `@truffle/dashboard-hardhat-plugin` now automatically adds a `--network truffleDashboard` to your Hardhat project, eliminating the need to add a custom network to your Hardhard config. In addition, it brings some additional flexibility by allowing you to [customize a number of settings](https://github.com/trufflesuite/truffle/tree/develop/packages/dashboard-hardhat-plugin#configuration) such as network, port, etc.
+
+Beyond that we've added support for Polygon ZkEVM to Etherscan source fetcher and fixed a pesky typo in the `@trufflesuite/codec` docs.
+
+That's all for now, but, as always we'll be back soon with more!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancements
+
+- Make @truffle/dashboard-hardhat-plugin automatically manage the Dashboard Hardhat network configuration (while still allowing customization) ([#5982](https://github.com/trufflesuite/truffle/pull/5982) by [@gnidan](https://github.com/gnidan))
+- Add support for Polygon ZkEVM to Etherscan fetcher ([#5986](https://github.com/trufflesuite/truffle/pull/5986) by [@haltman-at](https://github.com/haltman-at))
+
+### Bug Fixes
+
+- Fix typo in interface category name in Decoding/Encoding docs ([#5980](https://github.com/trufflesuite/truffle/pull/5980) by [@cliffoo](https://github.com/cliffoo))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.8.1 — Basil sorbet (2023-03-17)</h2>
+      <pre>Hey everyone, we have yet another release for you this week! 😊 There are some bug fixes, some dependency updates, and a couple of enhancements. Thanks very much to @sheetalkamat and @AlexToTheSun for their contributions! 🙏
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### enhancements
+
+- update Sourcify and Etherscan fetchers w/Base Goerli & more ([#5973](https://github.com/trufflesuite/truffle/pull/5973) by [@haltman-at](https://github.com/haltman-at))
+- add link to `LICENSE` in `README.md` ([#5969](https://github.com/trufflesuite/truffle/pull/5969) by [@AlexToTheSun](https://github.com/AlexToTheSun))
+
+
+### bug fixes 
+
+- fix `typeRoots` in `tsconfig.json` ([#5956](https://github.com/trufflesuite/truffle/pull/5956) by [@sheetalkamat](https://github.com/sheetalkamat))
+- fix @truffle/dashboard-hardhat-plugin's `package.json` ([#5964](https://github.com/trufflesuite/truffle/pull/5964) by [@gnidan](https://github.com/gnidan))
+- enable shell option for spawn ([#5968](https://github.com/trufflesuite/truffle/pull/5968) by [@cds-amal](https://github.com/cds-amal))
+
+
+### dependency Updates
+
+- bump Webpack to `5.76.0` ([#5972](https://github.com/trufflesuite/truffle/pull/5972) by [@dependabot[bot]](https://github.com/apps/dependabot))
+- bump Ganache to `7.7.6` ([#5954](https://github.com/trufflesuite/truffle/pull/5954) by [@cds-amal](https://github.com/cds-amal))
+- bump Ganache to `7.7.7` ([#5966](https://github.com/trufflesuite/truffle/pull/5966) by [@davidmurdoch](https://github.com/davidmurdoch))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.8.0 — Homemade Four-Layer Carrot Cake (2023-03-10)</h2>
+      <pre>Hello! 👋 It's time for another Truffle release!
+
+This week, we're introducing the Truffle Dashboard Hardhat plugin.  <img src="https://user-images.githubusercontent.com/8952139/224185345-83c1f5d5-ef2e-4fbb-8339-073d23126c15.png"  width="5%" height="5%">
+
+This plugin enables you to see decoded transaction information (both the function signature and the values of any arguments passed) when using [Truffle Dashboard](https://trufflesuite.com/docs/truffle/how-to/use-the-truffle-dashboard/) with your Hardhat projects. It extends `npx hardhat compile` by sending the compiled artifacts to Truffle Dashboard, which in turn uses @truffle/decoder for decoding, giving you that extra degree of visibility before signing the transactions with your browser-based wallet.
+
+You can install this plugin with `npm` (or `yarn`) by running:
+
+```bash
+npm i @truffle/dashboard-hardhat-plugin -D
+```
+
+Beyond that, simply import the plugin in your `hardhat.config.js`:
+
+```ts
+import "@truffle/dashboard-hardhat-plugin";
+```
+
+Truffle Dashboard allows developers to deploy their applications using a browser-based wallet instead of through local key management. For details on how to use the Truffle Dashboard, take a look at the documentation [here](https://trufflesuite.com/docs/truffle/how-to/use-the-truffle-dashboard/). 🎉
+
+That's it for this week! We hope you enjoy this new feature. Please let us know what you think!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### New Features
+- Add Hardhat plugin for Truffle Dashboard ([#5927](https://github.com/trufflesuite/truffle/pull/5927) by [@kevinbluer](https://github.com/kevinbluer))
+
+### Dependency Updates
+- Upgrade Ganache to v7.7.6 ([#5954](https://github.com/trufflesuite/truffle/pull/5954) by [@cds-amal](https://github.com/cds-amal))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.9 — Cabbage tart (2023-03-02)</h2>
+      <pre>Hey everyone, we hope you enjoy today's release which contains some library updates and a bug fix related to @truffle/from-hardhat. We hope you all have a nice weekend!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Bug fixes
+
+- stop serializing HH config data we don't need ([#5938](https://github.com/trufflesuite/truffle/pull/5938) by [@gnidan](https://github.com/gnidan))
+- ensure resolver.resolve()'s type only needs 1 arg. ([#5946](https://github.com/trufflesuite/truffle/pull/5946) by [@gnidan](https://github.com/gnidan))
+
+### Internal improvement
+
+- add a warning when unable to save the solidity compiler to disk instead of throwing ([#5934](https://github.com/trufflesuite/truffle/pull/5934) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Dependency update
+
+- bump thenify from 3.3.0 to 3.3.1 ([#5942](https://github.com/trufflesuite/truffle/pull/5942) by [@dependabot[bot]](https://github.com/apps/dependabot))
+- bump solc dependencies to v0.8.19 ([#5944](https://github.com/trufflesuite/truffle/pull/5944) by [@sukanyaparashar](https://github.com/sukanyaparashar))
+- bump solc version to latest 0.8.19 in truffle init ([#5941](https://github.com/trufflesuite/truffle/pull/5941) by [@sukanyaparashar](https://github.com/sukanyaparashar))
+- add `solc` as a devDep to compile-solidity-tests ([#5940](https://github.com/trufflesuite/truffle/pull/5940) by [@cds-amal](https://github.com/cds-amal))
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.8 — Cinnamon roll soup (2023-02-24)</h2>
+      <pre>Welcome back! 👋 Another Truffle release is out in the wild today. Once again it is mostly a maintenance-type release with some bug fixes and internal improvements. We have to give a shout-out 🔈 to @sandakersmann for updating the copyright information in Truffle's LICENSE file. Thanks so much for helping keep everything tidy and up-to-date! We'll see you next time and we wish you all a beautiful weekend!🦚
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+
+### Enhancement
+
+- update Sourcify networks for Sourcify `1.2.2` ([#5909](https://github.com/trufflesuite/truffle/pull/5909) by [@haltman-at](https://github.com/haltman-at))
+
+### Bug fixes
+
+- fix `console.log` when presenting `BigInt`s ([#5933](https://github.com/trufflesuite/truffle/pull/5933) by [@cds-amal](https://github.com/cds-amal))
+- only edit state in `txLog` when an initial state exists ([#5919](https://github.com/trufflesuite/truffle/pull/5919) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Internal improvements
+
+- error more explicitly when unable to write to cache directory ([#5930](https://github.com/trufflesuite/truffle/pull/5930) by [@eggplantzzz](https://github.com/eggplantzzz))
+- remove Aurora support from Etherscan fetcher ([#5912](https://github.com/trufflesuite/truffle/pull/5912) by [@haltman-at](https://github.com/haltman-at))
+- update copyright year ([#5928](https://github.com/trufflesuite/truffle/pull/5928) by [@sandakersmann](https://github.com/sandakersmann))
+
+### Dependency update
+
+- bump undici from `5.8.2` to `5.19.1` ([#5908](https://github.com/trufflesuite/truffle/pull/5908) by [@dependabot[bot]](https://github.com/apps/dependabot))
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.7 – Cranberry Orange Upside Down Cake (2023-02-17)</h2>
+      <pre>Hello hello! 👋 It's time for another Truffle release! 
+
+This week, we have a little bit of everything for you! Truffle should now properly return an error when it is due to an out of gas exception! 🎉 Previously, these were coming back as custom errors without further information. Additionally, you can now see a link to the Truffle Debugger documentation in the CLI when using it! 👀 Always nice to have more information at your fingertips! ⌨️
+
+Special thanks to [@sukanyaparashar](https://github.com/sukanyaparashar) for upgrading the `solc` dependencies to v0.8.18 in `contract-schema` and `compile-solidity` packages! 🙏
+
+See below for more detail on the contents of this week's release. Thanks for reading, and we'll see you next week! ✨ 
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+
+### Enhancements
+
+- Add support for PUSH0 instruction to debugger & disassembler ([#5898](https://github.com/trufflesuite/truffle/pull/5898) by [@haltman-at](https://github.com/haltman-at))
+- Update Sourcify chains for February 2023 ([#5904](https://github.com/trufflesuite/truffle/pull/5904) by [@haltman-at](https://github.com/haltman-at))
+- Restrict general help content in REPL context ([#5885](https://github.com/trufflesuite/truffle/pull/5885) by [@cds-amal](https://github.com/cds-amal))
+- Link to Debugger reference docs ([#5892](https://github.com/trufflesuite/truffle/pull/5892) by [@cds-amal](https://github.com/cds-amal))
+
+### Bug fixes
+
+- Fix (most) incorrect reports of custom errors ([#5903](https://github.com/trufflesuite/truffle/pull/5903) by [@haltman-at](https://github.com/haltman-at))
+- Set yargs help to always use truffle instead of script name ([#5883](https://github.com/trufflesuite/truffle/pull/5883) by [@cds-amal](https://github.com/cds-amal))
+
+### Internal improvements
+
+- Increase timeout on migration out of gas test ([#5907](https://github.com/trufflesuite/truffle/pull/5907) by [@haltman-at](https://github.com/haltman-at))
+- Disable slack actions ([#5889](https://github.com/trufflesuite/truffle/pull/5889) by [@cds-amal](https://github.com/cds-amal))
+- Temporarily disable job failure notifications ([#5890](https://github.com/trufflesuite/truffle/pull/5890) by [@cds-amal](https://github.com/cds-amal))
+- Simplify `Develop.connectOrStart()`'s signature ([#5891](https://github.com/trufflesuite/truffle/pull/5891) by [@cds-amal](https://github.com/cds-amal))
+- Suppress evalmachine error stack in truffle consoles ([#5888](https://github.com/trufflesuite/truffle/pull/5888) by [@cds-amal](https://github.com/cds-amal))
+
+
+### Dependency updates
+
+- Update ganache to 7.7.5 ([#5906](https://github.com/trufflesuite/truffle/pull/5906) by [@haltman-at](https://github.com/haltman-at))
+- Upgrade solc dependencies to v0.8.18 in `contract-schema` and `compile-solidity` packages ([#5886](https://github.com/trufflesuite/truffle/pull/5886) by [@sukanyaparashar](https://github.com/sukanyaparashar))
+- Upgrade tsd dev dependency to ^0.25.0 ([#5884](https://github.com/trufflesuite/truffle/pull/5884) by [@haltman-at](https://github.com/haltman-at))
+- Pin GETH to v1.10.26 ([#5900](https://github.com/trufflesuite/truffle/pull/5900) by [@cds-amal](https://github.com/cds-amal))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.6 – Classic chocolate fondue (2023-02-11)</h2>
+      <pre>Hi folks! Nice seeing you today 🤩 
+
+This week's Truffle release brings you fixes to some bugs that got surfaced internally. Hopefully these bugs didn't affect you, or maybe you were too busy dipping pieces of fruit into melted chocolate to open an issue 😮 🍍 🍓.  In any case, we recommend reading on and upgrading!
+
+Most notably: you can now switch accounts between transactions in Truffle Dashboard. This wasn't working correctly, which meant problems if (e.g.) your deployment process requires multiple accounts to sign different transactions... not great 🙀! Fortunately, this is now fixed and you can feel free to use Truffle Dashboard for all your CLI-driven signature needs, no matter how many counter-parties you want to involve in your smart contracts. 📄 🖊️
+
+Besides that, Truffle's interactive console (i.e., in `truffle develop` and `truffle console`) now properly interprets quoted strings... e.g., now `"two words"` gets treated as only one string, the way you'd expect! We've also fixed the behavior of our help system inside the interactive console, so now `help` inside Truffle's console behaves the same as `truffle help` on the command line. ℹ️ 
+
+Special shout-out to @sukanyaparashar for updating our `truffle init` output to the latest Solidity! Thanks for getting that for us 🙏.
+
+Scroll down for all the details if you'd like... regardless, take care and thanks for reading! 👋 
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+
+### Bug fixes
+
+- Fix help in `truffle develop` and `truffle console` ([#5871](https://github.com/trufflesuite/truffle/pull/5871) by [@eggplantzzz](https://github.com/eggplantzzz))
+- Support switching accounts between signature requests in Truffle Dashboard ([#5846](https://github.com/trufflesuite/truffle/pull/5846) by [@cliffoo](https://github.com/cliffoo))
+- Properly handle quotes, backslashes, etc in commands at console ([#5861](https://github.com/trufflesuite/truffle/pull/5861) by [@haltman-at](https://github.com/haltman-at))
+
+### Internal improvements
+
+- Improve CompilerSupplier via memoization and async filesystem access ([#5829](https://github.com/trufflesuite/truffle/pull/5829) by [@eggplantzzz](https://github.com/eggplantzzz))
+- Ensure @truffle/from-hardhat specifies `--no-compile` ([#5872](https://github.com/trufflesuite/truffle/pull/5872) by [@kevinbluer](https://github.com/kevinbluer))
+
+### Dependency updates
+
+- Upgrade solc version to v0.8.18 in truffle init ([#5870](https://github.com/trufflesuite/truffle/pull/5870) by [@sukanyaparashar](https://github.com/sukanyaparashar))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.5 — Chocolate chips (2023-02-02)</h2>
+      <pre>Hey everyone! 🫠 This week we're back with another release that mostly takes care of some good old fashioned housekeeping. 🧹
+
+So Solidity 0.8.18 was recently released and there are a couple of updates here to keep up with them. The one of the two worth mentioning is the new `block.prevrandao` alias (for `block.difficulty`). This has been added as a globally available variable in the debugger. Additionally, we bumped highlightjs-solidity (which will yield better syntax highlighting) and web3 (woohoo!🎉). We hope you enjoy and we'll see you next time! 👋
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+
+### Enhancement 
+
+* Add `block.prevrandao` as globally available variable in debugger ([#5866](https://github.com/trufflesuite/truffle/pull/5866) by [@haltman-at](https://github.com/haltman-at))
+
+
+### Internal improvement
+
+* Add `appendCBOR` field in metadata settings type in source fetcher ([#5864](https://github.com/trufflesuite/truffle/pull/5864) by [@haltman-at](https://github.com/haltman-at))
+
+
+### Dependency updates
+
+* Update web3 to `1.8.2` ([#5862](https://github.com/trufflesuite/truffle/pull/5862) by [@haltman-at](https://github.com/haltman-at))
+* Update highlightjs-solidity to `2.0.6` ([#5865](https://github.com/trufflesuite/truffle/pull/5865) by [@haltman-at](https://github.com/haltman-at))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.4 — Chocolate bumpy cake (2023-01-27)</h2>
+      <pre>Hi all, we've got a small release this week but it's got some useful bug 🐛 fixes!
+
+Specifically, there was a problem where, when using abbreviated names of Truffle commands -- for instance, `truffle migr` instead of `truffle migrate` -- some command-line options might not get set properly.  But this has been fixed now so you may be as terse as you please! 🏎
+
+And -- aside from some internal improvements and dependency updates -- that's it!  But we'll be back next week with more, and interesting things are brewing for later... 🫖
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Bug Fixes
+
+* Ensure yargs receives the correct command name when it has a typo ([#5834](https://github.com/trufflesuite/truffle/pull/5834) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Internal improvements
+
+* Add clarification in @truffle/contract README about overloaded functions ([#5836](https://github.com/trufflesuite/truffle/pull/5836) by [@eggplantzzz](https://github.com/eggplantzzz))
+* Remove unused error classes ([#5835](https://github.com/trufflesuite/truffle/pull/5835) by [@cds-amal](https://github.com/cds-amal))
+* Add debugGlobal default to config ([#5830](https://github.com/trufflesuite/truffle/pull/5830) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+
+### Dependency updates
+
+* Update axios to v1.2.4 ([#5854](https://github.com/trufflesuite/truffle/pull/5854) by [@eggplantzzz](https://github.com/eggplantzzz))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.3 — Everything-free cupcakes 🧁 (2023-01-13)</h2>
+      <pre>Hello all! 👋
+
+We hope you're having a great start to 2023 and hanging in there with your New Year's resolutions. 🧘
+
+This week's release offers up a number of quality of life improvements and all round healthy goodness. Firstly, Truffle now ships with Ganache `v7.7.3` which adds support for the Merge! ♻️ In addition, Truffle now more robustly handles help requests so `truffle help <cmd>`, `truffle <cmd> --help`, and `truffle --help <cmd>` should all have consistent output when searching for help for a given command. 📖 We've also updated the list of supported networks by [Sourcify](https://sourcify.dev/). 
+
+Lastly, Truffle will also now politely ask if you'll be willing to share telemetry when using [Truffle Dashboard](https://trufflesuite.com/docs/truffle/how-to/use-the-truffle-dashboard/). 🙏 Note that this will never include any personal data and you can view our [analytics policy](https://trufflesuite.com/analytics/) for more detail. 
+
+That's all for this week, but as always, we'll be back next week with more!
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancements
+
+* More robustly handle help requests in Truffle ([#5706](https://github.com/trufflesuite/truffle/pull/5706) by [@lsqproduction](https://github.com/lsqproduction))
+* Have Dashboard politely ask users occasionally if they'll share telemetry ([#5827](https://github.com/trufflesuite/truffle/pull/5827) by [@cliffoo](https://github.com/cliffoo))
+* Update Sourcify networks for January 2023 ([#5831](https://github.com/trufflesuite/truffle/pull/5831) by [@haltman-at](https://github.com/haltman-at))
+
+### Bug Fixes
+
+* Fix codec typedoc build script ([#5820](https://github.com/trufflesuite/truffle/pull/5820) by [@cds-amal](https://github.com/cds-amal))
+
+### Internal improvements
+
+* Remove unused dev dependency for codec docs ([#5825](https://github.com/trufflesuite/truffle/pull/5825) by [@haltman-at](https://github.com/haltman-at))
+* Build codec and preserve docs as part of bootstrap ([#5823](https://github.com/trufflesuite/truffle/pull/5823) by [@cds-amal](https://github.com/cds-amal))
+
+### Dependency updates
+
+* Upgrade Ganache to `v7.7.3` ([#5824](https://github.com/trufflesuite/truffle/pull/5824) by [@MicaiahReid](https://github.com/MicaiahReid))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.2— Mimosa Butter Cookies (2023-01-06)</h2>
+      <pre>Hello all, welcome to 2023!!! 🥂 🥳 🍾 
+We are back at it again with our weekly releases. 🛼 
+
+A big shoutout to @dPreininger for ringing in the ✨ new year 🎉 with a bug fix for Truffle! There was an issue they fixed with Truffle's development console to prevent crashes when interacting with Vyper smart contracts 🐍.  Thank you for getting this!  Many contributed their time and talent last year, and we are very much looking forward to collaborating more this year with our community. Please feel free to reach out if you find any issues in our backlog exciting. 🙇 
+
+🏗️ Please take a moment to complete [The Solidity Development Survey 2022](https://cryptpad.fr/form/#/2/form/view/HuPIRv4gvziSV0dPV1SJncKzYJXTVc8LGCaMfLUoj2c/). The last day to fill out the survey is January 7th. Thank you! 🙏🏽
+
+See you soon!  
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Bug fix
+
+- Fix `truffle console` crash when metadata is missing in JSON artifact ([#5819](https://github.com/trufflesuite/truffle/pull/5819) by [@dPreininger](https://github.com/dPreininger))
+
+### Internal improvements
+
+-  Change display name of @truffle/error and remove its stack property ([#5787](https://github.com/trufflesuite/truffle/pull/5787) by [@cds-amal](https://github.com/cds-amal))
+
+### Dependency updates
+
+- Upgrade @ganache/console.log to v0.3.0 ([#5790](https://github.com/trufflesuite/truffle/pull/5790) by [@cds-amal](https://github.com/cds-amal))
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.1 — Chocolate 🍫 Pavlova with Spiced Pears 🍐 (2022-12-21)</h2>
+      <pre>Hello all! 👋
+
+We want to bring a delicious chocolate 🍫 pavlova with spiced pears 🍐 to celebrate 🎉 this holiday season. Sit down 🪑, relax 🤗, and enjoy 🥳!!!
+
+While Truffle dropped support for Node 12 a while back, we hadn't been enforcing this in our Node version check at startup.  We now check this; Truffle will now refuse to run on Node 12 to prevent any problems.
+
+One more thing! Please take a moment to complete [The Solidity Development Survey 2022](https://cryptpad.fr/form/#/2/form/view/HuPIRv4gvziSV0dPV1SJncKzYJXTVc8LGCaMfLUoj2c/). This helps our community 🧑🏽‍🤝‍🧑🏽 to improve. Thanks! 🙏🏽
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Internal improvements
+
+- Bump minimum Node version check to 14 ([#5797](https://github.com/trufflesuite/truffle/pull/5797) by [@cds-amal](https://github.com/cds-amal))
+
+### Dependency updates
+
+- Upgrade web3 to v1.8.1 ([#5794](https://github.com/trufflesuite/truffle/pull/5794) by [@eggplantzzz](https://github.com/eggplantzzz))
+- Upgrade Ganache to v7.6.0 ([#5791](https://github.com/trufflesuite/truffle/pull/5791) by [@haltman-at](https://github.com/haltman-at))
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.7.0 — Some treats! (2022-12-15)</h2>
+      <pre>Hey ho, we have a release!
+Let's go, enjoy it with some treats! 🍫
+
+It's Thursday yet again and we have a Truffle release coming your way! ↔️ This one is pretty exciting because we are finally releasing a console.log for Solidity in Truffle's testing and console environment. Simply use the following import at the top of your contract:
+
+`import "truffle/console.sol";`
+
+Then you can call `console.log()` similar to how you would in JavaScript.
+
+`console.log("this is logging and here is an address - %o", msg.sender);`
+
+Now when you run this code during a Truffle test run or in Truffle's console environment, you will receive logging! Super cool! 🪵
+
+Another change we have this week is an update to the ENS infrastructure. When deploying an ENS dev registry, Truffle will also deploy a reverse registrar to allow for reverse resolution. So happy resolving!
+
+@truffle/provider received a spruce up as well! Remember [EIP 1193](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1193.md)? This is the one that specifies a `request` method on providers (in addition to some other things). Now @truffle/provider is 1193 compliant!
+
+Lastly we have a couple improvements that are a bit more internal to Truffle. A bit of code was cleaned up and fixed 🛠️, and an improvement which makes the encoding of contract creations easier was added.
+
+ℹ️ Oh and before we go, we'd like to once again remind you that the Solidity team is conducting a survey to find ways of bettering the language and the compiler. So go complete it [here](https://cryptpad.fr/form/#/2/form/view/HuPIRv4gvziSV0dPV1SJncKzYJXTVc8LGCaMfLUoj2c/) to help improve the ecosystem!
+
+And that should be it for this week! Happy middle of December to everyone and we'll see you again next time!
+
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Feature
+
+- implement console.log in Truffle ([#5687](https://github.com/trufflesuite/truffle/pull/5687) by [@cds-amal](https://github.com/cds-amal))
+
+
+### Enhancements
+
+- include a reverse registrar when deploying a dev registry ([#5763](https://github.com/trufflesuite/truffle/pull/5763) by [@haltman-at](https://github.com/haltman-at))
+- add `encodeCreation()` method to Encoder ([#5777](https://github.com/trufflesuite/truffle/pull/5777) by [@haltman-at](https://github.com/haltman-at))
+- make @truffle/provider compatible with EIP-1193 ([#5743](https://github.com/trufflesuite/truffle/pull/5743) by [@sukanyaparashar](https://github.com/sukanyaparashar))
+
+### Bug fixes
+
+- fix missing mocha runner during in-test debugging setup ([#5782](https://github.com/trufflesuite/truffle/pull/5782) by [@gnidan](https://github.com/gnidan))
+- add workaround for weird migration format ([#5785](https://github.com/trufflesuite/truffle/pull/5785) by [@cds-amal](https://github.com/cds-amal))
+- don't load Truffle's console contract into the console environment ([#5788](https://github.com/trufflesuite/truffle/pull/5788) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Internal improvement
+
+- remove `require` cache invalidation ([#5780](https://github.com/trufflesuite/truffle/pull/5780) by [@eggplantzzz](https://github.com/eggplantzzz))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.6.9 — Bucket of Caramel Popcorn (2022-12-08)</h2>
+      <pre>Hello all! 👋
+
+It seems like everyone is overjoyed 🥳 seeing their favourite players scoring goals. Are you feeling the FOOTBALL WORLD CUP ⚽ fever too? Then enjoy munching on a bucket full of caramel popcorn 🍿 with a new Truffle Release 🎉 to take your excitement to another level!
+
+This week's release includes a 🐛 fix for the type issues with `hdwallet-provider` in your Typescript projects. Yay! 🎉 We also added support for Boba Goerli network 🕸️ to `truffle debug --fetch-external`. _"More networks = More verification = More fun = More Safety"_
+
+One more thing! Please take a moment to complete [The Solidity Development Survey 2022](https://cryptpad.fr/form/#/2/form/view/HuPIRv4gvziSV0dPV1SJncKzYJXTVc8LGCaMfLUoj2c/). This helps our community 🧑🏽‍🤝‍🧑🏽 to improve. Thanks! 🙏🏽
+
+Sit back and cheer for your favourite teams! See you next week with a new Truffle Release! 🥳
+
+## How to upgrade
+
+We recommend upgrading to the latest version of Truffle by running:
+
+```
+npm uninstall -g truffle
+npm install -g truffle
+```
+
+## Changelog
+
+### Enhancement
+
+- Switch Etherscan fetcher from Boba Rinkeby to Boba Goerli ([#5761](https://github.com/trufflesuite/truffle/pull/5761) by [@haltman-at](https://github.com/haltman-at))
+
+### Bug fix
+
+- Fix hdwallet types ([#5767](https://github.com/trufflesuite/truffle/pull/5767) by [@eggplantzzz](https://github.com/eggplantzzz))
+
+### Internal improvements
+
+- Remove Arbitrum Rinkeby and Optimistic Kovan from Etherscan fetcher ([#5759](https://github.com/trufflesuite/truffle/pull/5759) by [@haltman-at](https://github.com/haltman-at))
+
+### Dependency updates
+
+- Upgrade express to v4.17.3 ([#5769](https://github.com/trufflesuite/truffle/pull/5769) by [@dependabot[bot]](https://github.com/apps/dependabot))
+- Upgrade qs to v6.5.3 ([#5770](https://github.com/trufflesuite/truffle/pull/5770) by [@dependabot[bot]](https://github.com/apps/dependabot))
+- Upgrade decode-uri-component to v0.2.2 ([#5768](https://github.com/trufflesuite/truffle/pull/5768) by [@dependabot[bot]](https://github.com/apps/dependabot))
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

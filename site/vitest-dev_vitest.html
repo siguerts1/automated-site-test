@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for vitest-dev/vitest"/>
+  <title>vitest-dev/vitest Release Notes</title>
+</head>
+<body>
+  <h1>🚀 vitest-dev/vitest - Release Notes</h1>
+  
+    <section>
+      <h2>v3.1.1 (2025-03-31)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **reporter**:
+  - Report tests in correct order &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7752 [<samp>(b166e)</samp>](https://github.com/vitest-dev/vitest/commit/b166efa2)
+  - Print test only once in the verbose mode &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7738 [<samp>(69ca4)</samp>](https://github.com/vitest-dev/vitest/commit/69ca425c)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.1.0...v3.1.1)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.0 (2025-03-31)</h2>
+      <pre>### 🚀 Features
+
+- Introduce `%$` option to add number of the test to its title - by @kemuridama in https://github.com/vitest-dev/vitest/issues/7412 [<samp>(df347)</samp>](https://github.com/vitest-dev/vitest/commit/df3477076)
+- Add `diff.maxDepth` option and set non-`Infinity` value as a default to reduce crash - by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7481 [<samp>(eacab)</samp>](https://github.com/vitest-dev/vitest/commit/eacab25e7)
+- Allow array element for `test.each/for` title formatting - by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7522 [<samp>(ea3d6)</samp>](https://github.com/vitest-dev/vitest/commit/ea3d67b03)
+- Add "configureVitest" plugin hook - by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7349 [<samp>(20a5d)</samp>](https://github.com/vitest-dev/vitest/commit/20a5d4bfc)
+- Support `--configLoader` CLI option - by @Carnageous and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7574 [<samp>(2a852)</samp>](https://github.com/vitest-dev/vitest/commit/2a8520a83)
+- Added `vitest-browser-lit` to `vitest init browser` and docs - by @EskiMojo14 and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7705 [<samp>(5659a)</samp>](https://github.com/vitest-dev/vitest/commit/5659a0e0c)
+- Use providers request interception for module mocking - by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7576 [<samp>(7883a)</samp>](https://github.com/vitest-dev/vitest/commit/7883acd63)
+- **browser**:
+  - Introduce `and`, `or` and `filter` locators - by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7463 [<samp>(63949)</samp>](https://github.com/vitest-dev/vitest/commit/63949b1d7)
+- **reporter**:
+  - Always render test time - by @AriPerkkio and @spamshaker in https://github.com/vitest-dev/vitest/issues/7529 [<samp>(5eba6)</samp>](https://github.com/vitest-dev/vitest/commit/5eba60ae1)
+  - `--silent=passed-only` to log failed tasks only - by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7530 [<samp>(f9e1c)</samp>](https://github.com/vitest-dev/vitest/commit/f9e1cb494)
+- **runner**:
+  - Add `test.scoped` to override `test.extend` fixtures per-suite - by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7233 [<samp>(e5851)</samp>](https://github.com/vitest-dev/vitest/commit/e5851e4b8)
+- **vitest**:
+  - Allow conditional `context.skip(boolean)` - by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7659 [<samp>(6adec)</samp>](https://github.com/vitest-dev/vitest/commit/6adecb903)
+  - Support rolldown-vite in NormalizeUrlPlugin - by @sapphi-red and @sheremet-va in https://github.com/vitest-dev/vitest/issues/7739 [<samp>(1ef31)</samp>](https://github.com/vitest-dev/vitest/commit/1ef31a7bb)
+
+### 🐞 Bug Fixes
+
+- Update test stats regularly - by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7700 [<samp>(b7953)</samp>](https://github.com/vitest-dev/vitest/commit/b7953487b)
+- Fix vm tests flakiness - by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7741 [<samp>(2702c)</samp>](https://github.com/vitest-dev/vitest/commit/2702cf424)
+- Set `diff.expand: false` as default - by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7697 [<samp>(f3420)</samp>](https://github.com/vitest-dev/vitest/commit/f34206536)
+- **browser**:
+  - Correctly calculate timeout in hooks when actions are performed - by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7747 [<samp>(a5505)</samp>](https://github.com/vitest-dev/vitest/commit/a55055180)
+- **deps**:
+  - Update all non-major dependencies - by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7600 [<samp>(7fc5a)</samp>](https://github.com/vitest-dev/vitest/commit/7fc5a2908)
+- **reporter**:
+  - `--hideSkippedTests` should hide suites too - by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7695 [<samp>(ba9b5)</samp>](https://github.com/vitest-dev/vitest/commit/ba9b51ccc)
+  - Report tests in correct order - by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7752 [<samp>(b166e)</samp>](https://github.com/vitest-dev/vitest/commit/b166efa28)
+  - Print test only once in the verbose mode - by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7738 [<samp>(69ca4)</samp>](https://github.com/vitest-dev/vitest/commit/69ca425c6)
+- **snapshot**:
+  - Fix indent normalization - by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7400 [<samp>(82997)</samp>](https://github.com/vitest-dev/vitest/commit/8299709d2)
+  - This change can cause small amount of very old snapshots to be updated, but there will be no functional change to how they work.
+
+### 🏎 Performance
+
+- **browser**: Fork jest-dom instead of bundling it - by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7605 [<samp>(12762)</samp>](https://github.com/vitest-dev/vitest/commit/12762ea6c)
+
+##### [View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.9...v3.1.1)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.0-beta.2 (2025-03-21)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- Add "configureVitest" plugin hook &nbsp;-&nbsp; by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7349 [<samp>(20a5d)</samp>](https://github.com/vitest-dev/vitest/commit/20a5d4bf)
+- **browser**: Introduce `and`, `or` and `filter` locators &nbsp;-&nbsp; by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7463 [<samp>(63949)</samp>](https://github.com/vitest-dev/vitest/commit/63949b1d)
+- **runner**: Add `test.scoped` to override `test.extend` fixtures per-suite &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7233 [<samp>(e5851)</samp>](https://github.com/vitest-dev/vitest/commit/e5851e4b)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **reporter**: `--hideSkippedTests` should hide suites too &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7695 [<samp>(ba9b5)</samp>](https://github.com/vitest-dev/vitest/commit/ba9b51cc)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.1.0-beta.1...v3.1.0-beta.2)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.1.0-beta.1 (2025-03-17)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- Introduce `%$` option to add number of the test to its title &nbsp;-&nbsp; by @kemuridama in https://github.com/vitest-dev/vitest/issues/7412 [<samp>(df347)</samp>](https://github.com/vitest-dev/vitest/commit/df347707)
+- Add `diff.maxDepth` option and set non-`Infinity` value as a default to reduce crash &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7481 [<samp>(eacab)</samp>](https://github.com/vitest-dev/vitest/commit/eacab25e)
+- Allow array element for `test.each/for` title formatting &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7522 [<samp>(ea3d6)</samp>](https://github.com/vitest-dev/vitest/commit/ea3d67b0)
+- **reporter**:
+  - Always render test time &nbsp;-&nbsp; by @AriPerkkio and **Michał Grzegorzewski** in https://github.com/vitest-dev/vitest/issues/7529 [<samp>(5eba6)</samp>](https://github.com/vitest-dev/vitest/commit/5eba60ae)
+  - `--silent=passed-only` to log failed tasks only &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7530 [<samp>(f9e1c)</samp>](https://github.com/vitest-dev/vitest/commit/f9e1cb49)
+- **vitest**:
+  - Allow conditional `context.skip(boolean)` &nbsp;-&nbsp; by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7659 [<samp>(6adec)</samp>](https://github.com/vitest-dev/vitest/commit/6adecb90)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.9...v3.1.0-beta.1)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.9 (2025-03-17)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Typings of `ctx.skip()` as `never` &nbsp;-&nbsp; by @sirlancelot in https://github.com/vitest-dev/vitest/issues/7608 [<samp>(09f35)</samp>](https://github.com/vitest-dev/vitest/commit/09f35301)
+- Cleanup vitest in public `resolveConfig` API &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7623 [<samp>(db14a)</samp>](https://github.com/vitest-dev/vitest/commit/db14ab71)
+- Fix `toHaveBeenCalledWith(asymmetricMatcher)` with `undefined` arguments &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7624 [<samp>(0fb21)</samp>](https://github.com/vitest-dev/vitest/commit/0fb21faa)
+- Race condition in RPC filesystem cache. &nbsp;-&nbsp; by @dts in https://github.com/vitest-dev/vitest/issues/7531 [<samp>(b7f55)</samp>](https://github.com/vitest-dev/vitest/commit/b7f55261)
+- Fix `getState().testPath` during collection with no isolation &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7640 [<samp>(3fb3f)</samp>](https://github.com/vitest-dev/vitest/commit/3fb3fbf8)
+- Support custom toString method in %s format &nbsp;-&nbsp; by @pengooseDev in https://github.com/vitest-dev/vitest/issues/7637 [<samp>(46d93)</samp>](https://github.com/vitest-dev/vitest/commit/46d93a2e)
+- **browser**:
+  - Fail playwright timeouts earlier than a test timeout &nbsp;-&nbsp; by @sheremet-va and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7565 [<samp>(5eb4c)</samp>](https://github.com/vitest-dev/vitest/commit/5eb4cd1f)
+  - Remove @testing-library/dom from dependencies #7555)" &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7628 and https://github.com/vitest-dev/vitest/issues/7555 [<samp>(94b27)</samp>](https://github.com/vitest-dev/vitest/commit/94b27af5)
+- **coverage**:
+  - Browser mode + `coverage.all` &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7597 [<samp>(422ba)</samp>](https://github.com/vitest-dev/vitest/commit/422ba66b)
+- **runner**:
+  - Show stacktrace on hook timeout error &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7502 [<samp>(268a1)</samp>](https://github.com/vitest-dev/vitest/commit/268a19e1)
+- **vite-node**:
+  - Fix source map of inlined node_modules &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7557 [<samp>(34aa3)</samp>](https://github.com/vitest-dev/vitest/commit/34aa322b)
+  - Fix missing `buildStart` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7652 [<samp>(29f5a)</samp>](https://github.com/vitest-dev/vitest/commit/29f5a848)
+- **web-worker**:
+  - Ensure `removeEventListener` is bound to worker &nbsp;-&nbsp; by @joelgallant in https://github.com/vitest-dev/vitest/issues/7631 [<samp>(ff42b)</samp>](https://github.com/vitest-dev/vitest/commit/ff42bcb3)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.8...v3.0.9)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.8 (2025-03-06)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Fix fetch cache multiple writes &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7546 [<samp>(1a8b4)</samp>](https://github.com/vitest-dev/vitest/commit/1a8b4337)
+- Use browser.isolate instead of config.isolate &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7560 [<samp>(4b5ed)</samp>](https://github.com/vitest-dev/vitest/commit/4b5ed902)
+- Remove vestigial spy stub, import directly from `@vitest/spy` &nbsp;-&nbsp; by @mrginglymus in https://github.com/vitest-dev/vitest/issues/7575 [<samp>(7f7ff)</samp>](https://github.com/vitest-dev/vitest/commit/7f7ff11c)
+- Correctly split the argv string &nbsp;-&nbsp; by @btea in https://github.com/vitest-dev/vitest/issues/7533 [<samp>(4325a)</samp>](https://github.com/vitest-dev/vitest/commit/4325ac67)
+- **browser**:
+  - Remove @testing-library/dom from dependencies &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7555 [<samp>(5387a)</samp>](https://github.com/vitest-dev/vitest/commit/5387a5b3)
+  - Improve source map handling for bundled files &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7534 [<samp>(e2c57)</samp>](https://github.com/vitest-dev/vitest/commit/e2c570b6)
+  - Print related test file and potential test in unhandled errors &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7564 [<samp>(fee90)</samp>](https://github.com/vitest-dev/vitest/commit/fee90d85)
+- **runner**:
+  - Fix `beforeEach/All` cleanup callback timeout &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7500 [<samp>(0c292)</samp>](https://github.com/vitest-dev/vitest/commit/0c2924b7)
+  - Fix and simplify `Task.suite` initialization &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7414 [<samp>(ca9ff)</samp>](https://github.com/vitest-dev/vitest/commit/ca9ffac5)
+- **snapshot**:
+  - Allow inline snapshot calls on same location with same snapshot &nbsp;-&nbsp; by @jycouet and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7464 [<samp>(d5cb8)</samp>](https://github.com/vitest-dev/vitest/commit/d5cb8212)
+- **vite-node**:
+  - Fix `buildStart` on Vite 6 &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7480 [<samp>(c0f47)</samp>](https://github.com/vitest-dev/vitest/commit/c0f47e03)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.7...v3.0.8)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.7 (2025-02-24)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **browser**: Support webdriverio 9 &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7553 [<samp>(b1949)</samp>](https://github.com/vitest-dev/vitest/commit/b1949c97)
+- **deps**: Update all non-major dependencies &nbsp;-&nbsp; in https://github.com/vitest-dev/vitest/issues/7543 [<samp>(365ff)</samp>](https://github.com/vitest-dev/vitest/commit/365ffe6b)
+- **expect**: Correct generic MatchersObject this type in expect.extend &nbsp;-&nbsp; by @Workingstiff-s in https://github.com/vitest-dev/vitest/issues/7526 [<samp>(d5765)</samp>](https://github.com/vitest-dev/vitest/commit/d5765f71)
+- **mocker**: Include more modules to prefix-only module list &nbsp;-&nbsp; by @btea in https://github.com/vitest-dev/vitest/issues/7524 [<samp>(a12ec)</samp>](https://github.com/vitest-dev/vitest/commit/a12ec008)
+- **spy**: Clear/reset/restore mocks in stack order &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7499 [<samp>(f7100)</samp>](https://github.com/vitest-dev/vitest/commit/f71004ff)
+
+### &nbsp;&nbsp;&nbsp;🏎 Performance
+
+- **browser**: Do wdio context switching only once per file &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7549 [<samp>(aaa58)</samp>](https://github.com/vitest-dev/vitest/commit/aaa58556)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.6...v3.0.7)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.6 (2025-02-18)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Fix `getMockedSystemTime` for `useFakeTimer` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7405 [<samp>(03912)</samp>](https://github.com/vitest-dev/vitest/commit/03912b43)
+- Compat for jest-image-snapshot &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7390 [<samp>(9542b)</samp>](https://github.com/vitest-dev/vitest/commit/9542b699)
+- Ensure project names are readable in dark terminals &nbsp;-&nbsp; by @rgrove in https://github.com/vitest-dev/vitest/issues/7371 [<samp>(bb94c)</samp>](https://github.com/vitest-dev/vitest/commit/bb94c19f)
+- Exclude `queueMicrotask` from default fake timers to not break node fetch &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/pull/7505 [<samp>(167a9)</samp>](https://github.com/vitest-dev/vitest/commit/167a98d7)
+- Use `tinyglobby` instead of `fast-glob` &nbsp;-&nbsp; by @benmccann in https://github.com/vitest-dev/vitest/issues/7504 [<samp>(b62ac)</samp>](https://github.com/vitest-dev/vitest/commit/b62ac22)
+- **browser**:
+  - Fix mocking modules out of root &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7415 [<samp>(d3acb)</samp>](https://github.com/vitest-dev/vitest/commit/d3acbd8b)
+  - Fix `toHaveClass` typing &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7383 [<samp>(7ef23)</samp>](https://github.com/vitest-dev/vitest/commit/7ef238c0)
+  - Relax locator selectors methods &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7422 [<samp>(1b8c5)</samp>](https://github.com/vitest-dev/vitest/commit/1b8c5c9e)
+  - Resolve thread count from `maxWorkers` &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7483 [<samp>(adbb2)</samp>](https://github.com/vitest-dev/vitest/commit/adbb25ab)
+  - Cleanup timeout on resolve and give more information in the error &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7487 [<samp>(5a45a)</samp>](https://github.com/vitest-dev/vitest/commit/5a45a7ca)
+- **coverage**:
+  - `vite-node` to pass correct execution wrapper offset &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7417 [<samp>(1f2e5)</samp>](https://github.com/vitest-dev/vitest/commit/1f2e5552)
+  - Preserve moduleExecutionInfo in non-isolated runs &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7486 [<samp>(f31a0)</samp>](https://github.com/vitest-dev/vitest/commit/f31a07bb)
+- **deps**:
+  - Update all non-major dependencies &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7363 [<samp>(e348b)</samp>](https://github.com/vitest-dev/vitest/commit/e348bd4c)
+  - Update all non-major dependencies &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7507 [<samp>(6cc40)</samp>](https://github.com/vitest-dev/vitest/commit/6cc408d6)
+- **init**:
+  - Invalid browser config &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7475 [<samp>(8fe64)</samp>](https://github.com/vitest-dev/vitest/commit/8fe641b4)
+- **reporters**:
+  - Render tasks in tree when in TTY &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7503 [<samp>(027ce)</samp>](https://github.com/vitest-dev/vitest/commit/027ce9bb)
+- **vite-node**:
+  - Remove fake first line mapping on Vite 6 &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7124 [<samp>(b9973)</samp>](https://github.com/vitest-dev/vitest/commit/b997355b)
+- **watch**:
+  - Properly remove cache after removing existing test files &nbsp;-&nbsp; by @soc221b in https://github.com/vitest-dev/vitest/issues/7399 [<samp>(01a59)</samp>](https://github.com/vitest-dev/vitest/commit/01a59721)
+- **workspace**:
+  - Forward `inspect` related cli options &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7373 [<samp>(ed15b)</samp>](https://github.com/vitest-dev/vitest/commit/ed15b5b3)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.5...v3.0.6)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.5 (2025-02-03)</h2>
+      <pre>This release includes security patches for:
+- [Remote Code Execution when accessing a malicious website while Vitest API server is listening | CVE-2025-24964](https://github.com/vitest-dev/vitest/security/advisories/GHSA-9crc-q9x8-hgqq)
+
+
+### 🚀 Features
+
+- **ui**: Insert message "no tests found" in ui - by @DevJoaoLopes in https://github.com/vitest-dev/vitest/issues/7366 [<samp>(92da4)</samp>](https://github.com/vitest-dev/vitest/commit/92da490bd)
+
+### 🐞 Bug Fixes
+
+- Validate websocket request - by @hi-ogawa and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7317 [<samp>(191ef)</samp>](https://github.com/vitest-dev/vitest/commit/191ef9e34)
+- Don't toggle cli cursor on non-TTY - by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7336 [<samp>(3c805)</samp>](https://github.com/vitest-dev/vitest/commit/3c8050e69)
+- **vite-node**: Differentiate file url with hash and query - by @hi-ogawa  in https://github.com/vitest-dev/vitest/issues/7365 [<samp>(926ca)</samp>](https://github.com/vitest-dev/vitest/commit/926ca9546)
+
+##### [View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.4...v3.0.5)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.9 (2025-02-03)</h2>
+      <pre>This release includes security patches for:
+
+- [Browser mode serves arbitrary files | CVE-2025-24963](https://github.com/vitest-dev/vitest/security/advisories/GHSA-8gvc-j273-4wm5)
+- [Remote Code Execution when accessing a malicious website while Vitest API server is listening | CVE-2025-24964](https://github.com/vitest-dev/vitest/security/advisories/GHSA-9crc-q9x8-hgqq)
+
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- backport https://github.com/vitest-dev/vitest/issues/7317 to v2 - by @hi-ogawa in https://github.com/vitest-dev/vitest/pull/7318
+- (backport #7340 to v2) restrict served files from `/__screenshot-error` - by @hi-ogawa in https://github.com/vitest-dev/vitest/pull/7343
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.8...v2.1.9)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.6.1 (2025-02-03)</h2>
+      <pre>This release includes security patches for:
+
+- [Remote Code Execution when accessing a malicious website while Vitest API server is listening | CVE-2025-24964](https://github.com/vitest-dev/vitest/security/advisories/GHSA-9crc-q9x8-hgqq)
+
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- backport https://github.com/vitest-dev/vitest/issues/7317 to v1 -  by @hi-ogawa in https://github.com/vitest-dev/vitest/pull/7319
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v1.6.0...v1.6.1)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.4 (2025-01-23)</h2>
+      <pre>This release includes security patches for:
+
+- [Browser mode serves arbitrary files | CVE-2025-24963](https://github.com/vitest-dev/vitest/security/advisories/GHSA-8gvc-j273-4wm5)
+
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Filter projects eagerly during config resolution &nbsp;-&nbsp; by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7313 [<samp>(dff44)</samp>](https://github.com/vitest-dev/vitest/commit/dff4406d)
+- Apply `development|production` condition on Vites 6 by @hi-ogawa and @sheremet-va (#7301) [<samp>(ef146)</samp>](https://github.com/vitest-dev/vitest/commit/ef1464fc7b101709bfbf7b040e5bad62998c2ff9)
+- **browser**: Restrict served files from `/__screenshot-error` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7340 [<samp>(ed9ae)</samp>](https://github.com/vitest-dev/vitest/commit/ed9aeba2)
+- **deps**: Update all non-major dependencies &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7297 [<samp>(38ea8)</samp>](https://github.com/vitest-dev/vitest/commit/38ea8eae)
+- **runner**: Timeout long sync hook &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7289 [<samp>(c60ee)</samp>](https://github.com/vitest-dev/vitest/commit/c60ee27c)
+- **typechecking**: Support typechecking parsing with Vite 6 &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7335 [<samp>(bff70)</samp>](https://github.com/vitest-dev/vitest/commit/bff70be9)
+- **types**: Fix public types &nbsp;-&nbsp; by @mrginglymus and @sheremet-va in https://github.com/vitest-dev/vitest/issues/7328 [<samp>(ce6af)</samp>](https://github.com/vitest-dev/vitest/commit/ce6af70c)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.3...v3.0.4)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.3 (2025-01-21)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **browser**:
+  - Don't throw a validation error if v8 coverage is used with filtered instances &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7306 [<samp>(fa463)</samp>](https://github.com/vitest-dev/vitest/commit/fa4634b2)
+  - Don't fail when running --browser.headless if the browser projest is part of the workspace &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7311 [<samp>(e43a8)</samp>](https://github.com/vitest-dev/vitest/commit/e43a8f56)
+
+### &nbsp;&nbsp;&nbsp;🏎 Performance
+
+- **reporters**: Update summary only when needed &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7291 [<samp>(7f36b)</samp>](https://github.com/vitest-dev/vitest/commit/7f36b6f9)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.2...v3.0.3)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.2 (2025-01-17)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Don't await an empty timeout after every test &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7281 [<samp>(ef1aa)</samp>](https://github.com/vitest-dev/vitest/commit/ef1aa893)
+- **expect**: Fix `expect().resolves/rejects` chain typings &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7273 [<samp>(fa415)</samp>](https://github.com/vitest-dev/vitest/commit/fa415059)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.1...v3.0.2)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.1 (2025-01-16)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Revert "fix: re-apply default conditions if using vite 6 or later (https://github.com/vitest-dev/vitest/issues/7071)" &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7071 and https://github.com/vitest-dev/vitest/issues/7271 [<samp>(755ec)</samp>](https://github.com/vitest-dev/vitest/commit/755ecdfa)
+- **deps**: Update all non-major dependencies &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7147 [<samp>(537fa)</samp>](https://github.com/vitest-dev/vitest/commit/537fa5ed)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.0...v3.0.1)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0 (2025-01-16)</h2>
+      <pre>Vitest 3 is here! There are a few breaking changes, but we expect the migration to be smooth. This release page lists all changes made to the project during the beta. For the migration guide, please refer to the [documentation](https://vitest.dev/guide/migration.html#migrating-to-vitest-2-0).
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- `spy.mockReset` changes &nbsp;-&nbsp; by @Lordfirespeed in https://github.com/vitest-dev/vitest/issues/6426 [<samp>(db7a8)</samp>](https://github.com/vitest-dev/vitest/commit/db7a8888)
+- Pass down context to test hooks &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7034 [<samp>(82c2e)</samp>](https://github.com/vitest-dev/vitest/commit/82c2e244)
+- Support Vite 6 &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7026 [<samp>(7abe8)</samp>](https://github.com/vitest-dev/vitest/commit/7abe854c)
+- **coverage**: Always exclude test files &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7254 [<samp>(b5268)</samp>](https://github.com/vitest-dev/vitest/commit/b5268965)
+- **deps**: Update fake-timers to v14.0.0 &nbsp;-&nbsp; by @xxzefgh and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7097 [<samp>(c98b4)</samp>](https://github.com/vitest-dev/vitest/commit/c98b4b1c)
+- **expect**: Check more properties for error equality &nbsp;-&nbsp; by @hi-ogawa and @sheremet-va in https://github.com/vitest-dev/vitest/issues/5876 [<samp>(10023)</samp>](https://github.com/vitest-dev/vitest/commit/100230e9)
+- **runner**: Support `describe(..., { shuffle: boolean })` and inherit from parent suite &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6670 [<samp>(aa1da)</samp>](https://github.com/vitest-dev/vitest/commit/aa1dac3d)
+- **snapshot**: Reset snapshot state for `retry` and `repeats` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6817 [<samp>(e8ce9)</samp>](https://github.com/vitest-dev/vitest/commit/e8ce94cf)
+- **spy**: SpyOn reuses mock if method is already spyed on &nbsp;-&nbsp; by @sheremet-va and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6464 [<samp>(b3e43)</samp>](https://github.com/vitest-dev/vitest/commit/b3e43d04)
+- **vitest**: Don't expose default toFake config &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6288 [<samp>(e3144)</samp>](https://github.com/vitest-dev/vitest/commit/e3144fd8)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- Support inline `diff` options and support `printBasicPrototype` &nbsp;-&nbsp; by @hi-ogawa, @sheremet-va and **Michał Grzegorzewski** in https://github.com/vitest-dev/vitest/issues/6740 [<samp>(39186)</samp>](https://github.com/vitest-dev/vitest/commit/391860f7)
+- Allow a custom note when calling `ctx.skip()` dynamically &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6805 [<samp>(697c3)</samp>](https://github.com/vitest-dev/vitest/commit/697c35c5)
+- Allow inline workspace configuration &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6923 [<samp>(562e1)</samp>](https://github.com/vitest-dev/vitest/commit/562e1b14)
+- Provide the current project to the global setup &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6942 [<samp>(a5bbc)</samp>](https://github.com/vitest-dev/vitest/commit/a5bbc0a9)
+- Print project name as a label &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6925 [<samp>(a3bef)</samp>](https://github.com/vitest-dev/vitest/commit/a3bef598)
+- Print a deprecation warning if suite or test uses object as the third argument &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7031 [<samp>(407f1)</samp>](https://github.com/vitest-dev/vitest/commit/407f10e4)
+- Expose versions from `vitest/node` entry point and statically on Vitest &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7029 [<samp>(be8d4)</samp>](https://github.com/vitest-dev/vitest/commit/be8d479b)
+- `diff.printBasicPrototype: false` by default &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7043 [<samp>(2b5c5)</samp>](https://github.com/vitest-dev/vitest/commit/2b5c5201)
+- Prepare the Vitest API to be stable &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6962 [<samp>(9a1b5)</samp>](https://github.com/vitest-dev/vitest/commit/9a1b5012)
+- Support Vite v6 in mocker package &nbsp;-&nbsp; by @cexbrayat in https://github.com/vitest-dev/vitest/issues/7058 [<samp>(96f47)</samp>](https://github.com/vitest-dev/vitest/commit/96f47d37)
+- Allow multi-browser configuration &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6975 [<samp>(78b62)</samp>](https://github.com/vitest-dev/vitest/commit/78b62ffe)
+- Add resolved project names to the reporter API &nbsp;-&nbsp; by @userquin in https://github.com/vitest-dev/vitest/issues/7213 [<samp>(91758)</samp>](https://github.com/vitest-dev/vitest/commit/91758360)
+- Introduce the new reporter API &nbsp;-&nbsp; by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7069 [<samp>(76662)</samp>](https://github.com/vitest-dev/vitest/commit/766624ab)
+- Add `describe.for` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7253 [<samp>(0ad28)</samp>](https://github.com/vitest-dev/vitest/commit/0ad2860b)
+- **api**:
+  - Add onBrowserInit event &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7255 [<samp>(80ce0)</samp>](https://github.com/vitest-dev/vitest/commit/80ce0e1c)
+- **browser**:
+  - Support `actionTimeout` as playwright provider options &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6984 [<samp>(e2c29)</samp>](https://github.com/vitest-dev/vitest/commit/e2c29eaf)
+  - Support clipboard api `userEvent.copy, cut, paste` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6769 [<samp>(843a6)</samp>](https://github.com/vitest-dev/vitest/commit/843a621e)
+  - Implement locator.nth() &nbsp;-&nbsp; by @xeger and @sheremet-va in https://github.com/vitest-dev/vitest/issues/7137 [<samp>(38458)</samp>](https://github.com/vitest-dev/vitest/commit/38458ea6)
+- **cli**:
+  - Support excluding projects with `--project=!pattern` &nbsp;-&nbsp; by @haines in https://github.com/vitest-dev/vitest/issues/6924 [<samp>(ebfe9)</samp>](https://github.com/vitest-dev/vitest/commit/ebfe942c)
+  - Support specifying a line number when filtering tests &nbsp;-&nbsp; by @mzhubail and @sheremet-va in https://github.com/vitest-dev/vitest/issues/6411 [<samp>(4d94b)</samp>](https://github.com/vitest-dev/vitest/commit/4d94b956)
+  - Support location filters for suites &nbsp;-&nbsp; by @mzhubail in https://github.com/vitest-dev/vitest/issues/7048 [<samp>(751e2)</samp>](https://github.com/vitest-dev/vitest/commit/751e2dce)
+- **coverage**:
+  - `thresholds` to support maximum uncovered items &nbsp;-&nbsp; by @jonahkagan in https://github.com/vitest-dev/vitest/issues/7061 [<samp>(bde98)</samp>](https://github.com/vitest-dev/vitest/commit/bde98b6d)
+- **expect**:
+  - Add `toHaveBeenCalledExactlyOnceWith` expect matcher &nbsp;-&nbsp; by @jacoberdman2147 and @sheremet-va in https://github.com/vitest-dev/vitest/issues/6894 [<samp>(ff662)</samp>](https://github.com/vitest-dev/vitest/commit/ff66206a)
+  - Add `toHaveBeenCalledAfter` and `toHaveBeenCalledBefore` utility &nbsp;-&nbsp; by @Barbapapazes and @sheremet-va in https://github.com/vitest-dev/vitest/issues/6056 [<samp>(85e6f)</samp>](https://github.com/vitest-dev/vitest/commit/85e6f99f)
+  - Add `toSatisfy` asymmetric matcher &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7022 [<samp>(f691a)</samp>](https://github.com/vitest-dev/vitest/commit/f691ad76)
+  - Add `toBeOneOf` matcher &nbsp;-&nbsp; by @zirkelc and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6974 [<samp>(3d742)</samp>](https://github.com/vitest-dev/vitest/commit/3d742b2b)
+- **reporter**:
+  - Add support for function type to classname option in the junit reporter &nbsp;-&nbsp; by @jpleclerc, **Jean-Philippe Leclerc** and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6839 [<samp>(dc238)</samp>](https://github.com/vitest-dev/vitest/commit/dc238e92)
+- **reporters**:
+  - `summary` option for `verbose` and `default` reporters &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6893 [<samp>(511b7)</samp>](https://github.com/vitest-dev/vitest/commit/511b73c7)
+- **runner**:
+  - Test context can inject values from the config's `provide` &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6813 [<samp>(85c64)</samp>](https://github.com/vitest-dev/vitest/commit/85c64e35)
+  - Add "queued" state &nbsp;-&nbsp; by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6931 [<samp>(5f8d2)</samp>](https://github.com/vitest-dev/vitest/commit/5f8d2091)
+- **snapshot**:
+  - Provide `config` to `resolveSnapshotPath` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6800 [<samp>(746d8)</samp>](https://github.com/vitest-dev/vitest/commit/746d8986)
+- **ui**:
+  - Allow run individual tests/suites from the UI &nbsp;-&nbsp; by @userquin in https://github.com/vitest-dev/vitest/issues/6641 [<samp>(d9cc8)</samp>](https://github.com/vitest-dev/vitest/commit/d9cc81dd)
+  - Make clicking on a test in the UI open the report section and scroll to the test failure if applicable &nbsp;-&nbsp; by @jacoberdman2147 in https://github.com/vitest-dev/vitest/issues/6900 [<samp>(1bf27)</samp>](https://github.com/vitest-dev/vitest/commit/1bf27f0d)
+  - Allow hide/show node_modules in module graph tab &nbsp;-&nbsp; by @userquin in https://github.com/vitest-dev/vitest/issues/7217 [<samp>(50cf6)</samp>](https://github.com/vitest-dev/vitest/commit/50cf61b8)
+- **vitest**:
+  - Include `coverageMap` in json report &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6606 [<samp>(9c8f7)</samp>](https://github.com/vitest-dev/vitest/commit/9c8f7e3e)
+  - Add `onTestsRerun` method to global setup context &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6803 [<samp>(e26e0)</samp>](https://github.com/vitest-dev/vitest/commit/e26e066c)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Misc fix for vite 6 ecosystem ci &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6867 [<samp>(80f8b)</samp>](https://github.com/vitest-dev/vitest/commit/80f8bbf4)
+- Respect `cacheDir` when optimizer is enabled &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6910 [<samp>(0b08b)</samp>](https://github.com/vitest-dev/vitest/commit/0b08bc11)
+- Reset runningPromise after `finally` in case there is an error to avoid it getting stuck &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6951 [<samp>(02194)</samp>](https://github.com/vitest-dev/vitest/commit/021944cd)
+- Revert support for Vite 6 &nbsp;-&nbsp; by @sheremet-va [<samp>(fbe5c)</samp>](https://github.com/vitest-dev/vitest/commit/fbe5c39d)
+- Support Node 21 &nbsp;-&nbsp; by @sheremet-va [<samp>(92f7a)</samp>](https://github.com/vitest-dev/vitest/commit/92f7a2ad)
+- Don't use `Custom` type internally &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7032 [<samp>(7957f)</samp>](https://github.com/vitest-dev/vitest/commit/7957f912)
+- Persist cli filters as watch mode file filter &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6955 [<samp>(cc703)</samp>](https://github.com/vitest-dev/vitest/commit/cc703362)
+- Don't use dim color for succeeded tests &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7059 [<samp>(8a6f5)</samp>](https://github.com/vitest-dev/vitest/commit/8a6f5f16)
+- Fix missing chai types &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7149 [<samp>(6a09c)</samp>](https://github.com/vitest-dev/vitest/commit/6a09cc3b)
+- `cancelCurrentRun` awaits `runningPromise` &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7168 [<samp>(1dbf5)</samp>](https://github.com/vitest-dev/vitest/commit/1dbf5140)
+- Add Locator typings for nth, first and last. &nbsp;-&nbsp; by @xeger in https://github.com/vitest-dev/vitest/issues/7176 [<samp>(d262e)</samp>](https://github.com/vitest-dev/vitest/commit/d262e059)
+- Batch console logs by microtask &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7183 [<samp>(53d1d)</samp>](https://github.com/vitest-dev/vitest/commit/53d1d5f5)
+- Allow `getMockImplementation` to return "once" implementation &nbsp;-&nbsp; by @chaptergy in https://github.com/vitest-dev/vitest/issues/7033 [<samp>(39125)</samp>](https://github.com/vitest-dev/vitest/commit/3912554b)
+- `capturePrintError` logger duplicate event handlers &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7197 [<samp>(e89c3)</samp>](https://github.com/vitest-dev/vitest/commit/e89c3693)
+- Allow slots in vitest-browser-vue &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7120 [<samp>(2319f)</samp>](https://github.com/vitest-dev/vitest/commit/2319f849)
+- Reset root workspace project on restart &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7238 [<samp>(6e518)</samp>](https://github.com/vitest-dev/vitest/commit/6e51843a)
+- Cleanup `vitest/reporters` entrypoint &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7241 [<samp>(aec0b)</samp>](https://github.com/vitest-dev/vitest/commit/aec0b530)
+- Colors on `forks` pool &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7090 [<samp>(8cab9)</samp>](https://github.com/vitest-dev/vitest/commit/8cab9601)
+- Export `VitestRunner` type from `vitest/runners` &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7240 [<samp>(9b218)</samp>](https://github.com/vitest-dev/vitest/commit/9b218854)
+- Return test fn result to runner &nbsp;-&nbsp; by @wmertens in https://github.com/vitest-dev/vitest/issues/7239 [<samp>(48645)</samp>](https://github.com/vitest-dev/vitest/commit/48645bf4)
+- Re-apply default conditions if using vite 6 or later &nbsp;-&nbsp; by @thebanjomatic, **thebanjomatic** and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7071 [<samp>(84287)</samp>](https://github.com/vitest-dev/vitest/commit/84287fc2)
+- Prevent infinite loop on prettyDOM calls &nbsp;-&nbsp; by @tsirlucas in https://github.com/vitest-dev/vitest/issues/7250 [<samp>(a3a46)</samp>](https://github.com/vitest-dev/vitest/commit/a3a46a53)
+- **api**:
+  - Don't report events during `vitest list` &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7257 [<samp>(1c2b2)</samp>](https://github.com/vitest-dev/vitest/commit/1c2b210d)
+- **benchmark**:
+  - Disable type testing while benchmarking &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7068 [<samp>(4e603)</samp>](https://github.com/vitest-dev/vitest/commit/4e60333d)
+  - Rewrite reporter without `log-update` &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7019 [<samp>(6d23f)</samp>](https://github.com/vitest-dev/vitest/commit/6d23f4b1)
+- **browser**:
+  - Improve source maps when `vi.mock` is present &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6810 [<samp>(8d179)</samp>](https://github.com/vitest-dev/vitest/commit/8d179afc)
+  - Explain TypeScript support in docs and add asymmetric matchers to types &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6934 [<samp>(ac1a7)</samp>](https://github.com/vitest-dev/vitest/commit/ac1a7fdc)
+  - Fix matchers.d.ts &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6995 [<samp>(a485b)</samp>](https://github.com/vitest-dev/vitest/commit/a485b32b)
+  - Fix user event state on preview provider &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7041 [<samp>(8e944)</samp>](https://github.com/vitest-dev/vitest/commit/8e94427e)
+  - Fix provider options types &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7115 [<samp>(579bd)</samp>](https://github.com/vitest-dev/vitest/commit/579bda97)
+  - Only use locator.element on last expect.element attempt &nbsp;-&nbsp; by @tsirlucas in https://github.com/vitest-dev/vitest/issues/7139 and https://github.com/vitest-dev/vitest/issues/7152 [<samp>(847d3)</samp>](https://github.com/vitest-dev/vitest/commit/847d3221)
+  - Use correct project when filtering `entries` in the browser mode &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7167 [<samp>(423d6)</samp>](https://github.com/vitest-dev/vitest/commit/423d6345)
+  - Fix `console.time` with fake timers &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7207 [<samp>(903f3)</samp>](https://github.com/vitest-dev/vitest/commit/903f3b9b)
+  - Add instance validation to resolve coverage error &nbsp;-&nbsp; by @DevJoaoLopes and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7231 [<samp>(1e791)</samp>](https://github.com/vitest-dev/vitest/commit/1e7915b5)
+- **coverage**:
+  - Exclude browser mode iframe results &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6905 [<samp>(e04a1)</samp>](https://github.com/vitest-dev/vitest/commit/e04a1368)
+  - Correct coverage when `isolate: false` is used &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6957 [<samp>(426ce)</samp>](https://github.com/vitest-dev/vitest/commit/426ce6d8)
+  - Prevent crash when v8 incorrectly merges static_initializer's &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7150 [<samp>(cb6db)</samp>](https://github.com/vitest-dev/vitest/commit/cb6db13e)
+- **deps**:
+  - Update all non-major dependencies &nbsp;-&nbsp; in https://github.com/vitest-dev/vitest/issues/7085 [<samp>(8cc92)</samp>](https://github.com/vitest-dev/vitest/commit/8cc92c2f)
+  - Update all non-major dependencies &nbsp;-&nbsp; in https://github.com/vitest-dev/vitest/issues/7116 [<samp>(de5ce)</samp>](https://github.com/vitest-dev/vitest/commit/de5ce3d9)
+  - Update dependency pathe to v2 &nbsp;-&nbsp; in https://github.com/vitest-dev/vitest/issues/7181 [<samp>(74dbe)</samp>](https://github.com/vitest-dev/vitest/commit/74dbe03f)
+- **diff**:
+  - Truncate to avoid crash on diff large objects &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7133 [<samp>(2a9d6)</samp>](https://github.com/vitest-dev/vitest/commit/2a9d67a2)
+- **junit**:
+  - Fix testsuites time to be sum of all testsuite items &nbsp;-&nbsp; by @saitonakamura in https://github.com/vitest-dev/vitest/issues/6985 [<samp>(ca37a)</samp>](https://github.com/vitest-dev/vitest/commit/ca37a06a)
+- **pretty-format**:
+  - Support react 19 &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6909 [<samp>(bd29b)</samp>](https://github.com/vitest-dev/vitest/commit/bd29bcc7)
+- **reporters**:
+  - Write buffered stdout/stderr on process exit &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6932 [<samp>(80cde)</samp>](https://github.com/vitest-dev/vitest/commit/80cde2a0)
+  - Rewrite `dot` reporter without `log-update` &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6943 [<samp>(be969)</samp>](https://github.com/vitest-dev/vitest/commit/be969cfb)
+  - Check `--hideSkippedTests` in base reporter &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6988 [<samp>(721a5)</samp>](https://github.com/vitest-dev/vitest/commit/721a5b84)
+  - Show `retry` and `repeats` counts &nbsp;-&nbsp; by @AriPerkkio and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7004 [<samp>(3496a)</samp>](https://github.com/vitest-dev/vitest/commit/3496a015)
+- **runner**:
+  - Long synchronous tasks does not time out &nbsp;-&nbsp; by @ferdodo and @sheremet-va in https://github.com/vitest-dev/vitest/issues/2920 and https://github.com/vitest-dev/vitest/issues/6944 [<samp>(2fb58)</samp>](https://github.com/vitest-dev/vitest/commit/2fb585ae)
+  - Mark tests of `describe.todo` as `'todo'` &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7171 [<samp>(1d458)</samp>](https://github.com/vitest-dev/vitest/commit/1d458955)
+- **snapshot**:
+  - Fix "obsolete" message on snapshot update re-run &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7129 [<samp>(c2beb)</samp>](https://github.com/vitest-dev/vitest/commit/c2beb8ca)
+  - Preserve white space of `toMatchFileSnapshot` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7156 [<samp>(a437b)</samp>](https://github.com/vitest-dev/vitest/commit/a437b656)
+  - Fix obsoleteness check of `toMatchSnapshot("...")` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7126 [<samp>(ac9ba)</samp>](https://github.com/vitest-dev/vitest/commit/ac9ba151)
+- **typecheck**:
+  - Fix typecheck collect on Vite 6 &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6972 [<samp>(7b35d)</samp>](https://github.com/vitest-dev/vitest/commit/7b35d13a)
+  - Use unique temp and tsbuildinfo file for each tsconfig file &nbsp;-&nbsp; by @masnormen in https://github.com/vitest-dev/vitest/issues/7107 and https://github.com/vitest-dev/vitest/issues/7112 [<samp>(61b30)</samp>](https://github.com/vitest-dev/vitest/commit/61b30162)
+  - Fix error test case mapping for `@ts-expect-error` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7125 [<samp>(27d34)</samp>](https://github.com/vitest-dev/vitest/commit/27d340aa)
+- **types**:
+  - Make parameters non-nullable for Playwright options &nbsp;-&nbsp; by @apple-yagi in https://github.com/vitest-dev/vitest/issues/6989 [<samp>(fe2a1)</samp>](https://github.com/vitest-dev/vitest/commit/fe2a187f)
+- **ui**:
+  - Wrong module graph when generating html.meta.json.gz in browser mode &nbsp;-&nbsp; by @userquin in https://github.com/vitest-dev/vitest/issues/7214 [<samp>(dccdd)</samp>](https://github.com/vitest-dev/vitest/commit/dccdd550)
+  - Add errors and draft state (*) to the code editor &nbsp;-&nbsp; by @userquin in https://github.com/vitest-dev/vitest/issues/7044 [<samp>(faca4)</samp>](https://github.com/vitest-dev/vitest/commit/faca4de8)
+- **vite-node**:
+  - Fix error stack on Windows &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6786 [<samp>(bf7b3)</samp>](https://github.com/vitest-dev/vitest/commit/bf7b36ac)
+  - Properly normalize file url import &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7087 [<samp>(31675)</samp>](https://github.com/vitest-dev/vitest/commit/31675e3b)
+  - Fix mandatory node prefix &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7179 [<samp>(b6284)</samp>](https://github.com/vitest-dev/vitest/commit/b6284642)
+- **watch**:
+  - Don't indicate exit when no matching files &nbsp;-&nbsp; by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7246 [<samp>(003c0)</samp>](https://github.com/vitest-dev/vitest/commit/003c0bef)
+- **workspace**:
+  - `extends: true` correctly inherits all root config properties &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7232 [<samp>(798c0)</samp>](https://github.com/vitest-dev/vitest/commit/798c0da2)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.8...v3.0.0)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-beta.4 (2025-01-08)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **deps**: Update fake-timers to v14.0.0 &nbsp;-&nbsp; by @xxzefgh and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7097 [<samp>(c98b4)</samp>](https://github.com/vitest-dev/vitest/commit/c98b4b1c)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **browser**:
+  - Support clipboard api `userEvent.copy, cut, paste` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6769 [<samp>(843a6)</samp>](https://github.com/vitest-dev/vitest/commit/843a621e)
+  - Implement locator.nth() &nbsp;-&nbsp; by @xeger and @sheremet-va in https://github.com/vitest-dev/vitest/issues/7137 [<samp>(38458)</samp>](https://github.com/vitest-dev/vitest/commit/38458ea6)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Fix missing chai types &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7149 [<samp>(6a09c)</samp>](https://github.com/vitest-dev/vitest/commit/6a09cc3b)
+- `cancelCurrentRun` awaits `runningPromise` &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7168 [<samp>(1dbf5)</samp>](https://github.com/vitest-dev/vitest/commit/1dbf5140)
+- Add Locator typings for nth, first and last. &nbsp;-&nbsp; by @xeger in https://github.com/vitest-dev/vitest/issues/7176 [<samp>(d262e)</samp>](https://github.com/vitest-dev/vitest/commit/d262e059)
+- Batch console logs by microtask &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7183 [<samp>(53d1d)</samp>](https://github.com/vitest-dev/vitest/commit/53d1d5f5)
+- Allow `getMockImplementation` to return "once" implementation &nbsp;-&nbsp; by @chaptergy in https://github.com/vitest-dev/vitest/issues/7033 [<samp>(39125)</samp>](https://github.com/vitest-dev/vitest/commit/3912554b)
+- **benchmark**:
+  - Rewrite reporter without `log-update` &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7019 [<samp>(6d23f)</samp>](https://github.com/vitest-dev/vitest/commit/6d23f4b1)
+- **browser**:
+  - Fix provider options types &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7115 [<samp>(579bd)</samp>](https://github.com/vitest-dev/vitest/commit/579bda97)
+  - Only use locator.element on last expect.element attempt &nbsp;-&nbsp; by @tsirlucas in https://github.com/vitest-dev/vitest/issues/7139 and https://github.com/vitest-dev/vitest/issues/7152 [<samp>(847d3)</samp>](https://github.com/vitest-dev/vitest/commit/847d3221)
+  - Use correct project when filtering `entries` in the browser mode &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7167 [<samp>(423d6)</samp>](https://github.com/vitest-dev/vitest/commit/423d6345)
+- **coverage**:
+  - Prevent crash when v8 incorrectly merges static_initializer's &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7150 [<samp>(cb6db)</samp>](https://github.com/vitest-dev/vitest/commit/cb6db13e)
+- **deps**:
+  - Update all non-major dependencies &nbsp;-&nbsp; in https://github.com/vitest-dev/vitest/issues/7116 [<samp>(de5ce)</samp>](https://github.com/vitest-dev/vitest/commit/de5ce3d9)
+  - Update dependency pathe to v2 &nbsp;-&nbsp; in https://github.com/vitest-dev/vitest/issues/7181 [<samp>(74dbe)</samp>](https://github.com/vitest-dev/vitest/commit/74dbe03f)
+- **diff**:
+  - Truncate to avoid crash on diff large objects &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7133 [<samp>(2a9d6)</samp>](https://github.com/vitest-dev/vitest/commit/2a9d67a2)
+- **runner**:
+  - Mark tests of `describe.todo` as `'todo'` &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7171 [<samp>(1d458)</samp>](https://github.com/vitest-dev/vitest/commit/1d458955)
+- **snapshot**:
+  - Fix "obsolete" message on snapshot update re-run &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7129 [<samp>(c2beb)</samp>](https://github.com/vitest-dev/vitest/commit/c2beb8ca)
+  - Preserve white space of `toMatchFileSnapshot` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7156 [<samp>(a437b)</samp>](https://github.com/vitest-dev/vitest/commit/a437b656)
+  - Fix obsoleteness check of `toMatchSnapshot("...")` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7126 [<samp>(ac9ba)</samp>](https://github.com/vitest-dev/vitest/commit/ac9ba151)
+- **typecheck**:
+  - Use unique temp and tsbuildinfo file for each tsconfig file &nbsp;-&nbsp; by @masnormen in https://github.com/vitest-dev/vitest/issues/7107 and https://github.com/vitest-dev/vitest/issues/7112 [<samp>(61b30)</samp>](https://github.com/vitest-dev/vitest/commit/61b30162)
+  - Fix error test case mapping for `@ts-expect-error` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7125 [<samp>(27d34)</samp>](https://github.com/vitest-dev/vitest/commit/27d340aa)
+- **vite-node**:
+  - Properly normalize file url import &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7087 [<samp>(31675)</samp>](https://github.com/vitest-dev/vitest/commit/31675e3b)
+  - Fix mandatory node prefix &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7179 [<samp>(b6284)</samp>](https://github.com/vitest-dev/vitest/commit/b6284642)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.0-beta.3...v3.0.0-beta.4)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-beta.3 (2024-12-20)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- Support Vite v6 in mocker package &nbsp;-&nbsp; by @cexbrayat in https://github.com/vitest-dev/vitest/issues/7058 [<samp>(96f47)</samp>](https://github.com/vitest-dev/vitest/commit/96f47d37)
+- Allow multi-browser configuration &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6975 [<samp>(78b62)</samp>](https://github.com/vitest-dev/vitest/commit/78b62ffe)
+- **coverage**: `thresholds` to support maximum uncovered items &nbsp;-&nbsp; by @jonahkagan in https://github.com/vitest-dev/vitest/issues/7061 [<samp>(bde98)</samp>](https://github.com/vitest-dev/vitest/commit/bde98b6d)
+- **expect**: Add `toBeOneOf` matcher &nbsp;-&nbsp; by @zirkelc and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6974 [<samp>(3d742)</samp>](https://github.com/vitest-dev/vitest/commit/3d742b2b)
+- **runner**: Add "queued" state &nbsp;-&nbsp; by @sheremet-va and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6931 [<samp>(5f8d2)</samp>](https://github.com/vitest-dev/vitest/commit/5f8d2091)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Don't use dim color for passed tests &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7059 [<samp>(8a6f5)</samp>](https://github.com/vitest-dev/vitest/commit/8a6f5f16)
+- **benchmark**: Disable type testing while benchmarking &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/7068 [<samp>(4e603)</samp>](https://github.com/vitest-dev/vitest/commit/4e60333d)
+- **deps**: Update all non-major dependencies &nbsp;-&nbsp; in https://github.com/vitest-dev/vitest/issues/7085 [<samp>(8cc92)</samp>](https://github.com/vitest-dev/vitest/commit/8cc92c2f)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.0-beta.2...v3.0.0-beta.3)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-beta.2 (2024-12-10)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **expect**: Check more properties for error equality &nbsp;-&nbsp; by @hi-ogawa and @sheremet-va in https://github.com/vitest-dev/vitest/issues/5876 [<samp>(10023)</samp>](https://github.com/vitest-dev/vitest/commit/100230e9)
+- **spy**: SpyOn reuses mock if method is already spyed on &nbsp;-&nbsp; by @sheremet-va and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6464 [<samp>(b3e43)</samp>](https://github.com/vitest-dev/vitest/commit/b3e43d04)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- Expose versions from `vitest/node` entry point and statically on Vitest &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7029 [<samp>(be8d4)</samp>](https://github.com/vitest-dev/vitest/commit/be8d479b)
+- `diff.printBasicPrototype: false` by default &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7043 [<samp>(2b5c5)</samp>](https://github.com/vitest-dev/vitest/commit/2b5c5201)
+- Prepare the Vitest API to be stable &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6962 [<samp>(9a1b5)</samp>](https://github.com/vitest-dev/vitest/commit/9a1b5012)
+- **cli**: Support location filters for suites &nbsp;-&nbsp; by @mzhubail in https://github.com/vitest-dev/vitest/issues/7048 [<samp>(751e2)</samp>](https://github.com/vitest-dev/vitest/commit/751e2dce)
+- **expect**: Add `toSatisfy` asymmetric matcher &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7022 [<samp>(f691a)</samp>](https://github.com/vitest-dev/vitest/commit/f691ad76)
+- **ui**: Make clicking on a test in the UI open the report section and scroll to the test failure if applicable &nbsp;-&nbsp; by @jacoberdman2147 in https://github.com/vitest-dev/vitest/issues/6900 [<samp>(1bf27)</samp>](https://github.com/vitest-dev/vitest/commit/1bf27f0d)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Persist cli filters as watch mode file filter &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6955 [<samp>(cc703)</samp>](https://github.com/vitest-dev/vitest/commit/cc703362)
+- **browser**: Fix user event state on preview provider &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7041 [<samp>(8e944)</samp>](https://github.com/vitest-dev/vitest/commit/8e94427e)
+- **coverage**: Correct coverage when `isolate: false` is used &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6957 [<samp>(426ce)</samp>](https://github.com/vitest-dev/vitest/commit/426ce6d8)
+- **runner**: Long synchronous tasks does not time out &nbsp;-&nbsp; by @ferdodo and @sheremet-va in https://github.com/vitest-dev/vitest/issues/2920 and https://github.com/vitest-dev/vitest/issues/6944 [<samp>(2fb58)</samp>](https://github.com/vitest-dev/vitest/commit/2fb585ae)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v3.0.0-beta.1...v3.0.0-beta.2)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0-beta.1 (2024-12-05)</h2>
+      <pre>We decided to skip Vitest 2.2 and release Vitest 3 with support for Vite 6 instead. There will be no more Vitest 2 versions. Vitest 3 is the first version that supports Vite 6 (excluding 2.1.6). We aim to have a stable release in January.
+
+Vitest 3 is our first step to standardising the public Node.js API. We plan to remove the experimental tag from the current APIs in Vitest 3.1 - the API will follow semver after that.
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- `spy.mockReset` changes &nbsp;-&nbsp; by @Lordfirespeed in https://github.com/vitest-dev/vitest/issues/6426 [<samp>(db7a8)</samp>](https://github.com/vitest-dev/vitest/commit/db7a8888)
+- Pass down context to test hooks &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7034 [<samp>(82c2e)</samp>](https://github.com/vitest-dev/vitest/commit/82c2e244)
+- Support Vite 6 &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7026 [<samp>(7abe8)</samp>](https://github.com/vitest-dev/vitest/commit/7abe854c)
+- **runner**: Support `describe(..., { shuffle: boolean })` and inherit from parent suite &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6670 [<samp>(aa1da)</samp>](https://github.com/vitest-dev/vitest/commit/aa1dac3d)
+- **snapshot**: Reset snapshot state for `retry` and `repeats` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6817 [<samp>(e8ce9)</samp>](https://github.com/vitest-dev/vitest/commit/e8ce94cf)
+- **vitest**: Don't expose default toFake config &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6288 [<samp>(e3144)</samp>](https://github.com/vitest-dev/vitest/commit/e3144fd8)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- Support inline `diff` options and support `printBasicPrototype` &nbsp;-&nbsp; by @hi-ogawa, @sheremet-va and **Michał Grzegorzewski** in https://github.com/vitest-dev/vitest/issues/6740 [<samp>(39186)</samp>](https://github.com/vitest-dev/vitest/commit/391860f7)
+- Allow a custom note when calling `ctx.skip()` dynamically &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6805 [<samp>(697c3)</samp>](https://github.com/vitest-dev/vitest/commit/697c35c5)
+- Allow inline workspace configuration &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6923 [<samp>(562e1)</samp>](https://github.com/vitest-dev/vitest/commit/562e1b14)
+- Provide the current project to the global setup &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6942 [<samp>(a5bbc)</samp>](https://github.com/vitest-dev/vitest/commit/a5bbc0a9)
+- Print project name as a label &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6925 [<samp>(a3bef)</samp>](https://github.com/vitest-dev/vitest/commit/a3bef598)
+- Print a deprecation warning if suite or test uses object as the third argument &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/7031 [<samp>(407f1)</samp>](https://github.com/vitest-dev/vitest/commit/407f10e4)
+- **browser**:
+  - Support `actionTimeout` as playwright provider options &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6984 [<samp>(e2c29)</samp>](https://github.com/vitest-dev/vitest/commit/e2c29eaf)
+- **cli**:
+  - Support excluding projects with `--project=!pattern` &nbsp;-&nbsp; by @haines in https://github.com/vitest-dev/vitest/issues/6924 [<samp>(ebfe9)</samp>](https://github.com/vitest-dev/vitest/commit/ebfe942c)
+  - Support specifying a line number when filtering tests &nbsp;-&nbsp; by @mzhubail and @sheremet-va in https://github.com/vitest-dev/vitest/issues/6411 [<samp>(4d94b)</samp>](https://github.com/vitest-dev/vitest/commit/4d94b956)
+- **expect**:
+  - Add `toHaveBeenCalledExactlyOnceWith` expect matcher &nbsp;-&nbsp; by @jacoberdman2147 and @sheremet-va in https://github.com/vitest-dev/vitest/issues/6894 [<samp>(ff662)</samp>](https://github.com/vitest-dev/vitest/commit/ff66206a)
+  - Add `toHaveBeenCalledAfter` and `toHaveBeenCalledBefore` utility &nbsp;-&nbsp; by @Barbapapazes and @sheremet-va in https://github.com/vitest-dev/vitest/issues/6056 [<samp>(85e6f)</samp>](https://github.com/vitest-dev/vitest/commit/85e6f99f)
+- **reporter**:
+  - Add support for function type to classname option in the junit reporter &nbsp;-&nbsp; by @jpleclerc, **Jean-Philippe Leclerc** and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6839 [<samp>(dc238)</samp>](https://github.com/vitest-dev/vitest/commit/dc238e92)
+- **reporters**:
+  - `summary` option for `verbose` and `default` reporters &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6893 [<samp>(511b7)</samp>](https://github.com/vitest-dev/vitest/commit/511b73c7)
+- **runner**:
+  - Test context can inject values from the config's `provide` &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6813 [<samp>(85c64)</samp>](https://github.com/vitest-dev/vitest/commit/85c64e35)
+- **snapshot**:
+  - Provide `config` to `resolveSnapshotPath` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6800 [<samp>(746d8)</samp>](https://github.com/vitest-dev/vitest/commit/746d8986)
+- **ui**:
+  - Allow run individual tests/suites from the UI &nbsp;-&nbsp; by @userquin in https://github.com/vitest-dev/vitest/issues/6641 [<samp>(d9cc8)</samp>](https://github.com/vitest-dev/vitest/commit/d9cc81dd)
+- **vitest**:
+  - Include `coverageMap` in json report &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6606 [<samp>(9c8f7)</samp>](https://github.com/vitest-dev/vitest/commit/9c8f7e3e)
+  - Add `onTestsRerun` method to global setup context &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6803 [<samp>(e26e0)</samp>](https://github.com/vitest-dev/vitest/commit/e26e066c)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Misc fix for vite 6 ecosystem ci &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6867 [<samp>(80f8b)</samp>](https://github.com/vitest-dev/vitest/commit/80f8bbf4)
+- Respect `cacheDir` when optimizer is enabled &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6910 [<samp>(0b08b)</samp>](https://github.com/vitest-dev/vitest/commit/0b08bc11)
+- Reset runningPromise after `finally` in case there is an error to avoid it getting stuck &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6951 [<samp>(02194)</samp>](https://github.com/vitest-dev/vitest/commit/021944cd)
+- Support Node 21 &nbsp;-&nbsp; by @sheremet-va [<samp>(92f7a)</samp>](https://github.com/vitest-dev/vitest/commit/92f7a2ad)
+- Don't use `Custom` internally &nbsp;-&nbsp; by @sheremet-va [<samp>(46fc5)</samp>](https://github.com/vitest-dev/vitest/commit/46fc5340)
+- **browser**:
+  - Improve source maps when `vi.mock` is present &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6810 [<samp>(8d179)</samp>](https://github.com/vitest-dev/vitest/commit/8d179afc)
+  - Explain TypeScript support in docs and add asymmetric matchers to types &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6934 [<samp>(ac1a7)</samp>](https://github.com/vitest-dev/vitest/commit/ac1a7fdc)
+  - Fix matchers.d.ts &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6995 [<samp>(a485b)</samp>](https://github.com/vitest-dev/vitest/commit/a485b32b)
+- **coverage**:
+  - Exclude browser mode iframe results &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6905 [<samp>(e04a1)</samp>](https://github.com/vitest-dev/vitest/commit/e04a1368)
+- **junit**:
+  - Fix testsuites time to be sum of all testsuite items &nbsp;-&nbsp; by @saitonakamura in https://github.com/vitest-dev/vitest/issues/6985 [<samp>(ca37a)</samp>](https://github.com/vitest-dev/vitest/commit/ca37a06a)
+- **pretty-format**:
+  - Support react 19 &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6909 [<samp>(bd29b)</samp>](https://github.com/vitest-dev/vitest/commit/bd29bcc7)
+- **reporters**:
+  - Write buffered stdout/stderr on process exit &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6932 [<samp>(80cde)</samp>](https://github.com/vitest-dev/vitest/commit/80cde2a0)
+  - Rewrite `dot` reporter without `log-update` &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6943 [<samp>(be969)</samp>](https://github.com/vitest-dev/vitest/commit/be969cfb)
+  - Check `--hideSkippedTests` in base reporter &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6988 [<samp>(721a5)</samp>](https://github.com/vitest-dev/vitest/commit/721a5b84)
+  - Show `retry` and `repeats` counts &nbsp;-&nbsp; by @AriPerkkio and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/7004 [<samp>(3496a)</samp>](https://github.com/vitest-dev/vitest/commit/3496a015)
+- **typecheck**:
+  - Fix typecheck collect on Vite 6 &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6972 [<samp>(7b35d)</samp>](https://github.com/vitest-dev/vitest/commit/7b35d13a)
+- **types**:
+  - Make parameters non-nullable for Playwright options &nbsp;-&nbsp; by @apple-yagi in https://github.com/vitest-dev/vitest/issues/6989 [<samp>(fe2a1)</samp>](https://github.com/vitest-dev/vitest/commit/fe2a187f)
+- **vite-node**:
+  - Fix error stack on Windows &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6786 [<samp>(bf7b3)</samp>](https://github.com/vitest-dev/vitest/commit/bf7b36ac)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.8...v3.0.0-beta.1)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.8 (2024-12-02)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Support Node 21 &nbsp;-&nbsp; by @sheremet-va [<samp>(92f7a)</samp>](https://github.com/vitest-dev/vitest/commit/92f7a2ad)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.7...v2.1.8)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.7 (2024-12-02)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Revert support for Vite 6 &nbsp;-&nbsp; by @sheremet-va [<samp>(fbe5c)</samp>](https://github.com/vitest-dev/vitest/commit/fbe5c39d)
+  - This introduced some breaking changes (https://github.com/vitest-dev/vitest/issues/6992). We will enable support for it later. In the meantime, you can still use `pnpm.overrides` or yarn resolutions to override the `vite` version in the `vitest` package - the APIs are compatible.
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.6...v2.1.7)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.6 (2024-11-26)</h2>
+      <pre>## 🚀 Features
+
+- Support Vite 6
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.5...v2.1.6)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.0-beta.2 (2024-11-18)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **reporter**: Add support for function type to classname option in the junit reporter &nbsp;-&nbsp; by @jpleclerc, **Jean-Philippe Leclerc** and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6839 [<samp>(dc238)</samp>](https://github.com/vitest-dev/vitest/commit/dc238e92)
+- **reporters**: `summary` option for `verbose` and `default` reporters &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6893 [<samp>(511b7)</samp>](https://github.com/vitest-dev/vitest/commit/511b73c7)
+- **ui**: Allow run individual tests/suites from the UI &nbsp;-&nbsp; by @userquin in https://github.com/vitest-dev/vitest/issues/6641 [<samp>(d9cc8)</samp>](https://github.com/vitest-dev/vitest/commit/d9cc81dd)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Misc fix for vite 6 ecosystem ci &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6867 [<samp>(80f8b)</samp>](https://github.com/vitest-dev/vitest/commit/80f8bbf4)
+- Respect `cacheDir` when optimizer is enabled &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6910 [<samp>(0b08b)</samp>](https://github.com/vitest-dev/vitest/commit/0b08bc11)
+- **coverage**: Exclude browser mode iframe results &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6905 [<samp>(e04a1)</samp>](https://github.com/vitest-dev/vitest/commit/e04a1368)
+- **pretty-format**: Support react 19 &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6909 [<samp>(bd29b)</samp>](https://github.com/vitest-dev/vitest/commit/bd29bcc7)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.2.0-beta.1...v2.2.0-beta.2)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.2.0-beta.1 (2024-11-13)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- Support inline `diff` options and support `printBasicPrototype` &nbsp;-&nbsp; by @hi-ogawa, @sheremet-va and **Michał Grzegorzewski** in https://github.com/vitest-dev/vitest/issues/6740 [<samp>(39186)</samp>](https://github.com/vitest-dev/vitest/commit/391860f7)
+- Allow a custom note when calling `ctx.skip()` dynamically &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6805 [<samp>(697c3)</samp>](https://github.com/vitest-dev/vitest/commit/697c35c5)
+- **expect**:
+  - Add `toHaveBeenCalledExactlyOnceWith` expect matcher &nbsp;-&nbsp; by @jacoberdman2147 and @sheremet-va in https://github.com/vitest-dev/vitest/issues/6894 [<samp>(ff662)</samp>](https://github.com/vitest-dev/vitest/commit/ff66206a)
+  - Add `toHaveBeenCalledAfter` and `toHaveBeenCalledBefore` utility &nbsp;-&nbsp; by @Barbapapazes and @sheremet-va in https://github.com/vitest-dev/vitest/issues/6056 [<samp>(85e6f)</samp>](https://github.com/vitest-dev/vitest/commit/85e6f99f)
+- **runner**:
+  - Test context can inject values from the config's `provide` &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6813 [<samp>(85c64)</samp>](https://github.com/vitest-dev/vitest/commit/85c64e35)
+- **snapshot**:
+  - Provide `config` to `resolveSnapshotPath` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6800 [<samp>(746d8)</samp>](https://github.com/vitest-dev/vitest/commit/746d8986)
+- **vitest**:
+  - Include `coverageMap` in json report &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6606 [<samp>(9c8f7)</samp>](https://github.com/vitest-dev/vitest/commit/9c8f7e3e)
+  - Add `onTestsRerun` method to global setup context &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6803 [<samp>(e26e0)</samp>](https://github.com/vitest-dev/vitest/commit/e26e066c)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **browser**: Improve source maps when `vi.mock` is present &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6810 [<samp>(8d179)</samp>](https://github.com/vitest-dev/vitest/commit/8d179afc)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.5...v2.2.0-beta.1)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.5 (2024-11-13)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- `dangerouslyIgnoreUnhandledErrors` without base reporter &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6808 [<samp>(0bf0a)</samp>](https://github.com/vitest-dev/vitest/commit/0bf0ab00)
+- Capture `unhandledRejection` even when base reporter is not used &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6812 [<samp>(8878b)</samp>](https://github.com/vitest-dev/vitest/commit/8878b04d)
+- Don't change the working directory when loading workspace projects &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6811 [<samp>(f0aea)</samp>](https://github.com/vitest-dev/vitest/commit/f0aeaca8)
+- Remove `sequence.concurrent` from the `RuntimeConfig` type &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6880 [<samp>(6af73)</samp>](https://github.com/vitest-dev/vitest/commit/6af73d93)
+- Stop the runner before restarting, restart on workspace config change &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6859 [<samp>(b01df)</samp>](https://github.com/vitest-dev/vitest/commit/b01df47d)
+- Don't rerun on Esc or Ctrl-C during watch filter &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6895 [<samp>(98f76)</samp>](https://github.com/vitest-dev/vitest/commit/98f76ea7)
+- Print ssrTransform error &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6885 [<samp>(4c96c)</samp>](https://github.com/vitest-dev/vitest/commit/4c96cce7)
+- Throw an error and a warning if `.poll`, `.element`, `.rejects`/`.resolves`, and `locator.*` weren't awaited &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6877 [<samp>(93b67)</samp>](https://github.com/vitest-dev/vitest/commit/93b67c24)
+- **browser**:
+  - Don't process the default css styles &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6861 [<samp>(0d67f)</samp>](https://github.com/vitest-dev/vitest/commit/0d67f04b)
+  - Support non US key input &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6873 [<samp>(5969d)</samp>](https://github.com/vitest-dev/vitest/commit/5969d8da)
+  - Stop the browser rpc when the pool is closed &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6858 [<samp>(9a0c9)</samp>](https://github.com/vitest-dev/vitest/commit/9a0c93d7)
+  - Init browsers eagerly when tests are running &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6876 [<samp>(417bd)</samp>](https://github.com/vitest-dev/vitest/commit/417bdb42)
+- **coverage**:
+  - Report uncovered files when re-run by `enter` or `'a'` &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6848 [<samp>(487c8)</samp>](https://github.com/vitest-dev/vitest/commit/487c80ae)
+- **ui**:
+  - Remove crossorigin attributes for same origin assets &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6883 [<samp>(6e793)</samp>](https://github.com/vitest-dev/vitest/commit/6e793c64)
+- **vite-node**:
+  - Improve esm check to decide external &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6816 [<samp>(7e1fa)</samp>](https://github.com/vitest-dev/vitest/commit/7e1faf3d)
+  - Top-level throw in module is not reported properly &nbsp;-&nbsp; by @vanaigr and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6840 [<samp>(cf0cb)</samp>](https://github.com/vitest-dev/vitest/commit/cf0cbf6a)
+- **vitest**:
+  - Use fetch() implementation from happy-dom &nbsp;-&nbsp; by @capricorn86 in https://github.com/vitest-dev/vitest/issues/6879 [<samp>(3c56f)</samp>](https://github.com/vitest-dev/vitest/commit/3c56feb4)
+
+### &nbsp;&nbsp;&nbsp;🏎 Performance
+
+- Limit workspace project concurrency to available cores &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6869 [<samp>(f4c04)</samp>](https://github.com/vitest-dev/vitest/commit/f4c04ab6)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.4...v2.1.5)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.4 (2024-10-28)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🚀 Features
+
+_This patch release includes a non-breaking feature for the experimental Browser Mode that doesn't follow SemVer. If you want to avoid picking up releases like this, make sure to pin the Vitest version in your `package.json`. See npm's documentation about [semver](https://docs.npmjs.com/cli/v6/using-npm/semver/) for more information._
+
+- **browser**: Allow custom HTML path, respect plugins `transformIndexHtml` &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6725 [<samp>(16902)</samp>](https://github.com/vitest-dev/vitest/commit/169028f0)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **windows**:
+  - Don't normalize drive case letter in root &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6792 [<samp>(b28cd)</samp>](https://github.com/vitest-dev/vitest/commit/b28cd2e3)
+- **browser**:
+  - Fix default browser port &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6700 [<samp>(9c518)</samp>](https://github.com/vitest-dev/vitest/commit/9c518c14)
+  - Optimize expect-type &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6713 [<samp>(07918)</samp>](https://github.com/vitest-dev/vitest/commit/07918538)
+  - Don't polyfill process.env &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6718 [<samp>(da6d2)</samp>](https://github.com/vitest-dev/vitest/commit/da6d2ea7)
+  - Increment browser port automatically if there are several projects with browser.enabled &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6717 [<samp>(a9397)</samp>](https://github.com/vitest-dev/vitest/commit/a939779f)
+  - Cleanup keyboard state &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6731 [<samp>(19278)</samp>](https://github.com/vitest-dev/vitest/commit/19278f4c)
+  - Don't add `v=` queries to setup files imports &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6759 [<samp>(b8258)</samp>](https://github.com/vitest-dev/vitest/commit/b82584c9)
+  - User event cleanup on retry &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6764 [<samp>(bdd15)</samp>](https://github.com/vitest-dev/vitest/commit/bdd15dd1)
+  - Ignore non mocked msw requests &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6770 [<samp>(9d9ba)</samp>](https://github.com/vitest-dev/vitest/commit/9d9bad5b)
+  - Initiate MSW in the same frame as tests &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6772 [<samp>(2444f)</samp>](https://github.com/vitest-dev/vitest/commit/2444ff22)
+- **deps**:
+  - Update dependency sirv to v3 &nbsp;-&nbsp; in https://github.com/vitest-dev/vitest/issues/6701 [<samp>(fde5d)</samp>](https://github.com/vitest-dev/vitest/commit/fde5d509)
+- **expect**:
+  - Correct behavior of `toThrowError` with empty string parameter &nbsp;-&nbsp; by @shulaoda in https://github.com/vitest-dev/vitest/issues/6710 [<samp>(a6129)</samp>](https://github.com/vitest-dev/vitest/commit/a61293e9)
+- **mocker**:
+  - Remove spy from peer dependencies &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6777 [<samp>(3a8b5)</samp>](https://github.com/vitest-dev/vitest/commit/3a8b56bf)
+- **vitest**:
+  - Clarify slowTestThreshold, print slow tests in non-TTY mode &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6715 [<samp>(2e6aa)</samp>](https://github.com/vitest-dev/vitest/commit/2e6aa647)
+  - Print warnings form Vite plugins &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6724 [<samp>(121b1)</samp>](https://github.com/vitest-dev/vitest/commit/121b161f)
+  - Don't fail if the working directory starts with a lowercase drive letter &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6779 [<samp>(df6d7)</samp>](https://github.com/vitest-dev/vitest/commit/df6d750b)
+  - Silence import analysis warning &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6785 [<samp>(39041)</samp>](https://github.com/vitest-dev/vitest/commit/39041ee5)
+- **vitest,runner**:
+  - Simplify `test.extend` type exports &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6707 [<samp>(e5c38)</samp>](https://github.com/vitest-dev/vitest/commit/e5c388f0)
+
+### &nbsp;&nbsp;&nbsp;🏎 Performance
+
+- Use `hash` to replace `createHash` &nbsp;-&nbsp; by @btea in https://github.com/vitest-dev/vitest/issues/6703 [<samp>(5d07b)</samp>](https://github.com/vitest-dev/vitest/commit/5d07bba6)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.3...v2.1.4)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.3 (2024-10-14)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Fix error diff of `toBeNaN, toBeUndefined, toBeNull, toBeTruthy, toBeFalsy` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6697 [<samp>(e0027)</samp>](https://github.com/vitest-dev/vitest/commit/e002758c)
+- **browser**:
+  - Provide aria role intellisense &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6629 [<samp>(f36ea)</samp>](https://github.com/vitest-dev/vitest/commit/f36eac77)
+  - Not.toBeInTheDocument works with locators API &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6634 [<samp>(8bef5)</samp>](https://github.com/vitest-dev/vitest/commit/8bef5d2b)
+  - Use `/mockServiceWorker.js` instead of `/__vitest_msw__` &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6687 [<samp>(4b2ce)</samp>](https://github.com/vitest-dev/vitest/commit/4b2ce07f)
+  - Don't override the esbuild option in the browser mode &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6692 [<samp>(d131f)</samp>](https://github.com/vitest-dev/vitest/commit/d131fd64)
+- **expect**:
+  - Preserve prototype in `toMatchObject` diff &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6620 [<samp>(d289e)</samp>](https://github.com/vitest-dev/vitest/commit/d289e7eb)
+- **mocker**:
+  - Specify correct spy dependency &nbsp;-&nbsp; by @sheremet-va [<samp>(7e958)</samp>](https://github.com/vitest-dev/vitest/commit/7e9584aa)
+- **runner**:
+  - Ensure sequential suite overrides sequence.concurrent &nbsp;-&nbsp; by @dsyddall and @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6653 [<samp>(5e6de)</samp>](https://github.com/vitest-dev/vitest/commit/5e6de274)
+- **vitest**:
+  - Deprecate UserConfig in favor of ViteUserConfig &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6626 [<samp>(496bd)</samp>](https://github.com/vitest-dev/vitest/commit/496bd251)
+  - Don't hang with maxConcurrency 0 &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6627 [<samp>(946d8)</samp>](https://github.com/vitest-dev/vitest/commit/946d8bb1)
+  - Deprecate old task types and node-reliant types &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6632 [<samp>(00045)</samp>](https://github.com/vitest-dev/vitest/commit/000459a9)
+  - Fix `<empty line>` logs when interleaving `console.log/error` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6644 [<samp>(9ece3)</samp>](https://github.com/vitest-dev/vitest/commit/9ece3952)
+  - Show rollup error details as test error &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6686 [<samp>(47dde)</samp>](https://github.com/vitest-dev/vitest/commit/47dde76f)
+  - Always inline setup files &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6689 [<samp>(19d64)</samp>](https://github.com/vitest-dev/vitest/commit/19d64e20)
+  - Use `fast-glob` instead of `tinyglobby` in Vitest &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6688 [<samp>(70baa)</samp>](https://github.com/vitest-dev/vitest/commit/70baaaa9)
+- **web-worker**:
+  - Share mocker with main executor &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6623 [<samp>(fe7b8)</samp>](https://github.com/vitest-dev/vitest/commit/fe7b8aee)
+
+### &nbsp;&nbsp;&nbsp;🏎 Performance
+
+- Reuse full name in reported tasks, update generator types &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6666 [<samp>(7a0de)</samp>](https://github.com/vitest-dev/vitest/commit/7a0de0a7)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.2...v2.1.3)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.2 (2024-10-02)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Move `Vitest.setServer` to post `configureServer` hook to enable import analysis for workspace config loading &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6584 [<samp>(e7f35)</samp>](https://github.com/vitest-dev/vitest/commit/e7f35214)
+- **benchmark**:
+  - Clear `BenchmarkResult.samples` array to reduce memory usage &nbsp;-&nbsp; by @hi-ogawa and @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6541 [<samp>(a6407)</samp>](https://github.com/vitest-dev/vitest/commit/a6407afc)
+- **browser**:
+  - Fix dynamic import inside worker &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6569 [<samp>(ea2d4)</samp>](https://github.com/vitest-dev/vitest/commit/ea2d429b)
+  - Fix browser mock factory event race condition &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6530 [<samp>(f131f)</samp>](https://github.com/vitest-dev/vitest/commit/f131f93b)
+  - Serve ui assets as static &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6564 [<samp>(adcda)</samp>](https://github.com/vitest-dev/vitest/commit/adcdaee8)
+  - Update solidjs testing library lib &nbsp;-&nbsp; by @CamilleTeruel in https://github.com/vitest-dev/vitest/issues/6548 [<samp>(91442)</samp>](https://github.com/vitest-dev/vitest/commit/91442dfc)
+  - Use `data:` protocol on preview provider file upload &nbsp;-&nbsp; by @userquin in https://github.com/vitest-dev/vitest/issues/6501 [<samp>(e9821)</samp>](https://github.com/vitest-dev/vitest/commit/e9821f70)
+  - Fix base for client script &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6510 [<samp>(f9528)</samp>](https://github.com/vitest-dev/vitest/commit/f952874e)
+  - Throw an error if "@vitest/browser/context" is imported outside of the browser mode &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6570 [<samp>(383f1)</samp>](https://github.com/vitest-dev/vitest/commit/383f1791)
+- **coverage**:
+  - Remove empty coverage folder on test failure too &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6547 [<samp>(1371c)</samp>](https://github.com/vitest-dev/vitest/commit/1371ca6a)
+  - Include `*.astro` by default &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6565 [<samp>(f8ff7)</samp>](https://github.com/vitest-dev/vitest/commit/f8ff76a9)
+  - `cleanOnRerun: false` to invalidate previous results &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/issues/6592 [<samp>(88bde)</samp>](https://github.com/vitest-dev/vitest/commit/88bde99c)
+- **expect**:
+  - Fix `toBeDefined` with `expect.poll` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6562 [<samp>(f7da6)</samp>](https://github.com/vitest-dev/vitest/commit/f7da6199)
+- **forks**:
+  - Fix `--cpu-prof` and `--heap-prof` not working by default &nbsp;-&nbsp; by @AriPerkkio in https://github.com/vitest-dev/vitest/pull/6555 [<samp>(2e4d894)</samp>](https://github.com/vitest-dev/vitest/commit/2e4d894)
+- **runner**:
+  - Mark tests as skipped when `beforeAll` failed &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6524 [<samp>(fb797)</samp>](https://github.com/vitest-dev/vitest/commit/fb79792d)
+  - Support fixture parsing of lowered async syntax &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6531 [<samp>(b553c)</samp>](https://github.com/vitest-dev/vitest/commit/b553c7d6)
+  - Fix fixture parsing of lowered async syntax for non arrow functions &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6575 [<samp>(3de00)</samp>](https://github.com/vitest-dev/vitest/commit/3de00ab6)
+  - Guard test hook callback &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6604 [<samp>(14971)</samp>](https://github.com/vitest-dev/vitest/commit/1497134e)
+  - Run `onTestFinished` and `onTestFailed` during `retry` and `repeats` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6609 [<samp>(c5e29)</samp>](https://github.com/vitest-dev/vitest/commit/c5e29098)
+- **ui**:
+  - List tests on ui when `--standalone` &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6577 [<samp>(d0bf8)</samp>](https://github.com/vitest-dev/vitest/commit/d0bf89d3)
+- **vite-node**:
+  - Fix esm false-detection inside comment &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6506 [<samp>(91f85)</samp>](https://github.com/vitest-dev/vitest/commit/91f85997)
+- **vitest**:
+  - Install dependencies with the same version when prompted &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6611 [<samp>(ed8b7)</samp>](https://github.com/vitest-dev/vitest/commit/ed8b7c08)
+  - Make env.SSR consistent between different pools &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6616 [<samp>(8a8d3)</samp>](https://github.com/vitest-dev/vitest/commit/8a8d3f03)
+  - Don't start a websocket server if api is disabled &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6617 [<samp>(82140)</samp>](https://github.com/vitest-dev/vitest/commit/821400b8)
+- **workspace**:
+  - Fix glob pattern detection &nbsp;-&nbsp; by @hi-ogawa in https://github.com/vitest-dev/vitest/issues/6502 [<samp>(7727c)</samp>](https://github.com/vitest-dev/vitest/commit/7727ca87)
+  - Ignore DS_Store by default &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6571 [<samp>(d2a86)</samp>](https://github.com/vitest-dev/vitest/commit/d2a86ff5)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.1...v2.1.2)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1.1 (2024-09-13)</h2>
+      <pre>### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **browser**:
+  - Make example test callbacks async &nbsp;-&nbsp; by @aqandrew in https://github.com/vitest-dev/vitest/issues/6484 [<samp>(16aa7)</samp>](https://github.com/vitest-dev/vitest/commit/16aa76c2)
+  - Optimize vitest-browser-vue correctly &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6490 [<samp>(5cbb0)</samp>](https://github.com/vitest-dev/vitest/commit/5cbb0bba)
+- **workspace**:
+  - Resolve glob pattern once to avoid name collision &nbsp;-&nbsp; by @sheremet-va in https://github.com/vitest-dev/vitest/issues/6489 [<samp>(36b5a)</samp>](https://github.com/vitest-dev/vitest/commit/36b5aceb)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/vitest-dev/vitest/compare/v2.1.0...v2.1.1)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

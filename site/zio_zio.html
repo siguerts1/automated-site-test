@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for zio/zio"/>
+  <title>zio/zio Release Notes</title>
+</head>
+<body>
+  <h1>🚀 zio/zio - Release Notes</h1>
+  
+    <section>
+      <h2>2.1.16 (2025-02-26)</h2>
+      <pre>## Highlights
+This seemingly small release brings 2 new features to ZIO which library authors can utilize in order to provide a better DX for users. As usually, it also contains a number of optimizations, bug fixes, and it's fully binary and source-compatible with the rest of the v2.x series.
+
+### `HasNoScope` evidence (https://github.com/zio/zio/pull/9604)
+
+In ZIO, having a `Scope` as an environment requirement indicates that the effect contains finalizers (e.g., closing an HTTP connection) which need to be handled at some point in the evaluation of the effect or the application's lifetime. In certain cases, we might want to ensure that an effect provided to a method does not contain any finalizers. Starting with this version of ZIO, users / library authors can use the `HasNoScope` evidence for methods where the environment is generic, e.g.,:
+
+```scala
+def foo[R, A](f: ZIO[R, Nothing, A)(using HasNoScope[R]) = ???
+
+val f1 = foo(ZIO.succeed("foo")) // compiles
+val f2 = foo(ZIO.acquireRelease(ZIO.succeed("foo"))(_ => ZIO.unit)) // fails to compile
+```
+
+Note that this feature is primarily intended for use in libraries such as `zio-http` where we need to ensure that a user-provided effect does not contain any finalizers.
+
+### Generic interfaces for non-empty collections (https://github.com/zio/zio/pull/9560)
+
+This release introduces the `NonEmptySeq` type class (which `NonEmptyChunk` now extends) so that users / library authors can write generic code which requires non-empty collections as arguments.
+
+## What's Changed
+* Mark `broacastDynamic` tests as flaky by @kyri-petrou in https://github.com/zio/zio/pull/9558
+* Mark `Fiber` as sealed by @hearnadam in https://github.com/zio/zio/pull/9554
+* Optimise `zio.stream.ZChannel#mapOutZIOPar` code by @guizmaii in https://github.com/zio/zio/pull/9556
+* #9467 add peekAll to TQueue by @IgorDorokhov in https://github.com/zio/zio/pull/9476
+* more general type for ZSink.last by @mberndt123 in https://github.com/zio/zio/pull/9506
+* Add internal `Promise#succeedUnit` method to avoid `Exit` allocation when possible by @guizmaii in https://github.com/zio/zio/pull/9571
+* Improve warning to `Chunk.fromArray` about array mutability by @kyri-petrou in https://github.com/zio/zio/pull/9576
+* fix to SuiteAll macro, fail on missing type Spec if not imported by @kaplan-shaked in https://github.com/zio/zio/pull/9575
+* Use an `inline given` for CanFail evidence in Scala 3 by @kyri-petrou in https://github.com/zio/zio/pull/9568
+* add `stringValue` method to `zio.Config.Secret` by @mberndt123 in https://github.com/zio/zio/pull/9580
+* Implement generic interfaces for non-empty collections (#9559) by @987Nabil in https://github.com/zio/zio/pull/9560
+* Optimise `ZIO::exit` encoding by @guizmaii in https://github.com/zio/zio/pull/9586
+* Optimize `ZIO::flatMapError` encoding by @guizmaii in https://github.com/zio/zio/pull/9585
+* Reduce cost of `Promise` creation by @guizmaii in https://github.com/zio/zio/pull/9603
+* Clean `zio.stream.ZStream#toPull` code by @guizmaii in https://github.com/zio/zio/pull/9400
+* Add `HasNoScope` type class (#9597) by @987Nabil in https://github.com/zio/zio/pull/9604
+
+## Other changes (CI, dependencies and documentation)
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.15 by @renovate in https://github.com/zio/zio/pull/9551
+* Update magnolia to 1.3.11 by @zio-scala-steward in https://github.com/zio/zio/pull/9553
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.16 by @renovate in https://github.com/zio/zio/pull/9561
+* Remove community project `zio-aws-s3` from doc as it's not maintained by @guizmaii in https://github.com/zio/zio/pull/9564
+* Update zio-aws doc by @guizmaii in https://github.com/zio/zio/pull/9563
+* Update magnolia to 1.3.12 by @zio-scala-steward in https://github.com/zio/zio/pull/9567
+* chore(deps): update dependency prettier to v3.5.0 by @renovate in https://github.com/zio/zio/pull/9566
+* Deprecate accessor methods in zio-kafka tutorial by @erikvanoosten in https://github.com/zio/zio/pull/9565
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.17 by @renovate in https://github.com/zio/zio/pull/9572
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc39 - autoclosed by @renovate in https://github.com/zio/zio/pull/9573
+* fix: Flaky broadcastDynamic tests (#9555) by @gkfabs in https://github.com/zio/zio/pull/9557
+* Bump actions/create-github-app-token from 1.11.2 to 1.11.3 by @dependabot in https://github.com/zio/zio/pull/9577
+* fix(deps): update dependency postcss to v8.5.2 by @renovate in https://github.com/zio/zio/pull/9578
+* fix(deps): update dependency @zio.dev/zio-bson to v1.0.8 by @renovate in https://github.com/zio/zio/pull/9579
+* Update reactor-core to 3.7.3 by @zio-scala-steward in https://github.com/zio/zio/pull/9581
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.18 by @renovate in https://github.com/zio/zio/pull/9582
+* fix(deps): update dependency @zio.dev/zio-redis to v1.0.1 by @renovate in https://github.com/zio/zio/pull/9583
+* fix(deps): update dependency @zio.dev/zio-sbt to v0.4.0-alpha.31 by @renovate in https://github.com/zio/zio/pull/9584
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.19 by @renovate in https://github.com/zio/zio/pull/9588
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.20 by @renovate in https://github.com/zio/zio/pull/9591
+* chore(deps): update dependency prettier to v3.5.1 by @renovate in https://github.com/zio/zio/pull/9590
+* Update magnolia to 1.3.13 by @zio-scala-steward in https://github.com/zio/zio/pull/9594
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.21 by @renovate in https://github.com/zio/zio/pull/9599
+* Update sbt-mdoc to 2.6.4 by @zio-scala-steward in https://github.com/zio/zio/pull/9595
+* Update spring-core to 6.2.3 by @zio-scala-steward in https://github.com/zio/zio/pull/9596
+* chore(deps): update dependency @types/react to v19.0.9 by @renovate in https://github.com/zio/zio/pull/9605
+* Bump actions/create-github-app-token from 1.11.3 to 1.11.5 by @dependabot in https://github.com/zio/zio/pull/9607
+* chore(deps): update dependency @types/react to v19.0.10 by @renovate in https://github.com/zio/zio/pull/9606
+* Update magnolia to 1.3.14 by @zio-scala-steward in https://github.com/zio/zio/pull/9609
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.22 by @renovate in https://github.com/zio/zio/pull/9612
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.23 by @renovate in https://github.com/zio/zio/pull/9613
+* fix(deps): update dependency react-icons to v5.5.0 by @renovate in https://github.com/zio/zio/pull/9615
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.24 by @renovate in https://github.com/zio/zio/pull/9614
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.25 by @renovate in https://github.com/zio/zio/pull/9618
+* Tweaking the zio-kafka tutorial by @erikvanoosten in https://github.com/zio/zio/pull/9617
+* fix(deps): update dependency postcss to v8.5.3 by @renovate in https://github.com/zio/zio/pull/9620
+* fix(deps): update dependency @zio.dev/zio-schema to v1.6.2 by @renovate in https://github.com/zio/zio/pull/9619
+* fix(deps): update dependency @zio.dev/zio-kafka to v2.11.0 by @renovate in https://github.com/zio/zio/pull/9621
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.26 by @renovate in https://github.com/zio/zio/pull/9627
+* fix(deps): update dependency @zio.dev/zio-schema to v1.6.3 by @renovate in https://github.com/zio/zio/pull/9623
+* fix(deps): update dependency react-markdown to v10 by @renovate in https://github.com/zio/zio/pull/9626
+* chore(deps): update dependency prettier to v3.5.2 by @renovate in https://github.com/zio/zio/pull/9631
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.28 by @renovate in https://github.com/zio/zio/pull/9632
+* Update sbt-scalafix, scalafix-testkit to 0.14.2 by @zio-scala-steward in https://github.com/zio/zio/pull/9628
+* Update junit-platform-engine to 1.12.0 by @zio-scala-steward in https://github.com/zio/zio/pull/9630
+* fix(deps): update dependency @zio.dev/zio-redis to v1.1.0 by @renovate in https://github.com/zio/zio/pull/9634
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.29 by @renovate in https://github.com/zio/zio/pull/9635
+* fix(deps): update dependency @zio.dev/zio-logging to v2.5.0 by @renovate in https://github.com/zio/zio/pull/9636
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.30 by @renovate in https://github.com/zio/zio/pull/9637
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.31 by @renovate in https://github.com/zio/zio/pull/9641
+* Bump JamesIves/github-pages-deploy-action from 4.7.2 to 4.7.3 by @dependabot in https://github.com/zio/zio/pull/9639
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.32 by @renovate in https://github.com/zio/zio/pull/9643
+* Bump peter-evans/create-pull-request from 7.0.6 to 7.0.7 by @dependabot in https://github.com/zio/zio/pull/9640
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.33 by @renovate in https://github.com/zio/zio/pull/9644
+* Update slf4j-simple to 2.0.17 by @zio-scala-steward in https://github.com/zio/zio/pull/9646
+* Update magnolia to 1.3.15 by @zio-scala-steward in https://github.com/zio/zio/pull/9645
+
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.15...v2.1.16</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.15 (2025-02-05)</h2>
+      <pre>## Highlights
+
+This release contains various under-the-hood optimizations and minor bug fixes.
+
+> [!IMPORTANT] 
+> One noteable change is the update of `izumi-reflect` to v3.x from v2.x. This version of `izumi-reflect` generates tags that are not binary/backwards compatible for Scala 3 opaque types with those generated by v2.x.
+>
+> Since `zio` itself does not use opaque types, we considered this as a safe change. However, library authors that have ZIO as a dependency might want to check whether this change affects them in any way and release a new version using the updated `zio` / `izumi-reflect` versions
+
+## What's Changed
+* More efficient cleaning of exception stack traces in zio-test by @plokhotnyuk in https://github.com/zio/zio/pull/9437
+* Optimise `zio.stream.ZStream.repeat` by @guizmaii in https://github.com/zio/zio/pull/9397
+* Optimise `zio.stream.ZStream#takeRight` by @guizmaii in https://github.com/zio/zio/pull/9398
+* Sink drop while bug by @eyalfa in https://github.com/zio/zio/pull/9405
+* Optimise `zio.stream.ZChannel.mergeAllWith` code by @guizmaii in https://github.com/zio/zio/pull/9383
+* Optimize `FiberRef#locally` by @guizmaii in https://github.com/zio/zio/pull/9480
+* Optimize `FiberRef#locallyScoped` by @guizmaii in https://github.com/zio/zio/pull/9481
+* Optimize `FiberRef#locallyScopedWith` by @guizmaii in https://github.com/zio/zio/pull/9483
+* Fix rare race condition causing `ZStream` to hang on parallel errors by @kyri-petrou in https://github.com/zio/zio/pull/9478
+* Optimize `ZIO.fail` by @kyri-petrou in https://github.com/zio/zio/pull/9487
+* Optimize logging by @kyri-petrou in https://github.com/zio/zio/pull/9489
+* Print interruptions in `ZIO#debug` by @kyri-petrou in https://github.com/zio/zio/pull/9473
+* Make `*VersionSpecific` and `*PlatformSpecific` traits package-private by @kyri-petrou in https://github.com/zio/zio/pull/9491
+* update: ZIO#head to use subtype of Seq, not List by @hearnadam in https://github.com/zio/zio/pull/9502
+* Cache+seal evidence classes by @hearnadam in https://github.com/zio/zio/pull/9509
+* Optimize Ref.Atomic by @hearnadam in https://github.com/zio/zio/pull/9500
+* fix : ZStream Broadcastdynamic hanging by @gkfabs in https://github.com/zio/zio/pull/9474
+* Ensure `Supervisor#onEnd` is called exactly once by @kyri-petrou in https://github.com/zio/zio/pull/9537
+* `ZIO.fromEither` should produce a stacktrace on failure by @kyri-petrou in https://github.com/zio/zio/pull/9536
+
+## Other changes (CI, dependencies and documentation)
+* Update contributor guidelines by @plokhotnyuk in https://github.com/zio/zio/pull/9435
+* Update dependency highlight.js to v11.11.1 by @renovate in https://github.com/zio/zio/pull/9440
+* Update dependency @zio.dev/zio-sbt to v0.4.0-alpha.29 by @renovate in https://github.com/zio/zio/pull/9442
+* Docs (test-aspects) - use sbt testOnly in examples by @dbrown428 in https://github.com/zio/zio/pull/9441
+* Update dependency @zio.dev/zio-config to v4.0.3 by @renovate in https://github.com/zio/zio/pull/9444
+* Update @zio.dev/zio-dynamodb docs to 1.0.0-RC17 by @github-actions in https://github.com/zio/zio/pull/9446
+* Use GitHub App Token to Create PRs of New Documentation Releases by @khajavi in https://github.com/zio/zio/pull/9447
+* Update dependency @zio.dev/zio-streams-compress to v1 by @renovate in https://github.com/zio/zio/pull/9448
+* Update dependency @zio.dev/zio-sbt to v0.4.0-alpha.30 by @renovate in https://github.com/zio/zio/pull/9451
+* Update dependency @zio.dev/zio-telemetry to v3.1.1 by @renovate in https://github.com/zio/zio/pull/9454
+* Update scalafmt version by @kyri-petrou in https://github.com/zio/zio/pull/9450
+* Update dependency @zio.dev/zio-json to v0.7.4 by @renovate in https://github.com/zio/zio/pull/9455
+* Add documentation about using virtual threads by @digy in https://github.com/zio/zio/pull/9368
+* Update dependency typescript to v5.7.3 by @renovate in https://github.com/zio/zio/pull/9457
+* Update dependency @types/react to v19.0.4 by @renovate in https://github.com/zio/zio/pull/9456
+* Update dependency @zio.dev/zio-kafka to v2.9.1 by @renovate in https://github.com/zio/zio/pull/9460
+* Update dependency @types/react to v19.0.5 by @renovate in https://github.com/zio/zio/pull/9461
+* Update dependency @types/react to v19.0.6 by @renovate in https://github.com/zio/zio/pull/9462
+* Add test for `ZStream#dropWhileZIO` by @kyri-petrou in https://github.com/zio/zio/pull/9463
+* Update dependency @types/react to v19.0.7 by @renovate in https://github.com/zio/zio/pull/9468
+* Update dependency cytoscape to v3.31.0 by @renovate in https://github.com/zio/zio/pull/9465
+* Update dependency prettier-plugin-tailwindcss to v0.6.10 by @renovate in https://github.com/zio/zio/pull/9469
+* Update dependency postcss to v8.5.1 by @renovate in https://github.com/zio/zio/pull/9466
+* Reduce parallelism of `ZStreamSpec` by @kyri-petrou in https://github.com/zio/zio/pull/9464
+* Run Auto-approve GH job only for renovate PRs by @kyri-petrou in https://github.com/zio/zio/pull/9472
+* Update dependency @zio.dev/zio-kafka to v2.10.0 by @renovate in https://github.com/zio/zio/pull/9475
+* Add missing `disableAutoTrace` in ZStream file by @kyri-petrou in https://github.com/zio/zio/pull/9479
+* Fix flaky test in SemaphoreSpec by @kyri-petrou in https://github.com/zio/zio/pull/9492
+* Update dependency @zio.dev/zio-schema to v1.6.0 by @renovate in https://github.com/zio/zio/pull/9497
+* Update dependency prettier-plugin-tailwindcss to v0.6.11 by @renovate in https://github.com/zio/zio/pull/9496
+* Update dependency @zio.dev/zio-json to v0.7.5 by @renovate in https://github.com/zio/zio/pull/9495
+* Update dependency @types/react to v19.0.8 by @renovate in https://github.com/zio/zio/pull/9493
+* Update dependency @zio.dev/zio-schema to v1.6.1 by @renovate in https://github.com/zio/zio/pull/9499
+* Update dependency @zio.dev/zio-json to v0.7.6 by @renovate in https://github.com/zio/zio/pull/9498
+* Update dependency @zio.dev/zio-json to v0.7.7 by @renovate in https://github.com/zio/zio/pull/9501
+* Update dependency @zio.dev/zio-json to v0.7.8 by @renovate in https://github.com/zio/zio/pull/9504
+* Update dependency @zio.dev/izumi-reflect to v2024.11.11-da5b828d4d6e by @renovate in https://github.com/zio/zio/pull/9513
+* Update dependency @zio.dev/zio-json to v0.7.9 by @renovate in https://github.com/zio/zio/pull/9510
+* Disable bsp for js/native specific sources by @hearnadam in https://github.com/zio/zio/pull/9508
+* fix(deps): update dependency react-markdown to v9.0.3 by @renovate in https://github.com/zio/zio/pull/9515
+* Update izumi-reflect to v3.0.0 by @kyri-petrou in https://github.com/zio/zio/pull/9517
+* Update dependencies by @guizmaii in https://github.com/zio/zio/pull/9520
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.10 by @renovate in https://github.com/zio/zio/pull/9522
+* Deprecating accessor methods by @erikvanoosten in https://github.com/zio/zio/pull/9519
+* fix broken links in docs by @mberndt123 in https://github.com/zio/zio/pull/9514
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.12 by @renovate in https://github.com/zio/zio/pull/9528
+* Fix CI: Update `actions/upload-artifact` && `actions/download-artifact` by @guizmaii in https://github.com/zio/zio/pull/9527
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.12 by @renovate in https://github.com/zio/zio/pull/9529
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.13 by @renovate in https://github.com/zio/zio/pull/9530
+* Add scala-steward and dependabot to maintain things up-to-date by @guizmaii in https://github.com/zio/zio/pull/9526
+* Bump actions/checkout from 4.1.1 to 4.2.2 by @dependabot in https://github.com/zio/zio/pull/9534
+* Bump release-drafter/release-drafter from 5 to 6 by @dependabot in https://github.com/zio/zio/pull/9532
+* Bump actions/create-github-app-token from 1.11.1 to 1.11.2 by @dependabot in https://github.com/zio/zio/pull/9535
+* Bump actions/setup-java from 4.2.1 to 4.7.0 by @dependabot in https://github.com/zio/zio/pull/9533
+* Bump JamesIves/github-pages-deploy-action from 4.4.1 to 4.7.2 by @dependabot in https://github.com/zio/zio/pull/9531
+* Update sbt-mdoc to 2.6.3 by @zio-scala-steward in https://github.com/zio/zio/pull/9543
+* Update junit-platform-engine to 1.11.4 by @zio-scala-steward in https://github.com/zio/zio/pull/9542
+* Update izumi-reflect to 3.0.1 by @zio-scala-steward in https://github.com/zio/zio/pull/9539
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.14 by @renovate in https://github.com/zio/zio/pull/9546
+* Bump actions/setup-node from 3 to 4 by @dependabot in https://github.com/zio/zio/pull/9545
+* Documentation: Remove Deprecated Projects by @khajavi in https://github.com/zio/zio/pull/9547
+* Update magnolia to 1.3.10 by @zio-scala-steward in https://github.com/zio/zio/pull/9549
+
+## New Contributors
+* @dbrown428 made their first contribution in https://github.com/zio/zio/pull/9441
+* @zio-scala-steward made their first contribution in https://github.com/zio/zio/pull/9543
+* @gkfabs made their first contribution in https://github.com/zio/zio/pull/9474
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.14...v2.1.15</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.14 (2024-12-19)</h2>
+      <pre>## Highlights
+
+This release comes packed with bug fixes and under-the-hood optimizations. Big thank you to all the old and new contributors for their work in this release!
+
+> [!IMPORTANT] 
+> ### Runtime behaviour change of `ZIO#onDone` and `ZIO#onDoneCause`
+> In this release, the behavior of `onDone` and `onDoneCause` has changed to address concerns raised in https://github.com/zio/zio/issues/9191. Unlike other `onX` methods, `onDone` and `onDoneCause` executed the callback effects in "fire and forget" mode.
+> 
+> We believe that this behaviour could lead to unexpected bugs in applications. As such we changed the implementation of these methods so that the callbacks are executed synchronously. While we believe it's highly unlikely that users using these methods were aware of this implementation detail, we still advice them to review their usages as a precaution.
+
+## What's Changed
+
+* More efficient parsing of line numbers without string allocations (#9433) @plokhotnyuk
+* More `Exit` optimizations for `ZIO` methods (#9427) @kyri-petrou
+* Check `Exit.Success` first in `FiberRuntime#runloop` (#9422) @kyri-petrou
+* Optimizations for `ZIO#foreach*` methods (#9365) @kyri-petrou
+* Use an `Exit` for `Promise.succeed` (#9419) @kyri-petrou
+* Use `Exit.succeed` in more places (#9418) @kyri-petrou
+* Optimisation: Replace `Trace.instance.unapply` calls with `Trace.instance.parse` (#9416) @guizmaii
+* Optimise `Tracer.instance#unapply` (#9414) @guizmaii
+* Optimize pattern-matching in `ZIO`/`Exit` methods (#9415) @kyri-petrou
+* Ensure that TestClock methods are thread-safe (#9408) @kyri-petrou
+* Optimisation: Implement `ZIO.suspendSucceed` with `ZIO.FlatMap` (#9388) @guizmaii
+* Optimisation - FiberRuntime: bypass evaluation of `flatmap.first` when possible (#9393) @guizmaii
+* Optimise `zio.stream.ZStream.fromChunk` (#9396) @guizmaii
+* Optimise `zio.stream.ZStream.succeed` (#9399) @guizmaii
+* Optimise `FiberRef#set` (#9402) @guizmaii
+* Optimisation - FiberRuntime: Remove `ZIO.Continuation` allocation (#9391) @guizmaii
+* Optimize Scope-related methods (#9372) @kyri-petrou
+* zio-test: Don't overwrite inner node labels (#9363) @joroKr21
+* Fix race condition for errors in `ZChannel.mapOutZIOPar*` methods (#9354) @kyri-petrou
+* Refactor `FiberRefs` shortcut optimizations (#9328) @kyri-petrou
+* Optimise `ZStream.repeatZIOChunkOption` (#9379) @guizmaii
+* Fix #9358 OS signal handling for windows (#9366) @clarzte
+* [Issue #8571] Fix spans in TestResults with inlined code (#9367) @arainko
+* Remove internal usages of `ZIO.done` (#9369) @kyri-petrou
+* Ensure ZLayer macros use the trace from implicit scope (#9361) @joroKr21
+* Simplify `Pull.failCause` code (#9364) @guizmaii
+* Add Runtime method to enable loom based blocking executor (#9355) @digy
+* Replace internal `ZIO.success(Chunk.empty)` calls with `Exit.emptyChunk` (#9360) @guizmaii
+* Replace all internal `ZIO.fail(None)` with `Exit.failNone` (#9359) @guizmaii
+* Fix leak of finalizers in `ZKeyedPool` (#9329) @kyri-petrou
+* Transfer child finalisers to parent in ZIO.raceAll and ZIO.raceFibersWith  #9203 (#9353) @digy
+* Fix zio-kafka regression caused by ZStream changes (#9341) @kyri-petrou
+* Bring Ref on par with AtomicInteger (#9340) @erikvanoosten
+* Make `val`s non-transient in ZIO services (#9345) @kyri-petrou
+* Cause filter fix (#9254) @eyalfa
+* Use `-Ybackend-parallelism:4` when compiling Scala 2.13 with optimization enabled (#9346) @kyri-petrou
+* [Issue-9272] add ZLayer#runWith (#9351) @arainko
+* Add `applyOnExit` and `applyOnExitWith` methods to `ZIO.Grafter` (#9349) @kyri-petrou
+* Use a `val` for accessing `Ref.Atomic#unsafe` (#9344) @kyri-petrou
+* perf: Use whileLoop instead of recursion for several functions (#9131) @tmccombs
+* Suppress ExplicitImplicitTypes Wartremover warning in macro (#9323) @joroKr21
+* Fix Scope propagation in `ZStream#runScoped` (#9327) @kyri-petrou
+* Fix scope propagation for multiple specs #9175 (#9325) @clarzte
+* Remove implicit forking in ZIO#onDone and ZIO#onDoneCause to align with onX methods (#9286) @asr2003
+* Cleanup & update build.sbt (#9310) @kyri-petrou
+
+## Other changes (CI, dependencies and documentation)
+
+* Update dependency @types/react to v19.0.2 (#9434) @renovate
+* Update dependency tailwindcss to v3.4.17 (#9432) @renovate
+* Migrate renovate config (#9428) @renovate
+* Update izumi Version (#9429) @khajavi
+* Update dependency typescript to v5.7.2 (#9425) @renovate
+* Update dependency @tsconfig/docusaurus to v2.0.3 (#9420) @renovate
+* Update dependency @types/react-helmet to v6.1.11 (#9421) @renovate
+* Update dependency tailwindcss to v3.4.16 (#9423) @renovate
+* Update dependency clsx to v2.1.1 (#9424) @renovate
+* fix(deps): update dependency highlight.js to v11.11.0 (#9413) @renovate
+* chore(deps): update react monorepo to v19 (major) - autoclosed (#9381) @renovate
+* chore(deps): update dependency prettier to v3.4.2 - autoclosed (#9374) @renovate
+* chore(deps): update dependency @types/react to v18.3.13 (#9376) @renovate
+* fix(deps): update dependency @zio.dev/zio-cli to v0.7.0 (#9377) @renovate
+* fix(deps): update dependency react-icons to v5.4.0 (#9371) @renovate
+* feat: Migrate to Docusaurus v3 (#9165) @neo773
+* Update documentation of ref to fix warning about immutable data (#9357) @varshith257
+* Avoid name clash on JDK 23 from java.io.IO (#9322) @digy
+* Remove Scalac From Sponsors (#9331) @khajavi
+* chore(deps): update dependency prettier to v3.4.1 (#9347) @renovate
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.1.0 (#9348) @renovate
+* Add a Banner for Zionomicon Announcement (#9338) @khajavi
+* chore(deps): update dependency prettier to v3.4.0 (#9343) @renovate
+* chore(deps): update dependency cytoscape to v3.30.4 (#9342) @renovate
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.2 (#9335) @renovate
+* fix(deps): update dependency @zio.dev/zio-quill to v4.8.5 (#9334) @renovate
+* Introducing ZIO Guru on Gurubase.io (#9314) @kursataktas
+* chore(deps): update dependency prettier-plugin-tailwindcss to v0.6.9 (#9315) @renovate
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc35 (#9318) @renovate-bot 
+
+## New Contributors
+* @clarzte made their first contribution in https://github.com/zio/zio/pull/9325
+* @kursataktas made their first contribution in https://github.com/zio/zio/pull/9314
+* @tmccombs made their first contribution in https://github.com/zio/zio/pull/9131
+* @arainko made their first contribution in https://github.com/zio/zio/pull/9351
+* @digy made their first contribution in https://github.com/zio/zio/pull/9322
+* @neo773 made their first contribution in https://github.com/zio/zio/pull/9165
+* @plokhotnyuk made their first contribution in https://github.com/zio/zio/pull/9433
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.13...v2.1.14</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.13 (2024-11-20)</h2>
+      <pre>## Highlights
+This seemingly small release brings a number of new features and important bugfixes:
+1. Adds support for the Junit 5 engine via the new `zio-test-junit-engine` module #9214.
+2. [ScalaJS] Adds support for accessing environment variables via `zio.System` in JS engines that support it (e.g., NodeJS) #9282.
+3. Fixes a bug to an issue some users faced with `ZStream.mapZIOPar*` methods since v2.1.12 #9312.
+
+As always, this version is fully source and binary compatible with the rest of the v2.x series.
+
+## What's Changed
+* Add junit 5 engine for zio tests. Resolves zio/zio#6724 by @vincent-raman in https://github.com/zio/zio/pull/9214
+* Fix Span Substring Bounds Handling  by @Saturn225 in https://github.com/zio/zio/pull/9285
+* Make environment variables access platform-specific by @mhriemers in https://github.com/zio/zio/pull/9282
+* Allow creation of child fibers within uninterruptible regions on interrupted fibers by @kyri-petrou in https://github.com/zio/zio/pull/9295
+* Ensure that FiberRuntime auto-yields when evaluating `WhileLoop`s by @kyri-petrou in https://github.com/zio/zio/pull/9289
+* Improve subtype global cache performance by @kyri-petrou in https://github.com/zio/zio/pull/9296
+* Fix memory leak in `ZKeydPool#invalidate` by @kyri-petrou in https://github.com/zio/zio/pull/9307
+* Reduce the size of code generated by layer macros by @joroKr21 in https://github.com/zio/zio/pull/9281
+* Fix interruption propagation in `ZChannel#mapOutPar*` methods by @kyri-petrou in https://github.com/zio/zio/pull/9312
+
+## Other changes (CI, dependencies and documentation)
+* Doc: Simplify example by @guizmaii in https://github.com/zio/zio/pull/9287
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc32 by @renovate in https://github.com/zio/zio/pull/9290
+* fix(deps): update dependency postcss to v8.4.48 by @renovate in https://github.com/zio/zio/pull/9292
+* fix(deps): update dependency postcss to v8.4.49 by @renovate in https://github.com/zio/zio/pull/9294
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc33 by @renovate in https://github.com/zio/zio/pull/9293
+* Fix flaky interruption test by @kyri-petrou in https://github.com/zio/zio/pull/9299
+* fix(deps): update dependency @zio.dev/zio-logging to v2.4.0 - autoclosed by @renovate in https://github.com/zio/zio/pull/9298
+* fix(deps): update dependency @zio.dev/zio-kafka to v2.9.0 by @renovate in https://github.com/zio/zio/pull/9301
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc34 by @renovate in https://github.com/zio/zio/pull/9302
+* fix(deps): update dependency tailwindcss to v3.4.15 by @renovate in https://github.com/zio/zio/pull/9305
+* Fix timeouts in ZStream test by @kyri-petrou in https://github.com/zio/zio/pull/9313
+* Fix release CI (#9317) @kyri-petrou
+
+## New Contributors
+* @Saturn225 made their first contribution in https://github.com/zio/zio/pull/9285
+* @mhriemers made their first contribution in https://github.com/zio/zio/pull/9282
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.12...v2.1.13</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.12 (2024-11-07)</h2>
+      <pre>This release brings a couple bug fixes for `STM`, as well as a few optimizations and usability improvements.
+
+## What's Changed
+* Add addLogAnnotation method to Runtime for adding a log annotation to the entire app by @somdoron in https://github.com/zio/zio/pull/9235
+* Add `ZIO.fromNullable` by @kyri-petrou in https://github.com/zio/zio/pull/9250
+* Use reflection to install system signal handlers in JVM applications by @kyri-petrou in https://github.com/zio/zio/pull/9251
+* adds ConfigProvider.fromAppArgs by @somdoron in https://github.com/zio/zio/pull/9242
+* fix pipeline intersperse issue by @paulpdaniels in https://github.com/zio/zio/pull/9253
+* [9102] - add awaiting function to Semaphore by @IgorDorokhov in https://github.com/zio/zio/pull/9212
+* Expose `Fiber.Runtime.UnsafeAPI#interrupt` method by @hearnadam in https://github.com/zio/zio/pull/9246
+* Ensure that transactions containing both reads and writes are consistent by @kyri-petrou in https://github.com/zio/zio/pull/9265
+* optimize fromCompletionStage by @hearnadam in https://github.com/zio/zio/pull/9267
+* Optimise happy path in ZChannel.mapOutZIOPar* by @regiskuckaertz in https://github.com/zio/zio/pull/9123
+* Allow all types of statements within `suiteAll` for Scala 3 by @kyri-petrou in https://github.com/zio/zio/pull/9273
+* Make `TMap#toMap` idempotent by @kyri-petrou in https://github.com/zio/zio/pull/9280
+
+## Other changes (CI, dependencies and documentation)
+* fix(deps): update dependency @zio.dev/zio-profiling to v0.3.2 by @renovate in https://github.com/zio/zio/pull/9238
+* Add `.devcontainer` config by @kyri-petrou in https://github.com/zio/zio/pull/9228
+* fix(deps): update dependency @zio.dev/zio-ftp to v0.4.3 by @renovate in https://github.com/zio/zio/pull/9241
+* fix(deps): update dependency @zio.dev/zio-logging to v2.3.2 by @renovate in https://github.com/zio/zio/pull/9248
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.0 by @renovate in https://github.com/zio/zio/pull/9249
+* Add zio-streams-compress by @erikvanoosten in https://github.com/zio/zio/pull/9252
+* Added zio-cli sample project to sampleprojects by @fancellu in https://github.com/zio/zio/pull/9256
+* Add Kafka BigQuery Express to the sampleprojects by @erikvanoosten in https://github.com/zio/zio/pull/9255
+* fix(deps): update dependency @zio.dev/zio-streams-compress to v0.0.2 by @renovate in https://github.com/zio/zio/pull/9259
+* fix(deps): update dependency @zio.dev/zio-kafka to v2.8.3 by @renovate in https://github.com/zio/zio/pull/9263
+* docs: update quickstarts and tutorials for sbt-revolver plugin added by @varshith257 in https://github.com/zio/zio/pull/9195
+* Update dependencies by @kyri-petrou in https://github.com/zio/zio/pull/9270
+* Fixed typo in zio.md by @gbarrett-makeit in https://github.com/zio/zio/pull/9275
+* Add articles to Resources and sort them by @ghostdogpr in https://github.com/zio/zio/pull/9277
+* Fix Scaladoc for `ZStream.fromOutputStreamScoped` by @kyri-petrou in https://github.com/zio/zio/pull/9269
+* Doc: Update the Service Pattern doc && Remove the `Accessor Methods` section from it by @guizmaii in https://github.com/zio/zio/pull/9220
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.1 by @renovate in https://github.com/zio/zio/pull/9278</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.11 (2024-10-10)</h2>
+      <pre>We found a regression in 2.1.10 causing a runtime exception in some cases when using ZIO environment and layers, so here's a release to fix that.
+
+## What's Changed
+* Fix `IndexOutOfBoundsException` when using `reverseIterator` on `UpdateOrderLinkedMap` by @kyri-petrou in https://github.com/zio/zio/pull/9239</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.10 (2024-10-10)</h2>
+      <pre>This release brings a few important bug fixes related to `ZPool` and `ZSTM` as well as some optimizations. It also fixes a binary incompatibility that caused runtime errors when using an older version ZIO Streams together with ZIO 2.1.9.
+
+### Important note about ZPool changes
+
+There are 2 fixes / changes to ZPool that might affect the behaviour of an application so users are advised to revise the following in cases of unexpected behaviour after upgrading to ZIO 2.1.10+.
+
+#### Eager / strict initialization of ZPool's resources
+
+In previous ZIO versions, the initialization of ZPool resources was done lazily in a daemon fiber. e.g., this code would previously print the message, but will now "hang" awaiting for the pool to be initialized to its full size:
+
+```scala
+ZPool.make(ZIO.never, 10) *> ZIO.debug("Pool initialized")
+```
+
+We believe that this change makes the behaviour of ZPool more predictable (and referentially transparent!) as previously there were no guarantees that the ZPool resources would be initialized during the creation of the pool. However, this might result in the initialization of the pool hanging in cases that the acquisition of the resources itself hangs. Therefore users are advised to consider adding timeouts to the resource initialization effect.
+
+#### Strict finalization of ZPool resources
+
+In previous versions, it was possible for the ZPool finalizers to be interrupted, which would lead to potential leak of resources (see [this issue](https://github.com/zio/zio/issues/9152) for more info). Starting with ZIO 2.1.10+, closing a ZPool requires all of the resource finalizers to finish first. As with (1), this might lead to some unexpected behaviour if the finalization of a resource hangs indefinitely, so users are advised to add timeouts to the finalizers of resources used with ZPool.
+
+## What's Changed
+* Use "unsafe" methods in `Ref.Atomic` by @kyri-petrou in https://github.com/zio/zio/pull/9155
+* Fix ZPool finalizers not running when resource acquisition fails or is interrupted by @kyri-petrou in https://github.com/zio/zio/pull/9163
+* Initialize ZPool to its full size in the calling fiber by @kyri-petrou in https://github.com/zio/zio/pull/9164
+* Install signal handlers when running test suites by @kyri-petrou in https://github.com/zio/zio/pull/9166
+* Ensure ZPool finalizers are run if initialization is interrupted by @kyri-petrou in https://github.com/zio/zio/pull/9174
+* Ensure all FiberId recursive methods are stack safe by @guymers in https://github.com/zio/zio/pull/9173
+* Inherit child fibers created by merged streams by @kyri-petrou in https://github.com/zio/zio/pull/9180
+* Fix assert macro throwing missing method error in Scala 3 by @kyri-petrou in https://github.com/zio/zio/pull/9183
+* Add mapErrorZIO to streams by @cipriansofronia in https://github.com/zio/zio/pull/9187
+* Use reference equality in `ZEnvironment` when applying optimizations by @kyri-petrou in https://github.com/zio/zio/pull/9207
+* Fix binary incompatibility issue in zio v2.1.7+ by @kyri-petrou in https://github.com/zio/zio/pull/9223
+* Attempt to obtain new locks without retrying transaction in ZSTM by @kyri-petrou in https://github.com/zio/zio/pull/9221
+
+## Other changes (CI, dependencies and documentation)
+* chore(deps): update dependency @types/react to v18.3.5 by @renovate in https://github.com/zio/zio/pull/9154
+* fix(deps): update dependency postcss to v8.4.42 by @renovate in https://github.com/zio/zio/pull/9156
+* Restyling welcome page by @SvMak in https://github.com/zio/zio/pull/9112
+* fix(deps): update dependency postcss to v8.4.43 by @renovate in https://github.com/zio/zio/pull/9158
+* fix(deps): update dependency postcss to v8.4.44 by @renovate in https://github.com/zio/zio/pull/9159
+* Add zio-apache-parquet to ecosystem community docs by @grouzen in https://github.com/zio/zio/pull/9157
+* fix(deps): update dependency postcss to v8.4.45 by @renovate in https://github.com/zio/zio/pull/9169
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc31 by @renovate in https://github.com/zio/zio/pull/9171
+* Set JDK release version to 11 by @kyri-petrou in https://github.com/zio/zio/pull/9177
+* fix(deps): update dependency @zio.dev/zio-http to v3.0.0 by @renovate in https://github.com/zio/zio/pull/9190
+* Fix logo resolution by @SvMak in https://github.com/zio/zio/pull/9188
+* fix(deps): update dependency postcss to v8.4.47 by @renovate in https://github.com/zio/zio/pull/9196
+* fix(deps): update dependency tailwindcss to v3.4.11 by @renovate in https://github.com/zio/zio/pull/9192
+* fix(deps): update dependency @zio.dev/zio-query to v0.7.6 by @renovate in https://github.com/zio/zio/pull/9197
+* chore(deps): update dependency @types/react to v18.3.6 by @renovate in https://github.com/zio/zio/pull/9198
+* Documentation: Fix The Link to OpenTracing Documentation Page by @khajavi in https://github.com/zio/zio/pull/9161
+* chore(deps): update dependency @types/react to v18.3.7 by @renovate in https://github.com/zio/zio/pull/9199
+* fix(deps): update dependency @zio.dev/zio-http to v3.0.1 by @renovate in https://github.com/zio/zio/pull/9200
+* fix(deps): update dependency @zio.dev/zio-bson to v1.0.7 by @renovate in https://github.com/zio/zio/pull/9201
+* fix(deps): update dependency @zio.dev/zio-schema to v1.5.0 by @renovate in https://github.com/zio/zio/pull/9204
+* fix(deps): update dependency tailwindcss to v3.4.12 by @renovate in https://github.com/zio/zio/pull/9202
+* chore(deps): update dependency @types/react to v18.3.8 by @renovate in https://github.com/zio/zio/pull/9206
+* Remove mention of discontinued tools by @namingbe in https://github.com/zio/zio/pull/9213
+* Typos in zpipeline.md by @dubinsky in https://github.com/zio/zio/pull/9219
+* fix(deps): update dependency tailwindcss to v3.4.13 by @renovate in https://github.com/zio/zio/pull/9216
+* chore(deps): update dependency prettier-plugin-tailwindcss to v0.6.8 by @renovate in https://github.com/zio/zio/pull/9218
+* chore(deps): update dependency @types/react to v18.3.9 by @renovate in https://github.com/zio/zio/pull/9217
+* Doc: Update info about Java versions supported by @guizmaii in https://github.com/zio/zio/pull/9224
+* chore(deps): update dependency @types/react to v18.3.11 by @renovate in https://github.com/zio/zio/pull/9225
+* Doc: Needs to use serviceWithZIO not serviceWith by @fancellu in https://github.com/zio/zio/pull/9226
+* fix(deps): update dependency @zio.dev/zio-lambda to v1.0.5 by @renovate in https://github.com/zio/zio/pull/9230
+* Fix documentation for TestLens#right by @callado4 in https://github.com/zio/zio/pull/9232</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.9 (2024-08-29)</h2>
+      <pre>After receiving multiple reports of users failing to compile code using `ZLayer` macros with v2.1.8, we decided to temporarily revert https://github.com/zio/zio/pull/9077 until we get to bottom of what's been causing it.
+
+## What's Changed
+* fix(deps): update dependency @zio.dev/zio-query to v0.7.5 by @renovate in https://github.com/zio/zio/pull/9144
+* Update Scala Native to 0.5.5 by @kyri-petrou in https://github.com/zio/zio/pull/9143
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.3 by @renovate in https://github.com/zio/zio/pull/9148
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc30 by @renovate in https://github.com/zio/zio/pull/9150
+* Revert "makeSome refactoring" by @kyri-petrou in https://github.com/zio/zio/pull/9151
+
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.8...v2.1.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.8 (2024-08-24)</h2>
+      <pre>This release brings a re-implemented ZSTM runtime that significantly improves performance under contention, enables multi-threading for Scala Native 0.5.x, squashes some minor bugs, and makes a few things run a little bit faster. And it is fully binary and source-compatible with the rest of 2.x release!
+ 
+## Highlights
+
+### ZSTM performance improvements
+
+The performance of ZSTM under heavy contention has regressed over time due to various bug fixes. In this release, we reimplemented the internal runtime of ZSTM in order to significantly improve its performance under heavy contention (up to 800% improved throughput in some benchmarks!) all while achieving similar or better performance under no contention. For more details check out #9081
+
+### Scala Native multi-threading support
+
+In the previous release, we updated Scala Native to v0.5.x but as we mentioned in the release notes, the ZIO runtime was not yet multi-threading capable. In this release, we threw most of the existing Scala Native code (which was not thread-safe) and changed it to use (mostly) the same code as the JVM artifacts. Users that currently use ZIO with Scala Native 0.5.x must enable multi-threading for Scala Native in their builds by removing `nativeConfig ~= { _.withMultithreading(false) }`.
+
+> [!WARNING]
+> We're aware of an issue when using `zio-test` on MacOS ARM64 when the `debug` compilation mode is used (default).  If you come across any issues, try setting the `mode` to `releaseFast` or `releaseFull` (see [here](https://github.com/zio/zio/blob/9b657286e28ee8effbc9ae6e0c443a02a783c083/project/BuildHelper.scala#L246-L251) for an example)
+
+## What's Changed
+* makeSome refactoring (#9077) @pablf
+* Scala native multi-threading support (#9127) @kyri-petrou
+* Config.Secret's length leak (#9129) @pablf
+* send test finished notification for failing tests (#9139) @vincent-raman
+* Whencasediscardfunctions (#9136) @Petter-K
+* Optimise `Secret` creation from `String` (#9130) @guizmaii
+* Fix Scala Native tests not being run/reported properly (#9126) @kyri-petrou
+* `FiberRuntime` cleanups & micro-optimizations (#9115) @kyri-petrou
+* Prefer `Exit` over `ZIO` in nested effects and other micro-optimizations (#9106) @kyri-petrou
+* Optimize `FiberRef#locally` to restore previous FiberRefs when unmodified (#9105) @kyri-petrou
+* Use an improved eq in `FiberRefs` and add shortcut for `join` (#9100) @kyri-petrou
+* Add TestAspect.checks to allow running aspects within property-based specs (#9076) @mschuwalow
+* Allow `cached` methods to be interrupted (#9068) @guymers
+* Avoid scheduling non-positive sleep timers (#9098) @kyri-petrou
+* Improve `ZSTM`'s performance (#9081) @kyri-petrou
+* Ensure `ZStream` scope is properly closed (#9088) @kyri-petrou
+* fix: restore non-determinism in mapOutZIOParUnordered (#9075) @regiskuckaertz
+* feat: accumulate errors in ZChannel.mapOutZIOPar (#9065) @regiskuckaertz
+* Fix behaviour of `ZEnvironment.empty.get[Any]`  (#9074) @kyri-petrou
+
+## Other changes (CI, dependencies and documentation)
+* Fix checkout on release (#9142) @kyri-petrou
+* STM Documentation: Improve Writing and Fix Grammar Mistakes (#9107) @khajavi
+* fix(deps): update dependency @zio.dev/zio-redis to v1 (#9141) @renovate
+* fix(deps): update dependency @zio.dev/zio-logging to v2.3.1 (#9140) @renovate
+* fix(deps): update dependency @zio.dev/zio-kafka to v2.8.2 (#9137) @renovate
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.0-rc26 (#9134) @renovate
+* chore(deps): update dependency @types/react to v18.3.4 (#9133) @renovate
+* fix(deps): update dependency @zio.dev/zio-kafka to v2.8.1 (#9132) @renovate
+* Fix flaky `ZStream` test (#9121) @kyri-petrou
+* Reduce CI test time & optimize zio-test execution (#9128) @kyri-petrou
+* Add video component (#9111) @SvMak
+* Fix typos and improve English in index.md (#9119) @nedmules-sked
+* Setup improving website (#9110) @SvMak
+* fix(deps): update dependency @zio.dev/zio-schema to v1.4.1 (#9114) @renovate
+* fix(deps): update dependency @zio.dev/zio-schema to v1.4.0 (#9109) @renovate
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc29 (#9108) @renovate
+* Ensure green CI with re-actors/alls-green (#9104) @sideeffffect
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.2 (#9103) @renovate
+* Reduce number of CI workflows (#9096) @kyri-petrou
+* fix(deps): update dependency @zio.dev/zio-optics to v0.2.2 (#9099) @renovate
+* fix(deps): update dependency @zio.dev/zio-constraintless to v0.3.3 (#9097) @renovate
+* Fix flaky `WeakConcurrentBagSpec` test (#9095) @kyri-petrou
+* Fix TestClock (#9080) @asr2003
+* add new ZIO template project to the list of template projects (#9094) @lachezar
+* Fix flaky `ZLayer` test (#9092) @kyri-petrou
+* chore(deps): update dependency cytoscape to v3.30.2 (#9085) @renovate
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc28 (#9083) @renovate
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.0-rc25 (#9090) @renovate
+* fix(deps): update dependency postcss to v8.4.41 (#9078) @renovate
+* Typo in stream reference (#9064) @SADmitry
+* docs: add clarification note on initialization of test bootstrap layers (#9057) @varshith257
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.7 (2024-08-05)</h2>
+      <pre>This release adds support for Scala Native 0.5, contains various bug fixes as well as performance optimizations.
+
+## Highlights
+
+### Scala Native 0.5 support
+
+This version of ZIO is released using Scala Native 0.5, which means that libraries that depend on ZIO can now also update their Scala Native version. Special thanks to @sideeffffect for his work on this 🎉 
+
+> [!WARNING]
+> At the moment, ZIO is not yet fully compatible for use with Scala Native's multi-threading feature. We are planning on [adding support for it soon](https://github.com/zio/zio/issues/9056), but until then, users are encouraged to disable it using `nativeConfig ~= { _.withMultithreading(false) }` in their project config.
+
+### Fix memory leaks in parallel `ZStream` processing methods
+
+In v2.1.3 we did a number of optimizations to parallel ZStream processing. Unfortunately, since then we received a number of reports where users experienced memory leaks, which we managed to trace back to these optimizations. While we managed to patch a number of these issues in subsequent releases, we weren't able to fully eliminate them and therefor we made the decision to temporarily revert them back to their pre-v2.1.3 implementation. We are planning be revisiting optimizations for these methods in a future release but this time ensuring that they don't lead to memory leaks for edge-case usage patterns.
+
+> [!TIP]  
+> Based on the reports we received, it appears that many users use unbounded parallelism (i.e., `n = Int.MaxValue`) in `ZStream`'s `*Par` methods. To improve performance of these methods, we highly encourage users the following:
+> * Use a finite parallelism limit for ZStream's`*Par` methods. The limit needs to make sense for the workflow and system's resources. If unsure on what value to use, you can use these values as a vague starting point:
+> i. CPU-bounded workflow: `n = nCPU`
+> ii. IO-bounded: workflow `n = nCPU x ~8-16`
+> * If overriding the buffer size, use a relatively small value (i.e., `<= 16`)
+> * Use a power of 2 value for both parallelism and buffer sizes
+
+## What's Changed
+* Avoid usage of `equals` method when updating/joining `FiberRefs` (#8989) @kyri-petrou
+* ZSink - collectAllToMapValue{N} (#9062) @Petter-K
+* Avoid additional `Function1` allocation when using `ZIO.succeed` in Scala 3 (#9047) @kyri-petrou
+* Log a warning when a Gen stream doesn't generate any values (#9069) @kyri-petrou
+* fix: avoid unbounded buffer in mapOutZIOPar (#9061) @regiskuckaertz
+* Fix `ClassCastException` when concatenating chunks of different primitives (#9060) @kyri-petrou
+* fix: revert mapZIOPar, mapOutZIOParUnordered and mergeAllWith (#9054) @regiskuckaertz
+* Add implicit conversions between scala and java numeric types (#8939) @pablf
+* Optimizations of future interop methods (#9045) @kyri-petrou
+* Improve performance of updating interruption by 1 order of magnitude (#9033) @kyri-petrou
+* Scala Native 0.5.x (#8840) @sideeffffect
+* Ensure bounded queue items are correctly ordered (#9044) @kyri-petrou
+* Avoid unnecessary parking/unparking of threads when yielding (#9026) @kyri-petrou
+* Ensure UnsafeAPI performs stateful updates within fiber (#9040) (#9042) @steinybot
+* Use fresh names for compose helper method in layer macro (#9037) @joroKr21
+* core: use reference equality for null checks where possible (#9038) @hearnadam
+* Optimize failures, retries and stack trace generation (#9020) @kyri-petrou
+* Zio-9012 async resumption (#9016) @eyalfa
+* Optimize `ZIO.foreach` methods (#9005) @kyri-petrou
+* Make `ZIO.fromAutoCloseable` safer (#9008) @guizmaii
+
+## Other changes (CI, dependencies and documentation)
+* Increase timeout for flaky ZStream test (#9071) @kyri-petrou
+* Add exclusion for Scala 3 (#9070) @kyri-petrou
+* Add TestAspect.withLiveClock to the docs (#8973) @varshith257
+* docs: sharing the result of an effectful value between tests (#9063) @nartamonov
+* Documentation: Remove Extra Empty Lines (#9059) @khajavi
+* fix(deps): update dependency autoprefixer to v10.4.20 (#9067) @renovate
+* fix: untie streams-test from core-test (#9066) @regiskuckaertz
+* Dependency and doc updates (#9051) @kyri-petrou
+* Run mima checks against latest stable version (#9055) @kyri-petrou
+* Additional tests for queues with bounded parallelism (#9053) @kyri-petrou
+* fix(deps): update dependency postcss to v8.4.40 (#9039) @renovate
+* chore(deps): update dependency cytoscape to v3.30.1 - autoclosed (#9024) @renovate
+* chore(deps): update dependency typescript to v5.5.4 (#9035) @renovate
+* Don't run side effects in STM docs (#9050) @ghostdogpr
+* Remove unused `AsyncJump` (#9048) @kyri-petrou
+* Add `.git-blame-ignore-revs` file (#9034) @kyri-petrou
+* Add formatter for Scala 3 files (#9032) @kyri-petrou
+* Remove some sbt warnings (#9029) @guizmaii
+* Fix Scala 2.12 release (#9027) @kyri-petrou
+* Improve compile-time optimizations (#9021) @kyri-petrou
+* Update v2 version on website (#9022) @kyri-petrou
+* Skip compilation of `scalafix` modules via IntelliJ (#9017) @kyri-petrou
+* fix(deps): update dependency @zio.dev/zio-schema to v1.3.0 (#9014) @renovate
+* fix(deps): update dependency @zio.dev/zio-query to v0.7.4 (#9009) @renovate
+* fix(deps): update dependency @zio.dev/zio-kafka to v2.8.0 (#9010) @renovate
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.6 (2024-07-10)</h2>
+      <pre>This minor release contains a few important bug fixes and optimizations to improve performance. The most notable fix was done in #8997 which fixed a potential memory leak when using `ZStream#mapZIOParUnordered`.
+
+## What's Changed
+* Avoid forking in `zipWithPar` when one of the effects is an `Exit.Success` (#8999) @kyri-petrou
+* Optimize various ZIO methods to reduce allocations and `flatMaps` (#8990) @kyri-petrou
+* fix ZStream#mapZIOParUnordered memory leak (#8997) @myazinn
+* Improved rechunker for large chunks (#8991) @davidlar
+* Fix unused warning in `ZLayer#provide` macro for Scala 2 (#8994) @kyri-petrou
+* Use a `ConcurrentHashMap` as a cache in `ZEnvironment` (#8992) @kyri-petrou
+* Optimize `FiberRef#locally` (#8988) @kyri-petrou
+* Avoid unnecessary `flatMap`s in different ZIO methods (#8984) @kyri-petrou
+* Disable `FiberRuntime` assertions for release versions (#8980) @kyri-petrou
+* Improve `ZLayer.derive` and allow Tags to be derived via `derives` keyword for Scala 3 (#8975) @kyri-petrou
+
+## Other changes (CI, dependencies and documentation)
+* Fix `-Xelide-below` flag for Scala 2.12 (#9004) @kyri-petrou
+* Reduce Scala Native CI time to 13 mins (down from 25) (#9000) @kyri-petrou
+* fix(deps): update dependency @zio.dev/zio-query to v0.7.3 (#8985) @renovate
+* chore(deps): update dependency typescript to v5.5.3 (#8987) @renovate
+* fix(deps): update dependency postcss to v8.4.39 (#8981) @renovate
+* chore(deps): update dependency cytoscape to v3.30.0 (#8978) @renovate
+* fix(deps): update dependency @zio.dev/zio-schema to v1.2.2 (#8979) @renovate
+* fix(deps): update dependency @zio.dev/zio-http to v3.0.0-rc9 (#8972) @renovate</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.5 (2024-06-28)</h2>
+      <pre>This minor release contains a bug fix and a few improvements. The most meaningful improvement is that we now try to detect when an asynchronous effect is run from inside another ZIO effect via `Runtime.unsafe.run` (which is an anti-pattern! but happens in the wild) and move it automatically to the blocking threadpool to prevent deadlocks.
+
+## What's Changed
+* Cleanup `submit` and `submitAndYield` methods in `ZScheduler` by @kyri-petrou in https://github.com/zio/zio/pull/8957
+* Avoid deadlocks when a Fiber is unsafely running asynchronous effects by @kyri-petrou in https://github.com/zio/zio/pull/8955
+* Prefer `Exit.succeed` over `ZIO.succeed` for pure functions by @kyri-petrou in https://github.com/zio/zio/pull/8961
+* Add `Duration#asFiniteDuration` by @Adriani277 @asr2003 @ghostdogpr in https://github.com/zio/zio/pull/8960 https://github.com/zio/zio/pull/8962 https://github.com/zio/zio/pull/8967
+* Fixed defect in accessing environment when using `ZPipeline.fromFunction` by @eyalfa in https://github.com/zio/zio/pull/8966
+* Use a mutable `HashMap` as a cache in `ZEnvironment` by @kyri-petrou in https://github.com/zio/zio/pull/8974
+
+## Other changes (CI, dependencies and documentation)
+* fix(deps): update dependency @zio.dev/zio-sbt to v0.4.0-alpha.28 by @renovate in https://github.com/zio/zio/pull/8969
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.1 by @renovate in https://github.com/zio/zio/pull/8977
+* fix(deps): update dependency @zio.dev/zio-query to v0.7.2 by @renovate in https://github.com/zio/zio/pull/8968
+
+## New Contributors
+* @asr2003 made their first contribution in https://github.com/zio/zio/pull/8962
+
+**Full Changelog**: https://github.com/zio/zio/compare/2.1.4...v2.1.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.4 (2024-06-20)</h2>
+      <pre>This minor release contains 2 important bug fixes to `ZStream` parallel operations and `ZLayer` derivation. It also contains some performance improvements to `ZStream` and the new methods to `ZIO` that improve UX.
+
+## What's Changed
+* Provide `trace` explicitly in `ZLayer#provide` macros by @kyri-petrou in https://github.com/zio/zio/pull/8938
+* Lower upper bound of zio_fiber_lifetimes buckets by @andrzejressel in https://github.com/zio/zio/pull/8937
+* Improve rechunk performance by @paulpdaniels in https://github.com/zio/zio/pull/8928
+* Micro-optimize `ZIO.environment` by @kyri-petrou in https://github.com/zio/zio/pull/8943
+* Enrich `Promise#unsafe` API by @kyri-petrou in https://github.com/zio/zio/pull/8942
+* Add `xDiscard` variant of `ZIO.when` and `ZIO.unless` by @kyri-petrou in https://github.com/zio/zio/pull/8944
+* Changing order of `orElse` in `TestArrow` method `meta`  by @pablf in https://github.com/zio/zio/pull/8941
+* Optimize ZLayer via macro construction by @guymers in https://github.com/zio/zio/pull/8950
+* Fix premature interrupt of debounce by @paulpdaniels in https://github.com/zio/zio/pull/8947
+* Zio8935  unbounded map zio par xxx  fixes by @eyalfa in https://github.com/zio/zio/pull/8954
+* Fix debug layer regression, add a test by @joroKr21 in https://github.com/zio/zio/pull/8953
+
+## Other changes (CI, dependencies and documentation)
+* fix(deps): update dependency @zio.dev/zio-kafka to v2.7.5 by @renovate in https://github.com/zio/zio/pull/8929
+* Add test for mapZIOPar and mapZIOParUnordered for parallelism respected by @narma in https://github.com/zio/zio/pull/8940
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.3...2.1.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.3 (2024-06-12)</h2>
+      <pre>This minor release contains an important fix to a regression introduced in v2.1.2, where `ZEnvironment#prune` throws an error in cases where a class implements multiple services. This regression is most likely to be observed during `ZLayer` composition during app initialization, but users that have updated to v2.1.2 are still advised to update to v2.1.3 as soon as possible.
+
+In addition, this release also contains performance improvements to `ZStream` and `Chunk`, as well as some minor bug fixes.
+
+## What's Changed
+* Fix pruning on union types when a service implements multiple services (#8934) @kyri-petrou
+* Reduce generated code size for ZLayer.make on Scala 3 (#8905) @joroKr21
+* Reimplement someOrElse with better type inference (#8920) @notxcain
+* Add support for comparing related types in assertTrue in Scala 2 (#8923) @andrzejressel
+* Handle stream completion gracefully for timeout APIs (#8852) @kpritam
+* revisit Zstream.mapZIOPar and Zstream.mapZIOParUnordered optimization (#8908) @eyalfa
+* Fix Tag support for generic type arguments (#8883) @andrzejressel
+* Improve performance of `Chunk#map` (#8904) @kyri-petrou
+
+## Other changes (CI, dependencies and documentation)
+* Fix dependency in the build a restful webservice tutorial (#8930) @basdgrt
+* Added assembly support for benchmarks (#8932) @ajaychandran
+* Add Samsung Food to the list of adopters (#8925) @notxcain
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.0-rc24 (#8921) @renovate
+* Stream merge bench (#8919) @eyalfa
+* fix(deps): update dependency @zio.dev/zio-json to v0.7.0 (#8918) @renovate</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.2 (2024-06-04)</h2>
+      <pre>This minor release contains various bug fixes, performance improvements and quality of life improvements.
+
+One notable addition is a new runtime flag called `EagerShiftBack` to force shifting back to the default executor immediately after running a blocking computation (currently it stays on the blocking threadpool until the next yield or the fiber terminates). It is disabled by default so there is no change in behavior compared to older versions.
+
+## What's Changed
+* Extend `ControlThrowable` on control flow exceptions by @ghostdogpr in https://github.com/zio/zio/pull/8849
+* Add `ZIO.config[A]` API to load config using implicit by @kpritam in https://github.com/zio/zio/pull/8836
+* Optimize foreachPar when using bounded parallelism by @ghostdogpr in https://github.com/zio/zio/pull/8847
+* optimize ZStream's mapZIOPar and mapZIOParUnordered by @eyalfa in https://github.com/zio/zio/pull/8819
+* fix: implementation leak in pipeToOrFail by @regiskuckaertz in https://github.com/zio/zio/pull/8860
+* Improve environment performance by @kyri-petrou in https://github.com/zio/zio/pull/8846
+* avoid allocating Fiber.Status to process FiberMessage.Stateful by @fwbrasil in https://github.com/zio/zio/pull/8865
+* Allow "unsafe" creation of a `Queue` by @kyri-petrou in https://github.com/zio/zio/pull/8871
+* Maintain freshness of the ZLayer by @kpritam in https://github.com/zio/zio/pull/8870
+* Ignore name mapping for keys of maps while reading configs (#8740) by @987Nabil in https://github.com/zio/zio/pull/8878
+* Add runtime flag to enable / disable execution shift deferring by @kyri-petrou in https://github.com/zio/zio/pull/8854
+* Repurpose `CooperativeYielding` flag to determine `FiberRuntime`  should auto-yield by @kyri-petrou in https://github.com/zio/zio/pull/8884
+* add: missing `TestLens#cause` by @hearnadam in https://github.com/zio/zio/pull/8876
+* Fix ZPool hangs during parallel item acquisition after invalidation (… by @daemas in https://github.com/zio/zio/pull/8833
+* ZStream scalajs readFile by @kaplan-shaked in https://github.com/zio/zio/pull/8853
+* Avoid allocation on ZIO#unit by @kyri-petrou in https://github.com/zio/zio/pull/8888
+* Micro-optimize `ZIO.attempt` and `ZIO.suspend` by @kyri-petrou in https://github.com/zio/zio/pull/8887
+* Fix STM retry/orElse semantics by @BijenderKumar1 in https://github.com/zio/zio/pull/8845
+* optimize Stream flatMapPar  by @eyalfa in https://github.com/zio/zio/pull/8863
+* Add test lenses for Try by @Roman-Statsura in https://github.com/zio/zio/pull/8891
+* Add working knownSize implementation to ChunkBuilder instances (Scala 2.13+) by @seakayone in https://github.com/zio/zio/pull/8892
+* Avoid allocation in `ZEnvironment#get` by @kyri-petrou in https://github.com/zio/zio/pull/8906
+* Allow removal of metrics by @calvinlfer in https://github.com/zio/zio/pull/8900
+* Make layer's generated code deterministic by @reimai in https://github.com/zio/zio/pull/8914
+* Change ZTestLogger.default layer return type to Unit by @andrzejressel in https://github.com/zio/zio/pull/8902
+
+## Other changes (CI, dependencies and documentation)
+* chore(deps): update react monorepo by @renovate in https://github.com/zio/zio/pull/8842
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc26 by @renovate in https://github.com/zio/zio/pull/8851
+* Documentation For Log Annotation Mechanisms in ZIO by @khajavi in https://github.com/zio/zio/pull/8857
+* Documentation of ZKeyedPool by @khajavi in https://github.com/zio/zio/pull/8856
+* Fix Scala Native build by @kyri-petrou in https://github.com/zio/zio/pull/8864
+* fix(deps): update dependency @zio.dev/zio-http to v3.0.0-rc7 by @renovate in https://github.com/zio/zio/pull/8862
+* fix(deps): update dependency @zio.dev/zio-logging to v2.2.4 by @renovate in https://github.com/zio/zio/pull/8859
+* custom executor benchmark by @fwbrasil in https://github.com/zio/zio/pull/8869
+* Improve ZIO Test Assertion Documentation by @khajavi in https://github.com/zio/zio/pull/8868
+* Highlighted Projects by @khajavi in https://github.com/zio/zio/pull/8881
+* chore(deps): update dependency @types/react to v18.3.3 by @renovate in https://github.com/zio/zio/pull/8896
+* Remove Quill for the "community projects" page, as it's now an official one by @guizmaii in https://github.com/zio/zio/pull/8898
+* fix(deps): update dependency @zio.dev/zio-logging to v2.3.0 by @renovate in https://github.com/zio/zio/pull/8911
+* fix(deps): update dependency @zio.dev/zio-http to v3.0.0-rc8 by @renovate in https://github.com/zio/zio/pull/8910
+* fix(deps): update dependency @zio.dev/zio-sbt to v0.4.0-alpha.27 by @renovate in https://github.com/zio/zio/pull/8909
+* Rename file to match class name by @ajaychandran in https://github.com/zio/zio/pull/8913
+* Add zio-kafka and zio-prelude to the Highlights Projects by @guizmaii in https://github.com/zio/zio/pull/8897
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc27 by @renovate in https://github.com/zio/zio/pull/8915
+* Attempt at fixing random ZLayer compiler bug by @kyri-petrou in https://github.com/zio/zio/pull/8917
+* Fix flaky test in ReentrantLockSpec by @kyri-petrou in https://github.com/zio/zio/pull/8916
+
+## New Contributors
+* @kpritam made their first contribution in https://github.com/zio/zio/pull/8836
+* @fwbrasil made their first contribution in https://github.com/zio/zio/pull/8865
+* @daemas made their first contribution in https://github.com/zio/zio/pull/8833
+* @BijenderKumar1 made their first contribution in https://github.com/zio/zio/pull/8845
+* @seakayone made their first contribution in https://github.com/zio/zio/pull/8892
+* @reimai made their first contribution in https://github.com/zio/zio/pull/8914
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.1...v2.1.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.1 (2024-05-11)</h2>
+      <pre>We found a couple bugs in 2.1.0 so this we decided to release a patch version quickly:
+- An application using ZIO metrics would hang forever when receiving the termination signal after interrupting all other fibers. This is because `ScopedRef` now runs acquisition in an uninterruptibe region. You might want to be careful if you use `ZLayer.reloadable` and its variants: fibers forked in those layers are need to be marked as `interruptible` explicitly.
+- ZIO test assertions were broken on Scala.js with Scala 2.12 because of unsupported reflection usage.
+
+## What's Changed
+* Add a TestAspect to run tests in the blocking threadpool by @kyri-petrou in https://github.com/zio/zio/pull/8835
+* Fix metrics causing the application to hang on termination by @ghostdogpr in https://github.com/zio/zio/pull/8837
+* Don't use Java reflection for ScalaJS / Native by @kyri-petrou in https://github.com/zio/zio/pull/8841
+
+## Other changes (CI, dependencies and documentation)
+* Fix Versioning On Documentation by @khajavi in https://github.com/zio/zio/pull/8839
+* Added Scala3 + Prometheus + OpenTelemetry tracing example by @lewapek in https://github.com/zio/zio/pull/8831
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.0...v2.1.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.0 (2024-05-09)</h2>
+      <pre>This version brings a lot of performance improvements in the fiber runtime as well as the scheduler. It is fully binary compatible with the 2.0.x branch with the exception of some internal classes that shouldn't be used anywhere else (we tested a wide range of the library ecosystem without issues).
+
+An important change is that we disabled auto-blocking detection by default because it could cause some performance degradation in some cases. Better heuristics might be introduced in the future, but in the meantime you can enable it by using the `Runtime.enableAutoBlockingExecutor` aspect. We also added an optional executor based on Loom that you can use if your Java version is 21 or higher with the `Runtime.enableLoomBasedExecutor` aspect. Which one is better may vary based on your use case so we encourage you to test and measure it.
+
+If you use sttp v3 and Scala 3, you might run into a compile error when trying to provide or access `SttpClient` from/to your environment. This is because since https://github.com/zio/zio/pull/8612 we don't allow materializing tags for intersection types in covariant position and sttp does exactly that: `type SttpClient = SttpBackend[Task, ZioStreams with WebSockets]`. Using `SttpBackend[Task, Any]` or only one of `ZioStreams`/`WebSockets` solves the issue.
+
+## What's Changed (since 2.1.0-RC5)
+* Improve throughput of `ZIO#fork` by 300% by @kyri-petrou in https://github.com/zio/zio/pull/8814
+* Use `add` instead of `union` when extending a Scope by @kyri-petrou in https://github.com/zio/zio/pull/8823
+* Improve performance of `foreachPar` et.al. by @kyri-petrou in https://github.com/zio/zio/pull/8816
+
+## What's Changed (since 2.0.22)
+* Race Interruptibly In Channel.mergeAllWith by @adamgfraser in https://github.com/zio/zio/pull/8600
+* Return CompletableFuture Immediately by @adamgfraser in https://github.com/zio/zio/pull/8605
+* Add `asBase64String` to `Chunk` by @987Nabil in https://github.com/zio/zio/pull/8606
+* add Config methods for NonEmptyChunk by @mberndt123 in https://github.com/zio/zio/pull/8607
+* Implement NonEmptyChunk#groupBy and NonEmptyChunk#groupMap by @adamgfraser in https://github.com/zio/zio/pull/8608
+* [Scala 3] Prevent Tag materialization for intersection types in covariant position by @joroKr21 in https://github.com/zio/zio/pull/8612
+* Implement ZPipeline#dimap by @adamgfraser in https://github.com/zio/zio/pull/8618
+* Implement ZStream#takeWhileZIO by @adamgfraser in https://github.com/zio/zio/pull/8623
+* Too big zio-test output fix by @urbit-pilled in https://github.com/zio/zio/pull/8614
+* ZIO Test: Convert Rendering Failures to Test Failures by @adamgfraser in https://github.com/zio/zio/pull/8626
+* Fix sequence config with shorter one issue by @kyri-petrou in https://github.com/zio/zio/pull/8624
+* Indicate the true position of assertTrue arguments by @joroKr21 in https://github.com/zio/zio/pull/8642
+* Execute Acquire in ScopedRef Uninterruptibly by @adamgfraser in https://github.com/zio/zio/pull/8638
+* Propagate Regional Tags in Aspects Derived from Metrics by @adamgfraser in https://github.com/zio/zio/pull/8656
+* Allow selecting test cases via `TestSelector` by @Duhemm in https://github.com/zio/zio/pull/8633
+* support ZIO.readFile scala.js by @kaplan-shaked in https://github.com/zio/zio/pull/8632
+* `FiberRuntime` optimizations by @kyri-petrou in https://github.com/zio/zio/pull/8671
+* Implement ZStream.fromTPriorityQueue by @adamgfraser in https://github.com/zio/zio/pull/8676
+* fix: replace dashes in ConfigProvider.envProvider paths by @ThijsBroersen in https://github.com/zio/zio/pull/8680
+* Compile contains in assertTrue tests. by @pablf in https://github.com/zio/zio/pull/8681
+* Allowing comparisons between different types inside assertTrue by @pablf in https://github.com/zio/zio/pull/8684
+* Detect defects in JUnit tests by @pablf in https://github.com/zio/zio/pull/8688
+* Pass deprecated annotation to accessors by @pablf in https://github.com/zio/zio/pull/8689
+* Report the current fiber in `Exception in thread "zio-fiber-X"` instead of the interruptor fiber by @neko-kai in https://github.com/zio/zio/pull/8687
+* Avoid allocation in ZEnvironment.get [series/2.x] by @ghostdogpr in https://github.com/zio/zio/pull/8713
+* Optimize fiber id and executor access [series/2.x] by @ghostdogpr in https://github.com/zio/zio/pull/8717
+* Fix ConfigProvider#nested prefix by @wi101 in https://github.com/zio/zio/pull/8714
+* Added correct fiberRef inheritance if use effect with timeout by @Roman-Statsura in https://github.com/zio/zio/pull/8721
+* Use Chunk.single rather than Chunk.apply [series/2.x]  by @ghostdogpr in https://github.com/zio/zio/pull/8719
+* Use the requested strategy in ZStream mergeLeft/mergeRight by @ghostdogpr in https://github.com/zio/zio/pull/8743
+* Remove never used `FiberRuntime.MaxTrampolinesBeforeYield` constant by @guizmaii in https://github.com/zio/zio/pull/8756
+* Optimize `FiberId#isNone` by @guizmaii in https://github.com/zio/zio/pull/8746
+* Optimize `ZIO#absolve` by @kyri-petrou in https://github.com/zio/zio/pull/8759
+* Maintain bin compatibility with `v2.0.x` for methods used in `zio/interop-cats` by @kyri-petrou in https://github.com/zio/zio/pull/8757
+* Fix `Runtime#unsafe.fork` and `Runtime#unsafe.runToFuture` by @kyri-petrou in https://github.com/zio/zio/pull/8752
+* Optimize fork-join performance by @kyri-petrou in https://github.com/zio/zio/pull/8745
+* ZPipeline.fromFunction benchmark and optimization by @eyalfa in https://github.com/zio/zio/pull/8761
+* Revert binary incompatible change on `MutableConcurrentQueue` by @kyri-petrou in https://github.com/zio/zio/pull/8773
+* Allow providing alternative implementations for generating `FiberId`s by @kyri-petrou in https://github.com/zio/zio/pull/8778
+* Maintain backward compatibility of LinkedQueue by @ghostdogpr in https://github.com/zio/zio/pull/8784
+* Improve UX of modifying runtime flags by @kyri-petrou in https://github.com/zio/zio/pull/8774
+* Further optimize ch exec read by @eyalfa in https://github.com/zio/zio/pull/8775
+* Reduce output for huge lists during pretty printing by @andrzejressel in https://github.com/zio/zio/pull/8692
+* Fix awaiting of globally-scoped forked fibers when the app exits by @kyri-petrou in https://github.com/zio/zio/pull/8796
+* Optimizations for FiberRuntime runloop by @kyri-petrou in https://github.com/zio/zio/pull/8800
+* Allow application to exit on normal completion by @kyri-petrou in https://github.com/zio/zio/pull/8811
+
+## Other changes (CI, dependencies and documentation)
+* Update Binary Compatibility Version by @adamgfraser in https://github.com/zio/zio/pull/8601
+* Update scalajs documentation to be in line with latest zio2, scalajs by @jypma in https://github.com/zio/zio/pull/8613
+* Fixed some minor typos by @nedmules-sked in https://github.com/zio/zio/pull/8616
+* ZIO Ecosystem Docusaurus: Automate Project Discovery by @khajavi in https://github.com/zio/zio/pull/8641
+* ZIO Ecosystem Contribution Guide by @khajavi in https://github.com/zio/zio/pull/8640
+* Add Fhir Indexer to The sidebars.js File by @khajavi in https://github.com/zio/zio/pull/8639
+* Add zio nebula graph to sidebar by @jxnu-liguobin in https://github.com/zio/zio/pull/8622
+* zio-logging 2.2.0 website by @justcoon in https://github.com/zio/zio/pull/8645
+* Update @zio.dev/zio-bson docs to 1.0.6 by @github-actions in https://github.com/zio/zio/pull/8646
+* Update installation.md by @DoNotWorr in https://github.com/zio/zio/pull/8648
+* Enable Redirection Plugin for ZIO Website #8647 by @sroopsai in https://github.com/zio/zio/pull/8651
+* fix doc typo by @evis in https://github.com/zio/zio/pull/8650
+* chore: removed ZTestFramework by @ezhil56x in https://github.com/zio/zio/pull/8652
+* Update creating-sinks.md by @sangwoo-sean in https://github.com/zio/zio/pull/8658
+* Gitter channel -> Discord Server by @hearnadam in https://github.com/zio/zio/pull/8628
+* Update @zio.dev/zio-prelude docs to 1.0.0-RC23 by @github-actions in https://github.com/zio/zio/pull/8663
+* Refine ZIO Ecosystem Contribution Guide by @khajavi in https://github.com/zio/zio/pull/8643
+* Update @zio.dev/zio-sbt docs to 0.4.0-alpha.23 by @github-actions in https://github.com/zio/zio/pull/8665
+* zio-logging 2.2.1 website by @justcoon in https://github.com/zio/zio/pull/8669
+* Update operations.md by @gcsolaroli in https://github.com/zio/zio/pull/8694
+* Update @zio.dev/zio-sbt docs to 0.4.0-alpha.24 by @github-actions in https://github.com/zio/zio/pull/8685
+* Update @zio.dev/zio-query docs to 0.6.1 by @github-actions in https://github.com/zio/zio/pull/8698
+* fix(deps): update dependency @zio.dev/zio-metrics-connectors to v2.3.1 by @renovate in https://github.com/zio/zio/pull/8727
+* fix(deps): update dependency @zio.dev/zio-profiling to v0.3.0 by @renovate in https://github.com/zio/zio/pull/8728
+* fix(deps): update dependency @zio.dev/zio-schema to v1 by @renovate in https://github.com/zio/zio/pull/8730
+* chore(deps): update dependency typescript to v5.4.4 by @renovate in https://github.com/zio/zio/pull/8725
+* fix(deps): update dependency @zio.dev/zio-http to v3.0.0-rc6 by @renovate in https://github.com/zio/zio/pull/8707
+* fix(deps): update dependency @zio.dev/zio-logging to v2.2.2 by @renovate in https://github.com/zio/zio/pull/8709
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.0-rc21 by @renovate in https://github.com/zio/zio/pull/8722
+* fix(deps): update dependency @zio.dev/zio-kafka to v2.7.4 by @renovate in https://github.com/zio/zio/pull/8708
+* fix(deps): update dependency @zio.dev/zio-quill to v4.8.3 by @renovate in https://github.com/zio/zio/pull/8710
+* Update @zio.dev/zio-kafka docs to 2.7.4 by @github-actions in https://github.com/zio/zio/pull/8691
+* fix(deps): update dependency @zio.dev/zio-config to v4.0.1 by @renovate in https://github.com/zio/zio/pull/8705
+* fix(deps): update dependency @zio.dev/zio-ftp to v0.4.2 by @renovate in https://github.com/zio/zio/pull/8706
+* chore(deps): update dependency typescript to v5.4.5 by @renovate in https://github.com/zio/zio/pull/8733
+* Documentation: Clean up Metrics Page by @khajavi in https://github.com/zio/zio/pull/8736
+* chore(deps): update dependency @types/react to v18.2.77 by @renovate in https://github.com/zio/zio/pull/8737
+* fix(deps): update dependency @zio.dev/zio-query to v0.7.0 by @renovate in https://github.com/zio/zio/pull/8739
+* Make Redirect Plugin Compatible with Docusaurus Core by @khajavi in https://github.com/zio/zio/pull/8738
+* chore(deps): update dependency @types/react to v18.2.79 by @renovate in https://github.com/zio/zio/pull/8750
+* Fix build website CI by @ghostdogpr in https://github.com/zio/zio/pull/8762
+* Update Scala, dependencies and sbt plugins by @guizmaii in https://github.com/zio/zio/pull/8760
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.0-rc22 by @renovate in https://github.com/zio/zio/pull/8776
+* Publish with Java 11 rather than 17 by @ghostdogpr in https://github.com/zio/zio/pull/8780
+* Remove outdated comparison with Future from the tagline by @ghostdogpr in https://github.com/zio/zio/pull/8788
+* Update Mima checked version by @guizmaii in https://github.com/zio/zio/pull/8795
+* Give more memory to build website CI job by @ghostdogpr in https://github.com/zio/zio/pull/8798
+* fix(deps): update dependency @zio.dev/zio-profiling to v0.3.1 by @renovate in https://github.com/zio/zio/pull/8799
+* fix(deps): update dependency @zio.dev/zio-config to v4.0.2 by @renovate in https://github.com/zio/zio/pull/8801
+* Update these docs for 2.0 by @AndyKirsch in https://github.com/zio/zio/pull/8803
+* Fixed #8782 - User has incorrect rights by @Yummy-Yums in https://github.com/zio/zio/pull/8802
+* Fix typo in docs: FiberRef reference page by @DanBondarenko in https://github.com/zio/zio/pull/8809
+* Update ZIO HTTP Related Guides by @khajavi in https://github.com/zio/zio/pull/8806
+* Improve GHA execution time by @kyri-petrou in https://github.com/zio/zio/pull/8810
+* Fix typo in docs: Fiber reference page by @DanBondarenko in https://github.com/zio/zio/pull/8812
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.0-rc23 by @renovate in https://github.com/zio/zio/pull/8815
+* Fix flaky "preserves failures" tests by @kyri-petrou in https://github.com/zio/zio/pull/8817
+* fix(deps): update dependency @zio.dev/zio-prelude to v1.0.0-rc25 by @renovate in https://github.com/zio/zio/pull/8821
+* fix(deps): update dependency @zio.dev/zio-quill to v4.8.4 by @renovate in https://github.com/zio/zio/pull/8824
+* fix(deps): update dependency @zio.dev/zio-sbt to v0.4.0-alpha.26 by @renovate in https://github.com/zio/zio/pull/8825
+* Update `sbt` to 1.10.0 by @kyri-petrou in https://github.com/zio/zio/pull/8826
+* Fix publishing snapshot versions by @kyri-petrou in https://github.com/zio/zio/pull/8830
+
+## New Contributors
+* @nedmules-sked made their first contribution in https://github.com/zio/zio/pull/8616
+* @urbit-pilled made their first contribution in https://github.com/zio/zio/pull/8614
+* @DoNotWorr made their first contribution in https://github.com/zio/zio/pull/8648
+* @sroopsai made their first contribution in https://github.com/zio/zio/pull/8651
+* @ezhil56x made their first contribution in https://github.com/zio/zio/pull/8652
+* @Duhemm made their first contribution in https://github.com/zio/zio/pull/8633
+* @kaplan-shaked made their first contribution in https://github.com/zio/zio/pull/8632
+* @gcsolaroli made their first contribution in https://github.com/zio/zio/pull/8694
+* @Roman-Statsura made their first contribution in https://github.com/zio/zio/pull/8721
+* @AndyKirsch made their first contribution in https://github.com/zio/zio/pull/8803
+* @Yummy-Yums made their first contribution in https://github.com/zio/zio/pull/8802
+* @DanBondarenko made their first contribution in https://github.com/zio/zio/pull/8809
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.22...v2.1.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.0-RC5 (2024-05-02)</h2>
+      <pre>An issue was found in the RC4 so we decided to release a RC5 directly.
+
+## What's Changed
+* Allow application to exit on normal completion by @kyri-petrou in https://github.com/zio/zio/pull/8811
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.0-RC4...v2.1.0-RC5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.0-RC4 (2024-05-02)</h2>
+      <pre>This version contains a few more performance improvements as well as some changes to maintain binary compatibility with ZIO 2.0.x so that there is no need to upgrade all libraries using ZIO. It is expected to be the last release candidate: if no major issues are discovered, we are planning to release a final 2.1.0 in about a week. Please report if you find anything!
+
+EDIT: one issue has been found, will cut a RC5 shortly: https://github.com/zio/zio/pull/8811
+
+## What's Changed
+* Revert binary incompatible change on `MutableConcurrentQueue` by @kyri-petrou in https://github.com/zio/zio/pull/8773
+* Revert changes in #8660 by @kyri-petrou in https://github.com/zio/zio/pull/8777
+* Allow providing alternative implementations for generating `FiberId`s by @kyri-petrou in https://github.com/zio/zio/pull/8778
+* Maintain backward compatibility of LinkedQueue by @ghostdogpr in https://github.com/zio/zio/pull/8784
+* Improve UX of modifying runtime flags by @kyri-petrou in https://github.com/zio/zio/pull/8774
+* Further optimize ch exec read by @eyalfa in https://github.com/zio/zio/pull/8775
+* Reduce output for huge lists during pretty printing by @andrzejressel in https://github.com/zio/zio/pull/8692
+* Fix awaiting of globally-scoped forked fibers when the app exits by @kyri-petrou in https://github.com/zio/zio/pull/8796
+* Optimizations for FiberRuntime runloop by @kyri-petrou in https://github.com/zio/zio/pull/8800
+
+## CI Updates
+* Publish with Java 11 rather than 17 by @ghostdogpr in https://github.com/zio/zio/pull/8780
+* Update Mima checked version by @guizmaii in https://github.com/zio/zio/pull/8795
+* Give more memory to build website CI job by @ghostdogpr in https://github.com/zio/zio/pull/8798
+* Improve GHA execution time by @kyri-petrou in https://github.com/zio/zio/pull/8810
+* Update Scala, dependencies and sbt plugins by @guizmaii in https://github.com/zio/zio/pull/8760
+
+## Documentation Updates
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.0-rc22 by @renovate in https://github.com/zio/zio/pull/8776
+* Remove outdated comparison with Future from the tagline by @ghostdogpr in https://github.com/zio/zio/pull/8788
+* fix(deps): update dependency @zio.dev/zio-profiling to v0.3.1 by @renovate in https://github.com/zio/zio/pull/8799
+* fix(deps): update dependency @zio.dev/zio-config to v4.0.2 by @renovate in https://github.com/zio/zio/pull/8801
+* Fixed #8782 - User has incorrect rights by @Yummy-Yums in https://github.com/zio/zio/pull/8802
+* Fix typo in docs: FiberRef reference page by @DanBondarenko in https://github.com/zio/zio/pull/8809
+* Update these docs for 2.0 by @AndyKirsch in https://github.com/zio/zio/pull/8803
+* Update ZIO HTTP Related Guides by @khajavi in https://github.com/zio/zio/pull/8806
+
+## New Contributors
+* @AndyKirsch made their first contribution in https://github.com/zio/zio/pull/8803
+* @Yummy-Yums made their first contribution in https://github.com/zio/zio/pull/8802
+* @DanBondarenko made their first contribution in https://github.com/zio/zio/pull/8809
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.0-RC3...v2.1.0-RC4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.0-RC3 (2024-04-20)</h2>
+      <pre>We found a regression in [2.1.0-RC2](https://github.com/zio/zio/releases/tag/v2.1.0-RC2) causing compile errors with `ZLayer.make` or `ZIO#provide`. The change causing these errors has been reverted and we're making a RC3 right away so that more people can test the recent runtime improvements.
+
+## What's Changed
+* Revert "Build fresh layers once with ZLayer macro (#8678)" by @ghostdogpr in https://github.com/zio/zio/pull/8768
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1.0-RC2...v2.1.0-RC3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.1.0-RC2 (2024-04-19)</h2>
+      <pre>This release candidate builds on the previous [ZIO runtime system improvements](https://github.com/zio/zio/pull/8582) delivered in the [2.1-RC1](https://github.com/zio/zio/releases/tag/v2.1-RC1) to add [major improvements in forking and joining fibers](https://github.com/zio/zio/pull/8745). Our `ForkJoin` benchmark is about 6x faster than in 2.0.x, and close to 20x faster when you disable `FiberRoots` (which is recommended for high performance).
+
+We've also changed the default behavior to disable auto-blocking detection by default because it could cause some performance degradation in some cases. Better heuristics might be introduced in the future, but in the meantime you can enable it by using the `Runtime.enableAutoBlockingExecutor` aspect. We also added an optional executor based on Loom that you can use if your Java version is 21 or higher. It looks like our default `ZScheduler` is faster when forking a lot of fibers, but depending on your use case, you might want to try this new executor using the `Runtime.enableLoomBasedExecutor` aspect.
+
+Because of the amount of changes, we decided to release a new release candidate first, and hope to get people to test it and report any issue. We will probably do a minor RC3 with a few fixes but are hoping to release 2.1.0 soon. Note that this version is binary compatible with 2.0.x with the exception of a few internal classes that should not be used anywhere else, but if you find any incompatibility issue, please let us know.
+
+Known issues:
+- Regression in ZLayer.make https://github.com/zio/zio/issues/8767
+
+## What's Changed
+* Add TestAspects afterFailure and afterSuccess by @hanneshauer in https://github.com/zio/zio/pull/8588
+* Implement TestAspect.afterAll Success and Failure Variants by @adamgfraser in https://github.com/zio/zio/pull/8590
+* Prevent implicit widening to Double by @erikvanoosten in https://github.com/zio/zio/pull/8594
+* Restore Permits by @adamgfraser in https://github.com/zio/zio/pull/8599
+* Race Interruptibly In Channel.mergeAllWith by @adamgfraser in https://github.com/zio/zio/pull/8600
+* Return CompletableFuture Immediately by @adamgfraser in https://github.com/zio/zio/pull/8605
+* Add `asBase64String` to `Chunk` by @987Nabil in https://github.com/zio/zio/pull/8606
+* add Config methods for NonEmptyChunk by @mberndt123 in https://github.com/zio/zio/pull/8607
+* Implement NonEmptyChunk#groupBy and NonEmptyChunk#groupMap by @adamgfraser in https://github.com/zio/zio/pull/8608
+* [Scala 3] Prevent Tag materialization for intersection types in covariant position by @joroKr21 in https://github.com/zio/zio/pull/8612
+* Implement ZPipeline#dimap by @adamgfraser in https://github.com/zio/zio/pull/8618
+* Implement ZStream#takeWhileZIO by @adamgfraser in https://github.com/zio/zio/pull/8623
+* Too big zio-test output fix by @urbit-pilled in https://github.com/zio/zio/pull/8614
+* ZIO Test: Convert Rendering Failures to Test Failures by @adamgfraser in https://github.com/zio/zio/pull/8626
+* Fix sequence config with shorter one issue by @kyri-petrou in https://github.com/zio/zio/pull/8624
+* Indicate the true position of assertTrue arguments by @joroKr21 in https://github.com/zio/zio/pull/8642
+* Execute Acquire in ScopedRef Uninterruptibly by @adamgfraser in https://github.com/zio/zio/pull/8638
+* Propagate Regional Tags in Aspects Derived from Metrics by @adamgfraser in https://github.com/zio/zio/pull/8656
+* Allow selecting test cases via `TestSelector` by @Duhemm in https://github.com/zio/zio/pull/8633
+* support ZIO.readFile scala.js by @kaplan-shaked in https://github.com/zio/zio/pull/8632
+* Use More Specific Type by @adamgfraser in https://github.com/zio/zio/pull/8660
+* `FiberRuntime` optimizations by @kyri-petrou in https://github.com/zio/zio/pull/8671
+* Implement ZStream.fromTPriorityQueue by @adamgfraser in https://github.com/zio/zio/pull/8676
+* Build fresh layers once with ZLayer macro by @pablf in https://github.com/zio/zio/pull/8678
+* fix: replace dashes in ConfigProvider.envProvider paths by @ThijsBroersen in https://github.com/zio/zio/pull/8680
+* Compile contains in assertTrue tests. by @pablf in https://github.com/zio/zio/pull/8681
+* Allowing comparisons between different types inside assertTrue by @pablf in https://github.com/zio/zio/pull/8684
+* Detect defects in JUnit tests by @pablf in https://github.com/zio/zio/pull/8688
+* Pass deprecated annotation to accessors by @pablf in https://github.com/zio/zio/pull/8689
+* Report the current fiber in `Exception in thread "zio-fiber-X"` instead of the interruptor fiber by @neko-kai in https://github.com/zio/zio/pull/8687
+* Avoid allocation in ZEnvironment.get [series/2.x] by @ghostdogpr in https://github.com/zio/zio/pull/8713
+* Optimize fiber id and executor access [series/2.x] by @ghostdogpr in https://github.com/zio/zio/pull/8717
+* Fix ConfigProvider#nested prefix by @wi101 in https://github.com/zio/zio/pull/8714
+* Added correct fiberRef inheritance if use effect with timeout by @Roman-Statsura in https://github.com/zio/zio/pull/8721
+* Use Chunk.single rather than Chunk.apply [series/2.x]  by @ghostdogpr in https://github.com/zio/zio/pull/8719
+* Use the requested strategy in ZStream mergeLeft/mergeRight by @ghostdogpr in https://github.com/zio/zio/pull/8743
+* Remove never used `FiberRuntime.MaxTrampolinesBeforeYield` constant by @guizmaii in https://github.com/zio/zio/pull/8756
+* Optimize `FiberId#isNone` by @guizmaii in https://github.com/zio/zio/pull/8746
+* Optimize `ZIO#absolve` by @kyri-petrou in https://github.com/zio/zio/pull/8759
+* Maintain bin compatibility with `v2.0.x` for methods used in `zio/interop-cats` by @kyri-petrou in https://github.com/zio/zio/pull/8757
+* Fix `Runtime#unsafe.fork` and `Runtime#unsafe.runToFuture` by @kyri-petrou in https://github.com/zio/zio/pull/8752
+* Optimize fork-join performance by @kyri-petrou in https://github.com/zio/zio/pull/8745
+* ZPipeline.fromFunction benchmark and optimization by @eyalfa in https://github.com/zio/zio/pull/8761
+
+## Documentation Updates
+* Update @zio.dev/zio-telemetry docs to 3.0.0-RC20 by @github-actions in https://github.com/zio/zio/pull/8587
+* Update @zio.dev/zio-jdbc docs to 0.1.2 by @github-actions in https://github.com/zio/zio/pull/8589
+* Fix Broken Newsletter's Link by @khajavi in https://github.com/zio/zio/pull/8593
+* Update Copyright by @adamgfraser in https://github.com/zio/zio/pull/8596
+* Update scalajs documentation to be in line with latest zio2, scalajs by @jypma in https://github.com/zio/zio/pull/8613
+* Fixed some minor typos by @nedmules-sked in https://github.com/zio/zio/pull/8616
+* Update @zio.dev/zio-prelude docs to 1.0.0-RC22 by @github-actions in https://github.com/zio/zio/pull/8627
+* Revert "Update @zio.dev/zio-prelude docs to 1.0.0-RC22" by @khajavi in https://github.com/zio/zio/pull/8637
+* ZIO Ecosystem Docusaurus: Automate Project Discovery by @khajavi in https://github.com/zio/zio/pull/8641
+* ZIO Ecosystem Contribution Guide by @khajavi in https://github.com/zio/zio/pull/8640
+* Add Fhir Indexer to The sidebars.js File by @khajavi in https://github.com/zio/zio/pull/8639
+* Add zio nebula graph to sidebar by @jxnu-liguobin in https://github.com/zio/zio/pull/8622
+* zio-logging 2.2.0 website by @justcoon in https://github.com/zio/zio/pull/8645
+* Update @zio.dev/zio-bson docs to 1.0.6 by @github-actions in https://github.com/zio/zio/pull/8646
+* Update installation.md by @DoNotWorr in https://github.com/zio/zio/pull/8648
+* Enable Redirection Plugin for ZIO Website #8647 by @sroopsai in https://github.com/zio/zio/pull/8651
+* fix doc typo by @evis in https://github.com/zio/zio/pull/8650
+* Update creating-sinks.md by @sangwoo-sean in https://github.com/zio/zio/pull/8658
+* Gitter channel -> Discord Server by @hearnadam in https://github.com/zio/zio/pull/8628
+* Update @zio.dev/zio-prelude docs to 1.0.0-RC23 by @github-actions in https://github.com/zio/zio/pull/8663
+* Refine ZIO Ecosystem Contribution Guide by @khajavi in https://github.com/zio/zio/pull/8643
+* Update @zio.dev/zio-sbt docs to 0.4.0-alpha.23 by @github-actions in https://github.com/zio/zio/pull/8665
+* zio-logging 2.2.1 website by @justcoon in https://github.com/zio/zio/pull/8669
+* Update operations.md by @gcsolaroli in https://github.com/zio/zio/pull/8694
+* Update @zio.dev/zio-sbt docs to 0.4.0-alpha.24 by @github-actions in https://github.com/zio/zio/pull/8685
+* Update @zio.dev/zio-query docs to 0.6.1 by @github-actions in https://github.com/zio/zio/pull/8698
+* fix(deps): update dependency @zio.dev/zio-metrics-connectors to v2.3.1 by @renovate in https://github.com/zio/zio/pull/8727
+* fix(deps): update dependency @zio.dev/zio-profiling to v0.3.0 by @renovate in https://github.com/zio/zio/pull/8728
+* fix(deps): update dependency @zio.dev/zio-schema to v1 by @renovate in https://github.com/zio/zio/pull/8730
+* chore(deps): update dependency typescript to v5.4.4 by @renovate in https://github.com/zio/zio/pull/8725
+* fix(deps): update dependency @zio.dev/zio-http to v3.0.0-rc6 by @renovate in https://github.com/zio/zio/pull/8707
+* fix(deps): update dependency @zio.dev/zio-logging to v2.2.2 by @renovate in https://github.com/zio/zio/pull/8709
+* fix(deps): update dependency @zio.dev/zio-telemetry to v3.0.0-rc21 by @renovate in https://github.com/zio/zio/pull/8722
+* fix(deps): update dependency @zio.dev/zio-kafka to v2.7.4 by @renovate in https://github.com/zio/zio/pull/8708
+* fix(deps): update dependency @zio.dev/zio-quill to v4.8.3 by @renovate in https://github.com/zio/zio/pull/8710
+* Update @zio.dev/zio-kafka docs to 2.7.4 by @github-actions in https://github.com/zio/zio/pull/8691
+* fix(deps): update dependency @zio.dev/zio-config to v4.0.1 by @renovate in https://github.com/zio/zio/pull/8705
+* fix(deps): update dependency @zio.dev/zio-ftp to v0.4.2 by @renovate in https://github.com/zio/zio/pull/8706
+* chore(deps): update dependency typescript to v5.4.5 by @renovate in https://github.com/zio/zio/pull/8733
+* Documentation: Clean up Metrics Page by @khajavi in https://github.com/zio/zio/pull/8736
+* chore(deps): update dependency @types/react to v18.2.77 by @renovate in https://github.com/zio/zio/pull/8737
+* fix(deps): update dependency @zio.dev/zio-query to v0.7.0 by @renovate in https://github.com/zio/zio/pull/8739
+* Make Redirect Plugin Compatible with Docusaurus Core by @khajavi in https://github.com/zio/zio/pull/8738
+* chore(deps): update dependency @types/react to v18.2.79 by @renovate in https://github.com/zio/zio/pull/8750
+
+## CI
+* Update Binary Compatibility Version by @adamgfraser in https://github.com/zio/zio/pull/8601
+* chore: removed ZTestFramework by @ezhil56x in https://github.com/zio/zio/pull/8652
+* Fix build website CI by @ghostdogpr in https://github.com/zio/zio/pull/8762
+* Fix ScheduleSpec when run on last day of year by @erikvanoosten in https://github.com/zio/zio/pull/8595
+
+## New Contributors
+* @hanneshauer made their first contribution in https://github.com/zio/zio/pull/8588
+* @nedmules-sked made their first contribution in https://github.com/zio/zio/pull/8616
+* @urbit-pilled made their first contribution in https://github.com/zio/zio/pull/8614
+* @DoNotWorr made their first contribution in https://github.com/zio/zio/pull/8648
+* @sroopsai made their first contribution in https://github.com/zio/zio/pull/8651
+* @ezhil56x made their first contribution in https://github.com/zio/zio/pull/8652
+* @Duhemm made their first contribution in https://github.com/zio/zio/pull/8633
+* @kaplan-shaked made their first contribution in https://github.com/zio/zio/pull/8632
+* @gcsolaroli made their first contribution in https://github.com/zio/zio/pull/8694
+* @Roman-Statsura made their first contribution in https://github.com/zio/zio/pull/8721
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.1-RC1...v2.1.0-RC2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.0.22 (2024-04-12)</h2>
+      <pre>This release contains a few performance improvements that were backported to the 2.0.x branch so you can benefit from them sooner (the "current" branch is for 2.1.x, for which a RC2 will probably be released in the coming weeks). These changes, in particular the `FiberRuntime` one, have shown a ~10-15% improvement in some benchmarks.
+
+## What's Changed
+* `FiberRuntime` optimizations by @kyri-petrou in https://github.com/zio/zio/pull/8672
+* Avoid allocation in `ZEnvironment.get` by @ghostdogpr in https://github.com/zio/zio/pull/8712
+* Optimize fiber id and executor access by @ghostdogpr in https://github.com/zio/zio/pull/8716
+* Use `Chunk.single` rather than `Chunk.apply` by @ghostdogpr in https://github.com/zio/zio/pull/8718
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.21...v2.0.22</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.0.21 (2024-01-02)</h2>
+      <pre>## What's Changed
+* Correct Run to Future docs and provide an example by @gnp in https://github.com/zio/zio/pull/8577
+* ZIO Test: Include Error Message When Spec Run As App Fails by @adamgfraser in https://github.com/zio/zio/pull/8584
+* fix ambiguity checks in ZLayer#provide macro by @myazinn in https://github.com/zio/zio/pull/8580
+* Do not emit non-0 exit code for failing tests when running with IntelliJ by @hmemcpy in https://github.com/zio/zio/pull/8583
+* Fix a typo in "Queue". by @martinpovolny in https://github.com/zio/zio/pull/8586
+* Update @zio.dev/zio-telemetry docs to 3.0.0-RC20 by @github-actions in https://github.com/zio/zio/pull/8587
+* Update @zio.dev/zio-jdbc docs to 0.1.2 by @github-actions in https://github.com/zio/zio/pull/8589
+* Add TestAspects afterFailure and afterSuccess by @hanneshauer in https://github.com/zio/zio/pull/8588
+* Implement TestAspect.afterAll Success and Failure Variants by @adamgfraser in https://github.com/zio/zio/pull/8590
+* Prevent implicit widening to Double by @erikvanoosten in https://github.com/zio/zio/pull/8594
+* Fix ScheduleSpec when run on last day of year by @erikvanoosten in https://github.com/zio/zio/pull/8595
+* Fix Broken Newsletter's Link by @khajavi in https://github.com/zio/zio/pull/8593
+* Update Copyright by @adamgfraser in https://github.com/zio/zio/pull/8596
+* Restore Permits by @adamgfraser in https://github.com/zio/zio/pull/8599
+
+## New Contributors
+* @martinpovolny made their first contribution in https://github.com/zio/zio/pull/8586
+* @hanneshauer made their first contribution in https://github.com/zio/zio/pull/8588
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.20...v2.0.21</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.1-RC1 (2023-12-27)</h2>
+      <pre>## What's Changed
+
+* Correct Run to Future docs and provide an example by @gnp in https://github.com/zio/zio/pull/8577
+* ZIO Test: Include Error Message When Spec Run As App Fails by @adamgfraser in https://github.com/zio/zio/pull/8584
+* fix ambiguity checks in ZLayer#provide macro by @myazinn in https://github.com/zio/zio/pull/8580
+* Do not emit non-0 exit code for failing tests when running with IntelliJ by @hmemcpy in https://github.com/zio/zio/pull/8583
+* ZIO Runtime System Improvements (2.1 candidate) by @jdegoes in https://github.com/zio/zio/pull/8582
+* Fix a typo in "Queue". by @martinpovolny in https://github.com/zio/zio/pull/8586
+
+## New Contributors
+
+* @martinpovolny made their first contribution in https://github.com/zio/zio/pull/8586
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.20...v2.1-RC1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.0.20 (2023-12-13)</h2>
+      <pre>## What's Changed
+* ZIO Stream: Inherit FiberRefs After Running Channel Finalizers by @adamgfraser in https://github.com/zio/zio/pull/8535
+* ZIO Test: Add Variants Of TestResult Constructors by @adamgfraser in https://github.com/zio/zio/pull/8536
+* Update Documentation by @adamgfraser in https://github.com/zio/zio/pull/8545
+* Preserve Interruptibility In ZPool#get by @adamgfraser in https://github.com/zio/zio/pull/8541
+* ZIO STM: Add Convenience Methods For TMap by @adamgfraser in https://github.com/zio/zio/pull/8540
+* Add isEmpty and clear methods to the ConcurrentMap by @ytalashko in https://github.com/zio/zio/pull/8548
+* Optimize Differ by @adamgfraser in https://github.com/zio/zio/pull/8549
+* Smart assertions equalTo explicitly providing optional diff by @BanyMaciej in https://github.com/zio/zio/pull/8550
+* scala 3 smart assertions macro fix for class with same named field an… by @BanyMaciej in https://github.com/zio/zio/pull/8551
+* optimize ZStream.absolve by @paulpdaniels in https://github.com/zio/zio/pull/8558
+* Allow `contains` in an assertion to be passed a subtype when there's … by @shawjef3 in https://github.com/zio/zio/pull/8561
+* Fair Semaphore by @adamgfraser in https://github.com/zio/zio/pull/8554
+* Use Unbounded Queue by @adamgfraser in https://github.com/zio/zio/pull/8552
+* ZIO Metrics: Simplify Quantiles Calculation by @adamgfraser in https://github.com/zio/zio/pull/8562
+* Preserve Scopes In Stream Operators by @adamgfraser in https://github.com/zio/zio/pull/8574
+* Propagate Interruption in ZStream#flatMapPar by @adamgfraser in https://github.com/zio/zio/pull/8575
+
+## New Contributors
+* @ytalashko made their first contribution in https://github.com/zio/zio/pull/8548
+* @BanyMaciej made their first contribution in https://github.com/zio/zio/pull/8550
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.19...v2.0.20</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.0.19 (2023-11-06)</h2>
+      <pre>## What's Changed
+* Update Binary Compatibility Version by @adamgfraser in https://github.com/zio/zio/pull/8454
+* Fixed #8452 Failing YearMonth bounded generator by @loathwine in https://github.com/zio/zio/pull/8455
+* fix typo in Introduction to the ZIO's Contextual Data Types by @sangwoo-sean in https://github.com/zio/zio/pull/8460
+* Adding fhir indexer project to communities by @royashcenazi in https://github.com/zio/zio/pull/8467
+* ZIO Test: Prevent Concurrent Access to SBT Event Handler by @adamgfraser in https://github.com/zio/zio/pull/8474
+* Blog Post Announcing ZIO Chat. by @khajavi in https://github.com/zio/zio/pull/8476
+* Handle Deterministic Generators In Get.setOfN by @adamgfraser in https://github.com/zio/zio/pull/8485
+* Update Metrics Connectors Documentation by @adamgfraser in https://github.com/zio/zio/pull/8480
+* Update operations.md - Scanning examples by @jackhclee in https://github.com/zio/zio/pull/8486
+* Only Interrupt Root Fibers That Are Alive by @adamgfraser in https://github.com/zio/zio/pull/8466
+* ZIO Test: Create Debug File Lazily by @adamgfraser in https://github.com/zio/zio/pull/8487
+* Switch head from AtomicInteger to AtomicLong by @sameer-hashflow in https://github.com/zio/zio/pull/8490
+* Update quill.md by @sergiuszkierat in https://github.com/zio/zio/pull/8493
+* Use Mask by @adamgfraser in https://github.com/zio/zio/pull/8491
+* Fix Typo by @adamgfraser in https://github.com/zio/zio/pull/8492
+* Create zio-nebula.md by @jxnu-liguobin in https://github.com/zio/zio/pull/8499
+* Implement Assertion#render by @adamgfraser in https://github.com/zio/zio/pull/8498
+* Fix wrong package name in zio-streams installation docs by @visortelle in https://github.com/zio/zio/pull/8502
+* Documentation: Make Actor Interruptible by @khajavi in https://github.com/zio/zio/pull/8503
+* Use Pre-build UI Components for ZIO Chat by @khajavi in https://github.com/zio/zio/pull/8519
+* Documentation: Assertion on Error Types by @khajavi in https://github.com/zio/zio/pull/8520
+* Add cause info to TestRunner failure message by @esamson in https://github.com/zio/zio/pull/8517
+* Update Chat Components To Prevent Overriding Site CSS by @khajavi in https://github.com/zio/zio/pull/8525
+* Handle Failures In Inner Stream Finalizers by @adamgfraser in https://github.com/zio/zio/pull/8501
+* Add Custom Extractor For NonEmptyChunk by @adamgfraser in https://github.com/zio/zio/pull/8504
+## New Contributors
+* @royashcenazi made their first contribution in https://github.com/zio/zio/pull/8467
+* @jackhclee made their first contribution in https://github.com/zio/zio/pull/8486
+* @sameer-hashflow made their first contribution in https://github.com/zio/zio/pull/8490
+* @sergiuszkierat made their first contribution in https://github.com/zio/zio/pull/8493
+* @esamson made their first contribution in https://github.com/zio/zio/pull/8517
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.18...v2.0.19</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.0.18 (2023-09-26)</h2>
+      <pre>## What's Changed
+* Prevent ZIO Chat Pop-up Window From Changing Page Titles by @khajavi in https://github.com/zio/zio/pull/8422
+* ZIO Test: Fix Reporting Of Test Duration by @adamgfraser in https://github.com/zio/zio/pull/8419
+* Drop Support For Java 8 by @adamgfraser in https://github.com/zio/zio/pull/8434
+* Fix Typo by @adamgfraser in https://github.com/zio/zio/pull/8432
+* Remove Duplicate Stack Trace Elements by @adamgfraser in https://github.com/zio/zio/pull/8430
+* Update Binary Compatibility Version by @adamgfraser in https://github.com/zio/zio/pull/8425
+* Implement Gen#filterZIO by @adamgfraser in https://github.com/zio/zio/pull/8394
+* Fix Order Of Test Output by @adamgfraser in https://github.com/zio/zio/pull/8435
+* Update Dependencies by @adamgfraser in https://github.com/zio/zio/pull/8436
+* Improve Rendering Of Parallel Causes by @adamgfraser in https://github.com/zio/zio/pull/8438
+* Avoid Creating Overly Nested Chunks by @adamgfraser in https://github.com/zio/zio/pull/8427
+* Implement ZLayerAspect by @adamgfraser in https://github.com/zio/zio/pull/8391
+* Chunk Optimizations by @adamgfraser in https://github.com/zio/zio/pull/8440
+
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.17...v2.0.18</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.0.17 (2023-09-15)</h2>
+      <pre>## What's Changed
+* doc: zio.test.Diff by @Fristi in https://github.com/zio/zio/pull/8336
+* Update zio-temporal doc by @vitaliihonta in https://github.com/zio/zio/pull/8342
+* Handle Updating Service In Empty Environment by @adamgfraser in https://github.com/zio/zio/pull/8347
+* Make Chat Button More Visible by @khajavi in https://github.com/zio/zio/pull/8349
+* `Clock::currentTime`: Avoid calling `unit.convert` when the passed `TimeUnit` is `MILLISECONDS` by @guizmaii in https://github.com/zio/zio/pull/8358
+* Reminder about the IntelliJ Plugin if you are using zio-macros by @atais in https://github.com/zio/zio/pull/8363
+* Community libs: update zio-temporal doc by @vitaliihonta in https://github.com/zio/zio/pull/8366
+* Update Refs According To The New API by @khajavi in https://github.com/zio/zio/pull/8367
+* Align Thread Names by @adamgfraser in https://github.com/zio/zio/pull/8369
+* Add more methods to scala-native zio-streams by @pablf in https://github.com/zio/zio/pull/8364
+* Fixed description for random by @felix-hedenstrom in https://github.com/zio/zio/pull/8373
+* Native support for some ZIO methods by @pablf in https://github.com/zio/zio/pull/8375
+* Add missing finals on the Schedule trait by @guizmaii in https://github.com/zio/zio/pull/8376
+* ZIO Test: Correctly Report Time Of Parallel Tests by @adamgfraser in https://github.com/zio/zio/pull/8381
+* Add Blue Insight Digital to Adopters list by @ahoy196 in https://github.com/zio/zio/pull/8386
+* Do Not Fork Dynamically Accessed Scope by @adamgfraser in https://github.com/zio/zio/pull/8355
+* Handle Differences In Ancestor Values When Joining Fiber Refs by @adamgfraser in https://github.com/zio/zio/pull/8334
+* ZIO Test: Handle Equal Bounds In Gen.bigInt by @adamgfraser in https://github.com/zio/zio/pull/8339
+* Update Binary Compatibility Version by @adamgfraser in https://github.com/zio/zio/pull/8341
+* ZIO Config: Handle Nested Map Environment by @adamgfraser in https://github.com/zio/zio/pull/8345
+* Clean Up Type Signatures by @adamgfraser in https://github.com/zio/zio/pull/8351
+* Update Documentation by @adamgfraser in https://github.com/zio/zio/pull/8356
+* Bounded Thread Pool Scheduler by @adamgfraser in https://github.com/zio/zio/pull/8372
+* Automatic ZLayer derivation  by @guersam in https://github.com/zio/zio/pull/8374
+* ZIO Test: Use Live.withLive In Test Aspects Repeat and Retry by @adamgfraser in https://github.com/zio/zio/pull/8382
+* Fix ConcurrentSet#removeIf and ConcurrentSet#retainIf by @adamgfraser in https://github.com/zio/zio/pull/8385
+* Update chunk.md by @markusheilig in https://github.com/zio/zio/pull/8380
+
+## New Contributors
+* @atais made their first contribution in https://github.com/zio/zio/pull/8363
+* @pablf made their first contribution in https://github.com/zio/zio/pull/8364
+* @ahoy196 made their first contribution in https://github.com/zio/zio/pull/8386
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.16...v2.0.17</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.0.16 (2023-08-21)</h2>
+      <pre>## What's Changed
+* Update ZIO Mock Docs to The Latest Version (1.0.0-RC11) by @khajavi in https://github.com/zio/zio/pull/8182
+* How to Gracefully Shutdown ZIO Applications? by @khajavi in https://github.com/zio/zio/pull/8180
+* Adding a Description field to ZIO MetricKey by @Grryum in https://github.com/zio/zio/pull/8159
+* Improve performance of ConfigProvider.fromMap by @vladimirkl in https://github.com/zio/zio/pull/8183
+* Documentation: Update Histogram Metric Article by @khajavi in https://github.com/zio/zio/pull/8191
+* Auto-approve Renovate's PRs by @khajavi in https://github.com/zio/zio/pull/8039
+* Show message when using unsupported by-name parameters by @andrzejressel in https://github.com/zio/zio/pull/8117
+* Fix Typo by @adamgfraser in https://github.com/zio/zio/pull/8200
+* Fix FileNotFoundException: debug.txt in zio-test by @johnspade in https://github.com/zio/zio/pull/8201
+* Documentation: Integrating ZIO Test with JUnit by @khajavi in https://github.com/zio/zio/pull/8195
+* Update README.md by @hassanraza5214 in https://github.com/zio/zio/pull/8202
+* add AnyMind Group to adopters by @rolang in https://github.com/zio/zio/pull/8207
+* Remove Subscriber After Unsubscribing by @adamgfraser in https://github.com/zio/zio/pull/8179
+* Require At Least One Assertion by @adamgfraser in https://github.com/zio/zio/pull/8193
+* Documentation: Introduction to Reloadable Services by @khajavi in https://github.com/zio/zio/pull/8205
+* Simplify `ZSink::fold` code by @guizmaii in https://github.com/zio/zio/pull/8208
+* Add `ZLayer#toManaged` by @neko-kai in https://github.com/zio/zio/pull/8211
+* Add Social Media Image by @khajavi in https://github.com/zio/zio/pull/8212
+* upgrade  code snippets by @singularityDLW in https://github.com/zio/zio/pull/8224
+* Add Believe to adopters by @kevchuang in https://github.com/zio/zio/pull/8226
+* ZIO Test: Do Not Share Execution Event Sink by @adamgfraser in https://github.com/zio/zio/pull/8227
+* Fixed spelling mistake in AutoWireSpec.scala test by @felix-hedenstrom in https://github.com/zio/zio/pull/8232
+* Ecosystem community doc: update zio-temporal by @vitaliihonta in https://github.com/zio/zio/pull/8229
+* added Gen instance for java.util.Currency by @devsprint in https://github.com/zio/zio/pull/8222
+* Update running-tests.md by @sangwoo-sean in https://github.com/zio/zio/pull/8235
+* Remove ZIO 1.x Docs Navigation Bar From Website by @khajavi in https://github.com/zio/zio/pull/8238
+* Fix: Enable `ZLayer.derive` to handle arity 0 case classes (#8236) by @987Nabil in https://github.com/zio/zio/pull/8237
+* Website: Remove Duplication From Ecosystem Sidebar by @khajavi in https://github.com/zio/zio/pull/8252
+* optimize ZStream.fromIteratorSucceed by @myazinn in https://github.com/zio/zio/pull/8254
+* Join FiberRefs In Order In ZipPar by @adamgfraser in https://github.com/zio/zio/pull/8216
+* Fix Type Signature Of ZSink#orElse by @adamgfraser in https://github.com/zio/zio/pull/8223
+* Preserve Scope In Stream#tapErrorCause by @adamgfraser in https://github.com/zio/zio/pull/8248
+* Documentation: FiberRef and Compositional Updates by @khajavi in https://github.com/zio/zio/pull/8213
+* GH-8076 ConcurrentWeakHashSet by @dzikoysk in https://github.com/zio/zio/pull/8093
+* Added feature for dumping current metrics values for debug purpose. by @Grryum in https://github.com/zio/zio/pull/8162
+* Optimize Zippable by @adamgfraser in https://github.com/zio/zio/pull/8259
+* Optimize `ZStream::flatMap` by @guizmaii in https://github.com/zio/zio/pull/8261
+* Add ZIO Chat Bot to The Navbar by @khajavi in https://github.com/zio/zio/pull/8265
+* Fix Sidebar Label of FibeRef Page by @khajavi in https://github.com/zio/zio/pull/8266
+* Add GitHub Link of ZIO Project to the Navbar by @khajavi in https://github.com/zio/zio/pull/8267
+* Fix timer metric by @ghostdogpr in https://github.com/zio/zio/pull/8270
+* Add ZIO 1.0.18 Documentation to the Versioned Docs by @khajavi in https://github.com/zio/zio/pull/8268
+* Implement TestAspect.fromLayerShared by @adamgfraser in https://github.com/zio/zio/pull/8274
+* Peel with dying sink by @eyalfa in https://github.com/zio/zio/pull/8278
+* docs: Clean up some grammar & syntax in core reference by @ches in https://github.com/zio/zio/pull/8276
+* Use More Specific Return Type In ZSink.foldleftZIO by @adamgfraser in https://github.com/zio/zio/pull/8275
+* Implement Parallel Finalizers Mask by @adamgfraser in https://github.com/zio/zio/pull/8204
+* Update Fiber Lifetime Boundaries by @adamgfraser in https://github.com/zio/zio/pull/8264
+* ZIO Test: Warn If Scope Cannot Be Closed by @adamgfraser in https://github.com/zio/zio/pull/8288
+* use imported name instead of fully qualified name in Duration.scala by @mberndt123 in https://github.com/zio/zio/pull/8293
+* Implement Config.long by @adamgfraser in https://github.com/zio/zio/pull/8292
+* ZIO Test: Preserve Trace In TestAspect.timeoutWarning by @adamgfraser in https://github.com/zio/zio/pull/8289
+* Fixed broken symbolic links for CoC, Contributing Guideline by @hatchling13 in https://github.com/zio/zio/pull/8299
+* fix: double evaluation in raceAll by @regiskuckaertz in https://github.com/zio/zio/pull/8302
+* Add Automorph to ZIO compatible libraries by @martin-ockajak in https://github.com/zio/zio/pull/8318
+* Add ZIO Chat Pop-up Window by @khajavi in https://github.com/zio/zio/pull/8319
+* Do Not Hold On To References In Unbounded Hub by @adamgfraser in https://github.com/zio/zio/pull/8294
+* Compositional State Updates by @adamgfraser in https://github.com/zio/zio/pull/8325
+* Ensure Queue Will Be Shutdown Before Awaiting It In ZStream#tapSink by @adamgfraser in https://github.com/zio/zio/pull/8311
+* Implement ZStream#mergeSorted by @adamgfraser in https://github.com/zio/zio/pull/8301
+* Handle Early Termination In ZSink#raceWith by @adamgfraser in https://github.com/zio/zio/pull/8317
+* Update Binary Compatibility Version by @adamgfraser in https://github.com/zio/zio/pull/8323
+* Optimize Gen.unfoldGen by @adamgfraser in https://github.com/zio/zio/pull/8324
+* Make UI Design of Pop-up Window Responsive by @khajavi in https://github.com/zio/zio/pull/8328
+* Justify ZIO Header Image by @khajavi in https://github.com/zio/zio/pull/8330
+* Use Garbage-First Garbage Collector (UseG1GC) To Improve CI Performance by @khajavi in https://github.com/zio/zio/pull/8329
+* Don't Compare Fiber Ids When Joining Fiber Refs by @adamgfraser in https://github.com/zio/zio/pull/8333
+* Convert Seconds to Milliseconds in FiberId.apply by @adamgfraser in https://github.com/zio/zio/pull/8332
+* Simplify build-website Job on GitHub CI Workflow by @khajavi in https://github.com/zio/zio/pull/8335
+* Fixing OOM Error in the build-website Job of the CI Workflow by @khajavi in https://github.com/zio/zio/pull/8337
+
+## New Contributors
+* @hassanraza5214 made their first contribution in https://github.com/zio/zio/pull/8202
+* @rolang made their first contribution in https://github.com/zio/zio/pull/8207
+* @singularityDLW made their first contribution in https://github.com/zio/zio/pull/8224
+* @kevchuang made their first contribution in https://github.com/zio/zio/pull/8226
+* @devsprint made their first contribution in https://github.com/zio/zio/pull/8222
+* @sangwoo-sean made their first contribution in https://github.com/zio/zio/pull/8235
+* @dzikoysk made their first contribution in https://github.com/zio/zio/pull/8093
+* @hatchling13 made their first contribution in https://github.com/zio/zio/pull/8299
+* @martin-ockajak made their first contribution in https://github.com/zio/zio/pull/8318
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.15...v2.0.16</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>2.0.15 (2023-06-05)</h2>
+      <pre>This release contains a fix for an issue in Scala 3.3.0.
+
+## What's Changed
+* Upgrade Scala 3 Version And Revert ProvideSome Optimizations by @adamgfraser in https://github.com/zio/zio/pull/8165
+* Add `decodeCharsWithDecoder` to ZPipeline by @guymers in https://github.com/zio/zio/pull/8163
+* Add a samplePercent pipeline to randomly sample a stream by @gnp in https://github.com/zio/zio/pull/8058
+* Fix Documentation by @adamgfraser in https://github.com/zio/zio/pull/8172
+* Fix Broken Links Related to Official ZIO Projects by @khajavi in https://github.com/zio/zio/pull/8174
+
+
+**Full Changelog**: https://github.com/zio/zio/compare/v2.0.14...v2.0.15</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

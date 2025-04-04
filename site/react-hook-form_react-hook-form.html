@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for react-hook-form/react-hook-form"/>
+  <title>react-hook-form/react-hook-form Release Notes</title>
+</head>
+<body>
+  <h1>🚀 react-hook-form/react-hook-form - Release Notes</h1>
+  
+    <section>
+      <h2>Version 7.55.0 (2025-03-28)</h2>
+      <pre>⚡️ `createFormControl`
+
+- Allow us to start subscribing outside of the React component
+
+```tsx
+const { formControl, control } = createFormControl(props)
+
+function App() {
+  const { register } = useForm({
+    formControl,
+  })
+
+  return <form />
+}
+
+function Test() {
+  useFormState({
+    control // no longer need context api
+  })
+}
+```
+
+⚡️ `subscribe`
+
+- subscribe form state update without re-render
+- subscribe outside of the react component
+
+```tsx
+const { formControl } = createFormControl(props)
+
+formControl.subscribe({
+  formState: { isDirty: true },
+  callback: (formState) => {
+    if (formState.isDirty) {
+      // do something here
+    }
+  }
+})
+
+function App() {
+  const { register } = useForm({
+    formControl,
+  })
+
+  return <form />
+}
+```
+
+🪲 fix https://github.com/react-hook-form/react-hook-form/issues/12680: Update Fieldarray Unmount Status (https://github.com/react-hook-form/react-hook-form/pull/12690)
+🫡 fix: improve type inference for useFormContext (https://github.com/react-hook-form/react-hook-form/pull/12689)
+👮‍♂️ feat: infer resolver output types (https://github.com/react-hook-form/react-hook-form/pull/12638)
+🐞 fix(useForm): make values and defaultValues work correctly with createFormControl and useMemo (https://github.com/react-hook-form/react-hook-form/pull/12675)
+🥹 close https://github.com/react-hook-form/react-hook-form/issues/12665 issue with values not populate form
+🐞 fix https://github.com/react-hook-form/react-hook-form/issues/12665 regression on values over take default values
+🫡 allow use of handleSubmit with native events (https://github.com/react-hook-form/react-hook-form/pull/12645)
+🐞 fix https://github.com/react-hook-form/react-hook-form/issues/12631 revalidateMode issue with useFieldArray validation (https://github.com/react-hook-form/react-hook-form/pull/12646)
+🦥 close https://github.com/react-hook-form/react-hook-form/issues/12634 allow components with useController hook be memoized (https://github.com/react-hook-form/react-hook-form/pull/12635)
+🐞 fix https://github.com/react-hook-form/react-hook-form/issues/12580 setError in useEffect does not work when used inside the FormProvider context (https://github.com/react-hook-form/react-hook-form/pull/12642)
+🛟 fix: add the condition to prevent infinite render with errors prop (https://github.com/react-hook-form/react-hook-form/pull/12622)
+🐞 fix https://github.com/react-hook-form/react-hook-form/issues/12580 valid state update with onBlur mode (https://github.com/react-hook-form/react-hook-form/pull/12612)
+🐞 fix https://github.com/react-hook-form/react-hook-form/issues/12572 disabled field value not get undefined in resolver (https://github.com/react-hook-form/react-hook-form/pull/12573)
+🦾 feat: reference stable for useWatch defaultValue (https://github.com/react-hook-form/react-hook-form/pull/12564)
+⏰ chore: remove typetest folder from build (https://github.com/react-hook-form/react-hook-form/pull/12555)
+🐞 fix https://github.com/react-hook-form/react-hook-form/issues/12532 useController should unregister issue with strict mode (https://github.com/react-hook-form/react-hook-form/pull/12538)
+👁️ feat: improve reference update with useWatch (https://github.com/react-hook-form/react-hook-form/pull/12537)
+🦥 close https://github.com/react-hook-form/react-hook-form/issues/12531 disabled state issue with touched and dirty (https://github.com/react-hook-form/react-hook-form/pull/12536)
+
+thanks to @jtomaszewski, @joshkel, @candymask0712, @kotarella1110, @jorisre, @jtomaszewski, @controversial and @jedahu</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.55.0-next.9 (2025-03-17)</h2>
+      <pre>🪲 fix #12680: Update Fieldarray Unmount Status (#12690)
+🫡 fix: improve type inference for useFormContext (#12689)
+
+thanks to @jorisre & @DavidIMk </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.55.0-next.8 (2025-03-13)</h2>
+      <pre>👮‍♂️ feat: infer resolver output types (#12638)
+🐞 fix(useForm): make values and defaultValues work correctly with createFormControl and useMemo (#12675)
+🥹 close #12665 issue with values not populate form
+
+thanks @kotarella1110, @jorisre, @jtomaszewski, @controversial and @jedahu</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.55.0-next.7 (2025-03-07)</h2>
+      <pre>🐞 fix #12665 regression on values over take default values</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.55.0-next.6 (2025-03-05)</h2>
+      <pre>🫡 allow use of handleSubmit with native events (#12645)
+🐞 fix #12631 revalidateMode issue with useFieldArray validation (#12646)
+🦥 close #12634 allow components with `useController` hook be memoized (#12635)
+🐞 fix #12580 `setError` in `useEffect` does not work when used inside the FormProvider context (#12642)
+
+thanks to @jtomaszewski, @joshkel, @candymask0712 & @kotarella1110 </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.55.0-next.5 (2025-02-22)</h2>
+      <pre>🛟 fix: add the condition to prevent infinite render with `errors` prop (#12622)
+🐞 fix #12580 valid state update with `onBlur` mode (#12612)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.55.0-next.4 (2025-02-08)</h2>
+      <pre>🐞 fix #12572 disabled field value not get undefined in resolver (#12573)
+🦾 feat: reference stable for useWatch defaultValue (#12564)
+⏰ chore: remove __typetest__ folder from build (#12555)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.55.0-next.3 (2025-01-25)</h2>
+      <pre>🐞 fix #12532 `useController` should unregister issue with strict mode (#12538)
+👁️ feat: improve reference update with `useWatch` (#12537)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.55.0-next.2 (2025-01-18)</h2>
+      <pre>🦥 close #12531 disabled state issue with touched and dirty (#12536)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.55.0-next.1 (2024-12-27)</h2>
+      <pre>🥲 fix incorrect type for `useForm` with `formControl`
+
+```diff
+const { formControl, control } = createFormControl(props)
+
+function App() {
+  const { register } = useForm({
+-    control,
++    formControl,
+  })
+
+  return <form />
+}
+```</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>🎄  Version7.55.0-next.0 (2024-12-24)</h2>
+      <pre>⚡️ `createFormControl`
+
+- Allow us to start subscribing outside of the react component
+
+```tsx
+const { formControl, control } = createFormControl(props)
+
+function App() {
+  const { register } = useForm({
+    formControl,
+  })
+
+  return <form />
+}
+
+function Test() {
+  useFormState({
+    control // no longer need context api
+  })
+}
+```
+
+⚡️ `subscribe`
+
+- subscribe form state update without re-render
+- subscribe outside of the react component
+
+```tsx
+const { formControl } = createFormControl(props)
+
+formControl.subscribe({
+  formState: { isDirty: true },
+  callback: (formState) => {
+    if (formState.isDirty) {
+      // do something here
+    }
+  }
+})
+
+function App() {
+  const { register } = useForm({
+    formControl,
+  })
+
+  return <form />
+}
+```</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.54.2 (2024-12-20)</h2>
+      <pre>⚛️ fix #12478 issue should unregister input with controller (#12480)
+⏰ close #12443 track disabled fields and only omit data on submit (#12491)
+⚛️ upgrade e2e automation app to react 19 (#12482)
+🧪 test(useWatch): destructure setValue from useForm
+
+Thanks very much, @marcalexiei for your contribution to the documentation!  </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.54.1 (2024-12-12)</h2>
+      <pre>Revert "🦥 fix: useForm should return a new object on formState changes (#12424)" (#12475)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.54.0 (2024-12-06)</h2>
+      <pre>🦥 fix: useForm should return a new object on formState changes (#12424)
+🧻 improve prototype pollution check (#12431)
+🪖 fix: add FileList availability check for environments without FileList support (#12332)
+🧪 close #12198 memo for useController and useFormState (#12421)
+🐞 fix #12407 useFieldArray append issue with useForm disabled props (#12420)
+🐞 fix #12415 issue with flatten object with null value (#12418)
+🐞 fix #12385 nested array field invalid validation report on removed (#12405)
+🙀 fix: hasPromiseValidation return true or false appropriately. (#12389)
+👃 fix more staled props (#12404)
+
+thanks to @developer-bandi, @OlegDev1, @sukvvon, @alexandredev3 and @mfazekas</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.53.2 (2024-11-08)</h2>
+      <pre>🐞 fix #12398 staled disabled issue with resubmit form (#12403)
+🐞 fix: add type guard to fieldRef.select (#12390)
+Revert "🏺 watch reference update on formState update (#12326)" (#12391)
+
+thanks to @developer-bandi</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.53.1 (2024-10-19)</h2>
+      <pre>🐞 fix: #12294 ensure Invalid Date is evaluated correctly (#12295)
+🐞 fix #12316 setValue should work for arrays of primitives to handle checkboxes (#12316) (#12317)
+🐞 fix #12097 Use dirty fields along with mount names for form reset with keepDirtyValues (#12211)
+🫀 fix #12237 disabled state trigger formState dirty/dirtyFields to update (#12239)
+🐞 fix #12291 field array remove cause undefined with FormData (#12305)
+📝 improve flatten function with object type check (#12306)
+🖐️ improve: resolve type of set function (#12145)
+🔧 chore: upgrade eslint to v9 (#12150)
+📖 fix: code example input field placeholder name (#12296)
+📖 docs: fix typo in code example (#12271)
+
+thanks to @rasikhq @abnud11 @crypt0box @developer-bandi @matmannion @hasancruk & @vismay7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.53.0 (2024-08-24)</h2>
+      <pre>🌫️ feat: #12148 support isValid when mode is set to onBlur (#12194)
+
+```tsx
+// update formstate isValid with onBlur event
+const { formState: { isValid } } = useForm({
+  mode: 'onBlur'
+})
+```
+
+🐞 fix #12021 issue with disable prop not reflecting on re-render without trigger by useEffect (#12193)
+👩‍🌾 close #12168 optimise re-render with validating fields subscription (#12192)
+🐞 fix #12127 issue with compare object value changed with object input (#12185)
+🎲 improve : break out of recursive loops on first focus (#11827)
+📖 fix example of ObjectKeys type (#11965)
+
+thanks to @suke & @DPflasterer</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.52.2 (2024-08-03)</h2>
+      <pre>👍 close #12108 useController should subscribe to exact field name of form's state (#12109)
+👍 chore: upgrade app deps
+🩻 fix: add useCallback for ref callback (#12078)
+🚀 fix: skip call executeBuiltInValidation if no sub-fields left (#12054)
+
+thanks to @newsiberian, @Wendystraite and @abnud11</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.52.1 (2024-07-02)</h2>
+      <pre>🐞 fix #12024 dirty not update issue with values prop (#12041)
+🐞 fix: field array validate rules shift errors (#12033)
+
+thanks to @JardelCheung</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.52.0 (2024-06-15)</h2>
+      <pre>⚛️ close #11932 enable react 19 peer dependency (#11935)
+👮‍♀️ close #11954 getFieldState remove unnessaried inValidating and touched subscription (#11995)
+🐞 fix #11985 logic createFormControl check field before usage (#11986)
+⌨️ fix: enforce type safety for deps property in RegisterOptions (#11969)
+🐞 fix #11922 keep dirty on reset with dirty fields (#11958)
+🚔 close #11937 add validation in the cleanup process in useController (#11938)
+Revert "⌨️ close: correct type of error field in getFieldState return object (#11831)"
+📖 fix: change info.values type in WatchObserver (#11917)
+
+thanks to @nakaakist, @IdoBouskila, @pincy and @peinguin 
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.51.5 (2024-05-21)</h2>
+      <pre>📖 fix broken link to examples in README.md (#11805)
+⌨️ close: correct type of error field in getFieldState return object (#11831)
+🐞 fix #11842 radio buttons not disabled when multiple share a name (#11873)
+🐞 fix #11821 set value with disabled false before mount (#11880)
+🐞 fix setError to preserve existing errors elsewhere in the object (#11888)
+⌨️ fix: add info.value type to WatchObserver (#11872)
+🫡 fix issue with internal `set` api (#11915)
+
+thanks to @mjr2595 @erashu212 @SimonJTurner and @peinguin </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.51.4 (2024-05-04)</h2>
+      <pre>👹 close #11778 improve unregister omit key with getValues method (#11779)
+🐞 fix #11794  issue: Fields dirty state is not updated when passing values to useForm</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.51.3 (2024-04-11)</h2>
+      <pre>🐞 fix #11773 regression on dirty check with reset (#11775)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.51.2 (2024-03-26)</h2>
+      <pre>🐞 fix #11719 validation stuck on true state (#11723)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.51.1 (2024-03-17)</h2>
+      <pre>🐛 bug(validatingFields, trigger): handle all fields validation trigger (#11624)
+💚 ci: cleanup actions versions (#11629)
+🐞 fix #11590 issue with trigger on validatingFields (#11613)
+
+thanks to @Moshyfawn </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.51.0 (2024-03-01)</h2>
+      <pre>💬 add `isValidating` and `validatingFields` to field state (#10657)
+
+```tsx
+const { formState: { validatingFields } } = useForm({ mode: 'onBlur' });
+```
+
+⌨️ chore: replace ts-ignore with ts-expect-error (#11573)
+🧗‍♂️ chore: update lib dev deps (#11548)
+💅 related #11541 improve dirty check when undefined provided with reset api
+😾 fix #11514 issue under strict mode reset invoke twice reset mounted field names with keepDirtyValues (#11546)
+🤡 fix flush root render hack (#11521)
+🧽 chore: removed unused utils and resp. test cases (#11476)
+🐞 close #11503 issue dirty field update with async validation (#11509)
+
+Revert "🔧 fix data param in handleSubmit when TTransformedValues is a union type (#11420)"
+Revert "✨ feat(values): priorities values over defaultvalues (#11399)" (#11545)
+
+❤️ Thanks to @deepgolani4, @pbankonier and @deepgolani4
+❤️ Thank you principal.com for your contribution
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version v7.50.1 (2024-02-06)</h2>
+      <pre>🥲 Regression: Revert "⌨️ fix #10734 watch and useWatch without parameters return type (#11359)"</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Versions 7.50.0 (2024-02-01)</h2>
+      <pre>🔧 fix data param in handleSubmit when TTransformedValues is a union type (#11420)
+👷 build(Engines): remove pnpm dependency (#11425)
+🐞 fixes #11386 get new dirtyFields when reset keeping defaults and dirty values (#11401)
+🏷️ improve CustomElement type (#11309)
+💫 feat(useForm): leave formState flags in a consistent state when throwing in handleSubmit onValid (#11214)
+⌨️ fix: change DeepPartial to account for object union types & unknown (#11385)
+✨ feat(values): priorities values over defaultvalues (#11399)
+🐞 close #11246 skip root validation on action when mode and revalidate mode is onSubmit (#11395)
+💩 fix #11322 trigger extra re-render with useWatch plus shouldUnregister (#11394)
+⌨️ fix #10734 watch and useWatch without parameters return type (#11359)
+🧑‍✈️ fix #11281 issue with upgrade node version (#11392)
+🐞 fix #11368 keep form state mounted when keeping values (#11384)
+🐞 fix #11374: Nested deep partial with unknown (#11373)
+
+thanks to @Moshyfawn, @jonahallibone, @eladattias1996, @RulerOfCakes, @anonkey, @Ar4ys, @IanVS and @r-kataoka11</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.49.3 (2024-01-08)</h2>
+      <pre>🐛 fix(formState, disabled): infer controlled disabled form state (#11361)
+🐛 fix(reset): remove global reset option flag (#11355)
+🐛 fix(useController): check if disabled state was set by user (#11353)
+🖨️ fix: Change DeepPartial type definition to be compatible with unknown (#11333)
+🐞 fix #11328 resetField with object as defaultValue (#11329)
+
+thanks to @Moshyfawn, @geeee and @RulerOfCakes</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Version 7.49.2 (2023-12-13)</h2>
+      <pre>🐞 fix #11292 issue with controller validation prop (#11294)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

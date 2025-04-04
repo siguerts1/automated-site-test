@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for prisma/prisma"/>
+  <title>prisma/prisma Release Notes</title>
+</head>
+<body>
+  <h1>🚀 prisma/prisma - Release Notes</h1>
+  
+    <section>
+      <h2>6.5.0 (2025-03-11)</h2>
+      <pre>Today, we are excited to share the `6.5.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo ☝️ or [tweeting](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v6.5.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/6.5.0) about the release.** 🌟
+
+## Highlights
+
+### Databases can only be reset manually and explicitly
+
+In previous versions, if Prisma ORM determined that a `migrate` command could not be applied cleanly to the underlying database, you would get a message like this one:
+
+```
+? We need to reset the "public" schema at "db.url.com:5432"
+Do you want to continue? All data will be lost. (y/N)
+```
+
+While "no" was the default, we've determined that having this prompt in the first place was a mistake. In this version we're removing the prompt entirely and instead exiting with an appropriate error message.
+
+To get the previous behavior, you will need to run `prisma migrate reset` directly.
+
+### Support for `prisma.config.ts` in Prisma Studio
+
+We've expanded support for our `prisma.config.ts` file to include Prisma Studio!
+
+To use the new config file, including the ability to connect to driver adapter enabled databases with Prisma Studio, add a `studio` block to your `prisma.config.ts` file:
+
+```ts
+import path from 'node:path'
+import type { PrismaConfig } from 'prisma'
+import { PrismaLibSQL } from '@prisma/adapter-libsql'
+import { createClient } from '@libsql/client'
+
+export default {
+  earlyAccess: true,
+  schema: {
+    kind: 'single',
+    filePath: './prisma/schema.prisma',
+  },
+  studio: {
+    adapter: async (env: unknown) => {
+      const connectionString = `file:./dev.db'
+      const libsql = createClient({
+        url: connectionString,
+      })
+      return new PrismaLibSQL(libsql)
+    },
+  },
+} satisfies PrismaConfig
+```
+
+Notice how this looks a little different from last release! Instead of an `@prisma/config` package there’s now two different options:
+
+1. Using the `defineConfig` helper exported by `prisma/config`. 
+2. Using the `PrismaConfig` utility type exported by `Prisma`. 
+
+All the relevant info for the `prisma.config.ts` file, including these new ways of defining your config, [can be found in our docs](https://www.prisma.io/docs/orm/reference/prisma-config-reference).
+
+### Allow for chaining `$on` and `$extends`. 
+
+In previous versions of Prisma ORM, the return type of the `$on` client method was `void`. This did not allow for chaining `$on()` and `$extends()` calls, as `$on` is not available on extended clients. 
+
+In this version we've resolved this issue and `$on` will now return the modified Prisma Client.
+
+### Community fixes
+
+We have a number of community-submitted fixes that improve Prisma ORM:
+- [Allow for binaries to be loaded from local network](https://github.com/prisma/prisma/pull/23001). Thank you @RaHehl!
+- [Enhance type safety of the AtLeast utility type](https://github.com/prisma/prisma/pull/24056). Thank you @de-novo!
+- [Resolve a race condition in the NextJS monorepo plugin](https://github.com/prisma/prisma/pull/21370). Thank you @toniopelo!
+- [allow for filtering out spans with PrismaInstrumentation](https://github.com/prisma/prisma/pull/20113). Thank you @overbit!
+
+## Prisma is hiring
+
+Join us at Prisma and work on [our TypeScript ORM (now faster than ever)](https://www.prisma.io/blog/rust-to-typescript-update-boosting-prisma-orm-performance) and our Cloud products [like Prisma Postgres (now in GA!)](https://www.prisma.io/blog/prisma-postgres-the-future-of-serverless-databases)
+
+We currently have two open roles in our Engineering team:
+
+- [Developer Support Engineer (Americas)](https://ats.rippling.com/prisma-careers/jobs/99a4a4e0-02ff-4e0a-867e-3730bcd9b6c3)
+- [Senior Engineering Manager](https://ats.rippling.com/prisma-careers/jobs/0f9295a1-6111-4814-bf9b-a5eb2002bf34)
+
+If these don’t fit, you can still check out our [jobs page](https://www.prisma.io/careers) and send a general application.
+
+## Enterprise support
+
+Prisma offers an [enterprise support plan](https://www.prisma.io/enterprise#contact-us) for Prisma ORM. Get direct help from our team and a joint slack channel! [With Prisma ORM 7 on the horizon](https://www.prisma.io/blog/rust-to-typescript-update-boosting-prisma-orm-performance) this is a great time to upgrade your support today.
+
+## Credits
+
+Thank you to @overbit, @RaHehl, @toniopelo, and @de-novo for your contributions to this release!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.4.1 (2025-02-20)</h2>
+      <pre>Today, we are issuing the 6.4.1 patch release. It fixes a few issues with the NPS survey and makes it respect the `--no-hints` CLI flag.
+
+## Fixes
+
+#### Prisma CLI
+
+* https://github.com/prisma/prisma/issues/26364</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.4.0 (2025-02-18)</h2>
+      <pre>Today, we are excited to share the `6.4.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo ☝️ or [tweeting](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v6.4.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/6.4.0) about the release.** 🌟
+
+## Highlights
+
+### TypeScript-based configuration with `prisma.config.ts` (Early Access)
+
+In this release, we're introducing an Early Access version of a TypeScript-based configuration file for Prisma ORM: `prisma.config.ts`.
+
+This file will serve as a central configuration point for Prisma ORM:
+
+```ts
+import path from 'node:path'
+
+export default {
+  earlyAccess: true, // required while in Early Access
+
+  schema: {
+    kind: 'single', // use 'multi' if you're using the `prismaSchemaFolder` preview feature
+    filePath: path.join('custom', 'prisma', 'schema.prisma')
+  }
+  
+})
+```
+
+With this file you are able to run any arbitrary code needed to get values required by Prisma ORM, such as database URLs from a secret store or fine-grained control of settings. It needs to live in the current working directory from where you're executing Prisma CLI commands (typically, the root of your project).
+
+> **Note**: If you're using `prisma.config.ts`, the Prisma CLI will not load environment variables from `.env` files. If you want to use a `.env` file with `prisma.config.ts`, you'll need to load the environment variables manually using the [`dotenv`](https://github.com/motdotla/dotenv) package (see [here](https://www.prisma.io/docs/orm/reference/prisma-config-reference)).
+
+Learn more about the new `prisma.config.ts` file in the [docs](https://prisma.io/docs/orm/reference/prisma-config-reference).
+
+### Case-insensitive mode in JSON filters
+
+You can now do case-insensitive filtering on JSON data. 
+
+Just use the new `mode` option when filtering using `string_contains`, `string_starts_with` or `string_ends_with` in a JSON object and set it to `"insensitive"`:
+
+```ts
+await prisma.user.findMany({
+  where: {
+    pets: {
+      path: ['favorites', 'catBreed'],
+      string_contains: 'Van',
+      mode: "insensitive",
+    },
+  },
+});
+```
+
+The above query returns all users where the `favorites.catBreed` value contains `"Van"` or `"van"`.
+
+Thanks to [@lubosmato](https://github.com/lubosmato) who [implemented](https://github.com/prisma/prisma-engines/pull/4977) this feature 🎉
+
+### Improved CockroachDB migration speed
+
+In this release we found some inefficiencies in our migration engine that was impacting CockroachDB migrations. In 6.4.0, CockroachDB migrations should be significantly faster.
+
+## Calling all devs: Give us your feedback!
+
+Prisma ORM's community keeps us going. To make sure that we're focused on what the community needs, we would like to get your feedback via our online [feedback form](https://pris.ly/orm/survey/release-6-4).
+
+## Credits
+
+Huge thanks to @lubosmato, @notomo,  @Mayureshd-18, @mydea, @omar-dulaimi and @Hazmi35 for helping out with this release!
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.3.1 (2025-02-04)</h2>
+      <pre>This patch releases introduces improvements to the `prisma init` output when invoked to with the `--db` option.
+
+Run `npx prisma@latest init --db` to get an instant [Prisma Postgres](https://www.prisma.io/postgres) database.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.3.0 (2025-01-28)</h2>
+      <pre>Today, we are excited to share the `6.3.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo ☝️ or [tweeting](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v6.3.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/6.3.0) about the release.** 🌟
+
+## Highlights
+
+### A brand new Prisma Studio
+
+In this release we've included several *great* improvements to Prisma Studio's developer experience. You can learn all about the changes we've made in our [release blog post](https://www.prisma.io/blog/we-made-prisma-studio-even-better), but here's a short list:
+
+#### Prisma Studio is back in the Console
+
+Fans of Prisma Data Browser rejoice! The new Prisma Studio is now in [the Prisma Console](https://console.prisma.io) and is available for all PostgreSQL and MySQL databases.
+
+#### A new model viewer
+
+Previously, switching from model to model in Prisma Studio would require backing all the way out to the model view, then digging in again. With our new UI, it's easy to switch from model to model while keeping your place.
+
+![image](https://github.com/user-attachments/assets/beb3f4ed-7b7a-4f76-afd4-5b4a3081caff)
+
+#### A new editing experience
+
+If you're trying to edit a given field in a model, Prisma Studio made it quite easy. However, if you're trying to edit every field in a given row, it could get quite annoying to keep scrolling left to right. Our new edit sidebar resolves that with the ability to edit all fields for a given row at once.
+
+![image](https://github.com/user-attachments/assets/00ca97d3-2fc6-4302-82c4-6290549be14a)
+
+#### Clean up at the click of a button
+
+When editing a number of models, it can get difficult to get back to a clean slate. In the new Prisma Studio, we've added a "Close all" button that puts you back to a fresh start.
+
+![image](https://github.com/user-attachments/assets/847b0c5f-f67d-4cf1-986f-a178b965610b)
+
+
+### Add `limit` to `updateMany()` and `deleteMany()`
+
+Previously, `limit` has not existed as a valid option in top level `updateMany()` and `deleteMany()` queries. In 6.3.0 `limit` is now available in these queries, bringing their features more in line with other query types. 
+
+You can use `limit` like the following:
+
+```tsx
+await prisma.user.deleteMany({
+  where: { column: 'value' },
+  limit: 100,
+});
+```
+
+This will limit the number of deleted users to 100 at maximum. 
+
+### Sort `generator` fields deterministically
+
+In previous version of Prisma ORM, the fields inside of a `generator` block in your Prisma Schema were not deterministically sorted. This could lead to cases where `prisma db pull` could lead to re-ordering of fields. 
+
+In 6.3.0, the sorting of fields in this block is now deterministic. You may see re-ordering on the first `prisma db pull` after you upgrade, but it will remain consistent afterwards.
+
+### Replace `NOT IN` with `NOT EXISTS` for PostgreSQL relation filters
+
+In previous versions of Prisma ORM, when using the `none` or `some` relation filters, the SQL queries generated used `NOT IN`. In many cases this lead to performance issues as the size of the related table grew. In 6.3.0, we’ve replaced these usages of `IN` with `EXISTS` in order to improve query performance.
+
+## A special thank you
+
+We'd like to extend our heartfelt thanks to @loren and his team for the collaboration and trust in our enterprise support plan. Working closely with them allowed us to address important issues like #19249 and #17303. Their insights and partnership have been invaluable in improving our product.
+
+If your team could benefit from dedicated support and tailored solutions, [learn more](https://www.prisma.io/enterprise?utm_source=release-notes&utm_campaign=thanks#contact-us) about our enterprise support plan.
+
+## Fixes and improvements
+
+### Prisma Client
+
+- [Add `take` or `limit` to `updateMany()` & `deleteMany()`](https://github.com/prisma/prisma/issues/6957)
+
+### Prisma
+
+- [Prisma interactive transaction ignores DB exception on commit (with triggers)](https://github.com/prisma/prisma/issues/17303)
+- [`prisma db pull` non-deterministically sorts generator fields](https://github.com/prisma/prisma/issues/17899)
+- [`no entry found for key` error on views<->model relations](https://github.com/prisma/prisma/issues/19249)
+- [Adding `onUpdate` data to the DMMF in `@prisma/generator-helper`](https://github.com/prisma/prisma/issues/25944)
+
+## Credits
+
+Huge thanks to @WhyAsh5114 for their contributions to this release!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.2.1 (2025-01-08)</h2>
+      <pre>Today we are releasing the 6.2.1 patch release to address an issue with some of the `omitApi` preview feature checks having been accidentally omitted when making the feature GA. Now it is fully functional without the preview feature flag.
+
+### Changes
+
+*  https://github.com/prisma/prisma/pull/25997</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.2.0 (2025-01-07)</h2>
+      <pre>Today we're releasing Prisma ORM version 6.2.0 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo or [tweeting](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v6.2.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/6.2.0) about the release.** 🌟
+
+We have a number of new features in this version, including support for `json` and `enum` fields in SQLite, a new `updateManyAndReturn` function, support for ULID values, as well as the promotion of the `omit` feature from Preview to Generally Availability.
+
+## Highlights
+
+### Excluding fields via `omit` is now production-ready
+
+Our [number one](https://github.com/prisma/prisma/issues/5042) requested feature is out of Preview and Generally Available. In 6.2.0, you no longer need to add `omitApi` to your list of Preview features:
+
+```diff
+generator client {
+  provider        = "prisma-client-js"
+- previewFeatures = ["omitApi"]
+}
+```
+
+As a refresher: `omit` allows you to exclude certain fields from being returned in the results of your Prisma Client queries.
+
+You can either do this locally, on a _per-query_ level:
+
+```ts
+const result = await prisma.user.findMany({
+  omit: {
+    password: true,
+  },
+});
+```
+
+Or globally, to ensure a field is excluded from _all_ queries of a certain model:
+
+```ts
+const prisma = new PrismaClient({
+  omit: {
+    user: {
+      password: true
+    }
+  }
+})
+
+// The password field is excluded in all queries, including this one
+const user = await prisma.user.findUnique({ where: { id: 1 } })
+```
+
+For more information on `omit`, be sure to [check our documentation](https://www.prisma.io/docs/orm/prisma-client/queries/excluding-fields).
+
+### `json` and `enum` fields in SQLite
+
+Previous to this version, you could not define [`json`](https://github.com/prisma/prisma/issues/3786) and [`enum`](https://github.com/prisma/prisma/issues/2219) fields in your Prisma schema when using SQLite. The respective GitHub issues have been among the most popular ones in our repo, so with our [new approach to open-source governance](https://www.prisma.io/blog/prisma-orm-manifesto), we finally got to work and implemented these.
+
+Working with JSON and Enum fields works similarly to other database providers, here’s an example:
+
+```prisma
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id   Int    @id @default(autoincrement())
+  name String
+  role Role  
+  data Json
+}
+
+enum Role {
+  Customer
+  Admin 
+}
+```
+
+### Support for auto-generated ULID values
+
+Similar to `cuid2` support released in ORM version 6.0.0, we are now adding support for [Universally Unique Lexicographically Sortable Identifiers](https://github.com/ulid/spec) (or short: ULIDs 😄) in version 6.2.0. A ULID value is a  26-character alphanumeric string, e.g. `01GZ0GZ3XARH8ZP44A7TQ2W4ZD`.
+
+With this new feature, you can now create records with auto-generated ULID values for `String` fields:
+
+```prisma
+model User {
+  id String @id @default(ulid())  
+}
+```
+
+### New batch function: `updateManyAndReturn`
+
+`updateMany` allows you to update many records in your database, but it only returns the count of the affected rows, not the resulting rows themselves. With `updateManyAndReturn` you are now able to achieve this:
+
+```ts
+const users = await prisma.user.updateManyAndReturn({
+  where: {
+    email: {
+      contains: 'prisma.io',
+    }
+  },
+  data: {
+    role: 'ADMIN'
+  }
+})
+```
+
+This call to `updateManyAndReturn` will now return the actual records that have been updated in the query:
+
+```js
+[{
+  id: 22,
+  name: 'Alice',
+  email: 'alice@prisma.io',
+  profileViews: 0,
+  role: 'ADMIN',
+  coinflips: []
+}, {
+  id: 23,
+  name: 'Bob',
+  email: 'bob@prisma.io',
+  profileViews: 0,
+  role: 'ADMIN',
+  coinflips: []
+}]
+```
+
+Please note that like `createManyAndReturn`, `updateManyAndReturn` is only supported in PostgreSQL, CockroachDB, and SQLite.
+
+### Fixed runtime error in Node.js v23
+
+While not [_officially_ supported](https://www.prisma.io/docs/orm/reference/system-requirements#software-requirements), we understand that a lot of you like to be on the latest Node.js version — so we fixed an error that only occurred on Node.js 23. Happy coding ✌️
+
+## Prisma is hiring 🤝
+
+Join us at Prisma to work on the [most popular TypeScript ORM](https://www.prisma.io/blog/how-prisma-orm-became-the-most-downloaded-orm-for-node-js) and other exciting products like [the first serverless database built on unikernels](https://www.prisma.io/blog/announcing-prisma-postgres-early-access?utm_source=website&utm_medium=postgres-page)! 
+
+We currently have two open roles in our Engineering team:
+
+- [Senior Software Engineer (Prisma ORM)](https://ats.rippling.com/en-GB/prisma-careers/jobs/2398ed90-0c4a-478f-b69f-ab213df03b61)
+- [Senior Software Engineer (Prisma Data Platform)](https://ats.rippling.com/en-GB/prisma-careers/jobs/6b65e19a-8166-483c-8d44-222d05e16295)
+
+If these don’t fit, you can still check out our [jobs page](https://www.prisma.io/careers) and send a general application.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.1.0 (2024-12-17)</h2>
+      <pre>Today we're releasing Prisma ORM version 6.1.0
+
+In this version our `tracing` Preview feature is being graduated to GA!
+
+## Highlights
+
+### Tracing goes GA
+
+The `tracing` Preview feature is now stable. You now no longer have to include `tracing` in your set of enabled preview features.
+
+```diff 
+generator client {
+   provider        = "prisma-client-js"
+-  previewFeatures = ["tracing"]
+}
+```
+
+We have also changed some of the spans generated by Prisma Client. Previously, a trace would report the following spans:
+```
+prisma:client:operation
+prisma:client:serialize
+prisma:engine
+prisma:engine:connection
+prisma:engine:db_query
+prisma:engine:serialize
+```
+
+Now, the following are reported:
+```
+prisma:client:operation
+prisma:client:serialize
+prisma:engine:query
+prisma:engine:connection
+prisma:engine:db_query
+prisma:engine:serialize
+prisma:engine:response_json_serialization
+```
+
+Additionally, we have made a few changes to our dependencies:
+- `@opentelemetry/api` is now a peer dependency instead of a regular dependency
+- `registerInstrumentations ` in `@opentelemetry/instrumentation` is now re-exported by `@prisma/instrumentation`
+
+After upgrading to Prisma ORM 6.1.0 you will need to add `@opentelemetry/api` to your dependencies if you haven't already:
+```
+npm install @opentelemetry/api
+```
+
+You will also no longer need to have `@opentelemetry/instrumentation` if you only use `registerInstrumentations`. In this case you can import `registerInstrumentations` from `@prisma/instrumentation`
+```diff
+- import { PrismaInstrumentation } from '@prisma/instrumentation'
++ import { PrismaInstrumentation, registerInstrumentations } from '@prisma/instrumentation'
+```
+
+### Mutli-line comments in Prisma Schema Language (PSL)
+
+Comments can now be defined as multi-line in your Prisma schema! Comments can use the existing format:
+
+```prisma
+// this is a schema comment
+```
+
+or can now also use our multi-line format:
+```prisma
+/*
+ * this is a multi-line comment
+ * You can add in all you want here
+ * Keep typing and this comment will keep on going
+ */
+```
+
+### Bug fixes
+
+#### Tracing related
+
+As we're moving our `tracing` preview to GA, a number of issues have been resolved. Here are a few highlights:
+- [Tests for tracing expanded and improved](https://github.com/prisma/prisma/issues/19224)
+- [Issues with Elastic APM addressed](https://github.com/prisma/prisma/issues/24715)
+- [Issues with Datadog tracer addressed](https://github.com/prisma/prisma/issues/22450)
+- [Prisma Client now respects `suppressTracing`](https://github.com/prisma/prisma/issues/17953)
+
+#### Other issues
+
+We also have a number of other issues that were resolved outside of our `tracing` feature.
+- [Resolved type issues with the `PrismaNeonHTTP` adapter](https://github.com/prisma/prisma/issues/25514)
+- [`findUnique` returns `null` when used instead of `Promise.all`](https://github.com/prisma/prisma/issues/25662)
+- [Resolved an issue with the latest version of Alpine Linux](https://github.com/prisma/prisma/issues/25817)
+
+## Fixes and improvements
+
+### Prisma
+
+- [Tracing: Detailed report and profiling informations](https://github.com/prisma/prisma/issues/1711)
+- [Prisma Client Request Tracing Integration](https://github.com/prisma/prisma/issues/5956)
+- [Instrumentation error in production: `TypeError: parentTracer.getSpanLimits is not a function`](https://github.com/prisma/prisma/issues/14887)
+- [Prisma is using the internal `Span` constructor](https://github.com/prisma/prisma/issues/16309)
+- [Prisma Client doesn't put all OTEL trace spans under one parent span](https://github.com/prisma/prisma/issues/16791)
+- [Prisma trace has unaccounted time](https://github.com/prisma/prisma/issues/17853)
+- [`prisma:engine` spans do not respect `suppressTracing()`](https://github.com/prisma/prisma/issues/17953)
+- [`tracing: engine` spans don't pass through `Sampler`](https://github.com/prisma/prisma/issues/19088)
+- [Add tests for tracing and different ways to open the first connection (including internal spans)](https://github.com/prisma/prisma/issues/19224)
+- [Tracing: Long trailing delay in `prisma:client:operation`](https://github.com/prisma/prisma/issues/19580)
+- [`prisma:engine` spans are missing when there are multiple `new PrismaClient()` invocations](https://github.com/prisma/prisma/issues/20779)
+- [`parentTracer.getSpanLimits is not a function`](https://github.com/prisma/prisma/issues/21397)
+- [Support tracers not derived from `opentelemetry-sdk-trace-base` (e.g. Datadog tracer)](https://github.com/prisma/prisma/issues/22450)
+- [`traceparent` comments with multiple SQL statements](https://github.com/prisma/prisma/issues/24370)
+- [Make `@prisma/instrumentation` dependencies peer dependencies](https://github.com/prisma/prisma/issues/24373)
+- [Make sure `db.statement` attribute doesn't include the `traceparent` comment](https://github.com/prisma/prisma/issues/24375)
+- [[Instrumentation] `registerInstrumentations` uses the global provider instead of the one passed in](https://github.com/prisma/prisma/issues/24488)
+- [Instrumentation: Problems in working with Elastic APM](https://github.com/prisma/prisma/issues/24715)
+- [`PrismaNeonHTTP` adapter breaks on some types e.g. timestamp](https://github.com/prisma/prisma/issues/25514)
+- [Promise.all() returns null with findUnique()](https://github.com/prisma/prisma/issues/25662)
+- [Alpine Linux 3.21: `Prisma failed to detect the libssl/openssl version to use`](https://github.com/prisma/prisma/issues/25817)
+
+### Prisma Client
+
+- [Tracing operation duration bug under stress test](https://github.com/prisma/prisma/issues/16980)
+- [`@prisma/instrumentation` Type Error: `'InstrumentionNodeModuleDefintion' is not generic`](https://github.com/prisma/prisma/issues/24285)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.0.1 (2024-12-02)</h2>
+      <pre>Today we are releasing the `6.0.1` patch release to address an issue with using Prisma Client generated in a custom output path with Next.js.
+
+### Changes
+
+* [Revert `"type": "commonjs"` addition in generated `package.json`](https://github.com/prisma/prisma/pull/25767)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>6.0.0 (2024-11-28)</h2>
+      <pre>We’re excited to share the Prisma ORM v6 release today 🎉
+
+As this is a major release, it includes a few breaking changes that may affect your application. Before upgrading, we recommend that you check out our [upgrade guide](https://www.prisma.io/docs/orm/more/upgrade-guides/upgrading-versions/upgrading-to-prisma-6) to understand the impact on your application.
+
+If you want to have an overview of what we accomplished since v5, check out our announcement blog post: [Prisma 6: Better Performance, More Flexibility & Type-Safe SQL](https://www.prisma.io/blog/prisma-6-better-performance-more-flexibility-and-type-safe-sql).
+
+🌟 **Help us spread the word about Prisma by starring the repo ☝️ or [posting on X](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v6.0.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/6.0.0) about the release.**
+
+## Breaking changes
+
+⚠️ This section contains a list of breaking changes. If you upgrade your application to Prisma ORM v6 without addressing these, your application is going to break! **For detailed upgrade instructions, check out the [upgrade guide](https://www.prisma.io/docs/orm/more/upgrade-guides/upgrading-versions/upgrading-to-prisma-6).** ⚠️ 
+
+### Minimum supported Node.js versions
+
+The new minimum supported Node.js versions for Prisma ORM v6 are:
+
+- for Node.js 18 the minimum supported version is **18.18.0**
+- for Node.js 20 the minimum supported version is **20.9.0**
+- for Node.js 22 the minimum supported version is **22.11.0**
+
+There is no official support for Node.js <18.18.0, 19, 21, 23.
+
+### Minimum supported TypeScript version
+
+The new minimum supported TypeScript version for Prisma ORM v6 is: **5.1.0**.
+
+### Schema change for implicit m-n relations on PostgreSQL
+
+If you're using PostgreSQL and are defining [implicit many-to-many relations](https://www.prisma.io/docs/orm/prisma-schema/data-model/relations/many-to-many-relations#implicit-many-to-many-relations) in your Prisma schema, Prisma ORM maintains the [relation table](https://www.prisma.io/docs/orm/prisma-schema/data-model/relations/many-to-many-relations#relation-tables) for you under the hood. This relation table has `A` and `B` columns to represent the tables of the models that are part of this relation.
+
+Previous versions of Prisma ORM used to create a _unique index_ on these two columns. In Prisma v6, this unique index is changing to a _primary key_ in order to [simplify for the default replica identity behaviour](https://github.com/prisma/prisma/issues/25196).
+
+If you're defining implicit m-n relations in your Prisma schema, the next migration you'll create will contain `ALTER TABLE` statements for _all_ the relation tables that belong to these relations.
+
+### Full-text search on PostgreSQL
+
+The `fullTextSearch` Preview feature is promoted to General Availability only for MySQL. This means that if you're using PostgreSQL and currently make use of this Preview feature, you now need to use the new `fullTextSearchPostgres` Preview feature.
+
+### Usage of `Buffer`
+
+Prisma v6 replaces the usage of [`Buffer`](https://nodejs.org/api/buffer.html) with [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to represent fields of type `Bytes`. Make sure to replace all your occurrences of the `Buffer` type with the new `Uint8Array`.
+
+### Removed `NotFoundError`
+
+In Prisma v6, we removed the `NotFoundError` in favor of `PrismaClientKnownRequestError` with error code [`P2025`](https://www.prisma.io/docs/orm/reference/error-reference#p2025) in [`findUniqueOrThrow()`](https://www.prisma.io/docs/orm/reference/prisma-client-reference#finduniqueorthrow) and [`findFirstOrThrow()`](https://www.prisma.io/docs/orm/reference/prisma-client-reference#findfirstorthrow). If you've relied on catching `NotFoundError` instances in your code, you need to adjust the code accordingly.
+
+### New keywords that can't be used as model names: `async`, `await`, `using`
+
+With this release, you can't use `async`, `await` and `using` as model names any more.
+
+---
+
+⚠️ **For detailed upgrade instructions, check out the [upgrade guide](https://www.prisma.io/docs/orm/more/upgrade-guides/upgrading-versions/upgrading-to-prisma-6).**  ⚠️ 
+
+## Preview features promoted to General Availability
+
+In this release, we are promoting a number of [Preview](https://www.prisma.io/docs/orm/more/releases#preview) features to [General Availability](https://www.prisma.io/docs/orm/more/releases#generally-available-ga).
+
+### `fullTextIndex`
+
+If you use the [full-text index](https://www.prisma.io/docs/orm/prisma-schema/data-model/indexes#full-text-indexes-mysql-and-mongodb) feature in your app, you can now remove `fullTextIndex` from the `previewFeatures` in your Prisma schema:
+
+```diff
+generator client {
+  provider        = "prisma-client-js"
+- previewFeatures = ["fullTextIndex"]
+}
+
+```
+
+### `fullTextSearch`
+
+If you use the [full-text search](https://www.prisma.io/docs/orm/prisma-client/queries/full-text-search) feature with **MySQL** in your app, you can now remove `fullTextSearch` from the `previewFeatures` in your Prisma schema:
+
+```diff
+generator client {
+  provider        = "prisma-client-js"
+- previewFeatures = ["fullTextSearch"]
+}
+
+```
+
+If you are using it with **PostgreSQL**, you need to update the name of the feature flag to `fullTextSearchPostgres`:
+
+```diff
+generator client {  
+  provider        = "prisma-client-js"
+- previewFeatures = ["fullTextSearch"]  
++ previewFeatures = ["fullTextSearchPostgres"]
+}
+```
+
+## New features
+
+We are also releasing new features with this release:
+
+- [cuid2() support](https://github.com/prisma/prisma-engines/pull/5047)
+- [Include unused enum definitions in `prisma generate`'s output](https://github.com/prisma/prisma/pull/25740)
+- [Improved compatibility with Deno 2](https://github.com/prisma/prisma/pull/25734)
+
+## Company news
+
+### 🚀 Prisma Postgres is free during Early Access
+
+In case you missed it: We recently launched [Prisma Postgres](https://www.prisma.io/blog/announcing-prisma-postgres-early-access), a serverless database with zero cold starts, a generous free tier, connection pooling, real-time events, and a lot more! It’s entirely free during the Early Access phase, try it now!
+
+### ✨ Let us know what you think of Prisma ORM
+
+We're always trying to improve! If you've recently used Prisma ORM, we'd appreciate hearing your thoughts about your experience via this [2min survey](https://pris.ly/orm/survey/release-5-22).</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.22.0 (2024-11-05)</h2>
+      <pre>Today, we are excited to share the `5.22.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo ☝️ or [posting on X](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.22.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.22.0) about the release.**
+
+## Highlights
+
+### Further Tracing Improvements
+
+In our ongoing effort to stabilize the `tracing` Preview feature, we’ve made our spans compliant with OpenTelemetry Semantic Conventions for Database Client Calls. This should lead to better compatibility with tools such as DataDog and Sentry.
+
+We’ve also included numerous bug fixes that should make this Preview feature easier to work with.
+
+### Metrics bug fix
+
+Occasionally, connection pool metrics would become negative or grow unbounded. In this release, connection pool metrics should stay consistent.
+
+### Connection Pool Timeout fix
+
+In a specific case, there could be issues where fetching a new connection from the connection pool would time out, regardless of the state of the application and connection pool. If you have experience connection pool issues accessing a  PostgreSQL database with TLS encryption in a resource-constrained environment (such as Function-as-a-Service offerings or very small VPS) this should resolve those issues.
+
+Special thanks to @youxq for their pull request and help resolving this issue!
+
+## Join us
+Looking to make an impact on Prisma in a big way? We're hiring!
+
+Learn more on our careers page: https://www.prisma.io/careers
+
+## Fixes and improvements
+
+### Prisma Migrate
+
+- [removing `@unique` in `schema.prisma` does not generate SQL to do so](https://github.com/prisma/prisma/issues/12732)
+
+### Prisma
+
+- [Prisma generate randomly fails on Ubuntu due to missing internal .so `libquery_engine-debian-openssl-1.1.x.so.node`](https://github.com/prisma/prisma/issues/19124)
+- [Timed out fetching a new connection from the connection pool. ](https://github.com/prisma/prisma/issues/25162)
+- [Some `prisma:engine:connection` spans have no parent](https://github.com/prisma/prisma/issues/23792)
+- [Query-related spans outside of `prisma:engine:itx_runner` are disconnected from the tree](https://github.com/prisma/prisma/issues/21402)
+- [Tracing with dataproxy/mini-proxy: `itx_runner` span and it's children are missing sometimes](https://github.com/prisma/prisma/issues/20694)
+- [Incorrect OpenTelemetry span reported by Prisma](https://github.com/prisma/prisma/issues/25436)
+- [OTEL spans are not recognised as spans from a database](https://github.com/prisma/prisma/issues/21472)
+- [SQL Injection bug - D1 adaptor throws "Conversion failed: expected a datetime string in column" when string column contains any ISO date](https://github.com/prisma/prisma/issues/25404)
+- [Prisma generate randomly fails on Ubuntu due to missing internal .so `libquery_engine-debian-openssl-1.1.x.so.node`](https://github.com/prisma/prisma/issues/19124)
+
+## Credits
+
+Huge thanks to @tmm1, @Takur0, @hinaloe, @andyjy, and @youxq for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.21.1 (2024-10-17)</h2>
+      <pre>- Fixed a bug where migrations were not using shadow database correctly in some edge cases</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.21.0 (2024-10-15)</h2>
+      <pre>Today, we are excited to share the `5.21.0` release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo ☝️ or [posting on X](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.21.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.21.0) about the release.**
+
+## Highlights
+
+### Better support for tracing in MongoDB
+
+The `tracing` Preview feature now has full support for MongoDB with previously missing functionality now implemented. This is a part of the ongoing effort to stabilize this Preview feature and release it in General Availability.
+
+`tracing` is a Preview feature that enables built-in support for OpenTelemetry instrumentation inside the Prisma Client and provides deep insights into the performance and timing of your queries. See our [documentation for more information](https://www.prisma.io/docs/orm/prisma-client/observability-and-logging/opentelemetry-tracing).
+
+For an easy to use and zero-configuration tracing instrumentation tool with a dashboard that provides an overview of your queries, statistics, and AI-powered recommendations, try [Prisma Optimize](https://pris.ly/gh/optimize).
+
+### WebAssembly engine size decrease for edge functions
+
+Due to recent changes, some users experienced a steep increase of the bundle size in Prisma 5.20 when using [the `driverAdapters` Preview feature](https://www.prisma.io/docs/orm/overview/databases/database-drivers#driver-adapters), going over the 1 MB limit on the free tier of Cloudflare Workers. This has now been fixed.
+
+## Fixes and improvements
+
+### Prisma Engines
+
+- [Avoid regex crate for wasm bundle size (to keep cloudflare free plan)](https://github.com/prisma/prisma-engines/issues/5008)
+
+## Credits
+
+Huge thanks to @austin-tildei, @LucianBuzzo, @mcuelenaere, @pagewang0, @key-moon, @pranayat, @yubrot, @skyzh for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.20.0 (2024-09-24)</h2>
+      <pre>🌟 **Help us spread the word about Prisma by starring the repo or [posting on X](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.20.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.20.0) about the release.** 🌟
+
+## Highlights
+
+### `strictUndefinedChecks` in Preview
+
+With Prisma ORM 5.20.0, the Preview feature `strictUndefinedChecks` will disallow any value that is explicitly `undefined` and will be a runtime error. This change is direct feedback from [this GitHub issue](https://github.com/prisma/prisma/issues/20169) and follows [our latest proposal](https://github.com/prisma/prisma/issues/20169#issuecomment-2338360300) on the same issue. 
+
+To demonstrate the change, take the following code snippet:
+
+```tsx
+prisma.table.deleteMany({
+  where: {
+    // If `nullableThing` is nullish, this query will remove all data.
+    email: nullableThing?.property,
+  }
+})
+```
+
+In Prisma ORM 5.19.0 and below, this could result in unintended behavior. In Prisma ORM 5.20.0, if the `strictUndefinedChecks` Preview feature is enabled, you will get a runtime error instead:
+
+```tsx
+Invalid \`prisma.user.findMany()\` invocation in
+/client/tests/functional/strictUndefinedChecks/test.ts:0:0
+  XX })
+  XX 
+  XX test('throws on undefined input field', async () => {
+→ XX   const result = prisma.user.deleteMany({
+         where: {
+           email: undefined
+                  ~~~~~~~~~
+         }
+       })
+Invalid value for argument \`where\`: explicitly \`undefined\` values are not allowed."
+```
+
+We have also introduced the `Prisma.skip` symbol, which will allow you to get the previous behavior if desired.
+
+```tsx
+prisma.table.findMany({
+  where: {
+    // Use Prisma.skip to skip parts of the query
+    email: nullableEmail ?? Prisma.skip
+  }
+})
+```
+
+From Prisma ORM 5.20.0 onward, we recommend enabling `strictUndefinedChecks`, along with the TypeScript compiler option `exactOptionalPropertyTypes`, which will help catch cases of undefined values at compile time. Together, these two changes will help protect your Prisma queries from potentially destructive behavior. 
+
+`strictUndefinedChecks` will be a valid Preview feature for the remainder of Prisma ORM 5. With our next major version, this behavior will become the default and the Preview feature will be “graduated” to Generally Available. 
+
+If you have any questions or feedback about `strictUndefinedChecks`, please ask/comment in our dedicated [Preview feature GitHub discussion](https://github.com/prisma/prisma/discussions/25271).
+
+### `typedSql` bug fix
+
+Thank you to everyone who has tried out our [`typedSql` Preview feature](https://www.prisma.io/blog/announcing-typedsql-make-your-raw-sql-queries-type-safe-with-prisma-orm) and [provided feedback](https://github.com/prisma/prisma/discussions/25106)! This release has a quick fix for typescript files generated when Prisma Schema enums had hyphens.
+
+## Fixes and improvements
+
+### Prisma
+
+- [Prisma incorrectly parses CRDB's FK constraint error as `not available`.](https://github.com/prisma/prisma/issues/24072)
+- [Invalid TypeScript files created by `generate` when typedSql is enabled and enum contains hyphens.](https://github.com/prisma/prisma/issues/25163)
+- [`@prisma/internals` didn't list `ts-toolbelt` in dependencies.](https://github.com/prisma/prisma/issues/17952)
+- [using `$extends` prevents model comments from being passed to TypeScript](https://github.com/prisma/prisma/issues/24648)
+
+### Prisma Engines
+
+- [Planetscale engine tests: interactive_tx](https://github.com/prisma/prisma-engines/issues/4469)
+- [Fix broken engine size publishing workflow](https://github.com/prisma/prisma-engines/issues/4991)
+
+## Credits
+
+Huge thanks to @mcuelenaere, @pagewang0, @key-moon, @pranayat, @yubrot, @thijmenjk, @mydea, @HRM, @haaawk, @baileywickham, @brian-dlee, @nickcarnival, @eruditmorina, @nzakas, and @gutyerrez for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.19.1 (2024-09-02)</h2>
+      <pre>Today, we are issuing the `5.19.1` patch release.
+
+## What's Changed
+
+We've fixed the following issues:
+- https://github.com/prisma/prisma/issues/25103
+- https://github.com/prisma/prisma/issues/25137
+- https://github.com/prisma/prisma/issues/25104
+- https://github.com/prisma/prisma/issues/25101
+
+
+**Full Changelog**: https://github.com/prisma/prisma/compare/5.19.0...5.19.x, https://github.com/prisma/prisma-engines/compare/5.19.0...5.19.x</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.19.0 (2024-08-27)</h2>
+      <pre>Today, we are excited to share the `5.19.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo or [posting on X](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.19.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.19.0) about the release.** 🌟
+
+## Highlights
+
+### Introducing TypedSQL
+
+TypedSQL is a brand new way to interact with your database from Prisma Client. After enabling the `typedSql` Preview feature, you’re able to write SQL queries in a new `sql` subdirectory of your `prisma` directory. These queries are then checked by Prisma during using the new `--sql` flag of `prisma generate` and added to your client for use in your code.
+
+To get started with TypedSQL:
+
+1. Make sure that you have the latest version of `prisma` and `@prisma/client` installed:
+    
+    ```
+    npm install -D prisma@latest
+    npm install @prisma/client@latest
+    ```
+    
+2. Enable the `typedSql` Preview feature in your Prisma Schema.
+    
+    ```
+       generator client {
+         provider = "prisma-client-js"
+         previewFeatures = ["typedSql"]
+       }
+    ```
+    
+3. Create a `sql` subdirectory of your `prisma` directory.
+    
+    ```
+    mkdir -p prisma/sql
+    ```
+    
+4. You can now add `.sql` files to the `sql` directory! Each file can contain one sql query and the name must be a valid JS identifier. For this example, say you had the file `getUsersWithPosts.sql` with the following contents:
+    
+    ```sql
+    SELECT u.id, u.name, COUNT(p.id) as "postCount"
+    FROM "User" u
+    LEFT JOIN "Post" p ON u.id = p."authorId"
+    GROUP BY u.id, u.name
+    ```
+    
+5. Import your SQL query into your code with the `@prisma/client/sql` import:
+    
+    ```tsx
+       import { PrismaClient } from '@prisma/client'
+       import { getUsersWithPosts } from '@prisma/client/sql'
+    
+       const prisma = new PrismaClient()
+    
+       const usersWithPostCounts = await prisma.$queryRawTyped(getUsersWithPosts)
+       console.log(usersWithPostCounts)
+    ```
+    
+
+There’s a lot more to talk about with TypedSQL. We think that the combination of the high-level Prisma Client API and the low-level TypedSQL will make for a great developer experience for all of our users.
+
+To learn more about behind the “why” of TypedSQL [be sure to check out our announcement blog post](https://pris.ly/typedsql-blog).
+
+For docs, check out our new [TypedSQL section](https://pris.ly/d/typedsql).
+
+## Bug fixes
+
+### Driver adapters and D1
+
+A few issues with our `driverAdapters` Preview feature and Cloudflare D1 support were resolved via https://github.com/prisma/prisma-engines/pull/4970 and https://github.com/prisma/prisma/pull/24922
+- Mathematic operations such as `max`, `min`, `eq`, etc in queries when using Cloudflare D1.
+- Resolved issues when comparing `BigInt` IDs when `relationMode="prisma"` was enabled and Cloudflare D1 was being used.
+
+### Joins
+
+- https://github.com/prisma/prisma/issues/23742 fixes Prisma Client not supporting deeply nested `some` clauses when the `relationJoins` Preview feature was enabled.
+
+### MongoDB
+
+The MongoDB driver for Rust (that our query engine users under the hood) had behavior that prioritized IPv4 connections over IPv6 connections. In IPv6-only environments, this could lead to significant "cold starts" where the query engine had to wait for IPv4 to fail before the driver would try IPv6. 
+
+With help from the MongoDB team, this has been resolved. The driver will now try IPv4 and IPv6 connections in parallel and then move forward with the first response. This should prevent cold start issues that have been seen with MongoDB in Prisma Accelerate.
+
+Thank you to the MongoDB team!
+
+## Join us
+
+Looking to make an impact on Prisma in a big way? We're now hiring engineers for the ORM team!
+- [Senior Engineer (TypeScript)](https://boards.greenhouse.io/prisma/jobs/5350820002): This person will be primarily working on the TypeScript side and evolving our Prisma client. Rust knowledge (or desire to learn Rust) is a plus.
+- [Senior Engineer (Rust)](https://boards.greenhouse.io/prisma/jobs/6940273002): This person will be focused on the `prisma-engines` Rust codebase. TypeScript knowledge (or, again, a desire to learn) is a plus.
+
+## Credits
+
+Huge thanks to @mcuelenaere, @pagewang0, @Druue, @key-moon, @Jolg42, @pranayat, @ospfranco, @yubrot, @skyzh for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.18.0 (2024-08-06)</h2>
+      <pre>🌟 **Help us spread the word about Prisma by starring the repo or [tweeting](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.18.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.18.0) about the release.** 🌟
+
+## Highlights
+
+### Native support for UUIDv7
+
+Previous to this release, the Prisma Schema function `uuid()` did not accept any arguments and created a UUIDv4 ID. While sufficient in many cases, UUIDv4 has a few drawbacks, namely that it is not temporally sortable.
+
+UUIDv7 attempts to resolve this issue, making it easy to temporally sort your database rows by ID!
+
+To support this, we’ve updated the `uuid()` function in Prisma Schema to accept an optional, integer argument. Right now, the only valid values are `4` and `7`, with `4` being the default. 
+
+```tsx
+model User {
+  id   String @id @default(uuid()) // defaults to 4
+  name String
+}
+
+model User {
+  id   String @id @default(uuid(4)) // same as above, but explicit
+  name String
+}
+
+model User {
+  id   String @id @default(uuid(7)) // will use UUIDv7 instead of UUIDv4
+  name String
+}
+```
+
+### Bug squashing
+
+We’ve squashed a number of bugs this release, special thanks to everyone who helped us! A few select highlights are:
+
+- [SQLite db will now be created and read from the correct location when using `prismaSchemaFolder`](https://github.com/prisma/prisma/issues/24779).
+- [Empty `Json[]` fields will now return `[]` instead of `null` when accessed through a join using the `relationJoins` Preview feature.](https://github.com/prisma/prisma/issues/22923)
+
+## Fixes and improvements
+
+### Prisma
+
+- [Support UUID v7](https://github.com/prisma/prisma/issues/24079)
+
+### Language tools (e.g. VS Code)
+
+- [Support fetching references for a model](https://github.com/prisma/language-tools/issues/982)
+
+## Share your feedback about Prisma ORM
+
+We want to know how you like working with Prisma ORM in your projects! Please [take our 2min survey](https://pris.ly/orm-survey-5-18) and let us know what you like or where we can improve 🙏
+
+## Credits
+
+Huge thanks to @mcuelenaere, @pagewang0, @Druue, @key-moon, @Jolg42, @pranayat, @ospfranco, @yubrot, @skyzh, @haaawk for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.17.0 (2024-07-16)</h2>
+      <pre>🌟 **Help us spread the word about Prisma by starring the repo or [tweeting](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.17.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.17.0) about the release.** 🌟
+
+## Highlights
+
+### VSCode extension improvements
+
+We’re happy to introduce some cool new features that will make your experience with the Prisma VSCode extension even better!
+
+**Find references across schema files**
+
+The ability to hop between references of a given symbol is really useful in application code and now with the introduction of multi-file schema, we think it’s the perfect time to bring this feature to the VSCode extension!
+
+With the 5.17.0 release, you’ll now have the ability to use the native “find references” feature to find any usage of a given symbol
+
+![references](https://github.com/user-attachments/assets/b7d82584-2be7-4db6-bfd9-4dbe46f9e865)
+
+**Added context on hover**
+
+When hovering over a symbol that references a view, type, enum, or any other block with multiple values, you’ll now see a handy pop out that shows what is in that block at a glance.
+
+![image](https://github.com/user-attachments/assets/b0dbc818-374b-4b6d-bda5-974d66efca65)
+
+**Additional quick fixes**
+
+We’ve taken some fixes made by the `prisma format` cli command and made them quick fixes available to the VSCode Extension. Now, when you have forget a back relation or relation scalar field, you’ll now see in real time what is wrong and have the option to fix it via the extension.
+
+![image (1)](https://github.com/user-attachments/assets/931e8dff-2b1e-4da7-bd17-5b844d12804e)
+
+### QueryRaw performance improvements
+
+We’ve changed the response format of `queryRaw` to decrease its average size which reduces serialization CPU overhead.
+
+When querying large data sets, we expect you to see improved memory usage and up to 2x performance improvements.
+
+## Fixes and improvements
+
+### Prisma Client
+
+- [Remove or change `This is the 10th instance of Prisma Client being started. Make sure this is intentional.` warning](https://github.com/prisma/prisma/issues/23736)
+
+### Prisma
+
+- [Prisma generate option --allow-no-models doesn't work.](https://github.com/prisma/prisma/issues/24737)
+
+### Language tools (e.g. VS Code)
+
+- [LSP Rename incorrectly maps field name and appends character](https://github.com/prisma/language-tools/issues/1771)
+
+
+## Credits
+
+Huge thanks to @key-moon, @pranayat, @yubrot, @skyzh for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.16.2 (2024-07-09)</h2>
+      <pre>Today, we are issuing the 5.16.2 patch release to fix an issue in Prisma client.
+
+## Fix in Prisma Client
+
+- [nextjs app deployed to vercel edge can't import prisma WASM module ](https://github.com/prisma/prisma/issues/24673)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.16.1 (2024-06-27)</h2>
+      <pre>Today, we are issuing the 5.16.1 patch release to fix an issue in Prisma client.
+
+## Fix in Prisma Client
+
+- [dotenv loading issue with PrismaClient ](https://github.com/prisma/prisma/issues/24634)
+- [Prisma Seed Script Fails After Upgrading to v5.16.0 (DATABASE_URL Error)](https://github.com/prisma/prisma/issues/24658)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.16.0 (2024-06-25)</h2>
+      <pre>🌟 **Help us spread the word about Prisma by starring the repo or [tweeting](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.16.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.16.0) about the release.** 🌟
+
+## **Highlights**
+
+### Omit model fields globally
+
+With Prisma ORM 5.16.0 we’re more than happy to announce that we’re expanding the `omitApi` Preview feature to also include the ability to **omit fields globally**.
+
+When the Preview feature is enabled, you’re able to define fields to omit when instantiating Prisma Client.
+
+```tsx
+const prisma = new PrismaClient({
+  omit: {
+    user: {
+      // make sure that password is never queried.
+      password: true,
+    },
+  },
+});
+```
+
+You’re also able to omit fields from multiple models and multiple fields from the same model
+
+```tsx
+const prisma = new PrismaClient({
+  omit: {
+    user: { 
+      // make sure that password and internalId are never queried.
+      password: true,
+      internalId: true,
+    },
+    post: {
+      secretkey: true,
+    },
+  },
+});
+```
+
+With both local and global `omit`, you now have the flexibility to completely remove sensitive fields while also tailoring individual queries. If you need the ability to generally omit a field except in a specific query, you can also overwrite a global omit locally
+
+```tsx
+const prisma = new PrismaClient({
+  omit: {
+    user: { 
+      // password is omitted globally.
+      password: true,
+    },
+  },
+});
+
+const userWithPassword = await prisma.user.findUnique({
+  omit: { password: false }, // omit now false, so password is returned
+  where: { id: 1 },
+});
+```
+
+### Changes to `prismaSchemaFolder`
+
+In `5.15.0` we released the `prismaSchemaFolder` Preview feature, allowing you to create multiple Prisma Schema files in a `prisma/schema` directory. We’ve gotten [a lot of great feedback](https://github.com/prisma/prisma/discussions/24413) and are really excited with how the community has been using the feature.
+
+To continue improving our multi-file schema support, **we have a few breaking changes** to the `prismaSchemaFolder` feature:
+
+- When using relative paths in Prisma Schema files with the `prismaSchemaFolder` feature, a path is now relative to the file it is defined in rather than relative to the `prisma/schema` folder. This means that if you have a generator block in `/project/prisma/schema/config/generator.prisma` with an `output` of `./foo` the output will be resolved to `/project/prisma/schema/config/foo` rather than `/project/prisma/foo`. The path to a SQLite file will be resolved in the same manner.
+- We realized that during migration many people would have `prisma/schema` as well as `prisma/schema.prisma`. Our initial implementation looked for a `.prisma` file first and would ignore the `schema` folder if it exists. This is now an error.
+
+### Changes to `fullTextSearch`
+
+In order to improve our full-text search implementation **we have made a breaking change** to the `fullTextSearch` Preview feature.
+
+Previously, when the feature was enabled we updated the `<Model>OrderByWithRelationInput` TypeScript type with the `<Model>OrderByWithRelationAndSearchRelevanceInput` type. However, we have noted that there are no cases where relational ordering is needed but search relevance is not. Thus, we have decided to remove the `<Model>OrderByWithRelationAndSearchRelevanceInput` naming and only use the `<Model>OrderByWithRelationInput` naming.
+
+## Fixes and improvements
+
+### Prisma
+
+- [Wrong Parameterized Types Sent for SQL Server Queries](https://github.com/prisma/prisma/issues/17565)
+- [`Prisma has no exported member named OrderByWithRelationInput. Did you mean OrderByWithAggregationInput?`](https://github.com/prisma/prisma/issues/21017)
+- [[Driver Adapters]: missing provider compatibility validation](https://github.com/prisma/prisma/issues/21864)
+- [Disable "Start using Prisma Client" hint logs on `prisma generate`](https://github.com/prisma/prisma/issues/22513)
+- [Deploying prisma to CloudFlare pages using Nuxt/Nitro and node-postgres (pg) is using the wrong(vercel) wasm path](https://github.com/prisma/prisma/issues/23500)
+- [`@prisma/adapter-pg` modifies node-postgres global type parsers](https://github.com/prisma/prisma/issues/23505)
+- [@prisma/adapter-d1 is failing with an import error when called inside vitest tests](https://github.com/prisma/prisma/issues/23911)
+- [`db pull` fails with `[libs\user-facing-errors\src\quaint.rs:136:18] internal error: entered unreachable code` on invalid credentials](https://github.com/prisma/prisma/issues/24268)
+
+### Language tools (e.g. VS Code)
+
+- [Make prisma-fmt logs to work with language server](https://github.com/prisma/language-tools/issues/1193)
+- [Spans and positions get shifted out of sync when schema includes multibyte characters](https://github.com/prisma/language-tools/issues/1308)
+- [VSCode extension panics when opening an empty prisma schema](https://github.com/prisma/language-tools/issues/1760)
+
+### Prisma Engines
+
+- [[DA] Planetscale engine tests: one2m_mix_required_writable_readable](https://github.com/prisma/prisma-engines/issues/4482)
+- [[DA] Planetscale engine tests: apply_number_ops](https://github.com/prisma/prisma-engines/issues/4485)
+
+## Credits
+
+Huge thanks to @key-moon, @pranayat, @yubrot, @skyzh, @brian-dlee, @mydea, @nickcarnival, @eruditmorina, @nzakas, @gutyerrez, @avallete, @ceddy4395, @Kayoshi-dev, @yehonatanz for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.15.1 (2024-06-18)</h2>
+      <pre>Today, we are issuing the `5.15.1` patch release.
+
+## Fixes in Prisma Client
+
+- [internal error: entered unreachable code](https://github.com/prisma/prisma/issues/23407)
+- [Got error 'internal error: entered unreachable code' when trying to perform an upsert.](https://github.com/prisma/prisma/issues/22947)
+- [Prisma Client errors on SQLite with internal error: entered unreachable code when running 2 concurrent upsert ](https://github.com/prisma/prisma/issues/22725)
+- [`ConnectionError(Timed out during query execution.)` during seeding](https://github.com/prisma/prisma/issues/21772)
+- [SQLite timeouts after upgrade from prisma 2 to prisma 4](https://github.com/prisma/prisma/issues/17029)
+- [`ConnectionError(Timed out during query execution.)` error when using `Promise.all` for SQLite](https://github.com/prisma/prisma/issues/11789)
+- [Improve the error when SQLite database file is locked](https://github.com/prisma/prisma/issues/10403)
+- [sqlite timeout error multiple queries run one after another](https://github.com/prisma/prisma/issues/10306)
+- [SQLite times out during query execution when using `Promise.all()` / concurrent](https://github.com/prisma/prisma/issues/9562)
+- [internal error: entered unreachable code](https://github.com/prisma/prisma/issues/24511)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.15.0 (2024-06-04)</h2>
+      <pre>Today, we are excited to share the `5.15.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo or [tweeting](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.15.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.15.0) about the release.** 🌟
+
+## **Highlights**
+
+### Multi-File Prisma Schema support
+
+Prisma ORM 5.15.0 features support for multi-file Prisma Schema in Preview. 
+
+This closes [a long standing issue](https://github.com/prisma/prisma/issues/2377) and does so in a clean and easy to migrate way. 
+
+To get started: 
+
+1. Enable the `prismaSchemaFolder` Preview feature by including it in the `previewFeatures` field of your `generator`.
+    ```prisma
+    datasource db {
+      provider = "postgresql"
+      url      = env("DATABASE_URL")
+    }
+    
+    generator client {
+      provider        = "prisma-client-js"
+      previewFeatures = ["prismaSchemaFolder"]
+    }
+    
+    ```
+2. Create a `schema` subdirectory under your `prisma` directory.
+3. Move your `schema.prisma` into this directory. 
+
+You are now set up with a multi-file Prisma Schema! Add as many or as few `.prisma` files to the new `prisma/schema` directory.
+
+When running commands where a Prisma Schema file is expected to be provided, you can now define a Prisma Schema directory. This includes Prisma CLI commands that use the `--schema` option as well as defining schema via `package.json`
+
+Our tooling has also been updated to handle multiple Prisma Schema files. This includes our Visual Studio Code extension and tools like database introspection, which will deposit new models in a `introspected.prisma` file. Existing models will be updated in the file they are found. 
+
+To learn more, please refer to our official documentation and [announcement blog post](https://www.prisma.io/blog/organize-your-prisma-schema-with-multi-file-support). If you try out `prismaSchemaFolder`, please [let us know](https://github.com/prisma/prisma/discussions/24413)!
+
+### Interesting Bug Fixes
+
+#### Fix for PostgreSQL prepared statement caching for raw queries
+
+This release fixes a [nasty bug with the caching of prepared statements](https://github.com/prisma/prisma/issues/22482) in [raw Prisma Client queries](https://www.prisma.io/docs/orm/prisma-client/queries/raw-database-access/raw-queries) that affected PostgreSQL when you ran the same SQL statement with differently typed paramters. This should not fail any more.
+
+#### Fix for SQL Server introspection of (deprecated) **`CREATE DEFAULT`**
+
+Our Introspection logic [crashed](https://github.com/prisma/prisma/issues/24275) on encountering certain multi-line `CREATE DEFAULT`, a [deprecated way to define defaults in SQL Server](https://learn.microsoft.com/en-us/sql/t-sql/statements/create-default-transact-sql?view=sql-server-ver15). As many SQL Server users are working with established databases, this happened frequently enough that we now explicitly ignore these defaults instead of crashing.
+
+#### Fix for Cloudflare D1’s lower parameter limit
+
+Cloudflare’s D1 has a lower parameter limit than local SQLite, which caused [bigger queries to fail](https://github.com/prisma/prisma/issues/23743). We adapted that limit to the D1 default for `@prisma/adapter-d1`, which will avoid such failures.
+
+#### Fix for Cloudflare D1’s different `PRAGMA` support
+
+Our generated migration SQL for SQLite [did not always work for Cloudflare D1](https://github.com/prisma/prisma/issues/24208), because of differences in the supported pragmas. We adapted the SQL to work in both local SQLite and Cloudflare D1.
+
+### Fixes and improvements
+
+#### Prisma Migrate
+
+- [Crash on multiline defaults introspection on MSSQL](https://github.com/prisma/prisma/issues/10123)
+- [Error: [libs\sql-schema-describer\src\mssql.rs:315:30] called `Result::unwrap()` on an `Err` value: "Couldn't parse default value: `create default [dbo].[member_notification_cancel_flags]  as 0\r\n`" ](https://github.com/prisma/prisma/issues/10740)
+- [Error: [libs\sql-schema-describer\src\mssql.rs:315:30] called `Result::unwrap()` on an `Err` value: "Couldn't parse default value: `create default d_password as 'D,73' `" ](https://github.com/prisma/prisma/issues/11010)
+- [Crash introspecting MSSQL database with `DEFAULT`s](https://github.com/prisma/prisma/issues/11557)
+- [doing introspection on a SQL Server 2018 DB - for Dynamic GP get the following error.](https://github.com/prisma/prisma/issues/14200)
+- [Error: [libs\sql-schema-describer\src\mssql.rs:317:30] called `Result::unwrap()` on an `Err` value: "Couldn't parse default value: `\r\ncreate default D_BIT_OFF\r\nas 0\r\n`" ](https://github.com/prisma/prisma/issues/15704)
+- [Error: called `Result::unwrap()` on an `Err` value: "Couldn't parse default value in SQL Server](https://github.com/prisma/prisma/issues/17069)
+- [db pull errors on SQL Server with `Error: [libs\sql-schema-describer\src\mssql.rs:336:30] called `Result::unwrap()` on an `Err` value: "Couldn't parse default value: [...]`](https://github.com/prisma/prisma/issues/17104)
+- [Error: [libs\sql-schema-describer\src\mssql.rs:336:30] called `Result::unwrap()` on an `Err` value: "Couldn't parse default value: `\r\ncreate default [va_nulla] as 0\r\n`" ](https://github.com/prisma/prisma/issues/17292)
+- [Error when pulling from database](https://github.com/prisma/prisma/issues/19971)
+- [Foreign key relation results in erroneous second migration](https://github.com/prisma/prisma/issues/23043)
+- [`db pull` can't parse script setting default value](https://github.com/prisma/prisma/issues/23453)
+- [Bug: Migrations not compatible with D1](https://github.com/prisma/prisma/issues/24208)
+- [SQL Server Introspection crashes on multi-line (deprecated) defaults](https://github.com/prisma/prisma/issues/24275)
+
+#### Prisma Client
+
+- [Raw query failed. Code: `22P03`. Message: `db error: ERROR: incorrect binary data format in bind parameter 1`](https://github.com/prisma/prisma/issues/16611)
+- [Float number on raw query: `incorrect binary data format in bind parameter 1`](https://github.com/prisma/prisma/issues/17110)
+- [Can't use Prisma client in Next.js middleware, even when deploying to Node.js](https://github.com/prisma/prisma/issues/21310)
+- [Prepared statement caching is data dependent on numeric input parameters (`incorrect binary data format in bind parameter x`)](https://github.com/prisma/prisma/issues/22482)
+- [Turso Driver Adapter: Including `_count` leads to error](https://github.com/prisma/prisma/issues/23566)
+- [Next.js app build fails when using Prisma with DB driver in Server Action](https://github.com/prisma/prisma/issues/23600)
+- [Bug: [D1] Error in performIO: Error: D1_ERROR: too many SQL variables](https://github.com/prisma/prisma/issues/23743)
+- [Remove `warn(prisma-client) This is the 10th instance of Prisma Client being started.` warning in Edge (and potentially) other envs)](https://github.com/prisma/prisma/issues/23763)
+- [$executeRawUnsafe: `incorrect binary data format in bind parameter 6`](https://github.com/prisma/prisma/issues/23872)
+- [Bug: Error or bug using Prisma with DriverAdapter with PostgreSQL database Neon](https://github.com/prisma/prisma/issues/23903)
+- [`Inconsistent column data: Unexpected conversion failure from Number to BigInt` error when using `@prisma/adapter-pg` ](https://github.com/prisma/prisma/issues/23926)
+- [Incompatibility with NextJS app dir, CloudFlare Pages and D1](https://github.com/prisma/prisma/issues/23929)
+- [Breaking change? `Int` switched to being `Int32` for MongoDB](https://github.com/prisma/prisma/issues/24262)
+
+#### Language tools (e.g. VS Code)
+
+- [VS Code extension is showing an advertisement](https://github.com/prisma/language-tools/issues/1732)
+- [`Generate` codelens fails on Windows](https://github.com/prisma/language-tools/issues/1738)
+- [We incorrectly read commented out preview features if they are before the real preview features](https://github.com/prisma/language-tools/issues/1741)
+
+### Credits
+
+Huge thanks to @pranayat, @yubrot, and @skyzh for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.14.0 (2024-05-14)</h2>
+      <pre>Today, we are excited to share the `5.14.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo ☝️ or [posting on X](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.14.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.14.0) about the release.** 🌟
+
+## Highlights
+
+### Share your feedback about Prisma ORM
+
+We want to know how you like working with Prisma ORM in your projects! Please [take our 2min survey](https://pris.ly/orm/survey/release-5-14) and let us know what you like or where we can improve 🙏
+
+### `createManyAndReturn()`
+
+We’re happy to announce the availability of a new, top-level Prisma Client query: `createManyAndReturn()`. It works similarly to `createMany()` but uses a `RETURNING` clause in the SQL query to retrieve the records that were just created.
+
+Here’s an example of creating multiple posts and then immediately returning those posts.
+
+```tsx
+const postBodies = req.json()['posts']
+
+const posts = prisma.post.createManyAndReturn({
+  data: postBodies
+});
+
+return posts
+```
+
+Additionally,`createManyAndReturn()` supports the same options as `findMany()`, such as the ability to return only specific fields.
+
+```tsx
+const postBodies = req.json()['posts']
+
+const postTitles = prisma.post.createManyAndReturn({
+  data: postBodies,
+  select: {
+    title: true,
+  },
+});
+
+return postTitles
+```
+
+Full documentation for this feature can be found [in the Prisma Client API Reference](https://www.prisma.io/docs/orm/reference/prisma-client-reference#createmanyandreturn).
+
+**Note**: Because `createManyAndReturn()` uses the `RETURNING` clause, it is only supported by PostgreSQL, CockroachDB, and SQLite databases. At this time, `relationLoadStrategy: join` is not supported in `createManyAndReturn()` queries.
+
+### MongoDB performance improvements
+
+Previously, Prisma ORM suffered from performance issues when using the `in` operator or when including related models in queries against a MongoDB database. These queries were translated by the Prisma query engine in such a way that indexes were skipped and collection scans were used, leading to slower queries especially on large datasets.
+
+With 5.14.0, Prisma ORM now rewrites queries to use a combination of `$or` and `$eq` operators, leading to dramatic performance increases for queries that include `in` operators or relation loading.
+
+## Fixes and improvements
+
+### Prisma Client
+
+- [`createMany()` should return the created records](https://github.com/prisma/prisma/issues/8131)
+- [Generating Prisma client without any model in its schema](https://github.com/prisma/prisma/issues/11582)
+- [MongoDB: Performance issue with nested `take` on many-to-one relationship](https://github.com/prisma/prisma/issues/13865)
+- [Slow queries on MongoDB using `include` for relations](https://github.com/prisma/prisma/issues/15156)
+- [[MongoDB] Performance issue in `findMany()` query execution with `in`](https://github.com/prisma/prisma/issues/15983)
+- [MongoDB nested/`include` query slow](https://github.com/prisma/prisma/issues/17142)
+- [MongoDB Connector generates queries which do not take advantage of indices.](https://github.com/prisma/prisma/issues/17396)
+- [Mongodb Nested Queries Not Using Indexes](https://github.com/prisma/prisma/issues/18025)
+- [MongoDB slow delete with `onDelete: SetNull`](https://github.com/prisma/prisma/issues/19169)
+- [Slow query with many-to-one relationship on MongoDB](https://github.com/prisma/prisma/issues/20600)
+- [`prisma init --with-model`](https://github.com/prisma/prisma/issues/20915)
+- [Fixed version of `@opentelemetry/*` dependencies](https://github.com/prisma/prisma/issues/21473)
+- [Usage of deprecated punycode module](https://github.com/prisma/prisma/issues/21644)
+- [Bug: D1 One-to-Many Relation INSERTs fail with `The required connected records were not found.` when using indices](https://github.com/prisma/prisma/issues/23902)
+
+### Prisma Migrate
+
+- [Empty `dbgenerated()` still breaking for `Unsupported()` types](https://github.com/prisma/prisma/issues/15654)
+- [Validation error when `shadowDatabaseUrl` is identical to `url` (or `directUrl`)](https://github.com/prisma/prisma/issues/16628)
+- [MongoDB Query with 'in' condition will cause COLLSCAN, without leveraging indexes](https://github.com/prisma/prisma/issues/19955)
+- ["Not Authorised" when directly applying Prisma generated migrations to Cloudflare D1 with `PRAGMA foreign_key_check;`](https://github.com/prisma/prisma/issues/23827)
+
+### Language tools (e.g. VS Code)
+
+- [make superior: model generate](https://github.com/prisma/language-tools/issues/1651)
+- [Missing code autocomplete for referential actions with mongodb](https://github.com/prisma/language-tools/issues/1676)
+- [add codelens provider w/ generate client command](https://github.com/prisma/language-tools/pull/1710)
+
+## Company news
+
+### Prisma Changelog
+
+Curious about all things Prisma? Be sure to check out the [Prisma Changelog](https://www.prisma.io/changelog) for updates across Prisma's products, including ORM, Accelerate, and Pulse!
+
+### New product announcement: Prisma Optimize
+
+With this release, we are excited to introduce a new Prisma product. We’re calling it “Optimize” because that’s what it does! Let your favorite ORM also help you debug the performance of your application. 
+
+Check out our [announcement blog post](https://www.prisma.io/blog/prisma-optimize-early-access) for more details, including a demo video.
+
+## Credits
+
+Huge thanks to @pranayat, @yubrot, @skyzh, @anuraaga, @gutyerrez, @avallete, @ceddy4395, @Kayoshi-dev for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.13.0 (2024-04-23)</h2>
+      <pre>Today, we are excited to share the `5.13.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo or [posting on X](https://twitter.com/intent/post?text=Check%20out%20the%20latest%20%40prisma%20release%20v5.13.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps%3A%2F%2Fgithub.com%2Fprisma%2Fprisma%2Freleases%2Ftag%2F5.13.0) about the release.**
+
+## Highlights
+
+### `omit` fields from Prisma Client queries (Preview)
+
+We’re excited to announce Preview support for the `omit` option within the Prisma Client query options. The [highly-requested](https://github.com/prisma/prisma/issues/5042) `omit` feature now allows you to exclude fields that you don’t want to retrieve from the database on a ***per-query basis*.** 
+
+By default, when a query returns records, the result includes all scalar fields of the models defined in the Prisma schema. [`select`](https://www.prisma.io/docs/orm/reference/prisma-client-reference#select) can be used to return specific fields, while `omit` can now be used to exclude specific fields. `omit` lives at the same API level and works on all of the same [Prisma Client model queries](https://www.prisma.io/docs/orm/reference/prisma-client-reference#model-queries) as `select`. Note, however, that `omit` and `select` are mutually exclusive. In other words, you can’t use both in the same query. 
+
+To get started using `omit`, enable the `omitApi` Preview feature in your Prisma schema:
+
+```prisma
+// schema.prisma
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["omitApi"]
+}
+```
+
+Be sure to re-generate Prisma Client afterwards:
+
+```bash
+npx prisma generate
+```
+
+Here is an example of using `omit`:
+
+```ts
+// Includes all fields except password
+await prisma.user.findMany({
+  omit: {
+   password: true
+  },
+})
+```
+
+Here is an example of using `omit` with `include`:
+
+```ts
+// Includes all user fields except user's password and title of user's posts
+await prisma.user.findMany({
+  omit: {
+   password: true
+  },
+  include: {
+    posts: {
+      omit: {
+        title: true
+      },
+    },
+  },
+})
+```
+<details>
+	<summary>Expand to view the example Prisma schema</summary>
+
+```prisma
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  name     String?
+  password String
+  posts    Post[]
+}
+
+model Post {
+  id       Int    @id @default(autoincrement())
+  title    String
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId Int
+}
+```
+
+</details>    
+
+Many users have requested a global implementation of `omit`. This request will be accommodated in the future. In the meantime, you can follow the issue [here](https://github.com/prisma/prisma/issues/5042).
+
+**📣 Share your feedback:** [`omitApi` Preview feature](https://github.com/prisma/prisma/discussions/23924)
+
+**📚 Documentation:** [`omit` - Prisma Client API Reference](https://www.prisma.io/docs/orm/reference/prisma-client-reference#omit-preview)
+
+## Fixes and improvements
+
+### Prisma Migrate
+
+- [Nicer Datamodel Type validation](https://github.com/prisma/prisma/issues/15174)
+
+### Prisma Client
+
+- [MySQL `upsert()`: `Internal error: Attempted to serialize empty result.`](https://github.com/prisma/prisma/issues/17982)
+- [Mysql `upsert()` fails with "Attempted to serialize empty result."](https://github.com/prisma/prisma/issues/18285)
+- [Interactive Transaction API timing out after upgrading from 4.7.0 and above](https://github.com/prisma/prisma/issues/18393)
+- [MySQL and SQLite `upsert()`: `Internal error: Attempted to serialize empty result.`](https://github.com/prisma/prisma/issues/19868)
+- [MySQL `upsert()`: `Internal error: Attempted to serialize empty result.`](https://github.com/prisma/prisma/issues/20042)
+- [MongoDB `upsert()`: `Internal error: Attempted to serialize empty result.`](https://github.com/prisma/prisma/issues/20527)
+- [MongoDB `upsert()`: `Internal error: Attempted to serialize empty result`](https://github.com/prisma/prisma/issues/21612)
+- [Relation mode + `upsert()`: `Internal error: Attempted to serialize empty result.`](https://github.com/prisma/prisma/issues/22562)
+- [`Internal error: Attempted to serialize empty result.` on `upsert()` for `update` case in different databases (when using `relationMode=prisma` explicitly or implicitly [MongoDB])](https://github.com/prisma/prisma/issues/22916)
+- [Postgres `upsert(): Internal error: Attempted to serialize empty result` when `relationMode = "prisma"` is used](https://github.com/prisma/prisma/issues/23359)
+- [`✘ [ERROR] near "��": syntax error at offset 0` when running `wrangler d1 migrations apply` with Prisma generated migration (on Windows, using Powershell)](https://github.com/prisma/prisma/issues/23702)
+
+## Credits
+
+Huge thanks to @ospfranco, @pranayat, @yubrot, @skyzh, @anuraaga, @yehonatanz, @arthurfiorette, @elithrar, @tockn, @Kuhave, @obiwac for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.12.1 (2024-04-04)</h2>
+      <pre>Today, we are issuing the `5.12.1` patch release to fix two small problems with our [new Cloudflare D1 support](https://www.prisma.io/blog/build-applications-at-the-edge-with-prisma-orm-and-cloudflare-d1-preview).
+
+## Fixes in Prisma CLI
+
+### Windows-only fix for new D1 specific flags for `migrate diff` and `db pull`
+
+The flags `--from-local-d1` and `--to-local-d1` for `migrate diff` and `--local-d1` to `db pull` we added in 5.12.0 were not working as expected when running on Windows only. This is now fixed.
+
+📚 **Documentation:** [Deploying a Cloudflare worker with D1 and Prisma ORM](https://prisma.io/docs/orm/overview/databases/cloudflare-d1#how-to-connect-to-d1-in-cloudflare-workers-or-cloudflare-pages)
+
+### New option for `migrate diff`: `-o` or `--output`
+
+We added a new parameter `--output` to `migrate diff` that can be used to provide a filename into which the output of the command will be written. This is particularly useful for Windows users, using PowerShell, as using `>` to write into a file creates a UTF-16 LE file that can not be read by `wrangler d1 migrations apply`. Using this new option, this problem can be avoided:
+
+```sh
+npx prisma migrate diff --script --from-empty --to-schema-datamodel ./prisma/schema.prisma --output ./schema.sql
+```
+
+Related issues:
+
+- [`✘ [ERROR] near "��": syntax error at offset 0` when running `wrangler d1 migrations apply` with Prisma generated migration (on Windows, using PowerShell) #23702](https://github.com/prisma/prisma/issues/23702)
+- [`prisma migrate resolve --applied` not working on new project, `migration ... could not be found.`](https://github.com/prisma/prisma/issues/17558)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.12.0 (2024-04-02)</h2>
+      <pre>Today, we are excited to share the `5.12.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo or [posting on X](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@prisma%20release%20v5.12.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/prisma/prisma/releases/tag/5.12.0) about the release.**
+
+## Highlights
+
+### Cloudflare D1 (Preview)
+
+This release brings Preview support for [Cloudflare D1](https://developers.cloudflare.com/d1/) with Prisma ORM 🥳
+
+D1 is Cloudflare’s SQLite database that can be used when deploying applications with Cloudflare. 
+
+When using Prisma ORM with D1, you can continue to: model your database with Prisma schema language, specify `sqlite` as your database provider in your Prisma schema, and interact with your database using Prisma Client. 
+
+To use Prisma ORM and D1 on Cloudflare Workers or Cloudflare Pages, you need to set `sqlite` as your database provider and use the `@prisma/adapter-d1` database adapter via the `driverAdapters` Preview feature, released back in version [5.4.0](https://github.com/prisma/prisma/releases/tag/5.4.0). 
+
+Here is an example of sending a query to your D1 database using Prisma Client in your Worker:
+
+```ts
+// src/index.ts file
+import { PrismaClient } from '@prisma/client'
+import { PrismaD1 } from '@prisma/adapter-d1'
+
+// Add the D1Database to the Env interface
+export interface Env {
+// This must match the binding name defined in your wrangler.toml configuration
+  DB: D1Database
+}
+
+export default {
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: ExecutionContext
+  ): Promise<Response> {
+    // Make sure the database name matches the binding name in wrangler.toml and Env interface
+    const adapter = new PrismaD1(env.DB)
+    // Instantiate PrismaClient using the PrismaD1 driver adapter
+    const prisma = new PrismaClient({ adapter })
+
+    const users = await prisma.user.findMany()
+    const result = JSON.stringify(users)
+    return new Response(result)
+  },
+}
+```
+
+📚 **Documentation:** [D1 Documentation](https://prisma.io/docs/orm/overview/databases/cloudflare-d1)
+
+✍️ **Blog post:** [Build Applications at the Edge with Prisma ORM & Cloudflare D1 (Preview)](https://www.prisma.io/blog/build-applications-at-the-edge-with-prisma-orm-and-cloudflare-d1-preview)
+
+📣 **Share your feedback:** [D1 Driver Adapter](https://github.com/prisma/prisma/discussions/23646)  
+
+🚀 **Example project:** [Deploy a Cloudflare Worker with D1](https://github.com/prisma/prisma-examples/tree/latest/deployment-platforms/edge/cloudflare-workers/with-d1)
+
+### `createMany()` for SQLite
+
+Bringing support for `createMany()` in SQLite has been a [long-awaited feature](https://github.com/prisma/prisma/issues/10710) ⭐
+
+`createMany()` is a method on Prisma Client, released back in version [2.16.0](https://github.com/prisma/prisma/releases/tag/2.16.0), that lets you insert multiple records into your database at once. This can be really useful when seeding your database or inserting bulk data.
+
+Here is an example of using `createMany()` to create new users:
+
+```ts
+const users = await prisma.user.createMany({
+  data: [
+    { name: 'Sonali', email: 'sonali@prisma.io' },
+    { name: 'Alex', email: 'alex@prisma.io' },
+    { name: 'Yewande', email: 'yewande@prisma.io' },
+    { name: 'Angelina', email: 'angelina@prisma.io' },
+  ],
+})
+```
+
+Before this release, if you wanted to perform bulk inserts with SQLite, you would have most likely used `$queryRawUnsafe` to execute raw SQL queries. But now you don’t have to go through all that trouble 🙂
+
+With SQLite, `createMany()` works exactly the same way from an API standpoint as it does with other databases except it does not support the `skipDuplicates` option. At the behavior level, SQLite will split `createMany()` entries into multiple `INSERT` queries when the model in your schema contains fields with attributes like `@default(dbgenerated())` or `@default(autoincrement())`  and when the fields are not consistently provided with values across the entries.
+
+📚**Documentation:** [`createMany()` - Prisma Client API Reference](https://www.prisma.io/docs/orm/reference/prisma-client-reference#createmany)
+
+## Fixes and Improvements
+
+### Prisma Client
+
+- [N+1 Issue with `Decimal` data type and combining queries (batching)](https://github.com/prisma/prisma/issues/5952)
+- [Batched `findUnique()`  error out when the field is of `Boolean` type](https://github.com/prisma/prisma/issues/22384)
+- [`relationJoins` MySQL converts nested Decimal to float](https://github.com/prisma/prisma/issues/23233)
+- [Unexpected query leading to querying full table when using batched `findUnique()`](https://github.com/prisma/prisma/issues/23343)
+- [`node-postgres` (pg) errors with misleading `P2010 PrismaClientKnownRequestError` when using `@prisma/adapter-pg` with SSL (`?sslmode=require`)](https://github.com/prisma/prisma/issues/23390)
+- [D1 DateTime type does not work](https://github.com/prisma/prisma/issues/23479)
+
+## Credits
+
+Huge thanks to @yubrot, @skyzh, @anuraaga, @onichandame, @LucianBuzzo, @RobertCraigie, @arthurfiorette, @elithrar for helping!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.11.0 (2024-03-12)</h2>
+      <pre>Today, we are excited to share the `5.11.0` stable release 🎉
+
+🌟 **Help us spread the word about Prisma by starring the repo ☝️ or [posting on X](https://twitter.com/intent/post?text=Check%20out%20the%20latest%20%40prisma%20release%20v5.11.0%20%F0%9F%9A%80%0D%0A%0D%0Ahttps%3A%2F%2Fgithub.com%2Fprisma%2Fprisma%2Freleases%2Ftag%2F5.11.0) about the release.**
+
+## Highlights
+
+### Edge function support for Cloudflare and Vercel (Preview)
+
+We’re thrilled to announce that support for edge function deployments with Prisma ORM is now in Preview 🥳 As of this release, you can deploy your apps that are using Prisma ORM to:
+
+- Vercel Edge Functions and Vercel Edge Middleware
+- Cloudflare Workers and Cloudflare Pages
+
+In order to deploy to an edge function, you’ll need to use a compatible database driver (along with its [Prisma driver adapter](https://www.prisma.io/docs/orm/overview/databases/database-drivers#driver-adapters)):
+
+- Neon Serverless Driver (for PostgreSQL databases hosted via [Neon](https://neon.tech/))
+- PlanetScale Serverless Driver (for MySQL databases hosted via [PlanetScale](https://planetscale.com/))
+- `pg` driver (for traditional PostgreSQL databases)
+- `@libsql/client` driver (for SQLite databases hosted via [Turso](https://turso.tech/))
+
+Check out our [documentation](https://www.prisma.io/docs/orm/prisma-client/deployment/edge/overview) to learn how you can deploy an edge function using any combination of supported edge function provider and database. 
+
+You can also read more about it in the [announcement blog post](https://pris.ly/b/prisma-edge)! 
+
+### Performance improvements in nested `create` operations
+
+With Prisma ORM, you can create multiple new records in _nested_ queries, for example:
+
+```ts
+const user = await prisma.user.update({
+  where: { id: 9 },
+  data: {
+    name: 'Elliott',
+    posts: {
+      create: {
+        data: [{ title: 'My first post' }, { title: 'My second post' }],
+      },
+    },
+  },
+})
+```
+
+In previous versions, Prisma ORM would translate this into multiple SQL `INSERT` queries, each requiring its own roundtrip to the database. As of this release, these nested `create` queries are optimized and the `INSERT` queries are sent to the database _in bulk_ in a single roundtrip. These optimizations apply to one-to-many as well as many-to-many relations.
+
+With this change, using the nested `create` option to create multiple records effectively becomes equivalent to using a nested `createMany` operation (except that `createMany` _only_ works with one-to-many relations, whereas `create` works both with one-to-many and many-to-many).
+
+> **Note**: Only the deepest nested operation is optimized. If a user specified `create (1) -> create (2) -> create (3)`  in their query, only `create (3)` will be optimized.
+
+## Fixes and improvements
+
+### Prisma Client
+
+- [Prisma errors when not using the major.minor.patch versioning system](https://github.com/prisma/prisma/issues/7317)
+- [mongodb where condition resulted in combined $ne but should not be $eq](https://github.com/prisma/prisma/issues/15175)
+- [Node hangs when `console.log(new PrismaClient())`](https://github.com/prisma/prisma/issues/18292)
+- [Add wolfy linux to supported OS](https://github.com/prisma/prisma/issues/18329)
+- [Support Linux Gentoo](https://github.com/prisma/prisma/issues/18698)
+- [Know engines to download for Void Linux](https://github.com/prisma/prisma/issues/20434)
+- [Engine does not support Linux distro "openeuler"](https://github.com/prisma/prisma/issues/20937)
+- [Prisma Doesn't Recognize Crystal Linux distro](https://github.com/prisma/prisma/issues/21955)
+- [Regression: Mapped `enum` throws error (collation `cp1250_czech_cs` or similar)](https://github.com/prisma/prisma/issues/21967)
+- [`NOT` condition leaks out of its desired bounds](https://github.com/prisma/prisma/issues/22007)
+- [The column does not exist in the current database.](https://github.com/prisma/prisma/issues/22098)
+- [Logging `PrismaClient` object is slow](https://github.com/prisma/prisma/issues/22848)
+- [Running `prisma generate` on Litespeed Web Server cPanel with ssh](https://github.com/prisma/prisma/issues/22857)
+- [Prisma doesn't know which engines to download for the Linux distro "guttaos"](https://github.com/prisma/prisma/issues/23031)
+- [Error in driver-adapter-utils with `tsc`:  `Cannot find namespace 'debug'.`](https://github.com/prisma/prisma/issues/23091)
+- [VS Code debugger freeze from time to time, when Prisma Client is involved](https://github.com/prisma/prisma/issues/23181)
+- [`push` method still unimplemented for scalar lists in CockroachDB](https://github.com/prisma/prisma/issues/23183)
+- [`Invalid character` error persists on 5.10.1 in Prisma Studio](https://github.com/prisma/prisma/issues/23225)
+- [Add "Peppermint OS" to list of supported distros](https://github.com/prisma/prisma/issues/23237)
+- [`runtimeDescription` is not defined error](https://github.com/prisma/prisma/issues/23430)
+
+### Prisma Migrate
+
+- [Prisma with UOS or Deepin](https://github.com/prisma/prisma/issues/18374)
+- [Warning: Linux distro "slackware"](https://github.com/prisma/prisma/issues/18547)
+- [Error when run `npx prisma db pull` with DeepinOS 20.9GNU/LInux](https://github.com/prisma/prisma/issues/19157)
+- [Add solus to list of known supported distros](https://github.com/prisma/prisma/issues/21493)
+- [NixOS not recognised as a Linux distribution](https://github.com/prisma/prisma/issues/22145)
+- [Prisma Warning on Ubuntu 20.04](https://github.com/prisma/prisma/issues/22347)
+- [Let Prisma detect Artix Linux distro](https://github.com/prisma/prisma/issues/22522)
+- [couldn't identify clear-linux-os](https://github.com/prisma/prisma/issues/22539)
+- [Prisma doesn't know which engines to download with `Linux Mint`](https://github.com/prisma/prisma/issues/23141)
+- [`Error: Invalid character` when `schema.prisma` includes Chinese/Non-ASCII characters in a comment](https://github.com/prisma/prisma/issues/23201)
+
+### Prisma Engines
+
+- [[DA] Planetscale engine tests: aggregations](https://github.com/prisma/prisma-engines/issues/4473)
+- [[DA] Planetscale engine tests: json filtering](https://github.com/prisma/prisma-engines/issues/4475)
+- [[DA] Planetscale engine tests: order and pagination](https://github.com/prisma/prisma-engines/issues/4478)
+- [[DA] Planetscale engine tests: oids](https://github.com/prisma/prisma-engines/issues/4479)
+- [[DA] Planetscale engine tests: nested_createmany_fail_dups](https://github.com/prisma/prisma-engines/issues/4481)
+- [[DA] Planetscale engine tests: create_many_error_dups](https://github.com/prisma/prisma-engines/issues/4484)
+- [[DA] Planetscale engine tests: upsert_fails_if_filter_dont_match](https://github.com/prisma/prisma-engines/issues/4486)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.10.2 (2024-02-21)</h2>
+      <pre>Today, we are issuing the `5.10.2` patch release.
+
+## Fix in Prisma CLI
+
+- [`Invalid character` error persists on 5.10.1 in Prisma Studio](https://github.com/prisma/prisma/issues/23225)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>5.10.1 (2024-02-20)</h2>
+      <pre>Today, we are issuing the `5.10.1` patch release.
+
+## Fix in Prisma Client / Prisma CLI
+
+- [Error: Invalid character when schema.prisma includes Chinese/Non-ASCII characters in a comment](https://github.com/prisma/prisma/issues/23201)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

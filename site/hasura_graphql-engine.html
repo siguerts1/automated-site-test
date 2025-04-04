@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for hasura/graphql-engine"/>
+  <title>hasura/graphql-engine Release Notes</title>
+</head>
+<body>
+  <h1>🚀 hasura/graphql-engine - Release Notes</h1>
+  
+    <section>
+      <h2>v2.47.0-beta.1 (2025-03-25)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- Don't attempt to `CREATE EXTENSION pgcrypto` if it already exists, so users on Azure using an unprivileged Postgres user in Hasura can create the extension manually prior to startup.
+- Add new `HASURA_GRAPHQL_REDIS_NO_FAIL_ON_STARTUP` option, allowing the engine to start up normally, but with rate limiting and caching disabled,  if there are errors with redis during startup. _(Enterprise edition only)_
+
+#### Console
+- Fix connection template and Dynamic Routing settings being reset when editing database in Connection Details page.  _(Cloud / Enterprise edition only)_
+
+
+#### CLI
+- Add a flag `--no-transaction` to `migrate apply` command.
+
+#### Build
+- Update `libpq` version in UBI9 base image.
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.36.10 (2025-03-11)</h2>
+      <pre>## Changelog
+This is a patch release for v2.36
+
+### Bug fixes and improvements
+
+#### Build
+
+- Update Ubuntu Jammy base image and RH image to get the latest security updates.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.46.0 (2025-03-05)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- Fix an issue where Postgres reset JSON parameters to empty strings after a transaction, causing event trigger failures when executing mutations outside Hasura. The `insert_event_log` trigger function now correctly handles empty strings.
+- Attempt to set Haskell runtime threads based on cgroup CPU limits, when present, for better automatic sizing in Docker and Kubernetes environments. Users with small CPU limits on servers with many cores should expect to see somewhat lower memory usage and possibly improved performance.
+- Add optional `no_transaction` flag (default `false`) to `run_sql` API (Postgres)  to execute SQL statements outside transaction blocks, with support for splitting multiple statements. Useful for operations like `CREATE INDEX CONCURRENTLY`.
+- Fix the `hasura_active_subscriptions` metric becoming inconsistent (e.g. showing a negative value).
+- Fix an issue where a source's metadata would be erased if the source was inconsistent and then a source update was performed.
+- Mark remote schemas as inconsistent when type conflicts occur with the existing schema.
+- Only show internal actions errors in logs if `HASURA_GRAPHQL_DEV_MODE` or `HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS` are switched on.
+- Increase upper bound of execution time metrics to 100s. _(Cloud / Enterprise edition only)_
+- Add metrics `hasura_events_fetch_query_time` and `hasura_events_fetched_total`. _(Cloud / Enterprise edition only)_
+- Fix metrics label for DB with non-standard URI. _(Cloud / Enterprise edition only)_
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.46.0-beta.1 (2025-02-27)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- Fix an issue where Postgres reset JSON parameters to empty strings after a transaction, causing event trigger failures when executing mutations outside Hasura. The `insert_event_log` trigger function now correctly handles empty strings.
+- Attempt to set Haskell runtime threads based on cgroup CPU limits, when present, for better automatic sizing in Docker and Kubernetes environments. Users with small CPU limits on servers with many cores should expect to see somewhat lower memory usage and possibly improved performance.
+- Add optional `no_transaction` flag (default `false`) to `run_sql` API (Postgres)  to execute SQL statements outside transaction blocks, with support for splitting multiple statements. Useful for operations like `CREATE INDEX CONCURRENTLY`.
+- Fix an issue where a source's metadata would be erased if the source was inconsistent and then a source update was performed.
+- Mark remote schemas as inconsistent when type conflicts occur with the existing schema.
+- Only show internal actions errors in logs if `HASURA_GRAPHQL_DEV_MODE` or `HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS` are switched on.
+- Fix the `hasura_active_subscriptions` metric becoming inconsistent (e.g. showing a negative value). _(Cloud / Enterprise edition only)_
+- Increase upper bound of execution time metrics to 100s. _(Cloud / Enterprise edition only)_
+- Add metrics `hasura_events_fetch_query_time` and `hasura_events_fetched_total`. _(Cloud / Enterprise edition only)_
+- Fix metrics label for DB with non-standard URI. _(Cloud / Enterprise edition only)_</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.45.2 (2025-02-21)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.45`.
+
+### Bug fixes and improvements
+
+#### Server
+
+- Fix `ConnectionClosed` error during metadata apply, and silence some other websockets related messages incorrectly logged as errors and report-as-bugs.
+
+#### Console
+
+- Fix Model Summary for MongoDB databases in the data tab.
+- Fix email alerts modal crash in Schema Registry. _(Cloud only)_
+
+#### Build
+
+- Update RH, Quarkus, Kotlin and Snowflake to get the latest security updates.
+- Update Ubuntu Jammy base image and ubi9 image to get the latest security updates.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.45.1 (2024-12-06)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.45`.
+
+### Bug fixes and improvements
+
+#### CLI
+
+- Allow migration directories with 14 digit numeric prefixes to be picked up when running `hasura scripts update-project-v3`.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.44.1 (2024-12-09)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.44`.
+
+### Bug fixes and improvements
+
+### Console
+
+- Add support for session variables for the `_in` and `_nin` operators while creating permissions in data tab performance mode.
+
+### Build
+
+- Update ubi9 image for security vulnerabilities for GraphQL engine.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.45.0 (2024-12-02)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- Fix issue where websocket connections did not time out when clients failed to initialize the protocol.
+- When using GraphQL schema introspection to introspect directives, the `isRepeatable` field now returns a valid value instead of `null`.
+- Update `--http-log-query-only-on-error` flag / `HASURA_GRAPHQL_HTTP_LOG_QUERY_ONLY_ON_ERROR` env var behavior to include `operationName` in the `query` field of `http-log` for successful requests when set to `true`.
+- Add `--http-log-query-only-on-error` flag / `HASURA_GRAPHQL_HTTP_LOG_QUERY_ONLY_ON_ERROR` env var (default `false`) to include query field in `http-log` only when the request results in an error.
+- Only show internal actions errors in logs if `HASURA_GRAPHQL_DEV_MODE` or `HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS` are switched on.
+- Add `hasura_postgres_connection_error_total` metric to count the number of Postgres connection errors. _(Cloud / Enterprise edition only)_
+- Fix Postgres URI label in metrics. _(Cloud / Enterprise edition only)_
+
+#### Console
+
+- Fix permission builder crash while using relationships defined via composite foreign-keys. 
+- Add support for session variables for the `_in` and `_nin` operators while creating permissions in data tab performance mode.
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.36.9 (2024-11-26)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.36`
+
+### Bug fixes and improvements
+
+- Update RedHat base image to get the latest security updates.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.45.0-beta.1 (2024-11-13)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- Fix issue where websocket connections did not time out when clients failed to initialize the protocol.
+- When using GraphQL schema introspection to introspect directives, the `isRepeatable` field now returns a valid value instead of `null`.
+- Update `--http-log-query-only-on-error` flag / `HASURA_GRAPHQL_HTTP_LOG_QUERY_ONLY_ON_ERROR` env var behavior to include `operationName` in the `query` field of `http-log` for successful requests when set to `true`.
+- Add `--http-log-query-only-on-error` flag / `HASURA_GRAPHQL_HTTP_LOG_QUERY_ONLY_ON_ERROR` env var (default `false`) to include query field in `http-log` only when the request results in an error.
+- Add `hasura_postgres_connection_error_total` metric to count the number of Postgres connection errors. _(Cloud / Enterprise edition only)_
+- Fix Postgres URI label in metrics. _(Cloud / Enterprise edition only)_
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.44.0 (2024-10-30)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- Gzip compress OpenTelemetry (OTLP) export transport. This is supported by [all compliant servers](https://opentelemetry.io/docs/specs/otlp/#protocol-details).
+
+#### Build
+- Updates Ubuntu Jammy base image to get the latest security updates.
+- Updates Red Hat UBI base image to get the latest security updates.
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.36.8 (2024-09-19)</h2>
+      <pre>## Changelog
+
+#### Server
+- Use `HASURA_GRAPHQL_HTTP_LOG_QUERY_ONLY_ON_ERROR: true` (default `false`) env var or `--http-log-query-only-on-error` flag to include query field in `http-log` only when the request results in an error.
+- Updated `HASURA_GRAPHQL_HTTP_LOG_QUERY_ONLY_ON_ERROR` and `--http-log-query-only-on-error` to include `operationName` in the `query` field of `http-log` for successful requests when set to `true`.
+- Improved memory usage behavior when running the engine with the non-moving gc (with `+RTS --nonmoving-gc -RTS`) for improved tail latencies. The recommended configuration in this mode is: `+RTS --nonmoving-gc  --nonmoving-dense-allocator-count=34 -A64M -RTS`
+
+#### Build
+- Updates Ubuntu Jammy base image to get the latest security updates.
+- Updates Red Hat UBI base image to get the latest security updates.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.44.0-beta.1 (2024-09-23)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- Gzip compress OpenTelemetry (OTLP) export transport. This is supported by [all compliant servers](https://opentelemetry.io/docs/specs/otlp/#protocol-details).
+
+#### Build
+- Updates Ubuntu Jammy base image to get the latest security updates.
+- Updates Red Hat UBI base image to get the latest security updates.
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.43.0 (2024-08-27)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- Fix Native Query validation for Hasura instances using SSL certificates.
+- Fix spurious log entries regarding event trigger cleanup not being scheduled for BigQuery sources as event triggers are not supported. _(Cloud / Enterprise edition only)_
+
+#### Data Connectors
+- Add support for list parameters in Snowflake Native Queries. Parameters starting and ending with square brackets will be tokenized by commas; leading and trailing single and double quotes will be removed from the tokenized parameters.  _(Cloud / Enterprise edition only)_
+- Switched scalar type for MySQL timestamp column to simple datetime, without timezone.  _(Cloud / Enterprise edition only)_
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.43.0-beta.1 (2024-08-22)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- Fix Native Query validation for Hasura instances using SSL certificates.
+- Fix spurious log entries regarding event trigger cleanup not being scheduled for BigQuery sources as event triggers are not supported. _(Cloud / Enterprise edition only)_
+
+#### Data Connectors
+- Add support for list parameters in Snowflake Native Queries. Parameters starting and ending with square brackets will be tokenized by commas; leading and trailing single and double quotes will be removed from the tokenized parameters.  _(Cloud / Enterprise edition only)_
+- Switched scalar type for MySQL timestamp column to simple datetime, without timezone.  _(Cloud / Enterprise edition only)_
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.42.0 (2024-08-08)</h2>
+      <pre>## Changelog
+
+### Behaviour changes
+
+  
+- In certain circumstances, all HTTP headers were included in the set of session variables. This has now been reduced to only the session variables. This change affects a number of areas, including the HTTP logs, query validation, JWT claims, rate limiting, and accessing session variables in Kriti code.
+  
+- When `update_*_many` is given an empty list of updates, the result will now be an empty list, rather than an object. Previously, this meant that an empty list of updates would result in a result of the wrong type.
+  
+- In rare cases, sensitive headers were written to the GraphQL Engine logs. These cases are now handled correctly to avoid logging sensitive information.
+  
+
+### Bug fixes and improvements
+
+#### Server
+- Add field `ignored_client_headers` to Action definition to specify an explicit list of client headers to ignore when forwarding headers to the webhook handler.
+- Add an experimental feature flag `remove_empty_subscription_responses`  to filter empty responses in subscription queries for Postgres data sources. This should reduce Hasura-to-database and Hasura-to-client network overhead for users with many streaming subscriptions seeing empty results.
+- Add an experimental feature flag `no_null_unbound_variable_default` to remove unbound nullable variables with no defaults from the query, as per the [spec](https://spec.graphql.org/June2018/#example-704b8). 
+
+  For example, if `$unbound: String` is not given a variable assignment, the query `update_table({ _set: { column: $unbound }})` will not update any columns.
+
+- Quote Postgres custom scalar types in SQL. This enables using custom type names that are not just lowercase identifiers.
+- Add missing `trace_id` and `span_id` fields to logs for Enterprise Classic edition (Enterprise edition only)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.42.0-beta.1 (2024-08-02)</h2>
+      <pre>## Changelog
+### Behaviour changes
+
+  
+- In certain circumstances, all HTTP headers were included in the set of session variables. This has now been reduced to only the session variables. This change affects a number of areas, including the HTTP logs, query validation, JWT claims, rate limiting, and accessing session variables in Kriti code.
+  
+- When `update_*_many` is given an empty list of updates, the result will now be an empty list, rather than an object. Previously, this meant that an empty list of updates would result in a result of the wrong type.
+  
+- In rare cases, sensitive headers were written to the GraphQL Engine logs. These cases are now handled correctly to avoid logging sensitive information.
+  
+
+### Bug fixes and improvements
+
+#### Server
+- Add field `ignored_client_headers` to Action definition to specify an explicit list of client headers to ignore when forwarding headers to the webhook handler.
+- Add an experimental feature flag `remove_empty_subscription_responses`  to filter empty responses in subscription queries for Postgres data sources. This should reduce Hasura-to-database and Hasura-to-client network overhead for users with many streaming subscriptions seeing empty results.
+- Add an experimental feature flag `no_null_unbound_variable_default` to remove unbound nullable variables with no defaults from the query, as per the [spec](https://spec.graphql.org/June2018/#example-704b8). 
+
+  For example, if `$unbound: String` is not given a variable assignment, the query `update_table({ _set: { column: $unbound }})` will not update any columns.
+
+- Quote Postgres custom scalar types in SQL. This enables using custom type names that are not just lowercase identifiers.
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.36.7 (2024-08-02)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.36`
+
+### Behaviour changes
+- In certain circumstances, all HTTP headers were included in the set of session variables. This has now been reduced to only the session variables. This change affects a number of areas, including the HTTP logs, query validation, JWT claims, rate limiting, and accessing session variables in Kriti code.
+- In rare cases, sensitive headers were written to the GraphQL Engine logs. These cases are now handled correctly to avoid logging sensitive information.
+
+#### Build
+- Updates ubuntu jammy base image to get the latest security updates.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.40.3 (2024-07-30)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.40`
+
+### Bug fixes and improvements
+
+#### Data Connectors
+
+- Update RedHat base image to get the latest security updates.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.41.0 (2024-07-11)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- For JWT key servers that do not implement caching, keys will now refresh every 60 seconds instead of every second.
+- Gracefully handle and log certain unexpected internal exceptions.
+- Fix an intermittent bug triggered when clearing the cache, which results in an internal error. _(Cloud / Enterprise edition only)_
+- Add `session_variables` attribute to GraphQL spans in OpenTelemetry traces.  _(Cloud / Enterprise edition only)_
+- Add a new OpenTelemetry span for the auth webhook.  _(Cloud / Enterprise edition only)_
+- Enhance `SpanKind` for server and client spans according to [the OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind)  _(Cloud / Enterprise edition only)_
+
+#### Console
+- Add VPC collaborators feature for Cloud Enterprise users. _(Cloud only)_
+
+#### Build
+- Updates ubuntu jammy base image to get the latest security updates.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.41.0-beta.1 (2024-07-08)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+- For JWT key servers that do not implement caching, only refresh keys every 60 seconds rather than ever single second.
+- Gracefully handle and log certain unexpected internal exceptions.
+
+#### Build
+- Updates ubuntu jammy base image to get the latest security updates
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.40.2 (2024-06-24)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.40`.
+
+### Bug fixes and improvements
+
+#### Server
+
+- Add `HASURA_GRAPHQL_DISABLE_NATIVE_QUERY_VALIDATION` env var / `--disable-native-query-validation` flag to disable validation of Native Queries against the database.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.40.1 (2024-06-24)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.40` 
+
+### Bug fixes and improvements
+
+#### Server
+
+- Add `HASURA_GRAPHQL_ENABLE_QUERY_TRACING` env  var to enable adding Postgres SQL queries to the OTLP traces. _(Cloud / Enterprise edition only)_
+- Add GraphQL queries to the OTLP traces if the `HASURA_GRAPHQL_ENABLE_QUERY_TRACING` config option is enabled. _(Cloud / Enterprise edition only)_
+- Fix missing overflow bucket in OTLP histogram export. Data points in the "+inf" bucket will now be sent, just as in Prometheus export.  _(Cloud / Enterprise edition only)_
+
+#### Data Connectors
+
+- Update Redshift JDBC driver to latest version.   _(Cloud / Enterprise edition only)_</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.36.6 (2024-06-17)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.36`
+
+### Bug fixes and improvements
+
+#### Server
+
+- Add GraphQL queries to the OTLP traces if the `HASURA_GRAPHQL_ENABLE_QUERY_TRACING` config option is enabled. _(Cloud / Enterprise edition only)_
+- Add `operation_name` and `parameterized_query_hash` labels to the `hasura_graphql_requests_total` Prometheus metric. _(Cloud / Enterprise edition only)_
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.36.5 (2024-06-10)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.36`
+
+### Bug fixes and improvements
+
+#### Server
+
+- Add `HASURA_GRAPHQL_ENABLE_QUERY_TRACING` env var to enable adding Postgres SQL queries to the OTLP traces. _(Cloud / Enterprise edition only)_
+
+#### Build
+
+- Update the Ubuntu base image to receive the latest security updates.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.40.0 (2024-06-10)</h2>
+      <pre>## Changelog
+
+### Bug fixes and improvements
+
+#### Server
+
+- Explicitly close database connection after a Native Query validation step finishes.
+- Fix bug in streaming subscriptions that causes some database pollers to be left open after the relevant users unsubscribe from the subscription.
+- Fix a few bugs in the admin-only cache management endpoints, `/pro/cache/clear` and `/pro/cache/metrics`:  _(Cloud / Enterprise edition only)_
+  - The underlying management queries would sometimes miss keys. This has been remedied.
+  - They now return the internal error details when one occurs.
+- The type of the `clearedItemCount` field in the `/pro/cache/clear` endpoint response has been changed from a string to a number. _(Cloud / Enterprise edition only)_
+- Add `HASURA_GRAPHQL_REDIS_TIMEOUT` env var to set a timeout for Redis queries _(Enterprise edition only)_
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.40.0-beta.1 (2024-06-05)</h2>
+      <pre>## Changelog
+### Bug fixes and improvements
+
+#### Server
+
+- Explicitly close database connection after a Native Query validation step finishes.
+- Fix bug in streaming subscriptions that causes some database pollers to be left open after the relevant users unsubscribe from the subscription.
+- Fix a few bugs in the admin-only cache management endpoints, `/pro/cache/clear` and `/pro/cache/metrics`:  _(Cloud / Enterprise edition only)_
+  - The underlying management queries would sometimes miss keys. This has been remedied.
+  - They now return the internal error details when one occurs.
+- The type of the `clearedItemCount` field in the `/pro/cache/clear` endpoint response has been changed from a string to a number. _(Cloud / Enterprise edition only)_
+- Add `HASURA_GRAPHQL_REDIS_TIMEOUT` env var to set a timeout for Redis queries _(Enterprise edition only)_
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.36.4 (2024-05-28)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.36`
+
+### Bug fixes and improvements
+
+#### Server
+- Explicitly close database connection after a Native Query validation step finishes.
+
+#### Build
+
+- Update the Ubuntu and Red Hat UBI base images to receive the latest security updates.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.39.2 (2024-05-29)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.39`
+
+### Bug fixes and improvements
+
+#### Server
+- Run setup for scheduled events off the main thread so as not to slow startup.
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.39.1 (2024-05-09)</h2>
+      <pre>## Changelog
+
+This is a patch release for `v2.39`
+
+### Bug fixes and improvements
+
+#### Build
+
+- Fix bug where connections to read replicas would persist even after they were removed from the data source config. _(Cloud / Enterprise edition only)_</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

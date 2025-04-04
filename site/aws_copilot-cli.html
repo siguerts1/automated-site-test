@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for aws/copilot-cli"/>
+  <title>aws/copilot-cli Release Notes</title>
+</head>
+<body>
+  <h1>🚀 aws/copilot-cli - Release Notes</h1>
+  
+    <section>
+      <h2>copilot-cli: Release v1.34.0 (2024-06-26)</h2>
+      <pre>### ⚡️ Features and Enhancements
+- Import internal ALBs for Backend Services (#5490)
+> You can now import your existing internal application load balancer (ALB) for a Backend Service if you don't want to use the environment-shared internal ALB that Copilot creates for your Backend Services with `http` enabled. Just specify the name or ARN of the ALB in the `http.alb` field,and Copilot will figure out if it has an HTTP listener, an HTTPS listener, or both. Copilot will then create the appropriate listener rules and target group to send traffic to your Backend Service!
+
+### ❤️ Contributions
+Thank you, contributors 🥰!
+- @trivikr (#5822, #5828, #5829)
+- @mathmul (#5831)
+- @ikorecky (#5825)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.33.4 (2024-05-21)</h2>
+      <pre> 🐛 Bug Fixes
+
+- fix: uri root path checking (#5778)
+- fix: default aurora-mysql engine version (#5813)
+
+❤️ Contributions
+
+Thank you, contributors 🥰!
+- @Folyd (#5778)
+- @ruzickap (#5813)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.33.3 (2024-04-19)</h2>
+      <pre>⬆️  Updates
+- chore: update CDK version for CVE compliance (#5777)
+
+ 🐛 Bug Fixes
+- fix: allow EnvManagerRole to access the S3 bucket that holds tasks' env files (#5760)
+- fix: add `ListStacks` permission to EnvManagerRole (#5761)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.33.2 (2024-03-21)</h2>
+      <pre>🐛 Bug Fixes
+
+- fix: scheduled jobs' custom subnets should be rendered as strings (#5703)
+- fix: enable `copilot job package --diff` and prevent output of full template (#5685)
+- fix: check if docker is running for Windows (#5660)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.33.1 (2024-01-30)</h2>
+      <pre>🐛 Bug Fixes
+
+* Correctly empty ECR repositories when deleting app regional resources. (#5617)
+* Allow EFS volumes to have multiple mount points in a single service. (#5631)
+* Fix incorrect indentation for runtime secrets in the request-driven service CloudFormation template. (#5635)
+* Fix the `copilot svc package` command for a request-driven web service when `image.build` is used. (#5638)
+
+❤️ Contributions
+
+Thank you, contributors 🥰!
+- @isleys (#5632)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.33.0 (2024-01-17)</h2>
+      <pre>### ⚡️ Features and Enhancements
+- **run local `--use-task-role`**: Elevate your local testing experience with the ECS Task Role using the new `--use-task-role` flag (#5529)
+    
+    > The `copilot run local` command now includes a `--use-task-role` flag. When activated, Copilot will fetch IAM permissions from your deployed service and seamlessly inject them into the containers created by `run local`. This ensures that your containers mirror the same permissions as they would in the cloud, facilitating more accurate testing.
+
+    > If you prefer not to utilize the `TaskRole` permissions or if Copilot encounters issues retrieving them, you can disable this feature by setting `--use-task-role=false`.
+
+- **run local `depends_on` support**: Local run containers now respect [`depends_on`](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#image-depends-on) in your service manifests (#5509)
+
+    > Enhancing the run local feature! Previously, copilot run local initiated the startup and removal of all containers without a specific order. With this improvement, container actions are aligned with your [`depends_on`](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#image-depends-on) configuration in your service manifests.
+
+- **Allow variable escaping in manifest**: Escape interpolated variables in your manifests with the latest update (#5516)
+
+    > Now, you have the flexibility to escape interpolated variables in your manifests. Use the following syntax to prevent Copilot from resolving `${name}` using the local environment:
+    > ```yaml
+     > command: echo hello \${name}
+     > variable:
+     >   name: world
+    > ```
+
+- **`run local --watch` skips files specified by `.dockerignore`**: `--watch` flag now respects `.dockerignore` and Copilot will not watch these files (#5565)
+
+- **Upgrade Lambda Node.js version to 20.x**: as Node.js 16 has been End-of-Life since Sep. 2023 (#5583)
+
+### 🐛 Bug Fixes
+- Allow decryption of secrets with CMK (#5576): In `v1.32.1`, a [security patch](#5514) restricted `kms:Decrypt` to ECS Execution Role and AppRunner Instance Role. This affected users with managed KMS keys. Now, any KMS key with correct `copilot-application` and `copilot-environment` tags is allowed for seamless deployment.
+- `response_time` should respect imported ALB (#5564)
+- Check for ubuntu based distro to install SSM Plugin (#5571)
+- `run local --proxy` should work when Service Connect is disabled (#5604)
+
+### ❤️ Contributions
+Thank you, contributors 🥰!
+- @bencehornak (#5516, #5514)
+- @craigjbass (#5513)
+- @otty246 (#5510)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.32.1 (2023-12-13)</h2>
+      <pre>### 🐛 Bug Fixes
+
+- Refer to correct TargetGroup name for imported ALB. (#5478)
+- Add quotes to fix the invalid template for svc package for static site. (#5498)
+- Avoid panicking by initializing required client for static site. (#5530)
+- Fix KMS access denied errors when downloading the static env file. (#5514)
+- Fix the permission error when the pipeline CodeBuild tries to get the public public hosted zone ID for the domain. (#5540)
+- Account for TLS termination in exposed port validation. (#5549)
+- Respect `image.location` URI for containers. (#5555)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.32.0 (2023-11-09)</h2>
+      <pre>### ⚡️ Features and Enhancements
+- **`run local --proxy`**: Proxy outbound requests from your local containers to the environment VPC using `--proxy`! (#5412)
+    
+    > We are enhancing the `run local` feature released in [v1.30.0](https://aws.github.io/copilot-cli/blogs/release-v130/#copilot-run-local): the `--proxy` flag proxies outbound requests to your environment VPC. This feature gives you higher fidelity for your local testing using `run local` – the containers on your local machine can now talk to the other services in the VPC and talk to your RDS database through the cluster or instance endpoints.
+
+- **`run local --watch`**: Listen to changes to your workspace and automatically restart the containers (#5413)
+
+    > Another enhancement to the `run local` feature! Test your services using `run local` while making changes to your code, and Copilot will automatically restart the local containers. You can test your service with the new changes without having to kill the original process and run `run local` again. 
+    > The flag `--watch` is great by itself, but extremely useful if you use `--proxy`: it saves you quite a bit of the overhead time to set up the proxy. 
+
+- **Import an application load balancer**: Place an existing ALB in front of your service (#5438)
+
+    > Bring your own application load balancer if you don't like the default shared application load balancer of your environment! Just specify the name or the ARN of the application load balancer in the `http.alb` field, and Copilot will figure out whether it has an HTTP listener, an HTTPS listener, or both. Copilot will then create listener rules on the listeners it finds, and optionally upserts A records for your alias to the respective hosted zones if any are specified!
+    > ```yaml
+    > http:
+    >   alb: myALB # Or arn:aws:elasticloadbalancing:us-west-2:1234567890:loadbalancer/app/myALB/12345abcde
+    >   path: '/'
+    >   alias:
+    >      - name: example.com
+    >        hosted_zone: Z08230443CW11KE6JBNUA
+    >   allowed_source_ips: ["192.0.2.0/24", "198.51.100.10/32", "67.170.82.49/32"]
+    > ```
+
+- **Support addons for Static Site** (#5384): you can now use [addons to add additional resources](https://aws.github.io/copilot-cli/docs/developing/addons/workload/) to your Static Site workload, the same way as you would for any other services!
+
+- **Support docker build args in `task run --build-args`** (#5377)
+    > Pass additional build args to build the image using `--build-args`!
+    > ```
+    > $ copilot task run --build-args GO_VERSION=1.19
+    > ```
+
+- **Enforce KMS encryption on the pipeline artifact buckets** (#5329): Any new applications will start using the KMS key managed by Copilot as the default encryption key – instead of the S3-managed key – for your pipeline artifact buckets. It also rejects any `s3:PutObject` actions that disable server-side encryption. This change should not affect any existing applications, and can be optionally applied to your existing application by running `copilot app upgrade` to meet compliance requirements. 
+
+- **Enforce HTTPS on the pipeline artifact buckets** (#5393):  Reject any access to pipeline artifact buckets that are not secure. Any new applications will come with this configuration. For existing applications, run `copilot app upgrade` to get the extra protection.
+
+
+### 🐛 Bug Fixes
+* Remove `sts:AssumeRole` permission for the ECS task roles or the App Runner instance roles (#5423): Previously, there was a bug where the ECS tasks roles were given permission to assume roles that are tagged with the application name and the environment name. We are removing this permission for better security posture. We recommend that you redeploy your Load-Balanced Web Services, Backend Services, Worker Services, Request-Driven Web Service, and Scheduled Job to apply this fix. 
+
+### ❤️ Contributions
+Thank you, contributors 🥰!
+- @briercliffe  (#5377)
+- @FlorianSW (#5329)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.31.0 (2023-10-06)</h2>
+      <pre>### ⚡️ Features and Enhancements
+- **NLB enhancements**: You can now add security groups to Copilot-managed NLBs. NLBs also support the UDP protocol. (#5284)
+
+    > Previously, the `nlb` field in a Load-Balanced Web Service supported only `tcp` or `tls` traffic. Now, you can listen to `udp` traffic as well!
+    > ```
+    > nlb:
+    >   port: 8080/udp
+    >   healthcheck:
+    >           port: 80 # This needs to be a tcp port
+    >   additional_listeners:
+    >     - port: 8081/udp
+    >        healthcheck:
+    >           port: 80 # This needs to be a tcp port
+    > ```
+    > 
+    > Note that you will need to specify a health check port on your container that accepts TCP traffic, as health check using udp protocol isn't supported today.
+
+- **Better task failure logs**: Copilot will show more descriptive information during deployments when tasks fail, allowing for better troubleshooting. (#5249)
+
+    > `copilot [noun] deploy` will now display the ECS task stopped reasons within your CloudFormation deployment progress tracker:
+    > ```
+    >   - An ECS service to run and maintain your tasks in the environment cluster
+    >     Deployments                                                                                                              
+    >                Revision  Rollout        Desired  Running  Failed  Pending                                                            
+    >       PRIMARY  11        [in progress]  1        0        1       0                                                                  
+    >       ACTIVE   8         [completed]    1        1        0       0                                                                  
+    >     Latest 2 stopped tasks                                                                                                   
+    >       TaskId    CurrentStatus   DesiredStatus                                                                                        
+    >       6b1d6e32  DEPROVISIONING  STOPPED                                                                                              
+    >       9802d212  STOPPED         STOPPED                                                                                              
+    > 
+    >     ✘ Latest 2 tasks stopped reason                                                                                 
+    >       - [6b1d6e32,9802d212]: Essential container in task exited                                                                      
+    > 
+    >     Troubleshoot task stopped reason                                                                                         
+    >       1. You can run `copilot svc logs --previous` to see the logs of the last stopped task.                                
+    >       2. You can visit this article: https://repost.aws/knowledge-center/ecs-task-stopped.          
+    > ```
+
+- **`copilot deploy` enhancements**: You can now deploy multiple workloads at once, or deploy all local workloads, with `--all`. (#5324)
+
+    > 
+    > `copilot deploy` now supports deploying multiple workloads with one command, with optional ordering. You can specify multiple workloads with the `--name` flag, use the new `--all` flag in conjunction with `--init-wkld` to initialize and deploy all local workloads, and you can now provide a "deployment order" tag when specifying service names.
+    > 
+    > ```
+    > $ copilot deploy --all -n fe/1 -n worker/2 # Deploy "fe" first, and then "worker".
+    > ```
+
+- **Import an ACM certificate for your Static Site**: You can now bring your own ACM certificate for your Static Site service. (#5285 )
+
+    > To import an ACM certificate for your static site, simply specify the below fields in your static site manifest:
+    > ```
+    > http:
+    >   alias: example.com
+    >   certificate: "arn:aws:acm:us-east-1:1234567890:certificate/e5a6e114-b022-45b1-9339-38fbfd6db3e2"
+    > ```
+
+- **`copilot [env/svc] init` improvements**: these `init` commands no longer complain if you are initiating an existing service/job/environment already managed by the same workspace. In addition, `copilot env init` will no longer ask you to select an AWS profile if you have not configured one. (#5242  and #5202)
+- **Enable versioning on S3 buckets**: Copilot now enables versioning on all of the S3 buckets created by Copilot. (#5289)
+### 🐛 Bug Fixes
+* Panic when running `copilot svc status` against a service that is already stopped. (#5336)
+
+### ❤️ Contributions
+Thank you, contributors 🥰!
+- @tjhorner (https://github.com/aws/copilot-cli/pull/4980)
+- @build-with-aws-copilot (https://github.com/aws/copilot-cli/pull/5063)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.30.1 (2023-09-01)</h2>
+      <pre>### 🐛 Bug Fixes
+
+* Remove the confirmation prompt for environment deployment in `copilot deploy`. (#5262)
+* Make the confirmation prompt in `copilot app delete` default to `false` to avoid accidental app deletion (#5267) </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.30.0 (2023-08-30)</h2>
+      <pre>### ⚡️ Features and Enhancements
+* `copilot run local` to run your services locally ([#5049](https://github.com/aws/copilot-cli/pull/5049), [#5201](https://github.com/aws/copilot-cli/pull/5201), [#5182](https://github.com/aws/copilot-cli/pull/5182))
+  > You can use `copilot run local` to test Copilot services on your local machine! To get started, deploy your service
+with `copilot svc deploy`. Once your service is deployed, you can test changes to your code without waiting for a deployment by running `copilot run local`. Copilot will build or pull your service's images, inject secrets and environment variables defined in your manifest, grab your current IAM session credentials, and run Docker containers on your machine with that data.
+  > See the [blogpost](https://aws.github.io/copilot-cli/blogs/release-v130/#copilot-run-local) for more info.
+* Pipeline Pre- and Post-Deployment Actions ([#5209](https://github.com/aws/copilot-cli/pull/5209), [#5109](https://github.com/aws/copilot-cli/pull/5109))
+  > In pipelines, you can now use `pre_deployments` and `post_deployments` to define actions for your pipeline to run before or after your services or environments are deployed. This is helpful for running database migrations from within your pipeline!
+* Use Ctrl-C to roll back in-progress deployments ([#5213](https://github.com/aws/copilot-cli/pull/5213))
+  > While waiting for `copilot [noun] deploy` to finish, if you hit Ctrl-C, Copilot will roll back the current CloudFormation deployment. This is especially helpful if your Service is failing and you're stuck waiting for a CloudFormation deployment to fail!
+* `copilot deploy` to `init`-alize _and_ `deploy` services _and_ environments ([#5168](https://github.com/aws/copilot-cli/pull/5168), [#5215](https://github.com/aws/copilot-cli/pull/5215))
+  > You can now use `copilot deploy` to deploy environments and initialize services and environments with local manifests. The guided workflow now includes uninitialized local workloads and environments. Getting started with Copilot is now as easy as `git clone . && copilot deploy`!
+* Update exit code of `copilot [noun] deploy` to 0 if there are no changes ([#5179](https://github.com/aws/copilot-cli/pull/5179))
+* Support `from_cfn` for importing an EFS ID ([#5156](https://github.com/aws/copilot-cli/pull/5156))
+* Set default Static Site alias if app has an imported domain ([#5191](https://github.com/aws/copilot-cli/pull/5191))
+* Fall back to default credentials if no AWS config is present on `copilot env init` ([#5202](https://github.com/aws/copilot-cli/pull/5202))
+
+### 🐛 Bug Fixes
+* Skip interpolating arrays of strings for nodes with a literal style ([#5157](https://github.com/aws/copilot-cli/pull/5157))
+* Better output when building a single image ([#5148](https://github.com/aws/copilot-cli/pull/5148))
+* Fix initializing jobs with `copilot deploy` ([#5183](https://github.com/aws/copilot-cli/pull/5183))
+* Empty Copilot-created S3 bucket for ALB Access Logs on `copilot env delete` ([#5184](https://github.com/aws/copilot-cli/pull/5184))
+* Fix searching for a cluster with the same name as a recently deleted cluster ([#5204](https://github.com/aws/copilot-cli/pull/5204))
+* Skip `http` validation if it's disabled ([#5198](https://github.com/aws/copilot-cli/pull/5198))
+* Block deleting an environment if it's currently used in a pipeline ([#5246](https://github.com/aws/copilot-cli/pull/5246))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.29.1 (2023-08-02)</h2>
+      <pre>### 🐛 Bug Fixes
+* Filter out non-active ECS services ([#5152](https://github.com/aws/copilot-cli/pull/5125))
+  > The [`GetResources`](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_GetResources.html) API for ECS recently changed to return non-active ECS services, causing an error when running Copilot commands after recently recreating a service. Copilot now validates that the service ARNs returned by `GetResources` are active.
+
+* Prevent app upgrade followed by downgrade from removing ECR Repos ([#5141](https://github.com/aws/copilot-cli/pull/5141))
+  > Copilot apps upgraded to v1.28 or v1.29 and subsequently downgraded to versions prior were running into an issue where ECR repos were getting removed from the app stack. After this fix, upgrading your app with v1.29.1+ and then downgrading will cause the older Copilot version to print out an error instead of removing any ECR repos.
+
+* Explicitly block S3 public access ([#5141](https://github.com/aws/copilot-cli/pull/5130))
+  > Though objects uploaded to Copilot-created S3 buckets have never been public, Copilot-created S3 buckets now explicitly block public access at the bucket level.
+
+* Fix `copilot init` when app name is not set via flags ([#5126](https://github.com/aws/copilot-cli/pull/5126))
+* Validate sidecar `image` configuration ([#5122](https://github.com/aws/copilot-cli/pull/5122))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.29.0 (2023-07-19)</h2>
+      <pre>### ⚡️ Features and Enhancements
+- Pipeline CloudFormation template overrides (#5034)
+   > Copilot pipelines are much more nimble and extensible with CDK and YAML path overrides with `copilot pipeline override`! This feature provides a safe and easy way to modify your pipeline's CloudFormation template.
+   > A new `--diff` flag for `copilot pipeline deploy` enables you to preview changes to your CloudFormation template. (#4991)
+   > See the [blogpost](https://aws.github.io/copilot-cli/blogs/release-v129/#static-site-service-type/#pipeline-overrides) for more.
+- Static Site enhancements
+   > - For more dynamic development, Copilot will now invalidate the CloudFront edge cache each time you redeploy a Static Site workload, enabling you to see and deliver your updated content right away. (#5035)
+   > - `copilot svc show` for Static Site workloads includes a tree representation of your S3 bucket's contents. (#4966)
+   > <details>
+   >     <summary> View sample output </summary>
+   >    
+   >    ```console
+   >    Service name: static-site
+   >    About
+   >    
+   >      Application  my-app
+   >      Name         static-site
+   >      Type         Static Site
+   >    
+   >    Routes
+   >    
+   >      Environment  URL
+   >      -----------  ---
+   >      test         https://d399t9j1xbplme.cloudfront.net/
+   >    
+   >    S3 Bucket Objects
+   >    
+   >      Environment  test
+   >    .
+   >    ├── ReadMe.md
+   >    ├── error.html
+   >    ├── index.html
+   >    ├── Images
+   >    │   ├── SomeImage.PNG
+   >    │   └── AnotherImage.PNG
+   >    ├── css
+   >    │   ├── Style.css
+   >    │   ├── all.min.css
+   >    │   └── bootstrap.min.css
+   >    └── images
+   >        └── bg-masthead.jpg
+   >    ```
+   > </details>
+   >
+   > - `copilot svc status` for Static Site workloads includes the S3 bucket's object count and total size. (#4985)
+- Prevent clashes between Copilot versions by disallowing downgrading (unless explicitly enabled with the new `--allow-downgrade` flag for `init`, `deploy`, and `package` commands) (#5064)
+- Support Yarn for CDK overrides (#5076)
+- Enable interpolation of lists of strings in Copilot manifests (#4993)
+- Allow passing an existing [permissions boundary](https://aws.github.io/copilot-cli/blogs/release-v122/#iam-role-permissions-boundary)'s ARN when running `copilot app init` (as an alternative to the permissions boundary name (#4981)
+- Recommend splitting domains/conditions into different listener rules if the quota (five per rule) is detected. (#4961)
+
+### 🐛 Bug Fixes 
+- `copilot svc package` now applies overrides for Static Site workload types (#4952)
+- prevent exceeding CloudWatch Logs Resource Policy size when running `copilot job logs` by adding policies to each environment (#4979)
+- Static Site CloudFormation manifests quote aliases so asterisks render properly in CloudFormation templates (#5003)
+- Distinguish between active and non-active ECS clusters to avoid clashes (#5062)
+
+### ❤️ Contributions
+Thank you, contributors 🥰!
+- @tjhorner (#4980)
+- @build-with-aws-copilot  (#5063)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.28.0 (2023-05-25)</h2>
+      <pre>### ⚡️ Features and Enhancements
+* Static Site service type (#4621)
+
+> With the new Static Site service type, you can now deploy and host static websites with Amazon S3. You can specify local files to be uploaded to an S3 bucket with the Static Site service manifest. 
+> 
+ >```yaml
+> name: example
+> type: Static Site
+> http:
+>   alias: 'example.com'
+> files:
+>   - source: src/someDirectory
+>     recursive: true
+>   - source: someFile.html
+> ```
+> To learn more on how to deploy your static website using the Static Site service, see the [manifest specification](https://aws.github.io/copilot-cli/docs/manifest/static-site/).
+> For the announcement, check out the [blog post](https://aws.github.io/copilot-cli/blogs/release-v128/#static-site-service-type).
+
+* Add `--diff-yes` flag to `copilot [noun] deploy`(#4832)
+> Copilot [noun] deploy now has the new flag `--diff-yes`; you can specify the flag to automatically print the difference between your local changes and the latest deployed template.
+
+* Container Images Parallel Build (#4760)
+> Previously, Copilot built and pushed main container and sidecar container images sequentially.
+> You can now build main container and sidecar container images in parallel. With parallel build, you can reduce the 
+> overall time it takes to build and push container images to Amazon ECR.
+
+### 🐛 Bug Fixes 
+- Use LogicalID-safe name for sidecars env file parameter from the CloudFormation template (#4714)
+- Remove CloudWatch alarm-based rollbacks from ECS services in the GovCloud region (#4782)
+- Remove Docker runtime version from the buildspec in the pipeline CloudFormation template (#4723)
+- Keep parameter descriptions consistent across environment addons in the CloudFormation template (#4813)
+- Add Darwin ARM binary for Session Manager plugin installation (#4916)
+- Do not require a workspace summary when running `copilot app delete` (#4863)
+- Update custom domain records in parallel to fix the `CustomDomainFunction` lambda timeout (#4772).
+- Fix file not found error for CDK override ON Windows (#4807)
+- Use a more portable CDK executable for CDK overrides (#4808)
+- Separate out `grace_period` for ALB and NLB (#4734)
+- Separate out `deregistration_delay` for ALB and NLB (#4740)
+
+### ❤️ Contributions
+Thank you, contributors 🥰!
+- @interu (#4816, #4741)
+- @0xO0O0 (#4723)
+- @andreas-bergstrom (#4873)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.27.0 (2023-03-28)</h2>
+      <pre>### ⚡️ Features and Enhancements
+*  Extend Copilot-generated CloudFormation templates with the Cloud Development Kit (CDK) or YAML Patch overrides (#4208, #4209)
+
+   > With the new `copilot [noun] override` command, you can now fully customize your environment, service, or job AWS CloudFormation templates generated from Copilot manifests.
+   > You can override templates using the [CDK](https://docs.aws.amazon.com/cdk/v2/guide/home.html) when you need the expressive power and safety of a programming language, alternatively you can apply YAML patches when you need only a handful modifications.
+   > 
+   > To learn more about how to use overrides, checkout the [CDK guide](https://aws.github.io/copilot-cli/docs/developing/overrides/cdk/) or the [YAML patch guide](https://aws.github.io/copilot-cli/docs/developing/overrides/yamlpatch/).
+   > For the announcement, check out the [blog post](https://aws.github.io/copilot-cli/blogs/release-v127/#extend-copilot-generated-aws-cloudformation-templates).
+
+* Add support for multiple listener rules for `http` and listeners for `nlb` for Load Balanced Web and Backend Services (#4170)
+
+  > You can now define multiple host-based or path listener rules for Application Load Balancers with the new `http.additional_rules` property. Similarly, you can define multiple listeners on different ports and protocols for Network Load Balancers with the `nlb.additional_listeners` field.
+  > <details>
+  >    <summary> Sample manifest file </summary>
+  >
+  >   ```yaml
+  >   name: 'frontend'
+  >   type: 'Load Balanced Web Service'
+  >   
+  >   image:
+  >     build: 'path/to/Dockerfile'
+  >     port: 8080
+  >
+  >   sidecars:
+  >      docs:
+  >         port: 7000
+  >         build: 'path/to/Dockerfile'
+  >
+  >   http:
+  >     alias: 'example.com'
+  >     path: '/'
+  >     additional_rules:
+  >       -  alias: 'admin.example.com'
+  >          path: '/'
+  >          target_port: 9000
+  >       -  path: '/docs'
+  >          target_container: docs
+  >   ```
+  > </details>
+  >
+  > To learn more on how to add additional listeners and listener rules, see the [manifest specification](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#http-additional-rules).
+  > For the announcement, check out the [blog post](https://aws.github.io/copilot-cli/blogs/release-v127/#enable-multiple-listeners-and-listener-rules-for-load-balancers).
+
+* Preview CloudFormation template changes with the new `--diff` flag (#4259)
+
+  > You can now run `copilot [noun] package --diff` or `copilot [noun] deploy --diff` to view the difference between your local changes and the latest deployed template.
+  > <details>
+  >    <summary> View sample screenshot </summary>
+  > 
+  >    ![diff](https://user-images.githubusercontent.com/879348/228013575-9d1b5bbd-1f3a-410e-9363-caead0e5a76e.png)
+  > </details>
+  >
+  > For the announcement, check out the [blog post](https://aws.github.io/copilot-cli/blogs/release-v127/#preview-aws-cloudformation-template-changes).
+
+* Enable building container images for sidecars (#4254)
+
+  > Previously, Copilot only supported taking a container image URL for sidecar containers. Now, you can use `image.build` for your sidecars just like your main container to build and push images from local Dockerfiles.
+  >
+  > To learn more see the guide for [sidecar containers](https://aws.github.io/copilot-cli/docs/developing/sidecars/#image-build).
+  > For the announcement, check out the [blog post](https://aws.github.io/copilot-cli/blogs/release-v127/#build-and-push-container-images-for-sidecar-containers).
+
+* Enable uploading local environment files for sidecar containers (#4447)
+
+  > Previously, you could only specify an environment file (`env_file`) for your main container. You can now specify an environment file to upload for any sidecar container.
+  > To learn more see the guide for [sidecar containers](https://aws.github.io/copilot-cli/docs/developing/sidecars/#envFile).
+  > For the announcement, check out the [blog post](https://aws.github.io/copilot-cli/blogs/release-v127/#upload-local-environment-files-for-sidecar-containers).
+
+
+### 🐛 Bug Fixes
+* Removing CloudWatch alarm based rollbacks from ECS services now disassociates the alarms (#4565)
+* Remove `!Sub` in environment storage addons causing the addon deployment failure (#4562)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.26.0 (2023-02-21)</h2>
+      <pre>### ⚡️ Features and Enhancements
+
+- Add support for automating rollbacks for Amazon ECS services with CloudWatch alarms
+
+   > You can now [monitor your ECS deployments](https://aws.amazon.com/blogs/containers/automate-rollbacks-for-amazon-ecs-rolling-deployments-with-cloudwatch-alarms/) with custom [CloudWatch alarms](https://docs.aws.amazon.com/AmazonECS/latest/userguide/deployment-alarm-failure.html)! Configure your services to roll back to the last completed deployment if your alarms go into `In alarm` state during deployment. With the [circuit breaker](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html), Copilot has already been rolling back your failed deployments. Now, you can also roll back service deployments that aren't failing, but aren't performing in accordance with the metrics of your choice.
+  > 
+  > For example, in your backend, worker, or load-balanced web service manifest, you may import your own existing CloudWatch alarms:
+  >
+  > ```yaml
+  > deployment:
+  >   rollback_alarms: ["MyAlarm-ELB-4xx", "MyAlarm-ELB-5xx"]
+  > ```
+  >
+  > Or have Copilot create a CPU and/or memory utilization alarm for you, with thresholds of your choice:
+  > ```yaml
+  > deployment:
+  >   rollback_alarms:
+  >     cpu_utilization: 70    // Percentage value at or above which alarm is triggered.
+  >     memory_utilization: 50 // Percentage value at or above which alarm is triggered.
+  > ```
+  > 
+  > Read the [blog post](https://aws.github.io/copilot-cli/blogs/release-v126/#service-alarm-based-rollback) for more!
+
+- Update `storage init` to support DynamoDB tables, S3 buckets or RDS clusters as environment storage
+  > Now, you can create [environment addons](https://aws.github.io/copilot-cli/docs/developing/addons/environment/) for your storage easily with `copilot storage init --lifecycle environment`. The storage is deployed when you run `copilot env deploy`, and isn't deleted until you delete the environment by running `copilot env delete`.
+  > 
+  > Here is an example of prompts that you might see when you run `copilot storage init` without any flags.
+  > ```term
+  > $ copilot storage init
+  > What type of storage would you like to create?
+  >  > DynamoDB            (NoSQL)
+  >    S3                  (Objects)
+  >    Aurora Serverless   (SQL)
+  > Which workload needs access to the storage? 
+  >  > api
+  >    backend
+  > What would you like to name this DynamoDB Table? movies
+  > Do you want the storage to be created and deleted with the api service?
+  >    Yes, the storage should be created and deleted at the same time as api
+  >  > No, the storage should be created and deleted at the environment level
+  > ```
+  > 
+  > Read the [blog post](https://aws.github.io/copilot-cli/blogs/release-v126/#storage-init-for-environment-addons) for more!
+
+- Support [Request-Driven Web Service secrets](https://github.com/aws/copilot-cli/issues/4506)
+  > You can now add your secrets (from SSM Parameter Store or AWS Secrets Manager) to your App Runner service as environment variables using Copilot.
+  > 
+  > Similar to other service types such as Load-Balanced Web Service, you need to first add the following tags to your secrets:
+  > | Key                     | Value                                                       |
+  > | ----------------------- | ----------------------------------------------------------- |
+  > | `copilot-application`   | Application name from which you want to access the secret   |
+  > | `copilot-environment`   | Environment name from which you want to access the secret   |
+  >
+  > Then simply update your Request-Driven Web Service manifest with:
+  > ```yaml
+  > secrets:
+  >   GITHUB_TOKEN: GH_TOKEN_SECRET
+  > ```
+  > And deploy! Your service can now access the secret as an environment variable.
+  > 
+  > Read the [blog post](https://aws.github.io/copilot-cli/blogs/release-v126/#request-driven-web-service-secrets-support) for more!
+### 🐛 Bug Fixes
+- Require aws config file in `env init` only when needed (#4440)
+- `svc delete` should ignore Route53 A-record deletion error if not found (#4409)
+- Service Connect shouldn't affect gov cloud deployment (#4390)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.25.0 (2023-01-17)</h2>
+      <pre>### ⚡️ Features and Enhancements
+
+- Support user-written [environment addons](https://github.com/aws/copilot-cli/issues/4219)
+
+   > You can now deploy addons associated with your environments. Addons are additional AWS resources that are not integrated in Copilot by default - for example, DynamoDB, RDS, etc.  Environment addons resources have their lifecycle managed at the environment level. Hence, resources can be shared across services or jobs and won't be deleted unless the environment is deleted.
+   > 
+   > If you are already familiar with workload addons, then good news - the experience of managing environment addons is pretty similar. 
+   > 
+   > You just need to store your CFN templates under `copilot/environments/addons` folder, and then run `copilot env deploy` - your addons will the be deployed along with the environment. 
+   > 
+   > For an example walk-through, see [our blog post](https://aws.github.io/copilot-cli/blogs/release-v125/#environment-addons) !
+
+- Support [static content delivery](https://github.com/aws/copilot-cli/issues/3701) through an existing S3 bucket
+  > You can now bring your own S3 bucket to work with CloudFront for faster static content delivery.
+  > You can use CloudFront with an S3 bucket as the origin by configuring the environment manifest as below:
+  > 
+  > ```yaml
+  > cdn:
+  >   static_assets:
+  >     location: cf-s3-ecs-demo-bucket.s3.us-west-2.amazonaws.com
+  >     alias: example.com
+  >     path: static/*
+  > ```
+  > 
+  > Read the [blog post](https://aws.github.io/copilot-cli/blogs/release-v125/#static-content-delivery-with-cloudfront) for more!
+
+### 🐛 Bug Fixes
+- Render CFN template with `SslPolicy` instead of `SSLPolicy` (https://github.com/aws/copilot-cli/pull/4278)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.24.0 (2022-11-29)</h2>
+      <pre>### ⚡️ Features and Enhancements
+* ECS Service Connect Support (#4226)
+  > [ECS Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) enables a client service to connect to its downstream services in a load-balanced and resilient fashion. To enable Service Connect, you can simply add this configuration to your service manifest:
+  > ```yaml
+  > network:
+  >   connect: true
+  > ```
+  >  
+  > Check out our [blog post](https://aws.github.io/copilot-cli/blogs/release-v124#ecs-service-connect-support) for more! Also, check out the [network.connect](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#network-connect) field in the manifest specification.
+
+
+* Add `--no-rollback` flag to `env deploy` (#4168)
+  > Copilot `env deploy` now has a new flag `--no-rollback`; you can specify the flag to disable automatic env deployment rollback to help with debugging.
+
+* Add `AutoScalingConfiguration` to Request-Driven Web Service (RDWS)  (#4186)
+  > It is now possible to specify autoscaling configuration for your RDWS. For example, this can be configured in your service manifest:
+  >```yaml
+  > count: high-availability/3
+  >```
+
+* Add log retention to VPC flow logs (#4164)
+  > The default value for VPC flow logs is now 14 days (2 weeks):
+  > ```yaml
+  > network:
+  >   vpc:
+  >     flow_logs: on
+  > ```
+  > Alternatively, you can customize the number of days for retention:
+  > ```yaml
+  > network:
+  >   vpc:
+  >     flow_logs:
+  >       retention: 30
+  > ```
+
+
+### 🐛 Bug Fixes
+* Access logs bucket policy should be applied after ALB update (#4169)
+* Set tasks fewer than `spot_from` to Fargate Capacity Provider when `min` and `spot_from` equal (#4187)
+* Check if an application exists globally before creating it (#4113)
+
+
+### ❤️ Contributions
+Thank you, contributors 🥰!
+- @hkford  (#4144, #4128)
+- @isleys  (#4129)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.23.0 (2022-11-01)</h2>
+      <pre>### ⚡️ Features and Enhancements
+* Restrict the ingress of a Request-Driven Web Service (RDWS) to environment only (#4137)
+  > Previously, a RDWS was always internet-facing. Now, you have the option of toggling the service to be private. Specify `http.private: true` in a RDWS manifest, and the service will accept traffic from within the environment only. 
+  >  
+  > See our [blog post](https://aws.github.io/copilot-cli/blogs/release-v123/#app-runner-private-services) for more! Also, check out the [http.private](https://aws.github.io/copilot-cli/docs/manifest/rd-web-service/#http-private) field in the manifest specification.
+
+
+* Support Aurora Serverless v2 in `storage init` (#4075)
+  > `copilot storage init --storage-type Aurora` will now generate an addon template for Aurora Serverless v2 by default.
+  > To generate a template for v1, you can run `copilot storage init --storage-type Aurora --serverless-version v1`   
+  >
+  > Check out our [blog post](https://aws.github.io/copilot-cli/blogs/release-v123/#support-aurora-serverless-v2-in-storage-init) for more!
+
+* Restrict ingress to the public ALB using source IPs (#4103)
+  >It is now possible to limit the ingress to your public ALB to up to 50 source IPs. This can be configured in your environment manifest:
+  >```yaml
+  >http:
+  >  public:
+  >    ingress:
+  >      source_ips:
+  >        - 10.0.0.0/24
+  >        - 10.0.1.0/24
+  >```
+  > Check out our [blog post](https://aws.github.io/copilot-cli/blogs/release-v123/#http-public-ingress-source-ips) for more, as well as [`http.public.ingress.source_ips`](https://aws.github.io/copilot-cli/docs/manifest/environment/#http-public-ingress-source-ips) in the manifest specification !
+
+* Configure SSL policy for environment ALBs' HTTPS listener  (#4099)
+  > You can now specify the security policy applied on the HTTPS listener for your environment ALB(s) to comply with your organization's security requirements. This can be configured in your environment manifest:
+  >```yaml
+  >http:
+  >  public: 
+  >    ssl_policy: ELBSecurityPolicy-FS-1-2-Res-2019-08
+  > 
+  >  private: 
+  >    ssl_policy: ELBSecurityPolicy-FS-1-2-Res-2019-08
+  >```
+  > Check out the [`ssl_policy`](https://aws.github.io/copilot-cli/docs/manifest/environment/#http-public-sslpolicy) field in the manifest specification.
+
+* Restrict container access to root file system to read-only (#4062)
+  >You can now give your containers read-only access to its root file system to comply with Security Hub's recommendation of [[ECS.5] ECS containers should be limited to read-only access to root filesystems](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#fsbp-ecs-5). This can be configured in your service's manifest:
+  >```yaml
+  >storage:
+  >  readonly_fs: true
+  >```
+  > See [`storage.readononly_fs`](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#storage-readonlyfs) in the manifest specification or read the [blog post](https://aws.github.io/copilot-cli/blogs/release-v123/#storage-readonlyfs).
+
+* Enable VPC flow logs for environments (#4088)
+  >You can now capture information about the IP traffic going in and out of your environment VPC by enabling VPC flow logs in your environment manifest:
+  >```yaml
+  >network:
+  >  vpc:
+  >    flow_logs: on
+  >```
+  >  See [`network.vpc.flow_logs`](https://aws.github.io/copilot-cli/docs/manifest/environment/#network-vpc-flowlogs) in the manifest specification.
+
+* Show permissions boundary policy name in `app show` (#4071)
+  > In [Copilot v1.22.0](https://github.com/aws/copilot-cli/releases/tag/v1.22.0), we introduced permissions boundaries for all IAM roles in an application. Now you can see this configuration in `copilot app show`.
+  >```console
+  >$ copilot app show --name myapp
+  >
+  >About
+  >
+  >  Name                  myapp
+  >  Version               v1.1.0
+  >  URI                   N/A
+  >  Permissions Boundary  myPermissionsBoundaries
+  >```
+
+
+### 🐛 Bug Fixes
+* Fix misplaced `http` fields in environment manifest (#4068). See our [blog post](https://aws.github.io/copilot-cli/blogs/release-v123/#move-misplaced-http-fields-in-environment-manifest-backward-compatible) for more information on this manifest fix!
+* TLS termination does not require a certificate or domain for CDN (#4096)
+* Remove `sh`-unfriendly here string from the default buildspec (#4102)
+
+
+### ❤️ Contributions
+Thank you, contributors 🥰!
+- @hkford  (https://github.com/aws/copilot-cli/pull/4075)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.22.1 (2022-10-11)</h2>
+      <pre>### 🐛 Bug Fixes
+* Allow `cdn` certificate import without `http` cert import in Environment manifests ([#4061](https://github.com/aws/copilot-cli/pull/4061))
+  > In v1.22.0, Copilot introduced [TLS termination by CloudFront](https://aws.github.io/copilot-cli/blogs/release-v122/#cloudfront-tls-termination) for Load Balanced Web Services. However, enabling the feature required importing a certificate to both the public Application Load Balancer and CloudFront. This requirement has been removed, and you can now enable TLS termination without having a certificate attached to the load balancer.
+* Fix segfault while running `env package` ([#4061](https://github.com/aws/copilot-cli/pull/4061))
+* Escape double-quotes in serialized `parameters.json` values when running `copilot svc package --output-dir` ([#4061](https://github.com/aws/copilot-cli/pull/4061))
+
+* Use the sidecar container's port and protocol if it is the target container for the load balancer ([#4047](https://github.com/aws/copilot-cli/pull/4047))
+
+* Use the [`image.location`](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#image-build) value if present when running `copilot svc package --output-dir` ([#4055](https://github.com/aws/copilot-cli/pull/4055))
+
+* The manifest generated for a Worker service with `svc init` now takes into consideration whether or not the topics selected are FIFO (#4056)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.22.0 (2022-09-27)</h2>
+      <pre>### ⚡️ Features and Enhancements
+* Enable setting IAM permissions boundaries for all IAM roles in an application (#3969)
+   >  You can now leverage IAM permissions boundaries to comply with your organization’s security requirements and service control policies by passing the `--permissions-boundary` flag with the `copilot app init` command.
+   > See our [blog post](https://aws.github.io/copilot-cli/blogs/release-v122/#iam-role-permissions-boundary) to learn more! 
+   
+* Add FIFO (first in, first out) capabilities for SNS topics and SQS queues of Worker Services (#4014, #4018)
+   > For applications when the order of operations and events is critical, or where duplicates can't be tolerated you can now enable `fifo: true` in your manifests.
+   > See our [blog post](https://aws.github.io/copilot-cli/blogs/release-v122/#fifo-snssqs) for a walkthrough of connecting SNS FIFO topics to the SQS FIFO queue of a Worker Service.
+   > See the manifest specification for [SNS FIFO topics](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#publish-topics-topic-fifo) and [SQS FIFO queues](https://aws.github.io/copilot-cli/docs/manifest/worker-service/#subscribe-queue-fifo).
+
+* Configure the CloudFront CDN to terminate TLS (#4017)
+   > Your application can now benefit from terminating TLS at a geographically closer endpoint to the end user for faster TLS handshakes:
+   > ```yaml
+   > cdn:
+   >   tls_termination: true
+   > ```
+   > See our [blog post](https://aws.github.io/copilot-cli/blogs/release-v122/#cloudfront-tls-termination to learn more!
+   > See the [environment manifest](https://aws.github.io/copilot-cli/docs/manifest/environment/#cdn-tls-termination) for the specification.
+
+* Enable TLS connections between the Application Load Balancer and Fargate tasks (#4021)
+  > If the port of the target container is set to `443`, the target group's protocol and health check protocol is now set to `HTTPS`.
+  > See the sample [end-to-end encryption manifest](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#__tabbed_1_8) specification.
+
+* Add support for Windows Server 2022 (#3968)
+  > You can now specify `windows_server_2022_core` and `windows_server_2022_full` as OS Family options to run Windows 2022 Fargate tasks.
+  > See [`platform`](https://aws.github.io/copilot-cli/docs/manifest/backend-service/#platform) in the manifest specification.
+
+* Allow disabling HTTP to HTTPS redirection for Load Balanced Web Services (#4003)
+  > You can now set `http.redirect_to_https` as `false` (by default it's true) for your applications with a domain name.
+  > This field is particularly useful when enabling CloudFront to terminate TLS.
+  > See the [manifest specification](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#http-redirect-to-https).
+
+* Display logs for the last stopped task using the new `-p, --previous` flag (#3983)
+   > You can now easily view the logs of the last stopped task to help with troubleshooting with `copilot svc logs -p`.
+
+* Filter logs to an individual container with the new `--container` flag (#3985)
+   > You can now run `copilot svc logs --container nginx` to filter the logs to an individual container.
+
+
+### 🐛 Bug Fixes
+* Allow the creation of an internal hosted zone in the `aws-cn` and `aws-us-gov` partitions (#3995)
+* Fix object ownership for pipeline artifacts to be the bucket owner so cross accounts deployments are enabled (#3998)
+* Disable writing health check grace period to CloudFormation by setting `http.grace_period: 0s` (#4015)
+
+### ❤️ Contributions
+Thank you, contributors 🥰!
+* @shingos (#3976)
+* @gabrielcostasilva  (#3993)
+* @jterry75 (#3968)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.21.1 (2022-08-31)</h2>
+      <pre>### 🐛 Bug Fixes
+* Preserve existing service discovery endpoint (#3949)
+  > In the transition from `env upgrade` to `env deploy`, we lost the preservation of the `ServiceDiscoveryEndpoint` parameter and instead assumed the `[app].[env].local` format. However, environments that predated our v1.9.0 release have `[app].local`-formatted `ServiceDiscoveryEndpoint` parameters, and therefore were erroring out when updates were attempted. This fix preserves the existing value when `env deploy` is run.
+* Trigger `EnvControllerAction` custom resource whenever Copilot version updated (#3957)
+  > For users with internal ALBs, their backend service CloudFormation stacks rely on the environment stack for an `Output`, `InternalWorkloadsHostedZone`. After upgrading to v1.21.0, `svc deploy` failed for those users, as this `Output` was not being generated because nothing within the `EnvController`'s properties had changed to trigger an execution. This fix ensures that the Lambda is triggered whenever the Copilot version is changed.
+* Ensure `EnvManagerRole` has permission to upload artifacts to S3 (#3956)
+  > By checking for the appropriate permissions and adding them if they're absent, Copilot makes sure the `EnvManagerRole` can push objects to S3, whether the environment was deployed in the same account as the application or not.
+* Give `EnvManagerRole` permission to `--generate-cmd` (#3942)
+  > Now that the `EnvManagerRole` session is executing the command generation when that flag is applied to `task run`, it needs the `states:DescribeStateMachine` permission to do so. This fix grants that permission.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.21.0 (2022-08-17)</h2>
+      <pre>### ⚡️ Features and Enhancements
+* Enable Amazon CloudFront in your environments to deliver content with low-latency and improved security (#3701)
+  > By simply setting `cdn: true` in your environment manifest and running `copilot env deploy`, you can deploy your application globally and securely!
+  > Copilot's CloudFront integration supports HTTPS:
+  > ```yaml
+  > cdn:
+  >   certificate: arn:aws:acm:us-east-1:${AWS_ACCOUNT_ID}:certificate/13245665-h74x-4ore-jdnz-avs87dl11jd
+  >```
+  > and you can limit public traffic to your ALB to this distribution:
+  > ```yaml
+  > http:
+  >   public:
+  >     security_groups:
+  >       ingress:
+  >         restrict_to:
+  >           cdn: true
+  >```
+  > See our [blog post](https://aws.github.io/copilot-cli/blogs/release-v121/#cloudfront-integration) for more! 
+* Package local paths, such as Lambda functions, that your `addons/` AWS CloudFormation template references  (#3875)
+  > Copilot can now upload local files referenced in your addons templates to S3, then replace the relevant resource properties with the uploaded S3 location. On [`copilot svc deploy`](https://aws.github.io/copilot-cli/docs/commands/svc-deploy/) or [`copilot svc package --upload-assets`](https://aws.github.io/copilot-cli/docs/commands/svc-package/), certain fields on supported resources will be updated with an S3 location! To see the full list of resources that are supported, take a look at the [AWS CLI documentation](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/package.html).
+  > See our [blog post](https://aws.github.io/copilot-cli/blogs/release-v121/#package-addons-cloudformation-templates) for more!
+* Run Copilot's new `job logs` command (#3794)
+  > View and follow logs for executions of your scheduled jobs by running `copilot job logs`. You can choose how many invocations of the job to view, filter logs by specific task IDs, and choose whether to view state machine execution logs. 
+  > You might view logs from the last invocation of the job and all the state machine execution data:
+  > `copilot job logs --include-state-machine` 
+  > or invoke a task and follow its logs:
+  > `copilot job run -n [jobName] && copilot job logs -n [jobName] --follow`
+  > For more details, see the [blog post](https://aws.github.io/copilot-cli/blogs/release-v121/#job-logs)!
+* Configure security groups via env manifest (#3749, #3810)
+  > Define ingress and egress for your security groups:
+  >```yaml 
+  > network:
+  >   vpc:
+  >     security_group:
+  >       ingress:
+  >         - ip_protocol: tcp
+  >           ports: 0-65535
+  >           cidr: 0.0.0.0/0
+  >       egress:
+  >         - ip_protocol: tcp
+  >           ports: 80
+  >           cidr: 0.0.0.0/0
+  >```
+* Enable access logs for ELBs (#3849)
+  > Another new field for the environment manifest! Copilot can create an S3 bucket for you and write ELB access logs to it.
+  >```yaml
+  > http:
+  >   public:
+  >     access_logs: true 
+  >```
+  > Alternatively, you can specify an existing bucket. Read the [blog post](https://aws.github.io/copilot-cli/blogs/release-v121/#elb-access-log-support) to find out how!
+* Specify subnets in bulk with tags (#3727)
+  > In [v1.19.0](https://github.com/aws/copilot-cli/releases/tag/v1.19.0), we introduced the ability to indicate specific subnets in which to launch ECS tasks; now, you may refer to groups of those subnets by their tags:
+  >```yaml 
+  > network:
+  >   vpc:
+  >     placement:
+  >       subnets:
+  >         from_tags:
+  >           org: bi
+  >           type:
+  >             - public
+  >             - private
+  >```
+  > See the [docs](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#network-vpc-placement-subnets) for more details.
+* Leverage environment files for `task run` (#3803)
+    > You can add environment variables in bulk with the `task run` command. Store your env vars in an [environment variable file](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html) (with the `.env` extension), then pass in the path to that file using the new `--env-file` flag.
+
+  
+### 🐛 Bug Fixes
+* Network load balanced services can target sidecar ports (#3819)
+* The Environment Manager Role works for partitions besides the AWS public one (#3845)
+
+
+### ❤️ Contributions
+Thank you, contributors!
+* @dave-moser (#3847)
+* @dclark (#3897)
+* @apopa57 (#3898, #3899)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.20.0 (2022-07-19)</h2>
+      <pre>### ⚡️ Features and Enhancements
+* Brand-New Env Manifests Allow You to Configure and Modify your Environments  (#3522)
+  > Update environments even after they're deployed, rather than deleting and recreating them! Environment manifests enable modeling and provisioning environments with infrastructure as code. 
+  > Please note that **`env init` no longer automatically deploys** an environment and instead generates a manifest file.
+  >```yaml
+  >  $ cat copilot/environments/prod/manifest.yml
+  >  # The manifest for the "prod" environment.
+  >  # Read the full specification for the "Environment" type at:
+  >  #  https://aws.github.io/copilot-cli/docs/manifest/environment/
+  > 
+  >  # Your environment name will be used in naming your resources like VPC, cluster, etc.
+  >  name: prod
+  >  type: Environment
+  >
+  >  # Import your own VPC and subnets or configure how they should be created.
+  >  # network:
+  >  #   vpc:
+  >  #     id:
+  >
+  >  # Configure the load balancers in your environment, once created.
+  >  # http:
+  >  #   public:
+  >  #   private:
+  >
+  >  # Configure observability for your environment resources.
+  >  observability:
+  >  container_insights: false
+  >```
+  > For a detailed explanation and walkthrough, see [blog post](https://aws.github.io/copilot-cli/blogs/release-v120/#environment-manifest).
+* A New Type of Pipeline to Manage Environment Deployment (#3751)
+  > Enjoy continuous delivery of environments by setting up an environment pipeline. Follow the same steps (`pipeline init` and `pipeline deploy`) that you've been using to create pipelines for services and jobs. A pipeline manifest and buildspec will be created, which you may configure and push to your source repository between the two commands.
+  > See [blog post](https://aws.github.io/copilot-cli/blogs/release-v120/#continuous-delivery) for more.
+* `--manifest` flags for `svc show` and `env show` (#3715 & #3597)
+  > The `--manifest` flag helps you generate manifest files for your existing environments, for smooth integration into Copilot's new env manifest functionality.
+  > ```console
+  >  $ mkdir -p copilot/environments/prod
+  >  $ copilot env show -n prod --manifest > copilot/environments/prod/manifest.yml
+  > ```
+  > The flag also makes it easy to `init` new services and envs that are similar to your existing ones (that have been deployed since v1.20.0). 
+  > ```console
+  >  $ mkdir -p copilot/second-svc
+  >  $ copilot svc show -n first-svc --manifest env-name > copilot/second-svc/manifest.yml
+  > // Change the value of the `name:` field in the manifest from `first-svc` to `second-svc`
+  >  $ copilot svc init -n second-svc
+  > ```
+* Configuration of Autoscaling Cooldown Periods Allowed (#3629, #3644, #3667)
+  > For `Load Balanced`, `Backend`, and `Worker` Services, configure their autoscaling fields under `count` to have custom cooldown periods.
+  > Previously, each scaling metric such as `cpu_percentage` had a set _in_ cooldown of 120 secs and _out_ cooldown of 60 seconds. 
+  > For a detailed explanation and walkthrough, see [blog post](https://aws.github.io/copilot-cli/blogs/release-v120/#autoscaling-cooldown-support). For the specifications, see [documentation](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#count).
+* New `copilot env package` command (#3731)
+  > Like the existing `svc package` command, this new command prints the CloudFormation stack template and configuration used to deploy your environment. You may optionally write the output to a directory or upload assets like container images and Lambda functions. Asset locations are automatically plugged into the template!
+* `copilot job run` (#3692)
+  > When you set up a [scheduled job](https://aws.github.io/copilot-cli/docs/concepts/jobs/), sometimes you want to give it a test run to ensure that it works as expected, or you want to force a one-off run of your job. Now you can!
+* Denial of Default Security Group Ingress Allowed (#3682)
+  > Indicate in your workload manifest that you don't want to allow ingress of Copilot's default `EnvironmentSecurityGroup`. Find out how [here](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#network-vpc-security-groups)!
+* You Can Now Add Permissions to Pipeline Build Role (#3709)
+  > By adding policies to your build role via your pipeline manifest, you'll enjoy greatly increased flexibility. Access Secrets Manager to avoid the Docker Hub pull rate limit, grab parameters from Systems Manager, pull objects down from an S3 bucket, and more!
+* Surface Exit Codes for `task run` (#3620)
+  > Copilot now forwards non-zero exit codes when tasks launched by the `copilot task run --follow` command fail.
+* Predictable Alias for Backend Services (#3668)
+  > For a backend service with an internal ALB, Copilot will create a hosted zone `[env].[app].internal` and insert an A record `[svc].[env].[app].internal` into the hosted zone that points to the internal ALB.
+
+### 🐛 Bug Fixes
+* Fix Quoting of Env Vars and Secrets in `task run --generate-cmd` (#3702)
+* Allow Wildcard Character (`*`) in Aliases (#3739)
+* Don't Require Availability Zones When the VPC is Adjusted (#3745)
+* Don't Require Docker Engine for `svc init` When Bringing a Built Image (#3671)
+* Don't Require `port` Specification for Sidecar Config to Render Properly (#3666)
+
+### ❤️ Contributions
+Thank you, contributors!
+* @gautam-nutalapati (#3682)
+* @kangere (#3692)
+* @codekitchen (#3702)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.19.0 (2022-06-13)</h2>
+      <pre>### ⚡️ Features and enhancements
+* Support creating an Internal Application Load Balancer in front of "Backend Services" (#3538)
+  > You can now enable the `http` field for [Backend Services](https://aws.github.io/copilot-cli/docs/manifest/backend-service/). 
+  > When `http` is specified, an internal load balancer is provisioned in your environment stack that gets shared across all your backend services. 
+  > ```yaml
+  > name: api
+  > type: Backend Service
+  > http:
+  >   path: '/'
+  > ```
+  > For a detailed explanation and walkthrough, [see blog post](https://aws.github.io/copilot-cli/blogs/release-v119). For the specification, see [documentation](https://aws.github.io/copilot-cli/docs/manifest/backend-service/#http).
+* Support specifying subnet IDs for placing a service (#3592)
+   > You can now use the new field `subnets` under [`vpc.placement`](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#network-vpc-placement) to specify explicitly subnet IDs:
+   > ```yaml
+   >  network:
+   >    vpc:
+   >      placement:
+   >         subnets: ['subnet-1EXAMPLE', 'subnet-2EXAMPLE']
+* Add a new `hosted_zone` field under `alias` to automatically add A-records (#3608, #3643)
+   > You no longer have to [manage the A-record](https://aws.github.io/copilot-cli/blogs/release-v118/#certificate-import) for environments with imported certificates outside of Copilot. You can now specify:
+   > ```yaml
+   > http:
+   >   alias:
+   >   - name: example.com
+   >     hosted_zone: 'Z111111QQQQQQQ'
+   > ```
+
+* Export the private route table IDs so that clients can write VPC Endpoint `addons/` templates (#3611)
+* Add `http.healthcheck.port` field to configure the port used against healthchecks (#3548)
+
+### 🐛 Bug Fixes
+* Preserve tags applied by `app init --resource-tags` when services are deleted from the application (#3582)
+* Fix regression with enabling [autoscaling fields](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#count-range) for Load Balanced Web Services with only `nlb` (#3578)
+* Enable `copilot svc exec` for Fargate Windows tasks (#3566)
+
+### ❤️ Contributions
+Thank you, contributors!
+* @gautam-nutalapati (#3609)
+* @jonstacks (#3543)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.18.1 (2022-05-13)</h2>
+      <pre>### 🐛 Bug Fix
+* Allow the `EnvManagerRole` to upload resources to S3, enabling cross-account `env upgrade` (#3562 & #3567)
+  > With v1.18, deployments to environments in accounts different than your application's resulted in error, due to missing S3 permissions.
+With this fix, the `EnvironmentManagerRole` is now granted the permissions necessary to upload objects to your application's S3 bucket, allowing environment templates to be updated.  </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.18.0 (2022-05-09)</h2>
+      <pre>### ⚡️ Features and enhancements
+* Allow importing existing ACM certificates to your public load balancer while initializing an environment (#3503)  
+   >  Use the `copilot env init --import-cert-arns` flag to import validated ACM certificates if you have domains managed outside of Route 53, or want to enable HTTPS without having a domain associated with your application.
+   > For a detailed walkthrough, [see blog post](https://aws.github.io/copilot-cli/blogs/release-v118/#certificate-import). For the new flag description, [see documentation](https://aws.github.io/copilot-cli/docs/commands/env-init/).
+
+* Control the order of services of jobs deployed in a pipeline (#3497)  
+   > You can now create dependencies between workloads deployed in a pipeline with the new `deployments` field in pipeline manifests.
+   > Furthermore, the `deployments` field now allows you to specify deploying any custom CloudFormation stack.
+   > For a detailed walkthrough, [see blog post](https://aws.github.io/copilot-cli/blogs/release-v118/#controlling-order-of-deployments-in-a-pipeline). For the specification, [see documentation](https://aws.github.io/copilot-cli/docs/manifest/pipeline/#stages-deployments).
+   
+* Add `observability` configuration to Load Balanced Web, Backend, and Worker services (#3451, #3481)
+   > Similar to Request-Driven Web services, now you can specify `tracing: awsxray` for your ECS services to deploy them with a AWS Distro for OpenTelemetry Collector sidecar.
+   > For a detailed walkthrough, [see blog post](https://aws.github.io/copilot-cli/blogs/release-v118/#tracing-for-load-balanced-web-service-worker-service-and-backend-service). For the specification, [see documentation](https://aws.github.io/copilot-cli/docs/manifest/backend-service/#observability).
+
+* Add `'recreate'` option to rolling deployments for faster deployment cycles in development environments (#3461)
+   > Under the hood, Copilot sets [minimumHealthyPercent and maximumPercent](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentConfiguration.html) to 0 and 100 respectively (defaults are 100 and 200), so that old tasks are stopped before spinning up any new tasks.
+   > To learn more, [see blog post](https://aws.github.io/copilot-cli/blogs/release-v118/#recreate-strategy-for-faster-redeployments). For the specification, [see documentation](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#deployment).
+
+### 🐛 Bug Fixes
+* Upload addon templates generated in the build stage of a pipeline with the `bucket-owner-full-control` ACL (#3485)
+   > Addon templates that can be shared by multiple environments previously received an `AccessDenied` error.
+   > Updating the copilot version in your buildspec to v1.18 should now fix this issue.
+* Wrap key-value pairs generated by `copilot task run --generate-cmd` with quotation marks (#3514)
+* Use the `'/'` path separator while generating the pipeline buildspec even on Windows (#3532)
+
+### ❤️ Contributions
+Thank you, contributors!
+* @corey-cole (#3457)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.17.0 (2022-04-12)</h2>
+      <pre>### ⚡️ Features and enhancements
+* Support  tracing for Request-Driven Web Services (#3440)
+  > You can now update the manifest file for [Request-Driven Web Services](https://aws.github.io/copilot-cli/docs/manifest/rd-web-service/) to use AWS X-Ray with your instrumented AWS App Runner workloads for end-to-end analysis, debugging, and diagnosis:
+  >```yaml
+  > # Enable tracing for the service.
+  > observability:
+  >   tracing: awsxray
+  >```
+* Allow disabling of Scheduled Jobs (#3447)
+  > Easily toggle your [Scheduled Job](https://aws.github.io/copilot-cli/docs/manifest/scheduled-job/) off by setting your schedule to "none" in your manifest, disabling the event rule.
+  >```yaml
+  > on:
+  >   schedule: "none"
+  >```
+* Increase visibility of progress trackers (#3430 & #3432)
+  > With more resources surfaced, you have a finer-grained look at which resources Copilot is handling under the hood.
+
+### 🐛 Bug Fixes
+* Remove color formatting of suggested pipeline names (#3437)
+  > This allows default pipeline names to pass validation consistently.
+
+### ❤️ Contributions
+Thank you, contributors!
+* @kangere (#3447)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.16.0 (2022-04-06)</h2>
+      <pre>### ⚡️ Features and enhancements
+* Support multiple pipelines in a git repository (#3231)
+   > You can now run `copilot pipeline init` to create multiple CodePipelines that track separate branches in your repository.
+   > To learn more, see [docs](https://aws.github.io/copilot-cli/docs/concepts/pipelines/).
+
+* Add support for SNS subscription filter policies (#3338)  
+   > Worker services can now filter SNS messages for each subscribed topic using the `filter_policy` field.
+   > To learn more, see [docs](https://aws.github.io/copilot-cli/docs/manifest/worker-service/#topic-filter-policy).
+
+* Add a `--no-rollback` flag to the `deploy` commands to disable automatic stack rollback in case of a deployment failure (#3341)
+
+* Add a `--upload-assets` flag to the `package` commands to push assets to ECR or S3 before generating CloudFormation templates (#3268)
+   > Your pipeline buildspec can now be significantly simplified with this flag. If you'd like to regenerate the buildspec, delete the file and run `copilot pipeline init` again.
+* Allow additional security groups when running `task run` in an environment (#3365)
+* `app show` now displays the deployed environments for services and jobs in a table format (#3379)
+* `env show` now displays the deployed jobs in a table format (#3316)
+* Make Docker progress updates quiet when the environment variable `CI=true` (#3345)
+* Log warning when deploying an App Runner service in a region where it's not available yet (#3326)
+* Customize buildspec path in the pipeline manifest with `build.buildspec` ([#3403](https://github.com/aws/copilot-cli/pull/3403))
+
+
+### 🐛 Bug Fixes
+* Assuming a role with MFA enabled now prompts for a token code instead of erroring (#3331)
+* Environment overrides for the `network` field in service manifests no longer override base value (#3352)
+* The [`range`](https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#count-range) field uses the `FARGATE_SPOT` capacity provider only when `spot_from` is provided (#3367)
+* Public subnets with an implicit internet gateway association are now detected when running `env init` (#3269)
+*  Secrets can now be accessed by ephemeral tasks created with `task run`, either with the `copilot-application` and `copilot-environment` tags, or with the `--acknowledge-secrets-access` flag  (#3256)
+* `copilot svc logs --follow` used to truncate to 10 logs per task, now all logs are streamed (#3258)
+
+
+
+### ❤️ Contributions
+Thank you, contributors!
+* @codekitchen (#3365)
+* @shingos  (#3354)
+* @csantos (#3330) 
+* @rfma23 (#3348)
+* @g-grass (#3289)
+* @isleys (#3377)
+* @kangere (#3368)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>copilot-cli: Release v1.15.0 (2022-02-08)</h2>
+      <pre>### ⚡️ Features and enhancements
+* Support connecting to a VPC for Request-Driven Web Services (AWS App Runner) (#3195)
+   > You can now connect to your environment's VPC by updating your manifest file with:
+   > ```yaml
+   > network:
+   >   vpc:
+   >     placement: 'private'
+   > ```
+   > Once your App Runner service is connected to the VPC, you can then use existing features such as [service discovery](https://aws.github.io/copilot-cli/docs/developing/service-discovery/) to connect to Backend Services or connect to an Amazon Aurora database with [`copilot storage init`](https://aws.github.io/copilot-cli/docs/developing/storage/#database-and-artifacts).
+    > For more details, see [documentation](https://aws.github.io/copilot-cli/docs/manifest/rd-web-service/#network).
+
+* Allow injecting AWS Secrets Manager secrets using secret names instead of ARNs (#3223)
+   > Previously, you could only specify AWS Secrets Manager secrets only using their full ARN. You can now inject secrets using their names to keep your manifest files succinct:
+   > ```yaml
+   >  secrets:
+   >    DB:
+   >       secretsmanager: 'demo/test/mysql'
+   >    # You can refer to a specific key in the JSON blob.
+   >    DB_PASSWORD:
+   >       secretsmanager: 'demo/test/mysql:password::'
+   > ```
+   > For more details, see [documentation](https://aws.github.io/copilot-cli/docs/developing/secrets/#in-secrets-manager).
+
+* Respect the `AWS_CONFIG_FILE` environment variable to read the `config` file for your profiles (#3232)
+
+### ❤️ Contributions
+Thank you, contributors!
+* @acomagu (#3232)
+
+   </pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

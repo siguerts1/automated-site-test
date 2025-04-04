@@ -65,7 +65,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71336088,
-        "download_count": 38902,
+        "download_count": 38941,
         "created_at": "2025-03-25T22:10:19Z",
         "updated_at": "2025-03-25T22:10:21Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.3%2Bk3s1/k3s"
@@ -170,7 +170,7 @@
         "content_type": "application/zstd",
         "state": "uploaded",
         "size": 146798547,
-        "download_count": 4123,
+        "download_count": 4126,
         "created_at": "2025-03-25T22:10:42Z",
         "updated_at": "2025-03-25T22:10:47Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.3%2Bk3s1/k3s-airgap-images-amd64.tar.zst"
@@ -380,7 +380,7 @@
         "content_type": "application/zstd",
         "state": "uploaded",
         "size": 135778408,
-        "download_count": 2531,
+        "download_count": 2536,
         "created_at": "2025-03-25T22:10:21Z",
         "updated_at": "2025-03-25T22:10:26Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.3%2Bk3s1/k3s-airgap-images-arm64.tar.zst"
@@ -415,7 +415,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 66388120,
-        "download_count": 8572,
+        "download_count": 8581,
         "created_at": "2025-03-25T22:10:26Z",
         "updated_at": "2025-03-25T22:10:29Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.3%2Bk3s1/k3s-arm64"
@@ -485,7 +485,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 373,
-        "download_count": 683,
+        "download_count": 684,
         "created_at": "2025-03-25T22:10:47Z",
         "updated_at": "2025-03-25T22:10:47Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.3%2Bk3s1/k3s-images.txt"
@@ -520,7 +520,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 440,
-        "download_count": 43004,
+        "download_count": 43049,
         "created_at": "2025-03-25T22:10:47Z",
         "updated_at": "2025-03-25T22:10:48Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.3%2Bk3s1/sha256sum-amd64.txt"
@@ -590,7 +590,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 365,
-        "download_count": 9880,
+        "download_count": 9889,
         "created_at": "2025-03-25T22:10:29Z",
         "updated_at": "2025-03-25T22:10:29Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.3%2Bk3s1/sha256sum-arm64.txt"
@@ -1291,7 +1291,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 70676632,
-        "download_count": 3994,
+        "download_count": 3996,
         "created_at": "2025-03-25T22:38:38Z",
         "updated_at": "2025-03-25T22:38:41Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.31.7%2Bk3s1/k3s"
@@ -1711,7 +1711,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 375,
-        "download_count": 588,
+        "download_count": 589,
         "created_at": "2025-03-25T22:39:06Z",
         "updated_at": "2025-03-25T22:39:06Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.31.7%2Bk3s1/k3s-images.txt"
@@ -1746,7 +1746,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 440,
-        "download_count": 3990,
+        "download_count": 3992,
         "created_at": "2025-03-25T22:39:06Z",
         "updated_at": "2025-03-25T22:39:07Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.31.7%2Bk3s1/sha256sum-amd64.txt"
@@ -2505,7 +2505,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 69329048,
-        "download_count": 3093,
+        "download_count": 3100,
         "created_at": "2025-03-25T23:06:27Z",
         "updated_at": "2025-03-25T23:06:30Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.30.11%2Bk3s1/k3s"
@@ -2575,7 +2575,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 177388656,
-        "download_count": 49,
+        "download_count": 50,
         "created_at": "2025-03-25T23:06:48Z",
         "updated_at": "2025-03-25T23:06:53Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.30.11%2Bk3s1/k3s-airgap-images-amd64.tar.gz"
@@ -2925,7 +2925,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 375,
-        "download_count": 619,
+        "download_count": 620,
         "created_at": "2025-03-25T23:06:58Z",
         "updated_at": "2025-03-25T23:06:58Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.30.11%2Bk3s1/k3s-images.txt"
@@ -2960,7 +2960,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 440,
-        "download_count": 3087,
+        "download_count": 3093,
         "created_at": "2025-03-25T23:06:58Z",
         "updated_at": "2025-03-25T23:06:59Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.30.11%2Bk3s1/sha256sum-amd64.txt"
@@ -3538,7 +3538,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 375,
-        "download_count": 551,
+        "download_count": 552,
         "created_at": "2025-03-25T23:35:41Z",
         "updated_at": "2025-03-25T23:35:41Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.29.15%2Bk3s1/k3s-images.txt"
@@ -8301,7 +8301,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71270552,
-        "download_count": 20318,
+        "download_count": 20319,
         "created_at": "2025-02-27T02:47:05Z",
         "updated_at": "2025-02-27T02:47:08Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.2%2Bk3s1/k3s"
@@ -8721,7 +8721,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 373,
-        "download_count": 5261,
+        "download_count": 5262,
         "created_at": "2025-02-27T02:47:36Z",
         "updated_at": "2025-02-27T02:47:37Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.2%2Bk3s1/k3s-images.txt"
@@ -8756,7 +8756,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 440,
-        "download_count": 22424,
+        "download_count": 22428,
         "created_at": "2025-02-27T02:47:37Z",
         "updated_at": "2025-02-27T02:47:37Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.2%2Bk3s1/sha256sum-amd64.txt"
@@ -10140,7 +10140,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 70385816,
-        "download_count": 174525,
+        "download_count": 174535,
         "created_at": "2025-02-27T02:12:35Z",
         "updated_at": "2025-02-27T02:12:37Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.31.6%2Bk3s1/k3s"
@@ -10560,7 +10560,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 375,
-        "download_count": 5579,
+        "download_count": 5580,
         "created_at": "2025-02-27T02:13:03Z",
         "updated_at": "2025-02-27T02:13:03Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.31.6%2Bk3s1/k3s-images.txt"
@@ -10595,7 +10595,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 440,
-        "download_count": 195095,
+        "download_count": 195102,
         "created_at": "2025-02-27T02:13:04Z",
         "updated_at": "2025-02-27T02:13:04Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.31.6%2Bk3s1/sha256sum-amd64.txt"
@@ -12387,7 +12387,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 375,
-        "download_count": 3730,
+        "download_count": 3731,
         "created_at": "2025-02-27T01:38:40Z",
         "updated_at": "2025-02-27T01:38:40Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.30.10%2Bk3s1/k3s-images.txt"
@@ -13519,7 +13519,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 62914712,
-        "download_count": 287,
+        "download_count": 317,
         "created_at": "2025-02-27T01:04:45Z",
         "updated_at": "2025-02-27T01:04:47Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.29.14%2Bk3s1/k3s-arm64"
@@ -13589,7 +13589,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 375,
-        "download_count": 3552,
+        "download_count": 3553,
         "created_at": "2025-02-27T01:03:42Z",
         "updated_at": "2025-02-27T01:03:42Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.29.14%2Bk3s1/k3s-images.txt"
@@ -13694,7 +13694,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 365,
-        "download_count": 291,
+        "download_count": 325,
         "created_at": "2025-02-27T01:04:48Z",
         "updated_at": "2025-02-27T01:04:48Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.29.14%2Bk3s1/sha256sum-arm64.txt"
@@ -16787,7 +16787,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 70090904,
-        "download_count": 25438,
+        "download_count": 25439,
         "created_at": "2025-01-28T18:29:10Z",
         "updated_at": "2025-01-28T18:29:12Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.1%2Bk3s1/k3s"
@@ -17207,7 +17207,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 374,
-        "download_count": 13183,
+        "download_count": 13184,
         "created_at": "2025-01-28T18:29:35Z",
         "updated_at": "2025-01-28T18:29:35Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.1%2Bk3s1/k3s-images.txt"
@@ -17242,7 +17242,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 440,
-        "download_count": 31650,
+        "download_count": 31651,
         "created_at": "2025-01-28T18:29:36Z",
         "updated_at": "2025-01-28T18:29:36Z",
         "browser_download_url": "https://github.com/k3s-io/k3s/releases/download/v1.32.1%2Bk3s1/sha256sum-amd64.txt"

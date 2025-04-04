@@ -415,7 +415,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 116659426,
-        "download_count": 2434,
+        "download_count": 2435,
         "created_at": "2025-03-26T13:15:53Z",
         "updated_at": "2025-03-26T13:15:57Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.linux-amd64.tar.gz"
@@ -800,7 +800,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 113156027,
-        "download_count": 25,
+        "download_count": 26,
         "created_at": "2025-03-26T13:16:50Z",
         "updated_at": "2025-03-26T13:16:54Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.linux-riscv64.tar.gz"
@@ -835,7 +835,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 115135219,
-        "download_count": 31,
+        "download_count": 32,
         "created_at": "2025-03-26T13:16:54Z",
         "updated_at": "2025-03-26T13:16:59Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.linux-s390x.tar.gz"
@@ -870,7 +870,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 107968441,
-        "download_count": 24,
+        "download_count": 25,
         "created_at": "2025-03-26T13:17:00Z",
         "updated_at": "2025-03-26T13:17:04Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.netbsd-386.tar.gz"
@@ -905,7 +905,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 116411259,
-        "download_count": 28,
+        "download_count": 29,
         "created_at": "2025-03-26T13:17:04Z",
         "updated_at": "2025-03-26T13:17:08Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.netbsd-amd64.tar.gz"
@@ -940,7 +940,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 109686299,
-        "download_count": 25,
+        "download_count": 26,
         "created_at": "2025-03-26T13:17:09Z",
         "updated_at": "2025-03-26T13:17:20Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.netbsd-arm64.tar.gz"
@@ -975,7 +975,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 106308863,
-        "download_count": 26,
+        "download_count": 27,
         "created_at": "2025-03-26T13:17:21Z",
         "updated_at": "2025-03-26T13:17:25Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.netbsd-armv6.tar.gz"
@@ -1010,7 +1010,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 106253911,
-        "download_count": 25,
+        "download_count": 26,
         "created_at": "2025-03-26T13:17:25Z",
         "updated_at": "2025-03-26T13:17:29Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.netbsd-armv7.tar.gz"
@@ -1045,7 +1045,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 110667372,
-        "download_count": 10,
+        "download_count": 11,
         "created_at": "2025-03-26T13:17:30Z",
         "updated_at": "2025-03-26T13:17:34Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.windows-386.tar.gz"
@@ -1080,7 +1080,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 112720932,
-        "download_count": 51,
+        "download_count": 52,
         "created_at": "2025-03-26T13:17:35Z",
         "updated_at": "2025-03-26T13:17:40Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.windows-386.zip"
@@ -1115,7 +1115,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 117968086,
-        "download_count": 16,
+        "download_count": 17,
         "created_at": "2025-03-26T13:17:41Z",
         "updated_at": "2025-03-26T13:17:47Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.windows-amd64.tar.gz"
@@ -1150,7 +1150,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 120539212,
-        "download_count": 1855,
+        "download_count": 1856,
         "created_at": "2025-03-26T13:17:48Z",
         "updated_at": "2025-03-26T13:17:52Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.windows-amd64.zip"
@@ -1185,7 +1185,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 110180506,
-        "download_count": 10,
+        "download_count": 11,
         "created_at": "2025-03-26T13:17:53Z",
         "updated_at": "2025-03-26T13:17:58Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.windows-arm64.tar.gz"
@@ -1220,7 +1220,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 112464177,
-        "download_count": 44,
+        "download_count": 45,
         "created_at": "2025-03-26T13:17:58Z",
         "updated_at": "2025-03-26T13:18:03Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-3.3.0-rc.0.windows-arm64.zip"
@@ -1255,7 +1255,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3488507,
-        "download_count": 12,
+        "download_count": 13,
         "created_at": "2025-03-26T13:18:04Z",
         "updated_at": "2025-03-26T13:18:04Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/prometheus-web-ui-3.3.0-rc.0.tar.gz"
@@ -1290,7 +1290,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 3764,
-        "download_count": 195,
+        "download_count": 196,
         "created_at": "2025-03-26T13:18:05Z",
         "updated_at": "2025-03-26T13:18:05Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.3.0-rc.0/sha256sums.txt"
@@ -3029,7 +3029,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 114163078,
-        "download_count": 62781,
+        "download_count": 62790,
         "created_at": "2025-02-26T09:44:24Z",
         "updated_at": "2025-02-26T09:44:26Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.2.1/prometheus-3.2.1.linux-amd64.tar.gz"
@@ -4342,7 +4342,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 114163078,
-        "download_count": 44713,
+        "download_count": 44716,
         "created_at": "2025-02-17T19:08:12Z",
         "updated_at": "2025-02-17T19:08:16Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.2.0/prometheus-3.2.0.linux-amd64.tar.gz"
@@ -6968,7 +6968,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 114133789,
-        "download_count": 63350,
+        "download_count": 63351,
         "created_at": "2025-01-02T14:14:13Z",
         "updated_at": "2025-01-02T14:14:16Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v3.1.0/prometheus-3.1.0.linux-amd64.tar.gz"
@@ -14846,7 +14846,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 111626041,
-        "download_count": 48025,
+        "download_count": 48026,
         "created_at": "2024-11-06T10:33:52Z",
         "updated_at": "2024-11-06T10:33:54Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v2.55.1/prometheus-2.55.1.linux-amd64.tar.gz"
@@ -18785,7 +18785,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 111627572,
-        "download_count": 41417,
+        "download_count": 41418,
         "created_at": "2024-10-22T14:10:19Z",
         "updated_at": "2024-10-22T14:10:21Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v2.55.0/prometheus-2.55.0.linux-amd64.tar.gz"
@@ -25351,7 +25351,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 105689699,
-        "download_count": 140555,
+        "download_count": 140556,
         "created_at": "2024-08-27T11:19:11Z",
         "updated_at": "2024-08-27T11:19:14Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v2.54.1/prometheus-2.54.1.linux-amd64.tar.gz"
@@ -26226,7 +26226,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 3624,
-        "download_count": 123744,
+        "download_count": 123748,
         "created_at": "2024-08-27T11:20:15Z",
         "updated_at": "2024-08-27T11:20:15Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v2.54.1/sha256sums.txt"
@@ -34474,7 +34474,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 104191695,
-        "download_count": 134390,
+        "download_count": 134391,
         "created_at": "2024-07-10T10:38:29Z",
         "updated_at": "2024-07-10T10:38:32Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v2.53.1/prometheus-2.53.1.linux-amd64.tar.gz"
@@ -34509,7 +34509,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 98038202,
-        "download_count": 126817,
+        "download_count": 126824,
         "created_at": "2024-07-10T10:38:32Z",
         "updated_at": "2024-07-10T10:38:35Z",
         "browser_download_url": "https://github.com/prometheus/prometheus/releases/download/v2.53.1/prometheus-2.53.1.linux-arm64.tar.gz"

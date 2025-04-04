@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for fluent/fluent-bit"/>
+  <title>fluent/fluent-bit Release Notes</title>
+</head>
+<body>
+  <h1>🚀 fluent/fluent-bit - Release Notes</h1>
+  
+    <section>
+      <h2>Fluent Bit 4.0.0 (2025-04-01)</h2>
+      <pre>https://fluentbit.io/announcements/v4.0.0/
+
+## What's Changed
+* build: bump to 4.0.0 by @edsiper in https://github.com/fluent/fluent-bit/pull/9781
+* packaging: raspbian:  support raspbian bookworm package creation by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9760
+* stackdriver: add cloud_logging_base_url by @braydonk in https://github.com/fluent/fluent-bit/pull/9779
+* CODEOWNERS: change out_stackdriver code owners by @braydonk in https://github.com/fluent/fluent-bit/pull/9806
+* lib: monkey: add missing files by @edsiper in https://github.com/fluent/fluent-bit/pull/9804
+* in_systemd: fix buffer over-read by @bpetermannS11 in https://github.com/fluent/fluent-bit/pull/9789
+* core: profile signal path addition by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9748
+* readme: add swym logo to fluentbit_users.png by @erikbledsoe in https://github.com/fluent/fluent-bit/pull/9809
+* custom_calyptia: switch to YAML for Fleet config by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9698
+* tests: runtime_shell: custom_calyptia prevent fail on macOS at cleanup by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9827
+* workflows: macos: Build Intel Mac packages by macos-14-large runner by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9834
+* http: fixed assorted header related issues in both client and server by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9848
+* lib: monkey: upgrade to v1.8.2 by @edsiper in https://github.com/fluent/fluent-bit/pull/9850
+* in_ebpf: core: Prepare eBPF skeletons before starting to compile in_ebpf plugin properly by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9856
+* pack: fix missing scientific notation in JSON parser by @aivarasbaranauskas in https://github.com/fluent/fluent-bit/pull/9852
+* package: distro: dockerfiles: Install libcurl development package for oauthoicd on rdkafka by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9860
+* workflows: update daily builds for 3.2 by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9866
+* workflows: speed up Raspbian builds by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9838
+* workflows: increase size of container builders by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9869
+* packaging: skip empty repos by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9880
+* workflows: split container builds per-arch by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9875
+* in_opentelemetry: fix finalization of group for gRPC payload by @edsiper in https://github.com/fluent/fluent-bit/pull/9882
+* tests: in_kubernetes_events: try/wait for output to make tests less flakey, re #9570. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9877
+* in_calyptia_fleet: log info about config pulled from API by @nuclearpidgeon in https://github.com/fluent/fluent-bit/pull/9892
+* workflows: disable s390x container builds for release by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9898
+* in_tail: reintroduced the old ignore_older behavior as opt-in by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9911
+* log: added a new management signal to overcome a dedadlock by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9918
+* workflows: remove qemu usage by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9931
+* in_opentelemetry: add support for OpenTelemetry JSON traces by @edsiper in https://github.com/fluent/fluent-bit/pull/9938
+* zstd: introduce zstd compression support in Fluent Bit (cleanup) by @edsiper in https://github.com/fluent/fluent-bit/pull/9890
+* out_opentelemetry: auto configure HTTP/2 protocol when gRPC is enabled by @edsiper in https://github.com/fluent/fluent-bit/pull/9930
+* in_opentelemetry: refactor Logs handling and add support for gRPC message compression by @edsiper in https://github.com/fluent/fluent-bit/pull/9953
+* in_kubernetes_events: fix sqldb cleanup by @cm-rudolph in https://github.com/fluent/fluent-bit/pull/9894
+* input_chunk: log plugin alias instead of plugin name if exists. by @lecaros in https://github.com/fluent/fluent-bit/pull/9961
+* conditionals: add NOT_REGEX operator to conditional processing by @niedbalski in https://github.com/fluent/fluent-bit/pull/9960
+* in_splunk: fix memory corruption by resetting parser after reallocation by @niedbalski in https://github.com/fluent/fluent-bit/pull/9965
+* http input layer: fix parser state after memory reallocation by @edsiper in https://github.com/fluent/fluent-bit/pull/9970
+* in_http: add compression handling support for gzip, snappy and zstd by @edsiper in https://github.com/fluent/fluent-bit/pull/9977
+* bug-fix : Check for clang build dependency when building ebpf by @abhi-jha in https://github.com/fluent/fluent-bit/pull/9926
+* out_http: add zstd and snappy compression by @edsiper in https://github.com/fluent/fluent-bit/pull/9979
+* CODEOWNERS: add AWS code-owners for AWS-related files by @singholt in https://github.com/fluent/fluent-bit/pull/9951
+* conditionals: add GTE and LTE operators  by @niedbalski in https://github.com/fluent/fluent-bit/pull/9980
+* workflows: bump ossf/scorecard-action from 2.4.0 to 2.4.1 by @dependabot in https://github.com/fluent/fluent-bit/pull/9998
+* security update: CVE-2024-50608 and CVE-2024-50609 by @edsiper in https://github.com/fluent/fluent-bit/pull/9993
+* workflows: pin QEMU version for Raspbian only by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10005
+* bug-fix: Set correct and unique repo meta data by @pluhmen in https://github.com/fluent/fluent-bit/pull/9949
+* in_opentelemetry: fix groups encoding by closing headers properly by @edsiper in https://github.com/fluent/fluent-bit/pull/10018
+* internal: test: conditional: Add Byte-Order-Mark(BOM) for non western Windows environments by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9988
+* filter_kubernetes: add owner references information into record. by @shuaich in https://github.com/fluent/fluent-bit/pull/9719
+* zstd: add support for compressed unknown size by @edsiper in https://github.com/fluent/fluent-bit/pull/10021
+* out_http: fix logic to handle status of compressed payloads (fix #10016) by @edsiper in https://github.com/fluent/fluent-bit/pull/10023
+* ra: add support for direct array access notation  by @niedbalski in https://github.com/fluent/fluent-bit/pull/10007
+* workflows: bump uraimo/run-on-arch-action from 2 to 3 by @dependabot in https://github.com/fluent/fluent-bit/pull/10034
+* workflows: update release with minor fixes by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10040
+* packaging: revert apt repo origin/label info. by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10045
+* workflows: ensure we approve cosign by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10046
+* out_splunk: added otlp metadata support by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10035
+* filter_modifier: added missing log event encoder and decoder disposal by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10057
+* http_server_http1: updated the request size measurement function by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10062
+* input_thread: added missing sanity check by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10048
+* out_loki: add stuctured_metadata_map_keys by @0x006EA1E5 in https://github.com/fluent/fluent-bit/pull/9530
+* in_opentelemetry: logs: add missing checks for resource and scope by @edsiper in https://github.com/fluent/fluent-bit/pull/10077
+* out_opentelemetry: restored old group meta record processing mechanism by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10080
+* tests: fix tests that call pthread_join on stopped contexts and crash on macos. by @pwhelan in https://github.com/fluent/fluent-bit/pull/10025
+* workflows: remove invalid sync directory by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10088
+* out_opentelemetry: switch config property 'http2' default to 'off' by @edsiper in https://github.com/fluent/fluent-bit/pull/10089
+* out_gelf: fix crash after missing short_message key by @bpetermannS11 in https://github.com/fluent/fluent-bit/pull/10087
+* in_opentelemetry: fix handling of status code in JSON traces by @edsiper in https://github.com/fluent/fluent-bit/pull/10091
+* workflows: support optional image pushing by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10106
+* record_accesor: fix return value for flb_ra_get_kv_pair when get_ra_parser fails. by @pwhelan in https://github.com/fluent/fluent-bit/pull/10105
+* workflows: fix optional image pushing by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10107
+* input_chunk: check return values when calculating found chunks for new space. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9921
+* aws: add support for EKS Pod Identity by @zhihonl in https://github.com/fluent/fluent-bit/pull/10114
+* processor: fix missing read_groups flags for log event decoder by @edsiper in https://github.com/fluent/fluent-bit/pull/10117
+* processor_sampling: new trace sampling processor by @edsiper in https://github.com/fluent/fluent-bit/pull/10029
+* out_splunk: when packing OTel metadata, include resource attributes by @edsiper in https://github.com/fluent/fluent-bit/pull/10119
+* custom: add support for net properties to custom plugins. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9821
+* input: add support for upstream configuration for input client plugins. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8142
+* out_exit: add time_count (seconds) and record_count parameters for out_exit. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8621
+* tls: add support for setting min/max TLS version and cipher list by @edsiper in https://github.com/fluent/fluent-bit/pull/10133
+* workflows: update release promotion to correctly sync by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10135
+* windows: disable unused build targets and optimise container by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10136
+* in_kafka: optimize poll timeout handling for threaded and main event loop modes by @nareshku in https://github.com/fluent/fluent-bit/pull/10122
+* task_map: added task map scaling by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10044
+* out_azure_kusto: azure managed identity support added by @dceravigupta in https://github.com/fluent/fluent-bit/pull/10036
+* help: register global options by @edsiper in https://github.com/fluent/fluent-bit/pull/10134
+* processor: add conditional processing support for logs by @niedbalski in https://github.com/fluent/fluent-bit/pull/10142
+* processor_labels: add support for record accessor in values by @edsiper in https://github.com/fluent/fluent-bit/pull/9841
+* env: add support to set environment variable content from a file by @edsiper in https://github.com/fluent/fluent-bit/pull/10144
+* simdutf: simdutf_connector: in_tail: Implement UTF-16LE/UTF-16BE encoder by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9468
+* simd: riscv: implement RVV intrinsics by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9731
+* unescape: Decode \u escaped characters for surrogate pairs correctly by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9799
+* systemd: build: Add sethostname workaround for AmazonLinux2  by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9845
+* kafka: Display error messages on error for rd_kafka_conf_set() by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9859
+* pipe: add flb_pipe_error by @braydonk in https://github.com/fluent/fluent-bit/pull/10017
+* headers: cleanup paths for external header inclusion by @edsiper in https://github.com/fluent/fluent-bit/pull/10054
+* out_datadog: Fix formatting issue when setting a static hostname by @ddrthall in https://github.com/fluent/fluent-bit/pull/10104
+* version: update copyright to 2025 by @edsiper in https://github.com/fluent/fluent-bit/pull/10147
+* processor_content_modifier: fix and enhance data type conversion by @edsiper in https://github.com/fluent/fluent-bit/pull/10146
+* core: zig integration addition by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10149
+* log_event_decoder: improved group metadata fields are availability by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10151
+* routes_mask: added auto scalable route mask size feature by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10155
+* out_splunk: do not fail on Opentelemetry packing if some Log fields are missing by @edsiper in https://github.com/fluent/fluent-bit/pull/10153
+
+## New Contributors
+* @abhi-jha made their first contribution in https://github.com/fluent/fluent-bit/pull/9926
+* @singholt made their first contribution in https://github.com/fluent/fluent-bit/pull/9951
+* @pluhmen made their first contribution in https://github.com/fluent/fluent-bit/pull/9949
+* @dceravigupta made their first contribution in https://github.com/fluent/fluent-bit/pull/10036
+* @ddrthall made their first contribution in https://github.com/fluent/fluent-bit/pull/10104
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.4...v4.0.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.10 (2025-03-25)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.10/
+
+## What's Changed
+* release: update to 3.2.10 by @github-actions in https://github.com/fluent/fluent-bit/pull/10096
+* record_accesor: fix return value for flb_ra_get_kv_pair when get_ra_parser fails (Backport)  by @0x006EA1E5 in https://github.com/fluent/fluent-bit/pull/10108
+* aws: add support for EKS Pod Identity by @zhihonl in https://github.com/fluent/fluent-bit/pull/10115
+* processor: fix missing read_groups flags for log event decoder (backport for 3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/10118
+* out_splunk: when packing OTel metadata, include resource attributes (backport 3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/10120
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.9...v3.2.10</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.9 (2025-03-18)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.9/
+
+## What's Changed
+* ci: update version to 3.2.9 by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10039
+* filter_modifier: added missing log event encoder and decoder disposal by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10058
+* http_server_http1: updated the request size measurement function by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10063
+* input_thread: added missing sanity check (backport) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/10049
+* out_loki: add stuctured_metadata_map_keys (3.2.x Backport) by @0x006EA1E5 in https://github.com/fluent/fluent-bit/pull/10012
+* in_opentelemetry: logs: add missing checks for resource and scope (backport 3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/10078
+* out_opentelemetry: restored old group meta record processing mechanism (backport) by @edsiper in https://github.com/fluent/fluent-bit/pull/10083
+* out_opentelemetry: switch config property 'http2' default to 'off' (backport 3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/10090
+* out_splunk: added otlp metadata support (backport 3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/10093
+* in_opentelemetry: fix handling of status code in JSON traces (backport 3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/10092
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.8...v3.2.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.8 (2025-03-04)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.8/</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.7 (2025-02-25)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.7/
+
+## What's Changed
+* log: added a new management signal to overcome a deadlock by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9933
+* stackdriver: add cloud_logging_base_url (#9779) by @braydonk in https://github.com/fluent/fluent-bit/pull/9955
+* in_kubernetes_events: fix sqldb cleanup (backport to v3.2) by @cm-rudolph in https://github.com/fluent/fluent-bit/pull/9895
+* tests: in_kubernetes_events: backport flake test fix from #9877. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9900
+* http input layer: parser realloc fixes (#9970) by @edsiper in https://github.com/fluent/fluent-bit/pull/9971
+* opentelemetry: backports from git master by @edsiper in https://github.com/fluent/fluent-bit/pull/9975
+* in_http: add compression handling support for gzip, snappy and zstd (backport v3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/9978
+* input_chunk: log plugin alias instead of plugin name if exists. - backport to 3.2 by @lecaros in https://github.com/fluent/fluent-bit/pull/9973
+* out_http: add support for zstd and snappy compression (backport for v3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/9984
+* security update: CVE-2024-50608 and CVE-2024-50609 (v3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/9994
+* workflows: pin QEMU version for Raspbian only by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10006
+* ci: update to version 3.2.7 by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/10009
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.6...v3.2.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.6 (2025-02-11)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.6/
+
+## What's Changed
+* release: update to 3.2.6 by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9879
+* workflows: fix debug image manifest by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9884
+* in_opentelemetry: fix finalization of group for gRPC payload (backport for v3.2) by @edsiper in https://github.com/fluent/fluent-bit/pull/9883
+* in_tail: reintroduced the old ignore_older behavior as opt-in by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9912
+* workflows: remove qemu usage by @edsiper in https://github.com/fluent/fluent-bit/pull/9934
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.5...v3.2.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.5 (2025-01-27)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.5/
+
+## What's Changed
+* release: update to 3.2.5 by @github-actions in https://github.com/fluent/fluent-bit/pull/9780
+* 3.2: lib: monkey files by @edsiper in https://github.com/fluent/fluent-bit/pull/9805
+* pack: fix missing scientific notation in JSON parser [Backport 3.2] by @aivarasbaranauskas in https://github.com/fluent/fluent-bit/pull/9853
+* backports: v3.2 20240108 by @edsiper in https://github.com/fluent/fluent-bit/pull/9811
+* package: distro: dockerfiles: Install libcurl development package for oauthoicd on rdkafka [Backport 3.2] by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9863
+* workflows: increase size of container builders by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9870
+* workflows: remove s390x and armv7 platforms for container builds by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9871
+* workflows: split into per-arch container builds by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9876
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.4...v3.2.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.4 (2024-12-31)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.4/
+
+## What's Changed
+* release: update to 3.2.4 by @github-actions in https://github.com/fluent/fluent-bit/pull/9754
+* workflows: bump helm/kind-action from 1.11.0 to 1.12.0 by @dependabot in https://github.com/fluent/fluent-bit/pull/9763
+* internal: add conditionals evaluation API by @niedbalski in https://github.com/fluent/fluent-bit/pull/9749
+* in_systemd: fix memory leak by @bpetermannS11 in https://github.com/fluent/fluent-bit/pull/9773
+* Regression fix: Selects docker image target fpr local-build-all.sh by @Tradunsky in https://github.com/fluent/fluent-bit/pull/9767
+
+## New Contributors
+* @bpetermannS11 made their first contribution in https://github.com/fluent/fluent-bit/pull/9773
+* @Tradunsky made their first contribution in https://github.com/fluent/fluent-bit/pull/9767
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.3...v3.2.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.3 (2024-12-20)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.3/
+
+## What's Changed
+* release: update to 3.2.3 by @github-actions in https://github.com/fluent/fluent-bit/pull/9665
+* out_calyptia: retry agent registration on flush callback by @niedbalski in https://github.com/fluent/fluent-bit/pull/9656
+* cmake: fix UNICODE-escaped characters on aarch64 by @RamaMalladiAWS in https://github.com/fluent/fluent-bit/pull/8851
+* filter_parser: fix reserve data and preserve key handling by @niedbalski in https://github.com/fluent/fluent-bit/pull/9675
+* prometheus_remote_write: Fix a typo in configuration by @baonq-me in https://github.com/fluent/fluent-bit/pull/9674
+* wasm: Plug a resource leak on exception (CID 508177) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9615
+* calyptia: generate machine id for fleet agents by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9691
+* lib: wasm-micro-runtime: Bump up wasm-micro-runtime to v1.3.3 by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9643
+* in_winevtlog: Use correct flag for EvtRender by @mkfrey in https://github.com/fluent/fluent-bit/pull/9659
+* in_process_exporter_metrics: Fix error logic when directory cannot be… by @PromyLOPh in https://github.com/fluent/fluent-bit/pull/9549
+* Fix a typo in out opentelemetry plugin by @baonq-me in https://github.com/fluent/fluent-bit/pull/9673
+* in_systemd: Process enumerated data as cfl_kvlist(s) at first by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9291
+* cfl_record_accessor: cfl_ra_key: Implement generic CFL based record accessor by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9566
+* http_server: hs: Handle IPv4 and IPv6 addresses by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9449
+* in_forward: Support empty_shared_key parameter  by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9681
+* utils: Detect machine_id corruption and fill out a dummy value by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9690
+* build: Use signed char in RISC-V 64bit by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9524
+* update fluentbit_users.png by @erikbledsoe in https://github.com/fluent/fluent-bit/pull/9710
+* docs: update deployment details by @edsiper in https://github.com/fluent/fluent-bit/pull/9711
+* in_forward: Recreate connection when resumed by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9605
+* utf8: enhancements for handling of multibyte sequences by @edsiper in https://github.com/fluent/fluent-bit/pull/9687
+* opentelemetry: add Logs metadata support for JSON payload by @edsiper in https://github.com/fluent/fluent-bit/pull/9724
+* cfl_record_accessor: Plug resource leaks (CID 516097) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9728
+* plugin: Detect config format and use a proper loader by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9738
+* workflows: bump helm/kind-action from 1.10.0 to 1.11.0 by @dependabot in https://github.com/fluent/fluent-bit/pull/9736
+* lib: update cprofiles and c-ares libraries by @edsiper in https://github.com/fluent/fluent-bit/pull/9747
+* workflows: resolve ubuntu 24 packaging problems by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9751
+* plugin_proxy: Allow to execute flush callback on Golang side during hot-reloading by @imankurpatel000 in https://github.com/fluent/fluent-bit/pull/9734
+
+## New Contributors
+* @RamaMalladiAWS made their first contribution in https://github.com/fluent/fluent-bit/pull/8851
+* @baonq-me made their first contribution in https://github.com/fluent/fluent-bit/pull/9674
+* @mkfrey made their first contribution in https://github.com/fluent/fluent-bit/pull/9659
+* @PromyLOPh made their first contribution in https://github.com/fluent/fluent-bit/pull/9549
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.2...v3.2.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.2 (2024-11-28)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.2/
+
+## What's Changed
+* release: update to 3.2.2 by @github-actions in https://github.com/fluent/fluent-bit/pull/9610
+* signv4: added missing length calculation (CID 514601) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9606
+* http_client: added missing exit path (CID 514596, 514571) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9607
+* http_common: added missing initializers (CID 514594, 514583) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9608
+* out_opentelemetry: added missing result checks and fixed leaks (CID 514593) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9609
+* http_client: fixed potential memory corruption (CID 514587) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9611
+* http_client: added missing exit path (CID 514585) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9612
+* http_common: moved initializers to correct a bug introduced in PR 9608 by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9619
+* ci: extended CI script to pass test for flb_utils_get_machine_id by @mabrarov in https://github.com/fluent/fluent-bit/pull/9630
+* in_forward: Plug a resource leak on exception (CID 508064) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9616
+* node_exporter_metrics: Use real_path for complaining on glob error by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9618
+* plugin: Plug a use-after-free issue (CID 514582) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9639
+* http_client: assorted HTTP/2 related fixes by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9645
+* out_azure_kusto : fix multiple files tail issue and timeout issue by @tanmaya-panda1 in https://github.com/fluent/fluent-bit/pull/8430
+* in_opentelemetry: Propogate tag in http2 metrics and trace handlers by @nuclearpidgeon in https://github.com/fluent/fluent-bit/pull/9635
+* processor_labels: Process operations for output purposed contexts of metrics instead of the original one by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9632
+* filter_lua: expose env variables in FLB_ENV Lua table by @edsiper in https://github.com/fluent/fluent-bit/pull/9617
+* custom_calyptia: honour collector interval in secs and nano secs. by @niedbalski in https://github.com/fluent/fluent-bit/pull/9648
+* out_stackdriver bug fix: return cached token when current_timestamp is less than cached_expiration by @shuaich in https://github.com/fluent/fluent-bit/pull/9652
+* http_client: out_es: lib: implement http client response testing mechanism by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9401
+* in_http: use 'tag_key' option when json array is received by @imankurpatel000 in https://github.com/fluent/fluent-bit/pull/9590
+* network: fix IPV6 handling for accepting connections by @jomillerOpen in https://github.com/fluent/fluent-bit/pull/9404
+
+## New Contributors
+* @mabrarov made their first contribution in https://github.com/fluent/fluent-bit/pull/9630
+* @tanmaya-panda1 made their first contribution in https://github.com/fluent/fluent-bit/pull/8430
+* @imankurpatel000 made their first contribution in https://github.com/fluent/fluent-bit/pull/9590
+* @jomillerOpen made their first contribution in https://github.com/fluent/fluent-bit/pull/9404
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.1...v3.2.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.1 (2024-11-18)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.1/
+
+## What's Changed
+* config_format: windows: Handle static config on windows correctly by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9582
+* ci: support 3.2 releases as latest version by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9445
+* Retrieve Kubernetes pod IP address if it is set in status.podIP by @kgtw in https://github.com/fluent/fluent-bit/pull/2783
+* tests: runtime: kubernetes: fixes tests after addition of pod_ip by @lecaros in https://github.com/fluent/fluent-bit/pull/9591
+* in_ebpf: Prepare build directory for building eBPF objects by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9592
+* in_splunk: splunk token validation must be case-insensitive by @lecaros in https://github.com/fluent/fluent-bit/pull/9518
+* in_ebpf: Handle debian like systems' signal probes by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9596
+* security: supported versions now are 3.1.x and 3.2.x by @lecaros in https://github.com/fluent/fluent-bit/pull/9594
+* tls: removed alpn selector requirement by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9599
+* update: bump version to v3.2.1 by @edsiper in https://github.com/fluent/fluent-bit/pull/9602
+
+## New Contributors
+* @kgtw made their first contribution in https://github.com/fluent/fluent-bit/pull/2783
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.2.0...v3.2.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.2.0 (2024-11-15)</h2>
+      <pre>https://fluentbit.io/announcements/v3.2.0/
+
+## What's Changed
+* build: bump to v3.2 series by @edsiper in https://github.com/fluent/fluent-bit/pull/9322
+* workflows: bump peter-evans/create-pull-request from 6 to 7 by @dependabot in https://github.com/fluent/fluent-bit/pull/9342
+* workflows: linux: Compile and execute internal test on non-amd64 platforms Linux by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9313
+* engine: added missing explicit cast (CID 508212) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9329
+* in_elasticsearch: fixed potential issue caused by ingored reallocation (CID 508180) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9356
+* input: added missing initializer (CID 508207) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9331
+* out_opentelemetry: fixed memory leaks (CID 508192) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9334
+* tests: internal: signv4: uncommented code that caused a leak (CID 508181) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9348
+* in_elasticsearch: fixed memory leak (CID 507822) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9358
+* out_influxdb: Handle signed/unsigned integer as influx's integer of that representation by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9301
+* in_calyptia_fleet: fixed memory leaks (CID 508187) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9346
+* out_http: Request timed out(408) to be treated as retry by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9377
+* tests: internal: signv4: fixed leak (CID 508222) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9344
+* input: disable coroutines for custom events and input callbacks that do not support coroutines. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9338
+* filter_log_to_metrics: Add timer callback for emitting metrics by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/9251
+* lib: cmetrics: upgrade to v0.9.6 by @edsiper in https://github.com/fluent/fluent-bit/pull/9392
+* out_splunk: Extend retrying HTTP status code by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9375
+* workflows: Update scorecard workflow and remove Dockerfile warnings by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9421
+* config_format: cf_yaml: Plug memory leaks on exception for processing variants on plugin elements by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9426
+* out_calyptia: register OS and architecture for agents. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8466
+* lib: ctraces: upgrade to v0.5.6 by @edsiper in https://github.com/fluent/fluent-bit/pull/9430
+* in_calyptia_fleet: fix 'unable to find fleet by name'. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9410
+* filter_multiline: Reset group metadata buf on flush - Fixes 9262,8925,9337,8567 by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/9425
+* lib: fluent-otel-proto: update generated files and add profiling support by @edsiper in https://github.com/fluent/fluent-bit/pull/9434
+* reload: do not call flb_stop when flb_start fails to avoid crash on RHEL/CentOS. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9432
+* upstream: Improve error message for misconfigured HTTP_PROXY variable by @lecaros in https://github.com/fluent/fluent-bit/pull/9328
+* core: signal blob implementation  by @edsiper in https://github.com/fluent/fluent-bit/pull/9326
+* workflows: update for 3.1 branch by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9444
+* motd: v3.2 by @edsiper in https://github.com/fluent/fluent-bit/pull/9442
+* in_opentelemetry: add tag_from_uri support to http2 codepath  by @nuclearpidgeon in https://github.com/fluent/fluent-bit/pull/8963
+* motd: add missing null character by @edsiper in https://github.com/fluent/fluent-bit/pull/9474
+* cmake: update emails and urls for Chronosphere by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9408
+* lib: monkey: upgrade to v1.8.1 (add support for HTTP/1.1 chunked transfer encoding) by @edsiper in https://github.com/fluent/fluent-bit/pull/9466
+* blob: assorted improvements (cleanup) by @edsiper in https://github.com/fluent/fluent-bit/pull/9479
+* http_server: http1: always reset the parser context on pending status by @edsiper in https://github.com/fluent/fluent-bit/pull/9480
+* tests/internal: fix use-after-free for input_chunks test input_chunk_dropping_chunks. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9472
+* out_opentelemetry: metrics handling fixes by @edsiper in https://github.com/fluent/fluent-bit/pull/9481
+* scan: coverity fixes 20241012 by @edsiper in https://github.com/fluent/fluent-bit/pull/9488
+* out_azure_blob: fixed blob endpoint tracking by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9493
+* blob: assorted fixes by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9511
+* simd: add new SIMD support for JSON escaping by @edsiper in https://github.com/fluent/fluent-bit/pull/9500
+* config: complete Yaml support by @edsiper in https://github.com/fluent/fluent-bit/pull/9513
+* processor_content_modifier: add support for Metrics processing by @edsiper in https://github.com/fluent/fluent-bit/pull/9531
+* tls: include X509 error string when verify result is not x509_V_OK. by @niedbalski in https://github.com/fluent/fluent-bit/pull/9527
+* tls: improve debug information on the cause of the failure when loading system certificates on windows  by @niedbalski in https://github.com/fluent/fluent-bit/pull/9533
+* docs: DEVELOPER_GUIDE: add instructions for windows 2022. by @niedbalski in https://github.com/fluent/fluent-bit/pull/9522
+* input_chunk: fix input plugin metrics not counting records re-emitted by filters downstream by @mindw in https://github.com/fluent/fluent-bit/pull/9487
+* lib: fluent-otel-proto: update files for latest profiles support by @edsiper in https://github.com/fluent/fluent-bit/pull/9540
+* tls: macos load system certificates using security framework. by @niedbalski in https://github.com/fluent/fluent-bit/pull/9539
+* http_client: HTTP/2 client addition by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9541
+* out_blob: consider auto_create_container by @uristernik in https://github.com/fluent/fluent-bit/pull/9457
+* in_forward: fixed incorrect shared key length in authentication by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9550
+* filter_multiline: Add functionality to use as processor by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/9521
+* output: allow records size 0 on flb event type logs processor by @niedbalski in https://github.com/fluent/fluent-bit/pull/9554
+* processor_opentelemetry_envelope: add support for Metrics by @edsiper in https://github.com/fluent/fluent-bit/pull/9558
+* in_calyptia_fleet: fleet id search by name must use exact name. by @lecaros in https://github.com/fluent/fluent-bit/pull/9561
+* in_calyptia_fleet: make the http client buffer size configurable. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9515
+* in_calyptia_fleet: fix registering agent after first invocation. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9516
+* filter: Add dropped_bytes_total / drop_bytes metrics by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9419
+* network: tcp keepalive addition by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9249
+* out_datadog: custom added ability ot set custom HTTP headers by @AndrewChubatiuk in https://github.com/fluent/fluent-bit/pull/9441
+* build: use the system provided packages if found by @ThomasDevoogdt in https://github.com/fluent/fluent-bit/pull/8930
+* out_kinesis_streams: add custom port support for Kinesis output plugin by @azalio in https://github.com/fluent/fluent-bit/pull/9317
+* metrics_exporter: add support for filter metrics inside processors by @cw-Guo in https://github.com/fluent/fluent-bit/pull/9341
+* fix: ARES_OPT_TRIES must be set to update opt.tries by @bazzargh in https://github.com/fluent/fluent-bit/pull/8587
+* out_kafka: Introduce raw_log_key to write a single value to kafka by @zecke in https://github.com/fluent/fluent-bit/pull/8655
+* network: use TCP_KEEPALIVE instead of TCP_KEEPIDLE in OSX by @lecaros in https://github.com/fluent/fluent-bit/pull/9574
+* in_ebpf: initial version of the plugin (experimental) by @niedbalski in https://github.com/fluent/fluent-bit/pull/9576
+* lib: cprofiles addition by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9584
+* lib: cprofiles: fixed incorrect check by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9586
+* opentelemetry: initial addition of the experimental otlp profile signal by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9583
+
+## New Contributors
+* @mindw made their first contribution in https://github.com/fluent/fluent-bit/pull/9487
+* @uristernik made their first contribution in https://github.com/fluent/fluent-bit/pull/9457
+* @AndrewChubatiuk made their first contribution in https://github.com/fluent/fluent-bit/pull/9441
+* @azalio made their first contribution in https://github.com/fluent/fluent-bit/pull/9317
+* @cw-Guo made their first contribution in https://github.com/fluent/fluent-bit/pull/9341
+* @bazzargh made their first contribution in https://github.com/fluent/fluent-bit/pull/8587
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.7...v3.2.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.10 (2024-11-05)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.10/
+
+## What's Changed
+* in_opentelemetry: add tag_from_uri support to http2 codepath by @lecaros in https://github.com/fluent/fluent-bit/pull/9447
+* in_http: fix parsing of root JSON object by @edsiper in https://github.com/fluent/fluent-bit/pull/9467
+* out_opentelemetry: metrics handling fixes (backport for v3.1) by @edsiper in https://github.com/fluent/fluent-bit/pull/9483
+* in_forward: fixed incorrect shared key length in authentication by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9551
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.9...v3.1.10</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.9 (2024-09-27)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.9/
+
+## What's Changed
+* in_calyptia_fleet: fix 'unable to find fleet by name'. by @pwhelan in https://github.com/fluent/fluent-bit/pull/9412
+* 3.1: backport fixes 2024-09-26 by @edsiper in https://github.com/fluent/fluent-bit/pull/9433
+* reload: do not call flb_stop when flb_start fails and fix crash on RHEL by @pwhelan in https://github.com/fluent/fluent-bit/pull/9435
+* upstream: Improve error message for misconfigured HTTP_PROXY variable - Backport to 3.1 by @lecaros in https://github.com/fluent/fluent-bit/pull/9438
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.8...v3.1.9</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.8 (2024-09-16)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.8/
+
+## What's Changed
+* engine: added missing explicit cast (CID 508212) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9330
+* tests: internal: signv4: fixed leak (CID 508222) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9345
+* tests: internal: signv4: uncommented code that caused a leak (CID 508181) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9349
+* in_elasticsearch: fixed potential issue caused by ingored reallocation (CID 508180) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9357
+* in_elasticsearch: fixed memory leak (CID 507822) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9359
+* release: update to 3.1.8 by @github-actions in https://github.com/fluent/fluent-bit/pull/9324
+* out_opentelemetry: fixed memory leaks (CID 508192) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9335
+* in_calyptia_fleet: fixed memory leaks (CID 508187) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9347
+* input: added missing initializer (CID 508207) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9332
+* out_splunk: Extend retrying HTTP status code [Backport 3.1] by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9380
+* out_http: Request timed out(408) to be treated as retry [Backport 3.1] by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9379
+* out_influxdb: Handle signed/unsigned integer as influx's integer of that representation [Backport 3.1] by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9361
+* backport: PR #9338 to 3.1 by @pwhelan in https://github.com/fluent/fluent-bit/pull/9390
+* 3.1: lib: upgrade cmetrics to v0.9.6 by @edsiper in https://github.com/fluent/fluent-bit/pull/9393
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.7...v3.1.8</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.7 (2024-09-02)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.7/
+
+## What's Changed
+* release: update to 3.1.7 by @github-actions in https://github.com/fluent/fluent-bit/pull/9232
+* tests: in_http: replaced the failure trigger mechanism by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9219
+* filter_aws: fixed group metadata fetch issue and addressed (CID 507941) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9220
+* out_opensearch: fixed a wrong data type used for a boolean option by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9221
+* out_stackdriver: fixed a wrong data type used for two boolean options by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9222
+* filter_tensorflow: fixed a wrong data type used for a boolean option by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9224
+* in_nginx_exporter_metrics: fixed a wrong data type used for an option by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9225
+* in_opentelemetry: fixed a wrong data type used for an option by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9226
+* in_proc: fixed a wrong data type used for three options by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9227
+* out_es: fixed a wrong data type used for an option by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9228
+* network: fixed a wrong data type used for an option by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9229
+* tests: config_map: fixed a wrong data type used for an option by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9230
+* in_dummy: switched property types to match the config_map by @rightblank in https://github.com/fluent/fluent-bit/pull/9213
+* in_head: switched the type of buf_size to match the config_map by @rightblank in https://github.com/fluent/fluent-bit/pull/9205
+* in_elasticsearch: Store log_encoder pointer (CID 508245) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9210
+* out_opensearch: Plug a use-after-free issue (CID 508013) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9233
+* in_event_type: Plug a resource leak on exception (CID 507968) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9235
+* out_chronicle: Plug a resource leak on exception (CID 508008) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9234
+* core: fix configuration type cast issue on big endian systems by @rightblank in https://github.com/fluent/fluent-bit/pull/8904
+* core: support configurable event loop mechanism by @edsiper in https://github.com/fluent/fluent-bit/pull/9244
+* in_emitter: Plug a possible resource leak on exception (CID 508193) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9250
+* filter_logs_to_metrics: fixed memory corruption issue by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9252
+* upstream_ha: added environment variable support by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9255
+* core: fixed the data type used for booleans by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9253
+* in_winevtlog: Skip to translate SID for capability SIDs by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9212
+* core: endianness detection fix by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9256
+* in_process_exporter_metrics: Initialize with NULL for flb_sds_t pointer variables (CID 507975) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9266
+* output: Remove a needless calling of flb_output_instance_destroy() (CID 507809) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9280
+* core: fixes for reports provided by Coverity 20240826 by @edsiper in https://github.com/fluent/fluent-bit/pull/9285
+* lib: c-ares: upgrade to v1.33.1 by @edsiper in https://github.com/fluent/fluent-bit/pull/9287
+* tests: internal: added cpu byte order test cases by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9270
+* utils: use MachineGUID correctly. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8724
+* examples: filter_wasm_go: Upgrade to support Go 1.22.5 and TinyGo 0.32 by @opencmit2 in https://github.com/fluent/fluent-bit/pull/9105
+* in_elasticsearch: Fix string in http response code 400 by @lecaros in https://github.com/fluent/fluent-bit/pull/8977
+* out_logdna: refactored LogDNA URI formation to support configurable endpoints by @mirko-lazarevic in https://github.com/fluent/fluent-bit/pull/8051
+* build: use the system provided LuaJIT on s390x by @rightblank in https://github.com/fluent/fluent-bit/pull/9172
+* engine:enhanced byte order handling for timestamps by @mirko-lazarevic in https://github.com/fluent/fluent-bit/pull/9196
+* in_splunk: test: Handle 1.0 suffixed endpoints by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9271
+* out_elasticsearch: Process error information properly by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9236
+* in_winevtlog: out_s3: Fix windows build failures by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9293
+* out_azure_blob: fixed double free (CID 508656) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9296
+* in_collectd: fixed out of bounds read by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9298
+* out_stackdriver: fixed a memory leak (CID 508244) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9299
+* in_node_exporter_metrics: fixed possible invalid dereference (CID 508238) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9300
+* in_podman_metrics: Plug a resource leak on exception (CID 507805) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9295
+* reload: added appropriate type cast (CID 508209) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9292
+* coverity: fixes for 20240829 by @edsiper in https://github.com/fluent/fluent-bit/pull/9305
+* in_event_type: fixed two leaks (CID 508227) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9311
+* core: fixed memory leaks (CID 508230) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9310
+* record_accessor: Plug a resource leak on exception (CID 508119) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9306
+* out_opentelemetry: Prevent null dereference on memcpy (CID 507910) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9307
+* filter_multiline: fixed memory leak (CID 508221) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9314
+* sp: changed property type to prevent lossy cast (CID 508218) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9315
+* lib: cmetrics: upgrade to v0.9.5 by @edsiper in https://github.com/fluent/fluent-bit/pull/9319
+* filter_alter_size: fixed memory leak (CID 508216) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9316
+* coverity: fixes as of 20240830 (CID 507960) by @edsiper in https://github.com/fluent/fluent-bit/pull/9318
+
+## New Contributors
+* @rightblank made their first contribution in https://github.com/fluent/fluent-bit/pull/9213
+* @opencmit2 made their first contribution in https://github.com/fluent/fluent-bit/pull/9105
+* @mirko-lazarevic made their first contribution in https://github.com/fluent/fluent-bit/pull/8051
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.6...v3.1.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.6 (2024-08-14)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.6/
+
+## What's Changed
+* release: update to 3.1.6 by @github-actions in https://github.com/fluent/fluent-bit/pull/9183
+* filter_parser: added debug message (CID 508252) by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9195
+* pack: do not multiply out_size by realloc_size by @braydonk in https://github.com/fluent/fluent-bit/pull/9193
+* stackdriver: Add latency metric for write log entries HTTP request. by @shuaich in https://github.com/fluent/fluent-bit/pull/9182
+* in_forward: fixed two leaks by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9199
+* upstream_ha: upstream_node: process verify hostname on HA settings by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9180
+* coverity: report as of 20240813 by @edsiper in https://github.com/fluent/fluent-bit/pull/9203
+* in_kubernetes_events: Use time_t for time(NULL) returned value (CID 507947) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9211
+* in_exec_wasi: Fix resource leak on exception (CID 508347) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9208
+* Make `Time_System_Timezone` properly detect daylight savings by @braydonk in https://github.com/fluent/fluent-bit/pull/9201
+* out_prometheus_exporter: Fix dead code notified from coverity (CID 508348) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9207
+* in_forward: Plug a resource leak (CID 508219) by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9209
+* in_http: Content-Type rejected for application/json when encoding value is present. by @metalfork in https://github.com/fluent/fluent-bit/pull/9190
+* in_statsd: Implement metrics type of ingestion way by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9119
+
+## New Contributors
+* @metalfork made their first contribution in https://github.com/fluent/fluent-bit/pull/9190
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.5...v3.1.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.5 (2024-08-10)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.5/
+
+## What's Changed
+* release: update to 3.1.5 by @github-actions in https://github.com/fluent/fluent-bit/pull/9132
+* workflows: bump ossf/scorecard-action from 2.3.3 to 2.4.0 by @dependabot in https://github.com/fluent/fluent-bit/pull/9137
+* out_s3: Plug memory leaks on gzipped buffers during the swapping contents by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9143
+* lib: c-ares: ugprade to v1.32.3 by @edsiper in https://github.com/fluent/fluent-bit/pull/9141
+* in_kubernetes_events: fix k8s events end of stream deadlock by @ryanohnemus in https://github.com/fluent/fluent-bit/pull/9154
+* workflows: Fix CentOS7 build failure for EPEL by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9157
+* filter_log_to_metrics: add new option 'discard_logs' by @edsiper in https://github.com/fluent/fluent-bit/pull/9150
+* node_exporter_metrics: Align the collecting metrics of unit statuses by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9134
+* in_forward: Use full width of gzip header for checking whether concatenated or not by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9139
+* out_oracle_log_analytics: minor fixes by @nokute78 in https://github.com/fluent/fluent-bit/pull/7966
+* workflows: update unstable nightly builds for 3.0 by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/9168
+* lib: cfl: upgrade to v0.5.2 by @edsiper in https://github.com/fluent/fluent-bit/pull/9169
+* in_mqtt: added buffer size setting and fixed a leak by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9163
+* lib: library updates by @edsiper in https://github.com/fluent/fluent-bit/pull/9170
+* aws_util: fix leading zeros in time_key strings by @kangaechu in https://github.com/fluent/fluent-bit/pull/9128
+* out_opensearch: fixed wrong payload buffer usage for traces by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9158
+* build: use the system provided LuaJIT if found by @ThomasDevoogdt in https://github.com/fluent/fluent-bit/pull/7286
+* windows: build: Enable kafka plugins on Windows by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8662
+* out_prometheus_exporter: Handle multiply concatenated metrics type of events by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9122
+* core: fixes for issues reported by Coverity by @edsiper in https://github.com/fluent/fluent-bit/pull/9177
+* wasm: in_exec_wasi: filter_wasm: Make configurable for wasm heap and stack sizes by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9146
+* core: memory alignment feature addition by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/9174
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.4...v3.1.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.4 (2024-07-25)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.4/
+
+## What's Changed
+* release: update to 3.1.4 by @github-actions in https://github.com/fluent/fluent-bit/pull/9103
+* out_stdout: Consume entire metrics type of buffers by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9118
+* log_to_metrics: allow custom namespace and subsystem by @flobz in https://github.com/fluent/fluent-bit/pull/9101
+* input_chunk: do not exit if cannot release old chunks by @edsiper in https://github.com/fluent/fluent-bit/pull/9127
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.3...v3.1.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.3 (2024-07-17)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.3/
+
+## What's Changed
+* out_datadog: fix typo for `dd_hostname` documentation by @jszwedko in https://github.com/fluent/fluent-bit/pull/9032
+* release: update to 3.1.3 by @github-actions in https://github.com/fluent/fluent-bit/pull/9080
+* out_datadog: fix default message key remapping by @pmeier in https://github.com/fluent/fluent-bit/pull/9085
+* metrics: fix handling of old metric names (fix #9086) by @edsiper in https://github.com/fluent/fluent-bit/pull/9087
+* core and plugins: fix compiler warnings by @edsiper in https://github.com/fluent/fluent-bit/pull/9089
+* in_winevtlog: Retrieve messages of forwarded events correctly by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9081
+* lib: ctraces: upgrade to v0.5.2 by @edsiper in https://github.com/fluent/fluent-bit/pull/9090
+* in_splunk: Process strict check for credentials by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9094
+* in_splunk: Fix handlings for content type when http2 is off by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9095
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.2...v3.1.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.2 (2024-07-12)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.2/
+
+## What's Changed
+* release: update to 3.1.2 by @github-actions in https://github.com/fluent/fluent-bit/pull/9073
+* packaing: test: centos7: Fix packaging test by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9076
+* docs: add user logos by @erikbledsoe in https://github.com/fluent/fluent-bit/pull/9078
+* cmake: Correctly fetch FLB_GIT_HASH from signed commit by @xl-sec in https://github.com/fluent/fluent-bit/pull/9070
+* out_opentelemetry: restore manual parsing for log record fields (fix #9071) by @edsiper in https://github.com/fluent/fluent-bit/pull/9074
+* in_tail: Add option file_cache_advise to reduce file cache usage by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/8422
+* filter_log_to_metric: Add emitter alias and mem buf limit by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/8659
+* flb_input: Config parsing order fixed for storage.pause_on_chunks_overlimit by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/8720
+* in_forward: Add plugin pause/resume mechanism by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/8829
+
+## New Contributors
+* @xl-sec made their first contribution in https://github.com/fluent/fluent-bit/pull/9070
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.1...v3.1.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.1 (2024-07-10)</h2>
+      <pre>Official announcement: https://fluentbit.io/announcements/v3.1.1/
+
+## FYI
+
+This is a minor updated that fixes some build system issues found in v3.1.0 where some plugins were disabled.
+
+## What's Changed
+* release: update to 3.1.1 by @github-actions in https://github.com/fluent/fluent-bit/pull/9060
+* luajit-cmake: Add git repository existence check by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9065
+* cmake: build: Revive missing plugin definitions by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9066
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.1.0...v3.1.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.1.0 (2024-07-08)</h2>
+      <pre>https://fluentbit.io/announcements/v3.1.0/
+
+## What's Changed
+* release: update to 3.0.7 by @github-actions in https://github.com/fluent/fluent-bit/pull/8876
+* in_prometheus_scrape: add User-Agent HTTP header (#8880) by @endersonmaia in https://github.com/fluent/fluent-bit/pull/8882
+* tests: internal: log: use milliseconds to do time comparisons for cache timeout. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8891
+* tests/runtime/in_podman_metrics: refactor iteration of counters to use cfl_list from #8844. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8888
+* out_cloudwatch_logs: support log_group_class option by @PettitWesley in https://github.com/fluent/fluent-bit/pull/8832
+* in_http: respond accordingly to requests that produce errors. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8794
+* out_calyptia: move debug payload to debug level. by @lecaros in https://github.com/fluent/fluent-bit/pull/8805
+* tests: rutime: out_http: simplify and make the in_http test more robust. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8897
+* in_splunk: Store HEC token on enabled HTTP2 and raw endpoints by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8883
+* in_splunk: Add switch for storing in metadata or records and handle multiple tokens on in splunk by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8900
+* in_kubernetes_events: refactor time check to use struct flb_time. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8887
+* Fix GCC 14.1 build issues by @Javex in https://github.com/fluent/fluent-bit/pull/8901
+* in_systemd: Move one record back after skipping to the end by @ardavast in https://github.com/fluent/fluent-bit/pull/8917
+* http_server: api: v1: traces: fix finding inputs by alias. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8886
+* in_winevtlog: Fix threshold condition to avoid unnecessary warning by @Meetp369 in https://github.com/fluent/fluent-bit/pull/8771
+* dockerfile: update to bookworm base image by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/8916
+* lib: cmetrics: upgrade to v0.9.1 by @edsiper in https://github.com/fluent/fluent-bit/pull/8922
+* CMakeLists.txt: fix build with ninja by @ThomasDevoogdt in https://github.com/fluent/fluent-bit/pull/8835
+* processor_metrics_selector: Implement delete by label value operation by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8812
+* dockerfiles: windows: Update to use vcpkg instead of chocolatey by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8924
+* core: add log groups support and full OTLP <--> OTLP   by @edsiper in https://github.com/fluent/fluent-bit/pull/8898
+* out_opentelemetry: fix handling of multiple scopes by @edsiper in https://github.com/fluent/fluent-bit/pull/8933
+* build: add new FLB_MINIMAL cmake option to disable all plugins by @edsiper in https://github.com/fluent/fluent-bit/pull/8935
+* tls: Verify vhost when tls.verify is enabled by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8934
+* workflows: remove AppVeyor from release workflow by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/8948
+* lib: monkey: upgrade to v1.7.5 by @edsiper in https://github.com/fluent/fluent-bit/pull/8945
+* in_opentelemetry: attempt to fix tag_from_uri by @shaohme in https://github.com/fluent/fluent-bit/pull/8881
+* help: input: Handle listen to be a parameter for setting up listen address by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8952
+* lib: c-ares: upgrade to v1.30.0 by @edsiper in https://github.com/fluent/fluent-bit/pull/8953
+* workflows: bump docker/build-push-action from 5 to 6 by @dependabot in https://github.com/fluent/fluent-bit/pull/8973
+* in_opentelemetry: opentelemetry_prot: Fix string in http response code 400 by @lecaros in https://github.com/fluent/fluent-bit/pull/8979
+* in_prometheus_remote_write: prom_rw_prot: Fix string in http response code 400 by @lecaros in https://github.com/fluent/fluent-bit/pull/8978
+* in_winevtlog: Retrieve actual user account's domain and name by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8992
+* in_splunk: splunk_prot: Fix string in http response code 400. by @lecaros in https://github.com/fluent/fluent-bit/pull/8980
+* in_winevtlog: Permit absence of publisher metadata by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8974
+* processor_content_modifier: add support for OTel Logs Resource and Scopes by @edsiper in https://github.com/fluent/fluent-bit/pull/8989
+* in_docker: fix memory leak caused by conversion error by @Garfield96 in https://github.com/fluent/fluent-bit/pull/8994
+* processor_opentelemetry_envelope: new processor to package non OTel Logs content as OTel by @edsiper in https://github.com/fluent/fluent-bit/pull/9001
+* in_opentelemetry: handle missing or invalid content-type headers in metrics and traces handlers by @portswigger-tim in https://github.com/fluent/fluent-bit/pull/8986
+* in_kubernetes_events: Efficiently stream kubernetes events via watch by @ryanohnemus in https://github.com/fluent/fluent-bit/pull/8351
+* out_loki: allow sending unquoted strings by @iandrewt in https://github.com/fluent/fluent-bit/pull/8814
+* parser: add new option time_system_timezone (copy of #8164) by @edsiper in https://github.com/fluent/fluent-bit/pull/9006
+* processor_content_modifier: logs: do not fail if keys are not found by @edsiper in https://github.com/fluent/fluent-bit/pull/9005
+* out_datadog: Add support for setting a static hostname by @jszwedko in https://github.com/fluent/fluent-bit/pull/8988
+* Improved OpenTelemetry OTLP error handling by @nuclearpidgeon in https://github.com/fluent/fluent-bit/pull/8962
+* tls: input: output: Provide restoring way for tls.verify hebavior by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8966
+* utils: floating-point number support in size-to-bytes conversion by @Meetp369 in https://github.com/fluent/fluent-bit/pull/8767
+* Added parser for Linux kernel netfilter firewall log by @protohuf in https://github.com/fluent/fluent-bit/pull/8778
+* workflows: update for 3.1 release by @edsiper in https://github.com/fluent/fluent-bit/pull/9008
+* lib: c-ares: upgrade to v1.31.0 by @edsiper in https://github.com/fluent/fluent-bit/pull/9009
+* metrics: Allocate metrics' titles dynamically by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8969
+* in_winetvlog: Handle buffer allocation error and not mapped error by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9011
+* out_splunk: remove raw endpoint by @pmeier in https://github.com/fluent/fluent-bit/pull/9007
+* http_server: always set the content-length on HTTP/1.x (fix #9010) by @edsiper in https://github.com/fluent/fluent-bit/pull/9036
+* http_server and downstream: fix keepalive issues by @edsiper in https://github.com/fluent/fluent-bit/pull/9038
+* tls: openssl: fix handling of noisy non TLS errors by @edsiper in https://github.com/fluent/fluent-bit/pull/9039
+* lib: luajit: upgrade to 04dca791 by @edsiper in https://github.com/fluent/fluent-bit/pull/9044
+* lib: librdkafka: upgrade to v2.4.0 by @edsiper in https://github.com/fluent/fluent-bit/pull/9045
+* lib: c-ares: upgrade to v1.32.0 by @edsiper in https://github.com/fluent/fluent-bit/pull/9047
+* dockerfile: packaging: Fix build check for centos-7 and failures of package creations  by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9043
+* lib: nghttp2: backport upstream security fix by @edsiper in https://github.com/fluent/fluent-bit/pull/9052
+* windows: luajit: Enable LuaJIT on ARM64 Windows by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9051
+* out_gelf: test: Implement injecting tag capability by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9031
+* out_loki: add support for structured metadata by @jtackaberry in https://github.com/fluent/fluent-bit/pull/9048
+* http_server: Don't override keepalive for HTTP/2 by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/9056
+* config_format: yaml: Support passing arbitrary objects to processors by @tchrono in https://github.com/fluent/fluent-bit/pull/8874
+* in_syslog: Fix double free when no parser is set by @belzerus in https://github.com/fluent/fluent-bit/pull/8976
+* out_http: don't retry non retryable 4xx status codes by @IsraelZeromski in https://github.com/fluent/fluent-bit/pull/8861
+* build: Set security flags for release builds by @Garfield96 in https://github.com/fluent/fluent-bit/pull/6087
+* out_loki: Add http_buffer_max_size option and handle HTTP 5xx errors by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/8830
+* motd: v3.1 by @edsiper in https://github.com/fluent/fluent-bit/pull/9059
+
+## New Contributors
+* @Javex made their first contribution in https://github.com/fluent/fluent-bit/pull/8901
+* @ardavast made their first contribution in https://github.com/fluent/fluent-bit/pull/8917
+* @Meetp369 made their first contribution in https://github.com/fluent/fluent-bit/pull/8771
+* @shaohme made their first contribution in https://github.com/fluent/fluent-bit/pull/8881
+* @portswigger-tim made their first contribution in https://github.com/fluent/fluent-bit/pull/8986
+* @nuclearpidgeon made their first contribution in https://github.com/fluent/fluent-bit/pull/8962
+* @protohuf made their first contribution in https://github.com/fluent/fluent-bit/pull/8778
+* @pmeier made their first contribution in https://github.com/fluent/fluent-bit/pull/9007
+* @jtackaberry made their first contribution in https://github.com/fluent/fluent-bit/pull/9048
+* @belzerus made their first contribution in https://github.com/fluent/fluent-bit/pull/8976
+* @IsraelZeromski made their first contribution in https://github.com/fluent/fluent-bit/pull/8861
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.0.6...v3.1.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.0.7 (2024-06-11)</h2>
+      <pre>https://fluentbit.io/announcements/v3.0.7/
+
+## What's Changed
+* release: update to 3.0.7 by @github-actions in https://github.com/fluent/fluent-bit/pull/8876
+* in_prometheus_scrape: add User-Agent HTTP header (#8880) by @endersonmaia in https://github.com/fluent/fluent-bit/pull/8882
+* tests: internal: log: use milliseconds to do time comparisons for cache timeout. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8891
+* tests/runtime/in_podman_metrics: refactor iteration of counters to use cfl_list from #8844. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8888
+* out_cloudwatch_logs: support log_group_class option by @PettitWesley in https://github.com/fluent/fluent-bit/pull/8832
+* in_http: respond accordingly to requests that produce errors. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8794
+* out_calyptia: move debug payload to debug level. by @lecaros in https://github.com/fluent/fluent-bit/pull/8805
+* tests: rutime: out_http: simplify and make the in_http test more robust. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8897
+* in_splunk: Store HEC token on enabled HTTP2 and raw endpoints by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8883
+* in_splunk: Add switch for storing in metadata or records and handle multiple tokens on in splunk by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8900
+* in_kubernetes_events: refactor time check to use struct flb_time. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8887
+* Fix GCC 14.1 build issues by @Javex in https://github.com/fluent/fluent-bit/pull/8901
+* in_systemd: Move one record back after skipping to the end by @ardavast in https://github.com/fluent/fluent-bit/pull/8917
+* http_server: api: v1: traces: fix finding inputs by alias. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8886
+* in_winevtlog: Fix threshold condition to avoid unnecessary warning by @Meetp369 in https://github.com/fluent/fluent-bit/pull/8771
+* dockerfile: update to bookworm base image by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/8916
+* lib: cmetrics: upgrade to v0.9.1 by @edsiper in https://github.com/fluent/fluent-bit/pull/8922
+* CMakeLists.txt: fix build with ninja by @ThomasDevoogdt in https://github.com/fluent/fluent-bit/pull/8835
+* processor_metrics_selector: Implement delete by label value operation by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8812
+* dockerfiles: windows: Update to use vcpkg instead of chocolatey by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8924
+
+## New Contributors
+* @Javex made their first contribution in https://github.com/fluent/fluent-bit/pull/8901
+* @ardavast made their first contribution in https://github.com/fluent/fluent-bit/pull/8917
+* @Meetp369 made their first contribution in https://github.com/fluent/fluent-bit/pull/8771
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.0.6...v3.0.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.0.6 (2024-05-27)</h2>
+      <pre>https://fluentbit.io/announcements/v3.0.6/
+
+## What's Changed
+* release: update to 3.0.6 by @github-actions in https://github.com/fluent/fluent-bit/pull/8865
+* packaging: add build support for ubuntu 24.04 noble numbat by @markuman in https://github.com/fluent/fluent-bit/pull/8796
+* out_stackdriver: Support writing to textPayload field of Cloud Logging LogEntry. by @shuaich in https://github.com/fluent/fluent-bit/pull/8850
+* out_splunk: fix metadata bug that affects splunk_token behavior (fix #8867) by @edsiper in https://github.com/fluent/fluent-bit/pull/8873
+* core: Fix crash when running dry by @zecke in https://github.com/fluent/fluent-bit/pull/8872
+
+## New Contributors
+* @markuman made their first contribution in https://github.com/fluent/fluent-bit/pull/8796
+* @shuaich made their first contribution in https://github.com/fluent/fluent-bit/pull/8850
+* @zecke made their first contribution in https://github.com/fluent/fluent-bit/pull/8872
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.0.5...v3.0.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.0.5 (2024-05-24)</h2>
+      <pre>https://fluentbit.io/announcements/v3.0.5/
+
+## What's Changed
+* release: update to 3.0.5 by @github-actions in https://github.com/fluent/fluent-bit/pull/8839
+* workflows: ensure only master releases are marked latest by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/8856
+* engine: free after log worker thread has been stopped by @hiroyha1 in https://github.com/fluent/fluent-bit/pull/8486
+* out_splunk: reduce noise and fix hec_token handling (fix #8859) by @edsiper in https://github.com/fluent/fluent-bit/pull/8864
+* winevtlog: change total_size_threshold to size_t by @braydonk in https://github.com/fluent/fluent-bit/pull/8853
+* output: Fix handling of metrics in output processor by @tchrono in https://github.com/fluent/fluent-bit/pull/8848
+
+## New Contributors
+* @hiroyha1 made their first contribution in https://github.com/fluent/fluent-bit/pull/8486
+* @tchrono made their first contribution in https://github.com/fluent/fluent-bit/pull/8848
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.0.4...v3.0.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 2.2.3 (2024-05-22)</h2>
+      <pre>https://fluentbit.io/announcements/v2.2.3/
+
+## What's Changed
+* release: update to 2.2.3 by @github-actions in https://github.com/fluent/fluent-bit/pull/8377
+* maintenance: backport fixes by @edsiper in https://github.com/fluent/fluent-bit/pull/8402
+* input_chunk: added proper accounting of chunks that are rolled over by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/8441
+* workflows: windows: use concrete option on windows workflow [Backport 2.2] by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8444
+* network: utils: Fix int conversion errors [Backport to 2.2] by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8575
+* api: v2: reload: Prevent duplicated request via api v2 reload [Backport 2.2] by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8462
+* in_http: Adds support for Content-Encoding: gzip [Backport to 2.2] by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8573
+* engine_dispatch: remove chunks from memory if the task fails to be created by @seblaz in https://github.com/fluent/fluent-bit/pull/8681
+* in_kubernetes_events: update time check to use struct flb_time. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8845
+* tests: in_podman_metrics: refactor iteration of counters to use cfl_list. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8844
+
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v2.2.2...v2.2.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.0.4 (2024-05-21)</h2>
+      <pre>https://fluentbit.io/announcements/v3.0.4/
+
+## What's Changed
+* release: update to 3.0.4 by @github-actions in https://github.com/fluent/fluent-bit/pull/8770
+* in_otel: support to add resource of log by @nokute78 in https://github.com/fluent/fluent-bit/pull/8294
+* http_server: Fix keep-alive for HTTP/1.1 requests by @iandrewt in https://github.com/fluent/fluent-bit/pull/8761
+* workflows: macos: Use matrix for building Apple Silicon artefacts by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8765
+* filter: aws metadata group retries by @mwarzynski in https://github.com/fluent/fluent-bit/pull/7245
+* workflows: bump ossf/scorecard-action from 2.3.1 to 2.3.3 by @dependabot in https://github.com/fluent/fluent-bit/pull/8811
+* config: fix error message grammar by @braydonk in https://github.com/fluent/fluent-bit/pull/8818
+* out_kafka: increase max kafka dynamic topic length to 249 characters by @mickymiek in https://github.com/fluent/fluent-bit/pull/8789
+* processor_labels: Remove a needless existence check for insert operation by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8824
+* Config: fix incorrect assignment of kernel version between major and minor by @thenamehasbeentake in https://github.com/fluent/fluent-bit/pull/8797
+* fix: splunk output plugin correct record accessor key for hec_token by @mannbiher in https://github.com/fluent/fluent-bit/pull/8793
+* out_datadog: Update the descriptions of special field options by @jszwedko in https://github.com/fluent/fluent-bit/pull/8751
+* in_premetheus_remote_write: Implement handler of payloads of prometheus remote write protocol by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8725
+
+## New Contributors
+* @iandrewt made their first contribution in https://github.com/fluent/fluent-bit/pull/8761
+* @mickymiek made their first contribution in https://github.com/fluent/fluent-bit/pull/8789
+* @thenamehasbeentake made their first contribution in https://github.com/fluent/fluent-bit/pull/8797
+* @mannbiher made their first contribution in https://github.com/fluent/fluent-bit/pull/8793
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.0.3...v3.0.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.0.3 (2024-04-27)</h2>
+      <pre>https://fluentbit.io/announcements/v3.0.3/
+
+## What's Changed
+* workflows: bump azure/setup-kubectl from 3.2 to 4 by @dependabot in https://github.com/fluent/fluent-bit/pull/8706
+* workflows: bump azure/setup-helm from 3.5 to 4 by @dependabot in https://github.com/fluent/fluent-bit/pull/8705
+* release: update to 3.0.3 by @github-actions in https://github.com/fluent/fluent-bit/pull/8707
+* lib: updates for CFL, CMetrics and CTraces plus others by @edsiper in https://github.com/fluent/fluent-bit/pull/8732
+* in_splunk: out_splunk: Propagate ingested splunk_token authentication header by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8738
+* workflows: bump helm/kind-action from 1.9.0 to 1.10.0 by @dependabot in https://github.com/fluent/fluent-bit/pull/8754
+* in_http: fix url decoder by unifying normal interface with the one used in HTTP/1.x by @edsiper in https://github.com/fluent/fluent-bit/pull/8752
+* Update security policy to indicate 3.x supported only by @patrick-stephens in https://github.com/fluent/fluent-bit/pull/8764
+* out_chronicle: handle 1MB or larger chunks by @lecaros in https://github.com/fluent/fluent-bit/pull/8766
+* lib: updates on ctraces and cmetrics 2024-04-26 by @edsiper in https://github.com/fluent/fluent-bit/pull/8768
+* out_http: Use x-ndjson content type for json_lines by @mrueg in https://github.com/fluent/fluent-bit/pull/8715
+
+## New Contributors
+* @mrueg made their first contribution in https://github.com/fluent/fluent-bit/pull/8715
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.0.2...v3.0.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Fluent Bit 3.0.2 (2024-04-12)</h2>
+      <pre>https://fluentbit.io/announcements/v3.0.2/
+
+## What's Changed
+* engine_dispatch: remove chunks from memory if the task fails to be created by @seblaz in https://github.com/fluent/fluent-bit/pull/8601
+* release: update to 3.0.2 by @github-actions in https://github.com/fluent/fluent-bit/pull/8676
+* in_forward: Handle multiply concatenated gzip payloads by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8665
+* wamrc: build: macos: Prioritize for defined LLVM_DIR environment variable by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8670
+* lib: upgrade core libraries by @edsiper in https://github.com/fluent/fluent-bit/pull/8686
+* out_websocket: Add ability to provide additional headers by @markusthoemmes in https://github.com/fluent/fluent-bit/pull/8536
+* input_chunk: handle some chunk size debug messages as traces by @edsiper in https://github.com/fluent/fluent-bit/pull/8688
+* input_metric: fixed a double free by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/8690
+* lib: cmetrics: upgrade to v0.7.3 by @edsiper in https://github.com/fluent/fluent-bit/pull/8692
+* out_loki: Change loglevel for non-existing but defined label in record by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/8680
+* in_tail: Preventing incorrect inode usage from db. #8025 by @jinyongchoi in https://github.com/fluent/fluent-bit/pull/8062
+* task: on retry, only put chunk down if there are no users (fix #8691) by @edsiper in https://github.com/fluent/fluent-bit/pull/8694
+* fix Oracle Log Analytics output plugin 400 Bad Request issue by @handsomecheung in https://github.com/fluent/fluent-bit/pull/8685
+* Add support to set otel fields from the event body based on keys. Sig… by @cb645j in https://github.com/fluent/fluent-bit/pull/8644
+* config: fix compilation with FLB_HAVE_STATIC_CONF. by @bglimepoint in https://github.com/fluent/fluent-bit/pull/7536
+* test: internal: log: fix failures caused by timing issue. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8672
+* in_opentelemetry: fixed the uris used to detect gRPC requests by @leonardo-albertovich in https://github.com/fluent/fluent-bit/pull/8697
+* in_kubernetes_filter: add namespace_metadata_only option to fix regression from #8279 by @ryanohnemus in https://github.com/fluent/fluent-bit/pull/8695
+* Update cmetrics_decode_fuzz.c: Add missing include by @maflcko in https://github.com/fluent/fluent-bit/pull/8647
+* in_winevtlog: Make configurable for the size of collecting threshold per a cycle by @cosmo0920 in https://github.com/fluent/fluent-bit/pull/8677
+* in_http: reassign mk_http_request values on realloc. by @pwhelan in https://github.com/fluent/fluent-bit/pull/8643
+* lib: sqlite: upgrade to v3.45.2 by @edsiper in https://github.com/fluent/fluent-bit/pull/8704
+* in_emitter: Fix single record chunks and respect mem_buf_limit pause by @drbugfinder-work in https://github.com/fluent/fluent-bit/pull/8473
+
+## New Contributors
+* @markusthoemmes made their first contribution in https://github.com/fluent/fluent-bit/pull/8536
+* @handsomecheung made their first contribution in https://github.com/fluent/fluent-bit/pull/8685
+* @cb645j made their first contribution in https://github.com/fluent/fluent-bit/pull/8644
+* @bglimepoint made their first contribution in https://github.com/fluent/fluent-bit/pull/7536
+* @maflcko made their first contribution in https://github.com/fluent/fluent-bit/pull/8647
+
+**Full Changelog**: https://github.com/fluent/fluent-bit/compare/v3.0.1...v3.0.2</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

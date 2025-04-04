@@ -1,0 +1,2274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for temporalio/temporal"/>
+  <title>temporalio/temporal Release Notes</title>
+</head>
+<body>
+  <h1>🚀 temporalio/temporal - Release Notes</h1>
+  
+    <section>
+      <h2>v1.27.2 (2025-03-28)</h2>
+      <pre>This patch release fixes a few minor Worker Deployment and Nexus bugs.
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.27.2`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.27.1...v1.27.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.27.1 (2025-02-26)</h2>
+      <pre># Schema Changes
+
+Before upgrading your Temporal Cluster to v1.27.1, you must upgrade your core schema if you are using MySQL or PostgreSQL, and your visibility schema to the following:
+
+- Core:
+    - MySQL schema v1.16
+    - PostgreSQL schema v1.16
+- Visibility:
+    - Elasticsearch schema v9
+    - MySQL schema 1.9
+    - PostgreSQL schema v1.9
+
+Please see our [upgrade documentation](https://docs.temporal.io/self-hosted-guide/upgrade-server) for the necessary steps to upgrade your schemas.
+
+**NOTE:** The upgrade to MySQL and PostgreSQL Visibility schemas may come with temporary performance degradation because of creation of a new column `_version` which has default values. **Consider performing the schema upgrades when load is low.** There are protective mechanisms in place to account for timeouts from any VisibilityStore.
+
+# Deprecation of Visibility Scan APIs
+
+Visibility Scan APIs have been deprecated in favor of List Workflow APIs. Visibility Scan APIs will be removed in a future version. Migration to List Workflow APIs will be required in future versions.
+
+# Nexus GA
+
+[Nexus](https://docs.temporal.io/nexus) is now GA with a stable server API. 
+
+[Read more here](https://github.com/temporalio/temporal/blob/main/docs/architecture/nexus.md) on how to disable Nexus or how to operate it here.
+
+Notable features and bug fixes since `v1.26.2`:
+
+- The server now allows a maximum of 30 pending Nexus operations per workflow by default, as opposed to the previous limit being 30 total.
+- Add support for attaching callbacks, request IDs, and links to a workflow via `StartWorkflowExecutionRequest.OnConflictOptions` with `WorkflowIdConflictPolicy` of `USE_EXISTING`. This allows multiple operations to be backed by the same workflow.
+- Misc small features and tests.
+
+# Safe Deploys
+
+The following APIs are added for Worker Versioning. All APIs are experimental and not yet recommended for production usage. You need to set the dynamic configs `system.enableDeployments` and `system.enableDeploymentVersions` in order to use them.
+
+- ListWorkerDeployments
+- DescribeWorkerDeployment
+- DescribeWorkerDeploymentVersion
+- SetWorkerDeploymentCurrentVersion
+- SetWorkerDeploymentRampingVersion
+- UpdateWorkerVersionMetadata
+- DeleteWorkerDeployment
+- DeleteWorkerDeploymentVersion
+
+The following APIs are now deprecated and replaced by above:
+
+- ~~DescribeDeployment~~
+- ~~ListDeployments~~
+- ~~GetDeploymentReachability~~
+- ~~GetCurrentDeployment~~
+- ~~SetCurrentDeployment~~
+
+# Activity Commands (pre-release)
+
+Changes to the Activity Commands — a set of APIs designed to resolve issues related to activity execution. The following APIs where updated:
+
+- `UpdateActivityOptionsById` was renamed to `UpdateActivityOptions`. This API can be used by the client to update the options of an activity while activity is running.
+- `PauseActivityById` was renamed to `PauseActivity`. With this API, If the Activity is not currently running (e.g. because it previously failed and is waiting for the next retry), it will not be run again until it is unpaused.
+    - `activity_type` parameter was added. If this parameter is set - all running activities of this type will be paused.
+- `UnpauseActivityById` was renamed to `UnpauseActivity`. With this API clients can re-schedule a previously-paused Activity for execution.
+    - `no_wait` parameter was removed
+    - `activity_type` parameter was added. If this parameter is set - all paused activities of this type will be unpaused.
+    - `match-all` parameter was added. If this parameter is set - all paused activities will be unpaused.
+    - `jitter` parameter was added. If set, the activity will start at a random time within the specified jitter duration.
+- `ResetActivityById` was renamed to `ResetActivity`. With this API clients can reset the execution of an activity, specified by its ID or type.
+    - `no_wait`  parameter was removed
+    - `activity_type` parameter was added. If this parameter is provided - all paused activities of this type will be unpaused.
+    - `keep_paused` parameter was added. If this parameter is provided - all paused activities will stay paused.  Otherwise they will be unpaused.
+    - `jitter` parameter was added. If set, the activity will start at a random time within the specified jitter duration.
+- New batch operation was introduced - `BatchOperationUnpauseActivities`.
+
+# Workflow Reset with children
+
+In this release we have added the functionality to reset a workflow with a pending child. 
+
+Prior to this release reseting to a point between child workflow initiated and child workflow completed was not supported (the reset operation would fail). In the current release the reset operation will allow this case and the behavior of the parent after reset is to reconnect to the running child. The new run of the parent will receive the child’s completion event and result (if any) from the child. 
+
+The feature is gated behind a per namespace boolean dynamic configuration `AllowResetWithPendingChildren` which is enabled by default for all namespaces. 
+
+Note: If you are using Go-SDK and are relying on the SDK to generate child workflow IDs then you need to update it to the latest version to be able to use this feature. Other SDKs don’t need any upgrade to use this feature.
+
+# Delete namespace improvement
+
+1. Delete workflow executions RPS is now dynamic. Previously, `frontend.deleteNamespaceDeleteActivityRPS` was read only once when namespace deletion started, and subsequent changes to this dynamic config didn't affect the ongoing deletion. This was inconvenient for large namespaces since the default RPS is only `100`. Now the RPS can be adjusted on the fly.
+    
+    Please note: Since deletion of Workflow Execution is an asynchronous process, this RPS controls the rate at which delete execution tasks are created. Decreasing this value (for example, from `1000` to `10`) won't immediately slow down the process, as existing tasks in the transfer queue must be processed first.
+    
+2. `DeleteExecutionsWorkflow` now supports a `stats` query to track its progress. Since this Workflow can run for hours after a namespace is marked as deleted, it was previously difficult to monitor how many Workflow Executions remained. The new query handler provides current statistics about total and remaining executions.
+
+3. Metrics and logging have been enhanced for better actionability. Key improvements include:
+    1. Monitor `ReclaimResources` workflow failures using the metrics `reclaim_resources_namespace_delete_failure` and `reclaim_resources_delete_executions_failure`.
+    2. Track `DeleteExecutionsWorkflow` progress using the metrics `delete_executions_success` and `delete_executions_failure`.
+
+4. Business critical namespaces can be protected from deletion. Use dynamic config to list namespaces which are not deletable:
+    
+    ```yaml
+    worker.protectedNamespaces:
+      - value:
+          - critical_namespace
+          - just_very_important_namespace
+    ```
+    
+5. Sleep duration in `ReclaimResourcesWorkflow` now supports dynamic changes. If a namespace delete delay was mistakenly set too long, you can now modify it after the Workflow has started. Use this command to update the delay to a new value (10 hours in this example):
+    
+    ```
+    temporal workflow update --namespace temporal-system --name update_namespace_delete_delay --workflow-id temporal-sys-reclaim-namespace-resources-workflow/default-deleted-93f5e --input '"10h"'
+    ```
+    
+    Or use this command to remove the delay entirely:
+    
+    ```
+    temporal workflow update --namespace temporal-system --name update_namespace_delete_delay --workflow-id temporal-sys-reclaim-namespace-resources-workflow/default-deleted-93f5e --input '"0"'
+    ```
+    
+    Please note: The new delay starts from when it is set, not from when the original timer was created. For example, if the Workflow has already slept for 2 hours and the timer is updated to `10h`, it will sleep for another 10 hours, not 8.
+
+# Scheduled Actions
+
+- Scheduler workflow version has been updated.
+    - `FutureActionTimes` now accounts for a schedule’s update time and `RemainingActions`.
+    - `ScheduleActionResult` now includes a `WorkflowExecutionStatus` field, providing an eventually-consistent view of a workflow’s status within List results.
+- Bugfix: Queries on schedules might have been delayed after dynamic config changes were applied to per-namespace workers. An anti-entropy mechanism has been added to the per-namespace worker component.
+
+# Fix out-of-order Visibility tasks with SQL database
+
+All SQL stores used for Visibility had the rare possibility to perform updates to a workflow's visibility state out-of-order. This could result in Workflows occasionally appearing to have state that is out of date.
+
+### Implementation
+
+This has been fixed by adding a new column `_version` to all SQL store implementations. Queries to update Visibility data now ensure the `_version` advances before performing any writes.
+
+Updates to Visibility data are prepared by checking actual Workflow state. Therefore when a write is rejected for being out-of-order, we know the VisibilityStore already contains a equal or more up-to-date state, so we drop out-of-order updates silently.
+
+### Important Notes
+
+- Make sure to upgrade your Schemas before advancing your temporal version. See the **Schema Changes** section.
+- This will likely reduce the performance of SQL VisibilityStores.
+- We suggest ElasticSearch as the performant solution for VisibilityStore.
+
+---
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.27.1`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.26.2...v1.27.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.27.0 (2025-02-22)</h2>
+      <pre>> [!CAUTION] 
+> Please DO NOT use it if you are using SQL-based (PostgreSQL, MySQL, or sqlite) persistence. Update directly to [v1.27.1](https://github.com/temporalio/temporal/releases/tag/v1.27.1).
+> This release made changes to the SQL schemas, and there's a bug when upgrading from an older version.
+
+# Schema Changes
+
+Before upgrading your Temporal Cluster to v1.27.0, you must upgrade your core schema if you are using MySQL or PostgreSQL, and your visibility schema to the following:
+
+- Core:
+    - MySQL schema v1.15
+    - PostgreSQL schema v1.15
+- Visibility:
+    - Elasticsearch schema v9
+    - MySQL schema 1.9
+    - PostgreSQL schema v1.9
+
+Please see our [upgrade documentation](https://docs.temporal.io/self-hosted-guide/upgrade-server) for the necessary steps to upgrade your schemas.
+
+**NOTE:** The upgrade to MySQL and PostgreSQL Visibility schemas may come with temporary performance degradation because of creation of a new column `_version` which has default values. **Consider performing the schema upgrades when load is low.** There are protective mechanisms in place to account for timeouts from any VisibilityStore.
+
+# Deprecation of Visibility Scan APIs
+
+Visibility Scan APIs have been deprecated in favor of List Workflow APIs. Visibility Scan APIs will be removed in a future version. Migration to List Workflow APIs will be required in future versions.
+
+# Nexus GA
+
+[Nexus](https://docs.temporal.io/nexus) is now GA with a stable server API. 
+
+[Read more here](https://github.com/temporalio/temporal/blob/main/docs/architecture/nexus.md) on how to disable Nexus or how to operate it here.
+
+Notable features and bug fixes since `v1.26.2`:
+
+- The server now allows a maximum of 30 pending Nexus operations per workflow by default, as opposed to the previous limit being 30 total.
+- Add support for attaching callbacks, request IDs, and links to a workflow via `StartWorkflowExecutionRequest.OnConflictOptions` with `WorkflowIdConflictPolicy` of `USE_EXISTING`. This allows multiple operations to be backed by the same workflow.
+- Misc small features and tests.
+
+# Safe Deploys
+
+The following APIs are added for Worker Versioning. All APIs are experimental and not yet recommended for production usage. You need to set the dynamic configs `system.enableDeployments` and `system.enableDeploymentVersions` in order to use them.
+
+- ListWorkerDeployments
+- DescribeWorkerDeployment
+- DescribeWorkerDeploymentVersion
+- SetWorkerDeploymentCurrentVersion
+- SetWorkerDeploymentRampingVersion
+- UpdateWorkerVersionMetadata
+- DeleteWorkerDeployment
+- DeleteWorkerDeploymentVersion
+
+The following APIs are now deprecated and replaced by above:
+
+- ~~DescribeDeployment~~
+- ~~ListDeployments~~
+- ~~GetDeploymentReachability~~
+- ~~GetCurrentDeployment~~
+- ~~SetCurrentDeployment~~
+
+# Activity Commands (pre-release)
+
+Changes to the Activity Commands — a set of APIs designed to resolve issues related to activity execution. The following APIs where updated:
+
+- `UpdateActivityOptionsById` was renamed to `UpdateActivityOptions`. This API can be used by the client to update the options of an activity while activity is running.
+- `PauseActivityById` was renamed to `PauseActivity`. With this API, If the Activity is not currently running (e.g. because it previously failed and is waiting for the next retry), it will not be run again until it is unpaused.
+    - `activity_type` parameter was added. If this parameter is set - all running activities of this type will be paused.
+- `UnpauseActivityById` was renamed to `UnpauseActivity`. With this API clients can re-schedule a previously-paused Activity for execution.
+    - `no_wait` parameter was removed
+    - `activity_type` parameter was added. If this parameter is set - all paused activities of this type will be unpaused.
+    - `match-all` parameter was added. If this parameter is set - all paused activities will be unpaused.
+    - `jitter` parameter was added. If set, the activity will start at a random time within the specified jitter duration.
+- `ResetActivityById` was renamed to `ResetActivity`. With this API clients can unpauses the execution of a previously paused activity, specified by its ID.
+    - `no_wait`  parameter was removed
+    - `activity_type` parameter was added. If this parameter is provided - all paused activities of this type will be unpaused.
+    - `keep_paused` parameter was added. If this parameter is provided - all paused activities will stay paused.  Otherwise they will be unpaused.
+    - `jitter` parameter was added. If set, the activity will start at a random time within the specified jitter duration.
+- New batch operation was introduced - `BatchOperationUnpauseActivities`.
+
+# Workflow Reset with children
+
+In this release we have added the functionality to reset a workflow with a pending child. 
+
+Prior to this release reseting to a point between child workflow initiated and child workflow completed was not supported (the reset operation would fail). In the current release the reset operation will allow this case and the behavior of the parent after reset is to reconnect to the running child. The new run of the parent will receive the child’s completion event and result (if any) from the child. 
+
+The feature is gated behind a per namespace boolean dynamic configuration `AllowResetWithPendingChildren` which is enabled by default for all namespaces. 
+
+Note: If you are using Go-SDK and are relying on the SDK to generate child workflow IDs then you need to update it to the latest version to be able to use this feature. Other SDKs don’t need any upgrade to use this feature.
+
+# Delete namespace improvement
+
+1. Delete workflow executions RPS is now dynamic. Previously, `frontend.deleteNamespaceDeleteActivityRPS` was read only once when namespace deletion started, and subsequent changes to this dynamic config didn't affect the ongoing deletion. This was inconvenient for large namespaces since the default RPS is only `100`. Now the RPS can be adjusted on the fly.
+    
+    Please note: Since deletion of Workflow Execution is an asynchronous process, this RPS controls the rate at which delete execution tasks are created. Decreasing this value (for example, from `1000` to `10`) won't immediately slow down the process, as existing tasks in the transfer queue must be processed first.
+    
+2. `DeleteExecutionsWorkflow` now supports a `stats` query to track its progress. Since this Workflow can run for hours after a namespace is marked as deleted, it was previously difficult to monitor how many Workflow Executions remained. The new query handler provides current statistics about total and remaining executions.
+
+3. Metrics and logging have been enhanced for better actionability. Key improvements include:
+    1. Monitor `ReclaimResources` workflow failures using the metrics `reclaim_resources_namespace_delete_failure` and `reclaim_resources_delete_executions_failure`.
+    2. Track `DeleteExecutionsWorkflow` progress using the metrics `delete_executions_success` and `delete_executions_failure`.
+
+4. Business critical namespaces can be protected from deletion. Use dynamic config to list namespaces which are not deletable:
+    
+    ```yaml
+    worker.protectedNamespaces:
+      - value:
+          - critical_namespace
+          - just_very_important_namespace
+    ```
+    
+5. Sleep duration in `ReclaimResourcesWorkflow` now supports dynamic changes. If a namespace delete delay was mistakenly set too long, you can now modify it after the Workflow has started. Use this command to update the delay to a new value (10 hours in this example):
+    
+    ```
+    temporal workflow update --namespace temporal-system --name update_namespace_delete_delay --workflow-id temporal-sys-reclaim-namespace-resources-workflow/default-deleted-93f5e --input '"10h"'
+    ```
+    
+    Or use this command to remove the delay entirely:
+    
+    ```
+    temporal workflow update --namespace temporal-system --name update_namespace_delete_delay --workflow-id temporal-sys-reclaim-namespace-resources-workflow/default-deleted-93f5e --input '"0"'
+    ```
+    
+    Please note: The new delay starts from when it is set, not from when the original timer was created. For example, if the Workflow has already slept for 2 hours and the timer is updated to `10h`, it will sleep for another 10 hours, not 8.
+
+# Scheduled Actions
+
+- Scheduler workflow version has been updated.
+    - `FutureActionTimes` now accounts for a schedule’s update time and `RemainingActions`.
+    - `ScheduleActionResult` now includes a `WorkflowExecutionStatus` field, providing an eventually-consistent view of a workflow’s status within List results.
+- Bugfix: Queries on schedules might have been delayed after dynamic config changes were applied to per-namespace workers. An anti-entropy mechanism has been added to the per-namespace worker component.
+
+# Fix out-of-order Visibility tasks with SQL database
+
+All SQL stores used for Visibility had the rare possibility to perform updates to a workflow's visibility state out-of-order. This could result in Workflows occasionally appearing to have state that is out of date.
+
+### Implementation
+
+This has been fixed by adding a new column `_version` to all SQL store implementations. Queries to update Visibility data now ensure the `_version` advances before performing any writes.
+
+Updates to Visibility data are prepared by checking actual Workflow state. Therefore when a write is rejected for being out-of-order, we know the VisibilityStore already contains a equal or more up-to-date state, so we drop out-of-order updates silently.
+
+### Important Notes
+
+- Make sure to upgrade your Schemas before advancing your temporal version. See the **Schema Changes** section.
+- This will likely reduce the performance of SQL VisibilityStores.
+- We suggest ElasticSearch as the performant solution for VisibilityStore.
+
+---
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.27.0`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.26.2...v1.27.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.26.2 (2024-12-23)</h2>
+      <pre># Visibility schema changes
+
+`TemporalPauseInfo` column was added to visibility. `TemporalPauseInfo` contains search attribute related to paused entities in temporal workflows.
+
+Before upgrading your Temporal Cluster to v1.26.2, you must upgrade your visibility schemas to the following:
+
+- Visibility:
+    - Elasticsearch schema v8
+    - MySQL schema 1.7
+    - PostgreSQL schema v1.7
+
+# Batch metrics (wide events)
+
+PR: https://github.com/temporalio/temporal/pull/6655
+
+Description: Extended `metrics.Handler` interface with a new `StartBatch` method. StartBatch returns a BatchHandler that can be used to send a sequence of metrics as a single event when Close() is called on the batch. All provided metric handlers have been updated with the new interface and simply send metrics individually.
+
+💥 BREAKING CHANGE 💥 If you provide a custom metrics handler with `temporal.WithCustomMetricsHandler(metricsHandler)` you will need to implement `StartBatch()` on that handler. [See the tally metrics handler for an example of this.](https://github.com/temporalio/temporal/blob/2eb04bf7176a84aead476fa2564d88a835c75444/common/metrics/tally_metrics_handler.go#L123-L129)
+
+# Versioning / safe deploy (pre-release)
+
+The following EXPERIMENTAL Versioning APIs are added in this release:
+
+- Deployment APIs, for managing worker deployments:
+    - `DescribeDeployment`
+    - `ListDeployments`
+    - `GetCurrentDeployment`
+    - `SetCurrentDeployment`
+    - `GetDeploymentReachability`
+- `UpdateWorkflowExecutionOptions` API (and its batch mode) for setting versioning override for executions.
+
+Documentation is not available at this point. Do not use above APIs in production.
+
+To enable these APIs the following configs should be enabled: `system.enableDeployments` and `frontend.workerVersioningWorkflowAPIs`.
+
+# Workflow Update GA
+
+Description: 
+
+Workflow Update enables a gRPC client of a Workflow Execution to issue requests to that Workflow Execution and receive a response. These requests are delivered to and processed by a client-specified Workflow Execution. Updates are differentiated from Queries in that the processing of an Update is allowed to modify the state of a Workflow Execution. Updates are different from Signals in that an Update returns a response.
+
+Any gRPC client can invoke Updates via the `WorkflowService.UpdateWorkflowExecution`. Additionally, past Update requests can be observed via the `WorkflowService.PollWorkflowExecutionUpdate` API. The wait stage option determines whether they respond once the Update was *accepted* or *completed*.
+
+Note that an Update only becomes durable when it was *accepted*, until then, it will not appear in the Workflow history. SDKs will automatically retry to ensure Update requests complete.
+
+The execution and retention of Updates is configured via two optional dynamic configuration values:
+
+- `history.maxTotalUpdates` controls the total number of Updates that a single Workflow Execution can support. The default is 2000.
+- `history.maxInFlightUpdates` controls the number of Updates that can be “in-flight” (that is, concurrently executing, not having completed) for a given Workflow Execution. The default is 10.
+
+Since the 1.25 release, several minor bugs have been fixed.
+
+# Workflow Update-With-Start (public preview)
+
+Update-With-Start sends a Workflow Update that checks whether an already-running Workflow with that ID exists. If it does, the Update is processed. If not, it starts a new Workflow Execution with the supplied ID. When starting a new Workflow, it immediately processes the Update.
+
+Update-With-Start is great for latency-sensitive use cases.
+
+# Activity API (pre-release)
+
+Description: 
+
+We introduce the Activity API — a set of APIs designed to resolve issues related to activity execution. The following  APIs where introduced:
+
+- UpdateActivityOptionsById. This API can be used by the client to update the options of an activity while activity is running.
+    - The following options are supported:
+        - task-queue
+        - schedule-to-close-timeout
+        - schedule-to-start-timeout
+        - start-to-close-timeout
+        - heartbeat-timeout
+        - retry-initial-interval
+        - retry-maximum-interval
+        - retry-backoff-coefficient
+        - retry-maximum-attempts
+    - Partial updates are supported.
+    - Timeout updates are effective immediately.
+- PauseActivityById. With this API, If the Activity is not currently running (e.g. because it previously failed and is waiting for the next retry), it will not be run again until it is unpaused.
+    - However, if the Activity is currently running, it will run to completion. If the Activity is on its last retry attempt and fails, the failure will be returned to the caller, just as if the Activity had not been paused. Otherwise, if it fails, it will enter a paused state.
+- UnpauseActivityById . With this API clients can re-schedule a previously-paused Activity for execution.
+    - If the Activity is not running and has exceeded its retry timeout, it will be scheduled immediately. Otherwise, it will be scheduled when its retry timeout expires. The Activity can be retried immediately using `--no-wait`.
+- ResetActivityById. With this API clients can unpauses the execution of a previously paused activity, specified by its ID.
+    - Resetting an activity means:
+        - number of attempts will be reset to 0.
+        - activity timeouts will be reset.
+
+Documentation is not available at this point. Do not use above APIs in production.
+
+# Nexus
+
+[Nexus](https://docs.temporal.io/nexus) is still in public preview for this release, but has now been enabled by default.
+
+[Read more here](https://github.com/temporalio/temporal/blob/main/docs/architecture/nexus.md) on how to disable Nexus or how to operate it here.
+
+Notable features and bug fixes since `v1.25.2`:
+
+- [Allow completing a Nexus operation after workflow reset (](https://github.com/temporalio/temporal/commit/34e628e104c870f0df28c0b641821396fd9c9fc7)[#6434](https://github.com/temporalio/temporal/pull/6434)[)](https://github.com/temporalio/temporal/commit/34e628e104c870f0df28c0b641821396fd9c9fc7).
+- Fix a few issues around replication and cancelation.
+- Record NexusOperationStarted event and link when async operation completion races with the sync response path.
+- Support for full Temporal Failure rehydration and encryption. Nexus handlers and workflows backing operations will now expose the full error details by default. Caller workflows will also rehydrate the original error to allow for better E2E debugging experience.
+- Allow skipping application of Nexus events when resetting a workflow.
+
+# Notable bug fixes
+
+Primary engineer: @prathyushpv  
+
+Table not found bug in sqlite.
+
+Durations with mismatched seconds and nanoseconds signs will now fail validation and return an InvalidArgument error.
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.26.2`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.25.2...v1.26.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.25.2 (2024-11-06)</h2>
+      <pre>## Release Highlights
+This patch release fixes few minor Nexus and Update-with-Start related bugs.
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.25.1...v1.25.2
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.25.2`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.24.3 (2024-10-18)</h2>
+      <pre>## Release Highlights
+
+This release fixes one bug:
+- https://github.com/temporalio/temporal/issues/6566: track_total_hits is disabled for Elasticsearch Scroll API
+
+It also fixes a small bug in the Makefile which affects users building from source.
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.24.3`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.24.2...v1.24.3
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.25.1 (2024-10-10)</h2>
+      <pre>## Release Highlights
+
+This patch release fixes a couple bugs:
+- https://github.com/temporalio/temporal/issues/6566: track_total_hits is disabled for Elasticsearch Scroll API
+- https://github.com/temporalio/temporal/issues/6514: failure to reconnect to database
+
+It also adds support for Nexus links.
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.25.0...v1.25.1
+
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.25.1`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.25.0 (2024-09-09)</h2>
+      <pre>## Schema changes
+Before upgrading your Temporal Cluster to v1.25.0, you must upgrade your core and visibility schemas to the following:
+
+- Core:
+    - MySQL schema v1.14
+    - PostgreSQL schema v1.14
+    - Cassandra schema v1.11
+- Visibility:
+    - Elasticsearch schema v7
+    - MySQL schema 1.6
+    - PostgreSQL schema v1.6
+
+Please see our [upgrade documentation](https://docs.temporal.io/self-hosted-guide/upgrade-server) for the necessary steps to upgrade your schemas.
+
+## Release Highlights
+
+### 1. Nexus
+
+Nexus RPC is an open-source service framework for arbitrary-length operations whose lifetime may extend beyond a traditional RPC. It is an underpinning connecting durable executions within and across namespaces, clusters and regions – with an API contract designed with multi-team collaboration in mind. A service can be exposed as a set of sync or async Nexus operations – the latter provides an operation identifier and a uniform interface to get the status of an operation or its result, receive a completion callback, or cancel the operation.
+
+Temporal uses the Nexus RPC protocol to allow calling across namespace and cluster boundaries. The [Go SDK Nexus proposal](https://github.com/temporalio/proposals/blob/master/nexus/sdk-go.md) explains the user experience and shows sequence diagrams from an external perspective.
+
+[Read more here](https://github.com/temporalio/temporal/blob/main/docs/architecture/nexus.md) on how to enable Nexus and how to operate it here.
+
+### 2. Workflow Update (public preview)
+
+Workflow Update enables a gRPC client of a Workflow Execution to issue requests to that Workflow Execution and receive a response. These requests are delivered to and processed by a client-specified Workflow Execution. Updates are differentiated from Queries in that the processing of an Update is allowed to modify the state of a Workflow Execution. Updates are different from Signals in that an Update returns a response.
+
+Any gRPC client can invoke Updates via the `WorkflowService.UpdateWorkflowExecution`. Additionally, past Update requests can be observed via the `WorkflowService.PollWorkflowExecutionUpdate` API. The wait stage option determines whether they respond once the Update was *accepted* or *completed*.
+
+Note that an Update only becomes durable when it was *accepted*, until then, it will not appear in the Workflow history. SDKs will automatically retry to ensure Update requests complete.
+
+The execution and retention of Updates is configured via two optional dynamic configuration values:
+
+- `history.maxTotalUpdates` controls the total number of Updates that a single Workflow Execution can support. The default is 2000.
+- `history.maxInFlightUpdates` controls the number of Updates that can be “in-flight” (that is, concurrently executing, not having completed) for a given Workflow Execution. The default is 10.
+
+Since the 1.21 release, the feature was heavily tested and several bug fixes as well as performance optimizations were made.
+
+You can find more information at [this link](https://docs.temporal.io/encyclopedia/workflow-message-passing#sending-updates).
+
+
+
+### 3. Host level MutableState cache
+
+
+The `MutableState` cache has been updated to operate as a host-level cache by default. Previously, this cache was managed at the shard level, with each shard cache holding 512 `MutableState` entries. Now, the host-level cache, enabled by default (`history.enableHostHistoryCache = true`), will be shared across all shards on a given host.
+
+The size of the host-level cache is controlled by the `history.hostLevelCacheMaxSize` configuration, which is set to 128,000 entries by default. This change may impact the memory usage of the history service, but it can be adjusted by modifying the `history.hostLevelCacheMaxSize` value.
+
+
+### 4. Visibility Enhancement
+
+Enhanced the Nexus CLI to support query filtering for the `schedule list` command. The `--query` or `-q` (string) option allows filtering of results using a specified list filter.
+
+
+### 5. Task Queue Statistics
+
+Provide stats for Task Queue backlogs to be used for worker scaling decisions.
+
+User `DescribeTaskQueue` API in enhanced mode (with `report_stats=true`) to get the following info about the Task Queue:
+
+* Approximate backlog count
+* Approximate backlog age
+* Approximate rate of adding tasks to the task queue
+* Approximate rate of dispatching tasks from the task queue
+
+
+## Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+## Docker images for this release 
+[Server](https://hub.docker.com/repository/docker/temporalio/server) (use the tag `1.25.0`)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?] (https://docs.temporal.io/blog/auto-setup)) (use the tag `1.25.0`)
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools) (use the tag `1.25.0-tctl-1.18.1-cli-1.0.0`)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.24.0...v1.25.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.24.2 (2024-06-17)</h2>
+      <pre>## What's Changed
+* Acquire workflow lock during backfill history by @yux0 in https://github.com/temporalio/temporal/pull/6102
+* Next retry delay should not be bounded by retry policy MaximumInterval by @gow in  https://github.com/temporalio/temporal/pull/6063
+* Handle NextRetryDelay option in workflow failures by @gow in https://github.com/temporalio/temporal/pull/5946
+* Remove build id from sticky recordWorkflowTaskStarted by @ShahabT in https://github.com/temporalio/temporal/pull/6096
+* Scheduler Bugfix: getFutureActionTimes should ignore actions prior to update time, respect RemainingActions counter by @lina-temporal in https://github.com/temporalio/temporal/pull/6122
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.24.1...v1.24.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.24.1 (2024-06-05)</h2>
+      <pre>## Schema changes
+
+If you are using SQL based visibility, before upgrading your Temporal Cluster to v1.24.0, you must upgrade your visibility schemas to the following:
+  - MySQL schema 1.6
+  - PostgreSQL schema v1.6
+
+Please see our [upgrade documentation](https://docs.temporal.io/self-hosted-guide/upgrade-server) for the necessary steps to upgrade your schemas.
+
+## Release Highlights
+
+This release contains schema fix for SQL based visibility introduced in `1.24.0`. For full set of new features please check [v1.24.0 release notes](https://github.com/temporalio/temporal/releases/tag/v1.24.0).
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release
+[Server](https://hub.docker.com/repository/docker/temporalio/server) (use the tag `1.24.1`)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup)) (use the tag `1.24.1`)
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools) (use the tag `1.24.1-tctl-1.18.1-cli-0.12.0`)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.24.0...v1.24.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.24.0 (2024-05-31)</h2>
+      <pre>> [!CAUTION]  
+> This release introduces a [bug](https://github.com/temporalio/temporal/issues/6050) in SQL visibility. Please DO NOT use it if you are using SQL-based (PostgreSQL, MySQL, or sqlite) visibility. Elasticsearch based visibility is not affected. Update directly to [v1.24.1](https://github.com/temporalio/temporal/releases/tag/v1.24.1).
+
+## Schema changes
+
+Before upgrading your Temporal Cluster to v1.24.0, you must upgrade your core and visibility schemas to the following:
+
+- Core:
+    - MySQL schema v1.12
+    - PostgreSQL schema v1.12
+    - Cassandra schema v1.10
+- Visibility:
+    - Elasticsearch schema v7
+    - MySQL schema 1.5
+    - PostgreSQL schema v1.5
+
+Please see our [upgrade documentation](https://docs.temporal.io/self-hosted-guide/upgrade-server) for the necessary steps to upgrade your schemas.
+
+## Breaking changes
+
+### Standard Visibility
+
+As planned, standard visibility is no longer supported in this version. Please, upgrade to advanced visibility as well as the config keys to setup visibility before upgrading to this version. Refer to [v1.20.0 release notes](https://github.com/temporalio/temporal/releases/tag/v1.20.0) for upgrade instructions, and also check the [v1.21.0 release notes](https://github.com/temporalio/temporal/releases/tag/v1.21.0) for config key changes.
+
+Note that you also need to update the plugin name for the main store, ie., if you are using `mysql` plugin name for the main store, then you need to change to `mysql8`. Similarly, if it's `postgres`, then change it to `postgres12`.
+
+## Deprecation Announcements
+
+### Worker Versioning APIs [Experimental]
+
+The following changes were made to Worker Versioning APIs:
+
+- Deprecated `UpdateWorkerBuildIdCompatibility` in favor of the new  `UpdateWorkerVersioningRules` API.
+- Deprecated `GetWorkerBuildIdCompatibility` in favor of the new `GetWorkerVersioningRules` API.
+- Deprecated `GetWorkerTaskReachability` in favor of `DescribeTaskQueue` enhanced mode (`api_mode=ENHANCED`)
+
+Together with the old APIs, the Version Set concept is also deprecated and replaced with “versioning rules” which are more powerful and flexible. More details can be found in https://github.com/temporalio/api/blob/master/temporal/api/taskqueue/v1/message.proto#L153.
+
+For using these experimental APIs you need to enable the following configs:
+- `frontend.workerVersioningRuleAPIs`
+- `frontend.workerVersioningWorkflowAPIs`
+
+
+## Release Highlights
+
+### Namespace Burst Ratio
+
+Removing `frontend.namespaceBurst` and adding `frontend.namespaceBurstRatio` config. Similarly replacing `frontend.namespaceBurst.visibility` and `frontend.namespaceBurst.namespaceReplicationInducingAPIs` with `frontend.namespaceBurstRatio.visibility` and `frontend.namespaceBurstRatio.namespaceReplicationInducingAPIs`.
+
+The old values are used to specify the burst rate as number of requests per second. New values will specify burst as a ratio of their respective RPS limit. This ratio will be applied to calculated RPS limit from global and per-instance rate limits.
+
+### Visibility: Parent workflow execution
+
+We added two new system search attributes: `RootWorkflowId` and `RootRunId`. If you have previously created custom search attributes with one of these names, attempts to set them will start to fail. We suggest updating your workflows to not set those search attributes, delete those search attributes and then upgrade Temporal to this version. Alternatively, you can also set the dynamic config `system.supressErrorSetSystemSearchAttribute: true`. When this dynamic config is set to `true`, your workflow will not fail when trying to set a value on a system search attribute, and it will ignore your input for those system search attributes.
+
+### OpenAPI HTTP API Documentation
+
+OpenAPI v2 docs are served at `/api/v1/swagger.json` while v3 is at `/api/v1/openapi.yaml` when our HTTP API is enabled.
+
+### Shard Info Update Optimizations
+
+Operators can now configure how often we update shard info (tracking how many tasks have been acked, etc). This improves recovery speed by persisting shard data more frequently.
+
+This can be configured through the following dynamic config values:
+
+- `history.shardUpdateMinTasksCompleted` - the minimum number of tasks which must be completed (across all queues) before the shard info can be updated
+- `history.shardUpdateMinInterval` - the minimum amount of time between shard info updates *unless* `shardUpdateMinTasksCompleted` tasks have been acked
+
+Note that once `history.shardUpdateMinInterval amount` of time has passed we'll update the shard info regardless of the number of tasks completed
+
+### Interpolate MySQL query parameters by default (#5428)
+
+We now interpolate parameters into queries client-side for MySQL main databases but not visibility.
+
+When `interpolateParams` is false (the default) the driver will prepare parameterized statements before  executing them, meaning we need two round-trips to the database for each query. By setting `interpolateParams` to true the DB driver will handle interpolation and send the query just  once to the database, halving the number of round trips necessary. This  should improve the performance of all Temporal deploys using MySQL.
+
+### OpenTelemetry env variables
+
+Support for enabling OpenTelemetry for tracing gRPC requests via environment variables. See `develop/docs/tracing.md` for details.
+
+### Matching task queue handover
+
+Various improvements were made to task queue handover when adding/removing/restarting matching nodes. This should improve tail latency for task dispatch during those situations. To enable the improvements, operators should set the dynamic config `matching.alignMembershipChange` to a value like `10s` **after fully deploying** v1.24 to the entire cluster. This may become the default in future versions.
+
+### UTF-8 validation in protobuf messages
+
+When we migrated Temporal from the deprecated gogoproto fork of Google’s protobuf library to the official version in v1.23, we disabled protobuf’s default utf-8 validation to ensure a smooth deployment, since gogoproto did not validate fields for utf-8, and turning on validation immediately would have broken applications that accidentally used invalid utf-8.
+
+This was a temporary measure and we will eventually re-enable validation. As the first step, we’ve added tools to detect and warn about invalid utf-8 without breaking applications. There are two sets of dynamic config settings to use.
+
+The `sample` settings are set to a floating point value between 0.0 and 1.0 (default 0.0), and control what proportion of either RPC requests, responses, or data read from persistence, is validated for utf-8 in strings. If invalid utf-8 is found, warnings will be sent to logs, and the counter metric `utf8_validation_errors` will be incremented.
+
+The `fail` settings (boolean, default false) control whether a validation error will be turned into a RPC failure or data corruption error.
+
+- `system.validateUTF8.sample.rpcRequest`
+- `system.validateUTF8.sample.rpcResponse`
+- `system.validateUTF8.sample.persistence`
+- `system.validateUTF8.fail.rpcRequest`
+- `system.validateUTF8.fail.rpcResponse`
+- `system.validateUTF8.fail.persistence`
+
+If you think your application may be using invalid utf-8, we suggesting turning on the sample settings without the fail settings and running for a while. In a future version, validation and errors will be turned on by default (effectively sample set to 1.0 and fail set to true).
+
+### `admin-tools` docker image versioning
+
+We separated `admin-tools` docker [image](https://hub.docker.com/r/temporalio/admin-tools) release process. Version tag now includes versions of `tctl` (deprecated but still supported CLI) and `temporal` (modern CLI) binaries. This image is released every time whenever new version of any of these component is released. Current latest tag is [1.24.0-tctl-1.18.1-cli-0.12.0](https://hub.docker.com/layers/temporalio/admin-tools/1.24.0-tctl-1.18.1-cli-0.12.0/images/sha256-a9ad0a14efb085d20ed04fc956c80af287359b20edbaa532b677c89a8b550ef2?context=explore).
+
+## Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+## Docker images for this release
+[Server](https://hub.docker.com/repository/docker/temporalio/server) (use the tag `1.24.0`)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup)) (use the tag `1.24.0`)
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools) (use the tag `1.24.0-tctl-1.18.1-cli-0.12.0`)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.23.1...v1.24.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.23.1 (2024-04-30)</h2>
+      <pre>## Release Highlights
+
+- Dependencies version upgrade for addressing security vulnerabilities
+- Bug fixes for Schedule and replication
+
+## All Changes
+
+2024-04-30 - fad6bdc0e - Bump Server version to 1.23.1
+2024-04-26 - 99b6e0c38 - Fix schedule workflow to CAN after signals (#5799)
+2024-04-26 - 1bb03b730 - Update dependencies (#5789)
+2024-04-26 - 9701ef095 - Recalculate schedule times from previous action on update (#5381)
+2024-04-26 - dd4323a02 - Handle data corruption in history resend (#5398)
+2024-04-26 - 9b1981ce4 - Do schedule backfills incrementally (#5344)
+2024-04-26 - a520df228 - Use proto encoding for scheduler workflow next time cache (#5277)
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.23.1`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.23.0...v1.23.1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.7 (2024-03-29)</h2>
+      <pre>## Release Highlights
+This release mitigates a problem where invalid UTF-8 data could be supplied to the history service, causing a denial of service
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.22.7`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.22.6...v1.22.7
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.21.6 (2024-03-29)</h2>
+      <pre>## Release Highlights
+This release mitigates a problem where invalid UTF-8 data could be supplied to the history service, causing a denial of service
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.21.6`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.21.5...v1.21.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.20.5 (2024-03-29)</h2>
+      <pre>## Release Highlights
+This release mitigates a problem where invalid UTF-8 data could be supplied to the history service, causing a denial of service
+
+### Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use the tag `1.20.5`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.20.4...v1.20.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.23.0 (2024-03-22)</h2>
+      <pre># Release Highlights
+
+### Breaking Changes
+
+**[github.com/gogo/protobuf](http://github.com/gogo/protobuf) has been replaced with [google.golang.org/protobuf](http://google.golang.org/protobuf)**
+
+We've fully replaced the use of gogo/protobuf with the official google protobuf runtime.  This has both developmental and operational impacts as  prior to Server version v1.23.0 our protobuf code generator allowed invalid UTF-8 data to be stored as proto strings. This isn't allowed by the proto3 spec, so if you're running a custom-built temporal server and think some tenant may store arbitrary binary data in our strings you should set `-tags protolegacy` when compiling the server. If you use our `Makefile` this is already done.
+
+If you don't and see an error like `grpc: error unmarshalling request: string field contains invalid UTF-8` then you will need to enable this when building the server. If you're unsure then you should specify it anyways as there's no harm in doing so unless you relied on the protobuf compiler to ensure all strings were valid UTF-8.
+
+Developers using our protobuf-generated code will notice that:
+
+- `time.Time` in proto structs will now be `[timestamppb.Timestamp](https://pkg.go.dev/google.golang.org/protobuf@v1.31.0/types/known/timestamppb#section-documentation)`
+- `time.Duration` will now be `[durationpb.Duration](https://pkg.go.dev/google.golang.org/protobuf/types/known/durationpb)`
+- V2-generated structs embed locks, so you cannot dereference them.
+- Proto enums will, when formatted to JSON, now be in SCREAMING_SNAKE_CASE rather than PascalCase.
+    - If trying to deserialize old JSON with PascalCase to proto use `[go.temporal.io/api/temporalproto](https://pkg.go.dev/go.temporal.io/api/temporalproto)`
+- google/protobuf objects, or objects embedding these protos, cannot be compared using `reflect.DeepEqual` or *anything* that uses it. This includes `testify` and `mock` equality testers!
+    - If you need `reflect.DeepEqual` for any reason you can use `go.temporal.io/api/temporalproto.DeepEqual` instead
+    - If you need `testify` `require`/`assert` compatible checkers you can use the `go.temporal.io/server/common/testing/protorequire`, [go.temporal.io/server/common/testing/protoassert](http://go.temporal.io/server/common/testing/protoassert) packages
+    - If you need matchers for gomock we have a helper under `go.temporal.io/server/common/testing/protomock`
+
+**New System Search Attributes**
+
+We added two new system search attributes: `ParentWorkflowId` and `ParentRunId`. If you have previously created custom search attributes with one of these names, attempts to set them will start to fail. We suggest updating your workflows to not set those search attributes, delete those search attributes and then upgrade Temporal to this version. 
+
+Alternatively, you can also set the dynamic config `system.supressErrorSetSystemSearchAttribute` to true. When this dynamic config is set values for system search attributes will be ignored instead of causing your workflow to fail. Please use this as temporary workaround, because it could hide real issue in users workflows. 
+
+### Schema changes
+
+Before upgrading your Temporal Cluster to v1.23.0, you must upgrade your core and visibility schemas to the following:
+
+- Core:
+    - MySQL schema v1.11
+    - PostgreSQL schema v1.11
+    - Cassandra schema v1.9
+- Visibility:
+    - Elasticsearch schema v6
+    - MySQL schema 1.4
+    - PostgreSQL schema v1.4
+
+Please see our [upgrade documentation](https://docs.temporal.io/cluster-deployment-guide#upgrade-server) for the necessary steps to upgrade your schemas.
+
+### Deprecation Announcements
+
+- We've replaced all individual metrics describing Commands (e.g. `complete_workflow_command`, `continue_as_new_command` etc.) with a single metric called `command` which has a tag “commandType” describing the specific command type (see https://github.com/temporalio/temporal/pull/4995)
+- Standard visibility will be deprecated in the next release v1.24.0 along with old config key names, i.e. this is the last minor version to support them. Please refer to [v1.20.0 release notes](https://github.com/temporalio/temporal/releases/tag/v1.20.0) for upgrade instructions, and also refer to [v1.21.0 release notes](https://github.com/temporalio/temporal/releases/tag/v1.21.0) for config key changes.
+- In advanced visibility, the `LIKE` operator will no longer be supported in v1.24.0. It never did what it was meant to do, and only added confusing behavior when used with Elasticsearch.
+
+### Golang version
+
+- Upgraded golang to 1.21
+
+### Batch workflow reset by Build ID
+
+For situations where an operator wants to handle a bad deployment using workflow
+reset, the batch reset operation can now reset to before the first workflow task
+processed by a specific build id. This is based on reset points that are created
+when build id changes between workflow tasks. Note that this also applies across
+continue-as-new.
+
+This operation is not currently supported by a released version of the CLI, but
+you can use it through the gRPC API directly, e.g. using the Go SDK:
+
+```go
+client.WorkflowService().StartBatchOperationRequest(ctx, &workflowservice.StartBatchOperationRequest{
+	JobId:           uuid.New(),
+	Namespace:       "my-namespace",
+	// Select workflows that were touched by a specific build id:
+	VisibilityQuery: fmt.Sprintf(`BuildIds = "unversioned:bad-build"`),
+	Reason:          "reset bad build",
+	Operation: &workflowservice.StartBatchOperationRequest_ResetOperation{
+		ResetOperation: &batch.BatchOperationReset{
+			Identity: "bad build resetter",
+			Options: &commonpb.ResetOptions{
+				Target: &commonpb.ResetOptions_BuildId{
+					BuildId: "bad-build",
+				},
+				ResetReapplyType: enumspb.RESET_REAPPLY_TYPE_SIGNAL,
+			},
+		},
+	},
+})
+```
+
+### History Task DLQ
+
+We've added a DLQ to history service to handle poison pills in transfer / timer queues and other history task queues including visibility and replication queues. You can see our [operators guide](https://github.com/temporalio/temporal/blob/main/docs/admin/dlq.md) for more details. 
+
+If you want tasks experiencing unexpected errors to go to the DLQ after a certain number of failures you can set the `history.TaskDLQUnexpectedErrorAttempts` dynamic config.
+
+### Approximately FIFO Task Queueing
+
+Once this feature is enabled, our task queues will be *roughly* FIFO.
+
+This is disabled by default in 1.23, as we continue testing it but expect that it’ll be enabled by default in 1.24. To enable it the following config should be set to a short duration (e.g. 5sec) from its current default value (10yrs): `"matching.backlogNegligibleAge"`
+
+We've added the following metrics as part of this effort:
+
+- `poll_latency` - this is a per-task-queue histogram of the duration between worker poll request and response (with or without task) calculated from the Matching server’s perspective
+- `task_dispatch_latency` - this is a histogram of schedule_to_start time from Matching's perspective, broken down by task queue and task source (backlog vs history)
+
+### Global Persistence Rate Limiting
+
+We've added the ability to specify global (cluster level) rate limiting value for the persistence layer. You can configure by specifying the following dynamic config values:
+
+- `frontend.persistenceGlobalMaxQPS`
+- `history.persistenceGlobalMaxQPS`
+- `matching.persistenceGlobalMaxQPS`
+- `worker.persistenceGlobalMaxQPS`
+
+You can also specify this on the per-namespace level using
+
+- `frontend.persistenceGlobalNamespaceMaxQPS`
+- `history.persistenceGlobalNamespaceMaxQPS`
+- `matching.persistenceGlobalNamespaceMaxQPS`
+- `worker.persistenceGlobalNamespaceMaxQPS`
+
+Please be aware that **this functionality is experimental.** This global rate limiting isn’t workload aware but shard-aware; we currently allocate this QPS to each pod based on the number of shards they own rather than the demands of the workload, so pods with many low-workload shards will have a higher allocation of this limit than pods with fewer but more active workloads. If you plan to use this you will want to set the QPS value with some headroom (like 25%) to account for this.
+
+### Renamed Deadlock-detector metrics
+
+The metrics exported by the deadlock detector were renamed to use a `dd_` prefix to avoid confusion with other lock latency metrics. Affected metrics: `dd_cluster_metadata_lock_latency`, `dd_cluster_metadata_callback_lock_latency`, `dd_shard_controller_lock_latency`, `dd_shard_lock_latency`, `dd_namespace_registry_lock_latency`.
+
+### Visibility Prefix Search
+
+Visibility API now supports prefix search by using the keyword `STARTS_WITH`. Eg: `WorkflowType STARTS_WITH 'hello_world'`. Check the [Visibility documentation](https://docs.temporal.io/visibility#supported-operators) for additional information on supported operators.
+
+### Helpful links to get you started with Temporal
+
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+### Docker images for this release (use tag `v1.23.0`)
+
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+## New Contributors
+
+- @evanj made their first contribution in https://github.com/temporalio/temporal/pull/4706
+- @ndtretyak made their first contribution in https://github.com/temporalio/temporal/pull/4891
+- @ytaben made their first contribution in https://github.com/temporalio/temporal/pull/4880
+- @gallyamb made their first contribution in https://github.com/temporalio/temporal/pull/4973
+- @ajayk made their first contribution in https://github.com/temporalio/temporal/pull/5011
+- @yujunz made their first contribution in https://github.com/temporalio/temporal/pull/5060
+- @denniskniep made their first contribution in https://github.com/temporalio/temporal/pull/5059
+- @tuyenpthust made their first contribution in https://github.com/temporalio/temporal/pull/5134
+
+**Full Changelog**: https://github.com/temporalio/temporal/compare/v1.22.6...v1.23.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.6 (2024-03-06)</h2>
+      <pre># Release Highlights
+This release mitigates a rollback problem introduced into one of our v1.23.0 release candidates. This has no impact on OSS users using official releases.
+
+# All Changes
+2024-02-29 - 2899920e9 - Bump Server version to 1.22.6
+2024-02-29 - 1eba091c8 - Update Go SDK to handle SDKPriorityUpdateHandling flag (#5468)
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use the tag `1.22.6`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.5 (2024-02-22)</h2>
+      <pre># All Changes
+2024-02-22 - 2787da350 - Bump Server version to 1.22.5
+2024-02-22 - 760ea9c09 - Bump Server version to 1.22.5-rc2
+2024-02-21 - 2ea05b30d - Ensure PollActivityTaskQueueResponse.ScheduleToCloseTimeout is not nil (#5444)
+2024-02-02 - d4f38c207 - Bump Server version to 1.22.5-rc1
+2024-02-01 - 64fe53cb9 - Backport code to drop internal errors encountered during task processing (#5385)
+2024-01-31 - 2647b3675 - Fix scheduled task rescheduling on failover (#5377)
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use the tag `1.22.5`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.4 (2024-01-12)</h2>
+      <pre># All Changes
+2024-01-12 - fb617040c - Bump Server version to 1.22.4
+2024-01-12 - f2659e725 - Change auth order (#5294)
+2024-01-12 - 4489f174a - Fix buildkite cassandra setup (#5263)
+2024-01-08 - 6dcab7349 - Update GHA setup-go to pull version from go.mod file (#5207)
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use the tag `1.22.4`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.3 (2023-12-07)</h2>
+      <pre># Important
+The dependency `golang.org/x/net` was updated to address CVE-2023-39325, CVE-2023-3978, CVE-2023-44487.
+
+# All Changes
+2023-12-07 - 4eca060f9 - Bump Server version to 1.22.3
+2023-11-30 - 407ff8a1e - Fix nil panic (#5153)
+2023-11-30 - db10079e0 - Activate changes in #4990 and #5034 (#5035)
+2023-11-30 - 20a482943 - Always set RPS on dynamic rate limiter refresh (#5180)
+2023-11-30 - 79bacb94a - Fix default persistence request priority (#5177)
+2023-11-30 - b4b6581c5 - Update force replication with low priority context (#5010)
+2023-11-27 - 294e8a333 - 1.22.3 build fix for cherry pick build error (#5163)
+2023-11-22 - 38f0eb298 - Fix set up search attributes in secondary SQL visibility (#5143)
+2023-11-20 - 1f04629c2 - Add more logging message to monitor branch token update (#5058)
+2023-11-20 - 6ba388cb3 - Handle branch token update with long poll API (#4943)
+2023-11-20 - 98b5700e7 - golang.org/x/net: update to address CVE-2023-39325, CVE-2023-3978, CV… (#5011)
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use the tag `1.22.3`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.2 (2023-11-13)</h2>
+      <pre># All Changes
+
+2023-11-13 - db23e8671 - Add action metrics for schedule and updates (#5101)
+2023-11-03 - 37da275af - Allow list of keywords in dual visibility setting (#5065)
+2023-11-01 - 26114d774 - Hopefully avoid panic in DescribeWorkflowExecution (#5057)
+2023-10-31 - ddf979916 - Bump server version to 1.22.2 (#5056)
+2023-10-31 - ef3b92b86 - Fix schedule workflow unit test (#5052)
+2023-10-30 - 2320fc172 - Add force-continue-as-new signal to schedule workflow (#5034)
+2023-10-30 - b8163ceb6 - Use ContinueAsNewSuggested in scheduler workflow (#4990)
+2023-10-30 - 88f8f11da - Update Go SDK to v1.25.1 (#4955)
+2023-10-30 - cba2ce7ec - Improve scheduler workflow unit test (#4962)
+2023-10-30 - 53a4979f4 - Expose buffer size and # dropped actions in ScheduleInfo (#4839)
+2023-10-30 - 0fc50f827 - Adjust action metrics (#5043)
+2023-10-30 - 91425ba5d - Emit action metrics for batch of markers (#4905)
+2023-10-30 - f442eb703 - Validate search attributes values in queries to ES (#5036)
+2023-10-30 - 19ba0cec9 - Disable eager activities for incompatible versioned activities (#5030)
+2023-10-30 - cd14e159f - Add refresh task for close workflow (#4999)
+2023-10-30 - e022877a8 - Refresh upsert visibility task only for running workflows (#4909)
+2023-10-30 - f99bd882d - Lock get current execution for API requests (#4970)
+2023-10-30 - 8dc833c0a - Fix GenerateMigrationTasks behavior (#4987)
+2023-10-30 - 1a3083326 - Return InvalidArgument error when we get HTTP 400 from elasticsearch (#4900)
+2023-10-30 - b6c9868a6 - Reuse cached RemoteAdminClient in VerifyReplicationTasks (#4997) (#5050)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.1 (2023-10-20)</h2>
+      <pre># Important
+
+There was a security issue in the Temporal Docker image that could expose your DB password in the shell logs. The issue is fixed in https://github.com/temporalio/docker-builds/pull/147, and new Docker image builds packing this version or later will contain the fix. Note that this issue is not related in any way to the Temporal Server itself. It only affects a script in the Docker image to launch your Temporal Server.
+
+# All Changes
+
+2023-10-13 - 717352261 - Ensure latest Go version in GH workflows (#4974)
+2023-10-12 - b154bcda8 - Bump base-ci-builder image (#4969)
+2023-10-06 - 759b60896 - Refactor TaskPoller.PollAndProcessWorkflowTask (#4903)
+2023-10-06 - 4a70d6293 - Don't track overlapping scheduled workflows (#4911)
+2023-10-06 - 1f01c72a3 - Use RateBurst in RateLimitInterceptorProvider (#4933)
+2023-10-06 - 9abaafd16 - Take history length into account when rate limiting generate replication task (#4929)
+2023-10-06 - ba6391831 - Improve XDC logging (#4932)
+2023-10-06 - 8cadb9400 - Handle XDC replication task retry error / not found error correctly (#4924)
+2023-10-06 - 8d1e43aa9 - Make rate multi min and max dynamic (#4920)
+2023-10-06 - b4df68298 - Add metric for dynamic rate limit multiplier (#4921)
+2023-10-06 - 68604955a - Improve XDC Logging (#4917)
+2023-10-06 - b5f73191d - Simplify DescribeSchedule (#4810)
+2023-10-06 - 1af21c404 - Build id scavenger shouldn't look at recent build ids (#4846)
+2023-10-06 - 9547e8249 - Exit build id scavenger on rate limiter error (#4841)
+2023-10-06 - e9985714d - Fix QueryWorkflow forwarding on versioned queue (#4847)
+2023-10-06 - 277e97d49 - Make versioning data limits configurable by namespace (#4843)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.0 (2023-09-05)</h2>
+      <pre># Release Highlights
+
+## Streaming for replication (WIP)
+
+This version of server added gRPC streaming API for replications between clusters. This feature is still working in progress, is currently disabled by default. It will be enabled in future release.
+
+## Count workflow by ExecutionStatus
+
+The Count API feature allows the user to count the number of workflow matching the given query. For example, the command `temporal workflow count -q "WorkflowType='foo'"` returns the number of workflows that matches `WorkflowType='foo'`.
+
+Now, you can send queries to the Count API to group by a given search attribute. Eg: `-q "WorkflowType='foo' GROUP BY ExecutionStatus` returns the number of workflows that matches `WorkflowType='foo'` grouped by `ExecutionStatus`.
+
+The `GROUP BY` clause is only supported in the Count API, and, at this moment, we only support grouping by `ExecutionStatus`. We plan to support group by any search attribute in a future release.
+
+**EDIT**: Note: The Count API returns approximate counts.
+
+## Default authorizer changes
+
+The default authorizer now allows `OperatorService.ListSearchAttributes` as a namespace-level read-only API. Additionally, the implementation was changed: if you have custom authorizer code based on the default authorizer, you may want to examine the new implementation.
+
+## Schedules improvements
+
+Schedules that are “idle”, meaning they are only configured to run for a fixed number of times (either with “limited actions” or with a spec that doesn’t match any times in the future), will now automatically be deleted after one week since their last action. This applies to existing schedules, however existing schedules that are *already* idle won’t be deleted unless they’re woken up by a signal.
+
+Jitter is now calculated correctly so that jitter across separate schedules is not correlated. This automatically applies to existing schedules.
+
+## HTTP API
+
+The frontend workflow service API can now exposed via HTTP in addition to the existing gRPC exposed form. The port is set on `services.frontend.rpc.httpPort` and is disabled if unset or `0`. The default Docker template enables the HTTP API on port `7243`. See the HTTP annotations on the [workflow service API proto file](https://github.com/temporalio/api/blob/master/temporal/api/workflowservice/v1/service.proto) for more information about which operations are available at which URL paths.
+
+## All changes
+
+2023-09-05 - 9b877fae2 - increase max allowed shard linger limit (#4790)
+2023-09-05 - c73430b8a - Mark QueryWorkflow as read-only in api metadata (#4834)
+2023-09-05 - 86d883913 - Add method metadata and use for default authorizer (#4794)
+2023-08-28 - bba21caee - Always persist guessed set id on unknown build id (#4800)
+2023-08-28 - c13afdcef - Fix mutable state change not persisted bug (#4813)
+2023-08-21 - df2167ef0 - Update API to v1.24.0 (#4785)
+2023-08-21 - f6755a53c - Return NonRetryableApplicationError if Namespace is not found on remote cluster during verify (#4786)
+2023-08-21 - f42d19eba - Split sync workflow state logic to dedicated file (#4784)
+2023-08-18 - c7847968b - HTTP API support (#4543)
+2023-08-17 - 8309152e1 - Update some task refresh logic (#4779)
+2023-08-17 - 0080bd209 - Simplify XDC logic (#4546)
+2023-08-14 - 84b1e8b5a - Generate txn id for each event (#4774)
+2023-08-14 - aa5c3db6f - Add api to Eager retrieve the unknown namespace from remote cluster (#4769)
+2023-08-14 - 9f9db3f06 - Increaes RecordHeartbeat frequency in VerifyReplicationTask (#4771)
+2023-08-11 - 815c8a359 - Skip verifying workflow which has already passed retention time (#4770)
+2023-08-11 - 0ce1234ee - Rename leftover master to main (#4768)
+2023-08-11 - 7982f81e4 - Fix delete search attributes in mutable state (#4767)
+2023-08-11 - 545c96378 - Count group by status capability (#4750)
+2023-08-11 - 88f8c1c66 - Load task queue managers for demoted version set ids (#4762)
+2023-08-11 - 2b3d52e15 - Improve otel gauge memory usage (#4722)
+2023-08-10 - 673d5636b - Add corruption protection to ms (#4564)
+2023-08-11 - e4ce970e2 - Turn ErrWorkflowClosing into a retryable error (#4765)
+2023-08-10 - 3a9e34477 - Use raw history/matching client in task executor (#4710)
+2023-08-10 - 97f15fcce - Fix SQLite FTS query expression with dashes (#4755)
+2023-08-10 - 2da474317 - Remove debug logger from visibility manager (#4751)
+2023-08-10 - 2eb96096d - Make client code generation safer (#4747)
+2023-08-10 - 274de9870 - Make cassandra schema update idempotent (#4761)
+2023-08-10 - 5ced7bf63 - Improve task range completion prerequisite check (#4754)
+2023-08-10 - 7a11f91cf - Move getTaskQueueManager call into redirect methods (#4759)
+2023-08-10 - 97dbe09b4 - Fix retry policy max attempts (#4752)
+2023-08-10 - 31eada0cd - Reduce frontend handler retry max attempts (#4753)
+2023-08-09 - 6d4a76b41 - Adjust API priorities (#4756)
+2023-08-09 - cfad693d6 - Clean up some matching errors (#4758)
+2023-08-09 - 0737a8be1 - Avoid potential double close on userDataChanged (#4757)
+2023-08-09 - 63cd05122 - Do not load sticky queue if not loaded (#4694)
+2023-08-09 - d87acbd41 - Add frontend.globalNamespaceCount (#4743)
+2023-08-09 - 039de3d8d - Add descriptions for task processing metrics (#4746)
+2023-08-08 - e7dd2ff5f - Clean task queue name from matching before writing to WorkflowTaskScheduledEvent (#4565)
+2023-08-08 - b1804c219 - eager namespace refresher POC (#4725)
+2023-08-08 - 881b92310 - APS limit error handling (#4739)
+2023-08-08 - a60872188 - remove the event cache initial size and refactor putInternal (#4698)
+2023-08-07 - a3a4ac541 - Add descriptions for schedule metrics (#4728)
+2023-08-07 - 58e731a31 - Enable new schedule workflow logic (#4741)
+2023-08-07 - 60f733a80 - Fix bug causing duplicates when listing s3-archived workflows (#4712)
+2023-08-07 - 5889f1ccd - Continue replication verification by skipping workflow which should be or soon to be deleted (#4734)
+2023-08-07 - c861c7ebe - Update main branch in Makefile (#4740)
+2023-08-07 - c49bdc6b7 - Change schedule jitter to depend on schedule + namespace ids (#4685)
+2023-08-07 - 3bece5f82 - Collapse duplicate visibility tasks (#4727)
+2023-08-07 - 0541c8168 - Send versioned tasks to dlq when user data disabled (#4668)
+2023-08-07 - bd909c967 - Return errors from task executors when processing actions (#4719)
+2023-08-07 - df262d623 - Remove debug logging from Cassandra schema update tool (#4738)
+2023-08-04 - 23aac05bf - Speed up passive task validation (#4700)
+2023-08-04 - 10a6f6e74 - Return ResourceExhaustedError for consistent query buffer full (#4731)
+2023-08-04 - ecb625a1e - Update timer task error handling (#4718)
+2023-08-03 - dcccbf010 - Log actual error for get history data loss events (#4726)
+2023-08-03 - 5285b80b4 - Update running server locally README (#4723)
+2023-08-03 - ccd23cb6b - Bump UI version to 2.17.1 (#4720)
+2023-08-03 - db491171e - Add worker versioning calls to read-only namespace APIs for authorizer (#4721)
+2023-08-03 - 9de9ccf5c - Add ActivityType to ActivityInfo for mutable state (#4717)
+2023-08-02 - 4928b73c4 - Reduce the heartbeat size of VerifyReplicationTasks activity (#4705)
+2023-08-02 - 1eb3217a5 - Add replay tests for scheduler workflow (#4701)
+2023-08-02 - 4efda3c9c - Add more errors to targeted fault injector (#4711)
+2023-08-01 - f4ca57f0c - Special some handle history client generation (#4708)
+2023-08-01 - fb1d507e7 - Provide a shard ownership-based rate limit quota scaler from the history/shard package (#4704)
+2023-08-01 - ac1d1742f - Simplify newTaskQueueManager arguments (#4691)
+2023-07-31 - 283291855 - Support injecting additional interceptors in history and matching (#4680)
+2023-07-31 - 82fec8462 - Inject custom task executor wrapper (#4697)
+2023-07-28 - c595eb89e - Finish idle schedule when a timer fires (#4602)
+2023-07-28 - 4fb4dd9f8 - move IsValid to ControllableContext (#4699)
+2023-07-27 - 926950793 - Add versioned tag to loaded task queue gauge (#4672)
+2023-07-27 - 83a3a45a8 - Persist unknown build ids (#4667)
+2023-07-27 - 0281243bb - enable shard linger with time limit config (#4696)
+2023-07-28 - a13efeeb4 - Add quotas.DelayedRateLimiter (#4688)
+2023-07-27 - 48b80c0b0 - Add shard.OwnershipScaledRateBurst (#4687)
+2023-07-27 - 851e26b11 - Support count group by in visibility with SQL (#4666)
+2023-07-27 - f9b2db525 - Support count group by in visibility with Elasticsearch (#4619)
+2023-07-27 - a3b591147 - Matching service task GC (#4418)
+2023-07-27 - 569010780 - Put user data replication tasks in DLQ (#4609)
+2023-07-27 - 922cc2778 - Convert version history bad request to internal error (#4690)
+2023-07-27 - fbd0de731 - Fix Go version string goreleaser.yml (#4689)
+2023-07-27 - 541dee303 - Add back generated mocks (#4671)
+2023-07-26 - 4cd4f7e31 - Refactor CalculateEffectiveResourceLimit and NamespaceCountLimitInterceptor (#4665)
+2023-07-26 - 3be986cdb - support delaying shard close for membership change (#4659)
+2023-07-25 - 8753b8eae - Adjust CLI page size (#4682)
+2023-07-25 - 157bf673c - Fix tdbg unable to dump all workflow raw history issue (#4681)
+2023-07-25 - c3fa08891 - Return nil instead of task discarded error if namespace is invalid locally (#4678)
+2023-07-25 - e7bd02808 - add configurable ownership caching to history client (#4652)
+2023-07-24 - fa1597b8e - Assign fx pass in raw task converter (#4679)
+2023-07-24 - 5008255c1 - Add more replication error logs (#4677)
+2023-07-24 - 386a651fe - Minor fixes in force replication verification (#4675)
+2023-07-24 - 48d3107a3 -  Restore defaultListWorkflowsPageSize back to 1000 (from 100) (#4674)
+2023-07-22 - ce3f42e70 - Add clock.TimeSource.AfterFunc (#4611)
+2023-07-21 - c57f58779 - Add XDC replication cache (#4379)
+2023-07-21 - e10f21389 - Fix flaky TestForceReplicationWorkflow_VerifyReplicationTaskNonRetryableError (#4669)
+2023-07-21 - f708c81fe - Move redirect logic into taskQueueManager (#4657)
+2023-07-21 - baa964eb7 - Fix flaky versioning integration test (#4651)
+2023-07-21 - bd18f4940 - defer shard.Unlock() (#4664)
+2023-07-20 - 00587f605 - Execute VerifyReplicationTasks as an individual activity (#4656)
+2023-07-21 - a834ea49e - Validate workflow task start time when complete (#4663)
+2023-07-20 - a4a2ec027 - Fix future TestSetReadyGet_Parallel (#4661)
+2023-07-20 - fc414a85d - Custom search attributes validation per store (#4655)
+2023-07-20 - 61ff86b64 - update linter version in update-linters (#4653)
+2023-07-19 - fdb94a577 - Do not use Unvailable as error type for expected error cases (#4650)
+2023-07-19 - 724f23f25 - Cleanup new update related functional tests (#4563)
+2023-07-19 - 2605c0b72 - Add support for ES Scroll for Scan API (#4614)
+2023-07-19 - 02862114f - restructure history client for alternate ownership handling (#4636)
+2023-07-19 - d7b4da84e - Extract common code from service/frontend/{fx,fx_test}.go (#4643)
+2023-07-19 - 9a0745c48 - change the history cache key name to *Bytes (#4649)
+2023-07-19 - a903b404c - Change nil metrics handle to no op handler (#4646)
+2023-07-19 - 35ab8bdea - Add a test for NamespaceCountLimitInterceptor (#4639)
+2023-07-19 - 0646c0a1d - Log when health rate limiter value changes (#4648)
+2023-07-18 - e8ae1650e - Fail force-replication fast if any GenerateReplicationTasks/GenerateAndVerifyReplicationTasks activity returns error (#4642)
+2023-07-19 - bf23997a1 - Better handle admin handler stream replication API lifecycle (#4647)
+2023-07-18 - 8a75aed2b - Allow configurating history cache non-user context lock timeout (#4645)
+2023-07-18 - 964a60068 - do not cache large blob history event (#4621)
+2023-07-18 - 1caf08df5 - Make replication task convertor injectable by fx (#4635)
+2023-07-18 - ba5b23d31 - Prioritize UI/tctl when system is throttled (#4623)
+2023-07-17 - a4929062e - Ignore global rate limit if there are no hosts (#4627)
+2023-07-17 - 72fe26c36 - Exclude history APIs from persistence health signals (#4637)
+2023-07-14 - 7efba9fb0 - Add verification of replication tasks in force replication (#4630)
+2023-07-14 - 2d86390f4 - Do not generate visibility task for unchanged BuildIds (#4632)
+2023-07-14 - a01a309af - Support cluster metadata customized tags (#4622)
+2023-07-14 - 2fab90b0f - Drop standby tasks in standby taks executor  (#4626)
+2023-07-14 - 7e2de6902 - Fix some minor warnings in the matching package (#4608)
+2023-07-13 - cc38a4133 - Add activity / workflow task version check (#4580)
+2023-07-13 - b326a4a0f - Fix metrics tagging in stream replication task processing (#4625)
+2023-07-13 - 6e811dd84 - Handle replicate workflow state with exist workflow data (#4617)
+2023-07-12 - 1b82336cd - Send default tasks to unversioned queue when user data disabled (#4610)
+2023-07-12 - 9193a90f9 - Disable user data when fetch fails (#4604)
+2023-07-12 - 2fd612343 - Deprecate QueueAckLevel (#4616)
+2023-07-11 - 83faadf3c - Clean up cluster metadata initialization logic (#4531)
+2023-07-11 - 87b0f6034 - Fix metrics double emission in admin and operator handler (#4613)
+2023-07-11 - 7dddf7202 - Support cluster metadata customized tags (#4544)
+2023-07-10 - d0c2a887d - Add frontend global RPS limit (#4583)
+2023-07-10 - 3918d9342 - emit history service panic metric for all requests (#4497)
+2023-07-10 - 687125a01 - move controller shard membership handling (#4607)
+2023-07-10 - ec1a0106e - use a factory to create shard contexts (#4586)
+2023-07-10 - 2374cc4bb - Add a Clock option to our LRU cache (#4593)
+2023-07-10 - 3847f909d - Remove durable archival flag (#4594)
+2023-07-10 - 9547c8328 - Disable confusing-naming linter and tune unhandled-error (#4606)
+2023-07-10 - 0b0c398e4 - add stop reason for context (#4601)
+2023-07-10 - 8f798a9d6 - Use time.NewTimer instead of time.After (#4596)
+2023-07-07 - ec89a820d - properly fix migration in mem ack aggregation (#4571)
+2023-07-07 - 5c9600d67 - Remove verbose logging (#4603)
+2023-07-07 - 52997fdc3 - Remove time.Sleep from util_test (#4592)
+2023-07-07 - 3860610f6 - Remove flusher package (#4595)
+2023-07-07 - a3f530de4 - Update go version to 1.20 (#4597)
+2023-07-07 - 619e2f968 - Update trigger-publish GHA (#4599)
+2023-07-07 - 731cc3c8b - Fix MySQL 8 upgrade script to schema v1.3 (#4598)
+2023-07-06 - 061dbb262 - wait for drain duration before stopping shard controller (#4587)
+2023-07-06 - 92c841874 - Refactor fx service Start/Stop (#4584)
+2023-07-06 - bd241c014 - Log VisibilityStoreConfig for debugging (#4588)
+2023-07-06 - a84c2e0ad - support delay before history joins membership (#4582)
+2023-07-06 - 15f201745 - Allow context disable frontend redirection (#4547)
+2023-07-06 - 6d175c219 - move ringpop start call to service start (#4510)
+2023-07-05 - 1ca697991 - Add help text to a few more metrics (#4529)
+2023-07-05 - 17259dbc8 - Use DefaultServices for server_test (#4566)
+2023-07-03 - db8b67a84 - Test speculative workflow task creation while completing previous workflow task (#4517)
+2023-07-03 - 05e6ea0ce - Disable goerr113 in test files (#4574)
+2023-07-03 - 4b4dbf397 - Make all Go source file names snake case (#4558)
+2023-07-03 - 2a22821b4 - Remove common.Daemon interface (#4573)
+2023-06-30 - 76b5f338e - Improve build id scavenger (#4568)
+2023-06-30 - 3bb5c5802 - Fix migration in mem ack aggregation (#4569)
+2023-06-29 - 6a92ddd4b - Versioning cleanup (#4556)
+2023-06-29 - 2a2734e6e - Skip final task queue update if lost ownership (#4554)
+2023-06-29 - 911d7c359 - Measure backlog after completing current task (#4562)
+2023-06-29 - 598aa479c - Add corruption protection to ms (#4560)
+2023-06-29 - f97237fa1 - Handle get namespace by id error (#4559)
+2023-06-29 - 5e03077e0 - Use lowest persistence priority for standby tasks (#4551)
+2023-06-29 - 435cffe9a - Add a test to our gRPC resolver (#4548)
+2023-06-29 - c0fb121ac - Consider non default sets reachable by new workflows for a while after they stop being queue default (#4545)
+2023-06-28 - 87cc6f421 - Get execution start/close time when using cassandra visibility store (#4549)
+2023-06-27 - f51b96d92 - Add an error log detection test to the server (#4555)
+2023-06-27 - a7b0afddc - Handle new fx event type (#4553)
+2023-06-27 - 11a30b23d - Per shard per namespace RPS warning log (#4525)
+2023-06-27 - 39bf6a8ff - Add Semgrep scanning (#4550)
+2023-06-26 - 1e18621cb - Add more metrics for stream replication (#4539)
+2023-06-26 - 7198aa74a - Remove unused metrics def (#4540)
+2023-06-23 - b5979f96d - Update go dependencies (#4534)
+2023-06-23 - 326020ac9 - Update versionChecker.go for the next release (#4533)
+2023-06-23 - 7314ea42e - Update updateRegistry store on mutable state reload (#4532)
+2023-06-22 - c52957bb5 - Make replication tasks units 'dimensionless' (#4515)
+2023-06-22 - cca978f31 - Remove ReplicationTasksReturned (#4514)
+2023-06-22 - 9405cf848 - Perform task range completion on shard rangeID update (#4528)
+2023-06-21 - 61b7d6443 - Add an option for metrics descriptions (#4486)
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use tag `1.22.0`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.21.5 (2023-08-25)</h2>
+      <pre># Important 
+
+Temporal Server v1.21.0 introduced a security bug in the Cassandra tool (aka `temporal-cassandra-tool`) that can expose the credentials in debug level logs. The issue is fixed with this release in #4738.
+
+## All Changes
+
+2023-08-14 - 1eaaaf8da - Increaes RecordHeartbeat frequency in VerifyReplicationTask (#4771)
+2023-08-14 - 194a8938d - Skip verifying workflow which has already passed retention time (#4770)
+2023-08-14 - 8e56612d5 - Turn ErrWorkflowClosing into a retryable error (#4765)
+2023-08-14 - cadd9337b - Remove debug logging from Cassandra schema update tool (#4738)
+2023-08-07 - 7e216c3bb - Bump server version to 1.21.5
+2023-08-07 - 524bda390 - Fix bug causing duplicates when listing s3-archived workflows (#4712)
+2023-08-07 - 5722c2332 - Continue replication verification by skipping workflow which should be or soon to be deleted (#4734)
+2023-08-07 - a8ff17f49 - Change schedule jitter to depend on schedule + namespace ids (#4685)
+2023-08-07 - 5f1455fac - Collapse duplicate visibility tasks (#4727)
+2023-08-07 - 8bda654e6 - Return ResourceExhaustedError for consistent query buffer full (#4731)
+2023-08-07 - 95a76efbd - Add worker versioning calls to read-only namespace APIs for authorizer (#4721)
+2023-08-07 - 9970ea504 - Reduce the heartbeat size of VerifyReplicationTasks activity (#4705)
+2023-08-07 - 9d59be327 - Finish idle schedule when a timer fires (#4602)
+2023-08-07 - 120b8be8d - enable shard linger with time limit config (#4696)
+2023-08-07 - 4448efacd - Put user data replication tasks in DLQ (#4609)
+2023-08-07 - b8e7b2837 - support delaying shard close for membership change (#4659)
+2023-08-07 - 12c95ddf0 - Return nil instead of task discarded error if namespace is invalid locally (#4678)
+2023-08-07 - a7832c76b - add configurable ownership caching to history client (#4652)
+2023-08-07 - 37a70494f - Minor fixes in force replication verification (#4675)
+2023-08-07 - ed5aded36 - Fix flaky TestForceReplicationWorkflow_VerifyReplicationTaskNonRetryableError (#4669)
+2023-08-07 - eb0ee5ed1 - restructure history client for alternate ownership handling (#4636)
+2023-08-07 - b105e5b78 - move controller shard membership handling (#4607)
+2023-08-07 - 23135a350 - use a factory to create shard contexts (#4586)
+2023-08-07 - aeb47aab0 - add stop reason for context (#4601)
+2023-08-07 - 6c80ff6e0 - wait for drain duration before stopping shard controller (#4587)
+2023-08-07 - 35f6670c2 - support delay before history joins membership (#4582)
+2023-08-07 - a6dfbc6ea - move ringpop start call to service start (#4510)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.21.4 (2023-07-31)</h2>
+      <pre>## Schema Upgrades
+
+See the [1.21.0 release notes](https://github.com/temporalio/temporal/releases/tag/v1.21.0) for schema upgrade information for upgrading to the 1.21 series. There are no new schema changes in 1.21.4.
+
+# Release Highlights
+
+The release removes recent changes to cache handling to fix regressions that could cause excessive memory usage and block workflows under high load (5dbbc4522ff1d43c4002b9850b5b678054ac5aaf, 6c48ed2d942a95e37ee8b1484546ebcbc8aed552).
+
+Details about the v1.21.0 release can be found [here](https://github.com/temporalio/temporal/releases/tag/v1.21.0).
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use tag `1.21.4`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.21.3 (2023-07-24)</h2>
+      <pre># Important
+
+### We identified a bug in this release relating to the mutable state cache, that could cause workflows to be blocked under high load. We recommend not deploying this release.
+
+If downgrading from this release to the 1.20 series, downgrade to 1.20.4 instead of 1.20.3. This addresses an issue where the new `BuildIds` search attribute was not understood and would cause errors in visibility processing.
+
+## Schema Upgrades
+
+See the [1.21.0 release notes](https://github.com/temporalio/temporal/releases/tag/v1.21.0) for schema upgrade information for upgrading to the 1.21 series.
+
+
+# Release Highlights
+
+This release fixes a number of bugs:
+  * Workflows that use the new Workflow Update feature can be blocked with "non deterministic" errors under very rare circumstances.
+  * Introduce an option in the force-replication workflow to verify workflows were successfully replicated and applied on a target cluster.
+  * Fixed standby task discarding logic so that only task that does verification will be dropped.
+  * Changed the Elasticsearch Scan API back to use scroll if point in time is not available.
+  * Few other minor bugs.
+
+And improvements:
+ * Change history event cache size from count-based to byte size-based to avoid caching large blob history events. The dynamic config keys `history.eventsCacheInitialSize` and `history.eventsCacheMaxSize` are changed to `history.eventsCacheInitialSizeByte` and `history.eventsCacheMaxSizeByte`, respectively.
+
+### All Changes
+
+2023-07-24 - 55c4d36f8 - Restore defaultListWorkflowsPageSize back to 1000 (from 100) (#4674)
+2023-07-21 - d0974cdaa - Execute VerifyReplicationTasks as an individual activity (#4656)
+2023-07-21 - 9f9b172f6 - Fail force-replication fast if any GenerateReplicationTasks/GenerateAndVerifyReplicationTasks activity returns error (#4642)
+2023-07-21 - 6247d8814 - Add verification of replication tasks in force replication (#4630)
+2023-07-21 - 1d5601a4b - Validate workflow task start time when complete (#4663)
+2023-07-21 - 655c51aad - Exclude history APIs from persistence health signals (#4637)
+2023-07-21 - 4edce52ec - Per shard per namespace RPS warning log (#4525)
+2023-07-20 - 53517fd40 - Custom search attributes validation per store (#4655)
+2023-07-20 - 2830f3816 - Do not use Unvailable as error type for expected error cases (#4650)
+2023-07-20 - a9a9acbbb - Add support for ES Scroll for Scan API (#4614)
+2023-07-20 - 67de6dfef - change the history cache key name to *Bytes (#4649)
+2023-07-20 - 268e27408 - Log when health rate limiter value changes (#4648)
+2023-07-20 - 32b4219ca - Better handle admin handler stream replication API lifecycle (#4647)
+2023-07-20 - 7a125d94e - Allow configurating history cache non-user context lock timeout (#4645)
+2023-07-20 - f97b681b3 - do not cache large blob history event (#4621)
+2023-07-20 - 49b99fe6a - Drop standby tasks in standby taks executor  (#4626)
+2023-07-20 - a466c4da0 - Fix metrics tagging in stream replication task processing (#4625)
+2023-07-20 - bcbb3b926 - Handle replicate workflow state with exist workflow data (#4617)
+2023-07-20 - 561495045 - properly fix migration in mem ack aggregation (#4571)
+2023-07-20 - 1ca8443ed - Allow context disable frontend redirection (#4547)
+2023-07-20 - 674657bd2 - Skip final task queue update if lost ownership (#4554)
+
+Details about the v1.21.0 release can be found [here](https://github.com/temporalio/temporal/releases/tag/v1.21.0).
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use tag `1.21.3`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.21.2 (2023-07-15)</h2>
+      <pre>## Important
+
+* If downgrading from this release to the 1.20 series, downgrade to 1.20.4 instead of 1.20.3. This addresses an issue where the new `BuildIds` search attribute was not understood and would cause errors in visibility processing.
+
+
+## Schema Upgrades
+
+See the [1.21.0 release notes](https://github.com/temporalio/temporal/releases/tag/v1.21.0) for schema upgrade information for upgrading to the 1.21 series.
+
+
+# Release Highlights
+
+This release fixes a bug that could cause delays in task processing during upgrades and excessive load on visibility. Also, it fixes a few minor other bugs.
+
+### All Changes
+
+2023-07-14 - 9219be243 - Do not generate visibility task for unchanged BuildIds (#4632)
+2023-07-12 - 74b51d84d - Send default tasks to unversioned queue when user data disabled (#4610)
+2023-07-12 - d4cd7372b - Disable user data when fetch fails (#4604)
+2023-07-12 - 71ae36c75 - Fix MySQL 8 upgrade script to schema v1.3 (#4598)
+
+Details about the v1.21.0 release can be found [here](https://github.com/temporalio/temporal/releases/tag/v1.21.0).
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use tag `1.21.2`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.20.4 (2023-07-13)</h2>
+      <pre># Release Highlights
+
+This release addresses an issue when downgrading a cluster running the 1.21 series back to 1.20: New workflows would receive a `BuildIds` search attribute that would not be understood by 1.20 and would cause errors in visibility task processing. There's no need to upgrade to this release from 1.20.3, but if downgrading from 1.21, the downgrade should be done to this version.
+
+### All Changes
+
+2023-07-13 - f12479619 - Add BuildIds predefined search attribute (#4624)
+
+Details about the v1.20.0 release can be found [here](https://github.com/temporalio/temporal/releases/tag/v1.20.0).
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use tag `1.20.4`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.21.1 (2023-07-03)</h2>
+      <pre># IMPORTANT
+
+* Do not upgrade to this version if you using advanced visibility with MySQL as storage. The release of v1.21.0 included an script to upgrade the schema, but it contains a bug. Please upgrade to [v1.21.2](https://github.com/temporalio/temporal/releases/tag/v1.21.2) which fixes the bug.
+* If downgrading from this release to the 1.20 series, downgrade to 1.20.4 instead of 1.20.3. This addresses an issue where the new `BuildIds` search attribute was not understood and would cause errors in visibility processing.
+
+## Schema Upgrades
+
+See the [1.21.0 release notes](https://github.com/temporalio/temporal/releases/tag/v1.21.0) for schema upgrade information for upgrading to the 1.21 series.
+
+# Release Highlights
+
+This release fixes these bugs:
+* Skip reading close event for retention task if not using Cassandra visibility store.
+* Use lower priority for standby tasks.
+* Added sanity check to protect against mutable state corruption.
+* Fix replication ack aggregation logic.
+
+### All Changes
+
+2023-06-30 - 873df3467 - Improve build id scavenger (#4568)
+2023-06-30 - ed7f94cbe - Fix migration in mem ack aggregation (#4569)
+2023-06-29 - 0fcff5159 - Measure backlog after completing a current task (#4562)
+2023-06-29 - 275567976 - Add corruption protection to ms (#4560)
+2023-06-29 - 8b3426bf1 - Handle get namespace by id error (#4559)
+2023-06-29 - 72fb120c7 - Use lowest persistence priority for standby tasks (#4551)
+2023-06-29 - ca41bb034 - Consider non default sets reachable by new workflows for a while after they stop being queue default (#4545)
+2023-06-29 - 0d7350d6e - Get execution start/close time when using Cassandra visibility store (#4549)
+2023-06-29 - 0c441a796 - Add more metrics for stream replication (#4539)
+
+Details about the v1.21.0 release can be found [here](https://github.com/temporalio/temporal/releases/tag/v1.21.0).
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use the tag `1.21.1`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.21.0 (2023-06-23)</h2>
+      <pre># IMPORTANT
+
+* Do not upgrade to this version if you using advanced visibility with MySQL as storage. The release of v1.21.0 included an script to upgrade the schema, but it contains a bug. Please upgrade to [v1.21.2](https://github.com/temporalio/temporal/releases/tag/v1.21.2) which fixes the bug.
+* If downgrading from this release to the 1.20 series, downgrade to 1.20.4 instead of 1.20.3. This addresses an issue where the new `BuildIds` search attribute was not understood and would cause errors in visibility processing.
+
+## Schema Upgrades
+
+This release requires schema upgrades for both persistence and visibility.  See the schema upgrade [documentation](https://docs.temporal.io/cluster-deployment-guide#upgrade-server) for the required commands for performing the upgrade.
+
+# Release Highlights
+
+## Worker Versioning (preview)
+
+Links to docs:
+
+- https://docs.temporal.io/workers#worker-versioning
+- https://docs.temporal.io/dev-guide/java/versioning#worker-versioning
+- https://docs.temporal.io/dev-guide/golang/versioning#worker-versioning
+
+Description: Worker Versioning simplifies the process of deploying changes to Workflow Definitions.
+
+⚠️ This feature requires Advanced Visibility
+
+In the SDK, a user can identify a Worker with a Build ID, which should be associated at build time, and configure that Worker to use Versioning.
+
+An operator can use the `UpdateWorkerBuildIdCompatibility` gRPC API (and the high-level APIs in the SDKs) to define which builds are compatible with each other and control task routing for existing and new Workflows based on the compatibility constraints.
+
+Additionally, operators and automated scripts can use the `GetWorkerTaskReachability` API to query for build IDs that are no longer reachable and whose associated workers can be retired.
+
+⚠️ To enable worker versioning, turn on the `frontend.workerVersioningDataAPIs,` `frontend.workerVersioningWorkflowAPIs`, and `worker.buildIdScavengerEnabled` dynamic config flags (disabled by default in this release).
+
+This feature introduces a couple of schema changes:
+
+1. A new `BuildIds` Search Attribute that is used to track reachability. This new Search Attribute requires a Visibility schema update. See the schema upgrade [documentation](https://docs.temporal.io/cluster-deployment-guide#upgrade-server) for the required commands for performing the upgrade.
+2. A new `task_queue_user_data` table, which stores the Versioning data for the various Task Queues and is replicated using the Namespace replication queue. See the schema upgrade [documentation](https://docs.temporal.io/cluster-deployment-guide#upgrade-server) for the required commands for performing the upgrade.
+
+The Matching Service will now load Task Queue user data from persistence for the Task Queue root partition, and non-root partitions will try to obtain and maintain a fresh view of the user data by long-polling other Task Queue partitions for the same Task Queue.
+
+If user data loading is suspected to be causing processing overhead, it can be completely disabled by using the `matching.loadUserData` dynamic config flag.
+
+Note that disabling the loading of user data will essentially disable the Versioning feature and will cause tasks for versioned Workflows to be dropped by the Matching Service, causing versioned Workflows to be stuck. This approach was chosen over dispatching versioned Workflows to arbitrary Workers and breaking the user-defined compatibility semantics. Manual intervention will be required to regenerate Tasks for stuck versioned Workflows.
+
+As part of this work, the `UpdateWorkerBuildIdCompatiblity`, `UpdateNamespace`, and `RegisterNamespace` APIs now have stricter rate limiting because they can produce replication messages for Global Namespaces. The Namespace replication queue is a critical resource that is not partitioned and serves as a mechanism for delivering failover messages between Clusters.
+
+A few more dynamic configuration options were added for this feature:
+
+- `limit.workerBuildIdSize` is the byte length limit for a Worker Build ID as used in the RPC methods for updating the version sets for a Task Queue. Do not set this option to a value greater than 255 for Clusters that use SQL-based persistence due to predefined VARCHAR column width.
+- `limit.versionCompatibleSetLimitPerQueue` is the maximum number of compatible sets allowed in the Versioning data for a Task Queue. Update requests that would cause the Versioning data to exceed this number will fail with a `FailedPrecondition` error.
+- `limit.versionBuildIdLimitPerQueue` is the maximum number of Build IDs allowed to be defined in the Versioning data for a Task Queue. Update requests that would cause the Versioning data to exceed this number will fail with a `FailedPrecondition` error.
+- `limit.taskQueuesPerBuildId` limits the number of Task Queue names that can be mapped to a single Build ID.
+- `limit.reachabilityTaskQueueScan` limits the number of Task Queues to scan when responding to a `GetWorkerTaskReachability` query.
+- `limit.reachabilityQueryBuildIds` limits the number of Build IDs that can be requested in a single call to the `GetWorkerTaskReachability` API.
+- `worker.removableBuildIdDurationSinceDefault` is the minimum duration since a Build ID was last set as default in its containing set for it to be considered for removal. The value is used by the Build ID scavenger.
+- `frontend.rps.namespaceReplicationInducingAPIs` limits the requests-per-second (RPS) rate for Namespace replication-inducing APIs (such as `RegisterNamespace`, `UpdateNamespace`, and `UpdateWorkerBuildIdCompatibility`). This config is EXPERIMENTAL and might be changed or removed in a later release.
+- `frontend.namespaceRPS.namespaceReplicationInducingAPIs` is a per-host and per-Namespace RPS limit for Namespace replication-including APIs (such as `RegisterNamespace`, `UpdateNamespace`, and `UpdateWorkerBuildIdCompatibility`). This config is EXPERIMENTAL and might be changed or removed in a later release.
+- `frontend.namespaceBurst.namespaceReplicationInducingAPIs` is a per-host and per-Namespace burst limit for Namespace replication-inducing APIs (such as `RegisterNamespace`, `UpdateNamespace`, and `UpdateWorkerBuildIdCompatibility`). This config is EXPERIMENTAL and might be changed or removed in a later release.
+- `frontend.globalNamespaceRPS.namespaceReplicationInducingAPIs` is a Cluster global, per-Namespace RPS limit for Namespace replication-inducing APIs (such as `RegisterNamespace`, `UpdateNamespace`, and `UpdateWorkerBuildIdCompatibility`). The limit is evenly distributed among available Frontend Service instances. If this option is set, it overwrites the per-instance limit configured with `frontend.namespaceRPS.namespaceReplicationInducingAPIs`. This config is EXPERIMENTAL and might be changed or removed in a later release.
+
+## Synchronous Update (preview)
+
+Synchronous Workflow Update enables a gRPC client of a Workflow Execution to issue requests to that Workflow Execution and receive a response. These requests are delivered to and processed by a client-specified Workflow Execution. Updates are differentiated from Queries in that the processing of an Update is allowed to modify the state of a Workflow Execution. Updates are different from Signals in that an Update returns a response.
+
+Updates can be handled by Workflows written using the latest Go and Java SDKs, with other languages to follow.
+
+Any gRPC client can invoke Updates via the `WorkflowService.UpdateWorkflowExecution` API, which returns the Update outcome inline. Additionally, past Update outcomes can be observed via the `WorkflowService.PollWorkflowExecutionUpdate` API.
+
+Update functionality is disabled by default but can be enabled per Namespace by setting the `frontend.enableUpdateWorkflowExecution` flag to `true` for that Namespace in dynamic config.
+
+In this release, Update outcomes are stored for the same period as the Workflow history itself and can be observed for as long as that history exists. The execution and retention of Updates is configured via two optional dynamic configuration values:
+
+- `history.maxTotalUpdates` controls the total number of Updates that a single Workflow Execution can support. The default is 2000.
+- `history.maxInFlightUpdates` controls the number of Updates that can be “in-flight” (that is, concurrently executing, not having completed) for a given Workflow Execution. The default is 10.
+
+Warning: when resolving history event conflict in global namespace, history event for update may be lost. This will be addressed in future release. 
+
+## Batch Reset via BatchOperation API
+
+Description: The server now supports resetting a batch of Workflow Executions. `StartBatchOperationRequest` now supports the  `Operation` type of `ResetOperation`.
+
+This operation depends on two additional parameters:
+
+- `ResetReapplyType`: Determines whether to reapply Signals after resetting the Workflow.
+- `ResetType`: Determines which Event ID to choose when resetting the batch of Workflows.
+    - `RESET_TYPE_FIRST_WORKFLOW_TASK`: Resets to the Event of the first Workflow Task completed. If the Task doesn’t exist, resets to the Event after the Task was scheduled.
+    - `RESET_TYPE_LAST_WORKFLOW_TASK` : Resets to the Event of the last Workflow Task completed. If the Task doesn’t exist, resets to the Event after the Task was scheduled.
+
+## Dynamic rate limiter
+
+The dynamic rate limiter is an advanced system-protection mechanism. By default, it’s disabled. When enabled, the per-host persistence rate limiter automatically adjust based on the average number of errors returned from persistence and the average latency of persistence requests.
+
+The rate limit is adjusted using a multiplier between 0.1 and 1.0 (default 1.0) on the host-level persistence rate limiter. If either the ratio of persistence calls that result in an error or the average latency of persistence requests exceeds their respective thresholds, the multiplier is reduced. If the multiplier is less than its maximum (1.0) and neither threshold is exceeded, the multiplier is increased.
+
+Several new dynamic config options are available to tune these adjustments. They are grouped in a map for each service, with the key `<service>.persistenceDynamicRateLimitingParams`, but currently only apply to the History Service.
+
+- `enabled`: Whether dynamic rate limiting is enabled for this service (default `false`).
+- `refreshInterval`: How often the rate limit multiplier and dynamic config options are updated (default 10s).
+- `latencyThreshold`: The limit for average latency that should trigger a rate limit reduction when exceeded (default 0.0; not used).
+- `errorThreshold`: The ratio of errors to total requests that should trigger a rate limit reduction when exceeded (should be between 0 and 1; default 0.0; not used).
+- `rateBackoffStepSize`: The amount the rate limiter multiplier is reduced when either limit is exceeded (should be between 0 and 1; default 0.3).
+- `rateIncreaseStepSize`: The amount the rate limiter multiplier is increased when neither threshold is exceeded and the multiplier is less than its maximum (should be between 0 and 1; default 0.1).
+
+## Updated defaultAuthorizer and defaultJWTClaimMapper
+
+Important: If you use defaultAuthorizer or defaultJWTClaimMapper, this is a breaking change. You need to update your JWT generator to produce permission for the system-level role as “temporal-system:*role*” instead of “system:*role*”, where *role* is read, write, admin, or worker. For safe rollout, you can add “temporal-system:*role*” to the list of permissions before rollout and remove “system:*role*” after rollout is done.
+
+Related PRs: https://github.com/temporalio/temporal/pull/4227 https://github.com/temporalio/temporal/pull/4244
+
+Note that defaultAuthorizer and defaultJWTClaimMapper are not used by default. You must explicitly configure it to use them.
+
+- Remove access to AdminService and OperatorService APIs from System RoleWriter.
+- Remove the Namespace lowercase change. Admins of Namespace “Foo” will not have access to namespace “foo”.
+- Previously, the defaultJWTClaimMapper treated “system” as a special Namespace, and granted system-level access to the admin of the Namespace named “system”. This is now changed to use “temporal-system”, which is a real system Namespace. Roles on the “temporal-system” Namespace will have system-level access.
+
+## Visibility
+
+### Deprecation heads up
+
+- Standard Visibility is entering a deprecation process. We are marking it deprecated with this version (1.21), and we expect to remove it in v1.23.0. If you are using Cassandra as your Visibility store, check the deprecation warning below. If you use Standard Visibility with a SQL database, see the [v1.20.0 release highlights](https://github.com/temporalio/temporal/releases/tag/v1.20.0) for details about upgrading to Advanced Visibility. If you want to migrate to a different Visibility store, see [Visibility store](https://docs.temporal.io/cluster-deployment-guide#visibility-store).
+- Cassandra, as a Visibility store, will be deprecated together with Standard Visibility. Please migrate away from using Cassandra as your Visibility store. For migration information, see [Visibility store](https://docs.temporal.io/cluster-deployment-guide#visibility-store).
+- Docs links:
+    - [Concept - Visibility](https://docs.temporal.io/visibility)
+    - [Cluster Deployment - Visibility store configuration](https://docs.temporal.io/cluster-deployment-guide#visibility-store)
+
+### Configs
+
+Some Visibility configs have changed. The following lists all the changes, and all the old keys will be removed in the next release.
+
+For the Server config
+
+- Configure Elasticsearch as a Visibility store
+    - New key: `visibilityStore`
+    - Old key: `advancedVisibilityStore`
+
+For dynamic configs
+
+- Enable reading from secondary Visibility
+    - New key: `system.enableReadFromSecondaryVisibility`
+    - Old keys: `system.enableReadVisibilityFromES` / `system.enableReadFromSecondaryAdvancedVisibility`
+- Secondary Visibility writing mode
+    - New key: `system.secondaryVisibilityWritingMode`
+    - Old keys: `system.enableWriteToSecondaryAdvancedVisibility` / `system.advancedVisibilityWritingMode`
+- Visibility maximum read QPS
+    - New key: `system.visibilityPersistenceMaxReadQPS`
+    - Old keys: `system.standardVisibilityPersistenceMaxReadQPS` / `system.advancedVisibilityPersistenceMaxReadQPS`
+- Visibility maximum write QPS
+    - New key: `system.visibilityPersistenceMaxWriteQPS`
+    - Old keys: `system.standardVisibilityPersistenceMaxWriteQPS` / `system.advancedVisibilityPersistenceMaxWriteQPS`
+
+### List and Scan APIs
+
+The List and Scan APIs have the following changes.
+
+- For List and Scan API, the default maximum page size is reduced from 10000 to 1000. If you call with a larger number, it will cap at 1000, and it will not throw an error. As for pagination, as long as you get a non-null token, there might be a next page: a page with less than 1000 does not necessarily mean that it’s the last page. The maximum page size can be changed using the dynamic config `frontend.visibilityMaxPageSize`; the dynamic config `frontend.esIndexMaxResultWindow` has been removed.
+- The Scan API, even though its documentation says that the result set is not guaranteed to be sorted, is used to support the `ORDER BY` clause, and it had a default order. With this release, the `ORDER BY` clause is no longer supported. For Elasticsearch, it has been optimized for faster scanning without guaranteeing order.
+- ~When using Elasticsearch, the Scan API is used to do a [scroll](https://www.elastic.co/guide/en/elasticsearch/reference/current/scroll-api.html) search or open a [point in time](https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html) search if available. Now, it supports only point in time searches, as supported by Elasticsearch 7.10 and later. Currently, we do not support OpenSearch, and the Scan API won’t work with OpenSearch.~ **[Update 7/24/2023: this was reverted in [v1.21.3](https://github.com/temporalio/temporal/releases/tag/v1.21.3)]**
+- Support for the `ORDER BY` clause is now disabled by default. You can enable it by setting the dynamic config `system.visibilityDisableOrderByClause` to `false`, and it can be set per Namespace. Although you can still enable it, this feature will likely be removed in a future release.
+
+## Frontend Service shutdown behavior
+
+Description: The shutdown procedure for the Frontend Service has been changed slightly to work better with load balancers.
+
+- First, the Frontend Service returns `NOT_SERVING` to gRPC health checks for the duration of the dynamic config `frontend.shutdownFailHealthCheckDuration` (default 0 seconds).
+- Second, the Frontend Service tells gRPC to stop accepting new connections and RPCs. Currently running RPCs (including long polls) will not be interrupted yet.
+- After the value of the dynamic config `frontend.shutdownDrainDuration` (default 1 second), currently running RPCs will be canceled.
+- The sum of the two durations is limited to 300s. After that time, the process exits.
+
+The default maximum long-poll duration is 60s. To avoid any client errors, we recommend setting `frontend.shutdownDrainDuration` to at least the 60s and setting `frontend.shutdownFailHealthCheckDuration` to at least as long as it takes your health checking system to notice the failed health check and stop sending traffic to that Frontend Service.
+
+Temporal SDKs expect errors and retry intelligently, so these settings are not required for the correct execution of Workflow.
+
+(The previous behavior had incoming RPCs during the drain interval return an application-level “Shutting down” error instead of a gRPC-level error. Also, the sum of the two durations was limited to 120s.)
+
+## Dynamic config validation
+
+Description: For dynamic config values that are interpreted as durations, previously, an integer value (that is, with no unit specified) would be treated as an error, and the default value would be used instead. Now integers are treated as seconds. (Floats are still not allowed.)
+
+It’s highly recommended to use values with units for clarity. If using the default YAML-based dynamic config, use strings like `"30s"` or `"5m"` instead of `30` and `300`. If using a custom dynamic config implementation, ensure that values are returned with the Go type `time.Duration`.
+
+Additionally, dynamic config values that fail to parse are logged at warning level. (After some amount of them, they’re logged only sporadically).
+
+## Per workflow limit
+
+Related PR: https://github.com/temporalio/temporal/pull/4326
+
+Description: The default values for various per-Workflow limits have been reduced or tightened. More specifically:
+
+- `limit.numPendingChildExecutions.error`, `limit.numPendingActivities.error`, `limit.numPendingSignals.error`, and `limit.numPendingCancelRequests.error` have been reduced to 2000. If exceeded, Workflow Tasks that generate new Child Workflows or Activities, signal external Workflows, or request cancellation of external Workflow Commands will fail. Be aware that there’s no partial acceptance of Workflow Commands. As a result, if Commands in a single Workflow Task response exceed those limits, the Workflow Task will keep failing.
+- `history.maximumSignalsPerExecution` is now 10,000. If exceeded, new Signal requests sent to the Workflow are rejected and return an `InvalidArgument` error.
+
+## All changes
+
+2023-06-23 - 521641f62 - Update updateRegistry store on mutable state reload (#4532)
+2023-06-22 - b8feb950a - Perform task range completion on shard rangeID update (#4528)
+2023-06-21 - 869991655 - Prevent scavenger from removing build ids that were recently default for a set (#4527)
+2023-06-21 - 5b4e2e317 - Add per build id timestamp for when it was last made set default (#4526)
+2023-06-21 - cdf158e4d - Add per version set timestamp for when it was last made default in queue (#4524)
+2023-06-21 - 2cd157975 - Simplify XDC test logic (#4522)
+2023-06-21 - f2fb09850 - Add string dynamic config filter by namespace id (#4523)
+2023-06-21 - 198f0e498 - remove monitor WhoAmI (#4506)
+2023-06-20 - a62450acd - Bring back branch token for branch deletion (#4521)
+2023-06-20 - 7f064eac4 - Wrap setting futures in taskQueueManager (#4494)
+2023-06-20 - 35ad0a599 - Validate startedEventId when close WorkflowTask (#4519)
+2023-06-20 - 36c60c369 - Update duplicate WorkflowExecutionInfo CLI proto (#4520)
+2023-06-16 - bdd58017f - Use search attribute size limit for BuildIds truncation (#4516)
+2023-06-16 - 20baa97cf - Spool tasks with "default" versioning directive along with unversioned tasks (#4512)
+2023-06-16 - 7f3bb1a0e - Apply stricter rate limiting for the RegisterNamespace API (#4513)
+2023-06-16 - 3392a7ab5 - Fix wrong format specifier in client_gen (#4511)
+2023-06-16 - bddbc7439 - Cluster not found (#4501)
+2023-06-16 - 9330f5253 - Record ES bulk took time after err check (#4508)
+2023-06-15 - 187f699a6 - Add InvalidStateTransitionWorkflowExecutionUpdateCounter metric (#4503)
+2023-06-15 - 0a109d579 - Add missing reset type params (#4505)
+2023-06-15 - 6a9d9d8a4 - Fix typo in batch reset  (#4504)
+2023-06-15 - 1644435ae - Check if WorkflowTaskFailed event is nil when workflow completes (#4500)
+2023-06-15 - ae2d232f8 - Refactor matching operations when user data disabled (#4493)
+2023-06-14 - 73189b7bd - Return NonRetryableApplicationError if input is invalid in ForceReplicationWorkflow and NamespaceHandoverWorkflow (#4498)
+2023-06-14 - c712b57e2 - Fix error checking (#4496)
+2023-06-14 - 021a84e21 - Functional tests: Set ReturnNewWorkflowTask for task poller always to true (#4476)
+2023-06-14 - c5efe932b - Remove usages of AcceptedRequest field (#4489)
+2023-06-14 - 2db855d12 - Schedule a new workflow task after force flush buffer events (#4490)
+2023-06-14 - 8795c6c12 - Add namespace migration support for replication stream (#4488)
+2023-06-14 - 741edb50e - Test update not found due to shard reload case (#4495)
+2023-06-13 - 363e92c98 - Disable revive.unexported-return linter (#4466)
+2023-06-13 - a24557b4e - Log errors instead of crashing in OTel metrics handler (#4485)
+2023-06-13 - 598b0c387 - Fix some typos and comments in metrics package (#4478)
+2023-06-13 - 03ca8e8f2 - Refactor task queue user data loading (#4487)
+2023-06-13 - 71748a0cf - Only replicate user data for multi cluster setups (#4484)
+2023-06-12 - ea9ad7854 - Reuse unloadTaskQueue helper in versioning_test (#4482)
+2023-06-12 - a6ae65114 - Fix some invalid metrics definitions (#4465)
+2023-06-12 - fc281193f - Increase test timeout to 30 minutes (#4480)
+2023-06-12 - 75ffab3a5 - Add TestDescribeTaskQueue to versioning tests (#4474)
+2023-06-12 - 6e432225b - Add TestDescribeWorkflowExecution to versioning tests (#4473)
+2023-06-12 - 30c9be548 - Add worker identity to TestUpdateWorkflow tests (#4475)
+2023-06-10 - eeec6e01e - Get rid of MetricName type (#4479)
+2023-06-09 - eeee3a069 - Update poller info on base tqm (#4472)
+2023-06-09 - 06d2ce841 - Add dynamic config to disable loading task queue user data (#4477)
+2023-06-09 - d44aa1e7e - Add special rate limiter for namespace replication inducing APIs (#4455)
+2023-06-09 - cee5ba319 - Move poller map to matchingEngine (#4471)
+2023-06-09 - 65300d506 - Remove duplicate keys from dynamic config (#4470)
+2023-06-09 - e100485c4 - Block versioned cross-tq activities, child workflows, CAN (#4459)
+2023-06-09 - bef83ae71 - Create normal workflow task if unseen events exist (#4469)
+2023-06-09 - 54abd995d - Merge history tree insert with history node append (#4464)
+2023-06-09 - 30be627e5 - Implement build id scavenger (#4430)
+2023-06-08 - d8f70e15a - Remove unused metrics.ServiceIdx (#4454)
+2023-06-08 - 912b8890b - Remove unused MetricType concept (#4452)
+2023-06-08 - 137886a7b - Implement merge sets operation for Build IDs (#4447)
+2023-06-08 - dd4c7de94 - Enable workflow update is server development configs (#4461)
+2023-06-08 - ac1944fde - Enforce uniqueness of replication stream (#4448)
+2023-06-08 - a4bc99111 - Add more asserts on history events attributes (#4456)
+2023-06-08 - 27d0a1f48 - Use task queue base name for dynamic config (#4445)
+2023-06-08 - e5d58dc7e - More functional tests for worker versioning (#4446)
+2023-06-08 - f8453ceb7 - Hide BuildIds search attribute for schedules (#4458)
+2023-06-07 - 7608a0c8b - Add retryable client for persistence task manager (#4457)
+2023-06-07 - a51abcfff - Comments and event attributes in expected history in tests (#4426)
+2023-06-07 - b61c3f351 - Drop task when namespace is not on the cluster (#4444)
+2023-06-06 - 79e212d85 - Add functional test to deduplicate updates by ID (#4438)
+2023-06-06 - da83b0a5e - Add the event batch ID to update CompletionInfo (#4441)
+2023-06-06 - c107bfd3b - Take acceptedEventID write out of commit callback (#4443)
+2023-06-06 - 25c734287 - use existing acquire shard test setup (#4442)
+2023-06-05 - 81c619766 - Remove unneeded FlushAndCreateNewBatch call from AddWorkflowTaskScheduleToStartTimeoutEvent (#4439)
+2023-06-05 - d2ec9692c - Add functional test for shard reload during update (#4437)
+2023-06-02 - 6691620a2 - Write accepted event ID in update completion event (#4436)
+2023-06-02 - 426f6d17f - Improve flexibility of UpdateInfo proto message (#4433)
+2023-06-02 - de7f6790d - Dynamic rate limiter (#4390)
+2023-06-02 - 3bee7f782 - Upgrade OTEL module to the latest version (#4423)
+2023-06-02 - c4c6d6d2d - Limit max number of update for workflow execution (#4413)
+2023-06-02 - 2c90feb99 - Add test for heartbeat from speculative workflow task (#4425)
+2023-06-02 - ce4734012 - Fix task inMemoryNoUserLatency 2.0 (#4431)
+2023-06-02 - b34d21a99 - Fix handling of batch signal input payloads (#4374)
+2023-06-01 - d619d79fc - Limit build IDs per queue to 100 (#4415)
+2023-06-01 - d909a9673 - Fix task inMemoryNoUserLatency (#4429)
+2023-06-01 - 5bc1a7248 - Add update counts to mutable state statistics (#4422)
+2023-05-31 - e8c2a19f4 - Fix TestDefaultPublishRetryPolicy (#4421)
+2023-05-31 - 35e7696cc - Remove speculative workflow task restoration code (#4424)
+2023-05-31 - 10a14e319 - Inline UpdateInfo Storage (#4420)
+2023-05-31 - 5e0459e17 - Add functional test for update with existing scheduled workflow task (#4414)
+2023-05-30 - 2a4aec073 - Make server fx init more extendable (#4419)
+2023-05-30 - 8aab8ab9c - Improve task latency calculation and retry behavior (#4408)
+2023-05-30 - 35708d94e - Fix delete visibility task notification (#4416)
+2023-05-26 - d2f251638 - Refactor ES query converter (#4382)
+2023-05-26 - 81eaa7759 - Allow workflow to complete if there are updates in the registry (#4412)
+2023-05-26 - 7e64d1d41 - Final update of api/sdk for worker versioning
+2023-05-26 - a9505282f - Allow GetTaskQueueUserData and matching long polls to use a 5m timeout (#4407)
+2023-05-26 - 2de41e587 - Handle worker versioning for sticky queues (#4397)
+2023-05-26 - b717268be - Address comments from #4346 review (#4405)
+2023-05-26 - 188a7ec84 - Update API and SDK to latest master (#4402)
+2023-05-26 - 209e2501f - Worker versioning leftovers (#4400)
+2023-05-26 - 8a325f86e - Implement GetWorkerTaskReachability API (#4346)
+2023-05-26 - afe0304a1 - Add dynamic config to disable worker versioning progress APIs (#4398)
+2023-05-26 - 453f54a18 - Server updates for use_compatible_version (#4394)
+2023-05-26 - 773aefd8c - Add a few functional tests for worker versioning (#4375)
+2023-05-26 - 8ffe902bc - Redirect spooled tasks using versioning directive (#4357)
+2023-05-26 - 3805cfdf5 - Implement use_latest_build_id for activities, child workflows, continue-as-new (#4347)
+2023-05-26 - 42e766e9d - Propagate task queue user data with long-poll requests (#4334)
+2023-05-26 - bc58ba146 - Fix some versioning redirection logic (#4286)
+2023-05-26 - 53a4a3aab - Worker versioning - add BuildIDs search attribute (#4284)
+2023-05-26 - 6b4e3cc1f - Redirect to versioned queues in matching (#4241)
+2023-05-26 - ff6e6af7c - Minor fixes
+2023-05-26 - 2d2f94ba4 - Implement task queue user data seed (forced replication) (#4259)
+2023-05-26 - 9e9f9cae8 - Rename imports to match convention (#4261)
+2023-05-26 - 6e7917bec - Implement task queue user data replication (#4237)
+2023-05-26 - 1a3e27766 - Copy build id to binary checksum when present (#4230)
+2023-05-26 - 931adff08 - Thread version stamps through from history to matching (#4220)
+2023-05-26 - 35dfeede1 - Misc versioning tasks (#4221)
+2023-05-26 - 219f67479 - Pass worker version capabilities through poller info (#4219)
+2023-05-26 - 283931a5b - Refactor to use OwnsUserData (#4218)
+2023-05-26 - 84437cf01 - Versioning data merge algo and hybrid logical clock utils (#4205)
+2023-05-26 - 0a9785a15 - Refactor to use new protos and persistence (#4194)
+2023-05-26 - c2fdc9f2b - Proto and persistence definitions for replicated versioning (#4172)
+2023-05-26 - 47d3fe5f9 - Hot shard metrics (#4365)
+2023-05-26 - 759aa2cfe - Reject signal if workflow attempted to close (#4395)
+2023-05-26 - 01034e4b4 - Add ES point in time to Scan API (#4380)
+2023-05-26 - d1e1243bd - Rewrite some workflow history size calculation (#4258)
+2023-05-26 - 15bc10d5c - Fix mutable state get event error handling (#4396)
+2023-05-26 - 6132e5831 - Improve retry util (#4403)
+2023-05-26 - df9162b7b - Bump CI builder base version (#4406)
+2023-05-26 - eb2845e10 - Fix prometheus metrics (#4393)
+2023-05-25 - 0059b83ea - Use WTFailed.EventId as completion_event_batch_id when workflow is terminated or timed out (#4392)
+2023-05-25 - 9aa4ade25 - Fix merge issues from PR 4317 (#4404)
+2023-05-25 - 378e1e60f - Add function to get custom search attributes mapper in namespace registry (#4317)
+2023-05-24 - fea13adee - Do not generate scheduled task with timestamp in the past (#4367)
+2023-05-24 - c2aee406d - Refactor UpdateWorkflowExecution functional tests (#4388)
+2023-05-24 - 2fce7a56c - Enforce mutable state size limit (#4350)
+2023-05-24 - df69684c7 - Bugfix: backfill replication queue state read ID calculation (#4391)
+2023-05-24 - ca28eb077 - Fix partial namespace creation (2.0)  (#4330)
+2023-05-23 - 68856fef7 - Do not let API call timeout if workflow can't be locked (#4341)
+2023-05-23 - b191203e4 - Avoid making a subscope in tallyMetricsHandler if possible (#4363)
+2023-05-23 - e720b5533 - fix: create btree_gin extension only if not exists (#4371)
+2023-05-23 - 6be18a183 - Add functional test with OpenSearch 2 (#4124)
+2023-05-23 - 6b600dcf7 - Add metric to track ES bulk response took field (#4355)
+2023-05-19 - 981d22bbe - Remove unused toDC config (#4370)
+2023-05-19 - 09fc4c644 - Fail workflow execution update fast if workflow task constantly fails (#4376)
+2023-05-19 - 944b893e5 - Add functional test for speculative workflow task in sticky task queue timeout (#4369)
+2023-05-19 - d73481ae4 - Add functional test to cover conversion of scheduled speculative workflow task to normal (#4364)
+2023-05-19 - c719eac18 - Capture UpdateInfos in MutableState mutation (#4372)
+2023-05-19 - ed4960423 - Return # of state transition when generating last replication tasks (#4352)
+2023-05-19 - f72345035 - Bugfix: do not leak gRPC stream (#4368)
+2023-05-18 - e61de47cd - Add functional test to terminate workflow with pending speculative workflow task (#4366)
+2023-05-18 - 680e4e170 - Fail query fast if workflow task attempt greater or equals 3 (#4359)
+2023-05-18 - 9a6edae08 - Fix: failWorkflowTask returns wrong nextEventBatchID when failing speculative workflow tasks (#4354)
+2023-05-18 - 3bfbb814b - Don't return workflow task if it is speculative and doesn't have any messages (empty) (#4356)
+2023-05-17 - 007606d66 - Fix: use normal task queue if sticky worker unavailable during update workflow API call (#4353)
+2023-05-16 - ab2f6b9b3 - Ensure workflow key is fully specified (#4351)
+2023-05-16 - b9a9029e7 - Use the correct event version for task refresh (#4349)
+2023-05-16 - f74966f15 - Increase default number of Elasticsearch bulk processor workers to 2 (#3738)
+2023-05-16 - c42e7dd64 - Per-shard per-namespace rate limiter (#4302)
+2023-05-16 - 5e9f623d5 - Add a config flag for enabling async updates (#4342)
+2023-05-15 - 1240df2ee - Fix mutable state access after workflow lock is released (#4333)
+2023-05-15 - d5f026449 - Tag metric tracking custom order by with namespace (#4344)
+2023-05-15 - d2014911c - Bugfix: ExecutableTaskTracker LowWatermark funcion (#4343)
+2023-05-15 - 9f9b828f8 - Fix misc. context value propagation issues (#4279)
+2023-05-15 - 9712711c1 - Handle ProtocolMessageCommands in WFT completion (#4328)
+2023-05-15 - 1a479ad80 - Use sequential task processor for replication (#4339)
+2023-05-15 - 2607d6159 - Add some documentation to the maximumInterval field of ExponentialRet… (#4316)
+2023-05-15 - d4af86087 - Add some documentation to the maximumInterval field of ExponentialRet… (#4318)
+2023-05-15 - 467ea4c7b - Update Go SDK to v1.22.2 (#4327)
+2023-05-15 - 11f4e6852 - Add linters goerr113, paralleltest, and tparallel (#4239)
+2023-05-15 - 0d140a3c3 - Fix caller info for migration activities (#4340)
+2023-05-15 - 9d7545b09 - Truncate activity failure in mutable state (#4338)
+2023-05-14 - a05d21cdc - Fix: set nonRetryable field of server failure to "true" when failure size exceeds limit (#4335)
+2023-05-14 - d6ab8c531 - Add additional metrics for stream replication (#4323)
+2023-05-12 - a136de7ae - Make sure shard info always stays in a cleanup state (#4336)
+2023-05-12 - aca0d911a - Change schedules default catchup window to 1 year (#4332)
+2023-05-12 - f84a3c370 - Handful of minor changes to the update package (#4331)
+2023-05-12 - f07921b38 - Update api-go (#4320)
+2023-05-12 - 62611e2e5 - Refactor task queue related methods of mutable state (#4325)
+2023-05-11 - a343beaba - Revert "Fix partial namespace creation (#4267)" (#4322)
+2023-05-11 - cd8821c85 - Enforce stricter per workflow limit (#4326)
+2023-05-11 - 40e76275a - Remove unneeded duration/seconds conversion (#4321)
+2023-05-11 - 6e7c669ae - Create dynamic config to enable manual pagination for Elasticsearch (#4314)
+2023-05-11 - a3ae60298 - Add replication dlq metrics (#3876)
+2023-05-11 - 3cbab42bc - Fix partial namespace creation (#4267)
+2023-05-11 - 58e247bf8 - Prevent workflow close when updates are undelivered (#4313)
+2023-05-11 - a6861bfb0 - Async Updates and the Poll API (#4309)
+2023-05-11 - a1fe0e6a5 - Manually build ES pagination query for default sorter (#4271)
+2023-05-11 - d040cdfb3 - Improve Update.WaitAccepted - followup (#4312)
+2023-05-11 - 3bfac8a19 - Improve Update.WaitAccepted (#4311)
+2023-05-10 - f34d5b778 - Default disable order by clause support (#4305)
+2023-05-10 - 8ed296c12 - Use executable task tracker to dedup tasks when stream is re-established (#4310)
+2023-05-10 - 25b7cbc73 - Add a per-workflow limit to in-flight updates (#4307)
+2023-05-10 - 233953103 - Fix adding multiple search attributes of same type at once (#4273)
+2023-05-10 - 1c7e8955f - Refactor the Update type to a state machine (#4297)
+2023-05-10 - dc7f28df4 - Skip over entire time range if paused and batch and cache time queries (#4215)
+2023-05-10 - 807b791d2 - Add automaxprocs. (#4301)
+2023-05-09 - 46caef3df - Refactor matching handlerContext (#4303)
+2023-05-09 - 15974517a - Simplify task queue liveness (#4290)
+2023-05-09 - 9f6651042 - Use search attribute type map in visibility archival (#4304)
+2023-05-09 - d0007b065 - In memory timeout timer queue for speculative workflow task (#4254)
+2023-05-09 - 8bc74cb43 - Add server stream interceptor (#4300)
+2023-05-08 - 5af117ea3 - Bring PollWorkflowExecutionUpdate to HistoryEngine (#4298)
+2023-05-08 - 8e6203a45 - Event buffer size limit (#4296)
+2023-05-08 - 8fa4d3f71 - Correct spelling: updat_id -> update_id (#4299)
+2023-05-08 - 89f707b1b - Small refactor to matching signalFatalProblem (#4292)
+2023-05-08 - a43d451b8 - Enable Elasticsearch body compression with gzip (#4289)
+2023-05-05 - 392e769fb - Bump gocql to v1.4 (#4294)
+2023-05-05 - 9fd0e2607 - Handle namespace not found in history scan (#4287)
+2023-05-05 - 08dcc7055 - Expose better logs for dynamic config conversion errors (#4282)
+2023-05-05 - c243c084c - Verify WFTs with large event buffers fail (#4272)
+2023-05-05 - 9fdd08c79 - Make shard ownership more resilient when shard is busy (#4283)
+2023-05-04 - 0bdbbfc73 - Allow plain int seconds for duration in dynamic config (#4280)
+2023-05-04 - bb7d4afe5 - Introduce update.Storage (#4277)
+2023-05-04 - ea4946c9e - Use GracefulStop in frontend (#4212)
+2023-05-04 - e6e2372b0 - Add Reset to Batch API (#4157)
+2023-05-03 - 1d1ef27d2 - Remove force task refresh in passive processing logic (#4278)
+2023-05-03 - 6e43d5432 - Fix task attempt reset (#4276)
+2023-05-03 - b757d8b20 - Fix metric tag for delete execution task (#4275)
+2023-05-03 - 5783e7815 - Adds update state indexing to MutableState (#4224)
+2023-05-01 - d4cd05e04 - Remove support for ES PIT and scroll in ES client (#4223)
+2023-05-01 - b6525f179 - Remove unused matching DB layer impl (#4141)
+2023-05-01 - 2763a0f3b - Remove usages of ES PIT and Scroll (#4249)
+2023-05-01 - 661d6d431 - Refactor fx Start/Stop usage (#4248)
+2023-05-01 - 80687d797 - Remove unused functions in shard interface (#4255)
+2023-05-01 - 2aa548199 - Remove unused dynamicconfig.Collection in top level fx container (#4253)
+2023-04-28 - d6d7a0b0b - Add more logging (#4252)
+2023-04-28 - 625f6d2c5 - Increase shutdown timeout to 5 minutes (#4195)
+2023-04-28 - d94444d06 - Change dynamic config for worker versioning to be specific to data APIs (#4238)
+2023-04-28 - 10c20a6f0 - Update dynamic config related to visibility (#4250)
+2023-04-28 - 8740a205f - Support signals that do not immediately generate a workflow task (#4091)
+2023-04-27 - 7a24d8efb - defaultJWTClaimMapper treat namespace as case sensitive (#4244)
+2023-04-27 - 62c35aa97 - Remove noisy queue action log (#4245)
+2023-04-27 - 1ea69e026 - Turn autofix for golangci-lint and add goimports make target (#3958)
+2023-04-27 - 4d274876d - Run no-op claim mapper even without auth info (#4197)
+2023-04-27 - 23147c36c - Attempt to unify queue state (#4190)
+2023-04-26 - ccbfa7d47 - Add histogram support in metricstest (#4177)
+2023-04-26 - b1caaa004 - Code style simplification and improved readability for returning errors (#4236)
+2023-04-26 - cb0a9c792 - Code style fix (#4235)
+2023-04-26 - c0029aa54 - [WIP] Fix error return bug and some minor code style (#4234)
+2023-04-25 - d8d9289a9 - Fix test race condition (#4232)
+2023-04-25 - ec3ff8bbd - Block non admin role to access system services (#4227)
+2023-04-25 - 5797648dd - Fix broken tests (#4231)
+2023-04-25 - 8eb42e314 - Bugfix shard ID mapping util & stream receiver monitor (#4229)
+2023-04-25 - 7c4f3fd2a - Rename some var names in replication stream logic (#4211)
+2023-04-25 - 2c2fb71fc - Support ES secondary_visibility index in docker config template (#4213)
+2023-04-25 - aceb87878 - Use sqlite by default for functional test (#4210)
+2023-04-25 - 683064c1a - Add sequential task scheduler (#4130)
+2023-04-24 - e5372ec2b - Add dynamic config flag to disable worker versioning (#4222)
+2023-04-24 - 0953f9b62 - Call List API from Scan API for SQL visibility (#4217)
+2023-04-24 - 37cebd0b0 - Update vis store dev configs (#4208)
+2023-04-24 - 6715e3819 - Revert "Enable Scan API in SQL visibility store" (#4214)
+2023-04-24 - 12655c469 - Refactor configs for visibility (#4095)
+2023-04-24 - b97be7814 - Wire replication stream caller side (#4178)
+2023-04-21 - a52bb7331 - Test sync update on sticky task queue (#4200)
+2023-04-21 - ba09219d4 - Fix cron for schedules that do not match any time (#4206)
+2023-04-21 - d6c298b35 - Use int64 as type for queue readerID (#4176)
+2023-04-21 - feb938eae - Add flush method to flush buffer (#3521)
+2023-04-20 - 6c39401e5 - Validate messages against pending updates (#4188)
+2023-04-20 - 0ca9e83a1 - Convert speculative workflow task to normal when it is persisted (#4069)
+2023-04-19 - 501fdae54 - Implement batch history replication API (#4167)
+2023-04-19 - bdbec131c - Rename UpdateQueueState to SetQueueState (#4187)
+2023-04-19 - becc2f3d5 - Remove DefaultVisibilityIndexName from history config (#4189)
+2023-04-19 - 8d3836a50 - Don't log error for ownership lost in matching task reader (#4183)
+2023-04-19 - 2ff8d379b - Use correct API for transfer queue (#4186)
+2023-04-19 - 8b7e3f7d9 - Add visibility manager dependency to delete manager (#4138)
+2023-04-18 - af066c3f8 - Enable Scan API in SQL visibility store (#4161)
+2023-04-17 - e792a6808 - Add util to map shard IDs (#4175)
+2023-04-17 - 0cf036505 - Handle errors when registering new queue readers (#4055)
+2023-04-17 - 74d3f15ab - Enforce visibility max page size (#4164)
+2023-04-17 - 3cf1eb811 - Abort a task if schedule shuts down (#4125)
+2023-04-17 - 2d0272c6e - Remove unused exporter from openTelemetryProviderImpl (#4169)
+2023-04-14 - 52b036574 - Remove version_set_id from CompatibleVersionSet (#4170)
+2023-04-14 - c1ec2bb4c - Switch from opaque branch token to branch info (#4168)
+2023-04-13 - cdd1a218f - Split history tree insert from history node append (#4147)
+2023-04-13 - 87dbab0ad - Update Go SDK to v1.22.1 (#4166)
+2023-04-12 - b8aab1034 - Update Go SDK to v1.22.0 (#4163)
+2023-04-12 - 1e2ecc45a - Fix schedule catchup window metric calculation while paused (#4152)
+2023-04-12 - 04729dc27 - Add a hermetic PipeListener for testing net code (#4098)
+2023-04-12 - cb70d5816 - Use fx parameter object pattern for ringpop factory (#4115)
+2023-04-11 - 0e18e19d2 - Validation API should use low priority lock (#4140)
+2023-04-07 - 3ce9a171e - Fix error handling add search attributes (#4148)
+2023-04-05 - 0d6e92f8b - Addressing comments in PR 4134 (#4144)
+2023-04-01 - 6f1f02280 - Change Scan API to have no Order(ES) (#4134)
+2023-03-31 - ca1d906a5 - Do not generate workflow timeout task if workflow is closed (#4135)
+2023-03-31 - 2ef3afd55 - Properly handle replication task lifecycle (#4126)
+2023-03-31 - 7244681f3 - Reconnect on a few more gocql errors (#4132)
+2023-03-31 - c97c973ec - Use correct time for initial schedule memo (#4128)
+2023-03-31 - fec04d12d - Reuse timer in schedule workflow (#4129)
+2023-03-31 - 8955ebfc3 - Cleanup redundant input args (#4096)
+2023-03-29 - 0ca5360a1 - Auto clear stickiness (#4104)
+2023-03-29 - d4b64e854 - Reduce the # of resend events if workflow is a reset workflow (#4123)
+2023-03-29 - 9bc7eddb6 - Remove now as required var for workflow mutation (#4122)
+2023-03-29 - 3a5665264 - Enforce concurrent count limit to all long poll calls (#4120)
+2023-03-29 - d4e325114 - Fix data race in test (#4121)
+2023-03-29 - 7ce28f8ff - Log warnings for retryable ringpop errors (#4102)
+2023-03-29 - 88585475f - Inject service name (#4119)
+2023-03-29 - 8bd067a9f - Add poison pill support for replication stream (#4116)
+2023-03-29 - 7228219f5 - Don't include stack traces for warnings during tests (#4101)
+2023-03-29 - 8f030dbb8 - Wire replication stream E2E (#4097)
+2023-03-29 - fca366247 - Add history size bytes to SQL visibility (#4090)
+2023-03-29 - f4c188813 - Addressing PR-4099 comments (#4113)
+2023-03-29 - f1b88e8d5 - Bump UI version (#4047)
+2023-03-28 - bccdaaac4 - Add base workflow info to workflow replication task (#4107)
+2023-03-28 - e4a49b264 - Add flag to enable execution scanner event Id validator (#4114)
+2023-03-28 - 47424c0ba - Better error message in ES query converter (#4112)
+2023-03-28 - 939eefae8 - Fix missing import bug (#4111)
+2023-03-28 - a20faeb88 - Use dedicated proto definition for replication stream (#4106)
+2023-03-28 - afc5ac7e4 - Remove common.Daemon from Monitor interface (#4084)
+2023-03-28 - 443144646 - Add replication stream receiver logic (#4093)
+2023-03-26 - aef7c0b93 - Fix some minor linter warnings in the membership package (#4100)
+2023-03-24 - f1ef4db67 - Change update namespace to upsert custom search attributes (#4080)
+2023-03-24 - 8bdfccc51 - Refresh per-namespace worker periodically (#4103)
+2023-03-24 - 3d6ac72f5 - Fail QueryWorkflow if last workflow task failed (#4099)
+2023-03-24 - d05b15fce - Support empty queries when listing archived workflows (#4027)
+2023-03-24 - 63b22ca41 - Add support for workflow start delay (#3984)
+2023-03-23 - 11cef80fe - Flush buffer event when failing workflow task (#4010)
+2023-03-23 - 19a30b926 - Fix build id compatibility spelling (#4086)
+2023-03-23 - cd157354e - Hide ringpop config validation in ringpop package (#4085)
+2023-03-23 - aee7c5f9a - Stub out new PollWorkflowExecutionUpdate API (#4081)
+2023-03-23 - 5210ad4c2 - Add gRPC replication stream (#4057)
+2023-03-23 - e67a1ce17 - Account for local activity run time in schedule sleep (#4079)
+2023-03-22 - 832f4e6da - Break replication ack manager into smaller component (#4088)
+2023-03-22 - cc2eb80b2 - Fix test failure from merge conflict (#4087)
+2023-03-22 - 22522bf95 - Use more reliable workflow mutation check (#4076)
+2023-03-22 - 6974ed355 - Fix namespace handover replication queue notification (#4082)
+2023-03-22 - 66352edef - Track and emit metrics for entities in a single workflow (#4065)
+2023-03-22 - 1439b87bd - Handle max signal count limit for signal transfer task (#4051)
+2023-03-22 - b3bc60203 - Remove Lookup method from Monitor interface (#4072)
+2023-03-21 - 19b465be2 - Remove unused methods from Monitor interface (#4071)
+2023-03-21 - e8be006e2 - Lock current execution on start workflow (#4066)
+2023-03-21 - d53f1b6f4 - Use preemptable caller type for low priority history tasks (#3993)
+2023-03-21 - 78fdba2c5 - Add deadlines to schedule local activities (#4078)
+2023-03-21 - 2af5bf4b2 - Fix SQL visibility page token deserializer (#4074)
+2023-03-21 - fc56eeac0 - Rename visibility writing mode consts (#4068)
+2023-03-21 - dc018cd7d - Fixing saving custom search attribute after upgrading SQL DB (#4062)
+2023-03-21 - e7b42766f - Add counter to track custom order by usage in Elasticsearch (#4064)
+2023-03-21 - 4033f2105 - Rename variables in timer package (#4067)
+2023-03-21 - 411c65bf2 - Set default values in returned calendar specs (#3969)
+2023-03-20 - 0d0cad4a1 - Change disable order by dynamic config to per namespace (#4063)
+2023-03-16 - 129f2f841 - Pass in namespace ID to initialize new history branch (#4058)
+2023-03-15 - 07ffab53e - Use new API's simpler representation of versioning data (#3432)
+2023-03-14 - 086f5ecfb - Rename inflight WT to started WT (#4043)
+2023-03-14 - ddd0911c4 - Add gRPC stream error interceptor (#4019)
+2023-03-13 - ed47a167a - Fix UnhandledCommand error for workflow task completion in CancelTimer (#4050)
+2023-03-13 - b520a5b11 - Improve message sequence validator (#4037)
+2023-03-10 - 122bb36ed - Add more test for XDC (#4025)
+2023-03-09 - 7b6ce2545 - Unique owner for each shard context object (#4008)
+2023-03-09 - 4c47aecb4 - Convert query converter error to invalid argument (#4036)
+2023-03-09 - 7f848d1d6 - Move update registry from mutable state to workflow context (#4032)
+2023-03-09 - 85aa550f9 - Extract cluster config logic into ConfigureCassandraCluster() (#4034)
+2023-03-09 - 75facb16b - Remove unused HostsUpdated field from ChangedEvent (#4015)
+2023-03-09 - 818cbb173 - Refactor gocql.NewSession to allow passing in cluster config factory method (#4033)
+2023-03-08 - 010917c76 - Flush buffer event with single cluster namespace (#4031)
+2023-03-08 - d1159dc01 - Add support for namespace readthrough to persistence (#3908)
+2023-03-06 - 6ea38d79f - Update history task reader progress (#4004)
+2023-03-06 - e7cdd7140 - Register history queue readers (#3995)
+2023-03-06 - dc692785b - Restructure replication task implementation & UT (#3992)
+2023-03-06 - e4162e80d - Remove unused persistence GetHistoryTask API (#4003)
+2023-03-06 - 94f58249b - Add more test cases for XDC (#4009)
+2023-03-06 - c8ad74a61 - Return raw replication task info from read dlq api (#4007)
+2023-03-05 - c172708e3 - Hide remaining exported symbols in ringpop package (#4012)
+2023-03-05 - 9740e7f31 - Move RingPop config validation to membership package (#4011)
+2023-03-05 - 8c7e79a30 - Fix comment above NewServerFxImpl (#4013)
+2023-03-05 - 061593b0f - Move ringpop code from membership to ringpop package (#3999)
+2023-03-05 - abd02977d - Extract interface from membership.HostInfo (#3996)
+2023-03-02 - 701b77528 - Specify readerID on loading history tasks (#3994)
+2023-03-02 - 715fe3fe5 - History task reader persistence hint API (#3986)
+2023-03-02 - 2977c7243 - Upgrade sqlite to v1.21.0 to address security vulnerability (#4001)
+2023-03-01 - 7086b94a4 - Make types not used outside of membership unexported (#3998)
+2023-03-01 - 13e317075 - Use snake case for file names in common/membership (#3997)
+2023-02-28 - eea242d50 - Refactor history branch manipulation logic into its own utility (#3946)
+2023-02-27 - 35dcba861 - Improve scheduled queue lookahead logic (#3982)
+2023-02-24 - edd92bbf6 - Streamline localstack s3 development (#3976)
+2023-02-22 - 3b982585b - Add SQL query converter tests (#3972)
+2023-02-21 - bc2d02555 - Refactor SQL query converter (#3971)
+2023-02-21 - f522ff3eb - Upgrade dependency for next release (#3974)
+2023-02-21 - 3b7139358 - Fix passing pointer of slice element in SQL query converter (#3970)
+
+# Helpful links to get you started with Temporal
+[Temporal Docs](https://docs.temporal.io/)
+[Server](https://github.com/temporalio/temporal)
+[Docker Compose](https://github.com/temporalio/docker-compose)
+[Helm Chart](https://github.com/temporalio/helm-charts)
+
+# Docker images for this release (use tag `1.21.0`)
+[Server](https://hub.docker.com/repository/docker/temporalio/server)
+[Server With Auto Setup](https://hub.docker.com/repository/docker/temporalio/auto-setup) ([what is Auto-Setup?](https://docs.temporal.io/blog/auto-setup))
+[Admin-Tools](https://hub.docker.com/repository/docker/temporalio/admin-tools)</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

@@ -16,7 +16,13 @@
     <loc>https://yourdomain.com/site/vitejs_vite.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/eslint_eslint.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/moby_moby.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/opensearch-project_OpenSearch.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/spf13_viper.html</loc>
@@ -46,7 +52,13 @@
     <loc>https://yourdomain.com/site/vuepress_vuepress-next.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/thollander_actions-comment-pull-request.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/directus_directus.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/jest-community_eslint-plugin-jest.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/go-kit_kit.html</loc>
@@ -79,7 +91,16 @@
     <loc>https://yourdomain.com/site/facebook_react.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/ziglang_zig.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/ray-project_ray.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/koajs_koa.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/cypress-io_cypress.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/gorilla_mux.html</loc>
@@ -91,10 +112,16 @@
     <loc>https://yourdomain.com/site/golang_go.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/projectdiscovery_nuclei.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/junegunn_fzf.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/appwrite_appwrite.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/google_jax.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/changesets_changesets.html</loc>
@@ -106,10 +133,19 @@
     <loc>https://yourdomain.com/site/urfave_cli.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/wagtail_wagtail.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/shopify_polaris.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/ant-design_ant-design.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/BurntSushi_ripgrep.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/grpc_grpc.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/chakra-ui_chakra-ui.html</loc>
@@ -121,6 +157,9 @@
     <loc>https://yourdomain.com/site/docker_cli.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/open-telemetry_opentelemetry-python.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/spf13_cobra.html</loc>
   </url>
   <url>
@@ -130,13 +169,37 @@
     <loc>https://yourdomain.com/site/OpenVPN_openvpn.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/denoland_deno.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/jupyterlab_jupyterlab.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/feathersjs_feathers.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/scikit-image_scikit-image.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/getredash_redash.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/datadog_dd-trace-py.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/valyala_fasthttp.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/temporalio_temporal.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/actix_actix-web.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/cosmos_gaia.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/supabase_gotrue.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/strapi_strapi.html</loc>
@@ -166,6 +229,12 @@
     <loc>https://yourdomain.com/site/pytorch_pytorch.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/sqlfluff_sqlfluff.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/istio_istio.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/release-drafter_release-drafter.html</loc>
   </url>
   <url>
@@ -181,10 +250,16 @@
     <loc>https://yourdomain.com/site/scikit-learn_scikit-learn.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/hasura_graphql-engine.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/mysql_mysql-server.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/labstack_echo.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/withfig_autocomplete.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/nestjs_nest.html</loc>
@@ -214,7 +289,13 @@
     <loc>https://yourdomain.com/site/pandas-dev_pandas.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/crowdin_crowdin-cli.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/metasploit_metasploit-framework.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/open-policy-agent_opa.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/11ty_eleventy.html</loc>
@@ -235,6 +316,9 @@
     <loc>https://yourdomain.com/site/semantic-release_semantic-release.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/helmfile_helmfile.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/surrealdb_surrealdb.html</loc>
   </url>
   <url>
@@ -247,6 +331,9 @@
     <loc>https://yourdomain.com/site/actions_runner.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/fluent_fluent-bit.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/typesense_typesense.html</loc>
   </url>
   <url>
@@ -254,6 +341,15 @@
   </url>
   <url>
     <loc>https://yourdomain.com/site/grafana_grafana.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/toml-lang_toml.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/tilfinltd_aws-extend-switch-roles.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/grafana_loki.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/pallets_flask.html</loc>
@@ -271,7 +367,16 @@
     <loc>https://yourdomain.com/site/volta-cli_volta.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/airflow-helm_charts.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/apache_kafka.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/nodejs_node.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/ethereum_solidity.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/rollup_rollup.html</loc>
@@ -298,6 +403,9 @@
     <loc>https://yourdomain.com/site/numpy_numpy.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/playwright-community_playwright-go.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/vercel_swr.html</loc>
   </url>
   <url>
@@ -305,6 +413,18 @@
   </url>
   <url>
     <loc>https://yourdomain.com/site/tooljet_tooljet.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/roboflow_notebooks.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/axios_axios.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/janestreet_ocaml.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/react-hook-form_react-hook-form.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/jekyll_jekyll.html</loc>
@@ -334,13 +454,31 @@
     <loc>https://yourdomain.com/site/plausible_analytics.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/vitest-dev_vitest.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/expressjs_express.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/litestar-org_litestar.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/tauri-apps_tauri.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/developit_microbundle.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/testing-library_react-testing-library.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/typescript-eslint_typescript-eslint.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/ParityTech_substrate.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/chartjs_Chart.js.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/encode_httpx.html</loc>
@@ -355,10 +493,31 @@
     <loc>https://yourdomain.com/site/redis_redis.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/argoproj_argo-workflows.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/django_django.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/apache_airflow.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/vercel_turbo.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/docker_compose.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/dandavison_delta.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/influxdata_telegraf.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/kubescape_kubescape.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/streamlit_streamlit.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/moleculerjs_moleculer.html</loc>
@@ -394,10 +553,16 @@
     <loc>https://yourdomain.com/site/drone_drone.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/datastax_cassandra.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/mozilla_sops.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/npm_cli.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/trufflesuite_truffle.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/duckdb_duckdb.html</loc>
@@ -412,6 +577,9 @@
     <loc>https://yourdomain.com/site/ansible_ansible.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/lightdash_lightdash.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/tsconfig_bases.html</loc>
   </url>
   <url>
@@ -419,6 +587,9 @@
   </url>
   <url>
     <loc>https://yourdomain.com/site/status-im_status-react.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/tsayen_dom-to-image.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/psf_requests.html</loc>
@@ -433,10 +604,19 @@
     <loc>https://yourdomain.com/site/supabase_supabase.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/aws_copilot-cli.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/serde-rs_serde.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/kubernetes_kubernetes.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/prisma_prisma.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/buildkite_agent.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/remix-run_remix.html</loc>
@@ -454,6 +634,9 @@
     <loc>https://yourdomain.com/site/windicss_windicss.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/netlify_netlify-cms.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/portainer_portainer.html</loc>
   </url>
   <url>
@@ -466,10 +649,22 @@
     <loc>https://yourdomain.com/site/tiangolo_fastapi.html</loc>
   </url>
   <url>
+    <loc>https://yourdomain.com/site/tailwindlabs_headlessui.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/zio_zio.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/mlflow_mlflow.html</loc>
+  </url>
+  <url>
     <loc>https://yourdomain.com/site/langchain-ai_langchain.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/solidjs_solid.html</loc>
+  </url>
+  <url>
+    <loc>https://yourdomain.com/site/uber-go_fx.html</loc>
   </url>
   <url>
     <loc>https://yourdomain.com/site/lightning-ai_lightning.html</loc>

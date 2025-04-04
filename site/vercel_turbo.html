@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for vercel/turbo"/>
+  <title>vercel/turbo Release Notes</title>
+</head>
+<body>
+  <h1>🚀 vercel/turbo - Release Notes</h1>
+  
+    <section>
+      <h2>Turborepo v2.5.0 (2025-04-03)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.5.0 -->
+
+## What's Changed
+### Docs
+* docs: fix typo on continue docs by @jenseng in https://github.com/vercel/turborepo/pull/10041
+* docs: add explicit mention for capturing multiple .env files by @anthonyshew in https://github.com/vercel/turborepo/pull/10061
+* docs: fix json title for Watch Mode docs by @bohongu in https://github.com/vercel/turborepo/pull/10085
+* docs: upgrades for Vitest doc and add `with-vitest` example by @anthonyshew in https://github.com/vercel/turborepo/pull/10063
+* chore: remove experimental warning from ls command by @anthonyshew in https://github.com/vercel/turborepo/pull/10096
+* docs: add hybrid approach to vitest guide by @beaussan in https://github.com/vercel/turborepo/pull/10092
+* fix(cli): no longer attempt to parse task name as continue value by @chris-olszewski in https://github.com/vercel/turborepo/pull/10097
+* docs: clarify TURBO_TEAM slug usage by @anthonyshew in https://github.com/vercel/turborepo/pull/10102
+* fix: adds callout for installation instructions for PNPM by @Tigatok in https://github.com/vercel/turborepo/pull/10100
+* docs: add release phases to support policy by @anthonyshew in https://github.com/vercel/turborepo/pull/10091
+* docs: remove `ls` from Experimental phase in Support Policy by @anthonyshew in https://github.com/vercel/turborepo/pull/10108
+* docs: open source site source code by @anthonyshew in https://github.com/vercel/turborepo/pull/10127
+* docs: fix code black background colors by @anthonyshew in https://github.com/vercel/turborepo/pull/10141
+* fix(docs): prefix environment variable for search dialog by @anthonyshew in https://github.com/vercel/turborepo/pull/10142
+* fix(docs): fix commas in package exports example by @x-N0 in https://github.com/vercel/turborepo/pull/10143
+* docs: fix typos in documentation files by @rootdiae in https://github.com/vercel/turborepo/pull/10124
+* docs: update storybook initiation instructions by @sicarius97 in https://github.com/vercel/turborepo/pull/10145
+* feat(boundaries): package name as tag punning by @NicholasLYang in https://github.com/vercel/turborepo/pull/10151
+* fix(docs): asset importing failure for OG images by @anthonyshew in https://github.com/vercel/turborepo/pull/10159
+* chore(docs): convert 'Turbo' into 'Turborepo' by @anthonyshew in https://github.com/vercel/turborepo/pull/10162
+* docs: add `FORCE_COLOR` variable to docs by @anthonyshew in https://github.com/vercel/turborepo/pull/10165
+* feat: workspace root microsyntax by @anthonyshew in https://github.com/vercel/turborepo/pull/10094
+* docs(run): fix passthrough arg behavior by @chris-olszewski in https://github.com/vercel/turborepo/pull/10167
+* docs: bump openapi framework version by @anthonyshew in https://github.com/vercel/turborepo/pull/10172
+* docs: fix typos by @xiaobei0715 in https://github.com/vercel/turborepo/pull/10182
+* docs: update fallback OG image by @anthonyshew in https://github.com/vercel/turborepo/pull/10174
+* docs: enhance examples tables by @anthonyshew in https://github.com/vercel/turborepo/pull/10173
+* docs: fix typos in documentation files by @rootdiae in https://github.com/vercel/turborepo/pull/10192
+* docs: add checkout optimization for `--affected` by @anthonyshew in https://github.com/vercel/turborepo/pull/10188
+* feat(turbo json): make `with` public by @chris-olszewski in https://github.com/vercel/turborepo/pull/10191
+* chore: fix some typos by @pudongair in https://github.com/vercel/turborepo/pull/10196
+* docs: use schema from current @turbo/types by @chris-olszewski in https://github.com/vercel/turborepo/pull/10197
+* docs: switch turbo run to turbo watch for --experimental-write-cache by @victorlagerfors in https://github.com/vercel/turborepo/pull/10199
+* docs: layout redesign by @anthonyshew in https://github.com/vercel/turborepo/pull/10178
+* docs: fix text colors in a few spots by @anthonyshew in https://github.com/vercel/turborepo/pull/10213
+* docs: remove stale callout by @anthonyshew in https://github.com/vercel/turborepo/pull/10217
+* docs: links for OpenAPI spec for both human-readable and JSON by @anthonyshew in https://github.com/vercel/turborepo/pull/10216
+* docs: add a snippet to `with` by @anthonyshew in https://github.com/vercel/turborepo/pull/10215
+* docs: mention JSONC support by @anthonyshew in https://github.com/vercel/turborepo/pull/10214
+* chore(docs): remove with until published by @tknickman in https://github.com/vercel/turborepo/pull/10237
+* docs: add missing shadcn/ui tile by @anthonyshew in https://github.com/vercel/turborepo/pull/10249
+* docs: add config mention to upgrading guide by @anthonyshew in https://github.com/vercel/turborepo/pull/10233
+* docs: move CTA below TOC by @anthonyshew in https://github.com/vercel/turborepo/pull/10252
+* chore: upgrade to `proxy-agent` 6.5.0 by @chris-olszewski in https://github.com/vercel/turborepo/pull/10278
+### eslint
+* fix: `eslint-config-turbo` module export by @anthonyshew in https://github.com/vercel/turborepo/pull/10105
+* fix: mark type of flat config export to satisfy Linter.Config[] by @cprussin in https://github.com/vercel/turborepo/pull/10128
+* fix(eslint): array type lints by @chris-olszewski in https://github.com/vercel/turborepo/pull/10139
+* chore: fix types for ESLint package builds by @anthonyshew in https://github.com/vercel/turborepo/pull/10157
+### @turbo/repository
+* fix(release): manually install target toolchain by @dimitropoulos in https://github.com/vercel/turborepo/pull/10080
+* chore: update to Rust 1.85.0 by @ognevny in https://github.com/vercel/turborepo/pull/10024
+* fix: `affected_packages`'s optimization flow by @dimitropoulos in https://github.com/vercel/turborepo/pull/9950
+* chore: update to Rust 2024 edition by @ognevny in https://github.com/vercel/turborepo/pull/10114
+### Examples
+* docs: update README.md in examples with-tailwind to correctly reference .ts config files instead of .js by @vinayaksodar in https://github.com/vercel/turborepo/pull/10057
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10068
+* chore(deps): bump the non-monorepo group in /examples/non-monorepo with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10070
+* chore(deps-dev): bump turbo from 2.4.2 to 2.4.4 in /examples/with-shell-commands by @dependabot in https://github.com/vercel/turborepo/pull/10071
+* chore(deps): bump the basic group in /examples/basic with 5 updates by @dependabot in https://github.com/vercel/turborepo/pull/10069
+* chore(deps): bump the kitchen-sink group in /examples/kitchen-sink with 12 updates by @dependabot in https://github.com/vercel/turborepo/pull/10072
+* chore(deps): bump the with-tailwind group in /examples/with-tailwind with 5 updates by @dependabot in https://github.com/vercel/turborepo/pull/10073
+* docs: fix JSDoc annotation for ESLint flat configs of basic example by @Tyoneb in https://github.com/vercel/turborepo/pull/10089
+* chore(deps-dev): bump the basic group in /examples/basic with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10131
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10132
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/10133
+* chore(deps): bump the non-monorepo group in /examples/non-monorepo with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10134
+* chore(deps-dev): bump the kitchen-sink group in /examples/kitchen-sink with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10135
+* feat(examples): add example `with-solid`  by @ssshashank in https://github.com/vercel/turborepo/pull/10144
+* chore: fix example readme typo by @wmjae in https://github.com/vercel/turborepo/pull/10164
+* chore(deps-dev): bump the with-svelte group across 1 directory with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10189
+* chore(deps): bump the non-monorepo group in /examples/non-monorepo with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10183
+* chore(deps-dev): bump @next/eslint-plugin-next from 15.2.1 to 15.2.2 in /examples/with-tailwind by @dependabot in https://github.com/vercel/turborepo/pull/10184
+* fix(example): remove obsolete @types/react-native from with-react-native-web by @shinjith-dev in https://github.com/vercel/turborepo/pull/10190
+* chore(deps-dev): bump @types/node from 22.13.9 to 22.13.10 in /examples/basic by @dependabot in https://github.com/vercel/turborepo/pull/10186
+* chore(deps): bump the non-monorepo group in /examples/non-monorepo with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10220
+* chore(deps-dev): bump the basic group in /examples/basic with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10222
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/10224
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10223
+* fix: unexpected top-level property `default` in `base.js` eslint config by @mm-webx in https://github.com/vercel/turborepo/pull/10240
+* docs: fix the incorrect export keyword by @todaymoon in https://github.com/vercel/turborepo/pull/10235
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10256
+* chore(deps): bump the basic group in /examples/basic with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/10257
+* chore(deps): bump the non-monorepo group in /examples/non-monorepo with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/10259
+* chore(deps): bump the with-tailwind group in /examples/with-tailwind with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/10258
+* chore(deps): bump the kitchen-sink group across 1 directory with 8 updates by @dependabot in https://github.com/vercel/turborepo/pull/10221
+* chore(deps-dev): bump typescript-eslint from 8.28.0 to 8.29.0 in /examples/with-svelte in the with-svelte group by @dependabot in https://github.com/vercel/turborepo/pull/10263
+* chore(deps-dev): bump typescript-eslint from 8.28.0 to 8.29.0 in /examples/with-tailwind in the with-tailwind group by @dependabot in https://github.com/vercel/turborepo/pull/10264
+* chore(deps-dev): bump typescript-eslint from 8.28.0 to 8.29.0 in /examples/basic in the basic group by @dependabot in https://github.com/vercel/turborepo/pull/10265
+### Changelog
+* feat(process): differentiate between child interruption and killing by @chris-olszewski in https://github.com/vercel/turborepo/pull/10027
+* fix(@turbo/repository): revert "chore(deps): update git2 to 0.20.0" by @chris-olszewski in https://github.com/vercel/turborepo/pull/10045
+* fix(process): revert "feat(process): differentiate between child interruption and killing" by @chris-olszewski in https://github.com/vercel/turborepo/pull/10046
+* feat(boundaries): support tsconfig path aliases by @NicholasLYang in https://github.com/vercel/turborepo/pull/10002
+* chore: fix corepack wiring in integration tests by @jenseng in https://github.com/vercel/turborepo/pull/10044
+* chore(spaces): remove spaces id by @chris-olszewski in https://github.com/vercel/turborepo/pull/10050
+* refactor: move tests to Rust by @NicholasLYang in https://github.com/vercel/turborepo/pull/10043
+* feat(query): add schema flag by @NicholasLYang in https://github.com/vercel/turborepo/pull/10052
+* fix: revert "chore: fix corepack wiring in integration tests" by @chris-olszewski in https://github.com/vercel/turborepo/pull/10054
+* chore(signals): prefactor by @chris-olszewski in https://github.com/vercel/turborepo/pull/9995
+* fix: filter logic by @dinglindong in https://github.com/vercel/turborepo/pull/9653
+* chore(deps): update git2 to 0.20.0 by @chris-olszewski in https://github.com/vercel/turborepo/pull/10058
+* chore: unify futures versions by @chris-olszewski in https://github.com/vercel/turborepo/pull/10059
+* chore(signals): lift error conversion to each command that sets up signal handler by @chris-olszewski in https://github.com/vercel/turborepo/pull/10060
+* chore(scm): gate git2 behind feature flag by @chris-olszewski in https://github.com/vercel/turborepo/pull/10076
+* chore(turbo_json): remove exterior mutability from loader by @chris-olszewski in https://github.com/vercel/turborepo/pull/10066
+* chore: delete redundant glob watcher code by @NicholasLYang in https://github.com/vercel/turborepo/pull/10075
+* feat(ls): add package path to ls by @NicholasLYang in https://github.com/vercel/turborepo/pull/10079
+* fix(packages): no longer match versionless packages by @chris-olszewski in https://github.com/vercel/turborepo/pull/10056
+* fix(engine): no longer error if provided task is omitted by filter by @chris-olszewski in https://github.com/vercel/turborepo/pull/10051
+* feat: add JSONC support by @anthonyshew in https://github.com/vercel/turborepo/pull/10083
+* chore: update README by @NicholasLYang in https://github.com/vercel/turborepo/pull/10098
+* feat(clone): turbo clone by @NicholasLYang in https://github.com/vercel/turborepo/pull/9904
+* fix: correctly forward passthrough arguments when using pkg#task format by @NicholasLYang in https://github.com/vercel/turborepo/pull/10087
+* fix(boundaries): support import attributes by @NicholasLYang in https://github.com/vercel/turborepo/pull/10078
+* chore(scm): gate manual file hash behind git2 by @chris-olszewski in https://github.com/vercel/turborepo/pull/10088
+* fix(boundaries): unnecessary tsconfig warnings by @NicholasLYang in https://github.com/vercel/turborepo/pull/10104
+* fix(affected): consider turbo.jsonc as a default global dependency by @chris-olszewski in https://github.com/vercel/turborepo/pull/10106
+* fix(prune): support copying turbo.jsonc by @chris-olszewski in https://github.com/vercel/turborepo/pull/10107
+* chore(ci): remove kodiak by @tknickman in https://github.com/vercel/turborepo/pull/10116
+* fix: typo in issue template by @dimitropoulos in https://github.com/vercel/turborepo/pull/10119
+* feat(boundaries): implicit dependencies by @NicholasLYang in https://github.com/vercel/turborepo/pull/10117
+* chore: update schema with boundaries by @NicholasLYang in https://github.com/vercel/turborepo/pull/10118
+* chore: fix some typos by @kevincatty in https://github.com/vercel/turborepo/pull/10149
+* feat(process): distinguish between signals used to kill children by @chris-olszewski in https://github.com/vercel/turborepo/pull/10049
+* feat(boundaries): auto ignore by @NicholasLYang in https://github.com/vercel/turborepo/pull/10147
+* fix(bun): properly handle bun lockfile keys by @chris-olszewski in https://github.com/vercel/turborepo/pull/10137
+* chore: dogfood $TURBO_ROOT$ by @chris-olszewski in https://github.com/vercel/turborepo/pull/10168
+* chore: add missing backquotes by @jimmycathy in https://github.com/vercel/turborepo/pull/10180
+* feat(bun): bun prune support by @camero2734 in https://github.com/vercel/turborepo/pull/10175
+* chore: fix clippy lints in tests by @chris-olszewski in https://github.com/vercel/turborepo/pull/10193
+* feat(boundaries): package rules by @NicholasLYang in https://github.com/vercel/turborepo/pull/10160
+* fix: update env variables supported by nitro by @pi0 in https://github.com/vercel/turborepo/pull/10176
+* chore(frameworks): move framework logic to new crate by @chris-olszewski in https://github.com/vercel/turborepo/pull/10198
+* chore: format frameworks.json by @chris-olszewski in https://github.com/vercel/turborepo/pull/10209
+* fix(turbo_json): avoid workspace validation errors by @chris-olszewski in https://github.com/vercel/turborepo/pull/10211
+* fix(bun): deserialize correctly and use optionalPeers by @camero2734 in https://github.com/vercel/turborepo/pull/10219
+* feat(tui): bump default scrollback length by @anthonyshew in https://github.com/vercel/turborepo/pull/10261
+* chore: upgrade turborepo-process and turborepo-filewatch to Rust 2024 edition by @ognevny in https://github.com/vercel/turborepo/pull/10260
+* chore(auth): include path to bad token in error message by @chris-olszewski in https://github.com/vercel/turborepo/pull/10208
+
+## New Contributors
+* @dinglindong made their first contribution in https://github.com/vercel/turborepo/pull/9653
+* @vinayaksodar made their first contribution in https://github.com/vercel/turborepo/pull/10057
+* @bohongu made their first contribution in https://github.com/vercel/turborepo/pull/10085
+* @Tyoneb made their first contribution in https://github.com/vercel/turborepo/pull/10089
+* @beaussan made their first contribution in https://github.com/vercel/turborepo/pull/10092
+* @Tigatok made their first contribution in https://github.com/vercel/turborepo/pull/10100
+* @cprussin made their first contribution in https://github.com/vercel/turborepo/pull/10128
+* @x-N0 made their first contribution in https://github.com/vercel/turborepo/pull/10143
+* @rootdiae made their first contribution in https://github.com/vercel/turborepo/pull/10124
+* @ssshashank made their first contribution in https://github.com/vercel/turborepo/pull/10144
+* @sicarius97 made their first contribution in https://github.com/vercel/turborepo/pull/10145
+* @kevincatty made their first contribution in https://github.com/vercel/turborepo/pull/10149
+* @jimmycathy made their first contribution in https://github.com/vercel/turborepo/pull/10180
+* @xiaobei0715 made their first contribution in https://github.com/vercel/turborepo/pull/10182
+* @camero2734 made their first contribution in https://github.com/vercel/turborepo/pull/10175
+* @pudongair made their first contribution in https://github.com/vercel/turborepo/pull/10196
+* @pi0 made their first contribution in https://github.com/vercel/turborepo/pull/10176
+* @victorlagerfors made their first contribution in https://github.com/vercel/turborepo/pull/10199
+* @mm-webx made their first contribution in https://github.com/vercel/turborepo/pull/10240
+* @todaymoon made their first contribution in https://github.com/vercel/turborepo/pull/10235
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.4...v2.5.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.5-canary.7 (2025-03-31)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.5-canary.7 -->
+
+## What's Changed
+### Docs
+* docs: layout redesign by @anthonyshew in https://github.com/vercel/turborepo/pull/10178
+* docs: fix text colors in a few spots by @anthonyshew in https://github.com/vercel/turborepo/pull/10213
+* docs: remove stale callout by @anthonyshew in https://github.com/vercel/turborepo/pull/10217
+* docs: links for OpenAPI spec for both human-readable and JSON by @anthonyshew in https://github.com/vercel/turborepo/pull/10216
+* docs: add a snippet to `with` by @anthonyshew in https://github.com/vercel/turborepo/pull/10215
+* docs: mention JSONC support by @anthonyshew in https://github.com/vercel/turborepo/pull/10214
+* chore(docs): remove with until published by @tknickman in https://github.com/vercel/turborepo/pull/10237
+### Examples
+* chore(deps): bump the non-monorepo group in /examples/non-monorepo with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10220
+* chore(deps-dev): bump the basic group in /examples/basic with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10222
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/10224
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10223
+* fix: unexpected top-level property `default` in `base.js` eslint config by @mm-webx in https://github.com/vercel/turborepo/pull/10240
+* docs: fix the incorrect export keyword by @todaymoon in https://github.com/vercel/turborepo/pull/10235
+### Changelog
+* chore: format frameworks.json by @chris-olszewski in https://github.com/vercel/turborepo/pull/10209
+* fix(turbo_json): avoid workspace validation errors by @chris-olszewski in https://github.com/vercel/turborepo/pull/10211
+* fix(bun): deserialize correctly and use optionalPeers by @camero2734 in https://github.com/vercel/turborepo/pull/10219
+
+## New Contributors
+* @mm-webx made their first contribution in https://github.com/vercel/turborepo/pull/10240
+* @todaymoon made their first contribution in https://github.com/vercel/turborepo/pull/10235
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.5-canary.6...v2.4.5-canary.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.5-canary.6 (2025-03-20)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.5-canary.6 -->
+
+## What's Changed
+### Docs
+* docs: add checkout optimization for `--affected` by @anthonyshew in https://github.com/vercel/turborepo/pull/10188
+* feat(turbo json): make `with` public by @chris-olszewski in https://github.com/vercel/turborepo/pull/10191
+* chore: fix some typos by @pudongair in https://github.com/vercel/turborepo/pull/10196
+* docs: use schema from current @turbo/types by @chris-olszewski in https://github.com/vercel/turborepo/pull/10197
+* docs: switch turbo run to turbo watch for --experimental-write-cache by @victorlagerfors in https://github.com/vercel/turborepo/pull/10199
+### Examples
+* chore(deps): bump the non-monorepo group in /examples/non-monorepo with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10183
+* chore(deps-dev): bump @next/eslint-plugin-next from 15.2.1 to 15.2.2 in /examples/with-tailwind by @dependabot in https://github.com/vercel/turborepo/pull/10184
+* fix(example): remove obsolete @types/react-native from with-react-native-web by @shinjith-dev in https://github.com/vercel/turborepo/pull/10190
+* chore(deps-dev): bump @types/node from 22.13.9 to 22.13.10 in /examples/basic by @dependabot in https://github.com/vercel/turborepo/pull/10186
+### Changelog
+* chore: fix clippy lints in tests by @chris-olszewski in https://github.com/vercel/turborepo/pull/10193
+* feat(boundaries): package rules by @NicholasLYang in https://github.com/vercel/turborepo/pull/10160
+* fix: update env variables supported by nitro by @pi0 in https://github.com/vercel/turborepo/pull/10176
+* chore(frameworks): move framework logic to new crate by @chris-olszewski in https://github.com/vercel/turborepo/pull/10198
+
+## New Contributors
+* @pudongair made their first contribution in https://github.com/vercel/turborepo/pull/10196
+* @pi0 made their first contribution in https://github.com/vercel/turborepo/pull/10176
+* @victorlagerfors made their first contribution in https://github.com/vercel/turborepo/pull/10199
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.5-canary.5...v2.4.5-canary.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.5-canary.5 (2025-03-18)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.5-canary.5 -->
+
+## What's Changed
+### Docs
+* docs(run): fix passthrough arg behavior by @chris-olszewski in https://github.com/vercel/turborepo/pull/10167
+* docs: bump openapi framework version by @anthonyshew in https://github.com/vercel/turborepo/pull/10172
+* docs: fix typos by @xiaobei0715 in https://github.com/vercel/turborepo/pull/10182
+* docs: update fallback OG image by @anthonyshew in https://github.com/vercel/turborepo/pull/10174
+* docs: enhance examples tables by @anthonyshew in https://github.com/vercel/turborepo/pull/10173
+* docs: fix typos in documentation files by @rootdiae in https://github.com/vercel/turborepo/pull/10192
+### Examples
+* chore(deps-dev): bump the with-svelte group across 1 directory with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10189
+### Changelog
+* chore: dogfood `$TURBO_ROOT$` by @chris-olszewski in https://github.com/vercel/turborepo/pull/10168
+* chore: add missing backquotes by @jimmycathy in https://github.com/vercel/turborepo/pull/10180
+* feat(bun): bun prune support by @camero2734 in https://github.com/vercel/turborepo/pull/10175
+
+## New Contributors
+* @jimmycathy made their first contribution in https://github.com/vercel/turborepo/pull/10180
+* @xiaobei0715 made their first contribution in https://github.com/vercel/turborepo/pull/10182
+* @camero2734 made their first contribution in https://github.com/vercel/turborepo/pull/10175
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.5-canary.4...v2.4.5-canary.5</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.5-canary.4 (2025-03-14)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.5-canary.4 -->
+
+## What's Changed
+### Docs
+* feat(boundaries): package name as tag punning by @NicholasLYang in https://github.com/vercel/turborepo/pull/10151
+* fix(docs): asset importing failure for OG images by @anthonyshew in https://github.com/vercel/turborepo/pull/10159
+* chore(docs): convert 'Turbo' into 'Turborepo' by @anthonyshew in https://github.com/vercel/turborepo/pull/10162
+* docs: add `FORCE_COLOR` variable to docs by @anthonyshew in https://github.com/vercel/turborepo/pull/10165
+* feat: workspace root microsyntax by @anthonyshew in https://github.com/vercel/turborepo/pull/10094
+### Examples
+* chore: fix example readme typo by @wmjae in https://github.com/vercel/turborepo/pull/10164
+
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.5-canary.3...v2.4.5-canary.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.5-canary.3 (2025-03-13)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.5-canary.3 -->
+
+## What's Changed
+### Docs
+* docs: remove `ls` from Experimental phase in Support Policy by @anthonyshew in https://github.com/vercel/turborepo/pull/10108
+* docs: open source site source code by @anthonyshew in https://github.com/vercel/turborepo/pull/10127
+* docs: fix code black background colors by @anthonyshew in https://github.com/vercel/turborepo/pull/10141
+* fix(docs): prefix environment variable for search dialog by @anthonyshew in https://github.com/vercel/turborepo/pull/10142
+* fix(docs): fix commas in package exports example by @x-N0 in https://github.com/vercel/turborepo/pull/10143
+* docs: fix typos in documentation files by @rootdiae in https://github.com/vercel/turborepo/pull/10124
+* docs: update storybook initiation instructions by @sicarius97 in https://github.com/vercel/turborepo/pull/10145
+### eslint
+* fix: mark type of flat config export to satisfy Linter.Config[] by @cprussin in https://github.com/vercel/turborepo/pull/10128
+* fix(eslint): array type lints by @chris-olszewski in https://github.com/vercel/turborepo/pull/10139
+* chore: fix types for ESLint package builds by @anthonyshew in https://github.com/vercel/turborepo/pull/10157
+### @turbo/repository
+* chore: update to Rust 2024 edition by @ognevny in https://github.com/vercel/turborepo/pull/10114
+### Examples
+* chore(deps-dev): bump the basic group in /examples/basic with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10131
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10132
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/10133
+* chore(deps): bump the non-monorepo group in /examples/non-monorepo with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10134
+* chore(deps-dev): bump the kitchen-sink group in /examples/kitchen-sink with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10135
+* feat(examples): add example `with-solid`  by @ssshashank in https://github.com/vercel/turborepo/pull/10144
+### Changelog
+* chore(ci): remove kodiak by @tknickman in https://github.com/vercel/turborepo/pull/10116
+* fix: typo in issue template by @dimitropoulos in https://github.com/vercel/turborepo/pull/10119
+* feat(boundaries): implicit dependencies by @NicholasLYang in https://github.com/vercel/turborepo/pull/10117
+* chore: update schema with boundaries by @NicholasLYang in https://github.com/vercel/turborepo/pull/10118
+* chore: fix some typos by @kevincatty in https://github.com/vercel/turborepo/pull/10149
+* feat(process): distinguish between signals used to kill children by @chris-olszewski in https://github.com/vercel/turborepo/pull/10049
+* feat(boundaries): auto ignore by @NicholasLYang in https://github.com/vercel/turborepo/pull/10147
+* fix(bun): properly handle bun lockfile keys by @chris-olszewski in https://github.com/vercel/turborepo/pull/10137
+
+## New Contributors
+* @cprussin made their first contribution in https://github.com/vercel/turborepo/pull/10128
+* @x-N0 made their first contribution in https://github.com/vercel/turborepo/pull/10143
+* @rootdiae made their first contribution in https://github.com/vercel/turborepo/pull/10124
+* @ssshashank made their first contribution in https://github.com/vercel/turborepo/pull/10144
+* @sicarius97 made their first contribution in https://github.com/vercel/turborepo/pull/10145
+* @kevincatty made their first contribution in https://github.com/vercel/turborepo/pull/10149
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.5-canary.2...v2.4.5-canary.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.5-canary.2 (2025-03-05)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.5-canary.2 -->
+
+## What's Changed
+### Docs
+* docs: clarify TURBO_TEAM slug usage by @anthonyshew in https://github.com/vercel/turborepo/pull/10102
+* fix: adds callout for installation instructions for PNPM by @Tigatok in https://github.com/vercel/turborepo/pull/10100
+* docs: add release phases to support policy by @anthonyshew in https://github.com/vercel/turborepo/pull/10091
+### eslint
+* fix: `eslint-config-turbo` module export by @anthonyshew in https://github.com/vercel/turborepo/pull/10105
+### Changelog
+* feat(clone): turbo clone by @NicholasLYang in https://github.com/vercel/turborepo/pull/9904
+* fix: correctly forward passthrough arguments when using pkg#task format by @NicholasLYang in https://github.com/vercel/turborepo/pull/10087
+* fix(boundaries): support import attributes by @NicholasLYang in https://github.com/vercel/turborepo/pull/10078
+* chore(scm): gate manual file hash behind git2 by @chris-olszewski in https://github.com/vercel/turborepo/pull/10088
+* fix(boundaries): unnecessary tsconfig warnings by @NicholasLYang in https://github.com/vercel/turborepo/pull/10104
+* fix(affected): consider turbo.jsonc as a default global dependency by @chris-olszewski in https://github.com/vercel/turborepo/pull/10106
+* fix(prune): support copying turbo.jsonc by @chris-olszewski in https://github.com/vercel/turborepo/pull/10107
+
+## New Contributors
+* @Tigatok made their first contribution in https://github.com/vercel/turborepo/pull/10100
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.5-canary.1...v2.4.5-canary.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.5-canary.1 (2025-03-05)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.5-canary.1 -->
+
+## What's Changed
+### Docs
+* chore: remove experimental warning from ls command by @anthonyshew in https://github.com/vercel/turborepo/pull/10096
+* docs: add hybrid approach to vitest guide by @beaussan in https://github.com/vercel/turborepo/pull/10092
+* fix(cli): no longer attempt to parse task name as continue value by @chris-olszewski in https://github.com/vercel/turborepo/pull/10097
+### Changelog
+* chore: update README by @NicholasLYang in https://github.com/vercel/turborepo/pull/10098
+
+## New Contributors
+* @beaussan made their first contribution in https://github.com/vercel/turborepo/pull/10092
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.5-canary.0...v2.4.5-canary.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.5-canary.0 (2025-03-05)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.5-canary.0 -->
+
+## What's Changed
+### Docs
+* docs: fix typo on continue docs by @jenseng in https://github.com/vercel/turborepo/pull/10041
+* docs: add explicit mention for capturing multiple .env files by @anthonyshew in https://github.com/vercel/turborepo/pull/10061
+* docs: fix json title for Watch Mode docs by @bohongu in https://github.com/vercel/turborepo/pull/10085
+* docs: upgrades for Vitest doc and add `with-vitest` example by @anthonyshew in https://github.com/vercel/turborepo/pull/10063
+### @turbo/repository
+* fix(release): manually install target toolchain by @dimitropoulos in https://github.com/vercel/turborepo/pull/10080
+* chore: update to Rust 1.85.0 by @ognevny in https://github.com/vercel/turborepo/pull/10024
+* fix: `affected_packages`'s optimization flow by @dimitropoulos in https://github.com/vercel/turborepo/pull/9950
+### Examples
+* docs: update README.md in examples with-tailwind to correctly reference .ts config files instead of .js by @vinayaksodar in https://github.com/vercel/turborepo/pull/10057
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10068
+* chore(deps): bump the non-monorepo group in /examples/non-monorepo with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10070
+* chore(deps-dev): bump turbo from 2.4.2 to 2.4.4 in /examples/with-shell-commands by @dependabot in https://github.com/vercel/turborepo/pull/10071
+* chore(deps): bump the basic group in /examples/basic with 5 updates by @dependabot in https://github.com/vercel/turborepo/pull/10069
+* chore(deps): bump the kitchen-sink group in /examples/kitchen-sink with 12 updates by @dependabot in https://github.com/vercel/turborepo/pull/10072
+* chore(deps): bump the with-tailwind group in /examples/with-tailwind with 5 updates by @dependabot in https://github.com/vercel/turborepo/pull/10073
+* docs: fix JSDoc annotation for ESLint flat configs of basic example by @Tyoneb in https://github.com/vercel/turborepo/pull/10089
+### Changelog
+* feat(process): differentiate between child interruption and killing by @chris-olszewski in https://github.com/vercel/turborepo/pull/10027
+* fix(@turbo/repository): revert "chore(deps): update git2 to 0.20.0" by @chris-olszewski in https://github.com/vercel/turborepo/pull/10045
+* fix(process): revert "feat(process): differentiate between child interruption and killing" by @chris-olszewski in https://github.com/vercel/turborepo/pull/10046
+* feat(boundaries): support tsconfig path aliases by @NicholasLYang in https://github.com/vercel/turborepo/pull/10002
+* chore: fix corepack wiring in integration tests by @jenseng in https://github.com/vercel/turborepo/pull/10044
+* chore(spaces): remove spaces id by @chris-olszewski in https://github.com/vercel/turborepo/pull/10050
+* refactor: move tests to Rust by @NicholasLYang in https://github.com/vercel/turborepo/pull/10043
+* feat(query): add schema flag by @NicholasLYang in https://github.com/vercel/turborepo/pull/10052
+* fix: revert "chore: fix corepack wiring in integration tests" by @chris-olszewski in https://github.com/vercel/turborepo/pull/10054
+* chore(signals): prefactor by @chris-olszewski in https://github.com/vercel/turborepo/pull/9995
+* fix: filter logic by @dinglindong in https://github.com/vercel/turborepo/pull/9653
+* chore(deps): update git2 to 0.20.0 by @chris-olszewski in https://github.com/vercel/turborepo/pull/10058
+* chore: unify futures versions by @chris-olszewski in https://github.com/vercel/turborepo/pull/10059
+* chore(signals): lift error conversion to each command that sets up signal handler by @chris-olszewski in https://github.com/vercel/turborepo/pull/10060
+* chore(scm): gate git2 behind feature flag by @chris-olszewski in https://github.com/vercel/turborepo/pull/10076
+* chore(turbo_json): remove exterior mutability from loader by @chris-olszewski in https://github.com/vercel/turborepo/pull/10066
+* chore: delete redundant glob watcher code by @NicholasLYang in https://github.com/vercel/turborepo/pull/10075
+* feat(ls): add package path to ls by @NicholasLYang in https://github.com/vercel/turborepo/pull/10079
+* fix(packages): no longer match versionless packages by @chris-olszewski in https://github.com/vercel/turborepo/pull/10056
+* fix(engine): no longer error if provided task is omitted by filter by @chris-olszewski in https://github.com/vercel/turborepo/pull/10051
+* feat: add JSONC support by @anthonyshew in https://github.com/vercel/turborepo/pull/10083
+
+## New Contributors
+* @dinglindong made their first contribution in https://github.com/vercel/turborepo/pull/9653
+* @vinayaksodar made their first contribution in https://github.com/vercel/turborepo/pull/10057
+* @bohongu made their first contribution in https://github.com/vercel/turborepo/pull/10085
+* @Tyoneb made their first contribution in https://github.com/vercel/turborepo/pull/10089
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.4...v2.4.5-canary.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.4 (2025-02-25)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.4 -->
+
+## What's Changed
+### Docs
+* feat(turborepo): --continue=dependencies-successful by @jenseng in https://github.com/vercel/turborepo/pull/10023
+### Changelog
+* fix: update oxc-resolver and fix windows bug by @NicholasLYang in https://github.com/vercel/turborepo/pull/9754
+* chore: add comment about trace fix by @NicholasLYang in https://github.com/vercel/turborepo/pull/10040
+
+## New Contributors
+* @jenseng made their first contribution in https://github.com/vercel/turborepo/pull/10023
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.3...v2.4.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.3 (2025-02-25)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.3 -->
+
+## What's Changed
+### Docs
+* docs: update ESLint package docs by @anthonyshew in https://github.com/vercel/turborepo/pull/9833
+* docs: new page for examples by @anthonyshew in https://github.com/vercel/turborepo/pull/9843
+* docs: Fix broken link by @benwaffle in https://github.com/vercel/turborepo/pull/9857
+* docs: `schema.json` in `node_modules` by @anthonyshew in https://github.com/vercel/turborepo/pull/9832
+* docs: keybinds for tui by @anthonyshew in https://github.com/vercel/turborepo/pull/9831
+* docs: experimental flag for `watch` caching by @anthonyshew in https://github.com/vercel/turborepo/pull/9830
+* docs: `boundaries` experimental page by @anthonyshew in https://github.com/vercel/turborepo/pull/9834
+* chore(docs): correct syntax error in ESLint configuration example by @brunocroh in https://github.com/vercel/turborepo/pull/9870
+* docs: fix dangling sentence by @anthonyshew in https://github.com/vercel/turborepo/pull/9902
+* docs(boundaries): boundaries tags docs by @NicholasLYang in https://github.com/vercel/turborepo/pull/9959
+* docs(repo): add section on filtering to include dependencies by @ddeltree in https://github.com/vercel/turborepo/pull/9964
+* docs(repo): add JSON Schema to `turbo.json` ref in `single-package-workspaces.mdx` by @yamcodes in https://github.com/vercel/turborepo/pull/9926
+* docs: clarify login url usage by @anthonyshew in https://github.com/vercel/turborepo/pull/9963
+* docs: correct `--affected` flag equivalent by @anthonyshew in https://github.com/vercel/turborepo/pull/9969
+* docs: update wording for using `--affected` filter by @taesungh in https://github.com/vercel/turborepo/pull/9591
+* fix(docs): correct grammar in turborepo setup message by @Naresh-Khatri in https://github.com/vercel/turborepo/pull/9984
+* docs: update TypeScript wildcard recommendations by @anthonyshew in https://github.com/vercel/turborepo/pull/9983
+* feat(login): add `--manual` flag by @chris-olszewski in https://github.com/vercel/turborepo/pull/9998
+* docs: add `--manual` flag mention to self-hosting section by @anthonyshew in https://github.com/vercel/turborepo/pull/10009
+* docs: remove extra quotation mark by @anthonyshew in https://github.com/vercel/turborepo/pull/10010
+* docs: remove --continue mention with --parallel by @anthonyshew in https://github.com/vercel/turborepo/pull/10015
+* docs: more insightful leadin for Nx doc by @anthonyshew in https://github.com/vercel/turborepo/pull/10017
+* docs: corrections for Nx page by @anthonyshew in https://github.com/vercel/turborepo/pull/10019
+* docs(prune): document how prune differs from pnpm deploy by @chris-olszewski in https://github.com/vercel/turborepo/pull/10022
+* docs: update Nx page on dependency recommendations by @anthonyshew in https://github.com/vercel/turborepo/pull/10034
+### create-turbo
+* feat(create-turbo): fix official examples by @tknickman in https://github.com/vercel/turborepo/pull/9837
+* chore: move `create-turbo` community note and format it better by @anthonyshew in https://github.com/vercel/turborepo/pull/9836
+* chore: update copyright year to 2025 by @wmjae in https://github.com/vercel/turborepo/pull/10026
+### @turbo/codemod
+* feat(@turbo/codemod): add support for custom NPM registries by @Meligy in https://github.com/vercel/turborepo/pull/9803
+### eslint
+* fix: create types for ESLint config/plugin by @anthonyshew in https://github.com/vercel/turborepo/pull/9976
+* fix: exports for `eslint-config-turbo` by @anthonyshew in https://github.com/vercel/turborepo/pull/9978
+### @turbo/repository
+* chore(@turbo/repository): silence noop lint by @chris-olszewski in https://github.com/vercel/turborepo/pull/9835
+* feat(release): @turbo/repository v0.0.1-canary.11 by @dimitropoulos in https://github.com/vercel/turborepo/pull/9844
+### Examples
+* ci: add `check-types` task to examples testing by @anthonyshew in https://github.com/vercel/turborepo/pull/9824
+* chore(deps-dev): bump the basic group in /examples/basic with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9846
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9847
+* chore(deps): bump the kitchen-sink group in /examples/kitchen-sink with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9848
+* fix(examples): kitchen-sink package tests by @tknickman in https://github.com/vercel/turborepo/pull/9851
+* fix(examples): downgrade tailwind by @anthonyshew in https://github.com/vercel/turborepo/pull/9855
+* chore: removing unused script by @anthonyshew in https://github.com/vercel/turborepo/pull/9854
+* fix(pnpm): revert lockfile upgrade by @tknickman in https://github.com/vercel/turborepo/pull/9862
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/9877
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9878
+* chore(deps-dev): bump the basic group in /examples/basic with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/9879
+* chore(deps-dev): bump turbo from 2.3.4 to 2.4.0 in /examples/with-shell-commands in the with-shell-commands group by @dependabot in https://github.com/vercel/turborepo/pull/9880
+* feat(example): update with-react-native-web, Expo SDK 51 & Expo Router (File-based routing) by @shinjith-dev in https://github.com/vercel/turborepo/pull/9872
+* chore: use bunchee instead of tsup by @anthonyshew in https://github.com/vercel/turborepo/pull/9850
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/basic in the basic group by @dependabot in https://github.com/vercel/turborepo/pull/9893
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/with-tailwind in the with-tailwind group by @dependabot in https://github.com/vercel/turborepo/pull/9892
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/with-svelte in the with-svelte group by @dependabot in https://github.com/vercel/turborepo/pull/9891
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9930
+* chore(deps-dev): bump the kitchen-sink group in /examples/kitchen-sink with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9931
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9932
+* chore(deps-dev): bump the basic group in /examples/basic with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9933
+* fix: check-types in kitchen-sink example by @Asupkay in https://github.com/vercel/turborepo/pull/9952
+* fix: documentation for type-check in with-shell-commands example by @Asupkay in https://github.com/vercel/turborepo/pull/9953
+* chore: add check-types to root package.json if available by @Asupkay in https://github.com/vercel/turborepo/pull/9954
+* chore: standardize how turbo is ran in example packages by @Asupkay in https://github.com/vercel/turborepo/pull/9970
+* fix: package name in with-changesets release job by @Asupkay in https://github.com/vercel/turborepo/pull/9971
+* chore: standardize type check job name to check-types by @Asupkay in https://github.com/vercel/turborepo/pull/9973
+* chore(deps): bump the kitchen-sink group in /examples/kitchen-sink with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/9988
+* chore(deps-dev): bump turbo from 2.4.0 to 2.4.2 in /examples/with-shell-commands by @dependabot in https://github.com/vercel/turborepo/pull/9990
+* chore(deps-dev): bump the basic group in /examples/basic with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9991
+* chore(deps): bump next from 15.1.6 to 15.1.7 in /examples/non-monorepo by @dependabot in https://github.com/vercel/turborepo/pull/9993
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9992
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9989
+* chore(deps-dev): bump the basic group in /examples/basic with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10028
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10029
+* chore(deps-dev): bump eslint-config-next from 15.1.6 to 15.1.7 in /examples/non-monorepo by @dependabot in https://github.com/vercel/turborepo/pull/10030
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10031
+* chore(deps-dev): bump the kitchen-sink group in /examples/kitchen-sink with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10033
+* chore: bump Svelte example to Svelte v5 by @joshnuss in https://github.com/vercel/turborepo/pull/9981
+### Changelog
+* fix(deps): use windows-sys instead of winapi by @ognevny in https://github.com/vercel/turborepo/pull/9805
+* chore(turborepo-wax): remove lockfile by @ognevny in https://github.com/vercel/turborepo/pull/9817
+* fix(deps): remove unused `winapi` for turborepo by @ognevny in https://github.com/vercel/turborepo/pull/9839
+* fix(query): predicate bug by @NicholasLYang in https://github.com/vercel/turborepo/pull/9842
+* feat(turbo): update Azure Devops env by @tknickman in https://github.com/vercel/turborepo/pull/9849
+* fix(turbo-trace): check exports by @NicholasLYang in https://github.com/vercel/turborepo/pull/9841
+* feat(boundaries): add a nice message after finishing boundaries checks by @NicholasLYang in https://github.com/vercel/turborepo/pull/9861
+* feat(boundaries): ignore nested workspaces by @NicholasLYang in https://github.com/vercel/turborepo/pull/9840
+* feat(bun): support `bun.lock` by @chris-olszewski in https://github.com/vercel/turborepo/pull/9783
+* chore(deps): update git2 to 0.20.0 by @ognevny in https://github.com/vercel/turborepo/pull/9812
+* fix(microfrontends): fix handling of unsupported version by @chris-olszewski in https://github.com/vercel/turborepo/pull/9883
+* ci: more usable separator by @anthonyshew in https://github.com/vercel/turborepo/pull/9890
+* feat(boundaries): ignore svelte and vue files (but warn) by @NicholasLYang in https://github.com/vercel/turborepo/pull/9886
+* feat(query): studio graph by @NicholasLYang in https://github.com/vercel/turborepo/pull/9888
+* fix(summary): no longer display non existent logfile by @chris-olszewski in https://github.com/vercel/turborepo/pull/9907
+* refactor: upgrade miette by @NicholasLYang in https://github.com/vercel/turborepo/pull/9910
+* feat(turbo): framework conditionals by @tknickman in https://github.com/vercel/turborepo/pull/9853
+* feat(boundaries): boundaries tags by @NicholasLYang in https://github.com/vercel/turborepo/pull/9900
+* feat: adds pnpm lockfile ignoredOptionalDependencies by @ragrag in https://github.com/vercel/turborepo/pull/9939
+* test: add tests for authentication tokens and SSO by @anthonyshew in https://github.com/vercel/turborepo/pull/9937
+* fix(mfe): properly handle versionless configuration by @chris-olszewski in https://github.com/vercel/turborepo/pull/9945
+* fix: errant lockfile reference by @dimitropoulos in https://github.com/vercel/turborepo/pull/9957
+* fix: missing `bun.lock` by @dimitropoulos in https://github.com/vercel/turborepo/pull/9958
+* feat(boundaries): add ignore directive by @NicholasLYang in https://github.com/vercel/turborepo/pull/9938
+* fix(prune): preserve pnpmfileChecksum in lockfile by @chris-olszewski in https://github.com/vercel/turborepo/pull/9960
+* fix(tui): only display interactive message on tasks with stdin by @chris-olszewski in https://github.com/vercel/turborepo/pull/9966
+* fix(tui): replay all logs sent to tui with forced crlf by @chris-olszewski in https://github.com/vercel/turborepo/pull/9962
+* feat: better error when not enough scopes for SSO login by @anthonyshew in https://github.com/vercel/turborepo/pull/9948
+* fix(tui): no longer error if preferences cannot be read by @chris-olszewski in https://github.com/vercel/turborepo/pull/10004
+* chore: refactor `should_print_version` into helper for clarity by @erikareads in https://github.com/vercel/turborepo/pull/10006
+* chore(change_detector): improve log message on invalid ref range by @mehulkar in https://github.com/vercel/turborepo/pull/10001
+* chore: extract telemetry_handle creation into helper function by @erikareads in https://github.com/vercel/turborepo/pull/10008
+* chore: extract logic for defaulting to run into helper by @erikareads in https://github.com/vercel/turborepo/pull/10011
+* chore: change use of `map_or` to `map` and `unwrap_or` in cli helper by @erikareads in https://github.com/vercel/turborepo/pull/10018
+* chore: extract `set_run_flags` logic as named helper by @erikareads in https://github.com/vercel/turborepo/pull/10012
+* refactor(spaces): no more spaces by @NicholasLYang in https://github.com/vercel/turborepo/pull/9961
+* fix(proxy): make proxy task persistent by @chris-olszewski in https://github.com/vercel/turborepo/pull/10036
+
+## New Contributors
+* @benwaffle made their first contribution in https://github.com/vercel/turborepo/pull/9857
+* @brunocroh made their first contribution in https://github.com/vercel/turborepo/pull/9870
+* @shinjith-dev made their first contribution in https://github.com/vercel/turborepo/pull/9872
+* @Meligy made their first contribution in https://github.com/vercel/turborepo/pull/9803
+* @ddeltree made their first contribution in https://github.com/vercel/turborepo/pull/9964
+* @yamcodes made their first contribution in https://github.com/vercel/turborepo/pull/9926
+* @Asupkay made their first contribution in https://github.com/vercel/turborepo/pull/9952
+* @taesungh made their first contribution in https://github.com/vercel/turborepo/pull/9591
+* @Naresh-Khatri made their first contribution in https://github.com/vercel/turborepo/pull/9984
+* @erikareads made their first contribution in https://github.com/vercel/turborepo/pull/10006
+* @wmjae made their first contribution in https://github.com/vercel/turborepo/pull/10026
+* @joshnuss made their first contribution in https://github.com/vercel/turborepo/pull/9981
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.3.7...v2.4.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.3-canary.4 (2025-02-25)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.3-canary.4 -->
+
+## What's Changed
+### Docs
+* docs: add `--manual` flag mention to self-hosting section by @anthonyshew in https://github.com/vercel/turborepo/pull/10009
+* docs: remove extra quotation mark by @anthonyshew in https://github.com/vercel/turborepo/pull/10010
+* docs: remove --continue mention with --parallel by @anthonyshew in https://github.com/vercel/turborepo/pull/10015
+* docs: more insightful leadin for Nx doc by @anthonyshew in https://github.com/vercel/turborepo/pull/10017
+* docs: corrections for Nx page by @anthonyshew in https://github.com/vercel/turborepo/pull/10019
+* docs(prune): document how prune differs from pnpm deploy by @chris-olszewski in https://github.com/vercel/turborepo/pull/10022
+* docs: update Nx page on dependency recommendations by @anthonyshew in https://github.com/vercel/turborepo/pull/10034
+### create-turbo
+* chore: update copyright year to 2025 by @wmjae in https://github.com/vercel/turborepo/pull/10026
+### Examples
+* chore(deps-dev): bump the basic group in /examples/basic with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10028
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10029
+* chore(deps-dev): bump eslint-config-next from 15.1.6 to 15.1.7 in /examples/non-monorepo by @dependabot in https://github.com/vercel/turborepo/pull/10030
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/10031
+* chore(deps-dev): bump the kitchen-sink group in /examples/kitchen-sink with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/10033
+### Changelog
+* chore: refactor `should_print_version` into helper for clarity by @erikareads in https://github.com/vercel/turborepo/pull/10006
+* chore(change_detector): improve log message on invalid ref range by @mehulkar in https://github.com/vercel/turborepo/pull/10001
+* chore: extract telemetry_handle creation into helper function by @erikareads in https://github.com/vercel/turborepo/pull/10008
+* chore: extract logic for defaulting to run into helper by @erikareads in https://github.com/vercel/turborepo/pull/10011
+* chore: change use of `map_or` to `map` and `unwrap_or` in cli helper by @erikareads in https://github.com/vercel/turborepo/pull/10018
+* chore: extract `set_run_flags` logic as named helper by @erikareads in https://github.com/vercel/turborepo/pull/10012
+* refactor(spaces): no more spaces by @NicholasLYang in https://github.com/vercel/turborepo/pull/9961
+* fix(proxy): make proxy task persistent by @chris-olszewski in https://github.com/vercel/turborepo/pull/10036
+
+## New Contributors
+* @erikareads made their first contribution in https://github.com/vercel/turborepo/pull/10006
+* @wmjae made their first contribution in https://github.com/vercel/turborepo/pull/10026
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.3-canary.3...v2.4.3-canary.4</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.3-canary.3 (2025-02-19)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.3-canary.3 -->
+
+## What's Changed
+### Docs
+* fix(docs): correct grammar in turborepo setup message by @Naresh-Khatri in https://github.com/vercel/turborepo/pull/9984
+* docs: update TypeScript wildcard recommendations by @anthonyshew in https://github.com/vercel/turborepo/pull/9983
+* feat(login): add `--manual` flag by @chris-olszewski in https://github.com/vercel/turborepo/pull/9998
+### Examples
+* chore: standardize type check job name to check-types by @Asupkay in https://github.com/vercel/turborepo/pull/9973
+* chore(deps): bump the kitchen-sink group in /examples/kitchen-sink with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/9988
+* chore(deps-dev): bump turbo from 2.4.0 to 2.4.2 in /examples/with-shell-commands by @dependabot in https://github.com/vercel/turborepo/pull/9990
+* chore(deps-dev): bump the basic group in /examples/basic with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9991
+* chore(deps): bump next from 15.1.6 to 15.1.7 in /examples/non-monorepo by @dependabot in https://github.com/vercel/turborepo/pull/9993
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9992
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9989
+### Changelog
+* feat: better error when not enough scopes for SSO login by @anthonyshew in https://github.com/vercel/turborepo/pull/9948
+* fix(tui): no longer error if preferences cannot be read by @chris-olszewski in https://github.com/vercel/turborepo/pull/10004
+
+## New Contributors
+* @Naresh-Khatri made their first contribution in https://github.com/vercel/turborepo/pull/9984
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.3-canary.2...v2.4.3-canary.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.3-canary.2 (2025-02-14)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.3-canary.2 -->
+
+## What's Changed
+### eslint
+* fix: exports for `eslint-config-turbo` by @anthonyshew in https://github.com/vercel/turborepo/pull/9978
+
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.3-canary.1...v2.4.3-canary.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.3-canary.1 (2025-02-14)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.3-canary.1 -->
+
+## What's Changed
+### Docs
+* docs: clarify login url usage by @anthonyshew in https://github.com/vercel/turborepo/pull/9963
+* docs: correct `--affected` flag equivalent by @anthonyshew in https://github.com/vercel/turborepo/pull/9969
+* docs: update wording for using `--affected` filter by @taesungh in https://github.com/vercel/turborepo/pull/9591
+### eslint
+* fix: create types for ESLint config/plugin by @anthonyshew in https://github.com/vercel/turborepo/pull/9976
+### Examples
+* chore: standardize how turbo is ran in example packages by @Asupkay in https://github.com/vercel/turborepo/pull/9970
+* fix: package name in with-changesets release job by @Asupkay in https://github.com/vercel/turborepo/pull/9971
+
+## New Contributors
+* @taesungh made their first contribution in https://github.com/vercel/turborepo/pull/9591
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.3-canary.0...v2.4.3-canary.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.3-canary.0 (2025-02-14)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.3-canary.0 -->
+
+## What's Changed
+### Docs
+* docs: update ESLint package docs by @anthonyshew in https://github.com/vercel/turborepo/pull/9833
+* docs: new page for examples by @anthonyshew in https://github.com/vercel/turborepo/pull/9843
+* docs: Fix broken link by @benwaffle in https://github.com/vercel/turborepo/pull/9857
+* docs: `schema.json` in `node_modules` by @anthonyshew in https://github.com/vercel/turborepo/pull/9832
+* docs: keybinds for tui by @anthonyshew in https://github.com/vercel/turborepo/pull/9831
+* docs: experimental flag for `watch` caching by @anthonyshew in https://github.com/vercel/turborepo/pull/9830
+* docs: `boundaries` experimental page by @anthonyshew in https://github.com/vercel/turborepo/pull/9834
+* chore(docs): correct syntax error in ESLint configuration example by @brunocroh in https://github.com/vercel/turborepo/pull/9870
+* docs: fix dangling sentence by @anthonyshew in https://github.com/vercel/turborepo/pull/9902
+* docs(boundaries): boundaries tags docs by @NicholasLYang in https://github.com/vercel/turborepo/pull/9959
+* docs(repo): add section on filtering to include dependencies by @ddeltree in https://github.com/vercel/turborepo/pull/9964
+* docs(repo): add JSON Schema to `turbo.json` ref in `single-package-workspaces.mdx` by @yamcodes in https://github.com/vercel/turborepo/pull/9926
+### create-turbo
+* feat(create-turbo): fix official examples by @tknickman in https://github.com/vercel/turborepo/pull/9837
+* chore: move `create-turbo` community note and format it better by @anthonyshew in https://github.com/vercel/turborepo/pull/9836
+### @turbo/codemod
+* feat(@turbo/codemod): add support for custom NPM registries by @Meligy in https://github.com/vercel/turborepo/pull/9803
+### @turbo/repository
+* chore(@turbo/repository): silence noop lint by @chris-olszewski in https://github.com/vercel/turborepo/pull/9835
+* feat(release): @turbo/repository v0.0.1-canary.11 by @dimitropoulos in https://github.com/vercel/turborepo/pull/9844
+### Examples
+* ci: add `check-types` task to examples testing by @anthonyshew in https://github.com/vercel/turborepo/pull/9824
+* chore(deps-dev): bump the basic group in /examples/basic with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9846
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9847
+* chore(deps): bump the kitchen-sink group in /examples/kitchen-sink with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9848
+* fix(examples): kitchen-sink package tests by @tknickman in https://github.com/vercel/turborepo/pull/9851
+* fix(examples): downgrade tailwind by @anthonyshew in https://github.com/vercel/turborepo/pull/9855
+* chore: removing unused script by @anthonyshew in https://github.com/vercel/turborepo/pull/9854
+* fix(pnpm): revert lockfile upgrade by @tknickman in https://github.com/vercel/turborepo/pull/9862
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/9877
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9878
+* chore(deps-dev): bump the basic group in /examples/basic with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/9879
+* chore(deps-dev): bump turbo from 2.3.4 to 2.4.0 in /examples/with-shell-commands in the with-shell-commands group by @dependabot in https://github.com/vercel/turborepo/pull/9880
+* feat(example): update with-react-native-web, Expo SDK 51 & Expo Router (File-based routing) by @shinjith-dev in https://github.com/vercel/turborepo/pull/9872
+* chore: use bunchee instead of tsup by @anthonyshew in https://github.com/vercel/turborepo/pull/9850
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/basic in the basic group by @dependabot in https://github.com/vercel/turborepo/pull/9893
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/with-tailwind in the with-tailwind group by @dependabot in https://github.com/vercel/turborepo/pull/9892
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/with-svelte in the with-svelte group by @dependabot in https://github.com/vercel/turborepo/pull/9891
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9930
+* chore(deps-dev): bump the kitchen-sink group in /examples/kitchen-sink with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9931
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9932
+* chore(deps-dev): bump the basic group in /examples/basic with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9933
+* fix: check-types in kitchen-sink example by @Asupkay in https://github.com/vercel/turborepo/pull/9952
+* fix: documentation for type-check in with-shell-commands example by @Asupkay in https://github.com/vercel/turborepo/pull/9953
+* chore: add check-types to root package.json if available by @Asupkay in https://github.com/vercel/turborepo/pull/9954
+### Changelog
+* fix(deps): use windows-sys instead of winapi by @ognevny in https://github.com/vercel/turborepo/pull/9805
+* chore(turborepo-wax): remove lockfile by @ognevny in https://github.com/vercel/turborepo/pull/9817
+* fix(deps): remove unused `winapi` for turborepo by @ognevny in https://github.com/vercel/turborepo/pull/9839
+* fix(query): predicate bug by @NicholasLYang in https://github.com/vercel/turborepo/pull/9842
+* feat(turbo): update Azure Devops env by @tknickman in https://github.com/vercel/turborepo/pull/9849
+* fix(turbo-trace): check exports by @NicholasLYang in https://github.com/vercel/turborepo/pull/9841
+* feat(boundaries): add a nice message after finishing boundaries checks by @NicholasLYang in https://github.com/vercel/turborepo/pull/9861
+* feat(boundaries): ignore nested workspaces by @NicholasLYang in https://github.com/vercel/turborepo/pull/9840
+* feat(bun): support `bun.lock` by @chris-olszewski in https://github.com/vercel/turborepo/pull/9783
+* chore(deps): update git2 to 0.20.0 by @ognevny in https://github.com/vercel/turborepo/pull/9812
+* fix(microfrontends): fix handling of unsupported version by @chris-olszewski in https://github.com/vercel/turborepo/pull/9883
+* ci: more usable separator by @anthonyshew in https://github.com/vercel/turborepo/pull/9890
+* feat(boundaries): ignore svelte and vue files (but warn) by @NicholasLYang in https://github.com/vercel/turborepo/pull/9886
+* feat(query): studio graph by @NicholasLYang in https://github.com/vercel/turborepo/pull/9888
+* fix(summary): no longer display non existent logfile by @chris-olszewski in https://github.com/vercel/turborepo/pull/9907
+* refactor: upgrade miette by @NicholasLYang in https://github.com/vercel/turborepo/pull/9910
+* feat(turbo): framework conditionals by @tknickman in https://github.com/vercel/turborepo/pull/9853
+* feat(boundaries): boundaries tags by @NicholasLYang in https://github.com/vercel/turborepo/pull/9900
+* feat: adds pnpm lockfile ignoredOptionalDependencies by @ragrag in https://github.com/vercel/turborepo/pull/9939
+* test: add tests for authentication tokens and SSO by @anthonyshew in https://github.com/vercel/turborepo/pull/9937
+* fix(mfe): properly handle versionless configuration by @chris-olszewski in https://github.com/vercel/turborepo/pull/9945
+* fix: errant lockfile reference by @dimitropoulos in https://github.com/vercel/turborepo/pull/9957
+* fix: missing `bun.lock` by @dimitropoulos in https://github.com/vercel/turborepo/pull/9958
+* feat(boundaries): add ignore directive by @NicholasLYang in https://github.com/vercel/turborepo/pull/9938
+* fix(prune): preserve pnpmfileChecksum in lockfile by @chris-olszewski in https://github.com/vercel/turborepo/pull/9960
+* fix(tui): only display interactive message on tasks with stdin by @chris-olszewski in https://github.com/vercel/turborepo/pull/9966
+* fix(tui): replay all logs sent to tui with forced crlf by @chris-olszewski in https://github.com/vercel/turborepo/pull/9962
+
+## New Contributors
+* @benwaffle made their first contribution in https://github.com/vercel/turborepo/pull/9857
+* @brunocroh made their first contribution in https://github.com/vercel/turborepo/pull/9870
+* @shinjith-dev made their first contribution in https://github.com/vercel/turborepo/pull/9872
+* @Meligy made their first contribution in https://github.com/vercel/turborepo/pull/9803
+* @ddeltree made their first contribution in https://github.com/vercel/turborepo/pull/9964
+* @yamcodes made their first contribution in https://github.com/vercel/turborepo/pull/9926
+* @Asupkay made their first contribution in https://github.com/vercel/turborepo/pull/9952
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.3.7...v2.4.3-canary.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.3.7 (2025-02-13)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.3.7 -->
+
+## What's Changed
+* release(turborepo): 2.3.6 by @github-actions in https://github.com/vercel/turborepo/pull/9935
+* fix(mfe): properly handle versionless configuration by @chris-olszewski in https://github.com/vercel/turborepo/pull/9945
+
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.3.6...v2.3.7</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.2 (2025-02-12)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.2 -->
+
+## What's Changed
+### Changelog
+* feat(boundaries): boundaries tags by @NicholasLYang in https://github.com/vercel/turborepo/pull/9900
+* feat: adds pnpm lockfile ignoredOptionalDependencies by @ragrag in https://github.com/vercel/turborepo/pull/9939
+* test: add tests for authentication tokens and SSO by @anthonyshew in https://github.com/vercel/turborepo/pull/9937
+* fix(mfe): properly handle versionless configuration by @chris-olszewski in https://github.com/vercel/turborepo/pull/9945
+
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.1...v2.4.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.2-canary.0 (2025-02-12)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.2-canary.0 -->
+
+## What's Changed
+### Changelog
+* feat(boundaries): boundaries tags by @NicholasLYang in https://github.com/vercel/turborepo/pull/9900
+* feat: adds pnpm lockfile ignoredOptionalDependencies by @ragrag in https://github.com/vercel/turborepo/pull/9939
+* test: add tests for authentication tokens and SSO by @anthonyshew in https://github.com/vercel/turborepo/pull/9937
+* fix(mfe): properly handle versionless configuration by @chris-olszewski in https://github.com/vercel/turborepo/pull/9945
+
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.1...v2.4.2-canary.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.1 (2025-02-10)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.1 -->
+
+
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.0...v2.4.1
+
+## What's Changed
+* release(turborepo): 2.4.0 by @github-actions in https://github.com/vercel/turborepo/pull/9863
+* feat(boundaries): ignore nested workspaces by @NicholasLYang in https://github.com/vercel/turborepo/pull/9840
+* chore(docs): correct syntax error in ESLint configuration example by @brunocroh in https://github.com/vercel/turborepo/pull/9870
+* feat(bun): support `bun.lock` by @chris-olszewski in https://github.com/vercel/turborepo/pull/9783
+* chore(ci): always use latest corepack version by @chris-olszewski in https://github.com/vercel/turborepo/pull/9882
+* chore(deps): update git2 to 0.20.0 by @ognevny in https://github.com/vercel/turborepo/pull/9812
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/9877
+* fix(microfrontends): fix handling of unsupported version by @chris-olszewski in https://github.com/vercel/turborepo/pull/9883
+* release(turborepo): 2.4.1-canary.0 by @github-actions in https://github.com/vercel/turborepo/pull/9884
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9878
+* chore(deps-dev): bump the basic group in /examples/basic with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/9879
+* chore(deps-dev): bump turbo from 2.3.4 to 2.4.0 in /examples/with-shell-commands in the with-shell-commands group by @dependabot in https://github.com/vercel/turborepo/pull/9880
+* feat(example): update with-react-native-web, Expo SDK 51 & Expo Router (File-based routing) by @shinjith-dev in https://github.com/vercel/turborepo/pull/9872
+* chore: use bunchee instead of tsup by @anthonyshew in https://github.com/vercel/turborepo/pull/9850
+* ci: more usable separator by @anthonyshew in https://github.com/vercel/turborepo/pull/9890
+* fix: release `@turbo/repository` by @dimitropoulos in https://github.com/vercel/turborepo/pull/9865
+* feat(release): allow for overriding npm dist tag by @chris-olszewski in https://github.com/vercel/turborepo/pull/9899
+* feat(boundaries): ignore svelte and vue files (but warn) by @NicholasLYang in https://github.com/vercel/turborepo/pull/9886
+* ci: many examples fixes by @anthonyshew in https://github.com/vercel/turborepo/pull/9898
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/basic in the basic group by @dependabot in https://github.com/vercel/turborepo/pull/9893
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/with-tailwind in the with-tailwind group by @dependabot in https://github.com/vercel/turborepo/pull/9892
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/with-svelte in the with-svelte group by @dependabot in https://github.com/vercel/turborepo/pull/9891
+* feat(query): studio graph by @NicholasLYang in https://github.com/vercel/turborepo/pull/9888
+* docs: fix dangling sentence by @anthonyshew in https://github.com/vercel/turborepo/pull/9902
+* chore(release): remove goreleaser by @chris-olszewski in https://github.com/vercel/turborepo/pull/9905
+* fix(summary): no longer display non existent logfile by @chris-olszewski in https://github.com/vercel/turborepo/pull/9907
+* fix: Revert "chore(release): remove goreleaser" by @chris-olszewski in https://github.com/vercel/turborepo/pull/9908
+* feat(@turbo/codemod): add support for custom NPM registries by @Meligy in https://github.com/vercel/turborepo/pull/9803
+* chore(release): remove goreleaser by @chris-olszewski in https://github.com/vercel/turborepo/pull/9909
+* release(turborepo): 2.4.1-canary.1 by @github-actions in https://github.com/vercel/turborepo/pull/9911
+* Revert "chore(release): remove goreleaser" by @tknickman in https://github.com/vercel/turborepo/pull/9912
+* ci: fix examples update workflow by @anthonyshew in https://github.com/vercel/turborepo/pull/9864
+* chore(ci): support custom turbo version for ci by @tknickman in https://github.com/vercel/turborepo/pull/9913
+* fix(ci): correct global install workflow by @tknickman in https://github.com/vercel/turborepo/pull/9914
+* release(turborepo): 2.4.1-canary.2 by @github-actions in https://github.com/vercel/turborepo/pull/9915
+* fix(ci): correct dependency by @tknickman in https://github.com/vercel/turborepo/pull/9917
+* refactor: upgrade miette by @NicholasLYang in https://github.com/vercel/turborepo/pull/9910
+* feat(turbo): framework conditionals by @tknickman in https://github.com/vercel/turborepo/pull/9853
+* chore(release): remove goreleaser by @chris-olszewski in https://github.com/vercel/turborepo/pull/9918
+* release(turborepo): 2.4.1-canary.3 by @github-actions in https://github.com/vercel/turborepo/pull/9934
+* ci(fix): checkout before doing path filtering by @anthonyshew in https://github.com/vercel/turborepo/pull/9920
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9930
+* chore(deps-dev): bump the kitchen-sink group in /examples/kitchen-sink with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9931
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9932
+* chore(deps-dev): bump the basic group in /examples/basic with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9933
+
+## New Contributors
+* @brunocroh made their first contribution in https://github.com/vercel/turborepo/pull/9870
+* @shinjith-dev made their first contribution in https://github.com/vercel/turborepo/pull/9872
+* @Meligy made their first contribution in https://github.com/vercel/turborepo/pull/9803
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.0...v2.4.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.1-canary.3 (2025-02-10)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.1-canary.3 -->
+
+## What's Changed
+### Changelog
+* refactor: upgrade miette by @NicholasLYang in https://github.com/vercel/turborepo/pull/9910
+* feat(turbo): framework conditionals by @tknickman in https://github.com/vercel/turborepo/pull/9853
+
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.1-canary.2...v2.4.1-canary.3</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.3.6 (2025-02-10)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.3.6 -->
+
+
+## What's Changed
+* chore(examples): update `with-tailwind` by @anthonyshew in https://github.com/vercel/turborepo/pull/9764
+* release(turborepo): 2.3.4 by @github-actions in https://github.com/vercel/turborepo/pull/9776
+* chore(examples): update non-monorepo example by @anthonyshew in https://github.com/vercel/turborepo/pull/9770
+* chore(linting): add `name` property to ESLint `recommended` flat config by @jeremy-code in https://github.com/vercel/turborepo/pull/9765
+* docs: migration guide for users coming from Nx by @anthonyshew in https://github.com/vercel/turborepo/pull/9762
+* ci: conditional checks depending on source code changes by @anthonyshew in https://github.com/vercel/turborepo/pull/9731
+* ci: wrap if statement with curlies by @anthonyshew in https://github.com/vercel/turborepo/pull/9778
+* ci: add needs to examples checks by @anthonyshew in https://github.com/vercel/turborepo/pull/9779
+* ci: fix negative globs by @anthonyshew in https://github.com/vercel/turborepo/pull/9780
+* ci: still trying to get paths right by @anthonyshew in https://github.com/vercel/turborepo/pull/9781
+* ci: still trying to get paths right by @anthonyshew in https://github.com/vercel/turborepo/pull/9782
+* ci: fix ignore paths for tests by @anthonyshew in https://github.com/vercel/turborepo/pull/9784
+* ci: fix ignore paths for tests by @anthonyshew in https://github.com/vercel/turborepo/pull/9785
+* chore: upgrade to Rust 1.84.0 by @ognevny in https://github.com/vercel/turborepo/pull/9766
+* feat(mfe): v2->v1 & make version optional by @tknickman in https://github.com/vercel/turborepo/pull/9787
+* release(turborepo): 2.3.5-canary.0 by @github-actions in https://github.com/vercel/turborepo/pull/9792
+* docs: make incremental migration more prominent on Nx doc by @anthonyshew in https://github.com/vercel/turborepo/pull/9796
+* feat(prune): add `--use-gitignore` flag by @chris-olszewski in https://github.com/vercel/turborepo/pull/9797
+* chore: add best practices to Prisma ORM example by @ankur-arch in https://github.com/vercel/turborepo/pull/9794
+* ci: correctly ignoring in turborepo-test.yml by @anthonyshew in https://github.com/vercel/turborepo/pull/9800
+* feat: makes `affectedPackages` lockfile aware by @dimitropoulos in https://github.com/vercel/turborepo/pull/9795
+* chore(deps): bump the basic group across 1 directory with 17 updates by @dependabot in https://github.com/vercel/turborepo/pull/9772
+* feat(examples): add example-with-vite-react by @shivam-pawar in https://github.com/vercel/turborepo/pull/9620
+* chore(deps): bump the kitchen-sink group across 1 directory with 25 updates by @dependabot in https://github.com/vercel/turborepo/pull/9771
+* chore(deps-dev): bump @types/node from 20.17.16 to 22.10.10 in /examples/non-monorepo in the non-monorepo group across 1 directory by @dependabot in https://github.com/vercel/turborepo/pull/9777
+* feat(mfe): support user specified local proxy by @chris-olszewski in https://github.com/vercel/turborepo/pull/9695
+* chore(deps-dev): bump the basic group in /examples/basic with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/9806
+* chore(deps-dev): bump turbo from 2.3.3 to 2.3.4 in /examples/with-shell-commands in the with-shell-commands group by @dependabot in https://github.com/vercel/turborepo/pull/9807
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/9808
+* release(turborepo): 2.3.5-canary.1 by @github-actions in https://github.com/vercel/turborepo/pull/9813
+* feat(watch): caching by @NicholasLYang in https://github.com/vercel/turborepo/pull/9815
+* docs: fix typo by @arosequist in https://github.com/vercel/turborepo/pull/9814
+* fix(example): remove conflict css property from with-tailwind example by @kayumuzzaman in https://github.com/vercel/turborepo/pull/9816
+* chore(examples): update `with-svelte` dependencies by @anthonyshew in https://github.com/vercel/turborepo/pull/9822
+* ci(examples): update version in examples on release by @anthonyshew in https://github.com/vercel/turborepo/pull/9823
+* chore: suggest ways to break cyclic dependencies by @chris-olszewski in https://github.com/vercel/turborepo/pull/9799
+
+## New Contributors
+* @ankur-arch made their first contribution in https://github.com/vercel/turborepo/pull/9794
+* @shivam-pawar made their first contribution in https://github.com/vercel/turborepo/pull/9620
+* @arosequist made their first contribution in https://github.com/vercel/turborepo/pull/9814
+* @kayumuzzaman made their first contribution in https://github.com/vercel/turborepo/pull/9816
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.3.4...v2.3.6</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.1-canary.2 (2025-02-07)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.1-canary.2 -->
+
+
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.1-canary.1...v2.4.1-canary.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.1-canary.1 (2025-02-07)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.1-canary.1 -->
+
+## What's Changed
+### Docs
+* docs: fix dangling sentence by @anthonyshew in https://github.com/vercel/turborepo/pull/9902
+### @turbo/codemod
+* feat(@turbo/codemod): add support for custom NPM registries by @Meligy in https://github.com/vercel/turborepo/pull/9803
+### Examples
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 3 updates by @dependabot in https://github.com/vercel/turborepo/pull/9878
+* chore(deps-dev): bump the basic group in /examples/basic with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/9879
+* chore(deps-dev): bump turbo from 2.3.4 to 2.4.0 in /examples/with-shell-commands in the with-shell-commands group by @dependabot in https://github.com/vercel/turborepo/pull/9880
+* feat(example): update with-react-native-web, Expo SDK 51 & Expo Router (File-based routing) by @shinjith-dev in https://github.com/vercel/turborepo/pull/9872
+* chore: use bunchee instead of tsup by @anthonyshew in https://github.com/vercel/turborepo/pull/9850
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/basic in the basic group by @dependabot in https://github.com/vercel/turborepo/pull/9893
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/with-tailwind in the with-tailwind group by @dependabot in https://github.com/vercel/turborepo/pull/9892
+* chore(deps-dev): bump typescript-eslint from 8.22.0 to 8.23.0 in /examples/with-svelte in the with-svelte group by @dependabot in https://github.com/vercel/turborepo/pull/9891
+### Changelog
+* ci: more usable separator by @anthonyshew in https://github.com/vercel/turborepo/pull/9890
+* feat(boundaries): ignore svelte and vue files (but warn) by @NicholasLYang in https://github.com/vercel/turborepo/pull/9886
+* feat(query): studio graph by @NicholasLYang in https://github.com/vercel/turborepo/pull/9888
+* fix(summary): no longer display non existent logfile by @chris-olszewski in https://github.com/vercel/turborepo/pull/9907
+
+## New Contributors
+* @shinjith-dev made their first contribution in https://github.com/vercel/turborepo/pull/9872
+* @Meligy made their first contribution in https://github.com/vercel/turborepo/pull/9803
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.1-canary.0...v2.4.1-canary.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.1-canary.0 (2025-02-03)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.1-canary.0 -->
+
+## What's Changed
+### Docs
+* chore(docs): correct syntax error in ESLint configuration example by @brunocroh in https://github.com/vercel/turborepo/pull/9870
+### Examples
+* chore(deps-dev): bump the with-svelte group in /examples/with-svelte with 4 updates by @dependabot in https://github.com/vercel/turborepo/pull/9877
+### Changelog
+* feat(boundaries): ignore nested workspaces by @NicholasLYang in https://github.com/vercel/turborepo/pull/9840
+* feat(bun): support `bun.lock` by @chris-olszewski in https://github.com/vercel/turborepo/pull/9783
+* chore(deps): update git2 to 0.20.0 by @ognevny in https://github.com/vercel/turborepo/pull/9812
+* fix(microfrontends): fix handling of unsupported version by @chris-olszewski in https://github.com/vercel/turborepo/pull/9883
+
+## New Contributors
+* @brunocroh made their first contribution in https://github.com/vercel/turborepo/pull/9870
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.4.0...v2.4.1-canary.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.4.0 (2025-01-31)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.4.0 -->
+
+## What's Changed
+### Docs
+* docs: migration guide for users coming from Nx by @anthonyshew in https://github.com/vercel/turborepo/pull/9762
+* docs: make incremental migration more prominent on Nx doc by @anthonyshew in https://github.com/vercel/turborepo/pull/9796
+* feat(prune): add `--use-gitignore` flag by @chris-olszewski in https://github.com/vercel/turborepo/pull/9797
+* docs: fix typo by @arosequist in https://github.com/vercel/turborepo/pull/9814
+* docs: update ESLint package docs by @anthonyshew in https://github.com/vercel/turborepo/pull/9833
+* docs: new page for examples by @anthonyshew in https://github.com/vercel/turborepo/pull/9843
+* docs: Fix broken link by @benwaffle in https://github.com/vercel/turborepo/pull/9857
+* docs: `schema.json` in `node_modules` by @anthonyshew in https://github.com/vercel/turborepo/pull/9832
+* docs: keybinds for tui by @anthonyshew in https://github.com/vercel/turborepo/pull/9831
+* docs: experimental flag for `watch` caching by @anthonyshew in https://github.com/vercel/turborepo/pull/9830
+* docs: `boundaries` experimental page by @anthonyshew in https://github.com/vercel/turborepo/pull/9834
+### @turbo/repository
+* feat: makes `affectedPackages` lockfile aware by @dimitropoulos in https://github.com/vercel/turborepo/pull/9795
+* chore(@turbo/repository): silence noop lint by @chris-olszewski in https://github.com/vercel/turborepo/pull/9835
+### Examples
+* feat(create-turbo): fix official examples by @tknickman in https://github.com/vercel/turborepo/pull/9837
+* chore: move `create-turbo` community note and format it better by @anthonyshew in https://github.com/vercel/turborepo/pull/9836
+* chore(examples): update `with-tailwind` by @anthonyshew in https://github.com/vercel/turborepo/pull/9764
+* chore(examples): update non-monorepo example by @anthonyshew in https://github.com/vercel/turborepo/pull/9770
+* chore: add best practices to Prisma ORM example by @ankur-arch in https://github.com/vercel/turborepo/pull/9794
+* chore(deps): bump the basic group across 1 directory with 17 updates by @dependabot in https://github.com/vercel/turborepo/pull/9772
+* feat(examples): add example-with-vite-react by @shivam-pawar in https://github.com/vercel/turborepo/pull/9620
+* chore(deps): bump the kitchen-sink group across 1 directory with 25 updates by @dependabot in https://github.com/vercel/turborepo/pull/9771
+* chore(deps-dev): bump @types/node from 20.17.16 to 22.10.10 in /examples/non-monorepo in the non-monorepo group across 1 directory by @dependabot in https://github.com/vercel/turborepo/pull/9777
+* chore(deps-dev): bump the basic group in /examples/basic with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/9806
+* chore(deps-dev): bump turbo from 2.3.3 to 2.3.4 in /examples/with-shell-commands in the with-shell-commands group by @dependabot in https://github.com/vercel/turborepo/pull/9807
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/9808
+* fix(example): remove conflict css property from with-tailwind example by @kayumuzzaman in https://github.com/vercel/turborepo/pull/9816
+* chore(examples): update `with-svelte` dependencies by @anthonyshew in https://github.com/vercel/turborepo/pull/9822
+* ci: add `check-types` task to examples testing by @anthonyshew in https://github.com/vercel/turborepo/pull/9824
+* chore(deps-dev): bump the basic group in /examples/basic with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9846
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9847
+* chore(deps): bump the kitchen-sink group in /examples/kitchen-sink with 2 updates by @dependabot in https://github.com/vercel/turborepo/pull/9848
+* fix(examples): kitchen-sink package tests by @tknickman in https://github.com/vercel/turborepo/pull/9851
+* fix(examples): downgrade tailwind by @anthonyshew in https://github.com/vercel/turborepo/pull/9855
+* chore: removing unused script by @anthonyshew in https://github.com/vercel/turborepo/pull/9854
+* fix(pnpm): revert lockfile upgrade by @tknickman in https://github.com/vercel/turborepo/pull/9862
+### Changelog
+* chore: upgrade to Rust 1.84.0 by @ognevny in https://github.com/vercel/turborepo/pull/9766
+* feat(mfe): v2->v1 & make version optional by @tknickman in https://github.com/vercel/turborepo/pull/9787
+* feat(mfe): support user specified local proxy by @chris-olszewski in https://github.com/vercel/turborepo/pull/9695
+* feat(watch): caching by @NicholasLYang in https://github.com/vercel/turborepo/pull/9815
+* chore: suggest ways to break cyclic dependencies by @chris-olszewski in https://github.com/vercel/turborepo/pull/9799
+* fix(deps): use windows-sys instead of winapi by @ognevny in https://github.com/vercel/turborepo/pull/9805
+* chore(turborepo-wax): remove lockfile by @ognevny in https://github.com/vercel/turborepo/pull/9817
+* fix(deps): remove unused `winapi` for turborepo by @ognevny in https://github.com/vercel/turborepo/pull/9839
+* fix(query): predicate bug by @NicholasLYang in https://github.com/vercel/turborepo/pull/9842
+* feat(turbo): update Azure Devops env by @tknickman in https://github.com/vercel/turborepo/pull/9849
+* fix(turbo-trace): check exports by @NicholasLYang in https://github.com/vercel/turborepo/pull/9841
+* feat(boundaries): add a nice message after finishing boundaries checks by @NicholasLYang in https://github.com/vercel/turborepo/pull/9861
+* chore(linting): add `name` property to ESLint `recommended` flat config by @jeremy-code in https://github.com/vercel/turborepo/pull/9765
+
+## New Contributors
+* @ankur-arch made their first contribution in https://github.com/vercel/turborepo/pull/9794
+* @shivam-pawar made their first contribution in https://github.com/vercel/turborepo/pull/9620
+* @arosequist made their first contribution in https://github.com/vercel/turborepo/pull/9814
+* @kayumuzzaman made their first contribution in https://github.com/vercel/turborepo/pull/9816
+* @benwaffle made their first contribution in https://github.com/vercel/turborepo/pull/9857
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.3.4...v2.4.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.3.5-canary.2 (2025-01-28)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.3.5-canary.2 -->
+
+## What's Changed
+### Docs
+* docs: fix typo by @arosequist in https://github.com/vercel/turborepo/pull/9814
+### Examples
+* chore(deps-dev): bump the with-tailwind group in /examples/with-tailwind with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/9808
+* fix(example): remove conflict css property from with-tailwind example by @kayumuzzaman in https://github.com/vercel/turborepo/pull/9816
+* chore(examples): update `with-svelte` dependencies by @anthonyshew in https://github.com/vercel/turborepo/pull/9822
+### Changelog
+* feat(watch): caching by @NicholasLYang in https://github.com/vercel/turborepo/pull/9815
+* chore: suggest ways to break cyclic dependencies by @chris-olszewski in https://github.com/vercel/turborepo/pull/9799
+
+## New Contributors
+* @arosequist made their first contribution in https://github.com/vercel/turborepo/pull/9814
+* @kayumuzzaman made their first contribution in https://github.com/vercel/turborepo/pull/9816
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.3.5-canary.1...v2.3.5-canary.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.3.5-canary.1 (2025-01-27)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.3.5-canary.1 -->
+
+## What's Changed
+### Docs
+* docs: make incremental migration more prominent on Nx doc by @anthonyshew in https://github.com/vercel/turborepo/pull/9796
+* feat(prune): add `--use-gitignore` flag by @chris-olszewski in https://github.com/vercel/turborepo/pull/9797
+### @turbo/repository
+* feat: makes `affectedPackages` lockfile aware by @dimitropoulos in https://github.com/vercel/turborepo/pull/9795
+### Examples
+* chore: add best practices to Prisma ORM example by @ankur-arch in https://github.com/vercel/turborepo/pull/9794
+* chore(deps): bump the basic group across 1 directory with 17 updates by @dependabot in https://github.com/vercel/turborepo/pull/9772
+* feat(examples): add example-with-vite-react by @shivam-pawar in https://github.com/vercel/turborepo/pull/9620
+* chore(deps): bump the kitchen-sink group across 1 directory with 25 updates by @dependabot in https://github.com/vercel/turborepo/pull/9771
+* chore(deps-dev): bump @types/node from 20.17.16 to 22.10.10 in /examples/non-monorepo in the non-monorepo group across 1 directory by @dependabot in https://github.com/vercel/turborepo/pull/9777
+* chore(deps-dev): bump the basic group in /examples/basic with 6 updates by @dependabot in https://github.com/vercel/turborepo/pull/9806
+* chore(deps-dev): bump turbo from 2.3.3 to 2.3.4 in /examples/with-shell-commands in the with-shell-commands group by @dependabot in https://github.com/vercel/turborepo/pull/9807
+### Changelog
+* feat(mfe): support user specified local proxy by @chris-olszewski in https://github.com/vercel/turborepo/pull/9695
+
+## New Contributors
+* @ankur-arch made their first contribution in https://github.com/vercel/turborepo/pull/9794
+* @shivam-pawar made their first contribution in https://github.com/vercel/turborepo/pull/9620
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.3.5-canary.0...v2.3.5-canary.1</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.3.5-canary.0 (2025-01-24)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.3.5-canary.0 -->
+
+## What's Changed
+### Docs
+* docs: migration guide for users coming from Nx by @anthonyshew in https://github.com/vercel/turborepo/pull/9762
+### eslint
+* chore(linting): add `name` property to ESLint `recommended` flat config by @jeremy-code in https://github.com/vercel/turborepo/pull/9765
+### Examples
+* chore(examples): update `with-tailwind` by @anthonyshew in https://github.com/vercel/turborepo/pull/9764
+* chore(examples): update non-monorepo example by @anthonyshew in https://github.com/vercel/turborepo/pull/9770
+### Changelog
+* chore: upgrade to Rust 1.84.0 by @ognevny in https://github.com/vercel/turborepo/pull/9766
+* feat(mfe): v2->v1 & make version optional by @tknickman in https://github.com/vercel/turborepo/pull/9787
+
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.3.4...v2.3.5-canary.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Turborepo v2.3.4 (2025-01-23)</h2>
+      <pre><!-- Release notes generated using configuration in .github/turborepo-release.yml at v2.3.4 -->
+
+## What's Changed
+### Docs
+* chore(docs): enable hashlinking for System Environment Variables entries by @anthonyshew in https://github.com/vercel/turborepo/pull/9532
+* docs: options one-pager by @anthonyshew in https://github.com/vercel/turborepo/pull/9533
+* docs(typo): fix typo on turbo-ignore page by @anthonyshew in https://github.com/vercel/turborepo/pull/9576
+* docs: clarify default daemon usage by @anthonyshew in https://github.com/vercel/turborepo/pull/9566
+* docs: provide reasoning on why Turborepo doesn't support nested workspaces by @anthonyshew in https://github.com/vercel/turborepo/pull/9586
+* docs: change path of options overview page by @anthonyshew in https://github.com/vercel/turborepo/pull/9600
+* docs: remove old options page by @anthonyshew in https://github.com/vercel/turborepo/pull/9601
+* fix(watch): fix output text when no tasks are provided by @takaebato in https://github.com/vercel/turborepo/pull/9612
+* chore: change Discord links to Vercel Community by @anthonyshew in https://github.com/vercel/turborepo/pull/9629
+* docs: add community implementations of Remote Cache by @anthonyshew in https://github.com/vercel/turborepo/pull/9631
+* docs: add missing `api` folder in `turbo prune api --docker` example by @gianelli99 in https://github.com/vercel/turborepo/pull/9648
+* docs: add missing `apps` folder in `prune` command reference by @gianelli99 in https://github.com/vercel/turborepo/pull/9658
+* docs: correct Bun support status by @anthonyshew in https://github.com/vercel/turborepo/pull/9664
+* docs: mention module resolution differences for package managers by @anthonyshew in https://github.com/vercel/turborepo/pull/9665
+* docs(errors): improve error message for recursive calls by @anthonyshew in https://github.com/vercel/turborepo/pull/9650
+* docs: guide for Playwright by @anthonyshew in https://github.com/vercel/turborepo/pull/9662
+* docs: mention --graph on graphs page by @anthonyshew in https://github.com/vercel/turborepo/pull/9661
+* docs: fix typo in typescript.mdx of repo-docs by @jbrocksfellas in https://github.com/vercel/turborepo/pull/9674
+* docs: document creating packages with framework bindings by @anthonyshew in https://github.com/vercel/turborepo/pull/9222
+* docs: add note about packaging patterns by @anthonyshew in https://github.com/vercel/turborepo/pull/9673
+* docs: guide for shadcn/ui by @anthonyshew in https://github.com/vercel/turborepo/pull/9675
+* docs: add link to shadcn/ui page by @anthonyshew in https://github.com/vercel/turborepo/pull/9678
+* docs: mention free remote caching earlier on page by @anthonyshew in https://github.com/vercel/turborepo/pull/9688
+* docs: typo fix by @chaficnajjar in https://github.com/vercel/turborepo/pull/9690
+* docs(fix): correct line highlighting by removing extra comma by @anthonyshew in https://github.com/vercel/turborepo/pull/9696
+* docs: add community-built Run Summaries web viewer by @anthonyshew in https://github.com/vercel/turborepo/pull/9679
+* docs: edits for Prisma guide by @anthonyshew in https://github.com/vercel/turborepo/pull/9682
+* docs: update docs to use correct changeset dir by @chris-olszewski in https://github.com/vercel/turborepo/pull/9722
+* fix(docs): correct backticks causing broken links by @tknickman in https://github.com/vercel/turborepo/pull/9727
+* docs: update docker.mdx to Replace yarn install with yarn install --frozen-lockfile for consistent dependency installation by @jonathandsouza in https://github.com/vercel/turborepo/pull/9728
+### create-turbo
+* fix(create-turbo): correct repo name by @anthonyshew in https://github.com/vercel/turborepo/pull/9708
+* chore(examples): mark core supported examples by @anthonyshew in https://github.com/vercel/turborepo/pull/9707
+* chore(packages): update fs-extra import by @tknickman in https://github.com/vercel/turborepo/pull/9752
+* chore(packages): update picocolors import by @tknickman in https://github.com/vercel/turborepo/pull/9753
+### @turbo/codemod
+* fix: upgrade the turbo package in Yarn 4 by @atimmer in https://github.com/vercel/turborepo/pull/8076
+### eslint
+* chore: add peer dependencies to eslint packages by @bitttttten in https://github.com/vercel/turborepo/pull/8773
+### @turbo/repository
+* chore(pm): reduce PackageManager surface area by @chris-olszewski in https://github.com/vercel/turborepo/pull/9557
+### Examples
+* chore(examples): stable React 19 version by @anthonyshew in https://github.com/vercel/turborepo/pull/9575
+* fix(examples): create-turbo dependencies with npm by @anthonyshew in https://github.com/vercel/turborepo/pull/9580
+* Update config.json by @yamz8 in https://github.com/vercel/turborepo/pull/9603
+* chore(examples): update `basic` example to Next.js 15.1 by @anthonyshew in https://github.com/vercel/turborepo/pull/9602
+* fix(examples): add missing ESLint dependency by @anthonyshew in https://github.com/vercel/turborepo/pull/9640
+* feat(examples): utm source by @tknickman in https://github.com/vercel/turborepo/pull/9641
+* feat(examples): add `example-with-angular` by @codexshell in https://github.com/vercel/turborepo/pull/8140
+* chore(examples): remove unused typescript-eslint dependencies from ba… by @tevem1207 in https://github.com/vercel/turborepo/pull/9668
+* fix(examples): basic generator by @tknickman in https://github.com/vercel/turborepo/pull/9687
+* chore(examples): stable ports for applications by @anthonyshew in https://github.com/vercel/turborepo/pull/9705
+* fix(examples): bug in design system example by @zsh77 in https://github.com/vercel/turborepo/pull/9284
+* chore(deps-dev): bump turbo from 2.0.3 to 2.3.3 in /examples/with-shell-commands in the with-shell-commands group by @dependabot in https://github.com/vercel/turborepo/pull/9746
+* chore(deps): bump the with-tailwind group across 1 directory with 14 updates by @dependabot in https://github.com/vercel/turborepo/pull/9755
+* chore(deps): bump the non-monorepo group across 1 directory with 8 updates by @dependabot in https://github.com/vercel/turborepo/pull/9756
+### Changelog
+* chore(tui): move `h` bind to correct section by @anthonyshew in https://github.com/vercel/turborepo/pull/9543
+* chore(tui): dim pane text helpers and remove dead code. by @anthonyshew in https://github.com/vercel/turborepo/pull/9542
+* chore(tui): rename some variables for clarity by @anthonyshew in https://github.com/vercel/turborepo/pull/9541
+* chore: remove leader from bug report template by @anthonyshew in https://github.com/vercel/turborepo/pull/9551
+* feat(mfe): support MFE config v2 by @chris-olszewski in https://github.com/vercel/turborepo/pull/9471
+* chore(tui): add test for key handling by @chris-olszewski in https://github.com/vercel/turborepo/pull/9558
+* feat(mfe): enable proxy for no turbo json by @chris-olszewski in https://github.com/vercel/turborepo/pull/9560
+* refactor: compile args + config to opts by @NicholasLYang in https://github.com/vercel/turborepo/pull/9552
+* refactor(opts): remove config from opts by @NicholasLYang in https://github.com/vercel/turborepo/pull/9562
+* chore(scm): avoid dropping child before wait by @chris-olszewski in https://github.com/vercel/turborepo/pull/9564
+* fix: downgrade lockfile to match pnpm version in package.json by @chris-olszewski in https://github.com/vercel/turborepo/pull/9567
+* fix(cli): error on out of place run args by @chris-olszewski in https://github.com/vercel/turborepo/pull/9445
+* fix(daemon): limit number of git children by @chris-olszewski in https://github.com/vercel/turborepo/pull/9572
+* chore: clean up old stuff from Go/Turbopack by @NicholasLYang in https://github.com/vercel/turborepo/pull/9563
+* chore: fix outdated docs issue template label by @anthonyshew in https://github.com/vercel/turborepo/pull/9584
+* fix(mfe): factor in configs to hashes by @chris-olszewski in https://github.com/vercel/turborepo/pull/9582
+* docs: update CONTRIBUTING.md by @anthonyshew in https://github.com/vercel/turborepo/pull/9590
+* chore(integration): use offline install by @chris-olszewski in https://github.com/vercel/turborepo/pull/9599
+* feat(tui): popup to list keybinds by @anthonyshew in https://github.com/vercel/turborepo/pull/9545
+* fix(berry): add yarn berry support for built dependencies meta when pruning by @chris-olszewski in https://github.com/vercel/turborepo/pull/9605
+* fix(watch): watch command require tasks argument by @takaebato in https://github.com/vercel/turborepo/pull/9598
+* fix(mfe): multiple versions by @chris-olszewski in https://github.com/vercel/turborepo/pull/9595
+* feat(tui): bind to toggle task selection pinning by @anthonyshew in https://github.com/vercel/turborepo/pull/9609
+* chore: add new package name for Nitro by @anthonyshew in https://github.com/vercel/turborepo/pull/9608
+* feat(tui): change binds for log scrolling and add UI hints by @anthonyshew in https://github.com/vercel/turborepo/pull/9610
+* ci(examples): test every package manager in Support Policy on `basic` by @anthonyshew in https://github.com/vercel/turborepo/pull/9593
+* fix(package-manager): allow custom URL for `packageManager` version by @pkerschbaum in https://github.com/vercel/turborepo/pull/9624
+* feat(tui): persistent preferences by @anthonyshew in https://github.com/vercel/turborepo/pull/9512
+* fix(repository): honour handleTransparentWorkspaces setting in Yarn/Berry by @romanofski in https://github.com/vercel/turborepo/pull/9626
+* chore(env): add VERCEL_ENV into default global env map by @chris-olszewski in https://github.com/vercel/turborepo/pull/9635
+* docs: fix CONTRIBUTING.md typo by @anthonyshew in https://github.com/vercel/turborepo/pull/9637
+* docs: mention capnp in the dependencies by @maciej-ka in https://github.com/vercel/turborepo/pull/9643
+* fix: packages listed twice in watch mode by @maciej-ka in https://github.com/vercel/turborepo/pull/9644
+* chore: fix copyright license year by @JasonnnW3000 in https://github.com/vercel/turborepo/pull/9663
+* fix(prune): fix Yarn1 entries getting merged erroneously by @chris-olszewski in https://github.com/vercel/turborepo/pull/9627
+* feat(query): add lockfile package changes to `affectedPackage` by @chris-olszewski in https://github.com/vercel/turborepo/pull/9639
+* feat: optional `TURBO_SITE` environment variable at compilation time for development by @anthonyshew in https://github.com/vercel/turborepo/pull/9660
+* chore: add missing language fences to CONTRIBUTING.md by @glitched-w0rld in https://github.com/vercel/turborepo/pull/9671
+* fix: respect output mode 'none' even when caching is disabled by @anthonyshew in https://github.com/vercel/turborepo/pull/9670
+* feat(mfe): remove hyphen from microfrontends binary name by @mknichel in https://github.com/vercel/turborepo/pull/9683
+* fix(cache): no longer let remoteCache.enable override force by @chris-olszewski in https://github.com/vercel/turborepo/pull/9684
+* feat(telem): track ui mode by @tknickman in https://github.com/vercel/turborepo/pull/9698
+* fix(cache): suggest proper --cache flag for --remote-cache-read-only by @chris-olszewski in https://github.com/vercel/turborepo/pull/9701
+* fix(cache): avoid warning if TURBO_FORCE, TURBO_REMOTE_ONLY, and TURBO_CACHE by @chris-olszewski in https://github.com/vercel/turborepo/pull/9704
+* chore(@turbo/types): add interruptible to schema by @chris-olszewski in https://github.com/vercel/turborepo/pull/9706
+* perf(vt100): increase render performance for `tui_term` codepath by @chris-olszewski in https://github.com/vercel/turborepo/pull/9123
+* chore: upgrade to Rust 1.83.0 by @ognevny in https://github.com/vercel/turborepo/pull/9652
+* fix(tui): avoid zombie process on clipboard write failure by @chris-olszewski in https://github.com/vercel/turborepo/pull/9713
+* feat: respect gitignore during turbo prune by @thebrubaker in https://github.com/vercel/turborepo/pull/9711
+* chore(turbo): swap VERCEL_ENV to VERCEL_TARGET_ENV by @tknickman in https://github.com/vercel/turborepo/pull/9718
+* chore(turbo): include schema in turbo package by @chris-olszewski in https://github.com/vercel/turborepo/pull/9714
+* fix(env): allow `passThroughEnv` to negate built ins and `globalPassThroughEnv` by @chris-olszewski in https://github.com/vercel/turborepo/pull/9680
+* chore: update CONTRIBUTING.md for example maintenance statuses by @anthonyshew in https://github.com/vercel/turborepo/pull/9723
+* fix: put contributing update in right place by @anthonyshew in https://github.com/vercel/turborepo/pull/9724
+* fix: remove dupe in CONTRIBUTING.md by @anthonyshew in https://github.com/vercel/turborepo/pull/9725
+* fix: typos in CONTRIBUTING.md by @anthonyshew in https://github.com/vercel/turborepo/pull/9726
+* chore: use proper grammar in error messages by @anthonyshew in https://github.com/vercel/turborepo/pull/9685
+* chore: update an auth error message by @anthonyshew in https://github.com/vercel/turborepo/pull/9732
+* chore: make dependabot work again by @anthonyshew in https://github.com/vercel/turborepo/pull/9733
+* chore: run fewer dependabots by @anthonyshew in https://github.com/vercel/turborepo/pull/9740
+* chore: make PR titles a little less crazy by @anthonyshew in https://github.com/vercel/turborepo/pull/9745
+* feat: boundaries by @NicholasLYang in https://github.com/vercel/turborepo/pull/9634
+* docs: update CONTRIBUTING.md by @chris-olszewski in https://github.com/vercel/turborepo/pull/9759
+* fix(watch): correctly derive opts from watch mode args by @NicholasLYang in https://github.com/vercel/turborepo/pull/9761
+* chore: dependabot.yml weekly, not daily by @anthonyshew in https://github.com/vercel/turborepo/pull/9775
+
+## New Contributors
+* @bitttttten made their first contribution in https://github.com/vercel/turborepo/pull/8773
+* @yamz8 made their first contribution in https://github.com/vercel/turborepo/pull/9603
+* @takaebato made their first contribution in https://github.com/vercel/turborepo/pull/9598
+* @pkerschbaum made their first contribution in https://github.com/vercel/turborepo/pull/9624
+* @romanofski made their first contribution in https://github.com/vercel/turborepo/pull/9626
+* @maciej-ka made their first contribution in https://github.com/vercel/turborepo/pull/9643
+* @gianelli99 made their first contribution in https://github.com/vercel/turborepo/pull/9648
+* @codexshell made their first contribution in https://github.com/vercel/turborepo/pull/8140
+* @JasonnnW3000 made their first contribution in https://github.com/vercel/turborepo/pull/9663
+* @glitched-w0rld made their first contribution in https://github.com/vercel/turborepo/pull/9671
+* @tevem1207 made their first contribution in https://github.com/vercel/turborepo/pull/9668
+* @jbrocksfellas made their first contribution in https://github.com/vercel/turborepo/pull/9674
+* @chaficnajjar made their first contribution in https://github.com/vercel/turborepo/pull/9690
+* @thebrubaker made their first contribution in https://github.com/vercel/turborepo/pull/9711
+* @jonathandsouza made their first contribution in https://github.com/vercel/turborepo/pull/9728
+* @atimmer made their first contribution in https://github.com/vercel/turborepo/pull/8076
+
+**Full Changelog**: https://github.com/vercel/turborepo/compare/v2.3.3...v2.3.4</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

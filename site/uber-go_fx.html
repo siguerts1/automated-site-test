@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for uber-go/fx"/>
+  <title>uber-go/fx Release Notes</title>
+</head>
+<body>
+  <h1>🚀 uber-go/fx - Release Notes</h1>
+  
+    <section>
+      <h2>v1.23.0 (2024-10-11)</h2>
+      <pre>### Added
+- Added `Runtime` to `fxevent.Run` event, which stores the runtime of
+  a constructor or a decorator that's run, including functions created
+  by `fx.Supply` and `fx.Replace`.
+
+### Changed
+- Overhauled the documentation website. (https://uber-go.github.io/fx/)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.2 (2024-08-07)</h2>
+      <pre>### Fixed
+- A deadlock with the relayer in signal receivers.
+
+### Changed
+- Upgrade Dig dependency to v1.18.0</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.1 (2024-06-25)</h2>
+      <pre>### Fixed
+- Fx apps will only listen to signals when `.Run()`, `.Wait()`, or `.Done()`
+  are called, fixing a regression introduced in v1.19.0.
+
+Thank you @MarcoPolo for your contribution to the release.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.22.0 (2024-05-30)</h2>
+      <pre>### Added
+- Add `fx.Self` which can be passed to the `fx.As` annotation to signify
+  that a type should be provided as itself.
+- Add `fxtest.EnforceTimeout` that can be passed to `fxtest.NewLifecycle`
+  to force `Start` and `Stop` to return context errors when hook context expires.
+
+### Changed
+- `fx.Private` can now be used with `fx.Supply`.
+
+### Fixed
+- Fx apps will no longer listen to OS signals when they are stopped,
+  solving blocking issues in programs that depended on OS signals
+  after an Fx app stops.
+
+Thank you @MarcoPolo for your contribution to the release.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.21.1 (2024-04-24)</h2>
+      <pre>### Changed
+- Register Fx provides (e.g. fx.Lifecycle, fx.Shutdowner, fx.DotGraph) before
+  user provides, to increase likelihood of successful custom logger creation.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.21.0 (2024-03-13)</h2>
+      <pre>### Added
+- fxtest: Add WithTestLogger option that uses a `testing.TB` as the
+  Fx event logger.
+- An fxevent logger that can log events using a slog logger has been added.
+
+### Changed
+- Upgrade Dig dependency to v1.17.1
+
+Thanks to @robbert229 for their contribution to the release.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.20.1 (2023-10-17)</h2>
+      <pre>### Added
+- Provided, Decorated, Supplied, and Replaced events now include a trace
+  of module locations through which the option was given to the App.
+- wasi support.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.20.0 (2023-06-12)</h2>
+      <pre>### Added
+- A new event `fxevent.Run` is now emitted when Fx runs a constructor, decorator,
+  or supply/replace stub.
+
+### Changed
+- `fx.Populate` now works with `fx.Annotate`.
+- Upgrade Dig dependency to v1.17.0.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.19.3 (2023-05-08)</h2>
+      <pre>### Changed
+- Fixed several typos in docs.
+- WASM build support.
+- Annotating In and Out structs with From/As annotations generated invalid results.
+  The annotation check now blocks this.
+- `Shutdown`: Support calling from `Invoke`.
+
+### Deprecated
+- Deprecate `ShutdownTimeout` option.
+
+### Fixed
+- Respect Shutdowner ExitCode from calling `Run`.
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.19.2 (2023-02-21)</h2>
+      <pre>### Changed
+- Upgrade Dig dependency to v1.16.1.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.19.1 (2023-01-11)</h2>
+      <pre>### Changed
+- Calling `fx.Stop()` after the `App` has already stopped no longer errors out.
+
+### Fixed
+- Addressed a regression in 1.19.0 release which caused apps to ignore OS signals
+  after running for startTimeout duration.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.19.0 (2023-01-04)</h2>
+      <pre>
+### Added
+- `fx.RecoverFromPanics` Option which allows Fx to recover from user-provided constructors
+  and invoked functions.
+- `fx.Private` that allows the constructor to limit the scope of its outputs to the wrapping
+  `fx.Module`.
+- `ExitCode` ShutdownOption which allows setting custom exit code at the end of app
+  lifecycle.
+- `Wait` which returns a channel that can be used for waiting on application shutdown.
+- fxevent/ZapLogger now exposes `UseLogLevel` and `UseErrorLevel` methods to set
+  the level of the Zap logs produced by it.
+- Add lifecycle hook-convertible methods: `StartHook`, `StopHook`, `StartStopHook`
+  that can be used with more function signatures.
+
+### Changed
+- `fx.WithLogger` can now be passed at `fx.Module` level, setting custom logger at
+  `Module` scope instead of the whole `App`.
+
+### Fixed
+- `fx.OnStart` and `fx.OnStop` Annotations now work with annotated types that was
+  provided by the annotated constructor.
+- fxevent/ZapLogger: Errors from `fx.Supply` are now logged at `Error` level, not
+  `Info`.
+- A race condition in lifecycle Start/Stop methods.
+- Typos in docs.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.18.2 (2022-09-28)</h2>
+      <pre>## Added
+- Clarify ordering of `Invoke`s in `Module`s.
+
+## Fixed
+- Fix `Decorate` not being applied to transitive dependencies at root `App` level.
+
+  [1.18.2]: https://github.com/uber-go/fx/compare/v1.18.1...v1.18.2
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.18.1 (2022-08-08)</h2>
+      <pre>## Fixed
+- Fix a nil panic when nil is passed to OnStart and OnStop lifecycle methods.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.18.0 (2022-08-08)</h2>
+      <pre>## Added
+- Soft value groups that lets you specify value groups as best-effort dependencies.
+- fx.OnStart and fx.OnStop annotations which lets you annotate dependencies to provide OnStart and OnStop lifecycle hooks.
+- A new fxevent.Replaced event written to fxevent.Logger following an fx.Replace.
+
+## Fixed
+- Upgrade Dig dependency to v1.14.1 to address a couple of issues with decorations. Refer to Dig v1.14.1 release notes for more details.
+- fx.WithLogger no longer ignores decorations and replacements of types that it depends on.
+- Don't run lifecycle hooks if the context for them has already expired.
+- App.Start and App.Stop no longer deadlock if the OnStart/OnStop hook exits the current goroutine.
+- fxevent.ConsoleLogger no longer emits an extraneous argument for the Supplied event.
+
+## Deprecated
+- fx.Extract in favor of fx.Populate.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.17.1 (2022-03-23)</h2>
+      <pre>## Added
+- Logging for provide/invoke/decorate now includes the associated `fx.Module` name.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.17.0 (2022-03-01)</h2>
+      <pre>## Added
+- Add `fx.Module` which scopes any modifications made to the dependency graph.
+- Add `fx.Decorate` and `fx.Replace` that lets you modify a dependency graph with decorators.
+- Add `fxevent.Decorated` event which gets emitted upon a dependency getting decorated.
+
+## Changed
+- `fx.Annotate`: Validate that `fx.In` or `fx.Out` structs are not passed to it.
+- `fx.Annotate`: Upon failure to Provide, the error contains the actual location
+  of the provided constructor.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.16.0 (2021-12-03)</h2>
+      <pre>### Added
+- Add the ability to provide a function as multiple interfaces at once using `fx.As`.
+
+### Changed
+- `fx.Annotate`: support variadic functions, and feeding value groups into them.
+
+### Fixed
+- Fix an issue where OnStop hooks weren't getting called on SIGINT on Windows.
+- Fix a data race between app.Done() and shutdown.
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.15.0 (2021-11-08)</h2>
+      <pre>### Added
+- Add `fx.Annotate` to allow users to provide parameter and result tags easily without
+  having to create `fx.In` or `fx.Out` structs.
+- Add `fx.As` that allows users to annotate a constructor to provide its result type(s) as
+  interface(s) that they implement instead of the types themselves.
+
+### Fixed
+- Fix `fxevent.Stopped` not being logged when `App.Stop` is called.
+- Fix `fxevent.Started` or `fxevent.Stopped` not being logged when start or
+  stop times out.
+
+[1.15.0]: https://github.com/uber-go/fx/compare/v1.14.2...v1.15.0
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.14.2 (2021-08-16)</h2>
+      <pre>### Changed
+- For fxevent console implementation: no longer log non-error case for fxevent.Invoke event, while for zap implementation, start logging fx.Invoking case without stack.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.14.1 (2021-08-16)</h2>
+      <pre>### Changed
+- `fxevent.Invoked` was being logged at `Error` level even upon successful `Invoke`.
+   This was changed to log at `Info` level when `Invoke` succeeded.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.14.0 (2021-08-12)</h2>
+      <pre>### Added
+- Introduce the new `fx.WithLogger` option. Provide a constructor for
+  `fxevent.Logger` objects with it to customize how Fx logs events.
+- Add new `fxevent` package that exposes events from Fx in a structured way.
+  Use this to write custom logger implementations for use with the
+  `fx.WithLogger` option.
+- Expose and log additional information when lifecycle hooks time out.
+
+### Changed
+- Fx now emits structured JSON logs by default. These may be parsed and
+  processed by log ingestion systems.
+- `fxtest.Lifecycle` now logs to the provided `testing.TB` instead of stderr.
+- `fx.In` and `fx.Out` are now type aliases instead of structs.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.1 (2020-08-19)</h2>
+      <pre>### Fixed
+- Fix minimum version constraint for dig. `fx.ValidateGraph` requires at least
+  dig 1.10.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.13.0 (2020-06-16)</h2>
+      <pre>### Added
+- Added `fx.ValidateGraph` which allows graph cycle validation and dependency correctness
+ without running anything. This is useful if `fx.Invoke` has side effects, does I/O, etc.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.12.0 (2020-04-09)</h2>
+      <pre>### Added
+- Added `fx.Supply` to provide externally created values to Fx containers
+  without building anonymous constructors.
+
+### Changed
+- Drop library dependency on development tools.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.11.0 (2020-04-01)</h2>
+      <pre>### Added
+- Value groups can use the `flatten` option to indicate values in a slice should
+  be provided individually rather than providing the slice itself. See package
+  documentation for details.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.10.0 (2019-11-20)</h2>
+      <pre>### Added
+- All `fx.Option`s now include readable string representations.
+- Report stack traces when `fx.Provide` and `fx.Invoke` calls fail. This
+  should make these errors more debuggable.
+
+### Changed
+- Migrated to Go modules.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.9.0 (2019-01-22)</h2>
+      <pre>### Added
+- Add the ability to shutdown Fx applications from inside the container. See
+  the Shutdowner documentation for details.
+- Add `fx.Annotated` to allow users to provide named values without creating a
+  new constructor.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.8.0 (2018-11-06)</h2>
+      <pre>### Added
+- Provide DOT graph of dependencies in the container.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.7.1 (2018-09-26)</h2>
+      <pre>### Fixed
+- Make `fxtest.New` ensure that the app was created successfully. Previously,
+  it would return the app (similar to `fx.New`, which expects the user to verify
+  the error).
+- Update dig container to defer acyclic validation until after Invoke. Application
+  startup time should improve proportional to the size of the dependency graph.
+- Fix a goroutine leak in `fxtest.Lifecycle`.</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

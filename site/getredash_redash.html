@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for getredash/redash"/>
+  <title>getredash/redash Release Notes</title>
+</head>
+<body>
+  <h1>🚀 getredash/redash - Release Notes</h1>
+  
+    <section>
+      <h2>v25.1.0 (2025-01-08)</h2>
+      <pre>[Release Notes](https://github.com/getredash/redash/wiki/Release-Notes#25010)
+
+Docker Tag: `redash/redash:25.1.0`
+
+Upgrade from v10.1.0:
+
+Apply migration using `docker-compose run --rm server manage db upgrade`
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.1.0 (2021-11-24)</h2>
+      <pre>Docker Tag: `redash/redash:10.1.0.b50633`
+
+## Summary
+
+This release includes fixes for three security vulnerabilities (click the links for complete details to see whether your installation is affected):
+- Insecure default configuration affects installations where `REDASH_COOKIE_SECRET` is not set explicitly ([CVE-2021-41192](https://github.com/getredash/redash/security/advisories/GHSA-g8xr-f424-h2rv))
+- SSRF vulnerability affects installations that enabled URL-loading data sources ([CVE-2021-43780](https://github.com/getredash/redash/security/advisories/GHSA-fcpv-hgq6-87h7))
+- Incorrect usage of `state` parameter in OAuth client code affects installations where Google Login is enabled ([CVE-2021-43777](https://github.com/getredash/redash/security/advisories/GHSA-vhc7-w7r8-8m34))
+
+It also incorporates several fixes from master that merged after the V10.0 release.
+
+See [CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md) for the full release notes.
+
+Huge thanks to [Ian Carroll](https://github.com/iangcarroll) and another reporter who preferred to remain anonymous for responsibly disclosing these vulnerabilities.
+
+## Upgrading
+
+### From V10.0:
+
+Follow our standard upgrade process (reproduced below). 
+1. Make sure to backup your data. You only need to backup Redash’s PostgreSQL database (the database Redash stores metadata in, not the ones you might be querying) as the data in Redis is transient.
+2. Change directory to /opt/redash.
+3. Update `/opt/redash/docker-compose.yml` Redash image reference to `redash/redash:10.1.0.b50633`
+4. Stop Redash services: `docker-compose stop server scheduler scheduled_worker adhoc_worker` (you might need to list additional services if you updated your configuration)
+5. (No migrations are needed when upgrading from 10.0)
+6. Read the `Impact` segment at [this link](https://github.com/getredash/redash/security/advisories/GHSA-g8xr-f424-h2rv). If your installation is affected, follow the instructions under the `Patches` heading to secure the secret fields in your database.
+7. Start services with docker-compose up -d
+
+### From V9:
+Follow the same steps as V10 but for step 5:
+
+5. Apply migration: `docker-compose run --rm server manage db upgrade`
+
+### From V8 or earlier
+1. Follow the complete steps outlined in the [V10.0 release ](https://github.com/getredash/redash/releases/tag/v10.0.0) but use this Docker Tag in step 3: `redash/redash:10.1.0.b50633`
+2. Read the `Impact` segment at [this link](https://github.com/getredash/redash/security/advisories/GHSA-g8xr-f424-h2rv). If your installation is affected, follow the instructions under the `Patches` heading to secure the secret fields in your database.
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.0.0 (2021-10-02)</h2>
+      <pre>Docker Tag: `redash/redash:10.0.0.b50363`
+
+See [CHANGELOG](https://github.com/getredash/redash/blob/release/10.0.x/CHANGELOG.md) for the full release notes.
+
+## How to Upgrade
+
+Complete upgrade instructions for those coming from V8 -> V10 appear below. 
+
+---
+**Note**:  V10 is the first non-beta Redash release since V8. So we expect most users upgrading to V10 are coming from V8. The upgrade from V8->V10 is like any other, but since RQ replaced Celery in this version there are a couple extra modifications that need to be done in your `docker-compose.yml`.
+
+If you already run the V9-beta release you already made these changes. You can use the [standard upgrade instructions](https://redash.io/help/open-source/admin-guide/how-to-upgrade) instead.
+
+---
+
+These steps are performed on the server that runs Docker.
+
+1. Make sure to backup your data. You only need to backup Redash’s PostgreSQL database (the database Redash stores metadata in, not the ones you might be querying) as the data in Redis is transient. **Note**: If you just deployed a Redash V8 AMI and have not used it, you can skip this step.
+2. `cd /opt/redash`
+3. Update `opt/redash/docker-compose.yml` to reference the docker image you want to upgrade to: `redash/redash:10.0.0.b50363`
+
+![142671233-76952fdb-1d0b-4f54-8825-a13cc4814874](https://user-images.githubusercontent.com/17067911/142930648-6c5bc948-0370-4e87-a06a-3c7eb6eacacf.png)
+
+
+4.  Under `services.scheduler.environment` omit `QUEUES` and `WORKERS_COUNT` and omit environment altogether if it is empty.
+
+![142671147-2b3d1755-01a0-4561-86d4-0fff2a3d6862](https://user-images.githubusercontent.com/17067911/142930681-49606421-c644-4007-a650-34b6366bc161.png)
+5. Under `services`, add a new service for general RQ jobs:
+
+```yaml
+worker:
+  <<: *redash-service
+  command: worker
+  environment:
+    QUEUES: "periodic emails default"
+    WORKERS_COUNT: 1
+```
+
+![142671560-a8263e3b-0435-4327-ae46-c669f8a21b79](https://user-images.githubusercontent.com/17067911/142930697-ed7d2881-ca3f-4449-a096-b906f1d983c8.png)
+
+6. Stop Redash services: `docker-compose stop server scheduler scheduled_worker adhoc_worker` (you might need to list additional services if you defined them in your `docker-compose.yml` previously)
+7. Force a recreation of your containers with `docker-compose up --force-recreate --build`
+8. Run the necessary migrations with `docker-compose run --rm server manage db upgrade`
+9. Restart the containers `docker-compose up -d`
+
+## Dashboard URL Changes
+
+Dashboard URLs now include the dashboard id and slug.
+
+For example, given a dashboard with the slug `account-overview` and an id of `251`:
+
+**Before**
+`https://redash.app/dashboards/account-overview`
+
+**After**
+`https://redash.app/dashboards/251-account-overview`
+
+The dashboard can also be reached using the new `/dashboard` (notice this is singular) endpoint. It accepts _either_ an ID or a slug:
+
+- `https://redash.app/dashboard/251`
+- `https://redash.app/dashboard/account-overview`
+
+Either of these will redirect to the **After** link above. Dashboard ID's are guaranteed to be unique. But dashboards can share the same slug. If a user visits `/dashboard/<some slug>` and more than one dashboard exists with that slug, they will be redirected to the earliest created dashboard with that slug.
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the upgrade guide.
+* If the upgrade guide doesn't help, you can ask for help on the forum.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v10.0.0-beta (2021-06-21)</h2>
+      <pre>Docker Tag: `redash/redash:10.0.0-beta.b49597`
+
+See [CHANGELOG](https://github.com/getredash/redash/blob/release/10.0.x/CHANGELOG.md) for the full release notes.
+
+### Special instructions for upgrading from V8 or earlier
+
+Typically, if you are running your own instance of Redash and wish to upgrade, you would simply modify the Docker tag in your docker-compose.yml file. Since RQ has replaced Celery in this version, there are a couple extra modifications that need to be done in your docker-compose.yml:
+
+1. Under services/scheduler/environment, omit QUEUES and WORKERS_COUNT (and omit environment altogether if it is empty).
+2. Under services, add a new service for general RQ jobs:
+
+```yaml
+worker:
+  <<: *redash-service
+  command: worker
+  environment:
+    QUEUES: "periodic emails default"
+    WORKERS_COUNT: 1
+```
+
+Following that, force a recreation of your containers with docker-compose up --force-recreate --build and you should be good to go.
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the upgrade guide.
+* If the upgrade guide doesn't help, you can ask for help on the forum.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v9.0.0-beta (2020-06-14)</h2>
+      <pre>Docker Tag: `redash/redash:9.0.0-beta.b42121`.
+
+See [CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v900-beta---2020-06-11) for the full release notes.
+
+### Upgrading
+
+Typically, if you are running your own instance of Redash and wish to upgrade, you would simply modify the Docker tag in your docker-compose.yml file. Since RQ has replaced Celery in this version, there are a couple extra modifications that need to be done in your docker-compose.yml:
+
+1. Under services/scheduler/environment, omit QUEUES and WORKERS_COUNT (and omit environment altogether if it is empty).
+2. Under services, add a new service for general RQ jobs:
+
+```yaml
+worker:
+  <<: *redash-service
+  command: worker
+  environment:
+    QUEUES: "periodic emails default"
+    WORKERS_COUNT: 1
+```
+
+Following that, force a recreation of your containers with docker-compose up --force-recreate --build and you should be good to go.
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted). </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v8.0.0 (2019-10-28)</h2>
+      <pre>Docker Tag: `redash/redash:8.0.0.b32245`.
+
+See [CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v800---2019-10-27) for the full release notes.
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted). </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v8.0.0-beta.2 (2019-09-18)</h2>
+      <pre>Docker Tag: `redash/redash:8.0.0-beta.2.b29352`.
+
+See [CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v800-beta2---2019-09-16) for the full release notes.
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted). </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v7.0.0 (2019-03-25)</h2>
+      <pre>**Please read the following before upgrading:**
+
+1. If you're using the tarball deployment and not Docker, you might need to manually update some of the dependencies. Compare your current Python dependencies with the ones in the `requirements*.txt` files.
+
+2. This release adds encryption of your data sources configuration. By default it will use the `REDASH_COOKIE_SECRET` as encryption key. But we recommend setting a new key for it using the `REDASH_SECRET_KEY` environment variable. Note that you need to set this **before running migrations**. Otherwise everything will be encrypted with `REDSAH_COOKIE_SECRET`.
+
+See [CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v700---2019-03-17) for the full release notes.
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted). </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v6.0.0 (2018-12-17)</h2>
+      <pre>**Before upgrading to v6.0.0 make sure to clear out the Celery queue (unless upgrade from v6.0.0-beta).**
+
+This is the final release of v6.0.0. See [v6.0.0-beta](https://github.com/getredash/redash/releases/tag/v6.0.0-beta) for details of what's new in v6.0.0. This release includes only fixes from regressions introduces in the beta version.
+
+This release had contributions from 5 people: @rauchy, @denisov-vlad, @arikfr, @ariarijp, and @gabrieldutra. Thank you, everyone 🙏
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted). </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v6.0.0-beta (2018-12-04)</h2>
+      <pre>Redash v6 beta is now available! 🙌 This release was 2 months in the making and it is full with good stuff! 
+
+* We have 5 new data sources: Databricks, IBM DB2, Kylin, Druid and Rockset. ⌗
+* There are fixes and improvements to 11 existing data sources (MySQL, Redshift, Postgres, MongoDB, Google BigQuery, Vertica, TreasureData, Presto, ClickHouse, Google Sheets and Google Analytics).
+* The Query Results data source can now load cached results, just use the `cached_query_` prefix instead of `query_`.
+* On the visualizations front we added a Heatmap visualization and did updated the table and counter visualizations.
+* Alerts got some fixes and a new destination: PagerDuty.
+* If the live autocomplete in the code editor annoys you, you can disable it now (although we're working to make it better, see #3092).
+* Fast queries will now load faster. :running_man: 
+* We improved the layout of visualizations and content on smaller screen sizes. 📱
+* For those of you who like sharing, you can now enable the ability to share ownership of queries and dashboards and let others to edit them. Check the Settings page to enable this feature.
+
+There were also important changes to the code and infrastructure: 
+
+* More components moved to React.
+* We switched to Webpack 4 with the help of @dmonego.
+* We upgraded to Celery 4 with the help of @emtwo, @jezdez, @mashrikt and @atharvai.
+* We started moving towards Python 3 for our backend. The first step was to make sure our code pass basic sanity tests with Flake 8, which was implemented by @cclauss.
+* We improved our testing on the frontend by adding setup for Jest tests and E2E testing using Cypress (@gabrieldutra).
+* Each pull request now gets a deploy preview using Netlify to easily test frontend changes.
+
+This is just a summary, you're welcome to review the full CHANGELOG.
+
+This release had contributions from 38 people: @arikfr, @kravets-levko, @jezdez, @kyoshidajp, @kocsmy, @alison985, @gabrieldutra, @washort, @GitSumito, @emtwo, @rauchy, @alexanderlz, @denisov-vlad, @ariarijp, @yoavbls, @zhujunsan, @sjakthol, @koooge, @SakuradaJun, @dmonego, @Udomomo, @cclauss, @combineads, @zaimy, @Trigl, @ralphilius, @jodevsa, @deecay, @igorcanadi, @pashaxp, @hoangphuoc25, @toph, @burnash, @wankdanker, @Yossi-a, @Rovel, @kadrach, and @nicof38. **Thank you, everyone** 🙏
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* Because of the Celery upgrade, before upgrading to this version please make sure to clear out your Celery queues.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide ](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn’t help, you can ask for help on the [forum ](https://discuss.redash.io/c/support/support-self-hosted).
+---
+
+Happy querying :nerd_face:</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.2 (2018-10-18)</h2>
+      <pre>v5.0.2: 
+
+* Fix: prevent Open Redirect vulnerability.
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted). </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.1 (2018-09-28)</h2>
+      <pre>V5.0.1: 
+
+* Upgraded Celery version to 3.1.26 to make upgrade to Celery 4 easier.
+* Added support for JWT authentication (for services like Cloudflare Access or Google IAP).
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted). </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0 (2018-09-21)</h2>
+      <pre>Final release for V5. Most of the changes were already in the beta release of V5, but this includes several fixes along with UI improvements.
+
+🙏 Thanks to @arikfr, @jezdez, @kravets-levko, @alison985, @kocsmy, @yossi-a, @tdsmith, @nasmithan, @jrbenny35, @sjakthol, @ariarijp and @combineads who contributed to this release.
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted). </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.2 (2018-09-20)</h2>
+      <pre>This is a security release for V4 users. You can find full details on what it fixes and its importance in the [release blog post](https://blog.redash.io/important-redash-security-update-%EF%B8%8F-2fb8134ca689).
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted). </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.0.0-beta (2018-08-06)</h2>
+      <pre>This is the first beta of the V5 release (and hopefully the last one). This version includes a lot of exciting new additions along with bug fixes and other changes.
+
+Some notable changes:
+
+* Extensive work on parameters UI:
+  * New Date Range parameter type.
+  * UI for creating new parameters.
+  * Support for Now/Today as default value of date/time parameter.
+* Tagging and favorites ⭐️ support for queries and dashboards.
+* Users list page was improved (search, additional information) and you can now disable users.
+* Query editor improvements: additional keyboard shortcuts and support for searching in query text.
+* Visualizations improvements: option to select colors of pie chart sectors, X Axis type auto detect and option to format values, labels and tooltips.
+* Data Sources:
+  * Support for Yandex Metrika and AppMetrika.
+  * BigQuery: location property support and schema will load all tables now.
+  * Elasticsearch: stop sending source_content_type parameter which wasn't supported in older versions.
+* Started migrating the frontend codebase to React.
+
+[And much more](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v500-beta---2018-08-06)!
+
+🙏 Thanks to @kravets-levko, @arikfr, @ariarijp, @alison985, @kyoshidajp, @kocsmy, @denisov-vlad, @deecay, @yuua, @emtwo, @Pablohn26, @sieben, @atharvai, @matsumo, @tdawber, @innovia, @gabrieldutra, @coreyhuinker, @maxv, @sjakthol, @mtrbean and @washort who contributed to this release!
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted).
+
+---
+
+Docker image and updated tarball will be ready soon.
+
+---
+
+Happy querying 🤓 </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.1 (2018-05-02)</h2>
+      <pre>`v4.0.1` is a recommended upgrade that includes several bug fixes, small changes and [improved dashboard refresh UX](https://github.com/getredash/redash/pull/2501).
+
+As always huge thanks to everyone who contributed to this release. 🙏 
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted).
+
+---
+
+Happy querying 🤓 </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.0 (2018-04-16)</h2>
+      <pre>V4 is finally out. 🎁 We used the feedback from RC1 and our hosted customers to fix some performance issues in the RC1 release. @kravets-levko worked hard so you will get smooth performance with the new dashboards layout editor.
+
+This release includes 35 changes, features and bug fixes from @alon710, @arikfr, @deecay, @fmy, @idalin, @kravets-levko, @tnetennba3, @toru and @valentin2105. 🙏 🙏 🙏  This includes new Choropleth map visualization, Mattermost support and more.
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](https://redash.io/help/open-source/admin-guide/how-to-upgrade).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io/c/support/support-self-hosted).
+
+---
+
+Docker image and updated tarball will be ready soon.
+
+---
+
+Happy querying 🤓 </pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.0-rc.1 (2018-03-05)</h2>
+      <pre>This is a follow up release to the `v4.0.0-beta` and hopefully the last release before the full release of `v4.0.0`. It includes fixes to some bugs introduced in the beta version (like public dashboards or embeds not rendering), but also new features like the funnel visualization and more ([CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v400-rc1---2018-03-05)).
+
+**This is a beta release**, to upgrade to this release from an existing deployment run `sudo bin/upgrade --channel beta`. If you use a Docker based deployment you **do not** need to use this script, but rather update your image reference.
+
+As always this wouldn't be possible without the help of all the people who contributed code in this release: @kravets-levko, @arikfr, @kocsmy, @jezdez, @benmanns, @ariarijp, @tonyjiangh and @jubel-han. 🙏🙏🙏
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](  https://redash.io/help-onpremise/maintenance/how-to-upgrade-redash.html).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io).</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.0.0-beta (2018-02-15)</h2>
+      <pre>This is a very exciting release 🤩 that was a long time in the making 👷. It includes a fully updated user interface that should provide a much nicer experience, along with many new features and improvements:
+
+* Table visualization customization along with new column types (image, JSON & URL).
+* Dashboard layout editing (full control over widget height/width).
+* Updated chart visualization (mostly bug fixes) and settings for the cohort visualization.
+* BigQuery and Athena queries now show the amount of data scanned, so you know how much the query costs you. On top of that we have new data sources (MapD & CockroachDB) and improvements to other data sources (MongoDB, Salesforce, Redshift, Oracle and Elasticsearch).
+
+This is only the tip of the iceberg, see the full list of changes in the CHANGELOG.
+
+**This is a beta release**, to upgrade to this release from an existing deployment run `sudo bin/upgrade --channel beta`. If you use a Docker based deployment the Docker tag is `4.0.0-beta.b3690`.
+
+As always this wouldn't be possible without the help of all the people who contributed code in this release: @arikfr, @kravets-levko, @kyoshidajp, @ariarijp, @sjakthol, @kocsmy, @jezdez, @deecay, @kakakakakku, @bamboo-yujiro, @tonyjiangh, @washort, @jasonsmithj, @shinji19, @arjan, @gramakri, @doddjc21, @cdessanti, @yershalom, @miketheman, @crooy, @alexdrans, @javier-sanz, @negibouze, @mayconbordin and @rgjodekerken. 🙏🙏🙏
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](  https://redash.io/help-onpremise/maintenance/how-to-upgrade-redash.html).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io).</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v3.0.0 (2017-12-31)</h2>
+      <pre>Great things in this version like the long awaited Select All for filters, query based parameters, improvements to existing data sources (MongoDB, Redshift, MySQL) but and new data sources (Prometheus, Azure SQL Data Warehouse) and some more.
+
+This release wouldn’t be possible without the contributions of @myouju, @jezdez, @hhamalai, @atharvai, @kitsuyui, @yershalom, @fan-t-endo, @TylerBrock, @deecay, @rohithmenon, @Posnet, @amarjayr, @kyoshidajp, @meinac, @muddydixon, @cclauss, @alexmuller, @akiray03, @aterreno, @44px, @alison985, @isomura, @sylvain, @cyriac, @yutannihilation, @kravets-levko and @queeno. :clap: :clap:
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](  https://redash.io/help-onpremise/maintenance/how-to-upgrade-redash.html).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io).</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.1 (2017-10-22)</h2>
+      <pre>This is a patch release, that adds support for Redshift ACM certificates (see #2044 for details).
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](  https://redash.io/help-onpremise/maintenance/how-to-upgrade-redash.html).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io).</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v2.0.0 (2017-08-08)</h2>
+      <pre>Finally a new major release! 🙌 You can review the [full CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v200---2017-08-08), but some highlights of this release:
+
+* Direct Athena data source type (no more need for the Java proxy 👊 ).
+* New MemSQL data source type and updates/fixes to the MySQL, Google Analytics, Presto, MongoDB, Cassandra, JIRA, TreasureData, InfluxDB, MSSQL, PostgreSQL, and BigQuery data sources.
+* New Plotly based Box Plot visualization along with improvements to the Pivot Table, cohort and counter visualizations.
+* List parameter type.
+* Friendly API key dialog for queries along with usage examples.
+* Auto-publish queries when they are named (with option to disable; see #1830).
+
+This release wouldn't be possible without the help of @mfouilleul, @dotneet, @rmakulov, @deecay, @fbertsch, @rockwotj, @alexanderlz, @laughingman7743, @ziahamza, @yamamanx, @miketheman, @eyalzek, @alexpekurovsky, @ahamino, @jvanegmond, @suemoc, @44px, @amarjayr, @unixwitch, @danielerapati, @yershalom, @msnider, and @alison985 -- thank you, everyone 🙏 .
+
+---
+
+* Before doing an upgrade, please make sure you have a backup.
+* If you have any issues, please refer to the troubleshooting section in the [upgrade guide](  https://redash.io/help-onpremise/maintenance/how-to-upgrade-redash.html).
+* If the upgrade guide doesn't help, you can ask for help on the [forum](https://discuss.redash.io).
+
+[Full CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v200---2017-08-08) for this release.</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.3 (2017-04-18)</h2>
+      <pre>New hotfix release that fixes a performance issue in v1.0.1 and a few other small fixes that got in.
+
+[Full CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v102---2017-04-18) for this release. If you're upgrading from a pre-v1.0 version, checkout the CHANGELOG for previous releases as well ([v1.0.1](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v101---2017-04-02), [RC2](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v100-rc2---2017-02-22), [RC1](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v100-rc1---2017-01-31)).
+
+---
+
+If you were using the `MULTI_ORG` or `ALLOW_PARAMETERS_IN_EMBEDS` options, then they are currently not supported but planned to be supported in the next release.
+
+---
+
+If you're upgrading to this version from pre v1.0.0 release, before upgrading, please make sure to do the following changes to your `/opt/redash/.env` file:
+1. If you have local PostreSQL database, you will need to update the URL from `postgresql://redash` to `postgresql:///redash`.
+2. Remove the `REDASH_STATIC_ASSETS_PATH` definition.
+
+Make sure to complete these changes before doing the actual upgrade.
+
+We have a [new upgrade script](https://redash.io/help-onpremise/maintenance/how-to-upgrade-redash.html) that supports multiple release channels. To deploy this version run: `sudo upgrade`.
+
+You can upgrade to v1.0.0 and later only from v0.12.0, so if you have an older version, run: `sudo upgrade --channel legacy` first and then `sudo upgrade`.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.2 (2017-04-18)</h2>
+      <pre>New hotfix release that fixes a performance issue in v1.0.1 and a few other small fixes that got in.
+
+[Full CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v102---2017-04-18) for this release. If you're upgrading from a pre-v1.0 version, checkout the CHANGELOG for previous releases as well ([v1.0.1](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v101---2017-04-02), [RC2](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v100-rc2---2017-02-22), [RC1](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v100-rc1---2017-01-31)).
+
+---
+
+If you were using the `MULTI_ORG` or `ALLOW_PARAMETERS_IN_EMBEDS` options, then they are currently not supported but planned to be supported in the next release.
+
+---
+
+If you're upgrading to this version from pre v1.0.0 release, before upgrading, please make sure to do the following changes to your `/opt/redash/.env` file:
+1. If you have local PostreSQL database, you will need to update the URL from `postgresql://redash` to `postgresql:///redash`.
+2. Remove the `REDASH_STATIC_ASSETS_PATH` definition.
+
+Make sure to complete these changes before doing the actual upgrade.
+
+We have a [new upgrade script](https://redash.io/help-onpremise/maintenance/how-to-upgrade-redash.html) that supports multiple release channels. To deploy this version run: `sudo upgrade`.
+
+You can upgrade to v1.0.0 and later only from v0.12.0, so if you have an older version, run: `sudo upgrade --channel legacy` first and then `sudo upgrade`.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.1 (2017-04-02)</h2>
+      <pre>**This is the final release for v1** 🎉  (tagged as v1.0.1 to trigger new version notification for the RC versions users).
+
+[Full CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v101---2017-04-02) for this release. If you're upgrading from a pre-v1.0 version, checkout the CHANGELOG for previous releases as well ([RC2](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v100-rc2---2017-02-22), [RC1](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v100-rc1---2017-01-31)).
+
+---
+
+If you were using the `MULTI_ORG` or `ALLOW_PARAMETERS_IN_EMBEDS` options, then they are currently not supported but planned to be supported in the next release.
+
+---
+
+If you're upgrading to this version from pre v1.0.0 release, before upgrading, please make sure to do the following changes to your `/opt/redash/.env` file:
+1. If you have local PostreSQL database, you will need to update the URL from `postgresql://redash` to `postgresql:///redash`.
+2. Remove the `REDASH_STATIC_ASSETS_PATH` definition.
+
+Make sure to complete these changes before doing the actual upgrade.
+
+We have a [new upgrade script](https://redash.io/help-onpremise/maintenance/how-to-upgrade-redash.html) that supports multiple release channels. To deploy this version run: `sudo upgrade`.
+
+You can upgrade to v1.0.0 and later only from v0.12.0, so if you have an older version, run: `sudo upgrade --channel legacy` first and then `sudo upgrade`.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.2 (2017-02-26)</h2>
+      <pre>Second RC for the v1.0.0 release. We're getting closer to the final release. The more people will run these versions, and report issues (or submit fixes) the sooner we will have a stable release.
+
+[Full CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v100-rc2---2017-02-22) for this release.
+
+---
+
+If you're upgrading to this version from pre v1.0.0 release, before upgrading, please make sure to do the following changes to your /opt/redash/.env file:
+1. If you have local PostreSQL database, you will need to update the URL from postgresql://redash to postgresql:///redash.
+2. Remove the REDASH_STATIC_ASSETS_PATH definition.
+
+Make sure to complete these changes before doing the actual upgrade.
+
+We have a new upgrade script that supports multiple release channels. To deploy this version run: `sudo upgrade --channel beta`.
+
+You can upgrade to v1.0.0 only from v0.12.0, so if you have an older version, run: `sudo upgrade --channel legacy` first and then `sudo upgrade --channel beta`.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v1.0.0-rc.1 (2017-01-31)</h2>
+      <pre>Finally, a true v1.0.0-rc.1 release! 
+
+Before upgrading to this version, please make sure to do the following changes to your `/opt/redash/.env` file:
+1. If you have local PostreSQL database, you will need to update the URL from `postgresql://redash` to `postgresql:///redash`.
+2. Remove the `REDASH_STATIC_ASSETS_PATH` definition.
+
+Make sure to complete these changes before doing the actual upgrade.
+
+We have a [new upgrade script](https://redash.io/help-onpremise/maintenance/how-to-upgrade-redash.html) that supports multiple release channels. To deploy this version run: `sudo upgrade --channel beta`.
+
+You can upgrade to v1.0.0 only from v0.12.0, so if you have an older version, run: `sudo upgrade --channel legacy` first and then `sudo upgrade --channel beta`.
+
+[Full CHANGELOG for this release.](https://github.com/getredash/redash/blob/master/CHANGELOG.md#v100-rc1---2017-01-31)
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.12.0.b2449 (2016-07-03)</h2>
+      <pre>This version has been too long in the making and now finally released. Includes new visualizations, data sources, updated packages and numerous fixes and additions.
+
+See [CHANGELOG](https://github.com/getredash/redash/blob/master/CHANGELOG.md) for full release notes.
+
+Huge thanks to over 30 contributors (!) that participated in this release.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.11.1.b2095 (2016-08-02)</h2>
+      <pre>This is a hotfix release, which fixes an issue with email alerts in v0.11.0. For those who are upgrading from versions earlier than v0.11, see [full release notes in v0.11](https://github.com/getredash/redash/releases/tag/v0.11.0.b2016).
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v0.11.0.b2016 (2016-05-01)</h2>
+      <pre>The main features of this release are:
+- Alert Destinations: ability to define multiple destinations for alert notifications (currently implemented: HipChat, Slack, Webhook and email).
+- The long-awaited UI for query parameters (see example in #1069).
+
+Also, this release includes numerous smaller features, improvements, and bug fixes.
+
+A big thank you goes to all who contributed code and documentation in this release: @AntoineAugusti, @James226, @adamlwgriffiths, @alexdebrie, @anthony-coble, @ariarijp, @dheerajrav, @edwardsharp, @machira, @nabilblk, @ninneko, @ordd, @tomerben,  @toru-takahashi, @vishesh92, @vorakumar and @whummer.
+
+### Added
+
+d5e5b24 #1136: Feature: add --org option to all relevant CLI commands. (@adamlwgriffiths)
+87e25f2 #1129: Feature: support for JSON query formatting (Mongo, ElasticSearch) (@arikfr)
+6bb2716 #1121: Show error when failing to communicate with server (@arikfr)
+f21276e #1119: Feature: add UI to delete alerts (@arikfr)
+8656540 #1069: Feature: UI for query parameters (@arikfr)
+790128c #1067: Feature: word cloud visualization (@anthony-coble)
+8b73a2b #1098: Feature: UI for alert destinations & new destination types (@alexdebrie)
+1fbeb5d #1092: Add Heroku support (@adamlwgriffiths)
+f64622d #1089: Add support for serialising UUID type within MSSQL #961 (@James226)
+857caab #1085: Feature: API to pause a data source (@arikfr)
+214aa3b #1060: Feature: support configuring user's groups with SAML (@vorakumar)
+e20a005 #1007: Issue#1006:  Make bottom margin editable for Chart visualization (@vorakumar)
+6e0dd2b #1063: Add support for date/time Y axis (@tomerben)
+b5a4a6b #979: Feature: Add CLI to edit group permissions (@ninneko)
+6d495d2 #1014: Add server-side parameter handling for embeds (@whummer)
+5255804 #1091: Add caching for queries used in embeds (@whummer)
+
+### Changed
+
+0314313 #1149: Presto QueryRunner supports tinyint and smallint (@toru-takahashi)
+8fa6fdb #1030: Make sure data sources list ordered by id (@arikfr)
+8df822e #1141: Make create data source button more prominent (@arikfr)
+96dd811 #1127: Mark basic_auth_password as secret (@adamlwgriffiths)
+ad65391 #1130: Improve Slack notification style (@AntoineAugusti)
+df637e3 #1116: Return meaningful error when there is no cached result. (@arikfr)
+65635ec #1102: Switch to HipChat V2 API (@arikfr)
+14fcf01 #1072: Remove counter from the tasks Done tab (as it always shows 50). #1047 (@arikfr)
+1a1160e #1062: DynamoDB: Better exception handling (@arikfr)
+ed45dcb #1044: Improve vagrant flow (@staritza)
+8b5dc8e #1036: Add optional block for more scripts in template (@arikfr)
+
+### Fixed
+
+dbd48e1 #1143: Fix: use the email input type where needed (@ariarijp)
+7445972 #1142: Fix: dates in filters might be duplicated (@arikfr)
+5d0ed02 #1140: Fix: Hive should use the enabled variable (@arikfr)
+392627d #1139: Fix: Impala data source referencing wrong variable (@arikfr)
+c5bfbba #1133: Fix: query scrolling issues (@vishesh92)
+c01d266 #1128: Fix: visualization options not updating after changing type (@arikfr)
+6bc0e7a #1126: Fix #669: save fails when doing partial save of new query (@arikfr)
+3ce27b9 #1118: Fix: remove alerts for archived queries (@arikfr)
+4fabaae #1117: Fix #1052: filter not working for date/time values (@arikfr)
+c107c94 #1077: Fix: install needed dependencies to use Hive in Docker image (@nabilblk)
+abc790c #1115: Fix: allow non integers in alert reference value (@arikfr)
+4ec473c #1110: Fix #1109: mixed group permissions resulting in wrong permission (@arikfr)
+1ca5262 #1099: Fix RST syntax for links (@adamlwgriffiths)
+daa6c1c #1096: Fix typo in env variable VERSION_CHECK (@AntoineAugusti)
+cd06d27 #1095: Fix: use create_query permission for new query button. (@ordd)
+2bc0b27 #1061: Fix: area chart stacking doesn't work (@machira)
+8c21e91 #1108: Remove potnetially concurrency not safe code form enqueue_query (@arikfr)
+e831218 #1084: Fix #1049: duplicate alerts when data source belongs to multiple groups (@arikfr)
+6edb0ca #1080: Fix typo (@jeffwidman)
+64d7538 #1074: Fix: ElasticSearch wasn't using correct type names (@toyama0919)
+3f90dd9 #1064: Fix: old task trackers were not really removed (@arikfr)
+e10ecd2 #1058: Bring back filters if dashboard filters are enabled (@AntoineAugusti)
+701035f #1059: Fix: DynamoDB having issues when setting host (@arikfr)
+2924d4f #1040: Small fixes to visualizations view (@arikfr)
+fec0d5f #1037: Fix: multi filter wasn't working with __ syntax (@dheerajrav)
+b066ce4 #1033: Fix: only ask for notification permissions if wasn't denied (@arikfr)
+960c416 #1032: Fix: make sure we return dashboards only for current org only (@arikfr)
+b3844d3 #1029: Hive: close connection only if it exists (@arikfr)
+
+### Docs
+
+6bb09d8 #1146: Docs: add a link to settings documentation. (@adamlwgriffiths)
+095e759 #1103: Docs: add section about monitoring (@AntoineAugusti)
+e942486 #1090: Contributing Guide (@arikfr)
+3037c4f #1066: Docs: command type-o fix. (@edwardsharp)
+2ee0065 #1038: Add an ISSUE_TEMPLATE.md to direct people at the forum (@arikfr)
+f7322a4 #1021: Vagrant docs: add purging the cache step (@ariarijp)
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

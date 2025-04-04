@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for testing-library/react-testing-library"/>
+  <title>testing-library/react-testing-library Release Notes</title>
+</head>
+<body>
+  <h1>🚀 testing-library/react-testing-library - Release Notes</h1>
+  
+    <section>
+      <h2>v16.3.0 (2025-04-02)</h2>
+      <pre># [16.3.0](https://github.com/testing-library/react-testing-library/compare/v16.2.0...v16.3.0) (2025-04-02)
+
+
+### Features
+
+* add bernardobelchior as a contributor for code, and doc ([#1391](https://github.com/testing-library/react-testing-library/issues/1391)) ([9fc6a75](https://github.com/testing-library/react-testing-library/commit/9fc6a75d74bb8e03a48d3339efde4dd83cd5328b))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.2.0 (2025-01-15)</h2>
+      <pre># [16.2.0](https://github.com/testing-library/react-testing-library/compare/v16.1.0...v16.2.0) (2025-01-15)
+
+
+### Features
+
+* Add support for React error handlers ([#1354](https://github.com/testing-library/react-testing-library/issues/1354)) ([9618c51](https://github.com/testing-library/react-testing-library/commit/9618c5133706ec964f649e60a777cc384db58a3f))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.1.0 (2024-12-05)</h2>
+      <pre># [16.1.0](https://github.com/testing-library/react-testing-library/compare/v16.0.1...v16.1.0) (2024-12-05)
+
+
+### Features
+
+* Add support for React 19 ([#1367](https://github.com/testing-library/react-testing-library/issues/1367)) ([85ac253](https://github.com/testing-library/react-testing-library/commit/85ac2534a59abd38880011e77da4bb8c716eba84))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.0.1 (2024-08-29)</h2>
+      <pre>## [16.0.1](https://github.com/testing-library/react-testing-library/compare/v16.0.0...v16.0.1) (2024-08-29)
+
+
+### Bug Fixes
+
+* Add support for exactOptionalPropertyTypes in TypeScript ([#1351](https://github.com/testing-library/react-testing-library/issues/1351)) ([3dcd8a9](https://github.com/testing-library/react-testing-library/commit/3dcd8a9649e25054c0e650d95fca2317b7008576))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v16.0.0 (2024-06-03)</h2>
+      <pre># [16.0.0](https://github.com/testing-library/react-testing-library/compare/v15.0.7...v16.0.0) (2024-06-03)
+
+
+### Features
+
+* Move `@testing-library/dom` and `@types/react-dom`  to peer dependencies ([#1305](https://github.com/testing-library/react-testing-library/issues/1305)) ([a4744fa](https://github.com/testing-library/react-testing-library/commit/a4744fa904bf11812c92093226c3805450472636))
+
+
+### BREAKING CHANGES
+
+* `@testing-library/dom` was moved to a peer dependency and needs to be explicitly installed. This reduces the chance of having conflicting versions of `@testing-library/dom` installed that frequently caused bugs when used with `@testing-library/user-event`. We will also be able to allow new versions of `@testing-library/dom` being used without a SemVer major release of `@testing-library/react` by just widening the peer dependency.
+`@types/react-dom` needs to be installed if you're typechecking files using `@testing-library/react`.
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.0.7 (2024-05-07)</h2>
+      <pre>## [15.0.7](https://github.com/testing-library/react-testing-library/compare/v15.0.6...v15.0.7) (2024-05-07)
+
+
+### Bug Fixes
+
+* Ensure `act` is not `any` when `React.act` is not declared ([#1323](https://github.com/testing-library/react-testing-library/issues/1323)) ([c1f2957](https://github.com/testing-library/react-testing-library/commit/c1f2957a219ec7e6a6159a57c5d0717655c515cd))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.0.6 (2024-05-01)</h2>
+      <pre>## [15.0.6](https://github.com/testing-library/react-testing-library/compare/v15.0.5...v15.0.6) (2024-05-01)
+
+
+### Bug Fixes
+
+* export new act when available ([#1319](https://github.com/testing-library/react-testing-library/issues/1319)) ([b6e59f7](https://github.com/testing-library/react-testing-library/commit/b6e59f7d58c69f617cc9854d8c3e6f86c2dfb0e9))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.0.5 (2024-04-26)</h2>
+      <pre>## [15.0.5](https://github.com/testing-library/react-testing-library/compare/v15.0.4...v15.0.5) (2024-04-26)
+
+
+### Bug Fixes
+
+* Stop restricting `container` option based on `hydrate` ([#1313](https://github.com/testing-library/react-testing-library/issues/1313)) ([d143f46](https://github.com/testing-library/react-testing-library/commit/d143f46b39cbc750630a5cf2863182b4036d35ac))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.0.4 (2024-04-23)</h2>
+      <pre>## [15.0.4](https://github.com/testing-library/react-testing-library/compare/v15.0.3...v15.0.4) (2024-04-23)
+
+
+### Bug Fixes
+
+* Ensure `renderHook` options extend options for `render` ([#1308](https://github.com/testing-library/react-testing-library/issues/1308)) ([48282c2](https://github.com/testing-library/react-testing-library/commit/48282c2f35fb7338834b40983c12b889af35f5d1))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.0.3 (2024-04-23)</h2>
+      <pre>## [15.0.3](https://github.com/testing-library/react-testing-library/compare/v15.0.2...v15.0.3) (2024-04-23)
+
+
+### Bug Fixes
+
+* Don't raise TypeScript errors when hydating `document` ([#1304](https://github.com/testing-library/react-testing-library/issues/1304)) ([067d0c6](https://github.com/testing-library/react-testing-library/commit/067d0c6d2e87092f6ecaa8c9fcf505e4576055cf))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.0.2 (2024-04-13)</h2>
+      <pre>## [15.0.2](https://github.com/testing-library/react-testing-library/compare/v15.0.1...v15.0.2) (2024-04-13)
+
+
+### Bug Fixes
+
+* Improve `legacyRoot` error message ([#1301](https://github.com/testing-library/react-testing-library/issues/1301)) ([c63b873](https://github.com/testing-library/react-testing-library/commit/c63b873072d62c858959c2a19e68f8e2cc0b11be))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.0.1 (2024-04-11)</h2>
+      <pre>## [15.0.1](https://github.com/testing-library/react-testing-library/compare/v15.0.0...v15.0.1) (2024-04-11)
+
+
+### Bug Fixes
+
+* Stop using nullish coalescing ([#1299](https://github.com/testing-library/react-testing-library/issues/1299)) ([1645d21](https://github.com/testing-library/react-testing-library/commit/1645d21950ab8e3c6740b7e51b8a179a4c975c24))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.3.1 (2024-04-11)</h2>
+      <pre>## [14.3.1](https://github.com/testing-library/react-testing-library/compare/v14.3.0...v14.3.1) (2024-04-11)
+
+
+### Bug Fixes
+
+* Stop using nullish coalescing ([#1300](https://github.com/testing-library/react-testing-library/issues/1300)) ([8434a24](https://github.com/testing-library/react-testing-library/commit/8434a24ce79583d1359f58563c5f3981e729eb1c))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.0.0 (2024-04-10)</h2>
+      <pre># [15.0.0](https://github.com/testing-library/react-testing-library/compare/v14.3.0...v15.0.0) (2024-04-10)
+
+
+### Release
+
+* 15.0.0 ([#1295](https://github.com/testing-library/react-testing-library/issues/1295)) ([787cb85](https://github.com/testing-library/react-testing-library/commit/787cb85f8baa3d2e2a9916b7dad12c0a76d787a4))
+
+
+### BREAKING CHANGES
+
+* Minimum supported Node.js version is 18.0
+* New version of `@testing-library/dom` changes various roles. Check out the changed tests in https://github.com/testing-library/dom-testing-library/commit/2c570553d8f31b008451398152a9bd30bce362b3 to get an overview about what changed.
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.3.0 (2024-04-08)</h2>
+      <pre># [14.3.0](https://github.com/testing-library/react-testing-library/compare/v14.2.2...v14.3.0) (2024-04-08)
+
+
+### Features
+
+* Add support for React 19 Canary ([#1294](https://github.com/testing-library/react-testing-library/issues/1294)) ([9c4a46d](https://github.com/testing-library/react-testing-library/commit/9c4a46d5b9923c21c936d206614a8febcc939fc2))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.2.2 (2024-03-19)</h2>
+      <pre>## [14.2.2](https://github.com/testing-library/react-testing-library/compare/v14.2.1...v14.2.2) (2024-03-19)
+
+
+### Bug Fixes
+
+* Remove unused types ([#1287](https://github.com/testing-library/react-testing-library/issues/1287)) ([3da62fd](https://github.com/testing-library/react-testing-library/commit/3da62fd9741ca74bcd0d2bc668ba76a2d8f3751f))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.2.1 (2024-02-01)</h2>
+      <pre>## [14.2.1](https://github.com/testing-library/react-testing-library/compare/v14.2.0...v14.2.1) (2024-02-01)
+
+
+### Bug Fixes
+
+* Update types to support all possible react component return values ([#1272](https://github.com/testing-library/react-testing-library/issues/1272)) ([55e79c2](https://github.com/testing-library/react-testing-library/commit/55e79c290d3ec8a8eb3d39539e2c05bf35dff3d9))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.2.0 (2024-01-30)</h2>
+      <pre># [14.2.0](https://github.com/testing-library/react-testing-library/compare/v14.1.2...v14.2.0) (2024-01-30)
+
+
+### Features
+
+* add `reactStrictMode` option to enable strict mode render ([#1241](https://github.com/testing-library/react-testing-library/issues/1241)) ([0880eba](https://github.com/testing-library/react-testing-library/commit/0880eba4a01c030f942ad93600081bbb86eac959))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.1.2 (2023-11-17)</h2>
+      <pre>## [14.1.2](https://github.com/testing-library/react-testing-library/compare/v14.1.1...v14.1.2) (2023-11-17)
+
+
+### Bug Fixes
+
+* revert missing hooks warnings ([#1255](https://github.com/testing-library/react-testing-library/issues/1255)) ([1c67477](https://github.com/testing-library/react-testing-library/commit/1c67477443244e52c3ae57db49e1a6e8226e0c0d))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.1.1 (2023-11-17)</h2>
+      <pre>## [14.1.1](https://github.com/testing-library/react-testing-library/compare/v14.1.0...v14.1.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* log globals warning only once ([#1252](https://github.com/testing-library/react-testing-library/issues/1252)) ([fd52a59](https://github.com/testing-library/react-testing-library/commit/fd52a593a7987a14d3cf5c94f112795a1630725d)), closes [#1249](https://github.com/testing-library/react-testing-library/issues/1249)
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.1.0 (2023-11-08)</h2>
+      <pre># [14.1.0](https://github.com/testing-library/react-testing-library/compare/v14.0.0...v14.1.0) (2023-11-08)
+
+
+### Features
+
+* add warnings when globals are missing ([#1244](https://github.com/testing-library/react-testing-library/issues/1244)) ([d80319f](https://github.com/testing-library/react-testing-library/commit/d80319f5695d0ddbd93f7d63ca1cb71450663ba6))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.0.0 (2023-02-16)</h2>
+      <pre># [14.0.0](https://github.com/testing-library/react-testing-library/compare/v13.4.0...v14.0.0) (2023-02-16)
+
+
+### Bug Fixes
+
+* Prevent "missing act" warning for queued microtasks ([#1137](https://github.com/testing-library/react-testing-library/issues/1137)) ([f78839b](https://github.com/testing-library/react-testing-library/commit/f78839bf4147a777a823e33a429bcf5de9562f9e))
+
+
+### Features
+
+* Bump `@testing-library/dom` to 9.0.0 ([#1177](https://github.com/testing-library/react-testing-library/issues/1177)) ([6653c23](https://github.com/testing-library/react-testing-library/commit/6653c239c0acbafd204326c8951cde8206d39898))
+* Drop support for Node.js 12.x ([#1169](https://github.com/testing-library/react-testing-library/issues/1169)) ([9b7a1e2](https://github.com/testing-library/react-testing-library/commit/9b7a1e2bea5bf20ba9728f98eb7c68cdb80b7fdd))
+
+
+### BREAKING CHANGES
+
+* See https://github.com/testing-library/dom-testing-library/releases/tag/v9.0.0
+* Minimum supported Node.js version is now 14.x
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.0.0-alpha.3 (2023-02-16)</h2>
+      <pre># [14.0.0-alpha.3](https://github.com/testing-library/react-testing-library/compare/v14.0.0-alpha.2...v14.0.0-alpha.3) (2023-02-16)
+
+
+### Bug Fixes
+
+* Prevent "missing act" warning for queued microtasks ([#1137](https://github.com/testing-library/react-testing-library/issues/1137)) ([f78839b](https://github.com/testing-library/react-testing-library/commit/f78839bf4147a777a823e33a429bcf5de9562f9e))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.0.0-alpha.2 (2023-02-16)</h2>
+      <pre># [14.0.0-alpha.2](https://github.com/testing-library/react-testing-library/compare/v14.0.0-alpha.1...v14.0.0-alpha.2) (2023-02-16)
+
+
+### Features
+
+* Bump `@testing-library/dom` to 9.0.0 ([#1177](https://github.com/testing-library/react-testing-library/issues/1177)) ([6653c23](https://github.com/testing-library/react-testing-library/commit/6653c239c0acbafd204326c8951cde8206d39898))
+
+
+### BREAKING CHANGES
+
+* See https://github.com/testing-library/dom-testing-library/releases/tag/v9.0.0
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v14.0.0-alpha.1 (2023-01-31)</h2>
+      <pre># [14.0.0-alpha.1](https://github.com/testing-library/react-testing-library/compare/v13.4.0...v14.0.0-alpha.1) (2023-01-31)
+
+
+### Features
+
+* Drop support for Node.js 12.x ([#1169](https://github.com/testing-library/react-testing-library/issues/1169)) ([9b7a1e2](https://github.com/testing-library/react-testing-library/commit/9b7a1e2bea5bf20ba9728f98eb7c68cdb80b7fdd))
+
+
+### BREAKING CHANGES
+
+* Minimum supported Node.js version is now 14.x
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v13.5.0-alpha.1 (2023-01-31)</h2>
+      <pre># [13.5.0-alpha.1](https://github.com/testing-library/react-testing-library/compare/v13.4.0...v13.5.0-alpha.1) (2023-01-31)
+
+
+### Features
+
+* Drop support for Node.js 12.x ([#1169](https://github.com/testing-library/react-testing-library/issues/1169)) ([07d6872](https://github.com/testing-library/react-testing-library/commit/07d6872c3b35f0e9cd420af4b1a314af62e72799))
+
+
+### BREAKING CHANGES
+
+* Minimum supported Node.js version is now 14.x
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v13.4.0 (2022-09-04)</h2>
+      <pre># [13.4.0](https://github.com/testing-library/react-testing-library/compare/v13.3.0...v13.4.0) (2022-09-04)
+
+
+### Features
+
+* **renderHook:** allow passing of all render options to renderHook ([#1118](https://github.com/testing-library/react-testing-library/issues/1118)) ([27a9584](https://github.com/testing-library/react-testing-library/commit/27a9584629e28339b9961edefbb2134d7c570678))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v13.3.0 (2022-05-28)</h2>
+      <pre># [13.3.0](https://github.com/testing-library/react-testing-library/compare/v13.2.0...v13.3.0) (2022-05-28)
+
+
+### Features
+
+* Use `globalThis` if available ([#1070](https://github.com/testing-library/react-testing-library/issues/1070)) ([c80809a](https://github.com/testing-library/react-testing-library/commit/c80809a956b0b9f3289c4a6fa8b5e8cc72d6ef6d))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v13.2.0 (2022-05-03)</h2>
+      <pre># [13.2.0](https://github.com/testing-library/react-testing-library/compare/v13.1.1...v13.2.0) (2022-05-03)
+
+
+### Features
+
+* Export RenderHookOptions type ([#1062](https://github.com/testing-library/react-testing-library/issues/1062)) ([46b28ad](https://github.com/testing-library/react-testing-library/commit/46b28ade730f97a49a253d630f5b97c17ff24f6e))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v13.1.1 (2022-04-15)</h2>
+      <pre>## [13.1.1](https://github.com/testing-library/react-testing-library/compare/v13.1.0...v13.1.1) (2022-04-15)
+
+
+### Bug Fixes
+
+* **TS:** export interface RenderHookResult ([#1049](https://github.com/testing-library/react-testing-library/issues/1049)) ([9171163](https://github.com/testing-library/react-testing-library/commit/9171163fccf0a7ea43763475ca2980898b4079a5))
+
+
+
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

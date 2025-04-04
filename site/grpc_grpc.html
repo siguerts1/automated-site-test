@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for grpc/grpc"/>
+  <title>grpc/grpc Release Notes</title>
+</head>
+<body>
+  <h1>🚀 grpc/grpc - Release Notes</h1>
+  
+    <section>
+      <h2>Release v1.71.0 (2025-03-07)</h2>
+      <pre>This is release gRPC Core 1.71.0 (gears).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+
+
+Core
+---
+
+-  [CallAttemptTracer] Fix call attempt tracer lifetimes for retries (#38729). ([#38796](https://github.com/grpc/grpc/pull/38796))
+-  [pick_first] fix bug that caused us to stop triggering connection attempts. ([#38714](https://github.com/grpc/grpc/pull/38714))
+-  [CodeGen][CPP] Added support for service "deprecated" option. ([#38493](https://github.com/grpc/grpc/pull/38493))
+-  [EventEngine] Add SetDefaultEventEngine API (and friends). ([#38316](https://github.com/grpc/grpc/pull/38316))
+
+C++
+---
+
+-  [build] Restrict grpc++_public_hdrs target to internal visibility. ([#38646](https://github.com/grpc/grpc/pull/38646))
+-  [Doc] Added C++17 cmake option. ([#38432](https://github.com/grpc/grpc/pull/38432))
+
+Python
+---
+
+-  [CI] Drop Python 3.8. ([#38747](https://github.com/grpc/grpc/pull/38747))
+-  [Python] Support musl-linux binary wheels on arm64. ([#38223](https://github.com/grpc/grpc/pull/38223))
+
+Ruby
+---
+
+-  [ruby] Build/test ruby 3.4 and build native gems with Ruby 3.4 support. ([#38338](https://github.com/grpc/grpc/pull/38338))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.71.0-pre3 (2025-03-03)</h2>
+      <pre>This is a prerelease of gRPC Core 1.71.0 (gears).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.71.0-pre2 (2025-02-22)</h2>
+      <pre>This is a prerelease of gRPC Core 1.71.0 (gears).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.70.1 (2025-01-31)</h2>
+      <pre>This is release 1.70.1 ([genius](https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md)) of gRPC Core.
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes, with highlights listed below.
+
+Core
+---
+
+* [Backport-v1.70.x] Added ws2_32 to address_sorting (https://github.com/grpc/grpc/pull/38657)
+
+Ruby
+---
+
+- Add ruby 3.4 support to pre-compiled native gems (https://github.com/grpc/grpc/pull/38615)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.70.0 (2025-01-23)</h2>
+      <pre>This is release 1.70.0 ([genius](https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md)) of gRPC Core.
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes, with highlights listed below.
+
+
+Core
+---
+
+* [BoringSSL] Update third_party/boringssl-with-bazel. (#38274)
+
+C++
+---
+
+- gRPC C++ begins to require C++17 or later to build and use gRPC C++. You may need the following settings:
+  - CMake: Add CMAKE_CXX_STANDARD=17 to your CMake build command.
+  - Bazel: Add --cxxopt='/std:c++17' and --host_cxxopt='/std:c++17' to your Bazel build command.
+  - gRPC 1.69, the final version compatible with C++14, will be supported until December 10, 2025, according to https://github.com/grpc/proposal/blob/master/L120-requiring-cpp17.md.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.70.0-pre1 (2025-01-09)</h2>
+      <pre>This is a prerelease of gRPC Core 1.70.0 (genius).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.69.0 (2024-12-24)</h2>
+      <pre>This is release 1.69.0 ([gridiron](https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md)) of gRPC Core.
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes, with highlights listed below.
+
+
+Core
+---
+
+-  [Alarm] Fix Alarm reuse on cancellation. ([#38114](https://github.com/grpc/grpc/pull/38114))
+-  [xDS RBAC] Support string_match in HeaderMatcher. ([#38185](https://github.com/grpc/grpc/pull/38185))
+-  [pick_first] fix shutdown bug in new PF impl. ([#38144](https://github.com/grpc/grpc/pull/38144))
+-  [c-ares] Fix inverted length check in GrpcPolledFdWindows. ([#38101](https://github.com/grpc/grpc/pull/38101))
+-  [RetryFilter] Copy the SliceBuffer from RetryFilter's cache to batch payload. ([#38069](https://github.com/grpc/grpc/pull/38069))
+-  [EventEngine] Add stronger wording on Endpoint::Read contract. ([#38036](https://github.com/grpc/grpc/pull/38036))
+-  [chttp2] Fix channelz address. ([#38022](https://github.com/grpc/grpc/pull/38022))
+-  [XdsClient] Add missing authority to XdsClient metrics scope. ([#38009](https://github.com/grpc/grpc/pull/38009))
+-  [EventEngine] API contract: Endpoint::Read will provide either an error or data, but never both. ([#38019](https://github.com/grpc/grpc/pull/38019))
+-  [Build] Dropped Bazel 6.x support. ([#37979](https://github.com/grpc/grpc/pull/37979))
+
+Python
+---
+
+-  [Build] Override MACOSX_DEPLOYMENT_TARGET for gRPC Python. ([#37997](https://github.com/grpc/grpc/pull/37997))
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.69.0-pre1 (2024-12-09)</h2>
+      <pre>This is a prerelease of gRPC Core 1.69.0 (gridiron).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.68.2 (2024-12-03)</h2>
+      <pre>This is release gRPC Core 1.68.2 (groovy).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+
+C++
+---
+
+-   [CI] Added a gRPC_BUILD_TESTS guard to third_party protos (https://github.com/grpc/grpc/pull/38182)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.68.1 (2024-11-27)</h2>
+      <pre>This is release 1.68.1 ([groovy](https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md)) of gRPC Core.
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes, with highlights listed below.
+
+
+Core
+---
+
+-  [xDS RBAC] Support string_match in HeaderMatcher (#38185). ([#38198](https://github.com/grpc/grpc/pull/38198))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.68.0 (2024-11-16)</h2>
+      <pre>This is release 1.68.0 ([groovy](https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md)) of gRPC Core.
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes, with highlights listed below.
+
+Core
+---
+
+-  [XdsClient][Backport] Add missing authority to XdsClient metrics scope (#38009). ([#38023](https://github.com/grpc/grpc/pull/38023))
+-  [Release] Bump core version in preparation for 1.68 Branch Cut. ([#37941](https://github.com/grpc/grpc/pull/37941))
+-  [ConfigFetcher] Set HTTP2 error to NO_ERROR to do graceful GOAWAYs. ([#37939](https://github.com/grpc/grpc/pull/37939))
+-  [ruby] reduce INFO log for server CQ pluck registration to DEBUG. ([#37633](https://github.com/grpc/grpc/pull/37633))
+-  [EventEngine] Enable the PosixEventEngine client experiment. ([#35985](https://github.com/grpc/grpc/pull/35985))
+-  [chttp2_server] Fix race between connection starting and it being orphaned. ([#37683](https://github.com/grpc/grpc/pull/37683))
+-  [Chttp2Server] Fix race between connection manager updates and handshake. ([#37772](https://github.com/grpc/grpc/pull/37772))
+-  [xds] Fix XdsClient race between ResourceDoesNotExist timer and receiving resources. ([#37678](https://github.com/grpc/grpc/pull/37678))
+
+C++
+---
+
+-  [Build] Minimum version of MSVC is now 2022. ([#37687](https://github.com/grpc/grpc/pull/37687))
+-  [Build] Bumped the minimum version of cmake. ([#37702](https://github.com/grpc/grpc/pull/37702))
+
+Python
+---
+
+-  Add templating and support for Python 3.13. ([#37643](https://github.com/grpc/grpc/pull/37643))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.68.0-pre1 (2024-10-31)</h2>
+      <pre>This is a prerelease of gRPC Core 1.68.0 (groovy).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.67.1 (2024-10-29)</h2>
+      <pre>This is release gRPC Core 1.67.1 (gesundheit). This is a Python-only patch release.
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.67.0 (2024-10-08)</h2>
+      <pre>This is release 1.67.0 ([gesundheit](https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md)) of gRPC Core.
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes, with highlights listed below.
+
+
+Core
+---
+
+-  [ruby] reduce an INFO log to DEBUG (backport https://github.com/grpc/grpc/pull/37633). ([#37686](https://github.com/grpc/grpc/pull/37686))
+-  [release] Bump core version to 44.0.0. ([#37661](https://github.com/grpc/grpc/pull/37661))
+-  [RlsLB] Fix Deadlock. ([#37459](https://github.com/grpc/grpc/pull/37459))
+-  [Python Otel] Manage call tracer life cycle use call arena. ([#37460](https://github.com/grpc/grpc/pull/37460))
+
+C++
+---
+
+-  [OTel C++] Fix race when adding and removing callbacks. ([#37485](https://github.com/grpc/grpc/pull/37485))
+
+Python
+---
+
+-  [Backport to 1.67.x] Add templating and support for Python 3.13 (#37643). ([#37803](https://github.com/grpc/grpc/pull/37803))
+-  Add templating and support for Python 3.13. ([#37643](https://github.com/grpc/grpc/pull/37643))
+-  [Python Distrib] Change warning to RuntimeError for version incompatibility. ([#37466](https://github.com/grpc/grpc/pull/37466))
+-  [reflection]: python: reflection returns `original_request`. ([#36944](https://github.com/grpc/grpc/pull/36944))
+
+Ruby
+---
+
+-  [ruby] drop ruby 2.7 support. ([#37430](https://github.com/grpc/grpc/pull/37430))
+-  [ruby] reduce ruby gpr_log invocations from INFO to DEBUG. ([#37426](https://github.com/grpc/grpc/pull/37426))
+-  [ruby] refactor flaky test and expose cancel_with_status. ([#37410](https://github.com/grpc/grpc/pull/37410))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.66.2 (2024-09-28)</h2>
+      <pre>This is release gRPC Core 1.66.2 (gladiator).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+
+## What's Changed
+### Python
+* Added support for Python 3.13 and templating system for supported Python versions (#37643)
+
+
+**Full Changelog**: https://github.com/grpc/grpc/compare/v1.66.1...v1.66.2</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.67.0-pre1 (2024-09-17)</h2>
+      <pre>This is a prerelease of gRPC Core 1.67.0 (gesundheit).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.66.1 (2024-08-26)</h2>
+      <pre>This is release gRPC Core 1.66.1 (gladiator).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+
+# Core
+* Enable EDS dualstack support by default (https://github.com/grpc/grpc/pull/37545)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.66.0 (2024-08-22)</h2>
+      <pre>This is release 1.66.0 ([gladiator](https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md)) of gRPC Core.
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes, with highlights listed below.
+
+
+Core
+---
+
+-  [Python Otel] Manage call tracer life cycle use call arena. (v1.66.x backport). ([#37479](https://github.com/grpc/grpc/pull/37479))
+-  [BoringSSL] Update third_party/boringssl-with-bazel. ([#37223](https://github.com/grpc/grpc/pull/37223))
+-  [Dep] Upgrading Protobuf to v27.2. ([#36753](https://github.com/grpc/grpc/pull/36753))
+-  [Gpr_To_Absl_Logging] Fixing bugs . ([#36961](https://github.com/grpc/grpc/pull/36961))
+-  [chttp2] don't access endpoint in transport ops if it's already been destroyed. ([#36921](https://github.com/grpc/grpc/pull/36921))
+
+C++
+---
+
+-  [OTel C++] Fix race when adding and removing callbacks (#37485). ([#37508](https://github.com/grpc/grpc/pull/37508))
+-  [RlsLB] Fix Deadlock (#37459). ([#37502](https://github.com/grpc/grpc/pull/37502))
+
+Python
+---
+
+-  [Python Distrib] Change warning to RuntimeError for version incompatibility (v1.66.x backport). ([#37477](https://github.com/grpc/grpc/pull/37477))
+-  Fix issues/36613. ([#37022](https://github.com/grpc/grpc/pull/37022))
+-  [fix] updated invocation_metadata return type hint. ([#36894](https://github.com/grpc/grpc/pull/36894))
+-  [Release] Add warning about PyPi latest version not necessarily matching Github latest version. ([#36965](https://github.com/grpc/grpc/pull/36965))
+
+Ruby
+---
+
+-  [ruby] Update google-protobuf dep to allow 3.x and 4.x versions. ([#36982](https://github.com/grpc/grpc/pull/36982))
+-  [ruby] improve the way completion queue pluck operations handle signals and process shutdown. ([#36903](https://github.com/grpc/grpc/pull/36903))</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.66.0-pre5 (2024-08-16)</h2>
+      <pre>This is a prerelease of gRPC Core 1.66.0 (gladiator).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.65.5 (2024-08-17)</h2>
+      <pre>This is release gRPC Core 1.65.5 (gnarly).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+
+* [OTel C++] Fix race when adding and removing callbacks (#37509)
+* [RlsLB] Fix Deadlock (#37503)
+* [Python Otel] Manage call tracer life cycle use call arena. (v1.65.x backport) (#37478)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.66.0-pre4 (2024-08-15)</h2>
+      <pre>This is a prerelease of gRPC Core 1.66.0 (gladiator).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.66.0-pre3 (2024-08-07)</h2>
+      <pre>This is a prerelease of gRPC Core 1.66.0 (gladiator).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.66.0-pre2 (2024-08-02)</h2>
+      <pre>This is a prerelease of gRPC Core 1.66.0 (gladiator).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This prerelease contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.58.3 (2024-08-02)</h2>
+      <pre>This is release gRPC Core 1.58.3 (goku).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+- https://github.com/grpc/grpc/pull/37359 Fix a bug in hpack error handling</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.65.4 (2024-08-02)</h2>
+      <pre>This is release gRPC Core 1.65.4 (gnarly).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+- https://github.com/grpc/grpc/pull/37359 Fix a bug in hpack error handling</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.65.3 (2024-08-01)</h2>
+      <pre>This is release gRPC Core 1.65.3 (gnarly).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.64.3 (2024-08-02)</h2>
+      <pre>This is release gRPC Core 1.64.3 (grateful).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+- https://github.com/grpc/grpc/pull/37359 Fix a bug in hpack error handling</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.63.2 (2024-08-02)</h2>
+      <pre>This is release gRPC Core 1.63.2 (giggle).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+- https://github.com/grpc/grpc/pull/37359 Fix a bug in hpack error handling</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.62.3 (2024-08-02)</h2>
+      <pre>This is release gRPC Core 1.62.3 (guardian).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+- https://github.com/grpc/grpc/pull/37359 Fix a bug in hpack error handling</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release v1.61.3 (2024-08-02)</h2>
+      <pre>This is release gRPC Core 1.61.3 (grand).
+
+For gRPC documentation, see [grpc.io](https://grpc.io/). For previous releases, see [Releases](https://github.com/grpc/grpc/releases).
+
+This release contains refinements, improvements, and bug fixes.
+- https://github.com/grpc/grpc/pull/37359 Fix a bug in hpack error handling</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>

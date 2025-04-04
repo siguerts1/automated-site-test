@@ -1,0 +1,2790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Latest releases for ray-project/ray"/>
+  <title>ray-project/ray Release Notes</title>
+</head>
+<body>
+  <h1>🚀 ray-project/ray - Release Notes</h1>
+  
+    <section>
+      <h2>Ray-2.44.1 (2025-03-27)</h2>
+      <pre>Under screen-lit skies
+A ray of bliss in each patch
+Joy at any scale
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.44.0 (2025-03-21)</h2>
+      <pre># Release Highlights
+
+- This release features Ray Compiled Graph (beta). Ray Compiled Graph gives you a classic Ray Core-like API, but with (1) less than 50us system overhead for workloads that repeatedly execute the same task graph; and (2) native support for GPU-GPU communication via NCCL. Ray Compiled Graph APIs simplify high-performance multi-GPU workloads such as LLM inference and training. The beta release refines the API, enhances stability, and adds or improves features like visualization, profiling and experimental GPU compute/computation overlap. For more information, refer to Ray documentation: https://docs.ray.io/en/latest/ray-core/compiled-graph/ray-compiled-graph.html
+- The experimental Ray Workflows library has been deprecated and will be removed in a future version of Ray. Ray Workflows has been marked experimental since its inception and hasn’t been maintained due to the Ray team focusing on other priorities. If you are using Ray Workflows, we recommend pinning your Ray version to 2.44.
+
+# Ray Libraries
+
+## Ray Data
+
+🎉 New Features:
+- Add Iceberg write support through pyiceberg[ (](https://github.com/ray-project/ray/commit/5e26c7fc3866921ce97db876136e04271dabf8b4)[#50590](https://github.com/ray-project/ray/pull/50590)[)](https://github.com/ray-project/ray/commit/5e26c7fc3866921ce97db876136e04271dabf8b4) 
+- [LLM] Various feature enhancements to Ray Data LLM, including LoRA support #50804 and structured outputs #50901
+
+💫 Enhancements:
+- Add dataset/operator state, progress, total metrics ([#50770](https://github.com/ray-project/ray/pull/50770))
+- Make chunk combination threshold configurable ([#51200](https://github.com/ray-project/ray/pull/51200))
+- Store average memory use per task in OpRuntimeMetrics ([#51126](https://github.com/ray-project/ray/pull/51126))
+- Avoid unnecessary conversion to Numpy when creating Arrow/Pandas blocks ([#51238](https://github.com/ray-project/ray/pull/51238))
+- Append-mode API for preprocessors -- #50848, #50847, #50642, #50856, #50584. Note that vectorizers and hashers now output a single column instead 1 column per feature. In the near future, we will be graduating preprocessors to *beta*.
+
+🔨 Fixes:
+- Fixing Map Operators to avoid unconditionally overriding generator's back-pressure configuration ([#50900](https://github.com/ray-project/ray/pull/50900))
+- Fix filter expr equating negative numbers ([#50932](https://github.com/ray-project/ray/pull/50932))
+- Fix error message for `override_num_blocks` when reading from a HuggingFace Dataset  ([#50998](https://github.com/ray-project/ray/pull/50998))
+- Make num_blocks in repartition optional ([#50997](https://github.com/ray-project/ray/pull/50997))
+- Always pin the seed when doing file-based random shuffle ([#50924](https://github.com/ray-project/ray/pull/50924))
+- Fix `StandardScaler` to handle `NaN` stats ([#51281](https://github.com/ray-project/ray/pull/51281))
+
+## Ray Train
+
+🎉 New Features:
+- Implement state export API (#50622, #51085, #51177)
+
+💫 Enhancements:
+- Folded v2.XGBoostTrainer API into the public trainer class as an alternate constructor (#50045)
+- Created a default ScalingConfig if one is not provided to the trainer (#51093)
+- Improved TrainingFailedError message (#51199)
+- Utilize FailurePolicy factory (#51067)
+
+🔨 Fixes:
+- Fixed trainer import deserialization when captured within a Ray task (#50862)
+- Fixed serialize import test for Python 3.12 (#50963)
+- Fixed RunConfig deprecation message in Tune being emitted in trainer.fit usage (#51198)
+
+📖 Documentation: 
+- [Train V2] Updated API references (#51222)
+- [Train V2] Updated persistent storage guide (#51202)
+- [Train V2] Updated user guides for metrics, checkpoints, results, and experiment tracking (#51204)
+- [Train V2] Added updated Train + Tune user guide (#51048)
+- [Train V2] Added updated fault tolerance user guide (#51083)
+- Improved HF Transformers example (#50896)
+- Improved Train DeepSpeed example (#50906)
+- Use correct mean and standard deviation norm values in image tutorials (#50240)
+
+🏗 Architecture refactoring:
+- Deprecated Torch AMP wrapper utilities (#51066)
+- Hid private functions of train context to avoid abuse (#50874)
+- Removed ray storage dependency and deprecated RAY_STORAGE env var configuration option (#50872)
+- Moved library usage tests out of core (#51161)
+
+## Ray Tune
+
+📖 Documentation:
+- Various improvements to Tune Pytorch CIFAR tutorial (#50316)
+- Various improvements to the Ray Tune XGBoost tutorial (#50455)
+- Various enhancements to Tune Keras example (#50581)
+- Minor improvements to Hyperopt tutorial (#50697)
+- Various improvements to LightGBM tutorial (#50704)
+- Fixed non-runnable Optuna tutorial (#50404)
+- Added documentation for Asynchronous HyperBand Example in Tune (#50708)
+- Replaced reuse actors example with a fuller demonstration (#51234)
+- Fixed broken PB2/RLlib example (#51219)
+- Fixed typo and standardized equations across the two APIs (#51114)
+- Improved PBT example (#50870)
+- Removed broken links in documentation (#50995, #50996)
+
+🏗 Architecture refactoring:
+- Removed ray storage dependency and deprecated RAY_STORAGE env var configuration option (#50872)
+- Moved library usage tests out of core (#51161)
+
+## Ray Serve
+
+🎉 New Features:
+- Faster bulk imperative Serve Application deploys ([#49168](https://github.com/ray-project/ray/pull/49168))
+- [LLM] Add gen-config ([#51235](https://github.com/ray-project/ray/pull/51235))
+
+💫 Enhancements:
+- Clean up shutdown behavior of serve ([#51009](https://github.com/ray-project/ray/pull/51009))
+- Add `additional_log_standard_attrs` to serve logging config ([#51144](https://github.com/ray-project/ray/pull/51144))
+- [LLM] remove `asyncache` and `cachetools` from dependencies ([#50806](https://github.com/ray-project/ray/pull/50806))
+- [LLM] remove `backoff` dependency ([#50822](https://github.com/ray-project/ray/pull/50822))
+- [LLM] Remove `asyncio_timeout` from `ray[llm]` deps on python<3.11 ([#50815](https://github.com/ray-project/ray/pull/50815))
+- [LLM] Made JSON validator a singleton and `jsonref` packages lazy imported ([#50821](https://github.com/ray-project/ray/pull/50821))
+- [LLM] Reuse `AutoscalingConfig` and `DeploymentConfig` from Serve ([#50871](https://github.com/ray-project/ray/pull/50871))
+- [LLM] Use `pyarrow` FS for cloud remote storage interaction ([#50820](https://github.com/ray-project/ray/pull/50820))
+- [LLM] Add usage telemetry for `serve.llm` ([#51221](https://github.com/ray-project/ray/pull/51221))
+
+🔨 Fixes:
+- Exclude redirects from request error count ([#51130](https://github.com/ray-project/ray/pull/51130))
+- [LLM] Fix the wrong `device_capability` issue in vllm on quantized models ([#51007](https://github.com/ray-project/ray/pull/51007))
+- [LLM] add `gen-config` related data file to the package ([#51347](https://github.com/ray-project/ray/pull/51347))
+
+📖 Documentation:
+- [LLM] Fix quickstart serve LLM docs ([#50910](https://github.com/ray-project/ray/pull/50910))
+- [LLM] update `build_openai_app` to include yaml example ([#51283](https://github.com/ray-project/ray/pull/51283))
+- [LLM] remove old vllm+serve doc ([#51311](https://github.com/ray-project/ray/pull/51311))
+
+## RLlib
+
+💫 Enhancements:
+- APPO/IMPALA accelerate:
+  - `LearnerGroup` should not pickle remote functions on each update-call; Refactor `LearnerGroup` and `Learner` APIs. ([#50665](https://github.com/ray-project/ray/pull/50665))
+  - `EnvRunner` sync enhancements. ([#50918](https://github.com/ray-project/ray/pull/50918)[)](https://github.com/ray-project/ray/commit/02d4a3a51127f8470f9f422cc7f58dce73a6f520)
+  - Various other speedups: [#51302](https://github.com/ray-project/ray/pull/51302), [#50923](https://github.com/ray-project/ray/pull/50923), [#50919](https://github.com/ray-project/ray/pull/50919), [#50791](https://github.com/ray-project/ray/pull/50791)
+- Unify namings for actor managers' outstanding in-flight requests metrics. ([#51159](https://github.com/ray-project/ray/pull/51159))
+- Add timers to env step, forward pass, and complete connector pipelines runs. ([#51160](https://github.com/ray-project/ray/pull/51160))
+
+🔨 Fixes:
+- Multi-agent env vectorization:
+  - Fix `MultiAgentEnvRunner` env check bug. ([#50891](https://github.com/ray-project/ray/pull/50891)[)](https://github.com/ray-project/ray/commit/f4ab3439d4eb734f69fd8cc13b3d74d0e724864b)
+  - Add `single_action_space` and `single_observation_space` to `VectorMultiAgentEnv`. ([#51096](https://github.com/ray-project/ray/pull/51096))
+- Other fixes: [#51255](https://github.com/ray-project/ray/pull/51255), [#50920](https://github.com/ray-project/ray/pull/50920), [#51369](https://github.com/ray-project/ray/pull/51369)
+
+📖 Documentation:
+- Smaller fixes: [#51015](https://github.com/ray-project/ray/pull/51015), [#51219](https://github.com/ray-project/ray/pull/51219)
+
+# Ray Core and Ray Clusters
+
+## Ray Core
+
+🎉 New Features:
+- Enhanced `uv` support ([#51233](https://github.com/ray-project/ray/pull/51233))
+
+💫 Enhancements:
+- Made infeasible task errors much more obvious ([#45909](https://github.com/ray-project/ray/issues/45909))
+- Log rotation for workers, runtime env agent, and dashboard agent ([#50759](https://github.com/ray-project/ray/pull/50759), [#50877](https://github.com/ray-project/ray/pull/50877), [#50909](https://github.com/ray-project/ray/pull/50909))
+- Support customizing gloo timeout ([#50223](https://github.com/ray-project/ray/pull/50223))
+- Support torch profiling in Compiled Graph ([#51022](https://github.com/ray-project/ray/pull/51022))
+- Change default tensor deserialization in Compiled Graph ([#50778](https://github.com/ray-project/ray/pull/50778))
+- Use current node id if no node is specified on ray drain-node ([#51134](https://github.com/ray-project/ray/pull/51134))
+
+🔨 Fixes:
+- Fixed an issue where the raylet continued to have high CPU overhead after a job was terminated ([#49999](https://github.com/ray-project/ray/issues/49999)).
+- Fixed compiled graph buffer release issues ([#50434](https://github.com/ray-project/ray/pull/50434))
+- Improved logic for `ray.wait` on object store objects ([#50680](https://github.com/ray-project/ray/pull/50680))
+- Ray metrics performing validation the same validation as Prometheus for invalid names ([#40586](https://github.com/ray-project/ray/issues/40586))
+- Make executor a long-running Python thread ([#51016](https://github.com/ray-project/ray/pull/51016))
+- Fix plasma client memory leak ([#51051](https://github.com/ray-project/ray/pull/51051))
+- Fix using `ray.actor.exit_actor()` from within an async background thread ([#49451](https://github.com/ray-project/ray/issues/49451))
+- Fix UV hook to support Ray Job submission ([#51150](https://github.com/ray-project/ray/pull/51150))
+- Fix resource leakage after ray job is finished ([#49999](https://github.com/ray-project/ray/issues/49999))
+- Use the correct way to check whether an actor task is running ([#51158](https://github.com/ray-project/ray/pull/51158))
+- Controllably destroy CUDA events in GPUFuture’s (Compiled Graph) ([#51090](https://github.com/ray-project/ray/pull/51090))
+- Avoid creating a thread pool with 0 threads ([#50837](https://github.com/ray-project/ray/pull/50837))
+- Fix the logic to calculate the number of workers based on the TPU version ([#51227](https://github.com/ray-project/ray/pull/51227))
+
+📖 Documentation:
+- Updated error message and anti-pattern when forking new processes in worker processes ([#50705](https://github.com/ray-project/ray/pull/50705))
+- Compiled Graph API Documentation ([#50754](https://github.com/ray-project/ray/pull/50754))
+- Doc for nsight and torch profile for Compiled Graph ([#51037](https://github.com/ray-project/ray/pull/51037))
+- Compiled Graph Troubleshooting Doc ([#51030](https://github.com/ray-project/ray/pull/51030))
+- Completion of of Compiled Graph Docs ([#51206](https://github.com/ray-project/ray/pull/51206))
+- Updated `jemalloc` profiling doc ([#51031](https://github.com/ray-project/ray/pull/51031))
+- Add information about standard Python logger attributes ([#51038](https://github.com/ray-project/ray/pull/51038))
+- Add description for named placement groups to require a namespace ([#51285](https://github.com/ray-project/ray/pull/51285))
+- Deprecation warnings for Ray Workflows and cluster-wide storage ([#51309](https://github.com/ray-project/ray/pull/51309))
+
+## Ray Clusters
+
+🎉 New Features:
+- Add cuda 12.8 images ([#51210](https://github.com/ray-project/ray/pull/51210))
+
+💫 Enhancements:
+- Add Pod names to the output of `ray status -v` ([#51192](https://github.com/ray-project/ray/pull/51192))
+
+🔨 Fixes:
+- Fix autoscaler v1 crash from infeasible strict spread placement groups ([#39691](https://github.com/ray-project/ray/issues/39691))
+
+🏗 Architecture refactoring:
+- Refactor autoscaler v2 log formatting ([#49350](https://github.com/ray-project/ray/pull/49350))
+- Update yaml example for `CoordinatorSenderNodeProvider` ([#51292](https://github.com/ray-project/ray/pull/51292))
+
+## Dashboard
+
+🎉 New Features:
+- Discover TPU logs on the Ray Dashboard ([#47737](https://github.com/ray-project/ray/pull/47737))
+
+🔨 Fixes:
+- Return the correct error message when trying to kill non-existent actors ([#51341](https://github.com/ray-project/ray/pull/51341))
+
+----
+Many thanks to all those who contributed to this release!
+@crypdick, @rueian, @justinvyu, @MortalHappiness, @CheyuWu, @GeneDer, @dayshah, @lk-chen, @matthewdeng, @co63oc, @win5923, @sven1977, @akshay-anyscale, @ShaochenYu-YW, @gvspraveen, @bveeramani, @jakac, @VamshikShetty, @raulchen, @PaulFenton, @elimelt, @comaniac, @qinyiyan, @ruisearch42, @nadongjun, @AndyUB, @israbbani, @hongpeng-guo, @laysfire, @alexeykudinkin, @Drice1999, @harborn, @scottsun94, @abrarsheikh, @martinbomio, @MengjinYan, @HollowMan6, @orcahmlee, @kenchung285, @csy1204, @noemotiovon, @jujipotle, @davidxia, @kevin85421, @hcc429, @edoakes, @kouroshHakha, @omatthew98, @alanwguo, @farridav, @aslonnie, @simonsays1980, @pcmoritz, @terraflops1048576, @JoshKarpel, @SumanthRH, @sijieamoy, @zcin, @can-anyscale, @akyang-anyscale, @angelinalg, @saihaj, @jjyao, @anmscale, @ryanaoleary, @dentiny, @jimmyxie-figma, @stephanie-wang, @khluu, @maofagui</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.43.0 (2025-02-27)</h2>
+      <pre># Highlights
+- This release features new modules in Ray Serve and Ray Data for integration with large language models, marking the first step of addressing [#50639](https://github.com/ray-project/ray/issues/50639). Existing Ray Data and Ray Serve have limited support for LLM deployments, where users have to manually configure and manage the underlying LLM engine. In this release, we offer APIs for both batch inference and serving of LLMs within Ray in `ray.data.llm` and `ray.serve.llm`. See the below notes for more details. These APIs are marked as **alpha** -- meaning they may change in future releases without a deprecation period.
+- Ray Train V2 is available to try starting in Ray 2.43! Run your next Ray Train job with the `RAY_TRAIN_V2_ENABLED=1` environment variable. See [the migration guide](https://github.com/ray-project/ray/issues/49454) for more information.
+- A new integration with `uv run` that allows easily specifying Python dependencies for both driver and workers in a consistent way and enables quick iterations for development of Ray applications ([#50160](https://github.com/ray-project/ray/pull/50160), [50462](https://github.com/ray-project/ray/pull/50462)), check out our [blog post](https://www.anyscale.com/blog/uv-ray-pain-free-python-dependencies-in-clusters)
+
+# Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+🎉 New Features:
+- *Ray Data LLM*: We are introducing a new module in Ray Data for batch inference with LLMs (currently marked as **alpha**). It offers a new `Processor` abstraction that interoperates with existing Ray Data pipelines. This abstraction can be configured two ways:
+  - Using the `vLLMEngineProcessorConfig`, which configures vLLM to load model replicas for high throughput model inference
+  - Using the `HttpRequestProcessorConfig`, which sends HTTP requests to an OpenAI-compatible endpoint for inference. 
+  - Documentation for these features can be [found here.](https://docs.ray.io/en/master/data/working-with-llms.html)
+- Implement accurate memory accounting for `UnionOperator` ([#50436](https://github.com/ray-project/ray/pull/50436))
+- Implement accurate memory accounting for all-to-all operations ([#50290](https://github.com/ray-project/ray/pull/50290))
+
+💫 Enhancements:
+- Support class constructor args for filter() ([#50245](https://github.com/ray-project/ray/pull/50245))
+- Persist ParquetDatasource metadata. ([#50332](https://github.com/ray-project/ray/pull/50332))
+- Rebasing `ShufflingBatcher` onto `try_combine_chunked_columns` ([#50296](https://github.com/ray-project/ray/pull/50296))
+- Improve warning message if required dependency isn't installed ([#50464](https://github.com/ray-project/ray/pull/50464))
+- Move data-related test logic out of core tests directory ([#50482](https://github.com/ray-project/ray/pull/50482))
+- Pass executor as an argument to ExecutionCallback ([#50165](https://github.com/ray-project/ray/pull/50165))
+- Add operator id info to task+actor ([#50323](https://github.com/ray-project/ray/pull/50323))
+- Abstracting common methods, removing duplication in `ArrowBlockAccessor`, `PandasBlockAccessor` ([#50498](https://github.com/ray-project/ray/pull/50498))
+- Warn if map UDF is too large ([#50611](https://github.com/ray-project/ray/pull/50611))
+- Replace `AggregateFn` with `AggregateFnV2`, cleaning up Aggregation infrastructure ([#50585](https://github.com/ray-project/ray/pull/50585))
+- Simplify Operator.__repr__ ([#50620](https://github.com/ray-project/ray/pull/50620))
+- Adding in `TaskDurationStats` and `on_execution_step` callback ([#50766](https://github.com/ray-project/ray/pull/50766))
+- Print Resource Manager stats in release tests ([#50801](https://github.com/ray-project/ray/pull/50801))
+
+🔨 Fixes:
+- Fix invalid escape sequences in `grouped_data.py` docstrings ([#50392](https://github.com/ray-project/ray/pull/50392))
+- Deflake `test_map_batches_async_generator` ([#50459](https://github.com/ray-project/ray/pull/50459))
+- Avoid memory leak with `pyarrow.infer_type` on datetime arrays ([#50403](https://github.com/ray-project/ray/pull/50403))
+- Fix parquet partition cols to support tensors types ([#50591](https://github.com/ray-project/ray/pull/50591))
+- Fixing aggregation protocol to be appropriately associative ([#50757](https://github.com/ray-project/ray/pull/50757))
+
+📖 Documentation:
+- Remove "Stable Diffusion Batch Prediction with Ray Data" example ([#50460](https://github.com/ray-project/ray/pull/50460))
+
+## Ray Train<a id="ray-train"></a>
+🎉 New Features:
+- Ray Train V2 is available to try starting in Ray 2.43! Run your next Ray Train job with the `RAY_TRAIN_V2_ENABLED=1` environment variable. See [the migration guide](https://github.com/ray-project/ray/issues/49454) for more information.
+
+💫 Enhancements:
+- Add a training ingest benchmark release test ([#50019](https://github.com/ray-project/ray/pull/50019), [#50299](https://github.com/ray-project/ray/pull/50299)) with a fault tolerance variant ([#50399](https://github.com/ray-project/ray/pull/50399))
+- Add telemetry for Trainer usage in V2 ([#50321](https://github.com/ray-project/ray/pull/50321))
+- Add pydantic as a `ray[train]` extra install ([#46682](https://github.com/ray-project/ray/pull/46682))
+- Add state tracking to train v2 to make run status, run attempts, and training worker metadata observable ([#50515](https://github.com/ray-project/ray/pull/50515))
+
+🔨 Fixes:
+- Increase doc test parallelism ([#50326](https://github.com/ray-project/ray/pull/50326))
+- Disable TF test for py312 ([#50382](https://github.com/ray-project/ray/pull/50382))
+- Increase test timeout to deflake ([#50796](https://github.com/ray-project/ray/pull/50796))
+
+📖 Documentation:
+- Add missing xgboost pip install in example ([#50232](https://github.com/ray-project/ray/pull/50232))
+
+🏗 Architecture refactoring:
+- Add deprecation warnings pointing to a migration guide for Ray Train V2 ([#49455](https://github.com/ray-project/ray/pull/49455), [#50101](https://github.com/ray-project/ray/pull/50101), [#50322](https://github.com/ray-project/ray/pull/50322))
+- Refactor internal Train controller state management ([#50113](https://github.com/ray-project/ray/pull/50113), [#50181](https://github.com/ray-project/ray/pull/50181), [#50388](https://github.com/ray-project/ray/pull/50388))
+
+## Ray Tune<a id="ray-tune"></a>
+🔨 Fixes:
+- Fix worker node failure test ([#50109](https://github.com/ray-project/ray/pull/50109))
+
+📖 Documentation:
+- Update all doc examples off of ray.train imports ([#50458](https://github.com/ray-project/ray/pull/50458))
+- Update all ray/tune/examples off of ray.train imports ([#50435](https://github.com/ray-project/ray/pull/50435))
+- Fix typos in persistent storage guide ([#50127](https://github.com/ray-project/ray/pull/50127))
+- Remove Binder notebook links in Ray Tune docs ([#50621](https://github.com/ray-project/ray/pull/50621))
+
+🏗 Architecture refactoring:
+- Update RLlib to use ray.tune imports instead of ray.air and ray.train ([#49895](https://github.com/ray-project/ray/pull/49895))
+
+## Ray Serve<a id="ray-serve"></a>
+🎉 New Features:
+- *Ray Serve LLM*: We are introducing a new module in Ray Serve to easily integrate open source LLMs in your Ray Serve deployment, currently marked as **alpha**. This opens up a powerful capability of composing complex applications with multiple LLMs, which is a use case in emerging applications like agentic workflows. Ray Serve LLM offers a couple core components, including:
+  - `VLLMService`: A prebuilt deployment that offers a full-featured vLLM engine integration, with support for features such as LoRA multiplexing and multimodal language models.
+  - `LLMRouter`: An out-of-the-box OpenAI compatible model router that can route across multiple LLM deployments.
+  - Documentation can be found at https://docs.ray.io/en/releases-2.43.0/serve/llm/overview.html
+
+💫 Enhancements:
+- Add `required_resources` to REST API ([#50058](https://github.com/ray-project/ray/pull/50058))
+
+🔨 Fixes:
+- Fix batched requests hanging after cancellation ([#50054](https://github.com/ray-project/ray/pull/50054))
+- Properly propagate backpressure error ([#50311](https://github.com/ray-project/ray/pull/50311))
+
+## RLlib<a id="rllib"></a>
+🎉 New Features:
+- Added env vectorization support for multi-agent (new API stack). ([#50437](https://github.com/ray-project/ray/pull/50437))
+
+💫 Enhancements:
+- APPO/IMPALA various acceleration efforts. Reached 100k ts/sec on Atari benchmark with 400 EnvRunners and 16 (multi-node) GPU Learners: [#50760](https://github.com/ray-project/ray/pull/50760), [#50162](https://github.com/ray-project/ray/pull/50162), [#50249](https://github.com/ray-project/ray/pull/50249), [#50353](https://github.com/ray-project/ray/pull/50353), [#50368](https://github.com/ray-project/ray/pull/50368), [#50379](https://github.com/ray-project/ray/pull/50379), [#50440](https://github.com/ray-project/ray/pull/50440), [#50477](https://github.com/ray-project/ray/pull/50477), [#50527](https://github.com/ray-project/ray/pull/50527), [#50528](https://github.com/ray-project/ray/pull/50528), [#50600](https://github.com/ray-project/ray/pull/50600), [#50309](https://github.com/ray-project/ray/pull/50309)
+- Offline RL:
+  - Remove all weight synching to `eval_env_runner_group` from the training steps. ([#50057](https://github.com/ray-project/ray/pull/50057))
+  - Enable single-learner/multi-learner GPU training. ([#50034](https://github.com/ray-project/ray/pull/50034))
+  - Remove reference to MARWILOfflinePreLearner in `OfflinePreLearner` docstring. ([#50107](https://github.com/ray-project/ray/pull/50107))
+  - Add metrics to multi-agent replay buffers. ([#49959](https://github.com/ray-project/ray/pull/49959)[)](https://github.com/ray-project/ray/commit/00de19036cfcd125012711658833124edaf66c53)
+
+🔨 Fixes:
+- Fix SPOT preemption tolerance for large AlgorithmConfig: Pass by reference to RolloutWorker ([#50688](https://github.com/ray-project/ray/pull/50688))
+- `on_workers/env_runners_recreated` callback would be called twice. ([#50172](https://github.com/ray-project/ray/pull/50172))
+- `default_resource_request`: aggregator actors missing in placement group for local Learner. ([#50219](https://github.com/ray-project/ray/pull/50219), [#50475](https://github.com/ray-project/ray/pull/50475))
+
+📖 Documentation:
+- Docs re-do (new API stack):
+  - Rewrite/enhance "getting started" rst page. ([#49950](https://github.com/ray-project/ray/pull/49950))
+  - Remove rllib-models.rst and fix broken html links. ([#49966](https://github.com/ray-project/ray/pull/49966), [#50126](https://github.com/ray-project/ray/pull/50126))
+
+# Ray Core and Ray Clusters
+
+## Ray Core<a id="ray-core"></a>
+💫 Enhancements:
+- [Core] Enable users to configure python standard log attributes for structured logging (#49871)
+- [Core] Prestart worker with runtime env (#49994) 
+- [compiled graphs] Support experimental_compile(_default_communicator=comm) (#50023)
+- [Core] ray.util.Queue Empty and Full exceptions extend queue.Empty and Full (#50261)
+- [Core] Initial port of Ray to Python 3.13 (#47984)
+
+🔨 Fixes:
+- [Core] Ignore stale ReportWorkerBacklogRequest (#50280)
+- [Core] Fix check failure due to negative available resource (#50517)
+
+## Ray Clusters <a id="ray-clusters"></a>
+📖 Documentation:
+- Update the KubeRay docs to v1.3.0.
+
+## Ray Dashboard <a id="ray-dashboard"></a>
+🎉 New Features:
+- Additional filters for job list page ([#50283](https://github.com/ray-project/ray/pull/50283))
+
+# Thanks
+
+Thank you to everyone who contributed to this release! 🥳
+@liuxsh9, @justinrmiller, @CheyuWu, @400Ping, @scottsun94, @bveeramani, @bhmiller, @tylerfreckmann, @hefeiyun, @pcmoritz, @matthewdeng, @dentiny, @erictang000, @gvspraveen, @simonsays1980, @aslonnie, @shorbaji, @LeoLiao123, @justinvyu, @israbbani, @zcin, @ruisearch42, @khluu, @kouroshHakha, @sijieamoy, @SergeCroise, @raulchen, @anson627, @bluenote10, @allenyin55, @martinbomio, @rueian, @rynewang, @owenowenisme, @Betula-L, @alexeykudinkin, @crypdick, @jujipotle, @saihaj, @EricWiener, @kevin85421, @MengjinYan, @chris-ray-zhang, @SumanthRH, @chiayi, @comaniac, @angelinalg, @kenchung285, @tanmaychimurkar, @andrewsykim, @MortalHappiness, @sven1977, @richardliaw, @omatthew98, @fscnick, @akyang-anyscale, @cristianjd, @Jay-ju, @spencer-p, @win5923, @wxsms, @stfp, @letaoj, @JDarDagran, @jjyao, @srinathk10, @edoakes, @vincent0426, @dayshah, @davidxia, @DmitriGekhtman, @GeneDer, @HYLcool, @gameofby, @can-anyscale, @ryanaoleary, @eddyxu</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.42.1 (2025-02-11)</h2>
+      <pre>## Ray Data<a id="ray-data"></a>
+
+🔨 Fixes:
+
+- Fixes incorrect assertion (#50210)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.42.0 (2025-02-05)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+🎉 New Features:
+- Added read_audio and read_video ([#50016](https://github.com/ray-project/ray/pull/50016))
+
+💫 Enhancements:
+- Optimized multi-column groupbys ([#45667](https://github.com/ray-project/ray/pull/45667))
+- Included Ray user-agent in BigQuery client construction ([#49922](https://github.com/ray-project/ray/pull/49922))
+
+🔨 Fixes:
+- Fixed bug that made read tasks non-deterministic ([#49897](https://github.com/ray-project/ray/pull/49897))
+
+🗑️ Deprecations:
+- Deprecated num_rows_per_file in favor of min_rows_per_file ([#49978](https://github.com/ray-project/ray/pull/49978))
+
+## Ray Train<a id="ray-train"></a>
+💫 Enhancements:
+- Add Train v2 user-facing callback interface (#49819)
+- Add TuneReportCallback for propagating intermediate Train results to Tune (#49927)
+
+## Ray Tune<a id="ray-tune"></a>
+📖 Documentation:
+- Fix BayesOptSearch docs (#49848)
+
+## Ray Serve<a id="ray-serve"></a>
+💫 Enhancements:
+- Cache metrics in replica and report on an interval ([#49971](https://github.com/ray-project/ray/pull/49971))
+- Cache expensive calls to inspect.signature ([#49975](https://github.com/ray-project/ray/pull/49975))
+- Remove extra pickle serialization for gRPCRequest ([#49943](https://github.com/ray-project/ray/pull/49943))
+- Shared LongPollClient for Routers ([#48807](https://github.com/ray-project/ray/pull/48807))
+- DeploymentHandle API is now stable ([#49840](https://github.com/ray-project/ray/pull/49840))
+
+🔨 Fixes:
+- Fix batched requests hanging after request cancellation bug ([#50054](https://github.com/ray-project/ray/pull/50054))
+
+## RLlib<a id="rllib"></a>
+💫 Enhancements:
+- Add metrics to replay buffers. ([#49822](https://github.com/ray-project/ray/pull/49822))
+- Enhance node-failure tolerance (new API stack). ([#50007](https://github.com/ray-project/ray/pull/50007))
+- MetricsLogger cleanup throughput logic. ([#49981](https://github.com/ray-project/ray/pull/49981))
+- Split AddStates... connectors into 2 connector pieces (`AddTimeDimToBatchAndZeroPad` and `AddStatesFromEpisodesToBatch`) ([#49835](https://github.com/ray-project/ray/pull/49835))
+
+🔨 Fixes:
+- Old API stack IMPALA/APPO: Re-introduce mixin-replay-buffer pass, even if `replay-ratio=0` (fixes a memory leak). ([#49964](https://github.com/ray-project/ray/pull/49964))
+- Fix MetricsLogger race conditions. ([#49888](https://github.com/ray-project/ray/pull/49888))
+- APPO/IMPALA: Bug fix for > 1 Learner actor. ([#49849](https://github.com/ray-project/ray/pull/49849))
+
+📖 Documentation:
+- New MetricsLogger API rst page. ([#49538](https://github.com/ray-project/ray/pull/49538))
+- Move "new API stack" info box right below page titles for better visibility. ([#49921](https://github.com/ray-project/ray/pull/49921))
+- Add example script for how to log custom metrics in `training_step()`. ([#49976](https://github.com/ray-project/ray/pull/49976))
+- Enhance/redo autoregressive action distribution example. ([#49967](https://github.com/ray-project/ray/pull/49967))
+- Make the "tiny CNN" example RLModule run with APPO (by implementing `TargetNetAPI`) ([#49825](https://github.com/ray-project/ray/pull/49825))
+
+# Ray Core and Ray Clusters
+
+## Ray Core<a id="ray-core"></a>
+💫 Enhancements:
+- Only get single node info rather then all when needed ([#49727](https://github.com/ray-project/ray/pull/49727))
+- Introduce with_tensor_transport API ([#49753](https://github.com/ray-project/ray/pull/49753))
+
+🔨 Fixes:
+- Fix tqdm manager thread safe [#50040](https://github.com/ray-project/ray/pull/50040)
+
+## Ray Clusters <a id="ray-clusters"></a>
+🔨 Fixes:
+- Fix token expiration for ray autoscaler ([#48481](https://github.com/ray-project/ray/pull/48481))
+
+# Thanks
+
+Thank you to everyone who contributed to this release! 🥳 
+@wingkitlee0, @saihaj, @win5923, @justinvyu, @kevin85421, @edoakes, @cristianjd, @rynewang, @richardliaw, @LeoLiao123, @alexeykudinkin, @simonsays1980, @aslonnie, @ruisearch42, @pcmoritz, @fscnick, @bveeramani, @mattip, @till-m, @tswast, @ujjawal-khare, @wadhah101, @nikitavemuri, @akshay-anyscale, @srinathk10, @zcin, @dayshah, @dentiny, @LydiaXwQ, @matthewdeng, @JoshKarpel, @MortalHappiness, @sven1977, @omatthew98</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.41.0 (2025-01-23)</h2>
+      <pre># Highlights
+
+- Major update of RLlib docs and example scripts for the new API stack.
+
+# Ray Libraries
+
+## Ray Data
+
+🎉 New Features:
+
+- Expression support for filters (#49016) 
+- Support `partition_cols` in `write_parquet` (#49411)
+- Feature: implement multi-directional sort over Ray Data datasets (#49281)
+
+💫 Enhancements:
+
+- Use dask 2022.10.2 (#48898) 
+- Clarify schema validation error (#48882)
+- Raise `ValueError` when the data sort key is `None` (#48969) 
+- Provide more messages when webdataset format is error (#48643) 
+- Upgrade Arrow version from 17 to 18 (#48448)
+- Update `hudi` version to 0.2.0 (#48875) 
+- `webdataset`: expand JSON objects into individual samples (#48673)
+- Support passing kwargs to map tasks. (#49208) 
+- Add `ExecutionCallback` interface (#49205) 
+- Add seed for read files (#49129)
+- Make `select_columns` and `rename_columns` use Project operator (#49393)
+
+🔨 Fixes:
+
+- Fix partial function name parsing in `map_groups` (#48907) 
+- Always launch one task for `read_sql` (#48923) 
+- Reimplement of fix memory pandas (#48970)
+- `webdataset`: flatten return args (#48674) 
+- Handle `numpy > 2.0.0` behaviour in `_create_possibly_ragged_ndarray` (#48064)
+- Fix `DataContext` sealing for multiple datasets. (#49096) 
+- Fix `to_tf` for `List` types (#49139) 
+- Fix type mismatch error while mapping nullable column (#49405) 
+- Datasink: support passing write results to `on_write_completes` (#49251)
+- Fix `groupby` hang when value contains `np.nan` (#49420)
+- Fix bug where `file_extensions` doesn't work with compound extensions (#49244)
+- Fix map operator fusion when concurrency is set (#49573) 
+
+## Ray Train
+
+🎉 New Features:
+
+- Output JSON structured log files for system and application logs (#49414)
+- Add support for AMD ROCR_VISIBLE_DEVICES (#49346)
+
+💫 Enhancements:
+
+- Implement Train Tune API Revamp REP (#49376, #49467, #49317, #49522)
+
+🏗 Architecture refactoring:
+
+- LightGBM: Rewrite `get_network_params` implementation (#49019)
+
+## Ray Tune
+
+🎉 New Features:
+
+- Update `optuna_search` to allow users to configure optuna storage (#48547)
+
+🏗 Architecture refactoring:
+
+- Make changes to support Train Tune API Revamp REP (#49308, #49317, #49519)
+
+## Ray Serve
+
+💫 Enhancements:
+
+- Improved request_id generation to reduce proxy CPU overhead (#49537)
+- Tune GC threshold by default in proxy (#49720)
+- Use `pickle.dumps` for faster serialization from `proxy` to `replica` (#49539)
+
+🔨 Fixes:
+
+- Handle nested ‘=’ in serve run arguments (#49719)
+- Fix bug when `ray.init()` is called multiple times with different `runtime_envs` (#49074)
+
+🗑️ Deprecations:
+
+- Adds a warning that the default behavior for sync methods will change in a future release. They will be run in a threadpool by default. You can opt into this behavior early by setting `RAY_SERVE_RUN_SYNC_IN_THREADPOOL=1`. (#48897)
+
+## RLlib
+
+🎉 New Features:
+
+- Add support for external Envs to new API stack: New example script and custom tcp-capable EnvRunner. (#49033)
+
+💫 Enhancements:
+
+- Offline RL:
+  - Add sequence sampling to `EpisodeReplayBuffer`. (#48116)
+  - Allow incomplete `SampleBatch` data and fully compressed observations. (#48699)
+  - Add option to customize `OfflineData`. (#49015)
+  - Enable offline training without specifying an environment. (#49041)
+  - Various fixes: #48309, #49194, #49195
+- APPO/IMPALA acceleration (new API stack):
+  - Add support for `AggregatorActors` per Learner. (#49284)
+  - Auto-sleep time AND thread-safety for MetricsLogger. (#48868)
+  - Activate APPO cont. actions release- and CI tests (HalfCheetah-v1 and Pendulum-v1 new in `tuned_examples`). (#49068)
+  - Add "burn-in" period setting to the training of stateful RLModules. (#49680)
+- Callbacks API: Add support for individual lambda-style callbacks. (#49511)
+- Other enhancements: #49687, #49714, #49693, #49497, #49800, #49098
+
+📖 Documentation:
+
+- New example scripts:
+  - How to write a custom algorithm (VPG) from scratch. (#49536)
+  - How to customize an offline data pipeline. (#49046)
+  - GPUs on EnvRunners. (#49166)
+  - Hierarchical training. (#49127)
+  - Async gym vector env. (#49527)
+  - Other fixes and enhancements: #48988, #49071
+- New/rewritten html pages:
+  - Rewrite checkpointing page. (#49504)
+  - New scaling guide. (#49528)
+  - New callbacks page. (#49513)
+  - Rewrite `RLModule` page. (#49387)
+  - New AlgorithmConfig page and redo `package_ref` page for algo configs. (#49464)
+  - Rewrite offline RL page. (#48818)
+  - Rewrite “key concepts" rst page. (#49398)
+  - Rewrite RL environments pages. (#49165, #48542)
+  - Fixes and enhancements: #49465, #49037, #49304, #49428, #49474, #49399, #49713, #49518
+  
+🔨 Fixes:
+
+- Add `on_episode_created` callback to SingleAgentEnvRunner. (#49487)
+- Fix `train_batch_size_per_learner` problems. (#49715)
+- Various other fixes: #48540, #49363, #49418, #49191
+
+🏗 Architecture refactoring:
+
+- RLModule: Introduce `Default[algo]RLModule` classes (#49366, #49368)
+- Remove RLlib dependencies from setup.py; add `ormsgpack` (#49489)
+
+🗑️ Deprecations:
+
+- #49488, #49144
+
+# Ray Core and Ray Clusters
+
+## Ray Core
+
+💫 Enhancements:
+
+- Add `task_name`, `task_function_name` and `actor_name` in Structured Logging (#48703)
+- Support redis/valkey authentication with username (#48225)
+- Add v6e TPU Head Resource Autoscaling Support (#48201)
+- compiled graphs: Support all driver and actor read combinations (#48963) 
+- compiled graphs: Add ascii based CG visualization (#48315) 
+- compiled graphs: Add ray[cg] pip install option (#49220)
+- Allow uv cache at installation (#49176)
+- Support != Filter in GCS for Task State API (#48983)
+- compiled graphs: Add CPU-based NCCL communicator for development (#48440)
+- Support gcs and raylet log rotation (#48952)
+- compiled graphs: Support `nsight.nvtx` profiling (#49392)
+
+🔨 Fixes:
+
+- autoscaler: Health check logs are not visible in the autoscaler container's stdout (#48905)
+- Only publish `WORKER_OBJECT_EVICTION` when the object is out of scope or manually freed (#47990)
+- autoscaler: Autoscaler doesn't scale up correctly when the KubeRay RayCluster is not in the goal state (#48909)
+- autoscaler: Fix incorrectly terminating nodes misclassified as idle in autoscaler v1 (#48519)
+- compiled graphs: Fix the missing dependencies when num_returns is used (#49118)
+- autoscaler: Fuse scaling requests together to avoid overloading the Kubernetes API server (#49150)
+- Fix bug to support S3 pre-signed url for `.whl` file (#48560)
+- Fix data race on gRPC client context (#49475)
+- Make sure draining node is not selected for scheduling (#49517)
+
+## Ray Clusters
+
+💫 Enhancements:
+
+- Azure: Enable accelerated networking as a flag in azure vms (#47988)
+
+📖 Documentation:
+
+- Kuberay: Logging: Add Fluent Bit `DaemonSet` and Grafana Loki to "Persist KubeRay Operator Logs" (#48725)
+- Kuberay: Logging: Specify the Helm chart version in "Persist KubeRay Operator Logs" (#48937)
+
+Dashboard
+
+💫 Enhancements:
+
+- Add instance variable to many default dashboard graphs (#49174)
+- Display duration in milliseconds if under 1 second. (#49126)
+- Add `RAY_PROMETHEUS_HEADERS` env for carrying additional headers to Prometheus (#49353)
+- Document about the `RAY_PROMETHEUS_HEADERS` env for carrying additional headers to Prometheus (#49700)
+
+🏗 Architecture refactoring:
+
+- Move `memray` dependency from default to observability (#47763)
+- Move `StateHead`'s methods into free functions. (#49388)
+
+## Thanks
+
+@raulchen, @alanwguo, @omatthew98, @xingyu-long, @tlinkin, @yantzu, @alexeykudinkin, @andrewsykim, @win5923, @csy1204, @dayshah, @richardliaw, @stephanie-wang, @gueraf, @rueian, @davidxia, @fscnick, @wingkitlee0, @KPostOffice, @GeneDer, @MengjinYan, @simonsays1980, @pcmoritz, @petern48, @kashiwachen, @pfldy2850, @zcin, @scottjlee, @Akhil-CM, @Jay-ju, @JoshKarpel, @edoakes, @ruisearch42, @gorloffslava, @jimmyxie-figma, @bthananjeyan, @sven1977, @bnorick, @jeffreyjeffreywang, @ravi-dalal, @matthewdeng, @angelinalg, @ivanthewebber, @rkooo567, @srinathk10, @maresb, @gvspraveen, @akyang-anyscale, @mimiliaogo, @bveeramani, @ryanaoleary, @kevin85421, @richardsliu, @hartikainen, @coltwood93, @mattip, @Superskyyy, @justinvyu, @hongpeng-guo, @ArturNiederfahrenhorst, @jecsand838, @Bye-legumes, @hcc429, @WeichenXu123, @martinbomio, @HollowMan6, @MortalHappiness, @dentiny, @zhe-thoughts, @anyadontfly, @smanolloff, @richo-anyscale, @khluu, @xushiyan, @rynewang, @japneet-anyscale, @jjyao, @sumanthratna, @saihaj, @aslonnie 
+
+Many thanks to all those who contributed to this release! 
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.40.0 (2024-12-04)</h2>
+      <pre># Ray Libraries
+## Ray Data
+🎉 New Features:
+- Added read_hudi (https://github.com/ray-project/ray/pull/46273)
+
+💫 Enhancements:
+- Improved performance of DelegatingBlockBuilder (https://github.com/ray-project/ray/pull/48509)
+- Improved memory accounting of pandas blocks (https://github.com/ray-project/ray/pull/46939)
+
+🔨 Fixes:
+- Fixed bug where you can’t specify a schema with write_parquet (https://github.com/ray-project/ray/issues/48630)
+- Fixed bug where to_pandas errors if your dataset contains Arrow and pandas blocks (https://github.com/ray-project/ray/pull/48583)
+- Fixed bug where map_groups doesn’t work with pandas data (https://github.com/ray-project/ray/pull/48287)
+- Fixed bug where write_parquet errors if your data contains nullable fields (https://github.com/ray-project/ray/pull/48478)
+- Fixed bug where “Iteration Blocked Time” charts looks incorrect (https://github.com/ray-project/ray/pull/48618)
+- Fixed bug where unique fails with null values (https://github.com/ray-project/ray/pull/48750)
+- Fixed bug where “Rows Outputted” is 0 in the Data dashboard (https://github.com/ray-project/ray/pull/48745)
+- Fixed bug where methods like drop_columns cause spilling (https://github.com/ray-project/ray/pull/48140)
+- Fixed bug where async map tasks hang (https://github.com/ray-project/ray/pull/48861)
+
+🗑️ Deprecations:
+- Deprecated read_parquet_bulk https://github.com/ray-project/ray/pull/48691
+- Deprecated iter_tf_batches https://github.com/ray-project/ray/pull/48693
+- Deprecated meta_provider parameter of read functions (https://github.com/ray-project/ray/pull/48690)
+- Deprecated to_torch (https://github.com/ray-project/ray/pull/48692)
+
+## Ray Train
+🔨 Fixes:
+- Fix StartTracebackWithWorkerRank serialization (#48548)
+
+📖 Documentation:
+- Add example for fine-tuning Llama3.1 with AWS Trainium (#48768)
+
+## Ray Tune
+🔨 Fixes:
+- Remove the `clear_checkpoint` function during Trial restoration error handling. (#48532)
+
+## Ray Serve
+🎉 New Features:
+- Initial version of local_testing_mode ([#48477](https://github.com/ray-project/ray/pull/48477))
+
+💫 Enhancements:
+- Handle multiple changed objects per LongPollHost.listen_for_change RPC ([#48803](https://github.com/ray-project/ray/pull/48803/files))
+- Add more nuanced checks for http proxy status errors ([#47896](https://github.com/ray-project/ray/pull/47896))
+- Improve replica access log messages to include HTTP status info and better resemble standard log format ([#48819](https://github.com/ray-project/ray/pull/48819))
+- Propagate replica constructor error to deployment status message and print num retries left ([#48531](https://github.com/ray-project/ray/pull/47896))
+
+🔨 Fixes:
+- Pending requests that are cancelled before they were assigned to a replica now also return a serve.RequestCancelledError ([#48496](https://github.com/ray-project/ray/pull/48496))
+
+## RLlib
+💫 Enhancements:
+- Release test enhancements. ([#45803](https://github.com/ray-project/ray/pull/45803), [#48681](https://github.com/ray-project/ray/pull/48681))
+- Make opencv-python-headless default over opencv-python ([#48776](https://github.com/ray-project/ray/pull/48776)[)](https://github.com/ray-project/ray/commit/aaac19c8307038021dd96ffc4c2e616fbbf14896)
+- Reverse learner queue behavior of IMPALA/APPO (consume oldest batches first, instead of newest, BUT drop oldest batches if queue full). ([#48702](https://github.com/ray-project/ray/pull/48702))
+
+🔨 Fixes:
+- Fix torch scheduler stepping and reporting. ([#48125](https://github.com/ray-project/ray/pull/48125)[)](https://github.com/ray-project/ray/commit/ec9775d86fbf7eb93358d95268e9f62e53f790bd)
+- Fix accumulation of results over n training_step calls within same iteration (new API stack). ([#48136](https://github.com/ray-project/ray/pull/48136))
+- Various other fixes: [#48563](https://github.com/ray-project/ray/pull/48563), [#48314](https://github.com/ray-project/ray/pull/48314), [#48698](https://github.com/ray-project/ray/pull/48698), [#48869](https://github.com/ray-project/ray/pull/48869).
+
+📖 Documentation:
+- Upgrade examples script overview page (new API stack). ([#48526](https://github.com/ray-project/ray/pull/48526)[)](https://github.com/ray-project/ray/commit/d39c9df1b69ba0451abff7075963c3a6e2824c9c)
+- Enable RLlib + Serve example in CI and translate to new API stack. ([#48687](https://github.com/ray-project/ray/pull/48687))
+
+🏗 Architecture refactoring:
+- Switch new API stack on by default, APPO, IMPALA, BC, MARWIL, and CQL. ([#48516](https://github.com/ray-project/ray/pull/48516), [#48599](https://github.com/ray-project/ray/pull/48599)[)](https://github.com/ray-project/ray/commit/03ea4f6663fafaf64b8d10ac8db8e962302be561)
+- Various APPO enhancements (new API stack): Circular buffer [(](https://github.com/ray-project/ray/commit/05915c1b389ab0bada23217a3cb2768311d1184b)[#48798](https://github.com/ray-project/ray/pull/48798)), minor loss math fixes ([#48800](https://github.com/ray-project/ray/pull/48800)), target network update logic ([#48802](https://github.com/ray-project/ray/pull/48802)), smaller cleanups ([#48844](https://github.com/ray-project/ray/pull/48844)).
+- Remove `rllib_contrib` from repo. ([#48565](https://github.com/ray-project/ray/pull/48565)[)](https://github.com/ray-project/ray/commit/d2de98323f0848fec2dbeb61bbd39b507b9c97d8)
+
+# Ray Core and Ray Clusters
+
+## Ray Core
+🎉 New Features:
+- [Core] uv runtime env support ([#48479](https://github.com/ray-project/ray/pull/48479), [#48486](https://github.com/ray-project/ray/pull/48486), [#48611](https://github.com/ray-project/ray/pull/48611), [#48619](https://github.com/ray-project/ray/pull/48619), [#48632](https://github.com/ray-project/ray/pull/48632), [#48634](https://github.com/ray-project/ray/pull/48634), [#48637](https://github.com/ray-project/ray/pull/48637), [#48670](https://github.com/ray-project/ray/pull/48670), [#48731](https://github.com/ray-project/ray/pull/48731))
+- [Core] GCS FT with redis sentinel (#47335)
+
+💫 Enhancements:
+- [CompiledGraphs] Refine schedule visualization (#48594)
+
+🔨 Fixes:
+- [CompiledGraphs] Don't persist input_nodes in _CollectiveOperation to avoid wrong understanding about DAGs (#48463)
+- [Core] Fix Ascend NPU discovery to support 8+ cards per node (#48543)
+- [Core] Make Placement Group Wildcard and Indexed Resource Assignments Consistent (#48088)
+- [Core] Stop the GRPC server before Shut down the Object Store (#48572)
+
+## Ray Clusters
+🔨 Fixes:
+- [KubeRay]: Fix ConnectionError on Autoscaler CR lookups in K8s clusters with custom DNS for Kubernetes API. ([#48541](https://github.com/ray-project/ray/pull/48541))
+
+## Dashboard
+💫 Enhancements:
+- Add global UTC timezone button in navbar with local storage (#48510)
+- Add memory graphs optimized for OOM debugging (#48530) 
+- Improve tasks/actors metric naming and add graph for running tasks (#48528)
+add actor pid to dashboard (#48791)
+
+🔨 Fixes:
+- Fix Placement Group Table table cells overflow (#47323)
+- Fix Rows Outputted being zero on Ray Data Dashboard (#48745) 
+- fix confusing dataset operator name (#48805)
+
+# Thanks
+Thanks to all those who contributed to this release! 
+@rynewang, @rickyyx, @bveeramani, @marwan116, @simonsays1980, @dayshah, @dentiny, @KepingYan, @mimiliaogo, @kevin85421, @SeaOfOcean, @stephanie-wang, @mohitjain2504, @azayz, @xushiyan, @richardliaw, @can-anyscale, @xingyu-long, @kanwang, @aslonnie, @MortalHappiness, @jjyao, @SumanthRH, @matthewdeng, @alexeykudinkin, @sven1977, @raulchen, @andrewsykim, @zcin, @nadongjun, @hongpeng-guo, @miguelteixeiraa, @saihaj, @khluu, @ArturNiederfahrenhorst, @ryanaoleary, @ltbringer, @pcmoritz, @JoshKarpel, @akyang-anyscale, @frances720, @BeingGod, @edoakes, @Bye-legumes, @Superskyyy, @liuxsh9, @MengjinYan, @ruisearch42, @scottjlee, @angelinalg</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.39.0 (2024-11-13)</h2>
+      <pre># Ray Libraries
+
+## Ray Data
+
+🔨 Fixes:
+- Fixed InvalidObjectError edge case with Dataset.split() (https://github.com/ray-project/ray/pull/48130)
+- Made Concatenator preserve order of concatenated columns (https://github.com/ray-project/ray/pull/47997)
+
+📖 Documentation:
+- Improved documentation around Parquet column and predicate pushdown (https://github.com/ray-project/ray/pull/48095)
+- Marked num_rows_per_file parameter of write APIs as experimental (https://github.com/ray-project/ray/pull/48208)
+- One hot encoder now returns an encoded vector (https://github.com/ray-project/ray/pull/48173)
+- transform_batch no longer fails on missing columns (https://github.com/ray-project/ray/pull/48137)
+
+🏗 Architecture refactoring:
+- Dataset.count() now uses a Count logical operator (https://github.com/ray-project/ray/pull/48126)
+
+🗑 Deprecations:
+- Removed long-deprecated set_progress_bars (https://github.com/ray-project/ray/pull/48203)
+
+## Ray Train
+
+🔨 Fixes:
+- Safely check if the storage filesystem is `pyarrow.fs.S3FileSystem` (#48216)
+
+## Ray Tune
+
+🔨 Fixes:
+- Safely check if the storage filesystem is `pyarrow.fs.S3FileSystem` (#48216)
+
+## Ray Serve
+
+💫 Enhancements:
+- Cancelled requests now return a serve.RequestCancelledError (https://github.com/ray-project/ray/pull/48444)
+- Exposed application source in app details model (https://github.com/ray-project/ray/pull/45522)
+
+🔨 Fixes:
+- Basic HTTP deployments will now return “Internal Server Error” instead of a traceback to match FastAPI behavior (https://github.com/ray-project/ray/pull/48491)
+- Fixed an issue where high values of max_ongoing_requests couldn’t be reached due to an interaction with core’s max_concurrency (https://github.com/ray-project/ray/pull/48274)
+- Fixed an edge case where pending requests were not canceled properly (https://github.com/ray-project/ray/pull/47873)
+- Removed deprecated API to set route_prefix per-deployment (https://github.com/ray-project/ray/pull/48223)
+
+📖 Documentation:
+- Added ProxyStatus model to reference docs (https://github.com/ray-project/ray/pull/48299)
+- Added ApplicationStatus model to reference docs (https://github.com/ray-project/ray/pull/48220)
+
+## RLlib
+
+💫 Enhancements:
+- Upgrade to gymnasium==1.0.0 (support new API for vector env resets). ([#48443](https://github.com/ray-project/ray/pull/48443), [#45328](https://github.com/ray-project/ray/pull/45328))
+- Add off-policy'ness metric to new API stack. ([#48227](https://github.com/ray-project/ray/pull/48227))
+- Validate episodes before adding them to the buffer. ([#48083](https://github.com/ray-project/ray/pull/48083))
+
+📖 Documentation:
+- New example script for custom metrics on `EnvRunners` (using `MetricsLogger` API on the new stack). ([#47969](https://github.com/ray-project/ray/pull/47969))
+- Do-over: New RLlib index page. ([#48285](https://github.com/ray-project/ray/pull/48285), [#48442](https://github.com/ray-project/ray/pull/48442))
+- Do-over: Example script for AutoregressiveActionsRLM. ([#47972](https://github.com/ray-project/ray/pull/47972))
+
+🏗 Architecture refactoring:
+- New API stack on by default for PPO. ([#48284](https://github.com/ray-project/ray/pull/48284))
+- Change config.fault_tolerance default behavior (from `recreate_failed_env_runners=False` to `True`). ([#48286](https://github.com/ray-project/ray/pull/48286))
+
+🔨 Fixes:
+- Various bug and CI fixes: [#47993](https://github.com/ray-project/ray/pull/47993), [#48450](https://github.com/ray-project/ray/pull/48450), [#48213](https://github.com/ray-project/ray/pull/48213)
+- Cleanup `evaluation` folder ([#48493](https://github.com/ray-project/ray/pull/48493))
+
+## Ray Core
+
+🎉 New Features:
+- [CompiledGraphs] Support all reduce collective in aDAG ([#47621](https://github.com/ray-project/ray/pull/47621))
+- [CompiledGraphs] Add visualization of compiled graphs ([#47958](https://github.com/ray-project/ray/pull/47958))
+
+💫 Enhancements:
+- [**Distributed Debugger**] The distributed debugger can now be used without having to set RAY_DEBUG=1, see https://github.com/ray-project/ray/pull/48301 and https://docs.ray.io/en/latest/ray-observability/ray-distributed-debugger.html. If you want to restore the previous behavior and use the CLI based debugger, you need to set RAY_DEBUG=legacy.
+- [Core] Add more infos to each breakpoint for ray debug CLI ([#48202](https://github.com/ray-project/ray/pull/48202))
+- [Core] Add demands info to GCS debug state ([#48115](https://github.com/ray-project/ray/pull/48115))
+- [Core] Add PENDING_ACTOR_TASK_ARGS_FETCH and PENDING_ACTOR_TASK_ORDERING_OR_CONCURRENCY TaskStatus ([#48242](https://github.com/ray-project/ray/pull/48242))
+- [Core] Add metrics ray_io_context_event_loop_lag_ms. ([#47989](https://github.com/ray-project/ray/pull/47989))
+- [Core] Better log format when show the disk size ([#46869](https://github.com/ray-project/ray/pull/46869))
+- [CompiledGraphs] Support asyncio.gather on multiple CompiledDAGFutures ([#47860](https://github.com/ray-project/ray/pull/47860))
+- [CompiledGraphs] Raise an exception if a leaf node is found during compilation ([#47757](https://github.com/ray-project/ray/pull/47757))
+
+
+🔨 Fixes:
+- [Core] Posts CoreWorkerMemoryStore callbacks onto io_context to fix deadlock ([#47833](https://github.com/ray-project/ray/pull/47833))
+
+## Dashboard
+
+🔨 Fixes:
+- [Dashboard] Reworking dashboard_max_actors_to_cache to RAY_maximum_gcs_destroyed_actor_cached_count ([#48229](https://github.com/ray-project/ray/pull/48229))
+
+# Thanks
+Many thanks to all those who contributed to this release! 
+
+@akyang-anyscale, @rkooo567, @bveeramani, @dayshah, @martinbomio, @khluu, @justinvyu, @slfan1989, @alexeykudinkin, @simonsays1980, @vigneshka, @ruisearch42, @rynewang, @scottjlee, @jjyao, @JoshKarpel, @win5923, @MengjinYan, @MortalHappiness, @ujjawal-khare-27, @zcin, @ccoulombe, @Bye-legumes, @dentiny, @stephanie-wang, @LeoLiao123, @dengwxn, @richo-anyscale, @pcmoritz, @sven1977, @omatthew98, @GeneDer, @srinathk10, @can-anyscale, @edoakes, @kevin85421, @aslonnie, @jeffreyjeffreywang, @ArturNiederfahrenhorst</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.38.0 (2024-10-23)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🎉 New Features:
+- Add `Dataset.rename_columns` (#47906)
+- Basic structured logging (#47210)
+
+💫 Enhancements:
+- Add `partitioning` parameter to `read_parquet` (#47553)
+- Add `SERVICE_UNAVAILABLE` to list of retried transient errors (#47673)
+- Re-phrase the streaming executor current usage string (#47515)
+- Remove ray.kill in ActorPoolMapOperator (#47752)
+- Simplify and consolidate progress bar outputs (#47692)
+- Refactor `OpRuntimeMetrics` to support properties (#47800)
+- Refactor `plan_write_op` and `Datasink`s (#47942)
+- Link `PhysicalOperator` to its `LogicalOperator` (#47986)
+- Allow specifying both `num_cpus` and `num_gpus` for map APIs (#47995)
+- Allow specifying insertion index when registering custom plan optimization `Rule`s (#48039)
+- Adding in better framework for substituting logging handlers (#48056)
+
+🔨 Fixes:
+- Fix bug where Ray Data incorrectly emits progress bar warning (#47680)
+- Yield remaining results from async `map_batches` (#47696)
+- Fix event loop mismatch with async map (#47907)
+- Make sure `num_gpus` provide to Ray Data is appropriately passed to `ray.remote` call (#47768)
+- Fix unequal partitions when grouping by multiple keys (#47924)
+- Fix reading multiple parquet files with ragged ndarrays (#47961)
+- Removing unneeded test case (#48031)
+- Adding in better json checking in test logging (#48036)
+- Fix bug with inserting custom optimization rule at index 0 (#48051)
+- Fix logging output from `write_xxx` APIs (#48096)
+
+📖 Documentation:
+- Add docs section for Ray Data progress bars (#47804)
+- Add reference to parquet predicate pushdown (#47881)
+- Add tip about how to understand map_batches format (#47394)
+
+## Ray Train<a id="ray-train"></a>
+
+🏗 Architecture refactoring:
+- Remove deprecated mosaic and sklearn trainer code (#47901)
+
+## Ray Tune<a id="ray-tune"></a>
+
+🔨 Fixes:
+- Fix WandbLoggerCallback to reuse actors upon restore (#47985)
+
+## Ray Serve<a id="ray-serve"></a>
+
+🔨 Fixes:
+- Stop scheduling task early when requests have been canceled (#47847)
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+- Enable cloud checkpointing. (#47682)
+
+💫 Enhancements:
+- PPO on new API stack now shuffles batches properly before each epoch. (#47458)
+- Other enhancements: #47705, #47501, #47731, #47451, #47830, #47970, #47157
+
+🔨 Fixes:
+- Fix spot node preemption problem (RLlib now run stably with EnvRunner workers on spot nodes) (#47940)
+- Fix action masking example. (#47817)
+- Various other fixes: #47973, #46721, #47914, #47880, #47304, #47686
+
+🏗 Architecture refactoring:
+- Switch on new API stack by default for SAC and DQN. (#47217)
+- Remove Tf support on new API stack for PPO/IMPALA/APPO (only DreamerV3 on new API stack remains with tf now). (#47892)
+- Discontinue support for "hybrid" API stack (using RLModule + Learner, but still on RolloutWorker and Policy) (#46085)
+- RLModule (new API stack) refinements: #47884, #47885, #47889, #47908, #47915, #47965, #47775
+
+📖 Documentation:
+- Add new API stack migration guide. (#47779)
+- New API stack example script: BC pre training, then PPO finetuning using same RLModule class. (#47838)
+- New API stack: Autoregressive actions example. (#47829)
+- Remove old API stack connector docs entirely. (#47778)
+
+# Ray Core and Ray Clusters
+## Ray Core <a id="ray-core"></a>
+
+🎉 New Features:
+- CompiledGraphs: support multi readers in multi node when DAG is created from an actor (#47601)
+
+💫 Enhancements:
+- Add a flag to raise exception for out of band serialization of `ObjectRef` (#47544)
+- Store each GCS table in its own Redis Hash (#46861)
+- Decouple create worker vs pop worker request. (#47694)
+- Add metrics for GCS jobs (#47793)
+
+🔨 Fixes:
+- Fix broken dashboard cluster page when there are dead nodes (#47701)
+- Fix the `ray_tasks{State="PENDING_ARGS_FETCH"}` metric counting (#47770)
+- Separate the attempt_number with the task_status in memory summary and object list (#47818)
+- Fix object reconstruction hang on arguments pending creation (#47645)
+- Fix check failure: `sync_reactors_.find(reactor->GetRemoteNodeID()) == sync_reactors_.end()` (#47861)
+- Fix check failure `RAY_CHECK(it != current_tasks_.end())`; (#47659)
+
+📖 Documentation:
+- KubeRay docs: Add docs for YuniKorn Gang scheduling #47850 
+
+## Dashboard<a id="dashboard"></a>
+
+💫 Enhancements:
+- Performance improvements for large scale clusters (#47617)
+
+🔨 Fixes:
+- Placement group and required resources not showing correctly in dashboard (#47754)
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+@GeneDer, @rkooo567, @dayshah, @saihaj, @nikitavemuri, @bill-oconnor-anyscale, @WeichenXu123, @can-anyscale, @jjyao, @edoakes, @kekulai-fredchang, @bveeramani, @alexeykudinkin, @raulchen, @khluu, @sven1977, @ruisearch42, @dentiny, @MengjinYan, @Mark2000, @simonsays1980, @rynewang, @PatricYan, @zcin, @sofianhnaide, @matthewdeng, @dlwh, @scottjlee, @MortalHappiness, @kevin85421, @win5923, @aslonnie, @prithvi081099, @richardsliu, @milesvant, @omatthew98, @Superskyyy, @pcmoritz</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.37.0 (2024-09-24)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+💫 Enhancements:
+- Simplify custom metadata provider API (#47575)
+- Change counts of metrics to rates of metrics (#47236)
+- Throw exception for non-streaming HF datasets with "override_num_blocks" argument (#47559)
+- Refactor custom optimizer rules (#47605)
+
+🔨 Fixes:
+- Remove ineffective retry code in `plan_read_op` (#47456)
+- Fix incorrect pending task size if outputs are empty (#47604)
+
+## Ray Train<a id="ray-train"></a>
+💫 Enhancements:
+- Update run status and add stack trace to `TrainRunInfo` (#46875)
+
+## Ray Serve<a id="ray-serve"></a>
+💫 Enhancements:
+- Allow control of some serve configuration via env vars ([#47533](https://github.com/ray-project/ray/pull/47533))
+- [serve] Faster detection of dead replicas ([#47237](https://github.com/ray-project/ray/pull/47237))
+
+🔨 Fixes:
+- [Serve] fix component id logging field ([#47609](https://github.com/ray-project/ray/pull/47609))
+
+## RLlib<a id="rllib"></a>
+💫 Enhancements:
+- New API stack:
+  - Add restart-failed-env option to EnvRunners. ([#47608](https://github.com/ray-project/ray/pull/47608)[)](https://github.com/ray-project/ray/commit/e75f5e7aa950e30097a0323f4baf14d90b1b6b9b)
+  - Offline RL: Store episodes in state form. ([#47294](https://github.com/ray-project/ray/pull/47294)[)](https://github.com/ray-project/ray/commit/aa7179a6fa24a0d95a1c9b85014bfb322d3447e6)
+  - Offline RL: Replace GAE in MARWILOfflinePreLearner with `GeneralAdvantageEstimation` connector in learner pipeline. ([#47532](https://github.com/ray-project/ray/pull/47532))
+  - Off-policy algos: Add episode sampling to EpisodeReplayBuffer. ([#47500](https://github.com/ray-project/ray/pull/47500))
+  - RLModule APIs: Add `SelfSupervisedLossAPI` for RLModules[ that bri](https://github.com/ray-project/ray/commit/f422376cda3ae0dc52fc7686df3b1cb03342be7f)ng their own loss and `InferenceOnlyAPI`. ([#47581](https://github.com/ray-project/ray/pull/47581), [#47572](https://github.com/ray-project/ray/pull/47572))
+
+## Ray Core<a id="ray-core"></a>
+💫 Enhancements:
+- [aDAG] Allow custom NCCL group for aDAG (#47141)
+- [aDAG] support buffered input (#47272)
+- [aDAG] Support multi node multi reader (#47480)
+- [Core] Make is_gpu, is_actor, root_detached_id fields late bind to workers. (#47212)
+- [Core] Reconstruct actor to run lineage reconstruction triggered actor task (#47396)
+- [Core] Optimize GetAllJobInfo API for performance (#47530)
+
+🔨 Fixes:
+- [aDAG] Fix ranks ordering for custom NCCL group (#47594)
+
+## Ray Clusters<a id="ray-clusters"></a>
+📖 Documentation:
+- [KubeRay] add a guide for deploying vLLM with RayService (#47038) 
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+@ruisearch42, @andrewsykim, @timkpaine, @rkooo567, @WeichenXu123, @GeneDer, @sword865, @simonsays1980, @angelinalg, @sven1977, @jjyao, @woshiyyya, @aslonnie, @zcin, @omatthew98, @rueian, @khluu, @justinvyu, @bveeramani, @nikitavemuri, @chris-ray-zhang, @liuxsh9, @xingyu-long, @peytondmurray, @rynewang</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.36.1 (2024-09-23)</h2>
+      <pre>## Ray Core<a id="ray-core"></a>
+🔨 Fixes:
+- Fix broken dashboard cluster page when there are dead nodes (#47701)
+- Fix broken dashboard worker page (#47714)
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.36.0 (2024-09-17)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+💫 Enhancements:
+- Remove limit on number of tasks launched per scheduling step (#47393)
+- Allow user-defined Exception to be caught. (#47339)
+
+🔨 Fixes:
+- Display pending actors separately in the progress bar and not count them towards running resources (#46384)
+- Fix bug where `arrow_parquet_args` aren't used (#47161)
+- Skip empty JSON files in `read_json()` (#47378)
+- Remove remote call for initializing `Datasource` in `read_datasource()` (#47467)
+- Remove dead `from_*_operator` modules (#47457)
+- Release test fixes
+- Add `AWS ACCESS_DENIED` as retryable exception for multi-node Data+Train benchmarks (#47232)
+- Get AWS credentials with boto (#47352)
+- Use worker node instead of head node for `read_images_comparison_microbenchmark_single_node` release test (#47228)
+
+📖 Documentation:
+- Add docstring to explain `Dataset.deserialize_lineage` (#47203)
+- Add a comment explaining the bundling behavior for `map_batches` with default batch_size (#47433)
+
+## Ray Train<a id="ray-train"></a>
+
+💫 Enhancements:
+- Decouple device-related modules and add Huawei NPU support to Ray Train (#44086)
+
+🔨 Fixes:
+- Update TORCH_NCCL_ASYNC_ERROR_HANDLING env var (#47292)
+
+📖 Documentation:
+- Add missing Train public API reference (#47134)
+
+
+## Ray Tune<a id="ray-tune"></a>
+📖 Documentation:
+- Add missing Tune public API references (#47138)
+
+
+## Ray Serve<a id="ray-serve"></a>
+💫 Enhancements:
+- Mark proxy as unready when its routers are aware of zero replicas (#47002)
+- Setup default serve logger (#47229)
+
+🔨 Fixes:
+- Allow get_serve_logs_dir to run outside of Ray's context (#47224)
+- Use serve logger name for logs in serve (#47205)
+
+📖 Documentation:
+- [HPU] [Serve] [experimental] Add vllm HPU support in vllm example (#45893)
+
+🏗 Architecture refactoring:
+- Remove support for nested DeploymentResponses (#47209)
+
+## RLlib<a id="rllib"></a>
+🎉 New Features:
+- New API stack: Add CQL algorithm. ([#47000](https://github.com/ray-project/ray/pull/47000), [#47402](https://github.com/ray-project/ray/pull/47402))
+- New API stack: Enable GPU and multi-GPU support for DQN/SAC/CQL. ([#47179](https://github.com/ray-project/ray/pull/47179))
+
+💫 Enhancements:
+- New API stack: Offline RL enhancements: [#47195](https://github.com/ray-project/ray/pull/47195), [#47359](https://github.com/ray-project/ray/pull/47359)
+- Enhance new API stack stability: [#46324](https://github.com/ray-project/ray/pull/46324), [#47196](https://github.com/ray-project/ray/pull/47196), [#47245](https://github.com/ray-project/ray/pull/47245), [#47279](https://github.com/ray-project/ray/pull/47279)
+- Fix large batch size for synchronous algos (e.g. PPO) after EnvRunner failures. ([#47356](https://github.com/ray-project/ray/pull/47356))
+- Add torch.compile config options to old API stack. ([#47340](https://github.com/ray-project/ray/pull/47340)[)](https://github.com/ray-project/ray/commit/78402bc1fde669cb4015f9393106acb144ac45bf)
+- Add kwargs to torch.nn.parallel.DistributedDataParallel ([#47276](https://github.com/ray-project/ray/pull/47276))
+- Enhanced CI stability: [#47197](https://github.com/ray-project/ray/pull/47197), [#47249](https://github.com/ray-project/ray/pull/47249)
+
+📖 Documentation:
+- New API stack example scripts:
+  - Float16 training example script. ([#47362](https://github.com/ray-project/ray/pull/47362))
+  - Mixed precision training example script ([#47116](https://github.com/ray-project/ray/pull/47116))
+  - ModelV2 -> RLModule wrapper for migrating to new API stack. ([#47425](https://github.com/ray-project/ray/pull/47425))
+- Remove "new API stack experimental" hint from docs. ([#47301](https://github.com/ray-project/ray/pull/47301))
+
+🏗 Architecture refactoring:
+- Remove 2nd Learner ConnectorV2 pass from PPO ([#47401](https://github.com/ray-project/ray/pull/47401))
+- Add separate learning rates for policy and alpha to SAC. ([#47078](https://github.com/ray-project/ray/pull/47078))
+
+🔨 Fixes:
+- Various bug fixes: [#47401](https://github.com/ray-project/ray/pull/47401), [#47194](https://github.com/ray-project/ray/pull/47194), [#47259](https://github.com/ray-project/ray/pull/47259), [#47271](https://github.com/ray-project/ray/pull/47271), [#47277](https://github.com/ray-project/ray/pull/47277), [#47382](https://github.com/ray-project/ray/pull/47382)
+
+## Ray Core<a id="ray-core"></a>
+💫 Enhancements:
+- [ADAG] Raise proper error message for nccl within the same actor (#47250)
+- [[ADAG] Support multi-read of the same shm channel (](https://github.com/ray-project/ray/commit/c9c150a1f0460589e76415710afa5e940d834311)[#47311](https://github.com/ray-project/ray/pull/47311)[)](https://github.com/ray-project/ray/commit/c9c150a1f0460589e76415710afa5e940d834311)
+- [Log why core worker is not idle during HandleExit (](https://github.com/ray-project/ray/commit/43250f4481849ae0233b96e68637b294dc43748d)[#47300](https://github.com/ray-project/ray/pull/47300)[)](https://github.com/ray-project/ray/commit/43250f4481849ae0233b96e68637b294dc43748d)
+- Add PREPARED state for placement groups in GCS for better fault tolerance. ([#46858](https://github.com/ray-project/ray/pull/46858))
+
+🔨 Fixes:
+- Fix ray_unintentional_worker_failures_total to only count unintentional worker failures (#47368)
+- Fix runtime env race condition when uploading the same package concurrently (#47482)
+
+## Dashboard<a id="dashboard"></a>
+🔨 Fixes:
+- Performance optimizations for dashboard backend logic ([#47392](https://github.com/ray-project/ray/pull/47392)) ([#47367](https://github.com/ray-project/ray/pull/47367)) ([#47160](https://github.com/ray-project/ray/pull/47160)) (#47213)
+- Refactor to simplify dashboard backend logic ([#47324](https://github.com/ray-project/ray/pull/47324))
+
+## Docs<a id="dashboard"></a>
+
+💫 Enhancements:
+- Add sphinx-autobuild and documentation for make local (#47275): Speed up of local docs builds with `make local`.
+- Add Algolia search to docs ([#46477](https://github.com/ray-project/ray/pull/46477))
+- Update PyTorch Mnist Training doc for KubeRay 1.2.0 ([#47321](https://github.com/ray-project/ray/pull/47321))
+- Life-cycle of documentation [policy](https://docs.ray.io/en/latest/ray-contribute/api-policy.html) of Ray APIs
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+@GeneDer, @Bye-legumes, @nikitavemuri, @kevin85421, @MortalHappiness, @LeoLiao123, @saihaj, @rmcsqrd, @bveeramani, @zcin, @matthewdeng, @raulchen, @mattip, @jjyao, @ruisearch42, @scottjlee, @can-anyscale, @khluu, @aslonnie, @rynewang, @edoakes, @zhanluxianshen, @venkatram-dev, @c21, @allenyin55, @alexeykudinkin, @snehakottapalli, @BitPhinix, @hongchaodeng, @dengwxn, @liuxsh9, @simonsays1980, @peytondmurray, @KepingYan, @bryant1410, @woshiyyya, @sven1977</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.35.0 (2024-08-28)</h2>
+      <pre>**Notice**: Starting from this release, `pip install ray[all]` will not include `ray[cpp]`, and will not install the respective `ray-cpp` package. To install everything that includes `ray-cpp`, one can use `pip install ray[cpp-all]` instead.
+
+# Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+🎉 New Features:
+- Upgrade supported Arrow version from 16 to 17 (#47034)
+- Add support for reading from Iceberg (#46889)
+
+💫 Enhancements:
+- Various Progress Bar UX improvements (#46816, #46801, #46826, #46692, #46699, #46974, #46928, #47029, #46924, #47120, #47095, #47106)
+- Try get `size_bytes` from metadata and consolidate metadata methods (#46862)
+- Improve warning message when read task is large (#46942)
+- Extend API to enable passing sample weights via ray.dataset.to_tf (#45701)
+- Add a parameter to allow overriding LanceDB scanner options (#46975)
+- Add failure retry logic for read_lance (#46976)
+- Clarify warning for reading old Parquet data (#47049)
+- Move datasource implementations to `_internal` subpackage (#46825)
+- Handle logs from tensor extensions (#46943)
+
+🔨 Fixes:
+- Change type of `DataContext.retried_io_errors` from tuple to list (#46884)
+- Make Parquet tests more robust and expose Parquet logic (#46944)
+- Change pickling log level from warning to debug (#47032)
+- Add validation for shuffle arg (#47055)
+- Fix validation bug when size=0 in ActorPoolStrategy (#47072)
+- Fix exception in async map (#47110)
+- Fix wrong metrics group for `Object Store Memory` metrics on Ray Data Dashboard (#47170)
+- Handle errors in SplitCoordinator when generating a new epoch (#47176)
+
+📖 Documentation:
+- Auto-gen GroupedData api (#46925)
+- Fix signature of `Rule.plan` (#47094)
+
+## Ray Train<a id="ray-train"></a>
+💫 Enhancements:
+- [train] Updates to support xgboost==2.1.0 (#46667)
+- [train] Add hardware stats (#46719)
+
+## Ray Tune<a id="ray-tune"></a>
+🔨 Fixes:
+- [RLlib; Tune] Fix WandB metric overlap after restore from checkpoint. (#46897)
+
+## Ray Serve<a id="ray-serve"></a>
+💫 Enhancements:
+- Improved handling of replica death and replica unavailability in deployment handle routers before controller restarts replica (#47008)
+- Eagerly create routers in proxy for better GCS fault tolerance (#47031)
+- Immediately send ping in router when receiving new replica set (#47053)
+
+🏗 Architecture refactoring:
+- Deprecate passing arguments that contain `DeploymentResponses` in nested objects to downstream deployment handle calls (#46806)
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+- Offline RL on the new API stack:
+  - Record offline data (#46818, #47046, #47133, #47155) and support to directly read from episodes. (#46865)
+  - RLUnplugged example. (#46792)
+  - Progress on BC/MARWIL migration: #44970, #47154, #46799
+  - Progress on CQL migration:  #46969, #47105
+
+💫 Enhancements:
+- Add ObservationPreprocessor (ConnectorV2). (#47077)
+
+🔨 Fixes:
+- New API stack: Fix IMPALA/APPO + LSTM for single- and multi-GPU. (#47132, #47158)
+- Various bug fixes: #46898, #47047, #46963, #47021, #46897
+- Add more control to Algorithm.add_module/policy methods. (#46932, #46836)
+
+📖 Documentation:
+- Example scripts for new API stack:
+  - Curiosity (inverse dynamics model-based) RLModule example. (#46841)
+  - Add example script for Env with protobuf observation space. (#47071)
+- New API stack documentation:
+  - Cleanup old API stack docs (rllib-dev.rst). (#47172)
+  - Episodes (SingleAgentEpisode). (#46985)
+  - Redo rllib-algorithms.rst page. (#46916)
+
+🏗 Architecture refactoring:
+- Rename MultiAgent...RLModule... into MultiRL...Module for more generality. (#46840)
+- Add learner_only flag to RLModuleConfig/Spec and simplify creation of RLModule specs from algo-config. (#46900)
+
+## Ray Core<a id="ray-core"></a>
+💫 Enhancements:
+- Emit total lineage bytes metrics (#46725)
+- Adding accelerator type H100 (#46823)
+- More structured logging in core worker (#46906)
+- Change all callbacks to move to save copies. (#46971) 
+- Add ray[adag] option to pip install (#47009) 
+
+🔨 Fixes:
+- Fix dashboard process reporting on windows (#45578) 
+- Fix Ray-on-Spark cluster crashing bug when user cancels cell execution (#46899)
+- Fix PinExistingReturnObject segfault by passing owner_address (#46973)
+- Fix raylet CHECK failure from runtime env creation failure. (#46991)
+- Fix typo in memray command (#47006)
+- [ADAG] Fix for asyncio outputs (#46845)
+
+📖 Documentation:
+- Clarify behavior of placement_group_capture_child_tasks in docs (#46885)
+- Update ray.available_resources() docstring (#47018) 
+
+🏗 Architecture refactoring:
+- Async APIs for the New GcsClient. (#46788) 
+- Replace GCS stubs in the dashboard to use NewGcsAioClient. (#46846) 
+
+## Dashboard<a id="dashboard"></a>
+
+💫 Enhancements: 
+- Polish and minor improvements to the Serve page (#46811)
+
+🔨 Fixes: 
+- Fix CPU/GPU/RAM not being reported correctly on Windows (#44578)
+
+## Docs<a id="dashboard"></a>
+
+💫 Enhancements: 
+- Add more information about developer tooling for docs contributions (#46636), including `esbonio` section
+
+🔨 Fixes: 
+- Use PyData Sphinx theme version switcher (#46936)
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+@simonsays1980, @bveeramani, @tungh2, @zcin, @xingyu-long, @WeichenXu123, @aslonnie, @MaxVanDijck, @can-anyscale, @galenhwang, @omatthew98, @matthewdeng, @raulchen, @sven1977, @shrekris-anyscale, @deepyaman, @alexeykudinkin, @stephanie-wang, @kevin85421, @ruisearch42, @hongchaodeng, @khluu, @alanwguo, @hongpeng-guo, @saihaj, @Superskyyy, @tespent, @slfan1989, @justinvyu, @rynewang, @nikitavemuri, @amogkam, @mattip, @dev-goyal, @ryanaoleary, @peytondmurray, @edoakes, @venkatajagannath, @jjyao, @cristianjd, @scottjlee, @Bye-legumes</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Release 2.34.0 Notes (2024-07-31)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+💫 Enhancements:
+  - Add better support for UDF returns from list of datetime objects (#46762)
+  
+🔨 Fixes:
+  - Remove read task warning if size bytes not set in metadata (#46765)
+
+📖 Documentation:
+  - Fix read_tfrecords() docstring to display tfx-bsl tip (#46717)
+  - Update Dataset.zip() docs (#46757)
+
+
+## Ray Train<a id="ray-train"></a>
+🔨 Fixes:
+  - Sort workers by node ID rather than by node IP (#46163)
+
+🏗 Architecture refactoring:
+  - Remove dead RayDatasetSpec (#46764)
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+  - Offline RL support on new API stack:
+     - Initial design for Ray-Data based offline RL Algos (on new API stack). (#44969)
+     - Add user-defined schemas for data loading. (#46738)
+     - Make data pipeline better configurable and tuneable for users. (#46777)
+
+💫 Enhancements:
+- Move DQN into the TargetNetworkAPI (and deprecate `RLModuleWithTargetNetworksInterface`). (#46752)
+
+🔨 Fixes:
+- Numpy version fix: Rename all np.product usage to np.prod (#46317)
+
+📖 Documentation:
+- Examples for new API stack: Add 2 (count-based) curiosity examples. (#46737)
+- Remove RLlib CLI from docs (soon to be deprecated and replaced by python API). (#46724)
+
+🏗 Architecture refactoring:
+- Cleanup, rename, clarify: Algorithm.workers/evaluation_workers, local_worker(), etc.. (#46726)
+
+# Ray Core<a id="ray-core"></a>
+
+🏗 Architecture refactoring:
+- New python GcsClient binding (#46186)
+
+
+
+
+Many thanks to all those who contributed to this release! @KyleKoon, @ruisearch42, @rynewang, @sven1977, @saihaj, @aslonnie, @bveeramani, @akshay-anyscale, @kevin85421, @omatthew98, @anyscalesam, @MaxVanDijck, @justinvyu, @simonsays1980, @can-anyscale, @peytondmurray, @scottjlee</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.33.0 (2024-07-25)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+# Ray Core<a id="ray-core"></a>
+
+💫 Enhancements:
+- Add "last exception" to error message when GCS connection fails in ray.init() (#46516)
+
+🔨 Fixes:
+- Add object back to memory store when object recovery is skipped (#46460)
+- Task status should start with PENDING_ARGS_AVAIL when retry (#46494)
+- Fix ObjectFetchTimedOutError ([#46562](https://github.com/ray-project/ray/pull/46562))
+- Make working_dir support files created before 1980 ([#46634](https://github.com/ray-project/ray/pull/46634))
+- Allow full path in conda runtime env. ([#45550](https://github.com/ray-project/ray/pull/45550))
+- Fix worker launch time formatting in state api ([#43516](https://github.com/ray-project/ray/pull/43516))
+- 
+## Ray Data<a id="ray-data"></a>
+🎉 New Features:
+- Deprecate Dataset.get_internal_block_refs() (#46455)
+- Add read API for reading Databricks table with Delta Sharing (#46072)
+- Add support for objects to Arrow blocks (#45272)
+
+💫 Enhancements:
+- Change offsets to int64 and change to LargeList for ArrowTensorArray (#45352)
+- Prevent from_pandas from combining input blocks (#46363)
+- Update Dataset.count() to avoid unnecessarily keeping `BlockRef`s in-memory (#46369)
+- Use Set to fix inefficient iteration over Arrow table columns (#46541)
+- Add AWS Error UNKNOWN to list of retried write errors (#46646)
+- Always print traceback for internal exceptions (#46647)
+- Allow unknown estimate of operator output bundles and `ProgressBar` totals (#46601)
+- Improve filesystem retry coverage (#46685)
+
+🔨 Fixes:
+- Replace lambda mutable default arguments (#46493)
+
+📖 Documentation:
+- Auto-generate Dataset API documentation (#46557)
+- Update outdated ExecutionPlan docstring (#46638)
+
+
+## Ray Train<a id="ray-train"></a>
+💫 Enhancements:
+- Update run status and actor status for train runs. (#46395)
+
+🔨 Fixes:
+- Replace lambda default arguments (#46576)
+
+📖 Documentation:
+- Add MNIST training using KubeRay doc page (#46123)
+- Add example of pre-training Llama model on Intel Gaudi (#45459)
+- Fix tensorflow example by using ScalingConfig (#46565)
+
+## Ray Tune<a id="ray-tune"></a>
+🔨 Fixes:
+- Replace lambda default arguments (#46596)
+
+## Ray Serve<a id="ray-serve"></a>
+
+🎉 New Features:
+- Fully deprecate `target_num_ongoing_requests_per_replica` and `max_concurrent_queries`, respectively replaced by `max_ongoing_requests` and `target_ongoing_requests` (#46392 and #46427)
+- Configure the task launched by the controller to build an application with Serve’s logging config (#46347)
+
+## RLlib<a id="rllib"></a>
+
+💫 Enhancements:
+- Moving sampling coordination for `batch_mode=complete_episodes` to `synchronous_parallel_sample`. (#46321)
+- Enable complex action spaces with stateful modules. (#46468)
+
+🏗 Architecture refactoring:
+- Enable multi-learner setup for hybrid stack BC. (#46436)
+- Introduce Checkpointable API for RLlib components and subcomponents. (#46376)
+
+🔨 Fixes:
+- Replace Mapping typehint with Dict: #46474
+
+📖 Documentation:
+- More example scripts for new API stack: Two separate optimizers (w/ different learning rates). (#46540) and custom loss function. (#46445)
+
+## Dashboard<a id="dashboard"></a>
+
+🔨 Fixes:
+- Task end time showing the incorrect time (#46439)
+- Events Table rows having really bad spacing (#46701)
+- UI bugs in the serve dashboard page (#46599)
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+
+@alanwguo, @hongchaodeng, @anyscalesam, @brucebismarck, @bt2513, @woshiyyya, @terraflops1048576, @lorenzoritter, @omrishiv, @davidxia, @cchen777, @nono-Sang, @jackhumphries, @aslonnie, @JoshKarpel, @zjregee, @bveeramani, @khluu, @Superskyyy, @liuxsh9, @jjyao, @ruisearch42, @sven1977, @harborn, @saihaj, @zcin, @can-anyscale, @veekaybee, @chungen04, @WeichenXu123, @GeneDer, @sergey-serebryakov, @Bye-legumes, @scottjlee, @rynewang, @kevin85421, @cristianjd, @peytondmurray, @MortalHappiness, @MaxVanDijck, @simonsays1980, @mjovanovic9999</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.32.0 (2024-07-10)</h2>
+      <pre># Highlight: aDAG Developer Preview <a id="highlilght"></a>
+
+This is a new Ray Core specific feature called Ray accelerated DAGs (aDAGs). 
+
+- aDAGs give you a Ray Core-like API but with extensibility to pre-compile execution paths across pre-allocated resources on a Ray Cluster to possible benefits for optimization on throughput and latency. Some practical examples include:
+    - Up to 10x lower task execution time on single-node.
+    - Native support for GPU-GPU communication, via NCCL.
+- This is still very early, but please reach out on #ray-core on Ray Slack to learn more!
+
+# Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+💫 Enhancements:
+- Support async callable classes in `map_batches()` (#46129)
+
+🔨 Fixes:
+- Ensure `InputDataBuffer` doesn't free block references (#46191) 
+- `MapOperator.num_active_tasks` should exclude pending actors (#46364)
+- Fix progress bars being displayed as partially completed in Jupyter notebooks (#46289)
+
+📖 Documentation:
+- Fix docs: `read_api.py` docstring (#45690) 
+- Correct API annotation for `tfrecords_datasource` (#46171) 
+- Fix broken links in `README` and in `ray.data.Dataset` (#45345) 
+
+## Ray Train<a id="ray-train"></a>
+
+📖 Documentation:
+- Update PyTorch Data Ingestion User Guide (#45421)
+
+## Ray Serve<a id="ray-serve"></a>
+
+💫 Enhancements:
+- Optimize `ServeController.get_app_config()` (#45878)
+- Change default for max and target ongoing requests (#45943)
+- Integrate with Ray structured logging (#46215)
+- Allow configuring handle cache size and controller max concurrency (#46278)
+- Optimize `DeploymentDetails.deployment_route_prefix_not_set()` (#46305)
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+- APPO on new API stack (w/ `EnvRunners`). (#46216)
+
+💫 Enhancements:
+- Stability: APPO, SAC, and DQN activate multi-agent learning tests (#45542, #46299)
+- Make Tune trial ID available in `EnvRunners` (and callbacks). (#46294)
+- Add `env-` and `agent_steps` to custom evaluation function. (#45652)
+- Remove default-metrics from Algorithm (tune does NOT error anymore if any stop-metric is missing). (#46200)
+
+🔨 Fixes:
+- Various bug fixes: #45542
+
+📖 Documentation:
+- Example for new API stack: Offline RL (BC) training on single-agent, while evaluating w/ multi-agent setup. (#46251)
+- Example for new API stack: Custom RLModule with an LSTM. (#46276)
+
+# Ray Core<a id="ray-core"></a>
+
+🎉 New Features:
+- aDAG Developer Preview.
+
+💫 Enhancements:
+- Allow env setup logger encoding (#46242)
+- ray list tasks filter state and name on GCS side (#46270)
+- Log ray version and ray commit during GCS start (#46341)
+
+🔨 Fixes:
+- Decrement lineage ref count of an actor when the actor task return object reference is deleted (#46230)
+- Fix negative ALIVE actors metric and introduce IDLE state (#45718)
+- `psutil` process attr `num_fds` is not available on Windows (#46329)
+
+## Dashboard<a id="dashboard"></a>
+
+🎉 New Features:
+- Added customizable refresh frequency for metrics on Ray Dashboard (#44037)
+
+💫 Enhancements:
+- Upgraded to MUIv5 and React 18 (#45789)
+
+🔨 Fixes:
+- Fix for multi-line log items breaking log viewer rendering (#46391)
+- Fix for UI inconsistency when a job submission creates more than one Ray job. (#46267)
+- Fix filtering by job id for tasks API not filtering correctly. (#45017)
+
+## Docs<a id="docs"></a>
+
+🔨 Fixes:
+- Re-enabled automatic cross-reference link checking for Ray documentation, with Sphinx nitpicky mode (#46279)
+- Enforced naming conventions for public and private APIs to maintain accuracy, starting with Ray Data API documentation (#46261)
+
+📖 Documentation:
+- Upgrade Python 3.12 support to alpha, marking the release of the Ray wheel to PyPI and conducting a sanity check of the most critical tests.
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+
+@stephanie-wang, @MortalHappiness, @aslonnie, @ryanaoleary, @jjyao, @jackhumphries, @nikitavemuri, @woshiyyya, @JoshKarpel, @ruisearch42, @sven1977, @alanwguo, @GeneDer, @saihaj, @raulchen, @liuxsh9, @khluu, @cristianjd, @scottjlee, @bveeramani, @zcin, @simonsays1980, @SumanthRH, @davidxia, @can-anyscale, @peytondmurray, @kevin85421</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.31.0 (2024-06-26)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🔨 Fixes:
+- Fixed bug where `preserve_order` doesn’t work with file reads ([#46135](https://github.com/ray-project/ray/pull/46135))
+
+📖 Documentation:
+- Added documentation for `dataset.Schema` ([#46170](https://github.com/ray-project/ray/pull/46170))
+
+## Ray Train<a id="ray-train"></a>
+
+💫 Enhancements:
+- Add API for Ray Train run stats (#45711)
+
+## Ray Tune<a id="ray-tune"></a>
+
+💫 Enhancements:
+- Missing stopping criterion should not error (just warn). (#45613)
+
+📖 Documentation:
+- Fix broken references in Ray Tune documentation (#45233)
+
+## Ray Serve<a id="ray-serve"></a>
+
+**WARNING**: the following default values will change in Ray 2.32:
+  - Default for `max_ongoing_requests` will change from 100 to 5.
+  - Default for `target_ongoing_requests` will change from 1 to 2.
+
+💫 Enhancements:
+- Optimize DeploymentStateManager.get_deployment_statuses ([#45872](https://github.com/ray-project/ray/pull/45872))
+
+🔨 Fixes:
+- Fix logging error on passing traceback object into exc_info ([#46105](https://github.com/ray-project/ray/pull/46105))
+- Run __del__ even if constructor is still in-progress ([#45882](https://github.com/ray-project/ray/pull/45882))
+- Spread replicas with custom resources in torch tune serve release test ([#46093](https://github.com/ray-project/ray/pull/46093))
+- [1k release test] don't run replicas on head node ([#46130](https://github.com/ray-project/ray/pull/46130))
+
+📖 Documentation:
+- Remove todo since issue is fixed ([#45941](https://github.com/ray-project/ray/pull/45941))
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+- IMPALA runs on the new API stack (with EnvRunners and ConnectorV2s). ([#42085](https://github.com/ray-project/ray/pull/42085))
+- SAC/DQN: Prioritized multi-agent episode replay buffer. ([#45576](https://github.com/ray-project/ray/pull/45576)[)](https://github.com/ray-project/ray/commit/a7aa5e4c7bc4654b5ce710bf3551e3775470b57b)
+
+💫 Enhancements:
+- New API stack stability: Add systematic CI learning tests for all possible combinations of: [PPO|IMPALA] + [1CPU|2CPU|1GPU|2GPU] + [single-agent|multi-agent]. ([#46162](https://github.com/ray-project/ray/pull/46162), [#46161](https://github.com/ray-project/ray/pull/46161))
+
+📖 Documentation:
+- New API stack: Example script for action masking [(](https://github.com/ray-project/ray/commit/9d661677f942ccd7dfbbf2c2838e5dad9f50d12e)[#46146](https://github.com/ray-project/ray/pull/46146))
+- New API stack: PyFlight example script cleanup ([#45956](https://github.com/ray-project/ray/pull/45956)[)](https://github.com/ray-project/ray/commit/af45a8999b5d9ca09054de29c2bdd0b5b02184b5)
+- Old API stack: Enhanced ONNX example (+LSTM). ([#43592](https://github.com/ray-project/ray/pull/43592)[)](https://github.com/ray-project/ray/commit/d15204f5a0d5f2fa70935efa4935a7a61d8aafd1)
+
+# Ray Core and Ray Clusters<a id="ray-core-and-ray-clusters"></a>
+
+## Ray Core<a id="ray-core"></a>
+
+💫 Enhancements:
+- [runtime-env] automatically infer worker path when starting worker in container ([#42304](https://github.com/ray-project/ray/pull/42304))
+
+🔨 Fixes:
+- On GCS restart, destroy not forget the unused workers. Fixing PG leaks. (#45854)
+- Cancel lease requests before returning a PG bundle ([#45919](https://github.com/ray-project/ray/pull/45919))
+- Fix boost fiber stack overflow (#46133)
+
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+
+@jjyao, @kevin85421, @vincent-pli, @khluu, @simonsays1980, @sven1977, @rynewang, @can-anyscale, @richardsliu, @jackhumphries, @alexeykudinkin, @bveeramani, @ruisearch42, @shrekris-anyscale, @stephanie-wang, @matthewdeng, @zcin, @hongchaodeng, @ryanaoleary, @liuxsh9, @GeneDer, @aslonnie, @peytondmurray, @Bye-legumes, @woshiyyya, @scottjlee, @JoshKarpel</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.30.0 (2024-06-20)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+💫 Enhancements:
+- Improve fractional CPU/GPU formatting (#45673)
+- Use sampled fragments to estimate Parquet reader batch size (#45749)
+- Refactoring ParquetDatasource and metadata fetching logic (#45728, #45727, #45733, #45734, #45767)
+- Refactor planner.py (#45706)
+
+
+## Ray Tune<a id="ray-tune"></a>
+💫 Enhancements:
+- Change the behavior of a missing stopping criterion metric to warn instead of raising an error. This enables the use case of reporting different sets of metrics on different iterations (ex: a separate set of training and validation metrics). ([#45613](https://github.com/ray-project/ray/pull/45613))
+
+## Ray Serve<a id="ray-serve"></a>
+
+💫 Enhancements:
+- Create internal request id to track request objects ([#45761](https://github.com/ray-project/ray/pull/45761))
+
+## RLLib<a id="rllib"></a>
+
+💫 Enhancements:
+- Stability: [DreamerV3 weekly release test](https://github.com/ray-project/ray/commit/4adb78b2bf3c968f88f72ae9064189b846833230) ([#45654](https://github.com/ray-project/ray/pull/45654)); [Add "official" benchmark script for Atari PPO benchmarks](https://github.com/ray-project/ray/commit/d49f15b1112e67d15a80d696249f587ea7b95b57). ([#45697](https://github.com/ray-project/ray/pull/45697))
+- Enhance env-rendering callback (#45682)
+
+🔨 Fixes:
+- Bug fix in new MetricsLogger API: [EMA stats w/o window would lead to infinite l](https://github.com/ray-project/ray/commit/cbb1634a23ff4b59090f43dd853cf437e19fc0c8)ist mem-leak. ([#45752](https://github.com/ray-project/ray/pull/45752))
+- Various other bug fixes: ([#45819](https://github.com/ray-project/ray/pull/45819), [#45820](https://github.com/ray-project/ray/pull/45820), #[45683](https://github.com/ray-project/ray/pull/45683), [#45651](https://github.com/ray-project/ray/pull/45651), [#45753](https://github.com/ray-project/ray/pull/45753))
+
+📖 Documentation:
+- Re-do `examples` overview page (new API stack): [#45382](https://github.com/ray-project/ray/pull/45382)
+  - PyFlyt QuadX WayPoints example [#44758](https://github.com/ray-project/ray/pull/44758), [#45956](https://github.com/ray-project/ray/pull/45956)
+  - RLModule inference on new API stack ([#45831](https://github.com/ray-project/ray/pull/45831), [#45845](https://github.com/ray-project/ray/pull/45845))
+  - How to resume a tune.Tuner.fit() experiment from checkpoint. ([#45681](https://github.com/ray-project/ray/pull/45681))
+  - Custom RLModule (tiny CNN): [#45774](https://github.com/ray-project/ray/pull/45774)
+  - Connector examples docstrings ([#45864](https://github.com/ray-project/ray/pull/45864))
+- Old API stack examples: [#43592](https://github.com/ray-project/ray/pull/43592), [#45829](https://github.com/ray-project/ray/pull/45829)
+
+## Ray Core<a id="ray-core"></a>
+🎉 New Features:
+- Alpha release of job level [logging configuration](https://docs.ray.io/en/master/ray-core/api/doc/ray.LoggingConfig.html#ray.LoggingConfig): users can now config the user logging to be logfmt format with logging context attached. (#45344)
+
+💫 Enhancements:
+- Integrate amdsmi in AMDAcceleratorManager (#44572)
+
+🔨 Fixes:
+- Fix the C++ GcsClient Del not respecting del_by_prefix (#45604)
+- Fix exit handling of FiberState threads (#45834) 
+
+## Dashboard<a id="ray-dashboard"></a>
+💫 Enhancements:
+- Parse out json logs (#45853) 
+
+Many thanks to all those who contributed to this release: @liuxsh9, @peytondmurray, @pcmoritz, @GeneDer, @saihaj, @khluu, @aslonnie, @yucai, @vickytsang, @can-anyscale, @bthananjeyan, @raulchen, @hongchaodeng, @x13n, @simonsays1980, @peterghaddad, @kevin85421, @rynewang, @angelinalg, @jjyao, @BenWilson2, @jackhumphries, @zcin, @chris-ray-zhang, @c21, @shrekris-anyscale, @alanwguo, @stephanie-wang, @Bye-legumes, @sven1977, @WeichenXu123, @bveeramani, @nikitavemuri
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.24.0 (2024-06-06)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🎉 New Features:
+- Allow user to configure timeout for actor pool (#45508)
+- Add override_num_blocks to from_pandas and perform auto-partition (#44937)
+- Upgrade Arrow version to 16 in CI (#45565)
+
+💫 Enhancements:
+- Clarify that num_rows_per_file isn't strict (#45529)
+- Record more telemetry for newly added datasources (#45647)
+- Avoid pickling LanceFragment when creating read tasks for Lance (#45392)
+
+## Ray Train<a id="ray-train"></a>
+
+📖 Documentation:
+- [HPU] Add example of Stable Diffusion fine-tuning and serving on Intel Gaudi (#45217)
+- [HPU] Add example of Llama-2 fine-tuning on Intel Gaudi (#44667)
+
+
+## Ray Tune<a id="ray-tune"></a>
+🏗 Architecture refactoring:
+- Improve excessive syncing warning and deprecate TUNE_RESULT_DIR, RAY_AIR_LOCAL_CACHE_DIR, local_dir (#45210)
+
+## Ray Serve<a id="ray-serve"></a>
+
+💫 Enhancements:
+- Clean up Serve proxy files ([#45486](https://github.com/ray-project/ray/pull/45486))
+
+📖 Documentation:
+- vllm example to serve llm models ([#45430](https://github.com/ray-project/ray/pull/45430))
+
+## RLLib<a id="rllib"></a>
+
+💫 Enhancements:
+- DreamerV3 on tf: Bug fix, so it can run again with tf==2.11.1 (2.11.0 is not available anymore) (#45419); Added weekly release test for DreamerV3.
+- Added support for multi-agent off-policy algorithms (DQN and SAC) in the new (#45182)
+- Config option for APPO/IMPALA to change number of GPU-loader threads (#45467)
+
+🔨 Fixes:
+- Various MetricsLogger bug fixes (#45543, #45585, #45575)
+- Other fixes: #45588, #45617, #45517, #45465
+
+📖 Documentation:
+- Example script for new API stack: How-to restore 1 of n agents from a checkpoint. (#45462)
+- Example script for new API stack: Autoregressive action module. #45525
+
+## Ray Core<a id="ray-core"></a>
+
+💫 Enhancements:
+- Improve node death observability (#45320, #45357, #45533, #45644, #45497)
+- Ray c++ backend structured logging (#44468)
+
+🔨 Fixes:
+- Fix worker crash when getting actor name from runtime context (#45194)
+- log dedup should not dedup number only lines (#45385)
+
+📖 Documentation:
+- Improve doc for `--object-store-memory` to describe how the default value is set ([#45301](https://github.com/ray-project/ray/pull/45301))
+
+## Dashboard<a id="ray-dashboard"></a>
+🔨 Fixes:
+- Move Job package uploading to another thread to unblock the event loop. ([#45282](https://github.com/ray-project/ray/pull/45282))
+
+Many thanks to all those who contributed to this release: @maxliuofficial, @simonsays1980, @GeneDer, @dudeperf3ct, @khluu, @justinvyu, @andrewsykim, @Catch-Bull, @zcin, @bveeramani, @rynewang, @angelinalg, @matthewdeng, @jjyao, @kira-lin, @harborn, @hongchaodeng, @peytondmurray, @aslonnie, @timkpaine, @982945902, @maxpumperla, @stephanie-wang, @ruisearch42, @alanwguo, @can-anyscale, @c21, @Atry, @KamenShah, @sven1977, @raulchen
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.23.0 (2024-05-22)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🎉 New Features:
+- Add support for using GPUs with map_groups (#45305)
+- Add support for using actors with map_groups (#45310)
+
+💫 Enhancements:
+- Refine exception handling from arrow data conversion (#45294)
+
+🔨 Fixes:
+- Fix Ray databricks UC reader with dynamic Databricks notebook scope token (#45153)
+- Fix bug where you can't return objects and array from UDF (#45287 )
+- Fix bug where map_groups triggers execution during input validation (#45314)
+
+## Ray Tune<a id="ray-tune"></a>
+🔨 Fixes:
+- [tune] Fix PB2 scheduler error resulting from trying to sort by Trial objects (#45161)
+
+## Ray Serve<a id="ray-serve"></a>
+🔨 Fixes:
+- Log application unhealthy errors at error level instead of warning level ([#45211](https://github.com/ray-project/ray/pull/45211))
+
+## RLLib<a id="rllib"></a>
+💫 Enhancements:
+- Examples and `tuned_examples` learning test for new API stack are now “self-executable” (don’t require a third-party script anymore to run them). + WandB support. ([#45023](https://github.com/ray-project/ray/pull/45023))
+
+🔨 Fixes:
+- Fix result dict “spam” (duplicate, deprecated keys, e.g. “sampler_results” dumped into top level). ([#45330](https://github.com/ray-project/ray/pull/45330))
+
+📖 Documentation:
+- Add example for training with fractional GPUs on new API stack. ([#45379](https://github.com/ray-project/ray/pull/45379))
+- Cleanup examples folder and remove deprecated sub directories. ([#45327](https://github.com/ray-project/ray/pull/45327))
+
+## Ray Core<a id="ray-core"></a>
+💫 Enhancements:
+- [Logs] Add runtime env started logs to job driver ([#45255](https://github.com/ray-project/ray/pull/45255))
+- `ray.util.collective` support `torch.bfloat16` ([#39845](https://github.com/ray-project/ray/pull/39845))
+- [Core] Better propagate node death information ([#45128](https://github.com/ray-project/ray/pull/45128))
+
+🔨 Fixes:
+- [Core] Fix worker process leaks after job finishes ([#44214](https://github.com/ray-project/ray/pull/44214))
+
+
+Many thanks to all those who contributed to this release: @hongchaodeng, @khluu, @antoni-jamiolkowski, @ameroyer, @bveeramani, @can-anyscale, @WeichenXu123, @peytondmurray, @jackhumphries, @kevin85421, @jjyao, @robcaulk, @rynewang, @scottsun94, @swang, @GeneDer, @zcin, @ruisearch42, @aslonnie, @angelinalg, @raulchen, @ArthurBook, @sven1977, @wuxibin89
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.22.0 (2024-05-14)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🎉 New Features:
+- Add function to dynamically generate `ray_remote_args` for Map APIs (#45143)
+- Allow manually setting resource limits for training jobs (#45188)
+
+💫 Enhancements:
+- Introduce abstract interface for data autoscaling (#45002)
+- Add debugging info for `SplitCoordinator` (#45226)
+
+🔨 Fixes:
+- Don’t show `AllToAllOperator` progress bar if the disable flag is set (#45136)
+- Don't load Arrow `PyExtensionType` by default (#45084)
+- Don't raise batch size error if `num_gpus=0` (#45202)
+
+## Ray Train<a id="ray-train"></a>
+
+💫 Enhancements:
+- [XGBoost][LightGBM] Update RayTrainReportCallback to only save checkpoints on rank 0 (#45083)
+
+# Ray Core<a id="ray-core"></a>
+
+🔨 Fixes:
+- Fix the cpu percentage metrics for dashboard process (#45124)
+
+## Dashboard<a id="dashboard"></a>
+
+💫 Enhancements:
+- Improvements to log viewer so line numbers do not get selected when copying text.
+- Improvements to the log viewer to avoid unnecessary re-rendering which causes text selection to clear.
+
+
+Many thanks to all those who contributed to this release: @justinvyu, @simonsays1980, @chris-ray-zhang, @kevin85421, @angelinalg, @rynewang, @brycehuang30, @alanwguo, @jjyao, @shaikhismail, @khluu, @can-anyscale, @bveeramani, @jrosti, @WeichenXu123, @MortalHappiness, @raulchen, @scottjlee, @ruisearch42, @aslonnie, @alexeykudinkin
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.21.0 (2024-05-08)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🎉 New features:
+- Add `read_lance` API to read Lance Dataset (#45106)
+
+🔨 Fixes:
+- Retry RaySystemError application errors (#45079)
+
+📖 Documentation:
+- Fix broken references in data documentation (#44956)
+
+## Ray Train<a id="ray-train"></a>
+
+📖 Documentation:
+- Fix broken links in Train documentation (#44953)
+
+## Ray Tune<a id="ray-tune"></a>
+
+📖 Documentation:
+- Update Hugging Face example to add reference (#42771)
+
+🏗 Architecture refactoring:
+- Remove deprecated `ray.air.callbacks` modules (#45104)
+
+## Ray Serve<a id="ray-serve"></a>
+
+💫 Enhancements:
+- Allow methods to pass type @serve.batch type hint (#45004)
+- Allow configuring Serve control loop interval (#45063)
+
+🔨 Fixes:
+- Fix bug with controller failing to recover for autoscaling deployments (#45118)
+- Fix control+c after serve run doesn't shutdown serve components (#45087)
+- Fix lightweight update max ongoing requests (#45006)
+
+
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+- New MetricsLogger API now fully functional on the new API stack (working now also inside Learner classes, i.e. loss functions). ([#44995](https://github.com/ray-project/ray/pull/44995), [#45109](https://github.com/ray-project/ray/pull/45109))
+
+💫 Enhancements:
+- Renamings and cleanups (toward new API stack and more consistent naming schemata): WorkerSet -> EnvRunnerGroup, DEFAULT_POLICY_ID -> DEFAULT_MODULE_ID, config.rollouts() -> config.env_runners(), etc.. ([#45022](https://github.com/ray-project/ray/pull/45022), [#44920](https://github.com/ray-project/ray/pull/44920))
+- Changed behavior of `EnvRunnerGroup.foreach_worker…` methods to new defaults: `mark_healthy=True` (used to be False) and `healthy_only=True` (used to be False). ([#44993](https://github.com/ray-project/ray/pull/44993))
+- Fix `get_state()/from_state()` methods in SingleAgent- and MultiAgentEpisodes. ([#45012](https://github.com/ray-project/ray/pull/45012))
+
+🔨 Fixes:
+- Bug fix for (torch) global_norm clipping overflow problem: ([#45055](https://github.com/ray-project/ray/pull/45055))
+- Various bug- and test case fixes: [#45030](https://github.com/ray-project/ray/pull/45030), [#45031](https://github.com/ray-project/ray/pull/45031), [#45070](https://github.com/ray-project/ray/pull/45070), [#45053](https://github.com/ray-project/ray/pull/45053), [#45110](https://github.com/ray-project/ray/pull/45110), [#45111](https://github.com/ray-project/ray/pull/45111)
+
+📖 Documentation:
+- Example scripts using the MetricsLogger for env rendering and recording w/ WandB: [#45073](https://github.com/ray-project/ray/pull/45073), [#45107](https://github.com/ray-project/ray/pull/45107)
+
+# Ray Core<a id="ray-core"></a>
+
+🔨 Fixes:
+- Fix `ray.init(logging_format)` argument is ignored (#45037)
+- Handle unserializable user exception (#44878)
+- Fix dashboard process event loop blocking issues (#45048, #45047)
+
+## Dashboard<a id="dashboard"></a>
+🔨 Fixes:
+- Fix Nodes page sorting not working correctly.
+- Add back “actors per page” UI control in the actors page.
+
+Many thanks to all those who contributed to this release: @rynewang, @can-anyscale, @scottsun94, @bveeramani, @ceddy4395, @GeneDer, @zcin, @JoshKarpel, @nikitavemuri, @stephanie-wang, @jackhumphries, @matthewdeng, @yash97, @simonsays1980, @peytondmurray, @evalaiyc98, @c21, @alanwguo, @shrekris-anyscale, @kevin85421, @hongchaodeng, @sven1977, @st--, @khluu</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.20.0 (2024-05-01)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+💫 Enhancements:
+- Dedupe repeated schema during `ParquetDatasource` metadata prefetching (#44750)
+- Update `map_groups` implementation to better handle large outputs (#44862)
+- Deprecate `prefetch_batches` arg of `iter_rows` and change default value (#44982)
+- Adding in default behavior to false for creating dirs on s3 writes (#44972)
+- Make internal UDF names more descriptive (#44985)
+- Make `name` a required argument for `AggregateFn` (#44880)
+
+📖 Documentation:
+- Add key concepts to and revise "Data Internals" page (#44751)
+
+
+## Ray Train<a id="ray-train"></a>
+
+💫 Enhancements:
+- Setup XGBoost `CommunicatorContext` automatically (#44883)
+- Track Train Run Info with `TrainStateActor` (#44585)
+
+📖 Documentation:
+- Add documentation for `accelerator_type` (#44882)
+- Update Ray Train example titles (#44369)
+
+## Ray Tune<a id="ray-tune"></a>
+
+💫 Enhancements:
+- Remove trial table when running Ray Train in a Jupyter notebook (#44858)
+- Clean up temporary checkpoint directories for class Trainables (ex: RLlib) (#44366)
+
+📖 Documentation:
+- Fix minor doc format issues (#44865)
+- Remove outdated ScalingConfig references (#44918)
+
+## Ray Serve<a id="ray-serve"></a>
+
+💫 Enhancements:
+- Handle push metric interval is now configurable with environment variable RAY_SERVE_HANDLE_METRIC_PUSH_INTERVAL_S (#32920)
+- Improve performance of developer API serve.get_app_handle (#44812)
+
+🔨 Fixes:
+- Fix memory leak in handles for autoscaling deployments (the leak happens when 
+- RAY_SERVE_COLLECT_AUTOSCALING_METRICS_ON_HANDLE=1) (#44877)
+
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+- Introduce `MetricsLogger`, a unified API for users of RLlib to log custom metrics and stats in all of RLlib’s components (Algorithm, EnvRunners, and Learners). Rolled out for new API stack for Algorithm (`training_step`) and EnvRunners (custom callbacks). `Learner` (custom loss functions) support in progress. [#44888](https://github.com/ray-project/ray/pull/44888), [#44442](https://github.com/ray-project/ray/pull/44442)
+- Introduce “inference-only” (slim) mode for RLModules that run inside an EnvRunner (and thus don’t require value-functions or target networks): [#44797](https://github.com/ray-project/ray/pull/44797)
+
+💫 Enhancements:
+- MultiAgentEpisodeReplayBuffer for new API stack (preparation for multi-agent support of SAC and DQN): [#44450](https://github.com/ray-project/ray/pull/44450)
+- AlgorithmConfig cleanup and renaming of properties and methods for better consistency/transparency: [#44896](https://github.com/ray-project/ray/pull/44896)
+
+🔨 Fixes:
+- Various minor bug fixes: [#44989](https://github.com/ray-project/ray/pull/44989), [#44988](https://github.com/ray-project/ray/pull/44988), [#44891](https://github.com/ray-project/ray/pull/44891), [#44898](https://github.com/ray-project/ray/pull/44898), [#44868](https://github.com/ray-project/ray/pull/44868), [#44867](https://github.com/ray-project/ray/pull/44867), [#44845](https://github.com/ray-project/ray/pull/44845)
+
+## Ray Core and Ray Clusters<a id="ray-core"></a>
+
+💫 Enhancements:
+- Report GCS internal pubsub buffer metrics and cap message size (#44749)
+
+🔨 Fixes:
+- Fix task submission never return when network partition happens (#44692)
+- Fix incorrect use of ssh port forward option. (#44973)
+- Make sure dashboard will exit if grpc server fails (#44928)
+- Make sure dashboard agent will exit if grpc server fails (#44899)
+
+Thanks @can-anyscale, @hongchaodeng, @zcin, @marwan116, @khluu, @bewestphal, @scottjlee, @andrewsykim, @anyscalesam, @MortalHappiness, @justinvyu, @JoshKarpel, @woshiyyya, @rynewang, @Abirdcfly, @omatthew98, @sven1977, @marcelocarmona, @rueian, @mattip, @angelinalg, @aslonnie, @matthewdeng, @abizjakpro, @simonsays1980, @jjyao, @terraflops1048576, @hongpeng-guo, @stephanie-wang, @bw-matthew, @bveeramani, @ruisearch42, @kevin85421, @Tongruizhe
+
+Many thanks to all those who contributed to this release!</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.12.0 (2024-04-25)</h2>
+      <pre># Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🎉  New Features:
+
+- Store Ray Data logs in special subdirectory (#44743)
+
+💫 Enhancements:
+- Add in `local_read` option to `from_torch` (#44752)
+
+🔨 Fixes:
+- Fix the config to disable progress bar (#44342)
+
+📖 Documentation:
+- Clarify deprecated Datasource docstrings (#44790)
+
+## Ray Train<a id="ray-train"></a>
+
+🔨 Fixes:
+- Disable gathering the full state dict in `RayFSDPStrategy` for `lightning>2.1` (#44569)
+
+## Ray Tune<a id="ray-tune"></a>
+
+💫 Enhancements:
+
+- Remove spammy log for "new output engine" (#44824)
+- Enable isort (#44693)
+
+## Ray Serve<a id="ray-serve"></a>
+
+🔨 Fixes:
+- [Serve] fix getting attributes on stdout during Serve logging redirect ([#44787](https://github.com/ray-project/ray/pull/44787))
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+
+- Support of images and video logging in WandB (env rendering example script for the new API stack coming up). ([#43356](https://github.com/ray-project/ray/pull/43356))
+
+💫 Enhancements:
+
+- Better support and separation-of-concerns for `model_config_dict` in new API stack. ([#44263](https://github.com/ray-project/ray/pull/44263))
+- Added example script to pre-train an `RLModule` in single-agent fashion, then bring checkpoint into multi-agent setup and continue training. ([#44674](https://github.com/ray-project/ray/pull/44674))
+- More `examples` scripts got translated from the old- to the new API stack: Curriculum learning, custom-gym-env, etc..: ([#44706](https://github.com/ray-project/ray/pull/44706), [#44707](https://github.com/ray-project/ray/pull/44707), [#44735](https://github.com/ray-project/ray/pull/44735), [#44841](https://github.com/ray-project/ray/pull/44841))
+
+## Ray Core and Ray Clusters<a id="ray-core"></a>
+
+🔨 Fixes:
+- Fix GetAllJobInfo `is_running_tasks` is not returning the correct value when driver starts ray (#44459)
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+@can-anyscale, @hongpeng-guo, @sven1977, @zcin, @shrekris-anyscale, @liuxsh9, @jackhumphries, @GeneDer, @woshiyyya, @simonsays1980, @omatthew98, @andrewsykim, @n30111, @architkulkarni, @bveeramani, @aslonnie, @alexeykudinkin, @WeichenXu123, @rynewang, @matthewdeng, @angelinalg, @c21</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.11.0 (2024-04-17)</h2>
+      <pre># Release Highlights<a id="release-highlights"></a>
+
+- [data] Support reading Avro files with `ray.data.read_avro`
+- [train] Added experimental support for AWS Trainium (Neuron) and Intel HPU.
+
+# Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🎉  New Features:
+
+- Support reading Avro files with `ray.data.read_avro` (#43663)
+
+💫 Enhancements:
+- Pin `ipywidgets==7.7.2` to enable Data progress bars in VSCode Web (#44398)
+- Change log level for ignored exceptions (#44408)
+
+🔨 Fixes:
+- Change Parquet encoding ratio lower bound from 2 to 1 (#44470)
+- Fix throughput time calculations for metrics (#44138)
+- Fix nested ragged `numpy.ndarray` (#44236)
+- Fix Ray debugger incompatibility caused by trimmed error stack trace (#44496)
+
+📖 Documentation:
+- Update "Data Loading and Preprocessing" doc (#44165)
+- Move imports into `TFPRedictor` in batch inference example (#44434)
+
+## Ray Train<a id="ray-train"></a>
+
+🎉 New Features:
+
+- Add experimental support for AWS Trainium (Neuron) (#39130)
+- Add experimental support for Intel HPU (#43343)
+
+💫 Enhancements:
+
+- Log a deprecation warning for local_dir and related environment variables (#44029)
+- Enforce xgboost>=1.7 for XGBoostTrainer usage (#44269)
+
+🔨 Fixes:
+
+- Fix ScalingConfig(accelerator_type) to request an appropriate resource amount (#44225)
+- Fix maximum recursion issue when serializing exceptions  (#43952)
+- Remove base config deepcopy when initializing the trainer actor (#44611)
+
+🏗 Architecture refactoring:
+
+- Remove deprecated `BatchPredictor` (#43934)
+
+## Ray Tune<a id="ray-tune"></a>
+
+💫 Enhancements:
+
+- Add support for new style lightning import (#44339)
+- Log a deprecation warning for local_dir and related environment variables (#44029)
+
+🏗 Architecture refactoring:
+
+- Remove scikit-optimize search algorithm (#43969)
+
+## Ray Serve<a id="ray-serve"></a>
+
+🔨 Fixes:
+- Dynamically-created applications will no longer be deleted when a config is PUT via the REST API ([#44476](https://github.com/ray-project/ray/pull/44476)).
+- Fix `_to_object_ref` memory leak ([#43763](https://github.com/ray-project/ray/pull/43763))
+- Log warning to reconfigure `max_ongoing_requests` if `max_batch_size` is less than `max_ongoing_requests` ([#43840](https://github.com/ray-project/ray/pull/43840))
+- Deployment fails to start with `ModuleNotFoundError` in Ray 3.10 ([#44329](https://github.com/ray-project/ray/issues/44329))
+    - This was fixed by reverting the original core changes on the `sys.path` behavior. Revert "[core] If there's working_dir, don't set _py_driver_sys_path." ([#44435](https://github.com/ray-project/ray/pull/44435))
+- The `batch_queue_cls` parameter is removed from the `@serve.batch` decorator ([#43935](https://github.com/ray-project/ray/pull/43935))
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+
+- New API stack: **DQN Rainbow** is now available for single-agent ([#43196](https://github.com/ray-project/ray/pull/43196), [#43198](https://github.com/ray-project/ray/pull/43198), [#43199](https://github.com/ray-project/ray/pull/43199))
+- **`PrioritizedEpisodeReplayBuffer`** is available for **off-policy learning using the EnvRunner API** (`SingleAgentEnvRunner`) and supports random n-step sampling ([#42832](https://github.com/ray-project/ray/pull/42832), [#43258](https://github.com/ray-project/ray/pull/43258), [#43458](https://github.com/ray-project/ray/pull/43458), [#43496](https://github.com/ray-project/ray/pull/43496), [#44262](https://github.com/ray-project/ray/pull/44262))
+
+💫 Enhancements:
+
+- **Restructured `examples/` folder**; started moving example scripts to the new API stack ([#44559](https://github.com/ray-project/ray/pull/44559), [#44067](https://github.com/ray-project/ray/pull/44067), [#44603](https://github.com/ray-project/ray/pull/44603))
+- **Evaluation do-over: Deprecate `enable_async_evaluation` option** (in favor of existing `evaluation_parallel_to_training` setting). ([#43787](https://github.com/ray-project/ray/pull/43787))
+- Add: **`module_for` API to MultiAgentEpisode** (analogous to `policy_for` API of the old Episode classes). ([#44241](https://github.com/ray-project/ray/pull/44241))
+- All **`rllib_contrib`** old stack algorithms have been removed from `rllib/algorithms` ([#43656](https://github.com/ray-project/ray/pull/43656))
+
+🔨 Fixes:
+
+- New API stack: Multi-GPU + multi-agent has been fixed. This completes support for any combinations of the following on the new API stack: [single-agent, multi-agent] vs [0 GPUs, 1 GPU, >1GPUs] vs [any number of EnvRunners] ([#44420](https://github.com/ray-project/ray/pull/44420), [#44664](https://github.com/ray-project/ray/pull/44664), [#44594](https://github.com/ray-project/ray/pull/44594), [#44677](https://github.com/ray-project/ray/pull/44677), [#44082](https://github.com/ray-project/ray/pull/44082), [#44669](https://github.com/ray-project/ray/pull/44669), [#44622](https://github.com/ray-project/ray/pull/44622))
+- Various other bug fixes: [#43906](https://github.com/ray-project/ray/pull/43906), [#43871](https://github.com/ray-project/ray/pull/43871), [#44000](https://github.com/ray-project/ray/pull/44000), [#44340](https://github.com/ray-project/ray/pull/44340), [#44491](https://github.com/ray-project/ray/pull/44491), [#43959](https://github.com/ray-project/ray/pull/43959), [#44043](https://github.com/ray-project/ray/pull/44043), [#44446](https://github.com/ray-project/ray/pull/44446), [#44040](https://github.com/ray-project/ray/pull/44040)
+
+📖 Documentation:
+- [Re-announced new API stack in alpha stage](https://docs.ray.io/en/master/rllib/rllib-new-api-stack.html) ([#44090](https://github.com/ray-project/ray/pull/44090)).
+
+## Ray Core and Ray Clusters<a id="ray-core"></a>
+
+🎉 New Features:
+
+- Added Ray check-open-ports CLI for checking potential open ports to the public (#44488)
+
+💫 Enhancements:
+
+- Support nodes sharing the same spilling directory without conflicts. (#44487)
+- Create two subclasses of `RayActorError` to distinguish between actor died (`ActorDiedError`) and actor temporarily unavailable ([`ActorUnavailableError`](https://docs.ray.io/en/master/ray-core/fault_tolerance/actors.html#unavailable-actors)) cases.
+
+🔨 Fixes:
+
+- Fixed the `ModuleNotFound` issued introduced in 2.10 (#44435)
+- Fixed an issue where agent process is using too much CPU (#44348)
+- Fixed race condition in multi-threaded actor creation (#44232)
+- Fixed several streaming generator bugs (#44079, #44257, #44197)
+- Fixed an issue where user exception raised from tasks cannot be subclassed (#44379)
+
+## Dashboard <a id="dashboard"></a>
+
+💫 Enhancements:
+
+- Add serve controller metrics to serve system dashboard page (#43797)
+- Add Serve Application rows to Serve top-level deployments details page (#43506)
+- [Actor table page enhancements] Include "NodeId", "CPU", "Memory", "GPU", "GRAM" columns in the actor table page. Add sort functionality to resource utilization columns. Enable searching table by "Class" and "Repr". (#42588) (#42633) (#42788)
+
+🔨 Fixes:
+
+- Fix default sorting of nodes in Cluster table page to first be by "Alive" nodes, then head nodes, then alphabetical by node ID. (#42929)
+- Fix bug where the Serve Deployment detail page fails to load if the deployment is in "Starting" state (#43279)
+
+## Docs <a id="docs"></a>
+
+💫 Enhancements:
+
+- Landing page refreshes its look and feel. (#44251)
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+
+@aslonnie, @brycehuang30, @MortalHappiness, @astron8t-voyagerx, @edoakes, @sven1977, @anyscalesam, @scottjlee, @hongchaodeng, @slfan1989, @hebiao064, @fishbone, @zcin, @GeneDer, @shrekris-anyscale, @kira-lin, @chappidim, @raulchen, @c21, @WeichenXu123, @marian-code, @bveeramani, @can-anyscale, @mjd3, @justinvyu, @jackhumphries, @Bye-legumes, @ashione, @alanwguo, @Dreamsorcerer, @KamenShah, @jjyao, @omatthew98, @autolisis, @Superskyyy, @stephanie-wang, @simonsays1980, @davidxia, @angelinalg, @architkulkarni, @chris-ray-zhang, @kevin85421, @rynewang, @peytondmurray, @zhangyilun, @khluu, @matthewdeng, @ruisearch42, @pcmoritz, @mattip, @jerome-habana, @alexeykudinkin</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.10.0 (2024-03-21)</h2>
+      <pre># Release Highlights<a id="release-highlights"></a>
+Ray 2.10 release brings important stability improvements and enhancements to Ray Data, with Ray Data becoming generally available (GA).
+
+- [Data] Ray Data becomes generally available with stability improvements in streaming execution, reading and writing data, better tasks concurrency control, and debuggability improvement with dashboard, logging and metrics visualization.
+- [RLlib] “**New API Stack**” officially announced as alpha for PPO and SAC.
+- [Serve] Added a default autoscaling policy set via `num_replicas=”auto”` ([#42613](https://github.com/ray-project/ray/issues/42613)).
+- [Serve] Added support for active load shedding via `max_queued_requests` ([#42950](https://github.com/ray-project/ray/issues/42950)).
+- [Serve] Added replica queue length caching to the DeploymentHandle scheduler ([#42943](https://github.com/ray-project/ray/pull/42943)).
+  - This should improve overhead in the Serve proxy and handles.
+  - `max_ongoing_requests (max_concurrent_queries)` is also now strictly enforced ([#42947](https://github.com/ray-project/ray/issues/42947)).
+  - If you see any issues, please report them on GitHub and you can disable this behavior by setting: `RAY_SERVE_ENABLE_QUEUE_LENGTH_CACHE=0`.
+- [Serve] Renamed the following parameters. Each of the old names will be supported for another release before removal.
+  - `max_concurrent_queries` -> `max_ongoing_requests`
+  - `target_num_ongoing_requests_per_replica` -> `target_ongoing_requests`
+  - `downscale_smoothing_factor` -> `downscaling_factor`
+  - `upscale_smoothing_factor` -> `upscaling_factor`
+- [Core] [Autoscaler v2](https://docs.ray.io/en/master/cluster/kubernetes/user-guides/configuring-autoscaling.html#kuberay-autoscaler-v2) is in alpha and can be tried out with Kuberay. It has improved observability and stability compared to v1.
+- [Train] Added support for accelerator types via `ScalingConfig(accelerator_type)`.
+- [Train] Revamped the `XGBoostTrainer` and `LightGBMTrainer` to no longer depend on `xgboost_ray` and `lightgbm_ray`. A new, more flexible API will be released in a future release.
+- [Train/Tune] Refactored local staging directory to remove the need for `local_dir` and `RAY_AIR_LOCAL_CACHE_DIR`.
+
+# Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🎉 New Features:
+- Streaming execution stability improvement to avoid memory issue, including per-operator resource reservation, streaming generator output buffer management, and better runtime resource estimation (#43026, #43171, #43298, #43299, #42930, #42504)
+- Metadata read stability improvement to avoid AWS transient error, including retry on application-level exception, spread tasks across multiple nodes, and configure retry interval (#42044, #43216, #42922, #42759).
+- Allow tasks concurrency control for read, map, and write APIs (#42849, #43113, #43177, #42637)
+- Data dashboard and statistics improvement with more runtime metrics for each components (#43790, #43628, #43241, #43477, #43110, #43112)
+- Allow to specify application-level error to retry for actor task (#42492)
+- Add `num_rows_per_file` parameter to file-based writes (#42694)
+- Add `DataIterator.materialize` (#43210)
+- Skip schema call in `DataIterator.to_tf` if `tf.TypeSpec` is provided (#42917)
+- Add option to append for `Dataset.write_bigquery` (#42584)
+- Deprecate legacy components and classes (#43575, #43178, #43347, #43349, #43342, #43341, #42936, #43144, #43022, #43023)
+
+💫 Enhancements:
+
+- Restructure stdout logging for better readability (#43360)
+- Add a more performant way to read large TFRecord datasets (#42277)
+- Modify `ImageDatasource` to use `Image.BILINEAR` as the default image resampling filter (#43484)
+- Reduce internal stack trace output by default (#43251)
+- Perform incremental writes to Parquet files (#43563)
+- Warn on excessive driver memory usage during shuffle ops (#42574)
+- Distributed reads for `ray.data.from_huggingface` (#42599)
+- Remove `Stage` class and related usages (#42685)
+- Improve stability of reading JSON files to avoid PyArrow errors (#42558, #42357)
+
+🔨 Fixes:
+
+- Turn off actor locality by default (#44124)
+- Normalize block types before internal multi-block operations (#43764)
+- Fix memory metrics for `OutputSplitter` (#43740)
+- Fix race condition issue in `OpBufferQueue` (#43015)
+- Fix early stop for multiple `Limit` operators. (#42958)
+- Fix deadlocks caused by `Dataset.streaming_split` for job hanging (#42601)
+
+📖 Documentation:
+
+- Revamp Ray Data documentation for GA (#44006, #44007, #44008, #44098, #44168, #44093, #44105)
+
+## Ray Train<a id="ray-train"></a>
+
+🎉 New Features:
+
+- Add support for accelerator types via `ScalingConfig(accelerator_type)` for improved worker scheduling (#43090)
+
+💫 Enhancements:
+
+- Add a backend-specific context manager for `train_func` for setup/teardown logic (#43209)
+- Remove `DEFAULT_NCCL_SOCKET_IFNAME` to simplify network configuration (#42808)
+- Colocate Trainer with rank 0 Worker for to improve scheduling behavior (#43115)
+
+🔨 Fixes:
+
+- Enable scheduling workers with `memory` resource requirements (#42999)
+- Make path behavior OS-agnostic by using `Path.as_posix` over `os.path.join` (#42037)
+- [Lightning] Fix resuming from checkpoint when using `RayFSDPStrategy` (#43594)
+- [Lightning] Fix deadlock in `RayTrainReportCallback` (#42751)
+- [Transformers] Fix checkpoint reporting behavior when `get_latest_checkpoint` returns None (#42953)
+
+📖 Documentation:
+
+- Enhance docstring and user guides for `train_loop_config` (#43691)
+- Clarify in `ray.train.report` docstring that it is not a barrier (#42422)
+- Improve documentation for `prepare_data_loader` shuffle behavior and `set_epoch` (#41807)
+
+🏗 Architecture refactoring:
+
+- Simplify XGBoost and LightGBM Trainer integrations. Implemented `XGBoostTrainer` and `LightGBMTrainer` as `DataParallelTrainer`. Removed dependency on `xgboost_ray` and `lightgbm_ray`. (#42111, #42767, #43244, #43424)
+- Refactor local staging directory to remove the need for `local_dir` and `RAY_AIR_LOCAL_CACHE_DIR`. Add isolation between driver and distributed worker artifacts so that large files written by workers are not uploaded implicitly. Results are now only written to `storage_path`, rather than having another copy in the user’s home directory (`~/ray_results`). (#43369, #43403, #43689)
+- Split overloaded `ray.train.torch.get_device` into another `get_devices` API for multi-GPU worker setup (#42314)
+- Refactor restoration configuration to be centered around `storage_path` (#42853, #43179)
+- Deprecations related to `SyncConfig` (#42909)
+- Remove deprecated `preprocessor` argument from Trainers (#43146, #43234)
+- Hard-deprecate `MosaicTrainer` and remove `SklearnTrainer` (#42814)
+
+
+## Ray Tune<a id="ray-tune"></a>
+
+💫 Enhancements:
+
+- Increase the minimum number of allowed pending trials for faster auto-scaleup (#43455)
+- Add support to `TBXLogger` for logging images (#37822)
+- Improve validation of `Experiment(config)` to handle RLlib `AlgorithmConfig` (#42816, #42116)
+
+🔨 Fixes:
+
+- Fix `reuse_actors` error on actor cleanup for function trainables (#42951)
+- Make path behavior OS-agnostic by using Path.as_posix over `os.path.join` (#42037)
+
+📖 Documentation:
+
+- Minor documentation fixes (#42118, #41982)
+
+🏗 Architecture refactoring:
+
+- Refactor local staging directory to remove the need for `local_dir` and `RAY_AIR_LOCAL_CACHE_DIR`. Add isolation between driver and distributed worker artifacts so that large files written by workers are not uploaded implicitly. Results are now only written to `storage_path`, rather than having another copy in the user’s home directory (`~/ray_results`). (#43369, #43403, #43689)
+- Deprecations related to `SyncConfig` and `chdir_to_trial_dir` (#42909)
+- Refactor restoration configuration to be centered around `storage_path` (#42853, #43179)
+- Add back `NevergradSearch` (#42305)
+- Clean up invalid `checkpoint_dir` and `reporter` deprecation notices (#42698)
+
+## Ray Serve<a id="ray-serve"></a>
+
+🎉 New Features:
+
+- Added support for active load shedding via `max_queued_requests` ([#42950](https://github.com/ray-project/ray/issues/42950)).
+- Added a default autoscaling policy set via `num_replicas=”auto”` ([#42613](https://github.com/ray-project/ray/issues/42613)).
+
+🏗 API Changes:
+
+- Renamed the following parameters. Each of the old names will be supported for another release before removal.
+  - `max_concurrent_queries` to `max_ongoing_requests`
+  - `target_num_ongoing_requests_per_replica` to `target_ongoing_requests`
+  - `downscale_smoothing_factor` to `downscaling_factor`
+  - `upscale_smoothing_factor` to `upscaling_factor`
+- **WARNING**: the following default values will change in Ray 2.11:
+  - Default for `max_ongoing_requests` will change from 100 to 5.
+  - Default for `target_ongoing_requests` will change from 1 to 2.
+
+💫 Enhancements:
+
+- Add `RAY_SERVE_LOG_ENCODING` env to set the global logging behavior for Serve ([#42781](https://github.com/ray-project/ray/pull/42781)).
+- Config Serve's gRPC proxy to allow large payload ([#43114](https://github.com/ray-project/ray/pull/43114)).
+- Add blocking flag to serve.run() ([#43227](https://github.com/ray-project/ray/pull/43227)).
+- Add actor id and worker id to Serve structured logs ([#43725](https://github.com/ray-project/ray/pull/43725)).
+- Added replica queue length caching to the DeploymentHandle scheduler ([#42943](https://github.com/ray-project/ray/pull/42943)).
+  - This should improve overhead in the Serve proxy and handles.
+  - `max_ongoing_requests` (`max_concurrent_queries`) is also now strictly enforced ([#42947](https://github.com/ray-project/ray/issues/42947)).
+  - If you see any issues, please report them on GitHub and you can disable this behavior by setting: `RAY_SERVE_ENABLE_QUEUE_LENGTH_CACHE=0`.
+- Autoscaling metrics (tracking ongoing and queued metrics) are now collected at deployment handles by default instead of at the Serve replicas ([#42578](https://github.com/ray-project/ray/pull/42578)).
+  - This means you can now set `max_ongoing_requests=1` for autoscaling deployments and still upscale properly, because requests queued at handles are properly taken into account for autoscaling.
+  - You should expect deployments to upscale more aggressively during bursty traffic, because requests will likely queue up at handles during bursts of traffic.
+  - If you see any issues, please report them on GitHub and you can switch back to the old method of collecting metrics by setting the environment variable `RAY_SERVE_COLLECT_AUTOSCALING_METRICS_ON_HANDLE=0`
+- Improved the downscaling behavior of smoothing_factor for low numbers of replicas ([#42612](https://github.com/ray-project/ray/issues/42612)).
+- Various logging improvements ([#43707](https://github.com/ray-project/ray/pull/43707), [#43708](https://github.com/ray-project/ray/pull/43708), [#43629](https://github.com/ray-project/ray/pull/43629), [#43557](https://github.com/ray-project/ray/pull/43557)).
+- During in-place upgrades or when replicas become unhealthy, Serve will no longer wait for old replicas to gracefully terminate before starting new ones ([#43187](https://github.com/ray-project/ray/pull/43187)). New replicas will be eagerly started to satisfy the target number of healthy replicas.
+  - This new behavior is on by default and can be turned off by setting `RAY_SERVE_EAGERLY_START_REPLACEMENT_REPLICAS=0`
+
+🔨 Fixes:
+
+- Fix deployment route prefix override by default route prefix from serve run cli ([#43805](https://github.com/ray-project/ray/pull/43805)).
+- Fixed a bug causing batch methods to hang upon cancellation ([#42593](https://github.com/ray-project/ray/issues/42593)).
+- Unpinned FastAPI dependency version ([#42711](https://github.com/ray-project/ray/issues/42711)).
+- Delay proxy marking itself as healthy until it has routes from the controller ([#43076](https://github.com/ray-project/ray/issues/43076)).
+- Fixed an issue where multiplexed deployments could go into infinite backoff ([#43965](https://github.com/ray-project/ray/issues/43965)).
+- Silence noisy `KeyError` on disconnects ([#43713](https://github.com/ray-project/ray/pull/43713)).
+- Fixed the prometheus counter metrics emitted as gauge bug ([#43795](https://github.com/ray-project/ray/pull/43795), [#43901](https://github.com/ray-project/ray/pull/43901)).
+  - All the serve counter metrics are emitted as counters with _total suffix. The old gauge metrics are still emitted for compatibility.
+
+📖 Documentation:
+
+- Update serve logging config docs ([#43483](https://github.com/ray-project/ray/pull/43483)).
+- Added documentation for `max_replicas_per_node` ([#42743](https://github.com/ray-project/ray/pull/42743)).
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+
+- The **“new API stack”** is now in alpha stage and available for **PPO single-** (#42272) and **multi-agent** and for **SAC single-agent** ([#42571](https://github.com/ray-project/ray/pull/42571), [#42570](https://github.com/ray-project/ray/pull/42570), [#42568](https://github.com/ray-project/ray/pull/42568))
+  - **ConnectorV2 API** ([#43669](https://github.com/ray-project/ray/pull/43669), [#43680](https://github.com/ray-project/ray/pull/43680), [#43040](https://github.com/ray-project/ray/pull/43040), [#41074](https://github.com/ray-project/ray/pull/41074), [#41212](https://github.com/ray-project/ray/pull/41212))
+  - **Episode APIs** (SingleAgentEpisode and MultiAgentEpisode) ([#42009](https://github.com/ray-project/ray/pull/42009), [#43275](https://github.com/ray-project/ray/pull/43275), [#42296](https://github.com/ray-project/ray/pull/42296), [#43818](https://github.com/ray-project/ray/pull/43818), [#41631](https://github.com/ray-project/ray/pull/41631))
+  - **EnvRunner APIs** (SingleAgentEnvRunner and MultiAgentEnvRunner) ([#41558](https://github.com/ray-project/ray/pull/41558), [#41825](https://github.com/ray-project/ray/pull/41825), [#42296](https://github.com/ray-project/ray/pull/42296), [#43779](https://github.com/ray-project/ray/pull/43779))
+- In preparation of **DQN** on the new API stack: PrioritizedEpisodeReplayBuffer ([#43258](https://github.com/ray-project/ray/pull/43258), [#42832](https://github.com/ray-project/ray/pull/42832))
+
+💫 Enhancements:
+
+- **Old API Stack cleanups:**
+  - Move `SampleBatch` column names (e.g. `SampleBatch.OBS`) into new class (`Columns`). ([#43665](https://github.com/ray-project/ray/pull/43665))
+  - Remove old exec_plan API code. ([#41585](https://github.com/ray-project/ray/pull/41585))
+  - Introduce `OldAPIStack` decorator ([#43657](https://github.com/ray-project/ray/pull/43657))
+  - **RLModule API:** Add functionality to define kernel and bias initializers via config. ([#42137](https://github.com/ray-project/ray/pull/42137))
+- **Learner/LearnerGroup APIs**: 
+  - Replace Learner/LearnerGroup specific config classes (e.g. `LearnerHyperparameters`) with `AlgorithmConfig`. ([#41296](https://github.com/ray-project/ray/pull/41296)) 
+  - Learner/LearnerGroup: Allow updating from Episodes. ([#41235](https://github.com/ray-project/ray/pull/41235))
+- In preparation of **DQN** on the new API stack: ([#43199](https://github.com/ray-project/ray/pull/43199), [#43196](https://github.com/ray-project/ray/pull/43196))
+
+🔨 Fixes:
+
+- New API Stack bug fixes: Fix `policy_to_train` logic ([#41529](https://github.com/ray-project/ray/pull/41529)), fix multi-APU for PPO on the new API stack. ([#44001](https://github.com/ray-project/ray/pull/44001)), Issue 40347: ([#42090](https://github.com/ray-project/ray/pull/42090))
+- Other fixes: MultiAgentEnv would NOT call env.close() on a failed sub-env ([#43664](https://github.com/ray-project/ray/pull/43664)), Issue 42152 ([#43317](https://github.com/ray-project/ray/pull/43317)), issue 42396: ([#43316](https://github.com/ray-project/ray/pull/43316)), issue 41518 ([#42011](https://github.com/ray-project/ray/pull/42011)), issue 42385 ([#43313](https://github.com/ray-project/ray/pull/43313))
+
+📖 Documentation:
+
+- New API Stack examples: Self-play and league-based self-play ([#43276](https://github.com/ray-project/ray/pull/43276)), MeanStdFilter (for both single-agent and multi-agent) ([#43274](https://github.com/ray-project/ray/pull/43274)), Prev-actions/prev-rewards for multi-agent ([#43491](https://github.com/ray-project/ray/pull/43491))
+- Other docs fixes and enhancements: ([#43438](https://github.com/ray-project/ray/pull/43438), [#41472](https://github.com/ray-project/ray/pull/41472), [#42117](https://github.com/ray-project/ray/pull/42177), [#43458](https://github.com/ray-project/ray/pull/43458))
+
+# Ray Core and Ray Clusters<a id="ray-core-and-ray-clusters"></a>
+
+## Ray Core<a id="ray-core"></a>
+
+🎉 New Features:
+
+- [Autoscaler v2](https://docs.ray.io/en/master/cluster/kubernetes/user-guides/configuring-autoscaling.html#kuberay-autoscaler-v2) is in alpha and can be tried out with Kuberay.
+- Introduced [subreaper](https://docs.ray.io/en/master/ray-core/user-spawn-processes.html) to prevent leaks of sub-processes created by user code. (#42992)
+
+💫 Enhancements:
+
+- Ray state api `get_task()` now accepts ObjectRef (#43507)
+- Add an option to disable task tracing for task/actor (#42431)
+- Improved object transfer throughput. (#43434) 
+- Ray client now compares the Ray and Python version for compatibility with the remote Ray cluster. (#42760)
+
+🔨 Fixes:
+
+- Fixed several bugs for streaming generator (#43775, #43772, #43413)
+- Fixed Ray counter metrics emitted as gauge bug (#43795)
+- Fixed a bug where empty resource task doesn’t work with placement group (#43448)
+- Fixed a bug where CPU resource is not released for a blocked worker inside placement group (#43270)
+- Fixed GCS crashes when PG commit phase failed due to node failure (#43405)
+- Fixed a bug where Ray memory monitor prematurely kill tasks (#43071)
+- Fixed placement group resource leak (#42942)
+- Upgraded cloudpickle to 3.0 which fixes the incompatibility with dataclasses (#42730)
+
+📖 Documentation:
+
+- Updated the doc for Ray accelerators support (#41849)
+
+## Ray Clusters<a id="ray-clusters"></a>
+
+💫 Enhancements:
+
+- [spark] Add `heap_memory` param for `setup_ray_cluster` API, and change default value of per ray worker node config, and change default value of ray head node config for global Ray cluster (#42604)
+- [spark] Add global mode for ray on spark cluster (#41153)
+
+🔨 Fixes:
+
+- [VSphere] Only deploy ovf to first host of cluster  (#42258)
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+
+@ronyw7, @xsqian, @justinvyu, @matthewdeng, @sven1977, @thomasdesr, @veryhannibal, @klebster2, @can-anyscale, @simran-2797, @stephanie-wang, @simonsays1980, @kouroshHakha, @Zandew, @akshay-anyscale, @matschaffer-roblox, @WeichenXu123, @matthew29tang, @vitsai, @Hank0626, @anmyachev, @kira-lin, @ericl, @zcin, @sihanwang41, @peytondmurray, @raulchen, @aslonnie, @ruisearch42, @vszal, @pcmoritz, @rickyyx, @chrislevn, @brycehuang30, @alexeykudinkin, @vonsago, @shrekris-anyscale, @andrewsykim, @c21, @mattip, @hongchaodeng, @dabauxi, @fishbone, @scottjlee, @justina777, @surenyufuz, @robertnishihara, @nikitavemuri, @Yard1, @huchen2021, @shomilj, @architkulkarni, @liuxsh9, @Jocn2020, @liuyang-my, @rkooo567, @alanwguo, @KPostOffice, @woshiyyya, @n30111, @edoakes, @y-abe, @martinbomio, @jiwq, @arunppsg, @ArturNiederfahrenhorst, @kevin85421, @khluu, @JingChen23, @masariello, @angelinalg, @jjyao, @omatthew98, @jonathan-anyscale, @sjoshi6, @gaborgsomogyi, @rynewang, @ratnopamc, @chris-ray-zhang, @ijrsvt, @scottsun94, @raychen911, @franklsf95, @GeneDer, @madhuri-rai07, @scv119, @bveeramani, @anyscalesam, @zen-xu, @npuichigo
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.9.3 (2024-02-22)</h2>
+      <pre>This patch release contains fixes for Ray Core, Ray Data, and Ray Serve.
+
+# Ray Core
+
+🔨 Fixes:
+
+- Fix protobuf breaking change by adding a compat layer. ([#43172](https://github.com/ray-project/ray/pull/43172))
+- Bump up task failure logs to warnings to make sure failures could be troubleshooted ([#43147](https://github.com/ray-project/ray/pull/43147))
+- Fix placement group leaks ([#42942](https://github.com/ray-project/ray/pull/42942))
+
+# Ray Data
+
+🔨 Fixes:
+
+- Skip `schema` call in `to_tf` if `tf.TypeSpec` is provided ([#42917](https://github.com/ray-project/ray/pull/42917))
+- Skip recording memory spilled stats when get_memory_info_reply is failed ([#42824](https://github.com/ray-project/ray/pull/42824))
+
+# Ray Serve
+
+🔨 Fixes:
+
+- Fixing DeploymentStateManager qualifying replicas as running prematurely ([#43075](https://github.com/ray-project/ray/pull/43075))
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+
+@rynewang, @GeneDer, @alexeykudinkin, @edoakes, @c21, @rkooo567</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.9.2 (2024-02-06)</h2>
+      <pre>This patch release contains fixes for Ray Core, Ray Data, and Ray Serve.
+
+# Ray Core
+🔨 Fixes:
+- Fix out of disk test on release branch (https://github.com/ray-project/ray/pull/42724)
+   
+# Ray Data
+🔨 Fixes:
+- Fix failing huggingface test (https://github.com/ray-project/ray/pull/42727)
+- Fix deadlocks caused by streaming_split (https://github.com/ray-project/ray/pull/42601) (https://github.com/ray-project/ray/pull/42755)
+- Fix locality config not being respected in DataConfig (https://github.com/ray-project/ray/pull/42204
+https://github.com/ray-project/ray/pull/42204) (https://github.com/ray-project/ray/pull/42722)
+- Stability & accuracy improvements for Data+Train benchmark (https://github.com/ray-project/ray/pull/42027)
+- Add retry for _sample_fragment during `ParquetDatasource._estimate_files_encoding_ratio()` (https://github.com/ray-project/ray/pull/42759) (https://github.com/ray-project/ray/pull/42774)
+- Skip recording memory spilled stats when get_memory_info_reply is failed (https://github.com/ray-project/ray/pull/42824) (https://github.com/ray-project/ray/pull/42834)
+
+# Ray Serve
+🔨 Fixes:
+- Pin the fastapi & starlette version to avoid breaking proxy (https://github.com/ray-project/ray/pull/42740
+https://github.com/ray-project/ray/pull/42740)
+- Fix IS_PYDANTIC_2 logic for pydantic<1.9.0 (https://github.com/ray-project/ray/pull/42704) (https://github.com/ray-project/ray/pull/42708)
+- fix missing message body for json log formats (https://github.com/ray-project/ray/pull/42729) (https://github.com/ray-project/ray/pull/42874)
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+
+@c21, @raulchen, @can-anyscale, @edoakes, @peytondmurray, @scottjlee, @aslonnie, @architkulkarni, @GeneDer, @Zandew, @sihanwang41
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.9.1 (2024-01-19)</h2>
+      <pre>This patch release contains fixes for Ray Core, Ray Data, and Ray Serve.
+
+# Ray Core
+🔨 Fixes:
+- Adding debupgy as the ray debugger (#42311)
+- Fix task events profile events per task leak (#42248) 
+- Make sure redis sync context and async context connect to the same redis instance (#42040)
+   
+# Ray Data
+🔨 Fixes:
+- [Data] Retry write if error during file clean up (#42326)
+
+# Ray Serve
+🔨 Fixes:
+- Improve handling the websocket server disconnect scenario (#42130) 
+- Fix pydantic config documentation (#42216)
+- Address issues under high network delays:
+    - Enable setting queue length response deadline via environment variable (#42001)
+    - Add exponential backoff for queue_len_response_deadline_s (#42041)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>Ray-2.9.0 (2023-12-21)</h2>
+      <pre># Release Highlights<a id="release-highlights"></a>
+
+- This release contains fixes for the Ray Dashboard. Additional context can be found here: <https://www.anyscale.com/blog/update-on-ray-cves-cve-2023-6019-cve-2023-6020-cve-2023-6021-cve-2023-48022-cve-2023-48023> 
+- Ray Train has now upgraded support for spot node preemption -- allowing Ray Train to handle preemption node failures differently than application errors.
+- Ray is now compatible with Pydantic versions <2.0.0 and >=2.5.0, addressing a piece of user feedback we’ve consistently received.
+- The Ray Dashboard now has a page for Ray Data to monitor real-time execution metrics.
+- [Streaming generator](https://docs.ray.io/en/latest/ray-core/ray-generator.html) is now officially a public API (#41436, #38784). Streaming generator allows writing streaming applications easily on top of Ray via Python generator API and has been used for Ray Serve and Ray data for several releases. See the [documentation](https://docs.ray.io/en/master/ray-core/ray-generator.html) for details. 
+- We’ve added experimental support for new accelerators: Intel GPU (#38553), Intel Gaudi Accelerators (#40561), and Huawei Ascend NPU (#41256).
+
+# Ray Libraries<a id="ray-libraries"></a>
+
+## Ray Data<a id="ray-data"></a>
+
+🎉 New Features:
+* Add the dashboard for Ray Data to monitor real-time execution metrics and log file for debugging (<https://docs.ray.io/en/master/data/monitoring-your-workload.html>).
+* Introduce `concurrency` argument to replace `ComputeStrategy` in map-like APIs (#41461)
+* Allow task failures during execution (#41226)
+* Support PyArrow 14.0.1 (#41036)
+* Add new API for reading and writing Datasource (<https://github.com/ray-project/ray/issues/40296>)
+* Enable group-by over multiple keys in datasets (#37832)
+* Add support for multiple group keys in `map_groups` (#40778)
+
+💫 Enhancements:
+- Optimize `OpState.outqueue_num_blocks` (#41748)
+- Improve stall detection for `StreamingOutputsBackpressurePolicy` (#41637)
+- Enable read-only Datasets to be executed on new execution backend (#41466, #41597)
+- Inherit block size from downstream ops (#41019)
+- Use runtime object memory for scheduling (#41383)
+- Add retries to file writes (#41263)
+- Make range datasource streaming (#41302)
+- Test core performance metrics (#40757)
+- Allow `ConcurrencyCapBackpressurePolicy._cap_multiplier` to be set to 1.0 (#41222)
+- Create `StatsManager` to manage `_StatsActor` remote calls (#40913)
+- Expose `max_retry_cnt` parameter for `BigQuery` Write (#41163)
+- Add rows outputted to data metrics (#40280)
+- Add fault tolerance to remote tasks (#41084)
+- Add operator-level dropdown to ray data overview (#40981)
+- Avoid slicing too-small blocks (#40840)
+- Ray Data jobs detail table (#40756)
+- Update default shuffle block size to 1GB (#40839)
+- Log progress bar to data logs (#40814)
+- Operator level metrics (#40805)
+
+🔨 Fixes:
+- Partial fix for `Dataset.context` not being sealed after creation (#41569)
+- Fix the issue that `DataContext` is not propagated when using `streaming_split` (#41473)
+- Fix Parquet partition filter bug (#40947)
+- Fix split read output blocks (#41070)
+- Fix `BigQueryDatasource `fault tolerance bugs (#40986)
+
+📖 Documentation:
+- Add example of how to read and write custom file types (#41785)
+- Fix `ray.data.read_databricks_tables` doc (#41366)
+- Add `read_json` docs example for setting PyArrow block size when reading large files (#40533)
+- Add `AllToAllAPI` to dataset methods (#40842)
+
+
+## Ray Train<a id="ray-train"></a>
+
+🎉 New Features:
+- Support reading `Result` from cloud storage (#40622)
+
+💫 Enhancements:
+- Sort local Train workers by GPU ID (#40953)
+- Improve logging for Train worker scheduling information (#40536)
+- Load the latest unflattened metrics with `Result.from_path` (#40684)
+- Skip incrementing failure counter on preemption node died failures (#41285)
+- Update TensorFlow `ReportCheckpointCallback` to delete temporary directory (#41033)
+
+🔨 Fixes:
+- Update config dataclass repr to check against None (#40851)
+- Add a barrier in Lightning `RayTrainReportCallback` to ensure synchronous reporting. (#40875)
+- Restore Tuner and `Result`s properly from moved storage path (#40647)
+
+📖 Documentation:
+- Improve torch, lightning quickstarts and migration guides + fix torch restoration example (#41843)
+- Clarify error message when trying to use local storage for multi-node distributed training and checkpointing (#41844)
+- Copy edits and adding links to docstrings (#39617)
+- Fix the missing ray module import in PyTorch Guide (#41300)
+- Fix typo in lightning_mnist_example.ipynb (#40577)
+- Fix typo in deepspeed.rst (#40320)
+
+🏗 Architecture refactoring:
+- Remove Legacy Trainers (#41276)
+
+
+## Ray Tune<a id="ray-tune"></a>
+
+🎉 New Features:
+- Support reading `Result` from cloud storage (#40622)
+
+💫 Enhancements:
+- Skip incrementing failure counter on preemption node died failures (#41285)
+
+🔨 Fixes:
+- Restore Tuner and `Result`s properly from moved storage path (#40647)
+
+📖 Documentation:
+- Remove low value Tune examples and references to them  (#41348)
+- Clarify when to use `MLflowLoggerCallback` and `setup_mlflow` (#37854)
+
+🏗 Architecture refactoring:
+- Delete legacy `TuneClient`/`TuneServer` APIs (#41469)
+- Delete legacy `Searcher`s (#41414)
+- Delete legacy persistence utilities (`air.remote_storage`, etc.) (#40207)
+
+
+## Ray Serve<a id="ray-serve"></a>
+
+🎉 New Features:
+- Introduce logging config so that users can set different logging parameters for different applications & deployments.
+- Added gRPC context object into gRPC deployments for user to set custom code and details back to the client.
+- Introduce a runtime environment feature that allows running applications in different containers with different images. This feature is experimental and a new guide can be found in the Serve docs.
+
+💫 Enhancements:
+- Explicitly handle gRPC proxy task cancellation when the client dropped a request to not waste compute resources. 
+- Enable async `__del__` in the deployment to execute custom clean up steps.
+- Make Ray Serve compatible with Pydantic versions <2.0.0 and >=2.5.0.
+
+🔨 Fixes:
+- Fixed gRPC proxy streaming request latency metrics to include the entire lifecycle of the request, including the time to consume the generator.
+- Fixed gRPC proxy timeout request status from CANCELLED to DEADLINE_EXCEEDED.
+- Fixed previously Serve shutdown spamming log files with logs for each event loop to only log once on shutdown.
+- Fixed issue during batch requests when a request is dropped, the batch loop will be killed and not processed any future requests.
+- Updating replica log filenames to only include POSIX-compliant characters (removed the “#” character).
+- Replicas will now be gracefully shut down after being marked unhealthy due to health check failures instead of being force killed.
+  - This behavior can be toggled using the environment variable RAY_SERVE_FORCE_STOP_UNHEALTHY_REPLICAS=1, but this is planned to be removed in the near future. If you rely on this behavior, please file an issue on github.
+
+
+## RLlib<a id="rllib"></a>
+
+🎉 New Features:
+- New API stack (in progress):
+  - New `MultiAgentEpisode` class introduced. Basis for upcoming multi-agent EnvRunner, which will replace RolloutWorker APIs. (#40263, #40799)
+  - PPO runs with new `SingleAgentEnvRunner` (w/o Policy/RolloutWorker APIs). CI learning tests added. (#39732, #41074, #41075)
+  - By default: PPO reverted to use old API stack by default, for now. Pending feature-completion of new API stack (incl. multi-agent, RNN support, new EnvRunners, etc..). (#40706)
+- Old API stack:
+  - APPO/IMPALA: Enable using 2 separate optimizers for policy and vs (and 2 learning rates) on the old API stack. (#40927)
+  - Added `on_workers_recreated` callback to Algorithm, which is triggered after workers have failed and been restarted. (#40354)
+
+💫 Enhancements:
+- Old API stack and `rllib_contrib` cleanups: #40939, #40744, #40789, #40444, #37271
+
+🔨 Fixes:
+- Restoring from a checkpoint from an older wheel (where `AlgorithmConfig.rl_module_spec` was NOT a “@property” yet) breaks when trying to load from this checkpoint. (#41157)
+- SampleBatch slicing crashes when using tf + SEQ_LENS + zero-padding. (#40905)
+- Other fixes: #39978, #40788, #41168, #41204
+
+📖 Documentation:
+- Updated codeblocks in RLlib. (#37271)
+
+
+# Ray Core and Ray Clusters<a id="ray-core-and-ray-clusters"></a>
+
+## Ray Core<a id="ray-core"></a>
+
+🎉 New Features:
+- [Streaming generator](https://docs.ray.io/en/master/ray-core/ray-generator.html) is now officially a public API (#41436, #38784). Streaming generator allows writing streaming applications easily on top of Ray via Python generator API and has been used for Ray serve and Ray data for several releases. See the [documentation](https://docs.ray.io/en/master/ray-core/ray-generator.html) for details. 
+  - As part of the change, num_returns=”dynamic” is planning to be deprecated, and its return type is changed from `ObjectRefGenerator` -> “DynamicObjectRefGenerator”
+- Add experimental accelerator support for new hardwares.
+  - Add experimental support for Intel GPU (#38553)
+  - Add experimental support for Intel Gaudi Accelerators (#40561)
+  - Add experimental support for Huawei Ascend NPU (#41256)
+- Add the initial support to run MPI based code on top of Ray.(#40917, #41349)
+
+💫 Enhancements:
+- Optimize next/anext performance for streaming generator (#41270)
+- Make the number of connections and thread number of the object manager client tunable. (#41421)
+- Add `__ray_call__` default actor method (#41534)
+
+🔨 Fixes:
+- Fix NullPointerException cause by raylet id is empty when get actor info in java worker (#40560)
+- Fix a bug where SIGTERM is ignored to worker processes (#40210)
+- Fix mmap file leak. (#40370)
+- Fix the lifetime issue in Plasma server client releasing object. (#40809)
+- Upgrade grpc from 1.50.2 to 1.57.1 to include security fixes (#39090)
+- Fix the bug where two head nodes are shown from ray list nodes (#40838)
+- Fix the crash when the GCS address is not valid. (#41253)
+- Fix the issue of unexpectedly high socket usage in ray core worker processes. (#41121)
+- Make worker_process_setup_hook work with strings instead of Python functions (#41479)
+
+
+## Ray Clusters<a id="ray-clusters"></a>
+
+💫 Enhancements:
+- Stability improvements for the vSphere cluster launcher
+- Better CLI output for cluster launcher
+
+🔨 Fixes:
+- Fixed `run_init` for TPU command runner
+
+📖Documentation:
+- Added missing steps and simplified YAML in top-level clusters quickstart
+- Clarify that job entrypoints run on the head node by default and how to override it
+
+
+## Dashboard<a id="dashboard"></a>
+
+💫 Enhancements:
+  - Improvements to the Ray Data Dashboard
+    - Added Ray Data-specific overview on jobs page, including a table view with Dataset-level metrics
+    - Added operator-level metrics granularity to drill down on Dataset operators
+    - Added additional metrics for monitoring iteration over Datasets
+
+# Docs<a id="docs"></a>
+🎉 New Features:
+- Updated to Sphinx version 7.1.2. Previously, the docs build used Sphinx 4.3.2. Upgrading to a recent version provides a more modern user experience while fixing many long standing issues. Let us know how you like the upgrade or any other docs issues on your mind, on the Ray Slack #docs channel.
+
+# Thanks
+
+Many thanks to all those who contributed to this release!
+
+@justinvyu, @zcin, @avnishn, @jonathan-anyscale, @shrekris-anyscale, @LeonLuttenberger, @c21, @JingChen23, @liuyang-my, @ahmed-mahran, @huchen2021, @raulchen, @scottjlee, @jiwq, @z4y1b2, @jjyao, @JoshTanke, @marxav, @ArturNiederfahrenhorst, @SongGuyang, @jerome-habana, @rickyyx, @rynewang, @batuhanfaik, @can-anyscale, @allenwang28, @wingkitlee0, @angelinalg, @peytondmurray, @rueian, @KamenShah, @stephanie-wang, @bryanjuho, @sihanwang41, @ericl, @sofianhnaide, @RaffaGonzo, @xychu, @simonsays1980, @pcmoritz, @aslonnie, @WeichenXu123, @architkulkarni, @matthew29tang, @larrylian, @iycheng, @hongchaodeng, @rudeigerc, @rkooo567, @robertnishihara, @alanwguo, @emmyscode, @kevin85421, @alexeykudinkin, @michaelhly, @ijrsvt, @ArkAung, @mattip, @harborn, @sven1977, @liuxsh9, @woshiyyya, @hahahannes, @GeneDer, @vitsai, @Zandew, @evalaiyc98, @edoakes, @matthewdeng, @bveeramani
+</pre>
+    </section>
+    <hr />
+  
+</body>
+</html>
