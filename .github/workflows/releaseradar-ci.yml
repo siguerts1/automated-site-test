@@ -40,10 +40,13 @@ jobs:
           git fetch origin main
           git checkout main
 
+<<<<<<< HEAD
           # Copy generated files from build-staging
           git checkout build-staging -- index.html sitemap.xml site/
 
           git add index.html sitemap.xml site/
           git diff --quiet || git commit -m "Auto: Rendered site pushed from build-staging"
           git push origin main
+=======
+>>>>>>> a3c94e8049e62d10acfac941e138afa96acf1c7c
 
