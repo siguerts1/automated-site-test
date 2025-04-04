@@ -1,0 +1,47 @@
+name: ReleaseRadar Automation
+
+on:
+  push:
+    branches: [main]
+
+  schedule:
+    # Runs every 6 hours (midnight, 6am, noon, 6pm UTC)
+    - cron: '0 */6 * * *'
+
+jobs:
+  build-render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Load GitHub Token
+        run: echo "GITHUB_TOKEN=${{ secrets.SECRET_GITHUB_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Run fetch + render (only on schedule)
+        if: github.event_name == 'schedule'
+        run: |
+          python3 fetch_all_releases.py
+          python3 render_html.py
+
+      - name: Run render only (on push)
+        if: github.event_name == 'push'
+        run: python3 render_html.py
+
+      - name: Commit rendered site (if updated)
+        run: |
+          git config user.name "ReleaseRadar Bot"
+          git config user.email "bot@releaseradar.io"
+          git add site/ index.html sitemap.xml || true
+          git diff --quiet && echo "No changes to commit" || git commit -m "Auto-update rendered site"
+          git push origin gh-pages --force
+
