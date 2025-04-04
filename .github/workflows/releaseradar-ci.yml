@@ -46,7 +46,7 @@ jobs:
           git checkout main
           git checkout -b site-update || git switch site-update
           cp -r site/ index.html sitemap.xml .
-          git add index.html sitemap.xml site/
+          git add .
           git diff --quiet || git commit -m "Deploy latest render to main"
           git push origin site-update
 
