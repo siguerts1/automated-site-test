@@ -1,4 +1,4 @@
-name: ReleaseRadar Controlled Build
+name: Build & Deploy Site
 
 on:
   push:
@@ -10,12 +10,14 @@ permissions:
   contents: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout build-staging
         uses: actions/checkout@v3
+        with:
+          ref: build-staging
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -25,36 +27,23 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Load GitHub Token
-        run: echo "GITHUB_TOKEN=${{ secrets.SECRET_GITHUB_TOKEN }}" >> $GITHUB_ENV
-
-      - name: Run fetch + render (on schedule)
-        if: github.event_name == 'schedule'
+      - name: Run fetch and render
         run: |
           python3 fetch_all_releases.py
           python3 render_html.py
 
-      - name: Run render only (on push)
-        if: github.event_name == 'push'
-        run: python3 render_html.py
-
-      - name: Commit rendered site to main
+      - name: Push rendered site to main
         run: |
           git config user.name "ReleaseRadar Bot"
           git config user.email "bot@releaseradar.io"
+
           git fetch origin main
           git checkout main
-          git checkout -b site-update || git switch site-update
-          git add .
-          git diff --quiet || git commit -m "Deploy latest render to main"
-          git push origin site-update
 
-      - name: Create Pull Request to Main
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: site-update
-          base: main
-          title: "Deploy latest rendered site"
-          body: "Auto-generated PR from build-staging workflow."
+          # Copy generated files from build-staging
+          git checkout build-staging -- index.html sitemap.xml site/
+
+          git add index.html sitemap.xml site/
+          git diff --quiet || git commit -m "Auto: Rendered site pushed from build-staging"
+          git push origin main
 
