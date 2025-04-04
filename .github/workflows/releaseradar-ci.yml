@@ -8,6 +8,9 @@ on:
     # Runs every 6 hours (midnight, 6am, noon, 6pm UTC)
     - cron: '0 */6 * * *'
 
+permissions:
+  contents: write 
+
 jobs:
   build-render:
     runs-on: ubuntu-latest
