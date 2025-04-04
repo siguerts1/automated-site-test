@@ -40,13 +40,13 @@
     "body": "This is a bug fix release. We are putting is out specifically to address a critical issue that could break archive node databases.\r\n\r\n- Fixed an issue for `--state.scheme=hash` where the log indexer would accidentally delete trie nodes. (#31525)\r\n- Fixed an issue with tx submission, where the local pool didn't track pending nonces correctly. (#31496)\r\n- The log indexer will now disable itself when hitting missing receipts in the database. (#31500)\r\n- Another txpool issue reorg issue in `ethclient/simulated.Backend` is fixed in this release. (#31228)\r\n- Memory allocation for trie operations has been reduced significantly. (#30932)\r\n- `eth_createAccessList` now supports state overrides like `eth_call`. (#31497)\r\n- `eth_createAccessList` will now exclude 7702 authorities from the result. (#31336)\r\n- The abigen library now correctly forwards access lists to `eth_estimateGas`. (#31394)\r\n\r\nFor a full rundown of the changes please consult the Geth 1.15.7 [release milestone](https://github.com/ethereum/go-ethereum/milestone/184?closed=1)\r\n\r\n---\r\n\r\nAs with all our previous releases, you can find the:\r\n\r\n- Pre-built binaries for all platforms on our [downloads page](https://geth.ethereum.org/downloads/).\r\n- Docker images published under [`ethereum/client-go`](https://cloud.docker.com/u/ethereum/repository/docker/ethereum/client-go).\r\n- Ubuntu packages in our [Launchpad PPA repository](https://launchpad.net/~ethereum/+archive/ubuntu/ethereum).\r\n- OSX packages in our [Homebrew Tap repository](https://github.com/ethereum/homebrew-ethereum).\r\n",
     "reactions": {
       "url": "https://api.github.com/repos/ethereum/go-ethereum/releases/209396090/reactions",
-      "total_count": 8,
-      "+1": 4,
+      "total_count": 12,
+      "+1": 5,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
       "confused": 0,
-      "heart": 4,
+      "heart": 7,
       "rocket": 0,
       "eyes": 0
     }

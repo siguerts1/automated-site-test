@@ -65,7 +65,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2926279,
-        "download_count": 9939,
+        "download_count": 10044,
         "created_at": "2024-09-11T12:37:22Z",
         "updated_at": "2024-09-11T12:37:22Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-aarch64-apple-darwin.tar.gz"
@@ -100,7 +100,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3040795,
-        "download_count": 23958,
+        "download_count": 24262,
         "created_at": "2024-09-11T12:38:13Z",
         "updated_at": "2024-09-11T12:38:13Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-aarch64-unknown-linux-gnu.tar.gz"
@@ -135,7 +135,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3059809,
-        "download_count": 415,
+        "download_count": 421,
         "created_at": "2024-09-11T12:38:13Z",
         "updated_at": "2024-09-11T12:38:13Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-arm-unknown-linux-gnueabihf.tar.gz"
@@ -170,7 +170,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3435988,
-        "download_count": 256,
+        "download_count": 261,
         "created_at": "2024-09-11T12:38:03Z",
         "updated_at": "2024-09-11T12:38:03Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-i686-unknown-linux-gnu.tar.gz"
@@ -205,7 +205,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3039146,
-        "download_count": 4300,
+        "download_count": 4351,
         "created_at": "2024-09-11T12:37:23Z",
         "updated_at": "2024-09-11T12:37:24Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-apple-darwin.tar.gz"
@@ -240,7 +240,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3336017,
-        "download_count": 11322,
+        "download_count": 11435,
         "created_at": "2024-09-11T12:40:03Z",
         "updated_at": "2024-09-11T12:40:03Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-pc-windows-msvc.zip"
@@ -275,7 +275,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3209048,
-        "download_count": 16500,
+        "download_count": 16690,
         "created_at": "2024-09-11T12:37:36Z",
         "updated_at": "2024-09-11T12:37:37Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-gnu.tar.gz"
@@ -310,7 +310,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3301354,
-        "download_count": 17965,
+        "download_count": 18144,
         "created_at": "2024-09-11T12:38:01Z",
         "updated_at": "2024-09-11T12:38:01Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/delta-0.18.2-x86_64-unknown-linux-musl.tar.gz"
@@ -345,7 +345,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2582764,
-        "download_count": 3884,
+        "download_count": 3919,
         "created_at": "2024-09-11T12:38:01Z",
         "updated_at": "2024-09-11T12:38:01Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/git-delta-musl_0.18.2_amd64.deb"
@@ -380,7 +380,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2504860,
-        "download_count": 17011,
+        "download_count": 17418,
         "created_at": "2024-09-11T12:37:36Z",
         "updated_at": "2024-09-11T12:37:37Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_amd64.deb"
@@ -415,7 +415,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2292336,
-        "download_count": 3503,
+        "download_count": 3652,
         "created_at": "2024-09-11T12:38:13Z",
         "updated_at": "2024-09-11T12:38:13Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_arm64.deb"
@@ -450,7 +450,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2286516,
-        "download_count": 575,
+        "download_count": 583,
         "created_at": "2024-09-11T12:38:13Z",
         "updated_at": "2024-09-11T12:38:13Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_armhf.deb"
@@ -485,7 +485,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2691360,
-        "download_count": 610,
+        "download_count": 619,
         "created_at": "2024-09-11T12:38:03Z",
         "updated_at": "2024-09-11T12:38:03Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.2/git-delta_0.18.2_i386.deb"
@@ -749,7 +749,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3289023,
-        "download_count": 2674,
+        "download_count": 2683,
         "created_at": "2024-08-24T12:43:00Z",
         "updated_at": "2024-08-24T12:43:00Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.1/delta-0.18.1-x86_64-pc-windows-msvc.zip"
@@ -784,7 +784,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3163035,
-        "download_count": 1779,
+        "download_count": 1780,
         "created_at": "2024-08-24T12:41:04Z",
         "updated_at": "2024-08-24T12:41:05Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.1/delta-0.18.1-x86_64-unknown-linux-gnu.tar.gz"
@@ -889,7 +889,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2469600,
-        "download_count": 2505,
+        "download_count": 2519,
         "created_at": "2024-08-24T12:41:04Z",
         "updated_at": "2024-08-24T12:41:05Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.1/git-delta_0.18.1_amd64.deb"
@@ -1258,7 +1258,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3287995,
-        "download_count": 1789,
+        "download_count": 1798,
         "created_at": "2024-08-16T12:52:16Z",
         "updated_at": "2024-08-16T12:52:16Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.0/delta-0.18.0-x86_64-pc-windows-msvc.zip"
@@ -1293,7 +1293,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3163457,
-        "download_count": 855,
+        "download_count": 856,
         "created_at": "2024-08-16T12:49:45Z",
         "updated_at": "2024-08-16T12:49:45Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.0/delta-0.18.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -1398,7 +1398,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2469824,
-        "download_count": 1141,
+        "download_count": 1147,
         "created_at": "2024-08-16T12:49:45Z",
         "updated_at": "2024-08-16T12:49:45Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.18.0/git-delta_0.18.0_amd64.deb"
@@ -1627,7 +1627,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3045456,
-        "download_count": 3209,
+        "download_count": 3211,
         "created_at": "2024-03-16T14:29:39Z",
         "updated_at": "2024-03-16T14:29:39Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.17.0/delta-0.17.0-aarch64-unknown-linux-gnu.tar.gz"
@@ -1767,7 +1767,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3296616,
-        "download_count": 7978,
+        "download_count": 7988,
         "created_at": "2024-03-16T14:31:36Z",
         "updated_at": "2024-03-16T14:31:36Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.17.0/delta-0.17.0-x86_64-pc-windows-msvc.zip"
@@ -1802,7 +1802,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3186468,
-        "download_count": 9195,
+        "download_count": 9199,
         "created_at": "2024-03-16T14:28:32Z",
         "updated_at": "2024-03-16T14:28:32Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.17.0/delta-0.17.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -1837,7 +1837,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3269233,
-        "download_count": 12533,
+        "download_count": 12548,
         "created_at": "2024-03-16T14:28:56Z",
         "updated_at": "2024-03-16T14:28:57Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.17.0/delta-0.17.0-x86_64-unknown-linux-musl.tar.gz"
@@ -1872,7 +1872,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2553216,
-        "download_count": 4116,
+        "download_count": 4123,
         "created_at": "2024-03-16T14:28:56Z",
         "updated_at": "2024-03-16T14:28:57Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.17.0/git-delta-musl_0.17.0_amd64.deb"
@@ -1907,7 +1907,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2481664,
-        "download_count": 18060,
+        "download_count": 18107,
         "created_at": "2024-03-16T14:28:32Z",
         "updated_at": "2024-03-16T14:28:32Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.17.0/git-delta_0.17.0_amd64.deb"
@@ -1942,7 +1942,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2287756,
-        "download_count": 1974,
+        "download_count": 1976,
         "created_at": "2024-03-16T14:29:39Z",
         "updated_at": "2024-03-16T14:29:39Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.17.0/git-delta_0.17.0_arm64.deb"
@@ -2101,7 +2101,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2535013,
-        "download_count": 5064,
+        "download_count": 5065,
         "created_at": "2023-06-03T14:12:07Z",
         "updated_at": "2023-06-03T14:12:07Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.16.5/delta-0.16.5-aarch64-apple-darwin.tar.gz"
@@ -2276,7 +2276,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 2960890,
-        "download_count": 13894,
+        "download_count": 13904,
         "created_at": "2023-06-03T14:11:06Z",
         "updated_at": "2023-06-03T14:11:07Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.16.5/delta-0.16.5-x86_64-pc-windows-msvc.zip"
@@ -2346,7 +2346,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2857592,
-        "download_count": 76295,
+        "download_count": 76567,
         "created_at": "2023-06-03T14:08:33Z",
         "updated_at": "2023-06-03T14:08:33Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.16.5/delta-0.16.5-x86_64-unknown-linux-musl.tar.gz"
@@ -2381,7 +2381,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2269808,
-        "download_count": 9077,
+        "download_count": 9083,
         "created_at": "2023-06-03T14:08:33Z",
         "updated_at": "2023-06-03T14:08:33Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.16.5/git-delta-musl_0.16.5_amd64.deb"
@@ -2416,7 +2416,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2206228,
-        "download_count": 25020,
+        "download_count": 25026,
         "created_at": "2023-06-03T14:07:41Z",
         "updated_at": "2023-06-03T14:07:41Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_0.16.5_amd64.deb"
@@ -2680,7 +2680,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 2961323,
-        "download_count": 927,
+        "download_count": 936,
         "created_at": "2023-06-02T23:27:26Z",
         "updated_at": "2023-06-02T23:27:26Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.16.4/delta-0.16.4-x86_64-pc-windows-msvc.zip"
@@ -3014,7 +3014,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 2955258,
-        "download_count": 5861,
+        "download_count": 5870,
         "created_at": "2022-12-03T20:34:14Z",
         "updated_at": "2022-12-03T20:34:15Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.15.1/delta-0.15.1-x86_64-pc-windows-msvc.zip"
@@ -3049,7 +3049,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2782183,
-        "download_count": 9354,
+        "download_count": 9360,
         "created_at": "2022-12-03T20:29:17Z",
         "updated_at": "2022-12-03T20:29:17Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.15.1/delta-0.15.1-x86_64-unknown-linux-gnu.tar.gz"
@@ -3119,7 +3119,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2259852,
-        "download_count": 5976,
+        "download_count": 5977,
         "created_at": "2022-12-03T20:32:49Z",
         "updated_at": "2022-12-03T20:32:50Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.15.1/git-delta-musl_0.15.1_amd64.deb"
@@ -3593,7 +3593,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2856176,
-        "download_count": 5357,
+        "download_count": 5406,
         "created_at": "2022-12-03T15:14:57Z",
         "updated_at": "2022-12-03T15:14:57Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.15.0/delta-0.15.0-x86_64-unknown-linux-musl.tar.gz"
@@ -4032,7 +4032,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2774390,
-        "download_count": 5187,
+        "download_count": 5189,
         "created_at": "2022-08-31T21:01:16Z",
         "updated_at": "2022-08-31T21:01:16Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.14.0/delta-0.14.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -4067,7 +4067,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2854450,
-        "download_count": 4188,
+        "download_count": 4189,
         "created_at": "2022-08-31T21:02:34Z",
         "updated_at": "2022-08-31T21:02:35Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.14.0/delta-0.14.0-x86_64-unknown-linux-musl.tar.gz"
@@ -4102,7 +4102,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2253632,
-        "download_count": 4687,
+        "download_count": 4718,
         "created_at": "2022-08-31T21:02:34Z",
         "updated_at": "2022-08-31T21:02:34Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.14.0/git-delta-musl_0.14.0_amd64.deb"
@@ -4137,7 +4137,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2186812,
-        "download_count": 12269,
+        "download_count": 12274,
         "created_at": "2022-08-31T21:01:16Z",
         "updated_at": "2022-08-31T21:01:17Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.14.0/git-delta_0.14.0_amd64.deb"
@@ -4172,7 +4172,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2018000,
-        "download_count": 1992,
+        "download_count": 1997,
         "created_at": "2022-08-31T21:02:26Z",
         "updated_at": "2022-08-31T21:02:27Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.14.0/git-delta_0.14.0_arm64.deb"
@@ -5085,7 +5085,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2105000,
-        "download_count": 24106,
+        "download_count": 24110,
         "created_at": "2022-03-06T15:32:54Z",
         "updated_at": "2022-03-06T15:32:54Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.12.1/git-delta_0.12.1_amd64.deb"
@@ -5524,7 +5524,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2115612,
-        "download_count": 635,
+        "download_count": 636,
         "created_at": "2022-02-14T19:04:00Z",
         "updated_at": "2022-02-14T19:04:01Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.12.0/git-delta-musl_0.12.0_amd64.deb"
@@ -5998,7 +5998,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2089724,
-        "download_count": 18166,
+        "download_count": 18245,
         "created_at": "2021-12-15T23:59:52Z",
         "updated_at": "2021-12-15T23:59:52Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.11.3/git-delta-musl_0.11.3_amd64.deb"
@@ -8285,7 +8285,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2582157,
-        "download_count": 730,
+        "download_count": 734,
         "created_at": "2021-11-27T13:45:16Z",
         "updated_at": "2021-11-27T13:45:16Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.10.2/delta-0.10.2-x86_64-unknown-linux-gnu.tar.gz"
@@ -10169,7 +10169,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2375898,
-        "download_count": 1969,
+        "download_count": 1971,
         "created_at": "2021-10-27T01:00:28Z",
         "updated_at": "2021-10-27T01:00:29Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.9.1/delta-0.9.1-x86_64-unknown-linux-gnu.tar.gz"
@@ -11221,7 +11221,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 1799488,
-        "download_count": 6425,
+        "download_count": 6426,
         "created_at": "2021-07-13T10:48:41Z",
         "updated_at": "2021-07-13T10:48:41Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.8.3/git-delta_0.8.3_amd64.deb"
@@ -11589,7 +11589,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2257097,
-        "download_count": 841,
+        "download_count": 842,
         "created_at": "2021-06-29T12:10:21Z",
         "updated_at": "2021-06-29T12:10:21Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.8.2/delta-0.8.2-x86_64-unknown-linux-gnu.tar.gz"
@@ -12605,7 +12605,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 1845556,
-        "download_count": 5430,
+        "download_count": 5437,
         "created_at": "2021-05-28T18:40:41Z",
         "updated_at": "2021-05-28T18:40:41Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.8.0/git-delta-musl_0.8.0_amd64.deb"
@@ -13008,7 +13008,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2282136,
-        "download_count": 2321,
+        "download_count": 2323,
         "created_at": "2021-03-29T22:55:42Z",
         "updated_at": "2021-03-29T22:55:43Z",
         "browser_download_url": "https://github.com/dandavison/delta/releases/download/0.7.1/delta-0.7.1-x86_64-unknown-linux-gnu.tar.gz"

@@ -65,7 +65,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2433760,
-        "download_count": 898,
+        "download_count": 923,
         "created_at": "2025-01-07T19:14:16Z",
         "updated_at": "2025-01-07T19:14:16Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-musl_0.25.0_arm64.deb"
@@ -100,7 +100,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2669668,
-        "download_count": 1670,
+        "download_count": 1716,
         "created_at": "2025-01-07T19:15:46Z",
         "updated_at": "2025-01-07T19:15:46Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-musl_0.25.0_musl-linux-amd64.deb"
@@ -135,7 +135,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2691556,
-        "download_count": 341,
+        "download_count": 353,
         "created_at": "2025-01-07T19:15:29Z",
         "updated_at": "2025-01-07T19:15:29Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-musl_0.25.0_musl-linux-i686.deb"
@@ -170,7 +170,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2942334,
-        "download_count": 3962,
+        "download_count": 4078,
         "created_at": "2025-01-07T19:13:09Z",
         "updated_at": "2025-01-07T19:13:09Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-aarch64-apple-darwin.tar.gz"
@@ -205,7 +205,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3045108,
-        "download_count": 1777,
+        "download_count": 1820,
         "created_at": "2025-01-07T19:14:23Z",
         "updated_at": "2025-01-07T19:14:24Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-aarch64-unknown-linux-gnu.tar.gz"
@@ -240,7 +240,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3087818,
-        "download_count": 1883,
+        "download_count": 1946,
         "created_at": "2025-01-07T19:14:16Z",
         "updated_at": "2025-01-07T19:14:17Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-aarch64-unknown-linux-musl.tar.gz"
@@ -275,7 +275,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3091127,
-        "download_count": 319,
+        "download_count": 332,
         "created_at": "2025-01-07T19:13:58Z",
         "updated_at": "2025-01-07T19:13:58Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-arm-unknown-linux-gnueabihf.tar.gz"
@@ -310,7 +310,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3124937,
-        "download_count": 178,
+        "download_count": 187,
         "created_at": "2025-01-07T19:14:08Z",
         "updated_at": "2025-01-07T19:14:09Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-arm-unknown-linux-musleabihf.tar.gz"
@@ -345,7 +345,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3125128,
-        "download_count": 579,
+        "download_count": 601,
         "created_at": "2025-01-07T19:14:51Z",
         "updated_at": "2025-01-07T19:14:52Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-i686-pc-windows-msvc.zip"
@@ -380,7 +380,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3266415,
-        "download_count": 318,
+        "download_count": 329,
         "created_at": "2025-01-07T19:14:33Z",
         "updated_at": "2025-01-07T19:14:34Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-i686-unknown-linux-gnu.tar.gz"
@@ -415,7 +415,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3257614,
-        "download_count": 193,
+        "download_count": 201,
         "created_at": "2025-01-07T19:15:29Z",
         "updated_at": "2025-01-07T19:15:29Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-i686-unknown-linux-musl.tar.gz"
@@ -450,7 +450,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3070925,
-        "download_count": 1996,
+        "download_count": 2049,
         "created_at": "2025-01-07T19:16:05Z",
         "updated_at": "2025-01-07T19:16:05Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-apple-darwin.tar.gz"
@@ -485,7 +485,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3404469,
-        "download_count": 902,
+        "download_count": 924,
         "created_at": "2025-01-07T19:18:08Z",
         "updated_at": "2025-01-07T19:18:08Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-pc-windows-gnu.zip"
@@ -520,7 +520,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3339506,
-        "download_count": 19406,
+        "download_count": 19771,
         "created_at": "2025-01-07T19:16:10Z",
         "updated_at": "2025-01-07T19:16:10Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-pc-windows-msvc.zip"
@@ -555,7 +555,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3234894,
-        "download_count": 16682,
+        "download_count": 17011,
         "created_at": "2025-01-07T19:15:33Z",
         "updated_at": "2025-01-07T19:15:33Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -590,7 +590,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3275963,
-        "download_count": 32409,
+        "download_count": 33283,
         "created_at": "2025-01-07T19:15:46Z",
         "updated_at": "2025-01-07T19:15:46Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-unknown-linux-musl.tar.gz"
@@ -625,7 +625,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2631980,
-        "download_count": 7087,
+        "download_count": 7289,
         "created_at": "2025-01-07T19:15:33Z",
         "updated_at": "2025-01-07T19:15:33Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat_0.25.0_amd64.deb"
@@ -660,7 +660,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2386468,
-        "download_count": 606,
+        "download_count": 636,
         "created_at": "2025-01-07T19:14:23Z",
         "updated_at": "2025-01-07T19:14:24Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat_0.25.0_arm64.deb"
@@ -695,7 +695,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2415520,
-        "download_count": 180,
+        "download_count": 189,
         "created_at": "2025-01-07T19:13:58Z",
         "updated_at": "2025-01-07T19:13:58Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat_0.25.0_armhf.deb"
@@ -730,7 +730,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2691360,
-        "download_count": 170,
+        "download_count": 183,
         "created_at": "2025-01-07T19:14:33Z",
         "updated_at": "2025-01-07T19:14:33Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat_0.25.0_i686.deb"
@@ -765,7 +765,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2447440,
-        "download_count": 159,
+        "download_count": 167,
         "created_at": "2025-01-07T19:14:08Z",
         "updated_at": "2025-01-07T19:14:09Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.25.0/bat_0.25.0_musl-linux-armhf.deb"
@@ -854,7 +854,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2489744,
-        "download_count": 19804,
+        "download_count": 19825,
         "created_at": "2023-10-11T18:24:59Z",
         "updated_at": "2023-10-11T18:25:00Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-musl_0.24.0_amd64.deb"
@@ -924,7 +924,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2856747,
-        "download_count": 11521,
+        "download_count": 11543,
         "created_at": "2023-10-11T18:25:04Z",
         "updated_at": "2023-10-11T18:25:05Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-aarch64-unknown-linux-gnu.tar.gz"
@@ -1029,7 +1029,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 2932087,
-        "download_count": 2459,
+        "download_count": 2463,
         "created_at": "2023-10-11T18:29:22Z",
         "updated_at": "2023-10-11T18:29:22Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-i686-pc-windows-msvc.zip"
@@ -1134,7 +1134,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2858489,
-        "download_count": 26630,
+        "download_count": 26639,
         "created_at": "2023-10-11T18:22:58Z",
         "updated_at": "2023-10-11T18:22:58Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-apple-darwin.tar.gz"
@@ -1204,7 +1204,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3150280,
-        "download_count": 56296,
+        "download_count": 56310,
         "created_at": "2023-10-11T18:28:14Z",
         "updated_at": "2023-10-11T18:28:14Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-pc-windows-msvc.zip"
@@ -1239,7 +1239,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3005996,
-        "download_count": 56509,
+        "download_count": 56605,
         "created_at": "2023-10-11T18:24:27Z",
         "updated_at": "2023-10-11T18:24:27Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -1274,7 +1274,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3038788,
-        "download_count": 199242,
+        "download_count": 199292,
         "created_at": "2023-10-11T18:24:59Z",
         "updated_at": "2023-10-11T18:25:00Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-unknown-linux-musl.tar.gz"
@@ -1309,7 +1309,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2459628,
-        "download_count": 59369,
+        "download_count": 59553,
         "created_at": "2023-10-11T18:24:27Z",
         "updated_at": "2023-10-11T18:24:27Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat_0.24.0_amd64.deb"
@@ -1344,7 +1344,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2253008,
-        "download_count": 3673,
+        "download_count": 3676,
         "created_at": "2023-10-11T18:25:04Z",
         "updated_at": "2023-10-11T18:25:05Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.24.0/bat_0.24.0_arm64.deb"
@@ -1503,7 +1503,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2312156,
-        "download_count": 13062,
+        "download_count": 13074,
         "created_at": "2023-03-25T09:42:48Z",
         "updated_at": "2023-03-25T09:42:48Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-musl_0.23.0_amd64.deb"
@@ -1573,7 +1573,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2644373,
-        "download_count": 10308,
+        "download_count": 10323,
         "created_at": "2023-03-25T09:38:36Z",
         "updated_at": "2023-03-25T09:38:37Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-aarch64-unknown-linux-gnu.tar.gz"
@@ -1678,7 +1678,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 2771601,
-        "download_count": 1377,
+        "download_count": 1381,
         "created_at": "2023-03-25T09:43:43Z",
         "updated_at": "2023-03-25T09:43:44Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-i686-pc-windows-msvc.zip"
@@ -1748,7 +1748,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2823970,
-        "download_count": 1909,
+        "download_count": 1911,
         "created_at": "2023-03-25T09:38:52Z",
         "updated_at": "2023-03-25T09:38:53Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-i686-unknown-linux-musl.tar.gz"
@@ -1783,7 +1783,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2665256,
-        "download_count": 7462,
+        "download_count": 7466,
         "created_at": "2023-03-25T09:43:28Z",
         "updated_at": "2023-03-25T09:43:29Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-apple-darwin.tar.gz"
@@ -1853,7 +1853,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 2982920,
-        "download_count": 20935,
+        "download_count": 20942,
         "created_at": "2023-03-25T09:47:09Z",
         "updated_at": "2023-03-25T09:47:09Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-pc-windows-msvc.zip"
@@ -1888,7 +1888,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2806915,
-        "download_count": 31941,
+        "download_count": 31972,
         "created_at": "2023-03-25T09:41:54Z",
         "updated_at": "2023-03-25T09:41:54Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -1923,7 +1923,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2834054,
-        "download_count": 56183,
+        "download_count": 56199,
         "created_at": "2023-03-25T09:42:48Z",
         "updated_at": "2023-03-25T09:42:49Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-unknown-linux-musl.tar.gz"
@@ -1958,7 +1958,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2285756,
-        "download_count": 24457,
+        "download_count": 24484,
         "created_at": "2023-03-25T09:41:54Z",
         "updated_at": "2023-03-25T09:41:54Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat_0.23.0_amd64.deb"
@@ -1993,7 +1993,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2076088,
-        "download_count": 1247,
+        "download_count": 1249,
         "created_at": "2023-03-25T09:38:36Z",
         "updated_at": "2023-03-25T09:38:37Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat_0.23.0_arm64.deb"
@@ -2152,7 +2152,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2293192,
-        "download_count": 19937,
+        "download_count": 19943,
         "created_at": "2022-09-10T18:14:35Z",
         "updated_at": "2022-09-10T18:14:35Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.22.1/bat-musl_0.22.1_amd64.deb"
@@ -2537,7 +2537,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2782660,
-        "download_count": 21017,
+        "download_count": 21026,
         "created_at": "2022-09-10T18:13:57Z",
         "updated_at": "2022-09-10T18:13:57Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.22.1/bat-v0.22.1-x86_64-unknown-linux-gnu.tar.gz"
@@ -2572,7 +2572,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2814475,
-        "download_count": 60819,
+        "download_count": 60831,
         "created_at": "2022-09-10T18:14:35Z",
         "updated_at": "2022-09-10T18:14:35Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.22.1/bat-v0.22.1-x86_64-unknown-linux-musl.tar.gz"
@@ -2607,7 +2607,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2265720,
-        "download_count": 51800,
+        "download_count": 51844,
         "created_at": "2022-09-10T18:13:57Z",
         "updated_at": "2022-09-10T18:13:57Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.22.1/bat_0.22.1_amd64.deb"
@@ -2642,7 +2642,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2063532,
-        "download_count": 7064,
+        "download_count": 7097,
         "created_at": "2022-09-10T18:19:08Z",
         "updated_at": "2022-09-10T18:19:09Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.22.1/bat_0.22.1_arm64.deb"
@@ -3221,7 +3221,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2807972,
-        "download_count": 2222,
+        "download_count": 2225,
         "created_at": "2022-09-06T21:12:12Z",
         "updated_at": "2022-09-06T21:12:13Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.22.0/bat-v0.22.0-x86_64-unknown-linux-musl.tar.gz"
@@ -3256,7 +3256,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2260960,
-        "download_count": 2708,
+        "download_count": 2722,
         "created_at": "2022-09-06T21:09:41Z",
         "updated_at": "2022-09-06T21:09:42Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.22.0/bat_0.22.0_amd64.deb"
@@ -3450,7 +3450,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2252984,
-        "download_count": 8027,
+        "download_count": 8028,
         "created_at": "2022-05-12T11:43:34Z",
         "updated_at": "2022-05-12T11:43:34Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.21.0/bat-musl_0.21.0_amd64.deb"
@@ -3835,7 +3835,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2698308,
-        "download_count": 8755,
+        "download_count": 8757,
         "created_at": "2022-05-12T11:44:27Z",
         "updated_at": "2022-05-12T11:44:27Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.21.0/bat-v0.21.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -3870,7 +3870,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2746491,
-        "download_count": 18219,
+        "download_count": 18222,
         "created_at": "2022-05-12T11:43:34Z",
         "updated_at": "2022-05-12T11:43:35Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.21.0/bat-v0.21.0-x86_64-unknown-linux-musl.tar.gz"
@@ -3905,7 +3905,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2201212,
-        "download_count": 23297,
+        "download_count": 23300,
         "created_at": "2022-05-12T11:44:27Z",
         "updated_at": "2022-05-12T11:44:27Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.21.0/bat_0.21.0_amd64.deb"
@@ -4099,7 +4099,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2154060,
-        "download_count": 18690,
+        "download_count": 18878,
         "created_at": "2022-02-27T07:26:21Z",
         "updated_at": "2022-02-27T07:26:21Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-musl_0.20.0_amd64.deb"
@@ -4519,7 +4519,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2609339,
-        "download_count": 9073,
+        "download_count": 9076,
         "created_at": "2022-02-27T07:26:21Z",
         "updated_at": "2022-02-27T07:26:22Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.20.0/bat-v0.20.0-x86_64-unknown-linux-musl.tar.gz"
@@ -4554,7 +4554,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2102704,
-        "download_count": 16042,
+        "download_count": 16043,
         "created_at": "2022-02-27T07:21:20Z",
         "updated_at": "2022-02-27T07:21:20Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.20.0/bat_0.20.0_amd64.deb"
@@ -4748,7 +4748,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2142524,
-        "download_count": 4925,
+        "download_count": 4933,
         "created_at": "2022-01-08T17:10:57Z",
         "updated_at": "2022-01-08T17:11:00Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.19.0/bat-musl_0.19.0_amd64.deb"
@@ -5168,7 +5168,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2596839,
-        "download_count": 6823,
+        "download_count": 6826,
         "created_at": "2022-01-08T17:10:57Z",
         "updated_at": "2022-01-08T17:10:58Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.19.0/bat-v0.19.0-x86_64-unknown-linux-musl.tar.gz"
@@ -5203,7 +5203,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2095752,
-        "download_count": 15513,
+        "download_count": 15515,
         "created_at": "2022-01-08T17:07:08Z",
         "updated_at": "2022-01-08T17:07:09Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.19.0/bat_0.19.0_amd64.deb"
@@ -5397,7 +5397,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2055780,
-        "download_count": 6862,
+        "download_count": 6867,
         "created_at": "2021-08-22T16:50:43Z",
         "updated_at": "2021-08-22T16:50:44Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.18.3/bat-musl_0.18.3_amd64.deb"
@@ -5782,7 +5782,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2507743,
-        "download_count": 8929,
+        "download_count": 8935,
         "created_at": "2021-08-22T16:50:43Z",
         "updated_at": "2021-08-22T16:50:44Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.18.3/bat-v0.18.3-x86_64-unknown-linux-musl.tar.gz"
@@ -5817,7 +5817,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2025940,
-        "download_count": 25516,
+        "download_count": 25524,
         "created_at": "2021-08-22T16:48:44Z",
         "updated_at": "2021-08-22T16:48:45Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.18.3/bat_0.18.3_amd64.deb"
@@ -6395,7 +6395,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2516734,
-        "download_count": 5357,
+        "download_count": 5362,
         "created_at": "2021-07-13T10:15:50Z",
         "updated_at": "2021-07-13T10:15:50Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.18.2/bat-v0.18.2-x86_64-unknown-linux-musl.tar.gz"
@@ -6430,7 +6430,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2033476,
-        "download_count": 12824,
+        "download_count": 12827,
         "created_at": "2021-07-13T10:08:26Z",
         "updated_at": "2021-07-13T10:08:27Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.18.2/bat_0.18.2_amd64.deb"
@@ -6973,7 +6973,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2541832,
-        "download_count": 4338,
+        "download_count": 4339,
         "created_at": "2021-05-13T08:17:44Z",
         "updated_at": "2021-05-13T08:17:44Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.18.1/bat-v0.18.1-x86_64-unknown-linux-gnu.tar.gz"
@@ -7008,7 +7008,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2564049,
-        "download_count": 2327,
+        "download_count": 2330,
         "created_at": "2021-05-13T08:16:43Z",
         "updated_at": "2021-05-13T08:16:44Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.18.1/bat-v0.18.1-x86_64-unknown-linux-musl.tar.gz"
@@ -7043,7 +7043,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2060152,
-        "download_count": 20628,
+        "download_count": 20637,
         "created_at": "2021-05-13T08:17:44Z",
         "updated_at": "2021-05-13T08:17:44Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.18.1/bat_0.18.1_amd64.deb"
@@ -7609,7 +7609,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2602252,
-        "download_count": 2823,
+        "download_count": 2826,
         "created_at": "2021-02-28T22:32:33Z",
         "updated_at": "2021-02-28T22:32:34Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.18.0/bat-v0.18.0-x86_64-unknown-linux-musl.tar.gz"
@@ -8175,7 +8175,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2532573,
-        "download_count": 3841,
+        "download_count": 3844,
         "created_at": "2020-11-24T20:56:32Z",
         "updated_at": "2020-11-24T20:56:33Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.17.1/bat-v0.17.1-x86_64-unknown-linux-musl.tar.gz"
@@ -8741,7 +8741,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2532620,
-        "download_count": 720,
+        "download_count": 723,
         "created_at": "2020-11-23T16:06:09Z",
         "updated_at": "2020-11-23T16:06:09Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.17.0/bat-v0.17.0-x86_64-unknown-linux-musl.tar.gz"
@@ -9307,7 +9307,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2504557,
-        "download_count": 2689,
+        "download_count": 2692,
         "created_at": "2020-10-02T21:37:18Z",
         "updated_at": "2020-10-02T21:37:19Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.16.0/bat-v0.16.0-x86_64-unknown-linux-musl.tar.gz"
@@ -9523,7 +9523,7 @@
         "content_type": "application/x-debian-package",
         "state": "uploaded",
         "size": 2010484,
-        "download_count": 3692,
+        "download_count": 3693,
         "created_at": "2020-05-27T10:17:27Z",
         "updated_at": "2020-05-27T10:17:27Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.15.4/bat-musl_0.15.4_amd64.deb"
@@ -9768,7 +9768,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2487352,
-        "download_count": 6518,
+        "download_count": 6521,
         "created_at": "2020-05-27T10:17:26Z",
         "updated_at": "2020-05-27T10:17:26Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.15.4/bat-v0.15.4-x86_64-unknown-linux-musl.tar.gz"
@@ -9803,7 +9803,7 @@
         "content_type": "application/x-debian-package",
         "state": "uploaded",
         "size": 1965228,
-        "download_count": 26316,
+        "download_count": 26318,
         "created_at": "2020-05-27T10:17:26Z",
         "updated_at": "2020-05-27T10:17:26Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.15.4/bat_0.15.4_amd64.deb"
@@ -10229,7 +10229,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2495388,
-        "download_count": 727,
+        "download_count": 730,
         "created_at": "2020-05-26T06:40:04Z",
         "updated_at": "2020-05-26T06:40:05Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.15.3/bat-v0.15.3-x86_64-unknown-linux-musl.tar.gz"
@@ -10264,7 +10264,7 @@
         "content_type": "application/x-debian-package",
         "state": "uploaded",
         "size": 1969556,
-        "download_count": 366,
+        "download_count": 368,
         "created_at": "2020-05-26T06:40:49Z",
         "updated_at": "2020-05-26T06:40:50Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.15.3/bat_0.15.3_amd64.deb"
@@ -10690,7 +10690,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2495600,
-        "download_count": 733,
+        "download_count": 736,
         "created_at": "2020-05-25T15:42:39Z",
         "updated_at": "2020-05-25T15:42:39Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.15.2/bat-v0.15.2-x86_64-unknown-linux-musl.tar.gz"
@@ -11151,7 +11151,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2486348,
-        "download_count": 1031,
+        "download_count": 1034,
         "created_at": "2020-05-11T18:55:08Z",
         "updated_at": "2020-05-11T18:55:08Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.15.1/bat-v0.15.1-x86_64-unknown-linux-musl.tar.gz"
@@ -11612,7 +11612,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2472459,
-        "download_count": 1225,
+        "download_count": 1228,
         "created_at": "2020-04-25T11:50:46Z",
         "updated_at": "2020-04-25T11:50:46Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.15.0/bat-v0.15.0-x86_64-unknown-linux-musl.tar.gz"
@@ -12073,7 +12073,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2519976,
-        "download_count": 741,
+        "download_count": 744,
         "created_at": "2020-04-22T22:47:33Z",
         "updated_at": "2020-04-22T22:47:33Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.14.0/bat-v0.14.0-x86_64-unknown-linux-musl.tar.gz"
@@ -12534,7 +12534,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2400857,
-        "download_count": 1333,
+        "download_count": 1336,
         "created_at": "2020-03-22T12:33:30Z",
         "updated_at": "2020-03-22T12:33:31Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.13.0/bat-v0.13.0-x86_64-unknown-linux-musl.tar.gz"
@@ -12995,7 +12995,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2361849,
-        "download_count": 41957,
+        "download_count": 41960,
         "created_at": "2019-09-03T06:41:37Z",
         "updated_at": "2019-09-03T06:41:37Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-v0.12.1-x86_64-unknown-linux-musl.tar.gz"
@@ -13030,7 +13030,7 @@
         "content_type": "application/x-debian-package",
         "state": "uploaded",
         "size": 1876040,
-        "download_count": 35840,
+        "download_count": 35844,
         "created_at": "2019-09-03T06:38:09Z",
         "updated_at": "2019-09-03T06:38:09Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.12.1/bat_0.12.1_amd64.deb"
@@ -13456,7 +13456,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2362108,
-        "download_count": 735,
+        "download_count": 738,
         "created_at": "2019-08-31T19:36:14Z",
         "updated_at": "2019-08-31T19:36:14Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.12.0/bat-v0.12.0-x86_64-unknown-linux-musl.tar.gz"
@@ -13917,7 +13917,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2258312,
-        "download_count": 2417,
+        "download_count": 2420,
         "created_at": "2019-05-15T21:53:05Z",
         "updated_at": "2019-05-15T21:53:06Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.11.0/bat-v0.11.0-x86_64-unknown-linux-musl.tar.gz"
@@ -14378,7 +14378,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2291677,
-        "download_count": 1817,
+        "download_count": 1820,
         "created_at": "2019-02-07T23:18:10Z",
         "updated_at": "2019-02-07T23:18:10Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.10.0/bat-v0.10.0-x86_64-unknown-linux-musl.tar.gz"
@@ -14839,7 +14839,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2383909,
-        "download_count": 3741,
+        "download_count": 3743,
         "created_at": "2018-11-11T12:48:54Z",
         "updated_at": "2018-11-11T12:48:54Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.9.0/bat-v0.9.0-x86_64-unknown-linux-musl.tar.gz"
@@ -14874,7 +14874,7 @@
         "content_type": "application/x-debian-package",
         "state": "uploaded",
         "size": 1811858,
-        "download_count": 21942,
+        "download_count": 21943,
         "created_at": "2018-11-11T12:44:51Z",
         "updated_at": "2018-11-11T12:44:52Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.9.0/bat_0.9.0_amd64.deb"
@@ -15090,7 +15090,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2040015,
-        "download_count": 4929,
+        "download_count": 4930,
         "created_at": "2018-10-17T22:33:55Z",
         "updated_at": "2018-10-17T22:33:55Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.8.0/bat-v0.8.0-aarch64-unknown-linux-gnu.tar.gz"
@@ -15300,7 +15300,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2336133,
-        "download_count": 859,
+        "download_count": 860,
         "created_at": "2018-10-17T22:19:26Z",
         "updated_at": "2018-10-17T22:19:26Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.8.0/bat-v0.8.0-x86_64-unknown-linux-musl.tar.gz"
@@ -15761,7 +15761,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 2264405,
-        "download_count": 2486,
+        "download_count": 2490,
         "created_at": "2018-09-23T09:01:34Z",
         "updated_at": "2018-09-23T09:01:34Z",
         "browser_download_url": "https://github.com/sharkdp/bat/releases/download/v0.7.1/bat-v0.7.1-x86_64-unknown-linux-musl.tar.gz"

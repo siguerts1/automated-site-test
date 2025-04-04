@@ -10,6 +10,61 @@
   <h1>🚀 langchain-ai/langchain - Release Notes</h1>
   
     <section>
+      <h2>langchain-perplexity==0.1.0 (2025-04-03)</h2>
+      <pre>Initial release
+
+Bump `langchain-core` version in perplexity's `pyproject.toml` (#30647)
+partners: Add Perplexity Chat Integration (#30618)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-openai==0.3.12 (2025-04-02)</h2>
+      <pre>Changes since langchain-openai==0.3.11
+
+openai[patch]: upgrade tiktoken and fix test (#30621)
+openai: release 0.3.12 (#30616)
+openai[patch]: support structured output and tools (#30581)
+openai[patch]: ignore file blocks when counting tokens (#30601)
+langchain-openai: Support token counting for o-series models in ChatOpenAI (#30542)
+docs,langchain-community: Fix typos in docs and code (#30541)</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>langchain-core==0.3.50 (2025-04-02)</h2>
+      <pre>Changes since langchain-core==0.3.49
+
+Bug fixes:
+
+core[patch]: Propagate config_factories in RunnableBinding (#30603)
+core[patch]: pydantic 2.11 compat (#30554)
+core[patch]: Include delayed inputs in langchain tracer (#30546)
+core[patch]: fix loss of partially initialized variables during prompt composition (#30096)
+core[patch]: stop deleting records with "scoped_full" when doc is empty (#30520) -- this is a fix for the "scoped_full" mode in the indexing API.
+
+
+Internal:
+
+core[patch]: specify default event loop scope in pyproject.toml (#30543)
+
+Make linting rules stricter
+
+core: Bump ruff version to 0.11 (#30519)
+core: Fix test_stream_error_callback (#30228)
+core: Add ruff rules for PLW (Pylint Warnings) (#29288)
+core: Add ruff rules G, FA, INP, AIR and ISC (#29334)
+core: Add ruff rules for Pylint PLC (Convention) and PLE (Errors) (#29286)
+core: Add ruff rule FBT003 (boolean-trap) (#29424)
+core: Add ruff rules PERF (#29375)
+core: Add ruff rules PT (pytest) (#29381)
+core: Add ruff rules S110 and S112 (#30599)
+core: Add ruff rules D (docstring) (#29406)
+core: Accept ALL ruff rules with exclusions (#30595)</pre>
+    </section>
+    <hr />
+  
+    <section>
       <h2>langchain-groq==0.3.2 (2025-03-31)</h2>
       <pre>Changes since langchain-groq==0.3.1
 
@@ -379,40 +434,6 @@ mistral[patch]: support model_kwargs (#29838)</pre>
 core: release 0.3.45 (#30277)
 fix(core): Ignore missing secrets on deserialization (#30252)
 openai[patch]: support Responses API (#30231)</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>langchain-core==0.3.45-rc.1 (2025-03-12)</h2>
-      <pre>Changes since langchain-core==0.3.44
-
-core rc 0.3.45-rc.1
-Merge branch 'master' into cc/oai_responses
-streaming
-fmt
-fmt</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>langchain-core==0.3.44 (2025-03-11)</h2>
-      <pre>Changes since langchain-core==0.3.43
-
-core[patch]: release 0.3.44 (#30236)
-core[patch]: support single-node subgraphs and put subgraph nodes under the respective subgraphs (#30234)
-Flush (#30157)</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>langchain-openai==0.3.8 (2025-03-07)</h2>
-      <pre>Changes since langchain-openai==0.3.7
-
-openai[patch]: release 0.3.8 (#30164)
-core[patch]: update structured output tracing (#30123)
-core, openai, standard-tests: improve OpenAI compatibility with Anthropic content blocks (#30128)
-docs: Fix typo in code samples for max_tokens_for_prompt (#30088)
-openai[patch]: add unit test (#30022)</pre>
     </section>
     <hr />
   

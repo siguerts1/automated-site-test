@@ -100,7 +100,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6264968,
-        "download_count": 42,
+        "download_count": 46,
         "created_at": "2025-03-21T13:26:32Z",
         "updated_at": "2025-03-21T13:26:33Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.4/posthog-cli-aarch64-apple-darwin-update"
@@ -135,7 +135,7 @@
         "content_type": "application/x-xz",
         "state": "uploaded",
         "size": 2414908,
-        "download_count": 52,
+        "download_count": 56,
         "created_at": "2025-03-21T13:26:32Z",
         "updated_at": "2025-03-21T13:26:33Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.4/posthog-cli-aarch64-apple-darwin.tar.xz"
@@ -345,7 +345,7 @@
         "content_type": "application/x-shellscript",
         "state": "uploaded",
         "size": 46719,
-        "download_count": 198,
+        "download_count": 301,
         "created_at": "2025-03-21T13:26:33Z",
         "updated_at": "2025-03-21T13:26:34Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.4/posthog-cli-installer.sh"
@@ -485,7 +485,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 5430272,
-        "download_count": 2,
+        "download_count": 5,
         "created_at": "2025-03-21T13:26:34Z",
         "updated_at": "2025-03-21T13:26:34Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.4/posthog-cli-x86_64-pc-windows-msvc-update"
@@ -520,7 +520,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 8501216,
-        "download_count": 11,
+        "download_count": 14,
         "created_at": "2025-03-21T13:26:34Z",
         "updated_at": "2025-03-21T13:26:35Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.4/posthog-cli-x86_64-pc-windows-msvc.zip"
@@ -590,7 +590,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 11911728,
-        "download_count": 141,
+        "download_count": 223,
         "created_at": "2025-03-21T13:26:34Z",
         "updated_at": "2025-03-21T13:26:35Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.4/posthog-cli-x86_64-unknown-linux-gnu-update"
@@ -625,7 +625,7 @@
         "content_type": "application/x-xz",
         "state": "uploaded",
         "size": 2849912,
-        "download_count": 147,
+        "download_count": 230,
         "created_at": "2025-03-21T13:26:34Z",
         "updated_at": "2025-03-21T13:26:37Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.4/posthog-cli-x86_64-unknown-linux-gnu.tar.xz"
@@ -695,7 +695,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 12240520,
-        "download_count": 1,
+        "download_count": 8,
         "created_at": "2025-03-21T13:26:35Z",
         "updated_at": "2025-03-21T13:26:36Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.4/posthog-cli-x86_64-unknown-linux-musl-update"
@@ -730,7 +730,7 @@
         "content_type": "application/x-xz",
         "state": "uploaded",
         "size": 2914212,
-        "download_count": 3,
+        "download_count": 10,
         "created_at": "2025-03-21T13:26:35Z",
         "updated_at": "2025-03-21T13:26:36Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.4/posthog-cli-x86_64-unknown-linux-musl.tar.xz"
@@ -1226,7 +1226,7 @@
         "content_type": "application/x-shellscript",
         "state": "uploaded",
         "size": 46719,
-        "download_count": 6,
+        "download_count": 7,
         "created_at": "2025-03-20T09:49:33Z",
         "updated_at": "2025-03-20T09:49:33Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.3/posthog-cli-installer.sh"
@@ -1471,7 +1471,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 11911728,
-        "download_count": 1,
+        "download_count": 2,
         "created_at": "2025-03-20T09:49:33Z",
         "updated_at": "2025-03-20T09:49:34Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.3/posthog-cli-x86_64-unknown-linux-gnu-update"
@@ -1506,7 +1506,7 @@
         "content_type": "application/x-xz",
         "state": "uploaded",
         "size": 2851624,
-        "download_count": 5,
+        "download_count": 6,
         "created_at": "2025-03-20T09:49:34Z",
         "updated_at": "2025-03-20T09:49:34Z",
         "browser_download_url": "https://github.com/PostHog/posthog/releases/download/posthog-cli-v0.0.3/posthog-cli-x86_64-unknown-linux-gnu.tar.xz"

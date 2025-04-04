@@ -100,7 +100,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 126240128,
-        "download_count": 1,
+        "download_count": 7,
         "created_at": "2025-04-01T15:57:13Z",
         "updated_at": "2025-04-01T15:57:16Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.14.0-rc.2/meilisearch-linux-amd64"
@@ -135,7 +135,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 121948376,
-        "download_count": 1,
+        "download_count": 7,
         "created_at": "2025-04-01T16:08:04Z",
         "updated_at": "2025-04-01T16:08:14Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.14.0-rc.2/meilisearch-macos-amd64"
@@ -170,7 +170,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 119295168,
-        "download_count": 0,
+        "download_count": 3,
         "created_at": "2025-04-01T16:12:25Z",
         "updated_at": "2025-04-01T16:12:30Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.14.0-rc.2/meilisearch-macos-apple-silicon"
@@ -205,7 +205,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 121682944,
-        "download_count": 1,
+        "download_count": 12,
         "created_at": "2025-04-01T16:05:20Z",
         "updated_at": "2025-04-01T16:05:23Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.14.0-rc.2/meilisearch-windows-amd64.exe"
@@ -693,7 +693,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 123341616,
-        "download_count": 461,
+        "download_count": 474,
         "created_at": "2025-03-05T09:00:06Z",
         "updated_at": "2025-03-05T09:00:11Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.13.3/meilisearch-linux-aarch64"
@@ -728,7 +728,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 125579976,
-        "download_count": 3873,
+        "download_count": 4083,
         "created_at": "2025-03-05T08:57:36Z",
         "updated_at": "2025-03-05T08:57:40Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.13.3/meilisearch-linux-amd64"
@@ -763,7 +763,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 121378088,
-        "download_count": 52,
+        "download_count": 55,
         "created_at": "2025-03-05T09:01:37Z",
         "updated_at": "2025-03-05T09:01:41Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.13.3/meilisearch-macos-amd64"
@@ -798,7 +798,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 118766752,
-        "download_count": 400,
+        "download_count": 458,
         "created_at": "2025-03-05T09:03:50Z",
         "updated_at": "2025-03-05T09:03:56Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.13.3/meilisearch-macos-apple-silicon"
@@ -833,7 +833,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 120995328,
-        "download_count": 742,
+        "download_count": 800,
         "created_at": "2025-03-05T09:05:29Z",
         "updated_at": "2025-03-05T09:05:32Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.13.3/meilisearch-windows-amd64.exe"
@@ -868,7 +868,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 79577196,
-        "download_count": 769,
+        "download_count": 817,
         "created_at": "2025-03-05T08:58:19Z",
         "updated_at": "2025-03-05T08:58:21Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.13.3/meilisearch.deb"
@@ -992,7 +992,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 125564400,
-        "download_count": 771,
+        "download_count": 775,
         "created_at": "2025-02-27T12:26:31Z",
         "updated_at": "2025-02-27T12:26:35Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.13.2/meilisearch-linux-amd64"
@@ -1396,7 +1396,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 79571072,
-        "download_count": 51,
+        "download_count": 54,
         "created_at": "2025-02-26T12:35:15Z",
         "updated_at": "2025-02-26T12:35:17Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.13.1/meilisearch.deb"
@@ -1520,7 +1520,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 126207728,
-        "download_count": 1267,
+        "download_count": 1268,
         "created_at": "2025-02-17T08:40:31Z",
         "updated_at": "2025-02-17T08:40:34Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.13.0/meilisearch-linux-amd64"
@@ -2459,7 +2459,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 124706552,
-        "download_count": 2353,
+        "download_count": 2359,
         "created_at": "2025-01-30T13:15:10Z",
         "updated_at": "2025-01-30T13:15:14Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.12.8/meilisearch-linux-amd64"
@@ -2987,7 +2987,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 120444112,
-        "download_count": 43,
+        "download_count": 44,
         "created_at": "2025-01-23T14:43:34Z",
         "updated_at": "2025-01-23T14:43:39Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.12.7/meilisearch-macos-amd64"
@@ -4800,7 +4800,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 124624328,
-        "download_count": 970,
+        "download_count": 974,
         "created_at": "2024-12-23T09:07:04Z",
         "updated_at": "2024-12-23T09:07:08Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.12.0/meilisearch-linux-amd64"
@@ -4940,7 +4940,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 79291760,
-        "download_count": 558,
+        "download_count": 559,
         "created_at": "2024-12-23T09:08:01Z",
         "updated_at": "2024-12-23T09:08:03Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.12.0/meilisearch.deb"
@@ -5064,7 +5064,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 124624328,
-        "download_count": 12,
+        "download_count": 13,
         "created_at": "2024-12-16T15:29:49Z",
         "updated_at": "2024-12-16T15:29:51Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.12.0-rc.6/meilisearch-linux-amd64"
@@ -6643,7 +6643,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 121377880,
-        "download_count": 10731,
+        "download_count": 10740,
         "created_at": "2024-11-14T16:47:15Z",
         "updated_at": "2024-11-14T16:47:19Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.11.3/meilisearch-linux-amd64"
@@ -6713,7 +6713,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 114945312,
-        "download_count": 544,
+        "download_count": 545,
         "created_at": "2024-11-14T16:54:50Z",
         "updated_at": "2024-11-14T16:54:54Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.11.3/meilisearch-macos-apple-silicon"
@@ -7171,7 +7171,7 @@
         "content_type": "binary/octet-stream",
         "state": "uploaded",
         "size": 121373472,
-        "download_count": 4550,
+        "download_count": 4553,
         "created_at": "2024-11-07T09:35:40Z",
         "updated_at": "2024-11-07T09:35:42Z",
         "browser_download_url": "https://github.com/meilisearch/meilisearch/releases/download/v1.11.1/meilisearch-linux-amd64"

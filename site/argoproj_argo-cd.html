@@ -10,6 +10,47 @@
   <h1>🚀 argoproj/argo-cd - Release Notes</h1>
   
     <section>
+      <h2>v2.14.9 (2025-04-02)</h2>
+      <pre>## Quick Start
+
+### Non-HA:
+
+```shell
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.14.9/manifests/install.yaml
+```
+
+### HA:
+
+```shell
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.14.9/manifests/ha/install.yaml
+```
+
+## Release Signatures and Provenance
+
+All Argo CD container images are signed by cosign.  A Provenance is generated for container images and CLI binaries which meet the SLSA Level 3 specifications. See the [documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/signed-release-assets) on how to verify.
+
+
+## Upgrading
+
+If upgrading from a different minor version, be sure to read the [upgrading](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/) documentation.
+
+## Changelog
+### Bug fixes
+* 31a554568aa0cc3fa203ef7a0c59eb17705726c7: fix: Check for semver constraint matching in application webhook handler (cherry-pick #21648) (#22508) (@gcp-cherry-pick-bot[bot])
+### Other work
+* c868711d035bce8636f26218a41a04a1edfc0308: chore(dep): bump gitops-engine 2.14 (#22520) (@pjiang-dev)
+
+**Full Changelog**: https://github.com/argoproj/argo-cd/compare/v2.14.8...v2.14.9
+
+<a href="https://argoproj.github.io/cd/"><img src="https://raw.githubusercontent.com/argoproj/argo-site/master/content/pages/cd/gitops-cd.png" width="25%" ></a>
+
+</pre>
+    </section>
+    <hr />
+  
+    <section>
       <h2>v3.0.0-rc3 (2025-03-24)</h2>
       <pre>## Quick Start
 
@@ -2536,52 +2577,6 @@ If upgrading from a different minor version, be sure to read the [upgrading](htt
 * 7f45c9e09398b1d8e65ad9fdf1dab2dd2c1532d7: chore: Don't degrade PDB on InsufficientPods (#20171) (#20665) (#20694) (@gcp-cherry-pick-bot[bot])
 
 **Full Changelog**: https://github.com/argoproj/argo-cd/compare/v2.13.0...v2.13.1
-
-<a href="https://argoproj.github.io/cd/"><img src="https://raw.githubusercontent.com/argoproj/argo-site/master/content/pages/cd/gitops-cd.png" width="25%" ></a>
-
-</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v2.12.7 (2024-11-05)</h2>
-      <pre>## Quick Start
-
-### Non-HA:
-
-```shell
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.12.7/manifests/install.yaml
-```
-
-### HA:
-
-```shell
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.12.7/manifests/ha/install.yaml
-```
-
-## Release Signatures and Provenance
-
-All Argo CD container images are signed by cosign.  A Provenance is generated for container images and CLI binaries which meet the SLSA Level 3 specifications. See the [documentation](https://argo-cd.readthedocs.io/en/stable/operator-manual/signed-release-assets) on how to verify.
-
-
-## Upgrading
-
-If upgrading from a different minor version, be sure to read the [upgrading](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/overview/) documentation.
-
-## Changelog
-### Features
-* db5876fb3bef054596afe4e408a1e58e8edf48b9: feat: support using exponential backoff between self heal attempts (#20275) (#20479) (@alexmt)
-### Bug fixes
-* e48878b11ea72f8b6b3414e2990a0946b60a940a: fix(diff): avoid cache miss in server-side diff (#20605) (#20609) (@gcp-cherry-pick-bot[bot])
-* a41f868dc0077f0abcdcdcb07ae2eac4f994f282: fix(ui): fix create app panel reappear after closed (#19717) (#20507) (@gcp-cherry-pick-bot[bot])
-* cacb06a5e5aff897308bf87eba851a929b91417f: fix: check err before use schedule and duration (#20043) (#20371) (@daengdaengLee)
-* 32ef2e5f1e54f558501bf095fa910a0b85dbba35: fix: support managing cluster with multiple argocd instances and annotation based tracking (#20222) (#20482) (@alexmt)
-### Documentation
-* 0cae929ae1e11a34ad66635524daafae1052e361: docs(rbac): clarify glob pattern behavior for fine-grain RBAC (#20624) (#20627) (@gcp-cherry-pick-bot[bot])
-
-**Full Changelog**: https://github.com/argoproj/argo-cd/compare/v2.12.6...v2.12.7
 
 <a href="https://argoproj.github.io/cd/"><img src="https://raw.githubusercontent.com/argoproj/argo-site/master/content/pages/cd/gitops-cd.png" width="25%" ></a>
 

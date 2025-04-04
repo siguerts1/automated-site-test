@@ -10,6 +10,26 @@
   <h1>🚀 pydantic/pydantic - Release Notes</h1>
   
     <section>
+      <h2>v2.11.2 2025-04-03 (2025-04-03)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v2.11.2 -->
+
+## What's Changed
+### Fixes
+* Bump `pydantic-core` to v2.33.1 by @Viicos in https://github.com/pydantic/pydantic/pull/11678
+* Make sure `__pydantic_private__` exists before setting private attributes by @Viicos in https://github.com/pydantic/pydantic/pull/11666
+* Do not override `FieldInfo._complete` when using field from parent class by @Viicos in https://github.com/pydantic/pydantic/pull/11668
+* Provide the available definitions when applying discriminated unions by @Viicos in https://github.com/pydantic/pydantic/pull/11670
+* Do not expand root type in the mypy plugin for variables by @Viicos in https://github.com/pydantic/pydantic/pull/11676
+* Mention the attribute name in model fields deprecation message by @Viicos in https://github.com/pydantic/pydantic/pull/11674
+* Properly validate parameterized mappings by @Viicos in https://github.com/pydantic/pydantic/pull/11658
+* Prepare release v2.11.2 by @Viicos in https://github.com/pydantic/pydantic/pull/11684
+
+
+**Full Changelog**: https://github.com/pydantic/pydantic/compare/v2.11.1...v2.11.2</pre>
+    </section>
+    <hr />
+  
+    <section>
       <h2>v2.11.1 2025-03-28 (2025-03-28)</h2>
       <pre><!-- Release notes generated using configuration in .github/release.yml at v2.11.1 -->
 
@@ -1570,21 +1590,6 @@ Full Changelog: https://github.com/pydantic/pydantic/compare/v2.7.4...v2.8.0b1/<
 * Specify `recursive_guard` as kwarg in `FutureRef._evaluate` by @vfazio in [#9612](https://github.com/pydantic/pydantic/pull/9612)
 
 **Full Changelog**: https://github.com/pydantic/pydantic/compare/v2.7.3...v2.7.4</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v1.10.16 (2024-06-11) (2024-06-11)</h2>
-      <pre>## What's Changed
-* Import modules/objects directly from `v1` namespace by @exs-dwoodward in https://github.com/pydantic/pydantic/pull/9162
-* Fix mypy v1 plugin for upcoming mypy release by @cdce8p in https://github.com/pydantic/pydantic/pull/9586
-* Specify `recursive_guard` as kwarg in `FutureRef._evaluate` by @vfazio in https://github.com/pydantic/pydantic/pull/9612
-
-## New Contributors
-* @exs-dwoodward made their first contribution in https://github.com/pydantic/pydantic/pull/9162
-* @vfazio made their first contribution in https://github.com/pydantic/pydantic/pull/9612
-
-**Full Changelog**: https://github.com/pydantic/pydantic/compare/v1.10.15...v1.10.16</pre>
     </section>
     <hr />
   

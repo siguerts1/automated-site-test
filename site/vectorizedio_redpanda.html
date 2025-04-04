@@ -10,6 +10,35 @@
   <h1>🚀 vectorizedio/redpanda - Release Notes</h1>
   
     <section>
+      <h2>v24.2.21 (2025-04-02)</h2>
+      <pre>## Bug Fixes
+* Addresses startup behavior in SR that may result in inconsistent SR state between nodes by @michael-redpanda in [#25406](https://github.com/redpanda-data/redpanda/pull/25406)
+* Fixes a bug in which urgent garbage collection of multiple partitions may only consider one partition in the set. by @WillemKauf in [#25275](https://github.com/redpanda-data/redpanda/pull/25275)
+* This fixes a bug where kafka responses could get out-of-order with respect to request order on the same connection. This would surface as CorrelationIdMismatchException exceptions at the kafka client side. by @pgellert in [#25665](https://github.com/redpanda-data/redpanda/pull/25665)
+* [#25284](https://github.com/redpanda-data/redpanda/issues/25284) Fix a bug in group management behaviour when the last member of a group expires while there are pending
+members in the group. by @pgellert in [#25302](https://github.com/redpanda-data/redpanda/pull/25302)
+* [#25523](https://github.com/redpanda-data/redpanda/issues/25523) kafka/server/group_manager: Prevent metrics::double_registration during group management. by @BenPope in [#25525](https://github.com/redpanda-data/redpanda/pull/25525)
+* fixes a very rare situation in which Raft leader can enter into infinite loop trying to recover follower.  by @mmaslankaprv in [#25377](https://github.com/redpanda-data/redpanda/pull/25377)
+* PR [#25417](https://github.com/redpanda-data/redpanda/pull/25417) [v24.2.x] pandaproxy/sr: Fix normalization not being applied on stored schemas by @IoannisRP
+* PR [#25445](https://github.com/redpanda-data/redpanda/pull/25445) [v24.2.x] c/rm_stm: correct error codes by @bashtanov
+* PR [#25466](https://github.com/redpanda-data/redpanda/pull/25466) [v24.2.x] pandaproxy/sr: Relax schema registry startup validity requirements by @IoannisRP
+* PR [#25477](https://github.com/redpanda-data/redpanda/pull/25477) [v24.2.x] c/backend: fix copy pasta error in learner offset calculation by @bharathv
+* PR [#25528](https://github.com/redpanda-data/redpanda/pull/25528) [v24.2.x] pandaproxy/sr: Re-purpose schema_registry_normalize_on_startup config by @IoannisRP
+* PR [#25543](https://github.com/redpanda-data/redpanda/pull/25543) [v24.2.x] s3: Add timeout to credentials fetching operation by @Lazin
+* PR [#25551](https://github.com/redpanda-data/redpanda/pull/25551) [v24.2.x] cluster/partition: Reword description for kafka_request_bytes_total. by @BenPope
+* PR [#25576](https://github.com/redpanda-data/redpanda/pull/25576) [v24.2.x] Conservative validation in  by @mmaslankaprv
+* PR [#25584](https://github.com/redpanda-data/redpanda/pull/25584) [v24.2.x] config: relax schema_registry_always_normalize to not need restart by @IoannisRP
+
+## Improvements
+* admin: Disallow a superuser from removing themself. by @BenPope in [#25547](https://github.com/redpanda-data/redpanda/pull/25547)
+* PR [#25154](https://github.com/redpanda-data/redpanda/pull/25154) [v24.2.x] kafka/server: fix case of use after move by @IoannisRP
+
+**Full Changelog**: https://github.com/redpanda-data/redpanda/compare/v24.2.20...v24.2.21
+</pre>
+    </section>
+    <hr />
+  
+    <section>
       <h2>v24.3.9 (2025-03-27)</h2>
       <pre>
 ## Features
@@ -624,23 +653,6 @@ Full Changelog: https://github.com/redpanda-data/redpanda/compare/v24.2.6...v24.
 
 **Full Changelog**: https://github.com/redpanda-data/redpanda/compare/v24.1.16...v24.1.17
 </pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v24.1.16 (2024-09-05)</h2>
-      <pre>
-## Features
-* [#22956](https://github.com/redpanda-data/redpanda/issues/22956) Schema Registry: added support for the "verbose" query parameter on the schema compatibility checker endpoint by @pgellert in [#23027](https://github.com/redpanda-data/redpanda/pull/23027)
-## Bug Fixes
-* Fixes a regression in schema registry where concurrent requests could lead to memory faults by @oleiman in [#23138](https://github.com/redpanda-data/redpanda/pull/23138)
-* [#23109](https://github.com/redpanda-data/redpanda/issues/23109) Schema Registry: fixes a bug in the protobuf compatibility checks of nested fields where nested paths were incorrectly handled. by @pgellert in [#23169](https://github.com/redpanda-data/redpanda/pull/23169)
-* rpk: fix a bug in `rpk cloud login` that prevented `--no-profile` from working when used with SSO login. by @r-vasquez in [#23067](https://github.com/redpanda-data/redpanda/pull/23067)
-## Improvements
-* [#23080](https://github.com/redpanda-data/redpanda/issues/23080) Schema Registry: Tolerate `null` `metadata` and `ruleSet` when registering or querying a schema by @BenPope in [#23082](https://github.com/redpanda-data/redpanda/pull/23082)
-* [#23109](https://github.com/redpanda-data/redpanda/issues/23109) Schema Registry: now reports more specific error messages for Avro and Protobuf schemas when they are incompatible with earlier schemas. by @pgellert in [#23169](https://github.com/redpanda-data/redpanda/pull/23169)
-
-**Full Changelog**: https://github.com/redpanda-data/redpanda/compare/v24.1.15...v24.1.16</pre>
     </section>
     <hr />
   

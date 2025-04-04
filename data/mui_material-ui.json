@@ -40,14 +40,14 @@
     "body": "A big thanks to the 4 contributors who made this release possible.\r\n\r\n### `@mui/material@6.4.10`\r\n\r\n- [Autocomplete] Prevent shrink animation in controlled Autocomplete when initial `value` is provided (#45735) @imadx\r\n- [Popover] Allow `null` in `anchorEl` function return type (#45723) @eduter\r\n\r\n### Docs\r\n\r\n- Fix new React project link, CRA deprecated (#45669) @oliviertassinari\r\n\r\n### Core\r\n\r\n- [utils] Support cleanup callbacks in useForkRef (#45733) @DiegoAndai\r\n\r\nAll contributors of this release in alphabetical order: @DiegoAndai, @eduter, @imadx, @oliviertassinari",
     "reactions": {
       "url": "https://api.github.com/repos/mui/material-ui/releases/209428854/reactions",
-      "total_count": 6,
-      "+1": 3,
+      "total_count": 8,
+      "+1": 4,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
       "confused": 0,
       "heart": 0,
-      "rocket": 2,
+      "rocket": 3,
       "eyes": 1
     },
     "mentions_count": 4

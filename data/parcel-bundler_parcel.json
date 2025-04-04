@@ -248,15 +248,15 @@
     "body": "Blog post: https://parceljs.org/blog/v2-14-0/\r\n\r\n### Added\r\n\r\n- Core\r\n  - Add a CLI to create new Parcel apps \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10069)\r\n\r\n- JavaScript\r\n  - React Server Components \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10043), [Details](https://github.com/parcel-bundler/parcel/pull/10067), [Details](https://github.com/parcel-bundler/parcel/pull/10074), [Details](https://github.com/parcel-bundler/parcel/pull/10093), [Details](https://github.com/parcel-bundler/parcel/pull/10104)\r\n  - Add RSC-based static site generator \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10057)\r\n  - First-class MDX support \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10064)\r\n  - Merge React Refresh runtime and transformer \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10056)\r\n  - Modernize React error overlay \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10082)\r\n  - Support bundling node native modules \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10066)\r\n  - Use import maps for bundle manifest \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10073)\r\n\r\n- Dev Server\r\n  - Support running node bundles in dev server \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10055)\r\n  - Apply HMR updates via node worker thread \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10071)\r\n\r\n### Fixed\r\n\r\n- Core\r\n  - Fix dev dep request missing 'invalidateOnCreate' \u2013 [Details](https://github.com/parcel-bundler/parcel/commit/d6a4df3700bc2364eca18c25c42aa5f220c4b8db)\r\n  - Add napi-wasm as optional peer dependency in @parcel/rust \u2013 [Details](https://github.com/parcel-bundler/parcel/pull/10101)",
     "reactions": {
       "url": "https://api.github.com/repos/parcel-bundler/parcel/releases/206434594/reactions",
-      "total_count": 11,
+      "total_count": 13,
       "+1": 6,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
       "confused": 0,
       "heart": 2,
-      "rocket": 1,
-      "eyes": 2
+      "rocket": 2,
+      "eyes": 3
     }
   },
   {

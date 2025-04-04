@@ -65,7 +65,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 2916,
-        "download_count": 601,
+        "download_count": 605,
         "created_at": "2024-10-28T10:21:40Z",
         "updated_at": "2024-10-28T10:21:40Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.3.1/checksums.txt"
@@ -170,7 +170,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18168144,
-        "download_count": 402,
+        "download_count": 403,
         "created_at": "2024-10-28T10:21:39Z",
         "updated_at": "2024-10-28T10:21:40Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.3.1/kratos_1.3.1-linux_64bit.tar.gz"
@@ -310,7 +310,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18925570,
-        "download_count": 520,
+        "download_count": 526,
         "created_at": "2024-10-28T10:21:36Z",
         "updated_at": "2024-10-28T10:21:37Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.3.1/kratos_1.3.1-linux_sqlite_64bit.tar.gz"
@@ -590,7 +590,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18168169,
-        "download_count": 268,
+        "download_count": 273,
         "created_at": "2024-10-28T10:21:36Z",
         "updated_at": "2024-10-28T10:21:36Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.3.1/kratos_1.3.1-linux_static-nosqlite_64bit.tar.gz"
@@ -730,7 +730,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19123010,
-        "download_count": 69,
+        "download_count": 70,
         "created_at": "2024-10-28T10:21:35Z",
         "updated_at": "2024-10-28T10:21:35Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.3.1/kratos_1.3.1-macOS_sqlite_64bit.tar.gz"
@@ -800,7 +800,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18262463,
-        "download_count": 378,
+        "download_count": 381,
         "created_at": "2024-10-28T10:21:35Z",
         "updated_at": "2024-10-28T10:21:35Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.3.1/kratos_1.3.1-macOS_sqlite_arm64.tar.gz"
@@ -940,7 +940,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 18612091,
-        "download_count": 56,
+        "download_count": 57,
         "created_at": "2024-10-28T10:21:40Z",
         "updated_at": "2024-10-28T10:21:41Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.3.1/kratos_1.3.1-windows_64bit.zip"
@@ -1080,7 +1080,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19346204,
-        "download_count": 65,
+        "download_count": 67,
         "created_at": "2024-10-28T10:21:35Z",
         "updated_at": "2024-10-28T10:21:36Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.3.1/kratos_1.3.1-windows_sqlite_64bit.zip"
@@ -3379,7 +3379,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 2916,
-        "download_count": 309,
+        "download_count": 310,
         "created_at": "2024-06-05T11:02:54Z",
         "updated_at": "2024-06-05T11:02:54Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.2.0/checksums.txt"
@@ -3624,7 +3624,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17830566,
-        "download_count": 276,
+        "download_count": 277,
         "created_at": "2024-06-05T11:02:50Z",
         "updated_at": "2024-06-05T11:02:50Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.2.0/kratos_1.2.0-linux_sqlite_64bit.tar.gz"
@@ -3904,7 +3904,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17114043,
-        "download_count": 72,
+        "download_count": 74,
         "created_at": "2024-06-05T11:02:50Z",
         "updated_at": "2024-06-05T11:02:51Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.2.0/kratos_1.2.0-linux_static-nosqlite_64bit.tar.gz"
@@ -5147,7 +5147,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 15012063,
-        "download_count": 593,
+        "download_count": 596,
         "created_at": "2024-02-20T12:26:14Z",
         "updated_at": "2024-02-20T12:26:15Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.1.0/kratos_1.1.0-linux_64bit.tar.gz"
@@ -6810,7 +6810,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 14618103,
-        "download_count": 1771,
+        "download_count": 1775,
         "created_at": "2023-07-12T20:25:04Z",
         "updated_at": "2023-07-12T20:25:05Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v1.0.0/kratos_1.0.0-linux_64bit.tar.gz"
@@ -13994,7 +13994,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 12962631,
-        "download_count": 232,
+        "download_count": 234,
         "created_at": "2022-05-30T13:09:32Z",
         "updated_at": "2022-05-30T13:09:33Z",
         "browser_download_url": "https://github.com/ory/kratos/releases/download/v0.10.0/kratos_0.10.0-linux_64bit.tar.gz"

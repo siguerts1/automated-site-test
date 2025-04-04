@@ -65,7 +65,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17292241,
-        "download_count": 60,
+        "download_count": 74,
         "created_at": "2025-03-23T03:37:09Z",
         "updated_at": "2025-03-23T03:37:10Z",
         "browser_download_url": "https://github.com/usememos/memos/releases/download/v0.24.2/memos_v0.24.2_darwin_amd64.tar.gz"
@@ -100,7 +100,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 16748968,
-        "download_count": 42,
+        "download_count": 50,
         "created_at": "2025-03-23T03:37:11Z",
         "updated_at": "2025-03-23T03:37:12Z",
         "browser_download_url": "https://github.com/usememos/memos/releases/download/v0.24.2/memos_v0.24.2_darwin_arm64.tar.gz"
@@ -135,7 +135,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 16166429,
-        "download_count": 13,
+        "download_count": 17,
         "created_at": "2025-03-23T03:37:09Z",
         "updated_at": "2025-03-23T03:37:10Z",
         "browser_download_url": "https://github.com/usememos/memos/releases/download/v0.24.2/memos_v0.24.2_linux_386.tar.gz"
@@ -170,7 +170,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17053382,
-        "download_count": 73,
+        "download_count": 110,
         "created_at": "2025-03-23T03:37:09Z",
         "updated_at": "2025-03-23T03:37:10Z",
         "browser_download_url": "https://github.com/usememos/memos/releases/download/v0.24.2/memos_v0.24.2_linux_amd64.tar.gz"
@@ -205,7 +205,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 16087628,
-        "download_count": 50,
+        "download_count": 55,
         "created_at": "2025-03-23T03:37:09Z",
         "updated_at": "2025-03-23T03:37:10Z",
         "browser_download_url": "https://github.com/usememos/memos/releases/download/v0.24.2/memos_v0.24.2_linux_arm64.tar.gz"
@@ -399,7 +399,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17046043,
-        "download_count": 89,
+        "download_count": 90,
         "created_at": "2025-03-13T13:42:58Z",
         "updated_at": "2025-03-13T13:42:59Z",
         "browser_download_url": "https://github.com/usememos/memos/releases/download/v0.24.1/memos_v0.24.1_linux_amd64.tar.gz"
@@ -445,8 +445,8 @@
     "body": "\r\n![image](https://github.com/user-attachments/assets/0a8d95c4-4310-4396-89f3-a6fe070d3966)\r\n\r\n## Features\r\n\r\n* Polished homepage layout\r\n* Masonry view(_beta_)\r\n  <img width=\"286\" alt=\"image\" src=\"https://github.com/user-attachments/assets/19cbe5a8-8f55-4480-9bee-e9fa24bf5d23\" />\r\n* Support blur processing for NSFW content with customizable NSFW tags by @CallMeMhz in https://github.com/usememos/memos/pull/4407\r\n  <img width=\"700\" alt=\"image\" src=\"https://github.com/user-attachments/assets/12522bf8-3c41-4cdd-928b-0be5711de5d3\" />\r\n* Match sublist indentation when adding a new item by @mbaum0 in https://github.com/usememos/memos/pull/4433\r\n\r\n\r\nAnd more...\r\n\r\n* chore: add datepicker to calendar month by @shungiku in https://github.com/usememos/memos/pull/4379\r\n* feat: allow storing resource references >256 chars long in mysql by @cdzombak in https://github.com/usememos/memos/pull/4408\r\n* feat: prevent attackers from exploiting redirect attack GetLinkMetadata API by @CallMeMhz in https://github.com/usememos/memos/pull/4428\r\n* feat: support YouTube video thumbnail in link preview by @CallMeMhz in https://github.com/usememos/memos/pull/4427\r\n* feat: optimize initial load performance by implementing lazy loading and code splitting by @nbb2025 in https://github.com/usememos/memos/pull/4445\r\n* chore(i18n): update pt-BR by @lincolnthalles in https://github.com/usememos/memos/pull/4471\r\n* feat: add loading spinner during file upload process by @sawatkins in https://github.com/usememos/memos/pull/4491\r\n* feat: update i18n for zh-hans by @taosin in https://github.com/usememos/memos/pull/4488\r\n* chore(i18n): tidy by @lincolnthalles in https://github.com/usememos/memos/pull/4497\r\n\r\n**Full Changelog**: https://github.com/usememos/memos/compare/v0.24.0...v0.24.1\r\n\r\n## New Contributors\r\n* @mikropsoft made their first contribution in https://github.com/usememos/memos/pull/4375\r\n* @hartlco made their first contribution in https://github.com/usememos/memos/pull/4383\r\n* @taosin made their first contribution in https://github.com/usememos/memos/pull/4384\r\n* @eightysixed made their first contribution in https://github.com/usememos/memos/pull/4394\r\n* @thebestxt made their first contribution in https://github.com/usememos/memos/pull/4397\r\n* @cdzombak made their first contribution in https://github.com/usememos/memos/pull/4408\r\n* @CallMeMhz made their first contribution in https://github.com/usememos/memos/pull/4407\r\n* @ProjectOrangeJuice made their first contribution in https://github.com/usememos/memos/pull/4411\r\n* @mbaum0 made their first contribution in https://github.com/usememos/memos/pull/4433\r\n* @nbb2025 made their first contribution in https://github.com/usememos/memos/pull/4445\r\n* @wrrrzr made their first contribution in https://github.com/usememos/memos/pull/4486\r\n* @sawatkins made their first contribution in https://github.com/usememos/memos/pull/4491\r\n* @webserviceXXL made their first contribution in https://github.com/usememos/memos/pull/4492\r\n",
     "reactions": {
       "url": "https://api.github.com/repos/usememos/memos/releases/205582318/reactions",
-      "total_count": 43,
-      "+1": 13,
+      "total_count": 44,
+      "+1": 14,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
@@ -558,7 +558,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 14795383,
-        "download_count": 121,
+        "download_count": 122,
         "created_at": "2025-02-05T13:01:22Z",
         "updated_at": "2025-02-05T13:01:23Z",
         "browser_download_url": "https://github.com/usememos/memos/releases/download/v0.24.0/memos_v0.24.0_darwin_arm64.tar.gz"
@@ -628,7 +628,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 15167267,
-        "download_count": 360,
+        "download_count": 362,
         "created_at": "2025-02-05T13:01:23Z",
         "updated_at": "2025-02-05T13:01:24Z",
         "browser_download_url": "https://github.com/usememos/memos/releases/download/v0.24.0/memos_v0.24.0_linux_amd64.tar.gz"
@@ -857,7 +857,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 15023161,
-        "download_count": 97,
+        "download_count": 98,
         "created_at": "2025-01-29T15:45:46Z",
         "updated_at": "2025-01-29T15:45:47Z",
         "browser_download_url": "https://github.com/usememos/memos/releases/download/v0.23.1/memos_v0.23.1_linux_amd64.tar.gz"

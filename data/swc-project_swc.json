@@ -1156,7 +1156,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 31551736,
-        "download_count": 4,
+        "download_count": 7,
         "created_at": "2025-04-01T13:26:14Z",
         "updated_at": "2025-04-01T13:26:15Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-darwin-arm64"
@@ -1191,7 +1191,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 33400736,
-        "download_count": 4,
+        "download_count": 10,
         "created_at": "2025-04-01T13:26:15Z",
         "updated_at": "2025-04-01T13:26:16Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-darwin-x64"
@@ -1471,7 +1471,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 18012160,
-        "download_count": 3,
+        "download_count": 4,
         "created_at": "2025-04-01T13:04:30Z",
         "updated_at": "2025-04-01T13:04:32Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-html.win32-arm64-msvc.node"
@@ -1576,7 +1576,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20934136,
-        "download_count": 4,
+        "download_count": 6,
         "created_at": "2025-04-01T13:26:17Z",
         "updated_at": "2025-04-01T13:26:18Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-linux-arm-gnueabihf"
@@ -1611,7 +1611,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 45634600,
-        "download_count": 4,
+        "download_count": 7,
         "created_at": "2025-04-01T13:26:18Z",
         "updated_at": "2025-04-01T13:26:20Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-linux-arm64-gnu"
@@ -1646,7 +1646,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 44155144,
-        "download_count": 3,
+        "download_count": 4,
         "created_at": "2025-04-01T13:26:20Z",
         "updated_at": "2025-04-01T13:26:22Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-linux-arm64-musl"
@@ -1681,7 +1681,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 52073496,
-        "download_count": 4,
+        "download_count": 7,
         "created_at": "2025-04-01T13:26:22Z",
         "updated_at": "2025-04-01T13:26:24Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-linux-x64-gnu"
@@ -1716,7 +1716,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 52163384,
-        "download_count": 3,
+        "download_count": 4,
         "created_at": "2025-04-01T13:26:24Z",
         "updated_at": "2025-04-01T13:26:26Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-linux-x64-musl"
@@ -1751,7 +1751,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 27357696,
-        "download_count": 4,
+        "download_count": 6,
         "created_at": "2025-04-01T13:26:26Z",
         "updated_at": "2025-04-01T13:26:27Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-win32-arm64-msvc.exe"
@@ -1786,7 +1786,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 22950912,
-        "download_count": 4,
+        "download_count": 6,
         "created_at": "2025-04-01T13:26:27Z",
         "updated_at": "2025-04-01T13:26:28Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-win32-ia32-msvc.exe"
@@ -1821,7 +1821,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 43854848,
-        "download_count": 4,
+        "download_count": 8,
         "created_at": "2025-04-01T13:26:29Z",
         "updated_at": "2025-04-01T13:26:30Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.16/swc-win32-x64-msvc.exe"
@@ -2179,7 +2179,19 @@
     ],
     "tarball_url": "https://api.github.com/repos/swc-project/swc/tarball/v1.11.16",
     "zipball_url": "https://api.github.com/repos/swc-project/swc/zipball/v1.11.16",
-    "body": null
+    "body": null,
+    "reactions": {
+      "url": "https://api.github.com/repos/swc-project/swc/releases/209597379/reactions",
+      "total_count": 1,
+      "+1": 1,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    }
   },
   {
     "url": "https://api.github.com/repos/swc-project/swc/releases/209503939",
@@ -3303,7 +3315,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 31551736,
-        "download_count": 6,
+        "download_count": 8,
         "created_at": "2025-04-01T06:50:23Z",
         "updated_at": "2025-04-01T06:50:25Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.15/swc-darwin-arm64"
@@ -3338,7 +3350,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 33400736,
-        "download_count": 6,
+        "download_count": 8,
         "created_at": "2025-04-01T06:50:26Z",
         "updated_at": "2025-04-01T06:50:27Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.15/swc-darwin-x64"
@@ -3723,7 +3735,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20934136,
-        "download_count": 6,
+        "download_count": 8,
         "created_at": "2025-04-01T06:50:28Z",
         "updated_at": "2025-04-01T06:50:29Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.15/swc-linux-arm-gnueabihf"
@@ -3793,7 +3805,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 52073496,
-        "download_count": 6,
+        "download_count": 8,
         "created_at": "2025-04-01T06:50:33Z",
         "updated_at": "2025-04-01T06:50:40Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.15/swc-linux-x64-gnu"
@@ -3863,7 +3875,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 27357696,
-        "download_count": 6,
+        "download_count": 8,
         "created_at": "2025-04-01T06:50:46Z",
         "updated_at": "2025-04-01T06:50:48Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.15/swc-win32-arm64-msvc.exe"
@@ -3898,7 +3910,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 22950912,
-        "download_count": 6,
+        "download_count": 8,
         "created_at": "2025-04-01T06:50:48Z",
         "updated_at": "2025-04-01T06:50:50Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.15/swc-win32-ia32-msvc.exe"
@@ -3933,7 +3945,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 43854848,
-        "download_count": 6,
+        "download_count": 8,
         "created_at": "2025-04-01T06:50:51Z",
         "updated_at": "2025-04-01T06:50:53Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.15/swc-win32-x64-msvc.exe"
@@ -6121,7 +6133,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 31585032,
-        "download_count": 21,
+        "download_count": 23,
         "created_at": "2025-03-24T04:36:58Z",
         "updated_at": "2025-03-24T04:36:59Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.13/swc-darwin-arm64"
@@ -6156,7 +6168,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 33372152,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-24T04:36:59Z",
         "updated_at": "2025-03-24T04:37:00Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.13/swc-darwin-x64"
@@ -6436,7 +6448,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 17906176,
-        "download_count": 3,
+        "download_count": 4,
         "created_at": "2025-03-24T04:15:37Z",
         "updated_at": "2025-03-24T04:15:38Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.13/swc-html.win32-arm64-msvc.node"
@@ -6541,7 +6553,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20961096,
-        "download_count": 14,
+        "download_count": 16,
         "created_at": "2025-03-24T04:37:01Z",
         "updated_at": "2025-03-24T04:37:02Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.13/swc-linux-arm-gnueabihf"
@@ -6611,7 +6623,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 52020248,
-        "download_count": 837,
+        "download_count": 1182,
         "created_at": "2025-03-24T04:37:04Z",
         "updated_at": "2025-03-24T04:37:05Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.13/swc-linux-x64-gnu"
@@ -6681,7 +6693,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 27386368,
-        "download_count": 14,
+        "download_count": 16,
         "created_at": "2025-03-24T04:37:07Z",
         "updated_at": "2025-03-24T04:37:08Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.13/swc-win32-arm64-msvc.exe"
@@ -6716,7 +6728,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 23077888,
-        "download_count": 15,
+        "download_count": 17,
         "created_at": "2025-03-24T04:37:09Z",
         "updated_at": "2025-03-24T04:37:10Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.13/swc-win32-ia32-msvc.exe"
@@ -6751,7 +6763,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 43887616,
-        "download_count": 22,
+        "download_count": 24,
         "created_at": "2025-03-24T04:37:10Z",
         "updated_at": "2025-03-24T04:37:13Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.13/swc-win32-x64-msvc.exe"
@@ -8245,7 +8257,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 31585048,
-        "download_count": 15,
+        "download_count": 17,
         "created_at": "2025-03-23T14:20:17Z",
         "updated_at": "2025-03-23T14:20:18Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.12/swc-darwin-arm64"
@@ -8280,7 +8292,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 33392664,
-        "download_count": 15,
+        "download_count": 17,
         "created_at": "2025-03-23T14:20:18Z",
         "updated_at": "2025-03-23T14:20:19Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.12/swc-darwin-x64"
@@ -8665,7 +8677,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20938808,
-        "download_count": 14,
+        "download_count": 16,
         "created_at": "2025-03-23T14:20:19Z",
         "updated_at": "2025-03-23T14:20:20Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.12/swc-linux-arm-gnueabihf"
@@ -8735,7 +8747,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 52036696,
-        "download_count": 21,
+        "download_count": 25,
         "created_at": "2025-03-23T14:20:22Z",
         "updated_at": "2025-03-23T14:20:24Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.12/swc-linux-x64-gnu"
@@ -8805,7 +8817,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 27389952,
-        "download_count": 14,
+        "download_count": 16,
         "created_at": "2025-03-23T14:20:26Z",
         "updated_at": "2025-03-23T14:20:27Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.12/swc-win32-arm64-msvc.exe"
@@ -8840,7 +8852,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 23063552,
-        "download_count": 14,
+        "download_count": 16,
         "created_at": "2025-03-23T14:20:28Z",
         "updated_at": "2025-03-23T14:20:28Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.12/swc-win32-ia32-msvc.exe"
@@ -8875,7 +8887,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 43875840,
-        "download_count": 14,
+        "download_count": 16,
         "created_at": "2025-03-23T14:20:29Z",
         "updated_at": "2025-03-23T14:20:30Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.12/swc-win32-x64-msvc.exe"
@@ -10369,7 +10381,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 31485928,
-        "download_count": 24,
+        "download_count": 26,
         "created_at": "2025-03-17T18:43:10Z",
         "updated_at": "2025-03-17T18:43:12Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.11/swc-darwin-arm64"
@@ -10404,7 +10416,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 33269608,
-        "download_count": 23,
+        "download_count": 25,
         "created_at": "2025-03-17T18:43:12Z",
         "updated_at": "2025-03-17T18:43:14Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.11/swc-darwin-x64"
@@ -10789,7 +10801,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20882264,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-17T18:43:15Z",
         "updated_at": "2025-03-17T18:43:16Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.11/swc-linux-arm-gnueabihf"
@@ -10859,7 +10871,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 51786840,
-        "download_count": 1216,
+        "download_count": 1236,
         "created_at": "2025-03-17T18:43:19Z",
         "updated_at": "2025-03-17T18:43:22Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.11/swc-linux-x64-gnu"
@@ -10929,7 +10941,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 27290112,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-17T18:43:25Z",
         "updated_at": "2025-03-17T18:43:27Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.11/swc-win32-arm64-msvc.exe"
@@ -10964,7 +10976,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 22777856,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-17T18:43:27Z",
         "updated_at": "2025-03-17T18:43:29Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.11/swc-win32-ia32-msvc.exe"
@@ -10999,7 +11011,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 43698176,
-        "download_count": 25,
+        "download_count": 27,
         "created_at": "2025-03-17T18:43:29Z",
         "updated_at": "2025-03-17T18:43:32Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.11/swc-win32-x64-msvc.exe"
@@ -12493,7 +12505,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 31485960,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-17T07:18:42Z",
         "updated_at": "2025-03-17T07:18:45Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.10/swc-darwin-arm64"
@@ -12528,7 +12540,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 33277848,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-17T07:18:45Z",
         "updated_at": "2025-03-17T07:18:47Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.10/swc-darwin-x64"
@@ -12913,7 +12925,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20871576,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-17T07:18:48Z",
         "updated_at": "2025-03-17T07:18:49Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.10/swc-linux-arm-gnueabihf"
@@ -12983,7 +12995,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 51819608,
-        "download_count": 938,
+        "download_count": 940,
         "created_at": "2025-03-17T07:18:53Z",
         "updated_at": "2025-03-17T07:18:55Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.10/swc-linux-x64-gnu"
@@ -13053,7 +13065,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 27277824,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-17T07:18:58Z",
         "updated_at": "2025-03-17T07:19:00Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.10/swc-win32-arm64-msvc.exe"
@@ -13088,7 +13100,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 22777344,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-17T07:19:01Z",
         "updated_at": "2025-03-17T07:19:02Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.10/swc-win32-ia32-msvc.exe"
@@ -13123,7 +13135,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 43699712,
-        "download_count": 20,
+        "download_count": 22,
         "created_at": "2025-03-17T07:19:02Z",
         "updated_at": "2025-03-17T07:19:04Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.10/swc-win32-x64-msvc.exe"
@@ -14629,7 +14641,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 31485912,
-        "download_count": 30,
+        "download_count": 32,
         "created_at": "2025-03-12T13:23:57Z",
         "updated_at": "2025-03-12T13:23:59Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.9/swc-darwin-arm64"
@@ -14664,7 +14676,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 33265488,
-        "download_count": 28,
+        "download_count": 30,
         "created_at": "2025-03-12T13:23:59Z",
         "updated_at": "2025-03-12T13:24:00Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.9/swc-darwin-x64"
@@ -15049,7 +15061,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20908000,
-        "download_count": 25,
+        "download_count": 27,
         "created_at": "2025-03-12T13:24:01Z",
         "updated_at": "2025-03-12T13:24:02Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.9/swc-linux-arm-gnueabihf"
@@ -15119,7 +15131,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 51811448,
-        "download_count": 200,
+        "download_count": 213,
         "created_at": "2025-03-12T13:24:04Z",
         "updated_at": "2025-03-12T13:24:06Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.9/swc-linux-x64-gnu"
@@ -15189,7 +15201,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 27281920,
-        "download_count": 25,
+        "download_count": 27,
         "created_at": "2025-03-12T13:24:08Z",
         "updated_at": "2025-03-12T13:24:10Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.9/swc-win32-arm64-msvc.exe"
@@ -15224,7 +15236,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 22780416,
-        "download_count": 25,
+        "download_count": 27,
         "created_at": "2025-03-12T13:24:10Z",
         "updated_at": "2025-03-12T13:24:11Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.9/swc-win32-ia32-msvc.exe"
@@ -15259,7 +15271,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 43728896,
-        "download_count": 28,
+        "download_count": 30,
         "created_at": "2025-03-12T13:24:11Z",
         "updated_at": "2025-03-12T13:24:13Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.9/swc-win32-x64-msvc.exe"
@@ -16753,7 +16765,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 31502504,
-        "download_count": 39,
+        "download_count": 41,
         "created_at": "2025-03-07T18:10:45Z",
         "updated_at": "2025-03-07T18:10:47Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.8/swc-darwin-arm64"
@@ -16788,7 +16800,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 33269600,
-        "download_count": 38,
+        "download_count": 40,
         "created_at": "2025-03-07T18:10:47Z",
         "updated_at": "2025-03-07T18:10:48Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.8/swc-darwin-x64"
@@ -17173,7 +17185,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20945832,
-        "download_count": 30,
+        "download_count": 32,
         "created_at": "2025-03-07T18:10:49Z",
         "updated_at": "2025-03-07T18:10:50Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.8/swc-linux-arm-gnueabihf"
@@ -17243,7 +17255,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 51807352,
-        "download_count": 690,
+        "download_count": 693,
         "created_at": "2025-03-07T18:10:52Z",
         "updated_at": "2025-03-07T18:10:54Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.8/swc-linux-x64-gnu"
@@ -17313,7 +17325,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 27281408,
-        "download_count": 30,
+        "download_count": 32,
         "created_at": "2025-03-07T18:10:57Z",
         "updated_at": "2025-03-07T18:10:58Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.8/swc-win32-arm64-msvc.exe"
@@ -17348,7 +17360,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 22830592,
-        "download_count": 30,
+        "download_count": 32,
         "created_at": "2025-03-07T18:10:58Z",
         "updated_at": "2025-03-07T18:10:59Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.8/swc-win32-ia32-msvc.exe"
@@ -17383,7 +17395,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 43730432,
-        "download_count": 33,
+        "download_count": 35,
         "created_at": "2025-03-07T18:11:00Z",
         "updated_at": "2025-03-07T18:11:01Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.8/swc-win32-x64-msvc.exe"
@@ -18877,7 +18889,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 31502520,
-        "download_count": 34,
+        "download_count": 36,
         "created_at": "2025-03-04T17:03:52Z",
         "updated_at": "2025-03-04T17:03:53Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.7/swc-darwin-arm64"
@@ -18912,7 +18924,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 33281952,
-        "download_count": 35,
+        "download_count": 37,
         "created_at": "2025-03-04T17:03:54Z",
         "updated_at": "2025-03-04T17:03:55Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.7/swc-darwin-x64"
@@ -19297,7 +19309,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20945592,
-        "download_count": 33,
+        "download_count": 35,
         "created_at": "2025-03-04T17:03:56Z",
         "updated_at": "2025-03-04T17:03:57Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.7/swc-linux-arm-gnueabihf"
@@ -19367,7 +19379,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 51770488,
-        "download_count": 135,
+        "download_count": 137,
         "created_at": "2025-03-04T17:03:59Z",
         "updated_at": "2025-03-04T17:04:01Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.7/swc-linux-x64-gnu"
@@ -19437,7 +19449,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 27282944,
-        "download_count": 33,
+        "download_count": 35,
         "created_at": "2025-03-04T17:04:03Z",
         "updated_at": "2025-03-04T17:04:04Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.7/swc-win32-arm64-msvc.exe"
@@ -19472,7 +19484,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 22816768,
-        "download_count": 33,
+        "download_count": 35,
         "created_at": "2025-03-04T17:04:05Z",
         "updated_at": "2025-03-04T17:04:06Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.7/swc-win32-ia32-msvc.exe"
@@ -19507,7 +19519,7 @@
         "content_type": "application/x-msdownload",
         "state": "uploaded",
         "size": 43719168,
-        "download_count": 36,
+        "download_count": 38,
         "created_at": "2025-03-04T17:04:06Z",
         "updated_at": "2025-03-04T17:04:08Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.7/swc-win32-x64-msvc.exe"
@@ -23615,7 +23627,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 51778680,
-        "download_count": 4292,
+        "download_count": 4599,
         "created_at": "2025-02-28T13:20:49Z",
         "updated_at": "2025-02-28T13:20:51Z",
         "browser_download_url": "https://github.com/swc-project/swc/releases/download/v1.11.5/swc-linux-x64-gnu"

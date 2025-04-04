@@ -65,7 +65,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 290283034,
-        "download_count": 113,
+        "download_count": 306,
         "created_at": "2025-03-31T16:28:11Z",
         "updated_at": "2025-03-31T16:28:19Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/w2025-03-31/ZAP_WEEKLY_D-2025-03-31.zip"
@@ -141,7 +141,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 290263197,
-        "download_count": 434,
+        "download_count": 449,
         "created_at": "2025-03-26T09:55:51Z",
         "updated_at": "2025-03-26T09:55:58Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/w2025-03-26/ZAP_WEEKLY_D-2025-03-26.zip"
@@ -217,7 +217,7 @@
         "content_type": "application/json",
         "state": "uploaded",
         "size": 1259200,
-        "download_count": 24,
+        "download_count": 25,
         "created_at": "2025-03-25T17:46:53Z",
         "updated_at": "2025-03-25T17:46:53Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/bom.json"
@@ -252,7 +252,7 @@
         "content_type": "application/x-diskcopy",
         "state": "uploaded",
         "size": 262910572,
-        "download_count": 1359,
+        "download_count": 1687,
         "created_at": "2025-03-25T17:52:50Z",
         "updated_at": "2025-03-25T17:53:01Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2.16.1.dmg"
@@ -287,7 +287,7 @@
         "content_type": "application/x-diskcopy",
         "state": "uploaded",
         "size": 267575132,
-        "download_count": 3172,
+        "download_count": 4067,
         "created_at": "2025-03-25T17:53:03Z",
         "updated_at": "2025-03-25T17:53:16Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2.16.1_aarch64.dmg"
@@ -322,7 +322,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 106589261,
-        "download_count": 322,
+        "download_count": 443,
         "created_at": "2025-03-25T17:46:54Z",
         "updated_at": "2025-03-25T17:46:58Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2.16.1_Core.zip"
@@ -357,7 +357,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 276161238,
-        "download_count": 775,
+        "download_count": 975,
         "created_at": "2025-03-25T17:46:58Z",
         "updated_at": "2025-03-25T17:47:09Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2.16.1_Crossplatform.zip"
@@ -392,7 +392,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 234364899,
-        "download_count": 2727,
+        "download_count": 3462,
         "created_at": "2025-03-25T17:47:10Z",
         "updated_at": "2025-03-25T17:47:19Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2.16.1_Linux.tar.gz"
@@ -427,7 +427,7 @@
         "content_type": "application/x-shellscript",
         "state": "uploaded",
         "size": 237450190,
-        "download_count": 2981,
+        "download_count": 3935,
         "created_at": "2025-03-25T17:47:19Z",
         "updated_at": "2025-03-25T17:47:29Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2_16_1_unix.sh"
@@ -462,7 +462,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 245210624,
-        "download_count": 926,
+        "download_count": 1218,
         "created_at": "2025-03-25T17:47:40Z",
         "updated_at": "2025-03-25T17:47:49Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2_16_1_windows-x32.exe"
@@ -497,7 +497,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 245386752,
-        "download_count": 16070,
+        "download_count": 21392,
         "created_at": "2025-03-25T17:47:29Z",
         "updated_at": "2025-03-25T17:47:39Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.1/ZAP_2_16_1_windows.exe"
@@ -585,7 +585,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 288276145,
-        "download_count": 627,
+        "download_count": 630,
         "created_at": "2025-03-19T10:46:34Z",
         "updated_at": "2025-03-19T10:46:43Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/w2025-03-19/ZAP_WEEKLY_D-2025-03-19.zip"
@@ -661,7 +661,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 288267125,
-        "download_count": 811,
+        "download_count": 813,
         "created_at": "2025-03-11T09:17:19Z",
         "updated_at": "2025-03-11T09:17:28Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/w2025-03-11/ZAP_WEEKLY_D-2025-03-11.zip"
@@ -737,7 +737,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 287919341,
-        "download_count": 618,
+        "download_count": 622,
         "created_at": "2025-03-04T12:35:28Z",
         "updated_at": "2025-03-04T12:35:36Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/w2025-03-04/ZAP_WEEKLY_D-2025-03-04.zip"
@@ -813,7 +813,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 287833671,
-        "download_count": 542,
+        "download_count": 544,
         "created_at": "2025-02-26T17:30:24Z",
         "updated_at": "2025-02-26T17:30:33Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/w2025-02-26/ZAP_WEEKLY_D-2025-02-26.zip"
@@ -889,7 +889,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 287269094,
-        "download_count": 891,
+        "download_count": 895,
         "created_at": "2025-02-17T13:26:16Z",
         "updated_at": "2025-02-17T13:26:21Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/w2025-02-17/ZAP_WEEKLY_D-2025-02-17.zip"
@@ -965,7 +965,7 @@
         "content_type": "application/json",
         "state": "uploaded",
         "size": 1176058,
-        "download_count": 114,
+        "download_count": 116,
         "created_at": "2025-01-10T12:00:43Z",
         "updated_at": "2025-01-10T12:00:43Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.0/bom.json"
@@ -1035,7 +1035,7 @@
         "content_type": "application/x-diskcopy",
         "state": "uploaded",
         "size": 269949718,
-        "download_count": 20297,
+        "download_count": 20320,
         "created_at": "2025-01-10T12:23:10Z",
         "updated_at": "2025-01-10T12:24:08Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.0/ZAP_2.16.0_aarch64.dmg"
@@ -1070,7 +1070,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 106243588,
-        "download_count": 6755,
+        "download_count": 6940,
         "created_at": "2025-01-10T13:39:31Z",
         "updated_at": "2025-01-10T13:39:36Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.0/ZAP_2.16.0_Core.zip"
@@ -1105,7 +1105,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 277820629,
-        "download_count": 5621,
+        "download_count": 5639,
         "created_at": "2025-01-10T12:00:45Z",
         "updated_at": "2025-01-10T12:00:50Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.0/ZAP_2.16.0_Crossplatform.zip"
@@ -1140,7 +1140,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 234966964,
-        "download_count": 30745,
+        "download_count": 31109,
         "created_at": "2025-01-10T12:00:50Z",
         "updated_at": "2025-01-10T12:00:54Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.0/ZAP_2.16.0_Linux.tar.gz"
@@ -1175,7 +1175,7 @@
         "content_type": "application/x-shellscript",
         "state": "uploaded",
         "size": 238050035,
-        "download_count": 29968,
+        "download_count": 29971,
         "created_at": "2025-01-10T12:00:55Z",
         "updated_at": "2025-01-10T12:00:59Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.0/ZAP_2_16_0_unix.sh"
@@ -1210,7 +1210,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 244239872,
-        "download_count": 6981,
+        "download_count": 6999,
         "created_at": "2025-01-10T12:01:05Z",
         "updated_at": "2025-01-10T12:01:10Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.0/ZAP_2_16_0_windows-x32.exe"
@@ -1245,7 +1245,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 244416512,
-        "download_count": 115981,
+        "download_count": 116175,
         "created_at": "2025-01-10T12:01:00Z",
         "updated_at": "2025-01-10T12:01:05Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.16.0/ZAP_2_16_0_windows.exe"
@@ -1403,7 +1403,7 @@
         "content_type": "application/x-diskcopy",
         "state": "uploaded",
         "size": 260546019,
-        "download_count": 52131,
+        "download_count": 52135,
         "created_at": "2024-05-07T17:11:49Z",
         "updated_at": "2024-05-07T17:12:43Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.15.0/ZAP_2.15.0_aarch64.dmg"
@@ -1438,7 +1438,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 102464915,
-        "download_count": 10222,
+        "download_count": 10224,
         "created_at": "2024-05-07T17:05:36Z",
         "updated_at": "2024-05-07T17:05:38Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.15.0/ZAP_2.15.0_Core.zip"
@@ -1473,7 +1473,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 273949644,
-        "download_count": 18775,
+        "download_count": 18802,
         "created_at": "2024-05-07T17:05:38Z",
         "updated_at": "2024-05-07T17:05:43Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.15.0/ZAP_2.15.0_Crossplatform.zip"
@@ -1508,7 +1508,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 231558370,
-        "download_count": 93704,
+        "download_count": 93950,
         "created_at": "2024-05-07T17:05:44Z",
         "updated_at": "2024-05-07T17:05:48Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.15.0/ZAP_2.15.0_Linux.tar.gz"
@@ -1543,7 +1543,7 @@
         "content_type": "application/x-shellscript",
         "state": "uploaded",
         "size": 234649951,
-        "download_count": 98778,
+        "download_count": 98785,
         "created_at": "2024-05-07T17:05:48Z",
         "updated_at": "2024-05-07T17:05:52Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.15.0/ZAP_2_15_0_unix.sh"
@@ -1578,7 +1578,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 238554112,
-        "download_count": 23424,
+        "download_count": 23431,
         "created_at": "2024-05-07T17:05:56Z",
         "updated_at": "2024-05-07T17:06:00Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.15.0/ZAP_2_15_0_windows-x32.exe"
@@ -1613,7 +1613,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 238683648,
-        "download_count": 316537,
+        "download_count": 316581,
         "created_at": "2024-05-07T17:05:52Z",
         "updated_at": "2024-05-07T17:05:56Z",
         "browser_download_url": "https://github.com/zaproxy/zaproxy/releases/download/v2.15.0/ZAP_2_15_0_windows.exe"

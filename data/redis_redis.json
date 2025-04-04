@@ -40,8 +40,8 @@
     "body": "This is the fourth Milestone of Redis Community Edition 8.0.\r\n\r\nMilestones are non-feature-complete pre-releases. Pre-releases are not suitable for production use.\r\nOnce we reach feature completeness, we will release RC1.\r\n\r\n### Headlines\r\n\r\n8.0-M04 includes 3 new hash commands, performance improvements, and memory defragmentation improvements.\r\n\r\n### Distributions\r\n\r\n- Alpine and Debian Docker images - https://hub.docker.com/_/redis\r\n- Install using snap - see https://github.com/redis/redis-snap\r\n- Install using brew - see https://github.com/redis/homebrew-redis\r\n- Install using RPM and Debian APT - will be added on the GA release\r\n\r\n### New Features\r\n\r\n- #13798 Hash - new commands:\r\n  - `HGETDEL` Get and delete the value of one or more fields of a given hash key\r\n  - `HGETEX` Get the value of one or more fields of a given hash key, and optionally set their expiration\r\n  - `HSETEX` Set the value of one or more fields of a given hash key, and optionally set their expiration\r\n- #13773 Add replication offset to AOF, allowing more robust way to determine which AOF has a more up-to-date data during recovery\r\n- #13740, #13763 shared secret - new mechanism to allow sending internal commands between nodes\r\n\r\n### Bug fixes\r\n\r\n- #13804 Overflow on 32-bit systems when calculating idle time for eviction\r\n- #13793 `WAITAOF` returns prematurely\r\n- #13800 Remove `DENYOOM` from `HEXPIRE`, `HEXPIREAT`, `HPEXPIRE`, and `HPEXPIREAT`\r\n- #13632 Streams - wrong behavior of `XREAD +` after last entry\r\n\r\n### Modules API\r\n\r\n- #13788 `RedisModule_LoadDefaultConfigs` - load module configuration values from redis.conf\r\n- #13815 `RM_RegisterDefragFunc2` - support for incremental defragmentation of global module data\r\n- #13816 `RM_DefragRedisModuleDict` - allow modules to defrag `RedisModuleDict`\r\n- #13774 `RM_GetContextFlags` - add a `REDISMODULE_CTX_FLAGS_DEBUG_ENABLED` flag to execute debug commands\r\n\r\n### Performance and resource utilization improvements\r\n\r\n- #13752 Reduce defrag CPU usage when defragmentation is ineffective\r\n- #13764 Reduce latency when a command is called consecutively\r\n- #13787 Optimize parsing data from clients, specifically multi-bulk (array) data\r\n- #13792 Optimize dictionary lookup by avoiding duplicate key length calculation during comparisons\r\n- #13796 Optimize expiration checks\r\n",
     "reactions": {
       "url": "https://api.github.com/repos/redis/redis/releases/207173396/reactions",
-      "total_count": 42,
-      "+1": 21,
+      "total_count": 43,
+      "+1": 22,
       "-1": 0,
       "laugh": 4,
       "hooray": 6,
@@ -560,8 +560,8 @@
     "body": "This is the General Availability release of Redis Community Edition 7.4.\r\n\r\n### Changes to new 7.4 features (compared to 7.4 RC2)\r\n\r\n* #13391, #13438 Hash - expiration of individual fields: RDB file format changes\r\n* #13372 Hash - expiration of individual fields: rename and fix counting of `expired_subkeys` metric\r\n* #13372 Hash - expiration of individual fields: rename `INFO` keyspace field to `subexpiry`\r\n\r\n### Configuration parameters\r\n\r\n* #13400 Add hide-user-data-from-log - allows hiding user data from the log file\r\n\r\n### Bug fixes\r\n\r\n* #13407 Trigger Lua GC after `SCRIPT LOAD`\r\n* #13380 Fix possible crash due to OOM panic on invalid command\r\n* #13383 `FUNCTION FLUSH` - improve Lua GC behavior and fix thread race in ASYNC mode\r\n* #13408 `HEXPIRE`-like commands should emit `HDEL` keyspace notification if expire time is in the past\r\n",
     "reactions": {
       "url": "https://api.github.com/repos/redis/redis/releases/167579990/reactions",
-      "total_count": 48,
-      "+1": 20,
+      "total_count": 49,
+      "+1": 21,
       "-1": 0,
       "laugh": 0,
       "hooray": 16,

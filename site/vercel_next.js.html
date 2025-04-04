@@ -10,6 +10,120 @@
   <h1>🚀 vercel/next.js - Release Notes</h1>
   
     <section>
+      <h2>v15.3.0-canary.33 (2025-04-03)</h2>
+      <pre>### Core Changes
+
+- Ignore an existing HMR refresh hash cookie with `next start`: #77714
+- Turbopack build: Replace process.env.TURBOPACK usage: #77783
+
+### Misc Changes
+
+- doc: onNavigate: #77647
+- Update bundler production test manifest: #77764
+- doc: useLinkStatus doc follow-up: #77790
+- Update Turbopack development test manifest: #77766
+- [ci] remove needs build-native for lint job: #77787
+- test(examples): update turbopack manifest: #75092
+
+### Credits 
+
+Huge thanks to @gaojude, @unstubbable, @huozhi, @JamBalaya56562, and @timneutkens for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.32 (2025-04-03)</h2>
+      <pre>### Core Changes
+
+- [dev-overlay] remove text wrap for terminal: #76953
+- Upgrade React from `63779030-20250328` to `040f8286-20250402`: #77742
+- Optimize server runtime bundles: #77723
+- Turbopack Build: Remove cases of process.env.TURBOPACK: #77757
+- [dev-overlay] Fix unactionable `useLayoutEffect` warning if React 18 is used: #77737
+- [dev-tools] Fix flashing of disabled state on indicator: #77727
+- Webpack build: Add compiled in x seconds in missing places: #77751
+
+### Misc Changes
+
+- chore(turbo-tasks): Audit all remaining uses of `Vc` in a struct: #77756
+- docs: `instrumentation-client` follow up: #77752
+- [test] Get rid of unrelated "Invalid hook call" error from tests using `styled-components`: #77736
+- Turbopack: keep side-effect-full imports: #76545
+- Docs: Recommend inline `use server` and update examples: #77770
+- Revert "Docs: Recommend inline `use server` and update examples": #77771
+- doc: useLinkStatus: #77648
+- Update Turbopack production test manifest: #77767
+- Update bundler development test manifest: #77765
+- [docs] fix lint issue in use link status doc: #77785
+
+### Credits 
+
+Huge thanks to @bgw, @leerob, @devjiwonchoi, @unstubbable, @timneutkens, @eps1lon, @raunofreiberg, @mischnic, @delbaoliveira, @gaojude, and @huozhi for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.31 (2025-04-02)</h2>
+      <pre>### Core Changes
+
+- Reapply "Turbopack: layout segment optimization for Pages" (#77339): #77696
+- feat(next/image): support `new URL()` for `images.remotePatterns`: #77692
+
+### Misc Changes
+
+- Update bundler production test manifest: #77707
+
+### Credits 
+
+Huge thanks to @huozhi and @styfle for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v15.3.0-canary.30 (2025-04-02)</h2>
+      <pre>### Core Changes
+
+- [dev-overlay] Harden types when handling hydration mismatches: #77334
+- [dev-overlay] Fix ref warning when Pages Router with React 18 is used: #77726
+- add support for cssmodules-pure-no-check to allow global CSS features like View Transitions: #77321
+- [dev-overlay] Only warn once per invalid sourcemap: #77444
+- [dynamicIO] only abort once per prerender: #77747
+- Turbopack build: Move Turbopack marker to SERVER_FILES_MANIFEST: #77711
+
+### Example Changes
+
+- chore(examples): remove examples that can be v0'd: #77349
+- Alternate bundler example: use `canary` version: #77754
+
+### Misc Changes
+
+- chore(turbopack): Make TaskInputs use ResolvedVc: #77700
+- Getting Started Docs: Add `Metadata and OG images` page: #74077
+- Getting Started Docs: Add `Upgrade` page: #77717
+- Docs IA 2.0: Rename `Examples` to `Guides`: #77722
+- build: Update `swc_core` to `v19.0.0`: #77669
+- Add Josh to Turbopack team for created-by label: #77738
+- Turbopack: use better ident for worker chunk group: #77731
+- chore(turbo-tasks): Remove redundant ast-grep lint rule: #77701
+- fix(docs): update error type in notFound function description: #77503
+- Update bundler development test manifest: #77706
+- Update Turbopack production test manifest: #77709
+- Turbopack: refactor resolve_url_reference to avoid chunk_path: #77732
+- Update Turbopack development test manifest: #77708
+- Port "app-document" test to e2e: #77748
+- [ci]: skip build-windows job for docs only change: #77743
+
+### Credits 
+
+Huge thanks to @bgw, @eps1lon, @delbaoliveira, @jantimon, @kdy1, @padmaia, @sokra, @Bernardoow, @gnoff, @samcx, @mischnic, @huozhi, @wbinnssmith, and @timneutkens for helping!
+</pre>
+    </section>
+    <hr />
+  
+    <section>
       <h2>v15.3.0-canary.29 (2025-04-01)</h2>
       <pre>### Core Changes
 
@@ -524,91 +638,6 @@ Huge thanks to @bgw, @sokra, @unstubbable, @leerob, @mischnic, @raunofreiberg, @
 ### Credits 
 
 Huge thanks to @mischnic, @bgw, @ijjk, and @wbinnssmith for helping!
-</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v15.3.0-canary.11 (2025-03-17)</h2>
-      <pre>### Core Changes
-
-- [dev-overlay] Fix stacking order of highlighted line: #77189
-- Upgrade React from `6aa8254b-20250312` to `5398b711-20250314`: #77129
-- fix(styled-jsx): Pass `useLightningcss` option to `styled-jsx` correctly: #77008
-- log the instrumentation-client execution time: #77121
-- Turbopack: canary-gate production builds: #77146
-- [dev-overlay] remove special handling for missing tag error : #77147
-
-### Misc Changes
-
-- build: Update `swc_core` to `v16.6.0`: #77155
-- Allow building node-pty in tests: #77187
-- Don't mark ppr-errors Turbopack dev tests as failed: #76951
-- Bump lightningcss: #77132
-- Update Turbopack production test manifest: #77183
-- Turbopack: fix graph layout segment optimization: #77094
-- Turbopack: split up server actions modules for better treeshaking: #76877
-- Turbopack: conditional parse in apply_module_type: #77191
-- build: Update `swc_core` to `v16.6.2`: #77194
-
-### Credits 
-
-Huge thanks to @kdy1, @raunofreiberg, @mischnic, @gaojude, @wbinnssmith, and @huozhi for helping!
-</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v15.2.3 (2025-03-18)</h2>
-      <pre>> [!NOTE]  
-> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
-> This release contains a security patch for [CVE-2025-29927](https://github.com/vercel/next.js/security/advisories/GHSA-f82v-jwr5-mffw).
-
-### Core Changes
-
-- Update default allowed origins list (#77212)
-- unify allowed origin detection handling (#77053)
-- Add dev warning for cross-origin and stabilize allowedDevOrigins (#77044)
-- Ensure deploymentId is used for CSS preloads (#77210)
-- Update middleware request header (#77201)
-- [metadata] remove the default segement check for metadata rendering (#77119)
-- [ts-hint] fix vscode type hint plugin enabling (#77099)
-- [metadata] re-insert icons to head for streamed metadata (#76915)
-
-### Credits
-
-Huge thanks to @ijjk, @ztanner, and @huozhi for helping!
-
-</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v14.2.25 (2025-03-17)</h2>
-      <pre>> [!NOTE]  
-> This release is backporting bug fixes. It does **not** include all pending features/changes on canary.
-> This release contains a security patch for [CVE-2025-29927](https://github.com/vercel/next.js/security/advisories/GHSA-f82v-jwr5-mffw).
-
-### Core Changes
-
-- Update middleware request header (#77202)
-
-### Credits
-
-Huge thanks to @ijjk for helping!
-</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v15.3.0-canary.10 (2025-03-15)</h2>
-      <pre>### Core Changes
-
-- [metadata] remove the default segement check for metadata rendering: #77119
-
-### Credits 
-
-Huge thanks to @huozhi for helping!
 </pre>
     </section>
     <hr />

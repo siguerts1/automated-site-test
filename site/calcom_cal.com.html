@@ -10,6 +10,59 @@
   <h1>🚀 calcom/cal.com - Release Notes</h1>
   
     <section>
+      <h2>v5.1.15 (2025-04-03)</h2>
+      <pre>## What's Changed
+* docs: CalProvider by @supalarry in https://github.com/calcom/cal.com/pull/20508
+* fix: add oauth client id to table identifier on platform managed user list by @eunjae-lee in https://github.com/calcom/cal.com/pull/20513
+* refactor: extract NextRequest from handle new booking by @sean-brydon in https://github.com/calcom/cal.com/pull/20082
+* fix: Add to calendar feature not working properly by @anikdhabal in https://github.com/calcom/cal.com/pull/20515
+* fix: firstname lastname identifiers by @romitg2 in https://github.com/calcom/cal.com/pull/20480
+* fix: v2 allow creating team events without hosts by @supalarry in https://github.com/calcom/cal.com/pull/20520
+* chore: bridge logs api v2 <-> libraries by @ThyMinimalDev in https://github.com/calcom/cal.com/pull/20440
+* fix: keep search term on the url (DataTableToolbar.SearchBar) by @eunjae-lee in https://github.com/calcom/cal.com/pull/20521
+* chore: Booker Header - selectedDateString could be null by @hbjORbj in https://github.com/calcom/cal.com/pull/20517
+* feat: v2 return booking icsUid by @supalarry in https://github.com/calcom/cal.com/pull/20527
+* feat: max-seats-per-time-slot by @TusharBhatt1 in https://github.com/calcom/cal.com/pull/20213
+* feat: options to disable cancelling and/or rescheduling by @TusharBhatt1 in https://github.com/calcom/cal.com/pull/20489
+* feat: Update `@dub/analytics` to support domainsConfig.refer by @steven-tey in https://github.com/calcom/cal.com/pull/20495
+* fix: don't display user event types with no owner by @Udit-takkar in https://github.com/calcom/cal.com/pull/20525
+* feat: get org bookings endpoint api-v2 by @ThyMinimalDev in https://github.com/calcom/cal.com/pull/20462
+* chore: Update favicon for docs by @keithwillcode in https://github.com/calcom/cal.com/pull/20532
+
+## New Contributors
+* @romitg2 made their first contribution in https://github.com/calcom/cal.com/pull/20480
+
+**Full Changelog**: https://github.com/calcom/cal.com/compare/v5.1.14...v5.1.15</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v5.1.14 (2025-04-02)</h2>
+      <pre>## What's Changed
+* feat: implement booking page error boundary by @hbjORbj in https://github.com/calcom/cal.com/pull/20492
+* perf: Remove `ssrInit` completely  by @hbjORbj in https://github.com/calcom/cal.com/pull/20439
+* chore: Salesforce - handle checkbox type fields by @joeauyeung in https://github.com/calcom/cal.com/pull/20490
+* chore: do not route to meeting-ended page for daily link used for testing by @Udit-takkar in https://github.com/calcom/cal.com/pull/20371
+* feat: v3/UI docs  by @sean-brydon in https://github.com/calcom/cal.com/pull/20454
+* feat: support Filter Segment in other pages by @eunjae-lee in https://github.com/calcom/cal.com/pull/20461
+* fix: google signin getting started redirect by @sean-brydon in https://github.com/calcom/cal.com/pull/20501
+* fix: Correct import of markdownToSafeHtml on the client by @anikdhabal in https://github.com/calcom/cal.com/pull/18195
+* fix: switch saveMode for SaveFilterSegmentButton by @eunjae-lee in https://github.com/calcom/cal.com/pull/20502
+* chore: set x-request-id in response header for exeptions apiv2 by @ThyMinimalDev in https://github.com/calcom/cal.com/pull/20505
+* fix: removes additional space on top and bottom by @sean-brydon in https://github.com/calcom/cal.com/pull/20503
+* refactor: v2 access and refresh tokens by @supalarry in https://github.com/calcom/cal.com/pull/20486
+* fix: v2 filter out ooo days out of slots by @supalarry in https://github.com/calcom/cal.com/pull/20303
+* chore: Add spam checking for workflow bodies by @joeauyeung in https://github.com/calcom/cal.com/pull/18822
+* fix: v2 bookings attendeeEmail filter by @supalarry in https://github.com/calcom/cal.com/pull/20506
+* feat: allow conferencing apps to be installed on teams by @SomayChauhan in https://github.com/calcom/cal.com/pull/19784
+* chore: refactor to use `createRouterCaller` util by @hbjORbj in https://github.com/calcom/cal.com/pull/20494
+
+
+**Full Changelog**: https://github.com/calcom/cal.com/compare/v5.1.13...v5.1.14</pre>
+    </section>
+    <hr />
+  
+    <section>
       <h2>v5.1.13 (2025-04-01)</h2>
       <pre>## What's Changed
 * fix: User fields response not populated in HubSpot by @anikdhabal in https://github.com/calcom/cal.com/pull/20458
@@ -742,54 +795,6 @@
 * @sn10-debug made their first contribution in https://github.com/calcom/cal.com/pull/18862
 
 **Full Changelog**: https://github.com/calcom/cal.com/compare/v5.0.5...v5.0.6</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v5.0.5 (2025-02-21)</h2>
-      <pre>## What's Changed
-* fix: Routing Form - Crash due to an invalid state of connected field that was deleted in main form by @hariombalhara in https://github.com/calcom/cal.com/pull/19421
-* fix: #19296 Success pages shows wrong nr of occurrences (recurring booking) by @PAVANNAIK25 in https://github.com/calcom/cal.com/pull/19304
-* fix: preserve columnVisibility from initialState by @eunjae-lee in https://github.com/calcom/cal.com/pull/19412
-* feat: v2 routing forms responses endpoints by @supalarry in https://github.com/calcom/cal.com/pull/19319
-* fix: typos in packages/features by @luzpaz in https://github.com/calcom/cal.com/pull/19220
-* fix: Tabs activation issue and refactor by @anikdhabal in https://github.com/calcom/cal.com/pull/19399
-* feat: display alert when leaving/reloading booking page by @Udit-takkar in https://github.com/calcom/cal.com/pull/18932
-* fix: booking fields being overridden whenever saving with atom by @Ryukemeister in https://github.com/calcom/cal.com/pull/19339
-* refactor: Enabling typescript 5.3.3 in @calcom/trpc by @emrysal in https://github.com/calcom/cal.com/pull/19394
-* fix: skip confirm step followup by @SomayChauhan in https://github.com/calcom/cal.com/pull/19076
-* chore: remove deprecated code, Meta & MetaProvider by @hbjORbj in https://github.com/calcom/cal.com/pull/19407
-* docs: add help section for creating phone only event type by @Udit-takkar in https://github.com/calcom/cal.com/pull/19440
-* chore: More salesforce logs by @hariombalhara in https://github.com/calcom/cal.com/pull/19409
-* fix: typos in packages/ui by @luzpaz in https://github.com/calcom/cal.com/pull/19434
-* fix: Issues in custom event name by @anikdhabal in https://github.com/calcom/cal.com/pull/19405
-
-
-**Full Changelog**: https://github.com/calcom/cal.com/compare/v5.0.4...v5.0.5</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v5.0.4 (2025-02-20)</h2>
-      <pre>## What's Changed
-* fix: impersonation button alignment by @retrogtx in https://github.com/calcom/cal.com/pull/19383
-* chore: Salesforce - Added logs more by @hariombalhara in https://github.com/calcom/cal.com/pull/19397
-* fix: phone input crash for platform by @Ryukemeister in https://github.com/calcom/cal.com/pull/19396
-* fix: Dry Run improvements - Slot reservation by @hariombalhara in https://github.com/calcom/cal.com/pull/18865
-* fix: multiselect is broken by @anikdhabal in https://github.com/calcom/cal.com/pull/19351
-* fix: reduce abnormal spacing in calendar invite by @retrogtx in https://github.com/calcom/cal.com/pull/19290
-* feat: implement mintlify AI search into CMD+K by @Amit91848 in https://github.com/calcom/cal.com/pull/18749
-* chore: remove /user & /user/type dynamic routes from middleware by @hbjORbj in https://github.com/calcom/cal.com/pull/19345
-* fix: fix youtube link and referral url  by @yuriisilkov1986 in https://github.com/calcom/cal.com/pull/19410
-* feat: update translations via @lingodotdev by @calcom-bot in https://github.com/calcom/cal.com/pull/19417
-* chore: remove org/team booking routes from middleware by @hbjORbj in https://github.com/calcom/cal.com/pull/19349
-* fix: Issues with scheduling timezone change without end time by @nayan-bagale in https://github.com/calcom/cal.com/pull/19103
-* chore: Block POST requests to all page routes except a whitelist by @hbjORbj in https://github.com/calcom/cal.com/pull/19346
-
-## New Contributors
-* @nayan-bagale made their first contribution in https://github.com/calcom/cal.com/pull/19103
-
-**Full Changelog**: https://github.com/calcom/cal.com/compare/v5.0.3...v5.0.4</pre>
     </section>
     <hr />
   

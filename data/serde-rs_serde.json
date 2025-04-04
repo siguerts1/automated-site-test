@@ -40,8 +40,8 @@
     "body": "- Prevent `absolute_paths` Clippy restriction being triggered inside macro-generated code (#2906, thanks @davidzeng0)",
     "reactions": {
       "url": "https://api.github.com/repos/serde-rs/serde/releases/204606822/reactions",
-      "total_count": 11,
-      "+1": 4,
+      "total_count": 12,
+      "+1": 5,
       "-1": 0,
       "laugh": 2,
       "hooray": 1,

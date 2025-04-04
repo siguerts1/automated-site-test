@@ -10,6 +10,183 @@
   <h1>🚀 goharbor/harbor - Release Notes</h1>
   
     <section>
+      <h2>v2.13.0-rc1 (2025-04-03)</h2>
+      <pre><!-- Release notes generated using configuration in .github/release.yml at v2.13.0-rc1 -->
+
+## What's Changed
+### Exciting New Features 🎉
+
+#### Enhanced audit log 🎉
+Enhances Harbor's audit logging with more granular tracking of user actions and system events, improving traceability and security. Key changes include detailed log filtering, enhanced API logging, and improved log query performance. For more details, please refer to the design proposal: https://github.com/goharbor/community/blob/main/proposals/new/enhance_audit_log.md
+
+#### Enhanced OIDC 🎉
+Enhancements to OIDC integration in Harbor improve support for user session logout and Proof Key for Code Exchange.
+
+#### Integration with CloudNativeAI 🎉
+Integrates Harbor with CloudNativeAI (CNAI) to enhance AI model management and processing capabilities, enabling seamless storage, versioning, and retrieval of AI models. This integration supports the CloudNativeAI model specification, improving compatibility and scalability for managing AI workflows. For more details, please refer to the design proposal: https://github.com/goharbor/community/blob/main/proposals/new/AI-model-processor.md
+
+#### Redis TLS support 🎉
+Redis TLS support has been introduced to enhance the security of communication between Harbor components and Redis.
+
+* Add swagger api and audit_log_ext table model by @stonezdj in https://github.com/goharbor/harbor/pull/21360
+* Add configure item for audit_log_disable by @stonezdj in https://github.com/goharbor/harbor/pull/21368
+* Add config max_job_duration_hours for jobservice by @stonezdj in https://github.com/goharbor/harbor/pull/21390
+* Add middleware for audit log by @stonezdj in https://github.com/goharbor/harbor/pull/21376
+* Add dao and manager for audit log ext by @stonezdj in https://github.com/goharbor/harbor/pull/21379
+* Implement audit log ext API by @stonezdj in https://github.com/goharbor/harbor/pull/21414
+* Add user login event to audit log by @stonezdj in https://github.com/goharbor/harbor/pull/21415
+* Add user event and config event by @stonezdj in https://github.com/goharbor/harbor/pull/21455
+* Update purge audit to purge both audit_log_ext and audit_log by @stonezdj in https://github.com/goharbor/harbor/pull/21608
+* Add OIDC login event by @stonezdj in https://github.com/goharbor/harbor/pull/21650
+* feat: implement the CNAI model processor by @chlins in https://github.com/goharbor/harbor/pull/21663
+* oidclogout by @wy65701436 in https://github.com/goharbor/harbor/pull/21718
+* Feat: artifact adds AI Model type by @Liam-Zhao in https://github.com/goharbor/harbor/pull/21691
+### Enhancement 🚀
+* Enable MAX_JOB_DURATION_SECONDS in the jobservice container by @stonezdj in https://github.com/goharbor/harbor/pull/21232
+* feat: extend the p2p preheat policy by @chlins in https://github.com/goharbor/harbor/pull/21115
+* fix: replication rule message in UI by @bupd in https://github.com/goharbor/harbor/pull/21299
+* feat: add execution_id and task_id to the replication webhook payload by @chlins in https://github.com/goharbor/harbor/pull/21614
+* support to audit logs by @xuelichao in https://github.com/goharbor/harbor/pull/21377
+* Revamp Copy Pull Command by @bupd in https://github.com/goharbor/harbor/pull/21155
+* Add PKCE support for OIDC authentication by @reasonerjt in https://github.com/goharbor/harbor/pull/21702
+* feat: Persistent Page Size UI by @bupd in https://github.com/goharbor/harbor/pull/21627
+### Component updates ⬆️
+* Fix auth config oidc scope regex by @rlacko58 in https://github.com/goharbor/harbor/pull/20483
+* fix build package issue by @wy65701436 in https://github.com/goharbor/harbor/pull/21087
+* Update fr-fr-lang.json by @tostt in https://github.com/goharbor/harbor/pull/21082
+* chore: fix some comments by @cangqiaoyuzhuo in https://github.com/goharbor/harbor/pull/21109
+* bump base version by @wy65701436 in https://github.com/goharbor/harbor/pull/21111
+* chore(deps): bump go.opentelemetry.io/otel/sdk from 1.29.0 to 1.31.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21106
+* chore(deps): bump k8s.io/api from 0.31.1 to 0.31.2 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21104
+* chore(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp from 1.27.0 to 1.31.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21107
+* chore(deps): bump go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux from 0.51.0 to 0.56.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21131
+* chore(deps): bump github.com/aliyun/alibaba-cloud-sdk-go from 1.61.1193 to 1.63.47 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21130
+* chore(deps): bump github.com/golang-jwt/jwt/v4 from 4.4.2 to 4.5.1 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21132
+* chore(deps): bump github.com/prometheus/client_golang from 1.20.4 to 1.20.5 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21105
+* chore(deps): bump golang.org/x/text from 0.19.0 to 0.20.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21161
+* chore(deps): bump go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux from 0.56.0 to 0.57.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21160
+* chore(deps): bump go.opentelemetry.io/otel from 1.31.0 to 1.32.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21162
+* chore(deps): bump github.com/volcengine/volcengine-go-sdk from 1.0.159 to 1.0.164 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21159
+* chore(deps): bump golang.org/x/crypto from 0.28.0 to 0.29.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21158
+* Fix postgres script permissions by @hajnalmt in https://github.com/goharbor/harbor/pull/21007
+* fix: event-based replication deletion not work when policy with label by @chlins in https://github.com/goharbor/harbor/pull/21215
+* fix robot deletion event by @wy65701436 in https://github.com/goharbor/harbor/pull/21234
+* fix robot account creation issue by @wy65701436 in https://github.com/goharbor/harbor/pull/21310
+* chore(deps): bump golang.org/x/crypto from 0.29.0 to 0.31.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21307
+* fix export cve permission issue by @wy65701436 in https://github.com/goharbor/harbor/pull/21325
+* Fixed the type in DTR adapter info by @lysunkin in https://github.com/goharbor/harbor/pull/21357
+* fix: unify the auth data handle to the decode method by @chlins in https://github.com/goharbor/harbor/pull/21350
+* Skip admin and change oidc user not found message more readable by @stonezdj in https://github.com/goharbor/harbor/pull/21061
+* Update prepare to avoid error when max_job_duration_hours not configured by @stonezdj in https://github.com/goharbor/harbor/pull/21395
+* bump up swagger by @wy65701436 in https://github.com/goharbor/harbor/pull/21396
+* Remove id field from payload when update purge audit or gc schedule by @stonezdj in https://github.com/goharbor/harbor/pull/21408
+* chore(deps): bump github.com/beego/beego/v2 from 2.2.1 to 2.3.4 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21321
+* update spectral image by @wy65701436 in https://github.com/goharbor/harbor/pull/21410
+* bump mockery by @wy65701436 in https://github.com/goharbor/harbor/pull/21419
+* chore(deps): bump github.com/aliyun/alibaba-cloud-sdk-go from 1.63.47 to 1.63.80 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21405
+* chore(deps): bump golang.org/x/net from 0.30.0 to 0.33.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21413
+* Fix Overlay Issue in Replication Page UI by @bupd in https://github.com/goharbor/harbor/pull/21069
+* chore(deps): bump github.com/volcengine/volcengine-go-sdk from 1.0.164 to 1.0.177 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21404
+* chore(deps): bump k8s.io/apimachinery from 0.31.2 to 0.32.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21319
+* chore(deps): bump golang.org/x/oauth2 from 0.23.0 to 0.25.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21381
+* separate buildin values by @wy65701436 in https://github.com/goharbor/harbor/pull/21425
+* Bump up trivy to v0.58.2, trivy adapter to v0.32.3 (#21417) by @reasonerjt in https://github.com/goharbor/harbor/pull/21442
+* chore(deps): bump github.com/aliyun/alibaba-cloud-sdk-go from 1.63.80 to 1.63.84 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21437
+* chore(deps): bump k8s.io/client-go from 0.31.1 to 0.32.1 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21436
+* chore(deps): bump go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux from 0.57.0 to 0.59.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21439
+* chore(deps): bump golang.org/x/time from 0.7.0 to 0.9.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21438
+* chore(deps): bump go.opentelemetry.io/otel/sdk from 1.31.0 to 1.34.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21440
+* Full spanish harbor ui translation by @sergioarmgpl in https://github.com/goharbor/harbor/pull/21369
+* Fix: Incorrect Data Display in Replications Table by @bupd in https://github.com/goharbor/harbor/pull/21461
+* Fix Overflow in Interrogation Services Page by @bupd in https://github.com/goharbor/harbor/pull/21043
+* enlarge the gc workers to 10 by @wy65701436 in https://github.com/goharbor/harbor/pull/21462
+* chore(deps): bump github.com/go-ldap/ldap/v3 from 3.4.6 to 3.4.10 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21464
+* chore(deps): bump github.com/aws/aws-sdk-go from 1.55.5 to 1.55.6 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21467
+* chore(deps): bump github.com/volcengine/volcengine-go-sdk from 1.0.177 to 1.0.180 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21613
+* chore(deps): bump helm.sh/helm/v3 from 3.16.2 to 3.17.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21468
+* chore(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp from 1.31.0 to 1.34.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21465
+* Fix issue with user create/delete/update event by @stonezdj in https://github.com/goharbor/harbor/pull/21651
+* add redis tls support for core&jobservice by @MinerYang in https://github.com/goharbor/harbor/pull/21654
+* remove version info for anonymous users by @MinerYang in https://github.com/goharbor/harbor/pull/21672
+* prepare redis tls config by @MinerYang in https://github.com/goharbor/harbor/pull/21667
+* Adjust the audit_log_ext column size to keep align with audit_log table by @stonezdj in https://github.com/goharbor/harbor/pull/21678
+* remove redis sentinel patch from builder by @MinerYang in https://github.com/goharbor/harbor/pull/21679
+* update tlsOptions for external redis by @MinerYang in https://github.com/goharbor/harbor/pull/21681
+* add prepare migration script for 2.13.0 by @MinerYang in https://github.com/goharbor/harbor/pull/21680
+* Change audit log label by @stonezdj in https://github.com/goharbor/harbor/pull/21703
+* fix issue 20828 by @wy65701436 in https://github.com/goharbor/harbor/pull/21726
+* consume the downstream distribution by @wy65701436 in https://github.com/goharbor/harbor/pull/21733
+* Add Missing copyright headers in src/portal by @bupd in https://github.com/goharbor/harbor/pull/21693
+* Add Missing copyright headers in src/portal part 2 by @bupd in https://github.com/goharbor/harbor/pull/21694
+* Add Missing Headers in UI part 3 by @bupd in https://github.com/goharbor/harbor/pull/21695
+* Replace Vmware to goharbor by @bupd in https://github.com/goharbor/harbor/pull/21696
+* Add Lint Check for Copyright Headers in UI by @bupd in https://github.com/goharbor/harbor/pull/21692
+* Fix: Copy Pull Button Overlap with Tag Immutable Label by @bupd in https://github.com/goharbor/harbor/pull/21720
+* fix i18n issue by @wy65701436 in https://github.com/goharbor/harbor/pull/21748
+* fix: fix replication of multiple projects with numeric names by @cgirard-mir in https://github.com/goharbor/harbor/pull/21474
+* update golang to v1.23.7 by @wy65701436 in https://github.com/goharbor/harbor/pull/21749
+* chore(deps): bump golang.org/x/time from 0.9.0 to 0.11.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21715
+* Fix Password Validation in UI by @bupd in https://github.com/goharbor/harbor/pull/21697
+* chore(deps): bump github.com/volcengine/volcengine-go-sdk from 1.0.180 to 1.0.185 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21717
+* fix: limit the file size of the cnai model processor by @chlins in https://github.com/goharbor/harbor/pull/21759
+* redirect to the sign-in page by @wy65701436 in https://github.com/goharbor/harbor/pull/21764
+* chore(deps): bump go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp from 0.57.0 to 0.60.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21716
+* fix logout redirect by @wy65701436 in https://github.com/goharbor/harbor/pull/21765
+* fix: Remove top error message about no README or license by @Liam-Zhao in https://github.com/goharbor/harbor/pull/21754
+* chore(deps): bump golang.org/x/net from 0.34.0 to 0.36.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21731
+* chore(deps): bump golang.org/x/net from 0.34.0 to 0.37.0 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21744
+* chore(deps): bump helm.sh/helm/v3 from 3.17.0 to 3.17.2 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21745
+* Fix token service returning empty token on tls certificate issue without any error by @dee-kryvenko in https://github.com/goharbor/harbor/pull/20081
+* Suppress aborthandler by @ianseyer in https://github.com/goharbor/harbor/pull/21479
+* update oidc login log level by @wy65701436 in https://github.com/goharbor/harbor/pull/21775
+* chore(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to 5.2.2 in /src by @dependabot in https://github.com/goharbor/harbor/pull/21769
+* update robot log level by @wy65701436 in https://github.com/goharbor/harbor/pull/21778
+* Bump golang.org/x/oauth2 from v0.25.0 to v0.27.0 by @yevchuk-kostiantyn in https://github.com/goharbor/harbor/pull/21757
+* fix 21118 by @wy65701436 in https://github.com/goharbor/harbor/pull/21792
+* clean up robot account for SBOM Job by @MinerYang in https://github.com/goharbor/harbor/pull/21794
+* Add tips for \Other events\ by @stonezdj in https://github.com/goharbor/harbor/pull/21788
+* Add operation description for delete tag event by @stonezdj in https://github.com/goharbor/harbor/pull/21807
+* fix orm filterable issue by @wy65701436 in https://github.com/goharbor/harbor/pull/21797
+* Fix: Modelfs overflow in UI. by @bupd in https://github.com/goharbor/harbor/pull/21791
+* Add operation_descrtion when forward audit log by @stonezdj in https://github.com/goharbor/harbor/pull/21786
+* Remove top copy pull cmd button by @bupd in https://github.com/goharbor/harbor/pull/21810
+* chore: format the go.mod by @chlins in https://github.com/goharbor/harbor/pull/21812
+* bump up golang version by @wy65701436 in https://github.com/goharbor/harbor/pull/21813
+* Rule out the duplicate login event and false logout event for oidc by @stonezdj in https://github.com/goharbor/harbor/pull/21811
+* bump up jwt and beego by @wy65701436 in https://github.com/goharbor/harbor/pull/21814
+* build base images for v2.13 by @wy65701436 in https://github.com/goharbor/harbor/pull/21820
+### Breaking Changes 🛠
+* update csrf key generation by @wy65701436 in https://github.com/goharbor/harbor/pull/21154
+* remove with_signature by @wy65701436 in https://github.com/goharbor/harbor/pull/21420
+### Deprecations ❌
+* Remove robotV1 from code base (#20958) by @sgaist in https://github.com/goharbor/harbor/pull/20991
+### Other Changes
+* fix release script by @wy65701436 in https://github.com/goharbor/harbor/pull/21100
+* remove asc files handling by @wy65701436 in https://github.com/goharbor/harbor/pull/21214
+* chore(deps): bump codecov/codecov-action from 4 to 5 by @dependabot in https://github.com/goharbor/harbor/pull/21192
+* chore(deps): bump actions/stale from 9.0.0 to 9.1.0 by @dependabot in https://github.com/goharbor/harbor/pull/21446
+* (Doc): Add supported Node Version for Harbor UI in .nvmrc by @bupd in https://github.com/goharbor/harbor/pull/21153
+* Update xpath for some UI components by @stonezdj in https://github.com/goharbor/harbor/pull/21817
+
+## New Contributors
+* @rlacko58 made their first contribution in https://github.com/goharbor/harbor/pull/20483
+* @cangqiaoyuzhuo made their first contribution in https://github.com/goharbor/harbor/pull/21109
+* @yuzp1996 made their first contribution in https://github.com/goharbor/harbor/pull/21343
+* @lysunkin made their first contribution in https://github.com/goharbor/harbor/pull/21357
+* @sgaist made their first contribution in https://github.com/goharbor/harbor/pull/20991
+* @sergioarmgpl made their first contribution in https://github.com/goharbor/harbor/pull/21369
+* @Liam-Zhao made their first contribution in https://github.com/goharbor/harbor/pull/21691
+* @cgirard-mir made their first contribution in https://github.com/goharbor/harbor/pull/21474
+* @dee-kryvenko made their first contribution in https://github.com/goharbor/harbor/pull/20081
+* @ianseyer made their first contribution in https://github.com/goharbor/harbor/pull/21479
+* @yevchuk-kostiantyn made their first contribution in https://github.com/goharbor/harbor/pull/21757
+
+**Full Changelog**: https://github.com/goharbor/harbor/compare/v2.12.0...v2.13.0-rc1
+</pre>
+    </section>
+    <hr />
+  
+    <section>
       <h2>v2.12.2 (2025-01-16)</h2>
       <pre><!-- Release notes generated using configuration in .github/release.yml at v2.12.2 -->
 
@@ -1664,25 +1841,6 @@ Harbor now fully supports [OCI Distribution Spec v1.1.0](https://github.com/open
 
 
 **Full Changelog**: https://github.com/goharbor/harbor/compare/v2.8.5...v2.8.6-rc1
-</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v2.10.2 (2024-04-10)</h2>
-      <pre><!-- Release notes generated using configuration in .github/release.yml at v2.10.2 -->
-
-## What's Changed
-### Component updates ⬆️
-* [cherry-pick] panic due to mark retention task error by @stonezdj in https://github.com/goharbor/harbor/pull/20169
-* bump golang to 1.21.8 on release-2.10.0 by @MinerYang in https://github.com/goharbor/harbor/pull/20194
-* fix: update TRIVYVERSION=v0.50.1 && TRIVYADAPTERVERSION=v0.30.23 by @zyyw in https://github.com/goharbor/harbor/pull/20210
-* fix: close file by @zyyw in https://github.com/goharbor/harbor/pull/20220
-* [cherry-pick] Allow empty path in redirect_url by @stonezdj in https://github.com/goharbor/harbor/pull/20237
-* fix: test robot account permission by @zyyw in https://github.com/goharbor/harbor/pull/20241
-
-
-**Full Changelog**: https://github.com/goharbor/harbor/compare/v2.10.1...v2.10.2
 </pre>
     </section>
     <hr />

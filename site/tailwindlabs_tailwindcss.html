@@ -10,6 +10,33 @@
   <h1>🚀 tailwindlabs/tailwindcss - Release Notes</h1>
   
     <section>
+      <h2>v4.1.2 (2025-04-03)</h2>
+      <pre>### Fixed
+
+- Don't rely on the presence of `@layer base` to polyfill `@property` ([#17506](https://github.com/tailwindlabs/tailwindcss/pull/17506))
+- Support setting multiple inset shadows as arbitrary values ([#17523](https://github.com/tailwindlabs/tailwindcss/pull/17523))
+- Fix `drop-shadow-*` utilities that are defined with multiple shadows ([#17515](https://github.com/tailwindlabs/tailwindcss/pull/17515))
+- PostCSS: Fix race condition when two changes are queued concurrently ([#17514](https://github.com/tailwindlabs/tailwindcss/pull/17514))
+- PostCSS: Ensure files containing `@tailwind utilities` are processed ([#17514](https://github.com/tailwindlabs/tailwindcss/pull/17514))
+- Ensure the `color-mix(…)` polyfill creates fallbacks even when using colors that cannot be statically analyzed ([#17513](https://github.com/tailwindlabs/tailwindcss/pull/17513))
+- Fix slow incremental builds with `@tailwindcss/vite` and `@tailwindcss/postscss` (especially on Windows) ([#17511](https://github.com/tailwindlabs/tailwindcss/pull/17511))
+- Vite: Fix missing CSS file in Qwik setups ([#17533](https://github.com/tailwindlabs/tailwindcss/pull/17533))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
+      <h2>v4.1.1 (2025-04-02)</h2>
+      <pre>### Fixed
+
+- Disable padding in `@source inline(…)` brace expansion ([#17491](https://github.com/tailwindlabs/tailwindcss/pull/17491))
+- Inject polyfills after `@import` and body-less `@layer` ([#17493](https://github.com/tailwindlabs/tailwindcss/pull/17493))
+- Ensure `@tailwindcss/cli` does not contain an import for `jiti` ([#17502](https://github.com/tailwindlabs/tailwindcss/pull/17502))
+</pre>
+    </section>
+    <hr />
+  
+    <section>
       <h2>v4.1.0 (2025-04-01)</h2>
       <pre>### Added
 
@@ -537,51 +564,6 @@ For a deep-dive into everything that's new, [check out the announcement post](ht
 - Skip reserializing CSS files that don't use Tailwind features in `@tailwindcss/postcss` and `@tailwindcss/vite` ([#15226](https://github.com/tailwindlabs/tailwindcss/pull/15226))
 - _Upgrade (experimental)_: Do not migrate the `overflow-clip` utility ([#15244](https://github.com/tailwindlabs/tailwindcss/pull/15244))
 - _Upgrade (experimental)_: Rename `backdrop-blur` to `backdrop-blur-sm` and `backdrop-blur-sm` to `backdrop-blur-xs` ([#15242](https://github.com/tailwindlabs/tailwindcss/pull/15242))
-</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v4.0.0-beta.3 (2024-11-27)</h2>
-      <pre>### Fixed
-
-- Ensure any necessary vendor prefixes are generated for iOS Safari, Firefox, and Chrome ([#15166](https://github.com/tailwindlabs/tailwindcss/pull/15166))
-- Ensure `.group` and `.peer` are prefixed when using the `prefix(…)` option ([#15174](https://github.com/tailwindlabs/tailwindcss/pull/15174))
-- Ensure 3D transforms render correctly in Safari ([#15179](https://github.com/tailwindlabs/tailwindcss/pull/15179))
-- Ensure `--spacing-*` variables take precedence over `--container-*` variables ([#15180](https://github.com/tailwindlabs/tailwindcss/pull/15180))
-- Fix scanning classes delimited by tab characters ([#15169](https://github.com/tailwindlabs/tailwindcss/pull/15169))
-- Ensure opacity modifiers and semi-transparent gradients render correctly by default in Safari ([#15201](https://github.com/tailwindlabs/tailwindcss/pull/15201))
-- Fix element size thrashing when transitioning gradients on elements with a defined font-size in Safari ([#15216](https://github.com/tailwindlabs/tailwindcss/pull/15216))
-- Ensure `translate-*` utilities work with arbitrary values that use `calc(…)` ([#15215](https://github.com/tailwindlabs/tailwindcss/pull/15215))
-- Ensure gradient stop position utilities work with arbitrary values that use `calc(…)` ([#15215](https://github.com/tailwindlabs/tailwindcss/pull/15215))
-- Ensure Node addons are packaged correctly with Windows ARM builds ([#15171](https://github.com/tailwindlabs/tailwindcss/pull/15171))
-- Ensure the Vite plugin resolves CSS and JS files according to the configured resolver conditions ([#15173])(https://github.com/tailwindlabs/tailwindcss/pull/15173)
-- _Upgrade (experimental)_: Migrate prefixes for `.group` and `.peer` classes ([#15208](https://github.com/tailwindlabs/tailwindcss/pull/15208))
-
-### Changed
-
-- Interpolate gradients using OKLAB instead of OKLCH by default ([#15201](https://github.com/tailwindlabs/tailwindcss/pull/15201))
-- Error when `layer(…)` in `@import` is not first in the list of functions/conditions ([#15109](https://github.com/tailwindlabs/tailwindcss/pull/15109))
-- Use unitless line-height values for font-size variables in default theme ([#15216](https://github.com/tailwindlabs/tailwindcss/pull/15216))
-- Don't register custom properties with explicit types unless those custom properties need to be animateable ([#15215](https://github.com/tailwindlabs/tailwindcss/pull/15215))
-</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>v4.0.0-beta.2 (2024-11-22)</h2>
-      <pre>### Fixed
-
-- Use configured `--letter-spacing` values for custom font size utilities ([#15099](https://github.com/tailwindlabs/tailwindcss/pull/15099))
-- Ensure `space-x/y-*` and `divide-x/y-*` with variants can undo `space-x/y-reverse` and `divide-x/y-reverse` ([#15094](https://github.com/tailwindlabs/tailwindcss/pull/15094))
-- Don't print minified code when the build fails in the CLI ([#15106](https://github.com/tailwindlabs/tailwindcss/pull/15106))
-- Generate the correct CSS for the `break-keep` utility ([#15108](https://github.com/tailwindlabs/tailwindcss/pull/15108))
-- Detect single word utilities that include numbers (e.g. `h1`) when scanning files ([#15110](https://github.com/tailwindlabs/tailwindcss/pull/15110))
-- _Upgrade (experimental)_: Always add `layer(…)` as the first param to `@import` ([#15102](https://github.com/tailwindlabs/tailwindcss/pull/15102))
-
-### Changed
-
-- Revert the new base styles for buttons and form controls ([#15100](https://github.com/tailwindlabs/tailwindcss/pull/15100))
 </pre>
     </section>
     <hr />

@@ -65,7 +65,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 34365339,
-        "download_count": 5,
+        "download_count": 24,
         "created_at": "2025-04-01T10:02:21Z",
         "updated_at": "2025-04-01T10:02:22Z",
         "browser_download_url": "https://github.com/ant-design/ant-design/releases/download/5.24.6/website.tar.gz"
@@ -76,8 +76,8 @@
     "body": "- \ud83d\udc1e Fix Modal show loading with async call, still can close with click outer space. [#53227](https://github.com/ant-design/ant-design/pull/53227) [@jin19980928](https://github.com/jin19980928)\n- \ud83d\udc1e Fix when Table `size` is `small`, the theme config will take effect on the sub Pagination. [#52829](https://github.com/ant-design/ant-design/pull/52829) [@Can-Chen](https://github.com/Can-Chen)\n---\n- \ud83d\udc1e \u4fee\u590d Modal \u901a\u8fc7\u5f02\u6b65\u65b9\u6cd5\u663e\u793a loading \u6001\u65f6\uff0c\u70b9\u51fb\u5916\u4fa7\u4ecd\u80fd\u89e6\u53d1\u5173\u95ed\u7684\u95ee\u9898\u3002[#53227](https://github.com/ant-design/ant-design/pull/53227) [@jin19980928](https://github.com/jin19980928)\n- \ud83d\udc1e \u4fee\u590d Table \u5728 `size` \u4e3a `small` \u65f6\uff0c\u4e3b\u9898\u914d\u7f6e Pagination \u65e0\u6548\u7684\u95ee\u9898\u3002[#52829](https://github.com/ant-design/ant-design/pull/52829) [@Can-Chen](https://github.com/Can-Chen)",
     "reactions": {
       "url": "https://api.github.com/repos/ant-design/ant-design/releases/209554337/reactions",
-      "total_count": 4,
-      "+1": 1,
+      "total_count": 5,
+      "+1": 2,
       "-1": 0,
       "laugh": 0,
       "hooray": 1,
@@ -340,14 +340,14 @@
     "body": "- Input\n  - \ud83d\udc1e Fix the next element was not correctly selected after pressing the Tab key when `allowClear` was turned on for Input. [#52977](https://github.com/ant-design/ant-design/pull/52977) [@wanpan11](https://github.com/wanpan11)\n  - \ud83d\udc84 Fix the border display issue when hovering in the `disabled` state when Input has `variant=\"underlined\"` turned on. [#52959](https://github.com/ant-design/ant-design/pull/52959) [@ustcfury](https://github.com/ustcfury)\n- \ud83d\udc84 Fix DatePicker header buttons misalignment caused by unexpected spacing. [#53007](https://github.com/ant-design/ant-design/pull/53007) [@DDDDD12138](https://github.com/DDDDD12138)\n- \ud83d\udc84 Fix the text in AutoComplete was not centered when `size=\"large\"`. [#52819](https://github.com/ant-design/ant-design/pull/52819) [@aojunhao123](https://github.com/aojunhao123)\n- \ud83c\udde9\ud83c\uddea Add missing `de_DE` translations for Transfer. [#53047](https://github.com/ant-design/ant-design/pull/53047) [@chrisinick](https://github.com/chrisinick)\n---\n- Input\n  - \ud83d\udc1e \u4fee\u590d Input \u5f00\u542f `allowClear` \u540e\u6309\u4e0b Tab \u952e\u540e\u6ca1\u6709\u6b63\u786e\u9009\u4e2d\u4e0b\u4e2a\u5143\u7d20\u7684\u95ee\u9898\u3002[#52977](https://github.com/ant-design/ant-design/pull/52977) [@wanpan11](https://github.com/wanpan11)\n  - \ud83d\udc84 \u4fee\u590d Input \u5f00\u542f `variant=\"underlined\"` \u65f6 `disabled` \u72b6\u6001\u4e0b hover \u65f6\u8fb9\u6846\u663e\u793a\u95ee\u9898\u3002[#52959](https://github.com/ant-design/ant-design/pull/52959) [@ustcfury](https://github.com/ustcfury)\n- \ud83d\udc84 \u4fee\u590d DatePicker \u5934\u90e8\u6309\u94ae\u610f\u5916\u95f4\u8ddd\u5bfc\u81f4\u7684\u672a\u5bf9\u9f50\u95ee\u9898\u3002[#53007](https://github.com/ant-design/ant-design/pull/53007) [@DDDDD12138](https://github.com/DDDDD12138)\n- \ud83d\udc84 \u4fee\u590d AutoComplete \u5728 `size=\"large\"` \u65f6\u6587\u5b57\u672a\u5c45\u4e2d\u5bf9\u9f50\u7684\u95ee\u9898\u3002[#52819](https://github.com/ant-design/ant-design/pull/52819) [@aojunhao123](https://github.com/aojunhao123)\n- \ud83c\udde9\ud83c\uddea \u5b8c\u5584 `de_DE` Transfer \u672c\u5730\u5316. [#53047](https://github.com/ant-design/ant-design/pull/53047) [@chrisinick](https://github.com/chrisinick)",
     "reactions": {
       "url": "https://api.github.com/repos/ant-design/ant-design/releases/203775995/reactions",
-      "total_count": 3,
-      "+1": 1,
+      "total_count": 5,
+      "+1": 2,
       "-1": 0,
       "laugh": 0,
       "hooray": 1,
       "confused": 0,
       "heart": 0,
-      "rocket": 1,
+      "rocket": 2,
       "eyes": 0
     }
   },

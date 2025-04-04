@@ -65,7 +65,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 9011664,
-        "download_count": 24869,
+        "download_count": 26036,
         "created_at": "2024-12-05T06:45:23Z",
         "updated_at": "2024-12-05T06:45:24Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.2/volta-2.0.2-linux-arm.tar.gz"
@@ -100,7 +100,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 9783242,
-        "download_count": 2559942,
+        "download_count": 2633117,
         "created_at": "2024-12-05T06:45:22Z",
         "updated_at": "2024-12-05T06:45:23Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.2/volta-2.0.2-linux.tar.gz"
@@ -135,7 +135,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 12863777,
-        "download_count": 49190,
+        "download_count": 50315,
         "created_at": "2024-12-05T06:45:24Z",
         "updated_at": "2024-12-05T06:45:25Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.2/volta-2.0.2-macos.tar.gz"
@@ -170,7 +170,7 @@
         "content_type": "application/x-msi",
         "state": "uploaded",
         "size": 5292032,
-        "download_count": 2544,
+        "download_count": 2625,
         "created_at": "2024-12-05T06:45:27Z",
         "updated_at": "2024-12-05T06:45:27Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.2/volta-2.0.2-windows-arm64.msi"
@@ -205,7 +205,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 6163580,
-        "download_count": 989,
+        "download_count": 1014,
         "created_at": "2024-12-05T06:45:27Z",
         "updated_at": "2024-12-05T06:45:28Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.2/volta-2.0.2-windows-arm64.zip"
@@ -240,7 +240,7 @@
         "content_type": "application/x-msi",
         "state": "uploaded",
         "size": 5586944,
-        "download_count": 51097,
+        "download_count": 52358,
         "created_at": "2024-12-05T06:45:25Z",
         "updated_at": "2024-12-05T06:45:25Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.2/volta-2.0.2-windows-x86_64.msi"
@@ -275,7 +275,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 6516652,
-        "download_count": 3410,
+        "download_count": 3501,
         "created_at": "2024-12-05T06:45:26Z",
         "updated_at": "2024-12-05T06:45:26Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.2/volta-2.0.2-windows.zip"
@@ -310,7 +310,7 @@
         "content_type": "text/plain",
         "state": "uploaded",
         "size": 31,
-        "download_count": 116,
+        "download_count": 119,
         "created_at": "2024-12-05T06:45:28Z",
         "updated_at": "2024-12-05T06:45:28Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.2/volta.manifest"
@@ -398,7 +398,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 9020730,
-        "download_count": 4361,
+        "download_count": 4362,
         "created_at": "2024-08-19T02:13:42Z",
         "updated_at": "2024-08-19T02:13:43Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.1/volta-2.0.1-linux-arm.tar.gz"
@@ -433,7 +433,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 9794724,
-        "download_count": 2320424,
+        "download_count": 2320469,
         "created_at": "2024-08-19T02:13:41Z",
         "updated_at": "2024-08-19T02:13:42Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.1/volta-2.0.1-linux.tar.gz"
@@ -468,7 +468,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 12886258,
-        "download_count": 46389,
+        "download_count": 46391,
         "created_at": "2024-08-19T02:13:43Z",
         "updated_at": "2024-08-19T02:13:44Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.1/volta-2.0.1-macos.tar.gz"
@@ -503,7 +503,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 5296128,
-        "download_count": 2857,
+        "download_count": 2864,
         "created_at": "2024-08-19T18:14:14Z",
         "updated_at": "2024-08-19T18:14:16Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.1/volta-2.0.1-windows-arm64.msi"
@@ -538,7 +538,7 @@
         "content_type": "application/x-zip-compressed",
         "state": "uploaded",
         "size": 6177106,
-        "download_count": 1032,
+        "download_count": 1033,
         "created_at": "2024-08-19T18:14:16Z",
         "updated_at": "2024-08-19T18:14:19Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.1/volta-2.0.1-windows-arm64.zip"
@@ -573,7 +573,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 5607424,
-        "download_count": 37335,
+        "download_count": 37350,
         "created_at": "2024-08-19T18:14:19Z",
         "updated_at": "2024-08-19T18:14:22Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.1/volta-2.0.1-windows-x86_64.msi"
@@ -608,7 +608,7 @@
         "content_type": "application/x-zip-compressed",
         "state": "uploaded",
         "size": 6546535,
-        "download_count": 3805,
+        "download_count": 3819,
         "created_at": "2024-08-19T18:14:10Z",
         "updated_at": "2024-08-19T18:14:14Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.1/volta-2.0.1-windows.zip"
@@ -766,7 +766,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 11257558,
-        "download_count": 145314,
+        "download_count": 145325,
         "created_at": "2024-08-11T23:41:11Z",
         "updated_at": "2024-08-11T23:41:12Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.0/volta-2.0.0-linux.tar.gz"
@@ -836,7 +836,7 @@
         "content_type": "application/x-msi",
         "state": "uploaded",
         "size": 5042176,
-        "download_count": 518,
+        "download_count": 523,
         "created_at": "2024-08-11T23:41:18Z",
         "updated_at": "2024-08-11T23:41:19Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.0/volta-2.0.0-windows-arm64.msi"
@@ -906,7 +906,7 @@
         "content_type": "application/x-msi",
         "state": "uploaded",
         "size": 6012928,
-        "download_count": 3304,
+        "download_count": 3309,
         "created_at": "2024-08-11T23:41:15Z",
         "updated_at": "2024-08-11T23:41:16Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v2.0.0/volta-2.0.0-windows-x86_64.msi"
@@ -1065,7 +1065,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 10784006,
-        "download_count": 11039095,
+        "download_count": 11040782,
         "created_at": "2023-01-24T21:44:31Z",
         "updated_at": "2023-01-24T21:44:32Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-linux.tar.gz"
@@ -1100,7 +1100,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 6617265,
-        "download_count": 81051,
+        "download_count": 81062,
         "created_at": "2023-01-24T21:44:34Z",
         "updated_at": "2023-01-24T21:44:34Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-macos-aarch64.tar.gz"
@@ -1135,7 +1135,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 7087347,
-        "download_count": 96726,
+        "download_count": 96728,
         "created_at": "2023-01-24T21:44:32Z",
         "updated_at": "2023-01-24T21:44:33Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-macos.tar.gz"
@@ -1170,7 +1170,7 @@
         "content_type": "application/x-msi",
         "state": "uploaded",
         "size": 5853184,
-        "download_count": 331319,
+        "download_count": 331348,
         "created_at": "2023-01-24T21:44:35Z",
         "updated_at": "2023-01-24T21:44:36Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-windows-x86_64.msi"
@@ -1205,7 +1205,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 6128684,
-        "download_count": 8890,
+        "download_count": 8895,
         "created_at": "2023-01-24T21:44:36Z",
         "updated_at": "2023-01-24T21:44:37Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-windows.zip"
@@ -1328,7 +1328,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 10810857,
-        "download_count": 2508647,
+        "download_count": 2509177,
         "created_at": "2022-09-28T23:18:49Z",
         "updated_at": "2022-09-28T23:18:50Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.1.0/volta-1.1.0-linux.tar.gz"
@@ -1433,7 +1433,7 @@
         "content_type": "application/x-msi",
         "state": "uploaded",
         "size": 5947392,
-        "download_count": 87777,
+        "download_count": 87854,
         "created_at": "2022-09-28T23:18:53Z",
         "updated_at": "2022-09-28T23:18:53Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.1.0/volta-1.1.0-windows-x86_64.msi"
@@ -1626,7 +1626,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18956187,
-        "download_count": 704875,
+        "download_count": 704876,
         "created_at": "2022-06-02T00:23:33Z",
         "updated_at": "2022-06-02T00:23:34Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.0.8/volta-1.0.8-linux-openssl-1.1.tar.gz"
@@ -1661,7 +1661,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 8685953,
-        "download_count": 26670,
+        "download_count": 26676,
         "created_at": "2022-06-02T00:23:30Z",
         "updated_at": "2022-06-02T00:23:31Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.0.8/volta-1.0.8-linux-openssl-3.0.tar.gz"
@@ -1801,7 +1801,7 @@
         "content_type": "application/x-msi",
         "state": "uploaded",
         "size": 4857856,
-        "download_count": 96329,
+        "download_count": 96424,
         "created_at": "2022-06-02T00:23:37Z",
         "updated_at": "2022-06-02T00:23:37Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.0.8/volta-1.0.8-windows-x86_64.msi"
@@ -1982,7 +1982,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18881218,
-        "download_count": 105677,
+        "download_count": 105688,
         "created_at": "2022-04-22T23:05:30Z",
         "updated_at": "2022-04-22T23:05:31Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.0.7/volta-1.0.7-linux-openssl-1.1.tar.gz"
@@ -2052,7 +2052,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18912977,
-        "download_count": 19525,
+        "download_count": 19528,
         "created_at": "2022-04-22T23:05:25Z",
         "updated_at": "2022-04-22T23:05:26Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.0.7/volta-1.0.7-linux-openssl-rhel.tar.gz"
@@ -2157,7 +2157,7 @@
         "content_type": "application/x-msi",
         "state": "uploaded",
         "size": 5144576,
-        "download_count": 10708,
+        "download_count": 10715,
         "created_at": "2022-04-22T23:05:34Z",
         "updated_at": "2022-04-22T23:05:34Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.0.7/volta-1.0.7-windows-x86_64.msi"
@@ -2490,7 +2490,7 @@
         "content_type": "applictaion/x-msi",
         "state": "uploaded",
         "size": 5050368,
-        "download_count": 11900,
+        "download_count": 11914,
         "created_at": "2022-03-21T23:42:14Z",
         "updated_at": "2022-03-21T23:42:15Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.0.6/volta-1.0.6-windows-x86_64.msi"
@@ -2823,7 +2823,7 @@
         "content_type": "applictaion/x-msi",
         "state": "uploaded",
         "size": 4956160,
-        "download_count": 37854,
+        "download_count": 37861,
         "created_at": "2021-09-07T18:56:53Z",
         "updated_at": "2021-09-07T18:56:54Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v1.0.5/volta-1.0.5-windows-x86_64.msi"
@@ -5275,7 +5275,7 @@
         "content_type": "applictaion/x-msi",
         "state": "uploaded",
         "size": 5079040,
-        "download_count": 3354,
+        "download_count": 3355,
         "created_at": "2020-10-29T19:40:55Z",
         "updated_at": "2020-10-29T19:40:55Z",
         "browser_download_url": "https://github.com/volta-cli/volta/releases/download/v0.9.2/volta-0.9.2-windows-x86_64.msi"

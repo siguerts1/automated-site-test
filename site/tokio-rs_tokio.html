@@ -10,6 +10,18 @@
   <h1>🚀 tokio-rs/tokio - Release Notes</h1>
   
     <section>
+      <h2>Tokio v1.38.2 (2025-04-03)</h2>
+      <pre>This release fixes a soundness issue in the broadcast channel. The channel accepts values that are `Send` but `!Sync`. Previously, the channel called `clone()` on these values without synchronizing. This release fixes the channel by synchronizing calls to `.clone()` (Thanks Austin Bonander for finding and reporting the issue).
+
+### Fixed
+
+- sync: synchronize `clone()` call in broadcast channel ([#7232])
+
+[#7232]: https://github.com/tokio-rs/tokio/pull/7232</pre>
+    </section>
+    <hr />
+  
+    <section>
       <h2>Tokio v1.44.1 (2025-03-13)</h2>
       <pre># 1.44.1 (March 13th, 2025)
 
@@ -1108,21 +1120,6 @@ This release bumps the MSRV of Tokio to 1.63. ([#5887])
     <section>
       <h2>Tokio v1.28.2 (2023-05-28)</h2>
       <pre># 1.28.2 (May 28, 2023)
-
-Forward ports 1.18.6 changes.
-
-### Fixed
-
-- deps: disable default features for mio ([#5728])
-
-[#5728]: https://github.com/tokio-rs/tokio/pull/5728
-</pre>
-    </section>
-    <hr />
-  
-    <section>
-      <h2>Tokio v1.25.1 (2023-05-27)</h2>
-      <pre># 1.25.1 (May 28, 2023)
 
 Forward ports 1.18.6 changes.
 

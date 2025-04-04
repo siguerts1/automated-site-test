@@ -40,14 +40,14 @@
     "body": "## New Stuff\r\n - `install.sh`: add `$ZDOTDIR` to zsh search (#3458)\r\n\r\n## Fixes\r\n - `reinstall-packages`: do not reinstall corepack (#3544)\r\n - avoid bash-specific syntax (#3499)\r\n - `install-latest-npm`: npm v11 is out\r\n - `nvm_install_latest_npm`: avoid unbound variable (#3447)\r\n - give a more helpful message when `lts` alias is mistakenly used (#3441)\r\n - `nvm ls`, `nvm alias`, `nvm install`: error when an LTS name is invalid\r\n - `nvm_normalize_lts`: error when an LTS name is not lowercase (#3417)\r\n\r\n## Documentation\r\n - [readme] update link\r\n - [readme] fix `--no-use` example (#3479)\r\n - [readme] update copyright notice (#3507)\r\n - [readme] note zsh-nvm's AUTO_USE option (#2670)\r\n - [readme] add note about reloading zshrc after editing (#3052)\r\n - [readme] Update shell profile file install notes (#2241)\r\n - [readme] add docker tips (#2318)\r\n - [readme] remove `avn` from readme (#3469)\r\n - [readme] fnm -> nvm.fish (#2541)\r\n\r\n## Refactors\r\n - prefer `case` over if/else chains\r\n - combine `sed -e` invocations/arguments\r\n\r\n## Tests\r\n - `nvm exec`/`nvm run`: add `--silent` tests (#1259)\r\n - [actions] release test needs git tags\r\n - migrate `installation_iojs` test suite to GitHub Actions (#3476)\r\n - Migrate slow test suite from Travis CI (#3470)\r\n - temporarily skip this failing travis test to unblock progress\r\n - [actions] TOC: use latest LTS node\r\n - `install.sh`: clean up `nvm_detect_profile` tests\r\n - `nvm_detect_profile`: refactor (#3467)\r\n - run urchin tests on pull requests (#3466)\r\n - update mocks\r\n - ensure that unit tests use only mocked LTS names\r\n - [actions] use `node/install` instead of `node/run`\r\n\r\n## Meta\r\n - disable blank issues\r\n - update issue template\r\n - add DCO (#3456)\r\n - Rename .github/ISSUE_TEMPLATE.md to .github/ISSUE_TEMPLATE/ISSUE_TEMPLATE.md (#3454)\r\n",
     "reactions": {
       "url": "https://api.github.com/repos/nvm-sh/nvm/releases/205137212/reactions",
-      "total_count": 32,
-      "+1": 14,
+      "total_count": 37,
+      "+1": 15,
       "-1": 0,
       "laugh": 0,
-      "hooray": 2,
+      "hooray": 4,
       "confused": 0,
-      "heart": 10,
-      "rocket": 4,
+      "heart": 11,
+      "rocket": 5,
       "eyes": 2
     }
   },

@@ -65,7 +65,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 2888,
-        "download_count": 149,
+        "download_count": 154,
         "created_at": "2025-01-17T08:51:42Z",
         "updated_at": "2025-01-17T08:51:42Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/checksums.txt"
@@ -170,7 +170,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 14788432,
-        "download_count": 209,
+        "download_count": 217,
         "created_at": "2025-01-17T08:51:39Z",
         "updated_at": "2025-01-17T08:51:40Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/hydra_2.3.0-linux_64bit.tar.gz"
@@ -310,7 +310,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 15682943,
-        "download_count": 136,
+        "download_count": 141,
         "created_at": "2025-01-17T08:51:37Z",
         "updated_at": "2025-01-17T08:51:37Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/hydra_2.3.0-linux_sqlite_64bit.tar.gz"
@@ -345,7 +345,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 14690310,
-        "download_count": 16,
+        "download_count": 18,
         "created_at": "2025-01-17T08:51:37Z",
         "updated_at": "2025-01-17T08:51:37Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/hydra_2.3.0-linux_sqlite_arm64.tar.gz"
@@ -590,7 +590,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 14788437,
-        "download_count": 115,
+        "download_count": 120,
         "created_at": "2025-01-17T08:51:38Z",
         "updated_at": "2025-01-17T08:51:38Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/hydra_2.3.0-linux_static-nosqlite_64bit.tar.gz"
@@ -660,7 +660,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 15072737,
-        "download_count": 11,
+        "download_count": 13,
         "created_at": "2025-01-17T08:51:40Z",
         "updated_at": "2025-01-17T08:51:41Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/hydra_2.3.0-macOS_64bit.tar.gz"
@@ -730,7 +730,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 15864889,
-        "download_count": 40,
+        "download_count": 41,
         "created_at": "2025-01-17T08:51:36Z",
         "updated_at": "2025-01-17T08:51:36Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/hydra_2.3.0-macOS_sqlite_64bit.tar.gz"
@@ -800,7 +800,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 15110137,
-        "download_count": 217,
+        "download_count": 224,
         "created_at": "2025-01-17T08:51:36Z",
         "updated_at": "2025-01-17T08:51:37Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/hydra_2.3.0-macOS_sqlite_arm64.tar.gz"
@@ -940,7 +940,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 15137887,
-        "download_count": 80,
+        "download_count": 81,
         "created_at": "2025-01-17T08:51:40Z",
         "updated_at": "2025-01-17T08:51:41Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/hydra_2.3.0-windows_64bit.zip"
@@ -1080,7 +1080,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 16018026,
-        "download_count": 57,
+        "download_count": 60,
         "created_at": "2025-01-17T08:51:36Z",
         "updated_at": "2025-01-17T08:51:36Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.3.0/hydra_2.3.0-windows_sqlite_64bit.zip"
@@ -1728,7 +1728,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 2888,
-        "download_count": 5148,
+        "download_count": 5203,
         "created_at": "2024-02-12T11:37:42Z",
         "updated_at": "2024-02-12T11:37:42Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.2.0/checksums.txt"
@@ -1833,7 +1833,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 12377339,
-        "download_count": 2650,
+        "download_count": 2660,
         "created_at": "2024-02-12T11:37:41Z",
         "updated_at": "2024-02-12T11:37:42Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.2.0/hydra_2.2.0-linux_64bit.tar.gz"
@@ -1973,7 +1973,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 13237990,
-        "download_count": 5547,
+        "download_count": 5609,
         "created_at": "2024-02-12T11:37:34Z",
         "updated_at": "2024-02-12T11:37:36Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.2.0/hydra_2.2.0-linux_sqlite_64bit.tar.gz"
@@ -2008,7 +2008,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 12330092,
-        "download_count": 351,
+        "download_count": 353,
         "created_at": "2024-02-12T11:37:34Z",
         "updated_at": "2024-02-12T11:37:35Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.2.0/hydra_2.2.0-linux_sqlite_arm64.tar.gz"
@@ -3391,7 +3391,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 3028,
-        "download_count": 17391,
+        "download_count": 17511,
         "created_at": "2023-08-16T21:09:36Z",
         "updated_at": "2023-08-16T21:09:36Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.2.0-rc.3/checksums.txt"
@@ -3636,7 +3636,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 13351020,
-        "download_count": 17299,
+        "download_count": 17417,
         "created_at": "2023-08-16T21:09:22Z",
         "updated_at": "2023-08-16T21:09:22Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.2.0-rc.3/hydra_2.2.0-rc.3-linux_sqlite_64bit.tar.gz"
@@ -3671,7 +3671,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 12359413,
-        "download_count": 37,
+        "download_count": 38,
         "created_at": "2023-08-16T21:09:18Z",
         "updated_at": "2023-08-16T21:09:19Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.2.0-rc.3/hydra_2.2.0-rc.3-linux_sqlite_arm64.tar.gz"
@@ -4056,7 +4056,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 14085315,
-        "download_count": 174,
+        "download_count": 175,
         "created_at": "2023-08-16T21:09:17Z",
         "updated_at": "2023-08-16T21:09:18Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.2.0-rc.3/hydra_2.2.0-rc.3-macOS_sqlite_64bit.tar.gz"
@@ -6530,7 +6530,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 11826431,
-        "download_count": 163865,
+        "download_count": 163868,
         "created_at": "2023-05-24T08:55:30Z",
         "updated_at": "2023-05-24T08:55:31Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.1.2/hydra_2.1.2-linux_64bit.tar.gz"
@@ -13316,7 +13316,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 2436,
-        "download_count": 3870,
+        "download_count": 3878,
         "created_at": "2022-12-08T12:22:17Z",
         "updated_at": "2022-12-08T12:22:18Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.0.3/checksums.txt"
@@ -13561,7 +13561,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 13198624,
-        "download_count": 3924,
+        "download_count": 3932,
         "created_at": "2022-12-08T12:22:08Z",
         "updated_at": "2022-12-08T12:22:09Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v2.0.3/hydra_2.0.3-linux_sqlite_64bit.tar.gz"
@@ -18929,7 +18929,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 12097627,
-        "download_count": 21858,
+        "download_count": 21863,
         "created_at": "2022-08-25T17:41:38Z",
         "updated_at": "2022-08-25T17:41:39Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v1.11.10/hydra_1.11.10-linux_64bit.tar.gz"
@@ -21951,7 +21951,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 12464175,
-        "download_count": 393,
+        "download_count": 394,
         "created_at": "2022-05-04T11:05:39Z",
         "updated_at": "2022-05-04T11:05:40Z",
         "browser_download_url": "https://github.com/ory/hydra/releases/download/v1.11.8/hydra_1.11.8-linux_sqlite_libmusl_64bit.tar.gz"

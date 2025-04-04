@@ -65,7 +65,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 131077,
-        "download_count": 140563,
+        "download_count": 151313,
         "created_at": "2025-02-25T16:26:11Z",
         "updated_at": "2025-02-25T16:26:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/crd-schemas.tar.gz"
@@ -100,7 +100,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 290075,
+        "download_count": 310068,
         "created_at": "2025-02-25T16:26:11Z",
         "updated_at": "2025-02-25T16:26:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_checksums.txt"
@@ -135,7 +135,7 @@
         "content_type": "application/x-x509-ca-cert",
         "state": "uploaded",
         "size": 3108,
-        "download_count": 464,
+        "download_count": 481,
         "created_at": "2025-02-25T16:26:11Z",
         "updated_at": "2025-02-25T16:26:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_checksums.txt.pem"
@@ -170,7 +170,7 @@
         "content_type": "application/pgp-signature",
         "state": "uploaded",
         "size": 96,
-        "download_count": 461,
+        "download_count": 478,
         "created_at": "2025-02-25T16:26:11Z",
         "updated_at": "2025-02-25T16:26:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_checksums.txt.sig"
@@ -205,7 +205,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 21612004,
-        "download_count": 1371,
+        "download_count": 1417,
         "created_at": "2025-02-25T16:26:07Z",
         "updated_at": "2025-02-25T16:26:08Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_darwin_amd64.tar.gz"
@@ -240,7 +240,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 20304491,
-        "download_count": 9995,
+        "download_count": 10456,
         "created_at": "2025-02-25T16:26:07Z",
         "updated_at": "2025-02-25T16:26:09Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_darwin_arm64.tar.gz"
@@ -275,7 +275,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 21155785,
-        "download_count": 335451,
+        "download_count": 358174,
         "created_at": "2025-02-25T16:26:07Z",
         "updated_at": "2025-02-25T16:26:09Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_linux_amd64.tar.gz"
@@ -310,7 +310,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19866161,
-        "download_count": 391,
+        "download_count": 413,
         "created_at": "2025-02-25T16:26:07Z",
         "updated_at": "2025-02-25T16:26:08Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_linux_arm.tar.gz"
@@ -345,7 +345,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19362489,
-        "download_count": 4464,
+        "download_count": 4830,
         "created_at": "2025-02-25T16:26:09Z",
         "updated_at": "2025-02-25T16:26:10Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_linux_arm64.tar.gz"
@@ -450,7 +450,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 20689754,
-        "download_count": 140,
+        "download_count": 150,
         "created_at": "2025-02-25T16:26:09Z",
         "updated_at": "2025-02-25T16:26:10Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_windows_386.zip"
@@ -485,7 +485,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 21724353,
-        "download_count": 2250,
+        "download_count": 2452,
         "created_at": "2025-02-25T16:26:09Z",
         "updated_at": "2025-02-25T16:26:10Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_windows_amd64.zip"
@@ -520,7 +520,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19493439,
-        "download_count": 139,
+        "download_count": 152,
         "created_at": "2025-02-25T16:26:09Z",
         "updated_at": "2025-02-25T16:26:10Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/flux_2.5.1_windows_arm64.zip"
@@ -555,7 +555,7 @@
         "content_type": "application/yaml",
         "state": "uploaded",
         "size": 660677,
-        "download_count": 201944,
+        "download_count": 217632,
         "created_at": "2025-02-25T16:26:11Z",
         "updated_at": "2025-02-25T16:26:12Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/install.yaml"
@@ -590,7 +590,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 66355,
-        "download_count": 54687,
+        "download_count": 58685,
         "created_at": "2025-02-25T16:26:11Z",
         "updated_at": "2025-02-25T16:26:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/manifests.tar.gz"
@@ -625,7 +625,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 18120,
-        "download_count": 2555,
+        "download_count": 2959,
         "created_at": "2025-02-25T16:27:11Z",
         "updated_at": "2025-02-25T16:27:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.1/provenance.intoto.jsonl"
@@ -714,7 +714,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 132334,
-        "download_count": 18309,
+        "download_count": 18367,
         "created_at": "2025-02-20T14:35:43Z",
         "updated_at": "2025-02-20T14:35:43Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.0/crd-schemas.tar.gz"
@@ -749,7 +749,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 39375,
+        "download_count": 39514,
         "created_at": "2025-02-20T14:35:42Z",
         "updated_at": "2025-02-20T14:35:43Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.0/flux_2.5.0_checksums.txt"
@@ -889,7 +889,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 20300460,
-        "download_count": 3499,
+        "download_count": 3573,
         "created_at": "2025-02-20T14:35:39Z",
         "updated_at": "2025-02-20T14:35:41Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.0/flux_2.5.0_darwin_arm64.tar.gz"
@@ -924,7 +924,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 21155383,
-        "download_count": 48675,
+        "download_count": 48951,
         "created_at": "2025-02-20T14:35:39Z",
         "updated_at": "2025-02-20T14:35:40Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.0/flux_2.5.0_linux_amd64.tar.gz"
@@ -1134,7 +1134,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 21722266,
-        "download_count": 697,
+        "download_count": 759,
         "created_at": "2025-02-20T14:35:41Z",
         "updated_at": "2025-02-20T14:35:42Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.0/flux_2.5.0_windows_amd64.zip"
@@ -1169,7 +1169,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19495024,
-        "download_count": 109,
+        "download_count": 118,
         "created_at": "2025-02-20T14:35:41Z",
         "updated_at": "2025-02-20T14:35:42Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.0/flux_2.5.0_windows_arm64.zip"
@@ -1204,7 +1204,7 @@
         "content_type": "application/yaml",
         "state": "uploaded",
         "size": 660677,
-        "download_count": 31072,
+        "download_count": 34147,
         "created_at": "2025-02-20T14:35:43Z",
         "updated_at": "2025-02-20T14:35:43Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.0/install.yaml"
@@ -1239,7 +1239,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 66355,
-        "download_count": 11296,
+        "download_count": 11796,
         "created_at": "2025-02-20T14:35:43Z",
         "updated_at": "2025-02-20T14:35:43Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.0/manifests.tar.gz"
@@ -1274,7 +1274,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 18076,
-        "download_count": 1122,
+        "download_count": 1395,
         "created_at": "2025-02-20T14:38:06Z",
         "updated_at": "2025-02-20T14:38:06Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.5.0/provenance.intoto.jsonl"
@@ -1285,13 +1285,13 @@
     "body": "## Highlights\r\n\r\nFlux v2.5.0 is a feature release. Users are encouraged to upgrade for the best experience.\r\n\r\nFor a compressive overview of new features and API changes included in this release,\r\nplease refer to the [Announcing Flux 2.5 GA blog post](https://fluxcd.io/blog/2025/02/flux-v2.5.0/).\r\n\r\nOverview of the new features:\r\n\r\n- Support for GitHub App authentication (`GitRepository` and `ImageUpdateAutomation` API)\r\n- Custom Health Checks using CEL (`Kustomization` API)\r\n- Fine-grained control of garbage collection (`Kustomization` API)\r\n- Enable decryption of secrets generated by Kustomize components (`Kustomization` API)\r\n- Support for custom event metadata from annotations (`Alert` API)\r\n- Git commit status updates for Flux Kustomizations with OCIRepository sources (`Alert` API)\r\n- Resource filtering using CEL for webhook receivers (`Receiver` API)\r\n- Debug commands for Flux Kustomizations and HelmReleases (Flux CLI)\r\n\r\n\u2764\ufe0f Big thanks to all the Flux contributors that helped us with this release!\r\n\r\n### Kubernetes compatibility\r\n\r\nThis release is compatible with the following Kubernetes versions:\r\n\r\n| Kubernetes version | Minimum required |\r\n|--------------------|------------------|\r\n| `v1.30`            | `>= 1.30.0`      |\r\n| `v1.31`            | `>= 1.31.0`      |\r\n| `v1.32`            | `>= 1.32.0`      |\r\n\r\n> [!NOTE]\r\n> Note that the Flux project offers support only for the latest three minor versions of Kubernetes.\r\n> Backwards compatibility with older versions of Kubernetes and OpenShift is offered by vendors such as\r\n> [ControlPlane](https://control-plane.io/enterprise-for-flux-cd/) that provide enterprise support for Flux.\r\n\r\n### OpenShift compatibility\r\n\r\nFlux can be installed on Red Hat OpenShift cluster directly from OperatorHub using\r\n[Flux Operator](https://operatorhub.io/operator/flux-operator).\r\nThe operator allows the configuration of Flux multi-tenancy lockdown, network policies,\r\npersistent storage, sharding, vertical scaling and the synchronization\r\nof the cluster state from Git repositories, OCI artifacts and S3-compatible storage.\r\n\r\n## Upgrade procedure\r\n\r\nUpgrade Flux from `v2.4.0` to `v2.5.0` by following the [upgrade guide](https://fluxcd.io/flux/installation/upgrade/).\r\n\r\nThere are no new API versions in this release, so no changes are required in the YAML manifests containing Flux resources.\r\n\r\n## Components changelog\r\n\r\n- source-controller [v1.5.0](https://github.com/fluxcd/source-controller/blob/v1.5.0/CHANGELOG.md)\r\n- kustomize-controller [v1.5.0](https://github.com/fluxcd/kustomize-controller/blob/v1.5.0/CHANGELOG.md)\r\n- notification-controller [v1.5.0](https://github.com/fluxcd/notification-controller/blob/v1.5.0/CHANGELOG.md)\r\n- helm-controller [v1.2.0](https://github.com/fluxcd/helm-controller/blob/v1.2.0/CHANGELOG.md)\r\n- image-reflector-controller [v0.34.0](https://github.com/fluxcd/image-reflector-controller/blob/v0.34.0/CHANGELOG.md)\r\n- image-automation-controller [v0.40.0](https://github.com/fluxcd/image-automation-controller/blob/v0.40.0/CHANGELOG.md)\r\n\r\n## CLI Changelog\r\n\r\n- PR #5204 - @stefanprodan - Update kubectl in flux-cli image\r\n- PR #5203 - @stefanprodan - Update flux-cli image\r\n- PR #5200 - @stefanprodan - Update Kubernetes min supported version to 1.30\r\n- PR #5199 - @matheuscscp - Update integration tests dependencies for Flux 2.5\r\n- PR #5195 - @fluxcdbot - Update toolkit components\r\n- PR #5192 - @fluxcdbot - Update toolkit components\r\n- PR #5190 - @dependabot[bot] - build(deps): bump github.com/distribution/distribution/v3 from 3.0.0-rc.2 to 3.0.0-rc.3\r\n- PR #5188 - @matheuscscp - Upgrade pkg/runtime\r\n- PR #5187 - @stefanprodan - Update conformance test suite\r\n- PR #5181 - @dependabot[bot] - build(deps): bump the ci group across 1 directory with 13 updates\r\n- PR #5176 - @YvanGuidoin - fix: align `flux diff` skipping with kustomize-controller\r\n- PR #5175 - @stefanprodan - Update dependencies\r\n- PR #5151 - @stefanprodan - [RFC-0009] Custom Health Checks using CEL expressions\r\n- PR #5146 - @sjorsholtrop-ritense - Improve \"flux resume\" error message on non-existent object\r\n- PR #5142 - @matheuscscp - Fix create command always using imageRepositoryType\r\n- PR #5137 - @scottrigby - Add OpenShift 4.16 & 4.17 to conformance testing\r\n- PR #5117 - @stefanprodan - Implement `flux debug kustomization` command\r\n- PR #5114 - @stefanprodan - Update dependencies to Kubernetes 1.32.0 and Go 1.23.0\r\n- PR #5111 - @stefanprodan - Run conformance tests for Kubernetes 1.32.0\r\n- PR #5107 - @darkowlzz - workflows: Use setup-terraform to install latest\r\n- PR #5106 - @stefanprodan - Implement `flux debug helmrelease` command\r\n- PR #5105 - @stefanprodan - Update `fluxcd/pkg` dependencies\r\n- PR #5104 - @dependabot[bot] - build(deps): bump the ci group across 1 directory with 11 updates\r\n- PR #5103 - @dipti-pai - [RFC-007] Flux cli support for GitHub app authentication\r\n- PR #5099 - @bkreitch - fix misplaced quotes\r\n- PR #5073 - @mloskot - docs: Mention Flux upgrade guide in release notes\r\n- PR #5071 - @milas - fix: skip remote Kustomizations on recursive diff\r\n- PR #5068 - @h3nryc0ding - fix(cli): confusing error message for missing kind\r\n- PR #5060 - @jdewinne - Use replicated-actions in conformance tests \r\n\r\n",
     "reactions": {
       "url": "https://api.github.com/repos/fluxcd/flux2/releases/201446350/reactions",
-      "total_count": 45,
+      "total_count": 47,
       "+1": 1,
       "-1": 0,
       "laugh": 0,
-      "hooray": 16,
+      "hooray": 17,
       "confused": 0,
-      "heart": 14,
+      "heart": 15,
       "rocket": 14,
       "eyes": 0
     },
@@ -1363,7 +1363,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 131593,
-        "download_count": 476590,
+        "download_count": 476791,
         "created_at": "2024-09-30T16:48:43Z",
         "updated_at": "2024-09-30T16:48:43Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/crd-schemas.tar.gz"
@@ -1398,7 +1398,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 1026028,
+        "download_count": 1027363,
         "created_at": "2024-09-30T16:48:42Z",
         "updated_at": "2024-09-30T16:48:42Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/flux_2.4.0_checksums.txt"
@@ -1538,7 +1538,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19891775,
-        "download_count": 21969,
+        "download_count": 22039,
         "created_at": "2024-09-30T16:48:40Z",
         "updated_at": "2024-09-30T16:48:41Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/flux_2.4.0_darwin_arm64.tar.gz"
@@ -1573,7 +1573,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 20728984,
-        "download_count": 1288738,
+        "download_count": 1291150,
         "created_at": "2024-09-30T16:48:39Z",
         "updated_at": "2024-09-30T16:48:40Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/flux_2.4.0_linux_amd64.tar.gz"
@@ -1643,7 +1643,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18959332,
-        "download_count": 18277,
+        "download_count": 18308,
         "created_at": "2024-09-30T16:48:39Z",
         "updated_at": "2024-09-30T16:48:40Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/flux_2.4.0_linux_arm64.tar.gz"
@@ -1783,7 +1783,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 21304535,
-        "download_count": 6782,
+        "download_count": 6796,
         "created_at": "2024-09-30T16:48:41Z",
         "updated_at": "2024-09-30T16:48:41Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/flux_2.4.0_windows_amd64.zip"
@@ -1818,7 +1818,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19104839,
-        "download_count": 531,
+        "download_count": 540,
         "created_at": "2024-09-30T16:48:41Z",
         "updated_at": "2024-09-30T16:48:42Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/flux_2.4.0_windows_arm64.zip"
@@ -1853,7 +1853,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 656247,
-        "download_count": 1225691,
+        "download_count": 1239262,
         "created_at": "2024-09-30T16:48:43Z",
         "updated_at": "2024-09-30T16:48:43Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/install.yaml"
@@ -1888,7 +1888,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 65704,
-        "download_count": 1403106,
+        "download_count": 1420035,
         "created_at": "2024-09-30T16:48:43Z",
         "updated_at": "2024-09-30T16:48:43Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/manifests.tar.gz"
@@ -1923,7 +1923,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 18016,
-        "download_count": 1383,
+        "download_count": 1388,
         "created_at": "2024-09-30T16:49:38Z",
         "updated_at": "2024-09-30T16:49:38Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.4.0/provenance.intoto.jsonl"
@@ -2012,7 +2012,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 131925,
-        "download_count": 515965,
+        "download_count": 516553,
         "created_at": "2024-05-13T13:55:56Z",
         "updated_at": "2024-05-13T13:55:56Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.3.0/crd-schemas.tar.gz"
@@ -2047,7 +2047,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 1032370,
+        "download_count": 1034966,
         "created_at": "2024-05-13T13:55:55Z",
         "updated_at": "2024-05-13T13:55:56Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.3.0/flux_2.3.0_checksums.txt"
@@ -2187,7 +2187,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19369000,
-        "download_count": 18737,
+        "download_count": 18760,
         "created_at": "2024-05-13T13:55:54Z",
         "updated_at": "2024-05-13T13:55:55Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.3.0/flux_2.3.0_darwin_arm64.tar.gz"
@@ -2222,7 +2222,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 20185920,
-        "download_count": 1368219,
+        "download_count": 1372368,
         "created_at": "2024-05-13T13:55:53Z",
         "updated_at": "2024-05-13T13:55:54Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.3.0/flux_2.3.0_linux_amd64.tar.gz"
@@ -2292,7 +2292,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18463479,
-        "download_count": 43599,
+        "download_count": 43682,
         "created_at": "2024-05-13T13:55:53Z",
         "updated_at": "2024-05-13T13:55:54Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.3.0/flux_2.3.0_linux_arm64.tar.gz"
@@ -2432,7 +2432,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 20754011,
-        "download_count": 6133,
+        "download_count": 6155,
         "created_at": "2024-05-13T13:55:54Z",
         "updated_at": "2024-05-13T13:55:55Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.3.0/flux_2.3.0_windows_amd64.zip"
@@ -2467,7 +2467,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 18616512,
-        "download_count": 918,
+        "download_count": 927,
         "created_at": "2024-05-13T13:55:54Z",
         "updated_at": "2024-05-13T13:55:55Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.3.0/flux_2.3.0_windows_arm64.zip"
@@ -2502,7 +2502,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 668028,
-        "download_count": 2507824,
+        "download_count": 2528860,
         "created_at": "2024-05-13T13:55:56Z",
         "updated_at": "2024-05-13T13:55:56Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.3.0/install.yaml"
@@ -2537,7 +2537,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 66198,
-        "download_count": 1602238,
+        "download_count": 1609712,
         "created_at": "2024-05-13T13:55:56Z",
         "updated_at": "2024-05-13T13:55:56Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.3.0/manifests.tar.gz"
@@ -2661,7 +2661,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 57144,
-        "download_count": 328471,
+        "download_count": 328734,
         "created_at": "2024-02-05T14:44:15Z",
         "updated_at": "2024-02-05T14:44:16Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/crd-schemas.tar.gz"
@@ -2696,7 +2696,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 689525,
+        "download_count": 690217,
         "created_at": "2024-02-05T14:44:15Z",
         "updated_at": "2024-02-05T14:44:15Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/flux_2.2.3_checksums.txt"
@@ -2731,7 +2731,7 @@
         "content_type": "application/x-x509-ca-cert",
         "state": "uploaded",
         "size": 3108,
-        "download_count": 4301,
+        "download_count": 4531,
         "created_at": "2024-02-05T14:44:15Z",
         "updated_at": "2024-02-05T14:44:15Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/flux_2.2.3_checksums.txt.pem"
@@ -2766,7 +2766,7 @@
         "content_type": "application/pgp-signature",
         "state": "uploaded",
         "size": 96,
-        "download_count": 4305,
+        "download_count": 4528,
         "created_at": "2024-02-05T14:44:15Z",
         "updated_at": "2024-02-05T14:44:15Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/flux_2.2.3_checksums.txt.sig"
@@ -2801,7 +2801,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 20765568,
-        "download_count": 4572,
+        "download_count": 4573,
         "created_at": "2024-02-05T14:44:10Z",
         "updated_at": "2024-02-05T14:44:12Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/flux_2.2.3_darwin_amd64.tar.gz"
@@ -2836,7 +2836,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 20013925,
-        "download_count": 14141,
+        "download_count": 14149,
         "created_at": "2024-02-05T14:44:12Z",
         "updated_at": "2024-02-05T14:44:14Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/flux_2.2.3_darwin_arm64.tar.gz"
@@ -2871,7 +2871,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19780920,
-        "download_count": 860805,
+        "download_count": 861683,
         "created_at": "2024-02-05T14:44:09Z",
         "updated_at": "2024-02-05T14:44:12Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/flux_2.2.3_linux_amd64.tar.gz"
@@ -2941,7 +2941,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17936451,
-        "download_count": 11692,
+        "download_count": 11788,
         "created_at": "2024-02-05T14:44:10Z",
         "updated_at": "2024-02-05T14:44:12Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/flux_2.2.3_linux_arm64.tar.gz"
@@ -3081,7 +3081,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19982676,
-        "download_count": 5293,
+        "download_count": 5305,
         "created_at": "2024-02-05T14:44:12Z",
         "updated_at": "2024-02-05T14:44:14Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/flux_2.2.3_windows_amd64.zip"
@@ -3116,7 +3116,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 18121413,
-        "download_count": 918,
+        "download_count": 927,
         "created_at": "2024-02-05T14:44:12Z",
         "updated_at": "2024-02-05T14:44:14Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/flux_2.2.3_windows_arm64.zip"
@@ -3151,7 +3151,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 531265,
-        "download_count": 1983428,
+        "download_count": 1986009,
         "created_at": "2024-02-05T14:44:15Z",
         "updated_at": "2024-02-05T14:44:16Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/install.yaml"
@@ -3186,7 +3186,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 52517,
-        "download_count": 1656547,
+        "download_count": 1663379,
         "created_at": "2024-02-05T14:44:15Z",
         "updated_at": "2024-02-05T14:44:16Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/manifests.tar.gz"
@@ -3221,7 +3221,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 18032,
-        "download_count": 4381,
+        "download_count": 4615,
         "created_at": "2024-02-05T14:45:05Z",
         "updated_at": "2024-02-05T14:45:06Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.3/provenance.intoto.jsonl"
@@ -3310,7 +3310,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 56134,
-        "download_count": 102918,
+        "download_count": 102980,
         "created_at": "2023-12-19T17:49:42Z",
         "updated_at": "2023-12-19T17:49:42Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/crd-schemas.tar.gz"
@@ -3345,7 +3345,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 405772,
+        "download_count": 407013,
         "created_at": "2023-12-19T17:49:41Z",
         "updated_at": "2023-12-19T17:49:41Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/flux_2.2.2_checksums.txt"
@@ -3380,7 +3380,7 @@
         "content_type": "application/x-x509-ca-cert",
         "state": "uploaded",
         "size": 3108,
-        "download_count": 10918,
+        "download_count": 11847,
         "created_at": "2023-12-19T17:49:41Z",
         "updated_at": "2023-12-19T17:49:42Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/flux_2.2.2_checksums.txt.pem"
@@ -3415,7 +3415,7 @@
         "content_type": "application/pgp-signature",
         "state": "uploaded",
         "size": 96,
-        "download_count": 10913,
+        "download_count": 11831,
         "created_at": "2023-12-19T17:49:41Z",
         "updated_at": "2023-12-19T17:49:41Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/flux_2.2.2_checksums.txt.sig"
@@ -3485,7 +3485,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 20004745,
-        "download_count": 36871,
+        "download_count": 37007,
         "created_at": "2023-12-19T17:49:39Z",
         "updated_at": "2023-12-19T17:49:41Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/flux_2.2.2_darwin_arm64.tar.gz"
@@ -3520,7 +3520,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19794461,
-        "download_count": 465569,
+        "download_count": 467120,
         "created_at": "2023-12-19T17:49:38Z",
         "updated_at": "2023-12-19T17:49:39Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/flux_2.2.2_linux_amd64.tar.gz"
@@ -3730,7 +3730,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19987972,
-        "download_count": 4866,
+        "download_count": 4882,
         "created_at": "2023-12-19T17:49:40Z",
         "updated_at": "2023-12-19T17:49:41Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/flux_2.2.2_windows_amd64.zip"
@@ -3765,7 +3765,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 18119238,
-        "download_count": 1884,
+        "download_count": 1893,
         "created_at": "2023-12-19T17:49:40Z",
         "updated_at": "2023-12-19T17:49:41Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/flux_2.2.2_windows_arm64.zip"
@@ -3800,7 +3800,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 531265,
-        "download_count": 506567,
+        "download_count": 507984,
         "created_at": "2023-12-19T17:49:42Z",
         "updated_at": "2023-12-19T17:49:42Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/install.yaml"
@@ -3835,7 +3835,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 52529,
-        "download_count": 273765,
+        "download_count": 274050,
         "created_at": "2023-12-19T17:49:42Z",
         "updated_at": "2023-12-19T17:49:42Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/manifests.tar.gz"
@@ -3870,7 +3870,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 17984,
-        "download_count": 11466,
+        "download_count": 12396,
         "created_at": "2023-12-19T17:50:27Z",
         "updated_at": "2023-12-19T17:50:27Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.2/provenance.intoto.jsonl"
@@ -3959,7 +3959,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 56111,
-        "download_count": 7864,
+        "download_count": 7865,
         "created_at": "2023-12-15T10:38:34Z",
         "updated_at": "2023-12-15T10:38:34Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.1/crd-schemas.tar.gz"
@@ -4379,7 +4379,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19986947,
-        "download_count": 1085,
+        "download_count": 1094,
         "created_at": "2023-12-15T10:38:31Z",
         "updated_at": "2023-12-15T10:38:32Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.1/flux_2.2.1_windows_amd64.zip"
@@ -4414,7 +4414,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 18121042,
-        "download_count": 671,
+        "download_count": 680,
         "created_at": "2023-12-15T10:38:31Z",
         "updated_at": "2023-12-15T10:38:32Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.1/flux_2.2.1_windows_arm64.zip"
@@ -4449,7 +4449,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 531265,
-        "download_count": 92300,
+        "download_count": 92303,
         "created_at": "2023-12-15T10:38:34Z",
         "updated_at": "2023-12-15T10:38:34Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.1/install.yaml"
@@ -4484,7 +4484,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 52530,
-        "download_count": 36901,
+        "download_count": 37030,
         "created_at": "2023-12-15T10:38:34Z",
         "updated_at": "2023-12-15T10:38:34Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.1/manifests.tar.gz"
@@ -4643,7 +4643,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 35761,
+        "download_count": 35940,
         "created_at": "2023-12-12T15:47:26Z",
         "updated_at": "2023-12-12T15:47:26Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.0/flux_2.2.0_checksums.txt"
@@ -4783,7 +4783,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 20000423,
-        "download_count": 1504,
+        "download_count": 1505,
         "created_at": "2023-12-12T15:47:24Z",
         "updated_at": "2023-12-12T15:47:25Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.0/flux_2.2.0_darwin_arm64.tar.gz"
@@ -4818,7 +4818,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19790255,
-        "download_count": 38632,
+        "download_count": 38820,
         "created_at": "2023-12-12T15:47:22Z",
         "updated_at": "2023-12-12T15:47:23Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.0/flux_2.2.0_linux_amd64.tar.gz"
@@ -5028,7 +5028,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19987253,
-        "download_count": 1017,
+        "download_count": 1026,
         "created_at": "2023-12-12T15:47:24Z",
         "updated_at": "2023-12-12T15:47:25Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.0/flux_2.2.0_windows_amd64.zip"
@@ -5063,7 +5063,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 18120453,
-        "download_count": 672,
+        "download_count": 681,
         "created_at": "2023-12-12T15:47:24Z",
         "updated_at": "2023-12-12T15:47:25Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.0/flux_2.2.0_windows_arm64.zip"
@@ -5098,7 +5098,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 525540,
-        "download_count": 84440,
+        "download_count": 84442,
         "created_at": "2023-12-12T15:47:26Z",
         "updated_at": "2023-12-12T15:47:27Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.0/install.yaml"
@@ -5133,7 +5133,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 51818,
-        "download_count": 10576,
+        "download_count": 10613,
         "created_at": "2023-12-12T15:47:26Z",
         "updated_at": "2023-12-12T15:47:26Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.2.0/manifests.tar.gz"
@@ -5257,7 +5257,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 44299,
-        "download_count": 127677,
+        "download_count": 127771,
         "created_at": "2023-10-12T13:57:35Z",
         "updated_at": "2023-10-12T13:57:35Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.2/crd-schemas.tar.gz"
@@ -5292,7 +5292,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 235557,
+        "download_count": 235976,
         "created_at": "2023-10-12T13:57:34Z",
         "updated_at": "2023-10-12T13:57:34Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.2/flux_2.1.2_checksums.txt"
@@ -5432,7 +5432,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19317448,
-        "download_count": 9599,
+        "download_count": 9604,
         "created_at": "2023-10-12T13:57:28Z",
         "updated_at": "2023-10-12T13:57:29Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.2/flux_2.1.2_darwin_arm64.tar.gz"
@@ -5467,7 +5467,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19107833,
-        "download_count": 395029,
+        "download_count": 395555,
         "created_at": "2023-10-12T13:57:27Z",
         "updated_at": "2023-10-12T13:57:28Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.2/flux_2.1.2_linux_amd64.tar.gz"
@@ -5677,7 +5677,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19305108,
-        "download_count": 5045,
+        "download_count": 5054,
         "created_at": "2023-10-12T13:57:32Z",
         "updated_at": "2023-10-12T13:57:33Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.2/flux_2.1.2_windows_amd64.zip"
@@ -5712,7 +5712,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 17496576,
-        "download_count": 1590,
+        "download_count": 1599,
         "created_at": "2023-10-12T13:57:30Z",
         "updated_at": "2023-10-12T13:57:31Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.2/flux_2.1.2_windows_arm64.zip"
@@ -5747,7 +5747,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 442546,
-        "download_count": 1824089,
+        "download_count": 1831140,
         "created_at": "2023-10-12T13:57:36Z",
         "updated_at": "2023-10-12T13:57:36Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.2/install.yaml"
@@ -5782,7 +5782,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 40448,
-        "download_count": 339920,
+        "download_count": 340037,
         "created_at": "2023-10-12T13:57:36Z",
         "updated_at": "2023-10-12T13:57:36Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.2/manifests.tar.gz"
@@ -5906,7 +5906,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 40371,
-        "download_count": 49488,
+        "download_count": 49535,
         "created_at": "2023-09-19T11:56:48Z",
         "updated_at": "2023-09-19T11:56:48Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.1/crd-schemas.tar.gz"
@@ -5941,7 +5941,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 143462,
+        "download_count": 143742,
         "created_at": "2023-09-19T11:56:47Z",
         "updated_at": "2023-09-19T11:56:47Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.1/flux_2.1.1_checksums.txt"
@@ -6081,7 +6081,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19235847,
-        "download_count": 4457,
+        "download_count": 4461,
         "created_at": "2023-09-19T11:56:43Z",
         "updated_at": "2023-09-19T11:56:43Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.1/flux_2.1.1_darwin_arm64.tar.gz"
@@ -6116,7 +6116,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19038594,
-        "download_count": 160827,
+        "download_count": 161176,
         "created_at": "2023-09-19T11:56:41Z",
         "updated_at": "2023-09-19T11:56:42Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.1/flux_2.1.1_linux_amd64.tar.gz"
@@ -6326,7 +6326,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19233583,
-        "download_count": 2849,
+        "download_count": 2858,
         "created_at": "2023-09-19T11:56:44Z",
         "updated_at": "2023-09-19T11:56:45Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.1/flux_2.1.1_windows_amd64.zip"
@@ -6361,7 +6361,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 17427944,
-        "download_count": 934,
+        "download_count": 943,
         "created_at": "2023-09-19T11:56:45Z",
         "updated_at": "2023-09-19T11:56:46Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.1/flux_2.1.1_windows_arm64.zip"
@@ -6396,7 +6396,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 442546,
-        "download_count": 451762,
+        "download_count": 451772,
         "created_at": "2023-09-19T11:56:48Z",
         "updated_at": "2023-09-19T11:56:48Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.1/install.yaml"
@@ -6431,7 +6431,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 40451,
-        "download_count": 131961,
+        "download_count": 132047,
         "created_at": "2023-09-19T11:56:48Z",
         "updated_at": "2023-09-19T11:56:48Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.1/manifests.tar.gz"
@@ -6555,7 +6555,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 39578,
-        "download_count": 65264,
+        "download_count": 65332,
         "created_at": "2023-08-24T12:42:14Z",
         "updated_at": "2023-08-24T12:42:15Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.0/crd-schemas.tar.gz"
@@ -6590,7 +6590,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 127351,
+        "download_count": 127427,
         "created_at": "2023-08-24T12:42:14Z",
         "updated_at": "2023-08-24T12:42:14Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.0/flux_2.1.0_checksums.txt"
@@ -6765,7 +6765,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19039900,
-        "download_count": 271303,
+        "download_count": 271725,
         "created_at": "2023-08-24T12:42:05Z",
         "updated_at": "2023-08-24T12:42:06Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.0/flux_2.1.0_linux_amd64.tar.gz"
@@ -6835,7 +6835,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17252138,
-        "download_count": 1578,
+        "download_count": 1579,
         "created_at": "2023-08-24T12:42:05Z",
         "updated_at": "2023-08-24T12:42:06Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.0/flux_2.1.0_linux_arm64.tar.gz"
@@ -6975,7 +6975,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19233500,
-        "download_count": 2234,
+        "download_count": 2243,
         "created_at": "2023-08-24T12:42:09Z",
         "updated_at": "2023-08-24T12:42:10Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.0/flux_2.1.0_windows_amd64.zip"
@@ -7010,7 +7010,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 17428878,
-        "download_count": 794,
+        "download_count": 803,
         "created_at": "2023-08-24T12:42:10Z",
         "updated_at": "2023-08-24T12:42:12Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.0/flux_2.1.0_windows_arm64.zip"
@@ -7045,7 +7045,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 442546,
-        "download_count": 168641,
+        "download_count": 168642,
         "created_at": "2023-08-24T12:42:15Z",
         "updated_at": "2023-08-24T12:42:16Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.0/install.yaml"
@@ -7080,7 +7080,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 40434,
-        "download_count": 2619728,
+        "download_count": 2627463,
         "created_at": "2023-08-24T12:42:15Z",
         "updated_at": "2023-08-24T12:42:15Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.1.0/manifests.tar.gz"
@@ -7204,7 +7204,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 43847,
-        "download_count": 78274,
+        "download_count": 78291,
         "created_at": "2023-07-11T12:45:35Z",
         "updated_at": "2023-07-11T12:45:36Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.1/crd-schemas.tar.gz"
@@ -7239,7 +7239,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 273094,
+        "download_count": 273219,
         "created_at": "2023-07-11T12:45:34Z",
         "updated_at": "2023-07-11T12:45:35Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.1/flux_2.0.1_checksums.txt"
@@ -7344,7 +7344,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19873012,
-        "download_count": 5686,
+        "download_count": 5689,
         "created_at": "2023-07-11T12:45:30Z",
         "updated_at": "2023-07-11T12:45:31Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.1/flux_2.0.1_darwin_amd64.tar.gz"
@@ -7379,7 +7379,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19140908,
-        "download_count": 8539,
+        "download_count": 8565,
         "created_at": "2023-07-11T12:45:31Z",
         "updated_at": "2023-07-11T12:45:32Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.1/flux_2.0.1_darwin_arm64.tar.gz"
@@ -7414,7 +7414,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18935272,
-        "download_count": 375662,
+        "download_count": 375785,
         "created_at": "2023-07-11T12:45:28Z",
         "updated_at": "2023-07-11T12:45:29Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.1/flux_2.0.1_linux_amd64.tar.gz"
@@ -7484,7 +7484,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17163352,
-        "download_count": 6526,
+        "download_count": 6528,
         "created_at": "2023-07-11T12:45:28Z",
         "updated_at": "2023-07-11T12:45:29Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.1/flux_2.0.1_linux_arm64.tar.gz"
@@ -7624,7 +7624,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19131924,
-        "download_count": 5662,
+        "download_count": 5671,
         "created_at": "2023-07-11T12:45:31Z",
         "updated_at": "2023-07-11T12:45:32Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.1/flux_2.0.1_windows_amd64.zip"
@@ -7694,7 +7694,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 438190,
-        "download_count": 475357,
+        "download_count": 476506,
         "created_at": "2023-07-11T12:45:36Z",
         "updated_at": "2023-07-11T12:45:36Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.1/install.yaml"
@@ -7729,7 +7729,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 39479,
-        "download_count": 194691,
+        "download_count": 194863,
         "created_at": "2023-07-11T12:45:36Z",
         "updated_at": "2023-07-11T12:45:36Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.1/manifests.tar.gz"
@@ -7888,7 +7888,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1198,
-        "download_count": 121354,
+        "download_count": 122369,
         "created_at": "2023-07-05T14:35:09Z",
         "updated_at": "2023-07-05T14:35:09Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0/flux_2.0.0_checksums.txt"
@@ -8028,7 +8028,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19135661,
-        "download_count": 1950,
+        "download_count": 1952,
         "created_at": "2023-07-05T14:35:05Z",
         "updated_at": "2023-07-05T14:35:06Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0/flux_2.0.0_darwin_arm64.tar.gz"
@@ -8063,7 +8063,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18934504,
-        "download_count": 144468,
+        "download_count": 145487,
         "created_at": "2023-07-05T14:35:01Z",
         "updated_at": "2023-07-05T14:35:02Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0/flux_2.0.0_linux_amd64.tar.gz"
@@ -8133,7 +8133,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17163510,
-        "download_count": 987,
+        "download_count": 990,
         "created_at": "2023-07-05T14:35:01Z",
         "updated_at": "2023-07-05T14:35:02Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0/flux_2.0.0_linux_arm64.tar.gz"
@@ -8273,7 +8273,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19131217,
-        "download_count": 1398,
+        "download_count": 1408,
         "created_at": "2023-07-05T14:35:05Z",
         "updated_at": "2023-07-05T14:35:06Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0/flux_2.0.0_windows_amd64.zip"
@@ -8308,7 +8308,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 17341733,
-        "download_count": 695,
+        "download_count": 704,
         "created_at": "2023-07-05T14:35:06Z",
         "updated_at": "2023-07-05T14:35:08Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0/flux_2.0.0_windows_arm64.zip"
@@ -8378,7 +8378,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 39478,
-        "download_count": 16389,
+        "download_count": 16391,
         "created_at": "2023-07-05T14:35:11Z",
         "updated_at": "2023-07-05T14:35:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0/manifests.tar.gz"
@@ -8677,7 +8677,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18917841,
-        "download_count": 103501,
+        "download_count": 103652,
         "created_at": "2023-06-01T11:51:16Z",
         "updated_at": "2023-06-01T11:51:23Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0-rc.5/flux_2.0.0-rc.5_linux_amd64.tar.gz"
@@ -8992,7 +8992,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 39315,
-        "download_count": 42005,
+        "download_count": 42006,
         "created_at": "2023-06-01T11:51:29Z",
         "updated_at": "2023-06-01T11:51:30Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0-rc.5/manifests.tar.gz"
@@ -9730,7 +9730,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1248,
-        "download_count": 19375,
+        "download_count": 19377,
         "created_at": "2023-05-12T13:13:58Z",
         "updated_at": "2023-05-12T13:13:59Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0-rc.3/flux_2.0.0-rc.3_checksums.txt"
@@ -9905,7 +9905,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19110052,
-        "download_count": 47566,
+        "download_count": 47568,
         "created_at": "2023-05-12T13:13:55Z",
         "updated_at": "2023-05-12T13:13:56Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0-rc.3/flux_2.0.0-rc.3_linux_amd64.tar.gz"
@@ -10220,7 +10220,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 39317,
-        "download_count": 186931,
+        "download_count": 186952,
         "created_at": "2023-05-12T13:13:59Z",
         "updated_at": "2023-05-12T13:14:00Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0-rc.3/manifests.tar.gz"
@@ -10309,7 +10309,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 42649,
-        "download_count": 6272,
+        "download_count": 6286,
         "created_at": "2023-05-09T17:01:09Z",
         "updated_at": "2023-05-09T17:01:09Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0-rc.2/crd-schemas.tar.gz"
@@ -11133,7 +11133,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19112711,
-        "download_count": 327015,
+        "download_count": 327899,
         "created_at": "2023-04-06T11:58:35Z",
         "updated_at": "2023-04-06T11:58:36Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v2.0.0-rc.1/flux_2.0.0-rc.1_linux_amd64.tar.gz"
@@ -11537,7 +11537,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 35541,
-        "download_count": 40216,
+        "download_count": 40221,
         "created_at": "2023-03-21T10:10:22Z",
         "updated_at": "2023-03-21T10:10:23Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/crd-schemas.tar.gz"
@@ -11572,7 +11572,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1208,
-        "download_count": 328729,
+        "download_count": 329193,
         "created_at": "2023-03-21T10:10:21Z",
         "updated_at": "2023-03-21T10:10:22Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/flux_0.41.2_checksums.txt"
@@ -11712,7 +11712,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19087021,
-        "download_count": 10082,
+        "download_count": 10087,
         "created_at": "2023-03-21T10:10:15Z",
         "updated_at": "2023-03-21T10:10:17Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/flux_0.41.2_darwin_arm64.tar.gz"
@@ -11747,7 +11747,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19012306,
-        "download_count": 480695,
+        "download_count": 481503,
         "created_at": "2023-03-21T10:10:11Z",
         "updated_at": "2023-03-21T10:10:14Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/flux_0.41.2_linux_amd64.tar.gz"
@@ -11817,7 +11817,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 17246557,
-        "download_count": 6414,
+        "download_count": 6415,
         "created_at": "2023-03-21T10:10:11Z",
         "updated_at": "2023-03-21T10:10:13Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/flux_0.41.2_linux_arm64.tar.gz"
@@ -11957,7 +11957,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 19204991,
-        "download_count": 7936,
+        "download_count": 7941,
         "created_at": "2023-03-21T10:10:17Z",
         "updated_at": "2023-03-21T10:10:19Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/flux_0.41.2_windows_amd64.zip"
@@ -12027,7 +12027,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 379510,
-        "download_count": 3617246,
+        "download_count": 3617250,
         "created_at": "2023-03-21T10:10:23Z",
         "updated_at": "2023-03-21T10:10:23Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/install.yaml"
@@ -12062,7 +12062,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 35583,
-        "download_count": 652124,
+        "download_count": 652438,
         "created_at": "2023-03-21T10:10:23Z",
         "updated_at": "2023-03-21T10:10:23Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/manifests.tar.gz"
@@ -12361,7 +12361,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18944424,
-        "download_count": 51443,
+        "download_count": 51475,
         "created_at": "2023-03-10T15:27:54Z",
         "updated_at": "2023-03-10T15:27:55Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.1/flux_0.41.1_linux_amd64.tar.gz"
@@ -12676,7 +12676,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 35573,
-        "download_count": 11229,
+        "download_count": 11257,
         "created_at": "2023-03-10T15:28:01Z",
         "updated_at": "2023-03-10T15:28:02Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.1/manifests.tar.gz"
@@ -12800,7 +12800,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1208,
-        "download_count": 2564,
+        "download_count": 2567,
         "created_at": "2023-03-09T17:01:11Z",
         "updated_at": "2023-03-09T17:01:12Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.0/flux_0.41.0_checksums.txt"
@@ -12975,7 +12975,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18944427,
-        "download_count": 6749,
+        "download_count": 6758,
         "created_at": "2023-03-09T17:01:05Z",
         "updated_at": "2023-03-09T17:01:06Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.0/flux_0.41.0_linux_amd64.tar.gz"
@@ -13255,7 +13255,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 379510,
-        "download_count": 11029,
+        "download_count": 11030,
         "created_at": "2023-03-09T17:01:12Z",
         "updated_at": "2023-03-09T17:01:13Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.41.0/install.yaml"
@@ -13414,7 +13414,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1208,
-        "download_count": 28464,
+        "download_count": 28528,
         "created_at": "2023-02-28T15:43:33Z",
         "updated_at": "2023-02-28T15:43:33Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.40.2/flux_0.40.2_checksums.txt"
@@ -13589,7 +13589,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18752034,
-        "download_count": 83856,
+        "download_count": 83920,
         "created_at": "2023-02-28T15:43:27Z",
         "updated_at": "2023-02-28T15:43:28Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.40.2/flux_0.40.2_linux_amd64.tar.gz"
@@ -13869,7 +13869,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 379511,
-        "download_count": 10999,
+        "download_count": 11000,
         "created_at": "2023-02-28T15:43:35Z",
         "updated_at": "2023-02-28T15:43:36Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.40.2/install.yaml"
@@ -13993,7 +13993,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 34442,
-        "download_count": 21265,
+        "download_count": 21364,
         "created_at": "2023-02-23T14:39:32Z",
         "updated_at": "2023-02-23T14:39:32Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.40.1/crd-schemas.tar.gz"
@@ -14028,7 +14028,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1208,
-        "download_count": 29631,
+        "download_count": 29741,
         "created_at": "2023-02-23T14:39:31Z",
         "updated_at": "2023-02-23T14:39:31Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.40.1/flux_0.40.1_checksums.txt"
@@ -14203,7 +14203,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18752207,
-        "download_count": 42456,
+        "download_count": 42566,
         "created_at": "2023-02-23T14:39:26Z",
         "updated_at": "2023-02-23T14:39:27Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.40.1/flux_0.40.1_linux_amd64.tar.gz"
@@ -14518,7 +14518,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 35568,
-        "download_count": 26746,
+        "download_count": 26752,
         "created_at": "2023-02-23T14:39:32Z",
         "updated_at": "2023-02-23T14:39:32Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.40.1/manifests.tar.gz"
@@ -14642,7 +14642,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1208,
-        "download_count": 5910,
+        "download_count": 5912,
         "created_at": "2023-02-20T14:47:17Z",
         "updated_at": "2023-02-20T14:47:17Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.40.0/flux_0.40.0_checksums.txt"
@@ -14817,7 +14817,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18750028,
-        "download_count": 12542,
+        "download_count": 12544,
         "created_at": "2023-02-20T14:47:11Z",
         "updated_at": "2023-02-20T14:47:12Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.40.0/flux_0.40.0_linux_amd64.tar.gz"
@@ -15256,7 +15256,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1208,
-        "download_count": 528802,
+        "download_count": 533923,
         "created_at": "2023-02-02T16:02:28Z",
         "updated_at": "2023-02-02T16:02:28Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.39.0/flux_0.39.0_checksums.txt"
@@ -15431,7 +15431,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18715763,
-        "download_count": 596139,
+        "download_count": 601286,
         "created_at": "2023-02-02T16:02:18Z",
         "updated_at": "2023-02-02T16:02:20Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.39.0/flux_0.39.0_linux_amd64.tar.gz"
@@ -15711,7 +15711,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 355586,
-        "download_count": 41420,
+        "download_count": 41422,
         "created_at": "2023-02-02T16:02:29Z",
         "updated_at": "2023-02-02T16:02:30Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.39.0/install.yaml"
@@ -15746,7 +15746,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 33879,
-        "download_count": 68350,
+        "download_count": 68361,
         "created_at": "2023-02-02T16:02:29Z",
         "updated_at": "2023-02-02T16:02:30Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.39.0/manifests.tar.gz"
@@ -15870,7 +15870,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1208,
-        "download_count": 54481,
+        "download_count": 54555,
         "created_at": "2023-01-10T16:10:49Z",
         "updated_at": "2023-01-10T16:10:49Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.3/flux_0.38.3_checksums.txt"
@@ -16045,7 +16045,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18467856,
-        "download_count": 134299,
+        "download_count": 134383,
         "created_at": "2023-01-10T16:10:42Z",
         "updated_at": "2023-01-10T16:10:43Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.3/flux_0.38.3_linux_amd64.tar.gz"
@@ -16325,7 +16325,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 355515,
-        "download_count": 14411,
+        "download_count": 14412,
         "created_at": "2023-01-10T16:10:50Z",
         "updated_at": "2023-01-10T16:10:50Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.3/install.yaml"
@@ -16360,7 +16360,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 33861,
-        "download_count": 82155,
+        "download_count": 82251,
         "created_at": "2023-01-10T16:10:50Z",
         "updated_at": "2023-01-10T16:10:50Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.3/manifests.tar.gz"
@@ -16484,7 +16484,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1208,
-        "download_count": 17720,
+        "download_count": 17725,
         "created_at": "2022-12-22T14:11:04Z",
         "updated_at": "2022-12-22T14:11:04Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.2/flux_0.38.2_checksums.txt"
@@ -16589,7 +16589,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 19348961,
-        "download_count": 5476,
+        "download_count": 5495,
         "created_at": "2022-12-22T14:11:00Z",
         "updated_at": "2022-12-22T14:11:01Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.2/flux_0.38.2_darwin_amd64.tar.gz"
@@ -16624,7 +16624,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18568070,
-        "download_count": 5488,
+        "download_count": 5507,
         "created_at": "2022-12-22T14:11:01Z",
         "updated_at": "2022-12-22T14:11:02Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.2/flux_0.38.2_darwin_arm64.tar.gz"
@@ -16659,7 +16659,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18467834,
-        "download_count": 132211,
+        "download_count": 132744,
         "created_at": "2022-12-22T14:10:59Z",
         "updated_at": "2022-12-22T14:10:59Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.2/flux_0.38.2_linux_amd64.tar.gz"
@@ -16939,7 +16939,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 355515,
-        "download_count": 460041,
+        "download_count": 460042,
         "created_at": "2022-12-22T14:11:05Z",
         "updated_at": "2022-12-22T14:11:05Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.2/install.yaml"
@@ -17887,7 +17887,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18467629,
-        "download_count": 3169,
+        "download_count": 3173,
         "created_at": "2022-12-21T12:32:11Z",
         "updated_at": "2022-12-21T12:32:12Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.0/flux_0.38.0_linux_amd64.tar.gz"
@@ -18097,7 +18097,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 18644150,
-        "download_count": 26,
+        "download_count": 28,
         "created_at": "2022-12-21T12:32:13Z",
         "updated_at": "2022-12-21T12:32:14Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.38.0/flux_0.38.0_windows_amd64.zip"
@@ -18326,7 +18326,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 1208,
-        "download_count": 40166,
+        "download_count": 40202,
         "created_at": "2022-11-22T17:28:10Z",
         "updated_at": "2022-11-22T17:28:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.37.0/flux_0.37.0_checksums.txt"
@@ -18501,7 +18501,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 18627323,
-        "download_count": 216744,
+        "download_count": 217322,
         "created_at": "2022-11-22T17:28:05Z",
         "updated_at": "2022-11-22T17:28:06Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.37.0/flux_0.37.0_linux_amd64.tar.gz"
@@ -18711,7 +18711,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 18804533,
-        "download_count": 2015,
+        "download_count": 2017,
         "created_at": "2022-11-22T17:28:07Z",
         "updated_at": "2022-11-22T17:28:08Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.37.0/flux_0.37.0_windows_amd64.zip"
@@ -18781,7 +18781,7 @@
         "content_type": "application/x-yaml",
         "state": "uploaded",
         "size": 325649,
-        "download_count": 77344,
+        "download_count": 77354,
         "created_at": "2022-11-22T17:28:11Z",
         "updated_at": "2022-11-22T17:28:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.37.0/install.yaml"
@@ -18816,7 +18816,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 32013,
-        "download_count": 68256,
+        "download_count": 68269,
         "created_at": "2022-11-22T17:28:11Z",
         "updated_at": "2022-11-22T17:28:11Z",
         "browser_download_url": "https://github.com/fluxcd/flux2/releases/download/v0.37.0/manifests.tar.gz"

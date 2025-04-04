@@ -961,7 +961,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 550,
-        "download_count": 513,
+        "download_count": 516,
         "created_at": "2024-07-30T18:20:25Z",
         "updated_at": "2024-07-30T18:20:26Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.1/checksums.txt"
@@ -996,7 +996,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7545584,
-        "download_count": 913,
+        "download_count": 916,
         "created_at": "2024-07-30T18:20:25Z",
         "updated_at": "2024-07-30T18:20:25Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.1/ocb_0.106.1_darwin_amd64"
@@ -1031,7 +1031,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7410946,
-        "download_count": 891,
+        "download_count": 894,
         "created_at": "2024-07-30T18:20:25Z",
         "updated_at": "2024-07-30T18:20:25Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.1/ocb_0.106.1_darwin_arm64"
@@ -1066,7 +1066,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6946816,
-        "download_count": 5595,
+        "download_count": 5609,
         "created_at": "2024-07-30T18:20:25Z",
         "updated_at": "2024-07-30T18:20:25Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.1/ocb_0.106.1_linux_amd64"
@@ -1101,7 +1101,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6684672,
-        "download_count": 1088,
+        "download_count": 1104,
         "created_at": "2024-07-30T18:20:25Z",
         "updated_at": "2024-07-30T18:20:26Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.1/ocb_0.106.1_linux_arm64"
@@ -1136,7 +1136,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6881280,
-        "download_count": 510,
+        "download_count": 513,
         "created_at": "2024-07-30T18:20:25Z",
         "updated_at": "2024-07-30T18:20:26Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.1/ocb_0.106.1_linux_ppc64le"
@@ -1171,7 +1171,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 7301632,
-        "download_count": 719,
+        "download_count": 722,
         "created_at": "2024-07-30T18:20:25Z",
         "updated_at": "2024-07-30T18:20:25Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.1/ocb_0.106.1_windows_amd64.exe"
@@ -1287,7 +1287,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 550,
-        "download_count": 506,
+        "download_count": 509,
         "created_at": "2024-07-29T19:37:07Z",
         "updated_at": "2024-07-29T19:37:07Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.0/checksums.txt"
@@ -1322,7 +1322,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7545584,
-        "download_count": 522,
+        "download_count": 525,
         "created_at": "2024-07-29T19:37:07Z",
         "updated_at": "2024-07-29T19:37:07Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.0/ocb_0.106.0_darwin_amd64"
@@ -1357,7 +1357,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7410946,
-        "download_count": 549,
+        "download_count": 552,
         "created_at": "2024-07-29T19:37:06Z",
         "updated_at": "2024-07-29T19:37:07Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.0/ocb_0.106.0_darwin_arm64"
@@ -1392,7 +1392,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6946816,
-        "download_count": 26130,
+        "download_count": 26345,
         "created_at": "2024-07-29T19:37:07Z",
         "updated_at": "2024-07-29T19:37:08Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.0/ocb_0.106.0_linux_amd64"
@@ -1427,7 +1427,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6684672,
-        "download_count": 8466,
+        "download_count": 8574,
         "created_at": "2024-07-29T19:37:07Z",
         "updated_at": "2024-07-29T19:37:08Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.0/ocb_0.106.0_linux_arm64"
@@ -1462,7 +1462,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6881280,
-        "download_count": 508,
+        "download_count": 511,
         "created_at": "2024-07-29T19:37:06Z",
         "updated_at": "2024-07-29T19:37:07Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.0/ocb_0.106.0_linux_ppc64le"
@@ -1497,7 +1497,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 7301632,
-        "download_count": 514,
+        "download_count": 517,
         "created_at": "2024-07-29T19:37:07Z",
         "updated_at": "2024-07-29T19:37:07Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.106.0/ocb_0.106.0_windows_amd64.exe"
@@ -1613,7 +1613,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 550,
-        "download_count": 654,
+        "download_count": 657,
         "created_at": "2024-07-16T17:05:54Z",
         "updated_at": "2024-07-16T17:05:54Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.105.0/checksums.txt"
@@ -1648,7 +1648,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7545584,
-        "download_count": 554,
+        "download_count": 557,
         "created_at": "2024-07-16T17:05:54Z",
         "updated_at": "2024-07-16T17:05:54Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.105.0/ocb_0.105.0_darwin_amd64"
@@ -1683,7 +1683,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7410946,
-        "download_count": 609,
+        "download_count": 612,
         "created_at": "2024-07-16T17:05:54Z",
         "updated_at": "2024-07-16T17:05:54Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.105.0/ocb_0.105.0_darwin_arm64"
@@ -1718,7 +1718,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6946816,
-        "download_count": 5680,
+        "download_count": 5689,
         "created_at": "2024-07-16T17:05:53Z",
         "updated_at": "2024-07-16T17:05:53Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.105.0/ocb_0.105.0_linux_amd64"
@@ -1753,7 +1753,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6684672,
-        "download_count": 643,
+        "download_count": 647,
         "created_at": "2024-07-16T17:05:53Z",
         "updated_at": "2024-07-16T17:05:53Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.105.0/ocb_0.105.0_linux_arm64"
@@ -1788,7 +1788,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6881280,
-        "download_count": 531,
+        "download_count": 534,
         "created_at": "2024-07-16T17:05:53Z",
         "updated_at": "2024-07-16T17:05:53Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.105.0/ocb_0.105.0_linux_ppc64le"
@@ -1823,7 +1823,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 7301632,
-        "download_count": 803,
+        "download_count": 806,
         "created_at": "2024-07-16T17:05:53Z",
         "updated_at": "2024-07-16T17:05:53Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.105.0/ocb_0.105.0_windows_amd64.exe"
@@ -1939,7 +1939,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 550,
-        "download_count": 535,
+        "download_count": 538,
         "created_at": "2024-07-01T20:20:36Z",
         "updated_at": "2024-07-01T20:20:36Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.104.0/checksums.txt"
@@ -1974,7 +1974,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7541456,
-        "download_count": 578,
+        "download_count": 581,
         "created_at": "2024-07-01T20:20:35Z",
         "updated_at": "2024-07-01T20:20:36Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.104.0/ocb_0.104.0_darwin_amd64"
@@ -2009,7 +2009,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7410882,
-        "download_count": 693,
+        "download_count": 696,
         "created_at": "2024-07-01T20:20:36Z",
         "updated_at": "2024-07-01T20:20:36Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.104.0/ocb_0.104.0_darwin_arm64"
@@ -2044,7 +2044,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6946816,
-        "download_count": 11467,
+        "download_count": 11473,
         "created_at": "2024-07-01T20:20:35Z",
         "updated_at": "2024-07-01T20:20:36Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.104.0/ocb_0.104.0_linux_amd64"
@@ -2079,7 +2079,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6684672,
-        "download_count": 932,
+        "download_count": 936,
         "created_at": "2024-07-01T20:20:35Z",
         "updated_at": "2024-07-01T20:20:36Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.104.0/ocb_0.104.0_linux_arm64"
@@ -2114,7 +2114,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6881280,
-        "download_count": 535,
+        "download_count": 538,
         "created_at": "2024-07-01T20:20:36Z",
         "updated_at": "2024-07-01T20:20:36Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.104.0/ocb_0.104.0_linux_ppc64le"
@@ -2149,7 +2149,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 7297536,
-        "download_count": 574,
+        "download_count": 577,
         "created_at": "2024-07-01T20:20:35Z",
         "updated_at": "2024-07-01T20:20:36Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.104.0/ocb_0.104.0_windows_amd64.exe"
@@ -2277,7 +2277,7 @@
         "content_type": "text/plain; charset=utf-8",
         "state": "uploaded",
         "size": 550,
-        "download_count": 604,
+        "download_count": 607,
         "created_at": "2024-06-18T16:23:28Z",
         "updated_at": "2024-06-18T16:23:29Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.103.1/checksums.txt"
@@ -2312,7 +2312,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7537328,
-        "download_count": 629,
+        "download_count": 632,
         "created_at": "2024-06-18T16:23:27Z",
         "updated_at": "2024-06-18T16:23:28Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.103.1/ocb_0.103.1_darwin_amd64"
@@ -2347,7 +2347,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7410834,
-        "download_count": 1492,
+        "download_count": 1495,
         "created_at": "2024-06-18T16:23:28Z",
         "updated_at": "2024-06-18T16:23:29Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.103.1/ocb_0.103.1_darwin_arm64"
@@ -2382,7 +2382,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6942720,
-        "download_count": 9847,
+        "download_count": 9852,
         "created_at": "2024-06-18T16:23:27Z",
         "updated_at": "2024-06-18T16:23:28Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.103.1/ocb_0.103.1_linux_amd64"
@@ -2417,7 +2417,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6684672,
-        "download_count": 997,
+        "download_count": 1002,
         "created_at": "2024-06-18T16:23:27Z",
         "updated_at": "2024-06-18T16:23:28Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.103.1/ocb_0.103.1_linux_arm64"
@@ -2452,7 +2452,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 6881280,
-        "download_count": 553,
+        "download_count": 556,
         "created_at": "2024-06-18T16:23:28Z",
         "updated_at": "2024-06-18T16:23:29Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.103.1/ocb_0.103.1_linux_ppc64le"
@@ -2487,7 +2487,7 @@
         "content_type": "application/x-ms-dos-executable",
         "state": "uploaded",
         "size": 7294976,
-        "download_count": 1343,
+        "download_count": 1346,
         "created_at": "2024-06-18T16:23:27Z",
         "updated_at": "2024-06-18T16:23:28Z",
         "browser_download_url": "https://github.com/open-telemetry/opentelemetry-collector/releases/download/cmd/builder/v0.103.1/ocb_0.103.1_windows_amd64.exe"

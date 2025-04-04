@@ -65,7 +65,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 11199797,
-        "download_count": 1128,
+        "download_count": 1177,
         "created_at": "2025-02-14T21:53:01Z",
         "updated_at": "2025-02-14T21:53:02Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.20.0/zola-v0.20.0-aarch64-apple-darwin.tar.gz"
@@ -100,7 +100,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 11684638,
-        "download_count": 1439,
+        "download_count": 1489,
         "created_at": "2025-02-14T21:53:01Z",
         "updated_at": "2025-02-14T21:53:02Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.20.0/zola-v0.20.0-aarch64-unknown-linux-gnu.tar.gz"
@@ -135,7 +135,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 11958597,
-        "download_count": 895,
+        "download_count": 936,
         "created_at": "2025-02-14T21:53:01Z",
         "updated_at": "2025-02-14T21:53:01Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.20.0/zola-v0.20.0-x86_64-apple-darwin.tar.gz"
@@ -170,7 +170,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 12592873,
-        "download_count": 4142,
+        "download_count": 4320,
         "created_at": "2025-02-14T21:53:01Z",
         "updated_at": "2025-02-14T21:53:02Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.20.0/zola-v0.20.0-x86_64-pc-windows-msvc.zip"
@@ -205,7 +205,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 12530175,
-        "download_count": 13500,
+        "download_count": 14192,
         "created_at": "2025-02-14T21:53:01Z",
         "updated_at": "2025-02-14T21:53:01Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.20.0/zola-v0.20.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -364,7 +364,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 11054182,
-        "download_count": 20416,
+        "download_count": 20423,
         "created_at": "2024-08-15T18:56:24Z",
         "updated_at": "2024-08-15T18:56:25Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.19.2/zola-v0.19.2-x86_64-pc-windows-msvc.zip"
@@ -399,7 +399,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 11285222,
-        "download_count": 95845,
+        "download_count": 96163,
         "created_at": "2024-08-15T18:47:02Z",
         "updated_at": "2024-08-15T18:47:03Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.19.2/zola-v0.19.2-x86_64-unknown-linux-gnu.tar.gz"
@@ -557,7 +557,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 11057171,
-        "download_count": 4770,
+        "download_count": 4777,
         "created_at": "2024-06-24T21:41:51Z",
         "updated_at": "2024-06-24T21:41:52Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-pc-windows-msvc.zip"
@@ -592,7 +592,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 11305659,
-        "download_count": 36014,
+        "download_count": 36208,
         "created_at": "2024-06-24T21:33:18Z",
         "updated_at": "2024-06-24T21:33:19Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.19.1/zola-v0.19.1-x86_64-unknown-linux-gnu.tar.gz"
@@ -785,7 +785,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 11305175,
-        "download_count": 6376,
+        "download_count": 6437,
         "created_at": "2024-06-20T21:47:53Z",
         "updated_at": "2024-06-20T21:47:55Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.19.0/zola-v0.19.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -943,7 +943,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 9697289,
-        "download_count": 10643,
+        "download_count": 10650,
         "created_at": "2023-12-18T22:55:58Z",
         "updated_at": "2023-12-18T22:55:59Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.18.0/zola-v0.18.0-x86_64-pc-windows-msvc.zip"
@@ -978,7 +978,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 9978118,
-        "download_count": 89179,
+        "download_count": 89282,
         "created_at": "2023-12-18T22:50:16Z",
         "updated_at": "2023-12-18T22:50:17Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.18.0/zola-v0.18.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -1066,7 +1066,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 8952327,
-        "download_count": 4284,
+        "download_count": 4285,
         "created_at": "2023-03-19T20:03:51Z",
         "updated_at": "2023-03-19T20:03:52Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.17.2/zola-v0.17.2-x86_64-apple-darwin.tar.gz"
@@ -1101,7 +1101,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 9262839,
-        "download_count": 6625,
+        "download_count": 6633,
         "created_at": "2023-03-19T20:04:10Z",
         "updated_at": "2023-03-19T20:04:12Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.17.2/zola-v0.17.2-x86_64-pc-windows-msvc.zip"
@@ -1136,7 +1136,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 9486314,
-        "download_count": 162668,
+        "download_count": 162763,
         "created_at": "2023-03-19T19:58:50Z",
         "updated_at": "2023-03-19T19:58:51Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.17.2/zola-v0.17.2-x86_64-unknown-linux-gnu.tar.gz"
@@ -1294,7 +1294,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 9466403,
-        "download_count": 10110,
+        "download_count": 10123,
         "created_at": "2023-02-24T21:43:38Z",
         "updated_at": "2023-02-24T21:43:40Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.17.1/zola-v0.17.1-x86_64-unknown-linux-gnu.tar.gz"
@@ -1610,7 +1610,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 9065902,
-        "download_count": 55659,
+        "download_count": 55666,
         "created_at": "2022-08-14T15:14:54Z",
         "updated_at": "2022-08-14T15:14:55Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.16.1/zola-v0.16.1-x86_64-unknown-linux-gnu.tar.gz"
@@ -1768,7 +1768,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 10455277,
-        "download_count": 6729,
+        "download_count": 6735,
         "created_at": "2022-07-16T21:59:43Z",
         "updated_at": "2022-07-16T21:59:44Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.16.0/zola-v0.16.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -1926,7 +1926,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 9725172,
-        "download_count": 66742,
+        "download_count": 66951,
         "created_at": "2022-01-23T14:02:41Z",
         "updated_at": "2022-01-23T14:02:42Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.15.3/zola-v0.15.3-x86_64-unknown-linux-gnu.tar.gz"
@@ -2084,7 +2084,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 9723713,
-        "download_count": 10844,
+        "download_count": 10849,
         "created_at": "2021-12-10T22:08:32Z",
         "updated_at": "2021-12-10T22:08:33Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.15.2/zola-v0.15.2-x86_64-unknown-linux-gnu.tar.gz"
@@ -2558,7 +2558,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 9535281,
-        "download_count": 20867,
+        "download_count": 20871,
         "created_at": "2021-08-24T07:42:27Z",
         "updated_at": "2021-08-24T07:42:28Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.14.1/zola-v0.14.1-x86_64-unknown-linux-gnu.tar.gz"
@@ -2716,7 +2716,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 9370058,
-        "download_count": 25307,
+        "download_count": 25310,
         "created_at": "2021-07-19T18:04:29Z",
         "updated_at": "2021-07-19T18:04:30Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.14.0/zola-v0.14.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -2874,7 +2874,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 8839442,
-        "download_count": 54316,
+        "download_count": 54319,
         "created_at": "2021-01-09T14:27:24Z",
         "updated_at": "2021-01-09T14:27:25Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.13.0/zola-v0.13.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -3458,7 +3458,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 20461860,
-        "download_count": 42276,
+        "download_count": 42289,
         "created_at": "2020-05-25T16:47:28Z",
         "updated_at": "2020-05-25T16:47:29Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.11.0/zola-v0.11.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -3931,7 +3931,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 7529016,
-        "download_count": 15949,
+        "download_count": 15951,
         "created_at": "2019-10-01T23:55:01Z",
         "updated_at": "2019-10-01T23:55:02Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.9.0/zola-v0.9.0-x86_64-unknown-linux-gnu.tar.gz"
@@ -4223,7 +4223,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 8514872,
-        "download_count": 10531,
+        "download_count": 10533,
         "created_at": "2019-04-28T09:26:37Z",
         "updated_at": "2019-04-28T09:26:37Z",
         "browser_download_url": "https://github.com/getzola/zola/releases/download/v0.7.0/zola-v0.7.0-x86_64-unknown-linux-gnu.tar.gz"

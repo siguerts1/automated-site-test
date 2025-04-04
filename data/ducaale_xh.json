@@ -65,7 +65,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3213235,
-        "download_count": 1305,
+        "download_count": 1364,
         "created_at": "2025-02-18T08:44:25Z",
         "updated_at": "2025-02-18T08:44:25Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.24.0/xh-v0.24.0-aarch64-apple-darwin.tar.gz"
@@ -100,7 +100,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3295226,
-        "download_count": 1355,
+        "download_count": 1412,
         "created_at": "2025-02-18T08:44:31Z",
         "updated_at": "2025-02-18T08:44:32Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.24.0/xh-v0.24.0-aarch64-unknown-linux-musl.tar.gz"
@@ -170,7 +170,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3392092,
-        "download_count": 1022,
+        "download_count": 1073,
         "created_at": "2025-02-18T08:44:34Z",
         "updated_at": "2025-02-18T08:44:34Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.24.0/xh-v0.24.0-x86_64-apple-darwin.tar.gz"
@@ -205,7 +205,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3545592,
-        "download_count": 4104,
+        "download_count": 4289,
         "created_at": "2025-02-18T08:47:03Z",
         "updated_at": "2025-02-18T08:47:04Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.24.0/xh-v0.24.0-x86_64-pc-windows-msvc.zip"
@@ -240,7 +240,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3567881,
-        "download_count": 9290,
+        "download_count": 9785,
         "created_at": "2025-02-18T08:45:02Z",
         "updated_at": "2025-02-18T08:45:03Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.24.0/xh-v0.24.0-x86_64-unknown-linux-musl.tar.gz"
@@ -275,7 +275,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2750648,
-        "download_count": 131,
+        "download_count": 132,
         "created_at": "2025-02-18T08:45:02Z",
         "updated_at": "2025-02-18T08:45:03Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.24.0/xh_0.24.0_amd64.deb"
@@ -286,14 +286,14 @@
     "body": "### Features\r\n- Add `--generate` option to generate the man page and shell completions at runtime, see #393 (@fgimian)\r\n- Add support for Elvish and Nushell shell completions, see #393 (@fgimian)\r\n- Add `--compress` for compressing request body, see #403 (@zuisong)\r\n\r\n### Bug fixes\r\n- Store default paths for cookies without an explicit path attribute, see #401 (@otaconix)\r\n\r\n### Other\r\n- Support generating man page with reproducible timestamp via `SOURCE_DATE_EPOCH`, see #402 (@nc7s)\r\n- Upgrade cookie_store to 0.21.1, see #397 (@kranurag7)",
     "reactions": {
       "url": "https://api.github.com/repos/ducaale/xh/releases/200859589/reactions",
-      "total_count": 7,
-      "+1": 0,
+      "total_count": 11,
+      "+1": 1,
       "-1": 0,
       "laugh": 0,
-      "hooray": 7,
+      "hooray": 8,
       "confused": 0,
-      "heart": 0,
-      "rocket": 0,
+      "heart": 1,
+      "rocket": 1,
       "eyes": 0
     },
     "mentions_count": 5
@@ -399,7 +399,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3281072,
-        "download_count": 1651,
+        "download_count": 1656,
         "created_at": "2025-01-02T11:47:19Z",
         "updated_at": "2025-01-02T11:47:20Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.23.1/xh-v0.23.1-aarch64-unknown-linux-musl.tar.gz"
@@ -504,7 +504,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3528160,
-        "download_count": 6407,
+        "download_count": 6416,
         "created_at": "2025-01-02T11:49:10Z",
         "updated_at": "2025-01-02T11:49:10Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.23.1/xh-v0.23.1-x86_64-pc-windows-msvc.zip"
@@ -539,7 +539,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3543266,
-        "download_count": 13705,
+        "download_count": 13711,
         "created_at": "2025-01-02T11:47:28Z",
         "updated_at": "2025-01-02T11:47:28Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.23.1/xh-v0.23.1-x86_64-unknown-linux-musl.tar.gz"
@@ -585,8 +585,8 @@
     "body": "### Security fixes\r\n- Upgrade to ruzstd v0.7.3 to fix RUSTSEC-2024-0400, see #396 (@zuisong)\r\n\r\n### Bug fixes\r\n- Warn on combination of `--continue` and `Range` header, #394 (@blyxxyz)\r\n\r\n### Other\r\n- Enable logging in `rustls` and `tracing`-using dependencies, see #390 (@blyxxyz)",
     "reactions": {
       "url": "https://api.github.com/repos/ducaale/xh/releases/192914819/reactions",
-      "total_count": 2,
-      "+1": 2,
+      "total_count": 3,
+      "+1": 3,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
@@ -663,7 +663,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3047866,
-        "download_count": 3329,
+        "download_count": 3331,
         "created_at": "2024-10-12T21:28:40Z",
         "updated_at": "2024-10-12T21:28:40Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.23.0/xh-v0.23.0-aarch64-apple-darwin.tar.gz"
@@ -768,7 +768,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3200198,
-        "download_count": 4561,
+        "download_count": 4570,
         "created_at": "2024-10-12T21:29:55Z",
         "updated_at": "2024-10-12T21:29:56Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.23.0/xh-v0.23.0-x86_64-apple-darwin.tar.gz"
@@ -803,7 +803,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3319924,
-        "download_count": 9598,
+        "download_count": 9606,
         "created_at": "2024-10-12T21:38:11Z",
         "updated_at": "2024-10-12T21:38:12Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.23.0/xh-v0.23.0-x86_64-pc-windows-msvc.zip"
@@ -838,7 +838,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3334691,
-        "download_count": 28555,
+        "download_count": 28576,
         "created_at": "2024-10-12T21:30:22Z",
         "updated_at": "2024-10-12T21:30:22Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.23.0/xh-v0.23.0-x86_64-unknown-linux-musl.tar.gz"
@@ -884,13 +884,13 @@
     "body": "### Features\r\n- Handle responses compressed in zstd format, see #364 (@zuisong)\r\n- Suppress warnings when `-qq` flag is used, see #371 (@blyxxyz)\r\n- Add `--debug` option for logging and backtraces, see #371 (@blyxxyz)\r\n- Decode `content-disposition` and `location` headers as UTF-8, see #375 (@zuisong)\r\n- Print headers as latin1, with the UTF-8 decoding also shown if applicable, see #377 (@blyxxyz)\r\n- Print the actual reason phrase sent by the server instead of guessing it from the status code, see #377 (@blyxxyz)\r\n\r\n### Bug fixes\r\n- Apply TLS options to non-HTTPS URLs, see #372 (@blyxxyz)\r\n\r\n### Other\r\n- Ignore `NO_COLOR` if set to empty string, see #370 (@blyxxyz)",
     "reactions": {
       "url": "https://api.github.com/repos/ducaale/xh/releases/179658767/reactions",
-      "total_count": 7,
+      "total_count": 9,
       "+1": 0,
       "-1": 0,
       "laugh": 0,
-      "hooray": 5,
+      "hooray": 6,
       "confused": 0,
-      "heart": 2,
+      "heart": 3,
       "rocket": 0,
       "eyes": 0
     },
@@ -1102,7 +1102,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3122063,
-        "download_count": 9227,
+        "download_count": 9235,
         "created_at": "2024-07-08T22:23:32Z",
         "updated_at": "2024-07-08T22:23:33Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.22.2/xh-v0.22.2-x86_64-pc-windows-msvc.zip"
@@ -1183,13 +1183,13 @@
     "body": "### Security fixes\r\n- Prevent directory traversal in server-supplied filenames, see #379 (@blyxxyz)",
     "reactions": {
       "url": "https://api.github.com/repos/ducaale/xh/releases/164497734/reactions",
-      "total_count": 7,
-      "+1": 5,
+      "total_count": 9,
+      "+1": 6,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
       "confused": 0,
-      "heart": 2,
+      "heart": 3,
       "rocket": 0,
       "eyes": 0
     },
@@ -1401,7 +1401,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3139426,
-        "download_count": 4471,
+        "download_count": 4479,
         "created_at": "2024-04-12T22:47:18Z",
         "updated_at": "2024-04-12T22:47:18Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.22.0/xh-v0.22.0-x86_64-pc-windows-msvc.zip"
@@ -1482,14 +1482,14 @@
     "body": "### Features\r\n- Support http2-prior-knowledge, see #356 (@zuisong)\r\n- Directly bind to interface name on supported platforms, see #359 (@ducaale)\r\n- Enable stream when content-type is `text/event-stream`, see #360 (@zuisong)\r\n- Decode utf-8 encoded string when formatting non-streaming JSON response, see #361 (@zuisong)\r\n\r\n### Other\r\n- Upgrade to hyper v1, see #357 (@zuisong)\r\n- Use `serde-transcode` to optimize JSON formatting, see #362 (@blyxxyz)",
     "reactions": {
       "url": "https://api.github.com/repos/ducaale/xh/releases/151000897/reactions",
-      "total_count": 14,
-      "+1": 8,
+      "total_count": 17,
+      "+1": 9,
       "-1": 0,
       "laugh": 0,
-      "hooray": 4,
+      "hooray": 5,
       "confused": 0,
       "heart": 0,
-      "rocket": 2,
+      "rocket": 3,
       "eyes": 0
     },
     "mentions_count": 3
@@ -1665,7 +1665,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3158850,
-        "download_count": 1839,
+        "download_count": 1847,
         "created_at": "2024-01-28T21:27:38Z",
         "updated_at": "2024-01-28T21:27:39Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.21.0/xh-v0.21.0-x86_64-pc-windows-msvc.zip"
@@ -1746,8 +1746,8 @@
     "body": "## Features\r\n- Display remote address in metadata when `-vv` or `--meta` flag is used, see #348 (@zuisong)\r\n\r\n## Other\r\n- Default `XH_CONFIG_DIR` to `~/.config/xh` in macOS, see #353 (@ducaale)\r\n",
     "reactions": {
       "url": "https://api.github.com/repos/ducaale/xh/releases/138832480/reactions",
-      "total_count": 6,
-      "+1": 6,
+      "total_count": 7,
+      "+1": 7,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
@@ -1929,7 +1929,7 @@
         "content_type": "application/zip",
         "state": "uploaded",
         "size": 3204616,
-        "download_count": 1707,
+        "download_count": 1716,
         "created_at": "2023-11-19T17:42:25Z",
         "updated_at": "2023-11-19T17:42:26Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.20.1/xh-v0.20.1-x86_64-pc-windows-msvc.zip"
@@ -1964,7 +1964,7 @@
         "content_type": "application/gzip",
         "state": "uploaded",
         "size": 3153587,
-        "download_count": 4346,
+        "download_count": 4347,
         "created_at": "2023-11-19T17:41:01Z",
         "updated_at": "2023-11-19T17:41:02Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.20.1/xh-v0.20.1-x86_64-unknown-linux-musl.tar.gz"
@@ -2251,7 +2251,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 2421172,
-        "download_count": 232,
+        "download_count": 235,
         "created_at": "2023-10-22T21:53:38Z",
         "updated_at": "2023-10-22T21:53:38Z",
         "browser_download_url": "https://github.com/ducaale/xh/releases/download/v0.19.4/xh_0.19.4_amd64.deb"
@@ -2262,8 +2262,8 @@
     "body": "## Other\r\n- Explicitly enable serde's derive feature, see #334 (@jayvdb)\r\n",
     "reactions": {
       "url": "https://api.github.com/repos/ducaale/xh/releases/126165237/reactions",
-      "total_count": 2,
-      "+1": 2,
+      "total_count": 3,
+      "+1": 3,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
@@ -2526,8 +2526,8 @@
     "body": "### Other\r\n- Make `network-interface` an optional dependency, see #332 (@blyxxyz)\r\n\r\n**Note for package maintainers**:  When building xh with `--no-default-features`, make sure to enable the `network-interface` feature if there are no build errors like in https://github.com/ducaale/xh/issues/330",
     "reactions": {
       "url": "https://api.github.com/repos/ducaale/xh/releases/126128346/reactions",
-      "total_count": 1,
-      "+1": 1,
+      "total_count": 2,
+      "+1": 2,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
@@ -2790,8 +2790,8 @@
     "body": "### Features\r\n- Add `--interface` for binding to a local IP address or interface, see #307 (@ducaale)\r\n- Translate `--raw` flag when using `--curl`, see #308 (@ducaale)\r\n- Support duplicate header keys in session files, see #313 (@ducaale)\r\n- Support persisting cookies from multiple domains, see #314 (@ducaale)\r\n- Control output formatting (JSON indent-level, header sorting, etc) via `--format-options`, see #318 (@Bnyro) and #319 (@ducaale)\r\n\r\n### Bug fixes\r\n- Disable cURL's URL globbing, see #325 (@ducaale)\r\n- Improve PATH handling in `install.ps1`, see #264 (@henno)\r\n\r\n### Other\r\n- Update Rustls to v0.21.0, see #311 (@ducaale)",
     "reactions": {
       "url": "https://api.github.com/repos/ducaale/xh/releases/126116340/reactions",
-      "total_count": 2,
-      "+1": 2,
+      "total_count": 3,
+      "+1": 3,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,

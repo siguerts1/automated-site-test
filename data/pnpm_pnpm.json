@@ -65,7 +65,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63040172,
-        "download_count": 104,
+        "download_count": 392,
         "created_at": "2025-04-01T12:12:05Z",
         "updated_at": "2025-04-01T12:12:08Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.1/pnpm-linux-arm64"
@@ -100,7 +100,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67014900,
-        "download_count": 2878,
+        "download_count": 13094,
         "created_at": "2025-04-01T12:12:05Z",
         "updated_at": "2025-04-01T12:12:08Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.1/pnpm-linux-x64"
@@ -135,7 +135,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 59153204,
-        "download_count": 53,
+        "download_count": 145,
         "created_at": "2025-04-01T12:12:05Z",
         "updated_at": "2025-04-01T12:12:08Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.1/pnpm-linuxstatic-arm64"
@@ -170,7 +170,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64705532,
-        "download_count": 367,
+        "download_count": 2121,
         "created_at": "2025-04-01T12:12:05Z",
         "updated_at": "2025-04-01T12:12:08Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.1/pnpm-linuxstatic-x64"
@@ -205,7 +205,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63730064,
-        "download_count": 320,
+        "download_count": 1452,
         "created_at": "2025-04-01T12:12:05Z",
         "updated_at": "2025-04-01T12:12:08Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.1/pnpm-macos-arm64"
@@ -240,7 +240,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71087632,
-        "download_count": 32,
+        "download_count": 257,
         "created_at": "2025-04-01T12:12:05Z",
         "updated_at": "2025-04-01T12:12:08Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.1/pnpm-macos-x64"
@@ -275,7 +275,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41670947,
-        "download_count": 10,
+        "download_count": 18,
         "created_at": "2025-04-01T12:12:05Z",
         "updated_at": "2025-04-01T12:12:07Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.1/pnpm-win-arm64.exe"
@@ -310,7 +310,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54224163,
-        "download_count": 1036,
+        "download_count": 4191,
         "created_at": "2025-04-01T12:12:05Z",
         "updated_at": "2025-04-01T12:12:07Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.1/pnpm-win-x64.exe"
@@ -321,14 +321,14 @@
     "body": "## Patch Changes\r\n\r\n*   `pnpm config set` should convert the settings to their correct type before adding them to `pnpm-workspace.yaml` [#9355](https://github.com/pnpm/pnpm/issues/9355).\r\n*   `pnpm config get` should read auth related settings via npm CLI [#9345](https://github.com/pnpm/pnpm/issues/9345).\r\n*   Replace leading `~/` in a path in `.npmrc` with the home directory [#9217](https://github.com/pnpm/pnpm/issues/9217).\r\n\r\n\r\n## Platinum Sponsors\r\n\r\n<table>\r\n  <tbody>\r\n    <tr>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://bit.dev/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\"><img src=\"https://pnpm.io/img/users/bit.svg\" width=\"80\" alt=\"Bit\"></a>\r\n      </td>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://sanity.io/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\"><img src=\"https://pnpm.io/img/users/sanity.svg\" width=\"180\" alt=\"Bit\"></a>\r\n      </td>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://syntax.fm/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\">\r\n          <picture>\r\n            <source media=\"(prefers-color-scheme: light)\" srcset=\"https://pnpm.io/img/users/syntaxfm.svg\" />\r\n            <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pnpm.io/img/users/syntaxfm_light.svg\" />\r\n            <img src=\"https://pnpm.io/img/users/syntaxfm.svg\" width=\"90\" alt=\"Syntax\" />\r\n          </picture>\r\n        </a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n\r\n## Gold Sponsors\r\n\r\n<table>\r\n  <tbody>\r\n    <tr>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://discord.com/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\">\r\n          <picture>\r\n            <source media=\"(prefers-color-scheme: light)\" srcset=\"https://pnpm.io/img/users/discord.svg\" />\r\n            <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pnpm.io/img/users/discord_light.svg\" />\r\n            <img src=\"https://pnpm.io/img/users/discord.svg\" width=\"220\" alt=\"Discord\" />\r\n          </picture>\r\n        </a>\r\n      </td>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://uscreen.de/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\">\r\n          <picture>\r\n            <source media=\"(prefers-color-scheme: light)\" srcset=\"https://pnpm.io/img/users/uscreen.svg\" />\r\n            <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pnpm.io/img/users/uscreen_light.svg\" />\r\n            <img src=\"https://pnpm.io/img/users/uscreen.svg\" width=\"180\" alt=\"u|screen\" />\r\n          </picture>\r\n        </a>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://www.jetbrains.com/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\">\r\n          <picture>\r\n            <source media=\"(prefers-color-scheme: light)\" srcset=\"https://pnpm.io/img/users/jetbrains.svg\" />\r\n            <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pnpm.io/img/users/jetbrains.svg\" />\r\n            <img src=\"https://pnpm.io/img/users/jetbrains.svg\" width=\"180\" alt=\"JetBrains\" />\r\n          </picture>\r\n        </a>\r\n      </td>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://nx.dev/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\">\r\n          <picture>\r\n            <source media=\"(prefers-color-scheme: light)\" srcset=\"https://pnpm.io/img/users/nx.svg?0\" />\r\n            <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pnpm.io/img/users/nx_light.svg?0\" />\r\n            <img src=\"https://pnpm.io/img/users/nx.svg\" width=\"70\" alt=\"Nx\" />\r\n          </picture>\r\n        </a>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://coderabbit.ai/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\">\r\n          <picture>\r\n            <source media=\"(prefers-color-scheme: light)\" srcset=\"https://pnpm.io/img/users/coderabbit.svg\" />\r\n            <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pnpm.io/img/users/coderabbit_light.svg\" />\r\n            <img src=\"https://pnpm.io/img/users/coderabbit.svg\" width=\"220\" alt=\"CodeRabbit\" />\r\n          </picture>\r\n        </a>\r\n      </td>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://route4me.com/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\">\r\n          <img src=\"https://pnpm.io/img/users/route4me.svg\" width=\"220\" alt=\"Route4Me\" />\r\n        </a>\r\n      </td>\r\n    </tr>\r\n    <tr>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://workleap.com/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\">\r\n          <picture>\r\n            <source media=\"(prefers-color-scheme: light)\" srcset=\"https://pnpm.io/img/users/workleap.svg\" />\r\n            <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pnpm.io/img/users/workleap_light.svg\" />\r\n            <img src=\"https://pnpm.io/img/users/workleap.svg\" width=\"190\" alt=\"Workleap\" />\r\n          </picture>\r\n        </a>\r\n      </td>\r\n      <td align=\"center\" valign=\"middle\">\r\n        <a href=\"https://stackblitz.com/?utm_source=pnpm&utm_medium=release_notes\" target=\"_blank\">\r\n          <picture>\r\n            <source media=\"(prefers-color-scheme: light)\" srcset=\"https://pnpm.io/img/users/stackblitz.svg\" />\r\n            <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://pnpm.io/img/users/stackblitz_light.svg\" />\r\n            <img src=\"https://pnpm.io/img/users/stackblitz.svg\" width=\"190\" alt=\"Stackblitz\" />\r\n          </picture>\r\n        </a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n",
     "reactions": {
       "url": "https://api.github.com/repos/pnpm/pnpm/releases/209584051/reactions",
-      "total_count": 6,
-      "+1": 0,
+      "total_count": 12,
+      "+1": 1,
       "-1": 0,
       "laugh": 0,
-      "hooray": 5,
+      "hooray": 8,
       "confused": 0,
-      "heart": 1,
-      "rocket": 0,
+      "heart": 2,
+      "rocket": 1,
       "eyes": 0
     }
   },
@@ -398,7 +398,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63037820,
-        "download_count": 718,
+        "download_count": 725,
         "created_at": "2025-03-26T11:35:59Z",
         "updated_at": "2025-03-26T11:36:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.0/pnpm-linux-arm64"
@@ -433,7 +433,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67012388,
-        "download_count": 22523,
+        "download_count": 23204,
         "created_at": "2025-03-26T11:35:59Z",
         "updated_at": "2025-03-26T11:36:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.0/pnpm-linux-x64"
@@ -468,7 +468,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 59150796,
-        "download_count": 209,
+        "download_count": 214,
         "created_at": "2025-03-26T11:35:59Z",
         "updated_at": "2025-03-26T11:36:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.0/pnpm-linuxstatic-arm64"
@@ -503,7 +503,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64703012,
-        "download_count": 3194,
+        "download_count": 10093,
         "created_at": "2025-03-26T11:35:59Z",
         "updated_at": "2025-03-26T11:36:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.0/pnpm-linuxstatic-x64"
@@ -538,7 +538,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63727488,
-        "download_count": 2726,
+        "download_count": 2768,
         "created_at": "2025-03-26T11:35:59Z",
         "updated_at": "2025-03-26T11:36:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.0/pnpm-macos-arm64"
@@ -573,7 +573,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71084992,
-        "download_count": 667,
+        "download_count": 692,
         "created_at": "2025-03-26T11:35:59Z",
         "updated_at": "2025-03-26T11:36:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.0/pnpm-macos-x64"
@@ -643,7 +643,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54221747,
-        "download_count": 8320,
+        "download_count": 8378,
         "created_at": "2025-03-26T11:35:59Z",
         "updated_at": "2025-03-26T11:36:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.7.0/pnpm-win-x64.exe"
@@ -731,7 +731,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63022084,
-        "download_count": 1131,
+        "download_count": 1138,
         "created_at": "2025-03-19T13:39:11Z",
         "updated_at": "2025-03-19T13:39:14Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.5/pnpm-linux-arm64"
@@ -766,7 +766,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 66996724,
-        "download_count": 29251,
+        "download_count": 30788,
         "created_at": "2025-03-19T13:39:11Z",
         "updated_at": "2025-03-19T13:39:14Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.5/pnpm-linux-x64"
@@ -836,7 +836,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64687356,
-        "download_count": 4427,
+        "download_count": 4458,
         "created_at": "2025-03-19T13:39:11Z",
         "updated_at": "2025-03-19T13:39:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.5/pnpm-linuxstatic-x64"
@@ -871,7 +871,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63711600,
-        "download_count": 3136,
+        "download_count": 3145,
         "created_at": "2025-03-19T13:39:11Z",
         "updated_at": "2025-03-19T13:39:14Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.5/pnpm-macos-arm64"
@@ -906,7 +906,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71069296,
-        "download_count": 736,
+        "download_count": 737,
         "created_at": "2025-03-19T13:39:11Z",
         "updated_at": "2025-03-19T13:39:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.5/pnpm-macos-x64"
@@ -976,7 +976,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54205923,
-        "download_count": 9714,
+        "download_count": 9717,
         "created_at": "2025-03-19T13:39:11Z",
         "updated_at": "2025-03-19T13:39:14Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.5/pnpm-win-x64.exe"
@@ -1099,7 +1099,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 66994868,
-        "download_count": 9441,
+        "download_count": 9457,
         "created_at": "2025-03-17T13:59:54Z",
         "updated_at": "2025-03-17T13:59:58Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.4/pnpm-linux-x64"
@@ -1169,7 +1169,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64685492,
-        "download_count": 2136,
+        "download_count": 2156,
         "created_at": "2025-03-17T13:59:54Z",
         "updated_at": "2025-03-17T13:59:58Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.4/pnpm-linuxstatic-x64"
@@ -1204,7 +1204,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63709712,
-        "download_count": 1221,
+        "download_count": 1230,
         "created_at": "2025-03-17T13:59:54Z",
         "updated_at": "2025-03-17T13:59:58Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.4/pnpm-macos-arm64"
@@ -1239,7 +1239,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71067488,
-        "download_count": 441,
+        "download_count": 452,
         "created_at": "2025-03-17T13:59:54Z",
         "updated_at": "2025-03-17T13:59:58Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.4/pnpm-macos-x64"
@@ -1309,7 +1309,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54204163,
-        "download_count": 3833,
+        "download_count": 3834,
         "created_at": "2025-03-17T13:59:54Z",
         "updated_at": "2025-03-17T13:59:57Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.4/pnpm-win-x64.exe"
@@ -1432,7 +1432,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 66993073,
-        "download_count": 15599,
+        "download_count": 15902,
         "created_at": "2025-03-13T14:19:57Z",
         "updated_at": "2025-03-13T14:20:00Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.3/pnpm-linux-x64"
@@ -1467,7 +1467,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 59131489,
-        "download_count": 672,
+        "download_count": 712,
         "created_at": "2025-03-13T14:19:57Z",
         "updated_at": "2025-03-13T14:20:00Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.3/pnpm-linuxstatic-arm64"
@@ -1502,7 +1502,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64683625,
-        "download_count": 2320,
+        "download_count": 2360,
         "created_at": "2025-03-13T14:19:57Z",
         "updated_at": "2025-03-13T14:20:00Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.3/pnpm-linuxstatic-x64"
@@ -1537,7 +1537,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63707920,
-        "download_count": 1656,
+        "download_count": 1659,
         "created_at": "2025-03-13T14:19:56Z",
         "updated_at": "2025-03-13T14:20:00Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.3/pnpm-macos-arm64"
@@ -1765,7 +1765,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 66993857,
-        "download_count": 17489,
+        "download_count": 17507,
         "created_at": "2025-03-10T02:32:26Z",
         "updated_at": "2025-03-10T02:32:30Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.2/pnpm-linux-x64"
@@ -1835,7 +1835,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64684497,
-        "download_count": 4293,
+        "download_count": 4342,
         "created_at": "2025-03-10T02:32:26Z",
         "updated_at": "2025-03-10T02:32:30Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.2/pnpm-linuxstatic-x64"
@@ -1870,7 +1870,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63708576,
-        "download_count": 2226,
+        "download_count": 2412,
         "created_at": "2025-03-10T02:32:26Z",
         "updated_at": "2025-03-10T02:32:29Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.2/pnpm-macos-arm64"
@@ -1905,7 +1905,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71066080,
-        "download_count": 676,
+        "download_count": 679,
         "created_at": "2025-03-10T02:32:26Z",
         "updated_at": "2025-03-10T02:32:30Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.2/pnpm-macos-x64"
@@ -1940,7 +1940,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41649896,
-        "download_count": 116,
+        "download_count": 125,
         "created_at": "2025-03-10T02:32:26Z",
         "updated_at": "2025-03-10T02:32:29Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.2/pnpm-win-arm64.exe"
@@ -1975,7 +1975,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54203032,
-        "download_count": 10244,
+        "download_count": 10579,
         "created_at": "2025-03-10T02:32:26Z",
         "updated_at": "2025-03-10T02:32:29Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.2/pnpm-win-x64.exe"
@@ -2063,7 +2063,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63234814,
-        "download_count": 35,
+        "download_count": 41,
         "created_at": "2025-03-10T02:47:23Z",
         "updated_at": "2025-03-10T02:47:26Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-linux-arm64"
@@ -2098,7 +2098,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67209462,
-        "download_count": 2937,
+        "download_count": 3290,
         "created_at": "2025-03-10T02:47:23Z",
         "updated_at": "2025-03-10T02:47:27Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-linux-x64"
@@ -2168,7 +2168,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64900134,
-        "download_count": 353,
+        "download_count": 392,
         "created_at": "2025-03-10T02:47:23Z",
         "updated_at": "2025-03-10T02:47:26Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-linuxstatic-x64"
@@ -2203,7 +2203,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63927072,
-        "download_count": 186,
+        "download_count": 206,
         "created_at": "2025-03-10T02:47:23Z",
         "updated_at": "2025-03-10T02:47:26Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-macos-arm64"
@@ -2308,7 +2308,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54418666,
-        "download_count": 58,
+        "download_count": 60,
         "created_at": "2025-03-10T02:47:23Z",
         "updated_at": "2025-03-10T02:47:26Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.9/pnpm-win-x64.exe"
@@ -2431,7 +2431,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67209350,
-        "download_count": 60,
+        "download_count": 109,
         "created_at": "2025-03-09T14:26:35Z",
         "updated_at": "2025-03-09T14:26:38Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.8/pnpm-linux-x64"
@@ -2536,7 +2536,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63926864,
-        "download_count": 24,
+        "download_count": 26,
         "created_at": "2025-03-09T14:26:35Z",
         "updated_at": "2025-03-09T14:26:38Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.8/pnpm-macos-arm64"
@@ -2729,7 +2729,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63071305,
-        "download_count": 799,
+        "download_count": 805,
         "created_at": "2025-03-07T01:48:30Z",
         "updated_at": "2025-03-07T01:48:33Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.1/pnpm-linux-arm64"
@@ -2764,7 +2764,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67046033,
-        "download_count": 8305,
+        "download_count": 8334,
         "created_at": "2025-03-07T01:48:30Z",
         "updated_at": "2025-03-07T01:48:33Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.1/pnpm-linux-x64"
@@ -2939,7 +2939,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41702048,
-        "download_count": 77,
+        "download_count": 84,
         "created_at": "2025-03-07T01:48:30Z",
         "updated_at": "2025-03-07T01:48:32Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.1/pnpm-win-arm64.exe"
@@ -2974,7 +2974,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54255344,
-        "download_count": 4998,
+        "download_count": 5005,
         "created_at": "2025-03-07T01:48:30Z",
         "updated_at": "2025-03-07T01:48:33Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.1/pnpm-win-x64.exe"
@@ -3062,7 +3062,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63071241,
-        "download_count": 234,
+        "download_count": 241,
         "created_at": "2025-03-06T11:32:32Z",
         "updated_at": "2025-03-06T11:32:36Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.0/pnpm-linux-arm64"
@@ -3097,7 +3097,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67045921,
-        "download_count": 1806,
+        "download_count": 1810,
         "created_at": "2025-03-06T11:32:32Z",
         "updated_at": "2025-03-06T11:32:36Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.0/pnpm-linux-x64"
@@ -3202,7 +3202,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63761312,
-        "download_count": 208,
+        "download_count": 209,
         "created_at": "2025-03-06T11:32:32Z",
         "updated_at": "2025-03-06T11:32:36Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.0/pnpm-macos-arm64"
@@ -3307,7 +3307,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54255056,
-        "download_count": 1284,
+        "download_count": 1288,
         "created_at": "2025-03-06T11:32:32Z",
         "updated_at": "2025-03-06T11:32:35Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.6.0/pnpm-win-x64.exe"
@@ -3535,7 +3535,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63926944,
-        "download_count": 45,
+        "download_count": 51,
         "created_at": "2025-03-06T10:33:59Z",
         "updated_at": "2025-03-06T10:34:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.7/pnpm-macos-arm64"
@@ -3728,7 +3728,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63101740,
-        "download_count": 1323,
+        "download_count": 1334,
         "created_at": "2025-02-27T01:34:10Z",
         "updated_at": "2025-02-27T01:34:13Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.2/pnpm-linux-arm64"
@@ -3763,7 +3763,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67076420,
-        "download_count": 33601,
+        "download_count": 33745,
         "created_at": "2025-02-27T01:34:10Z",
         "updated_at": "2025-02-27T01:34:14Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.2/pnpm-linux-x64"
@@ -3798,7 +3798,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 59214740,
-        "download_count": 510,
+        "download_count": 535,
         "created_at": "2025-02-27T01:34:10Z",
         "updated_at": "2025-02-27T01:34:13Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.2/pnpm-linuxstatic-arm64"
@@ -3833,7 +3833,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64766932,
-        "download_count": 5563,
+        "download_count": 5596,
         "created_at": "2025-02-27T01:34:10Z",
         "updated_at": "2025-02-27T01:34:14Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.2/pnpm-linuxstatic-x64"
@@ -3868,7 +3868,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63792272,
-        "download_count": 5868,
+        "download_count": 6183,
         "created_at": "2025-02-27T01:34:10Z",
         "updated_at": "2025-02-27T01:34:14Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.2/pnpm-macos-arm64"
@@ -3938,7 +3938,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41732411,
-        "download_count": 110,
+        "download_count": 118,
         "created_at": "2025-02-27T01:34:10Z",
         "updated_at": "2025-02-27T01:34:13Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.2/pnpm-win-arm64.exe"
@@ -3973,7 +3973,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54285699,
-        "download_count": 12869,
+        "download_count": 12879,
         "created_at": "2025-02-27T01:34:10Z",
         "updated_at": "2025-02-27T01:34:13Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.2/pnpm-win-x64.exe"
@@ -4271,7 +4271,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41732475,
-        "download_count": 84,
+        "download_count": 92,
         "created_at": "2025-02-26T12:11:09Z",
         "updated_at": "2025-02-26T12:11:12Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.1/pnpm-win-arm64.exe"
@@ -4306,7 +4306,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54285675,
-        "download_count": 1967,
+        "download_count": 1975,
         "created_at": "2025-02-26T12:11:09Z",
         "updated_at": "2025-02-26T12:11:13Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.1/pnpm-win-x64.exe"
@@ -4429,7 +4429,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67075844,
-        "download_count": 6307,
+        "download_count": 6321,
         "created_at": "2025-02-25T12:13:00Z",
         "updated_at": "2025-02-25T12:13:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.0/pnpm-linux-x64"
@@ -4534,7 +4534,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63791744,
-        "download_count": 633,
+        "download_count": 634,
         "created_at": "2025-02-25T12:13:00Z",
         "updated_at": "2025-02-25T12:13:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.0/pnpm-macos-arm64"
@@ -4604,7 +4604,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41732019,
-        "download_count": 96,
+        "download_count": 103,
         "created_at": "2025-02-25T12:13:00Z",
         "updated_at": "2025-02-25T12:13:02Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.0/pnpm-win-arm64.exe"
@@ -4639,7 +4639,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54285067,
-        "download_count": 2490,
+        "download_count": 2498,
         "created_at": "2025-02-25T12:13:00Z",
         "updated_at": "2025-02-25T12:13:03Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.5.0/pnpm-win-x64.exe"
@@ -4762,7 +4762,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67308231,
-        "download_count": 11608,
+        "download_count": 14112,
         "created_at": "2025-02-24T08:32:21Z",
         "updated_at": "2025-02-24T08:32:24Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.6/pnpm-linux-x64"
@@ -5060,7 +5060,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63087026,
-        "download_count": 1837,
+        "download_count": 1847,
         "created_at": "2025-02-16T21:55:04Z",
         "updated_at": "2025-02-16T21:55:07Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.1/pnpm-linux-arm64"
@@ -5095,7 +5095,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67061578,
-        "download_count": 33207,
+        "download_count": 33382,
         "created_at": "2025-02-16T21:55:04Z",
         "updated_at": "2025-02-16T21:55:07Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.1/pnpm-linux-x64"
@@ -5165,7 +5165,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64752194,
-        "download_count": 5857,
+        "download_count": 5860,
         "created_at": "2025-02-16T21:55:04Z",
         "updated_at": "2025-02-16T21:55:07Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.1/pnpm-linuxstatic-x64"
@@ -5200,7 +5200,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63777424,
-        "download_count": 4441,
+        "download_count": 4450,
         "created_at": "2025-02-16T21:55:04Z",
         "updated_at": "2025-02-16T21:55:07Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.1/pnpm-macos-arm64"
@@ -5235,7 +5235,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71135024,
-        "download_count": 972,
+        "download_count": 977,
         "created_at": "2025-02-16T21:55:04Z",
         "updated_at": "2025-02-16T21:55:07Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.1/pnpm-macos-x64"
@@ -5270,7 +5270,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41717761,
-        "download_count": 147,
+        "download_count": 155,
         "created_at": "2025-02-16T21:55:04Z",
         "updated_at": "2025-02-16T21:55:06Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.1/pnpm-win-arm64.exe"
@@ -5305,7 +5305,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54270873,
-        "download_count": 14899,
+        "download_count": 14906,
         "created_at": "2025-02-16T21:55:04Z",
         "updated_at": "2025-02-16T21:55:06Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.1/pnpm-win-x64.exe"
@@ -5393,7 +5393,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63084906,
-        "download_count": 333,
+        "download_count": 344,
         "created_at": "2025-02-14T00:32:12Z",
         "updated_at": "2025-02-14T00:32:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.0/pnpm-linux-arm64"
@@ -5428,7 +5428,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67059530,
-        "download_count": 7163,
+        "download_count": 7203,
         "created_at": "2025-02-14T00:32:12Z",
         "updated_at": "2025-02-14T00:32:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.0/pnpm-linux-x64"
@@ -5498,7 +5498,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64750138,
-        "download_count": 1352,
+        "download_count": 1353,
         "created_at": "2025-02-14T00:32:12Z",
         "updated_at": "2025-02-14T00:32:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.0/pnpm-linuxstatic-x64"
@@ -5533,7 +5533,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63775344,
-        "download_count": 1204,
+        "download_count": 1210,
         "created_at": "2025-02-14T00:32:12Z",
         "updated_at": "2025-02-14T00:32:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.0/pnpm-macos-arm64"
@@ -5568,7 +5568,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71132992,
-        "download_count": 265,
+        "download_count": 266,
         "created_at": "2025-02-14T00:32:12Z",
         "updated_at": "2025-02-14T00:32:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.0/pnpm-macos-x64"
@@ -5603,7 +5603,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41715673,
-        "download_count": 118,
+        "download_count": 126,
         "created_at": "2025-02-14T00:32:12Z",
         "updated_at": "2025-02-14T00:32:14Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.0/pnpm-win-arm64.exe"
@@ -5638,7 +5638,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54268825,
-        "download_count": 4744,
+        "download_count": 4752,
         "created_at": "2025-02-14T00:32:12Z",
         "updated_at": "2025-02-14T00:32:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.4.0/pnpm-win-x64.exe"
@@ -5726,7 +5726,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63082794,
-        "download_count": 1058,
+        "download_count": 1062,
         "created_at": "2025-02-10T23:51:51Z",
         "updated_at": "2025-02-10T23:51:54Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.3.0/pnpm-linux-arm64"
@@ -5761,7 +5761,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67057578,
-        "download_count": 19339,
+        "download_count": 19561,
         "created_at": "2025-02-10T23:51:51Z",
         "updated_at": "2025-02-10T23:51:55Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.3.0/pnpm-linux-x64"
@@ -5796,7 +5796,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 59195826,
-        "download_count": 259,
+        "download_count": 264,
         "created_at": "2025-02-10T23:51:51Z",
         "updated_at": "2025-02-10T23:51:54Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.3.0/pnpm-linuxstatic-arm64"
@@ -5831,7 +5831,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64748122,
-        "download_count": 8001,
+        "download_count": 8288,
         "created_at": "2025-02-10T23:51:52Z",
         "updated_at": "2025-02-10T23:51:54Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.3.0/pnpm-linuxstatic-x64"
@@ -5866,7 +5866,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63773216,
-        "download_count": 1743,
+        "download_count": 1747,
         "created_at": "2025-02-10T23:51:51Z",
         "updated_at": "2025-02-10T23:51:54Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.3.0/pnpm-macos-arm64"
@@ -5936,7 +5936,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41713585,
-        "download_count": 152,
+        "download_count": 160,
         "created_at": "2025-02-10T23:51:51Z",
         "updated_at": "2025-02-10T23:51:54Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.3.0/pnpm-win-arm64.exe"
@@ -5971,7 +5971,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54266649,
-        "download_count": 6571,
+        "download_count": 6579,
         "created_at": "2025-02-10T23:51:51Z",
         "updated_at": "2025-02-10T23:51:54Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.3.0/pnpm-win-x64.exe"
@@ -6094,7 +6094,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67053218,
-        "download_count": 13951,
+        "download_count": 13986,
         "created_at": "2025-02-06T19:11:17Z",
         "updated_at": "2025-02-06T19:11:21Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.1/pnpm-linux-x64"
@@ -6164,7 +6164,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64743994,
-        "download_count": 3031,
+        "download_count": 3034,
         "created_at": "2025-02-06T19:11:17Z",
         "updated_at": "2025-02-06T19:11:20Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.1/pnpm-linuxstatic-x64"
@@ -6199,7 +6199,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63768832,
-        "download_count": 1985,
+        "download_count": 1986,
         "created_at": "2025-02-06T19:11:17Z",
         "updated_at": "2025-02-06T19:11:20Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.1/pnpm-macos-arm64"
@@ -6269,7 +6269,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41709177,
-        "download_count": 152,
+        "download_count": 159,
         "created_at": "2025-02-06T19:11:17Z",
         "updated_at": "2025-02-06T19:11:19Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.1/pnpm-win-arm64.exe"
@@ -6304,7 +6304,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54262545,
-        "download_count": 7203,
+        "download_count": 7210,
         "created_at": "2025-02-06T19:11:17Z",
         "updated_at": "2025-02-06T19:11:20Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.1/pnpm-win-x64.exe"
@@ -6392,7 +6392,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63078202,
-        "download_count": 1793,
+        "download_count": 1868,
         "created_at": "2025-02-03T17:48:57Z",
         "updated_at": "2025-02-03T17:49:00Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.0/pnpm-linux-arm64"
@@ -6427,7 +6427,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67052922,
-        "download_count": 18799,
+        "download_count": 19055,
         "created_at": "2025-02-03T17:48:57Z",
         "updated_at": "2025-02-03T17:49:00Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.0/pnpm-linux-x64"
@@ -6532,7 +6532,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63768480,
-        "download_count": 1992,
+        "download_count": 2002,
         "created_at": "2025-02-03T17:48:57Z",
         "updated_at": "2025-02-03T17:49:00Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.0/pnpm-macos-arm64"
@@ -6602,7 +6602,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41708969,
-        "download_count": 147,
+        "download_count": 155,
         "created_at": "2025-02-03T17:48:57Z",
         "updated_at": "2025-02-03T17:48:59Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.0/pnpm-win-arm64.exe"
@@ -6637,7 +6637,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54262153,
-        "download_count": 6382,
+        "download_count": 6391,
         "created_at": "2025-02-03T17:48:57Z",
         "updated_at": "2025-02-03T17:48:59Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.2.0/pnpm-win-x64.exe"
@@ -6725,7 +6725,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63336839,
-        "download_count": 553,
+        "download_count": 554,
         "created_at": "2025-02-02T17:47:12Z",
         "updated_at": "2025-02-02T17:47:16Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.5/pnpm-linux-arm64"
@@ -6760,7 +6760,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67311735,
-        "download_count": 26979,
+        "download_count": 27716,
         "created_at": "2025-02-02T17:47:12Z",
         "updated_at": "2025-02-02T17:47:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.5/pnpm-linux-x64"
@@ -6795,7 +6795,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 59450063,
-        "download_count": 186,
+        "download_count": 194,
         "created_at": "2025-02-02T17:47:12Z",
         "updated_at": "2025-02-02T17:47:16Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.5/pnpm-linuxstatic-arm64"
@@ -6830,7 +6830,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 65002255,
-        "download_count": 3580,
+        "download_count": 3718,
         "created_at": "2025-02-02T17:47:13Z",
         "updated_at": "2025-02-02T17:47:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.5/pnpm-linuxstatic-x64"
@@ -6865,7 +6865,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64030544,
-        "download_count": 937,
+        "download_count": 955,
         "created_at": "2025-02-02T17:47:12Z",
         "updated_at": "2025-02-02T17:47:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.5/pnpm-macos-arm64"
@@ -6935,7 +6935,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41967755,
-        "download_count": 132,
+        "download_count": 140,
         "created_at": "2025-02-02T17:47:12Z",
         "updated_at": "2025-02-02T17:47:14Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.5/pnpm-win-arm64.exe"
@@ -6970,7 +6970,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54520907,
-        "download_count": 1332,
+        "download_count": 1351,
         "created_at": "2025-02-02T17:47:12Z",
         "updated_at": "2025-02-02T17:47:15Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.5/pnpm-win-x64.exe"
@@ -7058,7 +7058,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63252527,
-        "download_count": 327,
+        "download_count": 328,
         "created_at": "2025-01-26T21:48:30Z",
         "updated_at": "2025-01-26T21:48:33Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.1.0/pnpm-linux-arm64"
@@ -7093,7 +7093,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67227159,
-        "download_count": 8930,
+        "download_count": 9088,
         "created_at": "2025-01-26T21:48:30Z",
         "updated_at": "2025-01-26T21:48:33Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.1.0/pnpm-linux-x64"
@@ -7198,7 +7198,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63944848,
-        "download_count": 665,
+        "download_count": 669,
         "created_at": "2025-01-26T21:48:30Z",
         "updated_at": "2025-01-26T21:48:34Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.1.0/pnpm-macos-arm64"
@@ -7233,7 +7233,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71302720,
-        "download_count": 122,
+        "download_count": 123,
         "created_at": "2025-01-26T21:48:30Z",
         "updated_at": "2025-01-26T21:48:33Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.1.0/pnpm-macos-x64"
@@ -7391,7 +7391,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63328687,
-        "download_count": 3759,
+        "download_count": 3761,
         "created_at": "2025-01-13T16:23:45Z",
         "updated_at": "2025-01-13T16:23:47Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.4/pnpm-linux-arm64"
@@ -7426,7 +7426,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67303343,
-        "download_count": 60839,
+        "download_count": 61169,
         "created_at": "2025-01-13T16:23:44Z",
         "updated_at": "2025-01-13T16:23:47Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.4/pnpm-linux-x64"
@@ -7496,7 +7496,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64993935,
-        "download_count": 12641,
+        "download_count": 12645,
         "created_at": "2025-01-13T16:23:44Z",
         "updated_at": "2025-01-13T16:23:47Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.4/pnpm-linuxstatic-x64"
@@ -7531,7 +7531,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64022032,
-        "download_count": 2542,
+        "download_count": 2546,
         "created_at": "2025-01-13T16:23:44Z",
         "updated_at": "2025-01-13T16:23:47Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.4/pnpm-macos-arm64"
@@ -7601,7 +7601,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 41959395,
-        "download_count": 276,
+        "download_count": 284,
         "created_at": "2025-01-13T16:23:44Z",
         "updated_at": "2025-01-13T16:23:46Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.4/pnpm-win-arm64.exe"
@@ -7636,7 +7636,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54512635,
-        "download_count": 8359,
+        "download_count": 8371,
         "created_at": "2025-01-13T16:23:44Z",
         "updated_at": "2025-01-13T16:23:47Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.4/pnpm-win-x64.exe"
@@ -7724,7 +7724,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63239495,
-        "download_count": 952,
+        "download_count": 988,
         "created_at": "2025-01-07T14:45:16Z",
         "updated_at": "2025-01-07T14:45:17Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.0.0/pnpm-linux-arm64"
@@ -7759,7 +7759,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67214167,
-        "download_count": 28499,
+        "download_count": 28965,
         "created_at": "2025-01-07T14:45:16Z",
         "updated_at": "2025-01-07T14:45:18Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.0.0/pnpm-linux-x64"
@@ -7829,7 +7829,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64904863,
-        "download_count": 959,
+        "download_count": 970,
         "created_at": "2025-01-07T14:45:16Z",
         "updated_at": "2025-01-07T14:45:17Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.0.0/pnpm-linuxstatic-x64"
@@ -7864,7 +7864,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63931808,
-        "download_count": 6256,
+        "download_count": 6260,
         "created_at": "2025-01-07T14:45:16Z",
         "updated_at": "2025-01-07T14:45:17Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.0.0/pnpm-macos-arm64"
@@ -7899,7 +7899,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 71289472,
-        "download_count": 1477,
+        "download_count": 1479,
         "created_at": "2025-01-07T14:45:16Z",
         "updated_at": "2025-01-07T14:45:17Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.0.0/pnpm-macos-x64"
@@ -7969,7 +7969,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54423430,
-        "download_count": 19425,
+        "download_count": 19442,
         "created_at": "2025-01-07T14:45:16Z",
         "updated_at": "2025-01-07T14:45:17Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v10.0.0/pnpm-win-x64.exe"
@@ -8391,7 +8391,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63328719,
-        "download_count": 1745,
+        "download_count": 1751,
         "created_at": "2025-01-05T22:26:26Z",
         "updated_at": "2025-01-05T22:26:28Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.3/pnpm-linux-arm64"
@@ -8426,7 +8426,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67303327,
-        "download_count": 36305,
+        "download_count": 36957,
         "created_at": "2025-01-05T22:26:26Z",
         "updated_at": "2025-01-05T22:26:28Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.3/pnpm-linux-x64"
@@ -8496,7 +8496,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64994047,
-        "download_count": 5610,
+        "download_count": 5618,
         "created_at": "2025-01-05T22:26:26Z",
         "updated_at": "2025-01-05T22:26:28Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.3/pnpm-linuxstatic-x64"
@@ -8531,7 +8531,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64022176,
-        "download_count": 1687,
+        "download_count": 1691,
         "created_at": "2025-01-05T22:26:26Z",
         "updated_at": "2025-01-05T22:26:28Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.3/pnpm-macos-arm64"
@@ -8636,7 +8636,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54512707,
-        "download_count": 7596,
+        "download_count": 7632,
         "created_at": "2025-01-05T22:26:26Z",
         "updated_at": "2025-01-05T22:26:28Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.3/pnpm-win-x64.exe"
@@ -9425,7 +9425,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67303031,
-        "download_count": 80750,
+        "download_count": 82619,
         "created_at": "2024-12-27T14:39:17Z",
         "updated_at": "2024-12-27T14:39:20Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.2/pnpm-linux-x64"
@@ -9495,7 +9495,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 64993575,
-        "download_count": 3368,
+        "download_count": 3405,
         "created_at": "2024-12-27T14:39:17Z",
         "updated_at": "2024-12-27T14:39:19Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.2/pnpm-linuxstatic-x64"
@@ -9635,7 +9635,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54512315,
-        "download_count": 8956,
+        "download_count": 8964,
         "created_at": "2024-12-27T14:39:17Z",
         "updated_at": "2024-12-27T14:39:19Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.2/pnpm-win-x64.exe"
@@ -9723,7 +9723,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 63326323,
-        "download_count": 1011,
+        "download_count": 1012,
         "created_at": "2024-12-20T00:33:47Z",
         "updated_at": "2024-12-20T00:33:49Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.1/pnpm-linux-arm64"
@@ -9758,7 +9758,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 67301011,
-        "download_count": 17813,
+        "download_count": 17815,
         "created_at": "2024-12-20T00:33:48Z",
         "updated_at": "2024-12-20T00:33:49Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.1/pnpm-linux-x64"
@@ -9968,7 +9968,7 @@
         "content_type": "application/octet-stream",
         "state": "uploaded",
         "size": 54510271,
-        "download_count": 9389,
+        "download_count": 9397,
         "created_at": "2024-12-20T00:33:47Z",
         "updated_at": "2024-12-20T00:33:49Z",
         "browser_download_url": "https://github.com/pnpm/pnpm/releases/download/v9.15.1/pnpm-win-x64.exe"

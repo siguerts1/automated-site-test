@@ -40,8 +40,8 @@
     "body": "### Minor Changes\n\n-   [`2f4ea3b`](https://github.com/chakra-ui/chakra-ui/commit/2f4ea3b31792b6df212798c5f00e174276acc274)\n    Thanks [@segunadebayo](https://github.com/segunadebayo)! - -\n    **useMediaQuery**: Fix type signature to allow skipping the second argument\n\n    -   **RadioCard**: Fix accessibility issue due to html structure\n\n    -   **Slider**\n\n        -   Add support for `origin: end` to align the thumb to the end of the track.\n        -   Expose `thumbSize` as CSS variables in the root element. Can be useful for\n            styling the slider.\n\n    -   **Menu**\n\n        -   Added `onSelect` event to the `Menu.Item` component.\n        -   Ensure menu items have unique IDs to improve accessibility and HTML\n            validation.\n",
     "reactions": {
       "url": "https://api.github.com/repos/chakra-ui/chakra-ui/releases/209171786/reactions",
-      "total_count": 5,
-      "+1": 2,
+      "total_count": 6,
+      "+1": 3,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
@@ -196,8 +196,8 @@
     "body": "### Patch Changes\n\n-   [`d1782c8`](https://github.com/chakra-ui/chakra-ui/commit/d1782c8e9604f5186b202d95beada6b4813da7db)\n    Thanks [@segunadebayo](https://github.com/segunadebayo)! - Initial release of\n    the `@chakra-ui/charts` package.\n",
     "reactions": {
       "url": "https://api.github.com/repos/chakra-ui/chakra-ui/releases/209171779/reactions",
-      "total_count": 3,
-      "+1": 1,
+      "total_count": 4,
+      "+1": 2,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
@@ -248,8 +248,8 @@
     "body": "### Patch Changes\n\n-   [`87a072b`](https://github.com/chakra-ui/chakra-ui/commit/87a072b7c0c699154651a9f415d578a8c972b21d)\n    Thanks [@segunadebayo](https://github.com/segunadebayo)! - - Fix potential\n    import error from `@zag-js/utils` in `@ark-ui/react`\n",
     "reactions": {
       "url": "https://api.github.com/repos/chakra-ui/chakra-ui/releases/207981001/reactions",
-      "total_count": 5,
-      "+1": 2,
+      "total_count": 6,
+      "+1": 3,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
@@ -300,8 +300,8 @@
     "body": "### Patch Changes\n\n-   [`0eb769e`](https://github.com/chakra-ui/chakra-ui/commit/0eb769ef66e3766aa3f78983054766d4371d2008)\n    Thanks [@segunadebayo](https://github.com/segunadebayo)! - - **System**: Fix\n    issue where output of `<system>.css(...)` from Chakra UI can't be assigned to\n    `Interpolation<Theme>` from `@emotion/react`.\n\n    -   **General**: Bump `@ark-ui/react` to latest version.\n",
     "reactions": {
       "url": "https://api.github.com/repos/chakra-ui/chakra-ui/releases/207963263/reactions",
-      "total_count": 3,
-      "+1": 1,
+      "total_count": 4,
+      "+1": 2,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
@@ -352,14 +352,14 @@
     "body": "### Minor Changes\n\n-   [`354eaa6`](https://github.com/chakra-ui/chakra-ui/commit/354eaa6a68dd49c3e983f12afb0350c3fc615c6b)\n    Thanks [@segunadebayo](https://github.com/segunadebayo)! - Improve render\n    performance by upgrading to the latest Ark UI v5.\n\n    This brings a **1.5x\u20134x** performance improvements across components. Learn\n    more from the\n    [Ark UI v5 changelog](https://ark-ui.com/react/docs/overview/changelog#500---2025-03-06).\n",
     "reactions": {
       "url": "https://api.github.com/repos/chakra-ui/chakra-ui/releases/207912490/reactions",
-      "total_count": 13,
-      "+1": 1,
+      "total_count": 15,
+      "+1": 2,
       "-1": 0,
       "laugh": 0,
       "hooray": 0,
       "confused": 0,
       "heart": 6,
-      "rocket": 5,
+      "rocket": 6,
       "eyes": 1
     }
   },
