@@ -27,21 +27,20 @@ jobs:
       - name: Load GitHub Token
         run: echo "GITHUB_TOKEN=${{ secrets.SECRET_GITHUB_TOKEN }}" >> $GITHUB_ENV
 
-      - name: Run fetch + render (only on schedule)
+      - name: Run fetch + render on schedule
         if: github.event_name == 'schedule'
         run: |
           python3 fetch_all_releases.py
           python3 render_html.py
 
-      - name: Run render only (on push)
+      - name: Run render on push
         if: github.event_name == 'push'
         run: python3 render_html.py
 
-      - name: Commit rendered site (if updated)
+      - name: Commit rendered site
         run: |
           git config user.name "ReleaseRadar Bot"
           git config user.email "bot@releaseradar.io"
-          git add site/ index.html sitemap.xml || true
+          git add index.html sitemap.xml site/ || true
           git diff --quiet && echo "No changes to commit" || git commit -m "Auto-update rendered site"
-          git push origin gh-pages --force
-
+          git push origin main
