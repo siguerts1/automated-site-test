@@ -1,22 +1,20 @@
-name: ReleaseRadar Automation
+name: ReleaseRadar Controlled Build
 
 on:
   push:
-    branches: [main]
-
+    branches: [build-staging]
   schedule:
-    # Runs every 6 hours (midnight, 6am, noon, 6pm UTC)
-    - cron: '0 */6 * * *'
+    - cron: '0 */6 * * *'  # Every 6 hours
 
 permissions:
-  contents: write 
+  contents: write
 
 jobs:
-  build-render:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -30,20 +28,34 @@ jobs:
       - name: Load GitHub Token
         run: echo "GITHUB_TOKEN=${{ secrets.SECRET_GITHUB_TOKEN }}" >> $GITHUB_ENV
 
-      - name: Run fetch + render on schedule
+      - name: Run fetch + render (on schedule)
         if: github.event_name == 'schedule'
         run: |
           python3 fetch_all_releases.py
           python3 render_html.py
 
-      - name: Run render on push
+      - name: Run render only (on push)
         if: github.event_name == 'push'
         run: python3 render_html.py
 
-      - name: Commit rendered site
+      - name: Commit rendered site to main
         run: |
           git config user.name "ReleaseRadar Bot"
           git config user.email "bot@releaseradar.io"
-          git add index.html sitemap.xml site/ || true
-          git diff --quiet && echo "No changes to commit" || git commit -m "Auto-update rendered site"
-          git push origin main
+          git fetch origin main
+          git checkout main
+          git checkout -b site-update || git switch site-update
+          cp -r site/ index.html sitemap.xml .
+          git add index.html sitemap.xml site/
+          git diff --quiet || git commit -m "Deploy latest render to main"
+          git push origin site-update
+
+      - name: Create Pull Request to Main
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: site-update
+          base: main
+          title: "Deploy latest rendered site"
+          body: "Auto-generated PR from build-staging workflow."
+
