@@ -49,12 +49,4 @@ jobs:
           git diff --quiet || git commit -m "Deploy latest render to main"
           git push origin site-update
 
-      - name: Create Pull Request to Main
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: site-update
-          base: main
-          title: "Deploy latest rendered site"
-          body: "Auto-generated PR from build-staging workflow."
 
