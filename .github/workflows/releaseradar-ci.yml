@@ -45,17 +45,8 @@ jobs:
           git fetch origin main
           git checkout main
           git checkout -b site-update || git switch site-update
-          cp -r site/ index.html sitemap.xml .
-          git add index.html sitemap.xml site/
+          git add .
           git diff --quiet || git commit -m "Deploy latest render to main"
           git push origin site-update
 
-      - name: Create Pull Request to Main
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: site-update
-          base: main
-          title: "Deploy latest rendered site"
-          body: "Auto-generated PR from build-staging workflow."
 
